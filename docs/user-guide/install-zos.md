@@ -7,13 +7,14 @@ Installation of Zowe&trade; server-side components on z/OS, consists of the foll
    - Zowe API Mediation Layer
    - Z Secure Services (ZSS)
 
-* **The Zowe Cross Memory Server (ZIS)** 
+* **The Zowe Cross Memory Server (ZIS)**  
+
  An APF authorized server application that provides privileged services to Zowe in a secure manner.
 
 :::notes
 * Zowe offers the possibility to run some of its Unix components in a container rather than under USS. For more information, see [Installing Zowe Containers](k8s-introduction.md).
-
 * Zowe also offers the option of configuration for high availability. For more information, see [High Availability overview](zowe-ha-overview.md).
+:::
 
 ## Roles and responsibilities for server-side component installation
 
@@ -35,8 +36,10 @@ Notify your organization's network administrator to assign port numbers, reserve
 
 In most cases, the system programmer performs the Zowe installation and configuration, and starts Zowe. Ensure that your system programmers have general knowledge about SMP/E, z/OSMF workflows, and regular maintanance procedures. In many cases, the system programmer also prepares jobs for other administrators.
 
-## End-to-end installation diagram
+## End-to-end installation 
 
+The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
+ 
 ![4 installation methods](../images/install/4-installation-methods.png)
 
 ## Stage 1: Prepare for installation
