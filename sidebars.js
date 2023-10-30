@@ -86,9 +86,9 @@ module.exports = {
     {
       type: "category",
       label: "Installing Zowe server-side components",
+      link: {type:"doc", id:"user-guide/install-zos"},
       collapsed: false,
       items: [
-        "user-guide/install-zos",
         {
           type: "category",
           label: "Preparing for installation",
