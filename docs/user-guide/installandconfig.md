@@ -1,4 +1,4 @@
-# Planning the installation
+# Preparing for installation
 
 The following information is required during the Zowe installation process. Software and hardware prerequisites are covered in the next section.
 

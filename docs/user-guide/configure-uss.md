@@ -1,16 +1,6 @@
-# Address UNIX System Services (USS) Requirements
+# Addressing UNIX System Services (USS) Requirements
 
-The Zowe z/OS component runtime requires USS to be configured. As shown in the [Zowe architecture](../getting-started/zowe-architecture.md), a number of servers run under UNIX System Services (USS) on z/OS. Review this topic for knowledge and considerations about USS when you install and configure Zowe.
-
-- [What is USS?](#what-is-uss)
-- [Setting up USS for the first time](#setting-up-uss-for-the-first-time)
-- [Language environment](#language-environment)
-- [OMVS segment](#omvs-segment)
-- [Address space region size](#address-space-region-size)
-- [Temporary files management](#temporary-files-management)
-  - [How to customize](#how-to-customize)
-    - [In STC](#in-stc)
-    - [In zowe.yaml](#in-zoweyaml)
+The Zowe z/OS component runtime requires UNIX System Services (USS) to be configured. As shown in the [Zowe architecture](../getting-started/zowe-architecture.md), a number of servers run under UNIX System Services (USS) on z/OS. Review this topic for knowledge and considerations about USS when you install and configure Zowe.
 
 ## What is USS?
 
@@ -65,7 +55,7 @@ Error: A fatal exception has occurred. Program will exit
 
 You can fix the storage-related issue by making one of the following changes:
 
-- ASSIZEMAX parameter
+- `ASSIZEMAX` parameter
 
    The ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes.
 
@@ -73,7 +63,7 @@ You can fix the storage-related issue by making one of the following changes:
 
    **Note:** Running a shell script via TSO OMVS will run the shell in the TSO address space, unless you specify `_BPX_SHAREAS=NO` when invoking OMVS. If you are using TSO OMVS to install Zowe, you will need `export _BPX_SHAREAS=NO` to make the ASSIZEMAX change effective.
 
-- SIZE parameter of TSO segment
+- `SIZE` parameter of TSO segment
 
    Set SIZE operand of TSO segment to the value of `2096128`.
 

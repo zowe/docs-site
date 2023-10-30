@@ -5,6 +5,8 @@ This security configuration step is required for first time setup of Zowe. If Zo
 :::info**Required roles:** system programmer, security administrator
 :::
 
+**Important:** Consult with your security administrator before you proceed with initializing Zowe security configurations.
+
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, you should customize it to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB` which contains the commands needed to perform the security configuration.
 
 :::note

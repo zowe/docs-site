@@ -14,6 +14,28 @@ Zowe provides the ability for some of its unix components to be run not under US
 
 If you want to configure Zowe for high availability, see [High Availability overview](zowe-ha-overview.md) for instructions.
 
+## Roles and responsibilities for server-side component installation
+
+### Security administrator
+
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform various tasks. For more information, see [Addressing security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
+
+### Storage administrator
+
+Before starting installation, notify the storage administrator to reserve enough space for USS, directory storage space, and any other storage requrements to install Zowe. For more information , see [Addresing storage requirements](./address-storage-requirements.md).
+
+### Network administrator
+
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](./address-network-requirements.md).
+
+### System programmer
+
+In most cases, the system programmer performs Zowe installation and configuration and starts Zowe. System programmers are typically knowledgeable about SMP/E, z/OSMF workflows, and regular maintanance procedures. This role also regularly prepares jobs for other administrators.
+
+## End-to-end installation diagram
+
+![4 installation methods](../images/install/4-installation-methods.png)
+
 ## Stage 1: Planning and preparing
 
 Before continuing with the installation, you should be familiar with the following topics:
@@ -22,14 +44,13 @@ Before continuing with the installation, you should be familiar with the followi
 - The `zwe` utility used for installing, configuring, and managing Zowe
 - The configuration file used for Zowe, `zowe.yaml`
 
-These topics and more are covered in the [Planning the installation](installandconfig.md) page.
-
+These topics and more are covered in the [Preparing for installation](installandconfig.md) page.
 
 ## Stage 2: Installing the Zowe z/OS runtime
 
 ![Install the Zowe z/OS runtime](../images/install/install.png)
 
-1. Ensure that the software requirements are met. The prerequisites are described in [System requirements](systemrequirements-zos.md).
+1. Ensure that the software requirements are met. The prerequisites are described in [Preparing for installation](systemrequirements-zos.md).
 
 1. Choose the method of installing Zowe on z/OS. 
 
@@ -54,7 +75,7 @@ These topics and more are covered in the [Planning the installation](installandc
 1. Obtain and install the Zowe build.
 
    - For how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
-   - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E](install-zowe-smpe.md).
+   - For how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E overview](install-zowe-smpe-overview.md).
    - For how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
 After successful installation of either a convenience build or an SMP/E build, there will be a zFS folder that contains the unconfigured Zowe runtime directory, a utility library `SZWEEXEC` that contains utilities, a SAMPLIB library `SZWESAMP` that contains sample members, and a load library `SZWEAUTH` that contains load modules. The steps to prepare the z/OS environment to launch Zowe are the same irrespective of the installation method.
@@ -89,7 +110,7 @@ The `zwe init` command runs the subcommands in sequence automatically. You can c
 
 1. [Configure Zowe to use TLS certificates.](configure-certificates.md) (`zwe init certificate`)
 1. [Install Zowe main started tasks](install-stc-members.md). (`zwe init stc`)
-1. [Configure the z/OS system for Zowe](configure-zos-system.md).
+1. [Addressing z/OS requirements for Zowe](configure-zos-system.md).
 1. [Verify the installation](verify-zowe-runtime-install.md). Verify that Zowe is installed correctly on z/OS.
 
 :::tip

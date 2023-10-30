@@ -81,141 +81,131 @@ module.exports = {
     },
   ],
 
-  setup : [
+  "setup":[
     "user-guide/install-overview",
     {
       type: "category",
-      label: "Zowe server-side installation overview",
-      link: {type:"doc", id:"user-guide/install-zos"},
+      label: "Installing Zowe server-side components",
       collapsed: false,
       items: [
+        "user-guide/install-zos",
         {
           type: "category",
-          label: "Installing convenience, SMP/E, and PSWI builds",
+          label: "Preparing for installation",
+          link: {type: "doc", id: "user-guide/installandconfig"},
           items: [
             "user-guide/zos-components-installation-checklist",
-            {
-              type: "category",
-              label: "Planning",
-              link: {type:"doc", id:"user-guide/installandconfig"},
-              items: [
-                "user-guide/configure-uss",
-              ],
-            },
-            {
-              type: "category",
-              label: "System requirements",
-              link: {type:"doc", id:"user-guide/systemrequirements-zos"},
-              items: [
-                "user-guide/install-nodejs-zos",
-                "user-guide/systemrequirements-zosmf",
-                "user-guide/systemrequirements-zosmf-lite",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing",
-              items: [
-                "user-guide/install-zowe-zos-convenience-build",
-                {
-                  type: "category",
-                  label: "Installing Zowe SMP/E build",
-                  link: {type:"doc", id:"user-guide/install-zowe-smpe"},
-                  items: [
-                    "user-guide/install-zowe-smpe-zosmf-workflow",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Installing Zowe Portable Software Instance",
-                  link: {type:"doc", id:"user-guide/install-zowe-pswi"},
-                  items: [
-                    "user-guide/install-zowe-pswi-address-requirements",
-                    "user-guide/install-zowe-pswi-acquire",
-                    "user-guide/install-zowe-pswi-deployment",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Upgrading server-side components",
-                  items: [
-                    "user-guide/api-mediation/upgrade-zowe-no-downtime"
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring",
-              link: {type:"doc", id:"user-guide/configuring-overview"},
-              items: [
-                {
-                  type: "category",
-                  label: "Initializing Zowe z/OS runtime",
-                  link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
-                  items: [
-                    "user-guide/initialize-zos-system",
-                        "user-guide/zwe-init-subcommand-overview",
-                    "user-guide/configure-zowe-zosmf-workflow",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Configuring security",
-                  link: {type:"doc", id:"user-guide/configuring-security"},
-                  items: [
-                    "user-guide/initialize-security-configuration",
-                    "user-guide/apf-authorize-load-library",
-                    "user-guide/configure-zos-system",
-                    "user-guide/assign-security-permissions-to-users",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Configuring certificates",
-                  link: {type:"doc", id:"user-guide/configure-certificates"},
-                  items: [
-                    "user-guide/certificates-configuration-questionnaire",
-                    "user-guide/certificate-configuration-scenarios",
-                    "user-guide/import-certificates",
-                    "user-guide/generate-certificates",
-                    "user-guide/use-certificates",
-                    "user-guide/certificates-setup",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Configuring the Zowe cross memory server",
-                  link: {type:"doc", id:"user-guide/configure-xmem-server"},
-                  items: [],
-                }, 
-                {
-                  type: "category",
-                  label: "Configuring high availability (optional)",
-                  link: {type:"doc", id:"user-guide/zowe-ha-overview"},
-                  items: [
-                "user-guide/configure-sysplex",
-                "user-guide/systemrequirements-zosmf-ha",
-                "user-guide/configure-caching-service-ha",
-                  ],
-                },
-              ],
-            },
-            "user-guide/start-zowe-zos",
-            "user-guide/verify-zowe-runtime-install",            
-          ],
-        },            
+            "user-guide/systemrequirements-zos",
+            "user-guide/address-security-requirements",
+            "user-guide/configure-uss",
+            "user-guide/address-storage-requirements",
+            "user-guide/address-network-requirements",
+            "user-guide/install-nodejs-zos",
+            "user-guide/address-browser-requirements",
+            "user-guide/address-authentication-requirements"
+          ]
+        },
         {
-          "type": "category",
-          "label": "Installing containerization build",
+          type: "category",
+          label: "Installing Zowe via SMP/E",
+          link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
+          items: [
+            "user-guide/install-zowe-smpe",
+          ]
+        },
+        {
+          type: "category",
+          label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
+          link: {type:"doc", id:"user-guide/zosmf-install"},
+          items: [
+            "user-guide/install-zowe-pswi-address-requirements",
+            "user-guide/systemrequirements-zosmf",
+            "user-guide/systemrequirements-zosmf-lite",
+            {
+              type: "category",
+              label: "Installing Zowe via z/OSMF from PSWI",
+              link: {type:"doc", id:"user-guide/install-zowe-pswi"},
+              items: [
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
+              ],
+              },
+              "user-guide/install-zowe-smpe-zosmf-workflow",
+            ],
+        },
+        "user-guide/install-zowe-zos-convenience-build",
+        {
+          type: "category",
+          label: "Installing Zowe via a containerization build (PAX file)",
           link: {type:"doc", id:"user-guide/k8s-introduction"},
-          "items": [
+          items: [
             "user-guide/k8s-prereqs",
             "user-guide/k8s-downloading",
             "user-guide/k8s-config",
             "user-guide/k8s-using",
           ],
-        }, 
+        },
+		    {
+          type: "category",
+          label: "Configuring",
+          link: {type:"doc", id:"user-guide/configuring-overview"},
+          items: [
+            {
+              type: "category",
+              label: "Initializing Zowe z/OS runtime",
+              link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
+              items: [
+                "user-guide/initialize-zos-system",
+                "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configure-zowe-zosmf-workflow",
+              ],
+            },
+            {
+              type: "category",
+              label: "Configuring security",
+              link: {type:"doc", id:"user-guide/configuring-security"},
+              items: [
+                "user-guide/initialize-security-configuration",
+                "user-guide/apf-authorize-load-library",
+                "user-guide/configure-zos-system",
+                "user-guide/assign-security-permissions-to-users",
+                 ],
+            },
+            {
+              type: "category",
+              label: "Configuring certificates",
+              link: {type:"doc", id:"user-guide/configure-certificates"},
+              items: [
+                "user-guide/certificates-configuration-questionnaire",
+                "user-guide/certificate-configuration-scenarios",
+                "user-guide/import-certificates",
+                "user-guide/generate-certificates",
+                "user-guide/use-certificates",
+                "user-guide/certificates-setup",
+              ],
+            },
+            {
+              type: "category",
+              label: "Configuring the Zowe cross memory server",
+              link: {type:"doc", id:"user-guide/configure-xmem-server"},
+              items: [],
+            }, 
+            {
+              type: "category",
+              label: "Configuring high availability (optional)",
+              link: {type:"doc", id:"user-guide/zowe-ha-overview"},
+              items: [
+                "user-guide/configure-sysplex",
+                "user-guide/systemrequirements-zosmf-ha",
+                "user-guide/configure-caching-service-ha",
+                  ],
+            },
+              ],
+            },
+            "user-guide/start-zowe-zos",
+            "user-guide/verify-zowe-runtime-install",            
+          ],
+    },
         {
           type: "category",
           label: "Advanced server-side configuration",
@@ -224,24 +214,22 @@ module.exports = {
             "user-guide/configmgr-using",
             "user-guide/install-configure-zos-extensions",
           ],
-            },
-            {
-              type: "category",
-              label: "API Mediation Layer",
-              items: [
-                "user-guide/configure-data-sets-jobs-api",
-                "user-guide/api-mediation/api-catalog-configuration",
-                "user-guide/api-mediation/api-mediation-personal-access-token",
-                "user-guide/api-mediation/api-gateway-configuration",
-                "user-guide/api-mediation/discovery-service-configuration",
-                "user-guide/api-mediation/api-mediation-internal-configuration",
-                "extend/extend-apiml/api-mediation-passtickets",
-              ],
-            },
+        },
+        {
+          type: "category",
+          label: "API Mediation Layer",
+          items: [
+            "user-guide/configure-data-sets-jobs-api",
+            "user-guide/api-mediation/api-catalog-configuration",
+            "user-guide/api-mediation/api-mediation-personal-access-token",
+            "user-guide/api-mediation/api-gateway-configuration",
+            "user-guide/api-mediation/discovery-service-configuration",
+            "user-guide/api-mediation/api-mediation-internal-configuration",
+            "extend/extend-apiml/api-mediation-passtickets",
+            ],
+        },
           ],
-        },       
-      ],
-    },    
+        },              
     {
       type: "category",
       label: "Zowe client-side components",
@@ -383,7 +371,7 @@ module.exports = {
         },
       ],
    
-  use : [
+  use: [
     "user-guide/zowe-getting-started-tutorial",
     {
       type: "category",
@@ -553,7 +541,7 @@ module.exports = {
       ],
     },
   ],
-  extending: [
+  "extending": [
     "extend/extend-zowe-overview",
     "extend/zowe-conformance-program",  
     {
@@ -661,7 +649,7 @@ module.exports = {
       ],
     },    
   ],
-  troubleshooting: [
+  "troubleshooting": [
     {
       type: "category",
       label: "Troubleshooting overview",
@@ -773,7 +761,7 @@ module.exports = {
     },
     "contribute/contributing",
   ],
-  reference: [
+  "reference": [
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     {

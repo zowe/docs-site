@@ -1,4 +1,4 @@
-# Configuring
+# Configuring Zowe containers
 
 Zowe provides sample configurations that make it easy for you to run Zowe in Kubernetes. You can use them directly or as a reference.
 
@@ -34,6 +34,7 @@ kubectl apply -f common/zowe-sa.yaml
 
 Note that by default, `zowe-sa` service account has `automountServiceAccountToken` disabled for security purposes.
 
+### Verification
 To verify, check the following configurations.
 
 * `kubectl get namespaces` should show a Namespace `zowe`.
@@ -54,13 +55,16 @@ After you customize the `storageClassName` value, apply the result by issuing th
 kubectl apply -f samples/workspace-pvc.yaml
 ```
 
+### Verification
 To verify, run the following commands and check if the `STATUS` of line item `zowe-workspace-pvc` shows as `Bound`.
 
 ```
 kubectl get pvc --namespace zowe
 ```
 
-**IMPORTANT**, `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany` to allow the workspace be shared by all Zowe components.
+:::danger Important: 
+`zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany` to allow the workspace be shared by all Zowe components.
+:::
 
 In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
 
@@ -132,7 +136,8 @@ c. Apply the file into Kubernetes:
 
 d. Remove the previously saved `configs.yaml` file from all systems for security.
 
-To verify:
+### Verification
+To verify, run the following commands and check the results.
 
 * `kubectl get configmaps --namespace zowe`
    
@@ -178,7 +183,7 @@ To define this service, run the command:
 kubectl apply -f samples/api-catalog-service.yaml
 ```
 
-Upon success, you should see the following output: 
+**To verify**, You should see the following output: 
 
 ```
 service/api-catalog-service created
@@ -200,7 +205,7 @@ Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this wil
 kubectl apply -f samples/gateway-service-np.yaml
 ```
 
-To verify either case, run the following command and check that the command displays the service `gateway-service`.
+**To verify either case**, run the following command and check that the command displays the service `gateway-service`.
 
 ```
 kubectl get services --namespace zowe
@@ -224,7 +229,7 @@ Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this wil
 kubectl apply -f samples/discovery-service-np.yaml
 ```
 
-To verify either case, run the following command and check that this command displays the service `discovery-service`:
+**To verify either case**, run the following command and check that this command displays the service `discovery-service`:
 
 ```kubectl get services --namespace zowe``` 
 
@@ -245,7 +250,7 @@ kubectl apply -f samples/bare-metal/gateway-ingress.yaml
 kubectl apply -f samples/bare-metal/discovery-ingress.yaml
 ```
 
-To verify, run the following commands:
+**To verify**, run the following commands:
 
 ```kubectl get ingresses --namespace zowe```
 
@@ -274,7 +279,7 @@ oc apply -f samples/openshift/gateway-route.yaml
 oc apply -f samples/openshift/discovery-route.yaml
 ```
 
-To verify, run the following commands:
+**To verify**, run the following commands:
 
 ```oc get routes --namespace zowe```
 
@@ -358,7 +363,7 @@ Zowe provides optional `PodDisruptionBudget` which can provide high availability
 kubectl apply -f samples/pod-disruption-budget/
 ```
 
-To verify this step, run:
+**To verify this step**, run:
 
 ```bash
 kubectl get pdb --namespace zowe
@@ -388,7 +393,7 @@ Zowe provides optional `HorizontalPodAutoscaler` which can automatically scale Z
 kubectl apply -f samples/horizontal-pod-autoscaler/
 ```
 
-To verify this step, run:
+**To verify this step**, run:
 
 ```bash
 kubectl get hpa --namespace zowe
