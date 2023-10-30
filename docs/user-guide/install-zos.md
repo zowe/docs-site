@@ -39,7 +39,7 @@ In most cases, the system programmer performs the Zowe installation and configur
 ## End-to-end installation 
 
 The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
- 
+
 ![4 installation methods](../images/install/4-installation-methods.png)
 
 ## Stage 1: Prepare for installation
@@ -114,7 +114,8 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 2. [Prepare the custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets.  
 (Uses the command `zwe init mvs`)
 3. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.  
-(Uses the command `zwe init security`)
+  (Uses the command `zwe init security`)  
+
    :::note
    If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
    :::
@@ -131,7 +132,7 @@ Once you complete the Zowe z/OS runtime, you can [verify the installation](verif
 
 :::tip
 * For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verifyCertificates: DISABLED`.
-* For production environments, certificate are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA.
+* For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA.
    * z/OSMF
    * Zowe
    * The service that is onboarded to Zowe   
