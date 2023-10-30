@@ -1,4 +1,4 @@
-# Installing Zowe via SMP/E
+# Installing Zowe via SMP/E instructions
 
 This section describes the installation method and the step-by-step procedures to install and activate the functions of Zowe.
 
