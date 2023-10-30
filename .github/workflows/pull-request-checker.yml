@@ -79,7 +79,7 @@ jobs:
     name: Check for missing review label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && (needs.initial-comment.result == 'success' || needs.initial-comment.result == 'skipped') && github.actor != 'zowe-robot' && !contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
+    if: ${{ always() && github.actor != 'zowe-robot' && !contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
 
     steps:
       - name: Review Label Check
@@ -102,7 +102,7 @@ jobs:
     name: Check for missing release label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && (needs.initial-comment.result == 'success' || needs.initial-comment.result == 'skipped') && github.actor != 'zowe-robot' }}
+    if: ${{ always() && github.actor != 'zowe-robot' }}
 
     steps:
       - id: prefix_label_check
@@ -123,7 +123,7 @@ jobs:
     name: Check for missing area label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && (needs.initial-comment.result == 'success' || needs.initial-comment.result == 'skipped') && github.actor != 'zowe-robot' }}
+    if: ${{ always() && github.actor != 'zowe-robot' }}
 
     steps:
       - id: prefix_label_check
