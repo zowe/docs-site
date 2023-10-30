@@ -3,16 +3,18 @@
 To properly configure Zowe to use certificates for server-side component installation, review the  certificate setup options presented in this article. 
 Understanding these options makes it possible to select the best certificate configuration scenario that fits your Zowe deployment use case. 
 
+:::info**Required roles:** system programmer, security administrator
+
+If you know that you will be using certificates in a production deployment environment, and that you will be using an external certificate authority (CA), we recommend you consult with your organization's security administrator before you start certificate configuration.
+:::
+
 Review the Configure Zowe Certificates diagram and answer the questions presented in the questionnaire at the end of this article.
 
-**Important:**
-If you know that you will be using certificates in a production deployment environment, and that you will be using an external certificate authority (CA), we recommend you consult with your organization's security administrator before you start certificate configuration.
-
-**Tip:**
+:::tip
 Before determining which scenario best suits your use case, it is practical to have a general understanding of the certificate configuration basics and Zowe certificates configuration overview. For more information, see the following articles: 
 - [Certificates concepts](../appendix/zowe-security-glossary#certificate-concepts) in the [Zowe Security Glossary](../appendix/zowe-security-glossary)
 - [Zowe certificates overview](../getting-started/zowe-certificates-overview)
-
+:::
 
 The numerated decision blocks (yellow diamonds) in the following diagram correspond to the questions in the questionnaire.
 Follow this sequence of questions to determine which certificate configuration scenario best suits your certificate use case.
@@ -39,8 +41,9 @@ If you plan to use Zowe generated self-signed certificates and your target envir
 **Question 3:** Do you plan to use a keyring?  
 Decide if you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
 
-**Tip:**  
+:::tip 
 While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS keyrings for production deployments.
+:::
 
 **Question 4:** Do you plan to use an existing certificate from another keyring or from a dataset?  
 If you have an existing certificate, you can import or connect this certificate to the planned z/OS keyring based storage.
@@ -53,6 +56,6 @@ For more information, see [Import and configure an existing certificate](./impor
 
 After you select your applicable certificate configuration scenario and review the certificate configurate sample in the article [Certificate configuration scenarios](./certificate-configuration-scenarios.md), you can continue to  [Configure Zowe Certificates](./configure-certificates).  
 
-**Tip:**
+:::tip
 If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate), to find resolution of errors you encounter when configuring Zowe certificates.
-
+:::

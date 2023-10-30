@@ -1,7 +1,12 @@
 
 # Generating a certificate  
 
-If you do not have a certificate, follow the procedure that corresponds to the certificate type you choose to generate: 
+If you do not have a certificate, follow the procedure in this article that corresponds to the certificate type you choose to generate.
+
+:::info**Required roles:** system programmer, security administrator
+:::
+
+Choose from the following certificate types:
 
 * [Creating a PKCS12 certificate](#creating-a-pkcs12-keystore)
 * [Creating a JCERACFKS certificate](#creating-a-jceracfks-certificate)
@@ -65,7 +70,9 @@ zowe:
         - 12.34.56.78
 ```
 
-**Tip:** To get the san IP address, run `ping dvipa.my-company.com` in your terminal. 
+:::tip
+To get the san IP address, run `ping dvipa.my-company.com` in your terminal. 
+:::
 
 ### Run the command to generate a PKCS12 keystore
 
@@ -202,11 +209,12 @@ zowe:
         - 12.34.56.78
 ```
 
-**Notes:**
+:::note**Notes:**
 - Alias names should be all lower cases.
 - The name and lables shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added to the certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
+:::
 
 ### Run the command to generate a JCERACFKS certificate
 
@@ -241,8 +249,9 @@ The following command output shows the generation of a JCERACFKS certificate usi
 #>
 ```
 
-**Tips:**  
+:::tip  
 As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
+:::
 
 3. Open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified, the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
 
@@ -265,10 +274,12 @@ zowe:
       certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&localca
 ```
 
-**Note:**  
-* `zowe.certificate.keystore.password` has a hardcoded password value. If you are using `type: PKCS12`, the password field must be the real password.
+:::note 
+`zowe.certificate.keystore.password` has a hardcoded password value. If you are using `type: PKCS12`, the password field must be the real password.
+:::
 
 You completed the procedure to generate a JCERACFKS certificate.
+
 ### Next steps after JCERACFKS setup
 
 For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](./use-certificates.md).

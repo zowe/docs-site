@@ -1,6 +1,10 @@
-# Use certificates 
+# Using certificates 
 
-Once you have generated or imported your certificates, you can now use the certificates with Zowe. Use the procedure that corresponds to the type of certificates you generated or imported:
+Once you have generated or imported your certificates, you can now use the certificates with Zowe. Use the procedure descibed in this article that corresponds to the type of certificates you generated or imported.
+
+:::info**Required roles:** system programmer, security administrator
+:::
+Choose from the following procedures:
 
 - [Use PKCS12 certificates](#use-pkcs12-certificates)
 - [Use JCERACFKS certificates](#use-jceracfks-certificates)
