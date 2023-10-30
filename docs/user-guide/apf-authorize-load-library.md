@@ -1,20 +1,16 @@
-# Performing APF authorization of load libraries
+# APF authorize load libraries
 
-Review this article to learn how to perform APF authorization of Zowe load libraries to make privileged calls. Note that this procedure requires elevated permissions.
+Learn how to perform APF authorization of Zowe load libraries that require access to make privileged calls.
 
-:::info**Required role:** security administrator
-:::
+**Important:** Consult with your security administrator before starting this procedure to ensure you have the required authorization.
 
-Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. The command `zwe init apfauth` reads the PDS names for the load libraries from `zowe.yaml` and performs the APF authority commands.  
+Zowe contains load modules that require access to make privileged z/OS security manager calls.  These are held in two load libraries which must be APF authorized. The command `zwe init apfauth` will read the PDS names for the load libraries from `zowe.yaml` and perform the APF authority commands.  
 
-- **zowe.setup.dataset.authLoadLib**  
- Specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
-- **zowe.setup.dataset.authPluginLib**  
- References the load library for ZIS plugins.  
+- `zowe.setup.dataset.authLoadLib` specifies the user custom load library, containing the `ZWELNCH`, `ZWESIS01` and `ZWESAUX` load modules.  These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.  
+- `zowe.setup.dataset.authPluginLib` which references the load library for ZIS plugins.  
 
-The following command presents an example of running `zwe init apfauth`: 
+Here is an example of running `zwe init apfauth`: 
 
-**Example:**
 ```
 #>zwe init apfauth -c ./zowe.yaml
 -------------------------------------------------------------------------------
@@ -26,11 +22,8 @@ APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
 >> Zowe load libraries are APF authorized successfully.
 #>
 ```
-:::note
-If you do not have permissions to update your security configurations, use `security-dry-run`. We recommend you inform your security administrator to review your job content.
-:::
 
-Specify `--security-dry-run` to have the command echo the commands that need to be run without executing the command.  
+Specify `--security-dry-run` to have the command echo the commands that need to be run without them being executed.  
 
 ```
   SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS

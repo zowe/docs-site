@@ -20,10 +20,9 @@ To end the Zowe cross memory server process, issue the operator stop command thr
 ```
 /P ZWESISTC
 ```
+**Note:** 
 
-:::note
 The starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example `ZWESIS_STD`. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
-:::
 
 ## Starting and stopping the cross memory auxiliary server `ZWESASTC` on z/OS
 
@@ -35,7 +34,7 @@ Zowe ships [`zwe start`](../appendix/zwe_server_command_reference/zwe/zwe-start.
 
 To start Zowe, run `zwe start --config /path/to/my/zowe.yaml` command. It will issue `S` command to Zowe `ZWESLSTC`.
 
-**Example:**
+Here is an example:
 
 ```
 #>zwe start --config /path/to/my/zowe.yaml
@@ -63,7 +62,7 @@ haInstances:
 
 To stop Zowe, run `zwe stop --config /path/to/my/zowe.yaml` command. It will issue `P` command to Zowe job.
 
-**Example:**
+Here is an example:
 
 ```
 #>zwe stop --config /path/to/my/zowe.yaml
@@ -103,6 +102,4 @@ To stop a running Zowe component, issue `F <zowe-job>,APPL=STOP(<component-name>
 
 To start a stopped Zowe component, issue `F <zowe-job>,APPL=START(<component-name>)` command. For example, if you want to start `app-server`, issue `F ZWE1SV,APPL=START(app-server)`.
 
-:::note
-Not all components can be restarted with this method. Some components may rely on another and you may need to restart affected components as well.
-:::
+**Note**, please be aware that not all components can be restarted with this method. Some components may rely on another and you may need to restart affected components as well.

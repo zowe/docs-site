@@ -1,9 +1,6 @@
-# Configuring high availability (optional)
+# Overview
 
-Zowe has a high availability feature built-in. This doc guides you through the configuration steps to enable this feature. Note that configuring high availability is optional.
-
-:::info**Required role:** system programmer
-:::
+Zowe has high availability feature built-in. This doc guides you through the configuration steps to enable this feature.
 
 ## Enable high availability when Zowe runs in Sysplex
 

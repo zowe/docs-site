@@ -1,16 +1,13 @@
 
 # Initializing Zowe custom data sets
 
-Review this article to learn about how to intialize Zowe custom MVS data sets by using the `zwe init mvs` command. 
-
-:::info**Required role:** system programmer
-:::
+Learn how to intialize Zowe custom MVS data sets by using the `zwe init mvs` command. 
 
 ## Introduction
 
-During the installation of Zowe, three data sets `SZWEAUTH`, `SZWESAMP` and `SZWEEXEC` are created and populated with members copied across from the Zowe installation files. The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified.
+During the installation of Zowe, three data sets `SZWEAUTH`, `SZWESAMP` and `SZWEEXEC` are created and populated with members copied across from the Zowe installation files. The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified because they will be replaced during subsequent upgrades of Zowe version 2. 
 
-For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs).
+For modification and execution, you must create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs).
 
 The `zowe.yaml` section that contains the parameters for the data set names is:
 
@@ -25,7 +22,7 @@ zowe:
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Review the following table for storage requirements for the three data sets:
+The storage requirements for the three data sets are included here.
 
 Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---|--
@@ -33,7 +30,7 @@ CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDS
 CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
 CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
 
-## Procedure to initialize Zowe custom data sets
+## Procedure
 
 To initialize Zowe custom data sets, run the following command: 
 
