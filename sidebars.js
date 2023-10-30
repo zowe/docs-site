@@ -81,7 +81,7 @@ module.exports = {
     },
   ],
 
-  "setup": [
+  "setup":[
     "user-guide/install-overview",
     {
       type: "category",
@@ -353,7 +353,7 @@ module.exports = {
       ],
     },    
   ],  
-  "use": [
+  "use":[
     "user-guide/zowe-getting-started-tutorial",
     {
       type: "category",
