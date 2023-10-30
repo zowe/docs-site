@@ -39,7 +39,7 @@ In most cases, the system programmer performs the Zowe installation and configur
 
 ![4 installation methods](../images/install/4-installation-methods.png)
 
-## Stage 1: Planning and preparing
+## Stage 1: Prepare for installation
 
 Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](installandconfig.md):
 
@@ -54,9 +54,9 @@ Begin the installation process by familiarizing yourself with the following topi
 
 1. Ensure that the software requirements described in [Preparing for installation](systemrequirements-zos.md) are met.
 
-1. Choose your method for installing Zowe on z/OS. 
+2. Choose your method for installing Zowe on z/OS. 
 
-   Each of the following formats contain the same contents. Choose the method based on your needs. The Zowe z/OS binaries are distributed in the following formats: 
+   Each method to perform Zowe server-side component installation contains the same contents. Choose the method based on your needs. The Zowe z/OS binaries are distributed in the following formats: 
 
    - **Convenience build**  
    The Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer these binaries to a USS directory and expand the contents. Use the [zwe](installandconfig.md#zwe-server-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
@@ -69,13 +69,15 @@ Begin the installation process by familiarizing yourself with the following topi
    - **Portable Software Instance (PSWI)**  
    You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
+   ::note
    While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
+   :::
 
 1. Obtain and install the Zowe build.
 
-   - For more information about how to obtain the convenience build and install it, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
-   - For more information about how to obtain the SMP/E build and install it, see [Installing Zowe SMP/E overview](install-zowe-smpe-overview.md).
-   - For more information about how to obtain the PSWI and install it, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
+   - For more information about how to obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
+   - For more information about how to obtain and install the SMP/E build, see [Installing Zowe SMP/E overview](install-zowe-smpe-overview.md).
+   - For more information about how to obtain and install the PSWI, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
 
 Successful installation of either a convenience build or an SMP/E build creates a zFS folder that contains the following artifacts:
 * The unconfigured Zowe runtime directory
@@ -103,7 +105,7 @@ The steps to initialize the system are the same independent of whether you obtai
 The `zwe init` command runs the subcommands in sequence automatically. You can choose to run the subcommands one by one to define each step based on your need. If you encounter any failures with `zwe init` command, you can pick up the failed subcommands step specifically and rerun this subcommand.
 :::
 
-The following procedure outlines the steps to configure the Zowe z/OS runtime, and the corresponding `zwe init` subcommand.
+The following procedure outlines the steps to configure the Zowe z/OS runtime, and the corresponding `zwe init` subcommands.
 
 1. [Prepare the zowe.yaml configuration file](../appendix/zowe-yaml-configuration.md) if the file does not already exist.
 2. [Prepare the custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets.  
@@ -142,7 +144,8 @@ Now that you have the permissions, certificates, files, and datasets necessary t
    
 :::tip
 We recommended that the first customization you perform is to [set `zwe` to use the Configuration Manager](configmgr-using.md).
-Other customization options can be found in [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
+
+See [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) for other customization options.
 :::
 
 ## Stage 5: (Optional) Installing and managing extensions
@@ -153,7 +156,7 @@ After Zowe is customized according to your needs, you can leverage more Zowe fun
 
 For more information about installing and managing extensions, see [Zowe server component and extension management](./install-configure-zos-extensions).
 
-## How to troubleshoot
+## How to troubleshoot problems with the installation
 
 If you encounter unexpected behavior when installing or verifying the Zowe runtime on z/OS, see the [Troubleshooting](../troubleshoot/troubleshooting.md) section for tips.
 
