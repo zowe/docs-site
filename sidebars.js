@@ -213,26 +213,24 @@ module.exports = {
                 "user-guide/install-configure-zos-extensions",
               ],
             },
+            {
+              type: "category",
+              label: "API Mediation Layer",
+              items: [
+                "user-guide/configure-data-sets-jobs-api",
+                "user-guide/api-mediation/api-catalog-configuration",
+                "user-guide/api-mediation/api-mediation-personal-access-token",
+                "user-guide/api-mediation/api-gateway-configuration",
+                "user-guide/api-mediation/discovery-service-configuration",
+                "user-guide/api-mediation/api-mediation-internal-configuration",
+                "extend/extend-apiml/api-mediation-passtickets",
+                ],
+            },
           ],
     },
-        {
-          type: "category",
-          label: "API Mediation Layer",
-          items: [
-            "user-guide/configure-data-sets-jobs-api",
-            "user-guide/api-mediation/api-catalog-configuration",
-            "user-guide/api-mediation/api-mediation-personal-access-token",
-            "user-guide/api-mediation/api-gateway-configuration",
-            "user-guide/api-mediation/discovery-service-configuration",
-            "user-guide/api-mediation/api-mediation-internal-configuration",
-            "extend/extend-apiml/api-mediation-passtickets",
-            ],
-        },
-          ],
-        },              
     {
       type: "category",
-      label: "Zowe client-side components",
+      label: "Installing Zowe client-side components",
       collapsed: false,
       items: [
         {
@@ -369,9 +367,10 @@ module.exports = {
             "user-guide/intellij-configure",
           ],
         },
-      ],
-   
-  use: [
+  ],
+},
+],             
+  "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
       type: "category",
@@ -875,7 +874,7 @@ module.exports = {
       href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.12.x.md",
     },
   ],
-};
+}
 
 // "appendix/tpsr",
 //items should be array of only strings, or array of object and strings
