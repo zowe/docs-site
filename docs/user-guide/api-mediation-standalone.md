@@ -14,3 +14,9 @@ Once Zowe is installed, use the following procedure to limit which components st
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.*.enabled` and set this property to `false` for all components that should not be started.
 3. Restart `Zowe&trade`.
+
+::note
+- If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESLSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
+  
+- If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESLSTC`.
+:::
