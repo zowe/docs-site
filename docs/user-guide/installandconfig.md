@@ -26,8 +26,6 @@ You can create a runtime directory in one of the following ways:
 * Install the Zowe SMP/E FMID AZWE002 using the JCL members in the REL4 member.
 * Execute the z/OSMF workflow script ZWERF01 contained in the SMP/E FMID AZWE002.
 
-For more information about the Zowe runtime directory, see Creating a Zowe runtime directory.
-
 During execution of Zowe, the runtime directory contents are not modified. Maintenance or Zowe APAR releases replaces the contents of the runtime directory.
 
 :::note
