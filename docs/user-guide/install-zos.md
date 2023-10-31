@@ -11,9 +11,9 @@ Installation of Zowe&trade; server-side components on z/OS, consists of the foll
 
  An APF authorized server application that provides privileged services to Zowe in a secure manner.
 
-:::notes
-* Zowe offers the possibility to run some of its Unix components in a container rather than under USS. For more information, see [Installing Zowe Containers](k8s-introduction.md).
-* Zowe also offers the option of configuration for high availability. For more information, see [High Availability overview](zowe-ha-overview.md).
+:::note**Notes**
+* Zowe offers the possibility to run some of its Unix components in a container rather than under USS. For more information, see [Installing Zowe via a containerization build (PAX filw)](k8s-introduction.md).
+* Zowe also offers the option of configuration for high availability. For more information, see [Configuring high availability (optional)](zowe-ha-overview.md).
 :::
 
 ## Roles and responsibilities for server-side component installation
@@ -167,3 +167,7 @@ If you encounter unexpected behavior when installing or verifying the Zowe runti
 For more information on `zwe`, refer to [the zwe appendix](../appendix/zwe_server_command_reference/zwe/zwe.md).
 
 For more information on the server configuration file, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
+
+## Next step
+
+Before starting the installation process, first review the article [Preparing for installation](./installandconfig.md) and the address the requirements outlined in the sub-articles in this section.
