@@ -1,20 +1,23 @@
 # Preparing for installation
 
-Review this overview article of key concepts and the sub-articles in this section to prepare your installation of Zowe server-side components for z/OS.
+Review this overview article to familiarize yourself with key concepts used in the Zowe server-side installation process. After reviewing these key concepts, review the articles in this section to prepare your system for installation. 
 
 :::info**Required roles:** system programmer, security administrator, storage administrator
 :::
 
-To prepare this installation of Zowe server-side components for z/OS, your installation team should review the installation and configuration tasks to determine the high-level requirements by role. Doing so can help you complete the process faster without any delays waiting for tasks to be completed at the last minute.
-To install your product, we recommend that you understand the following key concepts:
+To prepare for Zowe server-side installation, we recommend that your installation team review the installation and configuration tasks and the indicated required roles to perform specific procedures. Doing so can help you complete the process without encountering delays waiting for tasks to be completed at the last minute.
 
-## z/OS UNIX System Services (USS)
+## Key concepts in Zowe server-side installation
+
+Before you begin the installation process, it is useful to understand the following key concepts and features used to perform the installation.
+
+### z/OS UNIX System Services (USS)
 
 zFS is a UNIX file system where Zowe runtime files and folders are installed. Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys if the administrator chooses to use PKCS#12 keystore for certificate storage. 
 
 For more information about USS, see [Addressing UNIX System Servies (USS) Requirements](./configure-uss).
 
-## Runtime directory  
+### Runtime directory  
 The runtime directory contains the binaries, executable files, scripts, and other elements that are run when Zowe is started. Creating a Zowe runtime directory involves setting up the necessary environment for Zowe to run on your system. 
 
 You can create a runtime directory in one of the following ways:
@@ -66,11 +69,13 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 └── README.md                        - Quick introduction of Zowe and quick start guide
 ```
 
-## `zwe` command
+### `zwe` command
 The `zwe` command is provided in the <RUNTIME_DIR>/bin directory. Use this command and sub-commands to initialize Zowe, manage Zowe instances, and perform common tasks.
 
 :::tips
-* The `zwe` command has built in help that can be retrieved with the `-h` suffix.Use `zwe -h` to see all supported `zwe` commands. For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
+* The `zwe` command has built in help that can be retrieved with the `-h` suffix. Use `zwe -h` to see all supported `zwe` commands.
+
+  For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
 :::
 
 * If you expect that you will have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
@@ -85,7 +90,7 @@ Add this Zowe bin directory to your `PATH` environment variable to execute the `
   You may not want to add `zwe` to your PATH if you have multiple copies of the Zowe runtime, as this can confuse which one you are utilizing.
   :::
 
-## Zowe started tasks
+### Zowe started tasks
 
 Zowe has the following started tasks:
    - **`ZWESISTC`**  
@@ -96,11 +101,11 @@ Zowe has the following started tasks:
    This started task brings up other features of the Zowe runtime on z/OS upon request. Features may include Desktop, API Mediation Layer, ZSS, and more. When using containerization, it is likely that the only feature will be ZSS. This task can be used for a single Zowe instance deployment, and can also be used for Zowe high availability deployment in Sysplex. This task brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
    
   :::important
-  * In order for the above started tasks to run correctly, the security administrator permissions are required. For more inoformation, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+  * In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
   * Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
   :::
 
-## z/OS Data sets used by Zowe
+### z/OS Data sets used by Zowe
 
 After Zowe is properly installed, the following data sets are created on z/OS under the prefix you defined:
 
@@ -128,7 +133,7 @@ This data set defined in Zowe configuration contains extra load libraries used b
 - **`zowe.setup.datasets.loadlib`**  
 This data set defined in Zowe configuration contains load libraries that do not need authorization, such as a version of the configuration manager that can be used within REXX.
 
-## Zowe configuration file (`zowe.yaml`)
+### Zowe configuration file (`zowe.yaml`)
 
 Zowe uses a YAML format configuration. If you store the configuration on USS, this file is usually referred as `zowe.yaml`.
 
@@ -154,7 +159,7 @@ When you execute the `zwe` command, the `--config` or `-c` argument is used to p
 * If you are new to the `example-zowe.yaml` configuration file, you can start with entries that are marked with `COMMONLY_CUSTOMIZED`. It highlights most of the common configurations, such as directories, host and domain name, service ports, certificate setup, and z/OSMF, which are critical for standing a new Zowe instance.
 :::
 
-## Workspace directory
+### Workspace directory
 
 The workspace directory is required to launch Zowe. It is automatically created when you start Zowe. More than one workspace directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory. It is not recommended to create workspace directory manually in order to avoid permission conflicts.
 
@@ -170,7 +175,7 @@ The workspace directory should be defined in your Zowe configuration file as `zo
 
 Some Zowe components write logs to a file system. The directory is created automatically when you start Zowe and the content is automatically managed by Zowe components. It is not recommended to create a log directory manually in order to avoid permission conflicts.
 
-Multiple Zowe instances can define different log directories. It s not necessary that these log directories be shared in Sysplex deployment like the workspace directory.
+Multiple Zowe instances can define different log directories. It is not necessary that these log directories be shared in Sysplex deployment like the workspace directory.
 
 The log directory should be defined in your Zowe configuration file as `zowe.logDirectory`.
 
