@@ -86,9 +86,9 @@ module.exports = {
     {
       type: "category",
       label: "Installing Zowe server-side components",
+      link: {type: "doc", id: "user-guide/install-zos"},
       collapsed: false,
       items: [
-        "user-guide/install-zos",
         {
           type: "category",
           label: "Preparing for installation",
@@ -186,7 +186,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Configuring the Zowe cross memory server",
+              label: "Configuring the Zowe cross memory server (ZIS)",
               link: {type:"doc", id:"user-guide/configure-xmem-server"},
               items: [],
             }, 
@@ -215,7 +215,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Mediation Layer",
+              label: "Configuring API Mediation Layer",
               items: [
                 "user-guide/configure-data-sets-jobs-api",
                 "user-guide/api-mediation/api-catalog-configuration",
@@ -224,7 +224,8 @@ module.exports = {
                 "user-guide/api-mediation/discovery-service-configuration",
                 "user-guide/api-mediation/api-mediation-internal-configuration",
                 "extend/extend-apiml/api-mediation-passtickets",
-                ],
+                "user-guide/api-mediation-standalone",
+              ],
             },
           ],
     },
