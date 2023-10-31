@@ -60,7 +60,7 @@ jobs:
           template-path: "./.github/pull_request_template.md"  
           comment: true
           comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR."
-          comment-template-not-filled: ":warning: Looks like you may have deleted the instructions in the PR description. This makes it hard for the bot to tell if you've written a valid description. Please leave in the instructions and add your information after the colons."
+          comment-template-not-filled: ":warning: Looks like we're missing description information. Please answer both description prompts."
       - name: Check PR
         id: file_type_checker
         uses: JJ/github-pr-contains-action@releases/v10
