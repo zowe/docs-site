@@ -186,7 +186,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Configuring the Zowe cross memory server",
+              label: "Configuring the Zowe cross memory server (ZIS)",
               link: {type:"doc", id:"user-guide/configure-xmem-server"},
               items: [],
             }, 
@@ -215,7 +215,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Mediation Layer",
+              label: "Configuring API Mediation Layer",
               items: [
                 "user-guide/configure-data-sets-jobs-api",
                 "user-guide/api-mediation/api-catalog-configuration",
