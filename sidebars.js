@@ -409,6 +409,8 @@ module.exports = {
             "extend/extend-apiml/service-information",
             "extend/extend-apiml/websocket",
             "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+            "user-guide/api-mediation/api-mediation-update-password",
+            "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
