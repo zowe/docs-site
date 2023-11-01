@@ -1,4 +1,4 @@
-# Change expired password via API Catalog
+# Changing an expired password via API Catalog
 
 In case of expiration of a mainframe password, the API Catalog offers the possibility to set a new password. When your password expires, you are prompted with a form and a warning message:
 

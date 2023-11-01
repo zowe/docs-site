@@ -1,4 +1,3 @@
-<!-- omit in toc -->
 # Advanced API Catalog features configuration
 
 As a system programmer who wants to configure advanced API Catalog features of the API Mediation Layer, you can customize API Catalog parameters by modifying the `zowe.yaml` file.

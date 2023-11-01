@@ -1,8 +1,7 @@
-# API Mediation Layer Message Service Component
+# Using API Mediation Layer Message Service 
 
 The API ML Message Service component unifies and stores REST API error messages and log messages in a single file. The Message Service component enables users to mitigate the problem of message definition redundancy which helps to optimize the development process.
 
-- [API Mediation Layer Message Service Component](#api-mediation-layer-message-service-component)
   - [Message Definition](#message-definition)
   - [Creating a message](#creating-a-message)
   - [Mapping a message](#mapping-a-message)
@@ -14,12 +13,10 @@ API ML uses a customizable infrastructure to format both REST API error messages
 
 - Message `key` - a unique ID in the form of a dot-delimited string that describes the reason for the message. The `key` enables the UI or the console to show a meaningful and localized message. 
 
-    **Tips:** 
-    
+    :::tip**Tips:**
     - We recommend using the format `org.zowe.sample.apiservice.{TYPE}.greeting.empty` to define the message key. `{TYPE}` can be the api or log keyword. 
-
     - Use the message `key` and not the message `number`. The message `number` makes the code less readable, and increases the possibility of errors when renumbering values inside the `number`.
-
+    :::
 - Message `number` - a typical mainframe message ID (excluding the severity code)
 
 - Message `type` - There are two Massage types:
