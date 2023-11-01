@@ -1,10 +1,10 @@
 # Addressing network requirements
 
-:::info Roles required: network administrator
-:::
+Review the following table during installation of Zowe server-side components to determine which TCP ports are required. 
+Values presented in the table are default values. You can change the values by updating variable values in the `zowe.yaml` file. 
 
-As a systems programmer, review the following table during installation of Zowe server-side components to determine which TCP ports are required. 
-These are default values. You can change the values by updating variable values in the `zowe.yaml` file. 
+:::info**Required roles:** network administrator, system programmer
+:::
 
 For more information about variable names in the following table, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) in the References section.
 
