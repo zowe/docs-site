@@ -96,11 +96,11 @@ module.exports = {
           items: [
             "user-guide/zos-components-installation-checklist",
             "user-guide/systemrequirements-zos",
+            "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
-            "user-guide/install-nodejs-zos",
             "user-guide/address-browser-requirements",
             "user-guide/address-authentication-requirements"
           ]
