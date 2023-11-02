@@ -68,15 +68,31 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 ```
 
 ### `zwe` command
-The `zwe` command is provided in the <RUNTIME_DIR>/bin directory. Use this command and sub-commands to initialize Zowe, manage Zowe instances, and perform common tasks.
+The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
 
-:::tips
+The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
+
+* **mvs**  
+Copies the data sets provided with Zowe to custom data sets.
+* **security**  
+Creates the user IDs and security manager settings.
+* **apfauth**  
+APF authorizes the LOADLIB containing the modules that need to perform z/OS privileged security calls.
+* **certificate**  
+Configures Zowe to use TLS certificates.
+* **vsam**  
+Configures the VSAM files needed to run the Zowe caching service used for high availability (HA)
+* **stc**  
+Configures the system to launch the Zowe started task.
+
+In combination, these commands initialize Zowe, manage Zowe instances, and perform common tasks.
+
+:::tip**Tips:**
 * The `zwe` command has built in help that can be retrieved with the `-h` suffix. Use `zwe -h` to see all supported `zwe` commands.
 
   For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
-:::
 
-* If you expect that you will have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
+* If you expect to have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
 Add this Zowe bin directory to your `PATH` environment variable to execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
 
   ```
@@ -86,7 +102,7 @@ Add this Zowe bin directory to your `PATH` environment variable to execute the `
   This command updates the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bash_profile` file if you are using a bash shell. To make this update system wide, update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
 
   You may not want to add `zwe` to your PATH if you have multiple copies of the Zowe runtime, as this can confuse which one you are utilizing.
-  :::
+:::
 
 ### Zowe started tasks
 
@@ -98,10 +114,10 @@ Zowe has the following started tasks:
    - **`ZWESLSTC`**  
    This started task brings up other features of the Zowe runtime on z/OS upon request. Features may include Desktop, API Mediation Layer, ZSS, and more. When using containerization, it is likely that the only feature will be ZSS. This task can be used for a single Zowe instance deployment, and can also be used for Zowe high availability deployment in Sysplex. This task brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
    
-  :::important
-  * In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
-  * Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
-  :::
+:::info**Important!**
+* In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+* Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
+:::
 
 ### z/OS Data sets used by Zowe
 
