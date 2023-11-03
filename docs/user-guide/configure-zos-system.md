@@ -11,7 +11,9 @@ Be sure your z/OS system meets the following prerequisites:
 
 - z/OS version is in active support, such as Version 2.3 and Version 2.4
 
-   **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
+    :::note
+    z/OS V2.2 reached end of support on 30 September, 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
+    :::
 
 - zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
@@ -283,7 +285,9 @@ You must also grant READ access to the OMVSAPPL profile in the APPL class to the
 
 The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
-**Note:** This procedure may require security administrator authorization. Consult with your security administrator.
+:::note
+This procedure may require security administrator authorization. Consult with your security administrator.
+:::
 
 To display who is authorized to the profile, issue the following command:
 ```
@@ -688,11 +692,13 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 - [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
-**Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
+:::notes**Notes**
+* To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
 
-For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
+* For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-**Note:** MFA must work with Single sign-on (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
+* MFA must work with Single-Sign-On (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
+:::
 
 ### Single Sign-On (SSO)
 
