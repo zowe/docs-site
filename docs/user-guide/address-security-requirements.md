@@ -7,13 +7,13 @@ During configuration of server-side components, it is necessary to configure var
 organization may require your security administrator to complete steps to configure Zowe security. As a system
 administrator/programmer, first consult with your security administrator before you start the installation process.
 
-**Note:** This article addresses configuring Zowe security during the Zowe z/OS components installation process, and
-does not address security configuration to extend Zowe. For more information about security configuration to extend
-Zowe, see the following articles:
+:::note
+This article addresses configuring Zowe security during the Zowe z/OS components installation process, and does not address security configuration to extend Zowe. For more information about security configuration to extend Zowe, see the following articles:
 
 - [Digital certificates](../getting-started/zowe-security-overview#digital-certificates)
 - [User Authentication](../getting-started/zowe-security-overview#user-authentication)
 - [Access Authorization](../getting-started/zowe-security-overview#access-authorization)
+:::
 
 ## Tasks performed by your security administrator
 
@@ -21,7 +21,7 @@ To configure Zowe security, your organization's security administrator is requir
 perform various tasks. Some of the tasks apply to general Zowe configuration, while other tasks are required during
 installation if you plan to use specific Zowe components or features.
 
-The following required configuration tasks are performed by your organization's security administrator:
+The following required configuration tasks are performed by your organization's security administrator during the post-installation configuration:
 
 * [Initialize Zowe security configurations](../user-guide/initialize-security-configuration.md)
 * [Perform APF authorization of load libraries](../user-guide/apf-authorize-load-library.md)
@@ -30,7 +30,7 @@ The following required configuration tasks are performed by your organization's 
 * [Assign security permissions of users](#assign-security-permissions-of-users)
 
 If your Zowe server-side installation includes the features listed in the following table, consult your 
-security administrator to perform the associated security tasks:
+security administrator to perform the associated security tasks after installation:
 
 | Feature of a Zowe server-side component                                                                                                         | Configuration Task                                                                                                                                                                                                                                                                                                                                                         | 
 |-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
