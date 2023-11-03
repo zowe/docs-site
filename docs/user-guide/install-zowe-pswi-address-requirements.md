@@ -14,7 +14,7 @@ The IBM z/OS Management Facility Configuration Guide is your primary source of i
 :::info Roles required: Security administrator
 :::
 
-Configure z/OSMF security for ACF2, Top Secret, or IBM RACF as applicable to authorize users and resources. To prevent SSL handshake failures when importing product information into z/OSMF, make sure that you have added the Digicert Intermediate CA certificate to the z/OSMF keyring. For information, see Import Product Information into z/OSMF.
+Configure z/OSMF security for ACF2, Top Secret, or IBM RACF as applicable to authorize users and resources. To prevent SSL handshake failures when importing product information into z/OSMF, make sure that you have added the Digicert Intermediate CA certificate to the z/OSMF keyring. For information, see [Import Product Information into z/OSMF](https://techdocs.broadcom.com/us/en/ca-mainframe-software/traditional-management/mainframe-common-maintenance-procedures/1-0/getting-started/z-osmf-requirements/import-product-information-into-z-osmf.html).
 
 ## Confirm that the installer has read, create, update, and execute privileges in z/OS
 
@@ -42,4 +42,4 @@ To download and unpack the pax file, you need free space that is approximately 3
 
 Configure SMP/E Internet Service Retrieval to receive and download maintenance on a regular cadence or build custom maintenance packages (order PTFs, APARs, critical, recommended, all, or just HOLDDATA). This step is our recommended best practice when installing maintenance and is required to use the z/OSMF Software Update. For configuration details, see the Mainframe Common Maintenance Procedures documentation.	
 
-After these requirements have been addressed, you are ready to acquire a z/OSMF Portable Software Instance or Configure a Software Instance using z/OSMF Workflows.
+After these requirements have been addressed, you are ready to [acquire a z/OSMF Portable Software Instance](./install-zowe-pswi-acquire/#download-the-portable-software-instance-from-zowe-downloads) or [Configure Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md).
