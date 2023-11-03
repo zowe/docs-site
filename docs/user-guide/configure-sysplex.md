@@ -19,7 +19,7 @@ Zowe high availability instances require a Sysplex environment that consists of 
 - Node.js v14.x (except v14.17.2), or v16.x
 
 :::note
-It is highly recommended that Node.js installed on a shared file system.
+It is highly recommended that Node.js is installed on a shared file system.
 :::
 
 ## Configuring Sysplex Distributor
