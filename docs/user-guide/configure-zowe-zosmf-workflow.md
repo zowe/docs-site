@@ -58,26 +58,35 @@ After you register the workflow definition file, perform the following steps to 
 
 4. **Run Zowe init**
 
-    Execute the `zwe init` command with the previously stored zowe.yaml file as a parameter.
+   Execute the `zwe init` command with the previously stored zowe.yaml file as a parameter.
 
-    **Note**: Messages and error codes from the subsequent JOBS command are not forwarded back to z/OSMF.
+   :::note
+   Messages and error codes from the subsequent JOBS command are not forwarded back to z/OSMF.
+   :::
+   The `zwe init` command is a combination of the following sub-commands that define configuration:
 
-    The `zwe init` command is a combination of the following sub-commands that define configuration:
+   - **mvs**  
+      Copies the data sets that are provided with Zowe to custom data sets.
+   - **security**  
+      Creates user IDs and security manager settings.
+   - **apfauth**  
+      APF authorizes the LOADLIB that contains the modules that perform priviledged security calls on z/OS.
+   - **certificate**  
+      Configures Zowe to use TLS certificates.
+   - **vsam**  
+      Configures the VSAM files that help run the Zowe caching service for high availability (HA)
+   - **stc**  
+      Configures the system to launch the Zowe started task.
 
-    - **mvs**: Copies the data sets that are provided with Zowe to custom data sets.
-    - **security**: Creates user IDs and security manager settings.
-    - **apfauth**: APF authorizes the LOADLIB that contains the modules that perform priviledged security calls on z/OS.
-    - **certificate**: Configures Zowe to use TLS certificates.
-    - **vsam**: Configures the VSAM files that help run the Zowe caching service for high availability (HA)
-    - **stc**: Configures the system to launch the Zowe started task.
+   If you execute the `init` step again, perform one of the following steps:
+   * Manually delete failed artifacts that are created from previous `init` steps.
+   * Edit the step by adding the `--allow-overwritten` tag to the `init` command.
 
-    If you execute the init step again, either manually delete failed artifacts that are created from previous init steps or edit the step by adding the `--allow-overwritten` tag to the init command.
+   **Example: Command that re-runs init**
 
-    **Example: Command that re-runs init**
-
-    ```
-    zwe init -c '/path/zowe.yaml' --allow-overwritten
-    ```
+   ```
+   zwe init -c '/path/zowe.yaml' --allow-overwritten
+   ```
 
 After you execute each step, the step is marked as complete. After completing the workflow execution, you can view the Zowe started task.
 
@@ -115,7 +124,7 @@ Software instance is created after PSWI deployment is complete. Execute a workfl
 7. In the displayed table, click on the name of the workflow you want to execute.
 8. Click **OK**.
 
-    The **Workflows** tab with the previously selected workflow opens.
+   The **Workflows** tab with the previously selected workflow opens.
 
 9. Execute the workflow steps.
 
@@ -139,9 +148,11 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 
    - (Optional) Enter the complete USS path to the edited workflow properties file in the Workflow Variable Input File field. Use this file to customize product instances and automate workflow execution, saving time and effort when deploying multiple standardized Zowe instances. The values from this file override the default values for the workflow variables.
 
-        The sample properties file is located in the same directory with the workflow definition file. Create a copy of this file, and then modify as described in the file. Set the field to the path where the new file is located.
+   The sample properties file is located in the same directory with the workflow definition file. Create a copy of this file, and then modify as described in the file. Set the field to the path where the new file is located.
 
-        **Note:** If you use the convenience build, the workflows and variable input files are located in the USS runtime folder in files/workflows.
+   :::note
+   If you use the convenience build, the workflows and variable input files are located in the USS runtime folder in files/workflows.
+   :::
 
 5. Select the System where the workflow runs.
 
@@ -153,7 +164,7 @@ z/OSMF workflow simplifies the procedure to configure and start Zowe. Execute th
 
 9. Select **Finish**.
 
-    The **workflow** is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance.
+   The **workflow** is registered in z/OSMF. The workflow is available for execution to deploy and configure the Zowe instance.
 
 10. Perform the following steps to execute each step individually:
 
