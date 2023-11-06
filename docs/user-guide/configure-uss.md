@@ -29,9 +29,15 @@ HEAP64(4M,4M,KEEP,1M,1M,KEEP,0K,0K,FREE)
 
 ## OMVS segment
 
-Users who install Zowe to run Zowe scripts need to have an OMVS segment. If the user profile doesn't have OMVS segment, the following situations might occur:
+An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zowe to run Zowe scripts. 
 
-- When you access USS through TSO OMVS, you will see the following message:
+:::tip
+For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. 
+::: 
+
+If the user profile does not have an OMVS segment, the following messages can occur:
+
+- When you access USS through TSO OMVS, the following message is thrown:
 
    ```
    FSUM2057I No session was started. This TSO/E user ID does not have access to OpenMVS.+
@@ -40,7 +46,7 @@ Users who install Zowe to run Zowe scripts need to have an OMVS segment. If the 
    Action: Create an OMVS segment with a UID.
    ```
 
-- When you access USS through SSH, you will see the following message:
+- When you access USS through SSH, the following message is thrown:
 
    ```
    Access denied with SSH
