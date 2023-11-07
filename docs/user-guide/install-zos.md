@@ -40,7 +40,7 @@ In most cases, the system programmer performs the Zowe installation and configur
 
 The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
 
-![4 installation methods](../images/install/4-installation-methods.png){width=120% height=120%}
+![4 installation methods](../images/install/4-installation-methods.png)
 
 <img src="../images/install/4-installation-methods.png" alt="4 installation methods" width="120%" height="120%">
 
