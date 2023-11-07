@@ -42,6 +42,8 @@ The following diagram illustrates the full ecosystem for installing Zowe server-
 
 ![4 installation methods](../images/install/4-installation-methods.png){width=120% height=120%}
 
+<img src="../images/install/4-installation-methods.png" alt="4 installation methods" width="120%" height="120%">
+
 ## Stage 1: Prepare for installation
 
 Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](installandconfig.md):
