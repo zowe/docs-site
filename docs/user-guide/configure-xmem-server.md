@@ -1,7 +1,7 @@
-# Configuring the Zowe cross memory server (ZIS)
+# (Optional) Configuring the Zowe cross memory server (ZIS)
 
 The Zowe cross memory server (ZIS) provides privileged cross-memory services to the Zowe Desktop and runs as an
-APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is required to log on to the Zowe desktop and operate the desktop apps such as the Code Editor. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step. 
+APF-authorized program. It is launched with the ZWESISTC started task which runs the loadmodule ZWESIS01. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is required to log on to the Zowe desktop and operate the desktop apps such as the Code Editor. If you wish to start Zowe without the desktop (for example bring up just the API Mediation Layer), you do not need to install and configure a cross memory server and can skip this step.
 
 :::info**Required roles:** system programmer, security administrator
 :::
@@ -23,8 +23,19 @@ To install and configure the cross memory server, it is necessary to define APF-
     - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
     - [Installing the auxiliary service](#installing-the-auxiliary-service)
       - [Zowe Auxiliary Address space](#zowe-auxiliary-address-space)
-      
-## PDS sample library and PDSE load library
+
+## Cross memory server installation
+
+You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
+[screenshots are required]
+- JCL member `ZWESLSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
+- The PDSE Load Library `SZWEAUTH` is [APF-authorized](#apf-authorize), or [Load module](#load-module) `ZWESI00` is copied to an existing APF Auth LoadLib.
+- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
+- The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
+
+## Key concepts
+
+### PDS sample library and PDSE load library
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS sample library.  
 
@@ -44,13 +55,13 @@ The user ID `ZWESIUSR` that is assigned to the cross memory server started tasks
 
 To install the cross memory server, enable the PROCLIB, PARMLIB, and load module. This topic describes the steps to do this manually. 
 
-## Load module
+### Load module
 
-The cross memory server load module `ZWESIS01` is installed by Zowe into a PDSE `SZWEAUTH`.  For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.  
+The cross memory server load module `ZWESIS01` is installed by Zowe into a PDSE `SZWEAUTH`. For the cross memory server to be started, the load module needs to be APF-authorized and the program needs to run in key(4) as non-swappable.
 
-### APF authorize
+#### APF authorize
 
-APF authorize the PDSE `SZWESAUTH`.  This allows the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDSE itself when PTF maintenance is applied.  
+APF authorize the PDSE `SZWESAUTH`. This allows the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDSE itself when PTF maintenance is applied.  
 
 Do not add the `SZWEAUTH` data set to the system LNKLIST or LPALST concatenations.  
 
@@ -74,11 +85,11 @@ Issue one of the following operator commands to dynamically add the load library
   SETPROG APF,ADD,DSNAME=hlq.SZWEAUTH,SMS
   ```
 
-#### Configuring using `zwe init apfauth` 
+**Configuring using `zwe init apfauth`**
 
 If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library).
 
-#### Making APF auth be part of the IPL
+**Making APF auth be part of the IPL**
 
 Add one of the following lines to your active `PROGxx` PARMLIB member, for example `SYS1.PARMLIB(PROG00)`, to ensure that the APF authorization is added automatically after next IPL. The value of `DSNAME` is the name of the `SZWEAUTH` data set, as created during Zowe installation:  
 
@@ -93,7 +104,7 @@ Add one of the following lines to your active `PROGxx` PARMLIB member, for examp
 
 The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement and PROGxx update for reference.
 
-### Key 4 non-swappable
+#### Key 4 non-swappable
 
 The cross memory server load module `ZWESIS01` must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
 
@@ -109,7 +120,7 @@ Then, issue the following command to make the SCHEDxx changes effective:
 /SET SCH=xx
 ```
 
-## PARMLIB
+### PARMLIB
 
 The `ZWESISTC` started task must find a valid `ZWESIPxx` PARMLIB member in order to be launched successfully. The `SZWESAMP` PDS created at installation time contains the member `ZWESIP00` with default configuration values. You can copy this member to another data set, for example your system PARMLIB data set, or else leave it in `SZWESAMP`.  
 
@@ -117,36 +128,11 @@ If you choose to leave `ZWESIPxx` in the installation PDS `SZWESAMP` used at ins
 
 Wherever you place the `ZWESIP00` member, ensure that the data set is listed in the `PARMLIB DD` statement of the started task `ZWESISTC`.  
 
-## PROCLIB 
-
-For the cross memory server to be started, you must move the JCL PROCLIB `ZWESISTC` member from the installation PDS SAMPLIB `SZWESAMP` into a PDS that is on the JES concatenation path.  
-
-You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESIS01` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
-
-For example, the sample JCL below shows `ZWESISTC` where the APF-authorized PDSE containing `ZWESIS01` is `IBMUSER.ZWEV2.SZWEAUTH(ZWESIS01)` and the PDS PARMLIB containing `ZWESIP00` is `IBMUSER.ZWEV2.SZWESAMP(ZWESIP00)`.  
-
-```cobol
-//ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
-//         PARM='NAME=&NAME,MEM=&MEM'
-//STEPLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWEAUTH,DISP=SHR
-//PARMLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWESAMP,DISP=SHR
-//SYSPRINT DD   SYSOUT=*
-```
-
-## SAF configuration
+### SAF configuration
 
 Because the ZIS server makes z/OS security calls it restrits which clients are able to use it services, by requiring them to have `READ` access to a security profile `ZWES.IS` in the `FACILITY` class.  
 
 The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS server, which requires that the user ID `ZWESVUSR` has access to `ZWES.IS`.  The steps to do this are desribed in [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).  
-
-## Summary of cross memory server installation
-
-You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
-
-- JCL member `ZWESLSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
-- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESI00` is copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
-- The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
 
 ## Starting and stopping the cross memory server on z/OS
 
