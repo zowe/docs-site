@@ -8,7 +8,10 @@ meta:
 
 # Configuring z/OSMF
 
-To configure z/OSMF, follow these steps.
+Follow these steps described in this article to configure z/OSMF.
+
+:::info**Required roles:** system programmer, security administrator, domain administrator
+:::
 
 1. From the console, issue the following command to verify the version of z/OS:
     ```
@@ -31,9 +34,11 @@ To configure z/OSMF, follow these steps.
   [56147429]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.izua300/IZUHPINFO_ConfiguringMain.htm "Configuring z/OSMF"
   [56699d6d]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_ConfiguringMain.htm "Setting up z/OSMF for the first time"
 
-**Note:** In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
+  :::note
+  In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
-   The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3.
+  The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3.
+  :::
 
 3. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
 
@@ -66,11 +71,13 @@ To configure z/OSMF, follow these steps.
 
 5. Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
 
-**Note:** If your implementation uses an external security manager other than RACF (for example, Top Secret for z/OS or ACF2 for z/OS), you provide equivalent commands for your environment. For more information, see the following product documentation:
+:::note
+If your implementation uses an external security manager other than RACF (for example, Top Secret for z/OS or ACF2 for z/OS), you provide equivalent commands for your environment. For more information, see the following product documentation:
 
 - [Configure z/OS Management Facility for Top Secret](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-top-secret.html)
 
 - [Configure z/OS Management Facility for ACF2](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-acf2.html)
+:::
 
 ## z/OSMF REST services for the Zowe CLI
 The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
@@ -99,11 +106,12 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: `https://mvs.ibm.com:443/zosmf/restjobs/jobs`
 
-  **Notes:**
+  :::note**Notes**
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.
-
+  :::
+  
 ## Configuring z/OSMF to properly work with API ML
 
 There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as the endpoint `/zosmf/services/authenticate` issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.

@@ -4,17 +4,20 @@ The following features are optional with additional prerequisites.
 
 ## Multi-Factor Authentication (MFA)
 
-Multi-factor authentication is supported for several components, such as the Desktop and API Mediation Layer.
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work:
+Multi-factor authentication (MFA) is supported for several Zowe components, including the Zowe Desktop,  API Mediation Layer, and Zowe Application Framework.
+Multi-factor authentication is provided by third-party products with which Zowe is compatible. The following MFA products are known to work with Zowe:
 
-- [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
+- [Advanced Authentication Mainframe 2.0](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
-**Note:** To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
+To support the multi-factor authentication, it is necessary to apply z/OSMF APAR [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
 
-For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
+For information about using MFA in Zowe Application Framework, see [Application Framework Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
 
-**Note:** MFA must work with Single sign-on (SSO). Make sure that [SSO](#single-sign-on-sso) is configured before you use MFA in Zowe.
+
+:::important
+Multi-factor authentication requires configuration with Single-Sign-On (SSO). Ensure that SSO is configured before you use MFA in Zowe.
+:::
 
 ## Single Sign-On (SSO)
 
@@ -24,6 +27,10 @@ Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
 
+For more information about single-sign-on (SSO), see [Zowe API Mediation Layer Single-Sign-On Overview](../extend/extend-apiml/api-mediation-sso.md).
+
 ## API Mediation Layer OIDC Authentication
 
-Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
+Zowe requires **ACF2 APAR LU01316** to be applied when using the ACF2 security manager.
+
+For more information about OIDC authentication, see [Zowe API Mediation Layer OIDC Authentication](../extend/extend-apiml/api-mediation-oidc-authentication.md).

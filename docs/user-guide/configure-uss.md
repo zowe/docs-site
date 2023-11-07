@@ -2,6 +2,9 @@
 
 The Zowe z/OS component runtime requires UNIX System Services (USS) to be configured. As shown in the [Zowe architecture](../getting-started/zowe-architecture.md), a number of servers run under UNIX System Services (USS) on z/OS. Review this topic for knowledge and considerations about USS when you install and configure Zowe.
 
+:::info**Required role:** security administrator
+:::
+
 ## What is USS?
 
 The UNIX System Services element of z/OS® is a UNIX operating environment, which is implemented within the z/OS operating system. It is also known as z/OS UNIX. z/OS UNIX files are organized in a hierarchy, as in a UNIX system.  All files are members of a directory, and each directory in turn is a member of another directory at a higher level in the hierarchy. The highest level of the hierarchy is the *root* directory. The z/OS UNIX files system is also known as zFS. This zFS directory is the location where the Zowe runtime files and folders are installed.
@@ -26,9 +29,15 @@ HEAP64(4M,4M,KEEP,1M,1M,KEEP,0K,0K,FREE)
 
 ## OMVS segment
 
-Users who install Zowe to run Zowe scripts need to have an OMVS segment. If the user profile doesn't have OMVS segment, the following situations might occur:
+An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zowe to run Zowe scripts. 
 
-- When you access USS through TSO OMVS, you will see the following message:
+:::tip
+For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. 
+::: 
+
+If the user profile does not have an OMVS segment, the following messages can occur:
+
+- When you access USS through TSO OMVS, the following message is thrown:
 
    ```
    FSUM2057I No session was started. This TSO/E user ID does not have access to OpenMVS.+
@@ -37,7 +46,7 @@ Users who install Zowe to run Zowe scripts need to have an OMVS segment. If the 
    Action: Create an OMVS segment with a UID.
    ```
 
-- When you access USS through SSH, you will see the following message:
+- When you access USS through SSH, the following message is thrown:
 
    ```
    Access denied with SSH
@@ -55,32 +64,35 @@ Error: A fatal exception has occurred. Program will exit
 
 You can fix the storage-related issue by making one of the following changes:
 
-- `ASSIZEMAX` parameter
-
+-  **ASSIZEMAX** parameter  
    The ASSIZEMAX parameter is the maximum size of the process's virtual memory (address space) in bytes.
 
-   To specify the JVM maximum address space size on a per-user basis, set the ASSIZEMAX configuration parameter to the value of `2147483647`.
+   To specify the JVM maximum address space size on a per-user basis, set the `ASSIZEMAX` configuration parameter to the value `2147483647`.
 
-   **Note:** Running a shell script via TSO OMVS will run the shell in the TSO address space, unless you specify `_BPX_SHAREAS=NO` when invoking OMVS. If you are using TSO OMVS to install Zowe, you will need `export _BPX_SHAREAS=NO` to make the ASSIZEMAX change effective.
+   :::note
+   Running a shell script via TSO OMVS will run the shell in the TSO address space, unless you specify `_BPX_SHAREAS=NO` when invoking OMVS. If you are using TSO OMVS to install Zowe, you will need `export _BPX_SHAREAS=NO` to make the ASSIZEMAX change effective.
+   :::
 
-- `SIZE` parameter of TSO segment
+-  **SIZE** parameter of TSO segment  
+   Set `SIZE` operand of TSO segment to the value `2096128`.
 
-   Set SIZE operand of TSO segment to the value of `2096128`.
+   :::note
+   If you set `export _BPX_SHAREAS=YES` in your shell setup as recommended, Java will run in the TSO address space and the SIZE change will work.
+   :::
 
-   **Note:** If you set `export _BPX_SHAREAS=YES` in your shell setup as recommended, Java will run in the TSO address space and the SIZE change will work.
-
-- `ulimit -A`
-
+- **ulimit -A**  
    The maximum address space size for the process should be at least 250 M, in units of 1024 bytes. For example, `ulimit -A 250000`.
 
-   **Note:** Running `ulimit -a` displays the current process limits.
+   :::note
+   Running `ulimit -a` displays the current process limits.
+   :::
 
 ## Temporary files management
 
 Zowe server components require the use of temporary files. By default, these temporary files are written to the global `/tmp` directory in the USS file system.
 This section describes options to customize the destination directory for all Zowe server components.
 
-### How to customize
+### How to customize temporary files
 
 There are three environment variables that control the directory used to place these temporary files:
 
@@ -91,15 +103,15 @@ There are three environment variables that control the directory used to place t
 - **`CATALINA_TMPDIR`**  
  This variable controls the destination directory of Tomcat java servers used in some core components.
 
-#### In STC
+#### Customizing temporary files in STC
 
-Global environment variables can be customized directly in the Zowe STC, `zowe.setup.security.stcs.zowe` in `zowe.yaml` is the Zowe started task name. The default value is `ZWESLSTC`.
+Global environment variables can be customized directly in the Zowe STC, `zowe.setup.security.stcs.zowe` in the `zowe.yaml`. The default started task name value is `ZWESLSTC`.
 
 To add environment variables, follow these steps:
 
-1. Open the STC
+1. Open the STC.
 
-2. Find STDENV DD inline statements
+2. Find `STDENV DD` inline statements.
 
 3. Add a new line for each environment variable.  
 **Example:**
@@ -108,7 +120,7 @@ To add environment variables, follow these steps:
    TMPDIR=<path to directory>
    ```
 
-#### In zowe.yaml
+#### Customizing temporary files in zowe.yaml
 
 Edit your installation `zowe.yaml` file and add values under property `zowe.environments`. 
 
@@ -122,4 +134,6 @@ zowe:
    CATALINA_TMPDIR: <path to directory>
 ```
 
-**Note:** If the variable is defined in both the `zowe.yaml` and the STC member, the definition from `zowe.yaml` has priority.
+:::note
+If the variable is defined in both the `zowe.yaml` and the STC member, the definition from `zowe.yaml` has priority.
+:::

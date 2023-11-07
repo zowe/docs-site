@@ -48,7 +48,7 @@ Depending on the specific Zowe server-side components that your organization is 
 
 ## Next step
 
-After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./install-stc-members)
+After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./install-stc-members).
 
 
  
