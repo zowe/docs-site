@@ -40,9 +40,7 @@ In most cases, the system programmer performs the Zowe installation and configur
 
 The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
 
-![4 installation methods](../images/install/4-installation-methods.png)
-
-<img src="../images/install/4-installation-methods.png" alt="4 installation methods" width="120%" height="120%">
+![4 installation methods](../images/install/4-installation-methods(2).png)
 
 ## Stage 1: Prepare for installation
 
@@ -74,9 +72,9 @@ Begin the installation process by familiarizing yourself with the following topi
    - **Portable Software Instance (PSWI)**  
    You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
-   ::note
-   While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
-   :::
+::note
+While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
+:::
 
 1. Obtain and install the Zowe build.
 
@@ -106,7 +104,7 @@ We recommend you open the links to this configuration procedure in new tabs.
 
 The steps to initialize the system are the same independent of whether you obtained Zowe from a .pax convenience build, or an SMP/E distribution.
 
-:::important
+:::note
 The `zwe init` command runs the subcommands in sequence automatically. You can choose to run the subcommands one by one to define each step based on your need. If you encounter any failures with `zwe init` command, you can pick up the failed subcommands step specifically and rerun this subcommand.
 :::
 
@@ -118,9 +116,9 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 3. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.  
   (Uses the command `zwe init security`)  
 
-   :::note
-   If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
-   :::
+:::note
+If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
+:::
 4. [Perform APF authorization of load libraries](apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS priviledged security calls.  
 (Uses the command `zwe init apfauth`)
 5. [Configure Zowe to use TLS certificates](configure-certificates.md)  
