@@ -1,20 +1,20 @@
 # Installing Zowe via SMP/E instructions
 
-This section describes the installation method and the step-by-step procedures to install and activate the functions of Zowe.
+Review this article and the procedures to install and activate the functions of Zowe using SMP/E.
 
-**Notes:**
-
-* If you want to install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
+:::note**Notes:**
+* To install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
 * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
 * You can use the SMP/E dialogs instead of the sample jobs to accomplish the SMP/E installation steps.
+:::
 
 ### SMP/E considerations for installing Zowe
 
-Use the SMP/E RECEIVE, APPLY, and ACCEPT commands to install this release of Zowe.
+Use the SMP/E **RECEIVE**, **APPLY**, and **ACCEPT** commands to install this release of Zowe.
 
 ### SMP/E options subentry values
 
-The recommended values for certain SMP/E CSI subentries are shown in the following table. Using values lower than the recommended values can result in failures in the installation. DSSPACE is a subentry in the GLOBAL options entry. PEMAX is a subentry of the GENERAL entry in the GLOBAL options entry. See the SMP/E manuals for instructions on updating the global zone.
+The recommended values for certain SMP/E CSI subentries are shown in the following table. Using values lower than the recommended values can result in failures in the installation. `DSSPACE` is a subentry in the GLOBAL options entry. `PEMAX` is a subentry of the GENERAL entry in the GLOBAL options entry. See the SMP/E manuals for instructions on updating the global zone.
 
 Subentry | Value | Comment
 ---|---|---
@@ -25,8 +25,8 @@ PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
 Follow these high-level steps to download and install Zowe Open Source Project (Base).
 
-  1. [Download the Zowe SMP/E package](#download-and-unzip-the-zowe-smpe-package)
-  2. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
+  1. [Download and unzip the Zowe SMP/E package](#download-and-unzip-the-zowe-smpe-package).
+  2. [Allocate the file system to hold the download package](#allocate-the-file-system-to-hold-the-download-package).
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
   5. [Sample installation jobs](#sample-installation-jobs)
@@ -59,7 +59,7 @@ You will receive one ZIP package on your desktop. Extract the following files fr
 
      The Program Directory for the Zowe Open Source Project.  
 
-### Allocate file system to hold the download package
+### Allocate the file system to hold the download package
 
 You can either create a new z/OS UNIX file system (zFS) or create a new directory in an existing file system to place AZWE002.pax.Z. The directory that will contain the download package must reside on the z/OS system where the function will be installed.
 
@@ -132,9 +132,11 @@ You will receive a return code of 0 if this job runs correctly.
 
 Upload the AZWE002.readme.txt file in text format and the AZWE002.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE002.readme.txt file that you downloaded.
 
-**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
+:::note
+Ensure you download the pax file in a different file system than where you put Zowe runtime. 
+:::
 
-There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
+There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client. Commands or other information entered by the user are in bold, and the following values are assumed.
 
 :::note
 If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
@@ -148,7 +150,7 @@ tsopw | Your TSO password
 d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
-:::danger Important 
+:::danger**Important** 
 The AZWE002.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
 :::
 
@@ -185,8 +187,10 @@ ftp: quit
 221 Quit command received.  Goodbye.  
 ```
 
-**If you are unable to connect with ftp and only able to use sftp**,
-the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE002.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE002.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
+:::tip
+If you are unable to connect with ftp and only able to use sftp, use _sftp_ at the command prompt instead of _ftp_
+
+As _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the `AZWE002.readme.txt` file, it will be in an ASCII codepage so you need to convert it to `EBCDIC` before it can be used. To convert `AZWE002.readme.txt` to `EBCDIC`, log in to the distribution system using ssh and run an **ICONV** command.
 
 ```
 _C:>/__ssh tsouid@mvsaddr___   
@@ -200,6 +204,7 @@ _@zfs_path:>mv AZWE002.readme.EBCDIC AZWE002.readme.txt_
 _@zfs_path:>exit_  
 _C:>/_  
 ```
+:::
 
 ### Extract and expand the compressed SMPMCS and RELFILEs
 

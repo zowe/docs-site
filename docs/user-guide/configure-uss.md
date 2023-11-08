@@ -94,7 +94,7 @@ This section describes options to customize the destination directory for all Zo
 
 ### How to customize temporary files
 
-There are three environment variables that control the directory used to place these temporary files:
+Three environment variables control the directory used to place these temporary files:
 
 - **`TMPDIR`**  
  This is the main environment variable, it controls the directory used for most USS operations.
