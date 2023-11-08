@@ -1,13 +1,18 @@
 # Installing Zowe via a containerization build (PAX file)
 
-As a system programmer, you can download Zowe (server) containers as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Choose the appropriate installation type for your use case. Using containers has numerous advantaages:
+You can download Zowe (server) containers as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Choose the appropriate installation type for your use case.
+
+:::info**Required roles:** system programmer
+:::
+
+Using containers for installation has the following advantages:
 
 * You can run Zowe servers on other platforms including Linux on Z and your PC.
-* You can run Zowe servers local to your system for rapid development.
-* You cn run redundant copies of servers for scaling capacity to meet workload requirements
+* You can run Zowe servers locally on your system for rapid development.
+* You can run redundant copies of servers for scaling capacity to meet workload requirements.
 * You can leverage container monitoring tools.
 
-If you are new to containers, you can learn about the key concepts at the [Kubernetes website](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/).
+For more information about containers, see the [Kubernetes website](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/) to learn about key concepts.
 
 ## End-to-end container installation
 
@@ -17,34 +22,20 @@ Zowe containers are designed to run together with extensions and Zowe utilities,
 
 ### Stage 1: Plan and prepare for the installation
 
-<figure>
-  <image usemap="#home_map1" border="0" id="container-install-flow" src={require("../images/install/container-install-1.png").default} width="850" alt="See each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
-
 Stage 1 ensures that your software and hardware are prepared for installation. For more information, see [Preparing for Zowe server containers installation](k8s-prereqs.md).
 
 ### Stage 2: Download Zowe containers
 
-<figure>
-  <image usemap="#home_map1" border="0" id="container-install-flow" src={require("../images/install/container-install-2.png").default} width="850" alt="See each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
+In Stage 2, you download the Zowe containers. Choose from the following download methods:
 
-At Stage 2, you download the Zowe containers. Two downloading methods are available.
 * [Download Configuration samples](../user-guide/k8s-downloading#downloading-configuration-samples).(This is the recommended method) 
 * [Download container images](../user-guide/k8s-downloading#downloading-container-images).
 
 ### Stage 3 & 4: Install and configure Zowe containers
 
-<figure>
-  <image usemap="#home_map1" border="0" id="container-install-flow" src={require("../images/install/container-install-34.png").default} width="850" alt="See each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
+In Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, installation is achieved when the images are findable by Kubernetes. For more information, see the [Installing](../user-guide/k8s-downloading/#installing) section of **_Downloading and installing containers_**.
 
-At Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, an could be considered "installed" when it is findable by Kubernetes. See more information [here](../user-guide/k8s-downloading/#installing).
-
-At Stage 4, you can [configure the Zowe container environment](../user-guide/k8s-config.md).  
+In Stage 4, you can [configure the Zowe container environment](../user-guide/k8s-config.md).  
 Follow these steps:
 
 1. [Create namespace and service account](../user-guide/k8s-config#1-create-namespace-and-service-account)
@@ -55,28 +46,18 @@ Follow these steps:
 ### Stage 5: Start Zowe containers
 
 In Stage 5, you can [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers).  
- Follow these steps:
+
+Follow these steps:
 1. [Apply the deployment files to start Zowe containers](../user-guide/k8s-using#starting-zowe-containers). 
 2. After you start Zowe containers, [verify that Zowe containers are started](../user-guide/k8s-using#verifying-zowe-containers).
 
-<figure>
-  <image usemap="#home_map1" border="0" id="container-install-flow" src={require("../images/install/container-install-5.png").default} width="850" alt="See each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
-
 ### (Optional) Stage 6: Monitor Zowe containers
 
-In Stage 6, [monitor your containers](../user-guide/k8s-using#monitoring-zowe-containers) to verify that it is functioning properly.
-
-<figure>
-  <image usemap="#home_map1" border="0" id="container-install-flow" src={require("../images/install/container-install-6.png").default} width="850" alt="See each step to get more details on the flow." />
-  <figcaption></figcaption>
-</figure>
-
+In Stage 6, [monitor your containers](../user-guide/k8s-using#monitoring-zowe-containers) to verify that the containers are functioning properly.
 
 ## Known limitations
 
-* You may encounter an issue that some plugins are not showing up in Zowe Desktop. You can try the **Refresh Applications** icon showing up in Desktop start menu.
-* You may encounter an issue that some services are not showing up in Zowe API Catalog. You can try the **Refresh Static APIs** button showing up in upper-right corner of API Catalog web page.
-* `useConfigmgr` is disabled within containers, therefore yaml schema validation is not yet supported.
+* You may encounter an issue that some plugins do not appear in Zowe Desktop. We recommnend you try the **Refresh Applications** icon that appears in the Desktop start menu.
+* You may encounter an issue that some services do not appear in Zowe API Catalog. We recommend you try the **Refresh Static APIs** option that appears in the upper-right corner of API Catalog web page.
+* `useConfigmgr` is disabled within containers. As such yaml schema validation is not currently supported.
 
