@@ -1,15 +1,17 @@
 The Zowe's App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more. 
-These parameters can be specified in multiple ways: configuration files, CLI arguments, or environment variables.
 
-Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux/blob/v2.x/staging/schemas/zlux-config-schema.json)
 
-# Configuration file
-In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux/blob/v2.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
+# Configuration File
+The servers use a YAML file for configuration. The [global schema](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/zowe-yaml-schema.json) describes the parts of configuration that are common between servers.
+The App Server specifically is configured by the `components.app-server` section of the YAML, and that section follows [this App-server schema](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json)
+ZSS is instead configured by the `components.zss` section, following [the ZSS schema](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json)
+The App server can additionally use CLI arguments or environment variables to override the YAML file.
 
-# Environment variables
+# Environment variables (app-server only)
 CLI arguments take precedence over the configuration file, but are overridden by the CLI arguments.
 The format is `ZWED_key=value`, where "ZWED_" is a prefix for any configuration object.
-The key maps to a YAML object attribute, so to set the value of a nested object, such as the https configuration, you need multiple values.
+The attributes specified will be put within the `components.app-server` subsection of the Zowe configuration.
+The key maps to a JSON object attribute, so to set the value of a nested object, such as the https configuration, you need multiple values.
 For example:
 ```
 node: 
@@ -54,16 +56,9 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * strings can have quotes, but otherwise everything that isnt an array, boolean, or number is a string
 * objects are never values. They are the keys.
 
-## Friendly names for environment variables
-Some common configuration options have names that do not follow the above special syntax. These options get mapped to the special syntax when the server runs, so the same behavior can be configured in more than one way. Many of these values are listed here https://docs.zowe.org/stable/user-guide/configure-zowe-zosmf-workflow/#configure-the-zowe-instance-directory but for the App Server, the code that maps these values is contained within https://github.com/zowe/zlux-app-server/blob/v2.x/master/bin/convert-env.sh
-
-
-Although overridden by both environment variables and CLI arguments, for convenience the App server and ZSS read from a configuration file with a common structure. ZSS reads this directly as a startup argument, while the App Server as defined in the [zlux-server-framework](https://github.com/zowe/zlux-server-framework) repository accepts several parameters which are intended to be read from a YAML file through an implementer of the server, such the default provided in the [zlux-app-server](https://github.com/zowe/zlux-app-server) repository, namely the [lib/zluxServer.js](https://github.com/zowe/zlux-app-server/blob/v2.x/master/lib/zluxServer.js) file. This file accepts a YAML file that specifies most if not all parameters needed, but some other parameters can be provided via flags if desired. 
-
-
 # CLI arguments (app-server only)
 CLI arguments take precedence over environment variable and configuration files.
-The format is `--key=value`
+The format is `--key=value` and the attributes specified will be put within the `components.app-server` subsection of the Zowe configuration.
 The key maps to a YAML object attribute, so to set the value of a nested object, such as the https configuration, you need multiple period-separated values.
 For example:
 ```
@@ -86,7 +81,7 @@ node.https.certificates="../defaults/serverConfig/server.cert"
 
 **NOTE: ZSS does not support CLI arguments**
 
-**The key name is case-sensitive.**
+**The key names are case-sensitive.**
 
 **The types of the values are syntax-sensitive.**
 * Numbers are treated as numbers, not strings. 
@@ -142,18 +137,8 @@ To include Apps, be sure to define the location of the Plugins directory in the 
 For more information, see [Logging Utility](mvd-logutility.md).
 
 ## ZSS Configuration
-When running ZSS, it will require a configuration file similar or the same as the one used for the App Server. The attributes that are needed for ZSS, at minimum, are: *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and **agent**. All of these attributes have the same meaning as described above for the App server, but if the App server and ZSS are not run from the same location, then these directories may be different if desired.
+ZSS is configured by the same Zowe YAML file used by the App server, within the `components.zss` section of the file. The [ZSS schema for components.zss be found here](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json). More information about the configuration can be found [In its README](https://github.com/zowe/zss/#quick-run-how-to-start-zss).
 
-### ZSS Networking
-
-The attributes that control ZSS exclusively are within the **agent** object. ZSS uses HTTPS by default, but for those who wish to use AT-TLS instead of the built-in HTTPS support, ZSS can use HTTP as well. HTTP should never be used without [AT-TLS](../../user-guide/mvd-configuration#defining-the-at-tls-rule), as this is a security risk. The values `agent.https.port`, `agent.http.port` tell ZSS which ports to bind to, but also where the app-server can find ZSS. The values `agent.host` is used to tell app-server where to find ZSS as well, though `agent.https.ipAddresses` and `agent.http.ipAddresses` tell ZSS which addresses to bind to. For addresses, at this time only the first value of that array is used, and it may either be a hostname or an ipv4 address.
-
-Example of the agent body:
-```
-  agent: 
-    host: localhost
-    https: 
-      ipAddresses: 0.0.0.0
-      port: 7557
-    
-```
+### Connecting ZSS to App Server
+The App Server can connect to ZSS either directly or through the API Mediation Layer Gateway when that is running.
+The connection information is stored within the object `components.app-server.agent`, which describes whether the Gateway is involved, or if not, on which host and port can ZSS be found. For more information, see the [agent section of the schema](https://github.com/zowe/zlux-app-server/blob/c22105381e129bd999c47e838b424679eba26aa6/schemas/app-server-config.json#L262)
