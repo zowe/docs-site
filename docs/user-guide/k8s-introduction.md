@@ -11,6 +11,8 @@ If you are new to containers, you can learn about the key concepts at the [Kuber
 
 ## End-to-end container installation
 
+![Container installation](../images/install/containerization-install.png)
+
 Zowe containers are designed to run together with extensions and Zowe utilities, and therefore are built for orchestration software that can manage the relationship and lifecycle of the containers. The following topics guide you to set up and use Zowe's containers with the Kubernetes orchestration software.
 
 ### Stage 1: Plan and prepare for the installation
