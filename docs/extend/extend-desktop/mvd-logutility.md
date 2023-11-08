@@ -124,7 +124,7 @@ The application plug-in framework provides ways to specify what component logger
 
 #### Server startup logging configuration
 
-[The server configuration file](https://github.com/zowe/zlux/wiki/Configuration-for-zLUX-App-Server-&-ZSS) allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
+[The server configuration file](mvd-server-config.md) allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
 
 For example:
 ```  
