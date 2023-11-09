@@ -1,4 +1,4 @@
-# Enabling App Framework Tracing and Debugging
+# Enabling Tracing
 
 If you need to provide support with tracing information about the App Framework or a particular part of it, or need to debug a program you are developing that uses the App Framework, you can enable a variety of tracing within the Zowe YAML configuration file.
 If you are looking for basic troubleshooting and support, please instead see [Gathering Information for Support or Troubleshooting](../servers/must-gather.md)
