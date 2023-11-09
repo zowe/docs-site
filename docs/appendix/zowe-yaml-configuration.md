@@ -383,13 +383,13 @@ The high-level configuration `java` supports these definitions:
 
 :::tip
 
-Make sure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains within it "bin/node". For example, 
+Make sure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains within it `bin/node`. For example, 
 ```
 node:
   home: "/usrlppSysplex/nodejs/node-v12.16.1"
 ```
 
-The above value is valid only when the path `/usrlppSysplex/nodejs/node-v12.16.1/bin/node` exists. If you observe output of "node:...FSUM7351 not found", you need to check if the value contains within it `bin/node``, and correct the value if it does not.
+The above value is valid only when the path `/usrlppSysplex/nodejs/node-v12.16.1/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, you need to check if the value contains within it `bin/node`, and correct the value if it does not.
 
 :::
 
