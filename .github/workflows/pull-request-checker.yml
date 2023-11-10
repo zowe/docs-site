@@ -9,55 +9,52 @@ on:
     types: [opened, reopened, labeled]
 
 jobs:
-
   initial-comment:
     name: PR Instructions
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened' && github.actor != 'zowe-robot'
+    if: github.event.action == 'opened' && github.event.pull_request.user.login != 'zowe-robot'
 
     steps:
-      - name: Add initial comment w/ instructions
-        id: initial_comment_writer
+      # 1. Check out files needed by subsequent steps
+      - name: Checkout files
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github
+
+      # 2. Define outputs used by subsequent steps
+      - name: Check if author is writer
+        id: check-if-writer
         if: contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login)
+        run: echo "PR_AUTHOR_TYPE=writer" >> $GITHUB_ENV
+
+      - name: Check if author is labeller
+        id: check-if-labeller
+        if: ${{ steps.check-if-writer.outcome == 'skipped' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+        run: |
+          response=$(curl -fs -H "Authorization: Token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.event.pull_request.user.login }}/permission")
+          triage_permission=$(echo "$response" | jq -r '.user.permissions.triage')
+          if [ "$triage_permission" == "true" ]; then
+            echo "PR_AUTHOR_TYPE=labeller" >> $GITHUB_ENV
+          else
+            echo "PR_AUTHOR_TYPE=community" >> $GITHUB_ENV
+          fi
+
+      # 3. Add initial comment on PR
+      - name: Add initial comment
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          header: Initial comment writer
-          message: |
-            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these steps.
-                        
-            - [ ] Add the label `needs review by sme` if an SME needs to check your content.
-            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-            - [ ] Specify the major Zowe release for your content. (Examples: `V1`, `V2`, `V3`.)
-            - [ ] Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
-            - [ ] Fix broken links found in your content areas.
-            - [ ] Notify the SME to review this PR (if applicable).
-            - [ ] Merge to the `master` branch if your PR updates content that is on the live site. Merge to `docs-staging` if your PR updates content for a future release.
-            
+          header: Initial comment
+          path: .github/pr-comments/for-${{ env.PR_AUTHOR_TYPE }}.md
 
-      - name: Add initial comment w/ instructions
-        if: steps.initial_comment_writer.outcome == 'skipped'
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          header: Initial comment non-writer
-          message: |
-            :smiley_cat: Thank you for creating this PR! To publish your content to [Zowe Docs](https://docs.zowe.org/), follow these required steps.
-
-            - [ ] Add the label `needs review by doc`.
-            - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-            - [ ] Specify the major Zowe release for your content. (Examples: `V1`, `V2`, `V3`.)
-            - [ ] Select the `master` branch if your PR updates content that is on the live site. Select `docs-staging` if your PR updates content for a future release.
-            - [ ] Notify the Doc Squad about this PR. If you don't know who should review your content, message the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel. If you know which Doc Squad writer should approve your content, add that person as a reviewer.
-
-            **Need help?** Contact the Doc Squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel.      
-      - name: Checkout file
-        uses: Bhacaz/checkout-files@v2
-        with:
-          files: ".github/pull_request_template.md"  
+      # 4. Validate PR description
       - name: Description checker
         uses: jadrol/pr-description-checker-action@v1.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          template-path: "./.github/pull_request_template.md"  
+          template-path: "./.github/pull_request_template.md"
           comment: true
           comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR."
           comment-template-not-filled: ":warning: Looks like we're missing description information. Please answer both description prompts."
@@ -74,12 +71,12 @@ jobs:
           header: File name is missing
           message: |
             :file_folder: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
-          
+
   review-labels:
     name: Check for missing review label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && github.actor != 'zowe-robot' && !contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
+    if: ${{ always() && !contains(fromJson('["zowe-robot", "anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
 
     steps:
       - name: Review Label Check
@@ -87,7 +84,7 @@ jobs:
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
           prefix_mode: true
-          any_of: "needs review by"
+          any_of: "review:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Missing Review Label Comment PR
         if: failure()
@@ -96,13 +93,18 @@ jobs:
           header: Review label missing
           message: |
             :mag: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+      - name: Fixed Review Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Review label missing
+          delete: true
 
-          
   release-labels:
     name: Check for missing release label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && github.actor != 'zowe-robot' }}
+    if: ${{ always() && github.event.pull_request.user.login != 'zowe-robot' }}
 
     steps:
       - id: prefix_label_check
@@ -118,12 +120,18 @@ jobs:
           header: Release label missing
           message: |
             :floppy_disk: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+      - name: Fixed Release Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Release label missing
+          delete: true
 
   area-labels:
     name: Check for missing area label
     runs-on: ubuntu-latest
     needs: [initial-comment]
-    if: ${{ always() && github.actor != 'zowe-robot' }}
+    if: ${{ always() && github.event.pull_request.user.login != 'zowe-robot' }}
 
     steps:
       - id: prefix_label_check
@@ -139,4 +147,9 @@ jobs:
           header: Area label missing
           message: |
             :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
-    
+      - name: Fixed Area Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Area label missing
+          delete: true
