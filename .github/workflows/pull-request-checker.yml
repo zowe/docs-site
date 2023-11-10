@@ -56,8 +56,10 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           template-path: "./.github/pull_request_template.md"
           comment: true
-          comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR."
-          comment-template-not-filled: ":warning: Looks like we're missing description information. Please answer both description prompts."
+          comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR. 
+          If you have addressed this issue already, refresh your browser to remove this comment."
+          comment-template-not-filled: ":warning: Looks like we're missing description information. 
+          If you have addressed this issue already, refresh your browser to remove this comment."
       - name: Check PR
         id: file_type_checker
         uses: JJ/github-pr-contains-action@releases/v10
@@ -71,6 +73,7 @@ jobs:
           header: File name is missing
           message: |
             :file_folder: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
+            If you have addressed this issue already, refresh your browser to remove this comment.
 
   review-labels:
     name: Check for missing review label
@@ -93,6 +96,7 @@ jobs:
           header: Review label missing
           message: |
             :mag: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+            If you have addressed this issue already, refresh your browser to remove this comment.
       - name: Fixed Review Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
@@ -120,6 +124,7 @@ jobs:
           header: Release label missing
           message: |
             :floppy_disk: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+            If you have addressed this issue already, refresh your browser to remove this comment.
       - name: Fixed Release Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
@@ -147,6 +152,7 @@ jobs:
           header: Area label missing
           message: |
             :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+            If you have addressed this issue already, refresh your browser to remove this comment.
       - name: Fixed Area Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
