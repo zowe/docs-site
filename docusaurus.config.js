@@ -42,6 +42,12 @@ module.exports = {
       items: [
         {
           type: "doc",
+          label: "What's new",
+          docId: "whats-new/zowe-announcements",
+          position: "left",
+        },
+        {
+          type: "doc",
           label: "Overview",
           docId: "getting-started/overview",
           position: "left",

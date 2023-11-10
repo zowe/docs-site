@@ -1,6 +1,32 @@
 module.exports = {
-  "getting-started": [
+  "whats-new": [
     //id of the sidebar
+    "whats-new/zowe-announcements",
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Release notes",
+      className: "ToCheadercolor",
+      link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
+      items: [
+        "getting-started/release-notes/v2_11_0",
+        "getting-started/release-notes/v2_10_0",
+        "getting-started/release-notes/v2_9_0",
+        "getting-started/release-notes/v2_8_0",
+        "getting-started/release-notes/v2_7_0",
+        "getting-started/release-notes/v2_6_1",
+        "getting-started/release-notes/v2_6_0",
+        "getting-started/release-notes/v2_5_0",
+        "getting-started/release-notes/v2_4_0",
+        "getting-started/release-notes/v2_3_1",
+        "getting-started/release-notes/v2_3_0",
+        "getting-started/release-notes/v2_2_0",
+        "getting-started/release-notes/v2_1_0",
+        "getting-started/release-notes/v2_0_0",
+      ],
+    },
+    "whats-new/zowe-v3-office-hours",
+  ],
+  "getting-started": [
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
@@ -37,30 +63,7 @@ module.exports = {
         "getting-started/zowe_v2_faq",
       ],
     },
-    {
-      type: "category",
-      label: "Release notes",
-      className: "ToCheadercolor",
-      link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
-      items: [
-        "getting-started/release-notes/v2_12_0",
-        "getting-started/release-notes/v2_11_0",
-        "getting-started/release-notes/v2_10_0",
-        "getting-started/release-notes/v2_9_0",
-        "getting-started/release-notes/v2_8_0",
-        "getting-started/release-notes/v2_7_0",
-        "getting-started/release-notes/v2_6_1",
-        "getting-started/release-notes/v2_6_0",
-        "getting-started/release-notes/v2_5_0",
-        "getting-started/release-notes/v2_4_0",
-        "getting-started/release-notes/v2_3_1",
-        "getting-started/release-notes/v2_3_0",
-        "getting-started/release-notes/v2_2_0",
-        "getting-started/release-notes/v2_1_0",
-        "getting-started/release-notes/v2_0_0",
-        "getting-started/zowe-office-hours"
-      ],
-    },
+    "getting-started/zowe-office-hours",
     {
       type: "doc",
       label: "Zowe CLI quick start",
