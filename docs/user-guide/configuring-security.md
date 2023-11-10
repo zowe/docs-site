@@ -7,7 +7,7 @@ During the initial installation of Zowe server-side components, it is necessary 
 
 ## Validate and re-run `zwe init` commands
 
-During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this command.
+During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this JCL.
 
 ## Initialize Zowe security configurations
 

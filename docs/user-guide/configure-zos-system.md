@@ -9,13 +9,13 @@ As a security administrator it is necessary to  configure the z/OS system for Zo
 
 Be sure your z/OS system meets the following prerequisites:
 
-- z/OS version is in active support, such as Version 2.3 and Version 2.4
+- z/OS version is in active support, such as Version 2.3, Version 2.4, Version 2.5 and Version 3.1
 
     :::note
     z/OS V2.2 reached end of support on 30 September, 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
     :::
 
-- zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 833 mb <!-- this should be reviewed --> of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) z/OS OpenSSH V2.2.0 or later
   
@@ -25,10 +25,12 @@ Be sure your z/OS system meets the following prerequisites:
   
   To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. For more information, see [Configuring Sysplex for high availability](configure-sysplex.md).
 
- ## Settings specific configuration requirements
+ ## Settings specific configuration requirements <!-- This title is a bit confusing -->
  
 Configuration of your z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. Review the following table to determine which configuration steps are required based on your Zowe use case.
 
+<!-- second column says purpose but in many cases it starts by saying if it's required or not.
+Normalize how we state if they are required or not and start with purpose.ma-->
 Configuration step | Purpose |
 ---| ---|
 [Configure address space job naming](#configure-address-space-job-naming)| Required to set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required.|

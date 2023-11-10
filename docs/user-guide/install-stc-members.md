@@ -1,3 +1,5 @@
+<!-- This article is not linked in sidebars anymore but it has a link in configuring-security.md  -->
+
 # Installing Zowe main started tasks
 
 Once you have completed security configuration, you can install the Zowe main started tasks. 
