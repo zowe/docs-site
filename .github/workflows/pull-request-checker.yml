@@ -57,7 +57,7 @@ jobs:
           template-path: "./.github/pull_request_template.md"
           comment: true
           comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR. 
-          <br>If you have addressed this issue already, refresh your browser to remove this comment."
+          <br><br>If you have addressed this issue already, refresh your browser to remove this comment."
           comment-template-not-filled: ":warning: Looks like we're missing description information.<br> 
           If you have addressed this issue already, refresh your browser to remove this comment."
       - name: Check PR
@@ -96,7 +96,7 @@ jobs:
         with:
           header: Review label missing
           message: |
-            :mag: The **review** label is missing. Add a `needs review by` label so we can determine who needs to approve this PR.
+            :mag: The **review** label is missing. Add a `review:` label so we can determine who needs to approve this PR.
             
             If you have addressed this issue already, refresh your browser to remove this comment.
       - name: Fixed Review Label Comment PR
@@ -125,7 +125,7 @@ jobs:
         with:
           header: Release label missing
           message: |
-            :floppy_disk: The **release** label is missing. Add a `current release` or `next release` label so your content is published with the correct Zowe release.
+            :floppy_disk: The **release** label is missing. Add a `release:` label so your content is published with the correct major Zowe release.
             
             If you have addressed this issue already, refresh your browser to remove this comment.
       - name: Fixed Release Label Comment PR
