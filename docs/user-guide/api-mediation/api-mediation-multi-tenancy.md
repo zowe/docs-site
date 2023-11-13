@@ -13,7 +13,7 @@ The following bullets describe which Zowe components should be enabled and disab
 
 ## Onboard domain Gateways to the central Cloud Gateway
 
-The Cloud Gateway must onboard all domain Gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding. 
+The Cloud Gateway must onboard all domain Gateways. Onboarding can be performed either dynamically or by the static definition. We strongly recommend using dynamic onboarding. 
 
 ### Dynamic Onboarding (preferred way)
 
@@ -21,7 +21,7 @@ Users must set the following property for all domain Gateways to dynamically onb
 
 `components.gateway.apiml.service.additionalRegistration`
 
-Use the following example as a reference on how to set the value for this property in zowe.yml.
+Use the following example as a template for how to set the value for this property in zowe.yml.
 
 **Example:**
 ```
@@ -34,14 +34,14 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 
 :::note
-The Gateway service may need to provide different routing patterns for the central discovery service. This metadata could be the same for every cluster.
+It is not necessary for the Gateway service to provide different routing patterns for the central discovery service. This metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding (deprecated)
 
-Alternatively, you can statically onboard all domain Gateways on the Central Discovery service.
+Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the prefered method.
 
-Make sure that the following parameters are correctly specified in the static definition file:
+For static onboarding, make sure that the following parameters are correctly specified in the static definition file:
 
 - **services.serviceId**  
   Specify this parameter to GATEWAY
@@ -50,7 +50,7 @@ Make sure that the following parameters are correctly specified in the static de
 - **services.customMetadata.apiml.service.apimlId**  
   Specifies the id of the API ML environment
 
-Use the example in the section A.
+For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
 
 ## Establish a trust relationship between domain Gateways and the Cloud Gateway
 
@@ -58,15 +58,15 @@ The following keytool commands are examples of establishing a trust relationship
 
 - Import the public key certificate of all domain Gateways into the truststore of the Cloud Gateway.
 
-  The following keytool command is an example when the domain Gateways running on CA11 and CA32 import the certificate into Cloud Gateway running on CA31:
+  Use the following example of the keytool command when the domain Gateways running on CA11 and CA32 import the certificate into Cloud Gateway running on CA31:
 
   `keytool -import -file keystore/ca11/local_ca/local_ca.cer -alias gateway_ca11 -keystore keystore/ca31/localhost/localhost.truststore.p12`
 
   `keytool -import -file keystore/ca32/local_ca/local_ca.cer -alias gateway_ca32 -keystore keystore/ca31/localhost/localhost.truststore.p12`
 
-- Import public key certificate of the Cloud Gateway into the truststore of all domain Gateways.
+- Import a public key certificate of the Cloud Gateway into the truststore of all domain Gateways.
 
-  The following keytool command is an example when the certificate of the Cloud Gateway running on CA31 is imported into the truststore of the domain Gateways running on CA11 and CA32:
+  Use the following example of the keytool command  when the certificate of the Cloud Gateway running on CA31 is imported into the truststore of the domain Gateways running on CA11 and CA32:
 
   `keytool -import -file keystore/ca31/local_ca/local_ca.cer -alias gateway_ca31 -keystore keystore/ca11/localhost/localhost.truststore.p12`
 
@@ -74,7 +74,7 @@ The following keytool commands are examples of establishing a trust relationship
 
 ## Use the /registry endpoint in Cloud Gateway
 
-The /registry endpoint provides information about services onboarded to all domain Gateways and the Central Gateway.
+The `/registry` endpoint provides information about services onboarded to all domain Gateways and the Central Gateway. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
 ### Configuration
 
@@ -96,10 +96,13 @@ This parameter allows the setting of multiple users as a comma-separated list.
 
 Unsuccessful authorization returns a 403 error code. 
 
-### Request
+### Requests
 
-GET /cloud-gateway/api/v1/registry                   List services in all domains
-GET /cloud-gateway/api/v1/registry/{apimlId}    List services in apimlId domain
+* `GET /cloud-gateway/api/v1/registry`  
+This request lists services in all domains.
+
+* `GET /cloud-gateway/api/v1/registry/{apimlId}`  
+This request lists services in the apimlId domain.
 
 ### Response
 
@@ -141,7 +144,6 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 
 ## Troubleshooting
 
-
 ### ZWESG100W  
 
 Cannot receive information about services on API Gateway with apimlId 'Gateway-CA32' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
@@ -160,17 +162,17 @@ Review your certificate configuration.
  **Action**  
  Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
 
-## Onboarding domain cloud-gateway service to central discovery service
+## Onboarding a domain cloud-gateway service to central discovery service
 
-The central Cloud Gateway can onboard Cloud Gateways of all domains. This can be achieved similar to additional registrations of the Gateway:
+The central Cloud Gateway can onboard Cloud Gateways of all domains. This can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 ### Dynamic configuration: YML
 
-Users must set the following property for the domain cloud-gateway to dynamically onboard to central Discovery Service.
+Users must set the following property for the domain cloud-gateway to dynamically onboard to the central Discovery Service.
 
 `components.cloud-gateway.apiml.service.additionalRegistration`
 
-Use the following example as a reference on how to set the value for this property in zowe.yml.
+Use the following example as a template for how to set the value of this property in zowe.yml.
 
 **Example:**
 ```
@@ -196,15 +198,15 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 
 ### Validate successful configuration
 
-The corresponding ‘Cloud-Gateway’ service should appear in the eureka console of the central discovery service. 
+The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
 
-To see all instances details of the ‘CLOUD-GATEWAY’ application, perform a GET call on the following endpoint of the central discovery service:
+To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the central discovery service:
 
 ```
 /eureka/apps
 ```
  
-## A. Gateway static definition example
+## Gateway static definition example
 This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. The filename can be anything and the file extension must be yml.
 
 ```
