@@ -6,7 +6,10 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 :::info**Required roles:** system programmer, security administrator
 :::
 
-Before you install the Zowe cross memory server (ZIS), ensure that you have completed the initial steps for configuring Zowe z/OS components and the z/OS system. For more information, see the [Configuring Overview](./configuring-overview).
+:::note
+This page describes how to configure the cross server manually, however most part of this configuration should be already done during the [Zowe configuration](./configuring-overview). 
+If you have successfully run the `zwe init` command then the load modules are already installed, APF authorization and SAF configuration are done and the only thing you need to perform is to configure the load modules to run in [key 4 non-swappable](#key-4-non-swappable)
+:::
 
 To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. Performing these steps requires familiarity with z/OS.
 
@@ -78,27 +81,13 @@ Issue one of the following operator commands to dynamically add the load library
 
 If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library).
 
-#### Making APF auth be part of the IPL
-
-Add one of the following lines to your active `PROGxx` PARMLIB member, for example `SYS1.PARMLIB(PROG00)`, to ensure that the APF authorization is added automatically after next IPL. The value of `DSNAME` is the name of the `SZWEAUTH` data set, as created during Zowe installation:  
-
-- If the load library is not SMS-managed, add the following line, where `volser` is the name of the volume that holds the data set:
-  ```
-  APF ADD DSNAME=hlq.SZWEAUTH VOLUME=volser
-  ```
-- If the load library is SMS-managed, add the following line:
-  ```
-  APF ADD DSNAME=hlq.SZWEAUTH SMS
-  ```
-
-The PDS member `SZWESAMP(ZWESIMPRG)` contains the SETPROG statement and PROGxx update for reference.
-
 ### Key 4 non-swappable
 
-The cross memory server load module `ZWESIS01` must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
+The cross memory server load module `ZWESIS01` and the auxiliary (AUX) address space load module `ZWESAUX` must run in key 4 and be non-swappable. For the server to start in this environment, add the following PPT entries for the server and address spaces to the SCHEDxx member of the system PARMLIB.
 
 ```
 PPT PGMNAME(ZWESIS01) KEY(4) NOSWAP
+PPT PGMNAME(ZWESAUX)  KEY(4) NOSWAP
 ```
 
 The PDS member `SZWESAMP(ZWESISCH)` contains the PPT lines for reference.
@@ -139,45 +128,6 @@ Because the ZIS server makes z/OS security calls it restrits which clients are a
 
 The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS server, which requires that the user ID `ZWESVUSR` has access to `ZWES.IS`.  The steps to do this are desribed in [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).  
 
-## Summary of cross memory server installation
-
-You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
-
-- JCL member `ZWESLSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
-- The PDSE Load Library `SZWEAUTH`is APF-authorized, or Load module `ZWESI00` is copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
-- The load module `ZWESI00` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB `PPT PGMNAME(ZWESI00) KEY(4) NOSWAP`.
-
-## Starting and stopping the cross memory server on z/OS
-
-The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
-
-```
-/S ZWESISTC,REUSASID=YES
-```
-The ZWESISTC task starts and stops the ZWESASTC task as needed. Do not start the ZWESASTC task manually.
-
-To end the Zowe cross memory server process, issue the operator stop command through SDSF:
-
-```
-/P ZWESISTC
-```
-**Note:** 
-
-The starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
-
-To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
-
-If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
-
-For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=02,RGN=0M`. 
-And the `zowe.yaml` file is updated to use the `02` instance:
-
-```
-zss:
-    crossMemoryServerName: ZWESIS_02
-```
-
 ## Zowe auxiliary service
 
 Under some situations in support of a Zowe extension, the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`. 
@@ -211,6 +161,49 @@ A default installation of Zowe does not require auxiliary address spaces to be c
 :::important
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
 :::
+
+## Summary of cross memory server installation
+
+You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
+
+- JCL members `ZWESLSTC` and `ZWESASTC` are copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
+- The PDSE Load Library `SZWEAUTH` is APF-authorized, or Load modules `ZWESI00` and `ZWESAUX` are copied to an existing APF Auth LoadLib.
+- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
+- The load modules `ZWESI00` and `ZWESAUX` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB 
+```
+PPT PGMNAME(ZWESI00) KEY(4) NOSWAP
+PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP
+```
+
+## Starting and stopping the cross memory server on z/OS
+
+The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`. It supports reusable address spaces and can be started through SDSF with the operator start command with the REUSASID=YES keyword:
+
+```
+/S ZWESISTC,REUSASID=YES
+```
+The ZWESISTC task starts and stops the ZWESASTC task as needed. Do not start the ZWESASTC task manually.
+
+To end the Zowe cross memory server process, issue the operator stop command through SDSF:
+
+```
+/P ZWESISTC
+```
+**Note:** 
+
+The starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
+
+To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
+
+If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
+
+For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=02,RGN=0M`. 
+And the `zowe.yaml` file is updated to use the `02` instance:
+
+```
+zss:
+    crossMemoryServerName: ZWESIS_02
+```
 
 ## Next step
 
