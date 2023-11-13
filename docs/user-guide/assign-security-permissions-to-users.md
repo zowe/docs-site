@@ -69,7 +69,9 @@ Each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF req
 
 This step is not included in the provided Zowe JCL because it must be done for every TSO user ID who wants to access Zowe's z/OS services.  The list of those user IDs will typically be the operators, administrators, developers, or anyone else in the z/OS environment who is logging in to Zowe.
 
-**Note:** You can skip this section if you use Zowe without z/OSMF.  Zowe can operate without z/OSMF but services that use z/OSMF REST APIs will not be available, specifically the USS, MVS, and JES Explorers and the Zowe Command Line Interface files, jobs, workflows, tso, and console groups.
+:::note
+You can skip this section if you use Zowe without z/OSMF.  Zowe can operate without z/OSMF but services that use z/OSMF REST APIs will not be available, specifically the USS, MVS, and JES Explorers and the Zowe Command Line Interface files, jobs, workflows, tso, and console groups.
+:::
 
 To grant permissions to the user ID to access z/OSMF, issue the command(s) that corresponds to your ESM.
 
@@ -95,4 +97,4 @@ To grant permissions to the user ID to access z/OSMF, issue the command(s) that 
 
 ## Next step
 
-After you complete the security permissions assigning, the next step is to [grant users permissions to access z/OSMF](./grant-user-permission-zosmf).
+After you complete assigning security permissions, the next step is to [configure certificates](./configure-certificates).

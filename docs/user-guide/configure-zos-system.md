@@ -29,24 +29,23 @@ Be sure your z/OS system meets the following prerequisites:
  
 Configuration of your z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. Review the following table to determine which configuration steps are required based on your Zowe use case.
 
-<!-- second column says purpose but in many cases it starts by saying if it's required or not.
-Normalize how we state if they are required or not and start with purpose.ma-->
-Configuration step | Purpose |
----| ---|
-[Configure address space job naming](#configure-address-space-job-naming)| Required to set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required.|
-[Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) | Required if you want to use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | 
-[Configure security environment switching](#configure-security-environment-switching) | Required if you want to allow users to log on to the Zowe desktop through impersonation. | 
-[Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. |
-[Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) | Required if you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment. |
-[Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) | Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the started task ZWESLSTC to run under the correct user ID and group.| 
-[Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) | Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the cross memory server for SAF to guard against access by non-priviledged clients.|
-[Configure main Zowe server to use client certificate identity mapping](#configure-main-zowe-server-to-use-client-certificate-identity-mapping) | Required for API Mediation Layer to map a client certificate to a z/OS identity. |
-[Configure main Zowe server to use distributed identity mapping](#configure-main-zowe-server-to-use-distributed-identity-mapping)  | Required for API ML to  to map the association between a z/OS user ID and a distributed user identity. |
-[Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) | Required to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | 
-[Configure the main Zowe server to issue SMF records](api-mediation/api-mediation-smf.md#configure-the-main-zowe-server-to-issue-smf-records) | Required for API Mediation Layer to issue SMF records. |
-[Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa) | Required to use multi-factor authentication (MFA)
-[Single Sign-On (SSO)](#single-sign-on-sso) | Required to use Single Sign-On (SSO) |
-[API Mediation Layer OIDC Authentication](#api-mediation-layer-oidc-authentication) | Required to use OIDC Authentication with API Mediation Layer
+| Purpose | Configuration step |
+| --- | --- |
+| Set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required. | [Configure address space job naming](#configure-address-space-job-naming) |
+| To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
+| To allow users to log on to the Zowe desktop through impersonation. | [Configure security environment switching](#configure-security-environment-switching) |
+| Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. | [Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |
+| Required if you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment. | [Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) |
+| Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the started task ZWESLSTC to run under the correct user ID and group. | [Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) |
+| Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the cross memory server for SAF to guard against access by non-privileged clients. | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
+| Required for API Mediation Layer to map a client certificate to a z/OS identity. | [Configure main Zowe server to use client certificate identity mapping](#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
+| Required for API ML to map the association between a z/OS user ID and a distributed user identity. | [Configure main Zowe server to use distributed identity mapping](#configure-main-zowe-server-to-use-distributed-identity-mapping) |
+| To configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | [Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) |
+| Required for API Mediation Layer to issue SMF records. | [Configure the main Zowe server to issue SMF records](api-mediation/api-mediation-smf.md#configure-the-main-zowe-server-to-issue-smf-records) |
+| To use multi-factor authentication (MFA) | [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa) |
+| To use Single Sign-On (SSO) | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| To use OIDC Authentication with API Mediation Layer | [API Mediation Layer OIDC Authentication](#api-mediation-layer-oidc-authentication) |
+
 
 ### Configure an ICSF cryptographic services environment
 

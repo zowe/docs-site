@@ -1,6 +1,6 @@
 # Initializing Zowe z/OS runtime
 
-Begin configuration of your installation of Zowe z/OS components by initializing the Zowe z/OS runtime.
+Begin configuration of your installation of Zowe z/OS components by initializing Zowe z/OS runtime.
 
 :::info**Required roles:** system programmer
 :::
