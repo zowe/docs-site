@@ -100,7 +100,7 @@ This parameter allows the setting of multiple users as a comma-separated list.
 
 Unsuccessful authorization returns a 403 error code. 
 
-### Requests
+### Requests with `/registry`
 
 There are two endpoints providing the information about the services registered to the API ML. One endpoint is for all domains and another endpoint is for the specific domain. The details are below.
 
@@ -110,7 +110,7 @@ This request lists services in all domains.
 * `GET /cloud-gateway/api/v1/registry/{apimlId}`  
 This request lists services in the apimlId domain.
 
-### Response
+### Response with `/registry`
 
 **Example:**
 
@@ -144,7 +144,7 @@ This request lists services in the apimlId domain.
 ]
 ```
 
-## Validate successful configuration
+## Validate successful configuration with `/registry`
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
