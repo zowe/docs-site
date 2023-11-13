@@ -20,12 +20,9 @@ To install and configure the cross memory server, it is necessary to define APF-
 - [PARMLIB](#parmlib)
 - [PROCLIB](#proclib)
 - [SAF configuration](#saf-configuration)
+- [Zowe auxiliary service](#zowe-auxiliary-service)
 - [Summary of cross memory server installation](#summary-of-cross-memory-server-installation)
 - [Starting and stopping the cross memory server on z/OS](#starting-and-stopping-the-cross-memory-server-on-zos)
-- [Zowe auxiliary service](#zowe-auxiliary-service)
-    - [When to configure the auxiliary service](#when-to-configure-the-auxiliary-service)
-    - [Installing the auxiliary service](#installing-the-auxiliary-service)
-      - [Zowe Auxiliary Address space](#zowe-auxiliary-address-space)
       
 ## PDS sample library and PDSE load library
 
