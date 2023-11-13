@@ -8,7 +8,7 @@ on:
 jobs:
   pr-comment:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue.pull_request.url != '' && github.event.comment.user.login == github.event.issue.user.login }}
+    if: ${{ github.event.issue.pull_request && github.event.comment.user.login == github.event.issue.user.login }}
 
     steps:
       - name: Execute script if PR author commented

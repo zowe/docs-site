@@ -5,14 +5,14 @@ on:
     branches:
       - docs-staging
       - master
-      - anax-test-branch
-    types: [opened, reopened, labeled]
+      - anax-test-branch # TODO Delete this line before merging PR
+    types: [opened, reopened, edited, labeled]
 
 jobs:
   initial-comment:
     name: PR Instructions
     runs-on: ubuntu-latest
-    if: github.event.action == 'opened' && github.event.pull_request.user.login != 'zowe-robot'
+    if: github.event.pull_request.user.login != 'zowe-robot'
 
     steps:
       # 1. Check out files needed by subsequent steps
@@ -48,33 +48,46 @@ jobs:
         with:
           header: Initial comment
           path: .github/pr-comments/for-${{ env.PR_AUTHOR_TYPE }}.md
+          only_create: true
 
       # 4. Validate PR description
       - name: Description checker
+        id: description_checker
         uses: jadrol/pr-description-checker-action@v1.0.0
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           template-path: "./.github/pull_request_template.md"
-          comment: true
-          comment-empty-description: ":warning: Looks like something is wrong with the PR description. Remember to include a description and the file(s) included in this PR. 
-          <br><br>If you have addressed this issue already, refresh your browser to remove this comment."
-          comment-template-not-filled: ":warning: Looks like we're missing description information.<br> 
-          If you have addressed this issue already, refresh your browser to remove this comment."
-      - name: Check PR
+          comment: false
+      - name: Template Not Filled Comment PR
+        if: failure() && steps.description_checker.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid PR description
+          message: |
+            :warning: Looks like something is wrong with the PR description. Remember to add a description and the file(s) included in this PR.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: File type checker
         id: file_type_checker
         uses: JJ/github-pr-contains-action@releases/v10
         with:
-          github-token: ${{github.token}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           bodyContains: '\.md|\.jpg|\.gif|\.png'
-      - name: Missing File Name
+      - name: Missing File Name Comment PR
         if: failure() && steps.file_type_checker.outcome == 'failure'
         uses: marocchino/sticky-pull-request-comment@v2
         with:
-          header: File name is missing
+          header: Invalid PR description
           message: |
             :file_folder: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
-            
-            If you have addressed this issue already, refresh your browser to remove this comment.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: Fixed Invalid Description Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid PR description
+          delete: true
 
   review-labels:
     name: Check for missing review label
@@ -97,8 +110,8 @@ jobs:
           header: Review label missing
           message: |
             :mag: The **review** label is missing. Add a `review:` label so we can determine who needs to approve this PR.
-            
-            If you have addressed this issue already, refresh your browser to remove this comment.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
       - name: Fixed Review Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
@@ -126,8 +139,8 @@ jobs:
           header: Release label missing
           message: |
             :floppy_disk: The **release** label is missing. Add a `release:` label so your content is published with the correct major Zowe release.
-            
-            If you have addressed this issue already, refresh your browser to remove this comment.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
       - name: Fixed Release Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
@@ -155,8 +168,8 @@ jobs:
           header: Area label missing
           message: |
             :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
-            
-            If you have addressed this issue already, refresh your browser to remove this comment.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
       - name: Fixed Area Label Comment PR
         if: success()
         uses: marocchino/sticky-pull-request-comment@v2
