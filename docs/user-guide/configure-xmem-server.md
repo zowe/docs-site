@@ -28,7 +28,7 @@ To install and configure the cross memory server, it is necessary to define APF-
 
 The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the `SZWESAMP` PDS sample library.  
 
-The load modules for the cross memory server and an auxiliary server it uses are found in the `SZWEAUTH` PDSE.  
+The load modules for the cross memory server and the corresponding auxiliary server are found in the `SZWEAUTH` PDSE.  
 
   - **Convenience Build**  
   The location of `SZWESAMP` and `SZWEAUTH` for a convenience build depends on the value of the `zowe.setup.dataset.prefix` parameters in the `zowe.yaml` file used to configure the `zwe install` command, see [Install the MVS data sets](./install-zowe-zos-convenience-build.md#step-5-install-the-mvs-data-sets).
@@ -50,11 +50,11 @@ The cross memory server load module `ZWESIS01` is installed by Zowe into a PDSE 
 
 ### APF authorize
 
-APF authorize the PDSE `SZWESAUTH`.  This allows the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDSE itself when PTF maintenance is applied.  
+APF authorizes the PDSE `SZWESAUTH`. This allows the SMP/E APPLY and RESTORE jobs used for applying maintenance to be operating on the runtime PDSE itself when PTF maintenance is applied.  
 
 Do not add the `SZWEAUTH` data set to the system LNKLIST or LPALST concatenations.  
 
-To check whether a load library is APF-authorized, you can issue the following command:
+To check whether a load library is APF-authorized,issue the following command:
 
 ```
 D PROG,APF,DSNAME=hlq.SZWEAUTH
