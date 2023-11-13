@@ -1,8 +1,10 @@
 # Zowe MultiTenancy Configuration
 
+Zowe supports management of multiple sysplexes with different sysplexes serving different purposes or different customers. E.g. in case of a service provider managing sysplexes for multiple customers. This configuration allows you to have single access point for all the customers and properly route and authenticate for different sysplexes. 
+
 ## Component Layout example
 
-The following bullets describe which Zowe components should be enabled and disabled in the multi-tenancy environment.
+The following bullets describe which Zowe components should be enabled and disabled in the multi-tenancy environment. The multi-tenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in the specific sysplexes. As such we need different setups for the V2 version of the API ML on the central node and on the specific customer environments. 
 
 - Domain API ML
   - Gateway and Discovery Service: **enabled**
@@ -13,7 +15,11 @@ The following bullets describe which Zowe components should be enabled and disab
 
 ## Onboard domain Gateways to the central Cloud Gateway
 
+<<<<<<< HEAD
 The Cloud Gateway must onboard all domain Gateways. Onboarding can be performed either dynamically or by the static definition. We strongly recommend using dynamic onboarding. 
+=======
+The Cloud Gateway must onboard all domain Gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding as it adapts better to the potentially changing customer's environments. The static onboarding doesn't provide the functionality to actively monitor the health of the specific services. E.g. domain gateways in this case. 
+>>>>>>> a44831d8959fb10bed4fb48c500cf1e9fc676dd1
 
 ### Dynamic Onboarding (preferred way)
 
@@ -96,6 +102,7 @@ This parameter allows the setting of multiple users as a comma-separated list.
 
 Unsuccessful authorization returns a 403 error code. 
 
+<<<<<<< HEAD
 ### Requests
 
 * `GET /cloud-gateway/api/v1/registry`  
@@ -103,8 +110,18 @@ This request lists services in all domains.
 
 * `GET /cloud-gateway/api/v1/registry/{apimlId}`  
 This request lists services in the apimlId domain.
+=======
+### Get Information
 
-### Response
+There are two endpoints providing the information about the services registered to the API ML. One for all domains and another for the specific domain. The details are below.
+
+#### Requests
+
+GET /cloud-gateway/api/v1/registry              List services in all domains
+GET /cloud-gateway/api/v1/registry/{apimlId}    List services in apimlId domain
+>>>>>>> a44831d8959fb10bed4fb48c500cf1e9fc676dd1
+
+#### Response
 
 **Example:**
 
@@ -166,7 +183,12 @@ Review your certificate configuration.
 
 The central Cloud Gateway can onboard Cloud Gateways of all domains. This can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
-### Dynamic configuration: YML
+- Dynamic configuration via zowe.yaml
+- Dynamic configuration via Environment variables
+
+### Configurations
+
+#### Dynamic configuration: YML
 
 Users must set the following property for the domain cloud-gateway to dynamically onboard to the central Discovery Service.
 
@@ -184,7 +206,7 @@ components.cloud-gateway.apiml.service.additionalRegistration:
                 serviceUrl: /
 ```
 
-### Dynamic configuration: Environment variables
+#### Dynamic configuration: Environment variables
 
 The list of additional registrations is extracted from environment variables. You can define a list of objects by following YML->Environment translation rules. 
 
