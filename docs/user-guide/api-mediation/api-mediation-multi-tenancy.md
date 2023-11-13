@@ -62,7 +62,7 @@ The following keytool commands are examples of establishing a trust relationship
 
 - Import the public key certificate of all domain Gateways into the truststore of the Cloud Gateway.
 
-  Use the following example of the keytool command when the domain Gateways running on CA11 and CA32 import the certificate into Cloud Gateway running on CA31:
+  Use the following example of the keytool command when the domain Gateways running on CA11 and CA32 import the certificate into the Cloud Gateway running on CA31:
 
   `keytool -import -file keystore/ca11/local_ca/local_ca.cer -alias gateway_ca11 -keystore keystore/ca31/localhost/localhost.truststore.p12`
 
@@ -92,17 +92,17 @@ The `/registry` endpoint is authenticated by the client certificate. Cloud Gatew
 Unsuccessful authentication returns a 401 error code.
 
 ### Authorization with `/registry`
-Only the users configured by the following environment variable are allowed to use the `/registry` endpoint.
+Only users configured by the following environment variable are allowed to use the `/registry` endpoint.
 
 `APIML_SECURITY_X509_REGISTRY_ALLOWEDUSERS=USER1,user2,User3`
 
-This parameter allows the setting of multiple users as a comma-separated list.
+This parameter makes it possible to set multiple users as a comma-separated list.
 
 Unsuccessful authorization returns a 403 error code. 
 
 ### Requests with `/registry`
 
-There are two endpoints providing the information about the services registered to the API ML. One endpoint is for all domains and another endpoint is for the specific domain. The details are below.
+There are two endpoints that provide information about services registered to the API ML. One endpoint is for all domains, and the other endpoint is for the specific domain. Choose from the following **GET** calls:
 
 * `GET /cloud-gateway/api/v1/registry`  
 This request lists services in all domains.
@@ -170,7 +170,7 @@ Review your certificate configuration.
 
 ## Onboarding a domain cloud-gateway service to central discovery service
 
-The central Cloud Gateway can onboard Cloud Gateways of all domains. This onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+The central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
@@ -218,8 +218,9 @@ To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform 
 ```
  
 ## Gateway static definition example
-This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. The filename can be anything and the file extension must be yml.
+This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. There is no naming restriction of the filename, but the file extension must be yml.
 
+**Example:**
 ```
 #
 # Static definition of "discoverable-client" as "staticclient"
