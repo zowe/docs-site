@@ -41,6 +41,6 @@ Another option to initialize Zowe z/OS runtime is to configure Zowe with z/OSMF 
 * Enable MVS Explorer
 * Enable USS Explorer
 
-You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
+You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration z/OSMF workflow during the workflow registration process.
 
 For more information about this z/OS runtime initialization method, see [Configuring Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow).
