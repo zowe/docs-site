@@ -34,7 +34,7 @@ Specify `--security-dry-run` to have the command echo the commands that need to 
 
 ```
   SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
-  SETPROG APF,ADD,DSNAME=IBMUISER.ZWEV2.CUST.ZWESAPL,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.CUST.ZWESAPL,SMS
 ```
 
 ### Making APF auth be part of the IPL
