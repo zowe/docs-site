@@ -6,9 +6,11 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 :::info**Required roles:** system programmer, security administrator
 :::
 
-:::note
-This page describes how to configure the cross server manually, however most part of this configuration should be already done during the [Zowe configuration](./configuring-overview). 
-If you have successfully run the `zwe init` command then the load modules are already installed, APF authorization and SAF configuration are done and the only thing you need to perform is to configure the load modules to run in [key 4 non-swappable](#key-4-non-swappable)
+:::tip**Important**
+This article describes how to configure the cross server manually. However, most of this configuration should already be performed during [Zowe configuration](./configuring-overview). 
+If you have already successfully run the `zwe init` command, the load modules are already installed, and APF authorization and SAF configuration is complete.
+
+In this case, the final step is to configure the load modules to run in [key 4 non-swappable](#key-4-non-swappable).
 :::
 
 To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. Performing these steps requires familiarity with z/OS.
@@ -127,17 +129,19 @@ The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS ser
 
 ## Zowe auxiliary service
 
-Under some situations in support of a Zowe extension, the cross memory server will start, control, and stop an auxiliary address space. This run as a `ZWESASTC` started task that runs the load module `ZWESAUX`. 
+In some situations when a Zowe extension is supported, the cross memory server starts, controls, and stops an auxiliary address space. This is run as a `ZWESASTC` started task that runs the load module `ZWESAUX`. 
 
-### When to configure the auxiliary service
+:::note
+**When to configure the auxiliary service**
 
-Under normal Zowe operation, you will not see any auxiliary address spaces started. However, if you have installed a vendor product running on top of Zowe, this may use the auxiliary service so it should be configured to be launchable.  A vendor product documentation will specify whether it needs the Zowe auxiliary service to be configured so ensure that it is needed before attempting the configuration steps.
+Under normal Zowe operation, no auxiliary address spaces are started. However, if you have installed a vendor product running on top of Zowe, this product may use an auxiliary address space. In this case, the auxiliary service requires configuration to be launchable. The vendor product documentation will specify whether the Zowe auxiliary service requires configuration. Verify that the auxiliary service configuration is required before performing configuration steps.
 
-If you are just using core Zowe functionality, you **do not** need to configure the auxiliary service.  Even with the Zowe auxiliary service configured, there is no situation under which you should manually start the `ZWESASTC` started task.
+If you are using just core Zowe functionality, configuring the auxiliary service is not required. Even with the Zowe auxiliary service configured, there is no situation under which you should manually start the `ZWESASTC` started task.
+:::
 
 ### Installing the auxiliary service
 
-To install the auxiliary service to allow it to run, you take similar steps to install and configure the cross memory server as described above, but with a different JCL PROBLIC member and a different load module. There is no PARMLIB for the auxiliary service.
+To install the auxiliary service to allow this service to run, perform the steps to install and configure the cross memory server as described previously. Note that this procedure will use a different JCL PROBLIC member and a different load module. There is no PARMLIB for the auxiliary service.
 
 - JCL member `ZWESASTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path. 
 - The PDSE load library `SZWEAUTH`is APF-authorized, or load module `ZWESAUX` is copied to an existing APF Auth LoadLib.
@@ -155,7 +159,7 @@ Do not install the Zowe auxiliary address space unless a Zowe extension product'
 
 A default installation of Zowe does not require auxiliary address spaces to be configured.
 
-:::important
+:::info**Important**
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
 :::
 
@@ -186,13 +190,15 @@ To end the Zowe cross memory server process, issue the operator stop command thr
 ```
 /P ZWESISTC
 ```
-**Note:** 
 
+:::note
 The starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, then these will be sharing the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` will affect the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example ZWESIS_STD. The Zowe Cross Memory Server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross-memory server is started with a new version of its load module, it abandons its current load module instance in LPA and loads the updated version.
+:::
 
+## Troubleshooting
 To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to attach to the `ZWESISTC` cross memory server, a log file `zssServer-yyyy-mm-dd-hh-mm.log` is created in the log directory each time ZIS is started.  More details on diagnosing errors can be found in [Zowe Application Framework issues](../troubleshoot/app-framework/app-troubleshoot.md#cannot-log-in-to-the-zowe-desktop).
 
-If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, mannually update the `PROC NAME` in the corresponding `PROCLIB`.
+If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, manually update the `PROC NAME` in the corresponding `PROCLIB`.
 
 For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=02,RGN=0M`. 
 And the `zowe.yaml` file is updated to use the `02` instance:
