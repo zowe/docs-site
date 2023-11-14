@@ -207,6 +207,8 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
+The Zowe configuration transforms the configuration in the zowe.yaml file into the environment variables that are shown above. 
+
 ### Validate successful configuration
 
 The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
