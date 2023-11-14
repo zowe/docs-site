@@ -6,7 +6,16 @@ After the Zowe&trade; started task `ZWESLSTC` is running, follow the instruction
 - [Verifying API Mediation installation](#verifying-api-mediation-installation)
 - [Verifying z/OS Services installation](#verifying-z-os-services-installation)
 
-**Note:** Not all components may have been started. Which components have been started depends on your setting of the component `enabled` status in Zowe configuration file (usually `zowe.yaml`). If you set `enabled` to be `true` for `gateway`, `discovery` and `api-catalog`, the API Mediation Layer and z/OS Services are started. If you set `enabled` to be `true` for `app-server` and `zss`, the Zowe Application Framework (also known as Zowe desktop) are started. Those using containerization may only have `ZSS` started. For more information, see reference of [YAML configurations - components](../appendix/zowe-yaml-configuration#yaml-configurations---components).
+:::note
+Not all components may have been started. Which components have been started depends on your setting of the component `enabled` status in Zowe configuration file (usually `zowe.yaml`). 
+
+**Examples:**
+* If you set `enabled` to be `true` for `gateway`, `discovery` and `api-catalog`, the API Mediation Layer and z/OS Services are started.
+* If you set `enabled` to be `true` for `app-server` and `zss`, the Zowe Application Framework (Zowe desktop) are started.
+* Configurations that use containerization may only have `ZSS` started.
+
+For more information, see [YAML configurations - components](../appendix/zowe-yaml-configuration#yaml-configurations---components).
+:::
 
 ## Verifying Zowe Application Framework installation
 

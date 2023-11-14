@@ -1,9 +1,10 @@
-# View Service Information and API Documentation in the API Catalog
+# Viewing Service Information and API Documentation in the API Catalog
 
 Use the API Catalog to view services, API documentation, descriptive information about the service, the current state of the service, service endpoints, and detailed descriptions of these endpoints.
 
-**Note:** Verify that your service is running. At least one started and registered instance with the Discovery Service
-           is needed for your service to be visible in the API Catalog.
+:::note
+Verify that your service is running. At least one started and registered instance with the Discovery Service is needed for your service to be visible in the API Catalog.
+:::
 
 **Follow these steps:**
 
@@ -15,8 +16,7 @@ Services that belong to the same product family are displayed on the same tile.
 2. Click the tile to view header information, the registered services under that family ID,
  and API documentation for that service.
 
-   **Notes:**
-
+   :::note**Notes:**
    * The state of the service is indicated in the service tile on the dashboard page.
     If no instances of the service are currently running, the tile displays a message that no services are running.
    * At least one instance of a service must be started and registered with the Discovery Service for it to be visible
@@ -24,6 +24,7 @@ Services that belong to the same product family are displayed on the same tile.
     the corresponding API documentation is displayed, this API documentation is cached and remains visible
     even when the service and all service instances stop.
    * Descriptive information about the service and a link to the home page of the service are displayed.
+   :::
 
    **Example:**
 
@@ -44,12 +45,12 @@ Services that belong to the same product family are displayed on the same tile.
 
    <img src={require("../images/api-mediation/expanded.png").default} alt="endpoint detail" width="500px"/>
 
-   **Notes:**
-
+   :::note**Notes:**
    * If a lock icon is visible on the right side of the endpoint panel, the endpoint requires authentication.
    * The structure of the endpoint is displayed relative to the base URL.
    * The URL path of the abbreviated endpoint relative to the base URL is displayed in the following format:
-
+   :::
+   
    **Example:**
 
     `/{yourServiceId}/api/v1/{endpointName}`

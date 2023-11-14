@@ -67,8 +67,8 @@ Before installing Zowe Chat, ensure that your environment meets the [system requ
 1. Update the following configuration files based on your need. 
 
    - Zowe Chat: `$ZOWE_CHAT_HOME/config/chatServer.yaml`
-   - Chat tool: `$ZOWE_CHAT_HOME/config/zosmfServer.yaml`
-   - z/OSMF server: `$ZOWE_CHAT_HOME/config/chatTools/<mattermost | msteams | slack>.yaml`
+   - z/OSMF server: `$ZOWE_CHAT_HOME/config/zosmfServer.yaml`
+   - Chat tool: `$ZOWE_CHAT_HOME/config/chatTools/<mattermost | msteams | slack>.yaml`
 
 <!--TODO: How to verify the installation?-->
 

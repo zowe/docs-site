@@ -13,15 +13,21 @@ As a z/OS user, you can use the plug-in to perform the following tasks:
 
 ## Commands
 
-For detailed documentation on commands, actions, and options available in this plug-in, see our Web Help. It is available for download in three formats: a PDF document, an interactive online version, and a ZIP file containing the HTML for the online version.
+:::
 
-- <a href="/v2.11.x/web_help/index.html" target="_blank">Browse Online</a>
-- <a href="/v2.11.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
-- <a href="/v2.11.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
+When transferring files, data sets, or data set members, use only ASCII characters. If a file contains non-ASCII characters (such as glyphs or mathematical symbols), a translation error can happen when the file is downloaded from, or uploaded to, the mainframe. This error can result in data loss.
+
+:::
+
+For detailed documentation on commands, actions, and options available in this plug-in, see the Web Help. It is available for download in the following formats:
+
+- <a href="/v2.11.x/web_help/index.html" target="_blank">Browse the online Web Help</a>
+- <a href="/v2.11.x/zowe_web_help.zip" target="_blank">Download the ZIP file</a>
+- <a href="/v2.11.x/CLIReference_Zowe.pdf" target="_blank">Download the PDF document</a>
 
 ## Software requirements
 
-Before you install the plug-in, meet the software requirements in [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
+Before you install the plug-in, meet the [Software requirements for Zowe CLI plug-ins](cli-swreqplugins.md).
 
 ## Installing
 

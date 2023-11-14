@@ -42,13 +42,13 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Get Started",
+          label: "Overview",
           docId: "getting-started/overview",
           position: "left",
         },
         {
           type: "doc",
-          label: "Setup",
+          label: "Install",
           docId: "user-guide/install-overview",
           position: "left",
         },

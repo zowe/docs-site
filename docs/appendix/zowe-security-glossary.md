@@ -7,6 +7,7 @@ Read the following definitions for explanation of the security terms related to 
 - [Certificate verification](#certificate-verification)
 - [Zowe certificate requirements](#zowe-certificate-requirements)
 - [Certificate setup types](#certificate-setup-types)
+
 ## Certificate concepts
 
 * [Keystore](#keystore)
