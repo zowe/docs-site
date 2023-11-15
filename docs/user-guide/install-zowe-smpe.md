@@ -1,20 +1,23 @@
 # Installing Zowe via SMP/E instructions
 
-This section describes the installation method and the step-by-step procedures to install and activate the functions of Zowe.
+Review this article and the procedures to install and activate the functions of Zowe server-side components using SMP/E.
 
-**Notes:**
+:::info**Required roles:** system programmer
+:::
 
-* If you want to install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
+:::note**Notes:**
+* To install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
 * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
 * You can use the SMP/E dialogs instead of the sample jobs to accomplish the SMP/E installation steps.
+:::
 
 ### SMP/E considerations for installing Zowe
 
-Use the SMP/E RECEIVE, APPLY, and ACCEPT commands to install this release of Zowe.
+Use the SMP/E **RECEIVE**, **APPLY**, and **ACCEPT** commands to install this release of Zowe.
 
 ### SMP/E options subentry values
 
-The recommended values for certain SMP/E CSI subentries are shown in the following table. Using values lower than the recommended values can result in failures in the installation. DSSPACE is a subentry in the GLOBAL options entry. PEMAX is a subentry of the GENERAL entry in the GLOBAL options entry. See the SMP/E manuals for instructions on updating the global zone.
+The recommended values for certain SMP/E CSI subentries are shown in the following table. Using values lower than the recommended values can result in failures in the installation. `DSSPACE` is a subentry in the GLOBAL options entry. `PEMAX` is a subentry of the GENERAL entry in the GLOBAL options entry. See the SMP/E manuals for instructions on updating the global zone.
 
 Subentry | Value | Comment
 ---|---|---
@@ -25,11 +28,11 @@ PEMAX | SMP/E Default | IBM recommends using the SMP/E default for PEMAX.
 
 Follow these high-level steps to download and install Zowe Open Source Project (Base).
 
-  1. [Download the Zowe SMP/E package](#download-and-unzip-the-zowe-smpe-package)
-  2. [Allocate file system to hold web download package](#allocate-file-system-to-hold-the-download-package)
+  1. [Download and unzip the Zowe SMP/E package](#download-and-unzip-the-zowe-smpe-package).
+  2. [Allocate the file system to hold the download package](#allocate-the-file-system-to-hold-the-download-package).
   3. [Upload the download package to the host](#upload-the-download-package-to-the-host)
   4. [Extract and expand the compress SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles)
-  5. [Sample installation jobs](#sample-installation-jobs)
+  5. [Customize sample installation jobs](#customize-sample-installation-jobs)
   6. [Create SMP/E environment (optional)](#create-smpe-environment-optional)
   7. [Perform SMP/E RECEIVE](#perform-smpe-receive)
   8. [Allocate SMP/E target and distribution libraries](#allocate-smpe-target-and-distributions-libraries)
@@ -59,13 +62,13 @@ You will receive one ZIP package on your desktop. Extract the following files fr
 
      The Program Directory for the Zowe Open Source Project.  
 
-### Allocate file system to hold the download package
+### Allocate the file system to hold the download package
 
 You can either create a new z/OS UNIX file system (zFS) or create a new directory in an existing file system to place AZWE002.pax.Z. The directory that will contain the download package must reside on the z/OS system where the function will be installed.
 
 To create a new file system, and directory, for the download package, you can use the following sample JCL (FILESYS).
 
-Copy and paste the sample JCL into a separate data set, uncomment the job, and modify the job to update required parameters before submitting it.
+Copy and paste the sample JCL into a separate data set, uncomment the job, and modify the job to update required parameters before submitting the job.
 
 ```
 //FILESYS  JOB <job parameters>
@@ -125,19 +128,21 @@ Copy and paste the sample JCL into a separate data set, uncomment the job, and m
 //*
 ```
 :::tip Expected results
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 ### Upload the download package to the host
 
-Upload the AZWE002.readme.txt file in text format and the AZWE002.pax.Z file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the AZWE002.readme.txt file that you downloaded.
+Upload the `AZWE002.readme.txt` file in text format and the `AZWE002.pax.Z` file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the `AZWE002.readme.txt` file that you downloaded.
 
-**Note:** Ensure you download the pax file in a different file system than where you put Zowe runtime. 
+:::info**Important**
+Ensure you download the pax file in a different file system than where you put Zowe runtime. 
+:::
 
-There are many ways to transfer the files or make them available to the z/OS system where the package will be installed. In the following sample dialog, we use FTP from a Microsoft Windows command line to do the transfer. This assumes that the z/OS host is configured as an FTP host/server and that the workstation is an FTP client.  Commands or other information entered by the user are in bold, and the following values are assumed.
+There are many ways to transfer the files or make these files available to the z/OS system where the package will be installed. The following sample dialog uses FTP from a Microsoft Windows command line to perform the transfer. This method is applicable when  the z/OS host is configured as an FTP host/server and  the workstation is an FTP client. Commands or other customizations entered by the user are in bold, and the following values are assumed.
 
 :::note
-If you are not sure which protocol or port to use to transfer the files or any access that might be needed, you may need to consult with the network administrator. 
+If you are not sure which protocol or port to use to transfer the files, or for other access requirements, consult with your network administrator. 
 :::
 
 User enters: | Values 
@@ -148,11 +153,13 @@ tsopw | Your TSO password
 d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
-:::danger Important 
-The AZWE002.pax.Z file must be uploaded to the z/OS driving system in binary format, or the subsequent UNPAX step will fail.
+:::danger**Important** 
+The `AZWE002.pax.Z` file must be uploaded to the z/OS driving system in binary format. Not using binary format causes the subsequent UNPAX step to fail.
 :::
 
-This step of tranferring the files can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
+:::note
+This file tranfer can take a long time to run, depending on the capacity of your system, and on what other jobs are running.
+:::
 
 Sample FTP upload scenario:
 
@@ -185,8 +192,10 @@ ftp: quit
 221 Quit command received.  Goodbye.  
 ```
 
-**If you are unable to connect with ftp and only able to use sftp**,
-the commands above are the same except that you will use _sftp_ at the command prompt instead of _ftp_. Also, because _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the AZWE002.readme.txt file, it will be in an ASCII codepage so you need to convert it to EBCDIC before it can be used. To convert AZWE002.readme.txt to EBCDIC, log in to the distribution system using ssh and run an ICONV command.
+:::tip
+If you are unable to connect with ftp and only able to use sftp, use _sftp_ at the command prompt instead of _ftp_
+
+As _sftp_ only supports binary file transfer, the ___ascii___ and ___binary___ commands should be omitted. After you transfer the `AZWE002.readme.txt` file, this file will be in an ASCII codepage so you need to convert the file to `EBCDIC` before it can be used. To convert `AZWE002.readme.txt` to `EBCDIC`, log in to the distribution system using ssh and run the **ICONV** command.
 
 ```
 _C:>/__ssh tsouid@mvsaddr___   
@@ -200,10 +209,11 @@ _@zfs_path:>mv AZWE002.readme.EBCDIC AZWE002.readme.txt_
 _@zfs_path:>exit_  
 _C:>/_  
 ```
+:::
 
 ### Extract and expand the compressed SMPMCS and RELFILEs
 
-The AZWE002.readme.txt file uploaded in the previous step holds a sample JCL to expand the compressed SMPMCS and RELFILEs from the uploaded AZWE002.pax.Z file into data sets for use by the SMP/E RECEIVE job. The JCL is repeated here for your convenience.
+The `AZWE002.readme.txt` file uploaded in the previous step holds a sample JCL to expand the compressed SMPMCS and RELFILEs from the uploaded `AZWE002.pax.Z` file into data sets for use by the SMP/E RECEIVE job. The JCL is repeated here for your convenience.
 
 * _@zfs_path@_ matches the variable that you specified in the previous step.
 * If the `oshell` command gets a RC=256 and message "pax: checksum error on tape (got ee2e, expected 0)", then the archive file was not uploaded to the host in binary format.
@@ -304,10 +314,12 @@ newname="@PREFIX@.ZOWE.&FMID..F2"/>
 newname="@PREFIX@.ZOWE.&FMID..F4"/>
 </GIMUNZIP>                         
 //*                                 
-```
-where, `&VOLSER` is a DISK volume with sufficient free space to hold temporary copies of the RELFILES. As a guide, this may require 1,000 cylinders, or about 650 MB.
+``` 
 
-### Sample installation jobs
+* **&VOLSER**  
+Specifies the DISK volume with sufficient free space to hold temporary copies of the RELFILES. As a guide, this may require 1,000 cylinders, or approximately 650 MB.
+
+### Customize sample installation jobs
 
 The following sample installation jobs are provided in `hlq.ZOWE.AZWE002.F1`, or equivalent, as part of the project to help you install Zowe:
 
@@ -325,12 +337,20 @@ ZWE6DDEF | DDDEF | Sample job to  define SMP/E DDDEFs | ZOWE.AZWE002.F1
 ZWE7APLY | APPLY | Sample SMP/E APPLY job | ZOWE.AZWE002.F1
 ZWE8ACPT | ACCEPT | Sample SMP/E ACCEPT job | ZOWE.AZWE002.F1
 
-**Note:** When Zowe is downloaded from the web, the RELFILE data set name will be prefixed by your chosen high-level qualifier, as documented in the [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles) section.
+:::note
+When Zowe is downloaded from the web, the RELFILE data set name is prefixed by your chosen high-level qualifier, as documented in the [Extract and expand the compressed SMPMCS and RELFILEs](#extract-and-expand-the-compressed-smpmcs-and-relfiles) section.
+:::
 
-You can access the sample installation jobs by performing an SMP/E RECEIVE (refer to [Perform SMP/E RECEIVE](#perform-smpe-receive)), then copy the jobs from the RELFILES to a work data set for editing and submission.
+Follow these steps to access the sample installation jobs.
 
-You can also copy the sample installation jobs from the product files by submitting the following job.  Before you submit the job, add a job statement and change the lowercase parameters to uppercase values to meet the requirements of your site.
+1. Performing an SMP/E RECEIVE. See [Perform SMP/E RECEIVE](#perform-smpe-receive).
+2. Copy the jobs from the RELFILES to a working data set for editing and submission.
 
+Alteratively, you can copy the sample installation jobs from the product files by submitting the job in the following example. 
+
+Before you submit the job, add a job statement and change the lowercase parameters to uppercase values to meet the requirements of your site.
+
+**Example:**
 ```
 //STEP1    EXEC PGM=IEBCOPY
 //SYSPRINT DD SYSOUT=*
@@ -349,16 +369,19 @@ You can also copy the sample installation jobs from the product files by submitt
 /*
 ```
 
-See the following information to update the statements in the sample above:
+Customize the statements is this job statement with the following values:
 
 - IN:   
-   * __filevol__ is the volume serial of the DASD device where the downloaded files reside.
+   * **__filevol__**  
+   Specifies the volume serial of the DASD device where the downloaded files reside.
 
 - OUT:  
-  * __jcl-library-name__ is the name of the output data set where the sample jobs are stored.  
-  * __dasdvol__ is the volume serial of the DASD device where the output data set resides. Uncomment the statement is a volume serial must be provided.  
+  * **__jcl-library-name__**  
+  Specifies the name of the output data set where the sample jobs are stored.  
+  * **__dasdvol__**  
+  Specifies the volume serial of the DASD device where the output data set resides. Uncomment the statement is a volume serial must be provided.  
 
-The following supplied jobs might fail due to disk space allocation errors, as mentioned above for [GIMUNZIP](#gimunzip). Review the following sections for example error and actions that you can take to resolve the error.
+The following supplied jobs might fail due to disk space allocation errors for [GIMUNZIP](#gimunzip). Review the following sections for example error and actions that you can take to resolve the error.
 - [ZWE2RCVE](#zwe2rcve)
 - [ZWE1SMPE and ZWE4ZFS](#zwe1smpe-and-zwe4zfs)
 - [ZWEMKDIR,  ZWE1SMPE, ZWE2RCVE, ZWE3ALOC,  ZWE4ZFS and ZWE5MKD](#zwemkdir-zwe1smpe-zwe2rcve-zwe3aloc-zwe4zfs-and-zwe5mkd)
@@ -369,13 +392,13 @@ The following supplied jobs might fail due to disk space allocation errors, as m
 IEC032I E37-04,IGC0005E,ZWE2RCVE,RECEIVE,SMPTLIB,0AC0,USER10,  
 ZOWE.SMPE.AZWE002.F4                                            
 ```
-Add space and directory allocations to this SMPCNTL statement in the preceding ZWE1SMPE job:
+Add space and directory allocations to this `SMPCNTL` statement in the preceding ZWE1SMPE job:
 
 ```
 ADD DDDEF(SMPTLIB)  UNIT(SYSALLDA) .  
 ```
 
-This makes it as below:
+**Result:**
 
 ```
 ADD DDDEF(SMPTLIB) CYL SPACE(2,1) DIR(10)  UNIT(SYSALLDA) .  
@@ -383,24 +406,26 @@ ADD DDDEF(SMPTLIB) CYL SPACE(2,1) DIR(10)  UNIT(SYSALLDA) .
 
 #### ZWE1SMPE and ZWE4ZFS
 
-Example error
+**Example error:**
+
 ```
 IDC3506I REQUIRED VOLUMES AND/OR DEVICETYPES HAVE BEEN OMITTED        
 IDC3003I FUNCTION TERMINATED. CONDITION CODE IS 12                    
 
 IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 12    
 ```
-
+**Action**  
 Uncomment the `VOLUMES(...)` control statements and refer to the comments at the start of the JCL job for related necessary changes.
 
 #### ZWEMKDIR,  ZWE1SMPE, ZWE2RCVE, ZWE3ALOC,  ZWE4ZFS and ZWE5MKD
 
-Example error
-
+**Example error:**
 ```
 IEF257I ZWE3ALOC ALLOCD ALLOCD AZWEZFS - SPACE REQUESTED NOT AVAILABLE     
 IEF272I ZWE3ALOC ALLOCD ALLOCD - STEP WAS NOT EXECUTED.                    
 ```
+
+**Action**  
 Uncomment the `VOL=SER=&...` control statements and refer to the comments at the start of the JCL job for related necessary changes.
   
 
@@ -408,12 +433,14 @@ Uncomment the `VOL=SER=&...` control statements and refer to the comments at the
 
 A sample job ZWE1SMPE is provided or you may choose to use your own JCL. If you are using an existing CSI, do not run the sample job ZWE1SMPE. If you choose to use the sample job provided, edit and submit ZWE1SMPE. Consult the instructions in the sample job for more information.
 
-**Note:** If you want to use the default of letting your Automatic Class Selection (ACS) routines decide which volume to use, comment out the following line in the sample job ZWE1SMPE.
+:::note
+To use the default of letting your Automatic Class Selection (ACS) routines decide which volume to use, comment out the following line in the sample job `ZWE1SMPE`.
 
 ```// SET CSIVOL=#csivol```
+:::
 
 :::tip Expected results
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 ### Perform SMP/E RECEIVE
@@ -429,7 +456,7 @@ You will receive a return code of 0 if this job runs correctly.
 Edit and submit sample job ZWE3ALOC to allocate the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
 :::tip Expected results
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 ### Allocate, create and mount ZSF files (Optional)
@@ -442,9 +469,9 @@ If you plan to install Zowe into a new z/OS UNIX file system, you can edit and s
   * Create a mountpoint
   * Mount the z/OS UNIX file system on the mountpoint
 
-The recommended z/OS UNIX file system type is zFS. The recommended mountpoint is _/usr/lpp/zowe._
+The recommended z/OS UNIX file system type is zFS. The recommended mountpoint is `_/usr/lpp/zowe`._
 
-Before running the sample job to create the z/OS UNIX file system, you must ensure that OMVS is active on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
+Before running the sample job to create the z/OS UNIX file system, ensure that OMVS is active on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
 If you create a new file system for this product, consider updating the BPXPRMxx PARMLIB member to mount the new file system at IPL time. This action can be helpful if an IPL occurs before the installation is completed.
 
@@ -454,24 +481,27 @@ MOUNT FILESYSTEM('#dsn')
  MODE(RDWR)        /* can be MODE(READ) */
  TYPE(ZFS) PARM('AGGRGROW') /* zFS, with extents */
 ```
-See the following information to update the statements in the previous sample:
 
-  * __#dsn__ is the name of the data set holding the z/OS UNIX file system.
-  * ___/usr/lpp/zowe___ is the name of the mountpoint where the z/OS UNIX file system will be mounted.
+Customize the statements is this job statement with the following values:
+
+  * **__#dsn__**  
+  Specifies the name of the data set holding the z/OS UNIX file system.
+  * **___/usr/lpp/zowe___**  
+  Specifies the name of the mountpoint where the z/OS UNIX file system will be mounted.
 
 :::tip Expected results
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0 `if this job runs correctly.
 :::
 
 ### Allocate z/OS UNIX paths
 
 The target system HFS or zFS data set must be mounted on the driving system when running the sample ZWE5MKD job since the job will create paths in the HFS or zFS.
 
-Before running the sample job to create the paths in the file system, you must ensure that OMVS is active on the driving system and that the target system's HFS or zFS file system is mounted on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
+Before running the sample job to create the paths in the file system, ensure that OMVS is active on the driving system and that the target system's HFS, or zFS file system is mounted on the driving system. zFS must be active on the driving system if you are installing Zowe into a file system that is zFS.
 
 If you plan to install Zowe into a new HFS or zFS file system, you must create the mountpoint and mount the new file system on the driving system for Zowe.
 
-The recommended mountpoint is _/usr/lpp/zowe._
+The recommended mountpoint is `/usr/lpp/zowe.`
 
 Edit and submit sample job ZWE5MKD to allocate the HFS or zFS paths for Zowe. Consult the instructions in the sample job for more information.
 
@@ -486,7 +516,7 @@ You will receive a return code of 0 if this job runs correctly.
 Edit and submit sample job ZWE6DDEF to create DDDEF entries for the SMP/E target and distribution libraries for Zowe. Consult the instructions in the sample job for more information.
 
 :::tip Expected results
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 ### Perform SMP/E APPLY
@@ -497,50 +527,63 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
-   The latest HOLDDATA is available through several different portals, including [https://service.software.ibm.com/holdata/390hdfaq.html](https://service.software.ibm.com/holdata/390hdfaq.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. An APPLY CHECK will help you determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing. If there are any applicable HIPER of FIXCAT APARs, the APPLY CHECK will also identify fixing PTFs that will resolve the APARs, if a fixing PTF is available.
+  The latest HOLDDATA is available through several different portals, including [https://service.software.ibm.com/holdata/390hdfaq.html](https://service.software.ibm.com/holdata/390hdfaq.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. Use the **APPLY CHECK** command to assist you to determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing.
+   
+  If there are any applicable HIPER of FIXCAT APARs, the **APPLY CHECK** also identifies fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
-   You should install the FMIDs regardless of the status of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. That is, before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
+  You should install the FMIDs regardless of the status of unresolved HIPER or FIXCAT APARs. However, do not deploy the software until the unresolved HIPER and FIXCAT APARs have been analyzed to determine their applicability. Before deploying the software either ensure fixing PTFs are applied to resolve all HIPER or FIXCAT APARs, or ensure the problems reported by all HIPER or FIXCAT APARs are not applicable to your environment.
 
-   To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do _not_ bypass the PRE, ID, REQ, and IFREQ on the APPLY CHECK. The SMP/E root cause analysis identifies the cause only of _errors_ and not of _warnings_ (SMP/E treats bypassed PRE, ID, REQ, and IFREQ conditions as warnings, instead of errors).
+  :::tip
+  To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do _not_ bypass the PRE, ID, REQ, and IFREQ on the APPLY CHECK. The SMP/E root cause analysis identifies the cause only of _errors_ and not of _warnings_ (SMP/E treats bypassed PRE, ID, REQ, and IFREQ conditions as warnings, instead of errors).
+  :::
 
-   Here are sample APPLY commands:
+  #### Sample APPLY commands 
+  
+  Review the following sample **APPLY** commands:
 
-   1. To ensure that all recommended and critical service is installed with the FMIDs, receive the latest HOLDDATA and use the APPLY CHECK command as follows
+  * **APPLY CHECK**  
+  To ensure that all recommended and critical services are installed with the FMIDs, receive the latest HOLDDATA and use the **APPLY CHECK**. 
 
-    ```
-    APPLY S(fmid,fmid,...) CHECK   
-    FORFMID(fmid,fmid,...)
-    SOURCEID(RSU*)
-    FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
-    GROUPEXTEND .
-    ```
-    * Some HIPER APARs might not have fixing PTFs available yet.  You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
-    * This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
-
-   2. To install the FMIDs without regard for unresolved HIPER APARs, you can add the BYPASS(HOLDCLASS(HIPER)) operand to the APPLY CHECK command. This will allow you to install FMIDs, even though one of more unresolved HIPER APARs exist. After the FMIDs are installed, use the SMP/E REPORT ERRSYSMODS command to identify unresolved HIPER APARs and any fixing PTFs.
-
-    ```
-    APPLY S(fmid,fmid,...) CHECK
-    FORFMID(fmid,fmid,...)
-    SOURCEID(RSU*)
-    FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
-    GROUPEXTEND
-    BYPASS(HOLDCLASS(HIPER)) .
-     ..any other parameters documented in the program directory
-    ```
-    * This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
-    * If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
-
-2. After you take actions that are indicated by the APPLY CHECK, remove the CHECK operand and run the job again to perform the APPLY.
-
-**Note:** The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
-
-:::tip Expected results from APPLY CHECK
-You will receive a return code of 0 if this job runs correctly.
+  **Example:**
+  ```
+  APPLY S(fmid,fmid,...) CHECK   
+  FORFMID(fmid,fmid,...)
+  SOURCEID(RSU*)
+  FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
+  GROUPEXTEND .
+  ```
+::note**Notes:**
+* Some HIPER APARs might not have fixing PTFs available yet. You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
+* This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
 :::
 
-:::tip Expected results from APPLY 
-You will receive a return code of 0 if the job runs correctly.
+* **APPLY CHECK with operand**  
+To install the FMIDs without regard for unresolved HIPER APARs, add the `BYPASS(HOLDCLASS(HIPER))` operand to the **APPLY CHECK** command. Using this command and operand enables you to install FMIDs, even though one or more unresolved HIPER APARs exist. After the FMIDs are installed, use the SMP/E **REPORT ERRSYSMODS** command to identify unresolved HIPER APARs and any fixing PTFs.
+
+```
+APPLY S(fmid,fmid,...) CHECK
+FORFMID(fmid,fmid,...)
+SOURCEID(RSU*)
+FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
+GROUPEXTEND
+BYPASS(HOLDCLASS(HIPER)) .
+..any other parameters documented in the program directory
+```
+:::note**Notes:**  
+* This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
+* If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
+:::
+2. After you take actions that are indicated by the **APPLY CHECK**, remove the `CHECK` operand and run the job again to perform the APPLY.
+
+:::note
+The GROUPEXTENDED operand indicates the SMP/E applies all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+:::
+
+:::tip 
+* Expected results from **APPLY CHECK**
+You will receive a return code of `0` if this job runs correctly.
+* Expected results from **APPLY** 
+You will receive a return code of `0` if the job runs correctly.
 :::
 
 ### Perform SMP/E ACCEPT
@@ -551,27 +594,28 @@ To receive the full benefit of the SMP/E Causer SYSMOD Summary Report, do not by
 
 Before you use SMP/E to load new distribution libraries, it is recommended that you set the ACCJCLIN indicator in the distribution zone. In this way, you can save the entries that are produced from JCLIN in the distribution zone whenever a SYSMOD that contains inline JCLIN is accepted. For more information about the ACCJCLIN indicator, see the description of inline JCLIN in the SMP/E Commands book for details.
 
-After you take actions that are indicated by the ACCEPT CHECK, remove the CHECK operand and run the job again to perform the ACCEPT.
+After you take actions that are indicated by **ACCEPT CHECK**, remove the `CHECK` operand and run the job again to perform the **ACCEPT**.
 
-**Note:** The GROUPEXTEND operand indicates that SMP/E accepts all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
-
+:::note
+The GROUPEXTEND operand indicates that SMP/E accepts all requisite SYSMODs. The requisite SYSMODS might be applicable to other functions.
+:::
 :::tip Expected results from ACCEPT CHECK
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 If PTFs that contain replacement modules are accepted, SMP/E ACCEPT processing will link-edit or bind the modules into the distribution libraries. During this processing, the Linkage Editor or Binder might issue messages that indicate unresolved external references, which will result in a return code of 4 during the ACCEPT phase. You can ignore these messages, because the distribution libraries are not executable and the unresolved external references do not affect the executable system libraries.
 
 :::tip Expected results from ACCEPT 
-You will receive a return code of 0 if this job runs correctly.
+You will receive a return code of `0` if this job runs correctly.
 :::
 
 ### Run REPORT CROSSZONE
 
-The SMP/E REPORT CROSSZONE command identifies requisites for products that are installed in separate zones. This command also creates APPLY and ACCEPT commands in the SMPPUNCH data set. You can use the APPLY and ACCEPT commands to install those cross-zone requisites that the SMP/E REPORT CROSSZONE command identifies.
+The SMP/E REPORT CROSSZONE command identifies requisites for products that are installed in separate zones. This command also creates **APPLY** and **ACCEPT** commands in the `SMPPUNCH` data set. You can use the **APPLY** and **ACCEPT** commands to install those cross-zone requisites that the SMP/E REPORT CROSSZONE command identifies.
 
-After you install Zowe, it is recommended that you run REPORT CROSSZONE against the new or updated target and distribution zones. REPORT CROSSZONE requires a global zone with ZONEINDEX entries that describe all the target and distribution libraries to be reported on.
+After you install Zowe, it is recommended that you run **REPORT CROSSZONE** against the new or updated target and distribution zones. **REPORT CROSSZONE** requires a global zone with ZONEINDEX entries that describe all the target and distribution libraries to be reported on.
 
-For more information about REPORT CROSSZONE, see the SMP/E manuals.
+For more information about **REPORT CROSSZONE**, see the SMP/E manuals.
 
 ### Cleaning up obsolete data sets, paths, and DDDEFs
 
