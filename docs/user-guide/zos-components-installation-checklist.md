@@ -57,7 +57,7 @@ To start Zowe without the desktop (for example to launch just the API Mediation 
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-| [Configure the Zowe cross memory server (ZIS)](./configure-xmem-server.md) | * JCL member `ZWESLSTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path. <br /> * The PDSE Load Library `SZWEAUTH` is APF-authorized, or the load module `ZWESI00` is copied to an existing APF Auth LoadLib.<br /> * The JCL member `ZWESLSTC DD` statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. | 30 minutes 
+| [Configure the Zowe cross memory server (ZIS)](./configure-xmem-server.md) | * JCL member `ZWESISTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path. <br /> * The PDSE Load Library `SZWEAUTH` is APF-authorized, or the load module `ZWESIS01` is copied to an existing APF Auth LoadLib.<br /> * The JCL member `ZWESISTC DD` statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. | 30 minutes 
 
 ## Configuring High Availability (optional)
 
