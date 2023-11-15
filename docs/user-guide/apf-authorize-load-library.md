@@ -34,5 +34,22 @@ Specify `--security-dry-run` to have the command echo the commands that need to 
 
 ```
   SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
-  SETPROG APF,ADD,DSNAME=IBMUISER.ZWEV2.CUST.ZWESAPL,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.CUST.ZWESAPL,SMS
 ```
+
+### Making APF auth be part of the IPL
+
+Add one of the following to your active `PROGxx` PARMLIB member, for example `SYS1.PARMLIB(PROG00)`, to ensure that the APF authorization is added automatically after next IPL. The value of `DSNAME` is the name of the `SZWEAUTH` and `CUST.ZWESAPL` data sets, as created during Zowe installation:
+
+- If the load library is not SMS-managed, add the following lines, where `${volume}` is the name of the volume that holds the data set:
+  ```
+  APF ADD DSNAME(IBMUSER.ZWEV2.SZWEAUTH) VOLUME(${volume})
+  APF ADD DSNAME(IBMUSER.ZWEV2.CUST.ZWESAPL) VOLUME(${volume})
+  ```
+- If the load library is SMS-managed, add the following line:
+  ```
+  APF ADD DSNAME(IBMUSER.ZWEV2.SZWEAUTH) SMS
+  APF ADD DSNAME(IBMUSER.ZWEV2.CUST.ZWESAPL) SMS
+  ```
+
+The PDS member `SZWESAMP(ZWESIPRG)` contains the SETPROG statement and PROGxx update for reference.
