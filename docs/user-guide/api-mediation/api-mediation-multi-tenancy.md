@@ -207,7 +207,7 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
-The Zowe configuration transforms the configuration in the zowe.yaml file into the environment variables that are shown above. 
+This Zowe configuration transforms the zowe.yaml configuration file into the environment variables that are shown above. 
 
 ### Validate successful configuration
 
