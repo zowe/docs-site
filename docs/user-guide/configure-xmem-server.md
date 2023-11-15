@@ -167,10 +167,10 @@ The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed.
 
 You can start the cross memory server using the command `/S ZWESISTC` once the following steps have been completed.
 
-- JCL members `ZWESLSTC` and `ZWESASTC` are copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
+- JCL members STC - `ZWESISTC` and `ZWESASTC` are copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path.
 - The PDSE Load Library `SZWEAUTH` is APF-authorized, or Load modules `ZWESI00` and `ZWESAUX` are copied to an existing APF Auth LoadLib.
-- The JCL member `ZWESLSTC` DD statements are updated to point to the location of `ZWESI00` and `ZWESIP00`. 
-- The load modules `ZWESI00` and `ZWESAUX` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB 
+- The JCL member `ZWESISTC` DD statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. 
+- The load modules `ZWESIS01` and `ZWESAUX` must run in key 4 and be non-swappable by adding a PPT entry to the SCHEDxx member of the system PARMLIB 
 ```
 PPT PGMNAME(ZWESI00) KEY(4) NOSWAP
 PPT PGMNAME(ZWESAUX) KEY(4) NOSWAP
