@@ -125,7 +125,7 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 (Uses the command `zwe init certificate`)
 6. [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). Note that this step is only required if you are configuring Zowe for cross LPAR sysplex high availability.  
 (Uses the command `zwe init vsam`)
-7. [Install Zowe main started tasks](install-stc-members.md).  
+7. [Install Zowe main started tasks](./zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).  
 (Uses command `zwe init stc`)
 
 Once you complete the Zowe z/OS runtime, you can [verify the installation](verify-zowe-runtime-install.md) to determine that Zowe is installed correctly on z/OS.
