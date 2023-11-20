@@ -92,12 +92,6 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 - **`components.gateway.apiml.security.oidc.enabled`**  
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
-- **`components.gateway.apiml.security.oidc.clientId`**  
-   Specifies the value of the client identification (`client_id`) assigned by the OIDC provider to the API ML Gateway.
-
-- **`components.gateway.apiml.security.oidc.clientSecret`**
-   Specifies the client secret assigned by the OIDC provider to the API ML Gateway. This parameter is used in combination with the `client_id` to obtain JWKs from jwks.uri of the OIDC provider.
-
 - **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
@@ -123,18 +117,6 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
     ```
 
 ## Troubleshooting
-
-### API ML fails to validate the OIDC access token due to missing clientID and/or clientSecret
-
-**Symptom**  
-The Gateway log contains the following WARNING message:  
-`Missing clientId or clientSecret configuration. Cannot proceed with token validation.`
-
-**Explanation**  
-The `clientId` and/or `clientSecret` are not configured properly to correspond to the values set for the client application in the OIDC Identity Provider.
-
-**Solution**  
-Configure the `clientId` and/or `clientSecret` properly to contain the values set for the client application in the OIDC Identity Provider.
 
 ### API ML fails to validate the OIDC access token with the Distributed Identity Provider
 
@@ -164,4 +146,14 @@ The OIDC provider returns an HTTP 40x error code.
 The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
-Check that the `client_id` and `client_secret` configured in the API ML Gateway correspond to the `client_id` and `client_secret` of the client application as configured in the OIDC provider.
+Check that the URL `jwks_uri` contain actual key for the OIDC token validation.
+
+
+## Tips
+API ML Gateway exposes validate token `POST /gateway/api/v1/auth/oidc-token/validate` operation which is suitable during the OIDC setup. It expects JSON `{ token, serviceId }`. Call allows to verify that OIDC token is trusted by the API ML. Accounts mapping step is not included in that flow. 
+
+## Azure Entra ID OIDC notes
+At the current version API ML uses `sub` claim of the ID Token is used to identify the user and map to MF account. [Azure ID token](https://learn.microsoft.com/en-us/entra/identity-platform/id-token-claims-reference#use-claims-to-reliably-identify-a-user) contains several user identifiers. Azure token `sub` is unique per each app alphanumeric value e.g. `vkDzPtDkdH1qjI9h1N1dcEqCkhVASuXLqMDtykPZhC0` whereas OKTA ID token has email in `sub` claim. So z/OS identity propagation setup should take this into account for proper account mapping configuration. See Azure clarification:  
+> To correctly store information per-user, use sub or oid alone (which as GUIDs are unique), with tid used for routing or sharding if needed. If you need to share data across services, oid and tid is best as all apps get the same oid and tid claims for a user acting in a tenant. The sub claim is a pair-wise value that's unique. The value is based on a combination of the token recipient, tenant, and user. Two apps that request ID tokens for a user __receive different sub claims__, but the same oid claims for that user.
+
+
