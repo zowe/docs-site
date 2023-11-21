@@ -20,11 +20,11 @@ Follow the procedures in the following sections to customize Gateway parameters 
   * [Connection limits](#connection-limits)
   * [Routed instance header](#routed-instance-header)
   * [Distributed load balancer cache](#distributed-load-balancer-cache)
+  * [Replace or remove the Catalog with another service](#replace-or-remove-the-catalog-with-another-service)
   * [Personal Access Token](#personal-access-token)
-  * [API Mediation Layer as a standalone component](#api-mediation-layer-as-a-standalone-component)
-  * [SAF resource checking](#saf-resource-checking)
+  * [SAF Resource Checking](#saf-resource-checking)
   * [AT-TLS](#at-tls)
-  * [Unique cookiename for multiple zowe instances](#unique-cookie-name-for-multiple-zowe-instances)
+  * [Unique cookie name for multiple zowe instances](#unique-cookie-name-for-multiple-zowe-instances)
 
 ## Runtime configuration
 
@@ -41,7 +41,7 @@ Use the following procedure to customize properties for your runtime configurati
 
    * **apiml.service.discoveryServiceUrls**  
    This property specifies the Discovery Service URL used by the service to register to Eureka. The value can be set by defining the `ZWE_DISCOVERY_SERVICES_LIST` property in the `zowe.yaml` file.
-    
+
    * **components.gateway.apiml.security.ssl.verifySslCertificatesOfServices**  
    This parameter makes it possible to prevent server certificate validation.
 
@@ -53,13 +53,13 @@ Use the following procedure to customize properties for your runtime configurati
 
    * **ZWE_configs_debug**  
    This property can be used to unconditionally add active debug profiles. For more information, see the [Spring documentation](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles).
-   
+
    * **ZWE_configs_sslDebug**  
    This property can be used to enable the SSL debugging. This property can also assist with determining what exactly is happening at the SSL layer.
 
      This property uses the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all the SSL debugging
      is turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that enables a different level of tracing. For more information, see the [IBM documentation](https://www.ibm.com/docs/en/sdk-java-technology/8?topic=troubleshooting-debugging-utilities).
-     
+
      **Note:** This property can also be enabled for other API ML components.
 
    * **ZWE_configs_server_maxTotalConnections and ZWE_configs_server_maxConnectionsPerRoute**  
@@ -73,7 +73,7 @@ By default, the API Gateway uses z/OSMF as an authentication provider. It is pos
 provider instead of z/OSMF. The intended usage of SAF as an authentication provider is for systems without z/OSMF.
 If SAF is used and the z/OSMF is available on the system, the created tokens are not accepted by z/OSMF. Use
 the following procedure to switch to SAF. 
-     
+
 1. Open the `zowe.yaml` configuration file.
 2. Find or add the property `components.gateway.apiml.security.auth.provider` and set the value to `saf`.
 3. Restart Zowe.
@@ -119,21 +119,22 @@ All requests are disabled as the default configuration for retry with one except
 
   * **components.gateway.ribbon.retryableStatusCodes**  
 This property provides a list of status codes, for which the server should retry the request.
-    
+
   **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
-    
+
   * **components.gateway.ribbon.OkToRetryOnAllOperations**  
 Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
-     
+
     **Note:** Enabling retry can impact server resources due to request body buffering.
 
 * **components.gateway.ribbon.MaxAutoRetries**  
 Specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
-    
+
 * **components.gateway.ribbon.MaxAutoRetriesNextServer**  
 Specifies the number of additional servers that attempt to make the request. This number excludes the first server. The default value is `5`. 
 
 3. Restart Zowe
+
 ## Gateway client certificate authentication
 
 Use the following procedure to enable the feature to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
@@ -191,7 +192,6 @@ Use the following procedure to change the global timeout value for the API Media
   * **components.gateway.apiml.gateway.timeoutmillis**  
    This property defines the global value for http/ws client timeout.
   
-
     **Note:** Ribbon configures the client that connects to the routed services.
 
   * **components.gateway.ribbon.connectTimeout**  
@@ -222,7 +222,7 @@ Alternatively, list the origins as configured by the service, associated with th
 If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
 Use the following procedure to enable CORS handling.
-     
+
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.service.corsEnabled` and set the value to `true`.
 3. Restart Zowe.
@@ -232,13 +232,13 @@ Requests through the Gateway now contain a CORS header.
 ## Encoded slashes
 
 By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes, it is necessary to keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 
-    
+
 Use the following procedure to reject encoded slashes.
-    
+
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.service.allowEncodedSlashes` and set the value to `false`.
-3. Restart Zowe. 
-    
+3. Restart Zowe.
+
 Requests with encoded slashes are now rejected by the API Mediation Layer.
 
 ## Add a custom HTTP Auth header to store Zowe JWT token
@@ -313,7 +313,7 @@ A value can also be applied to `components.gateway.apiml.catalog.serviceId`.
 - **none**  
 Nothing is displayed on the Gateway home page and the Catalog is removed from `/application/health`
 
-- **alternative-catalog**   
+- **alternative-catalog**
 An alternative to the API Catalog is displayed
 
 - **metrics-dashboard**  
@@ -333,6 +333,7 @@ Use the following procedure to change or replace the Catalog service.
     - Set the value to `none` to remove the Catalog service.
     - Set the value to the ID of the service that is onboarded to the API Mediation Layer. 
 3. Restart Zowe.
+
 ## Personal Access Token
 
 By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
@@ -393,18 +394,22 @@ For more information about the SAF resource checking providers, see [SAF Resourc
 ## AT-TLS
 
 The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update `zowe.yaml` with following values under the respective component in the `components` section:
+
 ```
 components.*.spring.profiles.active=attls
 components.*.server.ssl.enabled=false
 components.*.server.internal.ssl.enabled=false
 ```
+
 While API ML can not handle TLS on its own, the Mediation Layer needs information about the server certificate that is defined in the AT-TLS rule. Update the `zowe.yaml` file for each respective APIML component in the `components` sections with the path to the SAF Key ring from the AT-TLS rule and specify the alias that is used for Inbound communication:
+
 ```
 components.*.certificate.keystore.file=<SAF-key-ring-from-AT-TLS-rule>
 components.*.certificate.keystore.type=JCERACFKS
 components.*.certificate.keystore.password=<keyring-password>
 components.*.certificate.keystore.alias=<certificate-alias-from-AT-TLS-rule>
 ```
+
 **Note:** This procedure does not configure AT-TLS on z/OS, but rather enables API ML to work with AT-TLS in place.
 
 ## Unique cookie name for multiple zowe instances
