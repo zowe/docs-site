@@ -4,7 +4,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 
 * [General API ML services configuration](#general-api-ml-services-configuration)
 * [Limit access to information or services in the API Catalog](#limit-access-to-information-or-services-in-the-api-catalog)
-* [Minimize entering user credentials](#minimize-entering-user-credentials)
+* [Minimize reentering user credentials](#minimize-reentering-user-credentials)
 * [Self-generate debugging information](#self-generate-debugging-information)
 * [Customize JWT authentication](#customize-jwt-authentication)
 * [Customize configurations when integrating services with API ML](#customize-configurations-when-integrating-services-with-api-ml)
@@ -45,7 +45,7 @@ The communication server on z/OS provides a functionality to encrypt HTTP commun
 
     For more information, see [SAF Resource Checking](./api-mediation/api-gateway-configuration/#saf-resource-checking) in the article Advanced Gateway features configuration.
 
-## Minimize entering user credentials
+## Minimize reentering user credentials
 
 :::info**Roles:** system programmer, system administrator
 :::
