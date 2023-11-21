@@ -23,7 +23,7 @@ The OIDC protocol is used by API ML client applications to verify the identity o
 After successful user login, the OIDC provider grants the client application a JWT Access Token along with an (JWT) Identity Token.
 The client application can pass this Access Token with subsequent requests to mainframe services routed through the API ML Gateway.
 The API ML Gateway then validates the OIDC Access Token. If the token is valid, the user identity from that token is mapped to the mainframe identity of the user.
-The API ML Gateway can then create mainframe user credentials (JWT or a Passticket) according to the service's authentication schema configuration.
+The API ML Gateway can then create mainframe user credentials (JWT or a PassTicket) according to the service's authentication schema configuration.
 The request is routed to the target API services with correct mainframe user credentials.
 
 ## Authentication Flow
@@ -32,17 +32,17 @@ The following diagram illustrates the interactions between the participants of t
 
 ![APIML OIDC Workflow](../../images/api-mediation/apiml-oidc-auth-seq.png)
 
-- When a user wants to access mainframe resources or services using the client application without a valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
+- When a user wants to access mainframe resources or services using the client application without valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 - The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
-- The URL to specific authorization server's JWK keys end point should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
+- The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
-- The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. 
+- The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
-- The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or pass-ticket) which are expected by the target mainframe service.
+- The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or PassTicket) which are expected by the target mainframe service.
 
 ## Prerequisites
 
@@ -58,9 +58,11 @@ Ensure that the following prerequisites are met:
 - Client Application configuration in the OIDC provider.
 
   Depending on the OIDC provider and client application capabilities, configuration of the OIDC provider varies.
-For example Web Applications with a secure server side component can use `code grant authorization flow` and can be granted a Refresh Token, whereas a Single Page Application running entirely in the User Agent (browser) is more limited regarding its security capabilities.  
+For example, web applications with a secure server side component can use `code grant authorization flow` and can be granted a Refresh Token, whereas a Single Page Application running entirely in the User Agent (browser) is more limited regarding its security capabilities.  
 
-  **Tip:** Consult your OIDC provider documentation for options and requirements available for your type of client application.
+  :::tip
+  Consult your OIDC provider documentation for options and requirements available for your type of client application.
+  :::
 
 - Users have been assigned to the Client Application.
 
@@ -73,9 +75,9 @@ A distributed identity consists of two parts:
 - A distributed identity name
 - A trusted registry which governs that identity
 
-API ML provides a Zowe CLI plugin to help administrators to generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system.
+API ML provides a Zowe CLI plugin to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system.
 
-  See the [Identity Federation cli plugin](#)  <!--Add link --> documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+  See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
 
@@ -122,10 +124,9 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 
 **Symptom**  
 The Gateway log contains the following ERROR message:  
-`Failed to validate the OIDC access token. Unexpected response: XXX.`  
-where:
+`Failed to validate the OIDC access token. Unexpected response: XXX.` 
 
-- _XXX_
+- **_XXX_**  
 is the HTTP status code returned by the Identity Provider.
 
 **Explanation**  
@@ -146,14 +147,23 @@ The OIDC provider returns an HTTP 40x error code.
 The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
-Check that the URL `jwks_uri` contain actual key for the OIDC token validation.
+Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
 
-## Tips
-API ML Gateway exposes validate token `POST /gateway/api/v1/auth/oidc-token/validate` operation which is suitable during the OIDC setup. It expects JSON `{ token, serviceId }`. Call allows to verify that OIDC token is trusted by the API ML. Accounts mapping step is not included in that flow. 
+:::tip**Tips**
+API ML Gateway exposes a validate token `POST /gateway/api/v1/auth/oidc-token/validate` operation which is suitable during the OIDC setup. The Gateway expects JSON `{ token, serviceId }`. The call allows to verify that OIDC token is trusted by the API ML. The accounts mapping step is not included in that flow. 
 
 ## Azure Entra ID OIDC notes
-At the current version API ML uses `sub` claim of the ID Token is used to identify the user and map to MF account. [Azure ID token](https://learn.microsoft.com/en-us/entra/identity-platform/id-token-claims-reference#use-claims-to-reliably-identify-a-user) contains several user identifiers. Azure token `sub` is unique per each app alphanumeric value e.g. `vkDzPtDkdH1qjI9h1N1dcEqCkhVASuXLqMDtykPZhC0` whereas OKTA ID token has email in `sub` claim. So z/OS identity propagation setup should take this into account for proper account mapping configuration. See Azure clarification:  
-> To correctly store information per-user, use sub or oid alone (which as GUIDs are unique), with tid used for routing or sharding if needed. If you need to share data across services, oid and tid is best as all apps get the same oid and tid claims for a user acting in a tenant. The sub claim is a pair-wise value that's unique. The value is based on a combination of the token recipient, tenant, and user. Two apps that request ID tokens for a user __receive different sub claims__, but the same oid claims for that user.
+At the current version API ML uses the `sub` claim of the ID Token is used to identify the user and map to MF account. 
+
+ For more information about user identifiers, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
+ 
+ <!-- Please rewrite this after considering the questions in the conversation in the pull request -->
+  The Azure ID token contains several user identifiers. The Azure token `sub` is unique per each app alphanumeric value, whereas the OKTA ID token has an email in the `sub` claim. So z/OS identity propagation setup should take this into account for proper account mapping configuration. See Azure clarification:  
+> To correctly store information per-user, use sub or oid alone (which as GUIDs are unique), with tid used for routing or sharding if needed. 
+
+ To share data across services, oid and tid is best as all apps get the same oid and tid claims for a user acting in a tenant. The sub claim is a pair-wise value that's unique. The value is based on a combination of the token recipient, tenant, and user. Two apps that request ID tokens for a user __receive different sub claims__, but the same oid claims for that user.
+
+
 
 
