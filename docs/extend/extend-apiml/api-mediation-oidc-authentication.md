@@ -151,19 +151,16 @@ Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
 
 :::tip**Tips**
-API ML Gateway exposes a validate token `POST /gateway/api/v1/auth/oidc-token/validate` operation which is suitable during the OIDC setup. The Gateway expects JSON `{ token, serviceId }`. The operation allows to verify that OIDC token is trusted by the API ML. The accounts mapping step is not included in that operation. 
+API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The operation allows to verify that OIDC token is trusted by the API ML. The accounts mapping step is not included in that operation.
+```shell
+curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
+```
 :::
 
 ## Azure Entra ID OIDC notes
-At the current version API ML uses the `sub` claim of the ID Token is used to identify the user and map to MF account. 
+API ML uses the `sub` claim of the ID Token to identify the user and map to MF account. The Azure token `sub` is alphanumeric value, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation, whereas the OKTA ID token has an email in the `sub` claim.
 
- For more information about user identifiers, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
- 
- <!-- Please rewrite this after considering the questions in the conversation in the pull request -->
-  The Azure ID token contains several user identifiers. The Azure token `sub` is unique per each app alphanumeric value, whereas the OKTA ID token has an email in the `sub` claim. So z/OS identity propagation setup should take this into account for proper account mapping configuration. See Azure clarification:  
-> To correctly store information per-user, use sub or oid alone (which as GUIDs are unique), with tid used for routing or sharding if needed. 
-
- To share data across services, oid and tid is best as all apps get the same oid and tid claims for a user acting in a tenant. The sub claim is a pair-wise value that's unique. The value is based on a combination of the token recipient, tenant, and user. Two apps that request ID tokens for a user __receive different sub claims__, but the same oid claims for that user.
+For more information about Entra ID token format see _ID token claims reference_ in the Microsoft documentation.
 
 
 
