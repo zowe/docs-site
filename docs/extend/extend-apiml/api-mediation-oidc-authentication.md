@@ -152,6 +152,7 @@ Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
 :::tip**Tips**
 API ML Gateway exposes a validate token `POST /gateway/api/v1/auth/oidc-token/validate` operation which is suitable during the OIDC setup. The Gateway expects JSON `{ token, serviceId }`. The call allows to verify that OIDC token is trusted by the API ML. The accounts mapping step is not included in that flow. 
+:::
 
 ## Azure Entra ID OIDC notes
 At the current version API ML uses the `sub` claim of the ID Token is used to identify the user and map to MF account. 
