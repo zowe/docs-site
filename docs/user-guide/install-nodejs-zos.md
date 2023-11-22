@@ -22,22 +22,18 @@ The following Node.js versions are supported to run Zowe. See the [Hardware and 
 The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
 :::note
-IBM SDK for Node.js withdrew v12 from marketing on September 6, 2021. The v12 service ended on September 30, 2022. <!--Zowe ended support for node v12.x in January 2023.-->
+IBM SDK for Node.js withdrew v16 from marketing on September 4, 2023. The v14 service ended on September 30, 2022. <!--Zowe ended support for node v14.x in September 2023.-->
 :::
 
-- v14.x (except v14.17.2)
-   - z/OS V2R3: PTFs UI61308, UI61375, UI61747 (APARs [PH07107](https://www-01.ibm.com/support/docview.wss?uid=isg1PH07107), [PH08352](https://www-01.ibm.com/support/docview.wss?uid=swg1PH08352), [PH09543](https://www-01.ibm.com/support/docview.wss?uid=swg1PH09543))    
-   - z/OS V2R4: PTFs UI64830, UI64837, UI64839, UI64940, UI65567 (APARs [PH14560](https://www.ibm.com/support/pages/apar/PH14560), 
-   [PH15674](https://www.ibm.com/support/pages/apar/PH15674),
-   [PH14559](https://www.ibm.com/support/pages/apar/PH14559),
-   [PH16038](https://www.ibm.com/support/pages/apar/PH16038),
-   [PH17481](https://www.ibm.com/support/pages/apar/PH17481))
-
-   **Known issue:** There is a known issue with node.js v14.17.2. It will cause the error of `ZWESLSTC not found in "<dsn-prefix>.SZWESAMP"` when you run the `zowe-install-proc.sh` utility.
 
 - v16.x
    - z/OS V2R4: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH14560), [UI64839](https://www.ibm.com/support/pages/apar/PH14559), [UI64940](https://www.ibm.com/support/pages/apar/PH16038), [UI65567](https://www.ibm.com/support/pages/apar/PH17481).
    - z/OS V2R5: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH15674),[UI64940](https://www.ibm.com/support/pages/apar/PH16038).
+
+- v18.x
+   - z/OS V2R4: PTFs UI78913, UI81096, UI78103, UI80155
+   - z/OS V2R5: PTFs UI78912, UI81095, UI80156
+
 
 
 ## How to obtain IBM SDK for Node.js - z/OS
