@@ -192,10 +192,10 @@ module.exports = {
           ],
         },            
         {
-          "type": "category",
-          "label": "Installing containerization build",
+          type: "category",
+          label: "Installing containerization build",
           link: {type:"doc", id:"user-guide/k8s-introduction"},
-          "items": [
+          items: [
             "user-guide/k8s-prereqs",
             "user-guide/k8s-downloading",
             "user-guide/k8s-config",
@@ -208,15 +208,15 @@ module.exports = {
           items: [
             "user-guide/mvd-configuration",
             {
-              "type": "category",
-              "label": "Advanced API Mediation Layer Configuration",
+              type: "category",
+              label: "Advanced API Mediation Layer Configuration",
               link: {type:"doc", id:"user-guide/advanced-apiml-configuration"},
-              "items": [
+              items: [
            "user-guide/general-apiml-services-configuration",
            "user-guide/limiting-access-to-info-or-services-in-api-catalog",
            {
             type: "category",
-            label: : "Minimizing reentering user credentials",
+            label: "Minimizing reentering user credentials",
             link: {type:"doc", id:"user-guide/minimizing-reentering-user-credentials"},
                   "items": [
                   "user-guide/api-mediation-personal-access-token",
@@ -229,7 +229,7 @@ module.exports = {
             "user-guide/customizing-jwt-authentication",
            {
             type: "category",
-            label: : "Customizing configurations when integrating services with API ML",
+            label: "Customizing configurations when integrating services with API ML",
             link: {type:"doc", id:"user-guide/customizing-configurations-when-integrating-services-with-apiml"},
                   "items": [
                   "user-guide/configuring-and-enabling-passtickets",
@@ -241,7 +241,7 @@ module.exports = {
             },
            {
             type: "category",
-            label: : "Customizing management of API ML load limits",
+            label: "Customizing management of API ML load limits",
             link: {type:"doc", id:"user-guide/customizing-management-of-apiml-load-limits"},
                   "items": [
                   "user-guide/connection-limits",
@@ -903,7 +903,7 @@ module.exports = {
       href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
     },
   ],
-};
+}
 
 // "appendix/tpsr",
 //items should be array of only strings, or array of object and strings
