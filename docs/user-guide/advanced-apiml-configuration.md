@@ -120,7 +120,7 @@ As a system programmer there are various configuration requirements that apply w
  * To add custom HTTP Auth headers to store a user ID and PassTicket, see [Add custom HTTP Auth headers to store user ID and PassTicket](./api-mediation/api-gateway-configuration/#add-custom-http-auth-headers-to-store-user-id-and-passticket).
  * To configure API ML to handle CORS for a new service, see [CORS handling](./api-mediation/api-gateway-configuration/#cors-handling).
 
- ## Customize API ML load limits for single instances and in HA 
+ ## Customize management of API ML load limits for single instances and in HA 
 
 :::info**Role:** system programmer
 ::: 
@@ -133,7 +133,7 @@ As a system programmer there are various configuration requirements that apply w
     * `server.maxTotalConnections`
     * `server.maxConnectionsPerRoute`
 
-Review the following configuration customization options for how API ML manages  load limits in high availability:
+Review the following configuration customization options for how API ML manages load limits in high availability:
 
 * To customize the Gateway retry policy, see [Gateway retry policy](./api-mediation/api-gateway-configuration/#gateway-retry-policy).
 * To distribute the load balancer cache between instances of the API Gateway, see [Distributed load balancer cache](./api-mediation/api-gateway-configuration/#distributed-load-balancer-cache).
