@@ -208,20 +208,53 @@ module.exports = {
           items: [
             "user-guide/mvd-configuration",
             {
-              type: "category",
-              label: "API Mediation Layer",
-              items: [
-                "user-guide/configure-data-sets-jobs-api",
-                "user-guide/api-mediation/api-catalog-configuration",
-                "user-guide/api-mediation/api-mediation-personal-access-token",
-                "user-guide/api-mediation/api-gateway-configuration",
-                "user-guide/api-mediation/discovery-service-configuration",
-                "user-guide/api-mediation/api-mediation-internal-configuration",
-                "extend/extend-apiml/api-mediation-passtickets",
-                "user-guide/api-mediation/api-mediation-multi-tenancy"
-              ],
+              "type": "category",
+              "label": "Advanced API Mediation Layer Configuration",
+              link: {type:"doc", id:"user-guide/advanced-apiml-configuration"},
+              "items": [
+           "user-guide/general-apiml-services-configuration",
+           "user-guide/limiting-access-to-info-or-services-in-api-catalog",
+           {
+            type: "category",
+            label: : "Minimizing reentering user credentials",
+            link: {type:"doc", id:"user-guide/minimizing-reentering-user-credentials"},
+                  "items": [
+                  "user-guide/api-mediation-personal-access-token",
+                  "user-guide/enable-jwt-token-refresh-endpoint",
+                  "user-guide/gateway-client-certificate-authentication",
+                  "user-guide/api-mediation-passtickets"
+                   ],
             },
-          ],
+            "user-guide/self-generating-debugging-information",
+            "user-guide/customizing-jwt-authentication",
+           {
+            type: "category",
+            label: : "Customizing configurations when integrating services with API ML",
+            link: {type:"doc", id:"user-guide/customizing-configurations-when-integrating-services-with-apiml"},
+                  "items": [
+                  "user-guide/configuring-and-enabling-passtickets",
+                  "user-guide/encoded-slashes",
+                  "user-guide/adding-custom-http-auth-header-to-store-zowe-jwt-token",
+                  "user-guide/adding-custom-http-auth-header-to-store-user-id-and-passticket",
+              "user-guide/cors-handling"
+                   ],
+            },
+           {
+            type: "category",
+            label: : "Customizing management of API ML load limits",
+            link: {type:"doc", id:"user-guide/customizing-management-of-apiml-load-limits"},
+                  "items": [
+                  "user-guide/connection-limits",
+                  "user-guide/gateway-timeouts",
+                  "user-guide/gateway-retry-policy",
+                  "user-guide/distributed-load-balancer-cache",
+              "user-guide/unique-cookie-name-for-multiple-zowe-instances"
+                   ],
+            },
+            "user-guide/customize-the-api-catalog-ui",
+            "user-guide/retrieving-a-specific-service-within-your-environment",
+            "user-guide/setting-a-consistent-service-id",
+           ],
         },       
       ],
     },    
