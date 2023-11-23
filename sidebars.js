@@ -217,10 +217,10 @@ module.exports = {
                   label: "Minimizing reentering user credentials",
                   link: { type: "doc", id: "user-guide/minimizing-reentering-user-credentials" },
                   items: [
-                    "user-guide/api-mediation-personal-access-token",
-                    "user-guide/enable-jwt-token-refresh-endpoint",
+                    "user-guide/api-mediation/api-mediation-personal-access-token",
+                    "user-guide/enabling-a-jwt-token-refresh-endpoint",
                     "user-guide/gateway-client-certificate-authentication",
-                    "user-guide/api-mediation-passtickets"
+                    "extend/extend-apiml/api-mediation-passtickets"
                   ],
                 },
                 "user-guide/self-generating-debugging-information",
@@ -233,7 +233,7 @@ module.exports = {
                     "user-guide/configuring-and-enabling-passtickets",
                     "user-guide/encoded-slashes",
                     "user-guide/adding-custom-http-auth-header-to-store-zowe-jwt-token",
-                    "user-guide/adding-custom-http-auth-header-to-store-user-id-and-passticket",
+                    "user-guide/adding-custom-http-auth-headers-to-store-user-id-and-passticket",
                     "user-guide/cors-handling"
                   ],
                 },
@@ -249,7 +249,7 @@ module.exports = {
                     "user-guide/unique-cookie-name-for-multiple-zowe-instances"
                   ],
                 },
-                "user-guide/customize-the-api-catalog-ui",
+                "user-guide/customizing-the-api-catalog-ui",
                 "user-guide/retrieving-a-specific-service-within-your-environment",
                 "user-guide/setting-a-consistent-service-id",
               ],
