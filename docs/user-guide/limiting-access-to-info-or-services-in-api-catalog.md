@@ -11,11 +11,11 @@ Choose from the following use cases:
 
 * Use the property `apiml.catalog.hide.serviceInfo` to hide the instance URL value of all services registered to the API ML in the API Catalog.
 
-    For more information, see the section [Hide service information](./api-mediation/api-catalog-configuration/#hide-service-information). 
+    See the section [Hide service information](#hide-service-information). 
 
 * The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked via an External Security Manager (ESM).
 
-    For more information, see the section [SAF Resource Checking](./api-mediation/api-gateway-configuration/#saf-resource-checking).
+    See the section [SAF Resource Checking](#saf-resource-checking).
 
 ## Hide service information
 
@@ -101,4 +101,4 @@ To use the endpoint provider, customize the URL corresponding to the SAF resourc
    The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart Zowe.
 
-For more information about the SAF resource checking providers, see [SAF Resource Checking Providers](api-mediation-saf-resource-checking.md).
+For more information about the SAF resource checking providers, see [SAF Resource Checking Providers](./api-mediation/api-mediation-saf-resource-checking).

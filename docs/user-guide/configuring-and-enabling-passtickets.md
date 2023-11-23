@@ -3,11 +3,11 @@
 ## Configuring Zowe to use PassTickets
 
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
-For more information, see [Authentication with PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
+For more information, see [Authentication with PassTickets](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-passtickets).
 
 ### Overview
 API clients can use either a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend-apiml/authentication-for-apiml-services).
+The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend/extend-apiml/authentication-for-apiml-services).
 
 When an API client provides a valid Zowe JWT token or client certificate to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
@@ -87,10 +87,10 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 
 The following steps outline the procedure for enabling PassTicket Support:
 
-1. Follow the [API service documentation](../../extend/extend-apiml/authentication-for-apiml-services.md#authentication-with-passtickets) that explains how to activate support for PassTickets.
+1. Follow the [API service documentation](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-passtickets) that explains how to activate support for PassTickets.
     - The PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API Service in a secure mainframe environment.
 2. Record the value of the APPLID of the API service.
-3. Enable the Zowe started task user ID to generate PassTickets for the API service. For more information, see [PassTicket Security Configuration](../../extend/extend-apiml/api-mediation-passtickets.md). 
+3. Enable the Zowe started task user ID to generate PassTickets for the API service. For more information, see [PassTicket Security Configuration](../extend/extend-apiml/api-mediation-passtickets).
 4. Enable PassTicket support in the API Gateway for your API service.
 
 **Note:**
