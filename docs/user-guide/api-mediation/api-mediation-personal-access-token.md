@@ -21,7 +21,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
-**Note:** An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::note
+An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::
 
 ## User APIs
 
@@ -68,7 +70,9 @@ The request requires the body in the following format:
 }
 ```
 
-**Note:** The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
+:::note
+The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
+:::
 
 When validation is successful, the response to the request is an empty body with a status code of `200`. When validation fails, the user receives a status code of `401`.
 
@@ -123,7 +127,8 @@ When invalidation is successful, the response to the request is an empty body wi
 If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by **rules**.
 Such criteria define the level of access control and can restrict access in advance. Rule based access restriction can be applied by either user ID or service scopes.
 
-**Note:** _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
+:::note
+_Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
 ```
 {
    "serviceId": "<serviceId>",
@@ -137,6 +142,8 @@ Rule entries for users appear in the following format:
    "timestamp": "<timestamp>"
 }
 ```
+:::
+
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/users`  
