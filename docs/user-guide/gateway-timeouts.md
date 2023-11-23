@@ -8,9 +8,9 @@ Use the following procedure to change the global timeout value for the API Media
   * **components.gateway.apiml.gateway.timeoutmillis**  
    This property defines the global value for http/ws client timeout.
   
-
-    **Note:** Ribbon configures the client that connects to the routed services.
-
+  :::note
+  Ribbon configures the client that connects to the routed services.
+  :::
   * **components.gateway.ribbon.connectTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
