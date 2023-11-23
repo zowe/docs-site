@@ -10,13 +10,14 @@ All requests are disabled as the default configuration for retry with one except
   * **components.gateway.ribbon.retryableStatusCodes**  
 This property provides a list of status codes, for which the server should retry the request.
     
-     **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
+  **Example:** `components.gateway.ribbon.retryableStatusCodes: "503, 404"` 
     
   * **components.gateway.ribbon.OkToRetryOnAllOperations**  
 Specifies whether to retry all operations for this service. The default value is `false`. In this case, only `GET` requests are retried if they return a response code that is listed in `ribbon.retryableStatusCodes`. Setting this parameter to `true` enables retry requests for all methods which return a response code listed in `ribbon.retryableStatusCodes`. 
      
-    **Note:** Enabling retry can impact server resources due to request body buffering.
-
+  :::note
+  Enabling retry can impact server resources due to request body buffering.
+  :::
 * **components.gateway.ribbon.MaxAutoRetries**  
 Specifies the number of times a failed request is retried on the same server. This number is multiplied with `ribbon.MaxAutoRetriesNextServer`. The default value is `0`.
     
