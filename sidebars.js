@@ -232,7 +232,7 @@ module.exports = {
                   items: [
                     "user-guide/configuring-and-enabling-passtickets",
                     "user-guide/encoded-slashes",
-                    "user-guide/adding-custom-http-auth-header-to-store-zowe-jwt-token",
+                    "user-guide/adding-custom-http-header-to-store-zowe-jwt-token",
                     "user-guide/adding-custom-http-auth-headers-to-store-user-id-and-passticket",
                     "user-guide/cors-handling"
                   ],
