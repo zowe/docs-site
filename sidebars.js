@@ -80,7 +80,6 @@ module.exports = {
       id:"getting-started/zowe-resources",
     },
   ],
-
   "setup": [
     "user-guide/install-overview",
     {
