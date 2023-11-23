@@ -151,21 +151,23 @@ Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
 
 :::tip
-API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The operation makes it possible to verify that OIDC token is trusted by API ML. Note that the accounts mapping step is not included in this operation.
+API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The call to the endpoint `/gateway/api/v1/auth/oidc-token/validate` verifies if the OIDC token is trusted by API ML. Note that the Gateway service does not perform the mapping request to the ESM when the `/gateway/api/v1/auth/oidc-token/validate` endpoint is called.
 
-Use the following curl command to validate that the OIDC token is trusted by API ML:
+Use the following curl command to make a REST request with the OIDC token to the validate token endpoint:
 ```shell
 curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
 ```
+An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
-## Azure Entra ID OIDC notes
-API ML uses the `sub` claim of the ID Token to identify the user and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
-* The Azure token `sub` is an alphanumeric value. For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
+:::note**Azure Entra ID OIDC notes:**
+API ML uses the `sub` claim of the ID Token to identify the user, and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
+* The Azure token `sub` is an alphanumeric value.  
+For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
 * The OKTA ID token has an email in the `sub` claim.
 
 For more information about Entra ID token format see _ID token claims reference_ in the Microsoft documentation.
-
+:::
 
 
 
