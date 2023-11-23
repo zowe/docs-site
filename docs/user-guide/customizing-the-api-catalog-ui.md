@@ -71,11 +71,11 @@ An alternative to the API Catalog is displayed
 - **metrics-dashboard**  
  A possible dashboard that could appear in place of the API Catalog 
 
-**Notes:**
-
+:::note**Notes:**
 - If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
 - If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.
+:::
 
 Use the following procedure to change or replace the Catalog service.
 
