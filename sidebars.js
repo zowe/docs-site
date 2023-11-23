@@ -212,6 +212,7 @@ module.exports = {
               link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
               items: [
                 "user-guide/general-apiml-services-configuration",
+                "user-guide/limiting-access-to-info-or-services-in-api-catalog",
                 {
                   type: "category",
                   label: "Minimizing reentering user credentials",
