@@ -3,7 +3,6 @@
 :::info**Role:** system administrator
 :::
 
-
 As a system administrator, you can limit access to information and/or services available within the API Catalog and through the API Mediation Layer and check for the authorization of the user on certain endpoints.
 
 Choose from the following use cases:
