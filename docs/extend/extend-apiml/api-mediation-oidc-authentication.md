@@ -150,15 +150,19 @@ The client application is not properly configured in the API ML Gateway.
 Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
 
-:::tip**Tips**
-API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The operation allows to verify that OIDC token is trusted by the API ML. The accounts mapping step is not included in that operation.
+:::tip
+API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The operation makes it possible to verify that OIDC token is trusted by API ML. Note that the accounts mapping step is not included in this operation.
+
+Use the following curl command to validate that the OIDC token is trusted by API ML:
 ```shell
 curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
 ```
 :::
 
 ## Azure Entra ID OIDC notes
-API ML uses the `sub` claim of the ID Token to identify the user and map to MF account. The Azure token `sub` is alphanumeric value, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation, whereas the OKTA ID token has an email in the `sub` claim.
+API ML uses the `sub` claim of the ID Token to identify the user and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
+* The Azure token `sub` is an alphanumeric value. For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
+* The OKTA ID token has an email in the `sub` claim.
 
 For more information about Entra ID token format see _ID token claims reference_ in the Microsoft documentation.
 
