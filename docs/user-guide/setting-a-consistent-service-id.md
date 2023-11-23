@@ -1,6 +1,7 @@
 # Setting a consistent service ID
 
-:::info**Role:** API service extender:::
+:::info**Role:** API service extender
+:::
 
 As an API service extender you can modify the service ID to ensure compatibility of services that use a non-conformant organization prefix with Zowe v2.
 
