@@ -1,4 +1,7 @@
-# Gateway client certificate authentication
+# Enabling a client certificate to authenticate for API Gateway
+
+:::info**Roles:** system programmer, system administrator, security administrator
+:::
 
 Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
 
