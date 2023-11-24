@@ -1,4 +1,4 @@
-# Personal Access Token
+# Generating, validating, and invalidating a Personal Access Token
 
 You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials as part of the automation configuration on a server during  application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
@@ -46,10 +46,10 @@ The request requires the body in the following format:
 ```
 
 * **validity**  
-refers to the expiration time of the token. The maximum threshold is 90 days.  
+Specifies the expiration time of the token. The maximum threshold is 90 days.  
 
 * **scopes**  
- limits the access on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
+ Limits the access on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
 
 When creation is successful, the response to the request is a body containing the PAT with a status code of `200`. When creation fails, the user receives a status code of `401`. 
 
@@ -162,9 +162,8 @@ The request requires the body in the following format:
 refers the user the revocation is applied to.
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time) in milliseconds. The timestamp is
-used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
-after that date are not affected by the user rule.
+Specifies the date of revocation (the default value is the current time) in milliseconds. The timestamp is
+used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created after that date are not affected by the user rule.
 
 By calling this endpoint, the user rule is stored in the cache by the Caching Service under the `invalidUsers` key.
 
@@ -190,12 +189,11 @@ The request requires the body in the following format:
 Invalidation of all tokens is possible by using rules based on service scopes.
 
 * **serviceId**  
-represents the service to which the revocation should be applied (e.g. APPL IDs). 
+Specofoes the service to which the revocation should be applied (e.g. APPL IDs). 
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time) in milliseconds. A timestamp is
-used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
-after that date are not affected by the service rule.
+Specifies the date of revocation (the default value is the current time) in milliseconds. A timestamp is
+used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created after that date are not affected by the service rule.
 
 Calling this endpoint stores the service rule in the cache by the Caching Service under the `invalidScopes` key.
 
