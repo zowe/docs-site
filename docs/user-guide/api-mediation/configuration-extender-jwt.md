@@ -1,4 +1,9 @@
-# Adding a custom HTTP Auth header to store Zowe JWT token
+# Customize JWT behavior with respect to the integration with the extending services
+
+:::info**Roles:** system programmer, system administrator, security administrator
+:::
+
+## Adding a custom HTTP Auth header to store Zowe JWT token
 
 If a southbound service needs to consume the Zowe JWT token from a HTTP request header to participate in the Zowe SSO, you can define a custom HTTP header name as part of the Gateway configuration.
 The southbound service must use the `zoweJwt` scheme in order to leverage this functionality. Once the HTTP header name is defined, each request to the southbound service contains the JWT token in the custom header.

@@ -1,9 +1,9 @@
 # Customizing JWT authentication 
 
-:::info**Role:** system programmer
+:::info**Role:** system programmer, system administrator, security administrator
 :::
 
-As a system programmer, you can customize how JWT authentication is performed, and also the service that provides the JWT authentication token.
+As a system programmer, you can customize how JWT authentication is performed, the service that provides the JWT authentication token, whether it's possible to refresh JWT token and other characteristics of JWT for consumption. 
 
 ## SAF as an Authentication provider
 
@@ -25,3 +25,20 @@ Also see the following properties:
 
 * **[components.gateway.apiml.security.auth.zosmf.ServiceId](./api-mediation/api-gateway-configuration/#runtime-configuration)**  
         This parameter specifies the z/OSMF service id used as authentication provider. The service id is defined in the static definition of z/OSMF. The default value is `zosmf`.
+
+## Enabling a JWT token refresh endpoint
+
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
+
+For more information, see [Configure Passtickets](configuration-extender-passtickets.md)
+
+1. Open the file `zowe.yaml`.
+2. Configure the following properties:
+
+    * **components.gateway.apiml.security.allowtokenrefresh: true**  
+    Add this property to enable the refresh endpoint.
+
+    * **components.gateway.apiml.security.zosmf.applid**  
+    If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+
+3. Restart Zowe.

@@ -21,7 +21,7 @@ The following information is required during the Zowe installation process. Soft
 
   **Notes:**
   
-  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation/configuration-api-mediation-standalone.md).
   
   - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESLSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
   

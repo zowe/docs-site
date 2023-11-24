@@ -1,7 +1,6 @@
-# Configuring and enabling Zowe to use PassTickets
+# Configuring and enabling Zowe to use PassTickets as an integration method for southbound services
 
-
-As a system programmer, follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets.
+As a system programmer, follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 
 :::info**Roles:** system programmer, security administrator
 :::
@@ -9,13 +8,11 @@ As a system programmer, follow the procedures described in this article to confi
 ## Configuring Zowe to use PassTickets
 
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
-For more information about what types of API services support PassTickets, see [Authentication with PassTickets](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-passtickets).
 
 ### Overview of how PassTickets are used
-API clients can use either a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend/extend-apiml/authentication-for-apiml-services).
+API clients can use various supported methods such as Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
 
-When an API client provides a valid Zowe JWT token or client certificate to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
+When an API client provides a valid authentication method to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
@@ -89,20 +86,16 @@ PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 
-## Enabling Zowe to use PassTickets
+# Adding custom HTTP Auth headers to store user ID and PassTicket
 
-The following steps outline the procedure for enabling PassTicket Support:
+If a southbound service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
+The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
 
-1. Follow the [API service documentation](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-passtickets) that explains how to activate support for PassTickets.
+Use the following procedure to add the custom HTTP headers.
 
-:::caution**Important:**
-The PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API Service in a secure mainframe environment.
-:::
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.auth.passticket.customAuthHeader` and set the value which represents the header's name.
+3. Find or add the property `components.gateway.apiml.security.auth.passticket.customUserHeader` and set the value which represents the header's name.
+4. Restart Zowe.
 
-2. Record the value of the APPLID of the API service.
-3. Enable the Zowe started task user ID to generate PassTickets for the API service. For more information, see [PassTicket Security Configuration](../extend/extend-apiml/api-mediation-passtickets).
-4. Enable PassTicket support in the API Gateway for your API service.
-
-:::note
-PassTickets must be enabled for every user who requires access to the API service.
-:::
+Requests through the Gateway towards the southbound service now contain the custom HTTP headers with the PassTicket and the user ID.

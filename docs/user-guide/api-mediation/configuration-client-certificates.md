@@ -3,7 +3,7 @@
 :::info**Roles:** system programmer, system administrator, security administrator
 :::
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
+Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. 
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
@@ -53,3 +53,4 @@ Use the following procedure to enable the zowe.yaml file to use a client certifi
    ```
 
 5. Restart Zowe.
+

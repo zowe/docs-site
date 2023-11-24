@@ -211,48 +211,56 @@ module.exports = {
               label: "Advanced API Mediation Layer Configuration",
               link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
               items: [
-                "user-guide/general-apiml-services-configuration",
-                "user-guide/limiting-access-to-info-or-services-in-api-catalog",
                 {
                   type: "category",
-                  label: "Minimizing reentering user credentials",
-                  link: { type: "doc", id: "user-guide/minimizing-reentering-user-credentials" },
+                  label: "Single Sign On for Clients",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
                   items: [
-                    "user-guide/api-mediation/api-mediation-personal-access-token",
-                    "user-guide/enabling-a-jwt-token-refresh-endpoint",
-                    "user-guide/gateway-client-certificate-authentication",
-                    "extend/extend-apiml/api-mediation-passtickets"
-                  ],
-                },
-                "user-guide/self-generating-debugging-information",
-                "user-guide/customizing-jwt-authentication",
-                {
-                  type: "category",
-                  label: "Customizing configurations when integrating services with API ML",
-                  link: { type: "doc", id: "user-guide/customizing-configurations-when-integrating-services-with-apiml" },
-                  items: [
-                    "user-guide/configuring-and-enabling-passtickets",
-                    "user-guide/encoded-slashes",
-                    "user-guide/adding-custom-http-header-to-store-zowe-jwt-token",
-                    "user-guide/adding-custom-http-auth-headers-to-store-user-id-and-passticket",
-                    "user-guide/cors-handling"
+                    "user-guide/api-mediation/configuration-client-certificates",
+                    "user-guide/api-mediation/configuration-personal-access-token",
+                    "user-guide/api-mediation/configuration-jwt"
                   ],
                 },
                 {
                   type: "category",
-                  label: "Customizing management of API ML load limits",
-                  link: { type: "doc", id: "user-guide/customizing-management-of-apiml-load-limits" },
+                  label: "Single Sign On for Onboarding services",
                   items: [
-                    "user-guide/connection-limits",
-                    "user-guide/gateway-timeouts",
-                    "user-guide/gateway-retry-policy",
-                    "user-guide/distributed-load-balancer-cache",
-                    "user-guide/unique-cookie-name-for-multiple-zowe-instances"
+                    "user-guide/api-mediation/configuration-extender-jwt",
+                    "user-guide/api-mediation/configuration-extender-passtickets"
                   ],
                 },
-                "user-guide/customizing-the-api-catalog-ui",
-                "user-guide/retrieving-a-specific-service-within-your-environment",
-                "user-guide/setting-a-consistent-service-id",
+                {
+                  type: "category",
+                  label: "Routing",
+                  items: [
+                    {
+                      type: "category",
+                      label: "Customizing Management of API ML Load limits",
+                      link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                      items: [
+                        "user-guide/api-mediation/configuration-connection-limits",
+                        "user-guide/api-mediation/configuration-gateway-timeouts"
+                      ],
+                    },
+                    "user-guide/api-mediation/configuration-cors",
+                    "user-guide/api-mediation/configuration-url-handling",
+                    "user-guide/api-mediation/configuration-gateway-retry-policy",
+                    "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                    "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                    "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                    "user-guide/api-mediation/configuration-set-consistent-service-id"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Authorization",
+                  items: [
+                    "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
+                    "user-guide/api-mediation/configuration-saf-resource-checking"
+                  ],
+                },                
+                "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+                "user-guide/api-mediation/configuration-at-tls"
               ],
             }
           ],
