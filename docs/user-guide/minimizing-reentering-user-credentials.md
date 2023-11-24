@@ -1,6 +1,6 @@
 # Minimizing reentering user credentials
 
-:::info**Roles:** system programmer, system administrator
+:::info**Roles:** system programmer, system administrator, security administrator
 :::
 
 As a system programmer or system administrator, you can customize API ML to minimize how often you are required to enter your user credentials.
