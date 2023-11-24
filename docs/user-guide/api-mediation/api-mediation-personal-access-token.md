@@ -1,5 +1,8 @@
 # Generating, validating, and invalidating a Personal Access Token
 
+:::**Roles:** system programmer, security administrator
+:::
+
 You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials as part of the automation configuration on a server during  application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
 
