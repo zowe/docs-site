@@ -1,5 +1,8 @@
 # Configuring Zowe to use PassTickets
 
+:::info**Role:** system programmer
+:::
+
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
 For more information, see [Authentication with PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
 
