@@ -1,6 +1,9 @@
 # Adding custom HTTP Auth headers to store user ID and PassTicket
 
-If a southbound service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
+:::info**Role:** system programmer
+:::
+
+If a southbound service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers' names as part of the Gateway configuration.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
 
 Use the following procedure to add the custom HTTP headers.

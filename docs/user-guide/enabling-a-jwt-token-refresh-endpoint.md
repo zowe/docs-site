@@ -5,7 +5,7 @@
 
 Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
 
-For more information, see [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md)
+For more information, see [Configure Passtickets](../../extend/extend-apiml/api-mediation-passtickets.md).
 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:

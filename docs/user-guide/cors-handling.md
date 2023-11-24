@@ -1,6 +1,6 @@
 # Customizing Cross-Origin Resource Sharing (CORS) 
 
-:::**Role:** system programmer
+:::info**Role:** system programmer
 :::
 
 As a system programmer, you can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the following procedure, API Gateway endpoints start handling CORS requests. Individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/custom-metadata.md) parameters.
@@ -18,9 +18,9 @@ Additionally, the Gateway handles the preflight requests on behalf of the servic
 - `Access-Control-Allow-Credentials: true`
 - `Access-Control-Allow-Origin: *` 
 
-Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md).
+Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in [Custom Metadata](../extend/extend-apiml/custom-metadata).
 
-If CORS is enabled for Gateway routes but not in [Custom Metadata](../../extend/extend-apiml/custom-metadata.md), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
+If CORS is enabled for Gateway routes but not in [Custom Metadata](../extend/extend-apiml/custom-metadata), the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
 Use the following procedure to enable CORS handling.
      
