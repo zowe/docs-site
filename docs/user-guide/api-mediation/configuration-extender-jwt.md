@@ -1,4 +1,4 @@
-# Customize JWT behavior with respect to the integration with the extending services
+# Customizing JWT behavior as per integration with extending services
 
 :::info**Roles:** system programmer, system administrator, security administrator
 :::
