@@ -2,7 +2,7 @@
 
 ## SAF Check Providers
 
-It's possible to use different providers to handle the SAF authorization check. The specific configuraiton is explained below. 
+It is possible to use different providers to handle the SAF authorization check. Follow the procedure in this article that applies to your specific configuration use case. 
 
 ### REST endpoint call
 
@@ -31,7 +31,7 @@ are available on the classpath. This approach uses the following method describe
 
 ### Dummy implementation
 
-The Dummy provider is for testing purpose outside of the mainframe.
+Use the Dummy provider for testing purpose outside of the mainframe.
 
 Create the file `saf.yml` and locate it in the folder, where is application running or create file `mock-saf.yml` in the
 test module (root folder). The highest priority is to read the file outside of the JAR. A file (inner or outside) has to exist.
@@ -56,7 +56,7 @@ The following YAML presents the structure of the file:
 
 ## SAF Resource Checking
 
-The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with ESM.
+API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with ESM.
 
 Verification of the SAF resource is provided by the following three providers:
 
