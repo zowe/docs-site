@@ -3,9 +3,9 @@
 :::info**Roles:** system programmer, system administrator, security administrator
 :::
 
-As a system programmer or system administrator, you can customize API ML with respect to how does it handle the authentication towards clients such as CLI and/or users. The usage of the following methods limit the amount of times the user actually uses credentials to access the API Mediation Layer. 
+As a system programmer or system administrator, you can customize the way API ML handles authentication towards clients such as CLI and/or users. Usage of the following methods limits the frequency the user is reqired to use credentials to access API Mediation Layer. 
 
-* You can use API Mediation Layer to generate, validate, and invalidate a Personal Access Token (PAT) that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
+* One method to minimize the frequency of entering credentials is to use API Mediation Layer to generate, validate, and invalidate a Personal Access Token (PAT). This method enables access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 
  For more information, see [Using a Personal Access Token (PAT)](./api-mediation/api-mediation-personal-access-token). 
 
