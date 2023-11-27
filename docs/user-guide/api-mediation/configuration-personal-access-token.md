@@ -1,5 +1,4 @@
-## Personal Access Token
-## Enabling a Personal Access Token
+# Enabling a Personal Access Token
 
 By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
 this functionality, see [Personal Access Tokens](api-mediation-personal-access-token.md).

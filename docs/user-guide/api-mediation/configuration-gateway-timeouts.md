@@ -1,4 +1,3 @@
-# Gateway timeouts
 # Customizing Gateway timeouts
 
 Use the following procedure to change the global timeout value for the API Mediation Layer instance.

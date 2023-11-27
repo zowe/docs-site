@@ -1,4 +1,4 @@
-# Determine the instance you are accessing
+# Determining the instance you are accessing
 
 :::info**Roles:** system programmer, system administrator
 :::
