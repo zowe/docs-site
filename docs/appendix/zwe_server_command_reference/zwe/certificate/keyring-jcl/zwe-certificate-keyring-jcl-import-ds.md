@@ -9,6 +9,8 @@
 Import certificate stored in MVS data set into Zowe keyring.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -38,6 +40,8 @@ Full name|Alias|Type|Required|Help message
 --import-ds-name||string|yes|Name of the data set holds certificate to import into keyring.
 --import-ds-password||string|yes|Password of the data set holds certificate to import.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -56,6 +60,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0173E|173|Failed to import certificate to Zowe keyring "%s".
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

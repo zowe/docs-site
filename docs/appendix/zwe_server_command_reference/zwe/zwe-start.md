@@ -16,10 +16,9 @@ zowe:
     security:
       stcs:
         zowe: ZWESLSTC
-  job:
-    name: ZWE1SV
+  jobname: ZWE1SV
 haInstances:
-  <ha-instance>:
+  [ha-instance]:
     sysname: ZLP1
 ```
 
@@ -27,7 +26,7 @@ haInstances:
   This configuration is optional. Default value is `ZWESLSTC`.
 - `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the start command will not pass `JOBNAME=` option to `S` command.
-- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
+- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
 
@@ -44,6 +43,8 @@ zwe start -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -62,6 +63,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0165E|165|Failed to start job %s: %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
