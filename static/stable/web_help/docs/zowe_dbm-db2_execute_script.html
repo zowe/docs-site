@@ -59,7 +59,7 @@
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -70,6 +70,42 @@
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -165,37 +201,37 @@
 <li>
 <p>Execute only the SQLDDL section of a script. The first .CONNECT statement in the script identifies the target subsystem where the script is executed. Execution begins at the .SYSTEM SQLDDL statement and ends at the next .SYSTEM statement in the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section SQLDDL">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section SQLDDL">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute a script beginning from the sync point 10 (.SYNC 10 statement) to the end of the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section 10">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section 10">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute only the target (SQLDDL) section of the script starting at sync point 20:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section target,20">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section target,20">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script from the beginning:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart new">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart new">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script at the location specified in the token. The restart token is returned by a previous 'zowe dbm execute command' failure as part of the terminal output and in the error file:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution at the last successful sync point recorded in the restart token up to the end of the target (SQLDDL) section:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 </ul>
