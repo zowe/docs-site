@@ -127,9 +127,9 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Locate the runtimeDirectory from the `zowe.yaml` variable ` runtimeDirectory: "<PATH_TO_RUNTIME>"`.
+  Locate the runtimeDirectory from the `zowe.yaml` variable `runtimeDirectory: "<PATH_TO_RUNTIME>"`.
 
-  Check that there is a `<PATH_TO_RUNTIME>/schemas` directory.  This should contain four `.json` files.
+  Check that there is a `<PATH_TO_RUNTIME>/schemas` directory. This should contain four `.json` files shown below. 
 
   ```
   manifest-schema.json
