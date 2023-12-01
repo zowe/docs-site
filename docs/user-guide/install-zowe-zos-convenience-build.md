@@ -1,4 +1,4 @@
-# Installing Zowe runtime from a convenience build
+# Installing Zowe via a convenience build (PAX file)
 
 You install the Zowe&trade; convenience build by obtaining a PAX file and using this to create the Zowe runtime environment.
 
@@ -10,9 +10,14 @@ The configuration data that is read by the `zwe` command are stored in a YAML co
 
 Complete the following steps to install the Zowe runtime. 
 
+## End-to-end installation diagram
+
+![Convenience build install diagram](../images/install/Convenience-build-install.png)
+
 ## Step 1: Obtain the convenience build
 
-To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website, navigate to **Zowe V2 Preview** -> **Convenience build** section, and select the button to download the v2 convenience build.
+1. To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website.
+2. Navigate to **Zowe V2 Preview** -> **Convenience build** section, and select the button to download the v2 convenience build.
 
 ## Step 2: Transfer the convenience build to USS and expand it
 
@@ -48,7 +53,7 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
     put <zowe-V.v.p>.pax
     ```
 
-    Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.
+    `zowe-V.v.p` is a variable that indicates the name of the PAX file you downloaded.
 
     **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.
 

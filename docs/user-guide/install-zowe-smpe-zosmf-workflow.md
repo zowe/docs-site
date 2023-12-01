@@ -7,11 +7,11 @@ z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe
 3. Select **Create Workflow** from the **Actions** menu. 
 4. Enter the complete path to the workflow definition file in the **Workflow Definition filed**.
 
-   The workflow is located in the ZWEWRF01 member of the `hlq.ZOWE.AZWE002.F4` data set. 
+   The workflow is located in the `ZWEWRF01` member of the `hlq.ZOWE.AZWE002.F4` data set. 
 
 5. (Optional) Enter the path to the customized variable input file that you prepared in advance.
- 
-   The variable input file is located in ZWEYML01 member of the `hlq.ZOWE.AZWE002` data set. 
+
+   The variable input file is located in `ZWEYML01` member of the `hlq.ZOWE.AZWE002` data set. 
 
    Create a copy of the variable input file. Modify the file as necessary according to the built-in comments. Set the field to the path where the new file is located. When you execute the workflow, the values from the variable input file override the workflow variables default values.
 
@@ -33,7 +33,7 @@ z/OSMF workflow simplifies the procedure to create an SMP/E environment for Zowe
     4. Select **Next**. 
     5. Repeat the previous two steps to complete all items until the option **Finish** is available. 
     6. Select **Finish**. 
-
+   
        After you execute each step, the step is marked as **Complete**. The workflow is executed. 
        
 After you complete executing all the steps individually, the Zowe SMP/E is created. 
