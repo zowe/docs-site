@@ -10,7 +10,7 @@ Transform an option into the proper format for a Zowe CLI environment variable, 
 Refer to your operating system documentation for information about how to set and get environment variables. The procedure varies between Windows, Mac, and various versions of Linux.
 :::
 
-## Examples of transformed CLI options
+### Examples of transformed CLI options
 
 The following table provides examples of CLI options and the corresponding environment variable to which you can define a value:
 
