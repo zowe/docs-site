@@ -919,7 +919,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0159I
+### ZWED0159E
 
   *** rejects: 
 

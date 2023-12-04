@@ -1,0 +1,3 @@
+I, Lobhas Paradkar, hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. 
+In the past I have used email: lparadkar@rocketsoftware.com
+41febb79fe07ae4670a746301b7215740e65a3c7 updated release notes 2.12 (#3203)

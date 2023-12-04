@@ -1,9 +1,11 @@
-# Create an Extension for API ML
+# Creating an Extension for API ML
 
 Zowe allows extenders to define their own extension for API ML. Follow the steps in this article to create your extension and add it to the
 API Gateway classpath.
 
-**Note:** The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR that contains the extension.
+:::note
+The `api-sample-extension-package` contains a sample `manifest.yml` and the `apiml-sample-extension` JAR that contains the extension.
+:::
 
 **Follow these steps:**
 
@@ -41,7 +43,9 @@ For more information, see [Packaging z/OS extensions](../packaging-zos-extension
 
 The extension directory `<instance>/workspace/gateway/sharedLibs/` is then added to the API Gateway class path as part of the Zowe instance preparation.
 
-**Note:** The paths defined under `gatewaySharedLibs` can either be a path to the directory where the extensions JARs are located, or a path to the files. 
+:::note
+The paths defined under `gatewaySharedLibs` can either be a path to the directory where the extensions JARs are located, or a path to the files. 
+:::
 
 **Example:**
    ```yaml

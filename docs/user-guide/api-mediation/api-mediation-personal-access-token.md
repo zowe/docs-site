@@ -1,9 +1,9 @@
-# Personal Access Token
+# Using a Personal Access Token (PAT)
 
-You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials as part of the automation configuration on a server during  application development on z/OS.
+You can use API Mediation Layer to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
 
-To enable this functionality on your Zowe instance, see the [configuration guide](api-gateway-configuration#personal-access-token).
+To enable this functionality on your Zowe instance, see [Advanced Gateway features configuration](api-gateway-configuration#personal-access-token).
 
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
@@ -21,7 +21,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
-**Note:** An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::note
+An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::
 
 ## User APIs
 
@@ -44,10 +46,10 @@ The request requires the body in the following format:
 ```
 
 * **validity**  
-refers to the expiration time of the token. The maximum threshold is 90 days.  
+Specifies the expiration time of the token. The maximum threshold is 90 days.  
 
 * **scopes**  
- limits the access on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
+ Specifies the access limits on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
 
 When creation is successful, the response to the request is a body containing the PAT with a status code of `200`. When creation fails, the user receives a status code of `401`. 
 
@@ -68,7 +70,9 @@ The request requires the body in the following format:
 }
 ```
 
-**Note:** The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
+::note
+The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
+:::
 
 When validation is successful, the response to the request is an empty body with a status code of `200`. When validation fails, the user receives a status code of `401`.
 
@@ -123,7 +127,8 @@ When invalidation is successful, the response to the request is an empty body wi
 If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by **rules**.
 Such criteria define the level of access control and can restrict access in advance. Rule based access restriction can be applied by either user ID or service scopes.
 
-**Note:** _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
+:::note
+_Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
 ```
 {
    "serviceId": "<serviceId>",
@@ -137,6 +142,8 @@ Rule entries for users appear in the following format:
    "timestamp": "<timestamp>"
 }
 ```
+:::
+
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
 
 `DELETE /auth/access-token/revoke/tokens/users`  
@@ -152,10 +159,10 @@ The request requires the body in the following format:
 }
 ```
 * **userId**  
-refers the user the revocation is applied to.
+Specifies the user the revocation is applied to.
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time) in milliseconds. The timestamp is
+Specifies the date of revocation (the default value is the current time) in milliseconds. The timestamp is
 used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
 after that date are not affected by the user rule.
 
@@ -183,10 +190,10 @@ The request requires the body in the following format:
 Invalidation of all tokens is possible by using rules based on service scopes.
 
 * **serviceId**  
-represents the service to which the revocation should be applied (e.g. APPL IDs). 
+Specifies the service to which the revocation should be applied (e.g. APPL IDs). 
 
 * **timestamp**  
-represents the date of revocation (the default value is the current time) in milliseconds. A timestamp is
+Specifies the date of revocation (the default value is the current time) in milliseconds. A timestamp is
 used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
 after that date are not affected by the service rule.
 

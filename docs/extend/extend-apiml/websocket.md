@@ -1,5 +1,5 @@
-<!-- omit in toc -->
-# WebSocket support in API Gateway
+
+# Using WebSocket support in API Gateway
 
 The API Gateway includes a basic WebSocket proxy which enables the Gateway to access applications that use the WebSocket protocol together with a web UI and a REST API.
 
@@ -26,13 +26,11 @@ The service defines which WebSocket endpoints are exposed by using Eureka metada
 
 These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/${serviceId}/ws/v1/path` to map to `wss://serviceHost:servicePort/${serviceId}/ws/v1/path`.
 
-Where:
-
 * **`serviceId`**  
-  is the service ID of the service.
+  Specifies the service ID of the service.
   
 * **`path`**  
-  is the remaining path segment in the URL.
+  Specifies the remaining path segment in the URL.
 
 ## Architecture
 
@@ -55,7 +53,9 @@ The API Gateway also supports basic authentication via WebSocket.
 
 In addition to plain WebSocket support, API Mediation Layer also supports WebSocket subprotocols. Currently, only STOMP v1.2 and STOMP v1.1 are supported and tested. 
 
-**Note:** It is possible to update the list of currently supported WebSocket subprotocols. Update the API Gateway configuration using the environment variable `SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS` with the value of comma-separated subprotocol names. Support for additional subprotocols is not guaranteed as these subprotocols are not being tested.
+:::note
+It is possible to update the list of currently supported WebSocket subprotocols. Update the API Gateway configuration using the environment variable `SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS` with the value of comma-separated subprotocol names. Support for additional subprotocols is not guaranteed as these subprotocols are not being tested.
+:::
 
  **Example:**
 
@@ -80,7 +80,9 @@ gateway:
         maxIdleTimeout: 300000
 ```
 
-**Note:** This setting is global for the API ML Gateway.
+:::note
+This setting is global for the API ML Gateway.
+:::
 
 ## Diagnostics
 

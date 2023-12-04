@@ -1,4 +1,4 @@
-# Downloading and installing
+# Downloading and installing Zowe containers
 
 Learn how to download and install Zowe's containers.  
 
