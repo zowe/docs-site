@@ -1,4 +1,4 @@
-# Distribute the load balancer cache
+# Distributing the load balancer cache
 
 :::info**Role:** system programmer
 :::
