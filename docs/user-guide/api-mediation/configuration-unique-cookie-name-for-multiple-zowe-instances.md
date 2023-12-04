@@ -1,4 +1,7 @@
-# Setting a unique cookie name for multiple Zowe instances
+# Set a unique cookie name for multiple zowe instances
+
+:::info**Role:** system programmer
+:::
 
 By default, in the API Gateway, the cookie name is `apimlAuthenticationToken`.
 To prevent overwriting of the default cookie name in the case of multiple Zowe instances, a unique cookie name can be configured for each instance.  

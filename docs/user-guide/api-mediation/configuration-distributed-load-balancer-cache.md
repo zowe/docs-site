@@ -1,4 +1,7 @@
-# Distributing load balancer cache
+# Distribute the load balancer cache
+
+:::**Role:** system programmer
+:::
 
 You can choose to distribute the load balancer cache between instances of the API Gateway. To distribute the load balancer cache, it is necessary that the caching service is running. Gateway service instances are reuqired to have the same DN (Distinguished name) on the server certificate. This may be relevant for the HA setups.
 
