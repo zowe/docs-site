@@ -1,4 +1,5 @@
-# Enabling a client certificate to authenticate for API Gateway
+# Enabling single sign on for clients via client certificate configuration
+
 
 :::info**Roles:** system programmer, system administrator, security administrator
 :::

@@ -1,4 +1,4 @@
-# Determining the instance you are accessing
+# Retrieving a specific service within your environment 
 
 :::info**Roles:** system programmer, system administrator
 :::

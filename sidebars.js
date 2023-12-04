@@ -213,7 +213,7 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Single Sign On for Clients",
+                  label: "Enabling Single Sign On for Clients",
                   link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
                   items: [
                     "user-guide/api-mediation/configuration-client-certificates",
@@ -223,7 +223,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Single Sign On for Onboarding services",
+                  label: "Enabling Single Sign On for Extending services",
                   items: [
                     "user-guide/api-mediation/configuration-extender-jwt",
                     "user-guide/api-mediation/configuration-extender-passtickets"
@@ -231,7 +231,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Routing",
+                  label: "Specifying Routing",
                   items: [
                     {
                       type: "category",
@@ -253,7 +253,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Authorization",
+                  label: "Authorizing",
                   items: [
                     "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
                     "user-guide/api-mediation/configuration-saf-resource-checking"

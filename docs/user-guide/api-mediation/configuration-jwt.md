@@ -1,4 +1,4 @@
-# Customizing JWT authentication 
+# Enabling single sign on for clients via JWT token configuration 
 
 :::info**Role:** system programmer, system administrator, security administrator
 :::

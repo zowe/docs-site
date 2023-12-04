@@ -1,4 +1,4 @@
-# Configuring and enabling Zowe to use PassTickets as an integration method for southbound services
+# Enabling single sign on for extending services via PassTicket configuration
 
 As a system programmer, follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 

@@ -1,4 +1,4 @@
-# Customize connection limits
+# Customizing connection limits
 
 :::info**Role:** system programmer
 :::

@@ -1,4 +1,4 @@
-# Set a unique cookie name for multiple zowe instances
+# Configuring a unique cookie name for a specific API ML instance
 
 :::info**Role:** system programmer
 :::
