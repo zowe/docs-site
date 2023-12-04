@@ -50,7 +50,7 @@ RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
 
-API Gateway can be configured to check for SAF resource authorization in several ways. For details, see [SAF Resource Checking](../../user-guide/api-mediation/api-gateway-configuration.md#saf-resource-checking)
+API Gateway can be configured to check for SAF resource authorization in several ways. For details, see [SAF Resource Checking](../../user-guide/api-mediation/configuration-saf-resource-checking)
 
 ## API Endpoints
 

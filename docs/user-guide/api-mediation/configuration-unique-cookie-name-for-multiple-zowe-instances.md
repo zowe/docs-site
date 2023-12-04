@@ -14,4 +14,5 @@ Follow this procedure to configure a unique cookie name for the instances:
     **Example:**  
     If this parameter is set to `true`, and the cookieIdentifier is `1`, the name of the cookie transforms to `apimlAuthenticationToken.1`.  
     If this property is not set to `true`, the cookie name remains `apimlAuthenticationToken` by default.
+    
 3. Restart Zowe.

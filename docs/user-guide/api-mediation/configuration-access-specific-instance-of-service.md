@@ -1,9 +1,9 @@
-# Retrieving a specific service within your environment
+# Determining the instance you are accessing
 
 :::info**Roles:** system programmer, system administrator
 :::
 
-## Setting a routed instance header
+## Output a routed instance header
 
 The API Gateway can output a special header that contains the value of the instance ID of the API service that the request has been routed to. This is useful for understanding which service instance is being called.
 

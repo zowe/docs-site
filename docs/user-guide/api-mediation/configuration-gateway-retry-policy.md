@@ -1,7 +1,4 @@
-# Customize Gateway retry policy
-
-:::info**Role:** system programmer
-:::
+# Customizing Gateway retry policy
 
 Use the following procedure to change the Gateway retry policy.
 

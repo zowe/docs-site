@@ -1,4 +1,9 @@
-# Adding a custom HTTP Auth header to store Zowe JWT token
+# Customizing JWT behavior as per integration with extending services
+
+:::info**Roles:** system programmer, system administrator, security administrator
+:::
+
+## Adding a custom HTTP Auth header to store Zowe JWT token
 
 :::info**Role:** system programmer
 :::
