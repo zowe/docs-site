@@ -215,6 +215,7 @@ module.exports = {
                 "user-guide/api-mediation/api-catalog-configuration",
                 "user-guide/api-mediation/api-mediation-personal-access-token",
                 "user-guide/api-mediation/api-gateway-configuration",
+                "user-guide/api-mediation/attls.md",
                 "user-guide/api-mediation/discovery-service-configuration",
                 "user-guide/api-mediation/api-mediation-internal-configuration",
                 "extend/extend-apiml/api-mediation-passtickets",
