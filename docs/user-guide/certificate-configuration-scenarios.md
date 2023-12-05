@@ -191,6 +191,7 @@ PEM format certificate authorities can be imported and trusted.
    ```
 Your yaml file is now configured to enable Zowe to use a file-based PKCS12 keystore to import a certificate generted by another CA.
 ##  Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates
+
 Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
