@@ -25,7 +25,7 @@ If you have not enabled USS for your z/OS environment before, the SMP/E distribu
 
 To ensure that Zowe has enough memory, the recommended HEAP64 site should be large enough.
 ```
-HEAP64(512M,4M,KEEP,32M,4M,KEEP,OK,FREE)
+HEAP64(4M,4M,KEEP,1M,1M,KEEP,0K,0K,FREE)
 ```
 
 ## OMVS segment
