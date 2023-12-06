@@ -139,7 +139,7 @@ Follow these steps to authenticate with client certificates:
 The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command: 
   
 ```
-ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
+ALTUSER \<ZOWE_RUNTIME_USER (ZWESVUSR by default)\> PASSWORD(\ <NEWPASSWORD>\ )
 ```
 
 For other security systems, refer to the documentation for an equivalent command.
