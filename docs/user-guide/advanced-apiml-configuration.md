@@ -1,15 +1,11 @@
 # Advanced API Mediation Layer Configuration
 
-There are multiple options for customizing Zowe API Mediation Layer according to your specific use case. Review the various use cases presented in this article, and the roles that perform them, and follow the links to the corresponding documentation that describes how to perform your specific customization. API ML customization can be performed in the following areas:
+There are multiple options for customizing Zowe API Mediation Layer according to your specific use case. Review the various use cases presented in this section and follow the links to the corresponding documentation that describes how to perform your specific customization. API ML customization can be performed in the following areas:
 
-* [Enabling Single Sign On for Clients via Client Certificates Configuration](./api-mediation/configuration-client-certificates)
-* [Enabling Single Sign On for Clients via Personal Access Tokens Configuration](./api-mediation/configuration-personal-access-token)
-* [Enabling Single Sign On for Clients via JWT Token Configuration](./api-mediation/configuration-jwt)
-* [Enabling Single Sign On for Extending Services via JWT Token Configuration](./api-mediation/configuration-extender-jwt)
-* [Enabling Signel Sign On for Extending Services via Passtickets Configuration](./api-mediation/configuration-extender-passtickets)
-* [Customizing management of API ML load limits (single instances and HA)](./api-mediation/configuration-customizing-management-of-apiml-load-limits)
-* [Configuring a unique cookie name for a specific API ML instance](./api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances)
+* [Enabling Single Sign On for Clients](./api-mediation/configuration-single-sign-on-user)
+* [Enabling Single Sign On for Extending Services](./api-mediation/configuration-enable-single-sign-on-extenders)
+* [Customizing routing behavior](./api-mediation/configuration-routing)
+    * [Customizing management of API ML load limits](./api-mediation/configuration-customizing-management-of-apiml-load-limits)
+* [Configuring authorization of API ML resources](./api-mediation/configuration-authorization)
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui)
-* [Configuring SAF Resource Checking](./api-mediation/configuration-saf-resource-checking)
-* [Retrieving a specific service within your environment](./api-mediation/configuration-access-specific-instance-of-service)
-* [Setting a consistent service ID](./api-mediation/configuration-set-consistent-service-id)
+* [Configuring AT-TLS for API ML](./api-mediation/configuration-at-tls)
