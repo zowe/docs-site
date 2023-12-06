@@ -113,7 +113,14 @@ If the keyring or a truststore contains at least one valid certificate authority
 
 When providing credentials in any form together with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
 
-Authentication is performed in the following ways:
+Authentication against any endpoint is performed in following way: 
+
+* The client calls the service endpoint through API ML Gateway with the client certificate.
+* The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
+* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
+* The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
+
+Authentication via login endpoint is performed in following way:
 
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
