@@ -109,35 +109,51 @@ credentials. For more details, see the ZAAS Client documentation.
 
 Beginning with release 1.19 LTS, it is possible to perform authentication with client certificates. This feature is functional and tested, but automated testing on various security systems is not yet complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
 
-If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use the client certificates issued by this CA to authenticate to the API ML. This feature is not enabled by default and needs to be configured.
+If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use the client certificates issued by this CA to authenticate to API ML. This feature is not enabled by default and needs to be configured.
 
-When providing credentials in any form together with client certificate on the same login request, the credentials take precedence and client certificate is ignored.
+When providing credentials in any form together with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
 
 Authentication is performed in the following ways:
 
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
-* The public part of the provided client certificate is checked against SAF, and SAF subsequently returns a user ID that owns this certificate. ZSS  provides this API for the Mediation Layer.
+* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
-**Prerequisites:**
+### Procedure to authenticate with client certificates
 
-* Alter the Zowe runtime user and set protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command: 
+Follow these steps to authenticate with client certificates:
+
+1. Specify the Zowe runtime user and set your protection by password. 
+<!-- We should include where this runtime user and passowrd are specified --> 
+The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command: 
   
-      ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
-  
-  For other security systems, please refer to the documentation for an equivalent command.
-* Ensure that the Zowe runtime user is allowed to log in to z/OSMF (For example user is member of the default IZUUSER group)
-* Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata to allow being used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
-* Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
-* Import the external CA to the truststore or keyring of the API Mediation Layer.
-* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
+```
+ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
+```
+For other security systems, refer to the documentation for an equivalent command.
+2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
+
+:::note
+Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata so these metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
+:::
+
+3. Import the client certificates to SAF, or add them to a user profile.  
+**Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`).  
+For more information, see your security system documentation.
+4. Import the external CA to the truststore or keyring of the API Mediation Layer.
+5. [Configure the Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
+
+:::note**Notes:**
 * To upgrade from Zowe 1.18 or lower, see the [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
-* PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](api-mediation-passtickets.md).
+* PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](api-mediation-passtickets.md).
 * The Zowe runtime user has to be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration.md/#configure-component-zss).
+:::
+
+<!--We should add a step to verify that the procedure to authenticate with client certificates was successful. -->
 
 ### Authentication with JWT Token
 
@@ -167,56 +183,57 @@ authentication:
 
 * **authentication.scheme**  
 The value of this parameter specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers are set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service are also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
-  The following schemes are supported by the API Gateway:
+The following schemes are supported by the API Gateway:
 
-    * **bypass**  
-    This value specifies that the token is passed unchanged to service.
+  * **bypass**  
+  This value specifies that the token is passed unchanged to service.
 
-      **Note:** This is the default scheme when no authentication parameters are specified.
+  **Note:** This is the default scheme when no authentication parameters are specified.
 
-    * **zoweJwt**  
-      * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
-      * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
-      * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
-    * **httpBasicPassTicket**  
+  * **zoweJwt**  
+    * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
+    * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
+    * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
+    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
+
+  * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-      It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
+    It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
 
-        * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
-        * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
-        * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-      The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
+    * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
+    * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
+    * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
+    The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
       
-      For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
+    For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
-    * **zosmf**  
-This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-      This scheme should only be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
+  * **zosmf**  
+    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+    This scheme should only be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
 
-        * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
-        * When a client certificate is provided, the certificate translates into a z/OSMF token, and also extracts the LTPA for the service to use.
+    * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
+    * When a client certificate is provided, the certificate translates into a z/OSMF token, and also extracts the LTPA for the service to use.
 
-      For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+    For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
-    * **safIdt**  
-This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+  * **safIdt**  
+    This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
 
-      For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
+    For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
 
-    * **x509**  
- This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
+  * **x509**  
+    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
 
 * **authentication.headers**  
-When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
+    When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
 
-    * `X-Certificate-Public`  
+  * `X-Certificate-Public`  
 The public part of client certificate base64 encoded
 
-    * `X-Certificate-DistinguishedName`  
+  * `X-Certificate-DistinguishedName`  
 The distinguished name from client certificate
 
-    * `X-Certificate-CommonName`  
+  * `X-Certificate-CommonName`  
 The common name from the client certificate
 
 * **authentication.applid**  
