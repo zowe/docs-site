@@ -135,11 +135,13 @@ Follow these steps to authenticate with client certificates:
 
 1. Specify the Zowe runtime user and set your protection by password. 
 <!-- We should include where this runtime user and passowrd are specified --> 
+
 The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command: 
   
 ```
 ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
 ```
+
 For other security systems, refer to the documentation for an equivalent command.
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
 
