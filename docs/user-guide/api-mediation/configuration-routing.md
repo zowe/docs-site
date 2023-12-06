@@ -1,4 +1,4 @@
-## Customize routing behavior 
+# Customize routing behavior 
 
 The Zowe API Mediation Layer offers a range of configurations for enhanced functionality and security. Customizing CORS enables the Gateway to handle Cross-Origin Resource Sharing requests, while settings for encoded slashes and unique cookie names cater to specific operational needs of onboarding applications and multiple Zowe instances. The Gateway retry policy, customizable through zowe.yaml, optimizes request handling, especially useful in high availability scenarios.
 

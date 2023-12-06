@@ -224,6 +224,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Enabling Single Sign On for Extending services",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
                   items: [
                     "user-guide/api-mediation/configuration-extender-jwt",
                     "user-guide/api-mediation/configuration-extender-passtickets"
@@ -232,6 +233,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Specifying Routing",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
                   items: [
                     {
                       type: "category",
@@ -254,6 +256,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Authorizing",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
                   items: [
                     "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
                     "user-guide/api-mediation/configuration-saf-resource-checking"
