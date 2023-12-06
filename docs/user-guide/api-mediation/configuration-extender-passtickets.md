@@ -1,25 +1,30 @@
-# Configuring Zowe to use PassTickets
+# Enabling single sign on for extending services via PassTicket configuration
+
+As a system programmer, follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
+
+:::info**Roles:** system programmer, security administrator
+:::
+
+## Configuring Zowe to use PassTickets
 
 As system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer.
-For more information, see [Authentication with PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
 
-## Overview
-API clients can use either a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
-The Zowe JWT token is available through the API Gateway [authentication endpoint](../extend-apiml/authentication-for-apiml-services).
+### Overview of how PassTickets are used
+API clients can use various supported methods such as Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
 
-When an API client provides a valid Zowe JWT token or client certificate to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
+When an API client provides a valid authentication method to the API ML, the API Gateway then generates a valid PassTicket for any API service that supports PassTickets.
 The API Gateway then uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 
-- [Outline for enabling PassTicket support](#outline-for-enabling-passticket-support)
+- [Enabling PassTicket support](#enabling-passticket-support)
 - [Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service](#security-configuration-that-allows-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
 
     - [ACF2](#acf2)
     - [Top Secret](#top-secret)
     - [RACF](#racf)
 
-## Outline for enabling PassTicket support
+### Enabling PassTicket support
 
 The following steps outline the procedure for enabling PassTicket Support:
 
@@ -29,7 +34,7 @@ The following steps outline the procedure for enabling PassTicket Support:
 3. Enable the Zowe started task user ID to generate PassTickets for the API service.
 4. Enable PassTicket support in the API Gateway for your API service.
 
-## Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
+### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
 
 Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
@@ -41,7 +46,7 @@ Use the following variables to generate PassTickets for the API service to enabl
 
 Replace the variables in the following examples with actual values.
 
-### ACF2
+#### ACF2
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 The following code is an example of security commands that need to be issued.
@@ -56,7 +61,7 @@ F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
 
-### Top Secret
+#### Top Secret
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of that API service.
 
@@ -67,7 +72,7 @@ TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
 
-### RACF
+#### RACF
 
 To enable PassTicket creation for API service users, define the profile `IRRPTAUTH.<applid>.*` in the `PTKTDATA` class and set the universal access authority to `NONE`.
 
@@ -80,3 +85,17 @@ RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
 PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
+
+# Adding custom HTTP Auth headers to store user ID and PassTicket
+
+If a southbound service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
+The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
+
+Use the following procedure to add the custom HTTP headers.
+
+1. Open the file `zowe.yaml`.
+2. Find or add the property `components.gateway.apiml.security.auth.passticket.customAuthHeader` and set the value which represents the header's name.
+3. Find or add the property `components.gateway.apiml.security.auth.passticket.customUserHeader` and set the value which represents the header's name.
+4. Restart Zowe.
+
+Requests through the Gateway towards the southbound service now contain the custom HTTP headers with the PassTicket and the user ID.

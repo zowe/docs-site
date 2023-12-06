@@ -84,7 +84,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 
   **Notes:** 
   
-   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/api-gateway-configuration.md#enable-jwt-token-refresh-endpoint).
+   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt#enabling-a-jwt-token-refresh-endpoint).
    - The endpoint is protected by a client certificate.
 
   The refresh request requires the token in one of the following formats:
@@ -133,9 +133,9 @@ Authentication is performed in the following ways:
 * Ensure that you have an external Certificate Authority and signed client certificates, or generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata to allow being used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
 * Import the client certificates to SAF, or add them to a user profile. (Examples: `RACDCERT ADD` or `RACDCERT GENCERT`). For more information, see your security system documentation.
 * Import the external CA to the truststore or keyring of the API Mediation Layer.
-* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration.md#gateway-client-certificate-authentication).
+* [Configure Gateway for client certificate authentication](../../user-guide/api-mediation/configuration-client-certificates).
 * To upgrade from Zowe 1.18 or lower, see the [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
-* PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](api-mediation-passtickets.md).
+* PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](../../user-guide/api-mediation/configuration-extender-passtickets).
 * The Zowe runtime user has to be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system.md#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration.md/#configure-component-zss).
 
@@ -178,7 +178,7 @@ The value of this parameter specifies a service authentication scheme. Any valid
       * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
       * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
       * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
+      The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Customizing the header](../../user-guide/api-mediation/configuration-extender-jwt#adding-a-custom-http-auth-header-to-store-zowe-jwt-token) for more information about the custom HTTP request header.
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
       It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
@@ -186,7 +186,7 @@ The value of this parameter specifies a service authentication scheme. Any valid
         * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
         * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
         * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-      The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
+      The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Customize Auth header](../../user-guide/api-mediation/configuration-extender-passtickets#adding-custom-http-auth-headers-to-store-user-id-and-passticket) for more information about the custom HTTP request headers.
       
       For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 

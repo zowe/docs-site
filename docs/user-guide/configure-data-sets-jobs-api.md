@@ -1,4 +1,4 @@
-# Configuring the Zowe APIs
+# Configuring APIs for Jobs and Datasets (Deprecated)
 
 Review the security considerations for Zowe APIs and learn how to prevent the Denial of Service (DoS) attacks.
 

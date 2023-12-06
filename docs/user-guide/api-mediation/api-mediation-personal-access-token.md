@@ -1,4 +1,7 @@
-# Using a Personal Access Token (PAT)
+# Generating, validating, and invalidating a Personal Access Token
+
+:::info**Roles:** system programmer, security administrator
+:::
 
 You can use API Mediation Layer to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
@@ -21,6 +24,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
+:::note
+An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::
 :::note
 An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
 :::
@@ -70,7 +76,7 @@ The request requires the body in the following format:
 }
 ```
 
-::note
+:::note
 The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
 :::
 
@@ -129,6 +135,8 @@ Such criteria define the level of access control and can restrict access in adva
 
 :::note
 _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
+:::note
+_Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
 ```
 {
    "serviceId": "<serviceId>",
@@ -142,6 +150,8 @@ Rule entries for users appear in the following format:
    "timestamp": "<timestamp>"
 }
 ```
+:::
+
 :::
 
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
@@ -163,8 +173,7 @@ Specifies the user the revocation is applied to.
 
 * **timestamp**  
 Specifies the date of revocation (the default value is the current time) in milliseconds. The timestamp is
-used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
-after that date are not affected by the user rule.
+used to specify that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created after that date are not affected by the user rule.
 
 By calling this endpoint, the user rule is stored in the cache by the Caching Service under the `invalidUsers` key.
 
