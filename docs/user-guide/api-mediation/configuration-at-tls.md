@@ -1,5 +1,5 @@
 # AT-TLS Configuration for API Mediation Layer
-:::info**Role:** 
+ 
 The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). 
 
 :::info**Roles:** security administrator
