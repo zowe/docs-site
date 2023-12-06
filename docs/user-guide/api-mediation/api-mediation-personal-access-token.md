@@ -3,10 +3,10 @@
 :::info**Roles:** system programmer, security administrator
 :::
 
-You can use the API ML to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT also does not require storing mainframe credentials as part of the automation configuration on a server during  application development on z/OS.
+You can use API Mediation Layer to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
 
-To enable this functionality on your Zowe instance, see the [configuration guide](api-gateway-configuration#personal-access-token).
+To enable this functionality on your Zowe instance, see [Advanced Gateway features configuration](api-gateway-configuration#personal-access-token).
 
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
@@ -24,6 +24,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
+:::note
+An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::
 :::note
 An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
 :::
@@ -52,7 +55,7 @@ The request requires the body in the following format:
 Specifies the expiration time of the token. The maximum threshold is 90 days.  
 
 * **scopes**  
- Limits the access on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
+ Specifies the access limits on a service level. This parameter introduces a higher level of security in some aspects. Users are required to provide a scope. If no service is specified, it is not possible to authenticate using the token.
 
 When creation is successful, the response to the request is a body containing the PAT with a status code of `200`. When creation fails, the user receives a status code of `401`. 
 
@@ -132,6 +135,8 @@ Such criteria define the level of access control and can restrict access in adva
 
 :::note
 _Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
+:::note
+_Rules_ are entries used to revoke the tokens either by users or by services. Such rule entries for services appear in the following format:
 ```
 {
    "serviceId": "<serviceId>",
@@ -145,6 +150,8 @@ Rule entries for users appear in the following format:
    "timestamp": "<timestamp>"
 }
 ```
+:::
+
 :::
 
 The Security Administrator with specific access to SAF resources can invalidate all tokens bound to a specific user by calling the following REST API endpoint through the Gateway:
@@ -162,7 +169,7 @@ The request requires the body in the following format:
 }
 ```
 * **userId**  
-refers the user the revocation is applied to.
+Specifies the user the revocation is applied to.
 
 * **timestamp**  
 Specifies the date of revocation (the default value is the current time) in milliseconds. The timestamp is
@@ -192,11 +199,12 @@ The request requires the body in the following format:
 Invalidation of all tokens is possible by using rules based on service scopes.
 
 * **serviceId**  
-Specofoes the service to which the revocation should be applied (e.g. APPL IDs). 
+Specifies the service to which the revocation should be applied (e.g. APPL IDs). 
 
 * **timestamp**  
 Specifies the date of revocation (the default value is the current time) in milliseconds. A timestamp is
-used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created after that date are not affected by the service rule.
+used to state that tokens created before the date specified in the timestamp are invalidated. As such, any subsequent tokens created
+after that date are not affected by the service rule.
 
 Calling this endpoint stores the service rule in the cache by the Caching Service under the `invalidScopes` key.
 
