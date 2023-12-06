@@ -418,7 +418,7 @@ module.exports = {
         },
   ],
 },
-],             
+{             
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
