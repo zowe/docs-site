@@ -156,8 +156,6 @@ For more information, see your security system documentation.
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration.md/#configure-component-zss).
 :::
 
-<!--We should add a step to verify that the procedure to authenticate with client certificates was successful. -->
-
 ### Authentication with JWT Token
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
