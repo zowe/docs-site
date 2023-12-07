@@ -155,6 +155,12 @@ For more information, see your security system documentation.
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss).
 :::
 
+#### Validate the client certificate functionality
+
+To validate that the client certificate functionality works properly, the simplest option is to try calling login endpoint with the certificate that was setup using the previous steps. The following example is using curl which is generally available on linux based systems. 
+
+curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
+
 ### Authentication with JWT Token
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
