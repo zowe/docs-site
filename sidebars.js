@@ -225,7 +225,6 @@ module.exports = {
                   items: [
                     "user-guide/api-mediation/configuration-client-certificates",
                     "user-guide/api-mediation/configuration-personal-access-token",
-                    "user-guide/api-mediation/attls",
                     "user-guide/api-mediation/configuration-jwt"
                   ],
                 },
