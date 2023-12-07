@@ -113,17 +113,17 @@ If the keyring or a truststore contains at least one valid certificate authority
 
 When providing credentials in any form together with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
 
-Authentication against any endpoint is performed in following way: 
+Authentication against any endpoint is performed in the following way: 
 
 * The client calls the service endpoint through API ML Gateway with the client certificate.
-* The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
+* The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
 * The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
 * The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
 
-Authentication via the login endpoint is performed in following way:
+Authentication via the login endpoint is performed in the following way:
 
 * The client calls the API ML Gateway login endpoint with the client certificate.
-* The client certificate and private key are checked as a valid TLS client certificate against the Gateway's trusted CAs.
+* The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
 * The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
@@ -134,7 +134,7 @@ Authentication via the login endpoint is performed in following way:
 Follow these steps to authenticate with client certificates:
 
 1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command:  
-`ALTUSER \<ZOWE_RUNTIME_USER (ZWESVUSR by default)\> PASSWORD(\ <NEWPASSWORD>\ )`  
+`ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
 For other security systems, refer to the documentation for an equivalent command.
 
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
