@@ -25,8 +25,6 @@ Follow the procedures in the following sections to customize Gateway parameters 
 - [SAF Resource Checking](#saf-resource-checking)
 - [AT-TLS](#at-tls)
   - [Zowe configuration](#zowe-configuration)
-  - [Security considerations](#security-considerations)
-  - [High Availability](#high-availability)
 - [Unique cookie name for multiple zowe instances](#unique-cookie-name-for-multiple-zowe-instances)
 
 ## Runtime configuration
@@ -429,8 +427,6 @@ components.*.certificate.keystore.alias: <certificate alias / label from AT-TLS 
 ```
 
 Finally, if there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
-
-<!-- TODO verify requirement for common-java-lib component -->
 
 **Note:** AT-TLS is not yet supported in the API Cloud Gateway Mediation Layer component.
 

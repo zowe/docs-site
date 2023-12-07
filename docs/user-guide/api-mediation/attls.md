@@ -20,12 +20,6 @@ In general terms, the outbound AT-TLS rules (i.e. to make a transparent https ca
 ## Inbound and Outbout AT-TLS rules
 
 This section describes the suggested AT-TLS settings. It is meant as a guideline and helps showcase important aspects.
-The following diagram shows general connection recommendations between API ML components and services.
-
-<!-- TODO insert graph -->
-
-TODO:
-Add text about the default http behaviour for registered services to DS.
 
 ### Inbound rules
 
@@ -145,4 +139,4 @@ TTLSRule ApimlServiceClientRule
 AT-TLS settings for a Zowe API Mediation Layer installation configured in High Availability mode do not differ extensively, but a few extra connections appear:
 
 - communication between the lpars (Gateway to services in different LPARS need to be taken into account, in particular for the `RemoteAddr` settings)
-- communication between the replica instances of the Discovery Service
+- communication between the replica instances of the Discovery Service.
