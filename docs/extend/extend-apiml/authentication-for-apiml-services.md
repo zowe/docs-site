@@ -107,7 +107,7 @@ credentials. For more details, see the ZAAS Client documentation.
 
 ### Authentication with Client certificate
 
-Beginning with release 1.19 LTS, it is possible to perform authentication with client certificates. This feature is functional and tested, but automated testing on various security systems is not yet complete. As such, the feature is provided as a beta release for early preview. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. Client Certificate authentication will move out of Beta once test automation is fully implemented across different security systems.
+It is possible to perform authentication with client certificates. There is a limitation with respect to the ACF2 systems. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. 
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use the client certificates issued by this CA to authenticate to API ML. This feature is not enabled by default and needs to be configured.
 
@@ -150,7 +150,6 @@ For more information, see your security system documentation.
 5. [Configure the Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration/#gateway-client-certificate-authentication).
 
 :::note**Notes:**
-* To upgrade from Zowe 1.18 or lower, see the [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
 * PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](#authentication-with-passtickets).
 * The Zowe runtime user has to be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss).
