@@ -1,8 +1,8 @@
-# AT-TLS Configuration for API Mediation Layer
+# Configuring AT-TLS for API Mediation Layer
  
 The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS). 
 
-:::info**Roles:** security administrator
+:::info**Role:** security administrator
 :::
 
 Starting with Zowe version 1.24, it is possible to leverage AT-TLS within the API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate. To enable the AT-TLS profile and disable the TLS application in API ML, update `zowe.yaml` with the following values under the respective component in the `components` section:

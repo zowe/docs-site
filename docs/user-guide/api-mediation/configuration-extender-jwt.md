@@ -1,6 +1,6 @@
 # Enabling single sign on for extending services via JWT token configuration 
 
-:::info**Roles:** system programmer
+:::info**Role:** system programmer
 :::
 
 ## Adding a custom HTTP Auth header to store Zowe JWT token
