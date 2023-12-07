@@ -157,9 +157,12 @@ For more information, see your security system documentation.
 
 #### Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, the simplest option is to try calling login endpoint with the certificate that was setup using the previous steps. The following example is using curl which is generally available on linux based systems. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was setup using the steps in the previous section, _Procedure to authenticate with client certificates_. The following example uses curl, which is generally available on Linux based systems. 
 
+**Example:**
+```
 curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
+```
 
 ### Authentication with JWT Token
 
