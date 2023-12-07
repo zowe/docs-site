@@ -2,7 +2,7 @@
 
 Enabling Single Sign On (SSO) in Zowe involves configuring JWT tokens and PassTickets for secure authentication. The JWT token configuration requires setting up a custom HTTP header to store the token, thereby enhancing secure communication with southbound services. 
 
-FOr more information, see [Enabling single sign on for extending services via JWT token configuration](./configuration-extender-jwt).
+For more information, see [Enabling single sign on for extending services via JWT token configuration](./configuration-extender-jwt).
 
 PassTicket configuration, alternatively, allows services that do not natively support JWT tokens or client certificates to authenticate via the API Gateway. This authentication process requires the activation of PassTicket support, recording the APPLID, and configuring the Zowe started task user ID. Additionally, custom HTTP headers can be set up for PassTickets and user IDs, ensuring secure and streamlined access within the Zowe ecosystem.
 
