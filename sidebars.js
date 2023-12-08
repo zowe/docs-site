@@ -220,7 +220,7 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Enabling Single Sign On for Clients",
+                  label: "Enabling single sign on for clients",
                   link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
                   items: [
                     "user-guide/api-mediation/configuration-client-certificates",
@@ -230,7 +230,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Enabling Single Sign On for Extending services",
+                  label: "Enabling single sign on for extending services",
                   link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
                   items: [
                     "user-guide/api-mediation/configuration-extender-jwt",
@@ -239,12 +239,12 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Specifying Routing",
+                  label: "Customizing routing behavior",
                   link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
                   items: [
                     {
                       type: "category",
-                      label: "Customizing Management of API ML Load limits",
+                      label: "Customizing management of API ML load limits",
                       link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
                       items: [
                         "user-guide/api-mediation/configuration-connection-limits",
@@ -262,7 +262,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Authorizing",
+                  label: "Configuring authorization for API ML",
                   link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
                   items: [
                     "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
