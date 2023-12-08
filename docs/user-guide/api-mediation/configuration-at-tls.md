@@ -7,11 +7,14 @@ Transparent Transport Layer Security (AT-TLS).
 In this article you will find a description of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS and recommendations to keep it secure.
 
 - [Zowe configuration](#zowe-configuration)
+  - [Other Zowe components](#other-zowe-components)
 - [Security considerations](#security-considerations)
-- [Inbound and Outbout AT-TLS rules](#inbound-and-outbout-at-tls-rules)
+- [AT-TLS rules](#at-tls-rules)
   - [Inbound rules](#inbound-rules)
   - [Outbound rules](#outbound-rules)
+  - [Ciphers](#ciphers)
 - [High Availability](#high-availability)
+- [Troubleshooting](#troubleshooting)
 
 :::info**Roles:** security administrator
 :::
@@ -22,6 +25,7 @@ Starting with Zowe version 2.13 it is possible to leverage AT-TLS within the API
 
 :::note
 Support for AT-TLS was introduced back in Zowe 1.24, however there was an issue that prevented startup in some versions. It is recommended to upgrade to 2.13 or newer for full support.
+Usage of AT-TLS in previous versions is not supported.
 :::
 
 To enable the AT-TLS profile and disable the TLS application in API ML, update `zowe.yaml` with following values under the respective component in the `zowe.components` section.
@@ -43,11 +47,17 @@ components.*.certificate.keystore.password: password
 components.*.certificate.keystore.alias: <certificate alias / label from AT-TLS rule>
 ```
 
-Finally, if there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
+If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
 
 :::note
 AT-TLS is not yet supported in the API Cloud Gateway Mediation Layer component.
 :::
+
+### Other Zowe components
+
+Given the central characteristic of the API Mediation Layer Gateway, other components that need to interact with it need to be configured
+
+An example of this is the Zowe ZLUX App Server.
 
 ## Security considerations
 
@@ -57,7 +67,7 @@ In general terms, the outbound AT-TLS rules (i.e. to make a transparent https ca
 
 **Note:** The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
-## Inbound and Outbout AT-TLS rules
+## AT-TLS rules
 
 This section describes the suggested AT-TLS settings. It is meant as a guideline and helps showcase important aspects.
 
@@ -98,6 +108,16 @@ TTLSConnectionAction ApimlServerConnectionAction
   TTLSConnectionAdvancedParmsRef ApimlConnectionAdvParms
 }
 ```
+
+The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file, it should cover the following components:
+
+- Gateway: default port 7554
+- Discovery: default port 7553
+- Caching Service: 7555
+- API Catalog: default port 7552
+- Metrics Service: default port 7551
+
+Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions]() to configure Keyrings for your Zowe instace.
 
 Note the setting `HandshakeRole` as this is meant for the core services which authenticate through certificates with each other and will allow the API Gateway to receive and accept X.509 client certificates from API Clients.
 
@@ -172,12 +192,63 @@ TTLSRule ApimlServiceClientRule
 - The outbound connection from the Gateway to the Discovery Service must not be configured with sending the server certificate.
 - Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication.
 
+### Ciphers
+
+:::note
+This list of ciphers is provided as an example only, it's not meant to be copied.
+:::
+
+The list of supported ciphers should be constructed according to the TLS supported versions.
+Make sure the list has matches with non-AT-TLS-aware clients.
+
+```pagent
+TTLSCipherParms CipherParms
+{
+  V2CipherSuites TLS_RC4_128_WITH_MD5
+  V2CipherSuites TLS_RC4_128_EXPORT40_WITH_MD5
+  V2CipherSuites TLS_RC2_CBC_128_CBC_WITH_MD5
+  V2CipherSuites TLS_RC2_CBC_128_CBC_EXPORT40_WITH_MD5
+  V2CipherSuites TLS_RC2_CBC_128_CBC_EXPORT40_WITH_MD5
+  V2CipherSuites TLS_DES_192_EDE3_CBC_WITH_MD5
+  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites TLS_AES_128_GCM_SHA256
+  V3CipherSuites TLS_AES_256_GCM_SHA384
+  V3CipherSuites TLS_CHACHA20_POLY1305_SHA256
+}
+```
+
 ## High Availability
 
 AT-TLS settings for a Zowe API Mediation Layer installation configured in High Availability mode do not differ extensively. Changes need to be made to the previously described rules to allow for cross-lpar communication:
 
-Update `RemoteAddr` setting in the rules to allow for the following connections:
+Make sure the `RemoteAddr` setting in the rules accounts for the following connections:
 
 - Discovery Service to Discovery Service, this is the replica request.
 - Gateway Service to southbound services running in other LPAR.
 - Southbound services to Discovery Service, during onboarding.
+
+## Troubleshooting
+
+This section describes some common issues and how to resolve them.
+
+- You see the message "This combination of port requires SSL" <!-- verify correct message -->:
+
+  Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
+
+  Solution: review settings in the API Gateway, make sure the changes described [here](#zowe-configuration) are applied.
+
+- AT-TLS rules not applied
+
+  It could be a variation of the previous one, if the application is responding in http. It means the application is properly configured to support http-only calls but AT-TLS is not in place.
+
+  Solution: Make sure the rules are active and that the filters on port range and job names are properly set.
+
+- Non matching ciphers
+
+  This could happen if the [list of ciphers](#ciphers) does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
+
+  Solution: review the supported TLS versions and ciphers used in both client and server.
