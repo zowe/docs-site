@@ -55,15 +55,15 @@ AT-TLS is not yet supported in the API Cloud Gateway Mediation Layer component.
 
 ### Other Zowe components
 
-Given the central characteristic of the API Mediation Layer Gateway, other components that need to interact with it need to be configured
-
-An example of this is the Zowe ZLUX App Server.
+Given the central characteristic of the API Mediation Layer Gateway, other components that need to interact with it need to be configured to connect to API ML. Follow [these instructions](#ciphers) to configure the ciphers.
 
 ## Security considerations
 
 Configuring AT-TLS for the Zowe API Mediation Layer needs careful consideration regarding the security settings, especially around the Client Certificate authentication feature in the Zowe API Mediation Layer components as well as for the Onboarded services that support the x.509 client certificates authentication scheme.
 
 In general terms, the outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication, such as the case of the API Gateway authenticating with the Discovery Service.
+
+Since the use of client certificates cannot be customized for each request on AT-TLS side, it is recommended that certificates remain disabled in the AT-TLS configuration if the southbound service needs to support both modes. In this case the Gateway itself will handle the switch.
 
 **Note:** The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
