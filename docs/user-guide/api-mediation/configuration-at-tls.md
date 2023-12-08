@@ -50,26 +50,24 @@ components.*.certificate.keystore.alias: <certificate alias / label from AT-TLS 
 
 3. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
 
-:::note
-Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
-:::
+:::note**Notes**
+* Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
 
-:::note
-Given that the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration. 
+* Given that the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration. 
 :::
 
 :::caution**Important security consideration**
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-In general terms, the outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication, such as the case of the API Gateway authenticating with the Discovery Service.
+In general terms, the outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
 
 ## AT-TLS rules
 
-This section describes the suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules. 
+This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules. 
 
 ### Inbound rules
 
@@ -117,13 +115,13 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
-Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions]() to configure Keyrings for your Zowe instace.
+Replace `ApimlKeyring` with the keyring configured for your installation. Follow [these instructions]() to configure keyrings for your Zowe instance.
 
-Note the setting `HandshakeRole` as this is meant for the core services which authenticate through certificates with each other and will allow the API Gateway to receive and accept X.509 client certificates from API Clients.
+Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
 ### Outbound rules
 
-- For z/OSMF
+#### For z/OSMF
 
 ```pagent
 TTLSRule ApimlZosmfClientRule
@@ -153,9 +151,11 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 }
 ```
 
-Note `Jobname` is defined explicitly for the API Gateway, this is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as Gateway identifier.
+:::note
+`Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
+:::
 
-- For communication between API Gateway and other core services.
+#### For communication between API Gateway and other core services
 
 ```pagent
 TTLSRule ApimlClientRule
@@ -172,7 +172,7 @@ TTLSRule ApimlClientRule
 }
 ```
 
-- For communication between API Gateway and southbound services.
+#### For communication between API Gateway and southbound services
 
 ```pagent
 TTLSRule ApimlServiceClientRule
@@ -195,11 +195,11 @@ TTLSRule ApimlServiceClientRule
 ### Ciphers
 
 :::note
-This list of ciphers is provided as an example only, it's not meant to be copied.
+This list of ciphers is provided as an example only, and should be customized according to your specific configuration.
 :::
 
 The list of supported ciphers should be constructed according to the TLS supported versions.
-Make sure the list has matches with non-AT-TLS-aware clients.
+Ensure that the cipher list has matches with non-AT-TLS-aware clients.
 
 ```pagent
 TTLSCipherParms CipherParms
@@ -221,34 +221,37 @@ TTLSCipherParms CipherParms
 }
 ```
 
-## High Availability
+## Using AT-TLS for API ML in High Availability
 
 AT-TLS settings for a Zowe API Mediation Layer installation configured in High Availability mode do not differ extensively. Changes need to be made to the previously described rules to allow for cross-lpar communication:
 
-Make sure the `RemoteAddr` setting in the rules accounts for the following connections:
+Ensure that the `RemoteAddr` setting in the rules accounts for the following connections:
 
-- Discovery Service to Discovery Service, this is the replica request.
-- Gateway Service to southbound services running in other LPAR.
-- Southbound services to Discovery Service, during onboarding.
+- Discovery Service to Discovery Service. This is the replica request.
+- Gateway Service to southbound services running in another LPAR.
+- Southbound services to Discovery Service. This applies during onboarding.
 
 ## Troubleshooting
 
-This section describes some common issues and how to resolve them.
+This section describes some common issues when using AT-TLS with API ML and how to resolve these issues.
 
-- You see the message "This combination of port requires SSL" <!-- verify correct message -->:
+### The message `This combination of port requires SSL` is thrown <!-- verify correct message -->:
 
-  Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
+Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
 
-  Solution: review settings in the API Gateway, make sure the changes described [here](#zowe-configuration) are applied.
+**Solution:**  
+Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
 
-- AT-TLS rules not applied
+### AT-TLS rules are not applied
 
-  It could be a variation of the previous one, if the application is responding in http. It means the application is properly configured to support http-only calls but AT-TLS is not in place.
+Ff the application is responding in http, the application may not be properly configured to support http-only calls.  AT-TLS is not correctly configured.
 
-  Solution: Make sure the rules are active and that the filters on port range and job names are properly set.
+**Solution:**  
+Ensure the rules are active and that the filters on port range and job names are properly set.
 
-- Non matching ciphers
+### Non matching ciphers
 
-  This could happen if the [list of ciphers](#ciphers) does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
+An error can occur if the [list of ciphers](#ciphers) does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
 
-  Solution: review the supported TLS versions and ciphers used in both client and server.
+**Solution:**  
+Review the supported TLS versions and ciphers used in both the client and the server.
