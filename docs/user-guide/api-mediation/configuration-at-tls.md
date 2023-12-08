@@ -9,15 +9,13 @@ Review this article for descriptions of the configuration parameters required to
 :::info**Roles:** security administrator
 :::
 
-- [Zowe configuration](#zowe-configuration)
-  - [Other Zowe components](#other-zowe-components)
-- [Security considerations](#security-considerations)
+- [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
 - [AT-TLS rules](#at-tls-rules)
   - [Inbound rules](#inbound-rules)
   - [Outbound rules](#outbound-rules)
   - [Ciphers](#ciphers)
-- [High Availability](#high-availability)
-- [Troubleshooting](#troubleshooting)
+- [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
+- [AT-TLS Troubleshooting](#at-tls-troubleshooting)
 
 Starting with Zowe version 2.13, it is possible to leverage AT-TLS within API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate.
 
@@ -60,7 +58,7 @@ components.*.certificate.keystore.alias: <certificate alias / label from AT-TLS 
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-In general terms, the outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
+In general terms, outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
@@ -230,11 +228,11 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 - Gateway Service to southbound services running in another LPAR.
 - Southbound services to Discovery Service. This applies during onboarding.
 
-## Troubleshooting
+## AT-TLS Troubleshooting
 
 This section describes some common issues when using AT-TLS with API ML and how to resolve these issues.
 
-### The message `This combination of port requires SSL` is thrown <!-- verify correct message -->:
+### The message `This combination of port requires SSL` is thrown <!-- verify correct message -->
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
 
