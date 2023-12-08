@@ -70,12 +70,6 @@
 </ul>
 </li>
 <li>
-<p><code>--only-work-environment</code> <em>(boolean)</em></p>
-<ul>
-<li>If specified, only elements from the Endevor work environment will be synchronized.</li>
-</ul>
-</li>
-<li>
 <p><code>--read-only</code> <em>(boolean)</em></p>
 <ul>
 <li>If specified, it is necessary to use the option --endevor-stage-number. The synchronized elements will be read-only.</li>
@@ -88,9 +82,25 @@
 </ul>
 </li>
 <li>
-<p><code>--type-filter</code> <em>(string)</em></p>
+<p><code>--type-filters</code> <em>(array)</em></p>
 <ul>
-<li>Type filter</li>
+<li>Type filters that your mapping will be using. There can be multiple separated by a space. eg --type-filters &quot;COBOL&quot; &quot;COPY&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>--name-filters</code> <em>(array)</em></p>
+<ul>
+<li>Name filters that your mapping will be using. There can be multiple separated by a space. eg --name-filters &quot;ELE*&quot; &quot;CO*&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>--repository-check</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>If set to allowNonEmpty, user can proceed with initialization even if the repository is not empty.</p>
+<p>Default value: REQUIRE_EMPTY<br>
+Allowed values: REQUIRE_EMPTY, ALLOW_NON_EMPTY</p>
+</li>
 </ul>
 </li>
 <li>

@@ -25,7 +25,10 @@
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID.</li>
+<li>
+<p>Specifies the target Db2 subsystem or the data sharing group.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -62,7 +65,10 @@ TRIGGER &lt;schema.name&gt; &lt;schema.name&gt;<br>
 SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt;<br>
 FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;<br>
 PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
-<p>Note: &lt;schema&gt; must be 8 characters or less. &lt;name&gt; must be 18 characters or less. The SEQUENCE &lt;name&gt; must be 8 characters or less.</p>
+<p>Note:<br>
+- &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters.<br>
+- &lt;schema&gt; must be between 1 and 128 characters.<br>
+- &lt;version&gt; must be between 1 and 64 characters.</p>
 <p>A mask specification can include the following wildcard characters:</p>
 <p>% (percent sign) indicates that zero or more characters can occupy that position. Other non-wildcard characters must match.</p>
 <p>- (hyphen) indicates that any character can occupy that position, but a character must exist at that position.</p>
