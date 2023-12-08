@@ -18,7 +18,7 @@ Review this article for descriptions of the configuration parameters required to
 
 Starting with Zowe version 2.13, it is possible to leverage AT-TLS within API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate.
 
-## AT-TLS configuration for Zowe 
+## AT-TLS configuration for Zowe
 
 :::note
 Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
@@ -112,6 +112,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
+Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) to configure Keyrings for your Zowe instace.
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
