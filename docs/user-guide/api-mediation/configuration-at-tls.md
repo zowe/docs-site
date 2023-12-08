@@ -1,4 +1,3 @@
-<!-- omit in toc -->
 # Configuring AT-TLS for API Mediation Layer
 
 The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application 
@@ -6,7 +5,7 @@ Transparent Transport Layer Security (AT-TLS).
 
 Review this article for descriptions of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS, and security recommendations.
 
-:::info**Roles:** security administrator
+:::info**Role:** security administrator
 :::
 
 - [Zowe configuration](#zowe-configuration)
