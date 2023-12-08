@@ -25,7 +25,11 @@
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID where you want to execute the script. If the option is not specified, the target subsystem is identified by the first .CONNECT statement in the script. The target-db2 option value takes precedence.</li>
+<li>
+<p>Specifies the target Db2 subsystem or data sharing group where you want to execute the script. If this option is not specified, the target subsystem is identified by the first .CONNECT statement in the script.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+<p>The target-db2 option takes precedence over any other value that is specified for the Db2 subsystem or data sharing group.</p>
+</li>
 </ul>
 </li>
 <li>
