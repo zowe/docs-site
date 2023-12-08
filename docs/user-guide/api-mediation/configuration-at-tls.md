@@ -117,7 +117,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
-Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions]() to configure Keyrings for your Zowe instace.
+Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) to configure Keyrings for your Zowe instace.
 
 Note the setting `HandshakeRole` as this is meant for the core services which authenticate through certificates with each other and will allow the API Gateway to receive and accept X.509 client certificates from API Clients.
 
