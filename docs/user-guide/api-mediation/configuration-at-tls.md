@@ -62,7 +62,7 @@ Given that the Gateway is a core component of API ML, other components that need
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-The outbound AT-TLS rules, enabling transparent https calls through http, which are configured to send the server certificate should be limited to services that __require__ service to service authentication. An example could be the API Gateway authenticating with the Discovery Service.
+In general terms, the outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication, such as the case of the API Gateway authenticating with the Discovery Service.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
