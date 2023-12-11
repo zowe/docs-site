@@ -43,12 +43,12 @@ Zowe can claim support only for versions and technologies that Zowe can actually
 | **zOS** | | | | | | | | |
 | 2.5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | **Java** | | | | | | | | |
-| 8 | | Supported | | | | | | |
-| 11 | | [Supported](https://github.com/zowe/api-layer/issues/2955) | | | | | | |
-| 17 | | [In Progress](https://github.com/zowe/api-layer/issues/3113) | | | | | | |
+| 8 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 11 | In Progress | Yes | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress |
+| 17 | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress |
 | **Node.js** | | | | | | | | |
-| 16 | | | | | | | | |
-| 18 | | | | | | | | |
+| 16 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 18 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | **zOSMF** | | | | | | | | |
 | V2R5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 
@@ -57,11 +57,9 @@ Zowe can claim support only for versions and technologies that Zowe can actually
 | Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
 |----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
 | **TLS** | | | | | | | | |
-| 1.2 | | | | | | | | |
-| **AT-TLS** | | | | | | | | |
-| Unversioned |  | Yes | N/A | N/A | N/A | | N/A | |
+| 1.2 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | **IP** | | | | | | | | |
-| V4 | Yes | Yes | | | | | | |
+| V4 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 
 ## Supported Technologies for Version 2 by Zowe Support Providers
 
