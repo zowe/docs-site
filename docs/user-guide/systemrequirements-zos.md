@@ -44,8 +44,8 @@ Zowe can claim support only for versions and technologies that Zowe can actually
 | 2.5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | **Java** | | | | | | | | |
 | 8 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 11 | In Progress | Yes | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress |
-| 17 | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress | In Progress |
+| 11 | In Progress | Yes | N/A | N/A | N/A | N/A | N/A | In Progress |
+| 17 | In Progress | In Progress | N/A | N/A | N/A | N/A | N/A | In Progress |
 | **Node.js** | | | | | | | | |
 | 16 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | 18 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
