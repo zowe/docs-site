@@ -35,9 +35,10 @@ function flattenNodes(nestedNodes) {
             flattenedNodes.push.apply(flattenedNodes, flattenNodes(node.children));
         }
         else {
+            var fiveFromEnd = -5;
             flattenedNodes.push({
                 id: node.id,
-                text: node.id.slice(0, -5).replace(/_/g, " ")
+                text: node.id.slice(0, fiveFromEnd).replace(/_/g, " ")
             });
         }
     });
@@ -94,7 +95,8 @@ function updateCurrentNode(newNodeId, goto, expand, force) {
         }
     }
     currentNodeId = newNodeId;
-    var nodeIdWithoutExt = currentNodeId.slice(0, -5);
+    var fiveFromEnd = -5;
+    var nodeIdWithoutExt = currentNodeId.slice(0, fiveFromEnd);
     if (goto) {
         // Load docs page for node in iframe
         if (currentView === 0) {
@@ -167,7 +169,8 @@ function onTreeSearch(permutedSearchStr, node) {
         return false; // Don't match root node
     }
     // Strip off ".html" to get full command name
-    var fullCmd = node.id.slice(0, -5).replace(/_/g, " ");
+    var fiveFromEnd = -5;
+    var fullCmd = node.id.slice(0, fiveFromEnd).replace(/_/g, " ");
     var searchStrList = permutedSearchStr.split("\0");
     // Do fuzzy search that allows space or no char to be substituted for hyphen
     for (var _i = 0, _a = [fullCmd, fullCmd.replace(/-/g, " "), fullCmd.replace(/-/g, "")]; _i < _a.length; _i++) {
@@ -219,26 +222,31 @@ function onSearchTextChanged(noDelay) {
     if (searchTimeout) {
         clearTimeout(searchTimeout);
     }
+    var defaultDelay250 = 250;
     searchTimeout = window.setTimeout(function () {
         var searchStr = ($("#tree-search").val() || "").toString().trim();
         $("#cmd-tree").jstree(true).search(permuteSearchStr(searchStr));
         if (!searchStr) {
             updateCurrentNode(currentNodeId, false, false, true);
         }
-    }, noDelay ? 0 : 250);
+    }, noDelay ? 0 : defaultDelay250);
 }
 /**
  * Update selected node in command tree after new page loaded in iframe
  * @param e - Event object sent by postMessage
  */
 function onDocsPageChanged(e) {
+    if (e.origin !== window.location.origin || typeof e.data !== "string")
+        return;
     var tempNodeId = e.data.slice(e.data.lastIndexOf("/") + 1);
     updateCurrentNode(tempNodeId, false, false);
 }
 /**
  * Load command tree components
  */
+/* eslint-disable unused-imports/no-unused-vars */
 function loadTree() {
+    /* eslint-enable */
     // Set header and footer strings
     $("#header-text").text(headerStr);
     $("#footer").text(footerStr);
@@ -279,14 +287,20 @@ function loadTree() {
  * Toggle visibility of command tree
  * @param splitter - Split.js object
  */
+/* eslint-disable unused-imports/no-unused-vars */
 function toggleTree(splitter) {
+    /* eslint-enable */
     if ($("#panel-left").is(":visible")) {
         $("#panel-left").children().hide();
         $("#panel-left").hide();
-        splitter.setSizes([0, 100]);
+        var splitterWidth = 0;
+        var splitterHeight = 100;
+        splitter.setSizes([splitterWidth, splitterHeight]);
     }
     else {
-        splitter.setSizes([20, 80]);
+        var splitterWidth = 20;
+        var splitterHeight = 80;
+        splitter.setSizes([splitterWidth, splitterHeight]);
         $("#panel-left").show();
         $("#panel-left").children().show();
     }
@@ -295,7 +309,9 @@ function toggleTree(splitter) {
  * Change display mode of page
  * @param newMode - 0 = Tree View, 1 = Flat View
  */
+/* eslint-disable unused-imports/no-unused-vars */
 function changeView(newMode) {
+    /* eslint-enable */
     if (newMode === currentView) {
         return;
     }
