@@ -1,6 +1,6 @@
 # Enabling single sign on for clients via JWT token configuration 
 
-:::info**Role:** system programmer, system administrator, security administrator
+:::info**Roles:** system programmer, system administrator, security administrator
 :::
 
 As a system programmer, you can customize how JWT authentication is performed, the service that provides the JWT authentication token, whether it's possible to refresh JWT token and other characteristics of JWT for consumption. 
