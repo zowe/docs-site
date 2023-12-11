@@ -1,7 +1,6 @@
 # Configuring AT-TLS for API Mediation Layer
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application 
-Transparent Transport Layer Security (AT-TLS).
+The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS).
 
 Review this article for descriptions of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS, and security recommendations.
 
@@ -12,11 +11,12 @@ Review this article for descriptions of the configuration parameters required to
 - [AT-TLS rules](#at-tls-rules)
   - [Inbound rules](#inbound-rules)
   - [Outbound rules](#outbound-rules)
+    - [For z/OSMF](#for-zosmf)
+    - [For communication between API Gateway and other core services](#for-communication-between-api-gateway-and-other-core-services)
+    - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
   - [Ciphers](#ciphers)
 - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
 - [AT-TLS Troubleshooting](#at-tls-troubleshooting)
-
-Starting with Zowe version 2.13, it is possible to leverage AT-TLS within API Mediation Layer. Each API ML component can run with AT-TLS rules applied. Some components, such as the Discovery service, can be made AT-TLS aware by enabling the AT-TLS profile, whereby TLS information can be utilized. Such information could be a client certificate.
 
 ## AT-TLS configuration for Zowe
 
@@ -26,31 +26,42 @@ Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup 
 
 Follow these steps to configure Zowe to support AT-TLS:
 
-1. Enable the AT-TLS profile and disable the TLS application in API ML. Update `zowe.yaml` with the following values under the respective component in the `zowe.components` section.
+1. Enable the AT-TLS profile and disable the TLS application in API ML. Update `zowe.yaml` with the following values under the `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+
+**Example:**
 
 ```yaml
-components.*.spring.profiles.active: attls
-components.*.server.ssl.enabled: false
-components.*.server.internal.ssl.enabled: false
+zowe:
+  components:
+    gateway:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+      server:
+        internal:
+          ssl:
+            enabled: false
+
+    discovery:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
 ```
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule.
+While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Make sure the server certificates provided by the AT-TLS layer are trusted in the configured Zowe Keyring. Ideally AT-TLS should be configured with the same one.
 
-2. Update the `zowe.yaml` file for each respective API ML component in the `zowe.components` sections with the path to the SAF Key ring from the AT-TLS rule. Specify the alias that is used for inbound communication:
-
-```yaml
-components.*.certificate.keystore.file: <SAF-key-ring-from-AT-TLS-rule>
-components.*.certificate.keystore.type: JCERACFKS
-components.*.certificate.keystore.password: password
-components.*.certificate.keystore.alias: <certificate alias / label from AT-TLS rule>
-```
-
-3. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
+2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
 
 :::note**Notes**
 * Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
 
-* Given that the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration. 
+* Given that the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
 
 :::caution**Important security consideration**
@@ -64,7 +75,7 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 
 ## AT-TLS rules
 
-This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules. 
+This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
 
 ### Inbound rules
 
@@ -187,7 +198,7 @@ TTLSRule ApimlServiceClientRule
 ```
 
 - The outbound connection from the Gateway to the Discovery Service must not be configured with sending the server certificate.
-- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication.
+- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication otherwise it is the server user who would be authenticated.
 
 ### Ciphers
 
@@ -241,7 +252,7 @@ Review settings in the API Gateway. Ensure that the changes described in [AT-TLS
 
 ### AT-TLS rules are not applied
 
-Ff the application is responding in http, the application may not be properly configured to support http-only calls.  AT-TLS is not correctly configured.
+If the application is responding in http, the application may not be properly configured to support http-only calls. AT-TLS is not correctly configured.
 
 **Solution:**  
 Ensure the rules are active and that the filters on port range and job names are properly set.
