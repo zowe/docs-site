@@ -32,11 +32,40 @@ All Zowe server components can be installed on a z/OS environment, while some ca
   - [Memory requirements](#memory-requirements)
 
 
-## Supported Technologies for Version 2
+## Supported Technologies for Version 2 by Zowe
 
 Zowe can claim support only for versions and technologies that Zowe can actually test on the Open Infrastructure. There is linked question on whether and how can Vendors claim anything. 
 
 ### Technological pre-requisites
+
+| Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
+|----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
+| **zOS** | | | | | | | | |
+| 2.5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| **Java** | | | | | | | | |
+| 8 | | Supported | | | | | | |
+| 11 | | [Supported](https://github.com/zowe/api-layer/issues/2955) | | | | | | |
+| 17 | | [In Progress](https://github.com/zowe/api-layer/issues/3113) | | | | | | |
+| **Node.js** | | | | | | | | |
+| 16 | | | | | | | | |
+| 18 | | | | | | | | |
+| **zOSMF** | | | | | | | | |
+| V2R5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+
+### Technological Features
+
+| Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
+|----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
+| **TLS** | | | | | | | | |
+| 1.2 | | | | | | | | |
+| **AT-TLS** | | | | | | | | |
+| Unversioned |  | Yes | N/A | N/A | N/A | | N/A | |
+| **IP** | | | | | | | | |
+| V4 | Yes | Yes | | | | | | |
+
+## Supported Technologies for Version 2 by Zowe Support Providers
+
+Zowe conformant support providers may claim further support for specific areas such as:
 
 | Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
 |----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
@@ -69,15 +98,14 @@ Zowe can claim support only for versions and technologies that Zowe can actually
 | 1.2 | | | | | | | | |
 | 1.3 | | | | | | | | |
 | **AT-TLS** | | | | | | | | |
-| Unversioned | | | | | | | | |
+| Unversioned |  | Yes | N/A | N/A | N/A | | N/A | |
 | **IP** | | | | | | | | |
-| V4 | | | | | | | | |
+| V4 | Yes | Yes | | | | | | |
 | V6 | | | | | | | | |
 | **MFA** | | | | | | | | |
 | CA AAM | | | | | | | | |
 | IBM MFA | | | | | | | | |
 | Another provider | | | | | | | | |
-
 
 ## z/OS system requirements
 
