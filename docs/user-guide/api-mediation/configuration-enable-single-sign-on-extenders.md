@@ -1,9 +1,9 @@
 # Enabling single sign on for extending services
 
-:::info**Role:** system programmer, API service extender
+:::info**Roles:** system programmer, API service extender
 :::
 
-Enabling Single Sign On (SSO) in Zowe involves configuring JWT tokens and PassTickets for secure authentication. The JWT token configuration requires setting up a custom HTTP header to store the token, thereby enhancing secure communication with southbound services. 
+Enabling Single Sign On (SSO) in Zowe involves configuring JWT tokens or PassTickets for secure authentication. The JWT token configuration requires setting up a custom HTTP header to store the token, thereby enhancing secure communication with southbound services. 
 
 For more information, see [Enabling single sign on for extending services via JWT token configuration](./configuration-extender-jwt).
 

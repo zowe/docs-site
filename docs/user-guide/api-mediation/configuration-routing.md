@@ -7,6 +7,8 @@ The Zowe API Mediation Layer offers a range of configurations for enhanced funct
 
 Additionally, the Layer supports specific instance access and load balancer cache distribution, improving service identification and scalability. These configurations, including service ID adjustments for compatibility with Zowe v2, demonstrate Zowe's adaptability and robustness in API management.
 
+For details about specific configuration procedures, see the following links:
+
 - [Customizing Cross-Origin Resource Sharing (CORS)](./configuration-cors)
 - [Using encoded slashes](./configuration-url-handling)
 - [Customizing Gateway retry policy](./configuration-gateway-retry-policy)
