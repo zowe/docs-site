@@ -226,7 +226,7 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 ```
 :::important**Important**
 - The outbound connection from the Gateway to the Discovery Service must not be configured with sending the server certificate.
-- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication otherwise it is the server user who would be authenticated.
+- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
 :::
 
 ### Ciphers
