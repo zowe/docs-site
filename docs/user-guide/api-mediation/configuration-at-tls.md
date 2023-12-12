@@ -69,7 +69,7 @@ While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-In general terms, outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support x.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
@@ -225,7 +225,8 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 }
 ```
 :::important**Important**
-- The outbound connection from the Gateway to the Discovery Service must not be configured with sending the server certificate.
+- The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
+
 - Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
 :::
 
