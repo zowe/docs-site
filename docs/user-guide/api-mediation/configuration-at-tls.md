@@ -20,13 +20,14 @@ Review this article for descriptions of the configuration parameters required to
 
 ## AT-TLS configuration for Zowe
 
-:::note
+:::tip
 Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
 :::
 
 Follow these steps to configure Zowe to support AT-TLS:
 
-1. Enable the AT-TLS profile and disable the TLS application in API ML. Update `zowe.yaml` with the following values under the `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+1. Enable the AT-TLS profile and disable the TLS application in API ML.  
+Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
 
 **Example:**
 
@@ -54,21 +55,21 @@ zowe:
           enabled: false
 ```
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Make sure the server certificates provided by the AT-TLS layer are trusted in the configured Zowe Keyring. Ideally AT-TLS should be configured with the same one.
+While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Esure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
-2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, update or set the `zowe.zOSMF.scheme` to `http`.
+2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` to `http`.
 
 :::note**Notes**
 * Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
 
-* Given that the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
+* As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
 
 :::caution**Important security consideration**
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-In general terms, outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. One example of required service to service communication could be the API Gateway authenticating with the Discovery Service.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
@@ -123,7 +124,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
-Replace `ApimlKeyring` with the one configured for your installation. Follow [these instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) to configure Keyrings for your Zowe instace.
+Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
@@ -196,14 +197,15 @@ TTLSRule ApimlServiceClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 ```
-
+:::important**Important**
 - The outbound connection from the Gateway to the Discovery Service must not be configured with sending the server certificate.
 - Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication otherwise it is the server user who would be authenticated.
+:::
 
 ### Ciphers
 
 :::note
-This list of ciphers is provided as an example only, and should be customized according to your specific configuration.
+This list of ciphers is provided as an example only. Actual ciphers should be customized according to your specific configuration.
 :::
 
 The list of supported ciphers should be constructed according to the TLS supported versions.
