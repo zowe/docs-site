@@ -68,14 +68,15 @@ Zowe conformant support providers may claim further support for specific areas s
 | Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
 |----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
 | **zOS** | | | | | | | | |
-| 2.3 | | | | | | | | |
+| 2.3 | [IBM](Link to the IBM Statements) | | | | | | | |
 | 2.4 | | | | | | | | |
 | 2.5 | | | | | | | | |
-| 3.1 | | | | | | | | |
+| 3.1 | [Rocket](Link to the Rocket Statement), [Broadcom](Link to the Broadcom statement) | | | | | | | |
 | **Java** | | | | | | | | |
 | 8 | | Supported | | | | | | |
 | 11 | | [Supported](https://github.com/zowe/api-layer/issues/2955) | | | | | | |
 | 17 | | [In Progress](https://github.com/zowe/api-layer/issues/3113) | | | | | | |
+| 21 | | | | [IBA](Link to the IBA Statement) | | | | |
 | **Node.js** | | | | | | | | |
 | 16 | | | | | | | | |
 | 18 | | | | | | | | |
