@@ -8,4 +8,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
     * [Customizing management of API ML load limits](./api-mediation/configuration-customizing-management-of-apiml-load-limits)
 * [Configuring authorization of API ML resources](./api-mediation/configuration-authorization)
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui)
-* [Configuring AT-TLS for API ML](./api-mediation/configuration-at-tls)
+* [Configuring SAF Resource Checking](./api-mediation/configuration-saf-resource-checking)
+* [Retrieving a specific service within your environment](./api-mediation/configuration-access-specific-instance-of-service)
+* [Setting a consistent service ID](./api-mediation/configuration-set-consistent-service-id)
+
