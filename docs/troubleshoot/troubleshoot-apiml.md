@@ -33,6 +33,7 @@ Use debug mode to activate the following functions:
 
 - Display additional debug messages for API ML
 - Enable changing log level for individual code components
+- Gather atypical debug information
 
 **Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
@@ -139,6 +140,24 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
+
+### Gather atypical debug informaiton
+
+* **ZWE_configs_debug**  
+This property can be used to unconditionally add active debug profiles.
+
+For more information, see [Adding active profiles](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) in the Spring documentation.
+
+* **ZWE_configs_sslDebug**  
+This property can be used to enable the SSL debugging. This property can also assist with determining what exactly is happening at the SSL layer.
+
+This property uses the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all SSL debugging is turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that can enable a different level of tracing. 
+
+For more information, see the article **_Debugging Utilities_** in the IBM documentation.
+
+:::note
+This property can also be enabled for other API ML components.
+:::
 
 ## Debug and Fix Common Problems with SSL/TLS Setup
 

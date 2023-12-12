@@ -84,7 +84,6 @@ module.exports = {
       id:"getting-started/zowe-resources",
     },
   ],
-
   "setup":[
     "user-guide/install-overview",
     {
@@ -219,20 +218,68 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Configuring API Mediation Layer",
+              label: "Advanced API Mediation Layer Configuration",
+              link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
               items: [
-                "user-guide/configure-data-sets-jobs-api",
-                "user-guide/api-mediation/api-catalog-configuration",
-                "user-guide/api-mediation/api-mediation-personal-access-token",
-                "user-guide/api-mediation/api-gateway-configuration",
-                "user-guide/api-mediation/discovery-service-configuration",
-                "user-guide/api-mediation/api-mediation-internal-configuration",
-                "extend/extend-apiml/api-mediation-passtickets",
-                "user-guide/api-mediation-standalone",
+                {
+                  type: "category",
+                  label: "Enabling single sign on for clients",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
+                  items: [
+                    "user-guide/api-mediation/configuration-client-certificates",
+                    "user-guide/api-mediation/configuration-personal-access-token",
+                    "user-guide/api-mediation/configuration-jwt"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Enabling single sign on for extending services",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+                  items: [
+                    "user-guide/api-mediation/configuration-extender-jwt",
+                    "user-guide/api-mediation/configuration-extender-passtickets"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Customizing routing behavior",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Customizing management of API ML load limits",
+                      link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                      items: [
+                        "user-guide/api-mediation/configuration-connection-limits",
+                        "user-guide/api-mediation/configuration-gateway-timeouts"
+                      ],
+                    },
+                    "user-guide/api-mediation/configuration-cors",
+                    "user-guide/api-mediation/configuration-url-handling",
+                    "user-guide/api-mediation/configuration-gateway-retry-policy",
+                    "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                    "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                    "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                    "user-guide/api-mediation/configuration-set-consistent-service-id"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Configuring authorization for API ML",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
+                  items: [
+                    "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
+                    "user-guide/api-mediation/configuration-saf-resource-checking"
+                  ],
+                },                
+                "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+                "user-guide/api-mediation/configuration-at-tls"
               ],
-            },
+            }
           ],
-    },
+        }
+      ],
+    },    
     {
       type: "category",
       label: "Installing Zowe client-side components",
@@ -374,7 +421,7 @@ module.exports = {
         },
   ],
 },
-],             
+{             
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -878,7 +925,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.12.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.13.x.md",
     },
   ],
 }
