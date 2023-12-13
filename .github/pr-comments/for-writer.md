@@ -2,7 +2,7 @@
 
 - [ ] Add the label `review: sme` if an SME needs to check your content.
 - [ ] Identify your content topic with a label. (Examples: `area: apiml`, `area: cli`, `area: install and config`, etc.)
-- [ ] Specify the major Zowe release for your content. (Examples: `release: V1`, `release: V2`, `release: V3`)
+- [ ] Specify the major Zowe release(s) for your content. (Examples: `release: V1`, `release: V2`, `release: V3`)
 - [ ] Link any [Doc Issues](https://github.com/zowe/docs-site/issues) related to this PR.
 - [ ] Fix broken links found in your content areas.
 - [ ] Notify the SME to review this PR (if applicable).
