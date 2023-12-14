@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
         "whats-new/release-notes/v2_11_0",
         "whats-new/release-notes/v2_10_0",
