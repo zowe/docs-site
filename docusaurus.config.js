@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.9.x";
+const LATEST_VERSION = "v2.12.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
     }),
   },
   themeConfig: {
-    docs: {
+      docs: {
       sidebar: {
         hideable: true
       }
@@ -42,13 +42,13 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Get Started",
+          label: "Overview",
           docId: "getting-started/overview",
           position: "left",
         },
         {
           type: "doc",
-          label: "Setup",
+          label: "Install",
           docId: "user-guide/install-overview",
           position: "left",
         },
@@ -172,6 +172,9 @@ module.exports = {
       apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
+      searchParameters: {
+        facetFilters: ["keywords"]
+      }
     },
     colorMode: {
       defaultMode: "light",
@@ -201,6 +204,15 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.11.x": {
+              label: "v2.11.x LTS",
+            },
+            "v2.10.x": {
+              label: "v2.10.x LTS",
+            },
+            "v2.9.x": {
+              label: "v2.9.x LTS",
+            },
             "v2.8.x": {
               label: "v2.8.x LTS",
             },
@@ -212,12 +224,6 @@ module.exports = {
            },
             "v2.5.x": {
               label: "v2.5.x LTS",
-           },
-            "v2.4.x": {
-              label: "v2.4.x LTS",
-           },
-            "v2.3.x": {
-              label: "v2.3.x LTS",
            },
             "v1.28.x": {
               label: "v1.28.x LTS",

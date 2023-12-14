@@ -430,3 +430,16 @@ html[data-theme="light"] .darkTheme {
     margin-left: 0rem !important;
   }
 }
+
+@media (min-width: 997px) {
+   :root {
+  --docusaurus-announcement-bar-height: 1.8em !important;
+  }
+  }
+  div[class^='announcementBar_'] {
+   font-weight: 400;
+   font-size: 1.5em;
+   background: repeating-linear-gradient(35deg,#edf2fa,#edf2fa 20px,#c9d9f2 10px, #c9d9f2 40px) !important;
+  }
+
+

@@ -116,3 +116,26 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
   **Action:**
 
   Validate the format of Zowe configuration file. It should be a valid YAML file following specifications defined in https://yaml.org/.
+
+### ZWEL0073E
+
+  Launcher Could not load schemas, status=5
+
+  **Reason:**
+
+  The Zowe Launcher was able to locate the runtime directory, but unable to find the /schemas directory.  
+
+  **Action:**
+
+  Locate the runtimeDirectory from the `zowe.yaml` variable `runtimeDirectory: "<PATH_TO_RUNTIME>"`.
+
+  Check that there is a `<PATH_TO_RUNTIME>/schemas` directory. This should contain four `.json` files shown below. 
+
+  ```
+  manifest-schema.json
+  server-common-json
+  trivial-component-schema.json
+  zowe-yaml-schema.json
+  ```
+
+  On ocassion the error occurs because the `runtimeDirectory` is pointing to a valid directory, but one which doesn't contain a valid Zowe runtime environment is one of the first failures during a Zowe launch.

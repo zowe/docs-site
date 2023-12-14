@@ -611,6 +611,7 @@
 </ul></li>
 </ul></li>
 <li><a href="#zowe_sysview">sysview | sv</a><ul><li><a href="#zowe_sysview_capture">capture | cap</a></li>
+</ul><ul><li><a href="#zowe_sysview_capture-immediate">capture-immediate | cap-imm</a></li>
 </ul><ul><li><a href="#zowe_sysview_check">check</a><ul><li><a href="#zowe_sysview_check_status">status</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_sysview_display">display | dsp</a></li>
@@ -630,7 +631,7 @@
 </ul><ul><li><a href="#zowe_zos-files_compare_local-file-spool-dd">local-file-spool-dd | lf-sdd</a></li>
 </ul><ul><li><a href="#zowe_zos-files_compare_local-file-uss-file">local-file-uss-file | lf-uss</a></li>
 </ul><ul><li><a href="#zowe_zos-files_compare_spool-dd">spool-dd | sdd</a></li>
-</ul><ul><li><a href="#zowe_zos-files_compare_uss-files">uss-files | uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_uss-files">uss-files | uss | uf</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_copy">copy | cp</a><ul><li><a href="#zowe_zos-files_copy_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-files_copy_data-set-cross-lpar">data-set-cross-lpar | dsclp</a></li>
@@ -657,6 +658,9 @@
 </ul><ul><li><a href="#zowe_zos-files_download_data-sets-matching">data-sets-matching | dsm | data-set-matching</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-directory">uss-directory | uss-dir</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf | uss</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_edit">edit | ed</a><ul><li><a href="#zowe_zos-files_edit_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_edit_uss-file">uss-file | uss | uf</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke_ams-statements">ams-statements | as</a></li>
@@ -904,7 +908,7 @@
 <ul>
 <li>
 <p>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</p>
-<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+<p>Allowed values: ^apimlAuthenticationToken.*, jwtToken, LtpaToken2</p>
 </li>
 </ul>
 </li>
@@ -23036,8 +23040,8 @@ Allowed values: http, https</p>
 <p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Identifies an existing named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23048,6 +23052,54 @@ Allowed values: http, https</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23175,7 +23227,7 @@ Allowed values: http, https</p>
 <p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
 <p>Format:</p>
 <p>&lt;match-set-creator.match-set-name&gt;</p>
-<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23211,7 +23263,7 @@ PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
 TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
 TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
 TABLE *.MYTABLE *.YOURTABLE;</p>
-<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23223,7 +23275,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set used for modifying Db2 object attributes. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23241,7 +23293,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
 TBTS TESTTS% PRODTS%</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23254,7 +23306,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
 <p>Format:</p>
 <p>&lt;rule-set-creator.rule-set-name&gt;</p>
-<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23298,7 +23350,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output file name that contains the parseable impact analysis report in JSON or YAML format. This report helps identify significant DDL operations to be performed on Db2 objects. It provides the total number and type of DDL operations that are being performed on each object type, the list of DDL operations performed on each object instance, and the state of any pending changes.</p>
 <p>The report format is determined by the supplied file name extension: .json for JSON and .yaml or .yml for YAML. If no extension is provided, JSON format is used.</p>
 <p>Default value: impact.json</p>
-<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23307,7 +23359,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23318,6 +23370,60 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23451,7 +23557,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
 <p>Format:</p>
 <p>&lt;match-set-creator.match-set-name&gt;</p>
-<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23487,7 +23593,7 @@ PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
 TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
 TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
 TABLE *.MYTABLE *.YOURTABLE;</p>
-<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23499,7 +23605,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set used for modifying Db2 object attributes. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23517,7 +23623,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
 TBTS TESTTS% PRODTS%</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23530,7 +23636,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
 <p>Format:</p>
 <p>&lt;rule-set-creator.rule-set-name&gt;</p>
-<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23539,7 +23645,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23550,6 +23656,60 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23692,7 +23852,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23703,6 +23863,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23835,7 +24031,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23846,6 +24042,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23998,7 +24230,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24009,6 +24241,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24104,37 +24372,37 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p>Execute only the SQLDDL section of a script. The first .CONNECT statement in the script identifies the target subsystem where the script is executed. Execution begins at the .SYSTEM SQLDDL statement and ends at the next .SYSTEM statement in the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section SQLDDL">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section SQLDDL">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute a script beginning from the sync point 10 (.SYNC 10 statement) to the end of the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section 10">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section 10">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute only the target (SQLDDL) section of the script starting at sync point 20:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section target,20">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section target,20">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script from the beginning:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart new">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart new">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script at the location specified in the token. The restart token is returned by a previous 'zowe dbm execute command' failure as part of the terminal output and in the error file:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution at the last successful sync point recorded in the restart token up to the end of the target (SQLDDL) section:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -24193,7 +24461,7 @@ database db1 include(children);</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when generating the DDL.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 </li>
 </ul>
@@ -24206,7 +24474,7 @@ database db1 include(children);</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
 <p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
-<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Example:</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
@@ -24239,7 +24507,7 @@ Allowed values: drop, create</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24259,6 +24527,60 @@ Allowed values: drop, create</p>
 <p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the source Db2 subsystem ID where the objects that you want to generate DDL for are located.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24413,7 +24735,7 @@ database db1 include(children);</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when preparing objects for migration.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 </li>
 </ul>
@@ -24426,7 +24748,7 @@ database db1 include(children);</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
 <p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
-<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Example:</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
@@ -24458,7 +24780,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24484,6 +24806,60 @@ TBTS TESTTS% PRODTS%</p>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
 <li>Specifies the target Db2 subsystem ID where the object definitions and data are migrated (copied) to.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24573,7 +24949,7 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p>Generate a migration script and apply global changes:</p>
 <ul>
-<li><code>zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql">Copy</button></li>
+<li><code>zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG --change-set USER1.CHANGSET --output-migrate-script migrate.txt --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG --change-set USER1.CHANGSET --output-migrate-script migrate.txt --output-ddl-file objects.sql">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -28219,6 +28595,69 @@ Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
 </ul>
+<h4>endevor search text options</h4>
+<ul>
+<li>
+<p><code>--search-text</code> | <code>--stext</code> <em>(string)</em></p>
+<ul>
+<li>Search string(s) separated with AND or OR. E.g.: string_1 AND string_2 AND string_3 OR string_4.<br>
+For complex search strings with quotation marks use search-text-file parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-text-file</code> | <code>--stf</code> <em>(string)</em></p>
+<ul>
+<li>File which contains search string(s) separated with AND or OR. Recommended for complex search strings with quotation marks.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in</code> | <code>--si</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>2 letters describing where search should be performed:<br>
+es - Element Source<br>
+eh - Element History<br>
+ec - Element Changes<br>
+eu - Element Summary<br>
+cs - Components Source<br>
+ch - Components History<br>
+cc - Components Changes<br>
+cu - Components Summary.</p>
+<p>Allowed values: es, eh, ec, eu, cs, ch, cc, cu</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--search-from</code> | <code>--sf</code> <em>(number)</em></p>
+<ul>
+<li>Beginning interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-to</code> | <code>--st</code> <em>(number)</em></p>
+<ul>
+<li>Ending interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-ignore-case</code> | <code>--ic</code> <em>(boolean)</em></p>
+<ul>
+<li>Ignore search case.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in-binary</code> | <code>--bin</code> <em>(boolean)</em></p>
+<ul>
+<li>Should the text search be performed in binary elements.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-limit</code> | <code>--sl</code> <em>(number)</em></p>
+<ul>
+<li>Maximum search limit where 0 is NOLIMIT.</li>
+</ul>
+</li>
+</ul>
 <h4>scl generation options</h4>
 <ul>
 <li>
@@ -28410,6 +28849,12 @@ Allowed values: http, https</p>
 <p>List elements in Endevor from the specified inventory location with the endevor profile set up:</p>
 <ul>
 <li><code>zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List elements in Endevor using search text string:</p>
+<ul>
+<li><code>zowe endevor list elements --stext &quot;first or second and third&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements --stext &quot;first or second and third&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -54606,7 +55051,7 @@ Allowed values: http, https</p>
 <p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 <p>Default value: [object Object]</p>
 </li>
 </ul>
@@ -59065,7 +59510,7 @@ Recommended replacement: The 'config set' command</p>
 <li>
 <p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
-<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</li>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -61722,6 +62167,139 @@ Allowed values: http, https</p>
 <p>Display the Jobname, Jobid, and Status columns of the captured ACTIVITY command on row 3 from MY.CAPTURE.DATASET.:</p>
 <ul>
 <li><code>zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY --capture-row 3 --fields Jobname Jobid Status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY --capture-row 3 --fields Jobname Jobid Status">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_sysview_capture-immediate"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_sysview">sysview</a> › <a href="#zowe_sysview_capture-immediate">capture-immediate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Submit a capture request2</p>
+<h4>Usage</h4>
+<p>zowe sysview capture-immediate &lt;capture-file&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>capture-file</code>		 <em>(string)</em></p>
+<ul>
+<li>The list of SYSVIEW commands to be executed as an Event Capture.This takes the same form as a CAPLIB member.</li>
+</ul>
+</li>
+</ul>
+<h4>display options</h4>
+<ul>
+<li>
+<p><code>--context-fields</code> | <code>--cf</code> <em>(array)</em></p>
+<ul>
+<li>Context fields to display. Defaults to hiding all context</li>
+</ul>
+</li>
+</ul>
+<h4>data options</h4>
+<ul>
+<li>
+<p><code>--capture-description</code> | <code>--cd</code> <em>(string)</em></p>
+<ul>
+<li>The description of the capture</li>
+</ul>
+</li>
+</ul>
+<h4>sysview connection options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The port number of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS username used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>If set, the server certificate is verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--ssid</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>SSID of the SYSVIEW instance. Default value: GSVX</p>
+<p>Default value: GSVX</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
+<p>Default value: /api/v1</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--sysview-profile</code> | <code>--sysview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (sysview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Issues a Capture containing the commands in capture file 'my-capture.txt' with the description 'Top CPU Users':</p>
+<ul>
+<li><code>zowe sysview capture-immediate &quot;./my-capture.txt&quot; --description &quot;Top CPU Users&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview capture-immediate &quot;./my-capture.txt&quot; --description &quot;Top CPU Users&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -68579,6 +69157,300 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a name="zowe_zos-files_edit"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Edit the contents of a data set or USS file with your terminal and default editor.</p>
+<a class="cmd-anchor" name="zowe_zos-files_edit_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a> › <a href="#zowe_zos-files_edit_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Edit content from a z/OS data set with your terminal and default editor.</p>
+<h4>Usage</h4>
+<p>zowe zos-files edit data-set &lt;dataSetName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>dataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the data set you want to edit.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>Set the file extension of the file for editing to leverage an editor's file-type-specific formatting: ie &quot;--extension jcl&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Edit the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor notepad</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor notepad">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor C:\Windows\System32\Notepad.exe</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor C:\Windows\System32\Notepad.exe">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_jcl.jcl&quot; in notepad and set extension as &quot;jcl&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_edit_uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a> › <a href="#zowe_zos-files_edit_uss-file">uss-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Edit content from a Unix System Services (USS) file with your terminal and default editor.</p>
+<h4>Usage</h4>
+<p>zowe zos-files edit uss-file &lt;ussFilePath&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>ussFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the USS file you want to edit.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_text.txt&quot; in notepad:</p>
+<ul>
+<li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor notepad</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor notepad">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_text.txt&quot; in notepad:</p>
+<ul>
+<li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_zos-files_invoke"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Invoke z/OS utilities such as Access Method Services (AMS).</p>
 <a class="cmd-anchor" name="zowe_zos-files_invoke_ams-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a> › <a href="#zowe_zos-files_invoke_ams-file">ams-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -71314,7 +72186,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
 <ul>
-<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+<li>The range of records to return in either `SSS-EEE` or `SSS,NNN` format. SSS identifies the start record, EEE identifies the end record, and NNN identifies the number of retrieved records.</li>
 </ul>
 </li>
 <li>
@@ -71478,7 +72350,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
 <ul>
-<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+<li>The range of records to return in either `SSS-EEE` or `SSS,NNN` format. SSS identifies the start record, EEE identifies the end record, and NNN identifies the number of retrieved records.</li>
 </ul>
 </li>
 <li>

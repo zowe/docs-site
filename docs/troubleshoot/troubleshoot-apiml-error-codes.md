@@ -517,6 +517,78 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide correct user name or password.
 
+### ZWEAT500E
+
+  Failed to parse the client certificate forwarded from the central Gateway. Error message %s. The client certificate was %s
+
+  **Reason:**
+
+  The string sent by the central Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
+
+  **Action:**
+
+  Ensure that forwarding of the client certificate is also enabled in the central Gateway. Check for any error messages from the central Gateway.
+
+### ZWEAT501E
+
+  Failed to get trusted certificates from the central Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
+
+  **Reason:**
+  
+  The response status code is different from the expected 200 OK.
+  
+  **Action:**
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
+
+### ZWEAT502E
+
+  Invalid URL specified to get trusted certificates from the central Gateway. Error message: %s
+  
+  **Reason:**
+  
+  The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
+  
+  **Action:**
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
+
+### ZWEAT503E
+
+  An error occurred during retrieval of trusted certificates from the central Gateway. Error message: %s
+  
+  **Reason:**
+  
+  The communication with the cloud gateway got interrupted or an error occurred while processing the response.
+  
+  **Action:**
+  
+  Check the provided error message. Contact the support.
+
+### ZWEAT504E
+
+  Failed to parse the trusted certificates provided by the central Gateway. Error message %s
+  
+  **Reason:**
+  
+  The string sent by the central Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
+  
+  **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
+
+### ZWEAT505E
+
+  Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
+  
+  **Reason:**
+  
+  The Gateway performs an additional check of request certificates when the central Gateway forwards the incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to the proper central Gateway certificates endpoint.
+  
+  **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
+
 ### ZWEAT601E
 
   z/OSMF service name not found. Set parameter apiml.security.auth.zosmf.serviceId to your service ID.
@@ -1186,7 +1258,7 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-  
+
   Use the following configuration format:
   ```
   apiml: 
@@ -1196,13 +1268,13 @@ The following error message codes may appear on logs or API responses. Use the f
                jwtAutoconfiguration:
   ```
   Apply one of the following values:
-  
+
   * **auto**
   Signifies that API ML is enabled to resolve the JWT producer
-  
+
   * **jwt**
   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-  
+
   * **ltpa**
   Signifies that z/OSMF does not support JWT
 
@@ -1248,12 +1320,36 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The provided id is not valid under conformance criteria.
+  The provided id is not valid under the conformance criteria.
 
   **Action:**
 
   Verify the conformance criteria, provide valid service id.
 
+### ZWEAG718E
+
+  Cannot retrieve metadata: '%s'
+
+  **Reason:**
+
+  Metadata are not accessible.
+
+  **Action:**
+
+  Verify that the metadata are accessible and not empty.
+
+### ZWEAG719I
+
+  The service id provided is invalid: '%s'
+
+  **Reason:**
+
+  The provided service does not satisfy the conformance criteria and is therefore not valid.
+
+  **Action:**
+
+  Verify the conformance criteria, provide valid service id.
+  
 ### ZWEAG100E
 
   Authentication exception: '%s' for URL '%s'
@@ -1602,19 +1698,122 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Contact the administrator to validate webfinger configuration in gateway service.
 
+### ZWEAG181W
+
+  z/OSMF service '%s' is either not registered or not online yet.
+
+  **Reason:**
+
+  z/OSMF service may not be properly onboarded to API ML.
+
+  **Action:**
+
+  Verify if z/OSMF is up and registered to Discovery Service.
+
+### ZWEAG182E
+
+  SSL Misconfiguration, z/OSMF is not accessible.
+  Message: %s
+  Please verify the following:
+    - CN (Common Name) and z/OSMF hostname match.
+    - The certificate is valid
+    - TLS version matches
+    - z/OSMF server certificate is trusted in Zowe's truststore
+  Enable debugging to see further details in stack trace.
+
+  **Reason:**
+
+  The z/OSMF connection is incorrectly configured.
+
+  **Action:**
+
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
+
+### ZWEAG183E
+
+  z/OSMF internal error
+
+  **Reason:**
+
+  z/OSMF returned HTTP Status %s.
+
+  **Action:**
+
+  Review z/OSMF status and availability.
+
+### ZWEAG184E
+
+  Could not connect to z/OSMF: %s
+
+  **Reason:**
+
+  There was a connection issue between the API Mediation Layer instance and z/OSMF.
+
+  **Action:**
+
+  Verify z/OSMF is running. Verify connectivity to z/OSMF from this instance.
+
+### ZWEAG185W
+
+  The change password endpoint has failed with code %s
+
+  **Reason:**
+
+  The change password endpoint was not found.
+
+  **Action:**
+
+  Ensure PTF for APAR PH34912 is applied. (https://www.ibm.com/support/pages/apar/PH34912)
+
+### ZWEAG186E
+
+  z/OSMF internal error attempting password change: %s
+
+  **Reason:**
+
+  z/OSMF informed of an internal error.
+
+  **Action:**
+
+  Verify z/OSMF error log.
+
+### ZWEAG187W
+
+  The check of z/OSMF JWT authentication endpoint has failed. Using z/OSMF info endpoint as backup.
+
+  **Reason:**
+
+  z/OSMF JWT endpoint was not found.
+
+  **Action:**
+
+  Ensure APAR PH12143 (https://www.ibm.com/support/pages/apar/PH12143) fix has been applied.
+
+### ZWEAG188W
+
+  z/OSMF JWT builder endpoint call (%s) failed with %s
+
+  **Reason:**
+
+  z/OSMF returned an error code when calling JWT endpoint.
+
+  **Action:**
+
+  Review z/OSMF status. Contact your system administrator.
+
 ## API Catalog messages
 
 ### ZWEAC100W
 
-  Could not retrieve all service info from discovery -- %s -- %s -- %s
+  Could not retrieve information about service %s from the Discovery Service. Requested URL: %s. Response received: status code: %s, body: %s
 
   **Reason:**
 
-  The response from The Discovery Service about the registered instances returned an error or empty body.
+  The response from The Discovery Service about the registered service instances returned an error or empty body.
 
   **Action:**
 
-  Make sure the Discovery Service is up and running. If the http response error code refers to a security issue, check that both the Discovery Service and Catalog are running with the https scheme and that security is configured properly.
+  Make sure the Discovery Service and requested service are up and running. If the HTTP response error code refers to a security issue, make sure that security configuration is correct.
 
 ### ZWEAC101E
 
