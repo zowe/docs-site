@@ -42,6 +42,12 @@ module.exports = {
       items: [
         {
           type: "doc",
+          label: "What's new",
+          docId: "whats-new/zowe-announcements",
+          position: "left",
+        },
+        {
+          type: "doc",
           label: "Overview",
           docId: "getting-started/overview",
           position: "left",
@@ -204,6 +210,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.12.x": {
+              label: "v2.12.x LTS",
+            },
             "v2.11.x": {
               label: "v2.11.x LTS",
             },
@@ -253,13 +262,21 @@ module.exports = {
         fromExtensions: ["html"],
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
-          for (var i = 0; i < versionsArray.length; i++) {
-            var x = versionsArray[i];
-            if (existingPath.includes(x)) {
-              return [
-                existingPath.replace(x, x.replace(".", "-").replace(".", "-")),
-              ];
+          const redirects = {
+            "/whats-new/release-notes/": "/getting-started/release-notes/"
+          };
+          for (const x of versionsArray) {
+            redirects[x] = x.replace(".", "-").replace(".", "-");
+          }
+          let redirected = false;
+          for (const [toVal, fromVal] of Object.entries(redirects)) {
+            if (existingPath.includes(toVal)) {
+              existingPath = existingPath.replace(toVal, fromVal);
+              redirected = true;
             }
+          }
+          if (redirected) {
+            return [existingPath];
           }
         },
       },

@@ -84,7 +84,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 
   **Notes:** 
   
-   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/api-gateway-configuration.md#enable-jwt-token-refresh-endpoint).
+   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt#enabling-a-jwt-token-refresh-endpoint).
    - The endpoint is protected by a client certificate.
 
   The refresh request requires the token in one of the following formats:
@@ -206,6 +206,7 @@ The following schemes are supported by the API Gateway:
     The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
 
   * **httpBasicPassTicket**  
+
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
     It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
 
