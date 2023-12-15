@@ -3,21 +3,36 @@
 :::info**Roles:** system programmer, system administrator, security administrator
 :::
 
-The Zowe API Mediation Layer offers a range of routing configurations for enhanced functionality and security. You can customize your configuration for how API ML manages both northbound and southbound load limits in single instances, including changing the number of concurrent connections per route passing through the API Gateway, and changing the global Gateway timeout value for the API ML instance.
+The Zowe API Mediation Layer offers a range of routing configurations for enhanced functionality and security. 
 
-Customizing CORS enables the Gateway to handle Cross-Origin Resource Sharing requests, while settings for encoded slashes and unique cookie names cater to specific operational needs of onboarding applications and multiple Zowe instances. The Gateway retry policy, customizable through zowe.yaml, optimizes request handling, which can be especially useful in high availability scenarios.
+You can customize your configuration for how API ML manages both northbound and southbound load limits in single instances, including changing the number of concurrent connections per route passing through the API Gateway, and changing the global Gateway timeout value for the API ML instance.
+
+To change the number of concurrent connections per route passing through the API Gateway, see [Customizing connection limits](./configuration-connection-limits).
+
+To change the global Gateway timeout value for the API ML instance, see [Customizing Gateway timeouts](./configuration-gateway-timeouts).
+
+Also see the following properties in API Gateway configuration parameters: 
+* `server.maxTotalConnections`
+* `server.maxConnectionsPerRoute`
+
+Customizing CORS enables the Gateway to handle Cross-Origin Resource Sharing requests, while settings for encoded slashes and unique cookie names cater to specific operational needs of onboarding applications and multiple Zowe instances.
+
+For more information, see [Customizing Cross-Origin Resource Sharing (CORS)](./configuration-cors)
+
+To onboard applications which expose endpoints that expect encoded slashes, see [Using encoded slashes](./configuration-url-handling)
+
+The Gateway retry policy, customizable through zowe.yaml, optimizes request handling, which can be especially useful in high availability scenarios.
+
+To customize the Gateway retry policy, see [Customizing Gateway retry policy](./configuration-gateway-retry-policy).
 
 Additionally, API ML supports specific instance access and load balancer cache distribution, improving service identification and scalability. These configurations, including service ID adjustments for compatibility with Zowe v2, demonstrate Zowe's adaptability and robustness in API management.
 
-For details about specific configuration procedures, see the following links:
+To configure a unique cookie name for each instance to prevent overwriting of the default cookie name in the case of multiple Zowe instances, or for more complex deployment strategies, see [Configuring a unique cookie name for a specific API ML instance](./configuration-unique-cookie-name-for-multiple-zowe-instances).
 
-- [Customizing management of API ML load limits](./configuration-customizing-management-of-apiml-load-limits)
-    - [Customizing connection limits](./configuration-connection-limits)
-    - [Customizing Gateway timeouts](./configuration-gateway-timeouts)
-- [Customizing Cross-Origin Resource Sharing (CORS)](./configuration-cors)
-- [Using encoded slashes](./configuration-url-handling)
-- [Customizing Gateway retry policy](./configuration-gateway-retry-policy)
-- [Configuring a unique cookie name for a specific API ML instance](./configuration-unique-cookie-name-for-multiple-zowe-instances)
-- [Retrieving a specific service within your environment](./configuration-access-specific-instance-of-service)
-- [Distributing the load balancer cache](./configuration-distributed-load-balancer-cache)
-- [Setting a consistent service ID](./configuration-set-consistent-service-id)
+To determine which service instance is being called, you can customize the Gateway to output a routed instance header. For more information, see [Retrieving a specific service within your environment](./configuration-access-specific-instance-of-service).
+
+To distribute the load balancer cache between instances of the API Gateway, see [Distributing the load balancer cache](./configuration-distributed-load-balancer-cache).
+
+To modify the service ID to ensure compatibility of services that use a non-conformant organization prefix with Zowe v2, see [Setting a consistent service ID](./configuration-set-consistent-service-id).
+
+
