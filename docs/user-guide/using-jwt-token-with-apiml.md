@@ -3,9 +3,11 @@
 :::info**Required roles:** system administrator, security administrator
 :::
 
-As REST API services do not have mechanism of a long-term web session, it is necessary to have a way to establish an authenticated session outside of individual REST API services.
+## Authentication with JWT Token
 
-In Zowe, authentication is achieved using JWT tokens that can be obtained by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service).
+When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
+
+In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service).
 
 This article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience.
 
@@ -163,3 +165,7 @@ responsible for obtaining valid PassTicket (for example by using Zowe APIML that
 if the API client provides a valid JWT token).
 
 The authentication scheme is same as in the HTTP Basic authentication scheme. The PassTicket is used instead of the password.
+
+* For information about enabling a JWT token refresh endpoint, see [Enabling single sign on for clients via JWT token configuration](../user-guide/api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
+
+* For more information about authentication with JWT token, see [SAF Authentication Provider](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-jwt-token).
