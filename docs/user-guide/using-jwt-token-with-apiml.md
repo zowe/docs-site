@@ -3,27 +3,27 @@
 :::info**Required roles:** system administrator, security administrator
 :::
 
-Every REST request is required to provide valid authentication. As REST API services do not have mechanism of a long-term web session, it is necessary to have a way to establish an authenticated session outside of individual REST API services.
+As REST API services do not have mechanism of a long-term web session, it is necessary to have a way to establish an authenticated session outside of individual REST API services.
 
-In Zowe and in many other applications, this is achieved using JWT tokens that can be obtained by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service).
+In Zowe, authentication is achieved using JWT tokens that can be obtained by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service).
 
-This section focuses on the way how services in the Zowe API ecosystem are expected to accept and use these tokens so the API clients have unified experience.
+This article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience.
 
 ### Token-based Login Flow and Request/Response Format
 
 The following sequence describes how authentication through JWT tokens works:
 
-1. The API client obtains JWT token by using POST method on `/auth/login` endpoint of API service that requires valid user ID and password.
+1. The API client obtains a JWT token by using the POST method on the `/auth/login` endpoint of the API service that requires a valid user ID and password.
 
 2. The API service calls an *authentication provider* that returns a JWT token that contains the user ID claim in the HTTP cookie named `apimlAuthenticationToken` with attributes `HttpOnly` and `Secure`.
 
-3. The API client remembers the JWT token or cookie and sends it with every request as the cookie with name `apimlAuthenticationToken`.
+3. The API client remembers <!-- Is there a more accurate word than "remembers"? -->the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
 #### Obtaining the token
 
-- The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1` then the full URL can be: `https://hostname:port/api/v1/auth/login`.
+- The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1`, the full URL could have the format: `https://hostname:port/api/v1/auth/login`.
 
-- The credentials are provide in JSON request:
+- The credentials are provide in the JSON request:
 
     ```json
     {
@@ -32,11 +32,11 @@ The following sequence describes how authentication through JWT tokens works:
     }
     ```
 
-- Successful login returns `204` and empty body with the token in the `apimlAuthenticationToken` cookie.
+- Successful login returns `204` and an empty body with the token in the `apimlAuthenticationToken` cookie.
 
-- Failed authentication returns `401` without `WWW-Authenticate`
+- Failed authentication returns `401` without `WWW-Authenticate`.
 
-**Example**:
+**Example:**
 
 ```bash
 curl -v -c - -X POST "https://localhost:10080/api/v1/auth/login" -d "{ \"username\": \"zowe\", \"password\": \"zowe\"}"
@@ -59,7 +59,9 @@ Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; Ht
 
 #### Authenticated request
 
-One option is for the API client to pass the JWT token as a Cookie header with the name `apimlAuthenticationToken`:
+One option <!-- One option to do what? --> is for the API client to pass the JWT token as a cookie header with the name `apimlAuthenticationToken`:
+
+**Example:**
 
 ```http
 GET /api/v1/greeting HTTP/1.1
@@ -79,24 +81,26 @@ HTTP/1.1 200
 ...
 ```
 :::tip
-The first option (cookies) is preferred for web browsers with attributes `Secure` and `HttpOnly`.
+The first option (using a cookie header) is preferred for web browsers with the attributes `Secure` and `HttpOnly`.
 Browsers store and send cookies automatically.
-Cookies are present on all requests, including those coming from DOM elements.
-They are compatible with web mechanisms such as CORS, SSE, or WebSockets.
+Cookies are present on all requests, including those coming from DOM elements, and are compatible with web mechanisms such as CORS, SSE, or WebSockets.
 
 Cookies are more diffcult to support in non-web applications.
-Headers, such as `Authorization: Bearer`, are easier to be used in non-web applications.
-But such headers are difficult to use and secure in a web browser.
-The web application needs to store these headers and attach them to all requests where headers are required.
+Headers, such as `Authorization: Bearer`, are easier for use in non-web applications. Such headers, however, are difficult to use and secure in a web browser.
+The web application needs to store these headers and attach these headers to all requests where headers are required.
 
 Note that the API service needs to support both of them <!-- What is "both of them" --> so the API clients can use what makes more sense for them.
 :::
 
 ### Token format
 
-The JWT must contain unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti` in the meaning defined by <https://tools.ietf.org/html/rfc7519#section-4.1>. Specifically, the `sub` is the z/OS user ID and `iss` is the name of the service that issued the JWT token.
+The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti`. Specifically, the `sub` is the z/OS user ID, and `iss` is the name of the service that issued the JWT token.
 
-The JWT must use RS256 signature algorithm and the secret used to sign the JWT is an asymmetric key generated during installation.
+:::note
+For more information, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
+:::
+
+The JWT must use RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
 
 **Example**:
 
@@ -112,10 +116,16 @@ The JWT must use RS256 signature algorithm and the secret used to sign the JWT i
 
 ### Validating tokens
 
-API client does not need to validate the tokens, the API services must do it themselves. If the API client receives the token from another source and needs to validate such JWT token or needs to check details in it (like user ID, expiration) then it can use `/auth/query` endpoint
-that is provided by the service.
+The API client does not need to validate tokens. API services must perform token validation themselves. If the API client receives a token from another source and needs to validate the JWT token, or needs to check details in the token, such as user ID expiration, then the client can use the `/auth/query` endpoint provided by the service.
 
-The response is a JSON response with fields `creation`, `expiration`, `userId` that correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+The response is a JSON response with the following fields:
+* `creation`
+* `expiration`
+* `userId` 
+
+These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in ISO 8601 format.
+
+**Example:**
 
 ```bash
 curl -k --cookie "apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9..." -X GET "https://localhost:10080/api/v1/auth/query"
@@ -136,6 +146,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
+<!-- It seems that the following section is a work in progress and is not ready for the published documentation -->
 ### The support for token-based authentication in the Zowe REST API SDK
 
 The Zowe REST API SDK does not support it yet but it is planned add this support exactly how it is described. The JWT tokens will be issued by configurable provider.
