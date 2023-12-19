@@ -25,6 +25,8 @@ The following sequence describes how authentication through JWT tokens works:
 
 #### Obtaining the token
 
+<!-- We should outline how to obtain a token in a sequence of numbered steps. -->
+
 - The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1`, the full URL could have the format: `https://hostname:port/api/v1/auth/login`.
 
 - The credentials are provide in the JSON request:
@@ -157,8 +159,10 @@ The Zowe REST API SDK does not support it yet but it is planned add this support
 
 The JWT token provider can be:
 
-* Simple standalone provider that validates the credentials via `SafPlatformUser`
-* Zowe APIML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens
+* A  simple, standalone provider that validates the credentials via `SafPlatformUser`
+* The Zowe API ML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens.
+
+<!-- We should specify when to use each of these provider options -->
 
 ## HTTP basic authentication with PassTicket support
 
