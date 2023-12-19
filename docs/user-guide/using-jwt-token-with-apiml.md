@@ -153,7 +153,7 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 <!-- It seems that the following section is a work in progress and is not ready for the published documentation -->
-### The support for token-based authentication in the Zowe REST API SDK
+### Support for token-based authentication in the Zowe REST API SDK
 
 The Zowe REST API SDK does not support it yet but it is planned add this support exactly how it is described. The JWT tokens will be issued by configurable provider.
 
@@ -163,12 +163,4 @@ The JWT token provider can be:
 * The Zowe API ML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens.
 
 <!-- We should specify when to use each of these provider options -->
-
-## HTTP basic authentication with PassTicket support
-
-In order to support MFA without supporting JWT in the service, the service can accept PassTickets and the API client is
-responsible for obtaining valid PassTicket (for example by using Zowe APIML that will be able to generate PassTickets
-if the API client provides a valid JWT token).
-
-The authentication scheme is same as in the HTTP Basic authentication scheme. The PassTicket is used instead of the password.
 
