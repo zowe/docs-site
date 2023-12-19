@@ -11,7 +11,8 @@ This parent article describes how services in the Zowe API ecosystem are expecte
 
 The JWT tokens are by default produced by z/OSMF and the API Mediation Layer serves only as proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
-TODO: https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers should move to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
+<!-- moved https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
+-->
 
 ### Token-based Login Flow and Request/Response Format
 
@@ -23,7 +24,7 @@ The following sequence describes how authentication through JWT tokens works:
 
 3. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
-#### Obtaining the token
+#### Obtaining a token
 
 <!-- We should outline how to obtain a token in a sequence of numbered steps. -->
 
@@ -116,6 +117,8 @@ These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timesta
 curl -k --cookie "apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9..." -X GET "https://localhost:10080/api/v1/auth/query"
 ```
 
+<!-- Is this another example? -->
+
 ```http
 GET /api/v1/auth/query HTTP/1.1
 Connection: keep-alive
@@ -144,10 +147,12 @@ Notes:
 - The endpoint is disabled by default. For more information, see Enable JWT token endpoint.
 - The endpoint is protected by a client certificate.
 - The refresh request requires the token in one of the following formats:
-  - Cookie named apimlAuthenticationToken.
+  - Cookie named `apimlAuthenticationToken`.
   - Bearer authentication
 
 For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
+
+<!-- Please describe what the following code does? -->
 
 ```bash
 curl -v -c - -X POST "https://localhost:10080/api/v1/auth/refresh" 
