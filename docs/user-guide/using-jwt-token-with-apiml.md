@@ -111,13 +111,15 @@ The response is a JSON response with the following fields:
 
 These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in ISO 8601 format.
 
+<!-- We should describe what the following comand does. SUch as, "Execute the following curl command to check the status of your token." -->
 **Example:**
 
 ```bash
 curl -k --cookie "apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9..." -X GET "https://localhost:10080/api/v1/auth/query"
 ```
 
-<!-- Is this another example? -->
+The following output describes the status of the token: <!-- Please validate this statement. --> 
+
 
 ```http
 GET /api/v1/auth/query HTTP/1.1
@@ -138,25 +140,33 @@ Content-Type: application/json;charset=UTF-8
 
 ### Refreshing the token 
 
-The API Clients may want to refresh the existing token to prolong the validity time. `auth/refresh` endpoint can provide this functionality. 
+API Clients may want to refresh the existing token to prolong the validity time. 
 
-The auth/refresh endpoint generates a new token for the user based on valid jwt token. The full path of the auth/refresh endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh. The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is not usable anymore.
+Use the `auth/refresh` endpoint to prolong the validity time of the token.
 
-Notes:
+The auth/refresh endpoint generates a new token for the user based on valid jwt token. The full path of the auth/refresh endpoint appears as the following URL:
 
+```
+https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
+```
+The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is not usable anymore.
+
+:::note**Notes:**
 - The endpoint is disabled by default. For more information, see Enable JWT token endpoint.
 - The endpoint is protected by a client certificate.
 - The refresh request requires the token in one of the following formats:
   - Cookie named `apimlAuthenticationToken`.
   - Bearer authentication
+:::
 
 For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
-<!-- Please describe what the following code does? -->
+<!-- Please describe what the following code does? Such as, "The following request is an example of using curl to refresh the token:"-->
 
 ```bash
 curl -v -c - -X POST "https://localhost:10080/api/v1/auth/refresh" 
 ```
+The following output describes the status of the token: <!-- Please check for accuracy -->
 
 ```http
 POST /api/v1/auth/refresh HTTP/1.1
@@ -204,4 +214,6 @@ You can choose from the following JWT token providers:
 * The Zowe API ML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens.
 
 <!-- We should specify when to use each of these provider options -->
+
+<!-- If this section is to be included, it would be useful to have an example of how to to use this tken in the SDK -->
 

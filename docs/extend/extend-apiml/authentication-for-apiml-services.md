@@ -285,11 +285,7 @@ Use the following property of API Gateway to enable the `Dummy Authentication Pr
 apiml.security.auth.provider: dummy
 ```
 
-## Authorization
 
-Authorization is a method used to determine access rights of an entity.
-
-In the API ML, authorization is performed by the z/OS security manager ([ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 ## Discovery Service authentication
 
 There are several authentication mechanisms, depending on the desired endpoint, as described by the following matrix:
