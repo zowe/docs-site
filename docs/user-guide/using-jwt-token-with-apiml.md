@@ -9,7 +9,7 @@ In Zowe, authentication can be performed via JWT tokens, whereby a token can be 
 
 This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience. 
 
-The JWT tokens are by default produced by z/OSMF and the API Mediation Layer serves only as proxy. If you want to change who and how produces the tokens, read [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
+The JWT tokens are by default produced by z/OSMF and the API Mediation Layer serves only as proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
 TODO: https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers should move to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
 
@@ -189,13 +189,13 @@ The JWT must use RS256 signature algorithm. The secret used to sign the JWT is a
   "jti": "ac2eb63e-caa6-4ccf-a527-95cb61ad1646"
 }
 ```
-### The support for token-based authentication in the Zowe REST API SDK
+### Support for token-based authentication in the Zowe REST API SDK
 
 The Zowe REST API SDK does not support it yet but it is planned add this support exactly how it is described. The JWT tokens will be issued by configurable provider.
 
-The JWT token provider can be:
+You can choose from the following JWT token providers:
 
-* A  simple, standalone provider that validates the credentials via `SafPlatformUser`
+* A simple, standalone provider that validates the credentials via `SafPlatformUser`.
 * The Zowe API ML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens.
 
 <!-- We should specify when to use each of these provider options -->
