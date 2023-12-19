@@ -7,11 +7,11 @@
 
 In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). When a client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
 
-This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience.
+This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience. 
 
-* For information about enabling a JWT token refresh endpoint, see [Enabling single sign on for clients via JWT token configuration](../user-guide/api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
+The JWT tokens are by default produced by z/OSMF and the API Mediation Layer serves only as proxy. If you want to change who and how produces the tokens, read [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
-* For more information about authentication with JWT token, see [SAF Authentication Provider](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-jwt-token).
+TODO: https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers should move to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
 
 ### Token-based Login Flow and Request/Response Format
 
@@ -98,27 +98,6 @@ The web application needs to store these headers and attach these headers to all
 Note that the API service needs to support both of them <!-- What is "both of them" --> so the API clients can use what makes more sense for them.
 :::
 
-### Token format
-
-The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti`. Specifically, the `sub` is the z/OS user ID, and `iss` is the name of the service that issued the JWT token.
-
-:::note
-For more information, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
-:::
-
-The JWT must use RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
-
-**Example**:
-
-```json
-{
-  "sub": "zowe",
-  "iat": 1575034758,
-  "exp": 1575121158,
-  "iss": "Zowe Sample API Service",
-  "jti": "ac2eb63e-caa6-4ccf-a527-95cb61ad1646"
-}
-```
 
 ### Validating tokens
 
@@ -153,7 +132,64 @@ Content-Type: application/json;charset=UTF-8
 ```
 
 <!-- It seems that the following section is a work in progress and is not ready for the published documentation -->
-### Support for token-based authentication in the Zowe REST API SDK
+
+### Refreshing the token 
+
+The API Clients may want to refresh the existing token to prolong the validity time. `auth/refresh` endpoint can provide this functionality. 
+
+The auth/refresh endpoint generates a new token for the user based on valid jwt token. The full path of the auth/refresh endpoint appears as https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh. The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is not usable anymore.
+
+Notes:
+
+- The endpoint is disabled by default. For more information, see Enable JWT token endpoint.
+- The endpoint is protected by a client certificate.
+- The refresh request requires the token in one of the following formats:
+  - Cookie named apimlAuthenticationToken.
+  - Bearer authentication
+
+For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
+
+```bash
+curl -v -c - -X POST "https://localhost:10080/api/v1/auth/refresh" 
+```
+
+```http
+POST /api/v1/auth/refresh HTTP/1.1
+Accept: application/json, */*
+Content-Length: 40
+Content-Type: application/json
+
+{
+    "username": "zowe",
+    "password": "zowe"
+}
+
+HTTP/1.1 204
+Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
+```
+
+### Token format
+
+The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti`. Specifically, the `sub` is the z/OS user ID, and `iss` is the name of the service that issued the JWT token.
+
+:::note
+For more information, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
+:::
+
+The JWT must use RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
+
+**Example**:
+
+```json
+{
+  "sub": "zowe",
+  "iat": 1575034758,
+  "exp": 1575121158,
+  "iss": "Zowe Sample API Service",
+  "jti": "ac2eb63e-caa6-4ccf-a527-95cb61ad1646"
+}
+```
+### The support for token-based authentication in the Zowe REST API SDK
 
 The Zowe REST API SDK does not support it yet but it is planned add this support exactly how it is described. The JWT tokens will be issued by configurable provider.
 
