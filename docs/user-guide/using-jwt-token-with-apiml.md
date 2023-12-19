@@ -7,7 +7,11 @@
 
 In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). When a client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
 
-This article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience.
+This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience.
+
+* For information about enabling a JWT token refresh endpoint, see [Enabling single sign on for clients via JWT token configuration](../user-guide/api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
+
+* For more information about authentication with JWT token, see [SAF Authentication Provider](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-jwt-token).
 
 ### Token-based Login Flow and Request/Response Format
 
@@ -15,9 +19,9 @@ The following sequence describes how authentication through JWT tokens works:
 
 1. The API client obtains a JWT token by using the POST method on the `/auth/login` endpoint of the API service that requires a valid user ID and password.
 
-2. The API service calls an *authentication provider* that returns a JWT token that contains the user ID claim in the HTTP cookie named `apimlAuthenticationToken` with attributes `HttpOnly` and `Secure`.
+2. The API service then calls an *authentication provider* that returns a JWT token that contains the user ID claim in the HTTP cookie named `apimlAuthenticationToken` with attributes `HttpOnly` and `Secure`.
 
-3. The API client remembers <!-- Is there a more accurate word than "remembers"? -->the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
+3. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
 #### Obtaining the token
 
@@ -32,9 +36,9 @@ The following sequence describes how authentication through JWT tokens works:
     }
     ```
 
-- Successful login returns `204` and an empty body with the token in the `apimlAuthenticationToken` cookie.
+- Successful login returns RC `204`, and an empty body with the token in the `apimlAuthenticationToken` cookie.
 
-- Failed authentication returns `401` without `WWW-Authenticate`.
+- Failed authentication returns RC `401` without `WWW-Authenticate`.
 
 **Example:**
 
@@ -81,12 +85,12 @@ HTTP/1.1 200
 ...
 ```
 :::tip
-The first option (using a cookie header) is preferred for web browsers with the attributes `Secure` and `HttpOnly`.
+The first option (using a cookie header) is recommended for web browsers with the attributes `Secure` and `HttpOnly`.
 Browsers store and send cookies automatically.
 Cookies are present on all requests, including those coming from DOM elements, and are compatible with web mechanisms such as CORS, SSE, or WebSockets.
 
 Cookies are more diffcult to support in non-web applications.
-Headers, such as `Authorization: Bearer`, are easier for use in non-web applications. Such headers, however, are difficult to use and secure in a web browser.
+Headers, such as `Authorization: Bearer`, can be used in non-web applications. Such headers, however, are difficult to use and secure in a web browser.
 The web application needs to store these headers and attach these headers to all requests where headers are required.
 
 Note that the API service needs to support both of them <!-- What is "both of them" --> so the API clients can use what makes more sense for them.
@@ -153,8 +157,8 @@ The Zowe REST API SDK does not support it yet but it is planned add this support
 
 The JWT token provider can be:
 
-1. Simple standalone provider that validates the credentials via `SafPlatformUser`
-2. Zowe APIML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens
+* Simple standalone provider that validates the credentials via `SafPlatformUser`
+* Zowe APIML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens
 
 ## HTTP basic authentication with PassTicket support
 
@@ -164,6 +168,3 @@ if the API client provides a valid JWT token).
 
 The authentication scheme is same as in the HTTP Basic authentication scheme. The PassTicket is used instead of the password.
 
-* For information about enabling a JWT token refresh endpoint, see [Enabling single sign on for clients via JWT token configuration](../user-guide/api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
-
-* For more information about authentication with JWT token, see [SAF Authentication Provider](../extend/extend-apiml/authentication-for-apiml-services/#authentication-with-jwt-token).
