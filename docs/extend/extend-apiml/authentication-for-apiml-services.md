@@ -120,7 +120,7 @@ When providing credentials with a client certificate on the same login request, 
 
 #### How the Gateway resolves authentication 
 
-The Gateway resolves authetication by authenticating against an endpoint through the following process:
+ When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
 
 * The client calls the service endpoint through API ML Gateway with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
@@ -138,15 +138,19 @@ When sending a request to the login endpoint with a client certificate, the Gate
 
 #### Prerequisites
 
-1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command:  
+Ensure to satisfy the following requirements before you set up client certificate authentication:
+
+1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
+
+For RACF, issue the following TSO command:  
+
 `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
+
 For other security systems, refer to the documentation for an equivalent command.
 
 <!-- Add sample command and output -->
 
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
-
-<!-- Add how to provide this verification.. Sample commands? -->
 
 :::note
 Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
@@ -176,7 +180,7 @@ Validate using CURL, a command line utility that runs on Linux based systems:
 ```
 curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
 ```
-<!-- Add outcome -->
+Your Zowe instance is configured to accept x.509 client certificates authentication.
 
 
 ### Authentication with JWT Token
