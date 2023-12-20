@@ -5,9 +5,10 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-    - [Authentication with Username Password](#authentication-with-usernamepassword)
-    - [Authentication with Client certificate](#authentication-with-client-certificate)
-    - [Authentication with JWT Token](#authentication-with-jwt-token)
+    - [Authenticate with Username Password](#authenticate-with-usernamepassword)
+    - [Authenticate with Client certificate](#authenticate-with-client-certificate)
+    - [Authenticate with JWT Token](#authenticate-with-jwt-token)
+    - [Authenticate with Personal Access Token](#authenticate-with-personal-access-token)
 - [Authentication parameters](#authentication-parameters)
 - [Authentication providers](#authentication-providers)
     * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
@@ -100,7 +101,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
 with each authentication provider. 
 
-### Authentication with Username/Password
+### Authenticate with Username/Password
 
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
 credentials. For more details, see the ZAAS Client documentation. 
@@ -183,11 +184,11 @@ curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer
 Your Zowe instance is configured to accept x.509 client certificates authentication.
 
 
-### Authentication with JWT Token
+### Authenticate with JWT Token
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
-### Authentication with Personal Access Token
+### Authenticate with Personal Access Token
 
 A Personal Access Token (PAT) is an alternative to using passwords for authentication.
 It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
