@@ -143,19 +143,17 @@ Ensure to satisfy the following requirements before you set up client certificat
 
 1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
 
-For RACF, issue the following TSO command:  
+  For RACF, issue the following TSO command:  
 
-`ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
+  `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
 
-For other security systems, refer to the documentation for an equivalent command.
-
-<!-- Add sample command and output -->
+  For other security systems, refer to the documentation for an equivalent command.
 
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
 
-:::note
-Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
-:::
+  :::note
+  Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
+  :::
 
 #### Configure your z/OS system to support client certificate authentication
 
