@@ -5,11 +5,13 @@
 
 ## Authentication with JWT Token
 
-In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more details at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). When a client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
+In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more detail at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). 
+
+When a client authenticates with the API ML, the client receives the JWT token whch can then be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
 
 This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience. 
 
-The JWT tokens are by default produced by z/OSMF and the API Mediation Layer serves only as proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
+By default, JWT tokens are produced by z/OSMF and the API Mediation Layer serves only as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
 <!-- moved https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
 -->
@@ -24,9 +26,14 @@ The following sequence describes how authentication through JWT tokens works:
 
 3. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
-#### Obtaining a token
+## Obtaining a token
 
 <!-- We should outline how to obtain a token in a sequence of numbered steps. -->
+To obtain a token, call the endpoint with the credentials for either basic authentication or the client certificate.
+
+<!-- Check the previous statement for accuracy. -->
+
+- The full path for API ML is:```/gateway/auth/login```
 
 - The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1`, the full URL could have the format: `https://hostname:port/api/v1/auth/login`.
 
@@ -64,29 +71,13 @@ HTTP/1.1 204
 Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
 ```
 
-#### Authenticated request
+### Making an authenticated request
 
-One option <!-- One option to do what? --> is for the API client to pass the JWT token as a cookie header with the name `apimlAuthenticationToken`:
+You can send a JWT token with a request in two ways:
 
-**Example:**
+* Allow the API client to pass the JWT token as a cookie header
+* Pass the JWT token in the `Authorization: Bearer` header
 
-```http
-GET /api/v1/greeting HTTP/1.1
-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...
-
-HTTP/1.1 200
-...
-```
-
-The second option is to pass the JWT token in the `Authorization: Bearer` header:
-
-```http
-GET /api/v1/greeting HTTP/1.1
-Authorization: Bearer eyJhbGciOiJSUzI1NiJ9...
-
-HTTP/1.1 200
-...
-```
 :::tip
 The first option (using a cookie header) is recommended for web browsers with the attributes `Secure` and `HttpOnly`.
 Browsers store and send cookies automatically.
@@ -99,6 +90,33 @@ The web application needs to store these headers and attach these headers to all
 Note that the API service needs to support both of them <!-- What is "both of them" --> so the API clients can use what makes more sense for them.
 :::
 
+#### Allow the API client to pass the JWT token as a cookie header
+
+One option to send a JWT token with the request is for the API client to pass the JWT token as a cookie header with the name `apimlAuthenticationToken`:
+
+**Example:**
+
+```http
+GET /api/v1/greeting HTTP/1.1
+Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...
+
+HTTP/1.1 200
+...
+```
+
+#### Pass the JWT token in the `Authorization: Bearer` header
+
+A second option to send a JWT with the request is to pass the JWT token in the `Authorization: Bearer` header.
+
+**Example:**
+
+```http
+GET /api/v1/greeting HTTP/1.1
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9...
+
+HTTP/1.1 200
+...
+```
 
 ### Validating tokens
 
