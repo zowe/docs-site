@@ -127,7 +127,7 @@ The Gateway resolves authetication by authenticating against an endpoint through
 * The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML.
 * The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
 
-The Gateway resolves authentication via the login endpoint through the following process:
+When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token.
 
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
