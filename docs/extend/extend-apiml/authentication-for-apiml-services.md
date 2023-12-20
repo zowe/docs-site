@@ -118,7 +118,7 @@ certificate authentication, please create an issue against the api-layer reposit
 
 When providing credentials with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
 
-### How the Gateway resolves authentication 
+#### How the Gateway resolves authentication 
 
 The Gateway resolves authetication by authenticating against an endpoint through the following process:
 
@@ -136,7 +136,7 @@ The Gateway resolves authentication via the login endpoint through the following
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
-### Prerequisites
+#### Prerequisites
 
 1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command:  
 `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
@@ -152,7 +152,7 @@ For other security systems, refer to the documentation for an equivalent command
 Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
 :::
 
-### Configure your z/OS system to support client certificate authentication
+#### Configure your z/OS system to support client certificate authentication
 
 1. Import the client certificates to SAF, or add them to a user profile.  
 **Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`.  
