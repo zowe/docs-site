@@ -47,6 +47,8 @@ To determine the installed version of npm:
   
 2. Verify that your installed version of npm is compatible with your version of Node.js by referring to the [Node.js release matrix](https://nodejs.org/en/about/previous-releases#looking-for-latest-release-of-a-version-branch).
 
+    If your npm version is not compatible, install a new version of Node.js.
+
 :::info important
  If you are running npm version 8.11.0 or 8.12.0 and you are installing Zowe CLI on a computer that cannot access the Internet or has restricted Internet access, your Zowe CLI installation appears to complete successfully.
  
@@ -83,7 +85,7 @@ Plug-ins communicate with various mainframe services. The services must be confi
 
 ### Zowe CLI on z/OS is not supported
 
-Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 plug-in cannot run on z/OS due to native code requirements. As such, Zowe CLI is _not supported on z/OS_ and is currently experimental.
+Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 plug-in cannot run on z/OS due to native code requirements. As such, Zowe CLI is *not supported* on z/OS and is currently experimental.
 
 ## Free disk space
 
