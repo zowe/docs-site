@@ -206,7 +206,7 @@ Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; Ht
 The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti`. Specifically, the `sub` is the z/OS user ID, and `iss` is the name of the service that issued the JWT token.
 
 :::note
-For more information, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
+For more information about JWT token formatting, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
 :::
 
 The JWT must use RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
@@ -222,16 +222,5 @@ The JWT must use RS256 signature algorithm. The secret used to sign the JWT is a
   "jti": "ac2eb63e-caa6-4ccf-a527-95cb61ad1646"
 }
 ```
-### Support for token-based authentication in the Zowe REST API SDK
 
-The Zowe REST API SDK does not support it yet but it is planned add this support exactly how it is described. The JWT tokens will be issued by configurable provider.
-
-You can choose from the following JWT token providers:
-
-* A simple, standalone provider that validates the credentials via `SafPlatformUser`.
-* The Zowe API ML provider that uses the Zowe Authentication and Authorization Service to obtain and validate JWT tokens.
-
-<!-- We should specify when to use each of these provider options -->
-
-<!-- If this section is to be included, it would be useful to have an example of how to to use this tken in the SDK -->
 
