@@ -158,7 +158,7 @@ Ensure that you have an external Certificate Authority and signed client certifi
 **Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`.  
 For more information, see your security system documentation.
 2. Import the external CA to the truststore or keyring of the API Mediation Layer.
-3. [Configure the Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration/#gateway-client-certificate-authentication).
+3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](../../user-guide/api-mediation/configuration-client-certificates).
 
 :::note**Notes:**
 * PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](#authentication-with-passtickets).
