@@ -15,13 +15,15 @@ To install Node.js:
   1. Go to [Node.js LTS](https://nodejs.org/en/) to select and install a runtime version with active support.
 
   For a list of supported LTS versions, see [Nodejs Releases](https://https://nodejs.org/en/about/previous-releases).
+
   2. Restart the command prompt after installing Node.js, if required.
+
   3. Verify that Node.js is installed:
 
   ```
   node --version
   ```
-  Node.js is installed on your PC when Zowe CLI returns a message with the correct Node.js version.
+  Node.js is installed on your PC when a message returns with the correct Node.js version.
   
   If you issue the `node --version` command and get an error message, confirm that your PATH environment variable includes the path to the Node.js installation location.
 
@@ -43,7 +45,7 @@ To determine the installed version of npm:
   npm --version
   ```
 
-  Zowe CLI returns a message with the installed version of npm.
+  A message returns with the installed version of npm.
   
 2. Verify that your installed version of npm is compatible with your version of Node.js by referring to the [Node.js release matrix](https://nodejs.org/en/about/previous-releases#looking-for-latest-release-of-a-version-branch).
 
