@@ -56,6 +56,7 @@ module.exports = {
       ],
     },
     "appendix/zowe-glossary",
+    "getting-started/community-support",	
     {
       type: "category",
       label: "Zowe FAQ",
