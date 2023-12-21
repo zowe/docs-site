@@ -38,11 +38,13 @@ The Infinispan storage method is recommended for production usage.
 
     ```
     zowe
-      environments:
-            JGROUPS_BIND_PORT:
-            JGROUPS_BIND_ADDRESS:
-            CACHING_STORAGE_INFINISPAN_INITIALHOSTS:
-            CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION:
+      components:
+            caching-service:
+              storage:
+                mode: infinispan
+                infinispan: 
+                  jgroups:
+                    port: 7098
     ```
 
 ## VSAM
