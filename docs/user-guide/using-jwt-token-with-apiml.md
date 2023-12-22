@@ -1,37 +1,37 @@
-# Using JWT token with API Mediation Layer
+# Using a JWT token with API Mediation Layer
 
 :::info**Required roles:** system administrator, security administrator
 :::
 
-## Authentication with JWT Token
+## Authentication with a JWT Token
 
-In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more detail at [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). 
+In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more detail in [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). 
 
-When a client authenticates with the API ML, the client receives the JWT token whch can then be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
+When a client authenticates with API Mediation Layer, the client receives the JWT token which can then be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
 
-This parent article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience. 
+This article describes how services in the Zowe API ecosystem are expected to accept and use JWT tokens so that API clients have a stadardized experience. 
 
-By default, JWT tokens are produced by z/OSMF and the API Mediation Layer serves only as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
+By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
 
-### Token-based Login Flow and Request/Response Format
+### JWT Token-based Login Flow and Request/Response Format
 
 The following sequence describes how authentication through JWT tokens works:
 
-1. The API client obtains a JWT token by using the POST method on the `/auth/login` endpoint of the API service that requires a valid user ID and password.
+First, The API client obtains a JWT token by using the POST method on the `/auth/login` endpoint of the API service that requires a valid user ID and password.
 
-2. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
+Secondly, the API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
-## Obtaining a token
+## Obtaining a JWT token
 
-To obtain a token, call the endpoint with the credentials for either basic authentication or the client certificate.
+To obtain a JWT token, call the endpoint with the credentials for either basic authentication or the client certificate.
 
 
 - The full path for API ML is:```/gateway/auth/login```
 
 - The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1`, the full URL could have the format: `https://hostname:port/api/v1/auth/login`.
 
-- The credentials are provide in the JSON request:
+- Credentials are provided in the JSON request:
 
     ```json
     {
@@ -49,6 +49,7 @@ To obtain a token, call the endpoint with the credentials for either basic authe
 ```bash
 curl -v -c - -X POST "https://localhost:10080/api/v1/auth/login" -d "{ \"username\": \"zowe\", \"password\": \"zowe\"}"
 ```
+The following output describes the status of the JWT token:
 
 ```http
 POST /api/v1/auth/login HTTP/1.1
@@ -110,7 +111,7 @@ HTTP/1.1 200
 ...
 ```
 
-### Validating tokens
+### Validating JWT tokens
 
 The API client does not need to validate tokens. API services must perform token validation themselves. If the API client receives a token from another source and needs to validate the JWT token, or needs to check details in the token, such as user ID expiration, then the client can use the `/auth/query` endpoint provided by the service.
 
@@ -121,7 +122,7 @@ The JSON response contains the following fields:
 
 These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in ISO 8601 format.
 
-Execute the following curl command to validate the existing JWT token, and to retrieve the contents of the token. 
+Execute the following curl command to validate the existing JWT token, and to retrieve the contents of the token: 
 
 ```bash
 curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://localhost:10080/api/v1/auth/query"
@@ -144,18 +145,18 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-### Refreshing the token 
+### Refreshing the JWT token 
 
-API Clients can refresh the existing token to prolong the validity time. 
+API Clients can refresh the existing token to prolong the validity period. 
 
-Use the `auth/refresh` endpoint to prolong the validity time of the token.
+Use the `auth/refresh` endpoint to prolong the validity period of the token.
 
-The auth/refresh endpoint generates a new token for the user based on the valid JWT token. The full path of the `auth/refresh` endpoint appears as the following URL:
+The `auth/refresh` endpoint generates a new token for the user based on the valid JWT token. The full path of the `auth/refresh` endpoint appears as the following URL:
 
 ```
 https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
 ```
-The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is no longer usable.
+The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token becomes invalidated and is no longer usable.
 
 :::note**Notes:**
 - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](./api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
@@ -170,8 +171,9 @@ For more information, see the OpenAPI documentation of the API Mediation Layer i
 The following request receives a valid JWT token and returns the new valid JWT token. As such, the expiration time is reset. 
 
 ```bash
-curl -v -c - -X POST --data '{"username":"zowe","password":"zowe"}' "https://localhost:10080/api/v1/auth/refresh" 
+curl -v -X POST "https://localhost:10080/api/v1/auth/refresh" -d '{"username":"zowe","password":"zowe"}'
 ```
+
 The following output describes the status of the JWT token: 
 
 ```http
@@ -197,7 +199,7 @@ The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti
 For more information about JWT token formatting, see the paragraph 4.1 [Registered Claim Names](https://tools.ietf.org/html/rfc7519#section-4.1) in the Internet Engineering Task Force (IETF) memo that describes JSON Web Tokens.
 :::
 
-The JWT must use RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
+The JWT must use the RS256 signature algorithm. The secret used to sign the JWT is an asymmetric key generated during installation.
 
 **Example**:
 
