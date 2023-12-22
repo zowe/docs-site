@@ -170,7 +170,7 @@ For more information, see the OpenAPI documentation of the API Mediation Layer i
 The following request receives a valid JWT token and returns the new valid JWT token. As such, the expiration time is reset. 
 
 ```bash
-curl -v -c -X --data '{"username":"zowe","password":"zowe"}' POST "https://localhost:10080/api/v1/auth/refresh" 
+curl -v -c - -X POST --data '{"username":"zowe","password":"zowe"}' "https://localhost:10080/api/v1/auth/refresh" 
 ```
 The following output describes the status of the JWT token: 
 
