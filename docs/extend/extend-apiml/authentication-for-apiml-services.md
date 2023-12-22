@@ -5,9 +5,10 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-    - [Authentication with Username Password](#authentication-with-usernamepassword)
-    - [Authentication with Client certificate](#authentication-with-client-certificate)
-    - [Authentication with JWT Token](#authentication-with-jwt-token)
+    - [Authenticate with Username Password](#authenticate-with-usernamepassword)
+    - [Authenticate with Client certificate](#authenticate-with-client-certificate)
+    - [Authenticate with JWT Token](#authenticate-with-jwt-token)
+    - [Authenticate with Personal Access Token](#authenticate-with-personal-access-token)
 - [Authentication parameters](#authentication-parameters)
 - [Authentication providers](#authentication-providers)
     * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
@@ -100,27 +101,34 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
 with each authentication provider. 
 
-### Authentication with Username/Password
+### Authenticate with Username/Password
 
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
 credentials. For more details, see the ZAAS Client documentation. 
 
-### Authentication with Client certificate
+### Authenticate with Client certificate
 
-It is possible to perform authentication with client certificates. There is a limitation with respect to the ACF2 systems. If you would like to offer feedback using client certificate authentication, please create an issue against the api-layer repository. 
+You can perform authentication with client certificates.
 
-If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use the client certificates issued by this CA to authenticate to API ML. This feature is not enabled by default and needs to be configured.
+If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use the client certificates issued by this CA to authenticate to API ML. This feature is not enabled by default and must be configured.
 
-When providing credentials in any form together with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
+:::note
+There is a limitation with respect to ACF2 systems. If you would like to offer feedback using client
+certificate authentication, please create an issue against the api-layer repository.
+:::
 
-Authentication against any endpoint is performed in the following way: 
+When providing credentials with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
+
+#### How the Gateway resolves authentication 
+
+ When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
 
 * The client calls the service endpoint through API ML Gateway with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
-* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
+* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML.
 * The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
 
-Authentication via the login endpoint is performed in the following way:
+When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token.
 
 * The client calls the API ML Gateway login endpoint with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
@@ -129,46 +137,56 @@ Authentication via the login endpoint is performed in the following way:
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
 
-### Procedure to authenticate with client certificates
+#### Prerequisites
 
-Follow these steps to authenticate with client certificates:
+Ensure to satisfy the following requirements before you set up client certificate authentication:
 
-1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. For RACF, issue the following TSO command:  
-`ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
-For other security systems, refer to the documentation for an equivalent command.
+1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
+
+  For RACF, issue the following TSO command:  
+
+  `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
+
+  For other security systems, refer to the documentation for an equivalent command.
 
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
 
-:::note
-Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate has to have correct `Extended Key Usage` metadata so these metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
-:::
+  :::note
+  Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
+  :::
 
-3. Import the client certificates to SAF, or add them to a user profile.  
+#### Configure your z/OS system to support client certificate authentication
+
+1. Import the client certificates to SAF, or add them to a user profile.  
 **Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`.  
 For more information, see your security system documentation.
-4. Import the external CA to the truststore or keyring of the API Mediation Layer.
-5. [Configure the Gateway for client certificate authentication](../../user-guide/api-mediation/api-gateway-configuration/#gateway-client-certificate-authentication).
+2. Import the external CA to the truststore or keyring of the API Mediation Layer.
+3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](../../user-guide/api-mediation/configuration-client-certificates).
 
 :::note**Notes:**
 * PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](#authentication-with-passtickets).
-* The Zowe runtime user has to be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss).
 :::
 
 #### Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was setup using the steps in the previous section, _Procedure to authenticate with client certificates_. The following example uses curl, which is generally available on Linux based systems. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was setup using the steps in _Configure your z/OS system to support client certificate authentication_. 
+
+Validate using CURL, a command line utility that runs on Linux based systems:
 
 **Example:**
 ```
 curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
 ```
+Your Zowe instance is configured to accept x.509 client certificates authentication.
 
-### Authentication with JWT Token
+
+### Authenticate with JWT Token
 
 When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
 
-### Authentication with Personal Access Token
+### Authenticate with Personal Access Token
 
 A Personal Access Token (PAT) is an alternative to using passwords for authentication.
 It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials

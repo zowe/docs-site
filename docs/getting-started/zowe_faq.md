@@ -280,6 +280,18 @@ You can install Zowe CLI using the following methods:
 
 </details>
 
+### Does Zowe CLI support multi-factor authentication (MFA)?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, Zowe CLI supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+
+When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
+
+</details>
+
 ### How can I get help with using Zowe CLI?
 
 <details className="zowe-faq">
@@ -420,6 +432,18 @@ Although not recommended in all cases, it is possible to disable Zowe Explorer's
 <summary></summary>
 
 Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
+
+</details>
+
+### Does Zowe Explorer support multi-factor authentication (MFA)?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, Zowe Explorer supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+
+When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
 
 </details>
 
