@@ -28,7 +28,6 @@ The following sequence describes how authentication through JWT tokens works:
 
 ## Obtaining a token
 
-<!-- We should outline how to obtain a token in a sequence of numbered steps. -->
 To obtain a token, call the endpoint with the credentials for either basic authentication or the client certificate.
 
 <!-- Check the previous statement for accuracy. -->
@@ -129,7 +128,7 @@ The response is a JSON response with the following fields:
 
 These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in ISO 8601 format.
 
-<!-- We should describe what the following comand does. SUch as, "Execute the following curl command to check the status of your token." -->
+<!-- We should describe what the following command does, such as "Execute the following curl command to check the status of your token." -->
 **Example:**
 
 ```bash
@@ -153,8 +152,6 @@ Content-Type: application/json;charset=UTF-8
     "expiration": "2019-11-30T13:39:18.000+0000"
 }
 ```
-
-<!-- It seems that the following section is a work in progress and is not ready for the published documentation -->
 
 ### Refreshing the token 
 
