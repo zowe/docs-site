@@ -13,8 +13,6 @@ This parent article describes how services in the Zowe API ecosystem are expecte
 
 By default, JWT tokens are produced by z/OSMF and the API Mediation Layer serves only as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
-<!-- moved https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services/#authentication-providers to the https://docs.zowe.org/stable/user-guide/api-mediation/configuration-jwt 
--->
 
 ### Token-based Login Flow and Request/Response Format
 
@@ -22,15 +20,12 @@ The following sequence describes how authentication through JWT tokens works:
 
 1. The API client obtains a JWT token by using the POST method on the `/auth/login` endpoint of the API service that requires a valid user ID and password.
 
-2. The API service then calls an *authentication provider* that returns a JWT token that contains the user ID claim in the HTTP cookie named `apimlAuthenticationToken` with attributes `HttpOnly` and `Secure`.
-
-3. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
+2. The API client stores the JWT token or cookie and sends the token with every request as a cookie with the name `apimlAuthenticationToken`.
 
 ## Obtaining a token
 
 To obtain a token, call the endpoint with the credentials for either basic authentication or the client certificate.
 
-<!-- Check the previous statement for accuracy. -->
 
 - The full path for API ML is:```/gateway/auth/login```
 
@@ -74,8 +69,8 @@ Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; Ht
 
 You can send a JWT token with a request in two ways:
 
-* Allow the API client to pass the JWT token as a cookie header
-* Pass the JWT token in the `Authorization: Bearer` header
+* Allow the API client to pass the JWT token as a cookie header.
+* Pass the JWT token in the `Authorization: Bearer` header.
 
 :::tip
 The first option (using a cookie header) is recommended for web browsers with the attributes `Secure` and `HttpOnly`.
@@ -85,8 +80,6 @@ Cookies are present on all requests, including those coming from DOM elements, a
 Cookies are more diffcult to support in non-web applications.
 Headers, such as `Authorization: Bearer`, can be used in non-web applications. Such headers, however, are difficult to use and secure in a web browser.
 The web application needs to store these headers and attach these headers to all requests where headers are required.
-
-Note that the API service needs to support both of them <!-- What is "both of them" --> so the API clients can use what makes more sense for them.
 :::
 
 #### Allow the API client to pass the JWT token as a cookie header
@@ -121,22 +114,20 @@ HTTP/1.1 200
 
 The API client does not need to validate tokens. API services must perform token validation themselves. If the API client receives a token from another source and needs to validate the JWT token, or needs to check details in the token, such as user ID expiration, then the client can use the `/auth/query` endpoint provided by the service.
 
-The response is a JSON response with the following fields:
+The JSON response contains the following fields:
 * `creation`
 * `expiration`
 * `userId` 
 
 These fields correspond to `iss`, `exp`, and `sub` JWT token claims. The timestamps are in ISO 8601 format.
 
-<!-- We should describe what the following command does, such as "Execute the following curl command to check the status of your token." -->
-**Example:**
+Execute the following curl command to validate the existing JWT token, and to retrieve the contents of the token. 
 
 ```bash
-curl -k --cookie "apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9..." -X GET "https://localhost:10080/api/v1/auth/query"
+curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://localhost:10080/api/v1/auth/query"
 ```
 
-The following output describes the status of the token: <!-- Please validate this statement. --> 
-
+The following output describes the status of the JWT token:  
 
 ```http
 GET /api/v1/auth/query HTTP/1.1
@@ -155,19 +146,19 @@ Content-Type: application/json;charset=UTF-8
 
 ### Refreshing the token 
 
-API Clients may want to refresh the existing token to prolong the validity time. 
+API Clients can refresh the existing token to prolong the validity time. 
 
 Use the `auth/refresh` endpoint to prolong the validity time of the token.
 
-The auth/refresh endpoint generates a new token for the user based on valid jwt token. The full path of the auth/refresh endpoint appears as the following URL:
+The auth/refresh endpoint generates a new token for the user based on the valid JWT token. The full path of the `auth/refresh` endpoint appears as the following URL:
 
 ```
 https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
 ```
-The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is not usable anymore.
+The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token gets invalidated and is no longer usable.
 
 :::note**Notes:**
-- The endpoint is disabled by default. For more information, see Enable JWT token endpoint.
+- The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](./api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
 - The endpoint is protected by a client certificate.
 - The refresh request requires the token in one of the following formats:
   - Cookie named `apimlAuthenticationToken`.
@@ -176,12 +167,12 @@ The new token overwrites the old cookie with a Set-Cookie header. As part of the
 
 For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 
-<!-- Please describe what the following code does? Such as, "The following request is an example of using curl to refresh the token:"-->
+The following request receives a valid JWT token and returns the new valid JWT token. As such, the expiration time is reset. 
 
 ```bash
-curl -v -c - -X POST "https://localhost:10080/api/v1/auth/refresh" 
+curl -v -c - -X --data '{"username":"zowe","password":"zowe"}' POST "https://localhost:10080/api/v1/auth/refresh" 
 ```
-The following output describes the status of the token: <!-- Please check for accuracy -->
+The following output describes the status of the JWT token: 
 
 ```http
 POST /api/v1/auth/refresh HTTP/1.1
