@@ -46,16 +46,17 @@ Configure Infinispan as a storage solution through the Caching service by settin
 
 
   **Example of Caching service configuration using Infinispan:**
-    ```
-    zowe
-      components:
-        caching-service:
-          storage:
-            mode: infinispan
-            infinispan: 
-              initialHosts: lpar123[7099]
-              jgroups:
-                port: 7098
-              persistence:
-                dataLocation: data01
-    ```
+
+  ```yaml
+  zowe
+    components:
+      caching-service:
+        storage:
+          mode: infinispan
+          infinispan: 
+            initialHosts: lpar123[7099]
+            jgroups:
+              port: 7098
+            persistence:
+              dataLocation: data01
+  ```
