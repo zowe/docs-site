@@ -1,4 +1,4 @@
-# Authentication with a Personal Access Token
+# Authenticating with a Personal Access Token
 
 :::info**Roles:** system programmer, security administrator
 :::
