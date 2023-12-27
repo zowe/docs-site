@@ -1,4 +1,4 @@
-# Generating, validating, and invalidating a Personal Access Token
+# Authentication with a Personal Access Token
 
 :::info**Roles:** system programmer, security administrator
 :::
