@@ -457,6 +457,8 @@ module.exports = {
               label: "Routing",
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
+                "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+                "user-guide/api-mediation/api-mediation-update-password",
                 "extend/extend-apiml/websocket",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
               ],
@@ -476,9 +478,6 @@ module.exports = {
             "user-guide/api-mediation-metrics-service",
             "extend/extend-apiml/api-mediation-routing",
             "extend/extend-apiml/service-information",
-            "extend/extend-apiml/websocket",
-            "user-guide/api-mediation/api-gateway-rest-apis-documentation",
-            "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
