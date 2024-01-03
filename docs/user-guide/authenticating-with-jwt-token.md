@@ -1,9 +1,7 @@
-# Using a JWT token with API Mediation Layer
+# Authenticating with a JWT token
 
 :::info**Required roles:** system administrator, security administrator
 :::
-
-## Authentication with a JWT Token
 
 In Zowe, authentication can be performed via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more detail in [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). 
 
@@ -14,7 +12,7 @@ This article describes how services in the Zowe API ecosystem are expected to ac
 By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
 
 
-### JWT Token-based Login Flow and Request/Response Format
+## JWT Token-based Login Flow and Request/Response Format
 
 The following sequence describes how authentication through JWT tokens works:
 
@@ -66,7 +64,7 @@ HTTP/1.1 204
 Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
 ```
 
-### Making an authenticated request
+## Making an authenticated request
 
 You can send a JWT token with a request in two ways:
 
@@ -83,7 +81,7 @@ Headers, such as `Authorization: Bearer`, can be used in non-web applications. S
 The web application needs to store these headers and attach these headers to all requests where headers are required.
 :::
 
-#### Allow the API client to pass the JWT token as a cookie header
+### Allow the API client to pass the JWT token as a cookie header
 
 One option to send a JWT token with the request is for the API client to pass the JWT token as a cookie header with the name `apimlAuthenticationToken`:
 
@@ -97,7 +95,7 @@ HTTP/1.1 200
 ...
 ```
 
-#### Pass the JWT token in the `Authorization: Bearer` header
+### Pass the JWT token in the `Authorization: Bearer` header
 
 A second option to send a JWT with the request is to pass the JWT token in the `Authorization: Bearer` header.
 
@@ -111,7 +109,7 @@ HTTP/1.1 200
 ...
 ```
 
-### Validating JWT tokens
+## Validating JWT tokens
 
 The API client does not need to validate tokens. API services must perform token validation themselves. If the API client receives a token from another source and needs to validate the JWT token, or needs to check details in the token, such as user ID expiration, then the client can use the `/auth/query` endpoint provided by the service.
 
@@ -145,7 +143,7 @@ Content-Type: application/json;charset=UTF-8
 }
 ```
 
-### Refreshing the JWT token 
+## Refreshing the JWT token 
 
 API Clients can refresh the existing token to prolong the validity period. 
 
@@ -191,7 +189,7 @@ HTTP/1.1 204
 Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
 ```
 
-### Token format
+## Token format
 
 The JWT must contain the unencrypted claims `sub`, `iat`, `exp`, `iss`, and `jti`. Specifically, the `sub` is the z/OS user ID, and `iss` is the name of the service that issued the JWT token.
 
