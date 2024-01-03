@@ -6,10 +6,10 @@ If the keyring or a truststore contains at least one valid certificate authority
 
 :::note
 There is a limitation with respect to ACF2 systems. If you would like to offer feedback using client
-certificate authentication, please create an issue against the api-layer repository.
+certificate authentication, please create an issue in the Zowe [api-layer repository](https://github.com/zowe/api-layer).
 :::
 
-When providing credentials with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
+When providing credentials during a login request with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
 
 ## How the Gateway resolves authentication 
 
