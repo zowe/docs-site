@@ -1797,7 +1797,7 @@ Possible return codes:
 
 ### ZWES0700I
 
-ZIS Dynamic Base plugin starting, version _major_._minor_._patch_+_datestamp_,
+ZIS Dynamic Base plug-in starting, version _major_._minor_._patch_+_datestamp_,
 stub version _stub_version_
 
 **Reason:**
@@ -1811,7 +1811,7 @@ No action required.
 
 ### ZWES0701I
 
-ZIS Dynamic Base plugin successfully started
+ZIS Dynamic Base plug-in successfully started
 
 **Reason:**
 
@@ -1823,7 +1823,7 @@ No action required.
 
 ### ZWES0702E
 
-ZIS Dynamic Base plugin startup failed, status = _status_code_
+ZIS Dynamic Base plug-in startup failed, status = _status_code_
 
 **Reason:**
 
@@ -1836,7 +1836,7 @@ preceding this message and contact support if you cannot resolve the issue.
 
 ### ZWES0703E
 
-ZIS Dynamic Base plugin init error - _details_
+ZIS Dynamic Base plug-in init error - _details_
 
 **Reason:**
 
@@ -1849,7 +1849,7 @@ contact support if you cannot resolve the issue.
 
 ### ZWES0704I
 
-ZIS Dynamic Base plugin terminating
+ZIS Dynamic Base plug-in terminating
 
 **Reason:**
 
@@ -1861,7 +1861,7 @@ No action required.
 
 ### ZWES0705I
 
-ZIS Dynamic Base plugin successfully terminated
+ZIS Dynamic Base plug-in successfully terminated
 
 **Reason:**
 
@@ -1873,7 +1873,7 @@ No action required.
 
 ### ZWES0706E
 
-ZIS Dynamic Base plugin terminated with error
+ZIS Dynamic Base plug-in terminated with error
 
 **Reason:**
 
@@ -1954,7 +1954,7 @@ contact support if the reason is not one of the following:
 
 ### ZWES0713W
 
-ZIS Dynamic base plugin development mode is enabled
+ZIS Dynamic base plug-in development mode is enabled
 
 **Reason:**
 

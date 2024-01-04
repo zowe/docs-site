@@ -2,7 +2,7 @@
 
 The following topic provides the information that can help you troubleshoot problems when you encounter errors or warnings in configuring certificates.
 
-## PKCS 12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
+## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
 **Symptoms**
 
