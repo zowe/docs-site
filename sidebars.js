@@ -444,6 +444,27 @@ module.exports = {
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
+              label: "Using Single Sign On",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-sso"},
+              items: [
+                "user-guide/authenticating-with-jwt-token",
+                "user-guide/authenticating-with-client-certificates",
+                "user-guide/authenticating-with-personal-access-token",
+              ],
+            }, 
+            {
+              type: "category",
+              label: "Routing",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
+              items: [
+                "user-guide/api-mediation/routing-requests-to-rest-apis",
+                "user-guide/api-mediation/api-mediation-update-password",
+                "extend/extend-apiml/websocket",
+                "user-guide/api-mediation/api-mediation-multi-tenancy",
+              ],
+            },           
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -455,11 +476,7 @@ module.exports = {
               ],
             },
             "user-guide/api-mediation-metrics-service",
-            "extend/extend-apiml/api-mediation-routing",
             "extend/extend-apiml/service-information",
-            "extend/extend-apiml/websocket",
-            "user-guide/api-mediation/api-gateway-rest-apis-documentation",
-            "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
