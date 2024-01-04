@@ -19,6 +19,41 @@ test also other configuration and features, that we can't test on the Open Hardw
 
 ### Technological pre-requisites
 
+The following table covers information about the level of testing received by different projects for different prerequisites and technological features. 
+
+- There are three levels of testing - Ad-Hoc, Manual, Automated
+- There are three different types of stakeholders that does this type of testing - Community, Users, Support Providers
+
+#### Zowe Server Side
+
+##### API Mediation Layer
+
+| Name of the technology  | Testing Level | Testing Providers |
+|-------------------------|---------------|-------------------|
+| **zOS**                 |               |                   |
+| 2.5                     | Automated     | Community         |
+| **Java** |              |               |                   |
+| 8 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 11 | In Progress | Yes | N/A | N/A | N/A | N/A | N/A | In Progress |
+| 17 | In Progress | In Progress | N/A | N/A | N/A | N/A | N/A | In Progress |
+| 21 | N/A | No | N/A | Yes | N/A | N/A | N/A | No |
+| **Node.js** | | | | | | | | |
+| 16 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| 18 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| **zOSMF** | | | | | | | | |
+| V2R5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+
+### Technological Features
+
+| Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
+|----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
+| **TLS** | | | | | | | | |
+| 1.2 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| **IP** | | | | | | | | |
+| V4 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+
+#### Zowe Client Side
+
 | Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
 |----------------------|------|---------------------|-----|-----------------|--------------------|----------------------------|---------------|----------------------------|
 | **zOS** | | | | | | | | |
