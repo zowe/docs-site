@@ -34,6 +34,39 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 
 **Example of a runtime directory:**
 
+- For Zowe in a high availability configuration, there will be only one workspace directory which must be created on a shared file system (zFS directory) where all LPARs in a Sysplex can access.
+
+- (If not using containerization) Zowe optionally uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys if the administrator chooses to use PKCS#12 keystore for certificate storage. Northbound keys are one presented to clients of the Zowe desktop or Zowe API Gateway, and southbound keys are for servers that the Zowe API gateway connects to.  The certificate directory is not part of the Zowe runtime so that it can be shared between multiple Zowe runtimes and have its permissions secured independently. 
+
+- Zowe has the following started tasks:
+   - `ZWESISTC` is a cross memory server that the Zowe desktop uses to perform APF-authorized code. More details on the cross memory server are described in [Configuring the Zowe cross memory server](configure-xmem-server.md).
+   - `ZWESASTC` is a cross memory Auxiliary server that is used under some situations in support of a Zowe extension. Auxiliary server is started, controlled, and stopped by the cross memory server, so no need to start it manually. More details are described in [Zowe auxiliary service](configure-xmem-server.md)
+   - `ZWESLSTC` brings up other parts of the Zowe runtime on z/OS as requested. This may include Desktop, API mediation layer, ZSS, and more, but when using containerization likely only ZSS will be used here. It can be used for a single Zowe instance deployment and can also be used for Zowe high availability deployment in Sysplex. It brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
+   
+     In order for above started tasks to run correctly, security manager configuration needs to be performed.  This is documented in [Configuring the z/OS system for Zowe](configure-zos-system.md) and a sample JCL member `ZWESECUR` is shipped with Zowe that contains commands for RACF, TopSecret, and ACF2 security managers.  
+
+  **Notes:**
+  
+  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation/configuration-api-mediation-standalone.md).
+  
+  - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESLSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
+  
+  - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESLSTC`.
+
+## Topology of the Zowe z/OS launch process
+
+### Runtime directory
+
+The runtime directory contains the binaries and executable files. You can create a runtime directory in one of the following ways:
+
+- Create a directory and extract Zowe convenience build into it.
+- Installing the Zowe SMP/E FMID AZWE002 using the JCL members in the REL4 member.
+- Executing the z/OSMF worklow script `ZWERF01` contained in the SMP/E FMID AZWE002.
+
+During execution of Zowe, the runtime directory contents are not modified.  Maintenance or APAR release for Zowe replaces the contents of the runtime directory and are rollup PTFs.
+
+A typical Zowe runtime directory looks like this:
+
 ```
 ├── bin/                             - Zowe launch scripts
 │   ├── commands/                    - Sub-commands of zwe server command
@@ -68,15 +101,31 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 ```
 
 ### `zwe` command
-The `zwe` command is provided in the <RUNTIME_DIR>/bin directory. Use this command and sub-commands to initialize Zowe, manage Zowe instances, and perform common tasks.
+The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
 
-:::tips
+The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
+
+* **mvs**  
+Copies the data sets provided with Zowe to custom data sets.
+* **security**  
+Creates the user IDs and security manager settings.
+* **apfauth**  
+APF authorizes the LOADLIB containing the modules that need to perform z/OS privileged security calls.
+* **certificate**  
+Configures Zowe to use TLS certificates.
+* **vsam**  
+Configures the VSAM files needed to run the Zowe caching service used for high availability (HA)
+* **stc**  
+Configures the system to launch the Zowe started task.
+
+In combination, these commands initialize Zowe, manage Zowe instances, and perform common tasks.
+
+:::tip**Tips:**
 * The `zwe` command has built in help that can be retrieved with the `-h` suffix. Use `zwe -h` to see all supported `zwe` commands.
 
   For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
-:::
 
-* If you expect that you will have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
+* If you expect to have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
 Add this Zowe bin directory to your `PATH` environment variable to execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
 
   ```
@@ -86,7 +135,7 @@ Add this Zowe bin directory to your `PATH` environment variable to execute the `
   This command updates the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bash_profile` file if you are using a bash shell. To make this update system wide, update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
 
   You may not want to add `zwe` to your PATH if you have multiple copies of the Zowe runtime, as this can confuse which one you are utilizing.
-  :::
+:::
 
 ### Zowe started tasks
 
@@ -98,10 +147,10 @@ Zowe has the following started tasks:
    - **`ZWESLSTC`**  
    This started task brings up other features of the Zowe runtime on z/OS upon request. Features may include Desktop, API Mediation Layer, ZSS, and more. When using containerization, it is likely that the only feature will be ZSS. This task can be used for a single Zowe instance deployment, and can also be used for Zowe high availability deployment in Sysplex. This task brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
    
-  :::important
-  * In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
-  * Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
-  :::
+:::info**Important!**
+* In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+* Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
+:::
 
 ### z/OS Data sets used by Zowe
 

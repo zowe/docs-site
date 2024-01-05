@@ -50,12 +50,13 @@ if (isInIframe) {
  * @param message - Message to show in the tooltip
  */
 function setTooltip(btn, message) {
+    var oneSecAsMillis = 1000;
     btn.setAttribute("aria-label", message);
     btn.setAttribute("data-balloon-visible", "");
     setTimeout(function () {
         btn.removeAttribute("aria-label");
         btn.removeAttribute("data-balloon-visible");
-    }, 1000);
+    }, oneSecAsMillis);
 }
 // Enable clipboard access for copy buttons
 var clipboard = new ClipboardJS(".btn-copy");
@@ -84,7 +85,7 @@ if (isInIframe && window.location.href.indexOf("/all.html") !== -1) {
     window.onscroll = function (_) {
         var cmdName = findCurrentCmdAnchor().getAttribute("name");
         if (cmdName != null && cmdName !== currentCmdName_1) {
-            window.parent.postMessage(cmdName + ".html", "*");
+            window.parent.postMessage(cmdName + ".html", window.location.origin);
             currentCmdName_1 = cmdName;
         }
     };
