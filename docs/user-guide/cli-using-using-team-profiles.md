@@ -45,7 +45,7 @@ To update a username or password:
 
 3. Respond to prompts as needed. Press `Enter` to leave the value unchanged.
 
-    New values are saved in the Secure Credential Store. After the last secure value is submitted, the user returns to the system command prompt.
+    New values are saved in the [secure credential store](../appendix/zowe-glossary#secure-credential-store). After the last secure value is submitted, the user returns to the system command prompt.
 
 For more ways to secure credentials in config profiles, see [Managing credential security](../user-guide/cli-using-team-managing-credential-security).
 
@@ -65,7 +65,7 @@ Consider the following benefits of using team profiles:
 
 ## Important information about team profiles
 
-With the introduction of team profiles, the Secure Credential Store (SCS) Plug-in is deprecated. Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
+With the introduction of team profiles, the secure credential store (SCS) Plug-in is deprecated. Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
 
 You can convert all of your Zowe CLI and Zowe CLI plug-ins V1 profiles to team profiles by issuing the following command:
 
@@ -81,7 +81,5 @@ You can continue using Zowe CLI V1 profiles with Zowe CLI V2. However, we highly
 :::
 
 - Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups#config) now let you manage security for any option value.
-
-- The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
 
 - Zowe CLI V2 prompts you to enter the username and password securely by default.

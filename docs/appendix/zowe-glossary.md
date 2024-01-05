@@ -91,6 +91,12 @@ A more general term used to describe a modular piece of some component. Dependin
 
 A component may have multiple plug-ins, sometimes working together to form a single purpose or user experience, but an individual plug-in belongs to a single component. See [extension](#extension) for additional context.
 
+#### Secure credential store
+
+Secret storage functionality embedded in core Zowe CLI starting from Zowe V2. Securely stores configured private credentials in the credential manager used by your computer's operating system.
+
+A separate plug-in of the same name used in Zowe V1 CLI.
+
 #### Service
 
 A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term *service name* can be used to mean *service ID*.

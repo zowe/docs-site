@@ -2,9 +2,11 @@
 
 ## Secure credential storage
 
-With the introduction of team profiles in Zowe CLI V2, the **Secure Credential Store (SCS) Plug-in** is deprecated. The `zowe scs` command group is obsolete.
+With the introduction of team profiles in Zowe CLI V2, the **secure credential store (SCS) Plug-in** is deprecated. The `zowe scs` command group is obsolete.
 
-Secure credential encryption is now included with the Zowe CLI core application. When a command using a profile with missing `user` and `password` information is issued, Zowe CLI V2 prompts you to enter the username and password by default. To save secure properties and values in the Secure Credential Store, use the `zowe config` command group.
+Secure credential encryption is now included with the Zowe CLI core application. When a command using a profile with missing `user` and `password` information is issued, Zowe CLI V2 prompts you to enter the username and password. Both are then stored securely by default.
+
+For other ways to store credentials securely, use the `zowe config` command group. See the following instructions.
 
 ## Configuring secure properties
 
@@ -32,17 +34,17 @@ Create a configuration file and set its secure properties (such as usernames and
     ```
     A configuration file is created, if one does not already exist.
     
-    Additionally, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are added to the base profile `secure` array for that configuration file. This stores the username and password in the Secure Credential Store.
+    Additionally, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are added to the base profile `secure` array for that configuration file. This stores the username and password in the [secure credential store](../appendix/zowe-glossary#secure-credential-store).
 
 3. If needed, add other fields to the secure array.
     - Use a text editor or an IDE (such as Visual Studio Code) to edit the configuration file.
     - Issue the `zowe config set --secure <property-path>` command to secure a specific property in a specific profile.
         
-        For example, `zowe config set profiles.base.properties.password pw123 --secure` adds the `password` property to the base profile's `secure` array and saves the password `pw123` in the Secure Credential Store.
+        For example, `zowe config set profiles.base.properties.password pw123 --secure` adds the `password` property to the base profile's `secure` array and saves the password `pw123` in the secure credential store.
 
         If you issue the command for a property that is already secured, the CLI prompts you to enter a new property value.
 
-    The values for these properties are saved in the Secure Credential Store.
+    The values for these properties are saved in the secure credential store.
 
 ## Updating secure properties
 
@@ -70,7 +72,7 @@ Update secure credentials in an existing config profile:
 
 3. Respond to prompts as needed. Press `Enter` to leave the value unchanged.
 
-    New values are saved in the Secure Credential Store. After the last secure value is submitted, the user returns to the system command prompt.
+    New values are saved in the secure credential store. After the last secure value is submitted, the user returns to the system command prompt.
 
 ## Setting secure properties programmatically
 
