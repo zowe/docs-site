@@ -49,10 +49,12 @@ The following table covers information about the level of testing received by di
 
 #### Zowe server side
 
+- There are three levels of testing $${\color{red}Ad-hoc}$$ $${\color{yellow}Manual}$$ $${\color{green}Automated}$$
+
 | Name of the technology  | API Mediation Layer | Zowe Application Framework | Zowe System Services (ZSS) |
 |-------------------------|---------------------|----------------------------|----------------------------|
 | **zOS**                 |                     |                            |                            |
-| 2.5                     | <span style="color: yellow;">Community</span>, <span style="color: green">Vendors</span> | <span style="color: red">Users</span> | <span style="color: green">Users</span>, <span style="color: yellow"></span> | 
+| 2.5                     | $${\color{yellow}Community}$$ $${\color{green}Vendors}$$ | $${\color{red}Users}$$ | $${\color{yellow}Community}$$ $${\color{green}Vendors}$$ | 
 
 
 
