@@ -32,16 +32,30 @@ The following table covers information about the level of testing received by di
 |-------------------------|---------------|-------------------|
 | **zOS**                 |               |                   |
 | 2.5                     | Automated     | Community         |
-| **Java** |              |               |                   |
-| 8 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 11 | In Progress | Yes | N/A | N/A | N/A | N/A | N/A | In Progress |
-| 17 | In Progress | In Progress | N/A | N/A | N/A | N/A | N/A | In Progress |
-| 21 | N/A | No | N/A | Yes | N/A | N/A | N/A | No |
-| **Node.js** | | | | | | | | |
-| 16 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| 18 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| **zOSMF** | | | | | | | | |
-| V2R5 | Yes | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| **Java**                |               |                   |
+| 8                       | Ad-Hoc        | Users             |
+| 11                      | Manual        | Support Providers |
+
+
+##### API Mediation Layer
+
+| Name of the technology  | Users     | Support Providers | Community |
+|-------------------------|-----------|-------------------|-----------|
+| **zOS**                 |           |                   |           |
+| 2.5                     | Automated | Automated         | Automated |
+| **Java**                |           |                   |           |
+| 8                       |           | Automated         | Manual    |
+| 11                      | Ad-Hoc    |                   |           |
+
+#### Zowe server side
+
+| Name of the technology  | API Mediation Layer | Zowe Application Framework | Zowe System Services (ZSS) |
+|-------------------------|---------------------|----------------------------|----------------------------|
+| **zOS**                 |                     |                            |                            |
+| 2.5                     | <span style="color: yellow;">Community</span>, <span style="color: green">Vendors</span> | <span style="color: red">Users</span> | <span style="color: green">Users</span>, <span style="color: yellow"></span> | 
+
+
+
 
 ### Technological Features
 
