@@ -457,8 +457,7 @@ module.exports = {
               label: "Routing",
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
-                "user-guide/api-mediation/api-gateway-rest-apis-documentation",
-                "user-guide/api-mediation/api-mediation-update-password",
+                "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "extend/extend-apiml/websocket",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
               ],
