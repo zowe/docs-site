@@ -17,8 +17,12 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 * The client calls the service endpoint through API ML Gateway with the client certificate.
 * The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
-* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML.
+* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. Z Secure Services (ZSS)* provides this API for API ML. 
 * The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
+
+:::note
+* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos).
+:::
 
 When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token.
 
@@ -28,6 +32,9 @@ When sending a request to the login endpoint with a client certificate, the Gate
 * The Gateway performs the login of the mapped user and returns a valid JWT token.
 
 ![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
+
+:::tip
+For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 
 ## Prerequisites
 
