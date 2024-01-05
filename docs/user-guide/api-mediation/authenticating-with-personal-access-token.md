@@ -6,8 +6,6 @@
 You can use API Mediation Layer to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
 
-To enable this functionality on your Zowe instance, see [Advanced Gateway features configuration](api-gateway-configuration#personal-access-token).
-
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
 
@@ -27,8 +25,11 @@ APIs for security administrators are protected by SAF resource checking and can 
 :::note
 An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
 :::
-:::note
-An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+
+For detailed information about using the Personal Access Token as part of single sign on, see the section [Using the Personal Access Token to authenticate](#using-the-personal-access-token-to-authenticate) later in this article. 
+
+:::tip
+For additional information, see the Medium blog post [Personal Access Tokens for the Zowe API Mediation Layer](https://medium.com/zowe/personal-access-tokens-for-the-zowe-api-mediation-layer-53e383ff1e61). 
 :::
 
 ## User APIs
@@ -224,7 +225,7 @@ The main purpose of the eviction API is to ensure that the size of the cache doe
 
 When eviction is successful, the response to the request is an empty body with a status code of `204`. When eviction fails due to lack of permissions, the administrator receives a status code of `403`.
 
-## Use the Personal Access Token to authenticate
+## Using the Personal Access Token to authenticate
 
 There are four ways the API client can use the Personal Access Token to authenticate as part of the Single Sign On in which a service is specified in the scopes at the time when the token is issued:
 
