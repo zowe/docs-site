@@ -4,8 +4,8 @@ As an application developer, you can route your service through the Gateway usin
 
 There are two ways to route your service to the API Mediation Layer:
 
-* Basic Routing (using Service ID and version)
-* Basic Routing (using only the service ID)
+* Basic Routing using Service ID and version
+* Basic Routing using only the service ID
 
 ## Terminology
 
