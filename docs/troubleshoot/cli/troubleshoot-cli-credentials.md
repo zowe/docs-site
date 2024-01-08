@@ -18,9 +18,15 @@ To find the authentication methods used for different services and their order o
 
 ### PEM certificate files
 
-PEM certificate files are one of the authentication mechanisms used by Zowe CLI.
+PEM certificate files are used by Zowe CLI to authenticate to the API Mediation Layer. To be accepted, these certificate files must first be recorded in the service's keyring/trust-store on the mainframe before they are used by Zowe CLI.
 
-Some users choose to secure PEM certificates by placing them in a password protected container, such as a PGP file, a ZIP file, or a password protected PKCS #12 file (a.k.a. a PFX file). However, Zowe CLI does not currently support any certificate files that require a password for use.
+Some users choose to secure PEM certificates by placing them in a password protected container, such as a PGP file, a ZIP file, or a password protected PKCS12 file (a.k.a. a PFX file). However, Zowe CLI does not currently support any certificate files that require a password for use.
+
+:::note
+
+These client certificate files are different from the certificates generated or imported during Zowe server configuration. For more information, see [Using Certificates](https://docs.zowe.org/stable/user-guide/use-certificates/).
+
+:::
 
 To log into the API Mediation Layer with a PEM certificate file, refer to this workaround.
 
