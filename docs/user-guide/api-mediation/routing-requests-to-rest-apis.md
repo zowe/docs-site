@@ -1,11 +1,12 @@
 # Routing requests to REST APIs
 
-As an application developer, you can route your service through the Gateway using the API Mediation Layer to consume a specific resource.
+As an API consumer, I can access any services onboarded to the API Mediation Layer through one port. The service means one or more instances that share the same API and are onboarded under the same service Id. Some of the services provides versioned APIs and some of the services provide unversioned API. Generally you as a consumer shouldn't care about the details, the API Mediation Layer handles topics like what happens when one instance is down and or ditributing the load between different instances of the service. 
 
-There are two ways to route your service to the API Mediation Layer:
+Types of services:
+* Versioned services - Routing with serviceId and version
+* Nonversioned services - Using only the service Id
 
-* Basic Routing using Service ID and version
-* Basic Routing using only the service ID
+Under certain conditions it's possible to route to a specific instance of service.
 
 ## Terminology
 
@@ -20,19 +21,17 @@ There are two ways to route your service to the API Mediation Layer:
 
   A string of characters used to identify a resource. Each URI must point to a single corresponding resource that does not require any additional information, such as HTTP headers.
 
-## API ML Basic Routing using Service ID and version
+## Basic Routing
 
-This method of basic routing is based on the service ID that identifies the service. The specific instance is selected by the API Gateway. All instances require an identical response. Eureka and Zuul expect this type of routing.
+The basic method of routing is based on the service ID. For the services that has multiple versions of the API the secondary parameter is the version of the API that you want to reach. 
 
-The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided. For example, when a service is running in high-availability (HA) mode.
+### API ML Routing to the Versioned service
 
-Services of the same product that provide different resources, such as SYSVIEW on one system and SYSVIEW in a different sysplex, cannot have the same service ID; the same URI cannot have two different meanings.
-s
+The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided. For example, when a service is running in high-availability (HA) mode. To get to a specific instance, you would need to access it with specific API ML configuration and header X-Instance-Id.
+
 In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which you can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
 
-The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs, and the prefix `/ws/` applies to [WebSockets](websocket.md).
-
-You can implement additional routing using a Zuul pre-filter. For more information about how to implement a Zuul filter, see [Router and Filter: Zuul](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
+The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs, the prefix `/ws/` applies to [WebSockets](websocket.md) and the prefix `/graphql/` applies to GraphQL API.
 
 The URL expected by the API Gateway has the following format:
 
@@ -43,7 +42,7 @@ The URL expected by the API Gateway has the following format:
 The following address shows the original URL of a resource exposed by a service:
 
 ```
-http://service:10015/enablerv1sampleapp/api/v1/samples
+https://service:10015/enablerv1sampleapp/api/v1/samples
 ```
 
 The following address shows the API Gateway URL of the resource:
@@ -91,7 +90,7 @@ where:
 The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
 :::
 
-## Basic Routing using only the service ID
+### Basic Routing using only the service ID
 
 This method of routing is similar to the previous method, but does not use the version part of the URL. This approach is useful for services that handle versioning themselves with different granularity.
 
@@ -101,11 +100,11 @@ One example that only uses a service ID is z/OSMF.
 
 z/OSMF URL through the Gateway has the following format:
 
- `https://gateway:10010/zosmf/api/restjobs/jobs/...`
+ `https://gateway:10010/ibmzosmf/api/restjobs/jobs/...`
 
 where:
 
-* **`zosmf`**  
+* **`ibmzosmf`**  
 Specifies the service ID.
 
 * **`/restjobs/1.0/...`**  
