@@ -11,13 +11,10 @@ There are two ways to route your service to the API Mediation Layer:
 
 * **Service**
 
-  A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term "service name" is used to mean service ID.
-
-  The default service ID is provided by the service developer in the service configuration file.
-
-  A system administrator can replace the service ID with a deployment environment specific name using additional configuration that is external to the service deployment unit. Most often, this is configured in a JAR or WAR file.
-
-  Services are deployed using one or more service instances, which share the same service ID and implementation.
+  * A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term "service name" is used to mean service ID.  
+  * The default service ID is provided by the service developer in the service configuration file.  
+  * A system administrator can replace the service ID with a deployment environment specific name using additional configuration that is external to the service deployment unit. Most often, this is configured in a JAR or WAR file.  
+  * Services are deployed using one or more service instances, which share the same service ID and implementation.
 
 * **URI (Uniform Resource Identifier)**
 
@@ -122,18 +119,18 @@ The following diagram illustrates the difference in locations of Zowe components
 
 ![Zowe Architecture Diagram with High Availability Enablement](../../images/common/zowe-architecture-lpar.png)
 
-Zowe has high availability feature build-in. To enable this feature, you can define `haInstances` section in your YAML configuration file.
+Zowe has a high availability feature built-in. To enable this feature, you can define the `haInstances` section in your YAML configuration file.
 
-The diagram above shows that `ZWESLSTC` has started two Zowe instances running on two separate LPARs that can be on the same or different sysplexes.  
+The preceding diagram shows that `ZWESLSTC` started two Zowe instances running on two separate LPARs. These LPARs can be on the same or different sysplexes.  
 
-- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared so that incoming requests can be routed to either the gateway on LPAR A or LPAR B.
-- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated on the diagram, each component has two input lines: one from the API gateway on its own LPAR and one from the gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
+- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared, which makes it possible for  incoming requests to be routed to either the gateway on LPAR A or LPAR B.
+- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated in the diagram, each component has two input lines: one from the API gateway on its own LPAR, and one from the gateway on the other LPAR. When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
 
 The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, thereby providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
 
-The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the gateway of the second LPAR, all desktop traffic is routed there.  
+The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the gateway of the second LPAR, all desktop traffic is routed to the second LPAR.  
 
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set.  This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
 For simplification of the diagram above, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
 
@@ -152,25 +149,29 @@ between different _full versions_ internally and able to return a specific full 
 documentation for the highest version of the specified major version that is supported by all
 running services.
 
-Guidelines:
+### Guidelines
 
-- The version of the API, not dependent on the product release
+- The version of the API is not dependent on the product release.
 
-- Two last versions are supported
+- Two last versions are supported.
 
- - Major version - specified by the user of the API in the URI - increased only when backward
- incompatible change is introduced (it is rare because the REST APIs should be designed to allow
- extensibility)
+ - **Major version**  
+ This version is specified by the user of the API in the URI, and increased only when a backward
+ incompatible change is introduced. This circumstance is rare because the REST APIs should be designed to allow
+ extensibility.
 
- - Minor version - not specified in the URI but the user should know what is it, important to
- display the correct level of documentation. Increased when the API is extended with a new feature
- (if you use a new resource available in v1.2, the service has to provide at least v1.2, the request
+ - **Minor version**  
+ This version is not specified in the URI but the user should know what is it. It is important to
+ display the correct level of documentation. The minor version is increased when the API is extended with a new feature
+ (if you use a new resource available in v1.2, the request
  fails on v1.1). If there are multiple instances of the services that have different minor versions,
- the service together will say that has the lowest minor version (e.g instance A provide v1.3 and
- v2.2, instance B was not yet upgraded and provides v1.2 and v2.1, then the service provides v1.2
- and v2.1)
+ the service together will state that the lowest minor version is available.
+ 
+ **Example:**
+ 
+ Instance A provide v1.3 and v2.2. Instance B was not yet upgraded and provides v1.2 and v2.1. Subsequently, the service provides v1.2 and v2.1.
 
- - Patch version - not specified in the URI, no difference in the API, used only when the API
- documentation is patched or a bug was fixed, there is no change in the API
+ - **Patch version**  
+ The Patch version is not specified in the URI and does not indicate a difference in the API. A patch version is used only when the API documentation is patched or a bug was fixed with no change in the API.
 
  ![API Versioning](../../images/api-mediation/API-Versioning.png)
