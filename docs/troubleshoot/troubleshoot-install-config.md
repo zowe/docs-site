@@ -1,0 +1,83 @@
+# Troubleshooting installation and configuration
+
+This chapter will instruct you how to troubleshot the issues that you encounter during Zowe installation and configuration.
+
+## Troubleshooting installation issues
+
+## Troubleshooting configuration issues 
+
+### Troubleshooting certificate configuration issues
+
+#### PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
+
+**Symptoms**
+
+When you let Zowe server install create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. Then, parts of Zowe cannot be used. 
+
+**Solutions**
+
+This error occurs because of the incompatibility which is found between Java and GSK regarding cryptography.
+
+You can try one of the following options if you are affected by this error.
+
+- Temporarily downgrade Java, for example, to Java 8 SR7FP10.
+
+- Use the flags as below when generating a keystore. 
+
+```
+-J-Dkeystore.pkcs12.certProtectionAlgorithm=PBEWithSHAAnd40BitRC2 -J-
+Dkeystore.pkcs12.certPbeIterationCount=50000 -J-
+Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHAAnd3KeyTripleDES -J-
+Dkeystore.pkcs12.keyPbeIterationCount=50000
+```
+
+- Set the flag `keystore.pkcs12.legacy` enabled with no value to create a PKCS12 keystore that can be loaded.
+
+**Notes**
+
+If you already have an existing keystore or you are using keyrings, this error will not happen.
+
+If you do not use ZSS, this error will not happen because ZSS is on by default.
+
+If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
+
+#### Eureka request failed when using entrusted signed z/OSMF certificate
+
+**Symptoms**
+
+When using the entrusted signed z/OSMF certificate, it runs well with z/OSMF and everything seems fine. But there is an exception that the AppServer cannot register with Eureka. And the logs show the cause is the self-signed certificate in chain with `<ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44`.
+
+**Solutions**
+
+The error means that the keyring doesn't exist or cannot be found. So you need to look at the keyring information and confirm the corresponding certificate authorities. Make sure you specify the `certificateAuthorities` variable with the correct keyring label and the label of the conected CA in `zowe.certificate` section of your `zowe.yaml` file. 
+
+For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` varaible should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
+
+#### Error reported: wrong certificate setup (keyring certificate)
+
+**Symptoms**
+
+The connection failed but the certificate looks correct. And a keyring certificate is setup and it doesn't need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
+
+**Solutions**
+
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. But it is suggested to fill the `password` with *password* as shown below, or the code will fail to function.
+
+```
+certificate:
+    keystore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZWEKeyring
+      password: password
+      alias: ZoweCert
+    truststore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZWEKering
+      password: password
+    pem:
+      key:
+      certificate:
+      certificateAuthorities: safkeyring:////ZWESVUSR/ZWEKering&zoweCA
+```
+
+
