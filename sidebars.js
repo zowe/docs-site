@@ -205,81 +205,79 @@ module.exports = {
                   ],
             },
               ],
-            },
-            "user-guide/start-zowe-zos",
-            "user-guide/verify-zowe-runtime-install",
+        },
+        "user-guide/start-zowe-zos",
+        "user-guide/verify-zowe-runtime-install",
+        {
+          type: "category",
+          label: "Advanced server-side configuration",
+          items: [
+            "user-guide/mvd-configuration",
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced API Mediation Layer Configuration",
+          link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
+          items: [
             {
               type: "category",
-              label: "Advanced server-side configuration",
+              label: "Enabling single sign on for clients",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
               items: [
-                "user-guide/mvd-configuration",
-                "user-guide/configmgr-using",
-                "user-guide/install-configure-zos-extensions",
-              ],
+                "user-guide/api-mediation/configuration-client-certificates",
+                "user-guide/api-mediation/configuration-personal-access-token",
+                "user-guide/api-mediation/configuration-jwt"
+                  ],
             },
             {
               type: "category",
-              label: "Advanced API Mediation Layer Configuration",
-              link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
+              label: "Enabling single sign on for extending services",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+              items: [
+                "user-guide/api-mediation/configuration-extender-jwt",
+                "user-guide/api-mediation/configuration-extender-passtickets"
+                  ],
+            },
+            {
+              type: "category",
+              label: "Customizing routing behavior",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
               items: [
                 {
                   type: "category",
-                  label: "Enabling single sign on for clients",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
-                  items: [
-                    "user-guide/api-mediation/configuration-client-certificates",
-                    "user-guide/api-mediation/configuration-personal-access-token",
-                    "user-guide/api-mediation/configuration-jwt"
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Enabling single sign on for extending services",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
-                  items: [
-                    "user-guide/api-mediation/configuration-extender-jwt",
-                    "user-guide/api-mediation/configuration-extender-passtickets"
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Customizing routing behavior",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
-                  items: [
-                    {
-                      type: "category",
-                      label: "Customizing management of API ML load limits",
-                      link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                      items: [
+                  label: "Customizing management of API ML load limits",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                    items: [
                         "user-guide/api-mediation/configuration-connection-limits",
                         "user-guide/api-mediation/configuration-gateway-timeouts"
                       ],
-                    },
-                    "user-guide/api-mediation/configuration-cors",
-                    "user-guide/api-mediation/configuration-url-handling",
-                    "user-guide/api-mediation/configuration-gateway-retry-policy",
-                    "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
-                    "user-guide/api-mediation/configuration-access-specific-instance-of-service",
-                    "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
-                    "user-guide/api-mediation/configuration-set-consistent-service-id"
-                  ],
                 },
-                {
-                  type: "category",
-                  label: "Configuring authorization for API ML",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
-                  items: [
-                    "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                    "user-guide/api-mediation/configuration-saf-resource-checking"
+                "user-guide/api-mediation/configuration-cors",
+                "user-guide/api-mediation/configuration-url-handling",
+                "user-guide/api-mediation/configuration-gateway-retry-policy",
+                "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                "user-guide/api-mediation/configuration-set-consistent-service-id"
                   ],
-                },                
-                "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
-                "user-guide/api-mediation/configuration-at-tls"
+            },
+            {
+              type: "category",
+              label: "Configuring authorization for API ML",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
+              items: [
+                "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
+                "user-guide/api-mediation/configuration-saf-resource-checking"
               ],
-            }
+            },                
+            "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+            "user-guide/api-mediation/configuration-at-tls"
           ],
-        }
-      ],
+          }
+        ],
     },    
     {
       type: "category",
@@ -422,7 +420,7 @@ module.exports = {
         },
   ],
 },
-{             
+  ],             
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -789,7 +787,7 @@ module.exports = {
       ],
     }  
   ],
-  contributing: [
+  "contributing": [
     "contribute/roadmap-contribute",
     {
       type: "category",
@@ -930,6 +928,7 @@ module.exports = {
     },
   ],
 }
+
 
 // "appendix/tpsr",
 //items should be array of only strings, or array of object and strings

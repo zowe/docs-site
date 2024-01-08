@@ -7,5 +7,5 @@ As an API service extender you can modify the service ID to ensure compatibility
 
 For more information, see the following parameter in the article Discovery Service configuration parameters:
 
-* **[components.discovery.apiml.discovery.serviceIdPrefixReplacer](./api-mediation/discovery-service-configuration/#api-ml-configuration)**  
+* **components.discovery.apiml.discovery.serviceIdPrefixReplacer**  
     This parameter is used to modify the service ID of a service instance, before it registers to API ML. Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
