@@ -93,7 +93,9 @@ A component may have multiple plug-ins, sometimes working together to form a sin
 
 #### Secure credential store
 
-Secret storage functionality embedded in core Zowe CLI starting from Zowe V2. Securely stores configured private credentials in the credential manager used by your computer's operating system.
+Secret storage functionality embedded in core Zowe CLI and Zowe Explorer starting from Zowe V2.
+
+Securely stores configured private credentials in the secure vault available on your client operating system. Examples of such vaults include Windows Credential Manager on Microsoft Windows, and Passwords and Keys on Ubuntu Linux.
 
 A separate plug-in of the same name used in Zowe V1 CLI.
 

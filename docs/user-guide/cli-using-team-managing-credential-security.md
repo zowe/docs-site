@@ -2,7 +2,7 @@
 
 ## Secure credential storage
 
-With the introduction of team profiles in Zowe CLI V2, the **secure credential store (SCS) Plug-in** is deprecated. The `zowe scs` command group is obsolete.
+With the introduction of team profiles in Zowe CLI V2, the **Secure Credential Store (SCS) Plug-in** is deprecated. The `zowe scs` command group is obsolete.
 
 Secure credential encryption is now included with the Zowe CLI core application. When a command using a profile with missing `user` and `password` information is issued, Zowe CLI V2 prompts you to enter the username and password. Both are then stored securely by default.
 

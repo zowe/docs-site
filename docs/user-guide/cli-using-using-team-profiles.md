@@ -65,7 +65,7 @@ Consider the following benefits of using team profiles:
 
 ## Important information about team profiles
 
-With the introduction of team profiles, the secure credential store (SCS) Plug-in is deprecated. Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
+With the introduction of team profiles, the Secure Credential Store (SCS) Plug-in is deprecated. Secure credential encryption is now handled by the the secure array in the `zowe.config.json` file.
 
 You can convert all of your Zowe CLI and Zowe CLI plug-ins V1 profiles to team profiles by issuing the following command:
 
