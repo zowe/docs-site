@@ -57,7 +57,7 @@ https://gateway:10010/enablerv1sampleapp/api/v1/samples
 
 The following diagram illustrates how basic routing works:
 
-<img src={require("../../images/api-mediation/Basic-Routing.png").default} alt="Zowe API Mediation basic routing"/>
+![Zowe API Mediation basic routing](../../images/api-mediation/Basic-Routing.png)
 
 ### Implementation details for routing
 
@@ -120,7 +120,7 @@ Note that no version is specified in this URL.
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
-![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
+![Zowe Architecture Diagram with High Availability Enablement](../../images/common/zowe-architecture-lpar.png)
 
 Zowe has high availability feature build-in. To enable this feature, you can define `haInstances` section in your YAML configuration file.
 
