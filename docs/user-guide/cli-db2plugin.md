@@ -70,7 +70,9 @@ You downloaded and prepared to use the ODBC driver successfully. Proceed to inst
 
 To install the Db2 CLI plug-in on MacOS, you need the command line tools, which can be obtained by installing Xcode from the [App Store](https://medium.com/r/?url=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Fxcode%2Fid497799835%3Fmt%3D12). 
 
-**Note:** On some versions of MacOS, you may receive the error `xcrun: error: invalid active developer path` as shown below:
+:::note
+
+ On some versions of MacOS, you may receive the error `xcrun: error: invalid active developer path` as shown below:
 
 ```
 xcrun: error: invalid active developer path (/Library/Developer/CommandLineTools), missing xcrun at: /Library/Developer/CommandLineTools/usr/bin/xcrun
@@ -82,6 +84,7 @@ If this occurs, a manual refresh of the command line tools is required by runnin
 sudo rm -rf /Library/Developer/CommandLineTools
 sudo xcode-select --install
 ```
+:::
 
 #### Installing the plug-in
 
@@ -138,8 +141,12 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 1. Locate your client copy of the Db2 license file `db2consv_zs.lic`. 
 
-    **Note:** The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
+    :::note
+    
+    The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
     To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
+
+    :::
 
 2. Copy your Db2 license file `db2consv_za.lic` and place it in the following directory.
       ```
