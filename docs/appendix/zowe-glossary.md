@@ -6,33 +6,60 @@ This reference includes both technical as well as organizational terms that are 
 
 Not finding something you are looking for? Send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
+:::note
+Security is central to a wide range of functionalities in Zowe. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary).
+
+For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
+:::
+
 ## Core Zowe Projects
 
-#### API Mediation Layer (API ML)
+### Zowe API Mediation Layer (API ML)
 
 Provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. It has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
 
-#### Zowe Application Framework
+<details>
+<summary>
+Click here for descriptions of the various components that form the API Mediation Layer. 
+</summary>
+
+#### API Catalog  
+Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
+
+#### API Discovery Service  
+As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
+
+#### API Gateway    
+A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
+  
+Also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
+
+#### Caching Service  
+Designed for Zowe components in a high availability (HA) configuration. It supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
+
+</details>
+
+### Zowe Application Framework
 
 Modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience called the [Zowe Desktop](#zowe-desktop). Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a [3270 Terminal](#3270-terminal), [Virtual Terminal](#virtual-vt-terminal), and an [Editor](#zowe-editor).
 
-#### Zowe CLI
+### Zowe CLI
 
 Provides a command-line interface that lets you interact with the mainframe remotely and use common tools such as Integrated Development Environments (IDEs), shell commands, bash scripts, and build tools for mainframe development. The core set of commands includes working with data sets, USS, JES, as well as issuing TSO and console commands. The Zowe CLI is incredibly popular in modern mainframe education.
 
-#### Zowe client projects
+### Zowe client projects
 
 Includes all the Zowe projects that are installed on the user's PC. Also known as *Zowe client-side projects*. 
 
-#### Zowe Client SDKs
+### Zowe Client SDKs
 
 Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin/z/OSMF, Python, Swift, and Java.
 
-#### Zowe Explorer
+### Zowe Explorer
 
 A Visual Studio Code extension that modernizes the way developers and system administrators interact with z/OS mainframes. Zowe Explorer lets you interact with data sets, USS files, and jobs that are stored on z/OS. Zowe Explorer is incredibly popular in modern mainframe education.
 
-#### Zowe server components
+### Zowe server components
 
 Includes all the Zowe components that are installed on z/OS. Also known as *Zowe z/OS components* or *Zowe server-side components*.
 
@@ -43,23 +70,6 @@ Working closely with ZIS, ZSS serves as one of the primary, authenticated back-e
 ZSS is written in C and uses native calls to z/OS to provide its services.
 
 ## Architecture and other components
-
-#### API Catalog
-
-Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
-#### API Discovery Service
-
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
-
-#### API Gateway  
-
-A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
-  
-Also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
-
-#### Caching Service
-
-Designed for Zowe components in a high availability (HA) configuration. It supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
 
 #### Configuration Manager
 
@@ -238,10 +248,7 @@ The instance directory also contains a log directory where different microservic
 #### Zowe runtime
 
 Refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
-
-### Security
-
-For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org. 
+ 
 
 #### Sample library
 

@@ -43,6 +43,10 @@ module.exports = {
           link: {type: "doc", id: "getting-started/zowe-security-overview"},
           items: [
             { type: "doc",
+            label: "Glossary of Zowe Security terminology",
+            id: "appendix/zowe-security-glossary",
+            },
+            { type: "doc",
               label: "Digital Certificates",
               id: "getting-started/zowe-certificates-overview",
             },
