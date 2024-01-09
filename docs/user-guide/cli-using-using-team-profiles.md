@@ -27,9 +27,7 @@ The following profile types were introduced in Zowe V1 and continue to be used i
 
 ## Updating secure credentials
 
-To change an existing username or password in a team config profile, use the `zowe config secure` command for a quick update.
-
-To update a username or password:
+To change an existing username or password in a team config profile, use the `zowe config secure` command for a quick update:
 
 1. Open the Zowe CLI command prompt.
 
