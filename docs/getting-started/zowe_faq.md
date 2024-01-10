@@ -114,7 +114,11 @@ The Docker image contains the Zowe components that do not have the requirement o
 
 Configurating components with Docker is similar to the procedures you would follow without Docker, however tasks such as installation and running with Docker are a bit different, as these tasks become Linux oriented, rather than utilizing Jobs and STCs.
 
-**NOTE:** z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+:::note 
+
+z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+
+:::
 
 </details>
 
@@ -181,6 +185,17 @@ For information and tutorials about extending Zowe with a new plug-in or applica
 </details>
 
 
+### Where can I submit an idea for a future enhancement to Zowe?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Go to the [Zowe Community ReadMe file](https://github.com/zowe/community#submit-an-issue) for information on requesting a bug fix or enhancement. Members of the Zowe community can then review your issue to post feedback or vote their support. Issues are continuously monitored by Zowe squads for improvement ideas.
+
+</details>
+
+
 ### When will Zowe be completed?
 
 <details className="zowe-faq">
@@ -205,7 +220,6 @@ The Zowe community is also currently working to provide a vendor-neutral site fo
 Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite](../user-guide/systemrequirements-zosmf-lite.md) on Zowe Docs.
 
 </details>
-
 
 ## Zowe CLI FAQ
 
