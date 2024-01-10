@@ -14,7 +14,7 @@ To install Node.js:
 
   1. Go to [Node.js LTS](https://nodejs.org/en/) to select and install a runtime version with active support.
 
-  For a list of supported LTS versions, see [Nodejs Releases](https://https://nodejs.org/en/about/previous-releases).
+  For a list of supported LTS versions, see [Nodejs Releases](https://nodejs.org/en/about/previous-releases).
 
   2. Restart the command prompt after installing Node.js, if required.
 
