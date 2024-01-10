@@ -649,6 +649,7 @@ module.exports = {
                 "extend/extend-apiml/api-mediation-caching-service",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
+                "extend/extend-apiml/api-mediation-infinispan",
               ],
             }
           ],
