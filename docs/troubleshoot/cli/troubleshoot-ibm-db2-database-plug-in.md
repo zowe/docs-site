@@ -83,9 +83,9 @@ To manually download the ODBC driver, see instructions in [Downloading the ODBC 
 
 #### Fixing a failed extraction
 
-1. Manually extract the ODBC driver binaries from the `build.zip` file which is bundled with the [ibm_db](https://www.npmjs.com/package/ibm_db) package. The package can also be downloaded from [GitHub](https://github.com/ibmdb/node-ibm_db/blob/master/build.zip).
+1. Manually extract the ODBC driver binaries from the `build.zip` file which is bundled with the [ibm_db](https://www.npmjs.com/package/ibm_db) package. The `build.zip` archive can also be downloaded from [GitHub](https://github.com/ibmdb/node-ibm_db/blob/master/build.zip).
 
-2. Open the `build/Release` folder and copy the binary for your Node version (`odbc_bindings.node.18.18.2`, for example) into the Db2 plug-in folder (`C:\Users\username\.zowe\plugins\installed\node_modules\@zowe\db2-for-zowe-cli\node_modules\ibm_db\build\Release`).
+2. Open the `build/Release` folder and copy the binary for your Node version (for example, `odbc_bindings.node.18.18.2` if you have Node 18) into the Db2 plug-in folder (`C:\Users\username\.zowe\plugins\installed\node_modules\@zowe\db2-for-zowe-cli\node_modules\ibm_db\build\Release`).
 
 3. Rename the file to `odbc_bindings.node`. This is the name used by the Db2 plug-in.
 
@@ -93,6 +93,6 @@ To manually download the ODBC driver, see instructions in [Downloading the ODBC 
 
 :::note
 
-The preceding steps work to extract the driver binary for a downloaded version of the IBM Db2 Database Plug-in. When installing a new plug-in version, perform the workaround again to fix a failed extraction.
+The preceding steps extract the driver binary to fix a broken installation of the IBM Db2 Database Plug-in. When installing a new version of the plug-in, perform the workaround again to fix a failed extraction.
 
 :::
