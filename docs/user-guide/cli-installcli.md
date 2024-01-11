@@ -73,20 +73,20 @@ Use the following procedure to install Zowe CLI from a local package:
 
 1. Meet the [prerequisites](#prerequisites) for installing Zowe CLI.
 
-2. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.X.X\> CLI Core** button.
+2. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Core** button.
 
 3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
-    `zowe-cli-package-<X.X.X>.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-package-<X.Y.Z>.zip` is downloaded to your computer.
 
 4. **(Optional)** Meet the [prerequisites](#prerequisites) for installing Zowe CLI plug-ins.
-5. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.X.X\> CLI Plugins** button to download the plug-ins.
+5. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button to download the plug-ins.
 
 6. **(Optional)** Read the End User License Agreement for Zowe plug-ins and click **I agree** to download the plugins package.
 
-    `zowe-cli-plugins-next-<X.X.X>.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-plugins-next-<X.Y.Z>.zip` is downloaded to your computer.
 
-7. Unzip the contents of `zowe-cli-package-<X.X.X>.zip` (and optionally `zowe-cli-plugins-<X.X.X>.zip`) to a working directory.
+7. Unzip the contents of `zowe-cli-package-<X.Y.Z>.zip` (and optionally `zowe-cli-plugins-<X.Y.Z>.zip`) to a working directory.
 
 8. To install Zowe CLI Core, open a command-line window and issue the following commands to the working directory that you used in Step 7:
 
