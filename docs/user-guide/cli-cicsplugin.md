@@ -58,7 +58,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
 
     **NOTE:** If the file does not exist, issue the following command to create the configuration file:
     ```
-    zowe config init -–gc
+    zowe config init --gc
     ```
 
 3. Add code to the "profiles" section as shown in the following example: :
@@ -90,7 +90,7 @@ The following steps describe how to create a profile using the `zowe profiles cr
 1. Open a terminal window and issue the following command:
 
     ```
-    zowe profiles create cics <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    zowe profiles create cics <profile_name> –-host <host> --port <port> --user <user> --password <password> --region-name <region>
     ```
 
 - **`profile_name`:**

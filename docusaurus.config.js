@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.6.x";
+const LATEST_VERSION = "v2.14.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -24,7 +24,11 @@ module.exports = {
     }),
   },
   themeConfig: {
-    hideableSidebar: true,
+      docs: {
+      sidebar: {
+        hideable: true
+      }
+    },
     image: "img/zowe-icon.png",
     navbar: {
       title: "Zowe Docs",
@@ -38,13 +42,19 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Get Started",
+          label: "What's new",
+          docId: "whats-new/zowe-announcements",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Overview",
           docId: "getting-started/overview",
           position: "left",
         },
         {
           type: "doc",
-          label: "Setup",
+          label: "Install",
           docId: "user-guide/install-overview",
           position: "left",
         },
@@ -110,7 +120,7 @@ module.exports = {
             },
             {
               label: "Try Zowe",
-              href: "https://www.openmainframeproject.org/projects/zowe/ztrial",
+              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
             },
             {
               label: "Features",
@@ -164,10 +174,13 @@ module.exports = {
       copyright: `© Open Mainframe Project. a Linux Foundation Project. All Rights Reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page. Please refer to Marketing and Branding Guidelines for name usage guidelines. Linux is a registered trademark of Linus Torvalds. Privacy Policy and Terms of Use`,
     },
     algolia: {
-      apiKey: "65cba55ab266253898f7ad088e57be78",
+      appId: "1AB1S8E42B",
+      apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
-      appId: "1AB1S8E42B"
+      searchParameters: {
+        facetFilters: ["keywords"]
+      }
     },
     colorMode: {
       defaultMode: "light",
@@ -175,10 +188,6 @@ module.exports = {
     },
     prism: {
       additionalLanguages: ["ini", "java", "properties", "groovy", "markup"],
-    },
-    googleAnalytics: {
-      trackingID: "UA-123892882-1",
-      anonymizeIP: true,
     },
   },
   customFields: {
@@ -201,28 +210,41 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.13.x": {
+              label: "v2.13.x LTS",
+            },
+            "v2.12.x": {
+              label: "v2.12.x LTS",
+            },
+            "v2.11.x": {
+              label: "v2.11.x LTS",
+            },
+            "v2.10.x": {
+              label: "v2.10.x LTS",
+            },
+            "v2.9.x": {
+              label: "v2.9.x LTS",
+            },
+            "v2.8.x": {
+              label: "v2.8.x LTS",
+            },
+            "v2.7.x": {
+              label: "v2.7.x LTS",
+           },
+            "v2.6.x": {
+              label: "v2.6.x LTS",
+           },
             "v2.5.x": {
               label: "v2.5.x LTS",
            },
-            "v2.4.x": {
-              label: "v2.4.x LTS",
-           },
-            "v2.3.x": {
-              label: "v2.3.x LTS",
-           },
-            "v2.2.x": {
-              label: "v2.2.x LTS",
-           },
-            "v2.1.x": {
-               label: "v2.1.x LTS",
-            },
-            "v2.0.x": {
-              label: "v2.0.x LTS",
-            },
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
           },
+        },    
+        googleAnalytics: {
+          trackingID: "UA-123892882-1",
+          anonymizeIP: true,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -243,13 +265,21 @@ module.exports = {
         fromExtensions: ["html"],
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
-          for (var i = 0; i < versionsArray.length; i++) {
-            var x = versionsArray[i];
-            if (existingPath.includes(x)) {
-              return [
-                existingPath.replace(x, x.replace(".", "-").replace(".", "-")),
-              ];
+          const redirects = {
+            "/whats-new/release-notes/": "/getting-started/release-notes/"
+          };
+          for (const x of versionsArray) {
+            redirects[x] = x.replace(".", "-").replace(".", "-");
+          }
+          let redirected = false;
+          for (const [toVal, fromVal] of Object.entries(redirects)) {
+            if (existingPath.includes(toVal)) {
+              existingPath = existingPath.replace(toVal, fromVal);
+              redirected = true;
             }
+          }
+          if (redirected) {
+            return [existingPath];
           }
         },
       },

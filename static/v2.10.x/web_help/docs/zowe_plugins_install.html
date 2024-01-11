@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>plugins install</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_plugins.html">plugins</a> › <a href="zowe_plugins_install.html">install</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Install plug-ins to an application.</p>
+<h4>Usage</h4>
+<p>zowe plugins install [plugin...] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>plugin...</code>		 <em>(string)</em></p>
+<ul>
+<li>
+<p>A space-separated list of plug-ins to install. A plug-in can be any format that is accepted by the `npm install` command (local directory, TAR file, git URL, public package, private package, etc...).</p>
+<p>To use a relative local directory, at least one '/' or '\' must exist in the plug-in path. For example, you have a local plug-in in a folder called 'test-plugin' that you want to install. Specify the relative local directory by issuing the following command:</p>
+<p>zowe plugins install ./test-plugin</p>
+<p>If you omit the './', then the install command looks for 'test-plugin' in an npm registry.</p>
+<p>If the plugin argument is omitted, the plugins.json file will determine which plug-ins are installed. For more information on the plugins.json file, see the --file option.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>Specifies the location of a plugins.json file that contains the plug-ins you want to install.</p>
+<p>All plug-ins specified in plugins.json will be installed to the base CLI and the contents will be placed into /home/&lt;user&gt;/.zowe/plugins/plugins.json.</p>
+<p>If you do not specify a plugins.json file and do not specify a plug-in, the default plugin.json file (/home/&lt;user&gt;/.zowe/plugins/plugins.json) will be used. This provides a way to install plug-ins that were lost or corrupted after reinstalling or updating Zowe CLI.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--registry</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The npm registry that is used when installing remote packages. When this value is omitted, the value returned by `npm config get registry` is used.</p>
+<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/misc/registry">https://docs.npmjs.com/misc/registry</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--login</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Install plug-ins saved in /home/&lt;user&gt;/.zowe/plugins/plugins.json:</p>
+<ul>
+<li><code>zowe plugins install</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install plug-ins saved in a properly formatted config file:</p>
+<ul>
+<li><code>zowe plugins install --file /some/file/path/file_name.json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install --file /some/file/path/file_name.json">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install a remote plug-in:</p>
+<ul>
+<li><code>zowe plugins install my-plugin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install my-plugin">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install a remote plug-in using semver:</p>
+<ul>
+<li><code>zowe plugins install my-plugin@&quot;^1.2.3&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install my-plugin@&quot;^1.2.3&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install a remote plug-in from the specified registry:</p>
+<ul>
+<li><code>zowe plugins install my-plugin --registry https://registry.npmjs.org/</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install my-plugin --registry https://registry.npmjs.org/">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install a local folder, local TAR file, and a git URL:</p>
+<ul>
+<li><code>zowe plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install ./local-file /root/tar/some-tar.tgz git://github.com/project/repository.git#v1.0.0">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Install a remote plug-in from the registry which requires authorization(don't need to use this flag if you have already logged in before):</p>
+<ul>
+<li><code>zowe plugins install my-plugin --registry https://registry.npmjs.org/ --login</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins install my-plugin --registry https://registry.npmjs.org/ --login">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

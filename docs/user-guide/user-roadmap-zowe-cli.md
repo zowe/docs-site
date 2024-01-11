@@ -1,22 +1,25 @@
-# Information roadmap for Zowe CLI
+# Zowe CLI
 
-This roadmap outlines the information resources that are available for all user roles who are interested in Zowe CLI. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe CLI.
+The resources here provide information about various Zowe CLI topics, such as learning basic skills, installation, developing, and troubleshooting.
 
-The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
+:::tip
+
+To identify the resources most relevant for you, use the following definitions of Zowe CLI skill levels.
 
 * Beginner: You're starting out and want to learn the fundamentals.
 * Intermediate: You have some experience but want to learn more in-depth skills. 
 * Advanced: You have lots of experience and are looking to learn about specialized topics.
+:::
 
 ## Fundamentals
 
 > Zowe skill level: Beginner
 
-- [**Zowe CLI overview**](getting-started/overview.md#zowe-cli)
+- [**Zowe CLI overview**](../getting-started/overview.md#zowe-cli)
 
    New to Zowe CLI? This overview topic introduces what is Zowe CLI.
 
-- [**Architecture**](getting-started/zowe-architecture.md#zowe-architecture)
+- [**Architecture**](../getting-started/zowe-architecture.md#zowe-architecture)
 
    Review the Zowe architecture to understand how Zowe CLI works in the Zowe framework. 
 
@@ -29,7 +32,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 > Zowe skill level: Beginner
 
-- [**Zowe CLI quick start**](getting-started/cli-getting-started.md)
+- [**Zowe CLI quick start**](../getting-started/cli-getting-started.md)
    
    Get started with Zowe CLI quickly and easily.
 
