@@ -151,7 +151,7 @@ Summary: Create new directories to archive content. Relocate content files for t
 
         ![Verify the archived doc](images/verify-archive.png)
 
-        **NOTE:** When local build displays in your web browser, expect to see the previous minor release version listed twice in the Zowe Docs version drop-down menu. You will fix this in Part 3.
+        **NOTE:** When the local build displays in your web browser, expect to see the previous minor release version listed twice in the Zowe Docs version drop-down menu. You will fix this in Part 3.
 
 7. In GitHub, create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
 
