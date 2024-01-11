@@ -58,7 +58,7 @@ Download the ODBC driver before you install the Db2 plug-in.
 
 1. If you are installing the plug-in on a Apple computer that contains an M1 (or later architecture) processor, complete the steps in [M1 processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
 
-2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url) (Darwin x64). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
 3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You will need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
@@ -169,7 +169,7 @@ Alternatively, you can create a db2 profile manually by adding a section that co
 
 2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init --gc`
 
 3. Add code to the "profiles" section as shown in the following example:
     ```
@@ -197,7 +197,7 @@ The following steps describe how to create a profile using the `zowe profiles cr
 
 1. Open a terminal window and issue the following command:
     ```
-    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> --region-name <region>
     ```
 
    **`profile_name`:** 
