@@ -45,11 +45,11 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 - See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
-#### Explorer API
+#### Zowe Explorer API
 
 - See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-####  Explorer FTP Extension
+#### Zowe Explorer FTP Extension
 
 - See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
@@ -87,11 +87,11 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 
 - See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
-#### Explorer API
+#### Zowe Explorer API
 
 - See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-####  Explorer FTP Extension
+####  Zowe Explorer FTP Extension
 
 - See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
