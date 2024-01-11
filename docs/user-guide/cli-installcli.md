@@ -73,20 +73,20 @@ Use the following procedure to install Zowe CLI from a local package:
 
 1. Meet the [prerequisites](#prerequisites) for installing Zowe CLI.
 
-2. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Core** button.
+2. Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<vNext\> CLI Core** button.
 
 3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
-    `zowe-cli-package-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-package-<vNext>.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
 4. **(Optional)** Meet the [prerequisites](#prerequisites) for installing Zowe CLI plug-ins.
-5. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe vNext CLI Plugins** button to download the plugins.
+5. **(Optional)** Navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<vNext\> CLI Plugins** button to download the plug-ins.
 
 6. **(Optional)** Read the End User License Agreement for Zowe plug-ins and click **I agree** to download the plugins package.
 
-    `zowe-cli-plugins-next-2022MMDD.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
+    `zowe-cli-plugins-next-<vNext>.zip` is downloaded to your computer (where MMDD indicates the month and day of the build).
 
-7. Unzip the contents of `zowe-cli-package-next-2021MMDD.zip` (and optionally `zowe-cli-plugins-2021MMDD.zip`) to a working directory.
+7. Unzip the contents of `zowe-cli-package-<vNext>.zip` (and optionally `zowe-cli-plugins-<vNext>.zip`) to a working directory.
 
 8. To install Zowe CLI Core, open a command-line window and issue the following commands to the working directory that you used in Step 7:
 
@@ -94,7 +94,11 @@ Use the following procedure to install Zowe CLI from a local package:
    npm install -g zowe-cli.tgz
    ```
 
-   **Note:** If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+   :::note
+   
+   If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in the npm documentation.
+
+   :::
 
 9. **(Optional)** To install Zowe CLI plug-ins, issue the following command to the working directory that you used in Step 7: 
 
