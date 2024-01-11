@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zjcl-expert remote-ds</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zjcl-expert.html">zjcl-expert</a> › <a href="zowe_zjcl-expert_remote-ds.html">remote-ds</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Wraps an SSH call to JCLX on the remote system to validate the specified remote data set.</p>
+<h4>Usage</h4>
+<p>zowe zjcl-expert remote-ds &lt;dsn&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>dsn</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the data set to be analysed on the remote system.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--output</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The output format provided upon completion.</p>
+<p>Default value: json<br>
+Allowed values: json, text</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--alias</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>An alias to give the file name during analysis.</li>
+</ul>
+</li>
+<li>
+<p><code>--dsn-check</code> | <code>-c</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Turn on or off DSN and USS file existence checking during analysis.</p>
+<p>Default value: ON<br>
+Allowed values: ON, OFF</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rules</code> | <code>-r</code> <em>(string)</em></p>
+<ul>
+<li>The absolute path of the remote rules file used to define user site rules during analysis.</li>
+</ul>
+</li>
+<li>
+<p><code>--job-class</code> | <code>-j</code> <em>(string)</em></p>
+<ul>
+<li>The default job class to use during JCL analysis if none is provided.</li>
+</ul>
+</li>
+<li>
+<p><code>--log-level</code> | <code>-l</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The level of diagnostic logging to be performed during analysis. Messages at this level and above are written to stderr if no log file is specified.</p>
+<p>Default value: FATAL<br>
+Allowed values: TRACE, DEBUG, INFO, WARN, ERROR, FATAL</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--log-file</code> | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>The relative path of a local file that log messages are output to. If the file already exists it will be overwritten.</li>
+</ul>
+</li>
+<li>
+<p><code>--remote-home-dir</code> <em>(string)</em></p>
+<ul>
+<li>The home directory of IBM Z JCL Expert in USS on your remote system.  If this option is not set, the plug-in will rely on the PATH variable in the remote user environment.</li>
+</ul>
+</li>
+<li>
+<p><code>--remote-temp-dir</code> <em>(string)</em></p>
+<ul>
+<li>The directory where all temporary files are created and deleted by the IBM Z JCL Expert Zowe CLI plugin. Temporary files are cleaned up after each operation. Defaults to &quot;/tmp&quot; if not specified.</li>
+</ul>
+</li>
+<li>
+<p><code>--language</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The language to be used by IBM Z JCL Expert when invoked. This option will be ignored if remoteHomeDir is not specified.</p>
+<p>Default value: ENG<br>
+Allowed values: ENG, JPN</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-encoding</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The encoding to translate the remote response from. An empty string value or 'binary' will result in no encoding translation. Defaults to 'utf-8' if not provided.</p>
+<p>Default value: utf-8</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>z/OS Ssh Connection Options</h4>
+<ul>
+<li>
+<p><code>--ssh-port</code> | <code>-S</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OS SSH server port.</p>
+<p>Default value: 22</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--privateKey</code> | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
+<ul>
+<li>Path to a file containing your private key, that must match a public key stored in the server for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--keyPassphrase</code> | <code>--passphrase</code> | <code>--kp</code> <em>(string)</em></p>
+<ul>
+<li>Private key passphrase, which unlocks the private key.</li>
+</ul>
+</li>
+<li>
+<p><code>--handshakeTimeout</code> | <code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
+<ul>
+<li>How long in milliseconds to wait for the SSH handshake to complete.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--jclx-profile</code> | <code>--jclx-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (jclx) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--ssh-profile</code> | <code>--ssh-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ssh) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
