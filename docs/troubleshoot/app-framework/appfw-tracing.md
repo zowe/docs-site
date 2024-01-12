@@ -16,7 +16,7 @@ Enabling `components.app-server.debug` is equivalent to setting:
 components:
   app-server:
     logLevels:
-    _zsf.*: 5
+      _zsf.*: 5
 ```
 
 ## Advanced debugging for App Server
@@ -36,8 +36,8 @@ For example, to enable minimum debug verbosity of the auth logger of the server 
 components:
   app-server:
     logLevels:
-    _zsf.auth: 3
-    com.foo.*: 5
+      _zsf.auth: 3
+      com.foo.*: 5
 ```
 
 ## Advanced debugging for ZSS
