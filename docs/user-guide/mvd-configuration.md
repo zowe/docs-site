@@ -4,7 +4,7 @@ The Zowe Application ("App") Framework is configured in the Zowe configuration f
 
 When you install Zowe&trade;, the App Framework is configured as a Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content. 
 
-You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
+You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plug-ins.
 
 ## Accessing the App Server
 
@@ -48,17 +48,16 @@ ZSS shares some parameters in common with the app-server, so you can consult the
 
 In the latest version of Zowe, `instance.env` is no longer used. However, some environment variables that could be specified within v1 can still be set within v2 in the `zowe.environments` section of the server configuration file. Environment variables starting with `ZWED_` map to values that can be specified within `components.app-server` and `components.zss` so they are redundant, but you can refer to the above json-schema document to see which values are useful or deprecated.
 
-
 ## Configuring the framework as a Mediation Layer client
 
 The App Server and ZSS automatically register to the API Mediation Layer when present.
 If this is not desired, registration can disabled by setting the properties `components.app-server.mediationLayer.server.enabled=false` for app-server and `components.zss.mediationLayer.enabled=false` for ZSS.
 
-## Setting up terminal app plugins
+## Setting up terminal app plug-ins
 
-Follow these optional steps to configure the default connection to open for the terminal app plugins.
+Follow these optional steps to configure the default connection to open for the terminal app plug-ins.
 
-### Setting up the TN3270 mainframe terminal app plugin
+### Setting up the TN3270 mainframe terminal app plug-in
 
 The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json` to `<components.app-server.instanceDir>/org.zowe.terminal.tn3270/sessions/_defaultTN3270.json`. Either way, you will see a file with the following properties:
 
@@ -70,7 +69,7 @@ The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/stora
   }
 ```
 
-### Setting up the VT Terminal app plugin
+### Setting up the VT Terminal app plug-in
 
 The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you will see a file with the following properties:
 
@@ -97,16 +96,14 @@ The `app-server` component configuration can be used to customize its HTTPS conn
 
 The `zss` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.zss.agent.https` as defined within the [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L81)
 
-
 ### HTTP
 
 The `app-server` can be configured for HTTP via the `components.app-server.node.http` section of the Zowe configuration file, as specified within the `app-server` [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L73).
 
 The `zss` server can be configured for HTTP via the `components.zss.agent.http` section of the Zowe configuration file, as specified within the `zss` [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L99). Note that `components.zss.tls` must be set to false for HTTP to take effect, and that `components.zss.agent.http.attls` must be set to true for AT-TLS to be recognized correctly.
 
+## Configuration directories
 
-
-## Configuration Directories
 When running, the App Server will access the server's settings and read or modify the contents of its resource storage. All of this data is stored within a hierarchy of folders which correspond to scopes:
 
 - Product: The contents of this folder are not meant to be modified, but used as defaults for a product.
@@ -118,6 +115,7 @@ When running, the App Server will access the server's settings and read or modif
 These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend/extend-desktop/mvd-configdataservice.md)
 
 ### Old defaults
+
 Prior to Zowe release 2.0.0, the location of the configuration directories were initialized to be within the `<INSTANCE_DIR>` folder unless otherwise customized. 2.0.0 does have backwards compatibility for the existence of these directories, but `<INSTANCE_DIR>` folder no longer exists, so they should be migrated to match the ones specified in the Zowe configuration file.
 
 | Folder | New Location | Old Location | Note
@@ -128,10 +126,9 @@ Prior to Zowe release 2.0.0, the location of the configuration directories were 
 | usersDir | `<zowe.workspaceDirectory>/app-server/users` | `<INSTANCE_DIR>/workspace/app-server/users` |
 | pluginsDir | `<zowe.workspaceDirectory>/app-server/plugins` | `<INSTANCE_DIR>/workspace/app-server/plugins` |
 
+## App plug-in configuration
 
-## App plugin configuration
-
-The App framework will load plugins from Components such as extensions based upon their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the *components.app-server.pluginsDir* variable in the Zowe configuration file.
+The App framework will load plug-ins from Components such as extensions based upon their enabled status in Zowe configuration. The server caches knowledge of these plug-ins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the *components.app-server.pluginsDir* variable in the Zowe configuration file.
 
 ## Logging configuration
 
@@ -161,7 +158,11 @@ zss:
 
 All settings are optional.
 
-Note: Loggers here are either for builtin logs (\_zss or \_zsf) or plugins. The dots (.) are literally part of the strings, and not another level in the configuration. For example, `components.zss.logLevels['_zss.traceLevel']=5` is a logLevels object with a member zss.traceLevel
+:::note
+
+Loggers here are either for builtin logs (\_zss or \_zsf) or plug-ins. The dots (.) are literally part of the strings, and not another level in the configuration. For example, `components.zss.logLevels['_zss.traceLevel']=5` is a logLevels object with a member zss.traceLevel.
+
+:::
 
 ### Log files
 
@@ -181,13 +182,12 @@ At minimum, the log information for both app-server and zss are written to STDOU
 By default, both servers additionally log to files and the location of these files can be changed or logging to them can be disabled.
 The following environment variables can be used to customize the app-server and zss log locations by setting the values within the `zowe.environments` section of the Zowe configuration file.
 
-* `ZWED_NODE_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for app-server, but keeps the default filenames.
-* `ZWES_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for zss, but keeps the default filenames.
+* `ZWED_NODE_LOG_DIR`: Overrides the Zowe configuration file value of `zowe.logDirectory` for app-server, but keeps the default filenames.
+* `ZWES_LOG_DIR`: Overrides the Zowe configuration file value of `zowe.logDirectory` for zss, but keeps the default filenames.
 * `ZWED_NODE_LOG_FILE`: Specifies the full path to the file where logs will be written from app-server. This overrides both `ZWED_NODE_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
 * `ZWES_LOG_FILE`: Specifies the full path to the file where logs will be written from zss. This overrides both `ZWES_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
 
 If the directory or file specified cannot be created, the server will run (but it might not perform logging properly).
-
 
 ## ZSS configuration
 
@@ -219,7 +219,7 @@ zss:
 
 ### ZSS 64 or 31 bit modes
 
-Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other. 
+Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plug-ins support. Official Zowe distributions contain plug-ins that support both 64 bit and 31 bit, but extensions may only support one or the other.
 
 #### Verifying which ZSS mode is in use
 
@@ -231,13 +231,13 @@ Or
 
 `ZWES1013I ZSS Server has started. Version 2.0.0 31-bit`
 
-#### Verifying which ZSS mode plugins support
+#### Verifying which ZSS mode plug-ins support
 
-You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plugin.
-In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
+You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plug-in.
+In each component or extension you have, its manifest file will state if there are `appFw` plug-in entries.
 In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
-If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plugin only supports 31 bit ZSS. A plugin only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
@@ -280,12 +280,21 @@ There are a few requirements to working with AT-TLS:
 * You must have the authority to alter security definitions related to certificate management, and you must be authorized to work with and update the Policy Agent.
 * AT-TLS needs a TLS rule and keyring. The next section will cover that information.
 
-**Note:** Bracketed values below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
+:::note
+
+Bracketed values in the section below (including the brackets) are variables. Replace them with values relevant to your organization. Always use the same value when substituting a variable that occurs multiple times.
+
+:::
 
 ### Creating AT-TLS certificates and keyring using RACF
-In the following commands and examples you will create a root CA certificate and a server certificate signed by it. These will be placed within a keyring which is owned by the user that runs the Zowe server.
-**Note: These actions can be done for various Zowe servers, but in these examples we set up ZSS for AT-TLS. You can subsitute ZSS for another server if desired.**
 
+In the following commands and examples you will create a root CA certificate and a server certificate signed by it. These will be placed within a keyring which is owned by the user that runs the Zowe server.
+
+:::note
+
+These actions can be done for various Zowe servers, but in these examples we set up ZSS for AT-TLS. You can subsitute ZSS for another server if desired.
+
+:::
 
 Key variables:
 
@@ -299,9 +308,12 @@ Key variables:
 | `[ring_name]`	  |   |
 | `[output_dataset_name]`	  |   |
 
-**Note**:
+:::note
+
 -  `[server_userid]` must be the server user ID, such as the STC user.
-- `[server_common_name]` must be the z/OS hostname that runs Zowe
+- `[server_common_name]` must be the z/OS hostname that runs Zowe.
+
+:::
 
 1. Enter the following RACF command to generate a CA certificate:
   ```
@@ -315,6 +327,7 @@ Key variables:
     NOTAFTER(DATE([yyyy/mm/dd])) +
     SIZE(2048)
   ```
+
 2. Enter the follow RACF command to generate a server certificate signed by the CA certificate:
   ```
   RACDCERT ID('[server_userid]') GENCERT +
@@ -360,7 +373,11 @@ Key variables:
   SETROPTS RACLIST(FACILITY) REFRESH
   ```
 
-**Note**: These sample commands use the FACILTY class to manage certificate related authorizations. You can also use the RDATALIB class, which offers granular control over the authorizations.
+  :::note
+
+  These sample commands use the `FACILITY` class to manage certificate related authorizations. You can also use the `RDATALIB` class, which offers granular control over the authorizations.
+
+  :::
 
 7. Enter the following RACF command to export the CA certificate to a dataset so it can be imported by the Zowe server:
   ```
@@ -369,6 +386,7 @@ Key variables:
   ```
 
 ### Defining the AT-TLS rule
+
 To define the AT-TLS rule, use the sample below to specify values in your AT-TLS Policy Agent Configuration file:
 
 ```
@@ -429,9 +447,9 @@ TTLSCipherParms                   cipher~ZSS
 }
 ```
 
-
 ## Using multiple ZIS instances
-When you install Zowe, it is ready to be used for 1 instance of each component. However, ZIS can have a one-to-many relationship with the Zowe webservers, and so you may wish to have more than one copy of ZIS for testing or to handle different groups of ZIS plugins.
+
+When you install Zowe, it is ready to be used for 1 instance of each component. However, ZIS can have a one-to-many relationship with the Zowe webservers, and so you may wish to have more than one copy of ZIS for testing or to handle different groups of ZIS plug-ins.
 
 The following steps can be followed to point a Zowe instance at a particular ZIS server.
 
@@ -449,14 +467,13 @@ The following steps can be followed to point a Zowe instance at a particular ZIS
 
 4. [Stop the Zowe instance you wish to point to the ZIS server](../user-guide/start-zowe-zos.md).
 
-5. Locate the zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
+5. Locate the Zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
 
 6. [Restart the Zowe instance](../user-guide/start-zowe-zos/#starting-and-stopping-zowe-main-server-zweslstc-on-zos-with-zwe-server-command)
 
-7.  Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
+7. Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
 
    `ZIS status - Ok (name='ZWESIS_MYSRV    ', cmsRC=0, description='Ok', clientVersion=2)`
-
 
 ## Controlling access to apps
 
@@ -474,8 +491,11 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 ### Controlling app access for all users
 
-**Note:**
-- `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
+:::note
+
+The `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
+
+:::
 
 1. Enable RBAC.
 
@@ -489,7 +509,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    ```
 4. Open the copied `allowedPlugins.json` file and perform either of the following steps:
     - To make an app unavailable, delete it from the list of objects.
-    - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
+    - To make an app available, copy an existing plug-in object and specify the app's values in the new object. Identifier and version attributes are required.
 
 5. [Restart the app server](start-zowe-zos.md). 
 
@@ -525,19 +545,23 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     }
     ```
 
-    **Notes:**
+    :::note
+
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
 
+    :::
+
 6. [Restart the app server](start-zowe-zos.md).
 
-
 ## Controlling access to dataservices
+
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
-You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the App Framework and ZSS servers. Any dataservice added as part of an app plugin is a service dataservice.
+You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#Administering-the-servers-and-plugins-using-an-API) from the App Framework and ZSS servers. Any dataservice added as part of an app plug-in is a service dataservice.
 
 ### Defining the RACF ZOWE class
+
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
 
 1. Make sure that the CDT class is active and RACLISTed.
@@ -567,11 +591,16 @@ If you use RACF security, take the following steps define the ZOWE class to the 
     ```
     SETROPTS GENERIC(ZONE) REFRESH
     ```
-    **Note** You must run this command before creating generic profiles within ZOWE class.
+    :::note
+    
+    You must run this command before creating generic profiles within ZOWE class.
+    
+    :::
 
 For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Creating authorization profiles
+
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
 
 Endpoints are identified by URIs in the following format:
@@ -595,6 +624,7 @@ For example, to issue a POST request to the dataservice endpoint documented abov
 For configuration dataservice endpoint profiles use the service code `CFG`. For core dataservice endpoints use `COR`. For all other dataservice endpoints use `SVC`.
 
 ### Creating generic authorization profiles
+
 Some endpoints can generate an unlimited number of URIs. For example, an endpoint that performs a DELETE action on any file would generate a different URI for each file, and users can create an unlimited number of files. To apply RBAC to this type of endpoint you must create a generic profile, for example:
 
 `ZLUX.1.COR.ORG_ZOWE_FOO.BAZ.DELETE.**`
@@ -610,8 +640,8 @@ The following are recommended for basic authorization:
 - To prevent non-administrators from configuring endpoints at the product and instance levels, create the following profile and do not give them access to it: `ZLUX.1.CFG.**`
 - To give non-administrators all access to user, create the following profile and give them UPDATE access to it: `ZLUX.1.CFG.*.*.USER.**`
 
-
 ### Endpoint URL length limitations
+
 SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that appliction developers maintain relatively short endpoint URL paths.
 
 For information on endpoint URLs, see [Dataservice endpoint URL lengths and RBAC](../extend/extend-desktop/mvd-dataservices.md#limiting-the-length-of-dataservice-paths-for-rbac)
@@ -626,15 +656,15 @@ For a list of compatible MFA products, see [Known compatible MFA products](syste
 
 ### Session duration and expiration
 
-After successful authentication, a Zowe Desktop session is created by authentication plugins.
+After successful authentication, a Zowe Desktop session is created by authentication plug-ins.
 
-The duration of the session is determined by the plugin used. Some plugins are capable of renewing the session prior to expiration, while others may have a fixed session length.
+The duration of the session is determined by the plug-in used. Some plug-ins are capable of renewing the session prior to expiration, while others may have a fixed session length.
 
-Zowe is bundled with a few of these plugins:
+Zowe is bundled with a few of these plug-ins:
 
-* **sso-auth**: Uses either ZSS or the API Mediation Layer for authentication, and ZSS for RBAC authorization. This plugin also supports resetting or changing your password via a ZSS API. Whether ZSS or API Mediation Layer or both are used for authentication depends upon SSO settings. Starting with Zowe 1.28.0, SSO is enabled by default such that only API Mediation Layer is called at authentication time. By default, the Mediation Layer calls z/OSMF to answer the authentication request. The session created mirrors the z/OSMF session.
+* **sso-auth**: Uses either ZSS or the API Mediation Layer for authentication, and ZSS for RBAC authorization. This plug-in also supports resetting or changing your password via a ZSS API. Whether ZSS or API Mediation Layer or both are used for authentication depends upon SSO settings. Starting with Zowe 1.28.0, SSO is enabled by default such that only API Mediation Layer is called at authentication time. By default, the Mediation Layer calls z/OSMF to answer the authentication request. The session created mirrors the z/OSMF session.
 
-* **trivial-auth**: This plugin is used for development and testing, as it always returns true for any function. It could be used if there were specific services you did not need authentication for, while you wanted authentication elsewhere.
+* **trivial-auth**: This plug-in is used for development and testing, as it always returns true for any function. It could be used if there were specific services you did not need authentication for, while you wanted authentication elsewhere.
 
 When a session expires, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based.
 
@@ -646,11 +676,11 @@ When you use the default Zowe SMP/E or convenience build configuration, you do n
 
 To configure Zowe for MFA with a configuration other than the default, take the following steps:
 
-1. Choose an App Server security plugin that is compatible with MFA. The [sso-auth](#session-duration-and-expiration) plugin is compatible.
+1. Choose an App Server security plug-in that is compatible with MFA. The [sso-auth](#session-duration-and-expiration) plug-in is compatible.
 2. Locate the App Server's configuration file in `zowe.yaml`.
 3. Edit the configuration file to modify the section `components.app-server.dataserviceAuthentication`.
 
-4. Set `defaultAuthentication` to the same category as the plugin of choice, as seen in its pluginDefinition.json file. For example:
+4. Set `defaultAuthentication` to the same category as the plug-in of choice, as seen in its pluginDefinition.json file. For example:
     * **sso-auth**: "saf"
     * **trivial-auth**: "fallback"
 
@@ -662,9 +692,9 @@ components:
       defaultAuthentication: saf
 ```
 
+## Administering the servers and plug-ins using an API
 
-## Administering the servers and plugins using an API
-The App Server has a REST API to retrieve and edit both the App Server and ZSS server configuration values, and list, add, update, and delete plugins. Most of the features require RBAC to be enabled and for your user to have RBAC access to utilize these endpoints. For more information see documentation on how to  [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices)
+The App Server has a REST API to retrieve and edit both the App Server and ZSS server configuration values, and list, add, update, and delete plug-ins. Most of the features require RBAC to be enabled and for your user to have RBAC access to utilize these endpoints. For more information see documentation on how to  [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices)
 
 The API returns the following information in a JSON response:
 
@@ -682,14 +712,17 @@ The API returns the following information in a JSON response:
 | /server/agent/loglevels (GET)                             | Returns the verbosity levels of the ZSS logger.              |
 | /server/agent/environment (GET)                           | Returns ZSS environment information.                         |
 | /server/logLevels/name/:componentName/level/:level (POST) | Specify the logger that you are using and a verbosity level. |
-| /plugins (GET)                                            | Returns a list of all plugins and their dataservices.        |
-| /plugins (PUT)                                            | Adds a new plugin or upgrades an existing plugin. Only available in cluster mode (default). |
-| /plugins/:id (DELETE)                                     | Deletes a plugin. Only available in cluster mode (default).  |
+| /plugins (GET)                                            | Returns a list of all plug-ins and their dataservices.        |
+| /plugins (PUT)                                            | Adds a new plug-in or upgrades an existing plug-in. Only available in cluster mode (default). |
+| /plugins/:id (DELETE)                                     | Deletes a plug-in. Only available in cluster mode (default).  |
 
 Swagger API documentation is provided in the `<zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
-**Note:** The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.
+:::note
 
+The "agent" end points interact with the agent specified in the Zowe configuration file. By default this is ZSS.
+
+:::
 
 ## Managing Cluster Mode for app-server
 
@@ -710,4 +743,3 @@ When you **disable** cluster mode, you will lose the following benefits:
 
 - In Zowe V1, include `ZLUX_NO_CLUSTER=1` in the `instance.env` configuration.
 - In Zowe V2, include `zowe.environments.ZLUX_NO_CLUSTER=1` in the `zowe.yaml` file.
-
