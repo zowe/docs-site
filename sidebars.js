@@ -1,6 +1,35 @@
 module.exports = {
-  "getting-started": [
+  "whats-new": [
     //id of the sidebar
+    "whats-new/zowe-announcements",
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Release notes",
+      className: "ToCheadercolor",
+      link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
+      items: [
+        "whats-new/release-notes/v2_14_0",
+        "whats-new/release-notes/v2_13_0",
+        "whats-new/release-notes/v2_12_0",
+        "whats-new/release-notes/v2_11_0",
+        "whats-new/release-notes/v2_10_0",
+        "whats-new/release-notes/v2_9_0",
+        "whats-new/release-notes/v2_8_0",
+        "whats-new/release-notes/v2_7_0",
+        "whats-new/release-notes/v2_6_1",
+        "whats-new/release-notes/v2_6_0",
+        "whats-new/release-notes/v2_5_0",
+        "whats-new/release-notes/v2_4_0",
+        "whats-new/release-notes/v2_3_1",
+        "whats-new/release-notes/v2_3_0",
+        "whats-new/release-notes/v2_2_0",
+        "whats-new/release-notes/v2_1_0",
+        "whats-new/release-notes/v2_0_0",
+      ],
+    },
+    "whats-new/zowe-v3-office-hours",
+  ],
+  "getting-started": [
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
@@ -27,7 +56,7 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
-    "appendix/zowe-glossary", 
+    "appendix/zowe-glossary",
     {
       type: "category",
       label: "Zowe FAQ",
@@ -37,30 +66,7 @@ module.exports = {
         "getting-started/zowe_v2_faq",
       ],
     },
-    {
-      type: "category",
-      label: "Release notes",
-      className: "ToCheadercolor",
-      link: {type:"doc", id:"getting-started/release-notes/release-notes-overview"},
-      items: [
-        "getting-started/release-notes/v2_12_0",
-        "getting-started/release-notes/v2_11_0",
-        "getting-started/release-notes/v2_10_0",
-        "getting-started/release-notes/v2_9_0",
-        "getting-started/release-notes/v2_8_0",
-        "getting-started/release-notes/v2_7_0",
-        "getting-started/release-notes/v2_6_1",
-        "getting-started/release-notes/v2_6_0",
-        "getting-started/release-notes/v2_5_0",
-        "getting-started/release-notes/v2_4_0",
-        "getting-started/release-notes/v2_3_1",
-        "getting-started/release-notes/v2_3_0",
-        "getting-started/release-notes/v2_2_0",
-        "getting-started/release-notes/v2_1_0",
-        "getting-started/release-notes/v2_0_0",
-        "getting-started/zowe-office-hours"
-      ],
-    },
+    "getting-started/zowe-office-hours",
     {
       type: "doc",
       label: "Zowe CLI quick start",
@@ -80,153 +86,203 @@ module.exports = {
       id:"getting-started/zowe-resources",
     },
   ],
-
-  "setup": [
+  "setup":[
     "user-guide/install-overview",
     {
       type: "category",
-      label: "Zowe server-side installation overview",
-      link: {type:"doc", id:"user-guide/install-zos"},
+      label: "Installing Zowe server-side components",
+      link: {type: "doc", id: "user-guide/install-zos"},
       collapsed: false,
       items: [
         {
           type: "category",
-          label: "Installing convenience, SMP/E, and PSWI builds",
+          label: "Preparing for installation",
+          link: {type: "doc", id: "user-guide/installandconfig"},
           items: [
             "user-guide/zos-components-installation-checklist",
-            "user-guide/zos-components-installation-checklist-dev",
+            "user-guide/systemrequirements-zos",
+            "user-guide/install-nodejs-zos",
+            "user-guide/address-security-requirements",
+            "user-guide/configure-uss",
+            "user-guide/address-storage-requirements",
+            "user-guide/address-network-requirements",
+            "user-guide/address-browser-requirements",
+            "user-guide/address-authentication-requirements"
+          ]
+        },
+        {
+          type: "category",
+          label: "Installing Zowe via SMP/E",
+          link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
+          items: [
+            "user-guide/install-zowe-smpe",
+          ]
+        },
+        {
+          type: "category",
+          label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
+          link: {type:"doc", id:"user-guide/zosmf-install"},
+          items: [
+            "user-guide/install-zowe-pswi-address-requirements",
+            "user-guide/systemrequirements-zosmf",
+            "user-guide/systemrequirements-zosmf-lite",
             {
               type: "category",
-              label: "Planning",
-              link: {type:"doc", id:"user-guide/installandconfig"},
+              label: "Installing Zowe via z/OSMF from PSWI",
+              link: {type:"doc", id:"user-guide/install-zowe-pswi"},
               items: [
-                "user-guide/configure-uss",
+                "user-guide/install-zowe-pswi-acquire",
+                "user-guide/install-zowe-pswi-deployment",
               ],
-            },
+              },
+              "user-guide/install-zowe-smpe-zosmf-workflow",
+            ],
+        },
+        "user-guide/install-zowe-zos-convenience-build",
+        {
+          type: "category",
+          label: "Installing Zowe via a containerization build (PAX file)",
+          link: {type:"doc", id:"user-guide/k8s-introduction"},
+          items: [
+            "user-guide/k8s-prereqs",
+            "user-guide/k8s-downloading",
+            "user-guide/k8s-config",
+            "user-guide/k8s-using",
+          ],
+        },
+		    {
+          type: "category",
+          label: "Configuring",
+          link: {type:"doc", id:"user-guide/configuring-overview"},
+          items: [
             {
               type: "category",
-              label: "System requirements",
-              link: {type:"doc", id:"user-guide/systemrequirements-zos"},
-              items: [
-                "user-guide/install-nodejs-zos",
-                "user-guide/systemrequirements-zosmf",
-                "user-guide/systemrequirements-zosmf-lite",
-              ],
-            },
-            {
-              type: "category",
-              label: "Installing",
-              items: [
-                "user-guide/install-zowe-zos-convenience-build",
-                {
-                  type: "category",
-                  label: "Installing Zowe SMP/E build",
-                  link: {type:"doc", id:"user-guide/install-zowe-smpe"},
-                  items: [
-                    "user-guide/install-zowe-smpe-zosmf-workflow",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Installing Zowe Portable Software Instance",
-                  link: {type:"doc", id:"user-guide/install-zowe-pswi"},
-                  items: [
-                    "user-guide/install-zowe-pswi-address-requirements",
-                    "user-guide/install-zowe-pswi-acquire",
-                    "user-guide/install-zowe-pswi-deployment",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Upgrading server-side components",
-                  items: [
-                    "user-guide/api-mediation/upgrade-zowe-no-downtime"
-                  ],
-                },
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring",
+              label: "Initializing Zowe z/OS runtime",
+              link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
               items: [
                 "user-guide/initialize-zos-system",
-                "user-guide/initialize-mvs-datasets",
-                "user-guide/initialize-security-configuration",
-                "user-guide/configure-zos-system",
-                "user-guide/grant-user-permission-zosmf",
-                "user-guide/apf-authorize-load-library",
-                {
-                  type: "category",
-                  label: "Configuring certificates",
-                  link: {type:"doc", id:"user-guide/configure-certificates"},
-                  items: [
-                    "user-guide/certificates-configuration-questionnaire",
-                    "user-guide/certificate-configuration-scenarios",
-                    "user-guide/import-certificates",
-                    "user-guide/generate-certificates",
-                    "user-guide/use-certificates",
-                    "user-guide/certificates-setup",
-                  ],
-                },
-                "user-guide/initialize-vsam-dataset",
-                "user-guide/install-stc-members",
-                "user-guide/configure-xmem-server",
-                "user-guide/configure-auxiliary-address-space",
+                "user-guide/zwe-init-subcommand-overview",
                 "user-guide/configure-zowe-zosmf-workflow",
-                "user-guide/configmgr-using",
-                "user-guide/install-configure-zos-extensions"
               ],
             },
             {
               type: "category",
-              label: "High Availability",
+              label: "Configuring security",
+              link: {type:"doc", id:"user-guide/configuring-security"},
+              items: [
+                "user-guide/initialize-security-configuration",
+                "user-guide/apf-authorize-load-library",
+                "user-guide/configure-zos-system",
+                "user-guide/assign-security-permissions-to-users",
+                 ],
+            },
+            {
+              type: "category",
+              label: "Configuring certificates",
+              link: {type:"doc", id:"user-guide/configure-certificates"},
+              items: [
+                "user-guide/certificates-configuration-questionnaire",
+                "user-guide/certificate-configuration-scenarios",
+                "user-guide/import-certificates",
+                "user-guide/generate-certificates",
+                "user-guide/use-certificates",
+                "user-guide/certificates-setup",
+              ],
+            },
+            {
+              type: "category",
+              label: "Configuring the Zowe cross memory server (ZIS)",
+              link: {type:"doc", id:"user-guide/configure-xmem-server"},
+              items: [],
+            }, 
+            {
+              type: "category",
+              label: "Configuring high availability (optional)",
               link: {type:"doc", id:"user-guide/zowe-ha-overview"},
               items: [
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
-              ],
+                  ],
             },
-            "user-guide/start-zowe-zos",
-            "user-guide/verify-zowe-runtime-install",            
-          ],
-        },            
-        {
-          "type": "category",
-          "label": "Installing containerization build",
-          link: {type:"doc", id:"user-guide/k8s-introduction"},
-          "items": [
-            "user-guide/k8s-prereqs",
-            "user-guide/k8s-downloading",
-            "user-guide/k8s-config",
-            "user-guide/k8s-using"
-          ],
-        }, 
+              ],
+        },
+        "user-guide/start-zowe-zos",
+        "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
           label: "Advanced server-side configuration",
           items: [
             "user-guide/mvd-configuration",
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions",
+          ],
+        },
+        {
+          type: "category",
+          label: "Advanced API Mediation Layer Configuration",
+          link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
+          items: [
             {
               type: "category",
-              label: "API Mediation Layer",
+              label: "Enabling single sign on for clients",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
               items: [
-                "user-guide/configure-data-sets-jobs-api",
-                "user-guide/api-mediation/api-catalog-configuration",
-                "user-guide/api-mediation/api-mediation-personal-access-token",
-                "user-guide/api-mediation/api-gateway-configuration",
-                "user-guide/api-mediation/discovery-service-configuration",
-                "user-guide/api-mediation/api-mediation-internal-configuration",
-                "extend/extend-apiml/api-mediation-passtickets",
-              ],
+                "user-guide/api-mediation/configuration-client-certificates",
+                "user-guide/api-mediation/configuration-personal-access-token",
+                "user-guide/api-mediation/configuration-jwt"
+                  ],
             },
+            {
+              type: "category",
+              label: "Enabling single sign on for extending services",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+              items: [
+                "user-guide/api-mediation/configuration-extender-jwt",
+                "user-guide/api-mediation/configuration-extender-passtickets"
+                  ],
+            },
+            {
+              type: "category",
+              label: "Customizing routing behavior",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
+              items: [
+                {
+                  type: "category",
+                  label: "Customizing management of API ML load limits",
+                  link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                    items: [
+                        "user-guide/api-mediation/configuration-connection-limits",
+                        "user-guide/api-mediation/configuration-gateway-timeouts"
+                      ],
+                },
+                "user-guide/api-mediation/configuration-cors",
+                "user-guide/api-mediation/configuration-url-handling",
+                "user-guide/api-mediation/configuration-gateway-retry-policy",
+                "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                "user-guide/api-mediation/configuration-set-consistent-service-id"
+                  ],
+            },
+            {
+              type: "category",
+              label: "Configuring authorization for API ML",
+              link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
+              items: [
+                "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
+                "user-guide/api-mediation/configuration-saf-resource-checking"
+              ],
+            },                
+            "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+            "user-guide/api-mediation/configuration-at-tls"
           ],
-        },       
-      ],
+          }
+        ],
     },    
     {
       type: "category",
-      label: "Zowe client-side components",
+      label: "Installing Zowe client-side components",
       collapsed: false,
       items: [
         {
@@ -363,9 +419,9 @@ module.exports = {
             "user-guide/intellij-configure",
           ],
         },
-      ],
-    },    
-  ],  
+  ],
+},
+  ],             
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -404,6 +460,8 @@ module.exports = {
             "extend/extend-apiml/service-information",
             "extend/extend-apiml/websocket",
             "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+            "user-guide/api-mediation/api-mediation-update-password",
+            "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
@@ -449,7 +507,6 @@ module.exports = {
             "user-guide/cli-using-using-profiles-v1",
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
-    
             {
               type: "category",
               label: "Using environment variables",
@@ -490,7 +547,9 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
-            "user-guide/ze-use-cases",
+            "user-guide/ze-working-with-data-sets",
+            "user-guide/ze-working-with-uss-files",
+            "user-guide/ze-working-with-jobs",
             {
               type: "category",
               label: "Zowe Explorer extensions",
@@ -535,7 +594,7 @@ module.exports = {
       ],
     },
   ],
-  extending: [
+  "extending": [
     "extend/extend-zowe-overview",
     "extend/zowe-conformance-program",  
     {
@@ -591,6 +650,7 @@ module.exports = {
                 "extend/extend-apiml/api-mediation-caching-service",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
+                "extend/extend-apiml/api-mediation-infinispan",
               ],
             }
           ],
@@ -643,7 +703,7 @@ module.exports = {
       ],
     },    
   ],
-  troubleshooting: [
+  "troubleshooting": [
     {
       type: "category",
       label: "Troubleshooting overview",
@@ -730,7 +790,7 @@ module.exports = {
       ],
     }  
   ],
-  contributing: [
+  "contributing": [
     "contribute/roadmap-contribute",
     {
       type: "category",
@@ -756,7 +816,7 @@ module.exports = {
     },
     "contribute/contributing",
   ],
-  reference: [
+  "reference": [
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     {
@@ -867,10 +927,11 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.11.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.14.x.md",
     },
   ],
-};
+}
+
 
 // "appendix/tpsr",
 //items should be array of only strings, or array of object and strings
