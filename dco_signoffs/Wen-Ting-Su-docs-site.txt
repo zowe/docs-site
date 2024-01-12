@@ -1,0 +1,6 @@
+I, Wen Ting Su, hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. In the past I have used emails: wen.ting.su@ibm.com
+c2d5e239df7013223e5f52f1b8ac41a345891967 Update certificate-configuration-scenarios.md (#3189)
+98a73862bbf28cea7ba227a4482030437729c228 Update zowe-security-authentication.md (#3149)
+624fddc413f15bd35acfda827ff6dc16fb75ece9 Adjust the advanced config section (#3216)
+b07fd2c678379338bf03a691eef2c1588176c679 Add an overall flowchart to the beginning of the containerization installation chapter (#3237)
+277e136947f50d0703cd7e033fb07de17db35769 typo fix (#3256)

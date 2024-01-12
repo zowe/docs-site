@@ -8,6 +8,7 @@
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #3162ac;
+  --docusaurus-details-decoration-color: #3162ac !important;
   --ifm-color-primary-dark: #2c589b;
   --ifm-color-primary-darker: #2a5392;
   --ifm-color-primary-darkest: #224578;
@@ -25,6 +26,7 @@
 
 html[data-theme="dark"] {
   --ifm-color-primary: #5192c7;
+  --docusaurus-details-decoration-color: #5192c7 !important;
   --ifm-link-hover-color: #4b89bd;
   /* --ifm-background-color: #252628; FIXME:*/
   --ifm-background-section-dark: #3d3f42;
@@ -100,6 +102,10 @@ html[data-theme="dark"] .navbar-github-link:before {
 
 .alert--warning a {
   color: #4d3800;
+}
+
+.avatar {
+  column-gap: normal !important;
 }
 
 html[data-theme="dark"] .alert--warning, html[data-theme="dark"] .alert--warning a {
@@ -200,8 +206,12 @@ Badge {
   display: none;
 }
 
-.zowe-faq p {
-  margin: revert;
+.zowe-faq > summary::after {
+  content: "Click to show answer";
+}
+
+.zowe-faq[open] > summary::after {
+  content: "Click to hide answer";
 }
 
 .hero__title {
@@ -248,24 +258,6 @@ a.menu__link.menu__link--sublist {
   color: var(--ifm-heading-color);
 }
 
-/* DocItem Features */
-.zowe-faq[open] summary:before {
-  content: "📖 Click to hide answer";
-}
-
-details[open] summary:before {
-  content: "📖 ";
-}
-
-.zowe-faq summary:before {
-  content: "📘 Click to open answer";
-  margin-right: 5px;
-}
-
-summary:before {
-  content: "📘 ";
-}
-
 /* Docs Rating Box */
 .docsRating {
   display: flex;
@@ -279,7 +271,6 @@ summary:before {
 
 .docsRating .text--left {
   padding: 16px;
-  background-color: #f6f8fa;
   border-radius: var(--ifm-badge-border-radius);
 }
 
@@ -302,19 +293,19 @@ html[data-theme="dark"] .docsRating .text--left {
 .docsRating .i_thumbsup {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  margin: auto 14px;
+  margin: -3px 9px auto;
 }
 
 .docsRating .i_thumbsdown {
   transform: scale(-1, -1) translateY(-0.25em);
-  margin: -3px 14px auto 14px;
+  margin: -3px 9px auto;
 }
 
-html[data-theme="dark"] .docsRating .i_thumbsup {
+.docsRating .i_thumbsup {
   fill: #56a211;
 }
 
-html[data-theme="dark"] .docsRating .i_thumbsdown {
+.docsRating .i_thumbsdown {
   fill: #e9430f;
 }
 
@@ -326,7 +317,7 @@ html[data-theme="light"] .darkTheme {
   display: none;
 }
 
-.markdown header h1:first-of-type {
+.markdown h1:first-child {
   display: none;
 }
 
@@ -439,3 +430,16 @@ html[data-theme="light"] .darkTheme {
     margin-left: 0rem !important;
   }
 }
+
+@media (min-width: 997px) {
+   :root {
+  --docusaurus-announcement-bar-height: 1.8em !important;
+  }
+  }
+  div[class^='announcementBar_'] {
+   font-weight: 400;
+   font-size: 1.5em;
+   background: repeating-linear-gradient(35deg,#edf2fa,#edf2fa 20px,#c9d9f2 10px, #c9d9f2 40px) !important;
+  }
+
+

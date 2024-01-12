@@ -44,6 +44,8 @@ Do you think your issue is a bug? If so, try to list the steps to reproduce it, 
 When running Zowe servers on z/OS, the joblog has the most information.
 Depending on what support group you are contacting, you may want to sanitize the logs as they can contain basic system information like hostnames, usernames, and network configuration.
 
+Ensure that your logs were captured with long enough record length to be read by support. Zowe commonly writes lines as long as 500 characters, especially when tracing.
+
 ### Enabling debugging and tracing
 
 There are several debug modes in the Zowe servers, and support groups may ask for you to turn some on.

@@ -3,7 +3,7 @@
 //Since the dropdown provided by Docusaurus in default are only static hyperlinks
 
 import React, { useState, useRef, useEffect } from "react";
-import { useActiveVersion, useLatestVersion } from "@theme/hooks/useDocs"; //Added
+import { useActiveVersion, useLatestVersion } from "@docusaurus/plugin-content-docs/client"; //Added
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import useBaseUrl from "@docusaurus/useBaseUrl";
