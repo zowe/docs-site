@@ -8,7 +8,7 @@ The refresh request requires the token in one of the following formats:
 - Bearer authentication
 
 :::note**Notes:**
-- The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](api-gateway-configuration.md#enable-jwt-token-refresh-endpoint).
+- The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](configuration-jwt.md#enable-jwt-token-refresh-endpoint).
 - The endpoint is protected by a client certificate.
   For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
 :::

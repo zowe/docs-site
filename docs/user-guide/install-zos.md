@@ -2,19 +2,29 @@
 
 Installation of Zowe&trade; server-side components on z/OS, consists of the following two parts: 
 
-* **The Zowe runtime**, which consists of the following components: 
-   - Zowe Application Framework
-   - Zowe API Mediation Layer
-   - Z Secure Services (ZSS)
+* [Zowe runtime](#zowe-runtime)
+* [Zowe Cross Memory Server (ZIS)](#)
 
-* **The Zowe Cross Memory Server (ZIS)**  
+## Zowe runtime
 
- An APF authorized server application that provides privileged services to Zowe in a secure manner.
+The Zowe runtime consists of the following three components: 
 
-:::note**Notes**
-* Zowe offers the possibility to run some of its Unix components in a container rather than under USS. For more information, see [Installing Zowe via a containerization build (PAX filw)](k8s-introduction.md).
-* Zowe also offers the option of configuration for high availability. For more information, see [Configuring high availability (optional)](zowe-ha-overview.md).
-:::
+- **Zowe Application Framework**  
+Zowe Application Framework modernizes and simplifies working on the mainframe via a web visual interface. Functionality is provided through apps and a desktop user experience, which is referred to as the Zowe Desktop. Base functionality includes apps to work with JES, MVS Data Sets, Unix System Services, as well as a 3270 Terminal, Virtual Terminal, and an Editor. 
+
+- **Zowe API Mediation Layer (API ML)**  
+Zowe API ML provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. Zowe API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
+
+- **Z System Services Server (ZSS)**  
+ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and works closely with ZIS. ZSS  provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, security management, and others. The Zowe Desktop delegates a number of services to ZSS which can then be  accessed through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.
+
+## The Zowe Cross Memory Server (ZIS)  
+
+After the installation of Zowe runtime, install the Zowe Cross Memory Server (ZIS).
+
+The Zowe Cross Memeory Server, also referred to as Zowe Interprocess Services (ZIS) is an APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, ZIS is not an HTTP server. Instead, this server has a trust relationship with ZSS.
+
+Other Zowe components can work through ZSS to handle z/OS data that would otherwise be unavailable or where access to these data could be vulnerable to security breaches.
 
 ## Roles and responsibilities for server-side component installation
 
@@ -72,9 +82,9 @@ Begin the installation process by familiarizing yourself with the following topi
    - **Portable Software Instance (PSWI)**  
    You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
-   ::note
-   While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
-   :::
+::note
+While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
+:::
 
 1. Obtain and install the Zowe build.
 
@@ -104,7 +114,7 @@ We recommend you open the links to this configuration procedure in new tabs.
 
 The steps to initialize the system are the same independent of whether you obtained Zowe from a .pax convenience build, or an SMP/E distribution.
 
-:::important
+:::note
 The `zwe init` command runs the subcommands in sequence automatically. You can choose to run the subcommands one by one to define each step based on your need. If you encounter any failures with `zwe init` command, you can pick up the failed subcommands step specifically and rerun this subcommand.
 :::
 
@@ -116,16 +126,16 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 3. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.  
   (Uses the command `zwe init security`)  
 
-   :::note
-   If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
-   :::
+:::note
+If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
+:::
 4. [Perform APF authorization of load libraries](apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS priviledged security calls.  
 (Uses the command `zwe init apfauth`)
 5. [Configure Zowe to use TLS certificates](configure-certificates.md)  
 (Uses the command `zwe init certificate`)
 6. [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). Note that this step is only required if you are configuring Zowe for cross LPAR sysplex high availability.  
 (Uses the command `zwe init vsam`)
-7. [Install Zowe main started tasks](install-stc-members.md).  
+7. [Install Zowe main started tasks](./zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).  
 (Uses command `zwe init stc`)
 
 Once you complete the Zowe z/OS runtime, you can [verify the installation](verify-zowe-runtime-install.md) to determine that Zowe is installed correctly on z/OS.
