@@ -2,24 +2,6 @@
 
 The `zlux-shared` repository provides a logging utility for use by dataservices and web content for an application plug-in.
 
-1. [Logging Objects](#logging-objects)
-1. [Logger IDs](#logger-ids)
-1. [Accessing Logger Objects](#accessing-logger-objects)
-    1. [Logger](#logger)
-        1. [App Server](#app-server)
-        1. [Web](#web)
-    1. [Component Logger](#component-logger)
-        1. [App Server](#app-server-1)
-        1. [Web](#web-1)
-1. [Logger API](#logger-api)
-1. [Component Logger API](#component-logger-api)
-1. [Log Levels](#log-levels)
-1. [Logging Verbosity](#logging-verbosity)
-    1. [Configuring Logging Verbosity](#configuring-logging-verbosity)
-        1. [Server Startup Logging Configuration](#server-startup-logging-configuration)
-1. [Using log message IDs](#using-log-message-ids)
-
-
 ## Logging objects
 
 The logging utility is based on the following objects:
@@ -57,7 +39,6 @@ Component loggers are created from the core logger object, but when working with
 #### App Server
 
 See **Router Dataservice Context** in the topic [Dataservices](mvd-dataservices.md).   
-
 
 ## Logger API
 
@@ -106,8 +87,11 @@ An enum, `LogLevel`, exists for specifying the verbosity level of a logger. The 
 | FINER | 4
 | TRACE | 5
 
-**Note:** The default log level for a logger is **INFO**.
+:::note
 
+The default log level for a logger is **INFO**.
+
+:::
 
 ## Logging verbosity
 
@@ -127,6 +111,7 @@ The application plug-in framework provides ways to specify what component logger
 [The server configuration file](mvd-server-config.md) allows for specification of default log levels, as a top-level attribute `logLevel`, which takes key-value pairs where the key is a regex pattern for component IDs, and the value is an integer for the log levels.
 
 For example:
+
 ```  
 "logLevel": {
     "com.rs.configjs.data.access": 2,
@@ -139,9 +124,11 @@ For example:
     //"_unp.dsauth": 2
   },
 ```
+
 For more information about the server configuration file, see [Zowe Application Framework (zLUX) configuration](../../user-guide/mvd-configuration#configuration-file).
 
 ## Using log message IDs
+
 To make technical support for your application easier, create IDs for common log messages and use substitution to generate them. When you use IDs, people fielding support calls can identify and solve problems more quickly. IDs are particularly helpful if your application is translated, because it avoids users having to explain problems using language that the tech support person might not understand.
 
 To use log message IDs, take the following steps:
@@ -179,7 +166,7 @@ To use log message IDs, take the following steps:
    ```
    DATE TIME:TIME:TIME.TIME <ZWED:> username INFO (org.zowe.app.name,:) A001 - Приложение создано.
    ```
-   
+
 ### Message ID logging examples
 
 Server core: https://github.com/zowe/zlux-server-framework/blob/v2.x/master/plugins/config/lib/assets/i18n/log/messages_en.json
