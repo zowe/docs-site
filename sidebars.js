@@ -773,7 +773,14 @@ module.exports = {
             "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
-            "troubleshoot/cli/troubleshoot-cli-plugins",
+          ],
+        },
+        {
+          type: "category",
+          label: "Troubleshooting Zowe CLI plug-ins",
+          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli-plugins"},
+          items: [
+            "troubleshoot/cli/troubleshoot-ibm-db2-database-plug-in",
           ],
         },
         {
