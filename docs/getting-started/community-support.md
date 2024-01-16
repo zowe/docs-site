@@ -75,6 +75,7 @@ The table on this page reflects the state concerning the testing efforts by vari
 
 
 
+<!--
 
 ##### API Mediation Layer
 
@@ -97,7 +98,6 @@ The table on this page reflects the state concerning the testing efforts by vari
 
 
 
-<!--
 ### Technological Features
 
 | Name of the technology  | Zowe | API Mediation Layer | CLI | Intellij Plugin | Node.js Client SDK | Zowe Application Framework | Zowe Explorer | Zowe System Services (ZSS) |
