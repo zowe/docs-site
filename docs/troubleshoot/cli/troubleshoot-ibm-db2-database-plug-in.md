@@ -55,7 +55,7 @@ To troubleshoot a timeout error, see [Downloading the ODBC driver manually](#dow
 
 If the driver downloads successfully, security settings can still prompt an unpacking error.
 
-In the following example, the ODBC driver was downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set.
+In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set.
 
 ```
 Error: invalid distance too far back
