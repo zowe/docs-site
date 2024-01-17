@@ -3,14 +3,6 @@
 
 The API Gateway includes a basic WebSocket proxy which enables the Gateway to access applications that use the WebSocket protocol together with a web UI and a REST API.
 
-- [Architecture](#architecture)
-  - [Security and Authentication](#security-and-authentication)
-  - [Subprotocols](#subprotocols)
-  - [High availability](#high-availability)
-  - [Idle Timeout](#idle-timeout)
-- [Diagnostics](#diagnostics)
-- [Limitations](#limitations)
-
 The service defines which WebSocket endpoints are exposed by using Eureka metadata.
 
 **Example:**
