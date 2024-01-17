@@ -12,12 +12,19 @@ Client (i.e. web browser) <-> [Gateway (WebSocket Server) - Gateway (WebSocket C
 We recommend that clients implement a ping-like mechanism to maintain the opened WebSocket sessions and not rely on the web browser to perform this action.
 :::
 
-### Security and Authentication
+- [Security and Authentication](#security-and-authentication)
+- [Subprotocols](#subprotocols)
+- [High availability](#high-availability)
+- [Idle Timeout](#idle-timeout)
+- [Diagnostics](#diagnostics)
+- [Limitations](#limitations)
+
+## Security and Authentication
 
 The API Gateway usually uses TLS with the `wss` protocol. Services that use TLS enable the API Gateway to use `wss` to access these services. Services that do not use TLS require the API Gateway to use the `ws` protocol without TLS.
 The API Gateway also supports basic authentication via WebSocket.
 
-### Subprotocols
+## Subprotocols
 
 In addition to plain WebSocket support, API Mediation Layer also supports WebSocket subprotocols. Currently, only STOMP v1.2 and STOMP v1.1 are supported and tested. 
 
@@ -31,11 +38,11 @@ It is possible to update the list of currently supported WebSocket subprotocols.
 SERVER_WEBSOCKET_SUPPORTEDPROTOCOLS=v12.stomp,v11.stomp,wamp,soap
 ```
 
-### High availability
+## High availability
 
 In the high availability scenario, a WebSocket session is established between client and a selected Gateway. This session is then tied to this instance for its entire duration.
 
-### Idle Timeout
+## Idle Timeout
 
 The WebSocket client on the API ML Gateway has a default Idle timeout of one hour. If a WebSocket session between the Gateway WebSocket Client and the Service's WebSocket Server is inactive for the entire period, the connection is closed.
 
