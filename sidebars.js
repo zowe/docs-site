@@ -458,7 +458,7 @@ module.exports = {
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
-                "extend/extend-apiml/websocket",
+                "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
               ],
             },           
@@ -648,6 +648,7 @@ module.exports = {
             "extend/extend-apiml/custom-metadata",
             "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
+            "extend/extend-apiml/websocket",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
