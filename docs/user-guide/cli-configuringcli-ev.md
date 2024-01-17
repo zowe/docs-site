@@ -52,4 +52,12 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 
 | Platform | Environment Variable  | Description | Values | Default |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. In Zowe V3, this will be the only error format used and this environment variable will not be available.| TRUE, FALSE, blank | blank |
+| All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. In Zowe V3, this will be the only error format used and this environment variable will not be available.| `TRUE`, `FALSE`, blank | blank |
+| All | `CI` | Set by most Continuous Integration environments automatically. Set to any value, disables progress bars in Zowe CLI. | Any <br/>(CI environment name, typically) | blank |
+| All | `FORCE_COLOR` | For most CLI tools, sets the color depth to be used by the CLI on the terminal. Set to `0`, disables color and progress bars in Zowe CLI. Set to any other valid non-blank value, enables color and progress bars in Zowe CLI. <br/><br/> See Note below regarding Zowe CLI daemon configuration. | `0`, `1`, `2`, `3`, `TRUE`, blank | blank |
+
+:::note`FORCE_COLOR` NOTE
+
+When a user does not set `FORCE_COLOR` and uses the Zowe CLI daemon, the daemon determines if the terminal running the daemon supports colors and progress bars. If it does, the daemon automatically sets `FORCE_COLOR` to a supported setting in all requests sent to the Zowe CLI daemon server component.
+
+:::
