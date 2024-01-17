@@ -649,6 +649,7 @@ module.exports = {
             "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
             "extend/extend-apiml/websocket",
+            "extend/extend-apiml/implementing-routing-to-the-api-gateway",            
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
