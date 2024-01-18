@@ -1,6 +1,6 @@
-# Installation checklist
+# Zowe CLI Installation checklist
 
-The following checklists summarize the required steps for a base installation (_first-time installation_) in the order you should perform them. 
+The following checklists summarize the required steps for a base installation (_first-time installation_) in the order you should perform them.
 
 The checklist includes a brief description of the steps, with links to the comprehensive information required for the installation. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team (systems administrator, DevOps architect, application developer, and so on) to focus on the tasks for which they are responsible. 
 
@@ -15,7 +15,7 @@ To plan your Zowe CLI installation, review the following checklist.
 | Step        | Description | Role       | Time Estimate | Status     |
 | ----------- | ----------- | ---------- | ------------- | ---------- |
 | [Review the Zowe CLI information roadmap](../user-guide/user-roadmap-zowe-cli.md) | Learn about various Zowe CLI topics | Systems administrator, application developer, systems programmer, DevOps architect  | **.25** hrs |  |
-| [Review the release notes](../getting-started/release-notes/release-notes-overview.md) | Read about new features and enhancements included with this release of Zowe CLI | Systems administrator, DevOps architect |  **.25** hours |  || Review the Zowe CLI installation methods | [Determine the installation package to use to install CLI](cli-installcli.md) | Systems administrator |  **.25**hrs |  |
+| [Review the release notes](../whats-new/release-notes/release-notes-overview.md) | Read about new features and enhancements included with this release of Zowe CLI | Systems administrator, DevOps architect |  **.25** hours |  || Review the Zowe CLI installation methods | [Determine the installation package to use to install CLI](cli-installcli.md) | Systems administrator |  **.25**hrs |  |
 | [Address the requirements](../user-guide/systemrequirements-cli.md) | Install the client-side and host-side software, and ensure that there is sufficient free disk space | Systems administrator | **See Note-1** |  |
 | [(Optional) Install API Mediation Layer](../user-guide/install-zos.md) | Install the Zowe Runtime, which includes API Mediation Layer | Systems administrator | **8** hrs |  |
 | [Install z/OSMF](https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-setting-up-zosmf-first-time) | Follow the steps to install z/OSMF | Systems administrator  | **See Note-2** |  |

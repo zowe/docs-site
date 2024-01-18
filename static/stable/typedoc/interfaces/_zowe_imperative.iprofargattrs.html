@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IProfArgAttrs | Zowe Node.js SDK - v2.9.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.9.0">
+	<title>IProfArgAttrs | Zowe Node.js SDK - v2.13.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.13.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.9.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.13.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -93,6 +93,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofargattrs.html#argname" class="tsd-kind-icon">arg<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofargattrs.html#argvalue" class="tsd-kind-icon">arg<wbr>Value</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofargattrs.html#datatype" class="tsd-kind-icon">data<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofargattrs.html#inschema" class="tsd-kind-icon">in<wbr>Schema</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofargattrs.html#secure" class="tsd-kind-icon">secure</a></li>
 							</ul>
 						</section>
@@ -107,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">arg<wbr>Loc<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iprofloc.html" class="tsd-signature-type">IProfLoc</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.14.1/packages/config/src/doc/IProfArgAttrs.ts#L34">@zowe/imperative/packages/config/src/doc/IProfArgAttrs.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L34">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -122,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">arg<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.14.1/packages/config/src/doc/IProfArgAttrs.ts#L25">@zowe/imperative/packages/config/src/doc/IProfArgAttrs.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L25">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -137,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">arg<wbr>Value<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#iprofargvalue" class="tsd-signature-type">IProfArgValue</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.14.1/packages/config/src/doc/IProfArgAttrs.ts#L31">@zowe/imperative/packages/config/src/doc/IProfArgAttrs.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L31">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:31</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -152,7 +153,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<wbr>Type<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#iprofdatatype" class="tsd-signature-type">IProfDataType</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.14.1/packages/config/src/doc/IProfArgAttrs.ts#L28">@zowe/imperative/packages/config/src/doc/IProfArgAttrs.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L28">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -162,12 +163,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="inschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> in<wbr>Schema</h3>
+					<div class="tsd-signature tsd-kind-icon">in<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L40">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:40</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether the argument value is defined in the schema file</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="secure" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> secure</h3>
 					<div class="tsd-signature tsd-kind-icon">secure<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.14.1/packages/config/src/doc/IProfArgAttrs.ts#L37">@zowe/imperative/packages/config/src/doc/IProfArgAttrs.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.20.1/packages/imperative/src/config/src/doc/IProfArgAttrs.ts#L37">@zowe/imperative/src/config/src/doc/IProfArgAttrs.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -243,6 +259,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofargattrs.html#datatype" class="tsd-kind-icon">data<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.iprofargattrs.html#inschema" class="tsd-kind-icon">in<wbr>Schema</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofargattrs.html#secure" class="tsd-kind-icon">secure</a>

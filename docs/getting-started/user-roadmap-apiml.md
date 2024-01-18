@@ -46,7 +46,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
       This article explains how to configure security for the Zowe API Mediation Layer. 
 
-   - [Advanced Gateway features configuration](../user-guide/api-mediation/api-gateway-configuration.md)
+   - [Advanced Gateway features configuration](../user-guide/advanced-apiml-configuration.md)
       
       This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced Gateway features.
 

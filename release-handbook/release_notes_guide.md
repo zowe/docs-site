@@ -39,8 +39,23 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 #### IMS Plug-in for Zowe CLI
 
-
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ## Bug fixes
 
@@ -67,6 +82,22 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 #### IMS Plug-in for Zowe CLI
 
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+####  Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ### Vulnerabilities fixed
 
@@ -181,56 +212,58 @@ Follow the steps below to fetch the list of fixes for the previous release.
 
 Project repos can set up CHANGELOGs to record user-facing changes to the repo. Changelog automation aims to improve the accuracy and consistency of Zowe Release Notes and reduces the overhead for dev/doc engineers.
 
-If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squad to pick up the updates, the following rules MUST be met. 
+If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squad to pick up the updates, the following rules MUST be met.
 
-1. Include an issue or PR number for each entry. This helps users learn more about the change when needed. 
+#### CHANGELOG and release notes formatting
+
+- Include an issue or PR number for each entry. This helps users learn more about the change when needed. 
 
     Example: 
     ```
     Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335 
     ```
 
-2. Indicate whether the change is a new feature/enhancement or a bug fix.  This helps users understand quickly what new enhancements are introduced and decide whether to upgrade. 
+- Indicate whether the change is a new feature/enhancement or a bug fix.  This helps users understand quickly what new enhancements are introduced and decide whether to upgrade.
 
-    We propose one of the following methods to organize content:
+    We recommend one of the following methods to organize content:
     1) For each release, create separate sections for “New features and enhancements” and “Bug fixes” in the CHANGELOG and add updates into the correct section. 
 
-    Example: 
-    ```
-    1.14.0 
-    New features and enhancements
-    - Added SSO token name and label to convert-env.sh for use with ZSS. #118 
+        Example:
+        ```
+        1.14.0 
+        New features and enhancements
+        - Added SSO token name and label to convert-env.sh for use with ZSS. #118 
     
-    Bug fixes
-    - Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
-    ```
+        Bug fixes
+        - Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
+        ```
 
-   2) Use tags to label entries. 
+   2) Use tags to label entries.
 
-   Example:
-   ``` 
-   1.14.0 
-   - Feature: Added SSO token name and label to convert-env.sh for use with ZSS. #118 
-   - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
-   ```
+      Example:
+      ``` 
+      1.14.0 
+      - Feature: Added SSO token name and label to convert-env.sh for use with ZSS. #118 
+      - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
+      ```
 
-We recommend the following writing style for release notes entries:
+#### Writing style for release notes entries
 
-1. Start the sentence with a verb in past tense. 
+1. Start the sentence with a verb in past tense.
    - If a new feature or enhancement, can use “Added...”, “Improved...”, “Enhanced...”;
    - If a bug fix, can use “Fixed...”
-2. Write from the user’s perspective. 
+2. Write from the user’s perspective.
     - If a new feature or enhancement, document why this change matters to users (what this feature or enhancement allows the users to do now) . 
 
-    Example: 
-    ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
-    ```
+        Example:
+        ```
+        Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
+        ```
    - If a bug fix, state clearly what issue was resolved. 
 
-   Example: 
-   ```
-   Fixed a bug where the cascading position of new windows were wrong when that application was maximized. #102
-   ```
+      Example:
+      ```
+      Fixed a bug where the cascading position of new windows were wrong when that application was maximized. #102
+      ```
 
 3. Use second person “you” instead of “users”.

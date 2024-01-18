@@ -1,12 +1,15 @@
-# Information roadmap for Zowe CLI
+# Zowe CLI
 
-This roadmap outlines the information resources that are available for all user roles who are interested in Zowe CLI. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe CLI.
+The resources here provide information about various Zowe CLI topics, such as learning basic skills, installation, developing, and troubleshooting.
 
-The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
+:::tip
+
+To identify the resources most relevant for you, use the following definitions of Zowe CLI skill levels.
 
 * Beginner: You're starting out and want to learn the fundamentals.
 * Intermediate: You have some experience but want to learn more in-depth skills. 
 * Advanced: You have lots of experience and are looking to learn about specialized topics.
+:::
 
 ## Fundamentals
 
@@ -80,9 +83,9 @@ The following definition of skill levels about Zowe will help you gather most re
    The content also contains the web help for all Zowe ecosystem-conformant plug-ins that contributed to this website.
    
    You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version:
-   - <b><a href="/v2.7.x/web_help/index.html" target="_blank">Browse online</a></b>
-   - <b><a href="/v2.7.x/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
-   - <b><a href="/v2.7.x/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
+   - <b><a href="/stable/web_help/index.html" target="_blank">Browse online</a></b>
+   - <b><a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a></b>
+   - <b><a href="/stable/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a></b>
 
 - **Best practices**
 
