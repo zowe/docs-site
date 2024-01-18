@@ -121,7 +121,7 @@ With the Db2 ODBC CLI driver downloaded, set the `IBM_DB_INSTALLER_URL` environm
 
 ## Addressing the license requirement
 
-To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you do not have a license configured when you execute Db2 CLI commands, you will receive an error `SQL1598N`:
+To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you do not have a license configured when you execute Db2 CLI commands, you receive an error `SQL1598N`:
 
 ```
 DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
@@ -142,7 +142,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
     :::note
     
     The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
-    To know more about DB2 license and purchasing cost, please contact IBM Customer Support.
+    For more information about Db2 the license and purchasing cost, please contact IBM Customer Support.
 
     :::
 
@@ -172,7 +172,7 @@ We recommend that you create profiles using the configuration file. We do not re
 
 When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the DB2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
 
-Alternatively, you can create a db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
+Alternatively, you can create a Db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
 
 1. Browse to the following directory: `C:\Users\<username>\.zowe`
 

@@ -6,7 +6,7 @@ By default, Zowe CLI configuration is stored on your computer in the `C:\Users\u
 
 :::note
 
-For information on how to define Zowe CLI environment variables to execute commands more efficiently, see [Using environment variables](cli-using-using-environment-variables.md).
+For information on how to use environment variables to execute commands more efficiently, see [Using environment variables](cli-using-using-environment-variables.md).
 
 :::
 
@@ -66,7 +66,7 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | All | `ZOWE_V3_ERR_FORMAT` | For Zowe V2, reformats the message displayed in REST request errors so problem details, and service response and diagnostic information, display in a reader friendly manner. In Zowe V3, this will be the only error format used and this environment variable will not be available.| `TRUE`, `FALSE`, blank | blank |
 | All | `CI` | Set by most Continuous Integration environments automatically. Set to any value, disables progress bars in Zowe CLI. | Any <br/>(CI environment name, typically) | blank |
-| All | `FORCE_COLOR` | For most CLI tools, sets the color depth to be used by the CLI on the terminal. Set to `0`, disables color and progress bars in Zowe CLI. Set to any other valid non-blank value, enables color and progress bars in Zowe CLI. <br/><br/> See the subsequent Note regarding Zowe CLI daemon configuration. | `0`, `1`, `2`, `3`, `TRUE`, blank | blank |
+| All | `FORCE_COLOR` | For most CLI tools, sets the color depth to be used by the CLI on the terminal. Set to `0`, disables color and progress bars in Zowe CLI. Set to any other valid, non-blank value, enables color and progress bars in Zowe CLI. <br/><br/> See the subsequent Note regarding Zowe CLI daemon configuration. | `0`, `1`, `2`, `3`, `TRUE`, blank | blank |
 
 :::note
 
