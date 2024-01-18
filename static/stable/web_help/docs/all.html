@@ -279,7 +279,8 @@
 </ul></li>
 </ul><ul><li><a href="#zowe_endevor_initialize">initialize | init</a><ul><li><a href="#zowe_endevor_initialize_workspace">workspace | wsp</a></li>
 </ul></li>
-</ul><ul><li><a href="#zowe_endevor_list">list</a><ul><li><a href="#zowe_endevor_list_defaults">defaults</a></li>
+</ul><ul><li><a href="#zowe_endevor_list">list</a><ul><li><a href="#zowe_endevor_list_code-page-config">code-page-config | codepages | cdpg</a></li>
+</ul><ul><li><a href="#zowe_endevor_list_defaults">defaults</a></li>
 </ul><ul><li><a href="#zowe_endevor_list_dialog">dialog</a></li>
 </ul><ul><li><a href="#zowe_endevor_list_elements">elements | elem | ele</a></li>
 </ul><ul><li><a href="#zowe_endevor_list_environments">environments | environment | env</a></li>
@@ -302,6 +303,7 @@
 </ul></li>
 </ul><ul><li><a href="#zowe_endevor_print">print | p</a><ul><li><a href="#zowe_endevor_print_components">components | comp</a></li>
 </ul><ul><li><a href="#zowe_endevor_print_element">element | elem | ele</a></li>
+</ul><ul><li><a href="#zowe_endevor_print_member">member | mem</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_endevor_queryacm">queryacm</a><ul><li><a href="#zowe_endevor_queryacm_components">components | comp</a></li>
 </ul></li>
@@ -341,8 +343,6 @@
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-connection_list">list | ls</a></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-connection_rename">rename | ren</a></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-connection_update-credentials">update-credentials | uc</a></li>
-</ul></li>
-</ul><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-credentials">endevor-credentials | ec</a><ul><li><a href="#zowe_endevor-bridge-for-git_endevor-credentials_update">update | u</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token | token</a><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token_generate">generate | g</a></li>
 </ul><ul><li><a href="#zowe_endevor-bridge-for-git_local-hook-token_list">list | ls</a></li>
@@ -611,6 +611,7 @@
 </ul></li>
 </ul></li>
 <li><a href="#zowe_sysview">sysview | sv</a><ul><li><a href="#zowe_sysview_capture">capture | cap</a></li>
+</ul><ul><li><a href="#zowe_sysview_capture-immediate">capture-immediate | cap-imm</a></li>
 </ul><ul><li><a href="#zowe_sysview_check">check</a><ul><li><a href="#zowe_sysview_check_status">status</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_sysview_display">display | dsp</a></li>
@@ -630,7 +631,7 @@
 </ul><ul><li><a href="#zowe_zos-files_compare_local-file-spool-dd">local-file-spool-dd | lf-sdd</a></li>
 </ul><ul><li><a href="#zowe_zos-files_compare_local-file-uss-file">local-file-uss-file | lf-uss</a></li>
 </ul><ul><li><a href="#zowe_zos-files_compare_spool-dd">spool-dd | sdd</a></li>
-</ul><ul><li><a href="#zowe_zos-files_compare_uss-files">uss-files | uss</a></li>
+</ul><ul><li><a href="#zowe_zos-files_compare_uss-files">uss-files | uss | uf</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_copy">copy | cp</a><ul><li><a href="#zowe_zos-files_copy_data-set">data-set | ds</a></li>
 </ul><ul><li><a href="#zowe_zos-files_copy_data-set-cross-lpar">data-set-cross-lpar | dsclp</a></li>
@@ -657,6 +658,9 @@
 </ul><ul><li><a href="#zowe_zos-files_download_data-sets-matching">data-sets-matching | dsm | data-set-matching</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-directory">uss-directory | uss-dir</a></li>
 </ul><ul><li><a href="#zowe_zos-files_download_uss-file">uss-file | uf | uss</a></li>
+</ul></li>
+</ul><ul><li><a href="#zowe_zos-files_edit">edit | ed</a><ul><li><a href="#zowe_zos-files_edit_data-set">data-set | ds</a></li>
+</ul><ul><li><a href="#zowe_zos-files_edit_uss-file">uss-file | uss | uf</a></li>
 </ul></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke">invoke | call</a><ul><li><a href="#zowe_zos-files_invoke_ams-file">ams-file | af</a></li>
 </ul><ul><li><a href="#zowe_zos-files_invoke_ams-statements">ams-statements | as</a></li>
@@ -845,7 +849,10 @@
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -904,7 +911,7 @@
 <ul>
 <li>
 <p>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</p>
-<p>Allowed values: apimlAuthenticationToken, jwtToken, LtpaToken2</p>
+<p>Allowed values: ^apimlAuthenticationToken.*, jwtToken, LtpaToken2</p>
 </li>
 </ul>
 </li>
@@ -18805,7 +18812,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -18941,7 +18951,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19081,7 +19094,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19270,7 +19286,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19468,7 +19487,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19654,7 +19676,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19824,7 +19849,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -19960,7 +19988,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20094,7 +20125,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20222,7 +20256,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20350,7 +20387,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20474,7 +20514,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20604,7 +20647,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20732,7 +20778,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20854,7 +20903,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -20978,7 +21030,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21120,7 +21175,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21332,7 +21390,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21466,7 +21527,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21594,7 +21658,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21724,7 +21791,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -21860,7 +21930,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -22699,7 +22772,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -22831,7 +22907,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -22972,7 +23051,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -23016,7 +23098,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID where you want to validate the DDL.</li>
+<li>
+<p>Specifies the target Db2 subsystem or data sharing group where you want to validate the DDL.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -23036,8 +23121,8 @@ Allowed values: http, https</p>
 <p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Identifies an existing named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23048,6 +23133,54 @@ Allowed values: http, https</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23162,7 +23295,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID where the objects that you are comparing reside.</li>
+<li>
+<p>Specifies the target Db2 subsystem or the data sharing group where the objects that you are comparing reside.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -23175,7 +23311,7 @@ Allowed values: http, https</p>
 <p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
 <p>Format:</p>
 <p>&lt;match-set-creator.match-set-name&gt;</p>
-<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23199,7 +23335,10 @@ TRIGGER &lt;schema.name&gt; &lt;schema.name&gt;<br>
 SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt;<br>
 FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;<br>
 PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
-<p>Note: &lt;schema&gt; must be 8 characters or less. &lt;name&gt; must be 18 characters or less. The SEQUENCE &lt;name&gt; must be 8 characters or less.</p>
+<p>Note:<br>
+- &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters.<br>
+- &lt;schema&gt; must be between 1 and 128 characters.<br>
+- &lt;version&gt; must be between 1 and 64 characters.</p>
 <p>A mask specification can include the following wildcard characters:</p>
 <p>% (percent sign) indicates that zero or more characters can occupy that position. Other non-wildcard characters must match.</p>
 <p>- (hyphen) indicates that any character can occupy that position, but a character must exist at that position.</p>
@@ -23211,7 +23350,7 @@ PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
 TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
 TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
 TABLE *.MYTABLE *.YOURTABLE;</p>
-<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23223,7 +23362,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set used for modifying Db2 object attributes. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23241,7 +23380,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
 TBTS TESTTS% PRODTS%</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23254,7 +23393,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
 <p>Format:</p>
 <p>&lt;rule-set-creator.rule-set-name&gt;</p>
-<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23298,7 +23437,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output file name that contains the parseable impact analysis report in JSON or YAML format. This report helps identify significant DDL operations to be performed on Db2 objects. It provides the total number and type of DDL operations that are being performed on each object type, the list of DDL operations performed on each object instance, and the state of any pending changes.</p>
 <p>The report format is determined by the supplied file name extension: .json for JSON and .yaml or .yml for YAML. If no extension is provided, JSON format is used.</p>
 <p>Default value: impact.json</p>
-<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about the impact analysis report, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23307,7 +23446,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23318,6 +23457,60 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23438,7 +23631,10 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID.</li>
+<li>
+<p>Specifies the target Db2 subsystem or the data sharing group.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -23451,7 +23647,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
 <p>Format:</p>
 <p>&lt;match-set-creator.match-set-name&gt;</p>
-<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23475,7 +23671,10 @@ TRIGGER &lt;schema.name&gt; &lt;schema.name&gt;<br>
 SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt;<br>
 FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;<br>
 PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
-<p>Note: &lt;schema&gt; must be 8 characters or less. &lt;name&gt; must be 18 characters or less. The SEQUENCE &lt;name&gt; must be 8 characters or less.</p>
+<p>Note:<br>
+- &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters.<br>
+- &lt;schema&gt; must be between 1 and 128 characters.<br>
+- &lt;version&gt; must be between 1 and 64 characters.</p>
 <p>A mask specification can include the following wildcard characters:</p>
 <p>% (percent sign) indicates that zero or more characters can occupy that position. Other non-wildcard characters must match.</p>
 <p>- (hyphen) indicates that any character can occupy that position, but a character must exist at that position.</p>
@@ -23487,7 +23686,7 @@ PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
 TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
 TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
 TABLE *.MYTABLE *.YOURTABLE;</p>
-<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
 </li>
 </ul>
@@ -23499,7 +23698,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set used for modifying Db2 object attributes. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23517,7 +23716,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
 TBTS TESTTS% PRODTS%</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 <p>Consult with your database administrator about global change behavior for the default or a specific modification parameter.</p>
 </li>
@@ -23530,7 +23729,7 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the creator and name of an existing RC/Migrator rule set to be used to override Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file.The changes apply to the existing objects only (as determined by match-set processing).</p>
 <p>Format:</p>
 <p>&lt;rule-set-creator.rule-set-name&gt;</p>
-<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 </li>
 </ul>
 </li>
@@ -23539,7 +23738,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23550,6 +23749,60 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23692,7 +23945,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23703,6 +23956,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23835,7 +24124,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -23846,6 +24135,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -23964,7 +24289,11 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID where you want to execute the script. If the option is not specified, the target subsystem is identified by the first .CONNECT statement in the script. The target-db2 option value takes precedence.</li>
+<li>
+<p>Specifies the target Db2 subsystem or data sharing group where you want to execute the script. If this option is not specified, the target subsystem is identified by the first .CONNECT statement in the script.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+<p>The target-db2 option takes precedence over any other value that is specified for the Db2 subsystem or data sharing group.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -23998,7 +24327,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24009,6 +24338,42 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24104,37 +24469,37 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p>Execute only the SQLDDL section of a script. The first .CONNECT statement in the script identifies the target subsystem where the script is executed. Execution begins at the .SYSTEM SQLDDL statement and ends at the next .SYSTEM statement in the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section SQLDDL">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section SQLDDL</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section SQLDDL">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute a script beginning from the sync point 10 (.SYNC 10 statement) to the end of the script:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section 10">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section 10">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Execute only the target (SQLDDL) section of the script starting at sync point 20:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––script-section target,20">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --script-section target,20</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --script-section target,20">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script from the beginning:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart new">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart new">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution of a script at the location specified in the token. The restart token is returned by a previous 'zowe dbm execute command' failure as part of the terminal output and in the error file:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart 78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Restart execution at the last successful sync point recorded in the restart token up to the end of the target (SQLDDL) section:</p>
 <ul>
-<li><code>zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt ––restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
+<li><code>zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute script script001.txt --restart target,78A724A48DA5185D06FD140F6780D6FA">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -24193,7 +24558,7 @@ database db1 include(children);</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when generating the DDL.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 </li>
 </ul>
@@ -24206,7 +24571,7 @@ database db1 include(children);</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
 <p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
-<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Example:</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
@@ -24239,7 +24604,7 @@ Allowed values: drop, create</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24258,7 +24623,64 @@ Allowed values: drop, create</p>
 <li>
 <p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the source Db2 subsystem ID where the objects that you want to generate DDL for are located.</li>
+<li>
+<p>Specifies the source Db2 subsystem or the data sharing group where the objects that you want to generate DDL for are located.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24413,7 +24835,7 @@ database db1 include(children);</p>
 <p>Specifies the creator and name of an existing RC/Migrator global change set to be used to modify Db2 object attributes when preparing objects for migration.</p>
 <p>Format:</p>
 <p>&lt;change-set-creator.change-set-name&gt;</p>
-<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
 </li>
 </ul>
@@ -24426,7 +24848,7 @@ database db1 include(children);</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
 <p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
-<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a>.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
 <p>Example:</p>
 <p>The following example demonstrates changes to table’s schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
@@ -24458,7 +24880,7 @@ TBTS TESTTS% PRODTS%</p>
 <ul>
 <li>
 <p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
 </ul>
 </li>
@@ -24477,13 +24899,73 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the source Db2 subsystem ID where the object definitions and data that you want to migrate are located.</li>
+<li>
+<p>Specifies the source Db2 subsystem or the data sharing group where the object definitions and data that you want to migrate are located.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
 </ul>
 </li>
 <li>
 <p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the target Db2 subsystem ID where the object definitions and data are migrated (copied) to.</li>
+<li>
+<p>Specifies the target Db2 subsystem or the data sharing group where the object definitions and data are migrated (copied) to.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Profile Options</h4>
+<ul>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files when they already exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -24573,7 +25055,7 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p>Generate a migration script and apply global changes:</p>
 <ul>
-<li><code>zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG –-change-set USER1.CHANGSET –-output-migrate-script migrate.txt --output-ddl-file objects.sql">Copy</button></li>
+<li><code>zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG --change-set USER1.CHANGSET --output-migrate-script migrate.txt --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 prepare migration --object &quot;database my.db include(children)&quot; --source-db2 SRC --target-db2 TRG --change-set USER1.CHANGSET --output-migrate-script migrate.txt --output-ddl-file objects.sql">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -27609,6 +28091,229 @@ Allowed values: http, https</p>
 </ul>
 <a name="zowe_endevor_list"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor">endevor</a> › <a href="#zowe_endevor_list">list</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>List instances, elements, types, packages and inventory locations in Endevor.</p>
+<a class="cmd-anchor" name="zowe_endevor_list_code-page-config"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor">endevor</a> › <a href="#zowe_endevor_list">list</a> › <a href="#zowe_endevor_list_code-page-config">code-page-config</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>The list code-page-config command lists the EBCDIC code page mapping rules used by Endevor Web Services</p>
+<h4>Usage</h4>
+<p>zowe endevor list code-page-config [options]</p>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--suppress-messages</code> | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-file</code> | <code>--file-name</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving reports from Endevor SCM locally.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> <em>(string)</em></p>
+<ul>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
+</ul>
+</li>
+<li>
+<p><code>--write-report</code> <em>(boolean)</em></p>
+<ul>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+</ul>
+</li>
+<li>
+<p><code>--full-output</code> | <code>--fo</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option if you want a full output of list action.</li>
+</ul>
+</li>
+</ul>
+<h4>asynchronous task options</h4>
+<ul>
+<li>
+<p><code>--asynchronous</code> | <code>--async</code> <em>(boolean)</em></p>
+<ul>
+<li>Submit this command as an asynchronous Endevor Web Services task</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List codepage-config with session specified:</p>
+<ul>
+<li><code>zowe endevor list code-page-config --host hostName --port 8080</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list code-page-config --host hostName --port 8080">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a class="cmd-anchor" name="zowe_endevor_list_defaults"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor">endevor</a> › <a href="#zowe_endevor_list">list</a> › <a href="#zowe_endevor_list_defaults">defaults</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>List the contents of the main Endevor configuration table (C1DEFLTS)</p>
 <h4>Usage</h4>
@@ -28219,6 +28924,69 @@ Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
 </ul>
+<h4>endevor search text options</h4>
+<ul>
+<li>
+<p><code>--search-text</code> | <code>--stext</code> <em>(string)</em></p>
+<ul>
+<li>Search string(s) separated with AND or OR. E.g.: string_1 AND string_2 AND string_3 OR string_4.<br>
+For complex search strings with quotation marks use search-text-file parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-text-file</code> | <code>--stf</code> <em>(string)</em></p>
+<ul>
+<li>File which contains search string(s) separated with AND or OR. Recommended for complex search strings with quotation marks.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in</code> | <code>--si</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>2 letters describing where search should be performed:<br>
+es - Element Source<br>
+eh - Element History<br>
+ec - Element Changes<br>
+eu - Element Summary<br>
+cs - Components Source<br>
+ch - Components History<br>
+cc - Components Changes<br>
+cu - Components Summary.</p>
+<p>Allowed values: es, eh, ec, eu, cs, ch, cc, cu</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--search-from</code> | <code>--sf</code> <em>(number)</em></p>
+<ul>
+<li>Beginning interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-to</code> | <code>--st</code> <em>(number)</em></p>
+<ul>
+<li>Ending interval of the column range for the search-text.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-ignore-case</code> | <code>--ic</code> <em>(boolean)</em></p>
+<ul>
+<li>Ignore search case.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-in-binary</code> | <code>--bin</code> <em>(boolean)</em></p>
+<ul>
+<li>Should the text search be performed in binary elements.</li>
+</ul>
+</li>
+<li>
+<p><code>--search-limit</code> | <code>--sl</code> <em>(number)</em></p>
+<ul>
+<li>Maximum search limit where 0 is NOLIMIT.</li>
+</ul>
+</li>
+</ul>
 <h4>scl generation options</h4>
 <ul>
 <li>
@@ -28410,6 +29178,12 @@ Allowed values: http, https</p>
 <p>List elements in Endevor from the specified inventory location with the endevor profile set up:</p>
 <ul>
 <li><code>zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements -i ENDEVOR --env ENVNAME --sn 1 --sys SYSNAME --sub SUBNAME --typ TYPENAME">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List elements in Endevor using search text string:</p>
+<ul>
+<li><code>zowe endevor list elements --stext &quot;first or second and third&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor list elements --stext &quot;first or second and third&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -32167,15 +32941,6 @@ Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
 </ul>
-<h4>asynchronous task options</h4>
-<ul>
-<li>
-<p><code>--asynchronous</code> | <code>--async</code> <em>(boolean)</em></p>
-<ul>
-<li>Submit this command as an asynchronous Endevor Web Services task</li>
-</ul>
-</li>
-</ul>
 <h4>output customization options</h4>
 <ul>
 <li>
@@ -32610,6 +33375,203 @@ Allowed values: http, https</p>
 <p>Print element from specified inventory location with endevor profile set up:</p>
 <ul>
 <li><code>zowe endevor print element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor print element elementName --env ENV --sn 1 --sys SYS --sub SUB --typ TYPE -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_endevor_print_member"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor">endevor</a> › <a href="#zowe_endevor_print">print</a> › <a href="#zowe_endevor_print_member">member</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>The print member command prints a member from a specified dataset.</p>
+<h4>Usage</h4>
+<p>zowe endevor print member &lt;member&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>member</code>		 <em>(string)</em></p>
+<ul>
+<li>Name of the member.</li>
+</ul>
+</li>
+</ul>
+<h4>input sources options</h4>
+<ul>
+<li>
+<p><code>--from-dataset</code> | <code>--fd</code> <em>(string)</em></p>
+<ul>
+<li>Use this input to provide source data set name.</li>
+</ul>
+</li>
+</ul>
+<h4>options</h4>
+<ul>
+<li>
+<p><code>--headings</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify it if you want to print a header on each page.</li>
+</ul>
+</li>
+<li>
+<p><code>--charset</code> | <code>--char</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the clients preferred character set when retrieving, printing or updating elements.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>asynchronous task options</h4>
+<ul>
+<li>
+<p><code>--asynchronous</code> | <code>--async</code> <em>(boolean)</em></p>
+<ul>
+<li>Submit this command as an asynchronous Endevor Web Services task</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--to-file</code> | <code>--tf</code> <em>(string)</em></p>
+<ul>
+<li>The file name in which the data from the command output is stored</li>
+</ul>
+</li>
+<li>
+<p><code>--suppress-messages</code> | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-file</code> | <code>--file-name</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving reports from Endevor SCM locally.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> <em>(string)</em></p>
+<ul>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
+</ul>
+</li>
+<li>
+<p><code>--write-report</code> <em>(boolean)</em></p>
+<ul>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+</ul>
+</li>
+</ul>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Print a member from specified dataset:</p>
+<ul>
+<li><code>zowe endevor print member memName --fd DSNAME  -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor print member memName --fd DSNAME  -i ENDEVOR">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -33326,6 +34288,24 @@ Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain sp
 <ul>
 <li>This option is only valid when the data option is ele or comp. Instructs Endevor to filter the results of the list data summary function that is based on the specified ccids.<br>
 Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain special characters in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--file-extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The strategy for deciding what file extension to use during a bulk retrieve or workspace synchronization. Must be one of the following:</p>
+<pre><code>  none: File name is equal to element name, no extension is added\.
+
+  file\-ext: The file extension defined in the Type definition is used; If not defined, no extension is added\.
+
+  type\-name: The type name is used as the file extension\.
+
+  mixed: The file extension defined in Type definition is used; If not defined, the type name is used instead\.
+</code></pre>
+<p>Default value: mixed<br>
+Allowed values: none, file-ext, type-name, mixed</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -34492,6 +35472,24 @@ Allowed values: http, https</p>
 <p><code>--allow-deletes</code> | <code>--del</code> <em>(boolean)</em></p>
 <ul>
 <li>Allow workspace synchronization to delete unchanged Endevor elements when it detects the corresponding local files have been deleted. Default is off to maintain backward compatibility.</li>
+</ul>
+</li>
+<li>
+<p><code>--file-extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The strategy for deciding what file extension to use during a bulk retrieve or workspace synchronization. Must be one of the following:</p>
+<pre><code>  none: File name is equal to element name, no extension is added\.
+
+  file\-ext: The file extension defined in the Type definition is used; If not defined, no extension is added\.
+
+  type\-name: The type name is used as the file extension\.
+
+  mixed: The file extension defined in Type definition is used; If not defined, the type name is used instead\.
+</code></pre>
+<p>Default value: mixed<br>
+Allowed values: none, file-ext, type-name, mixed</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -36297,12 +37295,6 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--only-work-environment</code> <em>(boolean)</em></p>
-<ul>
-<li>If specified, only elements from the Endevor work environment will be synchronized.</li>
-</ul>
-</li>
-<li>
 <p><code>--mapping-mode</code> <em>(string)</em></p>
 <ul>
 <li>
@@ -36315,6 +37307,16 @@ Allowed values: http, https</p>
 <p><code>--like</code> <em>(string)</em></p>
 <ul>
 <li>Add branch using parameters from another branch in the same repository</li>
+</ul>
+</li>
+<li>
+<p><code>--repository-check</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>If set to allowNonEmpty, user can proceed with initialization of the branch even if the branch exists.</p>
+<p>Default value: REQUIRE_EMPTY<br>
+Allowed values: REQUIRE_EMPTY, ALLOW_NON_EMPTY</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -36498,7 +37500,7 @@ Allowed values: http, https</p>
 <a class="cmd-anchor" name="zowe_endevor-bridge-for-git_branch_delete"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_branch">branch</a> › <a href="#zowe_endevor-bridge-for-git_branch_delete">delete</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
 <p>Remove a branch from an existing mapping</p>
 <h4>Usage</h4>
-<p>zowe endevor-bridge-for-git branch delete &lt;context&gt; &lt;mapping&gt; [branch] [options]</p>
+<p>zowe endevor-bridge-for-git branch delete &lt;context&gt; &lt;mapping&gt; &lt;branch&gt; [options]</p>
 <h4>Positional Arguments</h4>
 <ul>
 <li>
@@ -36516,7 +37518,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>branch</code>		 <em>(string)</em></p>
 <ul>
-<li>Name of the synchronized branch in the Git repository.</li>
+<li>Name of the branch that will be added/removed.</li>
 </ul>
 </li>
 </ul>
@@ -36753,7 +37755,7 @@ Allowed values: http, https</p>
 <p>Build changes against remote git repository's Endevor Bridge for Git synchronized branch, using work area or build subsystem.It does not support autogen for building dependencies.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build execute [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -36761,36 +37763,6 @@ Allowed values: http, https</p>
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-</ul>
-<h4>Endevor work area options</h4>
-<ul>
-<li>
-<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
-<ul>
-<li>Endevor work area ID. Name-masking is not allowed.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM environment where your build subsystem resides.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM system where your build subsystem resides.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -36825,6 +37797,33 @@ Allowed values: http, https</p>
 <p>Starts the build process after cleaning the build subsystem.</p>
 <p>Default value: false</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>Endevor work area options</h4>
+<ul>
+<li>
+<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<ul>
+<li>Endevor work area ID. Name-masking is not allowed.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM environment where your build subsystem resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM system where your build subsystem resides.</li>
 </ul>
 </li>
 </ul>
@@ -37005,7 +38004,7 @@ Allowed values: http, https</p>
 <p>Get the report after executing 'build job-submit' command. This this command must be issued to finalize processing.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build job-report [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -37013,9 +38012,6 @@ Allowed values: http, https</p>
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -37266,7 +38262,7 @@ Allowed values: http, https</p>
 <p>Build changes from git local repository in Endevor by submitting a job. It supports autogen for building dependencies using with the option of selecting autogen span. After submitting, the command 'build job-report' must be issued to finalize processing.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build job-submit [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -37274,42 +38270,6 @@ Allowed values: http, https</p>
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-<li>
-<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
-<ul>
-<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
-</ul>
-</li>
-</ul>
-<h4>Endevor work area options</h4>
-<ul>
-<li>
-<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
-<ul>
-<li>Endevor work area ID. Name-masking is not allowed.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM environment where your build subsystem resides.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM system where your build subsystem resides.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -37341,6 +38301,42 @@ SUBSYSTEMS - Generates using elements from all Subsystems with the same-named Sy
 <p>Default value: NONE<br>
 Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>Endevor work area options</h4>
+<ul>
+<li>
+<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<ul>
+<li>Endevor work area ID. Name-masking is not allowed.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM environment where your build subsystem resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM system where your build subsystem resides.</li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
+<ul>
+<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
 </ul>
 </li>
 </ul>
@@ -38307,158 +39303,6 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<a name="zowe_endevor-bridge-for-git_endevor-credentials"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_endevor-credentials">endevor-credentials</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Manage your Endevor credentials stored in Endevor Bridge for Git. [Deprecated]</p>
-<a class="cmd-anchor" name="zowe_endevor-bridge-for-git_endevor-credentials_update"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_endevor-credentials">endevor-credentials</a> › <a href="#zowe_endevor-bridge-for-git_endevor-credentials_update">update</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Update your Endevor credentials for a Git-Endevor mapping.</p>
-<h4>Usage</h4>
-<p>zowe endevor-bridge-for-git endevor-credentials update &lt;context&gt; &lt;mapping&gt; [options]</p>
-<h4>Positional Arguments</h4>
-<ul>
-<li>
-<p><code>context</code>		 <em>(string)</em></p>
-<ul>
-<li>Git-Endevor mapping context (ID of the organization, project, team or owner of the Git repository).</li>
-</ul>
-</li>
-<li>
-<p><code>mapping</code>		 <em>(string)</em></p>
-<ul>
-<li>Git-Endevor mapping name (ID of the Git repository).</li>
-</ul>
-</li>
-</ul>
-<h4>Endevor options (alternatively use an 'endevor' profile)</h4>
-<ul>
-<li>
-<p><code>--endevor-user</code> | <code>--endevoru</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe (Endevor) username, which can be the same as your TSO login.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-password</code> | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
-<ul>
-<li>Mainframe (Endevor) password, which can be the same as your TSO password.</li>
-</ul>
-</li>
-</ul>
-<h4>Endevor Bridge for Git connection options (alternatively use an 'ebg' profile)</h4>
-<ul>
-<li>
-<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>The Endevor Bridge for Git SCM protocol.</p>
-<p>Default value: https</p>
-<p>Default value: https<br>
-Allowed values: http, https</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor Bridge for Git hostname.</li>
-</ul>
-</li>
-<li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
-<ul>
-<li>The Endevor Bridge for Git port.</li>
-</ul>
-</li>
-<li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
-<ul>
-<li>Endevor Bridge for Git username (your git username).</li>
-</ul>
-</li>
-<li>
-<p><code>--token</code> | <code>-t</code> <em>(string)</em></p>
-<ul>
-<li>Git personal access token (it can be obtained from your Git Enterprise Server).</li>
-</ul>
-</li>
-<li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: false</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>Profile Options</h4>
-<ul>
-<li>
-<p><code>--ebg-profile</code> | <code>--ebg-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (ebg) profile to load for this command execution.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (endevor) profile to load for this command execution.</li>
-</ul>
-</li>
-<li>
-<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
-<ul>
-<li>The name of a (base) profile to load for this command execution.</li>
-</ul>
-</li>
-</ul>
-<h4>Base Connection Options</h4>
-<ul>
-<li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Password to authenticate to service on the mainframe.</li>
-</ul>
-</li>
-<li>
-<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
-<ul>
-<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
-</ul>
-</li>
-<li>
-<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
-<ul>
-<li>The value of the token to pass to the API.</li>
-</ul>
-</li>
-<li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
-<ul>
-<li>The file path to a certificate file to use for authentication</li>
-</ul>
-</li>
-<li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
-<ul>
-<li>The file path to a certificate key file to use for authentication</li>
-</ul>
-</li>
-</ul>
-<h4>Examples</h4>
-<ul>
-<li>
-<p>Update the Endevor credentials for the Git-Endevor mapping 'MY-CONTEXT / MY-MAPPING' using the default EBG and Endevor profile:</p>
-<ul>
-<li><code>zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING">Copy</button></li>
-</ul>
-</li>
-<li>
-<p>Update the Endevor credentials for the Git-Endevor mapping 'MY-CONTEXT / MY-MAPPING' using the default EBG profile but not using an Endevor profile:</p>
-<ul>
-<li><code>zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING --endevor-user my-user --endevor-password my-password</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git endevor-credentials update MY-CONTEXT MY-MAPPING --endevor-user my-user --endevor-password my-password">Copy</button></li>
-</ul>
-</li>
-</ul>
 <a name="zowe_endevor-bridge-for-git_local-hook-token"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Manage the token you use for secure communication with BridgeForGit when using the local hook validation.</p>
 <a class="cmd-anchor" name="zowe_endevor-bridge-for-git_local-hook-token_generate"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_endevor-bridge-for-git">endevor-bridge-for-git</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token">local-hook-token</a> › <a href="#zowe_endevor-bridge-for-git_local-hook-token_generate">generate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -39128,12 +39972,6 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--only-work-environment</code> <em>(boolean)</em></p>
-<ul>
-<li>If specified, only elements from the Endevor work environment will be synchronized.</li>
-</ul>
-</li>
-<li>
 <p><code>--read-only</code> <em>(boolean)</em></p>
 <ul>
 <li>If specified, it is necessary to use the option --endevor-stage-number. The synchronized elements will be read-only.</li>
@@ -39146,9 +39984,25 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p><code>--type-filter</code> <em>(string)</em></p>
+<p><code>--type-filters</code> <em>(array)</em></p>
 <ul>
-<li>Type filter</li>
+<li>Type filters that your mapping will be using. There can be multiple separated by a space. eg --type-filters &quot;COBOL&quot; &quot;COPY&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>--name-filters</code> <em>(array)</em></p>
+<ul>
+<li>Name filters that your mapping will be using. There can be multiple separated by a space. eg --name-filters &quot;ELE*&quot; &quot;CO*&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>--repository-check</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>If set to allowNonEmpty, user can proceed with initialization even if the repository is not empty.</p>
+<p>Default value: REQUIRE_EMPTY<br>
+Allowed values: REQUIRE_EMPTY, ALLOW_NON_EMPTY</p>
+</li>
 </ul>
 </li>
 <li>
@@ -39959,7 +40813,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -39967,9 +40821,6 @@ Allowed values: http, https</p>
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -40138,7 +40989,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -40146,9 +40997,6 @@ Allowed values: http, https</p>
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -46597,7 +47445,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -46807,7 +47658,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -47056,7 +47910,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -47269,7 +48126,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -47476,7 +48336,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -47681,7 +48544,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -47888,7 +48754,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -48104,7 +48973,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -48309,7 +49181,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -48596,7 +49471,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -49073,7 +49951,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -52758,7 +53639,10 @@ Allowed values: http, https</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -54098,7 +54982,10 @@ Recommended replacement: The 'config init' command</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -54606,7 +55493,7 @@ Allowed values: http, https</p>
 <p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</p>
+<p>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 <p>Default value: [object Object]</p>
 </li>
 </ul>
@@ -54826,6 +55713,24 @@ Recommended replacement: The 'config init' command</p>
 <li>
 <p>Always override element signout, without having to specify the override signout option on each command</p>
 <p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--file-extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The strategy for deciding what file extension to use during a bulk retrieve or workspace synchronization. Must be one of the following:</p>
+<pre><code>        none: File name is equal to element name, no extension is added\.
+
+        file\-ext: The file extension defined in the Type definition is used; If not defined, no extension is added\.
+
+        type\-name: The type name is used as the file extension\.
+
+        mixed: The file extension defined in Type definition is used; If not defined, the type name is used instead\.
+</code></pre>
+<p>Default value: mixed<br>
+Allowed values: none, type-name, file-ext, mixed</p>
 </li>
 </ul>
 </li>
@@ -58702,7 +59607,10 @@ Recommended replacement: The 'config set' command</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -59065,7 +59973,7 @@ Recommended replacement: The 'config set' command</p>
 <li>
 <p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
-<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a>.</li>
+<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
@@ -59235,6 +60143,23 @@ Recommended replacement: The 'config set' command</p>
 <p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
 <ul>
 <li>Always override element signout, without having to specify the override signout option on each command</li>
+</ul>
+</li>
+<li>
+<p><code>--file-extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The strategy for deciding what file extension to use during a bulk retrieve or workspace synchronization. Must be one of the following:</p>
+<pre><code>        none: File name is equal to element name, no extension is added\.
+
+        file\-ext: The file extension defined in the Type definition is used; If not defined, no extension is added\.
+
+        type\-name: The type name is used as the file extension\.
+
+        mixed: The file extension defined in Type definition is used; If not defined, the type name is used instead\.
+</code></pre>
+<p>Allowed values: none, type-name, file-ext, mixed</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -61725,6 +62650,139 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a class="cmd-anchor" name="zowe_sysview_capture-immediate"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_sysview">sysview</a> › <a href="#zowe_sysview_capture-immediate">capture-immediate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Submit a capture request2</p>
+<h4>Usage</h4>
+<p>zowe sysview capture-immediate &lt;capture-file&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>capture-file</code>		 <em>(string)</em></p>
+<ul>
+<li>The list of SYSVIEW commands to be executed as an Event Capture.This takes the same form as a CAPLIB member.</li>
+</ul>
+</li>
+</ul>
+<h4>display options</h4>
+<ul>
+<li>
+<p><code>--context-fields</code> | <code>--cf</code> <em>(array)</em></p>
+<ul>
+<li>Context fields to display. Defaults to hiding all context</li>
+</ul>
+</li>
+</ul>
+<h4>data options</h4>
+<ul>
+<li>
+<p><code>--capture-description</code> | <code>--cd</code> <em>(string)</em></p>
+<ul>
+<li>The description of the capture</li>
+</ul>
+</li>
+</ul>
+<h4>sysview connection options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The port number of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS username used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>If set, the server certificate is verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--ssid</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>SSID of the SYSVIEW instance. Default value: GSVX</p>
+<p>Default value: GSVX</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
+<p>Default value: /api/v1</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--sysview-profile</code> | <code>--sysview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (sysview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Issues a Capture containing the commands in capture file 'my-capture.txt' with the description 'Top CPU Users':</p>
+<ul>
+<li><code>zowe sysview capture-immediate &quot;./my-capture.txt&quot; --description &quot;Top CPU Users&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview capture-immediate &quot;./my-capture.txt&quot; --description &quot;Top CPU Users&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_sysview_check"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_sysview">sysview</a> › <a href="#zowe_sysview_check">check</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Confirm that the SYSVIEW REST server is running on a specified system.</p>
 <a class="cmd-anchor" name="zowe_sysview_check_status"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_sysview">sysview</a> › <a href="#zowe_sysview_check">check</a> › <a href="#zowe_sysview_check_status">status</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -64150,7 +65208,7 @@ Allowed values: http, https</p>
 </li>
 </ul>
 <a class="cmd-anchor" name="zowe_zos-files_compare_uss-files"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_compare">compare</a> › <a href="#zowe_zos-files_compare_uss-files">uss-files</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
-<p>Compare the contents of a two uss files on your terminal (stdout). browser.</p>
+<p>Compare the contents of two uss files on your terminal (stdout). browser.</p>
 <h4>Usage</h4>
 <p>zowe zos-files compare uss-files &lt;ussFilePath1&gt; &lt;ussFilePath2&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -68579,6 +69637,300 @@ Allowed values: http, https</p>
 </ul>
 </li>
 </ul>
+<a name="zowe_zos-files_edit"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Edit the contents of a data set or USS file with your terminal and default editor.</p>
+<a class="cmd-anchor" name="zowe_zos-files_edit_data-set"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a> › <a href="#zowe_zos-files_edit_data-set">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Edit content from a z/OS data set with your terminal and default editor.</p>
+<h4>Usage</h4>
+<p>zowe zos-files edit data-set &lt;dataSetName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>dataSetName</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the data set you want to edit.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--extension</code> | <code>--ext</code> <em>(string)</em></p>
+<ul>
+<li>Set the file extension of the file for editing to leverage an editor's file-type-specific formatting: ie &quot;--extension jcl&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Edit the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor notepad</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor notepad">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the data set member &quot;ibmuser.cntl(iefbr14)&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor C:\Windows\System32\Notepad.exe</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.cntl(iefbr14) --editor C:\Windows\System32\Notepad.exe">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_jcl.jcl&quot; in notepad and set extension as &quot;jcl&quot;:</p>
+<ul>
+<li><code>zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl">Copy</button></li>
+</ul>
+</li>
+</ul>
+<a class="cmd-anchor" name="zowe_zos-files_edit_uss-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_edit">edit</a> › <a href="#zowe_zos-files_edit_uss-file">uss-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
+<p>Edit content from a Unix System Services (USS) file with your terminal and default editor.</p>
+<h4>Usage</h4>
+<p>zowe zos-files edit uss-file &lt;ussFilePath&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>ussFilePath</code>		 <em>(string)</em></p>
+<ul>
+<li>The path of the USS file you want to edit.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_text.txt&quot; in notepad:</p>
+<ul>
+<li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor notepad</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor notepad">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_text.txt&quot; in notepad:</p>
+<ul>
+<li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe">Copy</button></li>
+</ul>
+</li>
+</ul>
 <a name="zowe_zos-files_invoke"></a><h2><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Invoke z/OS utilities such as Access Method Services (AMS).</p>
 <a class="cmd-anchor" name="zowe_zos-files_invoke_ams-file"></a><h3><a href="#zowe">zowe</a> › <a href="#zowe_zos-files">zos-files</a> › <a href="#zowe_zos-files_invoke">invoke</a> › <a href="#zowe_zos-files_invoke_ams-file">ams-file</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h3>
@@ -71314,7 +72666,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
 <ul>
-<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+<li>The range of records to return in either `SSS-EEE` or `SSS,NNN` format. SSS identifies the start record, EEE identifies the end record, and NNN identifies the number of retrieved records.</li>
 </ul>
 </li>
 <li>
@@ -71478,7 +72830,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--range</code> | <code>-R</code> <em>(string)</em></p>
 <ul>
-<li>The range of records to return in either of SSS-EEE where SSS is the start and EEE is the end of records or SSS,NNN where is is the start and NNN is the number of records retrieved.</li>
+<li>The range of records to return in either `SSS-EEE` or `SSS,NNN` format. SSS identifies the start record, EEE identifies the end record, and NNN identifies the number of retrieved records.</li>
 </ul>
 </li>
 <li>
@@ -71723,7 +73075,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -71867,7 +73222,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -71994,7 +73352,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72139,7 +73500,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72283,7 +73647,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72443,7 +73810,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72585,7 +73955,10 @@ If you find this functionality useful, please consider setting up z/OSMF on your
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72719,7 +74092,10 @@ However, the pattern cannot begin with any of these sequences.</li>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -72874,7 +74250,10 @@ However, the pattern cannot begin with any of these sequences.</li>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73042,7 +74421,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73203,7 +74585,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73359,7 +74744,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73528,7 +74916,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73663,7 +75054,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73802,7 +75196,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -73952,7 +75349,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74140,7 +75540,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74319,7 +75722,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74509,7 +75915,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74657,7 +76066,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74799,7 +76211,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -74935,7 +76350,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -75064,7 +76482,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -75206,7 +76627,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -75339,7 +76763,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -75500,7 +76927,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -75636,7 +77066,10 @@ If you don't specify this option all jobs under this owner will be listed by def
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -77925,6 +79358,73 @@ Allowed values: forward, backward</p>
 </ul>
 </li>
 </ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
 <h4>Profile Options</h4>
 <ul>
 <li>
@@ -77943,39 +79443,6 @@ Allowed values: forward, backward</p>
 <h4>Base Connection Options</h4>
 <ul>
 <li>
-<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
-<ul>
-<li>Host name of service on the mainframe.</li>
-</ul>
-</li>
-<li>
-<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
-<ul>
-<li>Port number of service on the mainframe.</li>
-</ul>
-</li>
-<li>
-<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
-<ul>
-<li>User name to authenticate to service on the mainframe.</li>
-</ul>
-</li>
-<li>
-<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
-<ul>
-<li>Password to authenticate to service on the mainframe.</li>
-</ul>
-</li>
-<li>
-<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Reject self-signed certificates.</p>
-<p>Default value: true</p>
-</li>
-</ul>
-</li>
-<li>
 <p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
 <ul>
 <li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
@@ -77985,18 +79452,6 @@ Allowed values: forward, backward</p>
 <p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
 <ul>
 <li>The value of the token to pass to the API.</li>
-</ul>
-</li>
-<li>
-<p><code>--cert-file</code> <em>(local file path)</em></p>
-<ul>
-<li>The file path to a certificate file to use for authentication</li>
-</ul>
-</li>
-<li>
-<p><code>--cert-key-file</code> <em>(local file path)</em></p>
-<ul>
-<li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
 </ul>
@@ -78138,7 +79593,10 @@ Allowed values: forward, backward</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
@@ -79123,7 +80581,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--data-set</code> | <code>--ds</code> <em>(string)</em></p>
 <ul>
-<li>Data set that contains a workflow definiton.</li>
+<li>Data set that contains a workflow definition.</li>
 </ul>
 </li>
 <li>
@@ -79309,13 +80767,13 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using the data set &quot;TESTID.WKFLOW&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in z/OSMF:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using the data set &quot;TESTID.WKFLOW&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exists in z/OSMF:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using data set &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and delete succesfully completed jobs:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using data set &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and delete successfully completed jobs:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
 </ul>
@@ -79351,7 +80809,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--local-file</code> | <code>--lf</code> <em>(string)</em></p>
 <ul>
-<li>Local file that contains workflow definiton.</li>
+<li>Local file that contains workflow definition.</li>
 </ul>
 </li>
 <li>
@@ -79552,7 +81010,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using the local file &quot;TESTID_WKFLOW.xml&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in z/OSMF:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using the local file &quot;TESTID_WKFLOW.xml&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exists in z/OSMF:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-local-file &quot;testworkflow&quot; --local-file &quot;TESTID_WKFLOW.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-local-file &quot;testworkflow&quot; --local-file &quot;TESTID_WKFLOW.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>
@@ -79576,7 +81034,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--uss-file</code> | <code>--uf</code> <em>(string)</em></p>
 <ul>
-<li>Uss file that contains workflow definiton.</li>
+<li>Uss file that contains workflow definition.</li>
 </ul>
 </li>
 <li>
@@ -79762,7 +81220,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in z/OSMF:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using uss file &quot;/path/workflow.xml&quot; containing workflow definition, on system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exists in z/OSMF:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-uss-file &quot;testworkflow&quot; --uss-file &quot;/path/workflow.xml&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>

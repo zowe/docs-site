@@ -87,7 +87,7 @@ zowe:
         path: ${{ zowe.runtimeDirectory }}/bin/commands/components/npm.js
 ```
 
-The above example states that the default registry type will be "npm", and that the npm type is handled by the handler located at the path `${{ zowe.runtimeDirectory }}/bin/commands/components/npm.js`. This handler will by default use the registry located at `https://zowe.jfrog.io/zowe/npm`.
+The above example states that the default registry type will be "npm", and that the npm type is handled by the handler located at the path `${{ zowe.runtimeDirectory }}/bin/commands/components/npm.js`. This handler will by default use the registry located at `https://zowe.jfrog.io/zowe/api/npm/npm-local-release/`.
 
 ## Using multiple registries
 
@@ -153,7 +153,7 @@ The following table details the input and output expected for each handler actio
 | `ZWE_CLI_PARAMETER_COMPONENT_NAME` | string | Input | Install, Upgrade, Uninstall, Search | Value varies by command. For 'install' and 'uninstall', this value is the exact name of a component. For upgrade, it may also be 'all' to perform an upgrade for all components possible. For 'search', it may be any string to perform searching for exact or partial matching component names. |
 | `ZWE_CLI_PARAMETER_COMPONENT_FILE` | string | Output | Install, Upgrade, Uninstall | A comma-separated list of components that have been added or removed. During 'install' or 'upgrade', the list must be full unix paths to component folders or archives that were added. For 'uninstall', the list must instead be just the names of the components that were removed. If the handler failed during its operation or there were no changes, the output should instead just be the string 'null'. |
 
-An example of running `zwe components install -o exact-component-name --handler npm --registry https://zowe` would have the handler being given the following environment variables:
+An example of running `zwe components install -o exact-component-name --handler npm --registry "https://zowe.jfrog.io/zowe/api/npm/npm-local-release/"` would have the handler being given the following environment variables:
 
 ```
 ZWE_CLI_REGISTRY_COMMAND=install
