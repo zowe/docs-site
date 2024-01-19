@@ -63,7 +63,7 @@
 
   **Reason:**
 
-  Next attempt to restart component `<component-name>` in `<n>` seconds."
+  Next attempt to restart component `<component-name>` in `<n>` seconds.
 
   **Action:**
 
@@ -559,7 +559,7 @@
 
   **Reason:**
 
-  Failed to restart the component `<component-name>`."
+  Failed to restart the component `<component-name>`.
 
   **Action:**
 
@@ -571,7 +571,7 @@
 
   **Reason:**
 
-  Cannot read the output from component `<component-name>` (`<process-id>`) - `<error-text>`"
+  Cannot read the output from component `<component-name>` (`<process-id>`) - `<error-text>`
 
   **Action:**
 
@@ -583,7 +583,7 @@
 
   **Reason:**
 
-  Failed to create the file for stdin(`<file>`) - <error-text>."
+  Failed to create the file for stdin(`<file>`) - <error-text>.
 
   **Action:**
 
@@ -595,7 +595,7 @@
 
   **Reason:**
 
-  Failed to open the file for stdin(`<file>`) - <error-text>."
+  Failed to open the file for stdin(`<file>`) - <error-text>.
 
   **Action:**
 
@@ -619,7 +619,7 @@
 
   **Reason:**
 
-  Failed to get the WORKSPACE_DIR (`zowe.workspaceDirectory`) directory."
+  Failed to get the WORKSPACE_DIR (`zowe.workspaceDirectory`) directory.
 
   **Action:**
 
