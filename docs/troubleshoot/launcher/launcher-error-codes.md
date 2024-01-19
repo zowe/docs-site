@@ -809,7 +809,7 @@
 
   **Reason:**
 
-  The command `<command>` ended with return code `<return-code>`."
+  The command `<command>` ended with return code `<return-code>`.
 
   **Action:**
 
