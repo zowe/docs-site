@@ -1,4 +1,4 @@
-# FAQ: Zowe and components
+# Zowe FAQ
 
 Check out the following FAQs to learn more about the purpose and function of Zowe&trade;.
 
@@ -114,7 +114,11 @@ The Docker image contains the Zowe components that do not have the requirement o
 
 Configurating components with Docker is similar to the procedures you would follow without Docker, however tasks such as installation and running with Docker are a bit different, as these tasks become Linux oriented, rather than utilizing Jobs and STCs.
 
-**NOTE:** z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+:::note 
+
+z/OS is still required when using the Docker image. Depending on which components of Zowe you use, you'll still need to set up z/OS Management Facility as well as Zowe's ZSS and Cross memory servers.
+
+:::
 
 </details>
 
@@ -181,6 +185,17 @@ For information and tutorials about extending Zowe with a new plug-in or applica
 </details>
 
 
+### Where can I submit an idea for a future enhancement to Zowe?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Go to the [Zowe Community ReadMe file](https://github.com/zowe/community#submit-an-issue) for information on requesting a bug fix or enhancement. Members of the Zowe community can then review your issue to post feedback or vote their support. Issues are continuously monitored by Zowe squads for improvement ideas.
+
+</details>
+
+
 ### When will Zowe be completed?
 
 <details className="zowe-faq">
@@ -205,7 +220,6 @@ The Zowe community is also currently working to provide a vendor-neutral site fo
 Zowe is also compatible with IBM z/OSMF Lite for non-production use. For more information, see [Configuring z/OSMF Lite](../user-guide/systemrequirements-zosmf-lite.md) on Zowe Docs.
 
 </details>
-
 
 ## Zowe CLI FAQ
 
@@ -277,6 +291,18 @@ You can install Zowe CLI using the following methods:
 <summary></summary>
 
 - Zowe CLI V2 introduces **team** profiles. Using team profiles helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects. For more information, see [Using team profiles](../user-guide/cli-using-using-team-profiles.md).
+
+</details>
+
+### Does Zowe CLI support multi-factor authentication (MFA)?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, Zowe CLI supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+
+When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
 
 </details>
 
@@ -420,6 +446,28 @@ Although not recommended in all cases, it is possible to disable Zowe Explorer's
 <summary></summary>
 
 Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
+
+</details>
+
+### Does Zowe Explorer support multi-factor authentication (MFA)?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, Zowe Explorer supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+
+When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
+
+</details>
+
+### Is it possible to change the detected language of a file or data set opened in Zowe Explorer?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Yes, you can configure Visual Studio Code to use a specific language for a particular file extension or data set qualifier. To set file associations, see [Add a file extension to a language](https://code.visualstudio.com/docs/languages/overview#_add-a-file-extension-to-a-language).
 
 </details>
 
