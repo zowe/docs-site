@@ -39,8 +39,23 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 #### IMS Plug-in for Zowe CLI
 
-
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ## Bug fixes
 
@@ -67,6 +82,22 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 #### IMS Plug-in for Zowe CLI
 
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+####  Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ### Vulnerabilities fixed
 

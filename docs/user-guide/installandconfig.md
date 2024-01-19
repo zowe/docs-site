@@ -1,12 +1,38 @@
-# Planning the installation
+# Preparing for installation
 
-The following information is required during the Zowe installation process. Software and hardware prerequisites are covered in the next section.
+Review this overview article to familiarize yourself with key concepts used in the Zowe server-side installation process. After reviewing these key concepts, review the articles in this section to prepare your system for installation. 
 
-- The zFS directory where you will install the Zowe runtime files and folders. For more details of setting up and configuring the UNIX Systems Services (USS) environment, see [UNIX System Services considerations for Zowe](configure-uss.md).
+:::info**Required roles:** system programmer, security administrator, storage administrator
+:::
 
-- A HLQ that the installation can create a load library and samplib containing load modules and JCL samples required to run Zowe.
+To prepare for Zowe server-side installation, we recommend that your installation team review the installation and configuration tasks and the indicated required roles to perform specific procedures. Doing so can help you complete the process without encountering delays waiting for tasks to be completed at the last minute.
 
+## Key concepts in Zowe server-side installation
+
+Before you begin the installation process, it is useful to understand the following key concepts and features used to perform the installation.
+
+### z/OS UNIX System Services (USS)
+
+zFS is a UNIX file system where Zowe runtime files and folders are installed. Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys if the administrator chooses to use PKCS#12 keystore for certificate storage. 
+
+For more information about USS, see [Addressing UNIX System Servies (USS) Requirements](./configure-uss).
+
+### Runtime directory  
+The runtime directory contains the binaries, executable files, scripts, and other elements that are run when Zowe is started. Creating a Zowe runtime directory involves setting up the necessary environment for Zowe to run on your system. 
+
+You can create a runtime directory in one of the following ways:
+
+* Create a directory and extract Zowe convenience build into this directory.
+* Install the Zowe SMP/E FMID AZWE002 using the JCL members in the REL4 member.
+* Execute the z/OSMF workflow script ZWERF01 contained in the SMP/E FMID AZWE002.
+
+During execution of Zowe, the runtime directory contents are not modified. Maintenance or Zowe APAR releases replaces the contents of the runtime directory.
+
+:::note
 - Multiple instances of Zowe can be started from the same Zowe z/OS runtime. Each launch of Zowe has its own configuration, usually mentioned as Zowe YAML configuration file or zowe.yaml, and zFS directory that is known as a workspace directory.
+:::
+
+**Example of a runtime directory:**
 
 - For Zowe in a high availability configuration, there will be only one workspace directory which must be created on a shared file system (zFS directory) where all LPARs in a Sysplex can access.
 
@@ -21,7 +47,7 @@ The following information is required during the Zowe installation process. Soft
 
   **Notes:**
   
-  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation-standalone.md).
+  - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](api-mediation/configuration-api-mediation-standalone.md).
   
   - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESLSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
   
@@ -74,94 +100,115 @@ A typical Zowe runtime directory looks like this:
 └── README.md                        - Quick introduction of Zowe and quick start guide
 ```
 
-#### `zwe` server command
+### `zwe` command
+The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
 
-The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory. You can use this command and sub-commands to initialize Zowe, manage Zowe instances and fulfill common tasks.
+The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
 
-The `zwe` command has built in help that can be retrieved with the `-h` suffix. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands, and all of the help can also be found on this website, in ([the zwe appendix](../appendix/zwe_server_command_reference/zwe/zwe.md)  
+* **mvs**  
+Copies the data sets provided with Zowe to custom data sets.
+* **security**  
+Creates the user IDs and security manager settings.
+* **apfauth**  
+APF authorizes the LOADLIB containing the modules that need to perform z/OS privileged security calls.
+* **certificate**  
+Configures Zowe to use TLS certificates.
+* **vsam**  
+Configures the VSAM files needed to run the Zowe caching service used for high availability (HA)
+* **stc**  
+Configures the system to launch the Zowe started task.
 
-```
-zwe -h
- ...
-Available sub-command(s):
-  - certificate
-  - components
-  - init
-  - install
-  - internal
-  - sample
-  - start
-  - stop
-  - version
-```
+In combination, these commands initialize Zowe, manage Zowe instances, and perform common tasks.
 
-Other useful global parameters are:
+:::tip**Tips:**
+* The `zwe` command has built in help that can be retrieved with the `-h` suffix. Use `zwe -h` to see all supported `zwe` commands.
 
-- `--debug` or `-v` to enable verbose mode.
-- `--trace` or `-vv` to enable trace mode for current command.
-- `--log-dir` or `-l` to also write output to log files.
+  For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
 
-#### Add the `zwe` command to your PATH
+* If you expect to have only one copy of the Zowe runtime on your system, it is convenient to be able to access a copy of `zwe` from your user at any location within USS.
+Add this Zowe bin directory to your `PATH` environment variable to execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
 
-If you expect to only have one copy of the Zowe runtime on your system, it is convenient to be able to access its copy of `zwe` from your user at any location within USS.
-You can add this Zowe bin directory to your `PATH` environment variable so you can execute the `zwe` command without having to fully qualify its location. To update your PATH, run the following command:
+  ```
+  export PATH=${PATH}:<RUNTIME_DIR>/bin
+  ```
 
-```
-export PATH=${PATH}:<RUNTIME_DIR>/bin
-```
+  This command updates the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bash_profile` file if you are using a bash shell. To make this update system wide, update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
 
-This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bash_profile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
+  You may not want to add `zwe` to your PATH if you have multiple copies of the Zowe runtime, as this can confuse which one you are utilizing.
+:::
 
-*Note: You may not want to add `zwe` to your PATH if you have multiple copies of the Zowe runtime, as this can confuse which one you are utilizing*
+### Zowe started tasks
+
+Zowe has the following started tasks:
+   - **`ZWESISTC`**  
+   This started task corresponds to a cross memory server that the Zowe desktop uses to perform APF-authorized code. For more information about the cross memory server, and the cross memory auxiliary server `ZWESASTC` see [Configuring the Zowe cross memory server](configure-xmem-server.md).
+   - **`ZWESASTC`**  
+   This started task corresponds to a cross memory auxiliary server that is used under some situations in support of a Zowe extension. The auxiliary server is started, controlled, and stopped by the cross memory server, and does not need to be started manually. 
+   - **`ZWESLSTC`**  
+   This started task brings up other features of the Zowe runtime on z/OS upon request. Features may include Desktop, API Mediation Layer, ZSS, and more. When using containerization, it is likely that the only feature will be ZSS. This task can be used for a single Zowe instance deployment, and can also be used for Zowe high availability deployment in Sysplex. This task brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
+   
+:::info**Important!**
+* In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
+* Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
+:::
 
 ### z/OS Data sets used by Zowe
 
-After Zowe is properly installed, you should have these data sets created on z/OS under the prefix you defined:
+After Zowe is properly installed, the following data sets are created on z/OS under the prefix you defined:
 
-- `<prefix>.SZWEAUTH` contains authorized binaries used by Zowe components. In particular, ZIS needs this to run.
-- `<prefix>.SZWELOAD` contains binaries that do not need authorization. In particular, this contains a version of config manager that can be accessed within REXX.
-- `<prefix>.SZWEEXEC` contains few utility executables will be used by Zowe.
-- `<prefix>.SZWESAMP` contains sample JCLs to help you configure or start Zowe.
+- **`<prefix>.SZWEAUTH`**  
+This data set contains authorized binaries used by Zowe components. In particular, ZIS needs this data set to run.
+- **`<prefix>.SZWELOAD`**  
+This data set contains binaries that do not need authorization. In particular, this data set contains a version of configuration manager that can be accessed within REXX.
+- **`<prefix>.SZWEEXEC`**  
+This data set contains few utility executables will be used by Zowe.
+- **`<prefix>.SZWESAMP`**  
+This data set contains sample JCLs to help you configure or start Zowe.
 
-If you install Zowe with convenience build, these data sets will be created by [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md). If you install Zowe with SMPE or equivalent methods, these data sets will be created during install and you are not required to run `zwe install` command. The above data sets will be overwritten during upgrade process.
+If you install Zowe with the convenience build, these data sets are created by [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md). If you install Zowe with SMP/E or equivalent methods, these data sets are created during installation and you are not required to run the `zwe install` command. Note that the aforementioned data sets are overwritten during the upgrade process.
 
-Zowe configuration and runtime also use few other data sets to store customization. These data sets will not be overwritten during upgrade.
+Zowe configuration and runtime also use other data sets to store customization. These data sets are not overwritten during upgrade.
 
-- `zowe.setup.datasets.parmlib` defined in Zowe configuration, which contains user customized PARMLIB members.
-- `zowe.setup.datasets.jcllib` defined in Zowe configuration, which contains user customized JCLs or JCLs generated by [`zwe init` command](../appendix/zwe_server_command_reference/zwe/init/zwe-init.md).
-- `zowe.setup.datasets.authLoadlib` defined in Zowe configuration is optional. If the user choose to copy out load libraries from `<prefix>.SZWEAUTH`, they will be placed here. With this option, you have better control on what will be APF authorized other than authorize whole `<prefix>.SZWEAUTH`.
-- `zowe.setup.datasets.authPluginLib` defined in Zowe configuration contains extra load libraries used by ZIS plugins.
-- `zowe.setup.datasets.loadlib` defined in zowe configuration contains load libraries that do not need authorization, such as a version of the configuration manager that can be used within REXX.
+- **`zowe.setup.datasets.parmlib`**  
+This data set defined in Zowe configuration contains user customized PARMLIB members.
+- **`zowe.setup.datasets.jcllib`**  
+This data set defined in Zowe configuration contains user customized JCLs or JCLs generated by [`zwe init` command](../appendix/zwe_server_command_reference/zwe/init/zwe-init.md).
+- **`zowe.setup.datasets.authLoadlib`**  
+This data set defined in Zowe configuration is optional. If the user chooses to copy out load libraries from `<prefix>.SZWEAUTH`, these libraries are placed here. With this option, you have better control on what will be APF authorized other than authorize whole `<prefix>.SZWEAUTH`.
+- **`zowe.setup.datasets.authPluginLib`**  
+This data set defined in Zowe configuration contains extra load libraries used by ZIS plugins.
+- **`zowe.setup.datasets.loadlib`**  
+This data set defined in Zowe configuration contains load libraries that do not need authorization, such as a version of the configuration manager that can be used within REXX.
 
-### Zowe configuration file
+### Zowe configuration file (`zowe.yaml`)
 
 Zowe uses a YAML format configuration. If you store the configuration on USS, this file is usually referred as `zowe.yaml`.
 
-This configuration file can be placed on a location with these requirements:
+This configuration file has the following  requirements:
 
-- Zowe runtime user, usually referred as `ZWESVUSR`, must have read permission to this file.
-- If you plan to run Zowe in Sysplex, all Zowe high availability instances must share the same configuration file. That means this configuration file should be placed in a shared file system (zFS directory) where all LPARs in a Sysplex can access.
-- Zowe configuration file may contain sensitive configuration information so it should be protected against malicious accessing.
+- The Zowe runtime user, usually referred as `ZWESVUSR`, must have read permission to this file.
+- If you plan to run Zowe in Sysplex, all Zowe high availability instances must share the same configuration file. As such, this configuration file should be placed in a shared file system (zFS directory) where all LPARs in a Sysplex can access.
+- The Zowe configuration file may contain sensitive configuration information so it should be protected against malicious access.
 
-To create this configuration, you can copy from `example-zowe.yaml` located in Zowe runtime directory. Please be aware of the `zowe.runtimeDirectory` definition in the configuration file, it should match the Zowe runtime directory mentioned above.
+To create this configuration, you can copy from `example-zowe.yaml` located in Zowe runtime directory. Note that the `zowe.runtimeDirectory` definition in the configuration file should match the Zowe runtime directory mentioned previously.
 
-To learn more about this configuration, please check [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
+To learn more about this Zowe configuration file, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
+
+
+:::tip**zowe.yaml configuration tips:**  
 
 When you execute the `zwe` command, the `--config` or `-c` argument is used to pass the location of a `zowe.yaml` file.
 
-:::tip
-To avoid passing `--config` or `-c` to every `zwe` commands, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to location of zowe.yaml.
+* To avoid passing `--config` or `-c` to every `zwe` command, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to the location of zowe.yaml.
 
-For example, after defining `export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml`, you can simply type `zwe start` instead of full command `zwe start -c /path/to/my/zowe.yaml`.
-:::
+  For example, after defining `export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml`, you can simply type `zwe start` instead of the full command `zwe start -c /path/to/my/zowe.yaml`.
 
-:::tip
-If you are new to the `example-zowe.yaml` configuration file, you can start with entries that are marked with `COMMONLY_CUSTOMIZED`. It highlights most of the common configurations, such as directories, host and domain name, service ports, certificate setup, and z/OSMF, which are critical for standing a new Zowe instance.
+* If you are new to the `example-zowe.yaml` configuration file, you can start with entries that are marked with `COMMONLY_CUSTOMIZED`. It highlights most of the common configurations, such as directories, host and domain name, service ports, certificate setup, and z/OSMF, which are critical for standing a new Zowe instance.
 :::
 
 ### Workspace directory
 
-The workspace directory is required to launch Zowe. It is automatically created when you start Zowe. More than one workspace directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory. It's not recommended to create workspace directory manually in order to avoid permission conflicts.
+The workspace directory is required to launch Zowe. It is automatically created when you start Zowe. More than one workspace directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory. It is not recommended to create workspace directory manually in order to avoid permission conflicts.
 
 Zowe instances are started by running the server command `zwe start`. This creates a started task with the PROCLIB member `ZWESLSTC` that is provided with the samplib `SZWESAMP` created during the installation of Zowe. The JCL member `ZWESLSTC` starts Zowe launcher under which it launches Zowe components address spaces.  
 
@@ -173,17 +220,17 @@ The workspace directory should be defined in your Zowe configuration file as `zo
 
 ### Log directory
 
-Some Zowe components will write logs to file system. The directory will be created automatically when you start Zowe and the content will be automatically managed by Zowe components. It's not recommended to create log directory manually in order to avoid permission conflicts.
+Some Zowe components write logs to a file system. The directory is created automatically when you start Zowe and the content is automatically managed by Zowe components. It is not recommended to create a log directory manually in order to avoid permission conflicts.
 
-Multiple Zowe instances can define different log directories, they are not necessary to be shared in Sysplex deployment like workspace directory.
+Multiple Zowe instances can define different log directories. It is not necessary that these log directories be shared in Sysplex deployment like the workspace directory.
 
 The log directory should be defined in your Zowe configuration file as `zowe.logDirectory`.
 
 ### Keystore directory
 
-Zowe uses certificates to enable transport layer security. The system administrator can choose to use z/OS Keyring or PKCS#12 keystore for certificate storage. A keystore directory will be created and used if PKCS#12 keystore is chosen.
+Zowe uses certificates to enable transport layer security. The system administrator can choose to use z/OS Keyring or PKCS#12 keystore for certificate storage. A keystore directory is created and used if PKCS#12 keystore is chosen.
 
-A typical PKCS#12 keystore directory looks like:
+**Example of a PKCS#12 keystore directory:**
 
 ```
 ├── local_ca/                             - Zowe generated certificate authority
@@ -197,14 +244,18 @@ A typical PKCS#12 keystore directory looks like:
     └── localhost.truststore.p12          - Zowe trusted certificate authorities in PKCS#12 format
 ```
 
-To generate keystore directory, you need proper `zowe.setup.certificate` configuration defined in Zowe configuration file and then execute server command `zwe init certificate`. To learn more about this command, check [Reference of zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md).
+To generate a keystore directory, you need proper `zowe.setup.certificate` configuration defined in the Zowe configuration file. Execute the server command `zwe init certificate`. To learn more about this command, see the [Reference of zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the appendix.
 
 ### Extension directory
 
-Zowe allows server extensions to expand its core functionalities. The extensions are required to be installed in a central location so Zowe runtime can find and recognize them.
+Zowe allows server extensions to expand Zowe core functionalities. The extensions are required to be installed in a central location so Zowe runtime can find and recognize them.
 
 Similar to Zowe runtime directory, this extension directory should be created by the administrators perform Zowe installation and configuration task. Zowe runtime user, typically `ZWESVUSR` requires read-only permission to this directory.
 
 The extension directory should be created by system administrator and defined in your Zowe configuration file as `zowe.extensionDirectory`.
 
-Zowe uses [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to install Zowe server extensions. This command will create sub-directories or symbolic links under the extension directory.
+Zowe uses [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to install Zowe server extensions. This command creates sub-directories or symbolic links under the extension directory.
+
+## Next step
+
+Review and address the specific requirements in this Prepare for Installation section before beginning installation of Zowe server-side components for z/OS.

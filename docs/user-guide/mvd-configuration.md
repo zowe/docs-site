@@ -243,6 +243,31 @@ Example: [the sample angular app supports both 31 bit and 64 bit zss](https://gi
 
 You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value will not take effect until next server restart.
 
+#### Customizing ZSS session duration
+
+In a standard Zowe installation, all Zowe servers utilize the API Mediation Layer's token-based, single-sign on authentication. This authentication in turn cooperates with z/OSMF, and the session duration is typically that of z/OSMF's, which defaults to 8 hours before the session expires.  In that situation, customization of session duration is best done by customizing z/OSMF's session duration, as a part of its Liberty configuration.
+
+If you are not using the API Mediation Layer, or are trying to contact ZSS directly, then ZSS's own session logic is used. When authenticated directly to ZSS, it will respond to authenticated HTTP requests with a cookie which is valid by default for 1 hour. This can be customized by creating and editing a file named "timeouts.json" within ZSS's instance directory. The default location is `<zowe.workspaceDirectory>/app-server/serverConfig/timeouts.json`, because the default instance directory is `<zowe.workspaceDirectory>/app-server`, but can be customized by editing the value of `components.zss.instanceDir`.
+
+The timeouts.json file has the following layout:
+
+```
+{
+  "users": {
+    "zoweuser1": 3600
+  },
+  "groups": {
+    "developers": 7200
+  }
+}
+```
+
+Where you can have a "users" section that lists user accounts on the z/OS system, and "groups" section that lists groups on that system.
+The numbers for each entry are in seconds, where in the example `zoweuser1` has the default session duration value of 1 hour.
+It is possible that a user specified in this file is also in a group specified in this file. If so, the user value takes priority.
+If a user authenticates to ZSS and their user or group is not found in this file, then the default value of 1 hour is used.
+If this file is missing, Zowe will print a message about it missing, but it does not harm Zowe as the default value of 1 hour would be used for all direct authentications to ZSS.
+
 ## Using AT-TLS in the App Framework
 
 By default, both ZSS and the App server use HTTPS regardless of platform. However, some may wish to use AT-TLS on z/OS as an alternative way to provide HTTPS.
@@ -662,3 +687,25 @@ The API returns the following information in a JSON response:
 Swagger API documentation is provided in the `<zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
 **Note:** The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.
+
+
+## Managing Cluster Mode for app-server
+
+On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit. 
+
+When you **disable** cluster mode, you will lose the following benefits:
+
+1. **Performance under high user Count:** This is due to the absence of redundant workers, which can impact the system's efficiency when dealing with a large number of users.
+
+2. **Reduced downtime during unexpected exceptions:** The low-downtime characteristic, where only one request is interrupted compared to around 15 seconds of downtime, is compromised.
+
+### To turn the cluster mode on
+
+- In Zowe V1, do NOT include the `ZLUX_NO_CLUSTER` environment variable in the `instance.env` configuration.
+- In Zowe V2, do NOT include the `zowe.environments.ZLUX_NO_CLUSTER `in the `zowe.yaml` file.
+
+### To turn the cluster mode off
+
+- In Zowe V1, include `ZLUX_NO_CLUSTER=1` in the `instance.env` configuration.
+- In Zowe V2, include `zowe.environments.ZLUX_NO_CLUSTER=1` in the `zowe.yaml` file.
+
