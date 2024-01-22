@@ -37,7 +37,7 @@ ZSS is currently the default API that provides this mapping between the public p
 
 * The Gateway then performs the login of the mapped user and returns a valid JWT token.
 
-![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
+![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
 :::tip
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
