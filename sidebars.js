@@ -43,6 +43,10 @@ module.exports = {
           link: {type: "doc", id: "getting-started/zowe-security-overview"},
           items: [
             { type: "doc",
+            label: "Glossary of Zowe Security terminology",
+            id: "appendix/zowe-security-glossary",
+            },
+            { type: "doc",
               label: "Digital Certificates",
               id: "getting-started/zowe-certificates-overview",
             },
@@ -647,6 +651,7 @@ module.exports = {
               label: "Caching service",
               items: [
                 "extend/extend-apiml/api-mediation-caching-service",
+                "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
               ],
@@ -769,7 +774,14 @@ module.exports = {
             "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
-            "troubleshoot/cli/troubleshoot-cli-plugins",
+          ],
+        },
+        {
+          type: "category",
+          label: "Troubleshooting Zowe CLI plug-ins",
+          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli-plugins"},
+          items: [
+            "troubleshoot/cli/troubleshoot-ibm-db2-database-plug-in",
           ],
         },
         {
