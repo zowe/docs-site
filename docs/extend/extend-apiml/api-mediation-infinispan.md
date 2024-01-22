@@ -15,10 +15,10 @@ For more information on Infinispan, see the [official Infinispan documentation](
 
 ### Infinispan replica instances
 
-Infinispan can be used with both on standalone instance and High Availability mode. In case of multiple Caching Service instances, 
-you will have to specify all the cluster nodes (members). Each Infinispan node is bound to specific Caching Service instance and runs on a different port and host, which can be configured. See the [nfinispan configuration](#infinispan-configuration) to know how to configure multiple Infinispan nodes.
+Infinispan can be used with both a standalone instance and high availability mode. When using multiple Caching Service instances, 
+it is necessary to specify all of the cluster nodes (members). Each Infinispan node is bound to a specific Caching Service instance and runs on a different port and host, which can be configured. For more information about configuring multiple Infinispan modes, see the [Infinispan configuration](#infinispan-configuration). 
 
-For more information on Infinispan replication and how to configure a replica instance, see the [official Infinispan Cross-site Replication documentation](https://infinispan.org/docs/stable/titles/xsite/xsite.html).
+For more information on Infinispan replication and how to configure a replica instance, see the [Infinispan Cross-site Replication](https://infinispan.org/docs/stable/titles/xsite/xsite.html) documentation.
 
 ## Infinispan configuration
 
@@ -35,10 +35,10 @@ Configure Infinispan as a storage solution through the Caching service by settin
 
 * **`CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION`**
 
-  The path where the Soft-Index store will keep its data files for the Infinispan Soft-Index Cache Store. 
+  The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store. 
   The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem,
   you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each
-  instance. For more information, see [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
 * **`JGROUPS_BIND_PORT`**
