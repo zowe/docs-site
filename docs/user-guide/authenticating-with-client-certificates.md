@@ -69,9 +69,10 @@ For more information, see your security system documentation.
 3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates).
 
 :::caution**Important:**
-* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets).
+* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
 
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main server to use client identity mapping](./configure-zos-system/#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+
 * The internal API ML mapper can provide the API for API ML if enabled in the zowe.yaml file. Use of the internal API ML mapper is the recommended method. Note that the mapper feature is available for Zowe release 2.14 and later releases. Alternatively, ZSS can be configured to participate in Zowe SSO. 
 
 :::note**Notes:**

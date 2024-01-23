@@ -448,6 +448,16 @@ module.exports = {
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
+              label: "Using Single Sign On",
+              link: {type:"doc", id:"user-guide/api-mediation-sso"},
+              items: [
+                "user-guide/authenticating-with-jwt-token",
+                "user-guide/authenticating-with-client-certificates",
+                "user-guide/api-mediation/authenticating-with-personal-access-token",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -629,7 +639,6 @@ module.exports = {
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
             "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/api-mediation-sso",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
