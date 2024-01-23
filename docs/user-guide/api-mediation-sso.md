@@ -2,9 +2,14 @@
 
 You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
 
+:::info**Required roles:** system administrator, security administrator
+:::
+
 This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single-Sign-On is based on single-user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS), which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
 
-**Note:** Currently, API ML can provide SSO only in a single security domain.
+:::note
+Currently, API ML can provide SSO only in a single security domain.
+:::
 
 - [Zowe API ML client](#zowe-api-ml-client)
 - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
@@ -54,7 +59,7 @@ The REST API of ZAAS can easily be called from a Java application using the [ZAA
 If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
 :::note
-For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
+For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets).
 :::
 
 ## Further resources
