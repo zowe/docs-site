@@ -3,7 +3,7 @@
 :::info**Required roles:** system administrator, security administrator
 :::
 
-One user authentication method available in Zowe is via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information. This service is described in more detail in [Zowe Authentication and Authorization Service](https://github.com/zowe/api-layer/wiki/Zowe-Authentication-and-Authorization-Service). 
+One user authentication method available in Zowe is via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information.  
 
 When a client authenticates with API Mediation Layer, the client receives the JWT token which can then be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.
 
