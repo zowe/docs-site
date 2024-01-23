@@ -45,19 +45,19 @@ This section describes the requirements that an API service needs to satisfy to 
 * The API service can validate the token and extract information about the user ID by calling the ZAAS `/query` endpoint. 
 * The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 
-**Note:** The REST API of ZAAS can easily be called from a Java application using the [ZAAS Client](zaas-client.md)
+:::note
+The REST API of ZAAS can easily be called from a Java application using the [ZAAS Client](../extend/extend-apiml/zaas-client).
+:::
 
 ### Existing services that cannot be modified
 
 If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
-**Note:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets) for more details.
+:::note
+For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
+:::
 
 ## Further resources
 
-* [Authentication Methods](./authentication-for-apiml-services/#supported-authentication-methods)
-* [User guide for SSO in Zowe CLI ](../../user-guide/cli-using-integrating-apiml#accessing-multiple-services-with-sso)
-* [System requirements for using web tokens for SSO in Zlux and ZSS](/docs/user-guide/systemrequirements.md)
-
-
-
+* [User guide for SSO in Zowe CLI](./cli-using-integrating-apiml/#accessing-multiple-services-with-sso)
+* [System requirements for using web tokens for SSO in Zlux and ZSS](./systemrequirements)
