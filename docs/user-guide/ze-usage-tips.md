@@ -1,4 +1,4 @@
-# Usage Tips
+# Usage tips
 
 Make the best use of Zowe Explorer with the following tips.
 
