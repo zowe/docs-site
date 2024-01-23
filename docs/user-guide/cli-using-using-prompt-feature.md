@@ -28,12 +28,6 @@ To enable a one-time prompt:
 
      The prompt hides the user's input as it is entered into the command line.
 
-:::info
-
-This behavior may break if you are using the Zowe CLI Daemon.
-
-:::
-
 ### Always prompting for a particular option
 
 Always prompting can be a good practice when your environment's security protocols prevent storing credentials on a personal computer, or expire passwords frequently (as with multi-factor authentication).
