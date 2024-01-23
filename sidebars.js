@@ -453,7 +453,7 @@ module.exports = {
               items: [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
-                "user-guide/authenticating-with-personal-access-token",
+                "user-guide/api-mediation/authenticating-with-personal-access-token",
               ],
             },
             {
