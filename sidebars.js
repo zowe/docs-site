@@ -449,7 +449,7 @@ module.exports = {
             {
               type: "category",
               label: "Using Single Sign On",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-sso"},
+              link: {type:"doc", id:"user-guide/api-mediation-sso"},
               items: [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
@@ -639,7 +639,6 @@ module.exports = {
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
             "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/api-mediation-sso",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
