@@ -1,6 +1,6 @@
 # Using the prompt feature
 
-Zowe CLI uses a command-line "prompt" feature to ask you to provide required option values. The CLI always prompts for host, port, username, and password information if not supplied in commands or profile configuration.
+Zowe CLI uses a command-line "prompt" feature to request you to provide required option values. The CLI always prompts for host, port, username, and password information if not supplied in commands or profile configuration.
 
 You can also manually enable the prompt for any option. This is helpful to mask sensitive information on the screen while you type. You can enable a one-time prompt, or choose to always prompt for a particular option.
 
@@ -10,18 +10,18 @@ To enable a one-time prompt:
 
 1. Open the Zowe CLI command prompt.
 
-2. Specify an option or positional as `PROMPT*`:
+2. Specify an option or positional argument as `prompt*`:
 
     ```
-    zowe files download data-set "PROMPT*"
+    zowe files download data-set "prompt*"
     ```
     Zowe CLI responds with a prompt for the information.
    
 
-3. Answer the prompt with the correct value.
+3. Enter the correct value at the prompt.
 
     ```
-    zowe files download data-set PROMPT*
+    zowe files download data-set prompt*
     "dataSetName" Description: The name of the data set that you want to download
     Please enter "dataSetName":
     ```
@@ -56,7 +56,7 @@ To always prompt for a particular option:
     Zowe CLI prompts for the configured properties, such as the user ID and password in the following example:
 
     ```
-    zFernand0 @ SSH:~/gh/zowe/zowe-cli# zowe files list ds cust009.public.demo
+    zowe files list ds cust009.public.demo
     "user" Description: Mainframe (z/OSMF) user name, which can be the same as your TSO login.
     Please enter "user": 
     "password" Description: Mainframe (z/OSMF) password, which can be the same as your TSO password.
