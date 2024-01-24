@@ -73,13 +73,14 @@ Additional details are likely described in your security system documentation.
 * PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
 
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main server to use client identity mapping](./configure-zos-system/#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
-
-* The internal API ML mapper can provide the API for API ML if enabled in the zowe.yaml file. Use of the internal API ML mapper is the recommended method. Note that the mapper feature is available for Zowe release 2.14 and later releases. Alternatively, ZSS can be configured to participate in Zowe SSO. 
+:::
 
 :::note**Notes:**
-* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID, however the use of the internal API ML mapper is the recommended method.  
+* The internal API ML mapper can provide the API for API ML if enabled in the zowe.yaml file. Use of the internal API ML mapper is the recommended method. Note that the mapper feature is available for Zowe release 2.14 and later releases. Alternatively, ZSS can be configured to participate in Zowe SSO. 
 
-* For more information about configuring ZSS, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss) in the References section of Zowe Docs.
+* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and the SAF user ID, however the use of the internal API ML mapper is the recommended method.  
+
+* For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration/#configure-component-zss) in the References section of Zowe Docs.
 :::
 
 ### Enabling the internal API ML mapper
@@ -91,7 +92,7 @@ gateway:
     security:  
       userInternalMapper: true 
 ```
-Note that this internal API ML mapper option is only available for Zowe release 2.14 and later. 
+Note that the internal API ML mapper option is only available for Zowe release 2.14 and later releases. 
 
 
 ## Validate the client certificate functionality
