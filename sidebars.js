@@ -560,6 +560,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
+            "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
@@ -576,7 +577,7 @@ module.exports = {
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-usage-tips",
+                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
