@@ -26,7 +26,7 @@ Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend u
 
 :::
 
-## Using Zowe Explorer in remove environments
+## Using Zowe Explorer in remote environments
 
 As of Zowe Version 2.11, Zowe Explorer and the Zowe Explorer API no longer use `node-keytar`, which was used to manage mainframe credentials. This change might cause some users issues when trying to interact with remote environments.
 
