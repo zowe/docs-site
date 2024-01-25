@@ -65,7 +65,7 @@ In some cases Zowe API ML can check for the authorization of the user on certain
 Access to a SAF resource is checked with the installed z/OS External Security Manager (ESM).
 
 **Next steps:**
-For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
+For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking).
 
 ## Additional resources
 For more information about getting started with certificates including dertermining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
