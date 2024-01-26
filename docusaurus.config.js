@@ -241,10 +241,16 @@ module.exports = {
               label: "v1.28.x LTS",
             },
           },
-        },    
+        },
         googleAnalytics: {
           trackingID: "UA-123892882-1",
           anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: versionsArray.map((x) => "/" + x + "/**"),
+          filename: "sitemap.xml",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -287,7 +293,7 @@ module.exports = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true, 
+        debug: true,
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",

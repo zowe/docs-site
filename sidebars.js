@@ -44,6 +44,10 @@ module.exports = {
           link: {type: "doc", id: "getting-started/zowe-security-overview"},
           items: [
             { type: "doc",
+            label: "Glossary of Zowe Security terminology",
+            id: "appendix/zowe-security-glossary",
+            },
+            { type: "doc",
               label: "Digital Certificates",
               id: "getting-started/zowe-certificates-overview",
             },
@@ -445,6 +449,16 @@ module.exports = {
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
+              label: "Using Single Sign On",
+              link: {type:"doc", id:"user-guide/api-mediation-sso"},
+              items: [
+                "user-guide/authenticating-with-jwt-token",
+                "user-guide/authenticating-with-client-certificates",
+                "user-guide/api-mediation/authenticating-with-personal-access-token",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -547,6 +561,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
+            "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
@@ -563,7 +578,7 @@ module.exports = {
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-usage-tips",
+                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
@@ -626,7 +641,6 @@ module.exports = {
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
             "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/api-mediation-sso",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
@@ -648,6 +662,7 @@ module.exports = {
               label: "Caching service",
               items: [
                 "extend/extend-apiml/api-mediation-caching-service",
+                "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
                 "extend/extend-apiml/api-mediation-infinispan",
@@ -772,7 +787,14 @@ module.exports = {
             "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
             "troubleshoot/cli/cli-issue",
-            "troubleshoot/cli/troubleshoot-cli-plugins",
+          ],
+        },
+        {
+          type: "category",
+          label: "Troubleshooting Zowe CLI plug-ins",
+          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli-plugins"},
+          items: [
+            "troubleshoot/cli/troubleshoot-ibm-db2-database-plug-in",
           ],
         },
         {
