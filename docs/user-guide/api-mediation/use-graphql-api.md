@@ -1,0 +1,43 @@
+# GraphQL APIs
+
+GraphQL is a query language for APIs that has been gaining popularity among developers across various domains. 
+Basically the GraphQL is a REST API that have some specific characterics. As such the information in [Implementing the Routing](extend-apiml/implementing-routing-to-the-api-gateway.md
+) and [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis.md) applies. 
+
+This article isn't aimed at learning how to use GraphQL in general even though we will go over some of the key characteristics. 
+
+## How Does GraphQL Work?
+
+At its core, GraphQL operates through a type system you define for your data. Here's a breakdown of the process:
+
+- Schema Definition: You start by defining a 'schema', which is a model of the data that can be queried through the API. This schema acts as a contract between the client and the server.
+- Query: Clients send queries to your GraphQL server. These queries specify what data the client needs.
+- Resolving Queries: The server then processes these queries according to the schema and returns the appropriate results.
+
+## Key Concepts of GraphQL
+
+- Queries and Mutations: In GraphQL, queries are used for reading data, while mutations are used for writing data. This clear separation makes understanding and maintaining the API simpler.
+- Real-time Data with Subscriptions: GraphQL also supports subscriptions, which allow clients to subscribe to real-time updates, essential for dynamic content applications.
+- Strongly Typed: GraphQL APIs are strongly typed. This means every operation is checked and validated against the schema, leading to more reliable and predictable APIs.
+
+## Difference to the traditional REST APIs
+
+REST APIs, a long-standing standard in web development, operate on the principle of resource-based endpoints. 
+Each endpoint in a REST API corresponds to a specific resource (like a user or product), and the type of request (GET, POST, PUT, DELETE) 
+dictates the operation performed on that resource. This approach leads to a straightforward and uniform interface but often results 
+in over-fetching or under-fetching of data. Over-fetching occurs when the fixed data structure of an endpoint returns more information 
+than the client needs, while under-fetching happens when the client must make additional requests to gather all the necessary data. 
+Additionally, REST APIs rely heavily on HTTP status codes for error handling and utilize standard HTTP methods for caching and statelessness.
+
+In contrast, GraphQL, a newer technology, offers a more flexible and efficient way of working with data. Unlike REST, which 
+uses multiple endpoints, GraphQL uses a single endpoint through which clients can make versatile queries. These queries 
+are tailored to retrieve exactly the data required, eliminating over-fetching and under-fetching issues inherent in REST. 
+GraphQL's strongly typed system, defined by a schema, ensures that the data conforms to a specific structure, providing a 
+contract between the server and client. This approach simplifies data retrieval for complex, nested data and allows for 
+more precise error handling within the responses. However, GraphQL's flexibility can lead to more complex queries and 
+demands careful consideration regarding performance, especially in designing how queries are resolved on the server side.
+
+## Limitations for the API Mediation Layer
+
+The API Catalog currently doesn't support visualization of GraphQL APIs. As such we recommend for the extenders to provide 
+link to the GraphQL endpoint via the Open API for the API Catalog. 
