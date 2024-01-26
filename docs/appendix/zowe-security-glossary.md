@@ -1,4 +1,4 @@
-# Zowe security concepts glossary
+# Glossary of Zowe Security terminology
 
 Zowe implements a number of modern cyber-security concepts. Before getting started with configuring certificates, it is useful to familiarize yourself with the basic terminology.
 Read the following definitions for explanation of the security terms related to the core security technologies applied by Zowe:

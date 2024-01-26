@@ -20,7 +20,7 @@ For more information on Infinispan, see the [official Infinispan documentation](
 Infinispan can be used with both on standalone instance and High Availability mode. In case of multiple Caching Service instances, 
 you will have to specify all the cluster nodes (members). Each Infinispan node is bound to specific Caching Service instance and runs on a different port and host, which can be configured. See the [infinispan configuration](#infinispan-configuration) to know how to configure multiple Infinispan nodes.
 
-For more information on Infinispan replication and how to configure a replica instance, see the [official Infinispan Cross-site Replication documentation](https://infinispan.org/docs/stable/titles/xsite/xsite.html).
+For more information on Infinispan replication and how to configure a replica instance, see the [Infinispan Cross-site Replication](https://infinispan.org/docs/stable/titles/xsite/xsite.html) documentation.
 
 ## Infinispan configuration
 
@@ -31,14 +31,13 @@ Configure Infinispan as a storage solution through the Caching service by settin
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
 
-
 * **`zowe.components.caching-service.storage.infinispan.persistence.dataLocation`**
 
-  The path where the Soft-Index store will keep its data files for the Infinispan Soft-Index Cache Store. 
+  The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store. 
   The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem,
+
   you have to specify a different value of the `zowe.components.caching-service.storage.infinispan.persistence.dataLocation` property for each
   instance. For more information, see [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
 
