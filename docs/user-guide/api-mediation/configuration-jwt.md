@@ -72,23 +72,3 @@ You can also customize the following properties when authenticating with a JWT t
     To use a custom configuration for z/OSMF which changes the expiration of the LTPA token, it is necessary to also set the expiration in this parameter.
     
 
-**Follow these steps:**
-
-1. Open the file:  
-```
-<Zowe install directory>/components/gateway/bin/start.sh.
-```
-2. Find the line that contains the following jar:
-```
--cp ${ROOT_DIR}"/components/gateway/gateway-service.jar":/usr/include/java_classes/IRRRacf.jar.
-```
-3. Before the line described in step 2, add a new line in the following format:
-```
--Dapiml.security.auth.tokenProperties.expirationInSeconds={expirationTimeInSeconds} \
- ```
-    
-* **{expirationTimeInSeconds}**  
-Specifies the specific time before expiration
-
-4. Restart Zowe.
-    
