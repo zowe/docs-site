@@ -1,9 +1,32 @@
 # Using GraphQL APIs
 
 GraphQL is a query language for APIs that provides descriptions of the data in your APIs and allows for specific queries to facilitate API development. Routing for such APIs is possible within the Zowe ecosystem. For more information, see [Implementing routing to the Gateway](./extend-apiml/implementing-routing-to-the-api-gateway)
-) and [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis.md). 
+) and [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis.md). The Zowe itself doesn't provide any GraphQL API as of now. The example of routing applies only
+to services extending API ML that provides the GraphQL APIs
 
 For information about how to use GraphQL, see the product documentation. 
+
+## Routing to GraphQL example
+
+**Example:**
+
+    routes:
+        - gatewayUrl: "api/v1/graphql"
+          serviceUrl: "/graphql"
+
+In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
+
+* **GraphQL** - `https://gateway/helloworldservice/api/v1/graphql` routed to `https://hwServiceHost:port/graphql/`
+
+where:
+
+* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `serviceId/prefix/resourcePath`.
+* The service ID is used to find the service host and port.
+* The `serviceUrl` is used to prefix the `resourcePath` at the service host.
+
+:::note
+The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
+:::
 
 ## How GraphQL Works
 
