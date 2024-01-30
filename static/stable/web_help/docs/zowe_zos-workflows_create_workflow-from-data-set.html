@@ -24,7 +24,7 @@
 <li>
 <p><code>--data-set</code> | <code>--ds</code> <em>(string)</em></p>
 <ul>
-<li>Data set that contains a workflow definiton.</li>
+<li>Data set that contains a workflow definition.</li>
 </ul>
 </li>
 <li>
@@ -210,13 +210,13 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using the data set &quot;TESTID.WKFLOW&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exist in z/OSMF:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using the data set &quot;TESTID.WKFLOW&quot; that contains the workflow definition xml on the system &quot;TESTM1&quot; with owner &quot;OTHERID&quot; and delete workflow with the same name if it already exists in z/OSMF:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;OTHERID&quot; --overwrite">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Create a workflow with name &quot;testworkflow&quot; using data set &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and delete succesfully completed jobs:</p>
+<p>Create a workflow with name &quot;testworkflow&quot; using data set &quot;TESTID.WKFLOW&quot; containing workflow definition xml, on system &quot;TESTM1&quot; with owner &quot;MYSYSID&quot; and delete successfully completed jobs:</p>
 <ul>
 <li><code>zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows create workflow-from-data-set &quot;testworkflow&quot; --data-set &quot;TESTID.WKFLOW&quot; --system-name &quot;TESTM1&quot; --owner &quot;MYSYSID&quot; --delete-completed">Copy</button></li>
 </ul>

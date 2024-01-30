@@ -12,14 +12,15 @@ The Caching Service is available only for internal Zowe applications, and is not
 
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
+  - [Infinispan](#infinispan)
   - [VSAM](#vsam)
   - [Redis](#redis)
-  - [Infinispan](#infinispan)
   - [InMemory](#inmemory)
 - [How to start the service](#how-to-start-the-service)
 - [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
 - [Configuration properties](#configuration-properties)
 - [Authentication](#authentication)
+
 ## Architecture
 
 A precondition to provide for High Availability of all components within Zowe is the requirement that these components be either stateless, or for the resources of the service, to be offloaded to a location accessible by all instances of the service. This condition also applies to recently started instances. Some services, however, are not and cannot be stateless. The Caching Service is designed for these types of services.
@@ -36,25 +37,30 @@ Information from cached APIs is stored as a JSON in the following format:
 ## Storage methods
 
 The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
+
+### Infinispan (recommended)
+
+Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
+
+For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
+
 ### VSAM
 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
 For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching Service](./api-mediation-vsam.md).
+
 ### Redis
 
 Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
 For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](./api-mediation-redis.md).
-### Infinispan
 
-Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
-
-For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
 ### InMemory
 
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
 The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
+
 ## How to start the Service
 
 By default, the Caching Service starts along with the other Zowe components. To prevent the Caching Service from starting, set
@@ -102,9 +108,10 @@ This parameter specifies service behavior when the limit of records is reached. 
   * **removeOldest**  
   removes the oldest item in the cache when the service reaches the configured maximum number
 
-**Notes:** 
+:::note**Notes:**
 - For more information about how to configure the Caching Service in the `application.yml`, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
 - When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](./api-mediation-vsam.md).
+:::
 
 ## Authentication
 

@@ -78,7 +78,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    This article provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
 
-- [**Zowe API ML repository**](https://github.com/zowe/zowe-api)
+- [**Zowe API ML repository**](https://github.com/zowe/api-layer)
 
    To start working with the code immediately, check out this code repository. 
 
