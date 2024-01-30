@@ -480,6 +480,7 @@ module.exports = {
                 "user-guide/onboard-wizard",
               ],
             },
+            "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
             "extend/extend-apiml/service-information",
             "user-guide/api-mediation/api-mediation-jwt-token-refresh",
