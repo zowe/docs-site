@@ -1,6 +1,6 @@
 # Using GraphQL APIs
 
-GraphQL is a query language for APIs that provides descriptions of the data in your APIs and allows for specific queries to facilitate API development. Routing for such APIs is possible within the Zowe ecosystem. For more information, see [Implementing the Routing](extend-apiml/implementing-routing-to-the-api-gateway.md
+GraphQL is a query language for APIs that provides descriptions of the data in your APIs and allows for specific queries to facilitate API development. Routing for such APIs is possible within the Zowe ecosystem. For more information, see [Implementing routing to the Gateway](./extend-apiml/implementing-routing-to-the-api-gateway)
 ) and [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis.md). 
 
 For information about how to use GraphQL, see the product documentation. 
