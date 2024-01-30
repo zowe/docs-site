@@ -455,18 +455,7 @@ module.exports = {
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/authenticating-with-personal-access-token",
               ],
-            }, 
-            {
-              type: "category",
-              label: "Routing",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
-              items: [
-                "user-guide/api-mediation/routing-requests-to-rest-apis",
-                "user-guide/api-mediation/api-mediation-update-password",
-                "extend/extend-apiml/websocket",
-                "user-guide/api-mediation/api-mediation-multi-tenancy",
-              ],
-            },           
+            },            
             {
               type: "category",
               label: "Using API Catalog",
