@@ -4,18 +4,13 @@ Service instances provide information about routing to the API Gateway via Eurek
 
 **Example:**
 
-    metadata-map:
-        apiml:
-            routes:
-                ui_v1:
-                    gatewayUrl: "ui/v1"
-                    serviceUrl: "/helloworld"
-                api_v1:
-                    gatewayUrl: "api/v1"
-                    serviceUrl: "/helloworld/v1"
-                api_v2:
-                    gatewayUrl: "api/v2"
-                    serviceUrl: "/helloworld/v2"
+    routes:
+        - gatewayUrl: "ui/v1"
+          serviceUrl: "/helloworld"
+        - gatewayUrl: "api/v1"
+          serviceUrl: "/helloworld/v1"
+        - gatewayUrl: "api/v2"
+          serviceUrl: "/helloworld/v2"
 
 In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
 
