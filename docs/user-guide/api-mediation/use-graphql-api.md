@@ -4,7 +4,7 @@ GraphQL is a query language for APIs that provides descriptions of the data in y
 ) and [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis.md). The Zowe itself doesn't provide any GraphQL API as of now. The example of routing applies only
 to services extending API ML that provides the GraphQL APIs
 
-For information about how to use GraphQL, see the product documentation. 
+For information about how to use GraphQL, see the product documentation. The Best practices are available here: [https://graphql.org/learn/best-practices/](https://graphql.org/learn/best-practices/). The information on how do you use HTTP to deliver GraphQL interfaces are here: [https://graphql.org/learn/serving-over-http/](https://graphql.org/learn/serving-over-http/)
 
 ## Routing to GraphQL example
 
@@ -66,6 +66,11 @@ more precise error handling within the responses. However, GraphQL's flexibility
 demands careful consideration regarding performance, especially in designing how queries are resolved on the server side.
 
 ## Limitations for the API Mediation Layer
+
+The documentation for the GraphQL isn't provided via the standard OpenAPI protocol and instead are living as a sandbox environment within the GraphQL applications. At least usually. The example is shown below. 
+
+![Screenshot 2024-01-30 at 12 40 09](https://github.com/zowe/docs-site/assets/1757251/5c5bb428-3f08-4b89-b8bb-a34245dc37b9)
+
 
 The API Catalog currently does not support visualization of GraphQL APIs. As such, we recommend for the extenders to provide 
 link to the GraphQL endpoint via the Open API for the API Catalog. 
