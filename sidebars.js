@@ -463,7 +463,7 @@ module.exports = {
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
-                "extend/extend-apiml/websocket",
+                "extend/extend-apiml/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
               ],
