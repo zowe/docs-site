@@ -42,6 +42,8 @@ where:
 The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
 :::
 
+![Alt text](../../images/api-mediation/graphql-image.png)
+
 ## How GraphQL Works
 
 GraphQL operates through the type system you define for your data and uses the following structure:
@@ -65,8 +67,6 @@ GraphQL APIs are strongly typed so that every operation is checked and validated
 ## Limitations for the API Mediation Layer
 
 The documentation for the GraphQL isn't provided via the standard OpenAPI protocol and instead are living as a sandbox environment within the GraphQL applications. At least usually. The example is shown below. 
-
-![GraphQL](../../images/api-mediation/graphql-image.png)
 
 The API Catalog currently does not support visualization of GraphQL APIs. As such, we recommend for the extenders to provide 
 link to the GraphQL endpoint via the Open API for the API Catalog. 
