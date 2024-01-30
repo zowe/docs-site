@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.13.x";
+const LATEST_VERSION = "v2.14.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -210,6 +210,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v2.13.x": {
+              label: "v2.13.x LTS",
+            },
             "v2.12.x": {
               label: "v2.12.x LTS",
             },
@@ -238,10 +241,16 @@ module.exports = {
               label: "v1.28.x LTS",
             },
           },
-        },    
+        },
         googleAnalytics: {
           trackingID: "UA-123892882-1",
           anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: versionsArray.map((x) => "/" + x + "/**"),
+          filename: "sitemap.xml",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -284,7 +293,7 @@ module.exports = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true, 
+        debug: true,
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",

@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
         "whats-new/release-notes/v2_11_0",
@@ -449,13 +450,13 @@ module.exports = {
             {
               type: "category",
               label: "Using Single Sign On",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-sso"},
+              link: {type:"doc", id:"user-guide/api-mediation-sso"},
               items: [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
-                "user-guide/authenticating-with-personal-access-token",
+                "user-guide/api-mediation/authenticating-with-personal-access-token",
               ],
-            },            
+            },
             {
               type: "category",
               label: "Using API Catalog",
@@ -556,6 +557,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
+            "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
@@ -572,7 +574,7 @@ module.exports = {
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-usage-tips",
+                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
@@ -635,7 +637,6 @@ module.exports = {
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
             "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/api-mediation-sso",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
@@ -657,6 +658,7 @@ module.exports = {
               label: "Caching service",
               items: [
                 "extend/extend-apiml/api-mediation-caching-service",
+                "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
               ],
@@ -746,6 +748,7 @@ module.exports = {
           items: [
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/appfw-tracing",
             "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
@@ -941,7 +944,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.13.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.14.x.md",
     },
   ],
 }
