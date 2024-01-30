@@ -66,8 +66,7 @@ GraphQL APIs are strongly typed so that every operation is checked and validated
 
 The documentation for the GraphQL isn't provided via the standard OpenAPI protocol and instead are living as a sandbox environment within the GraphQL applications. At least usually. The example is shown below. 
 
-![Screenshot 2024-01-30 at 12 40 09](../../images/api-mediation/)
-
+![GraphQL](../../images/api-mediation/graphql-image.png)
 
 The API Catalog currently does not support visualization of GraphQL APIs. As such, we recommend for the extenders to provide 
 link to the GraphQL endpoint via the Open API for the API Catalog. 
