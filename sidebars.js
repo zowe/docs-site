@@ -459,6 +459,13 @@ module.exports = {
             },
             {
               type: "category",
+              label: "Using multi-factor authentication (MFA)",
+			        link: {type:"doc", id:"user-guide/using-multi-factor-authentication"},
+              items: [
+              ],
+            },
+            {
+              type: "category",
               label: "API Routing",
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
