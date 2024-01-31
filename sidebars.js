@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
         "whats-new/release-notes/v2_11_0",
@@ -458,6 +459,17 @@ module.exports = {
             },
             {
               type: "category",
+              label: "API Routing",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
+              items: [
+                "user-guide/api-mediation/routing-requests-to-rest-apis",
+                "user-guide/routing-with-websockets",
+                "user-guide/api-mediation/use-graphql-api",
+                "user-guide/api-mediation/api-mediation-multi-tenancy",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
@@ -468,12 +480,9 @@ module.exports = {
                 "user-guide/onboard-wizard",
               ],
             },
-            "user-guide/api-mediation-metrics-service",
-            "extend/extend-apiml/api-mediation-routing",
-            "extend/extend-apiml/service-information",
-            "extend/extend-apiml/websocket",
-            "user-guide/api-mediation/api-gateway-rest-apis-documentation",
             "user-guide/api-mediation/api-mediation-update-password",
+            "user-guide/api-mediation-metrics-service",
+            "extend/extend-apiml/service-information",
             "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
@@ -751,6 +760,7 @@ module.exports = {
           items: [
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
+            "troubleshoot/app-framework/appfw-tracing",
             "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
@@ -946,7 +956,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.13.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.14.x.md",
     },
   ],
 }
