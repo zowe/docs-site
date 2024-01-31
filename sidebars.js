@@ -290,8 +290,8 @@ module.exports = {
           label: "Zowe CLI",
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
-            "user-guide/systemrequirements-cli",
             "user-guide/cli-install-cli-checklist",
+            "user-guide/systemrequirements-cli",
           {
           type: "category",
           label: "Installing Zowe CLI",
@@ -304,7 +304,8 @@ module.exports = {
           },
             "user-guide/install-cli-via-proxy",
             "user-guide/cli-updatingcli",
-            "user-guide/cli-uninstall",   
+            "user-guide/cli-uninstall",  
+            "user-guide/cli-install-verify-your-installation", 
             {
               type: "category",
               label: "Advanced Zowe CLI configuration",
@@ -487,7 +488,6 @@ module.exports = {
               link: {type:"doc", id:"user-guide/cli-using-using-team-profiles"},
               items: [
                 "user-guide/cli-using-initializing-team-configuration",
-                "user-guide/cli-using-test-zosmf-connection",
                 "user-guide/cli-using-team-configuration-application-developers",
                 "user-guide/cli-using-team-configuration-team-leaders",
                 "user-guide/cli-using-sharing-team-config-files",
