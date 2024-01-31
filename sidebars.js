@@ -459,7 +459,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Routing",
+              label: "API Routing",
               link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
