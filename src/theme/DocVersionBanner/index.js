@@ -67,7 +67,9 @@ function LatestVersionSuggestionLabel({versionLabel, versionMetadata, to, onClic
       id="theme.docs.versions.latestVersionSuggestionLabel"
       description="The label used to tell the user to check the latest version"
       values={{
-        versionLabel,
+        guideLink: (
+          <a href="https://docs.zowe.org/stable/extend/migrate-extensions" target="_blank">the migration guide</a>
+        ),
         latestVersionLink: (
           <b>
             <Link to={to} onClick={onClick}>
@@ -78,7 +80,8 @@ function LatestVersionSuggestionLabel({versionLabel, versionMetadata, to, onClic
               </Translate>
             </Link>
           </b>
-        ),        
+        ),
+        versionLabel
       }}>
       {
         `${versionMetadata.version[1] === "2" ? "For {guideLink} of the {latestVersionLink}, see ({versionLabel})" : 'For the latest Zowe features and capabilities, please reference the latest version of Zowe Docs for the "active" {latestVersionLink} ({versionLabel})'}.`
