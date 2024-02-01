@@ -460,7 +460,7 @@ module.exports = {
             {
               type: "category",
               label: "Using multi-factor authentication (MFA)",
-	link: {type:"doc", id:"user-guide/api-mediation/using-multi-factor-authentication"},
+	      link: {type:"doc", id:"user-guide/api-mediation/using-multi-factor-authentication"},
               items: [
               ],
             },
