@@ -460,7 +460,6 @@ module.exports = {
             {
               type: "category",
               label: "API Routing",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
@@ -663,6 +662,13 @@ module.exports = {
                 "extend/extend-apiml/zaas-client",
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
                 "extend/extend-apiml/api-mediation-oidc-authentication",
+              ],
+            },
+            {
+              type: "category",
+              label: "Implementing routing to API Gateway",
+			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
+              items: [
               ],
             },
             {
