@@ -16,7 +16,8 @@ If you use z/OSMF as your authentication provider, ensure that you meet the foll
 
 ## Known Limitations and Recommendations
 
-* **Unintentional Reuse of MFA Token**
+### Unintentional Reuse of MFA Token
+
 When z/OSMF is used as a security provider, it is possible to reuse MFA tokens, whereby it is possible to receive a JWT token based on previously used MFA token. This presents a security risk.  
 
 This issue can be resolved by configuring z/OSMF to work properly with API ML.
@@ -26,7 +27,8 @@ Update the z/OSMF configuration with the following parameter:
 After applying this change, each authentication call results in generating a new JWT.
 For more information, see [Configuring z/OSMF](./systemrequirements-zosmf/#configuring-zosmf-to-properly-work-with-api-ml) to properly work with API ML, and [Multi-factor authentication configuration](./mvd-configuration/#multi-factor-authentication-configuration) in Configuring Zowe Application Framework.
 
-* **No Notification when Additional Input is Required**
+### No Notification when Additional Input is Required
+
 Neither Zowe CLI nor API Catalog issue a notification when a user is required to provide additional input. This can occur in cases such as when a user signon attempt triggers the requirements of a **New Pin** or **Next Token**. The user must resolve this situation outside of Zowe. Depending on the current authentication factor enabled (RSA SecurID or RADIUS), the user can use TSO console or MFA Self-service facilities.
 
 We recommend you first try to access self-service facilities and resolve the issue there. If you are unable to access your self-service facilities, contact your system administrator.
@@ -39,7 +41,7 @@ We recommend you first try to access self-service facilities and resolve the iss
 * For more information about how to resolve the RADIUS Access Challenge, see the sub-topic RADIUS Access Challenge Considerations in the previously referenced documenation.
 :::
 
-* **Token Expiration when Stored in the Authorization Dialog in "Try it out"**
+### Token Expiration when Stored in the Authorization Dialog in "Try it out"
 
 When using the API Catalog, you have the option to use the "Try it out" functionality to test a protected endpoint. In this case, you are given the option to provide and store MFA credentials in the Authorization dialog. As the MFA token has a short lifetime, we do not recommend storing your MFA token when using this feature.
 
