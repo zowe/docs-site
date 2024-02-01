@@ -4,7 +4,7 @@ GraphQL is a query language for APIs that provides descriptions of the data in y
 
 For more information about configuring routing to API ML, see the following articles:
 * [Implementing routing to the Gateway](../../extend/extend-apiml/implementing-routing-to-the-api-gateway)
-* [Routing Requests to REST API](user-guide/api-mediation/routing-requests-to-rest-apis)
+* [Routing Requests to REST API](./routing-requests-to-rest-apis)
 
 :::tip
 * For information about how to use GraphQL, see [GraphQL Best Practices](https://graphql.org/learn/best-practices/) in the GraphQL product documentation. 
