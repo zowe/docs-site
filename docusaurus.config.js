@@ -13,6 +13,11 @@ module.exports = {
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
+  markdown: {
+    mdx1Compat: {
+      comments: true
+    }
+  },
   webpack: {
     jsLoader: (isServer) => ({
       loader: require.resolve("esbuild-loader"),
