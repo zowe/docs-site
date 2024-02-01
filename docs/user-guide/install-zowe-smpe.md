@@ -552,7 +552,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
   FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
   GROUPEXTEND .
   ```
-::note**Notes:**
+:::note
 * Some HIPER APARs might not have fixing PTFs available yet. You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
 * This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
 :::
