@@ -38,7 +38,7 @@ We recommend you first try to access self-service facilities and resolve the iss
 * For more information about how to manage multi-factor authentication credentials in IBM Z MFA, see
 [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 * Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system. This support alternative does not rely on the mainframe MFA technology, but is equally secure.
-* For more information about how to resolve the RADIUS Access Challenge, see the sub-topic RADIUS Access Challenge Considerations in the previously referenced documenation.
+* For more information about how to resolve the RADIUS Access Challenge, see the sub-topic _RADIUS Access Challenge Considerations_ in the article [Manage Multi-Factor Authentication Credentials (IBM RACF)](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/using-with-ibm-racf/manage-multi-factor-authentication-credentials-ibm-racf.html).
 :::
 
 ### Token Expiration when Stored in the Authorization Dialog in "Try it out"
