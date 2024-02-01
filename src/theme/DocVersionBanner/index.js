@@ -37,10 +37,13 @@ function UnmaintainedVersionLabel({siteTitle, versionMetadata}) {
         description="The label used to tell the user that he's browsing an unmaintained doc version"
         values={{
           siteTitle,
+          guideLink: (
+            <a href="https://docs.zowe.org/stable/extend/migrate-extensions" target="_blank">the migration guide</a>
+          ),
           versionLabel: <b>{versionMetadata.label}</b>
         }}>
         {
-          `${versionMetadata.version[1] === "2" ? "" : `Please Note: The Zowe V1 LTS release has transitioned to "maintenance" effective 04/23/2022 with the 1.28 release and will no longer include new features. Security patches and critical bug fixes will continue to be documented for this release. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 LTS release, please see the latest version of Zowe Docs for the maintained V1 LTS release (v1.28.x)." : "" }`}`
+          `${versionMetadata.version[1] === "2" ? "" : `Please Note: Support for Zowe Version 1 ends on Sept. 30, 2024. Follow {guideLink} to upgrade to Zowe Version 2. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 LTS release, please see the latest version of Zowe Docs for the maintained V1 LTS release (v1.28.x)." : "" }`}`
         }
       </Translate>
     </>
@@ -75,10 +78,10 @@ function LatestVersionSuggestionLabel({versionLabel, versionMetadata, to, onClic
               </Translate>
             </Link>
           </b>
-        ),
+        ),        
       }}>
       {
-        `${versionMetadata.version[1] === "2" ? "For documentation of the {latestVersionLink}, see ({versionLabel})" : 'For the latest Zowe features and capabilities, please reference the latest version of Zowe Docs for the "active" {latestVersionLink} ({versionLabel})'}.`
+        `${versionMetadata.version[1] === "2" ? "For {guideLink} of the {latestVersionLink}, see ({versionLabel})" : 'For the latest Zowe features and capabilities, please reference the latest version of Zowe Docs for the "active" {latestVersionLink} ({versionLabel})'}.`
       }
     </Translate>
   );

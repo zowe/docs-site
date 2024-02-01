@@ -439,7 +439,7 @@ html[data-theme="light"] .darkTheme {
   div[class^='announcementBar_'] {
    font-weight: 400;
    font-size: 1.5em;
-   background: repeating-linear-gradient(35deg,#edf2fa,#edf2fa 20px,#c9d9f2 10px, #c9d9f2 40px) !important;
+   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
   }
 
 
