@@ -1,4 +1,4 @@
-# ZIS message codes
+# ZIS Error Message Codes
 
 The following codes can appear in either the ZIS SYSPRINT or JESMSGLG log, or
 both. Use the following message code references and the corresponding reasons
