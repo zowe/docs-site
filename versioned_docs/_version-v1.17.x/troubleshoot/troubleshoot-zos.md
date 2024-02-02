@@ -2,7 +2,7 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESVSTC` started task.
 
-## Unable to launch Zowe with { FSUM7351 }
+## Unable to launch Zowe with {'{'} FSUM7351 {'}'}
 
 When you run `zowe-start.sh` from a unix shell path `<zowe-instance-directory>/bin`, you encounter the following error:
 

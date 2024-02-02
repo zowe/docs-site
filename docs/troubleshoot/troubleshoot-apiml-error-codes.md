@@ -1241,7 +1241,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The URI does not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+  The URI does not follow the format `/{serviceId}/{type}/{version}/{endpoint}` or `/{type}/{version}/{serviceId}/{endpoint}`.
 
   **Action:**
 
@@ -1684,7 +1684,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}`.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAG180E
 

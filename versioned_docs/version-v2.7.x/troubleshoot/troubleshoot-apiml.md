@@ -15,7 +15,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
-    * [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+    * [Exception thrown when reading SAF keyring {'{'}ZWED0148E{'}'}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -110,7 +110,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **{name}**
+    - `{name}`
 
          Specifies the logger name
 
@@ -490,7 +490,7 @@ Caused by: java.security.UnrecoverableKeyException: Given final block not proper
 
 Make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. 
 
-### Exception thrown when reading SAF keyring {ZWED0148E}
+### Exception thrown when reading SAF keyring {'{'}ZWED0148E{'}'}
 
 **Symptom:**
 

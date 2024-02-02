@@ -223,7 +223,7 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
-## Error: Zowe Desktop address space fails to start { ZWED0115E }
+## Error: Zowe Desktop address space fails to start {'{'} ZWED0115E {'}'}
 
 After launching the started task `ZWESVSTC` there are no Zowe desktop `ZWE1DS` address space(s).
 
@@ -242,7 +242,7 @@ ZWED_node_cluster_storageTimeout=30000
 ```
 where the timeout value is in milliseconds.
 
-## Error: Exception thrown when reading SAF keyring {ZWED0148E}
+## Error: Exception thrown when reading SAF keyring {'{'}ZWED0148E{'}'}
 
 **Symptom:**
 The error message indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. ZWED0148E contains the following messages.

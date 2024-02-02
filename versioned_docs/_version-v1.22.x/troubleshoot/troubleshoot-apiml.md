@@ -90,7 +90,7 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     Where:
 
-    - **{name}**
+    - `{name}`
 
          is the logger name
 
