@@ -266,7 +266,7 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
 
 In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
 
-## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
+## Warning: Problem making eureka request {'{'} Error: connect ECONNREFUSED {'}'}
 
 **Symptom:** 
 The Zowe started task `ZWESLSTC` log contains error messages reporting problems connecting 

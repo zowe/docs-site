@@ -733,82 +733,75 @@ The following steps outline the process of registering your service with API ML.
 The following code block is a full example of a context listener class implementation.
 
 **Example:**
-
-    import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
-    import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
-    import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
-    import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
-    import org.zowe.apiml.exception.ServiceDefinitionException;
-    import lombok.extern.slf4j.Slf4j;
-
-    import javax.servlet.ServletContextEvent;
-    import javax.servlet.ServletContextListener;
-
+```
+import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
+import org.zowe.apiml.exception.ServiceDefinitionException;
+import lombok.extern.slf4j.Slf4j;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+/**
+ *  API ML Micro service implementation of ServletContextListener interface.
+ */
+@Slf4j
+public class ApiDiscoveryListener implements ServletContextListener {
     /**
-     *  API ML Micro service implementation of ServletContextListener interface.
+     * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
      */
-    @Slf4j
-    public class ApiDiscoveryListener implements ServletContextListener {
-
-        /**
-         * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
-         */
-        private ApiMediationClient apiMediationClient;
-
-        /**
-         *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
-         *  and registers this micro service with API ML.
-         *
-         *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
-         *  {@link java.util.Map} or a string containing the configuration data.
-         *
-         *  Here we use the most convenient method for our Java Servlet based service,
-         *  i.e expecting all the necessary initialization information to be present
-         *  in the  {@link javax.servlet.ServletContext} init parameters.
-
-         *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
-         *  which is then used to register this service with API ML Discovery Service.
-         *
-         *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
-         *  and only can throw {@link ServiceDefinitionException} checked exception.
-         *
-         * @param sce
-         */
-        @Override
-        public void contextInitialized(ServletContextEvent sce) {
-            try {
+    private ApiMediationClient apiMediationClient;
+    /**
+     *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
+     *  and registers this micro service with API ML.
+     *
+     *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
+     *  {@link java.util.Map} or a string containing the configuration data.
+     *
+     *  Here we use the most convenient method for our Java Servlet based service,
+     *  i.e expecting all the necessary initialization information to be present
+     *  in the  {@link javax.servlet.ServletContext} init parameters.
+     *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
+     *  which is then used to register this service with API ML Discovery Service.
+     *
+     *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+     *  and only can throw {@link ServiceDefinitionException} checked exception.
+     *
+     * @param sce
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        try {
+            /*
+             * Load configuration method with ServletContext
+             */
+            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
+            if (config  != null) {
                 /*
-                 * Load configuration method with ServletContext
+                 * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
                  */
-                ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
-                if (config  != null) {
-                    /*
-                     * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
-                     */
-                    apiMediationClient = new ApiMediationClientImpl();
-
-                    /*
-                     * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
-                     */
-                    apiMediationClient.register(config);
-                }
-            } catch (ServiceDefinitionException sde) {
-                log.error("Service configuration failed. Check log for previous errors: ", sde);
+                apiMediationClient = new ApiMediationClientImpl();
+                /*
+                 * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
+                 */
+                apiMediationClient.register(config);
             }
-        }
-
-        /**
-         * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
-         */
-        @Override
-        public void contextDestroyed(ServletContextEvent sce) {
-            if (apiMediationClient != null) {
-                apiMediationClient.unregister();
-            }
-
-            apiMediationClient = null;
+        } catch (ServiceDefinitionException sde) {
+            log.error("Service configuration failed. Check log for previous errors: ", sde);
         }
     }
+    /**
+     * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
+     */
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        if (apiMediationClient != null) {
+            apiMediationClient.unregister();
+        }
+        apiMediationClient = null;
+    }
+}
+```
 
 ## Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.

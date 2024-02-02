@@ -233,7 +233,7 @@ ZWED_node_cluster_storageTimeout=30000
 ```
 where the timeout value is in milliseconds.
 
-## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
+## Warning: Problem making eureka request {'{'} Error: connect ECONNREFUSED {'}'}
 
 **Symptom:** 
 The Zowe started task `ZWESVSTC` log contains error messages reporting problems connecting 
