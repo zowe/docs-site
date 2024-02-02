@@ -647,7 +647,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {validity: int , scopes: [string]}.
+  Use a valid body in the request. Format of a message: `{validity: int , scopes: [string]}`.
 
 ### ZWEAT606E
 
@@ -671,7 +671,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAT608E
 
@@ -1684,7 +1684,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAG180E
 
