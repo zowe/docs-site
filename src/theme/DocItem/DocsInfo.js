@@ -69,14 +69,12 @@ function DocsInfo({ docsPluginId, ...props }) {
         </div>
 
         <div className="user-options">
-          {/* PDF Button*/}
+          {/* Print Button*/}
           <div className="margin-right--md pointer display-flex">
             {props.editUrl && (
               <a
-                href={
-                  currentVersion == latestVersion
-                    ? "/zowe-docs.pdf"
-                    : "/zowe-docs-" + currentVersion + ".pdf"
+                onClick={
+                  () => window.print()
                 }
                 target="_blank"
               >
@@ -87,7 +85,7 @@ function DocsInfo({ docsPluginId, ...props }) {
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                <span className="margin-left--sm">PDF</span>
+                <span className="margin-left--sm">Print</span>
               </a>
             )}
           </div>
