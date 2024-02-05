@@ -3,12 +3,16 @@
 :::info**Required roles:** system administrator, security administrator
 :::
 
-Authentication can also be performed by the client when the service endpoint is called through the API ML Gateway with client certificates. 
+Authentication for integration with API ML can also be performed by the client when the service endpoint is called through the API ML Gateway with client certificates. 
 
-:::note
+:::tip
 There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, and are using Zowe v2.14 or a later version, use the recommended internal API ML mapper.
+:::
 
-When providing credentials during a login request with a client certificate on the same login request, the login credentials take precedence and the client certificate is ignored.
+:::note**Notes:**
+* When calling the login endpoint with basic authentication credentials as well as with client certificate, the basic authentication credentials take precedence and client certificate is ignored. 
+
+* If you are calling specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
 ## How the Gateway resolves authentication 
@@ -21,8 +25,7 @@ When sending a request to a service with a client certificate, the Gateway perfo
 * The Gateway then performs the login of the mapped user and provides valid authentication to the southbound service. 
 
 :::note**Notes:**
-* Currently ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper.
-* For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
+* Currently ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos).
 :::
 
@@ -43,9 +46,9 @@ ZSS is currently the default API that provides this mapping between the public p
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 :::
 
-## Prerequisites
+## Prerequisites 
 
-Ensure that you satisfy the following requirements before you set up client certificate authentication:
+When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate authentication. These prerequsites do not apply when using the internal API mapper.
 
 1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
 
@@ -58,7 +61,10 @@ For other security systems, refer to the documentation for an equivalent command
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
 :::note
-Ensure that you have an external Certificate Authority (CA) and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication (`OID: 1.3.6.1.5.5.7.3.2`).
+Ensure that you have an external Certificate Authority (CA) and signed client certificates. Alternatively, you can generate these certificates in SAF. 
+Ensure that the client certificate has the following `Extended Key Usage` metadata:  
+`OID: 1.3.6.1.5.5.7.3.2`  
+This metadata can be used for TLS client authentication.
 :::
 
 ## Configure your z/OS system to support client certificate authentication
