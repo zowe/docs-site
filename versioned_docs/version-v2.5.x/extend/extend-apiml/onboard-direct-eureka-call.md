@@ -249,10 +249,10 @@ The following snippet is an example of the API routing information properties.
 ```
 where:
 
-* **apiml.routes.\{route-prefix\}.gatewayUrl**
+* **apiml.routes.\{route-prefix\}.gatewayUrl**  
 The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
 
-* **apiml.routes.\{route-prefix\}.serviceUrl**
+* **apiml.routes.\{route-prefix\}.serviceUrl**  
 The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
@@ -332,7 +332,7 @@ This parameter specifies the API version. This parameter is used to correctly re
 * **apiml.apiInfo.\{api-index\}.gatewayUrl**  
 This parameter specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
-* **apiml.apiInfo.\{api-index\}.swaggerUrl**
+* **apiml.apiInfo.\{api-index\}.swaggerUrl**  
 (Optional) This parameter specifies the Http or Https address where the Swagger JSON document is available.
 
 * **apiml.apiInfo.\{api-index\}.documentationUrl**  

@@ -249,10 +249,10 @@ The following snippet is an example of the API routing information properties.
 ```
 where:
 
-* **apiml.routes.\{route-prefix\}.gatewayUrl**
+* **apiml.routes.\{route-prefix\}.gatewayUrl**  
 The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
 
-* **apiml.routes.\{route-prefix\}.serviceUrl**
+* **apiml.routes.\{route-prefix\}.serviceUrl**  
 The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
