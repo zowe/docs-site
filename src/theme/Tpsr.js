@@ -4,7 +4,7 @@ import {
   useDocsVersion,
 } from "@docusaurus/theme-common/internal";
 
-function tpsr() {
+function Tpsr() {
   const { siteConfig } = useDocusaurusContext();
   const latestVersion = useDocsVersion();
   const version = latestVersion?.label.split(" ");
@@ -19,4 +19,4 @@ function tpsr() {
   );
 }
 
-export default tpsr;
+export default Tpsr;

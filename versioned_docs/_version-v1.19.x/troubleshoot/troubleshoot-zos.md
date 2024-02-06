@@ -95,7 +95,7 @@ The zssServer will register itself with the cross memory server running under th
 ZWES1014I ZIS status - 'Ok' (name='ZWESIS_STD      ', cmsRC='0', description='Ok', clientVersion='2')
 ```
 
-## Unable to launch Zowe with {'{'} FSUM7351 {'}'}
+## Unable to launch Zowe with \{ FSUM7351 \}
 
 When you run `zowe-start.sh` from a unix shell path `<zowe-instance-directory>/bin`, you encounter the following error:
 

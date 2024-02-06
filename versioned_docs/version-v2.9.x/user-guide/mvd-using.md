@@ -74,8 +74,8 @@ The following keyboard shortcuts can be used in the Desktop to navigate or perfo
 |CTRL+ALT+M  |Open the Zowe launchbar menu. Use the UP/DOWN arrow keys to select an app, RIGHT arrow key to spawn context menu, ENTER to launch app, and ESC to close menu |
 |CTRL+ALT+UP  |Maximize active app. Press again to restore |
 |CTRL+ALT+DOWN  |Minimize active app. Press again to restore |
-|CTRL+ALT+LEFT (or "&lt;" key)   	|Switch to next recently active app |
-|CTRL+ALT+RIGHT (or "&gt;" key)   	|Switch to least recently active app |
+|CTRL+ALT+LEFT (or "\<" key)   	|Switch to next recently active app |
+|CTRL+ALT+RIGHT (or "\>" key)   	|Switch to least recently active app |
 |CTRL+ALT+W   	|Close active app |
 
 ### Changing application elements size

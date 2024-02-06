@@ -216,6 +216,17 @@ module.exports = {
           showLastUpdateTime: true,
           routeBasePath: "/",
           lastVersion: "current",
+          remarkPlugins: [() => {
+            // https://github.com/facebook/docusaurus/issues/9789
+            return async (root) => {
+              const {visit} = await import('unist-util-visit');
+              visit(root, 'mdxJsxFlowElement', (node) => {
+                if (node.name === 'img') {
+                  node.name = 'Img';
+                }
+              });
+            };
+          }],
           versions: {
             current: {
               path: "stable",

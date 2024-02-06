@@ -182,7 +182,7 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
-## Error: Zowe Desktop address space fails to start {'{'} ZWED0115E {'}'}
+## Error: Zowe Desktop address space fails to start \{ ZWED0115E \}
 
 After launching the started task `ZWESVSTC` there are no Zowe desktop `ZWE1DS` address space(s).
 
@@ -201,7 +201,7 @@ ZWED_node_cluster_storageTimeout=30000
 ```
 where the timeout value is in milliseconds.
 
-## Warning: Problem making eureka request {'{'} Error: connect ECONNREFUSED {'}'}
+## Warning: Problem making eureka request \{ Error: connect ECONNREFUSED \}
 
 **Symptom:** 
 The Zowe started task `ZWESVSTC` log contains error messages reporting problems connecting 
