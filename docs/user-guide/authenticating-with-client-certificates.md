@@ -20,9 +20,9 @@ There is a limitation with respect to performing authentication using Z Secure S
 When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
 
 * The client calls the service endpoint through the API ML Gateway with the client certificate.
-* The client certificate and private key are checked as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. As of Zowe version 2.14, the API for API ML can be provided by the internal API ML mapper if the mapper is enabled. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, although we recommend using the internal API ML mapper.
-* The Gateway then performs the login of the mapped user and provides valid authentication to the southbound service. 
+* The client certificate is checked as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
+* The public key of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. As of Zowe version 2.14, the API for API ML can be provided by the internal API ML mapper if the mapper is enabled. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, although we recommend using the internal API ML mapper.
+* The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. 
 
 :::note**Notes:**
 * Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
@@ -46,7 +46,7 @@ ZSS is currently the default API that provides this mapping between the public p
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 :::
 
-## Prerequisites 
+## Prerequisites when using ZSS
 
 When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate authentication. These prerequsites do not apply when using the internal API ML mapper.
 
@@ -103,7 +103,7 @@ Note that the internal API ML mapper option is only available for Zowe release 2
 
 ## Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in _Configure your z/OS system to support client certificate authentication_. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in _Configure your z/OS system to support client certificate authentication_ described previously in this article. 
 
 Validate using CURL, a command line utility that runs on Linux based systems:
 
