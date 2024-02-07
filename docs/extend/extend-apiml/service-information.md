@@ -9,28 +9,28 @@ As an API Mediation Layer user, information about API services can be obtained f
 
 This article provides further detail about each of these use cases.
 
-- [API ID in the API Mediation Layer](#api-id-in-the-api-mediation-layer)
-- [Protection of Service Information](#protection-of-service-information)
-- [API Endpoints](#api-endpoints)
-  - [Obtain Information about a  Specific Service](#obtain-information-about-a-specific-service)
-  - [Obtain Information about All Services](#obtain-information-about-all-services)
-  - [Obtain Information about All Services with a Specific API ID](#obtain-information-about-all-services-with-a-specific-api-id)
+- [Using API ID in API ML to locate APIs in different instances](#using-api-id-in-api-ml-to-locate-apis-in-different-instances)
+- [Protecting Service Information](#protecting-service-information)
+- [Using API Endpoints](#using-api-endpoints)
+  - [Obtaining Information about a  Specific Service](#obtaining-information-about-a-specific-service)
+  - [Obtaining Information about All Services](#obtaining-information-about-all-services)
+  - [Obtaining Information about All Services with a Specific API ID](#obtaining-information-about-all-services-with-a-specific-api-id)
 
-## API ID in the API Mediation Layer
+## Using API ID in API ML to locate APIs in different instances
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
 For more information about _baseUrl_ or _basePath_, see [Components of URL](api-mediation-components-of-URL.md).
 
-## Protection of Service Information
+## Protecting Service Information
 
 Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessible only by authorized users and services.
 
-Access to this information requires authentication using mainframe credentials, and a SAF resource check is done. The resource class and resource is defined in the `ZWESECUR` job. You can find more details about the `ZWESECUR` job in [Configuring the z/OS system for Zowe](../../user-guide/configure-zos-system.md).
+Access to this information requires authentication using mainframe credentials, as well as verification of access to resources through SAF. The resource class and resource is defined in the `ZWESECUR` job. Dor more information about `ZWESECUR` job, see [Configuring the z/OS system for Zowe](../../user-guide/configure-zos-system.md).
 
-The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to the your that can access the information about API services.
+The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to access the information about API services.
 
-In IBM RACF, the access to the service information can be given by:
+In IBM RACF, access to service information is specified in the following parameter:
 
 ```markup
 PERMIT APIML.SERVICES CLASS(ZOWE) ID(user) ACCESS(READ)
@@ -50,11 +50,11 @@ RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
 
-API Gateway can be configured to check for SAF resource authorization in several ways. For details, see [SAF Resource Checking](../../user-guide/api-mediation/configuration-saf-resource-checking)
+The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](../../user-guide/api-mediation/configuration-saf-resource-checking)
 
-## API Endpoints
+## Using API Endpoints
 
-### Obtain Information about a Specific Service
+### Obtaining Information about a Specific Service
 
 Use the following method to get information about a specific service:
 
@@ -66,7 +66,7 @@ where:
 
 This method returns a JSON response that describes the service. For more information, see [Response Format](#response-format).
 
-### Obtain Information about All Services
+### Obtaining Information about All Services
 
 Use the following method to get information about all services:
 
@@ -74,7 +74,7 @@ Use the following method to get information about all services:
 
 This method returns a JSON response with a list of all services. For more information, see [Response Format](#response-format).
 
-### Obtain Information about All Services with a Specific API ID
+### Obtaining Information about All Services with a Specific API ID
 
 Use the following method to get information about all services with a specific API ID:
 
