@@ -231,7 +231,7 @@ The standard z/OS Unix directory where Zowe server component and extension confi
 
 #### Zowe instance directory (V1 only)
 
-Also known as <INSTANCE_DIR>. Contains information that is specific to a launch of Zowe. It contains configuration settings that determine how an instance of the Zowe server is started, such as ports that are used or paths to dependent Java and Node.js runtimes.
+Also known as `<INSTANCE_DIR>`. Contains information that is specific to a launch of Zowe. It contains configuration settings that determine how an instance of the Zowe server is started, such as ports that are used or paths to dependent Java and Node.js runtimes.
   
 The instance directory also contains a log directory where different microservices write trace data for diagnosis, as well as a workspace and shell scripts to start and stop Zowe.
 

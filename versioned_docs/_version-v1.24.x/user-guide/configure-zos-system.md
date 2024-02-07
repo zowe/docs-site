@@ -194,7 +194,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
 
       /* Activate these changes */
 
@@ -210,7 +210,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
 - If you use Top Secret, complete the following steps:  
       
-   1. Define the BPX Resource and access for <zowe_stc_user>.
+   1. Define the BPX Resource and access for `<zowe_stc_user>`.
       ```
       TSS ADD(`owner-acid`) IBMFAC(BPX.)
       ```
@@ -220,7 +220,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
    2. Issue the following commands and review the output to check whether permission has been successfully granted:
       ```
       TSS WHOHAS IBMFAC(BPX.SERVER)
@@ -229,7 +229,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       TSS WHOHAS IBMFAC(BPX.DAEMON)
       ```
 - If you use ACF2, complete the following steps:
-   1. Define the BPX Resource and access for <zowe_stc_user>.
+   1. Define the BPX Resource and access for `<zowe_stc_user>`.
       ```
       SET RESOURCE(FAC)
       ```
@@ -239,7 +239,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       RECKEY BPX ADD(DAEMON ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
       ```
       F ACF2,REBUILD(FAC)
       ```

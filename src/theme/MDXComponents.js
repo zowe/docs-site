@@ -1,15 +1,16 @@
 import InitialComponents from '@theme-original/MDXComponents';
 import Badge from "./Badge";
-import tpsr from "./tpsr";
+import Image from "./Image";
+import Tpsr from "./Tpsr";
 import img from "./ZoomedImage";
-import image from "./image";
 
 const MDXComponents = {
   ...InitialComponents,
   Badge,
-  tpsr,
+  Image,
+  Tpsr,
   img,
-  image,
+  Img: img,
 };
 
 export default MDXComponents;

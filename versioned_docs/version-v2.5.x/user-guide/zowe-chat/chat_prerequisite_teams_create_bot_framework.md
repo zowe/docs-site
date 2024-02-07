@@ -22,7 +22,7 @@ You can use the tool Microsoft™ Developer Portal to create a bot with Microsof
 
 6.  Copy the new client secret.
 
-    <!-->![](Screen%20Shot%202022-03-14%20at%202.43.52%20PM.png "New client secret")-->
+    <!-- ![](Screen%20Shot%202022-03-14%20at%202.43.52%20PM.png "New client secret") -->
 
     **Remember:** Save the client secret for later use. You will need it when you configure your Microsoft Teams. The client secret appears only once here.
 
