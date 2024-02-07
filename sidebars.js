@@ -698,9 +698,8 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Caching service",
+              label: "Configuring storage for the Caching service",
               items: [
-                "extend/extend-apiml/api-mediation-caching-service",
                 "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",
