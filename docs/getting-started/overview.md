@@ -289,7 +289,7 @@ For more information, see [Using Zowe IntelliJ plug-in](../user-guide/intellij-u
 
 <!-- 
 
-<tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
+<Tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
 tpsrLatestLink = "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-" + latestVersion + ".md";
 This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</a>
 

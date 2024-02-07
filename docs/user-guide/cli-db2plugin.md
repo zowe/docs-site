@@ -152,7 +152,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
       ```
     :::tip
 
-    By default, <zowe_home> is set to `~/.zowe` on \UNIX and Mac systems, and `C:\Users\<Your_User>\.zowe` on    Windows systems.
+    By default, `<zowe_home>` is set to `~/.zowe` on \UNIX and Mac systems, and `C:\Users\<Your_User>\.zowe` on    Windows systems.
         
     :::
 

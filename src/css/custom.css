@@ -5,6 +5,8 @@
  * work well for content-centric websites.
  */
 
+@import 'react-medium-image-zoom/dist/styles.css';
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #3162ac;
@@ -442,4 +444,10 @@ html[data-theme="light"] .darkTheme {
    background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
   }
 
+[data-rmiz-modal-overlay='visible'] {
+  background-color: rgba(255 255 255 / 95%);
+}
 
+[data-theme='dark'] [data-rmiz-modal-overlay='visible'] {
+  background-color: rgba(0 0 0 / 95%);
+}
