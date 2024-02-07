@@ -476,11 +476,18 @@ module.exports = {
             },
             {
               type: "category",
+              label: "Learn more about APIs",
+              items: [
+                "user-guide/obtaining-information-about-api-services",
+                "user-guide/api-mediation-swagger-try-it-out",
+                "user-guide/api-mediation-swagger-code-snippets",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
-                "user-guide/api-mediation-swagger-try-it-out",
-                "user-guide/api-mediation-swagger-code-snippets",
                 "user-guide/api-mediation-static-api-refresh",
                 "user-guide/api-mediation-change-password-via-catalog",
                 "user-guide/onboard-wizard",
@@ -488,7 +495,6 @@ module.exports = {
             },
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
-            "extend/extend-apiml/service-information",
             "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
