@@ -101,7 +101,7 @@ A typical Zowe runtime directory looks like this:
 ```
 
 ### `zwe` command
-The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
+The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory.
 
 The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
 

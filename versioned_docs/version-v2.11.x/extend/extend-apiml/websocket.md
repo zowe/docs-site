@@ -14,15 +14,16 @@ The API Gateway includes a basic WebSocket proxy which enables the Gateway to ac
 The service defines which WebSocket endpoints are exposed by using Eureka metadata.
 
 **Example:**
-
-    eureka:
-        instance:
-            metadata-map:
-                apiml:
-                    routes:
-                        ws_v1:
-                            gatewayUrl: "ws/v1"
-                            serviceUrl: /${serviceId}/ws
+```
+eureka:
+    instance:
+        metadata-map:
+            apiml:
+                routes:
+                    ws_v1:
+                        gatewayUrl: "ws/v1"
+                        serviceUrl: /${serviceId}/ws
+```
 
 These metadata make it possible for requests from `wss://gatewayHost:gatewayPort/${serviceId}/ws/v1/path` to map to `wss://serviceHost:servicePort/${serviceId}/ws/v1/path`.
 

@@ -1,16 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import { useActiveVersion } from "@docusaurus/plugin-content-docs/client";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import ShareButton from "./ShareButton";
 
 function DocsInfo({ docsPluginId, ...props }) {
-  const { siteConfig } = useDocusaurusContext();
-  const currentVersion = useActiveVersion(docsPluginId).label.split(" ")[0];
-  const latestVersion = siteConfig.customFields.latestVersion;
-
   const location = useLocation();
   const openDocIssueURL =
     "https://github.com/zowe/docs-site/issues/new?assignees=&labels=&template=---doc-error-report.md&title=Issue with docs.zowe.org" +
@@ -69,14 +63,12 @@ function DocsInfo({ docsPluginId, ...props }) {
         </div>
 
         <div className="user-options">
-          {/* PDF Button*/}
+          {/* Print Button*/}
           <div className="margin-right--md pointer display-flex">
             {props.editUrl && (
               <a
-                href={
-                  currentVersion == latestVersion
-                    ? "/zowe-docs.pdf"
-                    : "/zowe-docs-" + currentVersion + ".pdf"
+                onClick={
+                  () => window.print()
                 }
                 target="_blank"
               >
@@ -87,7 +79,7 @@ function DocsInfo({ docsPluginId, ...props }) {
                     verticalAlign: "-0.125em",
                   }}
                 ></img>
-                <span className="margin-left--sm">PDF</span>
+                <span className="margin-left--sm">Print</span>
               </a>
             )}
           </div>

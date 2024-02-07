@@ -1,6 +1,6 @@
 import React from "react";
 
-function image(props) {
+function Image(props) {
   return (
     <img
       src={props.src}
@@ -13,4 +13,4 @@ function image(props) {
   );
 }
 
-export default image;
+export default Image;

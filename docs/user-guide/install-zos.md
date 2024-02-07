@@ -82,7 +82,7 @@ Begin the installation process by familiarizing yourself with the following topi
    - **Portable Software Instance (PSWI)**  
    You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
-::note
+:::note
 While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
 :::
 
