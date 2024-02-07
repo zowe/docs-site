@@ -1,4 +1,4 @@
-# Static APIs refresh functionality in the API Catalog
+# Using Static API services refresh in the API Catalog
 
 The API Catalog enables users to manually refresh static service APIs. Use the **Refresh Static APIs** option if you change a static service API and want these changes to be visible in the API Catalog without restarting the Discovery Service.
 
@@ -20,4 +20,6 @@ Successful requests return a pop-up notification that displays the message, `The
 
 <img src={require("../images/api-mediation/api_refresh_error.png").default} alt="api refresh error" width="700px"/>
 
-**Note:** The manual **Refresh Static APIs** option applies only to static service APIs. Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the specific services where changes are applied. It is not necessary to restart the API Catalog or the Discovery Service.
+:::note
+The manual **Refresh Static APIs** option applies only to static service APIs. Changes to the status of services that are onboarded to allow for dynamic discovery require a restart of the specific services where changes are applied. It is not necessary to restart the API Catalog or the Discovery Service.
+:::

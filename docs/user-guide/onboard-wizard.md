@@ -4,9 +4,7 @@ As an API developer, you can use the Yaml Onboarding Wizard to simplify the proc
 
 ## Onboarding your REST service with the Wizard
 
-The following procedure describes how to onboard your REST service with the Wizard.
-
-**Follow these steps:**
+Use the following procedure to onboard your REST service with the Wizard.
 
 1. In the dashboard of the API Catalog, click the **Onboard New API** dropdown located in the navbar.  
    ![Onboarding](../images/api-mediation/wizard-onboard-button.png)

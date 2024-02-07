@@ -476,20 +476,38 @@ module.exports = {
             },
             {
               type: "category",
+              label: "Learning more about APIs",
+              items: [
+                "user-guide/obtaining-information-about-api-services",
+                "user-guide/api-mediation-swagger-try-it-out",
+                "user-guide/api-mediation-swagger-code-snippets",
+              ],
+            },
+            {
+              type: "category",
+              label: "Administrating APIs",
+              items: [
+                "user-guide/api-mediation-static-api-refresh",
+                "user-guide/onboard-wizard",
+              ],
+            },
+            {
+              type: "category",
+              label: "Using the Caching Service",
+              items: [
+                "user-guide/api-mediation/api-mediation-caching-service",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
-                "user-guide/api-mediation-swagger-try-it-out",
-                "user-guide/api-mediation-swagger-code-snippets",
-                "user-guide/api-mediation-static-api-refresh",
                 "user-guide/api-mediation-change-password-via-catalog",
-                "user-guide/onboard-wizard",
               ],
             },
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
-            "extend/extend-apiml/service-information",
-            "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
@@ -680,9 +698,8 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Caching service",
+              label: "Configuring storage for the Caching service",
               items: [
-                "extend/extend-apiml/api-mediation-caching-service",
                 "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",

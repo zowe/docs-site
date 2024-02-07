@@ -42,19 +42,19 @@ The Caching Service supports the following storage solutions, which provide the 
 
 Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
-For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](./api-mediation-infinispan.md).
+For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-infinispan).
 
 ### VSAM
 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
-For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching Service](./api-mediation-vsam.md).
+For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching Service](../extend/extend-apiml/api-mediation-vsam).
 
 ### Redis
 
 Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
-For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](./api-mediation-redis.md).
+For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../extend/extend-apiml/api-mediation-redis).
 
 ### InMemory
 
