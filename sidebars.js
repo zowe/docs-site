@@ -508,7 +508,6 @@ module.exports = {
             },
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
-            "user-guide/api-mediation/api-mediation-jwt-token-refresh",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
