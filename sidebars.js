@@ -476,7 +476,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Learn more about APIs",
+              label: "Learning more about APIs",
               items: [
                 "user-guide/obtaining-information-about-api-services",
                 "user-guide/api-mediation-swagger-try-it-out",
@@ -485,12 +485,25 @@ module.exports = {
             },
             {
               type: "category",
+              label: "Administrating APIs",
+              items: [
+                "user-guide/api-mediation-static-api-refresh",
+                "user-guide/onboard-wizard",
+              ],
+            },
+            {
+              type: "category",
+              label: "Using the Caching Service",
+              items: [
+                "user-guide/api-mediation-caching-service",
+              ],
+            },
+            {
+              type: "category",
               label: "Using API Catalog",
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
-                "user-guide/api-mediation-static-api-refresh",
                 "user-guide/api-mediation-change-password-via-catalog",
-                "user-guide/onboard-wizard",
               ],
             },
             "user-guide/api-mediation/api-mediation-update-password",
