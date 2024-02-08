@@ -20,13 +20,13 @@ This article provides further detail about each of these use cases.
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
-For more information about _baseUrl_ or _basePath_, see [Components of URL](api-mediation-components-of-URL.md).
+For more information about _baseUrl_ or _basePath_, see [Components of URL](../extend/extend-apiml/api-mediation-components-of-URL).
 
 ## Protecting Service Information
 
 Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessible only by authorized users and services.
 
-Access to this information requires authentication using mainframe credentials, as well as verification of access to resources through SAF. The resource class and resource is defined in the `ZWESECUR` job. Dor more information about `ZWESECUR` job, see [Configuring the z/OS system for Zowe](../../user-guide/configure-zos-system.md).
+Access to this information requires authentication using mainframe credentials, as well as verification of access to resources through SAF. The resource class and resource is defined in the `ZWESECUR` job. Dor more information about `ZWESECUR` job, see [Configuring the z/OS system for Zowe](./configure-zos-system)
 
 The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to access the information about API services.
 
@@ -50,7 +50,7 @@ RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
 
-The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](../../user-guide/api-mediation/configuration-saf-resource-checking)
+The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking).
 
 ## Using API Endpoints
 
