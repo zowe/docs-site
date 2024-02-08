@@ -494,8 +494,8 @@ module.exports = {
             {
               type: "category",
               label: "Using the Caching Service",
+              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
               items: [
-                "user-guide/api-mediation/api-mediation-caching-service",
               ],
             },
             {
