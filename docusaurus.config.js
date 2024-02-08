@@ -294,7 +294,8 @@ module.exports = {
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
           const redirects = {
-            "/whats-new/release-notes/": "/getting-started/release-notes/"
+            "/whats-new/release-notes/": "/getting-started/release-notes/",
+            "/user-guide/obtaining-information-about-api-services": "/extend/extend-apiml/service-information",  
           };
           for (const x of versionsArray) {
             redirects[x] = x.replace(".", "-").replace(".", "-");
