@@ -52,11 +52,11 @@ When using ZSS for authentication, ensure that you satisfy the following prerequ
 
 1. Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
 
-For RACF, issue the following TSO command:  
+  For RACF, issue the following TSO command:  
 
-`ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
+  `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
 
-For other security systems, refer to the documentation for an equivalent command.
+  For other security systems, refer to the documentation for an equivalent command.
 
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
@@ -71,27 +71,27 @@ This metadata can be used for TLS client authentication.
 
 1. Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
 
-**Example command in RACF:**  
+  **Example command in RACF:**  
 
-`RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST` 
+  `RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST` 
 
-**Example command in ACF2:** 
+  **Example command in ACF2:** 
 
-`INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
+  `INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
 
-**Example command in Top Secret:** 
+  **Example command in Top Secret:** 
 
-`TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
+  `TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
 
-Additional details are likely described in your security system documentation.
+  Additional details are likely described in your security system documentation.
 
 2. Import the external CA to the truststore or keyring of the API Mediation Layer.
-3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates).
+3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](../user-guide/api-mediation/configuration-client-certificates.).
 
 :::caution**Important:**
 * PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
 
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main server to use client identity mapping](./configure-zos-system/#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system/#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
 :::
 
 :::note**Notes:**
