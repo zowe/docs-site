@@ -294,7 +294,17 @@ module.exports = {
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
             "user-guide/cli-install-cli-checklist",
-            "user-guide/systemrequirements-cli",
+            {
+              type: "category",
+              label: "Zowe CLI software requirements",
+              link: {type:"doc", id:"user-guide/systemrequirements-cli"},
+              items: [
+                "user-guide/cli-swreqplugins",
+              ],
+              },
+            "user-guide/cli-install-configure-install-online-registry-proxy",
+            "user-guide/cli-install-configure-zosmf",
+            "user-guide/cli-install-configure-zosmf-security",
           {
           type: "category",
           label: "Installing Zowe CLI",
@@ -302,21 +312,28 @@ module.exports = {
           items: [
             "user-guide/cli-configure-scs-on-headless-linux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-install-cli-nodejs-windows",
           ],
           },
-            "user-guide/install-cli-via-proxy",
             "user-guide/cli-updatingcli",
-            "user-guide/cli-uninstall",  
-            "user-guide/cli-install-verify-your-installation", 
             {
               type: "category",
               label: "Advanced Zowe CLI configuration",
               items: [
                 "user-guide/cli-configuringcli-ev",
                 "user-guide/cli-configuringcli-evfile",
+                "user-guide/cli-using-initializing-team-configuration",
+                {
+                  type: "category",
+                  label: "Configuring daemon mode",
+                  link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
+                  items: [
+                    "user-guide/cli-configure-daemon-on-zlinux-os",
+                  ],
+                },
               ],
             }, 
+            "user-guide/cli-install-verify-your-installation", 
+            "user-guide/cli-uninstall",
           ],
         },
         {
@@ -500,21 +517,12 @@ module.exports = {
               label: "Using team profiles",
               link: {type:"doc", id:"user-guide/cli-using-using-team-profiles"},
               items: [
-                "user-guide/cli-using-initializing-team-configuration",
                 "user-guide/cli-using-team-configuration-application-developers",
                 "user-guide/cli-using-team-configuration-team-leaders",
                 "user-guide/cli-using-sharing-team-config-files",
                 "user-guide/cli-using-understand-profiles-configs",
                 "user-guide/cli-using-team-managing-credential-security",
                 "user-guide/cli-using-global-storing-properties-automatically",
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring daemon mode",
-              link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
-              items: [
-                "user-guide/cli-configure-daemon-on-zlinux-os",
               ],
             },
             "user-guide/cli-using-using-profiles-v1",
@@ -536,7 +544,6 @@ module.exports = {
               label: "Zowe CLI plug-ins",
               link: {type:"doc", id:"user-guide/cli-extending"},
               items: [
-                "user-guide/cli-swreqplugins",
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
                 {

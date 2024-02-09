@@ -1,6 +1,9 @@
-# Zowe CLI System requirements
+# Zowe CLI software requirements
 
 Before installing Zowe CLI, ensure that your environment meets the prerequisites that are described here.
+
+:::info**Required role:** systems administrator
+:::
 
 ## Client-side requirements
 
@@ -27,13 +30,9 @@ To install Node.js:
   
   If you issue the `node --version` command and get an error message, confirm that your PATH environment variable includes the path to the Node.js installation location.
 
-:::info important
-If you are installing Zowe CLI with Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
-:::
-
 ### npm
 
-Node Package Manager (npm) is included with most Node.js installations and is used to install and manage Node.js packages on your personal computer.
+Node Package Manager (npm) is included with most Node.js installations and is used to install and manage Node.js packages on your personal computer. (Zowe CLI supports whatever npm version is packaged with Node.js.)
 
 Your installed version of npm must be compatible with your version of Node.js.
 
@@ -51,17 +50,11 @@ To determine the installed version of npm:
 
     If your npm version is not compatible, install a new version of Node.js.
 
-:::info important
- If you are running npm version 8.11.0 or 8.12.0 and you are installing Zowe CLI on a computer that cannot access the Internet or has restricted Internet access, your Zowe CLI installation appears to complete successfully.
- 
- However, when you issue Zowe commands that access the Secure Credential Store, the commands return error messages. To circumvent this problem, install npm 8.12.1 or later on your computer. If you cannot upgrade to 8.12.1 or later, see [Zowe Commands Fail with Secure Credential Errors](../troubleshoot/cli/known-cli.md#zowe-commands-fail-with-secure-credential-errors).
-:::
-
-### Secure Credential Store
+### Secure credential storage
 
 On Linux systems, you must install the packages `gnome-keyring` and `libsecret` (or `libsecret-1-0` on Debian and Ubuntu).
 
-For information about how to configure Secure Credential Store on headless Linux and z/Linux, see [Configure Secure Credential Store on headless Linux operating systems](../user-guide/cli-configure-scs-on-headless-linux-os.md).
+For information on performing this configuration, see [Configuring secure credential storage on headless Linux operating systems](../user-guide/cli-configure-scs-on-headless-linux-os.md).
 
 ### Plug-in client requirements
 
@@ -87,8 +80,28 @@ Plug-ins communicate with various mainframe services. The services must be confi
 
 ### Zowe CLI on z/OS is not supported
 
-Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 plug-in cannot run on z/OS due to native code requirements. As such, Zowe CLI is *not supported* on z/OS and is currently experimental.
+Zowe CLI can be installed on an IBM z/OS environment and run under Unix System Services (USS). However, the IBM Db2 plug-in and the Zowe Secrets SDK cannot run on z/OS due to native code requirements. This means that any z/OS credentials display as plain text on a team configuration file. As such, Zowe CLI is *not supported* on z/OS and is currently experimental.
 
 ## Free disk space
 
 Zowe CLI requires approximately **100 MB** of free disk space. The actual quantity of free disk space consumed might vary depending on your operating system, the plug-ins that you install, and the user profiles that are saved to disk.
+
+##
+
+# Software requirements for Zowe CLI plug-ins
+
+Before you use Zowe&trade; CLI plug-ins, complete the following steps:
+
+**Important!** You can perform the required configurations for the plug-ins that you want to use ***before*** or ***after*** you install the plug-ins. However, if you do not perform the required configurations, the plug-ins will not function as designed.
+
+| Plug-in | Required Configurations |
+| --- | --- |
+| [IBM CICS Plug-in for Zowe CLI](cli-cicsplugin.md) | <ul><li>Ensure that [IBM CICS Transaction Server v5.2 or later](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) is installed and running in your mainframe environment</li><li>[IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.</li></ul> |
+| [IBM Db2 Database Plug-in for Zowe CLI](cli-db2plugin.md) | <ul> <li>[Download and prepare the ODBC driver](../user-guide/cli-db2plugin.md#downloading-the-odbc-driver) (required for only package installations) and address the licensing requirements. _Perform this task before you install the plug-in_.</li><li>**(MacOS)** Download and Install [Xcode](https://developer.apple.com/xcode/resources/).</li> </ul>|  [z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md) | <ul> <li>Ensure that z/OS FTP service is enabled and configured with `JESINTERFACELEVEL` = 2.</li> <li>FTP over SSL is recommended.</li>   </ul> |
+| [IBM z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md) | <ul> <li>Ensure that z/OS FTP service is enabled and configured with `JESINTERFACELEVEL` = 2.</li> <li>FTP over SSL is recommended.</li> </ul> |
+| [IBM IMS Plug-in for Zowe CLI](cli-imsplugin.md) | <ul><li>Ensure that [IBM® IMS™ v14.1.0](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_14.1.0/com.ibm.ims14.doc/ims_product_landing_v14.html) or later is installed and running in your mainframe environment.</li><li> Configure [IBM® IMS™ Connect](https://www.ibm.com/support/knowledgecenter/en/SSEPH2_13.1.0/com.ibm.ims13.doc.ccg/ims_ct_intro.html).</li> <li>Configure [IBM IMS Operations APIs](https://github.com/zowe/ims-operations-api) to enable communication between the CLI and the IMS instance. </li></ul> |
+| [IBM MQ Plug-in for Zowe CLI](cli-mqplugin.md) | <ul><li>Ensure that [IBM® MQ™ v9.1.0](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_9.1.0/com.ibm.mq.pro.doc/q121910_.htm) or later is installed and running in your mainframe environment. Please read this blog for more information: [Exposing the MQ REST API via the Zowe API Mediation Layer](https://developer.ibm.com/messaging/2019/05/17/exposing-the-mq-rest-api-via-the-zowe-api-mediation-layer/) </li></ul>|
+| [Visual Studio Code Extension for Zowe](../user-guide/ze-install.md) | <ul><li>Node.js V8.0 or later</li><li>Access to z/OSMF; at least one profile is configured</li><li>Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](../user-guide/systemrequirements-zosmf.md).</li></ul>|
+
+
+**Important!** You can perform the required configurations for the plug-ins that you want to use ***before*** or ***after*** you install the plug-ins. However, if you do not perform the required configurations, the plug-ins will not function as designed.

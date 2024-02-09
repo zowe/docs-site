@@ -2,6 +2,15 @@
 
 Verify that Zowe CLI has been installed successfully by checking your connection to z/OSMF and accessing the in-product help.
 
+:::info**Required roles:** systems administrator, devops architect
+:::
+
+:::note
+
+Use these commands to validate connection to z/OSMF, not user credentials. To confirm credentials, issue any fully qualified command, such as `zowe zos-files list data-set <dataSetName> [options]`.
+
+:::
+
 ## Testing connections to z/OSMF
 
 Issue a command at any time to receive diagnostic information from the server and confirm that Zowe CLI can communicate with z/OSMF or other mainframe APIs.
@@ -10,15 +19,17 @@ Refer to the following sections for instructions on how to connect to z/OSMF wit
 
 :::info Important
 
-When z/OSMF receives a request via a Zowe CLI command, z/OSMF uses an SSL/TLS certificate to ensure a secure connection during the user session. This verification is done by default, although it can be bypassed by adding the -reject unauthorized (or --ru false) flag to the end of each command listed here. **[why do this if there's sec risk?]**
+When z/OSMF receives a request via a Zowe CLI command, z/OSMF uses an SSL/TLS certificate to ensure a secure connection during the user session.
 
-Determine the potential security risks. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a Certificate Authority (CA). For more information, see [Working with certificates](../user-guide/cli-using-working-certificates.md).
+In the event that your z/OSMF instance does not have a SSL/TLS certificate registered with a Certificate Authority (CA), use the `--reject-unauthorized` (or `--ru`) `false` flag to the end of each command listed here to bypass this security check.
+
+Determine the potential security risks. For the most secure environment, system administrators configure a server keyring with a server certificate signed by a CA. For more information, see [Working with certificates](../user-guide/cli-using-working-certificates.md).
 
 :::
 
 ### Connecting to z/OSM without a profile
 
-Follow these steps when you have installed Zowe CLI but have not yet created a configuration file, or the configuration file has incomplete profile for z/OSMF. **[is this last part correct?]**
+Follow these steps when you have installed Zowe CLI but have not yet created a configuration file, or the configuration file has an incomplete profile for z/OSMF.
 
 1. Verify that your Zowe CLI instance can communicate with z/OSMF:
 
@@ -46,13 +57,19 @@ Follow these steps when you have installed Zowe CLI but have not yet created a c
 
     You have confirmed that Zowe CLI is connected to z/OSMF.
 
-### Connecting to z/OSM with a default profile
+### Connecting to z/OSMF with a default profile
 
-Issue the following command when you have created a profile in a configuration file (such as a [global team config](../user-guide/cli-using-initializing-team-configuration/)) and want to verify the default profile can communicate with z/OSMF: **[what if you have two profiles, which is the default profile? what happens after command is run?]**
+Follow these steps when you have created a default profile in a configuration file (such as a [global team config](../user-guide/cli-using-initializing-team-configuration/)):
 
-```
-zowe zosmf check status
-```
+1. Verify the default profile can communicate with z/OSMF:
+
+    ```
+    zowe zosmf check status
+    ```
+
+2. Check that the installed z/OSMF services and plug-ins are listed in the response.
+
+    You have confirmed that Zowe CLI is connected to z/OSMF.
 
 ### Connecting to z/OSM with a specific profile
 
