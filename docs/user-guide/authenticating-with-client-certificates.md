@@ -69,9 +69,22 @@ This metadata can be used for TLS client authentication.
 
 ## Configure your z/OS system to support client certificate authentication
 
-1. Import the client certificates to SAF, or add the certificates to a user profile.  
-**Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`.  
+1. Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
+
+**Example command in RACF:**  
+
+`RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST` 
+
+**Example command in ACF2:** 
+
+`INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
+
+**Example command in Top Secret:** 
+
+`TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
+
 Additional details are likely described in your security system documentation.
+
 2. Import the external CA to the truststore or keyring of the API Mediation Layer.
 3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates).
 
@@ -103,9 +116,9 @@ Note that the internal API ML mapper option is only available for Zowe release 2
 
 ## Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in _Configure your z/OS system to support client certificate authentication_ described previously in this article. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication](#configure-your-zos-system-to-support-client-certificate-authentication) described previously in this article. 
 
-Validate using CURL, a command line utility that runs on Linux based systems:
+Validate using _CURL_, a command line utility that runs on Linux based systems:
 
 **Example:**
 ```
