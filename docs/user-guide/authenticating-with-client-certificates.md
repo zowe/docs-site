@@ -50,7 +50,7 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
 When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate authentication. These prerequsites do not apply when using the internal API ML mapper.
 
-1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
+1. Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
 
 For RACF, issue the following TSO command:  
 
@@ -61,7 +61,7 @@ For other security systems, refer to the documentation for an equivalent command
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
 :::note
-Ensure that you have an external Certificate Authority (CA) and signed client certificates. Alternatively, you can generate these certificates in SAF. 
+Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF. 
 Ensure that the client certificate has the following `Extended Key Usage` metadata:  
 `OID: 1.3.6.1.5.5.7.3.2`  
 This metadata can be used for TLS client authentication.
