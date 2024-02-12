@@ -37,7 +37,16 @@ export default function DocsVersionDropdownNavbarItem({
       // preserve ?search#hash suffix on version switches
       to: `${versionDoc.path}${search}${hash}`,
       isActive: () => version === activeDocContext.activeVersion,
-      onClick: () => savePreferredVersionName(version.name),
+      onClick: (e) => {
+        savePreferredVersionName(version.name);
+        // See https://stackoverflow.com/questions/73072779
+        // Preventing the default onClick event and calling window.reload is a hack to make redirects work
+        // Ideally we would use reloadDocument prop added in react-route-dom@6 but Docusaurus still uses v5
+        // Or we would override BrowserRouter to force refresh but I can't find a way to swizzle it
+        e.preventDefault();
+        window.location.href = e.target.href;
+        window.reload();
+      }
     };
   });
   const items = [
