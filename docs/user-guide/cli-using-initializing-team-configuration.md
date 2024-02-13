@@ -44,7 +44,7 @@ If API Mediation Layer is running on your site, [Connecting profiles to API Medi
 
     - `IBMUSER`
 
-    Specifies your user ID.
+        Specifies your user ID.
 
     A list of data sets is returned, indicating Zowe CLI is successfully configured to access a z/OSMF instance.
 
@@ -52,7 +52,7 @@ If API Mediation Layer is running on your site, [Connecting profiles to API Medi
 
 :::info Important
 
-After the configuration file is in place (by using either the `zowe config init` command or a file provided by a system administrator), the `zowe profiles` commands used in Zowe v1 no longer function. Zowe CLI returns errors when deprecated profile commands are issued.
+After the configuration file is in place (by using either the `zowe config init` command or a file provided by a system administrator), the `zowe profiles` commands used in Zowe V1 no longer function. Zowe CLI returns errors when deprecated profile commands are issued.
 
 :::
 
