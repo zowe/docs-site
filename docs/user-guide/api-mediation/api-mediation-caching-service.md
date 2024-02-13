@@ -6,7 +6,9 @@ As an API developer, you can use the Caching Service as a storage solution to en
 
 - Using InMemory
 
-**Note:** In the current implementation of the Caching Service, VSAM is required for the storage of key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.
+:::note
+In the current implementation of the Caching Service, VSAM is required for the storage of key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.
+:::
 
 The Caching Service is available only for internal Zowe applications, and is not exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 
@@ -108,9 +110,10 @@ This parameter specifies service behavior when the limit of records is reached. 
   * **removeOldest**  
   removes the oldest item in the cache when the service reaches the configured maximum number
 
-:::note**Notes:**
-- For more information about how to configure the Caching Service in the `application.yml`, see: [Add API Onboarding Configuration](../extend-apiml/onboard-spring-boot-enabler.md).
-- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](./api-mediation-vsam.md).
+:::note
+- For more information about how to configure the Caching Service in the `application.yml`, see
+ [Add API Onboarding Configuration](../../extend/extend-apiml/onboard-spring-boot-enabler).
+- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam).
 :::
 
 ## Authentication
