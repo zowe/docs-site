@@ -38,7 +38,7 @@ The following steps describe how to list the profiles that you created, delete t
 
     ```
     $ zowe config list --locations --root
-    /Users/SMITH-123/.zowe/zowe.config.json
+    ~/.zowe/zowe.config.json
     $
     ```
 
@@ -60,11 +60,8 @@ The following steps describe how to list the profiles that you created, delete t
     For Linux and Mac OS:
 
         ```
-        rm /Users/SMITH-123/.zowe/zowe.config.json
+        rm ~/.zowe/zowe.config.json
         ```
-
-    <!-- **Note:** When you issue the `delete` command, it deletes the
-    specified profile and its credentials from the credential vault in your computer's operating system. -->
 
 4. Uninstall Zowe CLI by issuing the following command:
 
