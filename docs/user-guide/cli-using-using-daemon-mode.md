@@ -12,13 +12,13 @@ When you run Zowe CLI in daemon mode, you run all Zowe commands as you normally 
 Review the following installation notes before you configure Zowe CLI to run in daemon mode:
 
 - Daemon mode does not function on z/OS UNIX System Services (USS) systems.
-- When you want Zowe CLI to run in daemon mode on **z/Linux** operating systems, you must build the daemon mode binary on the z/Linux systems. For information about how to build the binary, see [Configuring daemon mode on z/Linux operating systems](../user-guide/cli-configure-daemon-on-zlinux-os.md). The sections [Enabling daemon mode](#enabling-daemon-mode) and [Disabling daemon mode](#disabling-daemon-mode) (in this article) **do not apply** to running Zowe CLI in daemon mode on z/Linux operating systems.
+- When you want Zowe CLI to run in daemon mode on z/Linux operating systems, you must build the daemon mode binary on the z/Linux systems. For information about how to build the binary, see [Configuring daemon mode on z/Linux operating systems](../user-guide/cli-configure-daemon-on-zlinux-os.md). The sections [Enabling daemon mode](#enabling-daemon-mode) and [Disabling daemon mode](#disabling-daemon-mode) (in this article) **do not apply** to running Zowe CLI in daemon mode on z/Linux operating systems.
 - We do not recommend using daemon mode in an environment where multiple users use the same system. For example, a shared Linux server. **[can we explain why we don't recommend this?]**
 - When you are running Zowe on a Windows operating system in a virtual environment (for example, Windows Sandbox), you might receive an error message that indicates that a library named `VCRUNTIME140.dll` is missing. To correct the error, install Visual C++ Redistributable for Visual Studio 2015. For more information, see [Download Visual C++ Redistributable for Visual Studio 2015](https://www.microsoft.com/en-us/download/details.aspx?id=48145) in the Microsoft Download Center.
 
 ## Enabling daemon mode
 
-The following steps describe how to enable daemon mode and how to configure Zowe to run Zowe CLI constantly in daemon mode.
+To enable daemon mode and configure Zowe to run Zowe CLI constantly in daemon mode:
 
 1. Open a terminal window and issue the following command:
 
