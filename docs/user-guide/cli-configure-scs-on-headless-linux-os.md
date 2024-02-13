@@ -10,7 +10,7 @@ Perform the following configurations on headless Linux or z/Linux operating syst
 ### Requirements for headless Linux operating systems
 
 - Ensure that you installed the secure credential storage requirements that are described in [Zowe CLI software requirements](../user-guide/systemrequirements-cli.md#secure-credential-storage).
-- Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically.
+- Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically, see the following instructions.
 
 ### Unlocking the keyring manually
 
@@ -60,7 +60,7 @@ To unlock the Gnome keyring automatically when you log in:
         session optional pam_gnome_keyring.so auto_start
         ```
 
-3. AUse a text editor or the applicable command to add the following commands to the `~/.bashrc` file:
+3. Use a text editor or the applicable command to add the following commands to the `~/.bashrc` file:
 
     ```bash
     if [[ $- == *i* ]]; then  # Only run in interactive mode
@@ -118,7 +118,7 @@ To install and build the credential storage binaries on z/Linux RHEL V8.X and Ub
 
     Replace `#` with the major version of RHEL that is running on the z/Linux system.
 
-4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically) **[to do what?]**.
+4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically) to load and store credentials **[correct?]**.
 
 5. If you are configuring secure credential storage to run on RHEL V8.x or later, install Zowe CLI.
 
@@ -166,7 +166,7 @@ To install and build the credential storage binaries on z/Linux RHEL V7.X:
     ```
 7. Install Zowe CLI.
 
-8. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically).
+8. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically)to load and store credentials **[correct?]**.
 
     :::info important
     

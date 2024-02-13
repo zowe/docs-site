@@ -9,7 +9,7 @@ If you want to get started using Zowe CLI quickly, see [Zowe CLI quick start](..
 
 :::note notes
 
-- As you install Zowe CLI, you might encounter **error messages** that relate to `cpu-features` and `ssh`. You can safely ignore error messages of this type; the installation completes successfully. This behavior can occur when you install CLI from npm and from a local package.
+- As you install Zowe CLI, you might encounter **error messages** that relate to `cpu-features` and `ssh`. You can safely ignore error messages of this type; the installation completes successfully. This behavior can occur when you install CLI from npm and also from a local package.
 
 - **Linux users** might need to prepend `sudo` to `npm` commands. For more information, see [Known Zowe CLI issues](../troubleshoot/cli/known-cli.md#sudo-syntax-required-to-complete-some-installations).
 
@@ -21,7 +21,7 @@ To install Zowe CLI from a local package:
 
 1. Meet the [Zowe CLI software requirements](../user-guide/systemrequirements-cli.md).
 
-2. Navigate to [Download Zowe](https://www.zowe.org/download.html). In the **Client-side component installer** section, click the **Zowe \<X.Y.Z\> CLI Core** button.
+2. Navigate to [Download Zowe](https://www.zowe.org/download.html). In the **Client-side component installer** section, click the **Zowe \<X.Y.Z\> CLI Core** button (where <X.Y.Z\> specifies the release number).
 
 3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
@@ -29,11 +29,11 @@ To install Zowe CLI from a local package:
 
 4. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/cli-swreqplugins.md) to install Zowe CLI plug-ins.
 
-5. If installing Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button.
+5. If installing Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where <X.Y.Z\> specifies the release number).
 
 6. If installing Zowe CLI plug-ins, read the End User License Agreement for Zowe and click **I agree** to download the plug-ins package.
 
-    `zowe-cli-plugins-next-YYYYMMDD.zip` is downloaded to your computer (where YYYYMMDD indicates the year, month, and day of the build).
+    `zowe-cli-plugins-next-YYYYMMDD.zip` is downloaded to your computer.
 
 7. Unzip the contents of `zowe-cli-package-<X.Y.Z>.zip` (and `zowe-cli-plugins-<X.Y.Z>.zip`, if downloaded) to a working directory.
 
@@ -69,7 +69,7 @@ To install Zowe CLI from an npm registry:
 
    Zowe CLI is installed.
 
-2. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/swreqplugins.md) to install Zowe CLI plug-ins.
+2. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/cli-swreqplugins.md) to install Zowe CLI plug-ins.
 
 3. If installing all available Zowe CLI plug-ins, issue the following command:
    
@@ -83,7 +83,7 @@ To install Zowe CLI from an npm registry:
 
 There are some users who might prefer to install Zowe CLI on the mainframe, or on an operating system where secure credential storage is not required or cannot be installed from its package.
 
-For those users, mainframe installation offers the ability to install Zowe CLI in one place yet still be accessible to multiple mainframe developers. This can help with training purposes, or for scripts that run on both a local computer and the mainframe. These users often request instructions on mainframe installation, and it is provided here.
+For those users, mainframe installation offers the ability to install Zowe CLI in one place yet still be accessible to multiple mainframe developers. This can help with training purposes, or for scripts that run on both a local computer and the mainframe. These users often request instructions on mainframe installation, and they are provided here.
 
 Note, however, that Zowe CLI was not designed for mainframe installation and unexpected behavior can occur.
 
@@ -109,7 +109,7 @@ Installation steps for Zowe CLI depend on whether your z/Linux environment requi
 
 ### Installing Zowe on a USS system, or O/S without secure credential storage
 
-Follow the steps in [Configuring Zowe CLI where secure credential storage is not available](../user-guide/cli-configure-cli-on-os-where-scs-unavailable.md) for z/Linux.
+Follow the steps in [Configuring Zowe CLI where secure credential storage is not available](../user-guide/cli-configure-cli-on-os-where-scs-unavailable.md).
 
 ## Next steps
 
