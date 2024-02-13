@@ -5,7 +5,7 @@ This section explains how to configure Zowe CLI using environment variables.
 :::info Required roles: Security administrator, DevOps architect
 :::
 
-By default, Zowe CLI configuration is stored on your computer in the `C:\Users\user01\.zowe` directory. The directory includes log files, profile information, and installed CLI plug-ins. When troubleshooting, refer to the logs in the `imperative` and `zowe` folders.
+By default, Zowe CLI configuration is stored on your computer in the `C:\Users\user01\.zowe` directory. The directory includes log files, profile information, and installed Zowe CLI plug-ins. When troubleshooting, refer to the logs in the `imperative` and `zowe` folders.
 
 :::note
 
@@ -56,7 +56,7 @@ Setting the log level to `TRACE` or `ALL` might result in sensitive data being l
 
 ## Setting CLI daemon mode properties
 
-By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, the home directory resides on a network drive and has poor file performance.
+By default, the CLI daemon mode binary creates or reuses a file in the user's home directory each time a Zowe CLI command runs. In some cases, this behavior might be undesirable. For example, when the home directory resides on a network drive and has poor file performance.
 
 To change the location that the daemon uses, set the environment variables that are described in the following table.
 
