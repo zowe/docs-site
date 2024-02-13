@@ -5,7 +5,7 @@ You can install Zowe CLI and Zowe CLI plug-ins from an online registry using a p
 :::info Required role: systems administrator
 :::
 
-If your site functions behind a proxy server and blocks access to public registries, complete the following steps before you install Zowe CLI core and Zowe CLI plug-ins from your desired on-line registry.
+If your site functions behind a proxy server and blocks access to public registries, complete the following steps before you install Zowe CLI core and Zowe CLI plug-ins from your desired online registry.
 
 1. Contact your site administrator and obtain the IP address and port number to your proxy server.
 
