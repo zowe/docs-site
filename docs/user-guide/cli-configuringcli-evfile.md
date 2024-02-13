@@ -17,7 +17,7 @@ Use a `.zowe.env.json` file *only* when it is not possible to set your own syste
 
 ## How `.zowe.env.json` works
 
-When a Zowe command is issued, the command initializes the Imperative CLI Framework so that it loads all the utilities that allow the command to function. Imperative reads the `.zowe.env.json` configuration file and sets the environment variables before any loggers or Zowe CLI finish their own initialization.
+When a Zowe command is issued, the command initializes the Imperative CLI Framework **[is Imperative something still used in V3?]**so that it loads all the utilities that allow the command to function. Imperative reads the `.zowe.env.json` configuration file and sets the environment variables before any loggers or Zowe CLI finish their own initialization.
 
 The `.zowe.env.json` environment variables are set for only the duration of a Zowe CLI command.
 
@@ -29,11 +29,11 @@ If an existing environment variable is set in your system and the variable is al
 
 Create a dedicated JSON file to store settings for environment variables:
 
-1. In your Files Explorer, go to the home directory (%HOMEPATH% for Windows, $HOME for Linux and Mac) or the path set in the `ZOWE_CLI_HOME` environment variable.
+1. In your Files Explorer, go to the home directory (`%HOMEPATH%` for Windows, `$HOME` for Linux and Mac) or the path set in the `ZOWE_CLI_HOME` environment variable.
 
 2. Create a JSON file titled `.zowe.env.json`.
 
-3. Use an IDE to open `.zowe.env.json` and enter environment variables, as in the following example:
+3. Use a text editor to open `.zowe.env.json` and enter environment variables, as in the following example:
 
     ```
     {
