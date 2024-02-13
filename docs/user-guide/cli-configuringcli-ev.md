@@ -17,7 +17,7 @@ For information on how to define Zowe CLI environment variables to execute comma
 
 You can set the location on your computer where Zowe CLI creates the `.zowe` directory, which contains log files, profiles, and plug-ins for the product.
 
-| Environment Variable | Description | Values | Default |
+| Environment variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
 | `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | Your computer default home directory |
 
@@ -35,7 +35,7 @@ Any plug-in installed before specifying the environment variable cannot be manag
 
 :::
 
-| Environment Variable | Description | Values | Default |
+| Environment variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
 | `ZOWE_CLI_PLUGINS_DIR`  | Zowe CLI plug-in directory location | Any valid path on your computer | Plug-ins folder inside the Zowe CLI home |
 
@@ -49,10 +49,10 @@ Setting the log level to `TRACE` or `ALL` might result in sensitive data being l
 
 :::
 
-| Environment Variable | Description | Values | Default |
+| Environment variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
-| `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | WARN |
-| `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (OFF, TRACE, DEBUG, INFO, WARN, ERROR, FATAL) | WARN |
+| `ZOWE_APP_LOG_LEVEL`        | Zowe CLI logging level            | Log4JS log levels (`OFF`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`) | `WARN` |
+| `ZOWE_IMPERATIVE_LOG_LEVEL` | Imperative CLI Framework logging level | Log4JS log levels (`OFF`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`) | `WARN` |
 
 ## Setting CLI daemon mode properties
 
@@ -60,7 +60,7 @@ By default, the CLI daemon mode binary creates or reuses a file in the user's ho
 
 To change the location that the daemon uses, set the environment variables that are described in the following table.
 
-| Platform | Environment Variable  | Description | Values | Default |
+| Platform | Environment variable  | Description | Values | Default |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files:<ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `<your_home_dir>/.zowe/daemon` <br/><br/> Examples: <br/><br/> Windows: `%HOMEPATH%\.zowe\daemon`<br/>Linux: `$HOME/.zowe/daemon` |
 | Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon` **[correct?]**

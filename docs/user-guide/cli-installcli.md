@@ -93,8 +93,6 @@ Installing Zowe CLI on the mainframe is not supported by Zowe conformant support
    
 :::
 
-To install Zowe CLI on z/Linux, z/OS UNIX System Services (USS), or on an operating system where the secure credential storage is not required or cannot be installed, use the following installation guidelines.
-
 ### Installing Zowe CLI on z/Linux
 
 Installation steps for Zowe CLI depend on whether your z/Linux environment requires the secure credential storage.
