@@ -11,9 +11,9 @@ The uninstall process does not delete the profiles and credentials that you crea
 
 :::
 
-The following steps describe how to list the profiles that you created, delete the profiles, and uninstall Zowe CLI.
+To list the profiles that you created, delete the profiles, and uninstall Zowe CLI.
 
-1. Open a command terminal window.
+1. Open a command line window.
 
     :::note
     
@@ -79,7 +79,7 @@ The following steps describe how to list the profiles that you created, delete t
 
 5. Delete the `~/.zowe`  or `%homepath%\.zowe` directory on your computer. The directory contains the Zowe CLI log files and other miscellaneous files that were generated when you used the product.
 
-    :::tip
+    :::info
     
     Deleting the directory does not harm your computer.
 
