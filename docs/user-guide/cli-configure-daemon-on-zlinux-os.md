@@ -17,7 +17,7 @@ To install and build the daemon binary on z/Linux systems:
     - Rust
       
       For information about how to install Rust, see the [Rust documentation](https://forge.rust-lang.org/infra/other-installation-methods.html).
-4. Shallow clone the Zowe CLI Git repository for the version of CLI that you installed. Open a command terminal window and issue the following command:
+4. Shallow clone the Zowe CLI Git repository for the version of CLI that you installed. Open a command line window and issue the following command:
 
     ```
     git clone https://github.com/zowe/zowe-cli –depth 1 –branch v$(zowe –version)
