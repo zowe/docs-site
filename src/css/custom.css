@@ -434,15 +434,16 @@ html[data-theme="light"] .darkTheme {
 }
 
 @media (min-width: 997px) {
-   :root {
-  --docusaurus-announcement-bar-height: 1.8em !important;
+  :root {
+    --docusaurus-announcement-bar-height: 1.8em !important;
   }
-  }
-  div[class^='announcementBar_'] {
-   font-weight: 400;
-   font-size: 1.5em;
-   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
-  }
+}
+
+div[class^='announcementBar_'] {
+  font-weight: 400;
+  font-size: 1.5em;
+  background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
+}
 
 [data-rmiz-modal-overlay='visible'] {
   background-color: rgba(255 255 255 / 95%);

@@ -34,8 +34,8 @@ module.exports = {
       content:
           '📌 <b>Support for Zowe Version 1 ends on Sept. 30, 2024</b>. Follow <a href="https://docs.zowe.org/stable/extend/migrate-extensions/" target="_blank">this guide</a> to migrate to Zowe Version 2.',
       textColor: '#000',
-      },
-      docs: {
+    },
+    docs: {
       sidebar: {
         hideable: true
       }
@@ -100,17 +100,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-         {
-           type: "docsVersionDropdown",
-           position: "right",
-           dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
-         },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownActiveClassDisabled: true,
+          dropdownItemsAfter: [
+            {
+              to: "/versions",
+              label: "All versions",
+            },
+          ],
+        },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -294,7 +294,8 @@ module.exports = {
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
           const redirects = {
-            "/whats-new/release-notes/": "/getting-started/release-notes/"
+            "/whats-new/release-notes/": "/getting-started/release-notes/",
+            "/user-guide/obtaining-information-about-api-services": "/extend/extend-apiml/service-information",
           };
           for (const x of versionsArray) {
             redirects[x] = x.replace(".", "-").replace(".", "-");
