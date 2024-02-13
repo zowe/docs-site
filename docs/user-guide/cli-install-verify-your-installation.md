@@ -53,7 +53,7 @@ Follow these steps when you have installed Zowe CLI but have not yet created a c
 
         Specifies the password.
 
-2. Verify that the installed z/OSMF services are plug-ins are listed in the response.
+2. Verify that the installed z/OSMF services are plug-ins listed in the response.
 
     You have confirmed that Zowe CLI is connected to z/OSMF.
 
