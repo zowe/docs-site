@@ -58,7 +58,7 @@ If you are running Zowe CLI version v2.0.0 to v2.15.x, you can update to `@zowe-
 
    :::info Important
    
-   We do not recommend deleting the profiles from your previous Zowe CLI installation until you have tested your V2 installation and are satisfied with its performance.
+   We do not recommend deleting the profiles from your previous Zowe CLI installation until you have tested your V3 installation and are satisfied with its performance. **[is this still applicable for V3?]**
 
    :::
 
@@ -94,9 +94,9 @@ If necessary, you can update or revert Zowe CLI to a known, previously released 
    npm install -g @zowe/cli@<X.Y.Z>
    ```
 
-      `<X.Y.Z>`
+      - `<X.Y.Z>`
 
-      Specifies the version that Zowe CLI or Zowe CLI plug-ins are to be updated or reverted to. For example, `npm install -g @zowe/cli@7.18.7`.
+      Specifies the version that Zowe CLI or Zowe CLI plug-ins are to be updated or reverted to. For example, `npm install -g @zowe/cli@8.0.0`.
 
 2. See [Next steps](#next-steps) for recommended tasks after installation.
 
@@ -112,11 +112,11 @@ If necessary, you can update or revert Zowe CLI to a known, previously released 
 
     `zowe-cli-package-next-YYYYMMDD.zip` is downloaded to your computer (where YYYYMMDD indicates the year, month, and day of the build).
 
-4. If updating or reverting Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button.
+4. If updating or reverting Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where <X.Y.Z\> specifies the release number).
 
 5. If updating or reverting Zowe CLI plug-ins, read the End User License Agreement for Zowe and click **I agree** to download the plug-ins package.
 
-    `zowe-cli-plugins-next-YYYYMMDD.zip` is downloaded to your computer (where YYYYMMDD indicates the year, month, and day of the build).
+    `zowe-cli-plugins-next-YYYYMMDD.zip` is downloaded to your computer.
 
 6. Unzip the contents of `zowe-cli-package-<X.Y.Z>.zip` (and `zowe-cli-plugins-<X.Y.Z>.zip`, if downloaded) to a working directory.
 
