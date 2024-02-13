@@ -2,16 +2,16 @@
 
 You can install Zowe CLI and Zowe CLI plug-ins from an online registry using a proxy server on Windows, macOS, or Linux operating systems.
 
-:::info**Required role:** systems administrator
+:::info Required role: systems administrator
 :::
 
-If your site functions behind a proxy server and blocks access to public registries, complete the following steps before you install core CLI and plug-ins from your desired on-line registry.
+If your site functions behind a proxy server and blocks access to public registries, complete the following steps before you install Zowe CLI core and Zowe CLI plug-ins from your desired on-line registry.
 
 1. Contact your site administrator and obtain the IP address and port number to your proxy server.
 
 2. Configure your NPM configuration file using one of the following methods:
 
-    - Your proxy server **does not require** login credentials:
+    - If your proxy server **does not require** login credentials:
 
         Issue one of the following commands to add to the URL for the proxy server to your NPM configuration file.
 
@@ -43,7 +43,7 @@ If your site functions behind a proxy server and blocks access to public registr
 
             Specifies the port number of the proxy server.
 
-    - Your proxy server **requires** login credentials:
+    - If your proxy server **requires** login credentials:
 
         Issue one of the following commands to add the URL for the proxy server and your login credentials to your NPM configuration file.
 
@@ -82,4 +82,4 @@ If your site functions behind a proxy server and blocks access to public registr
 
             Specifies the port number of the proxy server.
 
-3. After you complete these steps, you can now install Zowe CLI and Zowe CLI Plug-ins from an NPM public online registry.
+3. Install Zowe CLI and Zowe CLI plug-ins from an NPM public online registry.

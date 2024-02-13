@@ -1,32 +1,33 @@
-# Configuring secure credential storage on headless Linux operating systemssssss
+# Configuring secure credential storage on headless Linux operating systems
 
 Perform the following configurations on headless Linux or z/Linux operating systems.
+
+:::info Required role: systems administrator
+:::
 
 ## Headless Linux operating systems
 
 ### Requirements for headless Linux operating systems
 
-- Ensure that you installed the secure credential storage requirements that are described in [Zowe CLI software requirements](../user-guide/systemrequirements-cli.md).
+- Ensure that you installed the secure credential storage requirements that are described in [Zowe CLI software requirements](../user-guide/systemrequirements-cli.md#secure-credential-storage).
 - Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically.
 
 ### Unlocking the keyring manually
 
 You must unlock the keyring in each user session.
 
-To unlock the keyring manually:
+To unlock the keyring manually, open the command prompt and issue the following command:
 
-1. Open the command prompt and issue the following command:
+```bash
+export $(dbus-launch)
+gnome-keyring-daemon -r --unlock --components=secrets
+```
 
-    ```bash
-    export $(dbus-launch)
-    gnome-keyring-daemon -r --unlock --components=secrets
-    ```
+:::note
 
-    :::note
+The `gnome-keyring-daemon -r --unlock --components=secrets` command prompts you to specify a password. After you enter the password, press `Ctrl` + `D` twice to continue the terminal session.
 
-    The `gnome-keyring-daemon -r --unlock --components=secrets` command prompts you to specify a password. After you enter the password, press `Ctrl` + `D` twice to continue the terminal session.
-
-    :::
+:::
 
 ### Unlocking the keyring automatically
 
@@ -45,7 +46,7 @@ To unlock the Gnome keyring automatically when you log in:
     - `gnome-keyring-pam`: CentOS, Fedora, SUSE
     - `libpam-gnome-keyring`: Debian, Ubuntu
 
-2. Use a text editor or the applicable command to edit the files `/etc/pam.d/login` (for TTY login), and `/etc/pam.d/sshd` if it exists (for SSH login).
+2. Use a text editor or the applicable command to edit the files `/etc/pam.d/login` (for TTY login) and `/etc/pam.d/sshd`, if it exists (for SSH login).
 
     - Add the following statement to the end of the `auth` section:
     
@@ -59,7 +60,7 @@ To unlock the Gnome keyring automatically when you log in:
         session optional pam_gnome_keyring.so auto_start
         ```
 
-3. Add the following commands to the `~/.bashrc` file:
+3. AUse a text editor or the applicable command to add the following commands to the `~/.bashrc` file:
 
     ```bash
     if [[ $- == *i* ]]; then  # Only run in interactive mode
@@ -74,6 +75,8 @@ To unlock the Gnome keyring automatically when you log in:
     The first command launches DBus, which the Gnome keyring requires. The second command starts the keyring daemon so that it is ready to be used by Zowe CLI commands.
 
 4. Restart your computer.
+
+    You have successfully completed the configuration to unlock the Gnome keyring automatically.
 
 5. Issue a Zowe CLI command that uses secure credentials to validate the automatic keyring unlock.
 
@@ -101,7 +104,7 @@ To install and build the credential storage binaries on z/Linux RHEL V8.X and Ub
 
     :::
 
-2. Install Zowe CLI if you are configuring secure credential storage on a Ubuntu z/Linux operating system.
+2. If you are configuring secure credential storage on a Ubuntu z/Linux operating system, install Zowe CLI.
 
     For all other platforms (RHEL), continue to the next step.
 
@@ -115,9 +118,9 @@ To install and build the credential storage binaries on z/Linux RHEL V8.X and Ub
 
     Replace `#` with the major version of RHEL that is running on the z/Linux system.
 
-4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically).
+4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically) **[to do what?]**.
 
-5. Install Zowe CLI if you are configuring secure credential storage to run on RHEL V8.x or later.
+5. If you are configuring secure credential storage to run on RHEL V8.x or later, install Zowe CLI.
 
 ## Configuring RHEL V7.X
 
@@ -157,7 +160,7 @@ To install and build the credential storage binaries on z/Linux RHEL V7.X:
     subscription-manager repos --enable rhel-7-for-system-z-optional-source-rpms
     subscription-manager repos --enable rhel-7-for-system-z-optional-debug-rpms
     ```
-6. Install the toolset:
+6. Install the toolset by issuing the following command:
     ```
     yum install devtoolset-11
     ```
@@ -167,9 +170,8 @@ To install and build the credential storage binaries on z/Linux RHEL V7.X:
 
     :::info important
     
-    The secure credential storage capability is installed every time that you install or update Zowe CLI. On RHEL V7.x, ensure that the Red Hat Developer Toolset is enabled every time you install or update Zowe CLI. When you do not enable the toolset, secure credential management is not available on the system. To ensure that the toolset is enabled when you install Zowe CLI, issue the following commands instead of the standard `npm install` commands.
+    The secure credential storage capability is installed every time that you install or update Zowe CLI. On RHEL V7.x, ensure that the Red Hat Developer Toolset is enabled every time you install or update Zowe CLI. When you do not enable the toolset, secure credential management is not available on the system. To ensure that the toolset is enabled when you install Zowe CLI, issue the following commands instead of the standard `npm install` commands. **[are these the exact commands, or are these example commands?]**
     
-    For example:
     ```
     scl enable devtoolset-11 ‘npm install -g @zowe/cli@next’
     scl enable devtoolset-11 ‘npm install -g zowe-cli.tgz’

@@ -304,7 +304,7 @@ module.exports = {
             "user-guide/cli-install-configure-zosmf-security",
           {
           type: "category",
-          label: "Installing Zowe CLI",
+          label: "Installing Zowe CLI and Zowe CLI plug-ins",
           link: {type:"doc", id:"user-guide/cli-installcli"},
           items: [
             "user-guide/cli-configure-scs-on-headless-linux-os",
@@ -314,7 +314,7 @@ module.exports = {
             "user-guide/cli-updatingcli",
             {
               type: "category",
-              label: "Advanced Zowe CLI configuration",
+              label: "Configuring Zowe CLI",
               items: [
                 "user-guide/cli-configuringcli-ev",
                 "user-guide/cli-configuringcli-evfile",
@@ -329,8 +329,8 @@ module.exports = {
                 },
               ],
             }, 
-            "user-guide/cli-install-verify-your-installation", 
             "user-guide/cli-uninstall",
+            "user-guide/cli-install-verify-your-installation", 
           ],
         },
         {
