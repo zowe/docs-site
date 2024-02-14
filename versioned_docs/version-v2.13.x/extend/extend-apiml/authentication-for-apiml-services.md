@@ -163,7 +163,7 @@ For more information, see your security system documentation.
 2. Import the external CA to the truststore or keyring of the API Mediation Layer.
 3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](../../user-guide/api-mediation/configuration-client-certificates).
 
-:::note**Notes:**
+:::note Notes:
 * PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](#authentication-with-passtickets).
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
 * ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss).

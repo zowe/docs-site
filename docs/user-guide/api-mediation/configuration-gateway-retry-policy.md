@@ -2,7 +2,7 @@
 
 Use the following procedure to change the Gateway retry policy.
 
-:::info**Role:** system programmer
+:::info Role: system programmer
 :::
 
 All requests are disabled as the default configuration for retry with one exception: the server retries `GET` requests that finish with status code `503`.
