@@ -2,7 +2,7 @@
 
 Review this article and the procedures to install and activate the functions of Zowe server-side components using SMP/E.
 
-:::info**Required roles:** system programmer
+:::info Required roles: system programmer
 :::
 
 :::note**Notes:**

@@ -3,7 +3,7 @@
 
 If you do not have a certificate, follow the procedure in this article that corresponds to the certificate type you choose to generate.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Choose from the following certificate types:

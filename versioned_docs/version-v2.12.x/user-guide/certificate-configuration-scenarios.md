@@ -3,7 +3,7 @@
 
  After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, review the five scenarios presented in this article for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 :::tip **Tip**

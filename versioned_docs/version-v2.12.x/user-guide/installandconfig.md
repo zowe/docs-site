@@ -2,7 +2,7 @@
 
 Review this overview article to familiarize yourself with key concepts used in the Zowe server-side installation process. After reviewing these key concepts, review the articles in this section to prepare your system for installation. 
 
-:::info**Required roles:** system programmer, security administrator, storage administrator
+:::info Required roles: system programmer, security administrator, storage administrator
 :::
 
 To prepare for Zowe server-side installation, we recommend that your installation team review the installation and configuration tasks and the indicated required roles to perform specific procedures. Doing so can help you complete the process without encountering delays waiting for tasks to be completed at the last minute.

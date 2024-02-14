@@ -2,7 +2,7 @@
 
 Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. Each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF requires permission to access these z/OSMF services.
 
-:::info**Required roles:**  security administrator
+:::info Required roles:  security administrator
 :::
 
 ### Overview of user categories and roles

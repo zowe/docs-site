@@ -10,7 +10,7 @@ meta:
 
 Follow these steps described in this article to configure z/OSMF.
 
-:::info**Required roles:** system programmer, security administrator, domain administrator
+:::info Required roles: system programmer, security administrator, domain administrator
 :::
 
 1. From the console, issue the following command to verify the version of z/OS:

@@ -1,6 +1,6 @@
 # Authenticating with a JWT token
 
-:::info**Required roles:** system administrator, security administrator
+:::info Required roles: system administrator, security administrator
 :::
 
 One user authentication method available in Zowe is via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information.  

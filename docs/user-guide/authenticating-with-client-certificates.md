@@ -1,6 +1,6 @@
 # Authenticating with client certificates
 
-:::info**Required roles:** system administrator, security administrator
+:::info Required roles: system administrator, security administrator
 :::
 
 Authentication for integration with API ML can also be performed by the client when the service endpoint is called through the API ML Gateway with client certificates. 
