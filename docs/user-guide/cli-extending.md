@@ -12,6 +12,14 @@ Plug-ins can gain control of your CLI application legitimately during the execut
 - [IBM® CICS Plug-in for Zowe CLI](cli-cicsplugin.md)
 - [IBM® Db2® Database Plug-in for Zowe CLI](cli-db2plugin.md)
 - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
-- [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
 - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
 - [Visual Studio Code (VSCode) Extension for Zowe](ze-install.md)
+- [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
+
+    :::warning
+
+    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
+
+    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
+
+    :::
