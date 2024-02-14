@@ -26,7 +26,7 @@ cd <ZOWE_INSTANCE_DIR>/bin
 ```
 where,
 
-_<ZOWE_INSTANCE_DIR>_ is the directory where you set the instance directory to. This script starts `ZWESVSTC` for you so you do not have to log on to TSO and use SDSF.
+`<ZOWE_INSTANCE_DIR>` is the directory where you set the instance directory to. This script starts `ZWESVSTC` for you so you do not have to log on to TSO and use SDSF.
 
 ### Option 2: Starting Zowe with the z/OS START command
 

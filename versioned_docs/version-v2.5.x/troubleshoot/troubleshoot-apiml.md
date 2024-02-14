@@ -108,7 +108,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **{name}**
+    - **\{name\}**
 
          Specifies the logger name
 

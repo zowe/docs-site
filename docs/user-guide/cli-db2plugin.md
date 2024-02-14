@@ -6,7 +6,7 @@ Zowe CLI Plug-in for IBM Db2 Database lets you execute SQL statements against a 
 
 ## Use cases
 
-As an application developer, you can use Zowe CLI Plug-in for IBM DB2 Database to perform the following tasks:
+As an application developer, you can use Zowe CLI Plug-in for IBM Db2 Database to perform the following tasks:
 
   - Execute SQL and interact with databases.
   - Execute a file with SQL statements.
@@ -124,7 +124,7 @@ With the Db2 ODBC CLI driver downloaded, set the `IBM_DB_INSTALLER_URL` environm
 To successfully connect the Db2 CLI plug-in to a database on z/OS, a license needs to be present either on the client where the Zowe CLI is executed from, or else on z/OS. If you do not have a license configured when you execute Db2 CLI commands, you receive an error `SQL1598N`:
 
 ```
-DB2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
+Db2 ODBC Driver Error: [node-ibm_db] SQL_ERROR
 Error Details:
 Error:    [IBM][CLI Driver] SQL1598N An attempt to connect to the database server failed because of a licensing problem.
 ```
@@ -135,14 +135,14 @@ You can execute the utility `db2connectactivate` on z/OS to enable a Db2 databas
 
 ### Client-side license
 
-If the utility `db2connectactivate` has not been executed against the Db2 database that your profile is connecting to, then it is possible to obtain the license file `db2consv_zs.lic` from a copy of DB2 Connect and use this for client configuration. This will need to be done separately for each client PC.  
+If the utility `db2connectactivate` has not been executed against the Db2 database that your profile is connecting to, then it is possible to obtain the license file `db2consv_zs.lic` from a copy of Db2 Connect and use this for client configuration. This will need to be done separately for each client PC.  
 
 1. Locate your client copy of the Db2 license file `db2consv_zs.lic`. 
 
     :::note
     
     The license must be of version 11.5 if the Db2 server is not `db2connectactivated`. You can buy a db2connect license from IBM. The connectivity can be enabled either on server using db2connectactivate utility or on client using client side license file.
-    For more information about Db2 the license and purchasing cost, please contact IBM Customer Support.
+    For more information about Db2 license and purchasing cost, please contact IBM Customer Support.
 
     :::
 
@@ -152,7 +152,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
       ```
     :::tip
 
-    By default, <zowe_home> is set to `~/.zowe` on \UNIX and Mac systems, and `C:\Users\<Your_User>\.zowe` on    Windows systems.
+    By default, `<zowe_home>` is set to `~/.zowe` on \UNIX and Mac systems, and `C:\Users\<Your_User>\.zowe` on    Windows systems.
         
     :::
 
@@ -160,7 +160,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 ## Creating a user profile
 
-You create a DB2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
+You create a Db2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
 
 - Create plug-in profiles using a configuration file: Specify your profile and connection details in the `zowe.config.json` configuration file.
 
@@ -170,7 +170,7 @@ We recommend that you create profiles using the configuration file. We do not re
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the DB2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
 
 Alternatively, you can create a Db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
 
@@ -202,7 +202,7 @@ Alternatively, you can create a Db2 profile manually by adding a section that co
 
 4. Save the file.
 
-    You can now use your profile when you issue commands in the db2 command group.
+    You can now use your profile when you issue commands in the `zowe db2` command group.
 
 ### Creating plug-in profiles using a command
 
@@ -243,4 +243,4 @@ Create a profile using the `zowe profiles create` command:
     ```
 2. Press `Enter`. The result of the command displays as a success or failure message.
 
-    You can now use your profile when you issue commands in the db2 command group.
+    You can now use your profile when you issue commands in the `zowe db2` command group.

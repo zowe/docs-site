@@ -69,10 +69,10 @@ jobs:
             If you have addressed this issue already, refresh this page in your browser to remove this comment.
       - name: File type checker
         id: file_type_checker
-        uses: JJ/github-pr-contains-action@releases/v10
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          bodyContains: '\.md|\.jpg|\.gif|\.png'
+        env:
+          PR_BODY_PATTERN: '\.md|\.jpg|\.gif|\.png|\.pdf'
+        run: |
+          [[ "${{ github.event.pull_request.body }}" =~ "$PR_BODY_PATTERN" ]] || exit 1
       - name: Missing File Name Comment PR
         if: failure() && steps.file_type_checker.outcome == 'failure'
         uses: marocchino/sticky-pull-request-comment@v2
