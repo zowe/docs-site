@@ -1,6 +1,6 @@
 # Authenticating with a JWT token
 
-:::info**Required roles:** system administrator, security administrator
+:::info Required roles: system administrator, security administrator
 :::
 
 One user authentication method available in Zowe is via JWT tokens, whereby a token can be provided by a specialized service, which can then be used to provide authentication information.  
@@ -160,7 +160,7 @@ https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
 ```
 The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token becomes invalidated and is no longer usable.
 
-:::note**Notes:**
+:::note Notes:
 - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](./api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
 - The endpoint is protected by a client certificate.
 - The refresh request requires the token in one of the following formats:

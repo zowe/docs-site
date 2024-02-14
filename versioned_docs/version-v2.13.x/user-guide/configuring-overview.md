@@ -2,7 +2,7 @@
 
 Review this article for an overview of the procedures that must be performed to configure Zowe z/OS components and the z/OS system. More details about the individual procedures are provided in the articles in this section. 
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Configuring Zowe z/OS components consists of the following four main steps:

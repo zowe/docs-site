@@ -2,7 +2,7 @@
 
 Before you install Zowe&trade; on z/OS, you must install IBM SDK for Node.js on the same z/OS server that hosts the Zowe Application Server and z/OS Explorer Services. Review the information in this topic to obtain and install Node.js.
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 :::note

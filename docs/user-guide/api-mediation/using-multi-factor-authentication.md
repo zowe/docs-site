@@ -33,7 +33,7 @@ Neither Zowe CLI nor API Catalog issue a notification when a user is required to
 
 We recommend you first try to access self-service facilities and resolve the issue there. If you are unable to access your self-service facilities, contact your system administrator.
 
-:::tip**Tips:**
+:::tip Tips:
 * For more information about how to manage multi-factor authentication credentials in AAM, see [Manage Multi-Factor Authentication Credentials (IBM RACF)](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/using-with-ibm-racf/manage-multi-factor-authentication-credentials-ibm-racf.html) in the Advanced Authentication Mainframe 2.0 Broadcom documentation.
 * For more information about how to manage multi-factor authentication credentials in IBM Z MFA, see
 [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
