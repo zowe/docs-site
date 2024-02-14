@@ -1,6 +1,6 @@
 # Installing Zowe client-side components
 
-Prepare yourself to install Zowe client-side components.
+Review this topic to prepare to install, configure, and deploy Zowe client-side components.
 
 :::info**Required roles:** systems programmer, security administrator, storage administrator
 :::
@@ -11,7 +11,7 @@ To install your product, we recommend that your team understands the following t
 
 - JCL
 - TSO/ISPF
-- Your organization IT environment, enterprise structure, and region structure
+- Your organization's IT environment, enterprise structure, and region structure
 - z/OS environment and installing software in this environment
 - z/OS UNIX System Services
 

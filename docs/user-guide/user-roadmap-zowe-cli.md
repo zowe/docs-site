@@ -20,7 +20,7 @@ Ready to start using Zowe CLI *right now*? Speed up the installation process wit
 
 ## Getting the most from Zowe CLI
 
-The following blogs on the publishing platform Medium go over uses cases and provide recommendations on best practices, providing tips on how to best use Zowe CLI to meet your needs.
+The following blogs on the publishing platform Medium go over use cases and provide recommendations on best practices, providing tips on how to best use Zowe CLI to meet your needs.
 
 - [Zowe CLI: Getting started with **Team Config**.](https://medium.com/zowe/zowe-cli-team-config-101-be57345ed668)
 
