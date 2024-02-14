@@ -1,25 +1,26 @@
-# Zowe MultiTenancy Configuration
+# Routing MultiTenancy Configuration
 
 Zowe supports management of multiple sysplexes whereby different sysplexes can serve different purposes or different customers. The use case for multi-sysplex support is when a service provider manages sysplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different sysplexes. 
 
 ## Component Layout example
 
-In the multi-tenancy environment, certain Zowe components should be enabled, while others should be disabled. The multi-tenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
+In the multi-tenancy environment, certain Zowe components may be enabled, while others may be disabled. The multi-tenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
 
-When using a multi-tenany environment, ensure that the following Zowe components are either enabled or disabled:
+When using a multi-tenancy environment, ensure that the following Zowe components are either enabled or disabled:
 
 - Domain API ML
   - Gateway and Discovery Service: **enabled**
   - Cloud Gateway: **disabled**
+
 - Central API ML
   - Cloud Gateway and Discovery Service: **enabled**
   - Gateway: **disabled**
 
-## Onboard domain Gateways to the central Cloud Gateway
+## Onboarding Domain Gateways to the central Cloud Gateway
 
 The Cloud Gateway must onboard all domain Gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of the specific services (e.g. domain gateways).  
 
-### Dynamic Onboarding (recommended)
+### Dynamic Onboarding (recommended) for domain Gateways
 
 To dynamically onboard to the Discovery Service in the central cluster, set the following property for all domain Gateways:
 
@@ -41,7 +42,7 @@ components.gateway.apiml.service.additionalRegistration:
 It is not necessary for the Gateway service to provide different routing patterns for the central discovery service. These metadata can be the same for every cluster.
 :::
 
-### Static Onboarding (deprecated)
+### Static Onboarding for domain Gateways (deprecated)
 
 Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the prefered method.
 
@@ -56,7 +57,7 @@ For static onboarding, make sure that the following parameters are correctly spe
 
 For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
 
-## Establish a trust relationship between domain Gateways and the Cloud Gateway
+## Establishing a trust relationship between domain Gateways and the Cloud Gateway
 
 The following keytool commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway.
 
@@ -76,7 +77,7 @@ The following keytool commands are examples of establishing a trust relationship
 
   `keytool -import -file keystore/ca31/local_ca/local_ca.cer -alias gateway_ca31 -keystore keystore/ca32/localhost/localhost.truststore.p12`
 
-## Use the /registry endpoint in Cloud Gateway
+## Using the /registry endpoint in Cloud Gateway
 
 The `/registry` endpoint provides information about services onboarded to all domain Gateways and the Central Gateway. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
@@ -175,7 +176,7 @@ The central Cloud Gateway can onboard Cloud Gateways of all domains. This servic
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
 
-### Dynamic Configurations
+### Dynamic Configurations to the central Discovery Service
 
 #### Dynamic configuration: YML
 
@@ -209,7 +210,7 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables that are shown above. 
 
-### Validate successful configuration
+### Validating successful configuration
 
 The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
 

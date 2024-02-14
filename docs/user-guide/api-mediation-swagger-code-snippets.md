@@ -1,6 +1,7 @@
-# Swagger Code Snippets functionality in the API Catalog
+# Using Swagger Code Snippets in the API Catalog
 
 As part of the *Try it out* functionality, the API Catalog provides **Code Snippets** in different languages for each service API operation. The following languages are supported:
+
 * C
 * C#
 * Go
@@ -41,13 +42,11 @@ apiInfo:
 
 ## Generate the code snippets
 
-This section outlines the process for generating code snippets.
+Use the following procedure to generate code snippets:
 
-**Follow these steps:**
+Click **Try it out** and execute the request, as described in the previous section.
 
-1. Click **Try it out** and execute the request, as described in the previous section.
+The API Catalog generates the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, these snippets are displayed in the snippet bar under a title prefixed with `Customized`.
 
-2. The API Catalog generates the basic code snippets, shown under the code snippet tab. If the service onboarder has also provided customized code snippets, these snippets are displayed in the snippet bar under a title prefixed with `Customized`.
-
-   **Example:**
-   <img src={require("../images/api-mediation/basic-code-snippets.png").default} alt="basic code snippets" width="700px"/>
+**Example:**
+<img src={require("../images/api-mediation/basic-code-snippets.png").default} alt="basic code snippets" width="700px"/>

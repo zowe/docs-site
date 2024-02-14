@@ -252,7 +252,7 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
-## Error: Exception thrown when reading SAF keyring {ZWED0148E}
+## Error: Exception thrown when reading SAF keyring \{ZWED0148E\}
 
 **Symptom:**
 The error message indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. ZWED0148E contains the following messages.
@@ -291,7 +291,7 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
 
 In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
 
-## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
+## Warning: Problem making eureka request \{ Error: connect ECONNREFUSED \}
 
 **Symptom:** 
 The Zowe started task `ZWESLSTC` log contains error messages reporting problems connecting 

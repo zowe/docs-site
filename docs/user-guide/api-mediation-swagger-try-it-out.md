@@ -1,6 +1,6 @@
-# Swagger "Try it out" functionality in the API Catalog
+# Using Swagger "Try it out" in the API Catalog
 
-The API Catalog enables users to call service APIs through the **Try it out** functionality. There are 2 types of endpoints:
+The API Catalog makes it possible for users to call service APIs through the **Try it out** functionality. There are 2 types of endpoints:
 
 - **Public endpoints**
 
@@ -14,7 +14,7 @@ The API Catalog enables users to call service APIs through the **Try it out** fu
 
     <img src={require("../images/api-mediation/catalog_proctected_endpoints_swagger_lock.png").default} alt="endpoint detail" width="1000px"/>
 
-    **Note:** Before making requests to protected endpoints, authorize your session by clicking the lock icon and complete the required information in the Authorization modal shown below:
+    Before making requests to protected endpoints, authorize your session by clicking the lock icon and complete the required information in the Authorization modal: 
 
     **Example:**
 
@@ -28,9 +28,7 @@ To demonstrate **Try it out**, we use the example of the Swagger Petstore.
 
 ## Make a request
 
-This section outlines the process for making a request.
-
-**Follow these steps:**
+Follow this procedure to make a request.
 
 1. Expand the **POST Pet** endpoint.
 

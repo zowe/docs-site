@@ -68,7 +68,7 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 ```
 
 ### `zwe` command
-The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
+The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory.
 
 The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
 
