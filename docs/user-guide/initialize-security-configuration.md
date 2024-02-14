@@ -58,7 +58,7 @@ The JCL allows you to vary which security manager you use by setting the _PRODUC
 
 If `ZWESECUR` encounters an error or a step that has already been performed, it continues to the end, so it can be run repeatedly in a scenario such as a pipeline automating the configuration of a z/OS environment for Zowe installation.  
 
-:::info**Important**
+:::info Important
 It is expected that your security administrator will be required to review, edit where necessary, and either execute `ZWESECUR` as a single job, or execute individual TSO commands to complete the security configuration of a z/OS system in preparation for installing and running Zowe.
 :::
 

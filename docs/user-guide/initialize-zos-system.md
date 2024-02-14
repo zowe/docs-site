@@ -22,7 +22,7 @@ Configures the VSAM files needed to run the Zowe caching service used for high a
 - **stc**  
 Configures the system to launch the Zowe started task.
 
-:::info**Recommendation:**
+:::info Recommendation:
 We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security) in this configuration documentation.
 ::: 
 

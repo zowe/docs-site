@@ -64,7 +64,7 @@ see [zwe init security](../appendix/zwe_server_command_reference/zwe/init/zwe-in
 
 Each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF requires permission to access these z/OSMF services. It is necessary that every user ID be added to the group with the appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` (default). 
 
-:::info**Required role:**  security administrator
+:::info Required role:  security administrator
 :::
 
 This step is not included in the provided Zowe JCL because it must be done for every TSO user ID who wants to access Zowe's z/OS services.  The list of those user IDs will typically be the operators, administrators, developers, or anyone else in the z/OS environment who is logging in to Zowe.

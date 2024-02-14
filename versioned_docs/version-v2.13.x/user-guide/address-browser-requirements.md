@@ -2,7 +2,7 @@
 
 Review the following browser requirements to avoid browser-specific issues when running particular server-side components.
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 ## Zowe Desktop requirements (client PC)

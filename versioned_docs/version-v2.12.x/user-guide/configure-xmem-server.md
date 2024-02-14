@@ -6,7 +6,7 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 :::info Required roles: system programmer, security administrator
 :::
 
-:::tip**Important**
+:::tip Important
 This article describes how to configure the cross server manually. However, most of this configuration should already be performed during [Zowe configuration](./configuring-overview). 
 If you have already successfully run the `zwe init` command, the load modules are already installed, and APF authorization and SAF configuration is complete.
 
@@ -159,7 +159,7 @@ Do not install the Zowe auxiliary address space unless a Zowe extension product'
 
 A default installation of Zowe does not require auxiliary address spaces to be configured.
 
-:::info**Important**
+:::info Important
 The cross memory `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. **Do not start the `ZWESASTC` task manually.**
 :::
 

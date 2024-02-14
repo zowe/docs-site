@@ -1,7 +1,7 @@
 # Enabling single sign on for clients via client certificate configuration
 
 
-:::info**Roles:** system programmer, system administrator, security administrator
+:::info Roles: system programmer, system administrator, security administrator
 :::
 
 Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. 

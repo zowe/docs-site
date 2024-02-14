@@ -17,7 +17,7 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 
 Use the `zwe init mvs` command to intialize Zowe custom MVS data sets. 
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 During the installation of Zowe, the following three data sets are created and populated with members copied across from the Zowe installation files:
@@ -102,7 +102,7 @@ Successful execution of `zwe init mvs` has the following results:
 
 This subcommand creates the user IDs and security manager settings.
 
-:::info**Required role:** security administrator
+:::info Required role: security administrator
 :::
 
 If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
@@ -158,7 +158,7 @@ Installation of Zowe main started tasks requires that JCL members for each of Zo
 
 Once you have completed security configuration, you can install the Zowe main started tasks. 
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.  

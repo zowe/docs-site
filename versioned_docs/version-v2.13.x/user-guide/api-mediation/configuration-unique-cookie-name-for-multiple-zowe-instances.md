@@ -1,6 +1,6 @@
 # Configuring a unique cookie name for a specific API ML instance
 
-:::info**Role:** system programmer
+:::info Role: system programmer
 :::
 
 By default, in the API Gateway, the cookie name is `apimlAuthenticationToken`.

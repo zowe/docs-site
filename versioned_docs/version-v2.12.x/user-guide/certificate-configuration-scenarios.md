@@ -19,7 +19,7 @@ This automation can be performed by defining and customizing the `zowe.setup.cer
 Zowe can then automate the certificate setup via the `zwe init certificate` command. 
 
 
-:::note**Note:**  
+:::note Note:  
 Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate*, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 :::
 

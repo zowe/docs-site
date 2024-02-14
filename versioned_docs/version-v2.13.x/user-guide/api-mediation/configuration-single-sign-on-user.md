@@ -1,6 +1,6 @@
 # Enabling single sign on for clients
 
-:::info**Roles:** system programmer, system administrator, security administrator
+:::info Roles: system programmer, system administrator, security administrator
 :::
 
 As a system programmer or system administrator, you can customize the way API ML handles authentication towards clients such as CLI and/or users. Each of the following methods limits the frequency the user is reqired to enter credentials to access API Mediation Layer: 
