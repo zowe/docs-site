@@ -287,11 +287,12 @@ module.exports = {
     {
       type: "category",
       label: "Installing Zowe client-side components",
+      link: {type:"doc", id:"user-guide/install-zowe-client-side-components"},
       collapsed: false,
       items: [
         {
           type: "category",
-          label: "Zowe CLI",
+          label: "Zowe CLI installation",
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
             "user-guide/systemrequirements-cli",
@@ -324,6 +325,7 @@ module.exports = {
           label: "Zowe Explorer",
           link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
           items: [
+            "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
