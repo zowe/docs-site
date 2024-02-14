@@ -89,7 +89,7 @@ To manually download the ODBC driver, see instructions in [Downloading the ODBC 
 
 3. Rename the file to `odbc_bindings.node`. This is the name used by the Db2 plug-in.
 
-    You have successfully extracted the ODBC driver.
+    You successfully extracted the ODBC driver.
 
 :::note
 
