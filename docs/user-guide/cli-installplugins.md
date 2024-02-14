@@ -4,7 +4,7 @@ Use commands in the `plugins` command group to install and manage Zowe&trade; CL
 
 :::info Important
 
-Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
+Plug-ins can gain control of Zowe CLI legitimately during the execution of every command. Install third-party plug-ins at your own risk.
 
 :::
 
@@ -67,7 +67,7 @@ Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this art
 
     :::
 
-You installed Zowe CLI plug-ins.
+    You have successfully installed Zowe CLI plug-ins.
 
 ## Installing plug-ins from a local package
 
@@ -123,7 +123,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     :::
 
-    You installed Zowe CLI plug-ins.
+    You have successfully installed the Zowe CLI plug-ins.
 
 ## Validating plug-ins
 
