@@ -164,7 +164,7 @@ curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/valida
 An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
-:::note**Azure Entra ID OIDC notes:**
+:::note Azure Entra ID OIDC notes:
 API ML uses the `sub` claim of the ID Token to identify the user, and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
 * The Azure token `sub` is an alphanumeric value.  
 For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.

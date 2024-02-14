@@ -2,7 +2,7 @@
 
 Begin configuration of your installation of Zowe z/OS components by initializing Zowe z/OS runtime.
 
-:::info**Required roles:** system programmer
+:::info Required roles: system programmer
 :::
 
 Use one of the following options to initialize Zowe z/OS runtime:

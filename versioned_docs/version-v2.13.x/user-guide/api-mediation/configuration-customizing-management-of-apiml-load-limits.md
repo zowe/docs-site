@@ -1,6 +1,6 @@
 # Customizing management of API ML load limits 
 
-:::info**Role:** system programmer
+:::info Role: system programmer
 ::: 
 
 As a system programmer, you can customize your configuration for how API ML manages both northbound and southbound load limits in single instances:
