@@ -12,7 +12,11 @@ For a system administrator for the Zowe API Mediation Layer, the IDF Plug-in for
 
 The plug-in provides the `map` command. For details about the map command, see [Using](#using).
 
-**Note:** The plug-in `help` command includes specific parameters of Zowe-profiles which are not used.
+:::note
+
+The plug-in `help` command includes specific parameters of Zowe-profiles which are not used.
+
+:::
 
 ## Software requirements
 
