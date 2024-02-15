@@ -3,7 +3,7 @@
 To properly configure Zowe to use certificates for server-side component installation, review the  certificate setup options presented in this article. 
 Understanding these options makes it possible to select the best certificate configuration scenario that fits your Zowe deployment use case. 
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 
 If you know that you will be using certificates in a production deployment environment, and that you will be using an external certificate authority (CA), we recommend you consult with your organization's security administrator before you start certificate configuration.
 :::

@@ -2,7 +2,7 @@
 
 One option to use certificates in Zowe is to import and configure existing certificates. Use the procedure that applies to the type of certificate you wish to import.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Choose from the following certificate importing options:

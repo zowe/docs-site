@@ -2,7 +2,7 @@
 
 As a system programmer, follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 
-:::info**Roles:** system programmer, security administrator
+:::info Roles: system programmer, security administrator
 :::
 
 ## Configuring Zowe to use PassTickets

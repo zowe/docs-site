@@ -2,7 +2,7 @@
 
 As a security administrator it is necessary to  configure the z/OS system for Zowe. Review the following article to learn about z/OS prerequisites, and z/OS configuration requirements for specific settings.
 
-:::info**Required role:** security administrator
+:::info Required role: security administrator
 :::
 
 ## z/OS prerequisites
@@ -123,7 +123,7 @@ Define or check the following configurations depending on whether ICSF is alread
         (repeat for user-acids IKED, NSSD, and Policy Agent)
 
 
-:::note**Notes:**
+:::note Notes:
 - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
 - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
 - CCA and/or PKCS #11 coprocessor for random number generation.
@@ -481,7 +481,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
 
-:::note**Notes:**
+:::note Notes:
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::

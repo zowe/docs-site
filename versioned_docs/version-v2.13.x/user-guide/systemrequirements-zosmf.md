@@ -10,7 +10,7 @@ meta:
 
 Follow these steps described in this article to configure z/OSMF.
 
-:::info**Required roles:** system programmer, security administrator, domain administrator
+:::info Required roles: system programmer, security administrator, domain administrator
 :::
 
 1. From the console, issue the following command to verify the version of z/OS:
@@ -106,7 +106,7 @@ The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work wit
 
   To verify that z/OSMF REST services are configured correctly in your environment, enter the REST endpoint into your browser. For example: `https://mvs.ibm.com:443/zosmf/restjobs/jobs`
 
-  :::note**Notes**
+  :::note Notes
 
   - Browsing z/OSMF endpoints requests your user ID and password for defaultRealm; these are your TSO user credentials.
   - The browser returns the status code 200 and a list of all jobs on the z/OS system. The list is in raw JSON format.

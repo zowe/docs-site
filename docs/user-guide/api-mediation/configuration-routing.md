@@ -1,6 +1,6 @@
 # Customizing routing behavior 
 
-:::info**Roles:** system programmer, system administrator, security administrator
+:::info Roles: system programmer, system administrator, security administrator
 :::
 
 The Zowe API Mediation Layer offers a range of routing configurations for enhanced functionality and security. 

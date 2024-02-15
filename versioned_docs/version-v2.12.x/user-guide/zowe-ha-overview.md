@@ -3,7 +3,7 @@
 Zowe has a high availability feature built-in.
 For Zowe in a high availability configuration, one workspace directory is required. This workspace directory must be created on a shared file system (zFS directory) which all LPARs in a Sysplex can access. Review this article and the following articles in this section for the configuration steps to enable the high availability feature. Note that configuring high availability is optional.
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 ## Enable high availability when Zowe runs in Sysplex

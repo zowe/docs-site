@@ -4,7 +4,7 @@ The communication server on z/OS provides a functionality to encrypt HTTP commun
 
 Review this article for descriptions of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS, and security recommendations.
 
-:::info**Role:** security administrator
+:::info Role: security administrator
 :::
 
 - [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
@@ -59,13 +59,13 @@ While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires
 
 2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
-:::note**Notes**
+:::note Notes
 * Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
 
 * As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
 
-:::caution**Important security consideration**
+:::caution Important security consideration
 
 Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 

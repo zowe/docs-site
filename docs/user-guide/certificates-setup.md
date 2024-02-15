@@ -4,7 +4,7 @@ Zowe can use certificates that are held in z/OS Keyring.
 
 You can use four z/OSMF workflows that enable you to manage keyring setup, certificates, certificate sign requests, and signatures, and load certificates to a keyring.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Use the following workflows to set up certificates for Zowe in your environment:
