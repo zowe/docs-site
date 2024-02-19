@@ -57,5 +57,5 @@ Configure Infinispan as a storage solution through the Caching service by settin
             jgroups:
               port: 7098
             persistence:
-              dataLocation: data01
+              dataLocation: /global/zowe/workspace/caching-service/data01
   ```
