@@ -35,5 +35,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: "--accept 401,429 --cache --max-cache-age 1d --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
+          args: "--accept 401,403,429 --cache --max-cache-age 1d --max-concurrency 64 --no-progress --verbose 'docs/**/*.md'"
           fail: true

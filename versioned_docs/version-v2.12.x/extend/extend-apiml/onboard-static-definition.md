@@ -94,7 +94,7 @@ catalogUiTiles:
 
 In this example, a suitable name for the file is `petstore.yml`.
 
-:::note**Notes:**
+:::note Notes:
 
 * The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 * The file can contain one or more services defined under the `services:` node.
@@ -103,7 +103,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 * The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
 
-:::tip**Tips:**
+:::tip Tips:
 
 * There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
@@ -473,11 +473,11 @@ additionalServiceMetadata:
            description: This is the second tile with ID tile2
    ```
 
-    * **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.\{tileId\}.title**
     
        This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-    * **catalogUiTile.{tileId}.description**
+    * **catalogUiTile.\{tileId\}.description**
     
        This parameter specifies the detailed description of the API Catalog UI dashboard tile. This value is displayed in the API Catalog UI dashboard as the tile description.
 
@@ -501,7 +501,7 @@ additionalServiceMetadata:
         
         All changes are applied. Existing parameters are overwritten.     
         
-    * **additionalServiceMetadata.{updatedParameter}**
+    * **additionalServiceMetadata.\{updatedParameter\}**
     
         This parameter specifies any metadata parameters that are updated.      
 
@@ -548,7 +548,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
     
     - To place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
-    :::note**Notes:**
+    :::note Notes:
     - The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts. If you have not yet started Zowe, this directory might be missing.
     - The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.
     :::  

@@ -70,7 +70,7 @@ The request requires the body in the following format:
 }
 ```
 
-::note
+:::note
 The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
 :::
 

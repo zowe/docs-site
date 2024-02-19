@@ -463,11 +463,11 @@ additionalServiceMetadata:
            description: This is the second tile with ID tile2
    ```
 
-    * **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.\{tileId\}.title**
     
        This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-    * **catalogUiTile.{tileId}.description**
+    * **catalogUiTile.\{tileId\}.description**
     
        This parameter specifies the detailed description of the API Catalog UI dashboard tile. This value is displayed in the API Catalog UI dashboard as the tile description.
 
@@ -491,7 +491,7 @@ additionalServiceMetadata:
         
         All changes are applied. Existing parameters are overwritten.     
         
-    * **additionalServiceMetadata.{updatedParameter}**
+    * **additionalServiceMetadata.\{updatedParameter\}**
     
         This parameter specifies any metadata parameters that are updated.      
 

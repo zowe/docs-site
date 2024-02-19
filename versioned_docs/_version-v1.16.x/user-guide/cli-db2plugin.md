@@ -116,7 +116,7 @@ The following steps are required for both the registry and offline package insta
         ```
         <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2/node_modules/ibm_db/installer/clidriver/license
         ```
-    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
+    **Tip:** By default, `<zowe_home>` is set to `~/.zowe` on \*NIX systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
     After the license is copied, you can use the Db2 plugin functionality.
 
