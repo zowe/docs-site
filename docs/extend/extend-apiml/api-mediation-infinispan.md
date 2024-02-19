@@ -53,7 +53,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
           storage:
             mode: infinispan
             infinispan: 
-              initialHosts: lpar123[7099]
+              initialHosts: lpar2[7099]
               jgroups:
                 port: 7098
               persistence:
@@ -64,7 +64,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
           storage:
             mode: infinispan
             infinispan: 
-              initialHosts: lpar123[7098]
+              initialHosts: lpar1[7098]
               jgroups:
                 port: 7099
               persistence:
