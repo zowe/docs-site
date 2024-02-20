@@ -11,14 +11,14 @@ Learn how to start using Zowe components, applications, and plug-ins.
 ## Zowe client-side components
 
 - [Using Zowe CLI](cli-using-usingcli.md)
-- [Using Zowe Explorer](ze-usage.md)
+- [Using Zowe Explorer for Visual Studio Code](ze-usage.md)
+- [Using Zowe Explorer for IntelliJ](intellij-using.md)
 - [Using Zowe SDKs](sdks-using.md)
 
 ### Explore available plug-ins
 
 - [Zowe CLI plug-ins](cli-extending.md)
-- [Zowe Explorer extensions](ze-using-zowe-explorer-cics-ext.md)
-- [Using Zowe IntelliJ Plug-in](intellij-using.md)
+- [Zowe Explorer extensions for Visual Studio Code](ze-using-zowe-explorer-cics-ext.md)
 
 ### Incubator components
 
