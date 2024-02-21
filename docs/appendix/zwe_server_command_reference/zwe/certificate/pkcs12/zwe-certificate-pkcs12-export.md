@@ -9,6 +9,8 @@
 Export PKCS12 keystore as PEM files.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -27,6 +29,8 @@ Full name|Alias|Type|Required|Help message
 --keystore|-f|string|yes|PKCS12 keystore file name.
 --password|-p|string|yes|Password of the certificate keystore.
 --private-keys||string|no|Private keys should also be exported.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -45,6 +49,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0178E|178|Failed to export PKCS12 keystore %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
