@@ -10,6 +10,8 @@ This command will lock the keystore directory to only be accessible by specified
 user group.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -28,7 +30,7 @@ Full name|Alias|Type|Required|Help message
 --keystore-dir|-d|string|yes|Keystore directory.
 --user||string|yes|Owner of the keystore directory.
 --group||string|yes|Group of the keystore directory.
---group-permission||string|no|Group permission. Can be `<empty>` for no permission, or `read`, `write`.
+--group-permission||string|no|Group permission. Can be <empty> for no permission, or `read`, `write`.
 
 
 ### Inherited from parent command
