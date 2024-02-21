@@ -28,6 +28,7 @@ module.exports = {
       ],
     },
     "whats-new/zowe-v3-office-hours",
+    "whats-new/breaking-changes-v3",
   ],
   "getting-started": [
     {
