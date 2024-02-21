@@ -9,6 +9,8 @@
 * [component](./zwe-internal-start-component.md)
 * [prepare](./zwe-internal-start-prepare.md)
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -27,6 +29,8 @@ zwe internal start component -o component-name -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -41,6 +45,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
