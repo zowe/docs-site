@@ -4,7 +4,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ## ZSS informational messages
 
-### ZWES1007I :new:
+### ZWES1007I
 
   webContent was not found in plugin definition for '%s'
 
@@ -16,7 +16,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES1008I :new:
+### ZWES1008I
 
   libraryVersion was not found in plugin definition for '%s'
 
@@ -28,7 +28,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES1010I :new:
+### ZWES1010I
 
   Plugin ID and/or location was not found in '%s'
 
@@ -83,7 +83,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES1038I :new:
+### ZWES1038I
 
   Server timeouts file '%s' either not found or invalid JSON. ZSS sessions will use the default length of one hour.
 
@@ -205,7 +205,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ## ZSS error messages
 
-### ZWES1001E :new:
+### ZWES1001E
 
   Log level '%d' is incorrect.
 
@@ -217,7 +217,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Verify the `<log-level>` is in range `0..5`.
 
-### ZWES1002E :new:
+### ZWES1002E
 
   Error in timeouts file: Could not parse config file as a JSON object.
 
@@ -241,7 +241,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   If you are a plugin developer check `<error-details>` and fix the error by editing `<plugin-definition-file>`, otherwise, report the error to the plugin vendor.
 
-### ZWES1011E :new:
+### ZWES1011E
 
   Error while parsing: '%s'
 
@@ -253,7 +253,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Review the `<json-statement>` and correct it.
 
-### ZWES1016E :new:
+### ZWES1016E
 
   Cannot validate file permission, path is not defined.
 
@@ -261,11 +261,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Cannot validate the file permission, path is not defined.
 
-  **Action:**
-
-  Review the permission of the :question:
-
-### ZWES1017E :new:
+### ZWES1017E
 
   Could not get file info on config path='%s': Ret='%d', res='%d'
 
@@ -277,7 +273,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Contact support.
 
-### ZWES1020E :new:
+### ZWES1020E
 
   Skipping validation of file permissions: Disabled during compilation, using file '%s'.
 
@@ -289,7 +285,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Contact support.
 
-### ZWES1021E :new:
+### ZWES1021E
 
   Cannot validate file permissions: Path is not defined.
 
@@ -297,21 +293,13 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Cannot validate the file permissions: path is not defined.
 
-  **Action:**
-
-  :question:
-
-### ZWES1022E :new:
+### ZWES1022E
 
   Cannot validate file permissions: Path is for a directory and not a file.
 
   **Reason:**
 
   Cannot validate the file permissions. Given path is a directory path only without a file.
-
-  **Action:**
-
-  :question:
 
 ### ZWES1034E
 
@@ -339,7 +327,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES1037E
 
-  The server port '%d' may be occupied. Is ZSS running twice?
+  This is usually because the server port '%d' is occupied. Is ZSS running twice?
 
   **Reason:**
 
@@ -351,7 +339,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES1065E
 
-  Failed to configure https server. Check agent https settings
+  Failed to configure https server, check agent https settings
 
   **Reason:**
 
@@ -361,7 +349,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Check agent https settings.
 
-### ZWES1500E :new:
+### ZWES1500E
 
   Failed to generate PassTicket - userId='%s', applId='%s', %s
 
@@ -387,7 +375,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   If your privileged server name is `ZWESIS_STD` then no action required. Otherwise set `components.zss.crossMemoryServerName` property in configuration to the correct name.
 
-### ZWES1004W :new:
+### ZWES1004W
 
   Expected plugin ID '%s', instead received '%s'
 
@@ -411,7 +399,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   If you are a plugin developer add the `pluginId` property to the `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
 
-### ZWES1009W :new:
+### ZWES1009W
 
   Plugin ID '%s' is NULL and cannot be loaded.
 
@@ -483,7 +471,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
-### ZWES1200W :new:
+### ZWES1200W
 
   Could not %s file '%s': Ret='%d', res='%d'
 
@@ -497,7 +485,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES1202W :new:
+### ZWES1202W
 
   Transfer type has not been set.
 
@@ -509,7 +497,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES1400W :new:
+### ZWES1400W
 
   Non standard class provided for '%s' '%s', ending request...
 
@@ -517,11 +505,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Non standard class was provided for `<HTTP-setting>` `<HTTP-method>`, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1401W :new:
+### ZWES1401W
 
   Profile not provided for profiles GET, ending request...
 
@@ -529,11 +513,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The profile not provided for profiles GET, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1402W :new:
+### ZWES1402W
 
   Profile name required for '%s' '%s'
 
@@ -541,11 +521,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The profile name is required for `<HTTP-setting>` `<HTTP-method>`
 
-  **Action:**
-
-  :question:
-
-### ZWES1403W :new:
+### ZWES1403W
 
   User ID required for user POST/PUT
 
@@ -553,11 +529,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The user ID is required for user POST or PUT.
 
-  **Action:**
-
-  :question:
-
-### :x: ZWES1404W :x:
+### ZWES1404W
 
   Body not provided for user POST/PUT, ending request...
 
@@ -565,11 +537,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The body was not provided for user POST or PUT, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1406W :new:
+### ZWES1406W
 
   Unknown access type '%d' provided for user POST/PUT, ending request...
 
@@ -577,11 +545,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Unknown access type `<access-type>` provided for user POST or PUT, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1407W :new:
+### ZWES1407W
 
   Access list can only be retrieved in bulk, ending request...
 
@@ -589,11 +553,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The access list can only be retrieved in bulk, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1408W :new:
+### ZWES1408W
 
   Access list buffer with size '%u' not allocated, ending request...
 
@@ -601,11 +561,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The access list buffer with size `<size>` was not allocated, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1409W :new:
+### ZWES1409W
 
   Access list size out of range '%u', ending request...
 
@@ -613,11 +569,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The size of access list is out of range `<number>`, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1410W :new:
+### ZWES1410W
 
   Access list entry name required for access list DELETE
 
@@ -625,11 +577,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The access list entry name is required for access list `DELETE`.
 
-  **Action:**
-
-  :question:
-
-### ZWES1411W :new:
+### ZWES1411W
 
   Class-mgmt query string is invalid, ending request...
 
@@ -637,11 +585,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   `Class-mgmt`` query string is invalid, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1412W :new:
+### ZWES1412W
 
   Group name required for '%s' '%s'
 
@@ -649,11 +593,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The group name required for `<HTTP-setting>` `<HTTP-method>`.
 
-  **Action:**
-
-  :question:
-
-### ZWES1413W :new:
+### ZWES1413W
 
   Body not provided for group POST, ending request...
 
@@ -661,11 +601,8 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The body was not provided for group `POST`, the request was ended.
 
-  **Action:**
 
-  :question:
-
-### ZWES1414W :new:
+### ZWES1414W
 
   Superior not provided for group POST, ending request...
 
@@ -673,11 +610,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Superior not provided for group `POST`, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1415W :new:
+### ZWES1415W
 
   Bad superior group provided for group POST, ending request...
 
@@ -685,11 +618,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Bad superior group was provided for group `POST`, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1416W :new:
+### ZWES1416W
 
   Access type not provided for user POST/PUT, ending request...
 
@@ -697,11 +626,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   The access type was not provided for user `POST` or `PUT`, the request was ended.
 
-  **Action:**
-
-  :question:
-
-### ZWES1417W :new:
+### ZWES1417W
 
   Unknown access type, use [USE, CREATE, CONNECT, JOIN]
 
@@ -709,11 +634,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Unknown access type, use `USE`, `CREATE`, `CONNECT` or `JOIN`.
 
-  **Action:**
-
-  :question:
-
-### ZWES1418W :new:
+### ZWES1418W
 
   Access list will be re-allocated with capacity '%u'
 
@@ -725,17 +646,13 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.  
 
-### ZWES1419W :new:
+### ZWES1419W
 
   Group-mgmt query string is invalid, ending request...
 
   **Reason:**
 
   `<Group-mgmt>` query string is invalid and the requested was ended.
-
-  **Action:**
-
-  :question:
 
 ### ZWES1602W
 
@@ -793,7 +710,6 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Failed to get JWK - `<reason>`, retry in `<n>` seconds. ZSS Server was unable to get JSON Web Key(JWK), it will try to repeat the attempt in `<n>` seconds.
 
-
   **Action:**
 
-No action required.
+  No action required.
