@@ -125,7 +125,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`. HA is mode enabled.
+  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`. HA mode is enabled.
 
   **Action:**
 
@@ -339,11 +339,11 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES1037E
 
-  This is usually because the server port '%d' is occupied. Is ZSS running twice?
+  The server port '%d' may be occupied. Is ZSS running twice?
 
   **Reason:**
 
-  ZSS port number is already occupped. 
+  ZSS port number is already occupied. 
 
   **Action:**
 
@@ -351,7 +351,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES1065E
 
-  Failed to configure https server, check agent https settings
+  Failed to configure https server. Check agent https settings
 
   **Reason:**
 
@@ -371,7 +371,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Review your security product meets all passTickets requirements.
+  Review your security product to determine that it meets all passTickets requirements.
 
 ## ZSS warning messages
 
@@ -409,7 +409,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  If you are a plugin developer add `pluginId` property into `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
+  If you are a plugin developer add the `pluginId` property to the `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
 
 ### ZWES1009W :new:
 
@@ -445,7 +445,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Ensure that ZSS certificate is configured correctly. Check GSKit return code and description for additional information. 
+  Ensure that the ZSS certificate is configured correctly. Check GSKit return code and description for additional information. 
 
 ### ZWES1103W
 
@@ -469,7 +469,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
+  Action depends on return/reason code. For additional information examine the reason code with the [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
 ### ZWES1103W
 
