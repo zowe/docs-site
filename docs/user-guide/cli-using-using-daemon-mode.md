@@ -40,17 +40,11 @@ To enable daemon mode and configure Zowe to run Zowe CLI constantly in daemon mo
 
    :::
 
-   You have successfully configured Zowe CLI to run on deamon mode.
+   You have successfully configured Zowe CLI to run on daemon mode.
    
    Each time a Zowe CLI command is issued, the daemon binary creates or reuses a file in the user's home directory. In some cases, this behavior might be undesirable. (For example, the home directory resides on a network drive and has poor file performance.)
    
    To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli-ev.md#setting-cli-daemon-mode-properties).
-
-   :::note
-   
-   Complete the environment variable configuration step (Step 2) only once. **[why would users think they need to perfrom Step 2 multiple times? Is this note really necessary?]**
-
-   :::
 
 The following example illustrates running Zowe CLI commands with daemon mode enabled:
 
@@ -66,7 +60,7 @@ The following example illustrates running Zowe CLI commands with daemon mode ena
 
 When you are running Zowe CLI in daemon mode using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as an emoji (♀️) **[<--is this really an emoji? do we need a better example?]**.
 
-To correct this, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your `.bashrc` file **[where is this file located?]**.
+To correct this, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your `.bashrc` file in the `/<drive>/Users/<UserID>/.bashrc` directory.
 
 :::
 
@@ -108,7 +102,7 @@ When you install another version of Zowe CLI, you should always run the `zowe da
 
 ## Disabling daemon mode
 
-You can disable Zowe CLI from running in daemon mode at any time. For example, if daemon mode lacks functionality that you desire, such as viewing colored-coded commands. **[is this still true?]**
+You can disable Zowe CLI from running in daemon mode at any time. For example, if the daemon experiences an unexpected error.
 
 To disable daemon mode, open a terminal window and issue the following command:
 

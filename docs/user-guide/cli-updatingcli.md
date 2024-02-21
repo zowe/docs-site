@@ -12,7 +12,7 @@ You must update Zowe CLI using the method that you used to install Zowe CLI.
 For Zowe CLI core, open a command line window and issue the following command:
 
 ```
-zowe -V
+zowe --version
 ```
 
 For Zowe CLI plug-ins, open a command line window and issue the following command:
@@ -35,7 +35,7 @@ If you are running Zowe CLI version v2.0.0 to v2.15.x, you can update to `@zowe-
 2. To update and install all Zowe plug-ins, open a command line window and issue the following command:
 
    ```
-   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v3-lts @zowe/db2-for-zowe-cli@zowe-v3-lts @zowe/zos-ftp-for-zowe-cli@zowe-v3lts @zowe/mq-for-zowe-cli@zowe-v3-lts 
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v3-lts @zowe/db2-for-zowe-cli@zowe-v3-lts @zowe/zos-ftp-for-zowe-cli@zowe-v3-lts @zowe/mq-for-zowe-cli@zowe-v3-lts 
    ```
    To install a subset of the plug-ins, remove the syntax for the plug-in(s) that you do not want to update. For example:
 
@@ -58,7 +58,7 @@ If you are running Zowe CLI version v2.0.0 to v2.15.x, you can update to `@zowe-
 
    :::info Important
    
-   We do not recommend deleting the profiles from your previous Zowe CLI installation until you have tested your V3 installation and are satisfied with its performance. **[is this still applicable for V3?]**
+   We do not recommend deleting the profiles from your previous Zowe CLI installation until you have tested your V3 installation and are satisfied.
 
    :::
 
@@ -69,12 +69,6 @@ If you are running Zowe CLI version v2.0.0 to v2.15.x, you can update to `@zowe-
 ### Updating from a local package
 
 To update Zowe CLI core and Zowe CLI plug-ins from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package.
-
-:::info Important
-
-When upgrading from Zowe V1 **[correct?]**, recreate any user profiles that you created before the update. **[where, how do you "recreate" the profiles?]**
-
-:::
 
 1. To uninstall Zowe CLI and Zowe CLI plug-ins, follow the instructions in [Uninstalling Zowe CLI and Zowe CLI Plug-ins](../user-guide/cli-uninstall.md).
 

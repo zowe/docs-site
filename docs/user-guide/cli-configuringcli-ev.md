@@ -45,7 +45,7 @@ You can set the log level to adjust the level of detail that is written to log f
 
 :::info Important
 
-Setting the log level to `TRACE` or `ALL` might result in sensitive data being logged. For example, command line arguments will be logged when `TRACE` is set.
+Setting the log level to `TRACE` or `ALL` might result in sensitive data being logged. For example, command line arguments are logged when `TRACE` is set.
 
 :::
 
@@ -63,4 +63,4 @@ To change the location that the daemon uses, set the environment variables that 
 | Platform | Environment variable  | Description | Values | Default |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files:<ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `<your_home_dir>/.zowe/daemon` <br/><br/> Examples: <br/><br/> Windows: `%HOMEPATH%\.zowe\daemon`<br/>Linux: `$HOME/.zowe/daemon` |
-| Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon` **[correct?]**
+| Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon`

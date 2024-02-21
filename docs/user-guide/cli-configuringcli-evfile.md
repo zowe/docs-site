@@ -17,7 +17,7 @@ Use a `.zowe.env.json` file *only* when it is not possible to set your own syste
 
 ## How `.zowe.env.json` works
 
-When a Zowe command is issued, the command initializes the Imperative CLI Framework **[is Imperative something still used in V3?]**so that it loads all the utilities that allow the command to function. Imperative reads the `.zowe.env.json` configuration file and sets the environment variables before any loggers or Zowe CLI finish their own initialization.
+When a Zowe command is issued, the command initializes the Imperative CLI Framework so that it loads all the utilities that allow the command to function. Imperative reads the `.zowe.env.json` configuration file and sets the environment variables before any loggers or Zowe CLI finish their own initialization.
 
 The `.zowe.env.json` environment variables are set for only the duration of a Zowe CLI command.
 

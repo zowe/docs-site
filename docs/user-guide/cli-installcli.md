@@ -74,7 +74,7 @@ To install Zowe CLI from an npm registry:
 3. If installing all available Zowe CLI plug-ins, issue the following command:
    
    ```
-   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts
+   zowe plugins install @zowe/cics-for-zowe-cli@zowe-v3-lts @zowe/db2-for-zowe-cli@zowe-v3-lts @zowe/mq-for-zowe-cli@zowe-v3-lts @zowe/zos-ftp-for-zowe-cli@zowe-v3-lts
    ```
 
    Zowe CLI and the optional plug-ins are installed on your computer.

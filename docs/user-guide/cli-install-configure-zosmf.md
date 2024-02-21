@@ -2,12 +2,12 @@
 
 Complete the following IBM z/OSMF configuration tasks for your Zowe CLI implementation.
 
-:::info**Required role:** systems programmer
+:::info Required role: systems programmer
 :::
 
 ## Obtaining z/OSMF installation and configuration materials
 
-Before you start the configuration process, review [Overview of z/OSMF](https://www.ibm.com/docs/en/zos/2.2.0?topic=introduction-overview-zosmf) in the IBM Documentation. Use the [First-Time Installation Checklist](https://www.ibm.com/docs/en/zos/2.2.0?topic=introduction-project-plans-configuring-zosmf) from IBM to plan your installation and complete all the required steps.
+Before you start the configuration process, review [Overview of z/OSMF](https://www.ibm.com/docs/en/zos/2.5.0?topic=zosmf-overview) in the IBM Documentation.
 
 ## Installing and configuring z/OSMF
 
@@ -28,6 +28,6 @@ Zowe CLI was designed and tested to integrate with z/OSMF running on IBM version
 | Plug-in        | Functionality | Task |
 | ----------- | ----------- | ----------- |
 | (Optional) Cloud Portal | The Cloud Portal plug-in lets you make software services available to marketplace consumers and it adds the Marketplace and Marketplace Administration tasks to the z/OSMF navigation tree. | For information about how to enable the plug-in, see [Cloud provisioning marketplace](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-cloud-provisioning-marketplace) on the IBM Documentation. |
-| Configuration Assistant | The Configuration Assistant plug-in lets z/OSMF configure TCP/IP policy-based networking functions.<br/>For more information about the functionality that the plug-in provides, see [Configuration Assistant task overview](https://www.ibm.com/docs/en/zos/2.2.0?topic=tasks-configuration-assistant-task-overview) on the IBM Documentation. | For information about how to enable the plug-in, see Updating z/OS for the [Configuration Assistant plug-in](https://www.ibm.com/docs/en/zos/2.2.0?topic=ins-updating-zos-configuration-assistant-plug-in) on the IBM Documentation. |
-| ISPF | The ISPF plug-in lets z/OSMF access traditional ISPF applications.<br/>For information about the functionality that the plug-in provides, see [ISPF task overview](https://www.ibm.com/docs/en/zos/2.2.0?topic=tasks-ispf-task-overview) on the IBM Documentation. | For information about how to enable the plug-in, see [Updating z/OS for the ISPF service](https://www.ibm.com/docs/en/zos/2.5.0?topic=service-updating-zos-ispf) on the IBM Documentation. |
-| Workload Management | The Workload Management plug-in lets z/OSMF operate and manage workload management service definitions and policies.<br/>For information about the functionality that the plug-in provides, see [Workload Management task overview](https://www.ibm.com/docs/en/zos/2.2.0?topic=tasks-workload-management-task-overview) on the IBM Documentation. | For information about how to enable the plug-in, see Updating z/OS for the [Updating z/OS for the Workload Management service](hhttps://www.ibm.com/docs/en/zos/2.5.0?topic=service-updating-zos-workload-management) on the IBM Documentation. |
+| Configuration Assistant | The Configuration Assistant plug-in lets z/OSMF configure TCP/IP policy-based networking functions.<br/>For more information about the functionality that the plug-in provides, see [Network Configuration Assistant](https://www.ibm.com/docs/en/zos/2.5.0?topic=configuration-network-assistant-task-summary) and [Security Configuration Assistant](https://www.ibm.com/docs/en/zos/2.5.0?topic=configuration-security-assistant-task) on the IBM Documentation. | For information about how to enable the plug-in, see Updating z/OS for the [Configuration Assistant plug-in](https://www.ibm.com/docs/en/zos/2.2.0?topic=ins-updating-zos-configuration-assistant-plug-in) on the IBM Documentation. |
+| ISPF | The ISPF plug-in lets z/OSMF access traditional ISPF applications.<br/>For information about the functionality that the plug-in provides, see [ISPF task overview](https://www.ibm.com/docs/en/zos/2.5.0?topic=interfaces-ispf) on the IBM Documentation. | For information about how to enable the plug-in, see [Updating z/OS for the ISPF service](https://www.ibm.com/docs/en/zos/2.5.0?topic=service-updating-zos-ispf) on the IBM Documentation. |
+| Workload Management | The Workload Management plug-in lets z/OSMF operate and manage workload management service definitions and policies.<br/>For information about the functionality that the plug-in provides, see [Workload Management task overview](https://www.ibm.com/docs/en/zos/2.5.0?topic=performance-workload-management-task) on the IBM Documentation. | For information about how to enable the plug-in, see Updating z/OS for the [Updating z/OS for the Workload Management service](hhttps://www.ibm.com/docs/en/zos/2.5.0?topic=service-updating-zos-workload-management) on the IBM Documentation. |

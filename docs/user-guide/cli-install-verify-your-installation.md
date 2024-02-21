@@ -108,7 +108,7 @@ The in-product help is used as a reference of all the commands and plug-ins that
     Alternatively, to display a full list of all available commands:
 
     ```
-    zowe --available commands
+    zowe --available-commands
     ```
 
 2. Verify that the help content displays and includes installed plug-ins.

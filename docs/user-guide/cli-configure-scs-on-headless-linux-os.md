@@ -86,7 +86,7 @@ To unlock the Gnome keyring automatically when you log in:
 
 Zowe CLI does not contain the  native, pre-built binaries that are required to access the credential vault on z/Linux operating systems. Developers must build the credential manager binaries on z/Linux systems during the Zowe CLI installation process.
 
-For instructions to set up the credential manager binaries for Red Hat Enterprise Linux (RHEL) V8.X and Ubuntu z/Linux systems, refer to this section. See [Configuring RHEL V7.X](#configuring-rhel-v7x) for instructions specific to that distribution.
+For instructions to set up the credential manager binaries for Red Hat Enterprise Linux (RHEL) V8.X and Ubuntu z/Linux systems, refer to this section. For instructions specific to RHEL V7.X, see [Configuring RHEL V7.X](#configuring-rhel-v7x).
 
 To install and build the credential storage binaries on z/Linux RHEL V8.X and Ubuntu systems:
 
@@ -118,7 +118,7 @@ To install and build the credential storage binaries on z/Linux RHEL V8.X and Ub
 
     Replace `#` with the major version of RHEL that is running on the z/Linux system.
 
-4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically) to load and store credentials **[correct?]**.
+4. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically) to load and store credentials.
 
 5. If you are configuring secure credential storage to run on RHEL V8.x or later, install Zowe CLI.
 
@@ -166,11 +166,11 @@ To install and build the credential storage binaries on z/Linux RHEL V7.X:
     ```
 7. Install Zowe CLI.
 
-8. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically)to load and store credentials **[correct?]**.
+8. [Unlock the keyring manually](#unlocking-the-keyring-manually) or [unlock the keyring automatically](#unlocking-the-keyring-automatically)to load and store credentials.
 
     :::info important
     
-    The secure credential storage capability is installed every time that you install or update Zowe CLI. On RHEL V7.x, ensure that the Red Hat Developer Toolset is enabled every time you install or update Zowe CLI. When you do not enable the toolset, secure credential management is not available on the system. To ensure that the toolset is enabled when you install Zowe CLI, issue the following commands instead of the standard `npm install` commands. **[are these the exact commands, or are these example commands?]**
+    The secure credential storage capability is installed every time that you install or update Zowe CLI. On RHEL V7.x, ensure that the Red Hat Developer Toolset is enabled every time you install or update Zowe CLI. When you do not enable the toolset, secure credential management is not available on the system. To ensure that the toolset is enabled when you install Zowe CLI, issue the following commands instead of the standard `npm install` commands.
     
     ```
     scl enable devtoolset-11 ‘npm install -g @zowe/cli@next’

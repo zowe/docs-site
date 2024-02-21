@@ -37,8 +37,8 @@ To install and build the daemon binary on z/Linux systems:
 
    After the command completes successfully, the Zowe daemon binary is a file named `zowe` that can be found in the `target/release` directory.
 
-7. Copy the binary to another location on the system and add that location **[is "that location" correct?]** to your PATH.
-8. To allow others to use the same binary, modify the file permissions: **[where is this modification made? The binary?]**
+7. Copy the binary to another location on the system and add that location to your PATH.
+8. To allow others to use the same binary, modify the file permissions in the binary: 
 
    ```
    chmod <permission OCTAL> zowe
