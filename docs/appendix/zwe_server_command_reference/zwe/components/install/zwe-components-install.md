@@ -47,6 +47,8 @@ Full name|Alias|Type|Required|Help message
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -69,7 +71,9 @@ ZWEL0180E|180|Zowe extension directory (zowe.extensionDirectory) is not defined 
 ZWEL0304E|304|Handler install failure, cannot continue.
 ZWEL0305E|305|Could not find one of the components' directories.
 ZWEL0314E|314|Cannot install with component=all. This option only exists for upgrade.
-ZWEL0315E|315|Handler (-handler or zowe.extensionRegistry.defaultHandler) required but not specified.### Inherited from parent command
+ZWEL0315E|315|Handler (-handler or zowe.extensionRegistry.defaultHandler) required but not specified.
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
