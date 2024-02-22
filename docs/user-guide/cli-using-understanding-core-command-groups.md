@@ -24,7 +24,7 @@ zowe auth -h
 
 ## config
 
-The `config` command group lets you manage JSON projects, global configuration, and convert profiles (service profiles and base profiles) to team profiles.
+The `config` command group lets you manage project and global team configurations, and JSON projects; and convert profiles (service profiles and base profiles) to team configs.
 
 :::note
 
@@ -38,7 +38,7 @@ zowe config -h
 
 ## daemon
 
-The `daemon` command groups let you perform operations that control the daemon-mode functionality of the Zowe CLI. Daemon-mode runs the CLI command processor as a daemon to improve performance.
+The `daemon` command groups let you perform operations that control the daemon-mode functionality of the Zowe CLI. Daemon-mode runs the CLI command processor as a background process to improve performance.
 
 :::note
 
@@ -172,7 +172,7 @@ zowe zos-jobs -h
 
 The `zos-logs` command group retrieves the z/OS operations logs.
 
-With the `zos-logs` command group, you can perform the following tasks:
+With the `zos-logs` command group, you can perform the following task:
 
 * List z/OS operations logs within a specified time frame.
 
@@ -258,7 +258,6 @@ The `zosmf` command group lets you work with Zowe CLI profiles and get general i
 
 With the `zosmf` command group, you can perform the following tasks:
 
-* Create and manage your Zowe CLI `zosmf` profiles. Profiles let you store configuration information for use on multiple commands. You can create a profile that contains your username, password, and connection details for a particular mainframe system, then reuse that profile to avoid typing connection information again on every command. You can switch between profiles to quickly target different mainframe subsystems. For more information, see [Team configurations](../user-guide/cli-using-using-team-profiles.md).
 * Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Testing connections to z/OSMF](../user-guide/cli-using-test-zosmf-connection).
 * Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
