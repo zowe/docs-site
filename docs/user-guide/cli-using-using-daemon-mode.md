@@ -56,13 +56,6 @@ The following example illustrates running Zowe CLI commands with daemon mode ena
    zowe --version
    8.0.0-next.202110211759
    ```
-:::note
-
-When you are running Zowe CLI in daemon mode using a Git Bash terminal on a Windows operating system, special characters might display using the wrong code page. For example, the default code page 437 renders a form-feed character (\f) as a unicode symbol (♀️).
-
-To correct this, issue the command `chcp.com 65001` to change the code page to UTF-8. If you want the change to be persistent, add the command to your `.bashrc` file in the `/<drive>/Users/<UserID>/.bashrc` directory.
-
-:::
 
 ## Restarting daemon mode
 
