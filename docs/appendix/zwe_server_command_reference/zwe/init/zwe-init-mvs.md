@@ -54,6 +54,8 @@ zwe init mvs -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -80,6 +82,8 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. This data set member will be overwritten during configuration.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

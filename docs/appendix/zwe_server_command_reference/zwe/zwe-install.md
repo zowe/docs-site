@@ -42,6 +42,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
 --dataset-prefix,--ds-prefix||string|no|Install Zowe to this dataset prefix.\nIf you specify this value, --config is not required.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -63,6 +65,8 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. Members in this data set will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

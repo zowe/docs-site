@@ -9,6 +9,8 @@
 * [get](./zwe-internal-config-get.md)
 * [set](./zwe-internal-config-set.md)
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -24,6 +26,8 @@ zwe internal config set -p path-of-configuration -e new-value-of-configuration -
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -38,6 +42,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

@@ -1,6 +1,6 @@
 # Customizing Cross-Origin Resource Sharing (CORS) 
 
-:::info**Role:** system programmer
+:::info Role: system programmer
 :::
 
 As a system programmer, you can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the following procedure, API Gateway endpoints start handling CORS requests. Individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler/#custom-metadata) parameters.

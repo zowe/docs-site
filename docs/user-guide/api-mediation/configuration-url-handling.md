@@ -1,6 +1,6 @@
 # Using encoded slashes
 
-:::info**Role:** system programmer
+:::info Role: system programmer
 :::
 
 By default, the API Mediation Layer accepts encoded slashes in the URL path of the request. If you are onboarding applications which expose endpoints that expect encoded slashes, it is necessary to keep the default configuration. We recommend that you change the property to `false` if you do not expect the applications to use the encoded slashes. 

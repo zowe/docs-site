@@ -16,7 +16,7 @@ Services that belong to the same product family are displayed on the same tile.
 2. Click the tile to view header information, the registered services under that family ID,
  and API documentation for that service.
 
-   :::note**Notes:**
+   :::note Notes:
    * The state of the service is indicated in the service tile on the dashboard page.
     If no instances of the service are currently running, the tile displays a message that no services are running.
    * At least one instance of a service must be started and registered with the Discovery Service for it to be visible
@@ -45,7 +45,7 @@ Services that belong to the same product family are displayed on the same tile.
 
    <img src={require("../images/api-mediation/expanded.png").default} alt="endpoint detail" width="500px"/>
 
-   :::note**Notes:**
+   :::note Notes:
    * If a lock icon is visible on the right side of the endpoint panel, the endpoint requires authentication.
    * The structure of the endpoint is displayed relative to the base URL.
    * The URL path of the abbreviated endpoint relative to the base URL is displayed in the following format:

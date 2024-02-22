@@ -287,11 +287,12 @@ module.exports = {
     {
       type: "category",
       label: "Installing Zowe client-side components",
+      link: {type:"doc", id:"user-guide/install-zowe-client-side-components"},
       collapsed: false,
       items: [
         {
           type: "category",
-          label: "Zowe CLI",
+          label: "Zowe CLI installation",
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
             "user-guide/cli-install-cli-checklist",
@@ -342,6 +343,7 @@ module.exports = {
           label: "Zowe Explorer",
           link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
           items: [
+            "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
@@ -467,23 +469,65 @@ module.exports = {
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
-              label: "Using API Catalog",
+              label: "Using Single Sign On",
+              link: {type:"doc", id:"user-guide/api-mediation-sso"},
               items: [
-                "user-guide/api-mediation-view-service-information-and-api-doc",
+                "user-guide/authenticating-with-jwt-token",
+                "user-guide/authenticating-with-client-certificates",
+                "user-guide/api-mediation/authenticating-with-personal-access-token",
+              ],
+            },
+            {
+              type: "category",
+              label: "Using multi-factor authentication (MFA)",
+	      link: {type:"doc", id:"user-guide/api-mediation/using-multi-factor-authentication"},
+              items: [
+              ],
+            },
+            {
+              type: "category",
+              label: "API Routing",
+              items: [
+                "user-guide/api-mediation/routing-requests-to-rest-apis",
+                "user-guide/routing-with-websockets",
+                "user-guide/api-mediation/use-graphql-api",
+                "user-guide/api-mediation/api-mediation-multi-tenancy",
+              ],
+            },
+            {
+              type: "category",
+              label: "Learning more about APIs",
+              items: [
+                "user-guide/obtaining-information-about-api-services",
                 "user-guide/api-mediation-swagger-try-it-out",
                 "user-guide/api-mediation-swagger-code-snippets",
+              ],
+            },
+            {
+              type: "category",
+              label: "Administrating APIs",
+              items: [
                 "user-guide/api-mediation-static-api-refresh",
-                "user-guide/api-mediation-change-password-via-catalog",
                 "user-guide/onboard-wizard",
               ],
             },
-            "user-guide/api-mediation-metrics-service",
-            "extend/extend-apiml/api-mediation-routing",
-            "extend/extend-apiml/service-information",
-            "extend/extend-apiml/websocket",
-            "user-guide/api-mediation/api-gateway-rest-apis-documentation",
+            {
+              type: "category",
+              label: "Using the Caching Service",
+              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
+              items: [
+              ],
+            },
+            {
+              type: "category",
+              label: "Using API Catalog",
+              items: [
+                "user-guide/api-mediation-view-service-information-and-api-doc",
+                "user-guide/api-mediation-change-password-via-catalog",
+              ],
+            },
             "user-guide/api-mediation/api-mediation-update-password",
-            "user-guide/api-mediation/api-mediation-jwt-token-refresh",
+            "user-guide/api-mediation-metrics-service",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
@@ -558,6 +602,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: {type:"doc", id:"user-guide/ze-usage"},
           items: [
+            "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
@@ -574,7 +619,7 @@ module.exports = {
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-usage-tips",
+                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
@@ -637,7 +682,6 @@ module.exports = {
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
             "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/api-mediation-sso",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
@@ -656,9 +700,15 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Caching service",
+              label: "Implementing routing to API Gateway",
+			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
               items: [
-                "extend/extend-apiml/api-mediation-caching-service",
+              ],
+            },
+            {
+              type: "category",
+              label: "Configuring storage for the Caching service",
+              items: [
                 "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
                 "extend/extend-apiml/api-mediation-redis",

@@ -3,7 +3,7 @@
 
 Review this article to learn about how to intialize Zowe custom MVS data sets by using the `zwe init mvs` command. 
 
-:::info**Required role:** system programmer
+:::info Required role: system programmer
 :::
 
 ## Introduction

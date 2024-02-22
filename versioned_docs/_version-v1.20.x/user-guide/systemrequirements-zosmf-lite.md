@@ -425,7 +425,7 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
 
 ####  Results
 
-If the user ID and password or pass phrase are valid, you are authenticated to z/OSMF. The Welcome page of IBM z/OS Management Facility tab opens in the main area. At the top right of the screen, Welcome *<your_user_ID>* is displayed. In the UI, only the options you are allowed to use are displayed.
+If the user ID and password or pass phrase are valid, you are authenticated to z/OSMF. The Welcome page of IBM z/OS Management Facility tab opens in the main area. At the top right of the screen, Welcome `<your_user_ID>` is displayed. In the UI, only the options you are allowed to use are displayed.
 
 <img src={require("../images/zosmf/Welcome.png").default} alt="Welcome" width="400px"/> 
 
@@ -542,7 +542,10 @@ Connect your user ID to IZUADMIN or IZUUSER.
 
 **Symptom 2**
 
-HTTP/1.1 500 Internal Server Error  {"rc":16,"reason":-1,"stack":"JesException: CATEGORY_CIM rc=16 reason=-1 cause=com.ibm.zoszmf.util.eis.EisConnectionException: IZUG911I: Connection to \"http:\/\/null:5988\" cannot be established, or was lost and cannot be re-established using protocol \"CIM\"......Caused by: WBEMException: CIM_ERR_FAILED (JNI Exception type CannotConnectException:\nCannot connect to local CIM server. Connection failed.)
+HTTP/1.1 500 Internal Server Error
+```
+{"rc":16,"reason":-1,"stack":"JesException: CATEGORY_CIM rc=16 reason=-1 cause=com.ibm.zoszmf.util.eis.EisConnectionException: IZUG911I: Connection to \"http:\/\/null:5988\" cannot be established, or was lost and cannot be re-established using protocol \"CIM\"......Caused by: WBEMException: CIM_ERR_FAILED (JNI Exception type CannotConnectException:\nCannot connect to local CIM server. Connection failed.)
+```
 
 **Cause**
 
@@ -591,7 +594,7 @@ In addition, to use TSO/E address space services, you must have:
 -   READ access to the account resource in class ACCTNUM, where account is the value specified in the COMMON_TSO ACCT option in parmlib.
 -   READ access to the CEA.CEATSO.TSOREQUEST resource in class SERVAUTH.
 -   READ access to the proc resource in class TSOPROC, where proc is the value specified with the COMMON_TSO PROC option in parmlib.
--   READ access to the <SAF_PREFIX>.*.izuUsers profile in the EJBROLE class. Or, at a minimum, READ access to the <SAF_PREFIX>.IzuManagementFacilityTsoServices.izuUsers resource name in the EJBROLE class.
+-   READ access to the `<SAF_PREFIX>.*.izuUsers` profile in the EJBROLE class. Or, at a minimum, READ access to the `<SAF_PREFIX>.IzuManagementFacilityTsoServices.izuUsers` resource name in the EJBROLE class.
 You must also ensure that the z/OSMF started task user ID, which is IZUSVR by default, has READ access to the CEA.CEATSO.TSOREQUEST resource in class SERVAUTH.
 To create a TSO/E address space on a remote system, you require the following authorizations:
 -   You must be authorized to the SAF resource profile that controls the ability to send data to the remote system (systemname), as indicated:

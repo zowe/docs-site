@@ -2,7 +2,7 @@
 
 You can download Zowe (server) containers as an alternative to running Zowe servers on z/OS through the Zowe convenience and SMP/E builds. Choose the appropriate installation type for your use case.
 
-:::info**Required roles:** system programmer
+:::info Required roles: system programmer
 :::
 
 Using containers for installation has the following advantages:

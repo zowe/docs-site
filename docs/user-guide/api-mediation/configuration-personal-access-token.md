@@ -1,7 +1,7 @@
 # Enabling single sign on for clients via personal access token configuration 
 
 
-:::info**Roles:** system programmer, system administrator, security administrator
+:::info Roles: system programmer, system administrator, security administrator
 :::
 
 By default the API Mediation Layer does not provide the ability to use personal access tokens. For more information about about
