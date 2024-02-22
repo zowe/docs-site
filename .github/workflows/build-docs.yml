@@ -39,7 +39,7 @@ jobs:
           key: cache-webpack-${{ github.base_ref || github.ref_name }}
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --omit=dev
 
       - name: Build with Docusaurus
         run: npm run build
