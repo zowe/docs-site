@@ -534,15 +534,21 @@
         {
           "type": "category",
           "label": "Using Zowe Desktop",
-          "link": {"type":"doc", "id":"user-guide/mvd-using"},
+          "link": {
+            "type": "doc",
+            "id": "user-guide/mvd-using"
+          },
           "items": [
-            "user-guide/mvd-editor",
-          ],
+            "user-guide/mvd-editor"
+          ]
         },
         {
           "type": "category",
           "label": "Using Zowe API Mediation Layer",
-          "link": {"type":"doc", "id":"user-guide/api-mediation/using-api-mediation-layer"},
+          "link": {
+            "type": "doc",
+            "id": "user-guide/api-mediation/using-api-mediation-layer"
+          },
           "items": [
             "getting-started/user-roadmap-apiml",
             {
@@ -553,14 +559,13 @@
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
-              ],
+              ]
             },
             {
               "type": "category",
               "label": "Using multi-factor authentication (MFA)",
-	            "link": {"type":"doc", "id":"user-guide/api-mediation/using-multi-factor-authentication"},
-              "items": [
-              ],
+              "link": {"type":"doc", "id":"user-guide/api-mediation/using-multi-factor-authentication"},
+              "items": []
             },
             {
               "type": "category",
@@ -570,7 +575,7 @@
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
-              ],
+              ]
             },
             {
               "type": "category",
@@ -579,7 +584,7 @@
                 "user-guide/obtaining-information-about-api-services",
                 "user-guide/api-mediation-swagger-try-it-out",
                 "user-guide/api-mediation-swagger-code-snippets",
-              ],
+              ]
             },
             {
               "type": "category",
@@ -587,14 +592,13 @@
               "items": [
                 "user-guide/api-mediation-static-api-refresh",
                 "user-guide/onboard-wizard",
-              ],
+              ]
             },
             {
-              type: "category",
-              label: "Using the Caching Service",
-              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
-              items: [
-              ],
+              "type": "category",
+              "label": "Using the Caching Service",
+              "link": {"type":"doc", "id":"user-guide/api-mediation/api-mediation-caching-service"},
+              "items": []
             },
             {
               "type": "category",
@@ -602,15 +606,15 @@
               "items": [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
                 "user-guide/api-mediation-change-password-via-catalog",
-              ],
+              ]
             },
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
             "user-guide/api-mediation/api-mediation-smf",
-          ],
-        }, 
+          ]
+        }
       ]
-    },
+    }    
     {
       "type": "category",
       "label": "Zowe client-side components",
