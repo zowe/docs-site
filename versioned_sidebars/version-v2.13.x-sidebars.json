@@ -534,13 +534,10 @@
         {
           "type": "category",
           "label": "Using Zowe Desktop",
-          "link": {
-            "type": "doc",
-            "id": "user-guide/mvd-using"
-          },
+          "link": {"type":"doc", "id":"user-guide/mvd-using"},
           "items": [
-            "user-guide/mvd-editor"
-          ]
+            "user-guide/mvd-editor",
+          ],
         },
         {
           "type": "category",
@@ -593,10 +590,10 @@
               ],
             },
             {
-              "type": "category",
-              "label": "Using the Caching Service",
-              "link": {"type":"doc", "id":"user-guide/api-mediation/api-mediation-caching-service"},
-              "items": [
+              type: "category",
+              label: "Using the Caching Service",
+              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
+              items: [
               ],
             },
             {
