@@ -15,7 +15,7 @@ This can cause potential problems when secure credential storage is not availabl
 
 If Zowe CLI cannot find the value for a user ID or password, for example, it prompts the user for that information and then stores the information securely when secure storage is available.
 
-In cases where secure storage is not possible, and the `autoStore` property is set to `true`, the secret credentials are saved as text in the applicable configuration file.
+In cases where secure storage is not possible, and the `autoStore` property is set to `true`, the credentials are saved as text in the applicable configuration file.
 
 ## Stopping automatic storage of prompted values
 
