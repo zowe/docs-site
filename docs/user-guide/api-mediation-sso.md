@@ -59,7 +59,7 @@ The REST API of ZAAS can easily be called from a Java application using the [ZAA
 If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
 :::note
-For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets).
+For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets).
 :::
 
 ## Further resources
