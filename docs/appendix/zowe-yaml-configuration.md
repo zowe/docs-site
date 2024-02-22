@@ -1,8 +1,13 @@
-# Zowe YAML configuration file reference
+# Zowe YAML server configuration file reference
 
-Zowe v2 uses a YAML configuration file during installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+Zowe v2 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
-**Note:** In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
+For details on the schema technology and where to find the schema files within our source code, see [Using the Configuration Manager](../user-guide/configmgr-using.md#json-schema-validation).
+
+:::note
+
+In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
 
 ```yaml
 zowe:
@@ -10,6 +15,8 @@ zowe:
     keystore:
       type: PKCS12
 ```
+
+:::
 
 **Table of Contents**
 
@@ -57,33 +64,15 @@ The YAML configuration file has few high-level sections:
 
 ### Extract sharable configuration out of zowe.yaml
 
-The Zowe YAML configuration file supports a special `@include` annotation that can be used in any level of the configuration. This enables you to organize your YAML configuration files and extract sharable configurations to a separate YAML file.
+The Zowe YAML configuration file supports splitting into several files or PARMLIB members when "zowe.useConfigmgr" is set to true. This can help simplify grouping configuration changes by type or owner.
+More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#splitting-configuration-into-multiple-storage-types)
 
-For example, you can define a sharable certificate configuration file `<keystore-dir>/zowe-certificates.yaml` like this:
 
-```yaml
-keystore:
-  type: PKCS12
-  file: /global/zowe/keystore/localhost/localhost.keystore.p12
-  password: password
-  alias: localhost
-truststore:
-  type: PKCS12
-  file: /global/zowe/keystore/localhost/localhost.truststore.p12
-  password: password
-pem:
-  key: /global/zowe/keystore/localhost/localhost.key
-  certificate: /global/zowe/keystore/localhost/localhost.cer
-  certificateAuthorities: /global/zowe/keystore/local_ca/local_ca.cer
-```
+### Creating portable references
 
-Then in your `zowe.yaml`, you can import this certification file like this:
-
-```yaml
-zowe:
-  certificate:
-    @include: "<keystore-dir>/zowe-certificates.yaml"
-```
+The Zowe YAML configuration file has template logic for relating one value to another, a system environment variable or symbol, or even to add conditional behavior.
+This feature is available when "zowe.useConfigmgr" is set to true, and it can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
+More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#configuration-templates)
 
 ### Configuration override
 
@@ -425,7 +414,13 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.service.corsEnabled`**  
  When this parameter is set to `true`, CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`.
 - **`apiml.service.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname. 
+ 
+ :::note
+ 
+ This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+
+ :::
 - **`apiml.gateway.timeoutMillis`**  
  Specifies the timeout for connection to the services in milliseconds.
 - **`apiml.security.x509.enabled`**  
@@ -454,7 +449,13 @@ These configurations can be used under the `components.discovery` section:
 - **`debug`**  
  Defines whether to enable debug mode for the Discovery Service.
 - **`apiml.service.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname.
+ 
+ :::note
+ 
+ This configuration is deprecated. The Zowe start script will ignore this value and always set it to `false`.
+
+ :::
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
@@ -477,8 +478,13 @@ These configurations can be used under the `components.api-catalog` section:
 - **`debug`**  
  Defines if we want to enable debug mode for the API Catalog. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
 - **`environment.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname.  
-  **Note:** This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname.
+ 
+ :::note
+ 
+ This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+
+ :::
 
 #### Configure component caching-service
 
@@ -514,7 +520,14 @@ These configurations can be used under the `components.caching-service` section:
 - **`storage.redis.ssl.truststorePassword`**  
  Specifies the password used to unlock the truststore.
 - **`environment.preferIpAddress`**  
- Set this parameter to `true`  to advertise a service IP address instead of its hostname. **Note:** this configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+ Set this parameter to `true`  to advertise a service IP address instead of its hostname.
+ 
+ :::note
+ 
+ This configuration is deprecated. Zowe start script will ignore this value and always set it to `false`.
+
+ :::
+ 
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  

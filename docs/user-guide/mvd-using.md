@@ -1,4 +1,4 @@
-# Using the Zowe Desktop
+# Using Zowe Desktop
 
 You can use the Zowe&trade; Application Framework to create application plugins for the Zowe Desktop. For more information, see [Extending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
 
@@ -74,8 +74,8 @@ The following keyboard shortcuts can be used in the Desktop to navigate or perfo
 |CTRL+ALT+M  |Open the Zowe launchbar menu. Use the UP/DOWN arrow keys to select an app, RIGHT arrow key to spawn context menu, ENTER to launch app, and ESC to close menu |
 |CTRL+ALT+UP  |Maximize active app. Press again to restore |
 |CTRL+ALT+DOWN  |Minimize active app. Press again to restore |
-|CTRL+ALT+LEFT (or "<" key)   	|Switch to next recently active app |
-|CTRL+ALT+RIGHT (or ">" key)   	|Switch to least recently active app |
+|CTRL+ALT+LEFT (or "\<" key)   	|Switch to next recently active app |
+|CTRL+ALT+RIGHT (or "\>" key)   	|Switch to least recently active app |
 |CTRL+ALT+W   	|Close active app |
 
 ### Changing application elements size
@@ -122,13 +122,6 @@ Application plugins are applications that you can use to access the mainframe an
 Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](install-configure-zos-extensions).
 
 Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux).
-
-### 3270 Terminal
-The 3270 Terminal Display Emulator plugin provides a user interface that emulates the basic functions of IBM 3270 family terminals. On the "back end," the plugin and the Zowe Application Server connect to any standard TN3270/E server.
-
-This terminal display emulator operates as a "Three-Tier" program. Due to web browsers being unable to supply TCP networking that terminals require, this terminal display emulator does not connect directly to your TN3270 server. Instead, the Zowe Application Server acts as a bridge, and uses websockets between it and the browser for terminal communication. As a result, terminal connections only work when the stack of network programs supports websockets and the TN3270 server destination is visible to the Zowe Application Server.
-
-The terminal connection can be customized per-user and saved for future sessions using the connection toolbar of the application. The preferences are stored within [the configuration dataservice storage](../extend/extend-desktop/mvd-configdataservice), which can also be used to set instance-wide defaults for multiple users.
 
 ### VT Terminal 
 The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using SSH or Telnet.

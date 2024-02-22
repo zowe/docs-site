@@ -19,6 +19,12 @@ See [New features and enhancements](#new-features-and-enhancements) for a full l
 
 Zowe Version 2.3.0 contains the enhancements that are described in the following topics.
 
+:::info find out more
+To watch a demo of new enhancements and updated features included in a Zowe minor release, look for the release demo recording in the [Zowe V2 System Demo playlist](https://www.youtube.com/playlist?list=PL8REpLGaY9QGjSTAqZaWxLG_g-jW1qGmo) on YouTube.
+
+System demos are typically held the week after a minor release becomes available. Check the [Open Mainframe Project Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for the latest schedule.
+:::
+
 ### Zowe installation and packaging
 
 ### Zowe Application Framework
@@ -39,8 +45,23 @@ Zowe Version 2.3.0 contains the enhancements that are described in the following
 
 #### IMS Plug-in for Zowe CLI
 
-
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ## Bug fixes
 
@@ -67,6 +88,22 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 #### IMS Plug-in for Zowe CLI
 
 ### Zowe Explorer
+
+#### Zowe Explorer (Core)
+
+- See the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer API
+
+- See the [Zowe Explorer API](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
+
+####  Zowe Explorer FTP Extension
+
+- See the [Zowe Explorer FTP Extension](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+
+#### Zowe Explorer ESLint Plug-in
+
+- See the [Zowe Explorer ESLint Plug-in](https://github.com/zowe/vscode-extension-for-zowe/blob/main/packages/eslint-plugin-zowe-explorer/CHANGELOG.md) changelog for updates included in this release.
 
 ### Vulnerabilities fixed
 

@@ -4,19 +4,21 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ## ZSS informational messages
 
-### ZWES0013I
+### ZWES1013I
 
   ZSS Server has started. Version '%s' '%s'
 
   **Reason:**
 
-  ZSS Server has started.
+  ZSS Server has started. Version is `<zowe-version>` `<addressing-mode>`.
+  
+  `<addressing-mode>` is either `31-bit` or `64-bit`.
 
   **Action:**
 
   No action required.
 
-### ZWES0014I
+### ZWES1014I
 
   ZIS status - '%s' (name='%.16s', cmsRC='%d', description='%s', clientVersion='%d')
 
@@ -33,7 +35,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   - `cmsRC=47`, description=`'ZVT is NULL'`
   - `cmsRC=64`, description=`'PC is unavailable'`
 
-### ZWES0035I
+### ZWES1035I
 
   ZSS Server settings: Address='%s', port='%d', protocol='%s'
 
@@ -44,7 +46,8 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   No action required.
-### ZWES0039I
+  
+### ZWES1039I
 
   Installing '%s' service...
 
@@ -56,7 +59,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES0061I
+### ZWES1061I
 
   TLS settings: keyring '%s', label '%s', password '%s', stash '%s'
 
@@ -67,7 +70,8 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   No action required.
-### ZWES0063I
+  
+### ZWES1063I
 
   Caching Service settings: gateway host '%s', port %d
 
@@ -79,7 +83,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   No action required.
 
-### ZWES0064I
+### ZWES1064I
 
   Caching Service not configured
 
@@ -90,6 +94,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   No action required.
+  
 ### ZWES1100I
 
   Product Registration is enabled.

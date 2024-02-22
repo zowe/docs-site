@@ -81,30 +81,31 @@ This method receives the `ServletContext` parameter, which holds a map of parame
 The following code block is an example of Java Servlet context configuration.
 
 **Example:**
-  
-      <Context>
-         
-         <Parameter name="apiml.config.location" value="/service-config.yml"/>
-         <!-- Relative path to configuration file:    
-         <Parameter name="apiml.config.additional-location" value="../conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" /> 
-       -->
-         <Parameter name="apiml.config.additional-location" value="/home/pin/bin/apache-tomcat-9.0.14/conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" />
-          
-         <Parameter name="apiml.serviceId" value="discopin" />
-         <Parameter name="apiml.serviceIpAddress" value="127.0.0.2" />
-         <Parameter name="apiml.discoveryService.hostname" value="localhost" />
-         <Parameter name="apiml.discoveryService.port" value="10011" />
-          
-         <Parameter name="apiml.ssl.enabled" value="true" />
-         <Parameter name="apiml.ssl.verifySslCertificatesOfServices" value="true" />
-         <Parameter name="apiml.ssl.keyPassword" value="password" />
-         <Parameter name="apiml.ssl.keystore.password" value="password" />
-         <Parameter name="apiml.ssl.truststore.password" value="password" />
-         <Parameter name="apiml.ssl.keystore" value="../keystore/localhost/localhost.truststore.p12" />
-         <Parameter name="apiml.ssl.truststore" value="../keystore/localhost/localhost.truststore.p12" />
-          
-      </Context>
+```
+<Context>
    
+   <Parameter name="apiml.config.location" value="/service-config.yml"/>
+   <!-- Relative path to configuration file:
+   <Parameter name="apiml.config.additional-location" value="../conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" />
+ -->
+   <Parameter name="apiml.config.additional-location" value="/home/pin/bin/apache-tomcat-9.0.14/conf/Catalina/localhost/apiml-plugin-poc_plain-java-enabler.yml" />
+
+   <Parameter name="apiml.serviceId" value="discopin" />
+   <Parameter name="apiml.serviceIpAddress" value="127.0.0.2" />
+   <Parameter name="apiml.discoveryService.hostname" value="localhost" />
+   <Parameter name="apiml.discoveryService.port" value="10011" />
+
+   <Parameter name="apiml.ssl.enabled" value="true" />
+   <Parameter name="apiml.ssl.verifySslCertificatesOfServices" value="true" />
+   <Parameter name="apiml.ssl.keyPassword" value="password" />
+   <Parameter name="apiml.ssl.keystore.password" value="password" />
+   <Parameter name="apiml.ssl.truststore.password" value="password" />
+   <Parameter name="apiml.ssl.keystore" value="../keystore/localhost/localhost.truststore.p12" />
+   <Parameter name="apiml.ssl.truststore" value="../keystore/localhost/localhost.truststore.p12" />
+
+</Context>
+```
+
    Where the two parameters corresponding to the location of the configuration files are:
     
    * `apiml.config.location`
@@ -173,55 +174,56 @@ After loading and before merging, each configuration will be separately patched 
 The following code block presents an example of how to load and merge onboarding configuration from _YAML_ files.
 
 **Example:**
+```
+@Slf4j
+public class ApiDiscoveryListener implements ServletContextListener {
 
-     @Slf4j
-     public class ApiDiscoveryListener implements ServletContextListener {
-     
-         /**
-          * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
-          */
-         private ApiMediationClient apiMediationClient;
-     
-         /**
-          *  Creates {@link ApiMediationServiceConfig}
-          *  Creates and initializes {@link ApiMediationClient} instance, which is then used to register this service
-          *  with API ML discovery service. The registration method of ApiMediationClientImpl catches all RuntimeExceptions
-          *  and only can throw {@link ServiceDefinitionException} checked exception.
-          *
-          * @param sce
-          */
-         @Override
-         public void contextInitialized(ServletContextEvent sce) {
-     
-             ServletContext context = sce.getServletContext();
-     
-             /*
-              * Call loadConfiguration method with both config file names initialized above.
-              */
-             ApiMediationServiceConfig defaultConfig = new ApiMediationServiceConfigReader().initializeAPIMLConfiguration(context);
-     
-             /*
-              * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery service.
-              */
-             apiMediationClient = new ApiMediationClientImpl();
-     
-             /*
-              * Call the {@link ApiMediationClient} instance to register your REST service with API ML Discovery service.
-              */
-             try {
-                 apiMediationClient.register(defaultConfig);
-             } catch (ServiceDefinitionException sde) {
-                 log.error("Service configuration failed. Check log for previous errors: ", sde);
-             }
-         }
-     
-         /**
-          * If apiMediationClient is not null, attmpts to unregister this service from API ML registry.
-          */
-         @Override
-         public void contextDestroyed(ServletContextEvent sce) {
-             if (apiMediationClient != null) {
-                 apiMediationClient.unregister();
-             }
-         }
-     }
+    /**
+     * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
+     */
+    private ApiMediationClient apiMediationClient;
+
+    /**
+     *  Creates {@link ApiMediationServiceConfig}
+     *  Creates and initializes {@link ApiMediationClient} instance, which is then used to register this service
+     *  with API ML discovery service. The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+     *  and only can throw {@link ServiceDefinitionException} checked exception.
+     *
+     * @param sce
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+
+        ServletContext context = sce.getServletContext();
+
+        /*
+         * Call loadConfiguration method with both config file names initialized above.
+         */
+        ApiMediationServiceConfig defaultConfig = new ApiMediationServiceConfigReader().initializeAPIMLConfiguration(context);
+
+        /*
+         * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery service.
+         */
+        apiMediationClient = new ApiMediationClientImpl();
+
+        /*
+         * Call the {@link ApiMediationClient} instance to register your REST service with API ML Discovery service.
+         */
+        try {
+            apiMediationClient.register(defaultConfig);
+        } catch (ServiceDefinitionException sde) {
+            log.error("Service configuration failed. Check log for previous errors: ", sde);
+        }
+    }
+
+    /**
+     * If apiMediationClient is not null, attmpts to unregister this service from API ML registry.
+     */
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        if (apiMediationClient != null) {
+            apiMediationClient.unregister();
+        }
+    }
+}
+```

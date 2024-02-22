@@ -1,4 +1,5 @@
 # Zowe Security Overview
+
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
 - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
@@ -19,6 +20,7 @@ Review the following sections to learn about how Zowe leverages modern security 
   - [Access Authorization](#access-authorization)
   
 ## Digital certificates
+
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
 The de-facto standard is the x.509 family type of certificates, which are the foundation behind Public Key Infrastructure (PKI) security.
 An X.509 certificate binds an identity to a public key using a digital signature.
@@ -63,11 +65,13 @@ In some cases Zowe API ML can check for the authorization of the user on certain
 Access to a SAF resource is checked with the installed z/OS External Security Manager (ESM).
 
 **Next steps:**
-For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/api-gateway-configuration#saf-resource-checking).
+For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking).
 
 ## Additional resources
 For more information about getting started with certificates including dertermining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
+
 - [Use-case based certificates configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
 - [Generate certificates for Zowe servers](../user-guide/generate-certificates.md)
 - [Import certificates](../user-guide/import-certificates.md)
 - [Configure Zowe to use certificates](../user-guide/configure-certificates.md)
+

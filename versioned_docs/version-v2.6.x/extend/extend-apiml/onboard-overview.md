@@ -23,7 +23,7 @@ Meet the following prerequisites before you onboard your service:
   
 - A certificate that is trusted by Zowe and certificate(s) to trust Zowe services
 
-  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [API Mediation Layer security setup](api-mediation-security.md#certificate-management-in-zowe-api-mediation-layer) and [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements)
+  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [Certificate management in API Mediation Layer](certificate-management-in-zowe-apiml) and [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements)
 
 - A REST API-enabled service that you want to onboard
 

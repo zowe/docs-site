@@ -266,7 +266,7 @@ For whatever list or steps we are introducing, the word "following" should prece
 
 Example:
 - Before a procedure, use "Follow these steps:"
-- The <component_name> supports the following use cases:
+- The `<component_name>` supports the following use cases:
 - Before you intall Zowe, review the following prerequisite installation tasks:
 
 Avoid ending the sentence with "following".
