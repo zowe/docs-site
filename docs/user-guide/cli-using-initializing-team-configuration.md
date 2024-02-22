@@ -104,7 +104,9 @@ To create a team plug-in profile:
 
 ## Connecting profiles to API Mediation Layer
 
-If you are using the API Mediation Layer, set up the `zowe.config.json` file to automatically access the services that are registered to the API ML and support Single Sign-On.
+You can use profiles to connect to the API Mediation Layer. This more efficient way to connect to the mainframe allows you to specify a host and port only once on a base profile instead of multiple host-and-port combinations across several service profiles.
+
+To set up the `zowe.config.json` file to automatically access the services that are registered to the API ML and support Single Sign-On:
 
 1. Open a command line window and issue the following command:
 
@@ -112,26 +114,25 @@ If you are using the API Mediation Layer, set up the `zowe.config.json` file to 
     zowe config auto-init --global-config
     ```
 
+    :::note
+
+    To add a profile to a configuration file in the current working directory, enter the base command without the `--global-config` option: `zowe config auto-init`.
+
+    :::
+
 2. Respond to subsequent CLI prompts with the following information:
 
     - The host name and port to your API ML instance.
     
     - Your username and password.
 
-    A default profile is added to the configuration file in the `.zowe` home directory.
+    A default base profile is added to the configuration file in the `.zowe` home directory.
 
-:::note
+    :::note
 
-To add a profile to a configuration file in the current working directory, enter the base command without the `--global-config` option: `zowe config init`.
+    To use certificates instead of basic authentication (such as user ID and password), you can specify the options `--cert-file` and `--cert-key-file` on the base command (`zowe config auto-init`). For more information on how to log in with certificates, see [Integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml).
+    
+    :::
 
-:::
 
-## Using Certificates
 
-**[what does this apply to? api ml? everything in this article?]**
-
-If using certificates to authenticate, specify the details for the certificates by modifying the following example command with your information:
-
-```
-zowe auth login apiml --cert-file "/path/to/cert/file" --cert-key-file "/path/to/cert/key/file"
-```

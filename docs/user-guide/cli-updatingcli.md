@@ -23,7 +23,7 @@ zowe plugins list
 
 ## Updating to the Zowe CLI V3 Long-term Support (v3-lts) version
 
-If you are running Zowe CLI version v2.0.0 to v2.15.x, you can update to `@zowe-v3-lts` (LTS version) to leverage the latest Zowe CLI and Zowe CLI plug-ins functionality.
+If you are running the Zowe CLI version included with Zowe release v2.0.0 to v2.15.x, you can update to `@zowe-v3-lts` (LTS version) to leverage the latest Zowe CLI and Zowe CLI plug-ins functionality.
 
 ### Updating from an npm online registry
 

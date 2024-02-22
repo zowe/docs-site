@@ -2,7 +2,7 @@
 
 Verify that Zowe CLI has been installed successfully by checking your connection to z/OSMF and accessing the in-product help.
 
-:::info**Required roles:** systems administrator, devops architect
+:::info Required roles: systems administrator, devops architect
 :::
 
 :::note
