@@ -33,8 +33,8 @@ Text colors could be difficult to read in some terminals. If this is the case, w
 ### Package/resource managers
 
 - [NodeJS](https://nodejs.org/en) LTS versions
-- [npm](https://www.npmjs.com/) versions applicable to NodeJs LTS versions
-- [PnPM](https://pnpm.io/)
+- [npm](https://www.npmjs.com/) versions applicable to NodeJS LTS versions
+- [pnpm](https://pnpm.io/)
 - [Yarn](https://yarnpkg.com/) 
 
 <br/> 
