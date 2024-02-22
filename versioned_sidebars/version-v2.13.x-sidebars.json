@@ -543,32 +543,32 @@
           ]
         },
         {
-          type: "category",
-          label: "Using Zowe API Mediation Layer",
-          link: {type:"doc", id:"user-guide/api-mediation/using-api-mediation-layer"},
-          items: [
+          "type": "category",
+          "label": "Using Zowe API Mediation Layer",
+          "link": {"type":"doc", "id":"user-guide/api-mediation/using-api-mediation-layer"},
+          "items": [
             "getting-started/user-roadmap-apiml",
             {
-              type: "category",
-              label: "Using Single Sign On",
-              link: {type:"doc", id:"user-guide/api-mediation-sso"},
-              items: [
+              "type": "category",
+              "label": "Using Single Sign On",
+              "link": {"type":"doc", "id":"user-guide/api-mediation-sso"},
+              "items": [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
               ],
             },
             {
-              type: "category",
-              label: "Using multi-factor authentication (MFA)",
-	      link: {type:"doc", id:"user-guide/api-mediation/using-multi-factor-authentication"},
-              items: [
+              "type": "category",
+              "label": "Using multi-factor authentication (MFA)",
+	            "link": {"type":"doc", "id":"user-guide/api-mediation/using-multi-factor-authentication"},
+              "items": [
               ],
             },
             {
-              type: "category",
-              label: "API Routing",
-              items: [
+              "type": "category",
+              "label": "API Routing",
+              "items": [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
@@ -576,33 +576,33 @@
               ],
             },
             {
-              type: "category",
-              label: "Learning more about APIs",
-              items: [
+              "type": "category",
+              "label": "Learning more about APIs",
+              "items": [
                 "user-guide/obtaining-information-about-api-services",
                 "user-guide/api-mediation-swagger-try-it-out",
                 "user-guide/api-mediation-swagger-code-snippets",
               ],
             },
             {
-              type: "category",
-              label: "Administrating APIs",
-              items: [
+              "type": "category",
+              "label": "Administrating APIs",
+              "items": [
                 "user-guide/api-mediation-static-api-refresh",
                 "user-guide/onboard-wizard",
               ],
             },
             {
-              type: "category",
-              label: "Using the Caching Service",
-              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
-              items: [
+              "type": "category",
+              "label": "Using the Caching Service",
+              "link": {"type":"doc", "id":"user-guide/api-mediation/api-mediation-caching-service"},
+              "items": [
               ],
             },
             {
-              type: "category",
-              label: "Using API Catalog",
-              items: [
+              "type": "category",
+              "label": "Using API Catalog",
+              "items": [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
                 "user-guide/api-mediation-change-password-via-catalog",
               ],
