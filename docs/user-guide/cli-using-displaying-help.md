@@ -59,6 +59,6 @@ Append `--help-web` to a specific command or action to launch directly into the 
 There are several methods to view Zowe CLI web help:
 
 - <a href="/stable/web_help/index.html" target="_blank">Use a web browser</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Extract from a zip file</a>
+- <a href="/stable/zowe_web_help.zip" target="_blank">Extract from a ZIP file</a>
 - <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download a PDF file</a>
 

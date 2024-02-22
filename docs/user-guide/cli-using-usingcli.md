@@ -6,7 +6,7 @@ You can use the CLI interactively from a command window on any computer on which
 
 :::tip
 
-If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
+Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` [environment variable](../user-guide/cli-configuringcli-ev.md#setting-other-environment-variables) to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
 
 :::
 
@@ -19,7 +19,6 @@ If you want to use the CLI together with a screen reader to provide accessibilit
     :::note
         The [IBM Db2 Database Plug-in for Zowe CLI](../user-guide/cli-db2plugin) has limited support on Apple Silicon. To use the Db2 plug-in, a complete re-install of Zowe CLI and CLI plug-ins is required. See [M1 processor installation](../user-guide/cli-db2-install-m1) for information.
     :::
-
 
 ### Operating systems
 

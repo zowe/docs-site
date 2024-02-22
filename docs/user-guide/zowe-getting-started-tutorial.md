@@ -4,15 +4,15 @@ Learn how to start using Zowe components, applications, and plug-ins.
 
 ## Zowe server-side components
 
-- [Using Zowe Desktop](mvd-using.md)
 - [Using Zowe API Mediation Layer](api-mediation/using-api-mediation-layer.md)
+- [Using Zowe Desktop](mvd-using.md)
 - [Zowe cross memory server](../user-guide/configure-xmem-server.md)
 
 ## Zowe client-side components
 
 - [Using Zowe CLI](cli-using-usingcli.md)
-- [Using Zowe Explorer for Visual Studio Code](ze-usage.md)
 - [Using Zowe Explorer for IntelliJ](intellij-using.md)
+- [Using Zowe Explorer for Visual Studio Code](ze-usage.md)
 - [Using Zowe SDKs](sdks-using.md)
 
 ### Explore available plug-ins
