@@ -22,6 +22,8 @@ zwe components install -c /path/to/zowe.yaml -o /path/to/component/package
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -36,6 +38,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
