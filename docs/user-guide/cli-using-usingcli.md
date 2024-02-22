@@ -39,4 +39,8 @@ Text colors could be difficult to read in some terminals. If this is the case, w
 
 <br/> 
 
->Using Zowe CLI on [z/OS Unix Systems Services](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-zos-unix-system-services) is not supported at this time. If you would like to use it on USS in the future, show your interest by voting for the enhancement in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli/issues/1680). 
+:::info share your feedback
+
+Using Zowe CLI on [z/OS Unix Systems Services](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-zos-unix-system-services) is not supported at this time. If you would like to use it on USS in the future, show your interest by voting for the enhancement in the [Zowe CLI GitHub repository](https://github.com/zowe/zowe-cli/issues/1680).
+
+:::
