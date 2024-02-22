@@ -35,7 +35,7 @@ If you want to use the CLI together with a screen reader to provide accessibilit
 
 - [NodeJS](https://nodejs.org/en) LTS versions
 - [npm](https://www.npmjs.com/) versions applicable to NodeJS LTS versions
-- [PnPM](https://pnpm.io/)
+- [pnpm](https://pnpm.io/)
 - [Yarn](https://yarnpkg.com/) 
 
 <br/> 
