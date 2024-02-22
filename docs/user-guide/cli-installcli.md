@@ -21,7 +21,7 @@ To install Zowe CLI from a local package:
 
 1. Meet the [Zowe CLI software requirements](../user-guide/systemrequirements-cli.md).
 
-2. Navigate to [Download Zowe](https://www.zowe.org/download.html). In the **Client-side component installer** section, click the **Zowe \<X.Y.Z\> CLI Core** button (where <X.Y.Z\> specifies the release number).
+2. Navigate to [Download Zowe](https://www.zowe.org/download.html). In the **Client-side component installer** section, click the **Zowe \<X.Y.Z\> CLI Core** button (where \<X.Y.Z\> specifies the release number).
 
 3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
@@ -29,7 +29,7 @@ To install Zowe CLI from a local package:
 
 4. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/cli-swreqplugins.md) to install Zowe CLI plug-ins.
 
-5. If installing Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where <X.Y.Z\> specifies the release number).
+5. If installing Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where \<X.Y.Z\> specifies the release number).
 
 6. If installing Zowe CLI plug-ins, read the End User License Agreement for Zowe and click **I agree** to download the plug-ins package.
 

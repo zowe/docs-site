@@ -106,7 +106,7 @@ If necessary, you can update or revert Zowe CLI to a known, previously released 
 
     `zowe-cli-package-next-YYYYMMDD.zip` is downloaded to your computer (where YYYYMMDD indicates the year, month, and day of the build).
 
-4. If updating or reverting Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where <X.Y.Z\> specifies the release number).
+4. If updating or reverting Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where \<X.Y.Z\> specifies the release number).
 
 5. If updating or reverting Zowe CLI plug-ins, read the End User License Agreement for Zowe and click **I agree** to download the plug-ins package.
 
