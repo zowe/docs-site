@@ -558,7 +558,7 @@
               "items": [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
-                "user-guide/api-mediation/authenticating-with-personal-access-token",
+                "user-guide/api-mediation/authenticating-with-personal-access-token"
               ]
             },
             {
@@ -574,7 +574,7 @@
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
-                "user-guide/api-mediation/api-mediation-multi-tenancy",
+                "user-guide/api-mediation/api-mediation-multi-tenancy"
               ]
             },
             {
@@ -583,7 +583,7 @@
               "items": [
                 "user-guide/obtaining-information-about-api-services",
                 "user-guide/api-mediation-swagger-try-it-out",
-                "user-guide/api-mediation-swagger-code-snippets",
+                "user-guide/api-mediation-swagger-code-snippets"
               ]
             },
             {
@@ -591,7 +591,7 @@
               "label": "Administrating APIs",
               "items": [
                 "user-guide/api-mediation-static-api-refresh",
-                "user-guide/onboard-wizard",
+                "user-guide/onboard-wizard"
               ]
             },
             {
@@ -605,12 +605,12 @@
               "label": "Using API Catalog",
               "items": [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
-                "user-guide/api-mediation-change-password-via-catalog",
+                "user-guide/api-mediation-change-password-via-catalog"
               ]
             },
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation-metrics-service",
-            "user-guide/api-mediation/api-mediation-smf",
+            "user-guide/api-mediation/api-mediation-smf"
           ]
         }
       ]
@@ -942,7 +942,7 @@
           "items": [
             "troubleshoot/launcher/launcher-error-codes"
           ]
-        },
+        }
       ]
     },
     {
