@@ -1,6 +1,9 @@
-# (Optional) Addressing authentication requirements
+# (Recommended) Addressing authentication requirements
 
-The following features are optional with additional prerequisites.
+The following features are not reuired, but are recommended with additional prerequisites.
+
+:::info Roles required: security administrator
+:::
 
 ## Multi-Factor Authentication (MFA)
 
