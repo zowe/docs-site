@@ -1,6 +1,6 @@
 # (Recommended) Addressing authentication requirements
 
-The following features are not reuired, but are recommended with additional prerequisites.
+The following features are not required, but are recommended with additional prerequisites.
 
 :::info Roles required: security administrator
 :::
