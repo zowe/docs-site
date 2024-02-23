@@ -188,6 +188,12 @@ The Zowe Support Provider Conformance Program gives vendors the ability to showc
 
 ##  Installation and configuration
 
+#### Base profile
+
+A type of team configuration profile that stores connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once.
+
+The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+
 #### Convenience build
 
   The Zowe installation file for Zowe z/OS components that is distributed as a PAX file in z/OS Unix and contains the runtimes and scripts to install and launch the z/OS runtime. It is the most common method to install Zowe.
@@ -211,6 +217,10 @@ Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as 
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
+
+#### Service profile
+
+A type of team configuration profile that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
 
 #### SMP/E
 
