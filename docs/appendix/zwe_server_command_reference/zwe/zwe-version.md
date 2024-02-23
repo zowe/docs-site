@@ -18,6 +18,8 @@ zwe version
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -36,6 +38,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

@@ -1,44 +1,29 @@
-# zwe
+# zwe diagnose
 
-[zwe](./zwe)
+[zwe](././zwe) > [diagnose](./zwe-diagnose)
 
-	zwe [sub-command [sub-command]...] [parameter [parameter]...]
-
-## Sub-commands
-
-* [certificate](./certificate/zwe-certificate.md)
-* [components](./components/zwe-components.md)
-* [config](./config/zwe-config.md)
-* [diagnose](./zwe-diagnose.md)
-* [init](./init/zwe-init.md)
-* [install](./zwe-install.md)
-* [internal](./internal/zwe-internal.md)
-* [migrate](./migrate/zwe-migrate.md)
-* [sample](./sample/zwe-sample.md)
-* [start](./zwe-start.md)
-* [stop](./zwe-stop.md)
-* [support](./support/zwe-support.md)
-* [version](./zwe-version.md)
+	zwe diagnose [parameter [parameter]...]
 
 ## Description
 
-A command line utility helps you managing Zowe instance.
-
-You can issue --help or -h to find information for all commands it supports.
+Display the message corresponding to the error code.
 
 
 ## Examples
 
 ```
-zwe install -h
-
-zwe init --allow-overwrite --config /path/to/zowe.yaml
-
-zwe start -c /path/to/zowe.yaml
+zwe diagnose -e ZWES0014I
 
 ```
 
 ## Parameters
+
+Full name|Alias|Type|Required|Help message
+|---|---|---|---|---
+--error-code|-e|string|yes|Error Code.
+
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -52,6 +37,13 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0102E|102|Invalid parameter %s.
+
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
