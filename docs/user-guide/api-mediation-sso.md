@@ -24,13 +24,13 @@ There are two main types of components that participate in Zowe SSO through API 
 * Zowe API ML client
 
    - This type of component is user-facing and can obtain user credentials through a user interface (web, CLI, desktop).
-   - API ML clients can be confidential or public.
+   - API ML clients can be private or public.
    - A Zowe API ML client calls API services through the API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. 
 
-* An API service accessed through Zowe API ML
+* API service accessed via Zowe API ML
 
-   - A service that is registered to API ML and is accessed through the API Gateway.
+   - A service that is registered to API ML and is accessed through the API ML Gateway.
    - Services are protected by an access token or PassTicket.
    - The access token or PassTicket can be validated by the called API service.
 
@@ -46,7 +46,7 @@ The following sections describe what is necessary to utilize SSO for both types 
 
 This section describes the requirements that an API service needs to satisfy to adopt a Zowe SSO access token. 
 
-* The token received by the Gateway is first validated and then may be passed directly to the service. Alternatively, the Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
+* The token received by the API ML Gateway is first validated and then may be passed directly to the service. Alternatively, the API ML Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
 * The API service can validate the token and extract information about the user ID by calling the ZAAS `/query` endpoint. 
 * The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 

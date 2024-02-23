@@ -22,7 +22,7 @@ For more information, see the [Authentication for API ML services documentation]
 
 ## Authentication with Personal Access Token (PAT)
 
-A Personal Access Token (PAT) is a specific scoped JWT with a configurable validity duration. The PAT authentication method is an alternative to using a client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token).
+A Personal Access Token (PAT) is a specific scoped JWT with a configurable validity duration. The PAT authentication method is an alternative to using a client certificate for authentication. It is disabled by default. To enable this functionality, see [Enabling single sign on for clients via personal access token configuration](../user-guide/api-mediation/configuration-personal-access-token).
 
 **Benefits of PAT**
 
@@ -30,12 +30,12 @@ A Personal Access Token (PAT) is a specific scoped JWT with a configurable valid
 - Scoped. Users are required to provide a scope. It is only valid for the specified services.
 - Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules.
 
-For more information about PAT, see [the Personal Access Token documentation](../user-guide/api-mediation/api-mediation-personal-access-token).
+For more information about PAT, see [Authenticating with a Personal Access Token documentation](../user-guide/api-mediation/authenticating-with-personal-access-token).
 
 ## Authentication with SAF Identity Tokens
 The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
 
-For more information about configuring the token, see the [Configure signed SAF Identity tokens (IDT) documentation](../user-guide/configure-zos-system#configure-signed-saf-identity-tokens-idt).
+For more information about configuring the token, see [Configure signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system/#configure-signed-saf-identity-tokens-idt).
 
 ## Multi-factor authentication (MFA)
 
