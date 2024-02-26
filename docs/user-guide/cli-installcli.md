@@ -107,7 +107,7 @@ Installation steps for Zowe CLI depend on whether your z/Linux environment requi
    1. Follow the steps in [Installing Zowe CLI and Zowe CLI plug-ins from an npm online registry](#installing-zowe-cli-and-zowe-cli-plug-ins-from-an-npm-online-registry) or [Installing Zowe CLI and Zowe CLI plug-ins from a local package](#installing-zowe-cli-and-zowe-cli-plug-ins-from-a-local-package).
    2. Follow the steps in [Configuring Zowe CLI where secure credential storage is not available](./cli-configure-cli-on-os-where-scs-unavailable.md).
 
-### Installing Zowe on a USS system, or O/S without secure credential storage
+### Installing Zowe CLI on a USS system, or an OS without secure credential storage
 
 Follow the steps in [Configuring Zowe CLI where secure credential storage is not available](../user-guide/cli-configure-cli-on-os-where-scs-unavailable.md).
 
