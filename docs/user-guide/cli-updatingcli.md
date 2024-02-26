@@ -90,7 +90,7 @@ If necessary, you can update or revert Zowe CLI to a known, previously released 
 
       - `<X.Y.Z>`
 
-      Specifies the version that Zowe CLI or Zowe CLI plug-ins are to be updated or reverted to. For example, `npm install -g @zowe/cli@8.0.0`.
+      Specifies release number that Zowe CLI or Zowe CLI plug-ins are to be updated or reverted to. For example, `npm install -g @zowe/cli@8.0.0`.
 
 2. See [Next steps](#next-steps) for recommended tasks after installation.
 
@@ -104,13 +104,13 @@ If necessary, you can update or revert Zowe CLI to a known, previously released 
 
 3. Read the End User License Agreement for Zowe and click **I agree** to download the core package.
 
-    `zowe-cli-package-next-YYYYMMDD.zip` is downloaded to your computer (where YYYYMMDD indicates the year, month, and day of the build).
+    `zowe-cli-package-next-<X.Y.Z>.zip` is downloaded to your computer (where `<X.Y.Z>` indicates the year, month, and day of the build).
 
 4. If updating or reverting Zowe CLI plug-ins, navigate to [Download Zowe](https://www.zowe.org/download.html) and click the **Zowe \<X.Y.Z\> CLI Plugins** button (where \<X.Y.Z\> specifies the release number).
 
 5. If updating or reverting Zowe CLI plug-ins, read the End User License Agreement for Zowe and click **I agree** to download the plug-ins package.
 
-    `zowe-cli-plugins-next-YYYYMMDD.zip` is downloaded to your computer.
+    `zowe-cli-plugins-next-<X.Y.Z>.zip` is downloaded to your computer.
 
 6. Unzip the contents of `zowe-cli-package-<X.Y.Z>.zip` (and `zowe-cli-plugins-<X.Y.Z>.zip`, if downloaded) to a working directory.
 
