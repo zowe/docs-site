@@ -117,6 +117,12 @@ The default service ID is provided by the service developer in the service confi
 
 Services are deployed using one or more service instances, which share the same service ID and implementation.
 
+#### Team configuration
+
+A method of storing and managing Zowe CLI and Zowe Explorer *team* and *user* profiles introduced in Zowe Version 2.
+
+This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. The location of the configuration file determines whether its profiles are applied *globally* or *per project*.
+
 #### Web Explorers
 
 A suite of web apps on the [Zowe Desktop](#zowe-desktop) that are part of the [Zowe Application Framework](#zowe-application-framework) and the core Zowe server installation. They include the [JES](#jes-explorer), [MVS](#mvs-multiple-virtual-storage-explorer), [USS](#uss-explorer), and IP Explorers. Not related to [ Zowe Explorer](#zowe-explorer).
