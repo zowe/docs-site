@@ -172,7 +172,7 @@ We recommend that you create profiles using the configuration file. We do not re
 
 When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in, the commands create an entry for a `db2 profile` in your `zowe.config.json` file.
 
-Alternatively, you can create a db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
+Alternatively, you can create a Db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
 
 1. Browse to the following directory: `C:\Users\<username>\.zowe`
 

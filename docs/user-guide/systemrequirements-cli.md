@@ -83,7 +83,7 @@ You do not need to install the full Zowe solution to install and use Zowe CLI. M
 
 Services for plug-ins must be configured and running.
 
-Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands. For example, the IMS plug-in requires an instance of IBM IMS on the mainframe with IMS Connect (REST services) running. For more information, see [Software requirements for CLI plug-ins](./cli-swreqplugins.md)
+Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands. For example, the CICS plug-in requires an instance of IBM CICS Transaction Server on the mainframe with the CICS Management Client Interface (CMCI) API running.
 
 ### Zowe CLI on z/OS is not supported
 
