@@ -1,10 +1,10 @@
 # Zowe release notes guide
 
-Learn how Zowe release notes are constructed, how to generate and submit release notes. 
+Learn how Zowe release notes are constructed, how to generate and submit release notes.
 
 ## Release notes template
 
-Zowe release notes follow a similar pattern for each release. The following template takes v2.3.0 as an example. 
+Zowe release notes follow a similar pattern for each release. The following template takes v2.3.0 as an example.
 
 ```
 # Version 2.3.0 (September 2022)
@@ -115,22 +115,22 @@ The following security issues were fixed by the Zowe security group in version 2
 
 ## Release notes process
 
-- Before the release is published, run a tool or script to pull updates from different CHANGELOGs into a Markdown file. 
-- Copy and move the content into the release notes document. 
-- Review the content, check grammar and style, check formatting. 
-- Send it to the community (squad leads) to review. 
-- Publish the release notes. 
+- Before the release is published, run a tool or script to pull updates from different CHANGELOGs into a Markdown file.
+- Copy and move the content into the release notes document.
+- Review the content, check grammar and style, check formatting.
+- Send it to the community (squad leads) to review.
+- Publish the release notes.
 
 ## How to update the release notes
 
-Zowe release notes build on its components' CHANGELOGs. Each component or area maintains a CHANGELOGs in the GitHub repo. Zowe V1 and V2 tracks a separate set of CHANGELOGs. The following list shows all V2 release CHANGELOGs (keeps updating). 
+Zowe release notes build on its components' CHANGELOGs. Each component or area maintains a CHANGELOGs in the GitHub repo. Zowe V1 and V2 tracks a separate set of CHANGELOGs. The following list shows all V2 release CHANGELOGs (keeps updating).
 
 For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog-recommendations)
 
 - Install and packaging
   > Pull updates in the section that matches Zowe release number like 2.6.0.
-  - https://github.com/zowe/zowe-install-packaging/blob/v2.x/rc/CHANGELOG.md    
-    
+  - https://github.com/zowe/zowe-install-packaging/blob/v2.x/rc/CHANGELOG.md
+
 - App Framework
   > Pull updates in the section that matches Zowe release number.
   - https://github.com/zowe/zlux-app-server/blob/v2.x/staging/CHANGELOG.md
@@ -138,7 +138,7 @@ For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog
   - https://github.com/zowe/zowe-common-c/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zlux-app-manager/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/zlux-server-framework/blob/v2.x/staging/CHANGELOG.md
- 
+
   > Based on change history timestamp, pull updates after last release.
   - https://github.com/zowe/zlux-editor/blob/v2.x/staging/CHANGELOG.md
   - https://github.com/zowe/tn3270-ng2/blob/v2.x/staging/CHANGELOG.md
@@ -156,7 +156,7 @@ For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog
   > Based on change history timestamp, pull updates after last release or identify CLI versions included in the release.
   - Core: https://github.com/zowe/zowe-cli/blob/master/packages/cli/CHANGELOG.md
   - Imperative CLI Framework: https://github.com/zowe/imperative/blob/master/CHANGELOG.md
-  - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/master/CHANGELOG.md
+  - CICS plug-in: https://github.com/zowe/cics-for-zowe-client/blob/master/packages/cli/CHANGELOG.md
   - DB2 plug-in: https://github.com/zowe/zowe-cli-db2-plugin/blob/master/CHANGELOG.md
   - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/master/CHANGELOG.md
 
@@ -168,7 +168,7 @@ For recommendations about CHANGELOGs, see [CHANGELOG recommendations](#changelog
 The following list shows all V1 release CHANGELOGs.
 
 - Install and packaging
-  
+
   - https://github.com/zowe/zowe-install-packaging/blob/v1.x/staging/CHANGELOG.md
 
 - App Framework
@@ -194,7 +194,7 @@ The following list shows all V1 release CHANGELOGs.
 
   - Core: https://github.com/zowe/zowe-cli/blob/zowe-v1-lts/packages/cli/CHANGELOG.md
   - Imperative CLI Framework: https://github.com/zowe/imperative/blob/zowe-v1-lts/CHANGELOG.md
-  - CICS plug-in: https://github.com/zowe/zowe-cli-cics-plugin/blob/zowe-v1-lts/CHANGELOG.md
+  - CICS plug-in: https://github.com/zowe/cics-for-zowe-client/blob/zowe-v1-lts/packages/cli/CHANGELOG.md
   - DB2 plug-in: https://github.com/zowe/zowe-cli-db2-plugin/blob/zowe-v1-lts/CHANGELOG.md
   - FTP Plug-in: https://github.com/zowe/zowe-cli-ftp-plugin/blob/zowe-v1-lts/CHANGELOG.md
   - Secure Credential Store Plug-in: https://github.com/zowe/zowe-cli-scs-plugin/blob/master/CHANGELOG.md
@@ -205,13 +205,13 @@ The following list shows all V1 release CHANGELOGs.
 
 ### Vulnerabilities fixed
 
-As described, when a new release is published, Zowe publishes the vulnerabilities fixed in the **previous** release. 
+As described, when a new release is published, Zowe publishes the vulnerabilities fixed in the **previous** release.
 
-Follow the steps below to fetch the list of fixes for the previous release. 
+Follow the steps below to fetch the list of fixes for the previous release.
 
 1. Go to the [zowe/security-reports](https://github.com/zowe/security-reports) repo. This is a private repo. Contact the security group (Nicholas Kocsis - Slack @Nick) to gain access.
-2. Open [https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md](https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md). 
-3. Locate the previous release section. Then, navigate to the **Fixed** subsection. 
+2. Open [https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md](https://github.com/zowe/security-reports/blob/master/security-vulnerabilities.md).
+3. Locate the previous release section. Then, navigate to the **Fixed** subsection.
 4. Copy the list of fixes and paste them in the release notes.
 
 ### CHANGELOG recommendations
@@ -222,24 +222,24 @@ If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squ
 
 #### CHANGELOG and release notes formatting
 
-- Include an issue or PR number for each entry. This helps users learn more about the change when needed. 
+- Include an issue or PR number for each entry. This helps users learn more about the change when needed.
 
-    Example: 
+    Example:
     ```
-    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335 
+    Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
     ```
 
 - Indicate whether the change is a new feature/enhancement or a bug fix.  This helps users understand quickly what new enhancements are introduced and decide whether to upgrade.
 
     We recommend one of the following methods to organize content:
-    1) For each release, create separate sections for “New features and enhancements” and “Bug fixes” in the CHANGELOG and add updates into the correct section. 
+    1) For each release, create separate sections for “New features and enhancements” and “Bug fixes” in the CHANGELOG and add updates into the correct section.
 
         Example:
         ```
-        1.14.0 
+        1.14.0
         New features and enhancements
-        - Added SSO token name and label to convert-env.sh for use with ZSS. #118 
-    
+        - Added SSO token name and label to convert-env.sh for use with ZSS. #118
+
         Bug fixes
         - Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
         ```
@@ -247,9 +247,9 @@ If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squ
    2) Use tags to label entries.
 
       Example:
-      ``` 
-      1.14.0 
-      - Feature: Added SSO token name and label to convert-env.sh for use with ZSS. #118 
+      ```
+      1.14.0
+      - Feature: Added SSO token name and label to convert-env.sh for use with ZSS. #118
       - Bugfix: Fixed app server configuration bug where min worker count was ignored when max worker count was not defined #187
       ```
 
@@ -259,13 +259,13 @@ If a CHANGELOG is set up, ensure that it’s properly formatted. For the doc squ
    - If a new feature or enhancement, can use “Added...”, “Improved...”, “Enhanced...”;
    - If a bug fix, can use “Fixed...”
 2. Write from the user’s perspective.
-    - If a new feature or enhancement, document why this change matters to users (what this feature or enhancement allows the users to do now) . 
+    - If a new feature or enhancement, document why this change matters to users (what this feature or enhancement allows the users to do now) .
 
         Example:
         ```
         Added the validate only mode of Zowe. This allows you to check whether all the component validation checks of the Zowe installation pass without starting any of the components. #1335
         ```
-   - If a bug fix, state clearly what issue was resolved. 
+   - If a bug fix, state clearly what issue was resolved.
 
       Example:
       ```
