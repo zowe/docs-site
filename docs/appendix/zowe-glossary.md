@@ -191,7 +191,6 @@ The governing body that is responsible for the overall planning, development, an
 
 The Zowe Support Provider Conformance Program gives vendors the ability to showcase their Zowe support competencies via well defined criteria. It is administered by the Linux Foundation and Open Mainframe Project.
 
-
 ##  Installation and configuration
 
 #### Base profile
