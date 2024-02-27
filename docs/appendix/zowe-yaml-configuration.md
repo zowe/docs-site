@@ -64,33 +64,15 @@ The YAML configuration file has few high-level sections:
 
 ### Extract sharable configuration out of zowe.yaml
 
-The Zowe YAML configuration file supports a special `@include` annotation that can be used in any level of the configuration. This enables you to organize your YAML configuration files and extract sharable configurations to a separate YAML file.
+The Zowe YAML configuration file supports splitting into several files or PARMLIB members when "zowe.useConfigmgr" is set to true. This can help simplify grouping configuration changes by type or owner.
+More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#splitting-configuration-into-multiple-storage-types)
 
-For example, you can define a sharable certificate configuration file `<keystore-dir>/zowe-certificates.yaml` like this:
 
-```yaml
-keystore:
-  type: PKCS12
-  file: /global/zowe/keystore/localhost/localhost.keystore.p12
-  password: password
-  alias: localhost
-truststore:
-  type: PKCS12
-  file: /global/zowe/keystore/localhost/localhost.truststore.p12
-  password: password
-pem:
-  key: /global/zowe/keystore/localhost/localhost.key
-  certificate: /global/zowe/keystore/localhost/localhost.cer
-  certificateAuthorities: /global/zowe/keystore/local_ca/local_ca.cer
-```
+### Creating portable references
 
-Then in your `zowe.yaml`, you can import this certification file like this:
-
-```yaml
-zowe:
-  certificate:
-    @include: "<keystore-dir>/zowe-certificates.yaml"
-```
+The Zowe YAML configuration file has template logic for relating one value to another, a system environment variable or symbol, or even to add conditional behavior.
+This feature is available when "zowe.useConfigmgr" is set to true, and it can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
+More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#configuration-templates)
 
 ### Configuration override
 

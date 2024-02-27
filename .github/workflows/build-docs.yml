@@ -16,10 +16,10 @@ jobs:
       cancel-in-progress: true
 
     steps:
-      - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
-        with:
-          swap-size-gb: 6
+      # - name: Set Swap Space
+      #   uses: pierotofy/set-swap-space@master
+      #   with:
+      #     swap-size-gb: 6
 
       - name: Checkout
         uses: actions/checkout@v3

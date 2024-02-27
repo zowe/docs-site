@@ -29,12 +29,6 @@ module.exports = {
     }),
   },
   themeConfig: {
-    announcementBar: {
-      id: 'announcementBar-1', // increment on change
-      content:
-          '📌 <b>Support for Zowe Version 1 ends on Sept. 30, 2024</b>. Follow <a href="https://docs.zowe.org/stable/extend/migrate-extensions/" target="_blank">this guide</a> to migrate to Zowe Version 2.',
-      textColor: '#000',
-    },
     docs: {
       sidebar: {
         hideable: true

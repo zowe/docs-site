@@ -107,7 +107,7 @@ When running on z/OS, the server uses the jobname suffix of AD.
 ## Caching service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The Caching service URL is `https://<ZOWE_HOST_IP>:7555`.
-For more information about the Caching service, see the [Caching service documentation](../extend/extend-apiml/api-mediation-caching-service.md).
+For more information about the Caching service, see the [Caching service documentation](../user-guide/api-mediation/api-mediation-caching-service).
 
 When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
 When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`

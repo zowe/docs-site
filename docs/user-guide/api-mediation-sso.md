@@ -1,11 +1,11 @@
-# Zowe API Mediation Layer Single-Sign-On Overview
+# Zowe API Mediation Layer Single Sign On Overview
 
-You can extend Zowe and utilize Zowe Single-Sign-On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
+You can extend Zowe and utilize Zowe Single Sign On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
 
 :::info Required roles: system administrator, security administrator
 :::
 
-This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single-Sign-On is based on single-user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS), which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
+This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation. Zowe Single Sign On is based on single-user authentication which produces an access token that represents the user in communication with z/OS services accessible through the API Mediation Layer. The access token is issued by the Zowe Authentication and Authorization Service (ZAAS), which is part of API ML. ZAAS issues an access token based on valid z/OS credentials. This token can be validated by any component participating in SSO. 
 
 :::note
 Currently, API ML can provide SSO only in a single security domain.
@@ -24,13 +24,13 @@ There are two main types of components that participate in Zowe SSO through API 
 * Zowe API ML client
 
    - This type of component is user-facing and can obtain user credentials through a user interface (web, CLI, desktop).
-   - API ML clients can be confidential or public.
+   - API ML clients can be private or public.
    - A Zowe API ML client calls API services through the API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. 
 
-* An API service accessed through Zowe API ML
+* API service accessed via Zowe API ML
 
-   - A service that is registered to API ML and is accessed through the API Gateway.
+   - A service that is registered to API ML and is accessed through the API ML Gateway.
    - Services are protected by an access token or PassTicket.
    - The access token or PassTicket can be validated by the called API service.
 
@@ -46,7 +46,7 @@ The following sections describe what is necessary to utilize SSO for both types 
 
 This section describes the requirements that an API service needs to satisfy to adopt a Zowe SSO access token. 
 
-* The token received by the Gateway is first validated and then may be passed directly to the service. Alternatively, the Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
+* The token received by the API ML Gateway is first validated and then may be passed directly to the service. Alternatively, the API ML Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
 * The API service can validate the token and extract information about the user ID by calling the ZAAS `/query` endpoint. 
 * The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 
@@ -59,7 +59,7 @@ The REST API of ZAAS can easily be called from a Java application using the [ZAA
 If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
 
 :::note
-For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets).
+For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets).
 :::
 
 ## Further resources
