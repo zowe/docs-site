@@ -13,7 +13,7 @@ This article describes how services in the Zowe API ecosystem are expected to ac
 For more information about authenticating with JWT tokens, see the Medium blog post [Single-Sign-On to z/OS REST APIs with Zowe](https://medium.com/zowe/single-sign-on-to-z-os-rest-apis-with-zowe-6e35fd022a95).
 :::
 
-By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](../user-guide/api-mediation/configuration-jwt/#saf-as-an-authentication-provider)
+By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](./api-mediation/configuration-jwt/#using-saf-as-an-authentication-provider).
 
 
 ## JWT Token-based Login Flow and Request/Response Format

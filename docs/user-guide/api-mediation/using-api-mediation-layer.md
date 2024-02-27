@@ -21,20 +21,53 @@ There are two primary use cases for using the API ML:
 
 See the following topics for detailed information about how to use the API Mediation Layer:  
 
-*  **Ways to use API ML via API ML Catalog**  
-    * [View Service Information and API Documentation](../api-mediation-view-service-information-and-api-doc.md)
-    * [Swagger "Try It Out" functionality](../api-mediation-swagger-try-it-out.md)
-    * [Swagger Code Snippets functionality](../api-mediation-swagger-code-snippets.md)
-    * [Static APIs refresh functionality](../api-mediation-static-api-refresh.md)
-    * [Change password via API Catalog functionality](../api-mediation-change-password-via-catalog.md) 
-    * [Onboarding a REST API service with the YAML Wizard](../onboard-wizard.md)
+### Using Single Sign On (SSO)
 
-* **Other features when using API ML**  
-    * [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service.md)
-    * [API Mediation Layer Routing](../../extend/extend-apiml/api-mediation-routing.md)
-    * [Obtaining Information about API Services](../../extend/extend-apiml/service-information.md)
-    * [WebSocket support in API Gateway](../../extend/extend-apiml/websocket.md)
-    * [Personal Access Tokens](../../user-guide/api-mediation/api-mediation-personal-access-token.md)
-    * [SMF records](../../user-guide/api-mediation/api-mediation-smf.md)
+Three authentication methods can be used with single sign on:
 
+* [Authenticating with a JWT token](../authenticating-with-jwt-token)
+* [Authenticating with client certificates](../authenticating-with-client-certificates)
+* [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token)
+
+### Using multi-factor authentication
+
+User identity verification can be performed by using multi-factor authentication. For more information, see [Using multi-factor authentication (MFA)](./using-multi-factor-authentication).
+
+### API Routing
+
+Various routing options can be used for APIs when using API Mediation Layer:
+
+* [Routing requests to REST APIs](./routing-requests-to-rest-apis)
+* [Routing with WebSickets](../routing-with-websockets)
+* [Using GraphQL APIs](use-graphql-api)
+* [Routing MultiTenancy Configuration](./api-mediation-multi-tenancy)
+
+### Learning more about APIs 
+
+API Mediation Layer makes it possible to view API information is a variety of ways:
+
+* [Obtaining information about API Services](../obtaining-information-about-api-services)
+* [Using Swagger "Try it out" in the API Catalog](../api-mediation-swagger-try-it-out)
+* [Using Swagger Code Snippets in the API Catalog](../api-mediation-swagger-code-snippets)
+
+### Administrating APIs
+
+* [Using Static API services refresh in the API Catalog](../api-mediation-static-api-refresh)
+* [Onboarding a REST API service with the YAML Wizard](../onboard-wizard)
+
+### Using the Caching Service
+
+As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. For details, see [Using the Caching service](./api-mediation-caching-service).
+
+### Using API Catalog
+
+There are various options for using the API Catalog:
+
+* [Viewing Service Information abd API Documentation in the API Catalog](../api-mediation-view-service-information-and-api-doc)
+* [Changing an expired password via API Catalog](../api-mediation-change-password-via-catalog)
+
+### Additional use case when usig API Mediation Layer
+
+* [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service)
+* [SMF records](./api-mediation-smf)
 
