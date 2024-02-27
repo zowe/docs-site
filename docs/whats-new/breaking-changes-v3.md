@@ -12,16 +12,14 @@ The upcoming release of Zowe v3 will bring a range of major changes in Zowe func
 * Jobs API will be archived
 * Metrics service will be archived
 * IMS API will be archived
-* Java 17 will be required for API Mediation Layer to run
+* Java 17 will be required for the API Mediation Layer to run
 * z/OSMF in version V2R5 with APAR PH12143 applied
-* Onboarding of static services will require the modification of the zowe.yaml as well as the addition of a directory outside of Zowe from which files can be read.
 * Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://`
 
 ### Important updates
 
-Authentication and Authorization Service is a separate service, only one that needs z/OS directly
-<!-- Can this be clarified? I am unclear about what this means. -->
-
+The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly
+ 
 ## Application Framework
 
 ### Breaking changes
