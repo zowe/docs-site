@@ -43,7 +43,7 @@ The Zowe Launcher makes it possible to launch Zowe z/OS server components in a h
 
 ### API Mediation Layer
 
-The API Mediation Layer provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../extend/extend-apiml/api-mediation-sso.md) capability for mainframe users.
+The API Mediation Layer provides a single point of access for APIs of mainframe services, and provides a [Single Sign On (SSO)](../user-guide/api-mediation-sso) capability for mainframe users.
 
 The API Mediation Layer (API ML) facilitates secure communication between loosely coupled clients and services through a variety of API types, such as REST, GraphQL or Web-Socket. 
 API ML consists of these core components: the API Gateway, the Discovery Service, the API Catalog, and the Caching service:
