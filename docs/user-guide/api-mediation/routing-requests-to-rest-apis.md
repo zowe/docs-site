@@ -86,7 +86,7 @@ The caching services for each Zowe instance, whether on the same LPAR, or distri
 
 For simplification of the diagram above, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
 
-To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex.md).
+To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../configure-sysplex).
 
 ## API Versioning
 

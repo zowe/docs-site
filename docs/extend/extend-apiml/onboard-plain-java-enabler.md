@@ -66,7 +66,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
-* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/master/onboarding-enabler-java-sample-app)
+* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/v2.x.x/onboarding-enabler-java-sample-app)
 
 ## Configuring your project
 
