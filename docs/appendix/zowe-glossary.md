@@ -16,7 +16,7 @@ For an overview of security in Zowe, see [the Zowe Security policy](https://www.
 
 ### Zowe API Mediation Layer (API ML)
 
-Provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. It has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
+Provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
 
 <details>
 <summary>
@@ -27,7 +27,7 @@ Click here for descriptions of the various components that form the API Mediatio
 Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
 
 #### API Discovery Service  
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, it continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
+As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
 
 #### API Gateway    
 A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
@@ -35,7 +35,7 @@ A proxy server that routes requests from clients on its northbound edge (such as
 Also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
 
 #### Caching Service  
-Designed for Zowe components in a high availability (HA) configuration. It supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
+Designed for Zowe components in a high availability (HA) configuration. The caching service supports the HA of all components within Zowe, allowing components to be stateless by providing a mechanism to offload their state to a location accessible by all instances of the service, including those which just started.
 
 </details>
 

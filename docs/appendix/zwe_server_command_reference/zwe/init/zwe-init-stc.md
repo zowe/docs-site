@@ -58,6 +58,8 @@ zwe init stc -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -87,6 +89,8 @@ ZWEL0143E|143|Cannot find data set member %s. You may need to re-run `zwe instal
 ZWEL0158E|158|%s already exists.
 ZWEL0159E|159|Failed to modify %s.
 ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

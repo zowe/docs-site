@@ -25,6 +25,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-file,--component|-o|string|yes|Path to the component package or directory.
 --auto-encoding|-e|string|no|If we want to automatically tagging the module files.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -45,10 +47,13 @@ Error code|Exit code|Error message
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0153E|153|Cannot install Zowe component to system root directory.
 ZWEL0154E|154|Temporary directory is empty.
-ZWEL0155E|155|Component %s already exists in %s.
+ZWEL0155E|155|Component %s already exists in %s. If you meant to upgrade this component, run the command 'zwe components upgrade' instead.
 ZWEL0167E|167|Cannot find component name from %s package manifest.
 ZWEL0204E|204|Symlink creation failure, error=%s
-ZWEL0313E|313|Cannot file component file %s.### Inherited from parent command
+ZWEL0313E|313|Cannot file component file %s.
+
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
