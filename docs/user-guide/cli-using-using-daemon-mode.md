@@ -41,21 +41,12 @@ To enable daemon mode and configure Zowe to run Zowe CLI constantly in daemon mo
    :::
 
    You have successfully configured Zowe CLI to run on daemon mode.
+
+      - Each time a Zowe CLI command is issued, the daemon binary creates or reuses a file in the user's home directory. In some cases, this behavior might be undesirable. (For example, the home directory resides on a network drive and has poor file performance.)
    
    Each time a Zowe CLI command is issued, the daemon binary creates or reuses a file in the user's home directory. In some cases, this behavior might be undesirable.
    
    To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli-ev.md#setting-cli-daemon-mode-properties).
-
-The following example illustrates running Zowe CLI commands with daemon mode enabled:
-
-   ```
-   zowe --version
-   Starting a background process to increase performance ...
-   8.0.0-next.202110211759
-   
-   zowe --version
-   8.0.0-next.202110211759
-   ```
 
 ## Restarting daemon mode
 
