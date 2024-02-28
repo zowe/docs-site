@@ -157,7 +157,7 @@ Refers to the desktop UI that is part of the [Zowe Application Framework](#zowe-
 
 #### Zowe Embedded Browser for RMF/SMF and APIs (ZEBRA)
 
-Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so that other ISV SW and users can exploit them using open-source SW for many ways. For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA demo site](https://zebra.talktothemainframe.com:3390/).
+Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so that other ISV SW and users can exploit them using open-source SW for many ways. For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit [Real ZEBRA Use Cases in Large Production Systems](https://openmainframeproject.org/blog/real-zebra-use-cases-in-large-production-systems-video/) in the Open Mainframe Project website. 
 
 #### Zowe install packaging  
 

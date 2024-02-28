@@ -25,7 +25,8 @@ Update the z/OSMF configuration with the following parameter:
 `allowBasicAuthLookup="false"`
 
 After applying this change, each authentication call results in generating a new JWT.
-For more information, see [Configuring z/OSMF](./systemrequirements-zosmf/#configuring-zosmf-to-properly-work-with-api-ml) to properly work with API ML, and [Multi-factor authentication configuration](./mvd-configuration/#multi-factor-authentication-configuration) in Configuring Zowe Application Framework.
+For more information, see [Configuring z/OSMF](../../user-guide/systemrequirements-zosmf).
+to properly work with API ML, and [Multi-factor authentication configuration](../mvd-configuration/#multi-factor-authentication-configuration) in Configuring Zowe Application Framework.
 
 ### No Notification when Additional Input is Required
 
