@@ -117,6 +117,12 @@ The default service ID is provided by the service developer in the service confi
 
 Services are deployed using one or more service instances, which share the same service ID and implementation.
 
+#### Team configuration
+
+A method of storing and managing Zowe CLI and Zowe Explorer *team* and *user* profiles introduced in Zowe Version 2.
+
+This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. The location of the configuration file determines whether its profiles are applied *globally* or *per project*.
+
 #### Web Explorers
 
 A suite of web apps on the [Zowe Desktop](#zowe-desktop) that are part of the [Zowe Application Framework](#zowe-application-framework) and the core Zowe server installation. They include the [JES](#jes-explorer), [MVS](#mvs-multiple-virtual-storage-explorer), [USS](#uss-explorer), and IP Explorers. Not related to [ Zowe Explorer](#zowe-explorer).
@@ -151,7 +157,7 @@ Refers to the desktop UI that is part of the [Zowe Application Framework](#zowe-
 
 #### Zowe Embedded Browser for RMF/SMF and APIs (ZEBRA)
 
-Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so that other ISV SW and users can exploit them using open-source SW for many ways. For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit the [ZEBRA demo site](https://zebra.talktothemainframe.com:3390/).
+Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so that other ISV SW and users can exploit them using open-source SW for many ways. For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation) or visit [Real ZEBRA Use Cases in Large Production Systems](https://openmainframeproject.org/blog/real-zebra-use-cases-in-large-production-systems-video/) in the Open Mainframe Project website. 
 
 #### Zowe install packaging  
 
@@ -185,8 +191,13 @@ The governing body that is responsible for the overall planning, development, an
 
 The Zowe Support Provider Conformance Program gives vendors the ability to showcase their Zowe support competencies via well defined criteria. It is administered by the Linux Foundation and Open Mainframe Project.
 
-
 ##  Installation and configuration
+
+#### Base profile
+
+A type of team configuration profile that stores connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once.
+
+The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
 #### Convenience build
 
@@ -211,6 +222,10 @@ Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as 
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
+
+#### Service profile
+
+A type of team configuration profile that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
 
 #### SMP/E
 
