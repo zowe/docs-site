@@ -4,4 +4,4 @@ The API Gateway provides different functionalities and implements several REST A
 
 * [Update User Password](api-mediation-update-password.md)
 * [JWT token refresh endpoint](api-mediation-jwt-token-refresh.md)
-* [Personal Access Tokens](api-mediation-personal-access-token.md)
+* [Personal Access Tokens](../api-mediation/authenticating-with-personal-access-token)

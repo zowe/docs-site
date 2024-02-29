@@ -19,7 +19,7 @@ Before you install Zowe Explorer CICS Extension from a VSIX file, ensure that Zo
 
 If  Zowe Explorer is installed, you can install Zowe Explorer CICS Extension from a VSIX file.
 
-1. Visit the [download site](https://github.com/zowe/vscode-extension-for-cics). Select the **Latest** button, which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
+1. Visit the [download site](https://github.com/zowe/cics-for-zowe-client). Select the **Latest** button, which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
 
    ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
 

@@ -28,6 +28,7 @@ module.exports = {
       ],
     },
     "whats-new/zowe-v3-office-hours",
+    "whats-new/breaking-changes-v3",
   ],
   "getting-started": [
     {
@@ -107,11 +108,11 @@ module.exports = {
             "user-guide/systemrequirements-zos",
             "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
+            "user-guide/address-authentication-requirements",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
             "user-guide/address-browser-requirements",
-            "user-guide/address-authentication-requirements"
           ]
         },
         {
