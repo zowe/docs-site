@@ -229,7 +229,7 @@ A type of team configuration profile that stores connection information for a sp
 
 #### SMP/E
 
-The Zowe installation for Zowe z/OS components that is distributed as an SMP/E package, identified by FMID, and contains the runtimes and the scripts to install and launch the z/OS runtime. The initial package is installed and then a PTF is applied. It is the second most common method to install Zowe.
+The Zowe installation for Zowe z/OS components that is distributed as an SMP/E package, identified by FMID, and contains the runtimes and the scripts to install and launch the z/OS runtime. The initial package is installed, and then a PTF is applied. It is the second most common method to install Zowe.
 
 #### SMP/E with z/OSMF workflow
 

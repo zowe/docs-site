@@ -2,7 +2,7 @@
 
 Zowe API Mediation Layer (ML) provides a secure single point of access to a defined set of mainframe services. The layer provides API management features such as high-availability, consistent security, and a single sign-on (SSO) and multi-factor authentication (MFA) experience.
 
-You use tokens to access services through API ML without reauthenticating every time you issue a command. Tokens allow for secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
+Use tokens to access services through API ML without reauthenticating every time you issue a command. Tokens allow for secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
 
 ## How token management works
 
