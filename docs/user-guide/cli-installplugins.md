@@ -2,7 +2,11 @@
 
 Use commands in the `plugins` command group to install and manage Zowe&trade; CLI plug-ins.
 
-**Important!** Plug-ins can gain control of your CLI application legitimately during the execution of commands. Install third-party plug-ins at your own risk. We make no warranties regarding the use of third-party plug-ins.
+:::info Important
+
+Plug-ins can gain control of Zowe CLI legitimately during the execution of every command. Install third-party plug-ins at your own risk.
+
+:::
 
 You can install the following Zowe plug-ins:
 - IBM® CICS® Plug-in for Zowe CLI
@@ -32,18 +36,24 @@ Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this art
       ```
       zowe plugins install <my-plugin>
       ```
-
-    **Note:** Replace `<my-plugin>` with the installation command syntax in the following table:
+    
+    Replace `<my-plugin>` with the installation command syntax in the following table
 
     | Plug-in | Syntax |
     |---------|-----------------------------|
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v2-lts` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
-    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
+    | IBM IMS Plug-in for Zowe CLI <br/>**DEPRECATED** | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
    
+    :::warning
 
+    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
+
+    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
+
+    :::
 
 3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
 
@@ -51,9 +61,13 @@ Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this art
     zowe plugins install <@zowe/my-plugin1> <@zowe/my-plugin2> <@zowe/my-plugin3> ...
     ```
 
-    **Note:** The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
+    :::note
+    
+    The IBM Db2 Plug-in for Zowe CLI requires additional licensing and ODBC driver configurations. If you installed the DB2 plug-in, see [IBM Db2 Plug-in for Zowe CLI](cli-db2plugin.md).
 
-You installed Zowe CLI plug-ins.
+    :::
+
+    You have successfully installed Zowe CLI plug-ins.
 
 ## Installing plug-ins from a local package
 
@@ -67,7 +81,11 @@ Install plug-ins from a local package on any computer that has limited or no acc
 
     From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
 
-    **Note:** `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number
+    :::note
+    
+    `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number.
+
+    :::
 
 3. Open a command-line window, such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package (.zip file). Issue the following command, or use your preferred method to unzip the files:
 
@@ -94,11 +112,18 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM CICS Plug-in for Zowe CLI | `cics-for-zowe-cli.tgz` |
     | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
-    | IBM IMS Plug-in for Zowe CLI | `ims-for-zowe-cli.tgz` |
     | IBM MQ Plug-in for Zowe CLI | `mq-for-zowe-cli.tgz` |
+    | IBM IMS Plug-in for Zowe CLI <br/> **DEPRECATED** | `ims-for-zowe-cli.tgz` |
    
+    :::warning
 
-You installed Zowe CLI plug-ins.
+    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
+
+    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
+
+    :::
+
+    You have successfully installed the Zowe CLI plug-ins.
 
 ## Validating plug-ins
 

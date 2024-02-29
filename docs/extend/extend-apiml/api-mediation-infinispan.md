@@ -31,14 +31,10 @@ Configure Infinispan as a storage solution through the Caching service by settin
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
 
-
 * **`zowe.components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store. 
-  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem,
-
-  you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each
-  instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
@@ -46,18 +42,31 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The port number used by Infinispan to synchronise data among cahing-service instances.
 
 
-  **Example of Caching service configuration using Infinispan:**
+  **Example of Caching service HA configuration using Infinispan:**
 
   ```yaml
   zowe
-    components:
-      caching-service:
-        storage:
-          mode: infinispan
-          infinispan: 
-            initialHosts: lpar123[7099]
-            jgroups:
-              port: 7098
-            persistence:
-              dataLocation: data01
+  haInstances:
+    lpar1:
+      components:
+        caching-service:
+          storage:
+            mode: infinispan
+            infinispan: 
+              initialHosts: lpar2[7099]
+              jgroups:
+                port: 7098
+              persistence:
+                dataLocation: /global/zowe/workspace/caching-service/data01
+    lpar2:
+      components:
+        caching-service:
+          storage:
+            mode: infinispan
+            infinispan: 
+              initialHosts: lpar1[7098]
+              jgroups:
+                port: 7099
+              persistence:
+                dataLocation: /global/zowe/workspace/caching-service/data02
   ```

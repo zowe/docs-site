@@ -527,7 +527,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
-  The latest HOLDDATA is available through several different portals, including [https://service.software.ibm.com/holdata/390hdfaq.html](https://service.software.ibm.com/holdata/390hdfaq.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. Use the **APPLY CHECK** command to assist you to determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing.
+  The latest HOLDDATA is available through several different portals, and may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. Use the **APPLY CHECK** command to assist you to determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing.
    
   If there are any applicable HIPER of FIXCAT APARs, the **APPLY CHECK** also identifies fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
