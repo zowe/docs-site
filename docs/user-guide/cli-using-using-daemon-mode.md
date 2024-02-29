@@ -26,9 +26,9 @@ To enable daemon mode and configure Zowe to run Zowe CLI constantly in daemon mo
    zowe daemon enable
    ```
 
-   The command copies the Zowe executables for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
+   The command copies the Zowe executable for your operating system into the `$ZOWE_CLI_HOME/bin` (`.zowe/bin`) directory. The next command that you issue starts the daemon.
 
-2. Add the path to the Zowe executable to your PATH environment variable. For example:
+2. Add the binary file path to the Zowe executable to your PATH environment variable. For example:
 
    ```
    C:\Users\<user_ID>\.zowe\bin
@@ -36,26 +36,17 @@ To enable daemon mode and configure Zowe to run Zowe CLI constantly in daemon mo
 
    :::info Important
    
-   Ensure that you position the path to your Zowe executables before the path into which NPM installed the Node.js script. For example, `C:\Program Files\nodejs\zowe.cmd`. For information about configuring environment variables, see the documentation for your computer's operating system.
+   Ensure that you position the path to your Zowe executable before the path into which NPM installed the Node.js script. For example, `C:\Program Files\nodejs\zowe.cmd`. For information about configuring environment variables, see the documentation for your computer's operating system.
 
    :::
 
-   You have successfully configured Zowe CLI to run on daemon mode.
+   You have successfully configured Zowe CLI to run on daemon mode. Each time a Zowe CLI command is issued, the daemon binary is loaded from the user's home directory to run the Zowe executable.
    
-   Each time a Zowe CLI command is issued, the daemon binary creates or reuses a file in the user's home directory. In some cases, this behavior might be undesirable.
-   
-   To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli-ev.md#setting-cli-daemon-mode-properties).
+   :::note
 
-The following example illustrates running Zowe CLI commands with daemon mode enabled:
+   In some cases, using the home directory might be undesirable. (For example, the home directory resides on a network drive and has poor file performance.) To change the location that the daemon uses, see [Setting CLI daemon mode properties](../user-guide/cli-configuringcli-ev.md#setting-cli-daemon-mode-properties).
 
-   ```
-   zowe --version
-   Starting a background process to increase performance ...
-   8.0.0-next.202110211759
-   
-   zowe --version
-   8.0.0-next.202110211759
-   ```
+   :::
 
 ## Restarting daemon mode
 
@@ -103,4 +94,4 @@ To disable daemon mode, open a terminal window and issue the following command:
    zowe daemon disable
    ```
 
-The `disable` command stops daemon mode, removes the Zowe executables from your `.zowe/bin` directory, and disables daemon mode.
+The `disable` command stops daemon mode, removes the Zowe executable from your `.zowe/bin` directory, and disables daemon mode.
