@@ -1,6 +1,5 @@
 # Enabling single sign on for clients via personal access token configuration 
 
-
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
