@@ -35,7 +35,7 @@ Publication Title | Form Number
 [IBM SMP/E for z/OS Reference](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232276/$file/gim2000_v2r3.pdf) | SA23-2276
 [IBM SMP/E for z/OS Messages, Codes, and Diagnosis](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3ga320883/$file/gim0000_v2r3.pdf) | GA32-0883
 
-These and other publications can be obtained from [https://www.ibm.com/shop/publications/order](https://www.ibm.com/shop/publications/order).
+These and other publications can be obtained from [IBM Publications Center](https://www.ibm.com/resources/publications/?mhsrc=ibmsearch_a&mhq=publications).
 
 ## Program support
 

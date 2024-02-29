@@ -42,6 +42,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no|Whether to dry run security related setup.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -65,6 +67,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

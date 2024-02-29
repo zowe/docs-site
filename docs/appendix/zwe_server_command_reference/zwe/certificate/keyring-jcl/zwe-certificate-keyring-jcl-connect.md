@@ -9,6 +9,8 @@
 Connect existing certificate to Zowe keyring.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -34,9 +36,11 @@ Full name|Alias|Type|Required|Help message
 --connect-user||string|yes|Certificate owner. Can be `SITE` or a user ID.
 --connect-label||string|yes|Certificate label to connect.
 --trust-zosmf||boolean|no|Whether to trust z/OSMF CA.
---zosmf-ca||string|no|Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
+--zosmf-ca||string|no|Labels of z/OSMF root certificate authorities. Specify `_auto_` to let Zowe to detect automatically. This works for RACF and TSS.
 --zosmf-user||string|no|z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -55,6 +59,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0175E|175|Failed to connect existing certificate to Zowe keyring "%s".
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
