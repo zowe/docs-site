@@ -12,9 +12,9 @@ As a result, VS Code extensions like Zowe Explorer, Zowe Explorer CICS Extension
 
 ## Client certificate support
 
-Some Zowe Explorer users prefer to use certificates to access the API Mediation Layer. This can be the case in sites that use credentials such as passwords and multifactor authentication, which are known to expire often. On the other hand, certificates can be valid for much longer.
+Some Zowe Explorer users prefer to use certificates to access the API Mediation Layer. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might only be valid for a short period of time. On the other hand, certificates can be valid for much longer.
 
-Zowe Explorer does not provide support for API ML client certificates. However, it is possible to use Zowe CLI to generate a token for API ML access.
+Zowe Explorer does not support authenticating to the API ML using client certificates. However, it is possible to use Zowe CLI to authenticate to the API ML using client certificates and receive a token that Zowe Explorer can use for API ML access.
 
 To use a client certificate to generate an API ML token:
 
@@ -48,7 +48,7 @@ To use a client certificate to generate an API ML token:
 
     :::
 
-## Data Set Creation Error
+## Data Set creation error
 
 **Symptom:**
 
@@ -62,7 +62,7 @@ Error running command zowe.createDataset: z/OSMF REST API Error: http(s) request
 
 Set the value of the Reject-Unauthorized parameter to `false`. Use the profile edit function to change profile's parameters.
 
-## Opening Binary Files Error
+## Opening binary files error
 
 **Symptom:**
 
@@ -87,7 +87,7 @@ Detail: File seems to be binary and cannot be opened as text. This is likely cau
 
 There is no solution or workaround at this time.
 
-## Theia Mainframe Connection Error
+## Theia mainframe connection error
 
 **Symptom:**
 
