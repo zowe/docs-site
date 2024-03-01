@@ -154,7 +154,7 @@ The following schemes are supported by the API Gateway:
     * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
     * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
     * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-    The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
+    The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt/#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
       
     For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
