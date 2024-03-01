@@ -752,6 +752,7 @@ module.exports = {
         },
         
         "extend/extend-ze/ze-extensions",
+        "getting-started/user-roadmap-client-sdk",
         "extend/extend-sdks",      
       ],
     },    
