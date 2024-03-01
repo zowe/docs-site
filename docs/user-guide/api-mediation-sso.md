@@ -46,7 +46,8 @@ The following sections describe what is necessary to utilize SSO for both types 
 This section describes the requirements that an API service needs to satisfy to adopt a Zowe SSO access token. 
 
 * The token received by the API ML Gateway is first validated and then may be passed directly to the service. Alternatively, the API ML Gateway can exchange the token for a PassTicket if the API service is configured to expect a PassTicket.
-* The API service can validate the token and extract information about the user ID by calling the ZAAS `/query` endpoint. 
+* The API service should validate the token. It can use ZAAS Client or directly call `query` endpoint.
+* The API service can extract information about the user ID by calling the ZAAS `/query` endpoint. 
 * The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 
 :::note
