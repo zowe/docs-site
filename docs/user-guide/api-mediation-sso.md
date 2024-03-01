@@ -24,7 +24,6 @@ There are two main types of components that participate in Zowe SSO through API 
 * Zowe API ML client
 
    - This type of component is user-facing and can obtain user credentials through a user interface (web, CLI, desktop).
-   - API ML clients can be private or public.
    - A Zowe API ML client calls API services through the API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. 
 
