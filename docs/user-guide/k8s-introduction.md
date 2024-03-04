@@ -28,8 +28,8 @@ Stage 1 ensures that your software and hardware are prepared for installation. F
 
 In Stage 2, you download the Zowe containers. Choose from the following download methods:
 
-* [Download Configuration samples](k8s-downloading/#downloading-configuration-samples).(This is the recommended method) 
-* [Download container images](k8s-downloading/#downloading-container-images).
+* [Download Configuration samples](k8s-downloading.md/#downloading-configuration-samples).(This is the recommended method) 
+* [Download container images](k8s-downloading.md#downloading-container-images).
 
 ### Stage 3 & 4: Install and configure Zowe containers
 
