@@ -2,7 +2,7 @@
 
 Before you install the Zowe server container, make sure that you have the required software and environments.
 
-* [Zowe installed on z/OS](install-zos.md) for users of ZSS and ZIS (default when you use the Zowe Application Framework `app-server`, the Zowe Desktop, or products that are based on them)
+* [Zowe installed on z/OS](./install-zos) for users of ZSS and ZIS (default when you use the Zowe Application Framework `app-server`, the Zowe Desktop, or products that are based on them)
 
 * z/OSMF installed on z/OS for users of it (default when you use `gateway`, API Mediation Layer, Web Explorers, or products that are based on them)
 
