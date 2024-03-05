@@ -350,13 +350,13 @@ additionalServiceMetadata:
             This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
             It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
             
-            **Tip:** For more information, see [Enabling PassTicket creation for API Services that accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
+            **Tip:** For more information, see [Authentication with PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
          
         * **safIdt**
 
             This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
         
-            For more information, see [SAF IDT provider](implement-new-saf-provider.md)
+            For more information, see [Implementing a new SAF IDT provider](implement-new-saf-provider.md).
 
         * **x509**
 

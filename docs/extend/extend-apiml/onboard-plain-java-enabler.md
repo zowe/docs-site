@@ -536,7 +536,8 @@ where:
 
 ### Authentication parameters
 
-These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](authentication-for-apiml-services.md/#authentication-parameters).
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters).
+
     
 ### API Security
 
@@ -573,7 +574,8 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
+  
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -587,7 +589,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -604,7 +606,9 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md) Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md#api-ml-saf-keyring).
+
+Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings.
 
@@ -644,7 +648,7 @@ where:
 
 ### Custom Metadata
 
-For information about custom metadata, see the topic [Custom Metadata](custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](./custom-metadata.md).
     
 ##  Registering your service with API ML
 
@@ -814,7 +818,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 

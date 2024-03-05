@@ -44,7 +44,7 @@ API ML uses the following authentication methods:
   - The client application passes the access JWT token to the API ML Gateway with subsequent requests for mainframe resources.
   - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials.
 
-For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md)
+For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md).
 
 ### Zowe API ML services
 
