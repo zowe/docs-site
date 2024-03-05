@@ -287,4 +287,4 @@ Create a `logback.xml` file in the `resources` folder and include the `applicati
 
 ## Validate successful registration
 
-After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by teh Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
+After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by the Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
