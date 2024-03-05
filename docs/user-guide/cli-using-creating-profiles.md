@@ -1,22 +1,29 @@
-# Configuration for team leaders
+# Creating profiles
 
-As a team leader or Dev-Ops advocate, you can share the profiles stored in a team configuration file with your team members so that they can easily access mainframe services.
+Configuration profiles are used to connect to different mainframe services, and you can structure each profile based on how that connection is made.
 
-## Reasons to share team configuration files
+For example, profiles can be nested to share the same connection information, or keep different information separate. Services can be accessed directly by Zowe CLI, or they can be accessed through the API Mediation Layer.
 
-Consider sharing a team configuration *globally* in the following scenarios:
+Review the following scenarios to help determine the profile types best suited for your environment.
 
-- You want to share profiles with application developers so that they can work with a defined set of mainframe services. The recipient of the file places it in their local `~/.zowe` folder manually before issuing CLI commands.
-- You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
-- You want to enable test automation in a CI/CD pipeline, which lets your pipelines make use of the project configuration.
+As a team leader, you can share the configuration you create with your team members so they can easily access mainframe services.
 
-For information about how to share team configuration files, see [Sharing team configuration files](../user-guide/cli-using-sharing-team-config-files.md).
 
-## Profile use cases
 
-The following topics describe various profile scenarios that team leaders can share with their teams, and application developers that function as DevOps advocates can create.
 
-### Accessing LPARs that contain services that share the same credentials
+
+
+As a DevOps advocate or team leader, you might want to share a team configuration globally in the following scenarios:
+
+You want to share profiles with application developers so that they can work with a defined set of mainframe services. The recipient of the file places it in their local ~/.zowe folder manually before issuing CLI commands.
+You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
+You want to enable test automation in a CI/CD pipeline, which lets your pipelines make use of the project configuration.
+
+
+
+
+
+## Accessing LPARs that contain services that share the same credentials
 
 In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs: **[is this explanation correct?]**
 
@@ -84,7 +91,7 @@ In the following configuration, nested profiles use the credentials from the sam
     "autoStore": true
 }
 ```
-### Accessing LPARs that contain services that do not share the same credentials
+## Accessing LPARs that contain services that do not share the same credentials
 
 In the following configuration, nested profiles use the credentials from different service profiles to access services directly on multiple LPARs.
 
@@ -157,7 +164,7 @@ In the following configuration, nested profiles use the credentials from differe
 }
 ```
 
-### Accessing LPARs that access services through one API Mediation Layer
+## Accessing LPARs that access services through one API Mediation Layer
 
 In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile.
 
@@ -206,7 +213,7 @@ In the following configuration, services are accessed through the API ML (where 
 }
 ```
 
-### Accessing LPARs that access services through one API Mediation Layer using certificate authentication
+## Accessing LPARs that access services through one API Mediation Layer using certificate authentication
 
 In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile.
 
