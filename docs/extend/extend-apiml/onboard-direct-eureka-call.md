@@ -257,8 +257,6 @@ The `serviceUrl` parameter provides a portion of the service instance URL path w
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
 
-For more information about API ML routing, see [API Gateway Routing](https://github.com/zowe/api-layer/wiki/API-Gateway-Routing).
-
 #### Authentication parameters
 Authentication parameters are grouped under the prefix: `apiml.authentication`. When unspecified, the default values are used.
 
