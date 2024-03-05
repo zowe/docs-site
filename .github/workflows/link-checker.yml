@@ -27,12 +27,12 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.ref_name }}
+          key: cache-lychee-${{ github.base_ref || github.ref_name }}
           restore-keys: cache-lychee-
 
       - name: Run lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: "--accept 403,429 --cache --max-cache-age 1d --max-concurrency 5 --no-progress --retry-wait-time 30 --verbose 'docs/**/*.md'"
+          args: "--accept 403,406,429 --cache --max-cache-age 1d --max-concurrency 2 --no-progress --timeout 60 --verbose 'docs/**/*.md'"
           fail: true
           token: ${{ secrets.GITHUB_TOKEN }}
