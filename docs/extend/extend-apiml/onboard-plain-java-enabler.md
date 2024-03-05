@@ -818,7 +818,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 
