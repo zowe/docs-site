@@ -8,21 +8,6 @@ Review the following scenarios to help determine the profile types best suited f
 
 As a team leader, you can share the configuration you create with your team members so they can easily access mainframe services.
 
-
-
-
-
-
-As a DevOps advocate or team leader, you might want to share a team configuration globally in the following scenarios:
-
-You want to share profiles with application developers so that they can work with a defined set of mainframe services. The recipient of the file places it in their local ~/.zowe folder manually before issuing CLI commands.
-You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
-You want to enable test automation in a CI/CD pipeline, which lets your pipelines make use of the project configuration.
-
-
-
-
-
 ## Accessing LPARs that contain services that share the same credentials
 
 In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs: **[is this explanation correct?]**
