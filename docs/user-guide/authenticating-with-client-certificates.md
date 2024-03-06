@@ -109,7 +109,7 @@ To enable the internal API ML mapper, set the following property in zowe.yaml:
 gateway:  
   apiml:  
     security:  
-      userInternalMapper: true 
+      useInternalMapper: true 
 ```
 Note that the internal API ML mapper option is only available for Zowe release 2.14 and later releases. 
 
