@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ejes query</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_query.html">query</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Query the host using (E)JES.  Return host spool, dataset, and library tables.  Return browsable data as reports.  Query commands specify which primary table to query.  Each primary table may also have child tables or child reports you can query using the --table and/or --report options.  You can access only those primary tables you are authorized to use. Issue these commands as an introduction: (1) &quot;zowe ejes query list&quot; to show available tables.(2) &quot;zowe ejes query status --owner help&quot; to demonstrate how to find how it all works. (3) &quot;zowe ejes query status --owner list&quot; to demonstrate how to find appropriate arguments. (4) &quot;zowe ejes query status --owner myuserid --sort time d&quot; to view a sorted table of your jobs.(5) &quot;zowe ejes query status --owner myuserid --sort time d --report &quot; to view the first job in report form (truncated to your screen).</p>
+<h4>Usage</h4>
+<p>zowe ejes query &lt;command&gt;</p>
+<p>Where &lt;command&gt; is one of the following:</p>
+<h4>Examples</h4>
+<ul>
+<li>Customize status table output.</li>
+</ul>
+<p>(1) Limit to owners beginning with &quot;rb&quot;.  If not specified, the owner will be the same as your logon id.  To specify all, use an asterisk(*).  (2) Filter rows to display only abends.  (3) Show only relevant columns and arrange in the order desired.  (4) Limit the number of lines, including headers, to 10.  (5) Remove header lines.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query st --owner rb* --metafilter &quot;maxcomp eq ab*&quot; 
+     --showcols &quot;jobname maxcomp status jobid rec&quot; --lines 10 --header off`
+</code></pre>
+<ul>
+<li>Display a table of data sets for a specific job on the spool by job id.</li>
+</ul>
+<p>(1) Select job 0437107.  The asterisk causes the positional job name to be ignored.  (2) Display a child table by table type.  Data sets status is &quot;s&quot; on the status table.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query st --select &quot;* j0437107&quot; --table s`
+</code></pre>
+<ul>
+<li>List the available table types for the child table.</li>
+</ul>
+<p>The &quot;list&quot; argument may be used on any option.  A table for that option will be displayed and any other work will stop.  The table may display available tables, reports, columns, for positional input fields depending on the option.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query st --table list`
+</code></pre>
+<ul>
+<li>Provide detailed help for the metafilter option.</li>
+</ul>
+<p>The &quot;help&quot; argument may be used on any option.    Help for the option will be displayed and any other work will stop.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query hchk --metafilter help`
+</code></pre>
+<h4>Commands</h4>
+<ul>
+<li><a href="zowe_ejes_query_activity.html">activity | ac</a> - - Activity table</li>
+<li><a href="zowe_ejes_query_apfds.html">apfds | apf</a> - - APF-authorized libraries table</li>
+<li><a href="zowe_ejes_query_class.html">class | cl</a> - - Job classes table</li>
+<li><a href="zowe_ejes_query_djc.html">djc | dj</a> - - JES3 dependent job network control table</li>
+<li><a href="zowe_ejes_query_dynexit.html">dynexit | dynex | dynx</a> - - Dynamic exits table</li>
+<li><a href="zowe_ejes_query_enclave.html">enclave | enc</a> - - Enclaves table</li>
+<li><a href="zowe_ejes_query_enq.html">enq</a> - - ENQ table</li>
+<li><a href="zowe_ejes_query_enqc.html">enqc</a> - - ENQ contention table</li>
+<li><a href="zowe_ejes_query_enqd.html">enqd</a> - - ENQ SYSDSN resources table</li>
+<li><a href="zowe_ejes_query_fss.html">fss</a> - - FSS (Function Subsystems) table</li>
+<li><a href="zowe_ejes_query_group.html">group | gr</a> - - Job class groups table</li>
+<li><a href="zowe_ejes_query_hcheck.html">hcheck | hchk | hc</a> - - Health check table</li>
+<li><a href="zowe_ejes_query_hold.html">hold | h</a> - - Hold table</li>
+<li><a href="zowe_ejes_query_init.html">init</a> - - JES2 initiators table</li>
+<li><a href="zowe_ejes_query_input.html">input | i</a> - - Input table</li>
+<li><a href="zowe_ejes_query_jesplex.html">jesplex | jesp</a> - - JESplex table</li>
+<li><a href="zowe_ejes_query_jgroup.html">jgroup | jg</a> - - JES2 job groups table</li>
+<li><a href="zowe_ejes_query_line.html">line | li</a> - - JES3 dependent job network control table</li>
+<li><a href="zowe_ejes_query_list.html">list</a> - - List primary tables you are authorized to use.</li>
+<li><a href="zowe_ejes_query_lnklst.html">lnklst | lnkl | lnk</a> - - Link list data sets table</li>
+<li><a href="zowe_ejes_query_lpalst.html">lpalst | lpal | lpa</a> - - Link pack data sets table</li>
+<li><a href="zowe_ejes_query_mds.html">mds | md</a> - - JES3 MDS table</li>
+<li><a href="zowe_ejes_query_memusage.html">memusage | memuse | memu</a> - - Memory usage table</li>
+<li><a href="zowe_ejes_query_mounts.html">mounts | mount | mo</a> - - z/OS UNIX mounts table</li>
+<li><a href="zowe_ejes_query_netconn.html">netconn | netc | nc</a> - - Network connections table</li>
+<li><a href="zowe_ejes_query_netserv.html">netserv | nets</a> - - Network servers table</li>
+<li><a href="zowe_ejes_query_nje.html">nje</a> - - JES3 NJE sysout table</li>
+<li><a href="zowe_ejes_query_node.html">node | node | no</a> - - Node table</li>
+<li><a href="zowe_ejes_query_offload.html">offload | off</a> - - JES2 spool offloader device table</li>
+<li><a href="zowe_ejes_query_pageds.html">pageds | pag | page | paged</a> - - Page data set resources table</li>
+<li><a href="zowe_ejes_query_parmlib.html">parmlib | parml | parm</a> - - Parameter library data sets table</li>
+<li><a href="zowe_ejes_query_printer.html">printer | pr</a> - - Printer and punch table</li>
+<li><a href="zowe_ejes_query_proclib.html">proclib | procl | proc</a> - - Proclib data sets table</li>
+<li><a href="zowe_ejes_query_pstatus.html">pstatus | pstat | ps</a> - - UNIX process status table</li>
+<li><a href="zowe_ejes_query_resmon.html">resmon | resm | rmon | rm</a> - - JES2 resource monitor table</li>
+<li><a href="zowe_ejes_query_resource.html">resource | reso</a> - - Workload manager resource table</li>
+<li><a href="zowe_ejes_query_schenv.html">schenv | sch</a> - - Workload manager scheduling environments table</li>
+<li><a href="zowe_ejes_query_session.html">session | ses</a> - - (E)JES session table</li>
+<li><a href="zowe_ejes_query_spart.html">spart | spa</a> - - Spool partitions table</li>
+<li><a href="zowe_ejes_query_spvol.html">spvol | spv</a> - - Spool volume extents table</li>
+<li><a href="zowe_ejes_query_status.html">status | st</a> - - Job status table</li>
+<li><a href="zowe_ejes_query_subsys.html">subsys | subsy | subs</a> - - MVS Sysplex Subsystems</li>
+<li><a href="zowe_ejes_query_symbol.html">symbol | sym</a> - - System symbols table</li>
+<li><a href="zowe_ejes_query_syscls.html">syscls | sysc</a> - - Sysout classes table</li>
+<li><a href="zowe_ejes_query_sysplex.html">sysplex | sysp | sys</a> - - Sysplex members table</li>
+<li><a href="zowe_ejes_query_sysreq.html">sysreq | sysr | sr</a> - - System requests table</li>
+<li><a href="zowe_ejes_query_writer.html">writer | w | output | o</a> - - Writer (Output) table</li>
+<li><a href="zowe_ejes_query_zero.html">zero | z</a> - - JES3 Job zero table</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
