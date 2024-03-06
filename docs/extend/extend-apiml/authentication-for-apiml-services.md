@@ -5,10 +5,6 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-    - [Authenticate with Username Password](#authenticate-with-usernamepassword)
-    - [Authenticate with Client certificate](#authenticate-with-client-certificate)
-    - [Authenticate with JWT Token](#authenticate-with-jwt-token)
-    - [Authenticate with Personal Access Token](#authenticate-with-personal-access-token)
 - [Authentication parameters](#authentication-parameters)
 - [Authentication providers](#authentication-providers)
     * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
@@ -102,11 +98,12 @@ of Zowe, all of the following methods are enabled and supported. All methods are
 
 Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
 
-* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token).
+* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token.md)
 
-* [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates).
+* [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
-* [Authenticating with personal access tokens](../../user-guide/api-mediation/authenticating-with-personal-access-token).
+* [Authenticating with personal access tokens](../../user-guide/api-mediation/authenticating-with-personal-access-token.md)
+
 
 ### Authenticate with Username/Password
 
