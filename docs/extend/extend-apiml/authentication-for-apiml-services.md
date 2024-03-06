@@ -198,6 +198,10 @@ API ML contains the following providers to handle authentication for the API Gat
 * `SAF Authentication Provider`
 * `Dummy Authentication Provider`
 
+In most cases, we recommend you use  the z/OSMF Authentication Provider. z/OSMF is part of z/OS. As such, this provider is the best option for providing the authentication API.
+
+When z/OSMF is not available, we recommend you use the SAF Authentication provider. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by API Gateway via SAF APIs.
+
 ### z/OSMF Authentication Provider
 
 The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
@@ -221,7 +225,7 @@ apiml.security.auth.provider: saf
 
 The `Dummy Authentication Provider` implements simple authentication for development purposes using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
 
-Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
+Use the following property of the API Gateway to enable the `Dummy Authentication Provider`:
 ```
 apiml.security.auth.provider: dummy
 ```

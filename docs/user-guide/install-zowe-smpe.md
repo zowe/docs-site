@@ -631,7 +631,7 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
 
-- For more information about how to customize Zowe, see [Configuring Zowe after installation](https://docs.zowe.org/stable/user-guide/configuring-overview/).
+- For more information about how to customize Zowe, see [Configuring Overview](https://docs.zowe.org/stable/user-guide/configuring-overview/).
 - For more information about how to use Zowe, see [Using Zowe](https://docs.zowe.org/stable/user-guide/zowe-getting-started-tutorial/).
 
 

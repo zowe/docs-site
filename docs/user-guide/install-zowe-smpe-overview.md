@@ -180,7 +180,7 @@ Web Download | 38666 Tracks | These are temporary data sets, which can be remove
 
       If you currently have a previous release of Zowe installed in these libraries, the installation of this release will delete the old release and reclaim the space that was used by the old release and any service that had been installed. You can determine whether these libraries have enough space by deleting the old release with a dummy function, compressing the libraries, and comparing the space requirements with the free space in the libraries.
 
-      For more information about the names and sizes of the required data sets, see [Allocate SMP/E target and distribution libraries](#allocate-smp-e-target-and-distributions-libraries).
+      For more information about the names and sizes of the required data sets, see [Allocate SMP/E target and distribution libraries](./install-zowe-smpe.md#allocate-smpe-target-and-distributions-libraries).
 
   3. Abbreviations used for the file system path type are as follows.
 
@@ -277,4 +277,4 @@ To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS 
 
 Zowe has no special considerations for the target system.
 
-For details about installing Zowe SMP/E, see the instructions [here](./install-zowe-smpe.md).
+For details about installing Zowe SMP/E, see [Installing Zowe via SMP/E instructions](./install-zowe-smpe.md).
