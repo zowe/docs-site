@@ -43,62 +43,32 @@
 </ul>
 </li>
 <li>
-<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Identifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the set of values that are normally used.</p>
-<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
-</li>
-</ul>
-</li>
-<li>
 <p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the local output error file in YAML format that contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
+<p>Specifies the local output error file in YAML format. The file contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
 <p>Default value: error.log</p>
 </li>
 </ul>
 </li>
-</ul>
-<h4>DBM-Db2 Profile Options</h4>
+<li>
+<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
 <ul>
 <li>
-<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
-<ul>
-<li>Specifies a string array of z/OS JCL JOB statements.</li>
-</ul>
+<p>Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
 </li>
-<li>
-<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
-<ul>
-<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
-</ul>
-</li>
-<li>
-<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
-<ul>
-<li>Specifies whether to overwrite output files when they already exist.</li>
-</ul>
-</li>
-<li>
-<p><code>--protocol</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
-<p>Allowed values: http, https</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
-<ul>
-<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
+<li>
+<p><code>--dbm-db2-options-profile</code> | <code>--dbm-db2-options-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2-options) profile to load for this command execution.</li>
+</ul>
+</li>
 <li>
 <p><code>--dbm-db2-profile</code> | <code>--dbm-db2-p</code> <em>(string)</em></p>
 <ul>
@@ -109,6 +79,48 @@
 <p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
 <ul>
 <li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
+</ul>
+</li>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix (high-level qualifier) in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files if they exist.</li>
 </ul>
 </li>
 </ul>
