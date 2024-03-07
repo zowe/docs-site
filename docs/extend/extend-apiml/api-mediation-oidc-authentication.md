@@ -93,6 +93,13 @@ Alternatively, administrators can use the installed ESM functionality to create,
 
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
 
+:::tip
+You can leverage the Zowe CLI Identity Federation (IDF) Plug-in for Zowe CLI to extend Zowe CLI to make it easier to map mainframe users with an identity provided by an external identity provider.
+The Plug-in is designed to work with the ESMs: IBM RACF, Broadcom ACF2, and Broadcom Top Secret.
+
+For more information about the Zowe CLI Identity Federation Plug-in, see the [README file in the api-layer repo](https://github.com/zowe/api-layer/edit/v3.x.x/zowe-cli-id-federation-plugin/README.md).
+:::
+
  In the zowe.yaml file, configure the following properties:
 
 - **`components.gateway.apiml.security.oidc.enabled`**  
