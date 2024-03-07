@@ -8,9 +8,6 @@ To create your own user configuration, start with a global team configuration fi
 
 To learn more about how profiles and configuration files work, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs.md).
 
-
-**[is there a use case for a team leader to create a user config file for *someone else*? We address app developers in the first graf. But I also want to make sure that we don't need to add instructions or best practices or context in this top section for team leaders.]**
-
 ## Creating user profiles
 
 Generate a *user* configuration file that overrides the values defined in the global `zowe.config.json` file:
@@ -23,7 +20,7 @@ Generate a *user* configuration file that overrides the values defined in the gl
 
     The configuration file `zowe.config.json` is created in the `ZOWE_CLI_HOME` directory.
 
-2. Respond to subsequent prompts to create connection profiles for mainframe services. **[correct?]**
+2. Respond to subsequent prompts to create connection profiles for mainframe services.
 
 3. Generate the global user configuration file:
 
@@ -31,7 +28,7 @@ Generate a *user* configuration file that overrides the values defined in the gl
     zowe config init --global-config --user-config
     ```
 
-    The configuration file `zowe.config.user.json` is created in the `ZOWE_CLI_HOME` directory. **[are there any prompts the user needs to answer? or if the config file created immediately after the command?]**
+    The configuration file `zowe.config.user.json` is created in the `ZOWE_CLI_HOME` directory.
 
     When created, the user configuration file contains profiles (copied from the global team configuration file) **[is the paranthetical correct?]** with no properties and the `defaults` object is empty. Refer to the following example.
 

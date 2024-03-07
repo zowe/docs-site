@@ -6,13 +6,13 @@ You might also need to modify the configuration file to add new profiles for acc
 
 ## Adding, modifying team profiles
 
-To define additional mainframe services and other profiles in an existing team configuration file:
+To define additional mainframe services and other profiles in an existing global team configuration file:
 
 1. Open the `~/.zowe/zowe.config.json` file in a text editor or an IDE (such as Visual Studio Code) on your computer.
 
 2. Edit the file by adding to or modifying the profiles listed in the profiles object.
 
-    Each profile contains connection and other frequently needed information for accessing various mainframe services **[is "mainframe" correct?]**, as in the following example:
+    Each profile contains connection and other frequently needed information for accessing various mainframe services, as in the following example:
 
     ```
     {

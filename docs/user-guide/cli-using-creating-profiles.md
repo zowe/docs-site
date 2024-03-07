@@ -10,7 +10,7 @@ As a team leader, you can share the configuration you create with your team memb
 
 ## Accessing LPARs that contain services that share the same credentials
 
-In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs: **[is this explanation correct?]**
+In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs:
 
 ```
 {
@@ -78,7 +78,7 @@ In the following configuration, nested profiles use the credentials from the sam
 ```
 ## Accessing LPARs that contain services that do not share the same credentials
 
-In the following configuration, nested profiles use the credentials from different service profiles to access services directly on multiple LPARs.
+In the following configuration, nested profiles use the credentials from service profiles in different LPARs to access services directly on multiple LPARs. **[correct????]**
 
 ```
 {
@@ -160,7 +160,7 @@ In the following configuration, services are accessed through the API ML (where 
         "zosmf": {
             "type": "zosmf",
             "properties": {
-                "basePath": "api/v1"
+                "basePath": "ibmzosmf/api/v1"
             }
         },
         "cics": {
