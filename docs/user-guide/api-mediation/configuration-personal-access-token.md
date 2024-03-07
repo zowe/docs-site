@@ -10,4 +10,4 @@ Use the following procedure to enable personal access tokens.
 2. Find or add the property with the value `components.gateway.apiml.security.personalAccessToken.enabled: true`.
 3. Restart Zowe.
 
-For more information about using personal access tokens, see [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token).
+For more information about using personal access tokens, see [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token.md).
