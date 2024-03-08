@@ -11,11 +11,15 @@ Clean up Kubernetes runtime.
 Currently this command will remove all outdated static definitions.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Parameters
+
+
 
 ### Inherited from parent command
 
@@ -31,6 +35,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
