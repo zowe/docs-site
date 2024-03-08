@@ -1,8 +1,8 @@
 # Editing team configurations
 
-After you [initialize team configuration](../user-guide/cli-using-initializing-team-configuration), the newly created team profiles need additional details in order to be applied in your environment. This could include information such as a port number, or user credentials.
+After you [initialize team configuration](../user-guide/cli-using-initializing-team-configuration), the newly created team profiles need additional details before they can be shared and applied in your environment. This could include information such as a port number, or user credentials.
 
-You might also need to modify the configuration file to add new profiles for accessing mainframe services.
+You might also need to modify the configuration file to [create new profiles](../user-guide/cli-using-creating-profiles.md) for accessing mainframe services.
 
 ## Adding, modifying team profiles
 

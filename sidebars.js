@@ -558,10 +558,10 @@ module.exports = {
                 label: "Benefits of team configuration",
                 link: {type:"doc", id:"user-guide/cli-using-benefits-of-team-config"},
                 items: [
-                  "user-guide/cli-using-initializing-user-configuration",
                   "user-guide/cli-using-editing-team-configuration",
                   "user-guide/cli-using-creating-profiles",
                   "user-guide/cli-using-sharing-team-config-files",
+                  "user-guide/cli-using-initializing-user-configuration",
                   ],
                 },
                 "user-guide/cli-using-understand-profiles-configs",

@@ -166,13 +166,13 @@ In the following configuration, services are accessed through the API ML (where 
         "cics": {
             "type": "cics",
             "properties": {
-                "basePath": "api/v1/cics"
+                "basePath": "ibmcics/api/v1"
             }
         },
         "db2": {
             "type": "db2",
             "properties": {
-                "basePath": "api/v1/db2"
+                "basePath": "ibmdb2/api/v1"
             }
         },
         "base": {

@@ -2,23 +2,28 @@
 
 As an application developer or Zowe CLI user, you can manage your connection details efficiently and in one location.
 
-That could mean relying on a team configuration file, or creating your own *user* configuration file.
+Typically, that means the use of a team configuration file. An important convenience of team configuration is that it is easier to share connection information. Another advantage (whether you work in a team or are the sole developer in your organization) is that team configuration has been optimized to leverage the broadest capabilities of Zowe CLI.
 
-To create your own user configuration, start with a global team configuration file that you have created or was provided to you. In this way, a single global configuration can become the basis for multiple user-specific configurations that are created with modifications tailored to particular requirements.
+However, there might come a time when applying your own *user* configuration file could make sense.
 
-To learn more about how profiles and configuration files work, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs.md).
+The necessity of user configuration is rare, and setting up a user configuration file should not be a priority unless there is a specific need for one. For example, user configuration can be helpful when only one user needs access to a highly restricted project.
+
+If you do want to use user configuration, it is advised that you create your `zowe.config.user.json` file after you have a global team configuration `zowe.config.json` file in place.
+
+To learn more about how profiles and different configuration files work, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs.md).
 
 ## Creating user profiles
 
 Generate a *user* configuration file that overrides the values defined in the global `zowe.config.json` file:
 
-1. Open a command line prompt and issue the following command to generate a global team configuration file:
+1. If you do not already have a global team configuration file, open a command line prompt and issue the following command to generate one:
 
     ```
     zowe config init --global-config
     ```
 
     The configuration file `zowe.config.json` is created in the `ZOWE_CLI_HOME` directory.
+
 
 2. Respond to subsequent prompts to create connection profiles for mainframe services.
 
@@ -30,7 +35,7 @@ Generate a *user* configuration file that overrides the values defined in the gl
 
     The configuration file `zowe.config.user.json` is created in the `ZOWE_CLI_HOME` directory.
 
-    When created, the user configuration file contains profiles (copied from the global team configuration file) **[is the paranthetical correct?]** with no properties and the `defaults` object is empty. Refer to the following example.
+    When created, the user configuration file contains profiles with no properties and the `defaults` object is empty. Refer to the following example.
 
     ```{
         "$schema": "./zowe.schema.json",
