@@ -206,41 +206,30 @@ Alternatively, you can create a Db2 profile manually by adding a section that co
 
 ### Creating plug-in profiles using a command
 
-Create a profile using the `zowe profiles create` command:
+After you install the plug-in, create a Db2 profile. A Db2 profile is required to issue commands to the Db2 region. Db2 profiles contain your host, port, user name, password, and a database name for the IBM Db2 server of your choice. You can create multiple profiles and switch between them as needed.
 
-1. Open a terminal window and issue the following command:
+To create a Db2 user profile:
+
+1.  Install the IBM Db2 Plug-in for Zowe CLI.
+2.  Create a Db2 profile: 
+    
     ```
-    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> --region-name <region>
+    zowe config init
+    ```
+3.  Set the port number to your Db2 port:
+
+    ```
+    zowe config set profiles.db2.properties.port <port number>
     ```
 
-   **`profile_name`** 
+4.  Set the database to your Db2 database:
 
-    Specifies a name for your profile.
-
-    **`host`**
-
-    Specifies the host name for the instance.
-
-    **`user`**
-
-    Specifies your user name to log in to the instance.
-
-    **`password`**
-
-    Specifies your password to log in to the instance.
-
-    **`port`**
-
-    Specifies the port number to connect to the instance.
-
-    **`database`**
-
-    Specifies the database to use on the instance.
-
-    **Example:**
     ```
-    zowe profiles create db2-profile database1 --host db2.zowe.org --port 25000 --user zowe --password zowepass --database zowedb
+    zowe config set profiles.db2.properties.database <database name>
     ```
-2. Press `Enter`. The result of the command displays as a success or failure message.
 
-    You can now use your profile when you issue commands in the `zowe db2` command group.
+5. If required, set the SSL File to the CA certificate used for the DB2 server:
+
+    ```
+    zowe config set profiles.db2.properties.sslFile <full path to SSL CA Certificate file>
+    ```
