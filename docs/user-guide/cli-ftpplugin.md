@@ -1,19 +1,19 @@
 # IBM® z/OS FTP Plug-in for Zowe CLI
 
-The IBM® z/OS FTP Plug-in for Zowe&trade; CLI lets you extend Zowe CLI to access z/OS datasets, USS files, and submit JCL. The plug-in uses the z/OS FTP service to achieve the interaction with z/OS.
+The IBM® z/OS FTP Plug-in for Zowe&trade; CLI lets you extend Zowe CLI to access z/OS data sets, USS files, and submit JCL. The plug-in uses the z/OS FTP service to achieve the interaction with z/OS.
 
 ## Use cases
 
 As a z/OS user, you can use the plug-in to perform the following tasks:
 
-  - List, view, rename, and download z/OS datasets or USS files.
-  - Upload local files or `stdin` to z/OS datasets or USS files.
+  - List, view, rename, and download z/OS data sets or USS files.
+  - Upload local files or `stdin` to z/OS data sets or USS files.
   - List, view, and download job status or job spool files.
-  - Delete a z/OS dataset, USS file, or job.
+  - Delete a z/OS data set, USS file, or job.
 
 ## Commands
 
-:::
+:::note
 
 When transferring files, data sets, or data set members, use only ASCII characters. If a file contains non-ASCII characters (such as glyphs or mathematical symbols), a translation error can happen when the file is downloaded from, or uploaded to, the mainframe. This error can result in data loss.
 
@@ -39,7 +39,7 @@ Use one of the following methods to install or update the plug-in:
 
 ## Creating a user profile
 
-After you install the plug-in, create an FTP profile. An FTP profile is recommended to issue commands to via FTP. FTP profiles contain your host, port, user name, and password for connect to z/OS using FTP. You can create multiple profiles and switch between them as needed.
+After you install the plug-in, create an FTP profile. An FTP profile is recommended to issue commands via FTP. FTP profiles contain your host, port, user name, and password to connect to z/OS using FTP. You can create multiple profiles and switch between them as needed.
 
 **Follow these steps:**
 1.  Install the z/OS FTP Plug-in for Zowe CLI
@@ -104,7 +104,7 @@ You can now use your profile when you issue commands in the zftp command group.
 
 ### Issuing test commands
 
-After installing the plugin successfully, you can issue commands to test basic Zowe CLI functionality.
+After installing the plug-in successfully, you can issue commands to test basic Zowe CLI functionality.
 
 For example, you can use one of the following methods to download a data set:
 
