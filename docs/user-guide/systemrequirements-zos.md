@@ -25,6 +25,10 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
+- SDSF
+
+  To install Zowe, there are a few commands which are issued to SDSF to know the status of the job submitted.
+
 - (Optional, recommended) z/OS OpenSSH
   
   Some features of Zowe require SSH, such as the SSH terminal of the Desktop. Install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
