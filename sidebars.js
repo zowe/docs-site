@@ -467,6 +467,7 @@ module.exports = {
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -698,7 +699,6 @@ module.exports = {
                 "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
