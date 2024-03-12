@@ -691,6 +691,7 @@ module.exports = {
             "extend/extend-apiml/custom-metadata",
             "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
+            "extend/extend-apiml/api-mediation-layer-development-setup",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
