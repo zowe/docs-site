@@ -2,7 +2,7 @@
 
 As an application developer or Zowe CLI user, you can manage your connection details efficiently and in one location.
 
-Typically, that means the use of a team configuration file. An important convenience of team configuration is that it is easier to share connection information. Another advantage (whether you work in a team or are the sole developer in your organization) is that team configuration has been optimized to leverage the broadest capabilities of Zowe CLI.
+Typically, that means the use of a team configuration file. An important convenience of team configuration is that it is easier to share connection information. Another advantage (whether you work in a team or are the sole developer in your organization) is that team configuration is optimized to leverage the broadest capabilities of Zowe CLI.
 
 However, there might come a time when applying your own *user* configuration file could make sense.
 

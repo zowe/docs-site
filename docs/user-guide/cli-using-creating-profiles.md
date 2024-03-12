@@ -78,7 +78,7 @@ In the following configuration, nested profiles use the credentials from the sam
 ```
 ## Accessing LPARs that contain services that do not share the same credentials
 
-In the following configuration, nested profiles use the credentials from service profiles in different LPARs to access services directly on multiple LPARs. **[correct????]**
+In the following configuration, profiles are nested to use the credentials from parent profiles for different LPARs to access services directly on multiple LPARs.
 
 ```
 {

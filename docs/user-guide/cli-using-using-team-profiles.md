@@ -18,9 +18,11 @@ Both team and user configurations can be applied either *globally* or *per proje
 
 Configuration files are made up of multiple profiles that can be used by Zowe CLI. These profiles contain credentials and/or settings that are applied by the commands issued in the CLI.
 
-- **Base profiles** let you store connection information for use with one or more services. A service profile can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to the Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
-
 - **Service profiles** let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types to a configuration file, such as the `cics` profile to connect to IBM CICS.
+
+- **Base profiles** let you store connection information for use with one or more services. Typically, there is only one base profile within a configuration file. Service profiles can pull information from a base profile as needed, so that you can specify a common username and password once. A base profile can optionally store tokens to connect to the Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+
+- **Parent profiles** let you nest service profiles that share some of the same properties and values into groups. There can be multiple parent profiles within a configuration file. This makes it possible to define shared properties (for example, hostname or credentials) only once in your configuration file, rather than duplicating values for each service profile. Parent profiles and nested service profiles are useful when your configuration uses multiple kinds of authentication or if your configuration is used to connect to multiple hosts.
 
 ## Updating secure credentials
 
