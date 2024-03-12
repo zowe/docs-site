@@ -2,7 +2,7 @@
 
 ## General information
 
-The instructions for local deployment are avilable within: [https://github.com/zowe/api-layer/?tab=readme-ov-file#run-api-mediation-layer-locally](https://github.com/zowe/api-layer/?tab=readme-ov-file#run-api-mediation-layer-locally)
+For development purposes, it is possible to deploy API ML locally. For more information, follow the instruction in the file [Run API Mediation Layer locally](https://github.com/zowe/api-layer/?tab=readme-ov-file#run-api-mediation-layer-locally).
 
 ## Dummy Authentication Provider
 

@@ -24,8 +24,8 @@ The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with
 
 Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
 ```
-apiml.security.auth.provider: zosmf
-apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+components.gateway.security.auth.provider: zosmf
+components.gateway.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
 ```
 ## SAF Authentication Provider
 
@@ -33,7 +33,7 @@ The `SAF Authentication Provider` allows the API Gateway to authenticate directl
 
 Use the following property of the API Gateway to enable the `SAF Authentication Provider`:
 ```
-apiml.security.auth.provider: saf
+components.gateway.security.auth.provider: saf
 ```
-**Note:** To provide your own implementation of the SAF IDT provider, see the [Implement new SAF provider](implement-new-saf-provider.md) guidelines.
+
 
