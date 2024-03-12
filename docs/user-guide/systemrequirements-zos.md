@@ -27,7 +27,17 @@ Be sure your z/OS system meets the following prerequisites:
 
 - SDSF
 
-  To install Zowe, there are a few commands which are issued to SDSF to know the status of the job submitted.
+  During the installation of Zowe, there are a few operator commands issued to SDSF to know the status of the job submitted to ZOS. Hence it is expected to have SDSF installed on ZOS, otheriwse user can expect a below error message.
+  IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found
+  
+  There is a workaround to do the installation without SDSF. It is possible by runnings the zwe init commands separately in the sequence given below and completing the failed steps manually.
+  
+  zwe init mvs
+  zwe init vsam
+  zwe init apfauth
+  zwe init security
+  zwe init certificate
+  zwe init stc
 
 - (Optional, recommended) z/OS OpenSSH
   
