@@ -27,17 +27,16 @@ Be sure your z/OS system meets the following prerequisites:
 
 - SDSF
 
-  During the installation of Zowe, there are a few operator commands issued to SDSF to know the status of the job submitted to ZOS. Hence it is expected to have SDSF installed on ZOS, otheriwse user can expect a below error message.
-  IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found
+  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Therefore, having SDSF installed on 
+  z/OS is essential for these operations; otherwise, users may encounter the following error message.
+
+  `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
   
-  There is a workaround to do the installation without SDSF. It is possible by runnings the zwe init commands separately in the sequence given below and completing the failed steps manually.
+  An alternative method exists for executing the steps without relying on SDSF as a workaround, as explained below.
   
-  zwe init mvs
-  zwe init vsam
-  zwe init apfauth
-  zwe init security
-  zwe init certificate
-  zwe init stc
+  For Example, the `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If such setup has been completed beforehand or if      Zowe utilizes an existing keyring, then `zowe init certificate` becomes unnecessary.
+  Similarly, `zowe start` and `zowe stop` commands rely on SDSF features. These commands primarily manage the submission of the Zowe Started Task (S <Zowe STC>) and its parameters, like     
+  haInstance=, if applicable. Nonetheless, users can manually execute these actions using alternative utilities installed on their systems, such as Sysview.
 
 - (Optional, recommended) z/OS OpenSSH
   
