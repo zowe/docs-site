@@ -16,11 +16,7 @@ This article describes the process of configuring a REST service to onboard with
 The API ML Plain Java Enabler (PJE) is a library which helps to simplify the process of onboarding a REST service with the API ML. 
 This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the PJE. 
 
-**Note:** For more information about specific configuration parameters and their possible values, and the service registration process, see the specific documentation of the onboarding approach you are using for your project:
-
- * [Direct REST call registration (No enabler)](onboard-direct-eureka-call.md)
  * [Plain Java Enabler](onboard-plain-java-enabler.md)
- 
 
 The PJE is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
 The PJE enables you to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behavior, and unnecessarily large service executables.
