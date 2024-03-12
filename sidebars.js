@@ -280,6 +280,7 @@ module.exports = {
                 "user-guide/api-mediation/configuration-saf-resource-checking"
               ]
             },
+            "user-guide/authentication-providers-for-apiml",
             {
               "type": "category",
               "label": "Configuring storage for the Caching service",
