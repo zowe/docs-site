@@ -45,15 +45,6 @@ Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this art
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
-    | IBM IMS Plug-in for Zowe CLI <br/>**DEPRECATED** | `@zowe/ims-for-zowe-cli@zowe-v2-lts` |
-   
-    :::warning
-
-    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
-
-    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
-
-    :::
 
 3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
 
@@ -113,15 +104,6 @@ Install plug-ins from a local package on any computer that has limited or no acc
     | IBM Db2 Plug-in for Zowe CLI | `db2-for-zowe-cli.tgz` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `zos-ftp-for-zowe-cli.tgz` |
     | IBM MQ Plug-in for Zowe CLI | `mq-for-zowe-cli.tgz` |
-    | IBM IMS Plug-in for Zowe CLI <br/> **DEPRECATED** | `ims-for-zowe-cli.tgz` |
-   
-    :::warning
-
-    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
-
-    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
-
-    :::
 
     You have successfully installed the Zowe CLI plug-ins.
 
@@ -145,7 +127,6 @@ zowe plugins validate [plugin]
     | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
     | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
     | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
-    | IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
     | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
 
 
@@ -225,7 +206,6 @@ The following table describes the uninstallation command syntax for each plug-in
 | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli` |
 | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli` |
 | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli` |
-| IBM IMS Plug-in for Zowe CLI | `@zowe/ims-for-zowe-cli` |
 | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli` |
 
 

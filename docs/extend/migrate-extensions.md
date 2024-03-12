@@ -31,7 +31,7 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 | --- |  --- | --- | --- |
 | `APIML_ALLOW_ENCODED_SLASHES` | `components.gateway.apiml.service.allowEncodedSlashes` | `ZWE_components_gateway_apiml_service_allowEncodedSlashes` | |
 | `APIML_CORS_ENABLED` | `components.gateway.apiml.service.corsEnabled` | `ZWE_components_gateway_apiml_service_corsEnabled` | |
-| `APIML_DEBUG_MODE_ENABLED` | `components.gateway.debug`, etc | `ZWE_components_gateway_debug`, etc | In v2, you can enable debug mode for APIML components separately. The `gateway` placeholder can be `discovery`, `api-catalog`, or `metrics-service`, and so on. |
+| `APIML_DEBUG_MODE_ENABLED` | `components.gateway.debug`, etc | `ZWE_components_gateway_debug`, etc | In v2, you can enable debug mode for APIML components separately. The `gateway` placeholder can be `discovery`, `api-catalog`, and so on. |
 | `APIML_ENABLE_SSO` | Removed in v2 | Removed in v2 | |
 | `APIML_GATEWAY_EXTERNAL_MAPPER` | `components.gateway.apiml.security.x509.externalMapperUrl` | `ZWE_components_gateway_apiml_security_x509_externalMapperUrl` | |
 | `APIML_GATEWAY_INTERNAL_HOST` | Not configurable in v2 | Not configurable in v2 | |
@@ -48,12 +48,10 @@ Review the following table for a detailed mapping of Zowe v1 and v2 variables.
 | `DISCOVERY_PORT` | `components.discovery.port` | `ZWE_components_discovery_port` | |
 | `EXTERNAL_CERTIFICATE_AUTHORITIES` | `zowe.certificate.pem.certificateAuthorities` | `ZWE_zowe_certificate_pem_certificateAuthorities` | |
 | `EXTERNAL_COMPONENTS` | Removed in v2 | Removed in v2 | Zowe v2 configuration does not distinguish core components and extensions on how to enable them. They  use the same `components.<component>.enabled` configuration. |
-| `FILES_API_PORT` | `components.files-api.port` | `ZWE_components_files_api_port` | |
 | `GATEWAY_PORT` | `components.gateway.port` | `ZWE_components_gateway_port` | |
 | `INSTANCE_DIR` | Removed in v2 | `ZWE_zowe_workspaceDirectory` or `ZWE_zowe_logDirectory` | The instance directory is split into workspace and logs directory in v2. |
 | `JAVA_HOME` | `java.home` | `JAVA_HOME` | |
 | `JES_EXPLORER_UI_PORT` | Removed in v2 | Removed in v2 | In v2, explorer-jes reuses the web server provided by App Server. It does not start independent web server. |
-| `JOBS_API_PORT` | `components.jobs-api.port` | `ZWE_components_jobs_api_port` | |
 | `KEY_ALIAS` | `zowe.certificate.keystore.alias` | `ZWE_zowe_certificate_keystore_alias` | |
 | `KEYSTORE_CERTIFICATE_AUTHORITY` | `zowe.certificate.pem.certificateAuthorities` | `ZWE_zowe_certificate_pem_certificateAuthorities` | |
 | `KEYSTORE_CERTIFICATE` | `zowe.certificate.pem.certificate` | `ZWE_zowe_certificate_pem_certificate` | |

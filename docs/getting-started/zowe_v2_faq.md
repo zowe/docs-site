@@ -16,7 +16,7 @@ For more information on Zowe setup and the yaml configuration, run the following
 
 ## What are the new default ports?
 
-Four of the default Zowe ports have changed: the app server, zss, the jobs API, and the files API. The new default app server port is 7556 (previously 8544) and the new zss port is 7557 (previously 8542). The new jobs API port is 7558 (previously 8545) and the new files API is 7559 (previously 8547). The JES/USS/MVS Explorer UI servers have been removed and thus no longer require port configurations.
+Four of the default Zowe ports have changed: the app server and the zss. The new default app server port is 7556 (previously 8544) and the new zss port is 7557 (previously 8542). The JES/USS/MVS Explorer UI servers have been removed and thus no longer require port configurations.
 
 ## How do I access Zowe through the API Mediation Layer in V2?
 
