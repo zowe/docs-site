@@ -225,42 +225,42 @@ module.exports = {
           ],
         },
         {
-          type: "category",
-          label: "Advanced API Mediation Layer Configuration",
-          link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
-          items: [
+          "type": "category",
+          "label": "Advanced API Mediation Layer Configuration",
+          "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
+          "items": [
             {
-              type: "category",
-              label: "Enabling single sign on for clients",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for clients",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-single-sign-on-user" },
+              "items": [
                 "user-guide/api-mediation/configuration-client-certificates",
                 "user-guide/api-mediation/configuration-personal-access-token",
                 "user-guide/api-mediation/configuration-jwt"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Enabling single sign on for extending services",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for extending services",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+              "items": [
                 "user-guide/api-mediation/configuration-extender-jwt",
                 "user-guide/api-mediation/configuration-extender-passtickets"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Customizing routing behavior",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
-              items: [
+              "type": "category",
+              "label": "Customizing routing behavior",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
+              "items": [
                 {
-                  type: "category",
-                  label: "Customizing management of API ML load limits",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                    items: [
-                        "user-guide/api-mediation/configuration-connection-limits",
-                        "user-guide/api-mediation/configuration-gateway-timeouts"
-                      ],
+                  "type": "category",
+                  "label": "Customizing management of API ML load limits",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-connection-limits",
+                    "user-guide/api-mediation/configuration-gateway-timeouts"
+                  ]
                 },
                 "user-guide/api-mediation/configuration-cors",
                 "user-guide/api-mediation/configuration-url-handling",
@@ -269,21 +269,31 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Configuring authorization for API ML",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
-              items: [
+              "type": "category",
+              "label": "Configuring authorization for API ML",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
+              "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
                 "user-guide/api-mediation/configuration-saf-resource-checking"
-              ],
-            },                
+              ]
+            },
+            {
+              "type": "category",
+              "label": "Configuring storage for the Caching service",
+              "items": [
+                "extend/extend-apiml/api-mediation-infinispan",
+                "extend/extend-apiml/api-mediation-vsam",
+                "extend/extend-apiml/api-mediation-redis",
+                "extend/extend-apiml/api-mediation-infinispan"
+              ]
+            },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls"
-          ],
-          }
+          ]
+        }        
         ],
     },    
     {
@@ -457,6 +467,7 @@ module.exports = {
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -688,7 +699,6 @@ module.exports = {
                 "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -698,16 +708,6 @@ module.exports = {
               items: [
               ],
             },
-            {
-              type: "category",
-              label: "Configuring storage for the Caching service",
-              items: [
-                "extend/extend-apiml/api-mediation-infinispan",
-                "extend/extend-apiml/api-mediation-vsam",
-                "extend/extend-apiml/api-mediation-redis",
-                "extend/extend-apiml/api-mediation-infinispan",
-              ],
-            }
           ],
         },
         {

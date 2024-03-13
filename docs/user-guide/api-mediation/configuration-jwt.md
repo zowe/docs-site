@@ -50,7 +50,7 @@ Authorization is used to set the access rights of an entity.
 In the API ML, authorization is performed by any of the following z/OS security managers:
 * [ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2)
 * [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm)
-*  [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret). 
+* [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret). 
 
 An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 

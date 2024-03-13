@@ -5,10 +5,6 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-    - [Authenticate with Username Password](#authenticate-with-usernamepassword)
-    - [Authenticate with Client certificate](#authenticate-with-client-certificate)
-    - [Authenticate with JWT Token](#authenticate-with-jwt-token)
-    - [Authenticate with Personal Access Token](#authenticate-with-personal-access-token)
 - [Authentication parameters](#authentication-parameters)
 - [Authentication providers](#authentication-providers)
     * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
@@ -85,7 +81,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 
   **Notes:** 
   
-   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt#enabling-a-jwt-token-refresh-endpoint).
+   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt.md#enabling-a-jwt-token-refresh-endpoint).
    - The endpoint is protected by a client certificate.
 
   The refresh request requires the token in one of the following formats:
@@ -102,11 +98,12 @@ of Zowe, all of the following methods are enabled and supported. All methods are
 
 Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
 
-* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token).
+* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token.md)
 
-* [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates).
+* [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
-* [Authenticating with personal access tokens](../../user-guide/api-mediation/authenticating-with-personal-access-token).
+* [Authenticating with personal access tokens](../../user-guide/api-mediation/authenticating-with-personal-access-token.md)
+
 
 ### Authenticate with Username/Password
 
@@ -155,6 +152,7 @@ The following schemes are supported by the API Gateway:
     * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
     * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
     * The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
+
       
     For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
