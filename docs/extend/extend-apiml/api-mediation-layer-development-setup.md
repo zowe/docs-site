@@ -10,5 +10,5 @@ The `Dummy Authentication Provider` implements simple authentication for develop
 
 Use the following property of the API Gateway to enable the `Dummy Authentication Provider`:
 ```
-apiml.security.auth.provider: dummy
+zowe.components.gateway.security.auth.provider: dummy
 ```
