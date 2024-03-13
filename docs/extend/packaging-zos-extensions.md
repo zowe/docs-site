@@ -4,7 +4,7 @@ You can extend Zowe in multiple ways. You may extend Zowe with microservices, wh
 
 Before you start, review the following terms:
 
-- **component**:
+- **component**
 
    Component refers to the most generic way to describe a program which can work within Zowe. It can be a microservice, a Zowe App Framework plug-in, or even just a shared program to be used by other Zowe components. This is also the generic word when referring to both Zowe core components and extensions. In most of the cases described in this topic, this terminology does not include programs running on the client side, like Zowe CLI plug-in or Zowe Explorer (VSCode extension).
 - **extension**
@@ -39,7 +39,7 @@ A typical component package consists of the following files and directories:
 
 - `apiml-static-registration.yaml.template`
 
-   Refers to a supporting file that instructs the Zowe launch script how to register this extension service to the API Mediation Layer Discovery service. In this case, this file is referred in the `manifest.yaml` `apimlServices.static[0].file` field. This file is optional depending on the function of the component and you can change and customize the file name in the manifest file.
+   Refers to a supporting file that instructs the Zowe launch script how to register this extension service to the API Mediation Layer Discovery service. In this case, this file is referred in the `manifest.yaml` `apimlServices.static[0].file` field. This file is optional depending on the function of the component. You can change and customize the file name in the manifest file.
 
 - `bin/(configure|start|validate).sh`
 
