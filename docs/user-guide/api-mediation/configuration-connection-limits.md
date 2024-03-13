@@ -33,7 +33,7 @@ zowe:
 Use the following procedure to change the limits:
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property `zowe.components.gateway.apiml.server.websocket.connectTimeout` and set the value to an appropriate positive integer. This timeout limits how long the API Gateway waits untill it drops connection if it can't reach the target server.
-3. Find or add the property `zowe.components.gateway.apiml.server.websocket.` and set the value to an appropriate positive integer. This timeout handles how long the API Gateway waits before it fails on stop message for teh Websocket connection
-4. Find or add the property `zowe.components.gateway.apiml.server.websocket.` and set the value to an appropriate positive integer. This timeout handles how long it takes before the server fails with unsuccessful response when trying to write message to the Websocket connection. 
-5. Find or add the property `zowe.components.gateway.apiml.server.websocket.` and set the value to an appropriate positive integer. This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. 
+2. Find or add the property `zowe.components.gateway.server.websocket.connectTimeout` and set the value to an appropriate positive integer. This timeout limits how long the API Gateway waits until it drops connection if it can't reach the target server. Default is 15 seconds.
+3. Find or add the property `zowe.components.gateway.server.websocket.stopTimeout` and set the value to an appropriate positive integer. This timeout handles how long the API Gateway waits before it fails on stop message for the Websocket connection. Default is 30 seconds.
+4. Find or add the property `zowe.components.gateway.apiml.websocket.asyncWriteTimeout` and set the value to an appropriate positive integer. This timeout handles how long it takes before the server fails with unsuccessful response when trying to write message to the Websocket connection. Default is 60 seconds.
+5. Find or add the property `zowe.components.gateway.apiml.websocket.maxIdleTimeout` and set the value to an appropriate positive integer. This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. Default is one hour.
