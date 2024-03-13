@@ -25,23 +25,20 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
-- System Display and Search Facility (SDSF)
+- System Display and Search Facility (SDSF) or Sysview
 
   During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Ensure that you have SDSF installed on 
-  z/OS to perform the following operations; otherwise, you may encounter the following error message:
+  z/OS, or an alternative utility to perform these previously mentioned operations. 
+  
+  Not having SDSF installed may result in the following error message:
 
   `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
-  
-  An alternative method exists as a workaround for executing the steps without relying on SDSF. See the following example.
-  
- **Example:**
 
+ :::note
  The `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zowe init certificate` is unnecessary.
+ :::
 
-Similarly, `zowe start` and `zowe stop` commands rely on SDSF features. These commands primarily manage the submission of the Zowe Started Task and its parameters. One example is the parameter    
-  `haInstance=`, which can be submitted if applicable.
-  
-   Users can manually execute these actions using alternative utilities installed on their systems, such as Sysview.
+Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zowe start` and `zowe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
 
 - (Optional, recommended) z/OS OpenSSH
   
