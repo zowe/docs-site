@@ -280,6 +280,7 @@ module.exports = {
                 "user-guide/api-mediation/configuration-saf-resource-checking"
               ]
             },
+            "user-guide/authentication-providers-for-apiml",
             {
               "type": "category",
               "label": "Configuring storage for the Caching service",
@@ -690,6 +691,7 @@ module.exports = {
             "extend/extend-apiml/custom-metadata",
             "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
+            "extend/extend-apiml/api-mediation-layer-development-setup",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
