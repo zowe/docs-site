@@ -25,18 +25,23 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
-- SDSF
+- System Display and Search Facility (SDSF)
 
-  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Therefore, having SDSF installed on 
-  z/OS is essential for these operations; otherwise, users may encounter the following error message.
+  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Ensure that you have SDSF installed on 
+  z/OS to perform the following operations; otherwise, you may encounter the following error message:
 
   `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
   
-  An alternative method exists for executing the steps without relying on SDSF as a workaround, as explained below.
+  An alternative method exists as a workaround for executing the steps without relying on SDSF. See the following example.
   
-  For Example, the `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If such setup has been completed beforehand or if      Zowe utilizes an existing keyring, then `zowe init certificate` becomes unnecessary.
-  Similarly, `zowe start` and `zowe stop` commands rely on SDSF features. These commands primarily manage the submission of the Zowe Started Task (S <Zowe STC>) and its parameters, like     
-  haInstance=, if applicable. Nonetheless, users can manually execute these actions using alternative utilities installed on their systems, such as Sysview.
+ **Example:**
+
+ The `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zowe init certificate` is unnecessary.
+
+Similarly, `zowe start` and `zowe stop` commands rely on SDSF features. These commands primarily manage the submission of the Zowe Started Task and its parameters. One example is the parameter    
+  `haInstance=`, which can be submitted if applicable.
+  
+   Users can manually execute these actions using alternative utilities installed on their systems, such as Sysview.
 
 - (Optional, recommended) z/OS OpenSSH
   
