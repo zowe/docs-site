@@ -35,7 +35,7 @@ Therefore, to provide a higher level of flexibility, the PJE implements routines
 
 * **internal _service-configuration.yml_** 
 
-  The first configuration file is typically internal to the service deployment artifact. This file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the Java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, it will not match every possible production environment and its corresponding requirements.
+  The first configuration file is typically internal to the service deployment artifact. This file must be accessible on the service `classpath`. This file contains basic API ML configuration based on values known at development time. Usually, this basic API ML configuration is provided by the service developer and is located in the `/resources` folder of the Java project source tree. This file is usually found in the deployment artifacts under `/WEB-INF/classes`. The configuration contained in this file is provided by the service developer or builder. As such, the configuration will not match every possible production environment and the corresponding requirements of the environment.
 
 * **external or additional _service-configuration.yml_**
 
@@ -102,14 +102,13 @@ The following code block is an example of Java Servlet context configuration.
 </Context>
 ```
 
-   Where the two parameters corresponding to the location of the configuration files are:
+   The two parameters corresponding to the location of the configuration files are:
     
-   * `apiml.config.location`
+   * `apiml.config.location`  
+   is parameter describes the location of the basic configuration file.
 
-      This parameter describes the location of the basic configuration file.
-   * `apiml.config.additional-location`
-
-      This parameter describes the location of the external configuration file.
+   * `apiml.config.additional-location`  
+   This parameter describes the location of the external configuration file.
     
    The method in this example uses the provided configuration file names in order to load them as _YAML_ files into the internal Java configuration object of type _ApiMediationServiceConfig_.
    
@@ -145,7 +144,9 @@ public ApiMediationServiceConfig loadConfiguration(String configurationFileName)
 This method receives a single _String_ parameter and can be used to load an internal or an external configuration file. 
 
 
-**Note:** This method first attempts to load the configuration as a Java resource. If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method attempts to resolve the file as a relative path. When the file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.   
+:::note
+This method first attempts to load the configuration as a Java resource. If the file is not found, the method attempts to resolve the file name as an absolute. If the file name still cannot be found, this method attempts to resolve the file as a relative path. When the file is found, the method loads the contents of the file and maps them to internal data classes. After loading the configuration file, the method attempts to substitute/rewrite configuration property values with corresponding Java System properties.  
+::: 
 
 ### Loading and merging two YAML configuration files
   
@@ -163,9 +164,10 @@ where:
 
    references the external configuration file name.
 
-**Note:**  The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
+:::note
+The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
 After loading and before merging, each configuration will be separately patched using Java System properties.
-          
+:::          
   
 The following code block presents an example of how to load and merge onboarding configuration from _YAML_ files.
 
