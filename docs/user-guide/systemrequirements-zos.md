@@ -25,7 +25,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
-- System Display and Search Facility (SDSF) or Sysview
+- System Display and Search Facility (SDSF)
 
   During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Ensure that you have SDSF installed on 
   z/OS, or an alternative utility to perform these previously mentioned operations. 
