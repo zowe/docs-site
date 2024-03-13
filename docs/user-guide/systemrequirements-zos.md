@@ -38,6 +38,8 @@ Be sure your z/OS system meets the following prerequisites:
  The `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zowe init certificate` is unnecessary.
  :::
 
+For more information about SDSF, see the _Abstract for z/OS SDSF Operation and Customization_ in the IBM documentation.
+
 Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zowe start` and `zowe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
 
 - (Optional, recommended) z/OS OpenSSH
