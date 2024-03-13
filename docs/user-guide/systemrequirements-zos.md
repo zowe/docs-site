@@ -27,20 +27,18 @@ Be sure your z/OS system meets the following prerequisites:
 
 - System Display and Search Facility (SDSF)
 
-  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zowe init certificate`, `zowe start`, and `zowe stop`. Ensure that you have SDSF installed on 
-  z/OS, or an alternative utility to perform these previously mentioned operations. 
+  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zwe init certificate`, `zwe start`, and `zwe stop`. Ensure that you have SDSF installed on z/OS. 
   
   Not having SDSF installed may result in the following error message:
 
   `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
 
  :::note
- The `zowe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zowe init certificate` is unnecessary.
+ The `zwe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zwe init certificate` is unnecessary.
+Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zwe start` and `zwe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
  :::
-
+ 
 For more information about SDSF, see the _Abstract for z/OS SDSF Operation and Customization_ in the IBM documentation.
-
-Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zowe start` and `zowe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
 
 - (Optional, recommended) z/OS OpenSSH
   
