@@ -681,7 +681,6 @@ module.exports = {
             "extend/extend-apiml/onboard-overview",
             "extend/extend-apiml/onboard-plain-java-enabler",
             "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/onboard-direct-eureka-call",
             "extend/extend-apiml/onboard-spring-boot-enabler",
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
