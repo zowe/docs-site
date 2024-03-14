@@ -1,6 +1,6 @@
-# The article was changed and moved
+# This article was changed and moved
 
-The information that used to be in this article are available in following ones:
+The information that used to be in the article **Configuring Zowe to use PassTickets** has been reorganized and is available in following articles:
 
-- The general configuration for Zowe and API ML is here [Configure Passtickets](https://docs.zowe.org/stable/user-guide/api-mediation/configuration-extender-passtickets)
-- For the extending services more details are: [Authentication for API ML services](https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services#authentication-parameters)
+- For detailed information about configuring Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services, see [Enabling single sign on for extending services via PassTicket configuration](https://docs.zowe.org/stable/user-guide/api-mediation/configuration-extender-passtickets).
+- For detailed information about authentication parameters to enable a service to accept a Zowe JWT or client certificate, see [Authentication for API ML services](https://docs.zowe.org/stable/extend/extend-apiml/authentication-for-apiml-services#authentication-parameters).
