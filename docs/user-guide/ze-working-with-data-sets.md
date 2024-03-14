@@ -215,6 +215,7 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
 2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
 3. Select a sort type from the list of available options:
    - **Name**
+   - **Date Created**
    - **Date Modified**
    - **User ID**
 
@@ -229,6 +230,7 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
 2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
 3. Select a sort type from the list of available options:
    - **Name**
+   - **Date Created**
    - **Date Modified**
    - **User ID**
 
