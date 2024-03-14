@@ -68,6 +68,5 @@ There are various options for using the API Catalog:
 
 ### Additional use case when usig API Mediation Layer
 
-* [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service)
 * [SMF records](./api-mediation-smf)
 

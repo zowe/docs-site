@@ -51,7 +51,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
     b. Issue the following command to install all of the plug-ins:
         
     ```
-    zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/ims-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
+    zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
     ```
         
     Zowe CLI is installed.

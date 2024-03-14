@@ -103,11 +103,6 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 
 An API is provided in high-availability mode which offers the possibility to store, retrieve, and delete data associated with keys. The service can only be used by internal Zowe services and is not exposed to the internet.
 
-**Metrics Service (Technical Preview)**
-
-The Metrics Service provides a web user interface to visualize requests to API Mediation Layer services. HTTP metrics such as number of requests and error rates are displayed for
-each API Mediation Layer service. This service is currently in technical preview and is not ready for production.
-
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
