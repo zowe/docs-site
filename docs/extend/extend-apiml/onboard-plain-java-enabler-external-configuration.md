@@ -14,9 +14,7 @@ This article describes the process of configuring a REST service to onboard with
 ## Introduction
 
 The API ML Plain Java Enabler (PJE) is a library which helps to simplify the process of onboarding a REST service with the API ML. 
-This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the PJE. 
-
- * [Plain Java Enabler](onboard-plain-java-enabler.md)
+This article describes how to provide and externalize the Zowe API ML onboarding configuration of your REST service using the PJE. For detailed instructions about how to onboard your API service using the Plain Java Enabler, see [Onboarding a REST API service with the Plain Java Enabler (PJE)](./onboard-plain-java-enabler.md).
 
 The PJE is the most universal Zowe API ML enabler. This enabler uses only Java, and does not use advanced Inversion of Control (_IoC_) or Dependency Injection (_DI_) technologies.
 The PJE enables you to onboard any REST service implemented in Java, avoiding dependencies, versions collisions, unexpected application behavior, and unnecessarily large service executables.
@@ -115,10 +113,9 @@ The following code block is an example of Java Servlet context configuration.
    The other context parameters with the _apiml_ prefix are used to rewrite values of properties in the configuration files. 
 
 ## Validating successful onboarding with the API Mediation Layer
-Ensure that you successfully onboarded a service with the API Mediation Layer. 
+To ensure that you successfully onboarded a service with the API Mediation Layer, follow these steps: 
 
-**Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 
@@ -156,13 +153,11 @@ To load and merge two configuration files, use the following method:
    ```     
 where:
 
-*  **String internalConfigurationFileName**
-
-   references the basic configuration file name. 
+*  **String internalConfigurationFileName**  
+references the basic configuration file name. 
    
-* **String externalizedConfigurationFileName**
-
-   references the external configuration file name.
+* **String externalizedConfigurationFileName**  
+references the external configuration file name.
 
 :::note
 The external configuration file takes precedence over the basic configuration file in order to match the target deployment environment.
