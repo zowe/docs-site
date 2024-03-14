@@ -26,7 +26,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
    - Select a continuous range of items by selecting the first item in the range. Then hold down the `Shift` key until selecting the last item in the range.
 3. Click and hold the region containing the selected items to start the drag process.
 4. As the items are selected, move your cursor to the desired folder or session. Release the mouse button to start the move operation.
-   - If the move operation might overwrite one or more files, an “overwrite confirmation" message displays. Select **Confirm** to relocate these items. Select **WHAT** to stop the move operation.
+   - If the move operation might overwrite one or more files, an “overwrite confirmation" message displays. Select **Confirm** to relocate these items. Select **Cancel** to stop the move operation.
 5. When items are moved, the tree view refreshes and the moved items appear in the destination folder.
 
    ![Dragging and dropping USS files](../images/ze/ZE-uss-drag-drop.gif)
