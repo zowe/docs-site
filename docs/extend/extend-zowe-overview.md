@@ -15,7 +15,10 @@ Zowe can be extended in the following ways:
 - [Extend Zowe Explorer](#extend-zowe-explorer)
 - [Add a plug-in to the Zowe Desktop](#add-a-plug-in-to-the-zowe-desktop)
 
+To assist with extension development, see the following [Sample extensions](#sample-extensions):
 
+- [Sample Zowe API and API Catalog extension](#sample-zowe-api-and-api-catalog-extension)
+- [Sample Zowe Desktop extension](#sample-zowe-desktop-extension)
 
 ## Extending the server side
 
@@ -43,7 +46,7 @@ Zowe Explorer provides extension APIs that assist third party extenders to creat
 
 For the kinds of extensions that are supported and how to get started with extending Zowe Explorer, see [Extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer).
 
-## Add a plug-in to the Zowe Desktop
+### Add a plug-in to the Zowe Desktop
 
 The Zowe Desktop allows a user to interact with z/OS applications through a web browser. The Desktop is served by the Zowe Application Framework Server on z/OS, also known as Z Lightweight User Experience (ZLUX). The Zowe desktop comes with a set of default applications. You can extend it to add new applications. For more information, see [Developing for Zowe Application Framework](extend-desktop/mvd-extendingzlux.md).
 
@@ -54,7 +57,6 @@ The Zowe Desktop is an angular application that allows native plug-ins to be bui
 - [Sample iframe App](extend-desktop/mvd-extendingzlux.md#sample-iframe-app).
 - [Sample Angular App](extend-desktop/mvd-extendingzlux.md#sample-angular-app).
 - [Sample React App](extend-desktop/mvd-extendingzlux.md#sample-react-app).
-
 
 ## Sample extensions
 
