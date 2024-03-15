@@ -27,6 +27,8 @@ The API Mediation Layer extension primarily focuses on extending via onboarding 
 
 You can create application plug-ins to extend the capabilities of the Zowe™ Application Framework. An application plug-in is an installable set of files that present resources in a web-based user interface, as a set of RESTful services, or in a web-based user interface and as a set of RESTful services.
 
+For more information about developing for Zowe Application Framework, see [Zowe Application Framework overview](./extend-desktop/mvd-extendingzlux.md).
+
 ## Extending the client side
 
 ### Extend Zowe CLI
