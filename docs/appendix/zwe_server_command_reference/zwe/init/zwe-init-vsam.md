@@ -80,6 +80,8 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
+ZWEL0148E|148|%s (%s) is not defined in Zowe YAML configuration file.
+ZWEL0149E|149|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. This data set member will be overwritten during configuration.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
