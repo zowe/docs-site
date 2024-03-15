@@ -24,7 +24,6 @@
 3. Select the **Sort Direction** option and select either **Ascending** or **Descending** from the **picker** field.
 4. Select a sort type from the list of available options:
    - **Job ID (default)**
-   - **Name**
    - **Date Submitted**
    - **Date Completed**
    - **Job Name**
