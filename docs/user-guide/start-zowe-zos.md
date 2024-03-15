@@ -4,14 +4,15 @@ The following article describes how to start and stop Zowe.
 
 Zowe consists of three main started tasks:
 
-- **ZWESLSTC**  
-Zowe main started task
-
 - **ZWESISTC**  
 Zowe cross memory server
 
 - **ZWESASTC**  
 Zowe cross memory auxiliary server
+
+- **ZWESLSTC**  
+Zowe main started task
+
 
 ## Starting and stopping the cross memory server `ZWESISTC` on z/OS
 
