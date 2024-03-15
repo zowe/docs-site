@@ -6,8 +6,9 @@ Review how services of the API Mediation Layer address authentication.
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
 - [Authentication parameters](#authentication-parameters)
-- [Authorization](#authorization)
 - [Discovery Service authentication](#discovery-service-authentication)
+  - [Authentication with PassTickets](#authentication-with-passtickets)
+ 
 
 :::tip
 For information about authentication providers that handle authentication for the API Gateway, see [Authentication providers for API Mediation Layer](../../user-guide/authentication-providers-for-apiml.md).
