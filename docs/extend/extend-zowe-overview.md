@@ -65,9 +65,9 @@ we provide a set of sample. These sample extensions contain the necessary boiler
 
 **Note:** For more information on the architecture of Zowe, see [Zowe Architecture](../getting-started/zowe-architecture.md).
 
-### Sample Zowe API and API Catalog extension
+### Sample Zowe API and API Catalog onboarded service
 
-The repository [https://github.com/zowe/sample-node-api](https://github.com/zowe/sample-node-api) contains a sample Zowe extension with a node server providing sample APIs for looking at cars in a dealership. For more information, see [sample-node-api](https://github.com/zowe/sample-node-api/blob/master/README.md).  
+The service [Discoverable Client](https://github.com/zowe/api-layer/tree/v3.x.x/discoverable-client) within API Mediation Layer repository contains a sample Zowe onboarded service with a Spring Boot server providing sample Helo world APIs. For more information, see [discoverable-client](https://github.com/zowe/api-layer/blob/v3.x.x/discoverable-client/README.md).  
 
 ### Sample Zowe Desktop extension
 
