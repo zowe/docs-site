@@ -2,17 +2,21 @@
 
 The IDF Plug-in for Zowe CLI lets you extend Zowe CLI to make it easier to map mainframe users with an identity provided by an external identity provider.
 
-The Plug-in is designed to work with the ESMs: IBM RACF, Broadcom ACF/2, and Broadcom Top Secret.
+The plug-in is designed to work with the ESMs: IBM RACF, ACF/2, and Top Secret.
 
 ## Use case
 
-As a system administrator for the Zowe API Mediation Layer, the IDF Plug-in for Zowe CLI can help facilitate the mapping of an external identity from a distributed identity provider to mainframe users administered by the system ESM.
+For a system administrator for the Zowe API Mediation Layer, the IDF Plug-in for Zowe CLI can help facilitate the mapping of an external identity from a distributed identity provider to mainframe users administered by the system ESM.
 
 ## Commands
 
-The plug-in provides the `map` command. For details about the map command, see [Usage](#usage).
+The plug-in provides the `map` command. For details about the map command, see [Using](#using).
 
-**Note:** The plug-in `help` command includes specific parameters of Zowe-profiles which are not used.
+:::note
+
+The plug-in `help` command includes specific parameters of Zowe-profiles which are not used.
+
+:::
 
 ## Software requirements
 
@@ -32,7 +36,7 @@ Use the following Plug-in ID with either of these installation methods:
 |---------|-----------------------------|
 | IDF Plugin for Zowe CLI | `@zowe/id-federation-for-zowe-cli` |
 
-## Usage
+## Using
 
 Currently, the plug-in does not interface with the mainframe system, so no Zowe CLI profile configuration is required.
 
@@ -80,4 +84,4 @@ The `map` command generates an output file with a valid JCL. The output file nam
 `idf_$ESM$SYSTEM.jcl`
 
 - **$SYSTEM**  
- This parameter is ommited if it is not provided.
+ This parameter is omitted if it is not provided.

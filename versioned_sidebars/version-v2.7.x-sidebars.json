@@ -1,5 +1,5 @@
 {
-  "version-v2.7.x/getting-started": [
+  "getting-started": [
     {
       "collapsed": false,
       "type": "category",
@@ -7,15 +7,15 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/overview"
+          "id": "getting-started/overview"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/zowe-architecture"
+          "id": "getting-started/zowe-architecture"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/zowe-secure-setup"
+          "id": "getting-started/zowe-secure-setup"
         }
       ]
     },
@@ -26,11 +26,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/zowe_faq"
+          "id": "getting-started/zowe_faq"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/zowe_v2_faq"
+          "id": "getting-started/zowe_v2_faq"
         }
       ]
     },
@@ -41,51 +41,51 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/release-notes-overview"
+          "id": "getting-started/release-notes/release-notes-overview"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_7_0"
+          "id": "getting-started/release-notes/v2_7_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_6_1"
+          "id": "getting-started/release-notes/v2_6_1"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_6_0"
+          "id": "getting-started/release-notes/v2_6_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_5_0"
+          "id": "getting-started/release-notes/v2_5_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_4_0"
+          "id": "getting-started/release-notes/v2_4_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_3_1"
+          "id": "getting-started/release-notes/v2_3_1"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_3_0"
+          "id": "getting-started/release-notes/v2_3_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_2_0"
+          "id": "getting-started/release-notes/v2_2_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_1_0"
+          "id": "getting-started/release-notes/v2_1_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/release-notes/v2_0_0"
+          "id": "getting-started/release-notes/v2_0_0"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/zowe-office-hours"
+          "id": "getting-started/zowe-office-hours"
         }
       ]
     },
@@ -96,7 +96,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/getting-started/cli-getting-started"
+          "id": "getting-started/cli-getting-started"
         }
       ]
     },
@@ -107,19 +107,19 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/extend/migrate-extensions"
+          "id": "extend/migrate-extensions"
         }
       ]
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/getting-started/zowe-resources"
+      "id": "getting-started/zowe-resources"
     }
   ],
-  "version-v2.7.x/setup": [
+  "setup": [
     {
       "type": "doc",
-      "id": "version-v2.7.x/user-guide/install-overview"
+      "id": "user-guide/install-overview"
     },
     {
       "collapsed": true,
@@ -133,15 +133,15 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/install-zos"
+              "id": "user-guide/install-zos"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zos-components-installation-checklist"
+              "id": "user-guide/zos-components-installation-checklist"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zos-components-installation-checklist-dev"
+              "id": "user-guide/zos-components-installation-checklist-dev"
             },
             {
               "collapsed": true,
@@ -150,11 +150,11 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/installandconfig"
+                  "id": "user-guide/installandconfig"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-uss"
+                  "id": "user-guide/configure-uss"
                 }
               ]
             },
@@ -165,19 +165,19 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/systemrequirements-zos"
+                  "id": "user-guide/systemrequirements-zos"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/install-nodejs-zos"
+                  "id": "user-guide/install-nodejs-zos"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/systemrequirements-zosmf"
+                  "id": "user-guide/systemrequirements-zosmf"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/systemrequirements-zosmf-lite"
+                  "id": "user-guide/systemrequirements-zosmf-lite"
                 }
               ]
             },
@@ -188,7 +188,7 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/install-zowe-zos-convenience-build"
+                  "id": "user-guide/install-zowe-zos-convenience-build"
                 },
                 {
                   "collapsed": true,
@@ -197,11 +197,11 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-smpe"
+                      "id": "user-guide/install-zowe-smpe"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-smpe-zosmf-workflow"
+                      "id": "user-guide/install-zowe-smpe-zosmf-workflow"
                     }
                   ]
                 },
@@ -212,19 +212,19 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-pswi"
+                      "id": "user-guide/install-zowe-pswi"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-pswi-address-requirements"
+                      "id": "user-guide/install-zowe-pswi-address-requirements"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-pswi-acquire"
+                      "id": "user-guide/install-zowe-pswi-acquire"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/install-zowe-pswi-deployment"
+                      "id": "user-guide/install-zowe-pswi-deployment"
                     }
                   ]
                 }
@@ -237,27 +237,27 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/initialize-zos-system"
+                  "id": "user-guide/initialize-zos-system"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/initialize-mvs-datasets"
+                  "id": "user-guide/initialize-mvs-datasets"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/initialize-security-configuration"
+                  "id": "user-guide/initialize-security-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-zos-system"
+                  "id": "user-guide/configure-zos-system"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/grant-user-permission-zosmf"
+                  "id": "user-guide/grant-user-permission-zosmf"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/apf-authorize-load-library"
+                  "id": "user-guide/apf-authorize-load-library"
                 },
                 {
                   "collapsed": true,
@@ -266,49 +266,49 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates"
+                      "id": "user-guide/configure-certificates"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates-keystore"
+                      "id": "user-guide/configure-certificates-keystore"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/configure-certificates-keyring"
+                      "id": "user-guide/configure-certificates-keyring"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/certificates-setup"
+                      "id": "user-guide/certificates-setup"
                     }
                   ]
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/initialize-vsam-dataset"
+                  "id": "user-guide/initialize-vsam-dataset"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/install-stc-members"
+                  "id": "user-guide/install-stc-members"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-xmem-server"
+                  "id": "user-guide/configure-xmem-server"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-auxiliary-address-space"
+                  "id": "user-guide/configure-auxiliary-address-space"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-zowe-zosmf-workflow"
+                  "id": "user-guide/configure-zowe-zosmf-workflow"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configmgr-using"
+                  "id": "user-guide/configmgr-using"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/install-configure-zos-extensions"
+                  "id": "user-guide/install-configure-zos-extensions"
                 }
               ]
             },
@@ -319,29 +319,29 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/zowe-ha-overview"
+                  "id": "user-guide/zowe-ha-overview"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-sysplex"
+                  "id": "user-guide/configure-sysplex"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/systemrequirements-zosmf-ha"
+                  "id": "user-guide/systemrequirements-zosmf-ha"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-caching-service-ha"
+                  "id": "user-guide/configure-caching-service-ha"
                 }
               ]
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/start-zowe-zos"
+              "id": "user-guide/start-zowe-zos"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/verify-zowe-runtime-install"
+              "id": "user-guide/verify-zowe-runtime-install"
             }
           ]
         },
@@ -352,23 +352,23 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/k8s-introduction"
+              "id": "user-guide/k8s-introduction"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/k8s-prereqs"
+              "id": "user-guide/k8s-prereqs"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/k8s-downloading"
+              "id": "user-guide/k8s-downloading"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/k8s-config"
+              "id": "user-guide/k8s-config"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/k8s-using"
+              "id": "user-guide/k8s-using"
             }
           ]
         },
@@ -379,7 +379,7 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/mvd-configuration"
+              "id": "user-guide/mvd-configuration"
             },
             {
               "collapsed": true,
@@ -388,27 +388,27 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/configure-data-sets-jobs-api"
+                  "id": "user-guide/configure-data-sets-jobs-api"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation/api-catalog-configuration"
+                  "id": "user-guide/api-mediation/api-catalog-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation/api-gateway-configuration"
+                  "id": "user-guide/api-mediation/api-gateway-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation/discovery-service-configuration"
+                  "id": "user-guide/api-mediation/discovery-service-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation/api-mediation-internal-configuration"
+                  "id": "user-guide/api-mediation/api-mediation-internal-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/api-mediation-passtickets"
+                  "id": "extend/extend-apiml/api-mediation-passtickets"
                 }
               ]
             }
@@ -428,15 +428,15 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-install-cli-checklist"
+              "id": "user-guide/cli-install-cli-checklist"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/user-roadmap-zowe-cli"
+              "id": "user-guide/user-roadmap-zowe-cli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/systemrequirements-cli"
+              "id": "user-guide/systemrequirements-cli"
             },
             {
               "collapsed": true,
@@ -445,33 +445,33 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-installcli"
+                  "id": "user-guide/cli-installcli"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-configure-scs-on-headless-linux-os"
+                  "id": "user-guide/cli-configure-scs-on-headless-linux-os"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-configure-cli-on-os-where-scs-unavailable"
+                  "id": "user-guide/cli-configure-cli-on-os-where-scs-unavailable"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-install-cli-nodejs-windows"
+                  "id": "user-guide/cli-install-cli-nodejs-windows"
                 }
               ]
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/install-cli-via-proxy"
+              "id": "user-guide/install-cli-via-proxy"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-updatingcli"
+              "id": "user-guide/cli-updatingcli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-uninstall"
+              "id": "user-guide/cli-uninstall"
             },
             {
               "collapsed": true,
@@ -480,11 +480,11 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-configuringcli-ev"
+                  "id": "user-guide/cli-configuringcli-ev"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-configuringcli-evfile"
+                  "id": "user-guide/cli-configuringcli-evfile"
                 }
               ]
             }
@@ -497,15 +497,15 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/getting-started/user-roadmap-zowe-explorer"
+              "id": "getting-started/user-roadmap-zowe-explorer"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/ze-install"
+              "id": "user-guide/ze-install"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/ze-profiles"
+              "id": "user-guide/ze-profiles"
             }
           ]
         },
@@ -516,7 +516,7 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zowe-chat/introduction"
+              "id": "user-guide/zowe-chat/introduction"
             },
             {
               "collapsed": true,
@@ -525,7 +525,7 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/zowe-chat/systemrequirements-chat"
+                  "id": "user-guide/zowe-chat/systemrequirements-chat"
                 },
                 {
                   "collapsed": true,
@@ -539,31 +539,31 @@
                       "items": [
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_install_mattermost"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_install_mattermost"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost_invite_channel"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_channel"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection"
                         }
                       ]
                     },
@@ -574,11 +574,11 @@
                       "items": [
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_teams"
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal"
                         },
                         {
                           "collapsed": true,
@@ -587,15 +587,15 @@
                           "items": [
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_create_bot"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_create_bot"
                             },
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_create_bot_framework"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_framework"
                             },
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_create_bot_azure"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_azure"
                             }
                           ]
                         },
@@ -606,15 +606,15 @@
                           "items": [
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint"
                             },
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_framework"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_framework"
                             },
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_azure"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_azure"
                             }
                           ]
                         }
@@ -627,7 +627,7 @@
                       "items": [
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_slack"
                         },
                         {
                           "collapsed": true,
@@ -636,7 +636,7 @@
                           "items": [
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_create_app"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_slack_create_app"
                             },
                             {
                               "collapsed": true,
@@ -645,27 +645,27 @@
                               "items": [
                                 {
                                   "type": "doc",
-                                  "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_configure_app"
+                                  "id": "user-guide/zowe-chat/chat_prerequisite_slack_configure_app"
                                 },
                                 {
                                   "type": "doc",
-                                  "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_socket_mode"
+                                  "id": "user-guide/zowe-chat/chat_prerequisite_slack_socket_mode"
                                 },
                                 {
                                   "type": "doc",
-                                  "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_http_endpoint"
+                                  "id": "user-guide/zowe-chat/chat_prerequisite_slack_http_endpoint"
                                 }
                               ]
                             },
                             {
                               "type": "doc",
-                              "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_install"
+                              "id": "user-guide/zowe-chat/chat_prerequisite_slack_install"
                             }
                           ]
                         },
                         {
                           "type": "doc",
-                          "id": "version-v2.7.x/user-guide/zowe-chat/chat_prerequisite_slack_invite_app_to_channel"
+                          "id": "user-guide/zowe-chat/chat_prerequisite_slack_invite_app_to_channel"
                         }
                       ]
                     }
@@ -680,7 +680,7 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/zowe-chat/chat_install_overview"
+                  "id": "user-guide/zowe-chat/chat_install_overview"
                 }
               ]
             },
@@ -691,7 +691,7 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/zowe-chat/chat_configure_server"
+                  "id": "user-guide/zowe-chat/chat_configure_server"
                 },
                 {
                   "collapsed": true,
@@ -700,15 +700,15 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/zowe-chat/chat_configure_mattermost"
+                      "id": "user-guide/zowe-chat/chat_configure_mattermost"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/zowe-chat/chat_configure_teams"
+                      "id": "user-guide/zowe-chat/chat_configure_teams"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/zowe-chat/chat_configure_slack"
+                      "id": "user-guide/zowe-chat/chat_configure_slack"
                     }
                   ]
                 }
@@ -716,11 +716,11 @@
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zowe-chat/chat_start_stop"
+              "id": "user-guide/zowe-chat/chat_start_stop"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zowe-chat/chat_uninstall"
+              "id": "user-guide/zowe-chat/chat_uninstall"
             }
           ]
         },
@@ -731,21 +731,21 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/intellij-install"
+              "id": "user-guide/intellij-install"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/intellij-configure"
+              "id": "user-guide/intellij-configure"
             }
           ]
         }
       ]
     }
   ],
-  "version-v2.7.x/use": [
+  "use": [
     {
       "type": "doc",
-      "id": "version-v2.7.x/user-guide/zowe-getting-started-tutorial"
+      "id": "user-guide/zowe-getting-started-tutorial"
     },
     {
       "collapsed": true,
@@ -759,11 +759,11 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/mvd-using"
+              "id": "user-guide/mvd-using"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/mvd-editor"
+              "id": "user-guide/mvd-editor"
             }
           ]
         },
@@ -774,11 +774,11 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/api-mediation/using-api-mediation-layer"
+              "id": "user-guide/api-mediation/using-api-mediation-layer"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/getting-started/user-roadmap-apiml"
+              "id": "getting-started/user-roadmap-apiml"
             },
             {
               "collapsed": true,
@@ -787,53 +787,53 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation-view-service-information-and-api-doc"
+                  "id": "user-guide/api-mediation-view-service-information-and-api-doc"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation-swagger-try-it-out"
+                  "id": "user-guide/api-mediation-swagger-try-it-out"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation-swagger-code-snippets"
+                  "id": "user-guide/api-mediation-swagger-code-snippets"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation-static-api-refresh"
+                  "id": "user-guide/api-mediation-static-api-refresh"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/api-mediation-change-password-via-catalog"
+                  "id": "user-guide/api-mediation-change-password-via-catalog"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/onboard-wizard"
+                  "id": "user-guide/onboard-wizard"
                 }
               ]
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/api-mediation-metrics-service"
+              "id": "user-guide/api-mediation-metrics-service"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/api-mediation-routing"
+              "id": "extend/extend-apiml/api-mediation-routing"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/service-information"
+              "id": "extend/extend-apiml/service-information"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/websocket"
+              "id": "extend/extend-apiml/websocket"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/api-mediation/api-gateway-rest-apis-documentation"
+              "id": "user-guide/api-mediation/api-gateway-rest-apis-documentation"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/api-mediation/api-mediation-smf"
+              "id": "user-guide/api-mediation/api-mediation-smf"
             }
           ]
         }
@@ -851,19 +851,19 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-usingcli"
+              "id": "user-guide/cli-using-usingcli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-displaying-help"
+              "id": "user-guide/cli-using-displaying-help"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-understanding-core-command-groups"
+              "id": "user-guide/cli-using-understanding-core-command-groups"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-issuing-first-command"
+              "id": "user-guide/cli-using-issuing-first-command"
             },
             {
               "collapsed": true,
@@ -872,39 +872,39 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-using-team-profiles"
+                  "id": "user-guide/cli-using-using-team-profiles"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-initializing-team-configuration"
+                  "id": "user-guide/cli-using-initializing-team-configuration"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-test-zosmf-connection"
+                  "id": "user-guide/cli-using-test-zosmf-connection"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-team-configuration-application-developers"
+                  "id": "user-guide/cli-using-team-configuration-application-developers"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-team-configuration-team-leaders"
+                  "id": "user-guide/cli-using-team-configuration-team-leaders"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-sharing-team-config-files"
+                  "id": "user-guide/cli-using-sharing-team-config-files"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-understand-profiles-configs"
+                  "id": "user-guide/cli-using-understand-profiles-configs"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-team-managing-credential-security"
+                  "id": "user-guide/cli-using-team-managing-credential-security"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-global-storing-properties-automatically"
+                  "id": "user-guide/cli-using-global-storing-properties-automatically"
                 }
               ]
             },
@@ -915,25 +915,25 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-using-daemon-mode"
+                  "id": "user-guide/cli-using-using-daemon-mode"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-configure-daemon-on-zlinux-os"
+                  "id": "user-guide/cli-configure-daemon-on-zlinux-os"
                 }
               ]
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-using-profiles-v1"
+              "id": "user-guide/cli-using-using-profiles-v1"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-integrating-apiml"
+              "id": "user-guide/cli-using-integrating-apiml"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-working-certificates"
+              "id": "user-guide/cli-using-working-certificates"
             },
             {
               "collapsed": true,
@@ -942,25 +942,25 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-using-environment-variables"
+                  "id": "user-guide/cli-using-using-environment-variables"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-formatting-environment-variables"
+                  "id": "user-guide/cli-using-formatting-environment-variables"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-using-setting-environment-variables-in-automation-server"
+                  "id": "user-guide/cli-using-setting-environment-variables-in-automation-server"
                 }
               ]
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-using-prompt-feature"
+              "id": "user-guide/cli-using-using-prompt-feature"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/cli-using-writing-scripts"
+              "id": "user-guide/cli-using-writing-scripts"
             },
             {
               "collapsed": true,
@@ -969,19 +969,19 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-extending"
+                  "id": "user-guide/cli-extending"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-swreqplugins"
+                  "id": "user-guide/cli-swreqplugins"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-installplugins"
+                  "id": "user-guide/cli-installplugins"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-cicsplugin"
+                  "id": "user-guide/cli-cicsplugin"
                 },
                 {
                   "collapsed": true,
@@ -990,25 +990,25 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/cli-db2plugin"
+                      "id": "user-guide/cli-db2plugin"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/cli-db2-install-m1"
+                      "id": "user-guide/cli-db2-install-m1"
                     }
                   ]
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-ftpplugin"
+                  "id": "user-guide/cli-ftpplugin"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-imsplugin"
+                  "id": "user-guide/cli-imsplugin"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/user-guide/cli-mqplugin"
+                  "id": "user-guide/cli-mqplugin"
                 }
               ]
             }
@@ -1021,11 +1021,11 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/ze-usage"
+              "id": "user-guide/ze-usage"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/ze-use-cases"
+              "id": "user-guide/ze-use-cases"
             },
             {
               "collapsed": true,
@@ -1039,31 +1039,31 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-using-zowe-explorer-cics-ext"
+                      "id": "user-guide/ze-using-zowe-explorer-cics-ext"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-install-zowe-explorer-cics-ext"
+                      "id": "user-guide/ze-install-zowe-explorer-cics-ext"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-create-zowe-explorer-cics-ext-profiles"
+                      "id": "user-guide/ze-create-zowe-explorer-cics-ext-profiles"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-use-cics-resources"
+                      "id": "user-guide/ze-use-cics-resources"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-override-tls-certs"
+                      "id": "user-guide/ze-override-tls-certs"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-usage-tips"
+                      "id": "user-guide/ze-usage-tips"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-provide-feedback-contribute"
+                      "id": "user-guide/ze-provide-feedback-contribute"
                     }
                   ]
                 },
@@ -1074,19 +1074,19 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-ftp-install-ze-ftp-ext"
+                      "id": "user-guide/ze-ftp-install-ze-ftp-ext"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-ftp-using-ze-ftp-ext"
+                      "id": "user-guide/ze-ftp-using-ze-ftp-ext"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-ftp-supported-functions"
+                      "id": "user-guide/ze-ftp-supported-functions"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/user-guide/ze-ftp-provide-feedback-contribute"
+                      "id": "user-guide/ze-ftp-provide-feedback-contribute"
                     }
                   ]
                 }
@@ -1101,7 +1101,7 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/zowe-chat/chat_use_interact_methods"
+              "id": "user-guide/zowe-chat/chat_use_interact_methods"
             }
           ]
         },
@@ -1112,29 +1112,29 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/intellij-working-sets"
+              "id": "user-guide/intellij-working-sets"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/user-guide/intellij-using"
+              "id": "user-guide/intellij-using"
             }
           ]
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/user-guide/sdks-using"
+          "id": "user-guide/sdks-using"
         }
       ]
     }
   ],
-  "version-v2.7.x/extending": [
+  "extending": [
     {
       "type": "doc",
-      "id": "version-v2.7.x/extend/extend-zowe-overview"
+      "id": "extend/extend-zowe-overview"
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/extend/zowe-conformance-program"
+      "id": "extend/zowe-conformance-program"
     },
     {
       "collapsed": true,
@@ -1148,27 +1148,27 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/packaging-zos-extensions"
+              "id": "extend/packaging-zos-extensions"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/server-schemas"
+              "id": "extend/server-schemas"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/component-registries"
+              "id": "extend/component-registries"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/lifecycling-with-zwesvstc"
+              "id": "extend/lifecycling-with-zwesvstc"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/k8s-extend"
+              "id": "extend/k8s-extend"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/k8s-conformance"
+              "id": "extend/k8s-conformance"
             }
           ]
         },
@@ -1179,59 +1179,59 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-overview"
+              "id": "extend/extend-apiml/onboard-overview"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-plain-java-enabler"
+              "id": "extend/extend-apiml/onboard-plain-java-enabler"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-plain-java-enabler-external-configuration"
+              "id": "extend/extend-apiml/onboard-plain-java-enabler-external-configuration"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-direct-eureka-call"
+              "id": "extend/extend-apiml/onboard-direct-eureka-call"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-spring-boot-enabler"
+              "id": "extend/extend-apiml/onboard-spring-boot-enabler"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-micronaut-enabler"
+              "id": "extend/extend-apiml/onboard-micronaut-enabler"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-nodejs-enabler"
+              "id": "extend/extend-apiml/onboard-nodejs-enabler"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/onboard-static-definition"
+              "id": "extend/extend-apiml/onboard-static-definition"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/api-mediation-sso"
+              "id": "extend/extend-apiml/api-mediation-sso"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/create-apiml-extension"
+              "id": "extend/extend-apiml/create-apiml-extension"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/api-mediation-message-service"
+              "id": "extend/extend-apiml/api-mediation-message-service"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/custom-metadata"
+              "id": "extend/extend-apiml/custom-metadata"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/api-mediation-versioning"
+              "id": "extend/extend-apiml/api-mediation-versioning"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-apiml/implement-new-saf-provider"
+              "id": "extend/extend-apiml/implement-new-saf-provider"
             },
             {
               "collapsed": true,
@@ -1240,19 +1240,19 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/zowe-api-mediation-layer-security-overview"
+                  "id": "extend/extend-apiml/zowe-api-mediation-layer-security-overview"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/authentication-for-apiml-services"
+                  "id": "extend/extend-apiml/authentication-for-apiml-services"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/zaas-client"
+                  "id": "extend/extend-apiml/zaas-client"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/certificate-management-in-zowe-apiml"
+                  "id": "extend/extend-apiml/certificate-management-in-zowe-apiml"
                 }
               ]
             },
@@ -1263,15 +1263,15 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/api-mediation-caching-service"
+                  "id": "extend/extend-apiml/api-mediation-caching-service"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/api-mediation-vsam"
+                  "id": "extend/extend-apiml/api-mediation-vsam"
                 },
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/extend/extend-apiml/api-mediation-redis"
+                  "id": "extend/extend-apiml/api-mediation-redis"
                 }
               ]
             }
@@ -1284,67 +1284,67 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-extendingzlux"
+              "id": "extend/extend-desktop/mvd-extendingzlux"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-plugindefandstruct"
+              "id": "extend/extend-desktop/mvd-plugindefandstruct"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-buildingplugins"
+              "id": "extend/extend-desktop/mvd-buildingplugins"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-installplugins"
+              "id": "extend/extend-desktop/mvd-installplugins"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-embeddingplugins"
+              "id": "extend/extend-desktop/mvd-embeddingplugins"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-dataservices"
+              "id": "extend/extend-desktop/mvd-dataservices"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-authentication-api"
+              "id": "extend/extend-desktop/mvd-authentication-api"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-internationalization"
+              "id": "extend/extend-desktop/mvd-internationalization"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-desktopandwindowmgt"
+              "id": "extend/extend-desktop/mvd-desktopandwindowmgt"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-configdataservice"
+              "id": "extend/extend-desktop/mvd-configdataservice"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-uribroker"
+              "id": "extend/extend-desktop/mvd-uribroker"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-apptoappcommunication"
+              "id": "extend/extend-desktop/mvd-apptoappcommunication"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-iframecomm"
+              "id": "extend/extend-desktop/mvd-iframecomm"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-errorreportingui"
+              "id": "extend/extend-desktop/mvd-errorreportingui"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-logutility"
+              "id": "extend/extend-desktop/mvd-logutility"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-desktop/mvd-conda"
+              "id": "extend/extend-desktop/mvd-conda"
             }
           ]
         }
@@ -1362,42 +1362,42 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-devTutorials"
+              "id": "extend/extend-cli/cli-devTutorials"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-setting-up"
+              "id": "extend/extend-cli/cli-setting-up"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-installing-sample-plugin"
+              "id": "extend/extend-cli/cli-installing-sample-plugin"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-extending-a-plugin"
+              "id": "extend/extend-cli/cli-extending-a-plugin"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-developing-a-plugin"
+              "id": "extend/extend-cli/cli-developing-a-plugin"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/extend/extend-cli/cli-implement-profiles"
+              "id": "extend/extend-cli/cli-implement-profiles"
             }
           ]
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/extend/extend-ze/ze-extensions"
+          "id": "extend/extend-ze/ze-extensions"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/extend/extend-sdks"
+          "id": "extend/extend-sdks"
         }
       ]
     }
   ],
-  "version-v2.7.x/troubleshooting": [
+  "troubleshooting": [
     {
       "collapsed": true,
       "type": "category",
@@ -1405,11 +1405,11 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/troubleshooting"
+          "id": "troubleshoot/troubleshooting"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/troubleshoot-zowe-release"
+          "id": "troubleshoot/troubleshoot-zowe-release"
         }
       ]
     },
@@ -1420,23 +1420,23 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/servers/must-gather"
+          "id": "troubleshoot/servers/must-gather"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/verify-fingerprint"
+          "id": "troubleshoot/verify-fingerprint"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/k8s-troubleshoot"
+          "id": "troubleshoot/k8s-troubleshoot"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/servers/return-codes"
+          "id": "troubleshoot/servers/return-codes"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/troubleshoot-zos-certificate"
+          "id": "troubleshoot/troubleshoot-zos-certificate"
         },
         {
           "collapsed": true,
@@ -1445,11 +1445,11 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/troubleshoot-apiml"
+              "id": "troubleshoot/troubleshoot-apiml"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/troubleshoot-apiml-error-codes"
+              "id": "troubleshoot/troubleshoot-apiml-error-codes"
             }
           ]
         },
@@ -1460,23 +1460,27 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/app-framework/app-troubleshoot"
+              "id": "troubleshoot/app-framework/app-troubleshoot"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/app-framework/app-mustgather"
+              "id": "troubleshoot/app-framework/app-mustgather"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/app-framework/app-issue"
+              "id": "troubleshoot/app-framework/app-issue"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/app-framework/app-return-codes"
+              "id": "troubleshoot/app-framework/app-return-codes"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/app-framework/zss-error-codes"
+              "id": "troubleshoot/app-framework/appserver-error-codes"
+            },
+            {
+              "type": "doc",
+              "id": "troubleshoot/app-framework/zss-error-codes"
             }
           ]
         },
@@ -1487,11 +1491,11 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/launcher/launcher-troubleshoot"
+              "id": "troubleshoot/launcher/launcher-troubleshoot"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/launcher/launcher-error-codes"
+              "id": "troubleshoot/launcher/launcher-error-codes"
             }
           ]
         }
@@ -1509,31 +1513,31 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/troubleshoot-cli"
+              "id": "troubleshoot/cli/troubleshoot-cli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/mustgather-cli"
+              "id": "troubleshoot/cli/mustgather-cli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/use-individual-troubleshoot-commands"
+              "id": "troubleshoot/cli/use-individual-troubleshoot-commands"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/cli-use-curl-to-troubleshoot"
+              "id": "troubleshoot/cli/cli-use-curl-to-troubleshoot"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/zosmf-cli"
+              "id": "troubleshoot/cli/zosmf-cli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/known-cli"
+              "id": "troubleshoot/cli/known-cli"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/cli/cli-issue"
+              "id": "troubleshoot/cli/cli-issue"
             },
             {
               "collapsed": true,
@@ -1542,7 +1546,7 @@
               "items": [
                 {
                   "type": "doc",
-                  "id": "version-v2.7.x/troubleshoot/cli/troubleshoot-cli-plugins"
+                  "id": "troubleshoot/cli/troubleshoot-cli-plugins"
                 }
               ]
             }
@@ -1555,33 +1559,33 @@
           "items": [
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/ze/troubleshoot-ze"
+              "id": "troubleshoot/ze/troubleshoot-ze"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/ze/known-ze"
+              "id": "troubleshoot/ze/known-ze"
             },
             {
               "type": "doc",
-              "id": "version-v2.7.x/troubleshoot/ze/ze-issues"
+              "id": "troubleshoot/ze/ze-issues"
             }
           ]
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/zowe-chat-troubleshoot/troubleshooting"
+          "id": "troubleshoot/zowe-chat-troubleshoot/troubleshooting"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/troubleshoot/troubleshoot-intellij"
+          "id": "troubleshoot/troubleshoot-intellij"
         }
       ]
     }
   ],
-  "version-v2.7.x/contributing": [
+  "contributing": [
     {
       "type": "doc",
-      "id": "version-v2.7.x/contribute/roadmap-contribute"
+      "id": "contribute/roadmap-contribute"
     },
     {
       "collapsed": true,
@@ -1590,19 +1594,19 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-code/categories"
+          "id": "contribute/guidelines-code/categories"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-code/general"
+          "id": "contribute/guidelines-code/general"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-code/code-and-patches"
+          "id": "contribute/guidelines-code/code-and-patches"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-code/documentation"
+          "id": "contribute/guidelines-code/documentation"
         }
       ]
     },
@@ -1613,43 +1617,43 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/ui"
+          "id": "contribute/guidelines-ui/ui"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/colors"
+          "id": "contribute/guidelines-ui/colors"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/typography"
+          "id": "contribute/guidelines-ui/typography"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/grid"
+          "id": "contribute/guidelines-ui/grid"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/icon"
+          "id": "contribute/guidelines-ui/icon"
         },
         {
           "type": "doc",
-          "id": "version-v2.7.x/contribute/guidelines-ui/appicon"
+          "id": "contribute/guidelines-ui/appicon"
         }
       ]
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/contribute/contributing"
+      "id": "contribute/contributing"
     }
   ],
-  "version-v2.7.x/reference": [
+  "reference": [
     {
       "type": "doc",
-      "id": "version-v2.7.x/appendix/zowe-cli-command-reference"
+      "id": "appendix/zowe-cli-command-reference"
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/appendix/zowe-api-reference"
+      "id": "appendix/zowe-api-reference"
     },
     {
       "collapsed": true,
@@ -1669,7 +1673,7 @@
       "items": [
         {
           "type": "doc",
-          "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference"
+          "id": "appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference"
         },
         {
           "collapsed": true,
@@ -1688,7 +1692,7 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status"
+                      "id": "appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status"
                     }
                   ]
                 }
@@ -1706,11 +1710,11 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status"
+                      "id": "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member"
+                      "id": "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member"
                     }
                   ]
                 }
@@ -1728,11 +1732,11 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status"
+                      "id": "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status"
                     },
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts"
+                      "id": "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts"
                     }
                   ]
                 }
@@ -1750,7 +1754,7 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console"
+                      "id": "appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console"
                     }
                   ]
                 }
@@ -1768,7 +1772,7 @@
                   "items": [
                     {
                       "type": "doc",
-                      "id": "version-v2.7.x/appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command"
+                      "id": "appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command"
                     }
                   ]
                 }
@@ -1780,15 +1784,15 @@
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/appendix/zowe-yaml-configuration"
+      "id": "appendix/zowe-yaml-configuration"
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/appendix/server-component-manifest"
+      "id": "appendix/server-component-manifest"
     },
     {
       "type": "doc",
-      "id": "version-v2.7.x/appendix/bill-of-materials"
+      "id": "appendix/bill-of-materials"
     },
     {
       "type": "link",

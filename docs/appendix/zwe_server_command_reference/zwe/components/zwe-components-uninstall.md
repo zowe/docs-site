@@ -23,9 +23,11 @@ zwe components uninstall -c /path/to/zowe.yaml -o package-name
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name,--component|-o|string|yes|The name of an installed component.
---registry|-r|string|no|Specifies the registry to searh within instead of the default. The registry must be compatible with the manager used.
+--registry|-r|string|no|Specifies the registry to search within instead of the default. The registry must be compatible with the manager used.
 --handler||string|no|Specifies the registry handler name used with the package registry, instead of the default. The handler must be compatible with the registry used.
---dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available### Inherited from parent command
+--dry-run|-d|boolean|no|Whether or not to perform the upgrade versus just checking if an upgrade is available
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -47,7 +49,9 @@ ZWEL0307E|307|Component %s cannot be uninstalled, because it is a core component
 ZWEL0308W|308|Component directory %s could not be removed, rc=%s.
 ZWEL0309W|309|Skipping removal of component %s because it is a core component.
 ZWEL0312W|312|Component %s marked for removal but is not installed.
-ZWEL????E|???|Command requires zowe.useConfigmgr=true to use.### Inherited from parent command
+ZWEL????E|???|Command requires zowe.useConfigmgr=true to use.
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

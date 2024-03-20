@@ -79,10 +79,10 @@ You can now start the API Mediation Layer independently of other Zowe components
 - The option to refresh file content has been added to the Editor. [#185](https://github.com/zowe/zlux-editor/pull/185)
 - Refresh buttons have been added to USS and MVS. [#108](https://github.com/zowe/zlux-file-explorer/pull/108)
 - Additional keybindings and other improvements have been added to the Editor. [#182](https://github.com/zowe/zlux-editor/pull/182)
-  - You can now move between open file tabs by using the following hotkeys: **Alt + (PAGEUP or <) and Alt + (PAGEDOWN or >)**
-  - After closing a tab, or multiple tabs, you can now undo the close by using the following hotkeys: **CTRL + ALT + T**
-  - The search function hotkey has been changed from **ALT + S** to **ALT + S**. 
-  - You can now hide/show the File Tree by using the following hotkeys: **ALT + B**. 
+  - You can now move between open file tabs by using the following keyboard shortcuts: **Alt + (PAGEUP or &lt;) and Alt + (PAGEDOWN or &gt;)**
+  - After closing a tab, or multiple tabs, you can now undo the close by using the following keyboard shortcuts: **CTRL + ALT + T**
+  - The search function keyboard shortcut has been changed from **ALT + S** to **ALT + S**. 
+  - You can now hide/show the File Tree by using the following keyboard shortcuts: **ALT + B**. 
 - Existing code highlighters have been reorganized in order to improve their readability. Additionally, a new code highlighter for the REXX language has been added. This new code highlighter detects files and datasets wherein the files should end with the .rexx prefix, but the datasets may contain the rexx or exec qualifiers. [#181](https://github.com/zowe/zlux-editor/pull/181)
 
 #### Zowe Explorer
@@ -747,7 +747,7 @@ The following features and enhancements were added.
   - The buttons found in this feature have been realigned
 - Several features have been added to the Zowe Editor [#153](https://github.com/zowe/zlux-editor/pull/153)
   - Globally increased the shortest duration of snackbar notifications from 2 seconds to 3 seconds
-  - Added a "Close All" button in the menu (hot key is Alt + W + Shift)
+  - Added a "Close All" button in the menu (keyboard shortcut is Alt + W + Shift)
   - A snackbar notification will be displayed when users attempt to open a file that they do not have permission to open
   - Added an "Undo" option to the Close All feature to reopen tabs & files
 - Login activity and session activity is now synchronized across multiple desktop tabs [#242](https://github.com/zowe/zlux-app-manager/pull/242)

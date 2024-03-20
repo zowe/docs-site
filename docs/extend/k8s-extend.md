@@ -1,8 +1,8 @@
 # Creating and adding Zowe extension containers
 
-Zowe extensions such as services and plug-ins that use Zowe component packaging can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. You can follow Zowe's [container conformance criteria](k8s-conformance.md) to understand and achieve compatibility.
+Zowe extensions can be used within a Zowe container environment. To do this, you must deliver the extension as a container image that is compatible with Zowe containers. Zowe server extensions such as services or app framework plugins must be packaged as components to work in the container environment. You can follow Zowe's container conformance criteria to understand and achieve compatibility.
 
-**Note**: Missing z/OS dependencies must be checked before creating and adding Zowe extension containers. 
+**Note**: Container code may depend on z/OS code, and it is recommended that components state these dependencies in their [manifest](https://docs.zowe.org/stable/appendix/server-component-manifest). Users should verify these dependencies to ensure a correctly configured Zowe container environment. 
 
 You can add extension containers to a Zowe container environment the same way as Zowe's core components by completing the following steps. 
 
@@ -18,8 +18,8 @@ An extension must have a container image to run in a Zowe container environment.
 
 The core components define component Dockerfiles and use GitHub Actions to build images. For example,
 
-- `jobs-api` is a component which has built-in web service. To build the images, this component defines a Dockerfile at <https://github.com/zowe/jobs/blob/v2.x/master/container/Dockerfile> and defines a GitHub Actions workflow at <https://github.com/zowe/jobs/blob/v2.x/master/.github/workflows/jobs-api-images.yml>.
-- `explorer-jes` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md). It defines a Dockerfile at <https://github.com/zowe/explorer-jes/blob/v2.x/master/container/Dockerfile>. Similar to `jobs-api`, it also defines a GitHub Actions workflow at <https://github.com/zowe/explorer-jes/blob/v2.x/master/.github/workflows/build_test.yml> to build the images.
+- `jobs-api` is a component which has built-in web service. To build the images, this component defines a Dockerfile at https://github.com/zowe/jobs/blob/v2.x/master/container/Dockerfile and defines a GitHub Actions workflow at https://github.com/zowe/jobs/tree/v2.x/master/.github/workflows.
+- `explorer-jes` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md). It defines a Dockerfile at https://github.com/zowe/explorer-jes/blob/v2.x/master/container/Dockerfile. Similar to `jobs-api`, it also defines a GitHub Actions workflow at https://github.com/zowe/explorer-jes/blob/v2.x/master/.github/workflows/build_test.yml to build the images.
 
 The following GitHub Actions are used by the core components to build conformant images. They might not be completely reusable for you, but are provided as an example.
 

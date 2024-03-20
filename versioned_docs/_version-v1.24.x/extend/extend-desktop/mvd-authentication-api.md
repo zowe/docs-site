@@ -5,11 +5,7 @@ The authentication mechanism of the ZLUX server allows for an administrator to g
 
 ## Handlers
 
-<<<<<<< HEAD
 The auth handlers are a type of zlux server plugin (type=nodeAuthentication) which are categorized by which kind of authentication they can provide. Whether it's to z/OS via `type=saf` or theoretical authentication such as Facebook or Amazon cloud, the handler API is abstract to handle different types of security needs.
-=======
-The auth handlers are a type of zlux server plugin (type=nodeAuthentication) which are categorized by which kind of authentication they can provide. Whether it's to z/OS via `type=saf` or theoretical authentication such as facebook or amazon cloud, the handler API is abstract to handle different types of security needs.
->>>>>>> docs-staging
 
 ### Handler installation
 
@@ -46,13 +42,8 @@ Context has attributes to help the plugin know about the server configuration, p
 
 ### Handler capabilities
 
-<<<<<<< HEAD
 A handler's constructor should return a capabilities object that states which capabilities the plugin has.
 If a capabilities object is not returned, it is assumed that only the authenticate and authorize functions are implemented, for backward compatibility support.
-=======
-A handler's constructor should return a capabilities object which states which capabilities the plugin has.
-If one is not returned, it is assumed only authenticate and authorize functions are implemented, for backward compatibility support.
->>>>>>> docs-staging
 The capabilities object should include:
 
 * canGetCategories: (true/false) If the getCategories() function exists, which returns a string array of categories of auth the plugin can support given the server context. This is useful if the plugin can support multiple categories conditionally.
@@ -75,11 +66,7 @@ sso-auth, which conditionally implements the saf, zss, and apiml security types:
 Some auth handlers are not capable of working in a high availability environment.
 In these environments, there can be multiple zlux servers and there may not be a safe and secure way to share session state data.
 This extends to the zlux server cookie as well, which is not sharable between multiple servers by default.
-<<<<<<< HEAD
 Therefore, high availability has two requirements from an auth handler plugin:
-=======
-Therefore, high availability has two requirements from an auth handler plugin
->>>>>>> docs-staging
 1) The plugin must state that it is HA capable by setting the capability flag `haCompatible=true`, usually indicating that the plugin has no state data.
 2) A plugin must have capability `canGenerateHaSessionId=true` so that the zlux server cookie is sharable between multiple zlux servers.
 
@@ -217,6 +204,8 @@ Not all plugins support this action, so while the call may return successful, if
 GET /auth-refresh
 ```
 
+Response example:
+```
 {
   "success": true,
   "categories": {
@@ -232,7 +221,7 @@ GET /auth-refresh
     }
   }
 }
-
+```
 
 ### Logout
 When you have an active session, you can terminate it early with a logout. This should remove cookies and tell the server to clear any cache it had about a session.
@@ -243,11 +232,7 @@ POST /auth-logout
 
 
 ### Password changes
-<<<<<<< HEAD
-Some auth plugins will allow you to change your password. Depending on the backing security (such as SAF), you may need to provide your current password to change it.
-=======
 Some auth plugins will allow you to change your password, such as in the case that you need to set an initial password to a new account, or it expired, or you just want to change it. Depending on the backing security (such as SAF) you may need to supply your current password to change it.
->>>>>>> docs-staging
 
 ```
 POST /auth-password

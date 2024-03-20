@@ -1,4 +1,4 @@
-# Overview
+# Zowe Application Framework overview
 
 You can create application plug-ins to extend the capabilities of the Zowe&trade; Application Framework. An application plug-in is an installable set of files that present resources in a web-based user interface, as a set of RESTful services, or in a web-based user interface and as a set of RESTful services.
 
@@ -26,12 +26,6 @@ The following tutorials are available in Github.
 
   :::tip Github Repo:
   [zlux-app-server](https://github.com/zowe/zlux-app-server/tree/staging/README.md)
-  :::
-
-- **User Browser Workshop App**
-
-  :::tip Github Repo:
-  [User Browser Workshop App](https://github.com/zowe/workshop-user-browser-app/blob/master/README.md)
   :::
 
 - **Internationalization in Angular Templates in Zowe Application Server**
