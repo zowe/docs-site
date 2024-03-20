@@ -41,6 +41,16 @@ For more information, see [Configure Passtickets](configuration-extender-passtic
   * **components.gateway.apiml.security.zosmf.applid**  
   If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a PassTicket for the specified `APPLID` and subsequently uses this PassTicket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
 
+:::note
+The `components.gateway.apiml.security.allowtokenrefresh` property doesn't work. The bug is covered here: https://github.com/zowe/api-layer/issues/3468. As workaround use:
+
+```
+zowe:
+  environments:
+    APIML_SECURITY_ALLOWTOKENREFRESH: true 
+```
+:::
+
 3. Restart Zowe.
 
 ## Authorization
