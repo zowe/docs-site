@@ -170,7 +170,7 @@ Specifies the local certificate authority alias in the keystore. Zowe CA is stor
 API Mediation Layer requires validation of the certificate of each service that it accessed by API Mediation Layer. API Mediation Layer requires validation of the full certificate chain.
 
 :::note
-This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend to perform the actions manually using your security system commands.
+This procedure applies only to UNIX file keystore/truststore. For the SAF keyring option, we recommend you perform the actions manually using your security system commands.
 :::
 
 Import the public certificate of the CA that has signed the certificate of the service to the API ML truststore.
