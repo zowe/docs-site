@@ -680,6 +680,14 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
+            {
+              type: "category",
+              label: "API Mediation Layer Quick start for development",
+              items: [
+                "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/quick-start-for-development",
+              ]
+            },
             "extend/extend-apiml/onboard-plain-java-enabler",
             "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
             "extend/extend-apiml/onboard-spring-boot-enabler",
@@ -698,8 +706,7 @@ module.exports = {
               items: [
                 "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
                 "extend/extend-apiml/authentication-for-apiml-services",
-                "extend/extend-apiml/zaas-client",
-                "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/zaas-client",                
               ],
             },
             {
