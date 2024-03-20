@@ -57,7 +57,7 @@ There are two ways to set up certificates on a z/OS machine:
 - Certificates in SAF keyring
 - Certificates in UNIX files (keystore and truststore)
  
-The [Configuring PKCS12 certificates](../../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../../user-guide/configure-certificates.md/#jceracfks-certificates-in-a-key-ring) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
+The [Configuring PKCS12 certificates](../../user-guide/use-certificates.md/#use-pkcs12-certificates) and [Configuring JCERACFS certificates in a key ring](../../user-guide/use-certificates.md/#use-jceracfks-certificates) contain instructions about how to set up certificates during installation. Follow the procedure in the applicable section described in this article during installation.
 
 
 ### Import the local CA certificate to your browser
