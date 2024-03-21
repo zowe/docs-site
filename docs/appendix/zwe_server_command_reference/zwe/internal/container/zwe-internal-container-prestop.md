@@ -9,6 +9,8 @@
 Actions will be executed before a service is stopped.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -18,6 +20,8 @@ WARNING: This command is for experimental purposes and could be changed in the f
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -32,6 +36,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

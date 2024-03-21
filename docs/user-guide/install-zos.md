@@ -3,7 +3,7 @@
 Installation of Zowe&trade; server-side components on z/OS, consists of the following two parts: 
 
 * [Zowe runtime](#zowe-runtime)
-* [Zowe Cross Memory Server (ZIS)](#)
+* [Zowe Cross Memory Server (ZIS)](#the-zowe-cross-memory-server-zis)
 
 ## Zowe runtime
 
@@ -32,15 +32,15 @@ To avoid interuptions in the installation of Zowe&trade; server-side components,
 
 ### Security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](./address-security-requirements#tasks-performed-by-your-security-administrator).
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](address-security-requirements#tasks-performed-by-your-security-administrator).
 
 ### Storage administrator
 
-Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requrements to install Zowe. For more information, see [Addressing storage requirements](./address-storage-requirements.md).
+Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requrements to install Zowe. For more information, see [Addressing storage requirements](address-storage-requirements).
 
 ### Network administrator
 
-Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](./address-network-requirements.md).
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](address-network-requirements).
 
 ### System programmer
 
@@ -54,7 +54,7 @@ The following diagram illustrates the full ecosystem for installing Zowe server-
 
 ## Stage 1: Prepare for installation
 
-Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](installandconfig.md):
+Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](installandconfig):
 
 - Zowe's hardware and software requirements
 - The `zwe` utility used for installing, configuring, and managing Zowe
@@ -82,7 +82,7 @@ Begin the installation process by familiarizing yourself with the following topi
    - **Portable Software Instance (PSWI)**  
    You can acquire and install the Zowe z/OS PAX file as a portable software instance (PSWI) using z/OSMF.
 
-::note
+:::note
 While the procedures to obtain and install the convenience build, SMP/E build or PSWI are different, the procedure to configure a Zowe runtime is the same, and does not depend on how the build is obtained and installed.
 :::
 
@@ -135,7 +135,7 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 (Uses the command `zwe init certificate`)
 6. [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). Note that this step is only required if you are configuring Zowe for cross LPAR sysplex high availability.  
 (Uses the command `zwe init vsam`)
-7. [Install Zowe main started tasks](./zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).  
+7. [Install Zowe main started tasks](zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).  
 (Uses command `zwe init stc`)
 
 Once you complete the Zowe z/OS runtime, you can [verify the installation](verify-zowe-runtime-install.md) to determine that Zowe is installed correctly on z/OS.
@@ -180,4 +180,4 @@ For more information on the server configuration file, see the [Zowe YAML config
 
 ## Next step
 
-Before starting the installation process, first review the article [Preparing for installation](./installandconfig.md) and the address the requirements outlined in the sub-articles in this section.
+Before starting the installation process, first review the article [Preparing for installation](installandconfig) and the address the requirements outlined in the sub-articles in this section.

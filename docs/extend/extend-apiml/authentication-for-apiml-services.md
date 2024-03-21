@@ -5,17 +5,14 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-    - [Authenticate with Username Password](#authenticate-with-usernamepassword)
-    - [Authenticate with Client certificate](#authenticate-with-client-certificate)
-    - [Authenticate with JWT Token](#authenticate-with-jwt-token)
-    - [Authenticate with Personal Access Token](#authenticate-with-personal-access-token)
 - [Authentication parameters](#authentication-parameters)
-- [Authentication providers](#authentication-providers)
-    * [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
-    * [SAF Authentication Provider](#saf-authentication-provider)
-    * [Dummy Authentication Provider](#dummy-authentication-provider)
-- [Authorization](#authorization)
 - [Discovery Service authentication](#discovery-service-authentication)
+  - [Authentication with PassTickets](#authentication-with-passtickets)
+ 
+
+:::tip
+For information about authentication providers that handle authentication for the API Gateway, see [Authentication providers for API Mediation Layer](../../user-guide/authentication-providers-for-apiml.md).
+:::
 
 ## Services of API Mediation Layer
 
@@ -85,7 +82,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 
   **Notes:** 
   
-   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt#enabling-a-jwt-token-refresh-endpoint).
+   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt.md#enabling-a-jwt-token-refresh-endpoint).
    - The endpoint is protected by a client certificate.
 
   The refresh request requires the token in one of the following formats:
@@ -98,99 +95,22 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 ## Supported authentication methods
 
 The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as part
-of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent
-with each authentication provider. 
+of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent with each authentication provider.
+
+Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
+
+* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token.md)
+
+* [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
+
+* [Authenticating with personal access tokens](../../user-guide/api-mediation/authenticating-with-personal-access-token.md)
+
 
 ### Authenticate with Username/Password
 
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
 credentials. For more details, see the ZAAS Client documentation. 
 
-### Authenticate with Client certificate
-
-You can perform authentication with client certificates.
-
-If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use the client certificates issued by this CA to authenticate to API ML. This feature is not enabled by default and must be configured.
-
-:::note
-There is a limitation with respect to ACF2 systems. If you would like to offer feedback using client
-certificate authentication, please create an issue against the api-layer repository.
-:::
-
-When providing credentials with a client certificate on the same login request, the credentials take precedence and the client certificate is ignored.
-
-#### How the Gateway resolves authentication 
-
- When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
-
-* The client calls the service endpoint through API ML Gateway with the client certificate.
-* The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
-* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML.
-* The Gateway performs the login of the mapped user and provides valid authentication to the southbound service.
-
-When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token.
-
-* The client calls the API ML Gateway login endpoint with the client certificate.
-* The client certificate and private key are checked as a valid TLS client certificate against the trusted CAs of the Gateway.
-* The public part of the provided client certificate is checked against SAF. SAF subsequently returns a user ID that owns this certificate. ZSS provides this API for API ML. 
-* The Gateway performs the login of the mapped user and returns a valid JWT token.
-
-![Zowe client certificate authentication diagram](../../images/api-mediation/zowe-client-cert-auth.png)
-
-#### Prerequisites
-
-Ensure to satisfy the following requirements before you set up client certificate authentication:
-
-1. Specify the Zowe runtime user and set your protection by password. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
-
-  For RACF, issue the following TSO command:  
-
-  `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
-
-  For other security systems, refer to the documentation for an equivalent command.
-
-2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is member of the default `IZUUSER` group.)
-
-  :::note
-  Ensure that you have an external Certificate Authority and signed client certificates. Alternatively, you can generate these certificates in SAF. The client certificate must have correct `Extended Key Usage` metadata so the metadate can be used for TLS client authentication. (`OID: 1.3.6.1.5.5.7.3.2`)
-  :::
-
-#### Configure your z/OS system to support client certificate authentication
-
-1. Import the client certificates to SAF, or add them to a user profile.  
-**Examples:** `RACDCERT ADD` or `RACDCERT GENCERT`.  
-For more information, see your security system documentation.
-2. Import the external CA to the truststore or keyring of the API Mediation Layer.
-3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](../../user-guide/api-mediation/configuration-client-certificates).
-
-:::note**Notes:**
-* PassTicket generation must be enabled for the Zowe runtime user. The user has to be able to generate a PassTicket for itself and for the APPLID of z/OSMF. For more information, see [Configure Passticket](#authentication-with-passtickets).
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information, see [Additional security rights that need to be granted](../../user-guide/configure-zos-system/#configure-main-Zowe-server-use-identity-mapping).
-* ZSS has to be configured to participate in Zowe SSO. For more information, see [Configure components zss](../../appendix/zowe-yaml-configuration/#configure-component-zss).
-:::
-
-#### Validate the client certificate functionality
-
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was setup using the steps in _Configure your z/OS system to support client certificate authentication_. 
-
-Validate using CURL, a command line utility that runs on Linux based systems:
-
-**Example:**
-```
-curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
-```
-Your Zowe instance is configured to accept x.509 client certificates authentication.
-
-
-### Authenticate with JWT Token
-
-When the client authenticates with the API ML, the client receives the JWT token in exchange. This token can be used for further authentication. If z/OSMF is configured as the authentication provider and the client already received a JWT token produced by z/OSMF, it is possible to reuse this token within API ML for authentication.  
-
-### Authenticate with Personal Access Token
-
-A Personal Access Token (PAT) is an alternative to using passwords for authentication.
-It is possible to generate a Personal Access Token that can be used for an instance of Version Control Systems on mainframe without having to store mainframe credentials
-or use a certificate. For more information about the PAT functionality, see the [Personal Access Token documentation](../../user-guide/api-mediation/api-mediation-personal-access-token.md).
 
 ## Authentication parameters
 
@@ -221,7 +141,8 @@ The following schemes are supported by the API Gateway:
     * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
     * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
     * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
+    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
+    
 
   * **httpBasicPassTicket**  
 
@@ -231,7 +152,8 @@ The following schemes are supported by the API Gateway:
     * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
     * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
     * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-    The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
+    * The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
+
       
     For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
@@ -268,46 +190,6 @@ The common name from the client certificate
 This parameter specifies a service APPLID.
   This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
 
-## Authentication providers
-
-API ML contains the following providers to handle authentication for the API Gateway:
-* `z/OSMF Authentication Provider`
-* `SAF Authentication Provider`
-* `Dummy Authentication Provider`
-
-### z/OSMF Authentication Provider
-
-The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
-
-Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
-```
-apiml.security.auth.provider: zosmf
-apiml.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
-```
-### SAF Authentication Provider
-
-The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. 
-
-Use the following property of the API Gateway to enable the `SAF Authentication Provider`:
-```
-apiml.security.auth.provider: saf
-```
-**Note:** To provide your own implementation of the SAF IDT provider, see the [Implement new SAF provider](implement-new-saf-provider.md) guidelines.
-
-### Dummy Authentication Provider
-
-The `Dummy Authentication Provider` implements simple authentication for development purposes using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
-
-Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
-```
-apiml.security.auth.provider: dummy
-```
-
-## Authorization
-
-Authorization is a method used to determine access rights of an entity.
-
-In the API ML, authorization is performed by the z/OS security manager ([ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2), [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm), [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret)). An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 ## Discovery Service authentication
 
 There are several authentication mechanisms, depending on the desired endpoint, as described by the following matrix:

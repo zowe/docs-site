@@ -21,64 +21,7 @@ Recommended replacement: The 'config init' command</p>
 </ul>
 </li>
 </ul>
-<h4>DBM-Db2 Common Options</h4>
-<ul>
-<li>
-<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
-<ul>
-<li>
-<p>Specifies a string array of z/OS JCL JOB statements.</p>
-<p>Default value: //DB2DVOPS JOB CLASS=A,,//         MSGCLASS=X</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</p>
-<p>Default value: ${user}.dbmdb2</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</p>
-<p>Default value: ${user}</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</p>
-<p>Default value: ${user}</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
-<ul>
-<li>
-<p>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</p>
-<p>Default value: ;</p>
-</li>
-</ul>
-</li>
-<li>
-<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
-<ul>
-<li>
-<p>Specifies whether to overwrite output files when they already exist.</p>
-<p>Default value: false</p>
-</li>
-</ul>
-</li>
-</ul>
-<h4>DBM-Db2 Connection Options</h4>
+<h4>DBM-Db2 Options</h4>
 <ul>
 <li>
 <p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
@@ -108,6 +51,16 @@ Recommended replacement: The 'config init' command</p>
 </ul>
 </li>
 <li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>
@@ -117,21 +70,74 @@ Recommended replacement: The 'config init' command</p>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> <em>(string)</em></p>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
-<p>Default value: https<br>
-Allowed values: http, https</p>
+<p>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
+<p>Default value: [object Object]</p>
 </li>
 </ul>
 </li>
 <li>
-<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
 <ul>
 <li>
-<p>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
-<p>Default value: [object Object]</p>
+<p>Specifies a string array of z/OS JCL JOB statements.</p>
+<p>Default value: //DB2DVOPS JOB CLASS=A,,//         MSGCLASS=X</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the prefix (high-level qualifier) in z/OS work data set names.</p>
+<p>Default value: ${user}.dbmdb2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Specifies whether to overwrite output files if they exist.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process.</p>
+<p>Default value: ${user}</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the authorization ID that is used in generated SET CURRENT SQLID statements.</p>
+<p>Default value: ${user}</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the SQL termination character to use in DDL generation when the default termination character conflicts with the SQL statements that are used in triggers, XML indexes, and routines (external SQL functions and native SQL stored procedures). The default termination character is a semi-colon (;). You cannot specify a comma, double quote, single quote, left or right parentheses, or an underscore.</p>
+<p>Default value: ;</p>
 </li>
 </ul>
 </li>
@@ -154,7 +160,7 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Create a DBM-Db2 profile named profile_name1 and default values for all the DBM-Db2-profile options:</p>
+<p>Create a DBM-Db2 profile named profile_name1 and default values for all the options:</p>
 <ul>
 <li><code>zowe profiles create dbm-db2-profile profile_name1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create dbm-db2-profile profile_name1">Copy</button></li>
 </ul>

@@ -2,10 +2,10 @@
 
 Review this article and the procedures to install and activate the functions of Zowe server-side components using SMP/E.
 
-:::info**Required roles:** system programmer
+:::info Required roles: system programmer
 :::
 
-:::note**Notes:**
+:::note Notes:
 * To install Zowe into its own SMP/E environment, consult the SMP/E manuals for instructions on creating and initializing the SMPCSI and SMP/E control data sets.
 * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
 * You can use the SMP/E dialogs instead of the sample jobs to accomplish the SMP/E installation steps.
@@ -135,7 +135,7 @@ You will receive a return code of `0` if this job runs correctly.
 
 Upload the `AZWE002.readme.txt` file in text format and the `AZWE002.pax.Z` file in binary format from your workstation to the z/OS UNIX file system. The instructions in this section are also in the `AZWE002.readme.txt` file that you downloaded.
 
-:::info**Important**
+:::info Important
 Ensure you download the pax file in a different file system than where you put Zowe runtime. 
 :::
 
@@ -153,7 +153,7 @@ tsopw | Your TSO password
 d: | Location of the downloaded files
 @zfs_path@ | z/OS UNIX path where to store the files. This matches the @zfs_path@ variable you specified in the previous step.
 
-:::danger**Important** 
+:::danger Important 
 The `AZWE002.pax.Z` file must be uploaded to the z/OS driving system in binary format. Not using binary format causes the subsequent UNPAX step to fail.
 :::
 
@@ -527,7 +527,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
 
 1. Ensure that you have the latest HOLDDATA; then edit and submit sample job ZWE7APLY to perform an SMP/E APPLY CHECK for Zowe. Consult the instructions in the sample job for more information.
 
-  The latest HOLDDATA is available through several different portals, including [https://service.software.ibm.com/holdata/390hdfaq.html](https://service.software.ibm.com/holdata/390hdfaq.html). The latest HOLDDATA may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. Use the **APPLY CHECK** command to assist you to determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing.
+  The latest HOLDDATA is available through several different portals, and may identify HIPER and FIXCAT APARs for the FMIDs you will be installing. Use the **APPLY CHECK** command to assist you to determine whether any HIPER or FIXCAT APARs are applicable to the FMIDs you are installing.
    
   If there are any applicable HIPER of FIXCAT APARs, the **APPLY CHECK** also identifies fixing PTFs that will resolve the APARs, if a fixing PTF is available.
 
@@ -552,7 +552,7 @@ In this step, you run the sample job ZWE7APLY to apply Zowe. This step can take 
   FIXCAT(IBM.PRODUCTINSTALL-REQUIREDSERVICE)
   GROUPEXTEND .
   ```
-::note**Notes:**
+:::note
 * Some HIPER APARs might not have fixing PTFs available yet. You should analyze the symptom flags for the unresolved HIPER APARs to determine if the reported problem is applicable to your environment and if you should bypass the specific ERROR HOLDs in order to continue the installation of the FMIDs.
 * This method requires more initial research, but can provide resolution for all HPERs that have fixing PTFs available and not in a PE chain. Unresolved PEs or HIPERs might still exist and require the use of BYPASS.
 :::
@@ -569,7 +569,7 @@ GROUPEXTEND
 BYPASS(HOLDCLASS(HIPER)) .
 ..any other parameters documented in the program directory
 ```
-:::note**Notes:**  
+:::note Notes:  
 * This method is quicker, but requires subsequent review of the Exception SYSMOD report produced by the REPORT ERRSYSMODS command to investigate any unresolved HIPERs. If you have received the latest HOLDDATA, you can also choose to use the REPORT MISSINGFIX command and specify Fix Category IBM.PRODUCTINSTALL-REQUIREDSERVICE to investigate missing recommended service.
 * If you bypass HOLDs during the installation of the FMIDs because fixing PTFs are not yet available, you can be notified when the fixing PTFs are available by using the APAR Status Tracking (AST) function of the ServiceLink or the APAR Tracking function of Resource Link.
 :::
@@ -631,7 +631,7 @@ If you mount the file system in which you have installed Zowe in read-only mode 
 
 You can find the necessary information about customizing and using Zowe on the Zowe doc site.
 
-- For more information about how to customize Zowe, see [Configuring Zowe after installation](https://docs.zowe.org/stable/user-guide/configuring-overview/).
+- For more information about how to customize Zowe, see [Configuring Overview](https://docs.zowe.org/stable/user-guide/configuring-overview/).
 - For more information about how to use Zowe, see [Using Zowe](https://docs.zowe.org/stable/user-guide/zowe-getting-started-tutorial/).
 
 

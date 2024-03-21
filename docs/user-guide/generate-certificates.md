@@ -3,7 +3,7 @@
 
 If you do not have a certificate, follow the procedure in this article that corresponds to the certificate type you choose to generate.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Choose from the following certificate types:
@@ -209,7 +209,7 @@ zowe:
         - 12.34.56.78
 ```
 
-:::note**Notes:**
+:::note Notes:
 - Alias names should be all lower cases.
 - The name and lables shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.

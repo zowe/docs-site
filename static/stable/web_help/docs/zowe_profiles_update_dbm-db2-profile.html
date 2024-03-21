@@ -21,46 +21,7 @@ Recommended replacement: The 'config set' command</p>
 </ul>
 </li>
 </ul>
-<h4>DBM-Db2 Common Options</h4>
-<ul>
-<li>
-<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
-<ul>
-<li>Specifies a string array of z/OS JCL JOB statements.</li>
-</ul>
-</li>
-<li>
-<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
-<ul>
-<li>Specifies the prefix that is used as the high level qualifier in z/OS work data set names.</li>
-</ul>
-</li>
-<li>
-<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
-<ul>
-<li>Specifies the primary Db2 authorization ID (user ID) that is used to establish a connection between Db2 and a process.</li>
-</ul>
-</li>
-<li>
-<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
-<ul>
-<li>Specifies the authorization ID that is used as the value in generated SET CURRENT SQLID statements most of the time.</li>
-</ul>
-</li>
-<li>
-<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
-<ul>
-<li>Specifies the SQL termination character that you want to use to terminate object DDL for triggers, XML indexes, functions, and procedures that contain embedded semicolon-terminated SQL statements. You cannot use a comma, an underscore, a single quote, double quotes, left parentheses, or right parentheses for this value.</li>
-</ul>
-</li>
-<li>
-<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
-<ul>
-<li>Specifies whether to overwrite output files when they already exist.</li>
-</ul>
-</li>
-</ul>
-<h4>DBM-Db2 Connection Options</h4>
+<h4>DBM-Db2 Options</h4>
 <ul>
 <li>
 <p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
@@ -87,24 +48,66 @@ Recommended replacement: The 'config set' command</p>
 </ul>
 </li>
 <li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
 <ul>
 <li>Determines whether the dbm-db2 command is accepted or rejected when a self-signed certificate is returned by the DBM Data Service.</li>
 </ul>
 </li>
 <li>
-<p><code>--protocol</code> <em>(string)</em></p>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
 <ul>
-<li>
-<p>Specifies the communication protocol to use between the zowe dbm-db2 client and the DBM Data Service.</p>
-<p>Allowed values: http, https</p>
-</li>
+<li>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 <li>
-<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
 <ul>
-<li>Specifies an object of one or more values consisting of a Db2 subsystem ID and a DBM Data Service environment pair. The paired entry identifies the DBM Data Service environment to use for a subsystem that is accessible through multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix (high-level qualifier) in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files if they exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used in generated SET CURRENT SQLID statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character to use in DDL generation when the default termination character conflicts with the SQL statements that are used in triggers, XML indexes, and routines (external SQL functions and native SQL stored procedures). The default termination character is a semi-colon (;). You cannot specify a comma, double quote, single quote, left or right parentheses, or an underscore.</li>
 </ul>
 </li>
 </ul>
