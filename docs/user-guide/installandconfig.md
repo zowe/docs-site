@@ -18,9 +18,9 @@ zFS is a UNIX file system where Zowe runtime files and folders are installed. Zo
 For more information about USS, see [Addressing UNIX System Servies (USS) Requirements](./configure-uss).
 
 :::note
-Zowe runs in USS and makes use of shell scripts and TCP/IP sockets. Reaching or exceding the socket limits or limitations on the number of files in the specific directory can affect the normal use of these resources and can affect the availability of open I/O handles. If you do not observe malfunctions resulting from reaching or exceding socket limits on the number of files in a specific directory, the number of open files should not be a concern.
+Zowe runs in USS and makes heavy use of shell scripts and TCP/IP sockets. This creates temporary files and ENQUEUES within the /tmp directory. The created amounts shouldn't impact the system (It's on scale of few thousands that are freed after configuration and startup). 
 
-If you are concerned about the use of shell scripts and TCP/IP sockets, we recommend you update the following property to move the opened files to different directory:
+If in your specific case, it does or you are concerned about this behavior, please update the following property to move the created files and ENQUEUES to different directory:
 zowe.yaml 
 
 environments:
