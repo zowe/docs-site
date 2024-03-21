@@ -55,7 +55,7 @@ During Zowe startup, there may be relatively high resource consumption in order 
 #### Resource consumption during Zowe startup 
 
 * **CPU consumption**  
-Zowe consumes approximately 300 CPU seconds on the z15 T01 processor during startup. Approximately 50 percent of CPU consumption is possible to run with zIIP.
+Zowe consumes approximately 300 CPU seconds on the z15 T01 processor during startup. Approximately 50 percent of CPU consumption is zIIP eligible.
 
 * **I/O**  
 Zowe performs approximately 5,000,000 I/O operations during startup.
@@ -63,7 +63,7 @@ Zowe performs approximately 5,000,000 I/O operations during startup.
 #### Resource consumption when Zowe is idling  
 
 * **CPU consumption**  
-Zowe consumes approximately 90 CPU seconds on the z15 T01 processor during 1 hour of operation when no external load is processed. Approximately 60 percent of CPU consumption can be run with zIIP.
+Zowe consumes approximately 90 CPU seconds on the z15 T01 processor during 1 hour of operation when no external load is processed. Approximately 60 percent of CPU consumption is zIIP eligible.
 
 * **I/O**  
 Zowe performs approximately 17,000 I/O operations during 1 hour of operation when no external load is processed.
