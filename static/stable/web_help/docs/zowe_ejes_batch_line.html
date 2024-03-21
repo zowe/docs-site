@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ejes batch line</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_batch.html">batch</a> › <a href="zowe_ejes_batch_line.html">line</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Display a table of the lines that connect NJE nodes to your JESplex, then enter the EJES Batch Shell.</p>
+<h4>Usage</h4>
+<p>zowe ejes batch line [parameter-list] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>parameter-list</code>		 <em>(string)</em></p>
+<ul>
+<li>Optional list enclosed in double-quotes.  May contain optional parameters, invocation primary selection criteria, an invocation system selection override, and/or a command stack.  The command stack may contain both host commands and meta commands like echo and download.  For a list of meta commands, use the option --helpApp meta.  For invocation parameters, see the (E)JES Reference Manual for information for the corresponding command for details about content and the list's internal order.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--blanks</code> | <code>-b</code> <em>(array)</em></p>
+<ul>
+<li>Display blank lines to stderr (screen on).  Off by default.  Specify with no argument to turn on.</li>
+</ul>
+</li>
+<li>
+<p><code>--cmdstack</code> | <code>-c</code> <em>(string)</em></p>
+<ul>
+<li>Start with a host command stack, separated by semicolons and enclosed in quotes.</li>
+</ul>
+</li>
+<li>
+<p><code>--autoupdate</code> | <code>-a</code> | <code>--aup</code> <em>(array)</em></p>
+<ul>
+<li>Append the UPDATE command to the command stack when you press enter (if it doesn't end with an UPDATE).  Not recommended when issuing FIND requests.  Off by default.  Specify with no argument to turn on.</li>
+</ul>
+</li>
+<li>
+<p><code>--debug</code> | <code>--dbg</code> | <code>--dv</code> | <code>--debug-value</code> <em>(number)</em></p>
+<ul>
+<li>Specify a numeric debugging mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--echo</code> | <code>-e</code> <em>(array)</em></p>
+<ul>
+<li>Display host screen output to stdout.  Off by default.  Specify with no argument to turn on.</li>
+</ul>
+</li>
+<li>
+<p><code>--inactivity</code> | <code>-i</code> <em>(number)</em></p>
+<ul>
+<li>Specify host activity timeout in minutes (starts set to 2).</li>
+</ul>
+</li>
+<li>
+<p><code>--jes2</code> | <code>-2</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES2 spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--jes3</code> | <code>-3</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES3 or JES3plus spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> <em>(string)</em></p>
+<ul>
+<li>Name of the spooler to use instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--screen</code> | <code>-s</code> <em>(array)</em></p>
+<ul>
+<li>Display host screen output to stderr.  Off by default.  Specify with no argument to turn on.</li>
+</ul>
+</li>
+<li>
+<p><code>--terminal</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>Set terminal emulation size or type.   String: [*|[&lt;number&gt;[,|x] &lt;number&gt;]|[2|3|4|5]</li>
+</ul>
+</li>
+<li>
+<p><code>--quiet</code> | <code>-q</code> <em>(array)</em></p>
+<ul>
+<li>Prevent output of interactive details, including version title on start and exit code on exit.</li>
+</ul>
+</li>
+</ul>
+<h4>EJES Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol used to access (E)JES server.</p>
+<p>Default value: https<br>
+Allowed values: http, https, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The (E)JES server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The (E)JES server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--rejectunauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--basepath</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all (E)JES resources when making REST requests.</li>
+</ul>
+</li>
+<li>
+<p><code>--color-scheme</code> | <code>--scheme</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Accessibility option: Specify the name of a color scheme.  User scheme files may also be created and specified to provide better contrast or to favor easier to see colors.  For a how-to, use &quot;zowe ejes emulate batch --helpApp scheme-info&quot;.  Zowe ejes log stream ignores this option as it outputs plain text by default, only colorizing when ANSI color options are specified.</p>
+<p>Allowed values: dark, light, powershell, nono, none, user-scheme-file, list, help</p>
+<p>Default value: dark</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--no-color</code> | <code>--nocolor</code> | <code>--nc</code> <em>(string)</em></p>
+<ul>
+<li>Accessibility option: Specify to prevent colorization of the CLI.  Same effect as defining NO_COLOR or FORCE_COLOR=0.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ejes-profile</code> | <code>--ejes-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ejes) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -29,6 +29,8 @@ zwe internal config set -p path-of-configuration -e new-value-of-configuration -
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -43,6 +45,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

@@ -30,20 +30,17 @@ function UnreleasedVersionLabel({siteTitle, versionMetadata}) {
 
 function UnmaintainedVersionLabel({siteTitle, versionMetadata}) {
   return (
-    <>
-      <p>This is documentation for {siteTitle} <b>{versionMetadata.label}</b>.</p>
-      <Translate
-        id="theme.docs.versions.unmaintainedVersionLabel"
-        description="The label used to tell the user that he's browsing an unmaintained doc version"
-        values={{
-          siteTitle,
-          versionLabel: <b>{versionMetadata.label}</b>
-        }}>
-        {
-          `${versionMetadata.version[1] === "2" ? "" : `Please Note: The Zowe V1 LTS release has transitioned to "maintenance" effective 04/23/2022 with the 1.28 release and will no longer include new features. Security patches and critical bug fixes will continue to be documented for this release. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 LTS release, please see the latest version of Zowe Docs for the maintained V1 LTS release (v1.28.x)." : "" }`}`
-        }
-      </Translate>
-    </>
+    <Translate
+      id="theme.docs.versions.unmaintainedVersionLabel"
+      description="The label used to tell the user that he's browsing an unmaintained doc version"
+      values={{
+        siteTitle,
+        versionLabel: <b>{versionMetadata.label}</b>
+      }}>
+      {
+        'This is documentation for Zowe {versionLabel}.'
+      }
+    </Translate>
   )
 }
 
@@ -58,13 +55,15 @@ function BannerLabel(props) {
   return <BannerLabelComponent {...props} />;
 }
 
-function LatestVersionSuggestionLabel({versionLabel, versionMetadata, to, onClick}) {
+function LatestVersionSuggestionLabel({siteTitle, versionLabel, versionMetadata, to, onClick}) {
   return (
     <Translate
       id="theme.docs.versions.latestVersionSuggestionLabel"
       description="The label used to tell the user to check the latest version"
       values={{
-        versionLabel,
+        guideLink: (
+          <a href="https://docs.zowe.org/stable/extend/migrate-extensions" target="_blank">the migration guide</a>
+        ),
         latestVersionLink: (
           <b>
             <Link to={to} onClick={onClick}>
@@ -76,9 +75,11 @@ function LatestVersionSuggestionLabel({versionLabel, versionMetadata, to, onClic
             </Link>
           </b>
         ),
+        versionLabel,
+        siteTitle
       }}>
       {
-        `${versionMetadata.version[1] === "2" ? "For documentation of the {latestVersionLink}, see ({versionLabel})" : 'For the latest Zowe features and capabilities, please reference the latest version of Zowe Docs for the "active" {latestVersionLink} ({versionLabel})'}.`
+        `${versionMetadata.version[1] === "2" ? 'For up-to-date help content, see the {latestVersionLink} ({versionLabel}) of {siteTitle}.' : `Note: Support for Zowe Version 1 ends on Sept. 30, 2024. Follow {guideLink} to upgrade to Zowe Version 2. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 LTS release, please see the latest version of {siteTitle} for the maintained V1 LTS release (v1.28.x)." : "" }`}`
       }
     </Translate>
   );
@@ -111,6 +112,7 @@ function DocVersionBannerEnabled({versionMetadata}) {
       </div>
       <div className="margin-top--md">
         <LatestVersionSuggestionLabel
+          siteTitle={siteTitle}
           versionLabel={latestVersionSuggestion.label}
           versionMetadata={versionMetadata}
           to={latestVersionSuggestedDoc.path}
