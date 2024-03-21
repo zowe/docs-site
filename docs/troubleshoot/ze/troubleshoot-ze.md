@@ -8,7 +8,7 @@ As a Zowe Explorer user, you may encounter problems when using Visual Studio Cod
 2. Review the current list of [Known issues](known-ze.md) in documentation. Also, try searching using the Zowe Docs search bar (keyboard shortcut `ctrl` + `k`).
 3. Collect the following information to help diagnose the issue:
     - The Zowe Explorer and Visual Studio Code versions installed
-        - See [Checking your Zowe version release number](troubleshoot/troubleshoot-check-your-zowe-version.md#zowe-explorer-for-visual-studio-code) for information.
+        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version/#zowe-explorer-for-visual-studio-code) for information.
     - Node.js and NPM versions installed
     - Whether you have Zowe CLI and the Secure Credential Store (SCS) Zowe CLI plug-in installed
 
@@ -24,6 +24,23 @@ As a Zowe Explorer user, you may encounter problems when using Visual Studio Cod
       :::
 
 Use [the Slack channel](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) to reach the Zowe Explorer community for assistance.
+
+## Connection issues with Zowe Explorer
+
+If you’re using Zowe Explorer at a site that uses an Internet proxy but cannot connect to a mainframe, ensure that the **Proxy Support** setting in Visual Studio Code is properly configured. Your system administrator can provide information on which option works best for your network environment.
+
+Note that Zowe Explorer cannot bypass this setting as it would circumvent the VS Code setting applied to all other extensions.
+
+To access the **Proxy Support** setting in VS Code:
+
+1. Open VS Code and select the **Manage** icon on the **Side Bar**.
+2. Select the **Settings** option from the context menu.
+3. In the Settings view, open the **Application** menu and select **Proxy**.
+4. Find the **Proxy Support** drop-down menu and select the appropriate option.
+
+In addition, VS Code allows users and administrators to configure proxy options on launch. See [Network Connections in Visual Studio Code](https://code.visualstudio.com/docs/setup/network#_proxy-server-support) for more information on proxy server support.
+
+System administrators can also add IP addresses, IP ranges, or DNS hostnames for each system inaccessible by proxy to the `NO_PROXY` environment variable. VS Code uses this variable for outgoing requests.
 
 ## Resolving invalid profiles
 

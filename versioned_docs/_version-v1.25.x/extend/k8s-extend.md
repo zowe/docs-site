@@ -12,7 +12,7 @@ You can add extension component containers to a Zowe container environment the s
 
 An extension component must have a container image to run in a Zowe container environment.
 
-You can use a Dockerfile to create such images, and can follow some examples of how the Zowe core components are built. The core components define component Dockerfiles and use GitHub Actions to build images. For example, `explorer-jes` component has a Dockerfile defined at <https://github.com/zowe/explorer-jes/blob/master/container/Dockerfile> and defines a GitHub Actions workflow <https://github.com/zowe/explorer-jes/blob/master/.github/workflows/explorer-jes-images.yml> to build the image.
+You can use a Dockerfile to create such images, and can follow some examples of how the Zowe core components are built. The core components define component Dockerfiles and use GitHub Actions to build images. For example, `explorer-jes` component has a Dockerfile defined at https://github.com/zowe/explorer-jes/blob/master/container/Dockerfile and defines a GitHub Actions workflow https://github.com/zowe/explorer-jes/blob/master/.github/workflows/explorer-jes-images.yml to build the image.
 
 The following are Actions used by the core components to build conformant images. They may not be completely reusable for extenders, but are provided as an example.
 

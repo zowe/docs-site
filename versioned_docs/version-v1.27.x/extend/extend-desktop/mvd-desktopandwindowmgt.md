@@ -157,9 +157,11 @@ The following are examples of how you would access the Window Actions API to beg
 2. Within the constructor of your App, in the arguments, do
 `@Optional() @Inject(Angular2InjectionTokens.WINDOW_ACTIONS) private windowActions: Angular2PluginWindowActions`
 3. Then inside the constructor, check that window actions exist and then execute the action
-if (this.windowActions) {
-   this.windowActions.maximize();
-}
+    ```
+    if (this.windowActions) {
+       this.windowActions.maximize();
+    }
+    ```
 4. Depending on your App layout, certain UI elements may not have loaded so to wait for them to load, one may want to use something like Angular's NgOnInit directive.
 
 **React**
