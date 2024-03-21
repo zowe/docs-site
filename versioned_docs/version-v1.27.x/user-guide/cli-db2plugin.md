@@ -143,7 +143,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
       ```
       <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
       ```
-    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*UNIX Aand Mac systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
+    **Tip:** By default, `<zowe_home>` is set to `~/.zowe` on \*UNIX Aand Mac systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
     After the license is copied, you can use the Db2 plugin functionality.
 

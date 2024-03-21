@@ -11,6 +11,8 @@ Return component list should be started in specified HA instance.
 NOTE: This command only returns a list of enabled components with start command.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -27,6 +29,8 @@ zwe internal get-launch-components -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -41,6 +45,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

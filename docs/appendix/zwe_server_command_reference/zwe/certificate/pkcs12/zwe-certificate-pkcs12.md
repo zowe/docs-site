@@ -17,6 +17,8 @@
 Manage PKCS12 format keystore and truststore.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -32,6 +34,8 @@ zwe certificate pkcs12 export -f /path/to/my/keystore/file -p keystore-cert-pass
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -46,6 +50,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

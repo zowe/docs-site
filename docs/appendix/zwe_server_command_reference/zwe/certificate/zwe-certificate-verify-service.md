@@ -12,6 +12,8 @@ certificate Common Name (CN) and Subject Alternate Name (SAN).
 NOTE: the service must be online and accessible.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -29,6 +31,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --host||string|yes|Host name of the service.
 --port||string|yes|Port of the service.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -47,6 +51,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0171E|171|Failed to verify certificate (CN and SAN) of service "%s".
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
