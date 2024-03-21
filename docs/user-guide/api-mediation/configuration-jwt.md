@@ -30,7 +30,7 @@ Authentication requests now utilize SAF as the authentication provider. API ML c
 
 Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
 
-For more information, see [Configure Passtickets](configuration-extender-passtickets.md)
+For more information, see [Configure Passtickets](configuration-extender-passtickets.md).
 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
@@ -42,7 +42,12 @@ For more information, see [Configure Passtickets](configuration-extender-passtic
   If you use z/OSMF as an authentication provider, provide a valid `APPLID`. The API ML generates a PassTicket for the specified `APPLID` and subsequently uses this PassTicket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
 
 :::note
-The `components.gateway.apiml.security.allowtokenrefresh` property doesn't work. The bug is covered here: https://github.com/zowe/api-layer/issues/3468. As workaround use:
+
+Problems have been noted with the functionality of the property `components.gateway.apiml.security.allowtokenrefresh`. For more information about the bug, see [issue #3468 in the api-layer repo](https://github.com/zowe/api-layer/issues/3468). 
+
+We recommend you use the following workaround:
+
+1. Configure the following parameter in `environments`:
 
 ```
 zowe:
@@ -51,7 +56,7 @@ zowe:
 ```
 :::
 
-3. Restart Zowe.
+2. Restart Zowe.
 
 ## Authorization
 
