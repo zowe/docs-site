@@ -50,7 +50,7 @@ For more information about SDSF, see the _Abstract for z/OS SDSF Operation and C
 
 ### Mainframe Resources Consumption 
 
-During Zowe startup, there may be relatively high resource consumption in order for Zowe to be operational as soon as possible. Subsequent resource consumption depends on the processing load of Zowe services. When Zowe is idle, resource consumption is considerably lower than during startup.
+During Zowe startup, there is high resource consumption in order for Zowe to be operational as soon as possible. Subsequent resource consumption depends on the processing load of Zowe services. When Zowe is idle, resource consumption is relatively lower.
 
 #### Resource consumption during Zowe startup 
 
