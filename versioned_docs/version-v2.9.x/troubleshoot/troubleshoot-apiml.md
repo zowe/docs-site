@@ -15,7 +15,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
-    * [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+    * [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
     * [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
     * [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
 ## Install API ML without Certificate Setup
@@ -112,7 +112,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **{name}**
+    - **\{name\}**
 
          Specifies the logger name
 
@@ -263,13 +263,13 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
-2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 #### Insecure fix
 
 **Follow these steps:**
 
-1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore). 
+1. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates/#pkcs12-certificates-in-a-keystore). 
 2. In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
 
 **Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
@@ -296,7 +296,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 
@@ -447,7 +447,7 @@ The Zowe desktop is able to be displayed in a browser but fails to logon.
  
 **Solution:**
 
-Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates.md/#jceracfks-certificates-in-a-key-ring).
+Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. More detail can be found in [Configuring PKCS12 certificates](../user-guide/configure-certificates/#pkcs12-certificates-in-a-keystore) and [Configuring JCERACFS certificates in a key ring](../user-guide/configure-certificates/#jceracfks-certificates-in-a-key-ring).
 
 ### Java z/OS components of Zowe unable to read certificates from keyring
 
@@ -492,7 +492,7 @@ Caused by: java.security.UnrecoverableKeyException: Given final block not proper
 
 Make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. 
 
-### Exception thrown when reading SAF keyring {ZWED0148E}
+### Exception thrown when reading SAF keyring \{ZWED0148E\}
 
 **Symptom:**
 
@@ -525,7 +525,7 @@ at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/shar
 
 Zowe's local CA certificate has its default name `ZoweCert`. Zowe Desktop hardcodes this certificate in the configuration scripts.
 
-If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](../user-guide/configure-certificates-keyring.md). 
+If you are using your own trusted CA certificate in the keyring, and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the [Zowe configuration](/v2.9.x/user-guide/configure-certificates-keyring).
 
 If you are using Zowe's local CA certificate and you still receive **ZWED0148E**, you may find the following message in the same log.
 
