@@ -9,6 +9,7 @@
 * [certificate](./certificate/zwe-certificate.md)
 * [components](./components/zwe-components.md)
 * [config](./config/zwe-config.md)
+* [diagnose](./zwe-diagnose.md)
 * [init](./init/zwe-init.md)
 * [install](./zwe-install.md)
 * [internal](./internal/zwe-internal.md)

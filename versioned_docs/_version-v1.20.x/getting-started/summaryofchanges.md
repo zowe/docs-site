@@ -205,7 +205,7 @@ You can now start the API Mediation Layer independently of other Zowe components
 - The option to refresh file content has been added to the Editor. [#185](https://github.com/zowe/zlux-editor/pull/185)
 - Refresh buttons have been added to USS and MVS. [#108](https://github.com/zowe/zlux-file-explorer/pull/108)
 - Additional keybindings and other improvements have been added to the Editor. [#182](https://github.com/zowe/zlux-editor/pull/182)
-  - You can now move between open file tabs by using the following keyboard shortcuts: **Alt + (PAGEUP or <) and Alt + (PAGEDOWN or >)**
+  - You can now move between open file tabs by using the following keyboard shortcuts: **Alt + (PAGEUP or &lt;) and Alt + (PAGEDOWN or &gt;)**
   - After closing a tab, or multiple tabs, you can now undo the close by using the following keyboard shortcuts: **CTRL + ALT + T**
   - The search function keyboard shortcut has been changed from **ALT + S** to **ALT + S**. 
   - You can now hide/show the File Tree by using the following keyboard shortcuts: **ALT + B**. 

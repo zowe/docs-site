@@ -109,7 +109,7 @@ This method has an added layer of security, whereby you do not have to provide a
 
 In return, this method provides a valid pass ticket as a String to the authorized user.
 
-**Tip:** For additional information about PassTickets in API ML see [Enabling PassTicket creation for API Services that Accept PassTickets](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-passtickets.html).
+**Tip:** For additional information about PassTickets in API ML see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets).
 
 ## Getting Started (Step by Step Instructions)
 
