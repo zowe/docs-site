@@ -4,6 +4,8 @@
 
 	zwe internal start prepare [parameter [parameter]...]
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -16,6 +18,8 @@ zwe internal start prepare -c /path/to/zowe.yaml
 ```
 
 ## Parameters
+
+
 
 ### Inherited from parent command
 
@@ -37,6 +41,8 @@ Error code|Exit code|Error message
 |---|---|---
 ZWEL0141E|141|User %s does not have write permission on %s.
 ZWEL0302W||You are running the Zowe process under user id IZUSVR. This is not recommended and may impact your z/OS MF server negatively.
+ZWEL0317E||Component %s commands.configure ended with rc=%s.
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

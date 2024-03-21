@@ -647,7 +647,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {validity: int , scopes: [string]}.
+  Use a valid body in the request. Format of a message: `{validity: int , scopes: [string]}`.
 
 ### ZWEAT606E
 
@@ -671,7 +671,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAT608E
 
@@ -1241,7 +1241,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The URI does not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+  The URI does not follow the format `/{serviceId}/{type}/{version}/{endpoint}` or `/{type}/{version}/{serviceId}/{endpoint}`.
 
   **Action:**
 
@@ -1674,6 +1674,42 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Configure your client to provide valid authentication.
 
+### ZWEAG169E
+
+  Unexpected response from the external identity mapper. Status: %s body: %s
+  
+  **Reason:**
+  
+  The external identity mapper request failed with Internal Error
+  
+  **Action:**
+  
+  Verify that ZSS is responding.
+
+### ZWEAG170E
+
+  Error occurred while trying to parse the response from the external identity mapper. Reason: %s
+  
+  **Reason:**
+  
+  The external identity mapper failed when trying to parse the response
+  
+  **Action:**
+  
+  Verify that the response is valid.
+
+### ZWEAG171E
+
+  Configuration error. Failed to construct the external identity mapper URI. Reason: %s
+  
+  **Reason:**
+  
+  Failed to construct the external identity mapper URI
+  
+  **Action:**
+  
+  Verify that the external identity mapper URL specified in the configuration is valid.
+
 ### ZWEAT607E
 
   Body in the revoke request is not valid.
@@ -1684,7 +1720,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAG180E
 
@@ -1712,20 +1748,22 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG182E
 
-  SSL Misconfiguration, z/OSMF is not accessible. Please verify the following: \n
-  - CN (Common Name) and z/OSMF hostname have to match.\n
-  - Certificate is expired\n
-  - TLS version match\n
-Enable debugging to see further details in stack trace
-
+  SSL Misconfiguration, z/OSMF is not accessible.
+  Message: %s
+  Please verify the following:
+    - CN (Common Name) and z/OSMF hostname match.
+    - The certificate is valid
+    - TLS version matches
+    - z/OSMF server certificate is trusted in Zowe's truststore
+  Enable debugging to see further details in stack trace.
 
   **Reason:**
 
-  z/OSMF connection has an incorrect configuration.
+  The z/OSMF connection is incorrectly configured.
 
   **Action:**
 
-  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
 
 ### ZWEAG183E
 

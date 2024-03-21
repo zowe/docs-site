@@ -117,4 +117,4 @@ scheme        host          basePath    endpointPath
 
 ### Resources
 
-- <https://swagger.io/docs/specification/2-0/api-host-and-base-path/>
+- https://swagger.io/docs/specification/2-0/api-host-and-base-path/

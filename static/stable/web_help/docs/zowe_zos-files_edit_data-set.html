@@ -24,13 +24,25 @@
 <li>
 <p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
 <ul>
-<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+<li>Editor that overrides the default editor for this file type. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
 </ul>
 </li>
 <li>
 <p><code>--extension</code> | <code>--ext</code> <em>(string)</em></p>
 <ul>
 <li>Set the file extension of the file for editing to leverage an editor's file-type-specific formatting: ie &quot;--extension jcl&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the file content in binary mode (no EBCDIC to ASCII conversion).</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the file content with encoding mode, which means that data conversion is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li>
@@ -152,9 +164,9 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p>Edit the contents of the USS file &quot;/a/ibmuser/my_jcl.jcl&quot; in notepad and set extension as &quot;jcl&quot;:</p>
+<p>Edit the contents of the data set member &quot;ibmuser.jcl(iefbr14)&quot; and set extension as &quot;jcl&quot;:</p>
 <ul>
-<li><code>zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.jcl(iefbr14) --editor notepad --extension jcl">Copy</button></li>
+<li><code>zowe zos-files edit data-set ibmuser.jcl(iefbr14) --binary</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit data-set ibmuser.jcl(iefbr14) --binary">Copy</button></li>
 </ul>
 </li>
 </ul>
