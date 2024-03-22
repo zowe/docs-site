@@ -368,5 +368,4 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
 
 ## External Resources
 
- - https://blog.asarkar.org/technical/netflix-eureka/
  - https://github.com/Netflix/eureka/wiki/Eureka-REST-operations
