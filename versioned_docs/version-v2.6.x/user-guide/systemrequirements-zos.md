@@ -115,7 +115,7 @@ The following ports are required for Zowe. These are default values. You can cha
 | Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
 | 7552 | zowe.components.api-catalog.port | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
-| 7553 | zowe.components.api-catalog.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
+| 7553 | zowe.components.discovery.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
 | 7554 | zowe.components.gateway.port | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
 | 7555 | zowe.components.caching-service.port | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
 | 7556 | zowe.components.app-server.port | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
