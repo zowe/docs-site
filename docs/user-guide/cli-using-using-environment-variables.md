@@ -20,23 +20,13 @@ Consider assigning a variable in the scenarios outlined in the following table.
 
 ## Store credentials securely in CI/CD pipelines
 
-You can use environment variables to store credentials securely when running CI/CD pipelines.
+You can use environment variables when running CI/CD pipelines to load credentials that are securely stored.
 
 To do so, use the `ZOWE_OPT_` prefix to turn a Zowe CLI command option into the proper format for a Zowe CLI environment variable. For instructions, see [Formatting environment variables](../user-guide/cli-using-formatting-environment-variables.md).
 
-To use environment variables for a username and password:
+The environment variables to use environment variables for a username and password are `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD`.
 
-```
-ZOWE_OPT_USER
-```
-
-and
-
-```
-ZOWE_OPT_PASSWORD
-```
-
-Include the username and password environment variables in scripts that run in a CI/CD pipeline, as in the following example code that uses the Jenkins secure credential store for the variable values:
+Include the username and password environment variables in CI/CD pipelines that run Zowe CLI, as in the following example Jenkinsfile that uses the Jenkins credential store:
 
 ```
 pipeline {
@@ -49,9 +39,9 @@ pipeline {
 
     }
     stages {
-        stage('Example stage 1') {
+        stage('Run Zowe CLI') {
             steps {
-                //
+                sh "zowe jobs list jobs"
             }
         }
         stage('Example stage 2') {
@@ -62,3 +52,5 @@ pipeline {
     }
 }
 ```
+
+For more information on Jenkins credential storage, see [Using credentials](https://www.jenkins.io/doc/book/using/using-credentials/) and Using a [Jenkinsfile](https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#for-secret-text-usernames-and-passwords-and-secret-files).
