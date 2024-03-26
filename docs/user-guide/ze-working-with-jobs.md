@@ -17,6 +17,20 @@
 
    ![Download Spool](../images/ze/ZE-jobs-download-spool.gif)
 
+## Sorting jobs
+
+1. Expand **JOBS** in the **Side Bar**.
+2. Click on the **Sort** icon to the right of a profile.
+3. Select the **Sort Direction** option and select either **Ascending** or **Descending** from the **picker** field.
+4. Select a sort type from the list of available options:
+   - **Job ID (default)**
+   - **Date Submitted**
+   - **Date Completed**
+   - **Job Name**
+   - **Return Code**
+
+   ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
+
 ## Issuing MVS commands
 
 1. Expand **JOBS** in the **Side Bar**.
@@ -49,7 +63,7 @@ Users can periodically refresh a spool file during long-running jobs to get the 
 
 There are two main ways to poll a spool file &mdash; automatically at set intervals or manually on demand.
 
-### **Defining a default interval for polling spool files**
+### Defining a default interval for polling spool files
 <br/>
 
 1. Click on the **Settings** icon on the **Activity Bar** and select **Settings**.
@@ -59,7 +73,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
  	- Value must be greater than or equal to 1000 ms (1 second).
 5. Press **Enter** to start the polling action.
 
-### **Polling a spool file at set intervals**
+### Polling a spool file at set intervals
 <br/>
 
 1. Expand **JOBS** in the **Side Bar**.
@@ -77,7 +91,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 
 <br/>
 
-### **Stopping spool file polling**
+### Stopping spool file polling
 <br/>
 
 1. In the **Side Bar**, select a spool file that is being polled.
@@ -88,7 +102,7 @@ There are two main ways to poll a spool file &mdash; automatically at set interv
 
    The poll request is removed from the poller, and the selected spool file is no longer marked with a "**P**" in the **Side Bar** and any corresponding **Editor** tabs.
 
-### **Polling a spool file manually**
+### Polling a spool file manually
 
 <br/>A spool file can be polled on demand by using a designated keyboard shortcut.
 
@@ -102,7 +116,7 @@ To manually poll a spool file:
    
    The spool file is updated and "**Polling...**" displays in the bottom status bar.
 
-### **Configuring the keyboard shortcut for manual polling**
+### Configuring the keyboard shortcut for manual polling
 <br/>
 
 1. Click on the **Settings** icon on the **Activity Bar** and select **Keyboard Shortcuts**.

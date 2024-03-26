@@ -24,7 +24,19 @@
 <li>
 <p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
 <ul>
-<li>Set the default editor that you wish to use for editing. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+<li>Editor that overrides the default editor for this file type. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the file content in binary mode (no EBCDIC to ASCII conversion).</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the file content with encoding mode, which means that data conversion is performed using the file encoding specified.</li>
 </ul>
 </li>
 <li>
@@ -143,6 +155,12 @@ Allowed values: http, https</p>
 <p>Edit the contents of the USS file &quot;/a/ibmuser/my_text.txt&quot; in notepad:</p>
 <ul>
 <li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --editor C:\Windows\System32\Notepad.exe">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Edit the contents of the USS file &quot;/a/ibmuser/my_jcl.jcl&quot; with binary flag set:</p>
+<ul>
+<li><code>zowe zos-files edit uss-file /a/ibmuser/my_text.txt --binary</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files edit uss-file /a/ibmuser/my_text.txt --binary">Copy</button></li>
 </ul>
 </li>
 </ul>

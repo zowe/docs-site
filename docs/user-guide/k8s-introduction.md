@@ -28,32 +28,32 @@ Stage 1 ensures that your software and hardware are prepared for installation. F
 
 In Stage 2, you download the Zowe containers. Choose from the following download methods:
 
-* [Download Configuration samples](../user-guide/k8s-downloading#downloading-configuration-samples).(This is the recommended method) 
-* [Download container images](../user-guide/k8s-downloading#downloading-container-images).
+* [Download Configuration samples](k8s-downloading.md#downloading-configuration-samples).(This is the recommended method) 
+* [Download container images](k8s-downloading.md#downloading-container-images).
 
 ### Stage 3 & 4: Install and configure Zowe containers
 
-In Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, installation is achieved when the images are findable by Kubernetes. For more information, see the [Installing](../user-guide/k8s-downloading/#installing) section of **_Downloading and installing containers_**.
+In Stage 3, you do not need to install the Zowe containers if you use Zowe's Kubernetes configuration samples. If you download container images, installation is achieved when the images are findable by Kubernetes. For more information, see the [Installing](k8s-downloading.md#installing) section of **_Downloading and installing containers_**.
 
 In Stage 4, you can [configure the Zowe container environment](../user-guide/k8s-config.md).  
 Follow these steps:
 
-1. [Create namespace and service account](../user-guide/k8s-config#1-create-namespace-and-service-account)
-2. [Create Persistent Volume Claim (PVC)](../user-guide/k8s-config#2-create-persistent-volume-claim-pvc)
-3. [Create and modify ConfigMaps and Secrets (Manually creating ConfigMaps and Secrets)](../user-guide/k8s-config#3-create-and-modify-configmaps-and-secrets)
-4. [Expose API Mediation Layer components](../user-guide/k8s-config#4-expose-api-mediation-layer-components)
+1. [Create namespace and service account](k8s-config.md#1-create-namespace-and-service-account)
+2. [Create Persistent Volume Claim (PVC)](k8s-config.md#2-create-persistent-volume-claim-pvc)
+3. [Create and modify ConfigMaps and Secrets (Manually creating ConfigMaps and Secrets)](k8s-config.md#3-create-and-modify-configmaps-and-secrets)
+4. [Expose API Mediation Layer components](k8s-config.md#4-expose-api-mediation-layer-components)
 
 ### Stage 5: Start Zowe containers
 
-In Stage 5, you can [start Zowe containers](../user-guide/k8s-using/#starting-zowe-containers).  
+In Stage 5, you can [start Zowe containers](k8s-using.md#starting-zowe-containers).  
 
 Follow these steps:
-1. [Apply the deployment files to start Zowe containers](../user-guide/k8s-using#starting-zowe-containers). 
-2. After you start Zowe containers, [verify that Zowe containers are started](../user-guide/k8s-using#verifying-zowe-containers).
+1. [Apply the deployment files to start Zowe containers](k8s-using.md#starting-zowe-containers). 
+2. After you start Zowe containers, [verify that Zowe containers are started](k8s-using.md#verifying-zowe-containers).
 
 ### (Optional) Stage 6: Monitor Zowe containers
 
-In Stage 6, [monitor your containers](../user-guide/k8s-using#monitoring-zowe-containers) to verify that the containers are functioning properly.
+In Stage 6, [monitor your containers](k8s-using.md#monitoring-zowe-containers) to verify that the containers are functioning properly.
 
 ## Known limitations
 

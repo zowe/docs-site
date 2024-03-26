@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
@@ -768,6 +769,7 @@ module.exports = {
         },
         
         "extend/extend-ze/ze-extensions",
+        "getting-started/user-roadmap-client-sdk",
         "extend/extend-sdks",      
       ],
     },    
@@ -1003,7 +1005,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.14.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
     },
   ],
 }
