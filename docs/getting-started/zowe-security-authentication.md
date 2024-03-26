@@ -12,7 +12,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 
 When the user successfully authenticates with the API ML, the client receives a JWT token in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT Token is signed with the private key that is configured in the Zowe Identity Provider's certificate store, regardless of whether the token is in a keystore or keyring.
 
-To utilize [Single-Sign-On (SSO)](../user-guide/systemrequirements-zos#single-sign-on-sso), the Zowe API ML client needs to provide an access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described in [this authenticated request example](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
+To utilize [Single-Sign-On (SSO)](../user-guide/api-mediation-sso.md), the Zowe API ML client needs to provide an access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described in [this authenticated request example](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
 ## Authentication with client certificates
 
@@ -22,7 +22,7 @@ For more information, see the [Authentication for API ML services documentation]
 
 ## Authentication with Personal Access Token (PAT)
 
-A Personal Access Token (PAT) is a specific scoped JWT with a configurable validity duration. The PAT authentication method is an alternative to using a client certificate for authentication. It is disabled by default. To enable this functionality, see [the configuration documentation](../user-guide/api-mediation/api-gateway-configuration#personal-access-token).
+A Personal Access Token (PAT) is a specific scoped JWT with a configurable validity duration. The PAT authentication method is an alternative to using a client certificate for authentication. It is disabled by default. To enable this functionality, see [Enabling single sign on for clients via personal access token configuration](../user-guide/api-mediation/configuration-personal-access-token.md).
 
 **Benefits of PAT**
 
@@ -30,12 +30,12 @@ A Personal Access Token (PAT) is a specific scoped JWT with a configurable valid
 - Scoped. Users are required to provide a scope. It is only valid for the specified services.
 - Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules.
 
-For more information about PAT, see [the Personal Access Token documentation](../user-guide/api-mediation/api-mediation-personal-access-token).
+For more information about PAT, see [Authenticating with a Personal Access Token documentation](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
 
 ## Authentication with SAF Identity Tokens
 The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
 
-For more information about configuring the token, see the [Configure signed SAF Identity tokens (IDT) documentation](../user-guide/configure-zos-system#configure-signed-saf-identity-tokens-idt).
+For more information about configuring the token, see [Configure signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md#configure-signed-saf-identity-tokens-idt).
 
 ## Multi-factor authentication (MFA)
 

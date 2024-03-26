@@ -3,7 +3,7 @@
 
 If you do not have a certificate, follow the procedure in this article that corresponds to the certificate type you choose to generate.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 Choose from the following certificate types:
@@ -15,7 +15,7 @@ Both certificate types are self-signed certificates.
 
 ## Creating a PKCS12 keystore
 
-Use can create PKCS12 certificates tht are stored in USS. Thiscertificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to server communcation. Zowe uses a keystore directory to contain its external certificate, and a truststore directory to hold the public keys of servers it communicate with (for example z/OSMF).
+Use can create PKCS12 certificates tht are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to server communcation. Zowe uses a keystore directory to contain its external certificate, and a truststore directory to hold the public keys of servers it communicate with (for example z/OSMF).
 
 Follow these steps to generate a PKCS12 keystore:
 
@@ -148,7 +148,7 @@ The `zwe init certificate` command generates a certificate based on `zowe.yaml` 
 ```
 
 4. (Optional) For details about the certificate you generated, run the following command:  
-`keytool -v -list keystore localhost.keystore.p12 -storetype PKCS12`
+`keytool -v -list -keystore localhost.keystore.p12 -storetype PKCS12`
 
 You completed the procedure to generate a PKCS12 keystore.
 
@@ -209,7 +209,7 @@ zowe:
         - 12.34.56.78
 ```
 
-:::note**Notes:**
+:::note Notes:
 - Alias names should be all lower cases.
 - The name and lables shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.

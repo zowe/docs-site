@@ -9,6 +9,8 @@
 Set value of a configuration and write back to the YAML configuration.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -27,7 +29,9 @@ Full name|Alias|Type|Required|Help message
 --ha-instance|-i|string|no|Zowe high availability instance ID.
 --path|-p|string|yes|Path of the configuration. For example, `components.gateway.port`.
 --value|-e|string|no|New value of the configuration.
---string||boolean|no|When specified, the value is treated as a string even if it looks like a number or boolean### Inherited from parent command
+--string||boolean|no|When specified, the value is treated as a string even if it looks like a number or boolean
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -41,6 +45,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

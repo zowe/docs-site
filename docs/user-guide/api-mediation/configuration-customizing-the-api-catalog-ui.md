@@ -1,12 +1,12 @@
 # Customizing the API Catalog UI
 
-:::info**Role:** system administrator
+:::info Role: system administrator
 :::
 
 As a system administrator, you can customize the API Catalog UI to have a similar interface to your organization's service, or with your existing visualization portal.
 
 * To customize the logotype and selected syle options in the zowe.yaml file, see [API Catalog branding](#api-catalog-branding).
-* To replace or remove the API Catolog service from the Gateway home page and health checks, see [Replace or remove the Catalog with another service](./api-mediation/api-gateway-configuration/#replace-or-remove-the-catalog-with-another-service).
+* To replace or remove the API Catolog service from the Gateway home page and health checks, see [Replace or remove the Catalog with another service](../api-mediation/configuration-customizing-the-api-catalog-ui/#replace-or-remove-the-catalog-with-another-service).
 
 ## API Catalog branding
 
@@ -71,7 +71,7 @@ An alternative to the API Catalog is displayed
 - **metrics-dashboard**  
  A possible dashboard that could appear in place of the API Catalog 
 
-:::note**Notes:**
+:::note Notes:
 - If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.
 - If the application contains the `homePageUrl` the link is displayed without the `UP` information.
 - If the application contains the `statusPageRelativeUrl` then `UP` or `DOWN` is displayed based on the `statusPage` without the link.

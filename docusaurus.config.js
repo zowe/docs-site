@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.13.x";
+const LATEST_VERSION = "v2.15.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -13,6 +13,11 @@ module.exports = {
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
+  markdown: {
+    mdx1Compat: {
+      comments: true
+    }
+  },
   webpack: {
     jsLoader: (isServer) => ({
       loader: require.resolve("esbuild-loader"),
@@ -24,7 +29,13 @@ module.exports = {
     }),
   },
   themeConfig: {
-      docs: {
+    announcementBar: {
+      id: 'announcementBar-1', // increment on change
+      content:
+          '📌  <b>The Zowe V3 release is delayed</b>. Release schedule for Zowe V2 to be updated. See <a href="https://docs.zowe.org/stable/whats-new/zowe-announcements" target="_blank">Zowe announcements</a> for more information. ',
+      textColor: '#000',
+      },
+    docs: {
       sidebar: {
         hideable: true
       }
@@ -89,17 +100,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-         {
-           type: "docsVersionDropdown",
-           position: "right",
-           dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
-         },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownActiveClassDisabled: true,
+          dropdownItemsAfter: [
+            {
+              to: "/versions",
+              label: "All versions",
+            },
+          ],
+        },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -205,10 +216,27 @@ module.exports = {
           showLastUpdateTime: true,
           routeBasePath: "/",
           lastVersion: "current",
+          remarkPlugins: [() => {
+            // https://github.com/facebook/docusaurus/issues/9789
+            return async (root) => {
+              const {visit} = await import('unist-util-visit');
+              visit(root, 'mdxJsxFlowElement', (node) => {
+                if (node.name === 'img') {
+                  node.name = 'Img';
+                }
+              });
+            };
+          }],
           versions: {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v2.14.x": {
+              label: "v2.14.x LTS",              
+            },
+            "v2.13.x": {
+              label: "v2.13.x LTS",
             },
             "v2.12.x": {
               label: "v2.12.x LTS",
@@ -238,10 +266,16 @@ module.exports = {
               label: "v1.28.x LTS",
             },
           },
-        },    
+        },
         googleAnalytics: {
           trackingID: "UA-123892882-1",
           anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: versionsArray.map((x) => "/" + x + "/**"),
+          filename: "sitemap.xml",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -263,7 +297,8 @@ module.exports = {
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
           const redirects = {
-            "/whats-new/release-notes/": "/getting-started/release-notes/"
+            "/whats-new/release-notes/": "/getting-started/release-notes/",
+            "/user-guide/obtaining-information-about-api-services": "/extend/extend-apiml/service-information",
           };
           for (const x of versionsArray) {
             redirects[x] = x.replace(".", "-").replace(".", "-");
@@ -284,7 +319,7 @@ module.exports = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true, 
+        debug: true,
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",

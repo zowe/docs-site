@@ -249,10 +249,10 @@ The following snippet is an example of the API routing information properties.
 ```
 where:
 
-* **apiml.routes.{route-prefix}.gatewayUrl**  
+* **apiml.routes.\{route-prefix\}.gatewayUrl**  
 The `gatewayUrl` parameter specifies the portion of the gateway URL which is replaced by the `serviceUrl` path.
 
-* **apiml.routes.{route-prefix}.serviceUrl**  
+* **apiml.routes.\{route-prefix\}.serviceUrl**  
 The `serviceUrl` parameter provides a portion of the service instance URL path which replaces the `gatewayUrl` part.  
 **Note:** The routes configuration used for a direct REST call to register a service must also contain a prefix before the `gatewayUrl` and `serviceUrl`.
 This prefix is used to differentiate the routes. This prefix must be provided manually when _XML_ configuration is used.
@@ -317,7 +317,7 @@ REST services can provide multiple APIs. Add API info parameters for each API th
 
 The following parameters provide the information properties of a single API:
 
-* **apiml.apiInfo.{api-index}.apiId**  
+* **apiml.apiInfo.\{api-index\}.apiId**  
 The API ID uniquely identifies the API in the API ML.
 Multiple services can provide the same API. The API ID can be used
 to locate the same APIs that are provided by different services.
@@ -326,19 +326,19 @@ The API ID needs to be a string of up to 64 characters
 that uses lowercase alphanumeric characters and a dot: `.`.  
 **Tip:** We recommend that you use your organization as the prefix.
 
-* **apiml.apiInfo.{api-index}.version**  
+* **apiml.apiInfo.\{api-index\}.version**  
 This parameter specifies the API version. This parameter is used to correctly retrieve the API documentation according to the requested version of the API.
 
-* **apiml.apiInfo.{api-index}.gatewayUrl**  
+* **apiml.apiInfo.\{api-index\}.gatewayUrl**  
 This parameter specifies the base path at the API Gateway where the API is available. Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections for the routes, which belong to this API.
 
-* **apiml.apiInfo.{api-index}.swaggerUrl**  
+* **apiml.apiInfo.\{api-index\}.swaggerUrl**  
 (Optional) This parameter specifies the Http or Https address where the Swagger JSON document is available.
 
-* **apiml.apiInfo.{api-index}.documentationUrl**  
+* **apiml.apiInfo.\{api-index\}.documentationUrl**  
 (Optional) This parameter specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
 
-* **apiml.apiInfo.{api-index}.defaultApi**  
+* **apiml.apiInfo.\{api-index\}.defaultApi**  
 (Optional) This parameter specifies if the API is the default one shown in the API Catalog. If no API has this parameter set to `true`, or multiple APIs have it set to `true`, then the default API becomes the API with the highest major version seen in `apiml.apiInfo.{api-index}.version`.  
 **Note:** The `{api-index}` is used to differentiate the service APIs. This index must be provided manually when _XML_ configuration is used. In the following example, `0` represents the `api-index`.  
 

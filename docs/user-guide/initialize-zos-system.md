@@ -2,7 +2,7 @@
 
 Once you complete the installation of the Zowe runtime, begin configuration by initializing Zowe with proper security configurations. To simplify this configuration process, one option is to run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
 
-:::info**Required roles:** system programmer, security administrator
+:::info Required roles: system programmer, security administrator
 :::
 
 ## About the `zwe init` command
@@ -22,7 +22,7 @@ Configures the VSAM files needed to run the Zowe caching service used for high a
 - **stc**  
 Configures the system to launch the Zowe started task.
 
-:::info::Recommendation:**
+:::info Recommendation:
 We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security) in this configuration documentation.
 ::: 
 
@@ -51,7 +51,7 @@ The `zwe init` command runs the subcommands in sequence automatically. If you ha
 zwe init --config /path/to/zowe.yaml
 ```
 
-:::note
+:::caution Validate successful initialization
 Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
 :::
 

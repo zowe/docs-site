@@ -63,6 +63,7 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * Strings can have quotes, but otherwise everything that is not an array, boolean, or number is a string.
 * Objects are never values, they are the keys.
 
+
 # CLI arguments (app-server only)
 
 CLI arguments take precedence over environment variable and configuration files.

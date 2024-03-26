@@ -1,10 +1,14 @@
-# Zowe API Mediation Layer OIDC Authentication
+# Authenticating with OIDC 
+
+:::info Required roles: system administrator, security administrator
+:::
 
 The OpenID/Connect ([OIDC](https://openid.net/specs/openid-connect-core-1_0.html)) protocol adds an authentication layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol.
+
 OIDC authentication, together with the z/OS [Identity Propagation](https://www.redbooks.ibm.com/redbooks/pdfs/sg247850.pdf) mechanism, is the foundation of the API ML Identity Federation.
 In this article, OIDC is often referred to as the provider, while the token-related functionality is actually provided by the OAuth2 component of the OIDC implementation.
 
-Zowe API ML can be configured to authenticate users by accepting Access Tokens issued by an external OIDC/OAuth2 provider.
+You can configure Zowe API ML to authenticate users by accepting Access Tokens issued by an external OIDC/OAuth2 provider.
 This configuration is useful in advanced deployments of Zowe where client applications need to access mainframe as well as enterprise/distributed systems while simultaneously offering single sign-on (SSO) across system boundaries.  
 
 This article details the API ML OIDC authentication functionality, and how to configure the OIDC Authentication feature.
@@ -93,6 +97,13 @@ Alternatively, administrators can use the installed ESM functionality to create,
 
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
 
+:::tip
+You can leverage the Zowe CLI Identity Federation (IDF) Plug-in for Zowe CLI to extend Zowe CLI to make it easier to map mainframe users with an identity provided by an external identity provider.
+The Plug-in is designed to work with the ESMs: IBM RACF, Broadcom ACF2, and Broadcom Top Secret.
+
+For more information about the Zowe CLI Identity Federation Plug-in, see the [README file in the api-layer repo](https://github.com/zowe/api-layer/edit/v3.x.x/zowe-cli-id-federation-plugin/README.md).
+:::
+
  In the zowe.yaml file, configure the following properties:
 
 - **`components.gateway.apiml.security.oidc.enabled`**  
@@ -164,7 +175,7 @@ curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/valida
 An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
-:::note**Azure Entra ID OIDC notes:**
+:::note Azure Entra ID OIDC notes:
 API ML uses the `sub` claim of the ID Token to identify the user, and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
 * The Azure token `sub` is an alphanumeric value.  
 For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.

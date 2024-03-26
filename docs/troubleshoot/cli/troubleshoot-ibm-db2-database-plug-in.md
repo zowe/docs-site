@@ -37,10 +37,10 @@ The response includes an error message, which could specify a timeout or unpacki
 Network restrictions can prevent the ODBC driver from downloading, resulting in a timeout error:
 
 ```
-Downloading DB2 ODBC CLI Driver from https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/ntx64_odbc_cli.zip ...
+Downloading Db2 ODBC CLI Driver from https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/ntx64_odbc_cli.zip ...
 
 ETIMEDOUT : https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/ntx64_odbc_cli.zipbm_db/-/ibm_db-3.2.3.tgz 7210ms (cache miss)
-Downloading DB2 ODBC CLI Driver from https://github.com/ibmdb/db2drivers/raw/main/clidriver/ntx64_odbc_cli.zip ...
+Downloading Db2 ODBC CLI Driver from https://github.com/ibmdb/db2drivers/raw/main/clidriver/ntx64_odbc_cli.zip ...
 
 ETIMEDOUT : https://github.com/ibmdb/db2drivers/raw/main/clidriver/ntx64_odbc_cli.zipifactory/api/npm/npmjs/ibm_db/-/ibm_db-3.2.3.tgz 7210ms (cache miss)
 
@@ -55,7 +55,7 @@ To troubleshoot a timeout error, see [Downloading the ODBC driver manually](#dow
 
 If the driver downloads successfully, security settings can still prompt an unpacking error.
 
-In the following example, the ODBC driver was downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` was set.
+In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set.
 
 ```
 Error: invalid distance too far back
@@ -89,7 +89,7 @@ To manually download the ODBC driver, see instructions in [Downloading the ODBC 
 
 3. Rename the file to `odbc_bindings.node`. This is the name used by the Db2 plug-in.
 
-    You have successfully extracted the ODBC driver.
+    You successfully extracted the ODBC driver.
 
 :::note
 
