@@ -722,6 +722,7 @@ module.exports = {
           type: "category",
           label: "Developing for Zowe Application Framework",
           items: [
+            "extend/extend-desktop/mvd-server-config",
             "extend/extend-desktop/mvd-extendingzlux",
             "extend/extend-desktop/mvd-plugindefandstruct",
             "extend/extend-desktop/mvd-buildingplugins",
