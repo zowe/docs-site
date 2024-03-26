@@ -5,9 +5,7 @@ Review how services of the API Mediation Layer address authentication.
 - [Services of API Mediation Layer](#services-of-api-mediation-layer)
 - [Authentication endpoints](#authentication-endpoints)
 - [Supported authentication methods](#supported-authentication-methods)
-- [Authentication parameters](#authentication-parameters)
 - [Discovery Service authentication](#discovery-service-authentication)
-  - [Authentication with PassTickets](#authentication-with-passtickets)
  
 
 :::tip
@@ -38,6 +36,10 @@ For information about authentication providers that handle authentication for th
 
     - Authentication is service-dependent
     - It is recommended to use the Authentication and Authorization Service for authentication
+
+- **zOSMF**
+
+    - THe zOSMF isn't per se part of the API Mediation Layer but it's the default authentication provider.   
 
 
 ## Authentication endpoints
@@ -111,84 +113,9 @@ Zowe supports three authentication methods with single-sign-on. Use the followin
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
 credentials. For more details, see the ZAAS Client documentation. 
 
-
 ## Authentication parameters
 
-Parameters are specified in the onboarding enablers.
-
-Authentication parameters enable a service to accept a Zowe JWT or client certificate. The API Gateway translates the authentication token to an authentication method supported by a service.
-
-The following example shows the parameters that define the service authentication method:
-
-**Example:**
-
-```yaml
-authentication:
-    scheme: httpBasicPassTicket
-    applid: ZOWEAPPL
-```
-
-* **authentication.scheme**  
-The value of this parameter specifies a service authentication scheme. Any valid headers or `X-Zowe-Auth-Failure` error headers are set and passed to southbound services. In addition, any `X-Zowe-Auth-Failure` error headers coming from the northbound service are also be passed to the southbound services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
-The following schemes are supported by the API Gateway:
-
-  * **bypass**  
-  This value specifies that the token is passed unchanged to service.
-
-  **Note:** This is the default scheme when no authentication parameters are specified.
-
-  * **zoweJwt**  
-    * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
-    * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
-    * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
-    
-
-  * **httpBasicPassTicket**  
-
-    This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-    It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent passticket generation errors.
-
-    * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
-    * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
-    * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-    * The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
-
-      
-    For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
-
-  * **zosmf**  
-    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-    This scheme should only be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
-
-    * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
-    * When a client certificate is provided, the certificate translates into a z/OSMF token, and also extracts the LTPA for the service to use.
-
-    For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
-
-  * **safIdt**  
-    This value specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
-
-    For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
-
-  * **x509**  
-    This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
-
-* **authentication.headers**  
-    When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
-
-  * `X-Certificate-Public`  
-The public part of client certificate base64 encoded
-
-  * `X-Certificate-DistinguishedName`  
-The distinguished name from client certificate
-
-  * `X-Certificate-CommonName`  
-The common name from the client certificate
-
-* **authentication.applid**  
-This parameter specifies a service APPLID.
-  This parameter is valid only for the `httpBasicPassTicket` authentication scheme.
+If you are looking for information about the authentication parameters and how your service can integrate with the API Mediation Layer consult [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md)
 
 ## Discovery Service authentication
 
@@ -214,77 +141,19 @@ Since the Discovery Service uses HTTPS, your client also requires verification o
  http --cert=keystore/localhost/localhost.pem --verify=false -j GET https://localhost:10011/eureka/apps/
  ```
 
+ ## zOSMF Authentication 
 
-### Authentication with PassTickets
+The zOSMF service is onboarded statically under the `ibmzosmf` service id. The specific definition is created during the Zowe configuration based on the values provided in the `zowe.yaml` file. 
 
-The following types of API services support PassTickets:
+The `authentication.scheme` value for zOSMF is:
 
-- [API Services that register dynamically with API ML that provide authentication information](#api-services-that-register-dynamically-with-api-ml-that-provide-authentication-information)
-- [API Services that register dynamically with API ML but do not provide metadata](#api-services-that-register-dynamically-with-api-ml-but-do-not-provide-metadata)
-- [API services that are defined using a static YAML definition](#api-services-that-are-defined-using-a-static-yaml-definition)
+ * **zosmf**  
+    This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
+    This scheme should only be used only for a z/OSMF service used by the API Gateway Authentication Service and other z/OSMF services that use the same LTPA key.
 
-#### API Services that register dynamically with API ML that provide authentication information
+    * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
+    * When a client certificate is provided, the certificate translates into a z/OSMF token, and also extracts the LTPA for the service to use.
 
-API services that support Zowe API Mediation Layer and use dynamic registration to the Discovery Service already provide metadata that enables PassTicket support.
+    For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
-As a system programmer, you are not required to do anything in this case. All required information is provided by the API service automatically.
-
-#### API Services that register dynamically with API ML but do not provide metadata
-
-Some services can use PassTickets but the API ML does not recognize that the service can accept PassTickets.
-For such services, you can provide additional service metadata externally in the same file that contains the static YAML definiton. The static YAML definitions are described in [REST APIs without code changes required](./onboard-static-definition.md).
-
-Add the following section to the YAML file with a static definition:
-
-```yaml
-additionalServiceMetadata:
-    - serviceId: <serviceId>
-      mode: UPDATE
-      authentication:
-        scheme: httpBasicPassTicket
-        applid: <applid>
-```
-
-where:
-
-- `<serviceId>`
-
-  is the service ID of the service to which you want to add metadata.
-
-#### API services that are defined using a static YAML definition
-
-Add the following metadata to the same level as the `serviceId`:
-
-**Example:**
-
-```yaml
-    - serviceId: ...
-      authentication:
-        scheme: httpBasicPassTicket
-        applid: TSTAPPL
-```
-
-**Note:** The fields in this example are explained later in this article.
-
-#### Adding YAML configuration to API services that register dynamically with API ML
-
-As a developer of an API service that registers dynamically with the API ML, you need to provide additional metadata to tell the API Gateway to use PassTickets.
-Additional metadata tells the API Gateway how to generate them. The following code shows an example of the YAML configuration that contains this metadata.
-
-**Example:**
-
-```yaml
-authentication:
-    scheme: httpBasicPassTicket
-    applid: <applid>
-```
-
-where:
-
-- `httpBasicPassTicket`
-
-  is the value that indicates that the HTTP Basic authentication scheme is used with PassTickets.
-
-- `<applid>`
-
-  is the `APPLID` value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`).
+Don't use this method for any other service. 
