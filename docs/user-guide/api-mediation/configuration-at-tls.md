@@ -27,7 +27,7 @@ Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup 
 Follow these steps to configure Zowe to support AT-TLS:
 
 1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, and `caching-service` in the `zowe.components` section.
 
 **Example:**
 
@@ -122,7 +122,6 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - Discovery: default port 7553
 - Caching Service: 7555
 - API Catalog: default port 7552
-- Metrics Service: default port 7551
 
 Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 

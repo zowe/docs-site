@@ -16,8 +16,6 @@ For more information about variable names in the following table, see the [Zowe 
 | 7555 | zowe.components.caching-service.port | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
 | 7556 | zowe.components.app-server.port | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
 | 7557 | zowe.components.zss.port | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
-| 7558 | zowe.components.jobs-api.port | Port of the service that provides REST APIs to z/OS jobs used by the JES Explorer.
-| 7559 | zowe.components.files-api.port | Port of the service that provides REST APIs to MVS and USS file systems.
 | N/A | zowe.components.explorer-jes | Port of the JES Explorer GUI for viewing and working with jobs in the Zowe Desktop.
 | N/A | zowe.components.explorer-mvs | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
 | N/A | zowe.components.explorer-uss | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.

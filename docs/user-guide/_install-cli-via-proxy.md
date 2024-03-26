@@ -2,6 +2,9 @@
 ​
 This topic describes how to install Zowe CLI using the NPM install command when you are working behind a proxy server. Use this installation method when your site blocks access to public npm.
 
+:::info**Required role:** systems administrator
+:::
+
 You can install Zowe CLI from an online registry via proxy on Windows, macOS, or Linux operating systems:
 
 *  This method requires access to an internal server that will allow you to connect to the appropriate registries. For other installation methods, see Installing CLI.
@@ -48,7 +51,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
     b. Issue the following command to install all of the plug-ins:
         
     ```
-    zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/ims-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
+    zowe plugins install @zowe/cics-for-zowe-cli@zowe-v2-lts @zowe/mq-for-zowe-cli@zowe-v2-lts @zowe/zos-ftp-for-zowe-cli@zowe-v2-lts @zowe/db2-for-zowe-cli@zowe-v2-lts
     ```
         
     Zowe CLI is installed.
