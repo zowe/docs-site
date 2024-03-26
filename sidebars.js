@@ -704,6 +704,7 @@ module.exports = {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
+                "extend/extend-apiml/api-medation-sso-integration-extenders",
                 "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
                 "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",                
