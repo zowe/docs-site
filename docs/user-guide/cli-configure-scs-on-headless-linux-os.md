@@ -5,6 +5,12 @@ Perform the following configurations on headless Linux or z/Linux operating syst
 :::info Required role: systems administrator
 :::
 
+:::note
+
+For CI/CD pipelines we recommend using the credential management provided by the CI/CD tool (for example, Jenkins credentials or GitHub secrets) to store credentials and load them into environment variables in the pipeline. See [Using environment variables](../user-guide/cli-using-using-environment-variables.md#store-credentials-securely-in-cicd-pipelines) for more information.
+
+:::
+
 ## Headless Linux operating systems
 
 ### Requirements for headless Linux operating systems
@@ -35,7 +41,7 @@ When you are using SSH or TTY to log in to Linux, you can configure the Gnome ke
 
 :::note
 
-The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions. 
+The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions.
 
 :::
 

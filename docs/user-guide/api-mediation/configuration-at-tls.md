@@ -223,7 +223,7 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
   SecondaryMap Off
 }
 ```
-:::important**Important**
+:::important
 - The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
 
 - Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
