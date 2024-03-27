@@ -253,6 +253,14 @@ module.exports = {
               "label": "Customizing routing behavior",
               "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
               "items": [
+                "user-guide/api-mediation/configuration-multi-tenancy-routing",
+                "user-guide/api-mediation/configuration-cors",
+                "user-guide/api-mediation/configuration-url-handling",
+                "user-guide/api-mediation/configuration-gateway-retry-policy",
+                "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                "user-guide/api-mediation/configuration-set-consistent-service-id",
                 {
                   "type": "category",
                   "label": "Customizing management of API ML load limits",
@@ -261,16 +269,9 @@ module.exports = {
                     "user-guide/api-mediation/configuration-connection-limits",
                     "user-guide/api-mediation/configuration-gateway-timeouts"
                   ]
-                },
-                "user-guide/api-mediation/configuration-cors",
-                "user-guide/api-mediation/configuration-url-handling",
-                "user-guide/api-mediation/configuration-gateway-retry-policy",
-                "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
-                "user-guide/api-mediation/configuration-access-specific-instance-of-service",
-                "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
-                "user-guide/api-mediation/configuration-set-consistent-service-id"
+                }
               ]
-            },
+            },            
             {
               "type": "category",
               "label": "Configuring authorization for API ML",

@@ -1,6 +1,6 @@
 # Configuring routing in a multi-tenant environment
 
-In a multi sysplex environment, the API Gateway may also need to register with a Central Discovery Service which gathers information about all installed API Gateways
+In a multi-sysplex environment, the API Gateway may also need to register with a Central Discovery Service which gathers information about all installed API Gateways
 in isolated sysplex environments. Data from the Central Discovery Service can then be used by the Central Gateway for routing to individual API Gateways.
 Follow these steps to register with additional Discovery Services:
 
