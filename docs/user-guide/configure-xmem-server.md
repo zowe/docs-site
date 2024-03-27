@@ -125,7 +125,7 @@ For example, the sample JCL below shows `ZWESISTC` where the APF-authorized PDSE
 
 Because the ZIS server makes z/OS security calls it restrits which clients are able to use it services, by requiring them to have `READ` access to a security profile `ZWES.IS` in the `FACILITY` class.  
 
-The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS server, which requires that the user ID `ZWESVUSR` has access to `ZWES.IS`.  The steps to do this are desribed in [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).  
+The Zowe launcher started task `ZWESLSTC` needs to be able to access the ZIS server, which requires that the user ID `ZWESVUSR` has access to `ZWES.IS`.  The steps to do this are described in [Configure the cross memory server for SAF](configure-zos-system.md#configure-the-cross-memory-server-for-saf).  
 
 ## Zowe auxiliary service
 
