@@ -37,9 +37,9 @@ For information about authentication providers that handle authentication for th
     - Authentication is service-dependent
     - It is recommended to use the Authentication and Authorization Service for authentication
 
-- **zOSMF**
+- **z/OSMF**
 
-    - THe zOSMF isn't per se part of the API Mediation Layer but it's the default authentication provider.   
+    - z/OSMF is not itself part of the API Mediation Layer but z/OSMF is the default authentication provider.   
 
 
 ## Authentication endpoints
@@ -49,14 +49,14 @@ The API Gateway contains the following REST API authentication endpoints:
 - **`auth/login`**  
 The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
 
-  The `auth/login` endpoint authenticates mainframe user credentials and   returns an authentication token. The login request requires user   credentials though one of the following methods:
+  The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
     * Basic access authentication
     * JSON with user credentials
     * Client certificate
   
   When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
-- **`auth/query`**  
+* **`auth/query`**  
 The full path of the `auth/query` endpoint appear as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
 
    The `auth/query` endpoint validates the token and retrieves the    information associated with the token.
@@ -80,7 +80,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
   The response is a JSON object, which contains information associated with the ticket.
 
 - **`auth/refresh`**  
- The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is not usable anymore.
+ The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is no longer usable.
 
   **Notes:** 
   
@@ -145,7 +145,7 @@ Since the Discovery Service uses HTTPS, your client also requires verification o
 
 The zOSMF service is onboarded statically under the `ibmzosmf` service id. The specific definition is created during the Zowe configuration based on the values provided in the `zowe.yaml` file. 
 
-The `authentication.scheme` value for zOSMF is:
+The `authentication.scheme` value for z/OSMF is:
 
  * **zosmf**  
     This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
@@ -154,6 +154,6 @@ The `authentication.scheme` value for zOSMF is:
     * When a JWT is provided, the token extracts the LTPA and forwards it to the service.
     * When a client certificate is provided, the certificate translates into a z/OSMF token, and also extracts the LTPA for the service to use.
 
-    For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
+    For more information about z/OSMF Single Sign On, see [Establishing a single sign on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html)
 
-Don't use this method for any other service. 
+This method should not be used for any other service. 
