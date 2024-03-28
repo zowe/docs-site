@@ -29,13 +29,7 @@ module.exports = {
     }),
   },
   themeConfig: {
-    announcementBar: {
-      id: 'announcementBar-1', // increment on change
-      content:
-          '📌  <b>The Zowe V3 release is delayed</b>. Release schedule for Zowe V2 to be updated. See <a href="https://docs.zowe.org/stable/whats-new/zowe-announcements" target="_blank">Zowe announcements</a> for more information. ',
-      textColor: '#000',
-      },
-    docs: {
+        docs: {
       sidebar: {
         hideable: true
       }
