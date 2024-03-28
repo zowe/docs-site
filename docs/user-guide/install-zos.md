@@ -32,7 +32,7 @@ To avoid interuptions in the installation of Zowe&trade; server-side components,
 
 ### Security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](address-security-requirements#tasks-performed-by-your-security-administrator).
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](./address-security-requirements.md#tasks-performed-by-your-security-administrator).
 
 ### Storage administrator
 
