@@ -287,8 +287,7 @@ module.exports = {
               "items": [
                 "extend/extend-apiml/api-mediation-infinispan",
                 "extend/extend-apiml/api-mediation-vsam",
-                "extend/extend-apiml/api-mediation-redis",
-                "extend/extend-apiml/api-mediation-infinispan"
+                "extend/extend-apiml/api-mediation-redis"
               ]
             },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
