@@ -58,7 +58,7 @@ The API Gateway can be configured to check for SAF resource authorization in sev
 
 Use the following method to get information about a specific service:
 
-`GET /gateway/{serviceId}/api/v1/services`
+`GET /gateway/api/v1/services/{serviceId}`
 
 where:
 

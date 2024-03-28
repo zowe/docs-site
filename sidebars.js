@@ -225,42 +225,42 @@ module.exports = {
           ],
         },
         {
-          type: "category",
-          label: "Advanced API Mediation Layer Configuration",
-          link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
-          items: [
+          "type": "category",
+          "label": "Advanced API Mediation Layer Configuration",
+          "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
+          "items": [
             {
-              type: "category",
-              label: "Enabling single sign on for clients",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for clients",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-single-sign-on-user" },
+              "items": [
                 "user-guide/api-mediation/configuration-client-certificates",
                 "user-guide/api-mediation/configuration-personal-access-token",
                 "user-guide/api-mediation/configuration-jwt"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Enabling single sign on for extending services",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for extending services",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+              "items": [
                 "user-guide/api-mediation/configuration-extender-jwt",
                 "user-guide/api-mediation/configuration-extender-passtickets"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Customizing routing behavior",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
-              items: [
+              "type": "category",
+              "label": "Customizing routing behavior",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
+              "items": [
                 {
-                  type: "category",
-                  label: "Customizing management of API ML load limits",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                    items: [
-                        "user-guide/api-mediation/configuration-connection-limits",
-                        "user-guide/api-mediation/configuration-gateway-timeouts"
-                      ],
+                  "type": "category",
+                  "label": "Customizing management of API ML load limits",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-connection-limits",
+                    "user-guide/api-mediation/configuration-gateway-timeouts"
+                  ]
                 },
                 "user-guide/api-mediation/configuration-cors",
                 "user-guide/api-mediation/configuration-url-handling",
@@ -269,56 +269,86 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Configuring authorization for API ML",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
-              items: [
+              "type": "category",
+              "label": "Configuring authorization for API ML",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
+              "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
                 "user-guide/api-mediation/configuration-saf-resource-checking"
-              ],
-            },                
+              ]
+            },
+            "user-guide/authentication-providers-for-apiml",
+            {
+              "type": "category",
+              "label": "Configuring storage for the Caching service",
+              "items": [
+                "extend/extend-apiml/api-mediation-infinispan",
+                "extend/extend-apiml/api-mediation-vsam",
+                "extend/extend-apiml/api-mediation-redis",
+                "extend/extend-apiml/api-mediation-infinispan"
+              ]
+            },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls"
-          ],
-          }
+          ]
+        }        
         ],
     },    
     {
       type: "category",
       label: "Installing Zowe client-side components",
+      link: {type:"doc", id:"user-guide/install-zowe-client-side-components"},
       collapsed: false,
       items: [
         {
           type: "category",
-          label: "Zowe CLI",
+          label: "Zowe CLI installation",
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
-            "user-guide/systemrequirements-cli",
             "user-guide/cli-install-cli-checklist",
+            {
+              type: "category",
+              label: "Zowe CLI software requirements",
+              link: {type:"doc", id:"user-guide/systemrequirements-cli"},
+              items: [
+                "user-guide/cli-swreqplugins",
+              ],
+              },
+            "user-guide/cli-install-configure-install-online-registry-proxy",
+            "user-guide/cli-install-configure-zosmf",
+            "user-guide/cli-install-configure-zosmf-security",
           {
           type: "category",
-          label: "Installing Zowe CLI",
+          label: "Installing Zowe CLI and Zowe CLI plug-ins",
           link: {type:"doc", id:"user-guide/cli-installcli"},
           items: [
             "user-guide/cli-configure-scs-on-headless-linux-os",
             "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-            "user-guide/cli-install-cli-nodejs-windows",
           ],
           },
-            "user-guide/install-cli-via-proxy",
             "user-guide/cli-updatingcli",
-            "user-guide/cli-uninstall",   
             {
               type: "category",
-              label: "Advanced Zowe CLI configuration",
+              label: "Configuring Zowe CLI",
               items: [
                 "user-guide/cli-configuringcli-ev",
                 "user-guide/cli-configuringcli-evfile",
+                "user-guide/cli-using-initializing-team-configuration",
+                {
+                  type: "category",
+                  label: "Configuring daemon mode",
+                  link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
+                  items: [
+                    "user-guide/cli-configure-daemon-on-zlinux-os",
+                  ],
+                },
               ],
             }, 
+            "user-guide/cli-uninstall",
+            "user-guide/cli-install-verify-your-installation", 
           ],
         },
         {
@@ -326,6 +356,7 @@ module.exports = {
           label: "Zowe Explorer",
           link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
           items: [
+            "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
@@ -457,6 +488,7 @@ module.exports = {
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -509,7 +541,6 @@ module.exports = {
               ],
             },
             "user-guide/api-mediation/api-mediation-update-password",
-            "user-guide/api-mediation-metrics-service",
             "user-guide/api-mediation/api-mediation-smf",
           ],
         },        
@@ -531,25 +562,23 @@ module.exports = {
             "user-guide/cli-using-issuing-first-command",
             {
               type: "category",
-              label: "Using team profiles",
+              label: "Using team configuration",
               link: {type:"doc", id:"user-guide/cli-using-using-team-profiles"},
               items: [
-                "user-guide/cli-using-initializing-team-configuration",
-                "user-guide/cli-using-test-zosmf-connection",
-                "user-guide/cli-using-team-configuration-application-developers",
-                "user-guide/cli-using-team-configuration-team-leaders",
-                "user-guide/cli-using-sharing-team-config-files",
+                {
+                type: "category",
+                label: "Benefits of team configuration",
+                link: {type:"doc", id:"user-guide/cli-using-benefits-of-team-config"},
+                items: [
+                  "user-guide/cli-using-editing-team-configuration",
+                  "user-guide/cli-using-creating-profiles",
+                  "user-guide/cli-using-sharing-team-config-files",
+                  "user-guide/cli-using-initializing-user-configuration",
+                  ],
+                },
                 "user-guide/cli-using-understand-profiles-configs",
                 "user-guide/cli-using-team-managing-credential-security",
                 "user-guide/cli-using-global-storing-properties-automatically",
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring daemon mode",
-              link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
-              items: [
-                "user-guide/cli-configure-daemon-on-zlinux-os",
               ],
             },
             "user-guide/cli-using-using-profiles-v1",
@@ -571,7 +600,6 @@ module.exports = {
               label: "Zowe CLI plug-ins",
               link: {type:"doc", id:"user-guide/cli-extending"},
               items: [
-                "user-guide/cli-swreqplugins",
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
                 {
@@ -583,7 +611,6 @@ module.exports = {
                   ],
                 },
                 "user-guide/cli-ftpplugin",
-                "user-guide/cli-imsplugin",
                 "user-guide/cli-mqplugin",
                 "user-guide/cli-idfplugin",
               ],
@@ -668,9 +695,16 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
+            {
+              type: "category",
+              label: "API Mediation Layer Quick start for development",
+              items: [
+                "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/quick-start-for-development",
+              ]
+            },
             "extend/extend-apiml/onboard-plain-java-enabler",
             "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/onboard-direct-eureka-call",
             "extend/extend-apiml/onboard-spring-boot-enabler",
             "extend/extend-apiml/onboard-micronaut-enabler",
             "extend/extend-apiml/onboard-nodejs-enabler",
@@ -680,15 +714,14 @@ module.exports = {
             "extend/extend-apiml/custom-metadata",
             "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
+            "extend/extend-apiml/api-mediation-layer-development-setup",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
                 "extend/extend-apiml/authentication-for-apiml-services",
-                "extend/extend-apiml/zaas-client",
-                "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/api-mediation-oidc-authentication",
+                "extend/extend-apiml/zaas-client",                
               ],
             },
             {
@@ -698,16 +731,6 @@ module.exports = {
               items: [
               ],
             },
-            {
-              type: "category",
-              label: "Configuring storage for the Caching service",
-              items: [
-                "extend/extend-apiml/api-mediation-infinispan",
-                "extend/extend-apiml/api-mediation-vsam",
-                "extend/extend-apiml/api-mediation-redis",
-                "extend/extend-apiml/api-mediation-infinispan",
-              ],
-            }
           ],
         },
         {

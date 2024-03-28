@@ -31,8 +31,6 @@ The configuration entries of each LPAR in the `zowe.yaml` file control which com
 
 The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set.  This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-For simplification of the diagram above, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
-
 To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex.md).
 
 ## Zowe architecture when running in Kubernetes cluster
@@ -118,13 +116,3 @@ When running on z/OS, the server uses the jobname suffix of CS.
 Zowe provides a number of rich GUI web applications for working with z/OS. Such applications include the Editor for files and datasets, the JES Explorer for jobs, and the IP Explorer for the TCPIP stack. You can access them through the Zowe desktop.
 
 ![Zowe Desktop Explorers](../images/mvd/desktop-explorers.png)
-
-### File API and JES API
-
-The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs can be abled in zowe server configuration.  
-
-The JES API server provides a set of REST APIs for working with JES. These APIs can be abled in zowe server configuration.
-
-Both the File API and JES API servers are registered as tiles on the API Catalog, so users can view the Swagger definition and test API requests and responses.
-
-

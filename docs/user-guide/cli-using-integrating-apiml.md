@@ -2,7 +2,11 @@
 
 Zowe API Mediation Layer (ML) provides a secure single point of access to a defined set of mainframe services. The layer provides API management features such as high-availability, consistent security, and a single sign-on (SSO) and multi-factor authentication (MFA) experience.
 
-Use tokens to access services through API ML without reauthenticating every time you issue a command. Tokens allow for secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
+You can use tokens or client certificates to integrate with API ML.
+
+Tokens allow you to access services through API ML without reauthenticating every time you issue a command. Tokens allow for secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
+
+Some  users prefer to use certificates to access API ML. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might be valid only for a short period of time. Certificates can be valid for much longer.
 
 ## How token management works
 
@@ -161,5 +165,32 @@ To perform SSO for the first set of services, log in to API ML and supply the `-
 
 To access the service that is *not* SSO-enabled, explicitly provide your username and password when you issue commands. Using the `--base-path` option ensures that the request is routed to API ML, but the username and password that you provide overrides the credentials in your base profile. This lets you sign in to the individual service.
 
-
 [def]: #specifying-a-base-path-with-zowe-v2-profiles
+
+## Using client certificates to authenticate to API ML
+
+To use a client certificate to generate an API ML token, open a command line window and issue the following command:
+
+    ```
+    zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path>
+    ```
+    - `<APIML Host>`
+    
+        Specifies the API ML host.
+    - `<APIML Port>`
+        
+        Specifies the API ML port.
+    - `<PEM Public Certificate Path>`
+    
+        Specifies the path for the PEM public certificate.
+    - `<PEM Private Certificate Path>`
+    
+        Specifies the path to the PEM private certificate.
+
+Zowe CLI procures a security token from the API ML and adds that token to the base profile in the applicable configuration file.
+
+:::note
+
+If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+
+:::

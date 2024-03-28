@@ -51,7 +51,7 @@ The `zwe init` command runs the subcommands in sequence automatically. If you ha
 zwe init --config /path/to/zowe.yaml
 ```
 
-:::note
+:::caution Validate successful initialization
 Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
 :::
 

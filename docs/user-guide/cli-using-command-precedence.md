@@ -5,12 +5,12 @@ You can provide your mainframe connection details (username, password, etc.) to 
 When you issue a command, the CLI *searches* for your command arguments in the following order:
 
 1. **Options** that you specify on individual commands.
-2. **Environment variables** that you define in the computer's operating system. 
+
+2. **Environment variables** that you define in the computer's operating system.
 
     For more information, see [Using environment variables](../user-guide/cli-using-using-environment-variables).
-3. **Service profiles** that you create (i.e. z/OSMF profile or another mainframe service).
-4. **Base profiles** that you create.
-
+3. **[Service profiles](../appendix/zowe-glossary.md#service-profile)** that you create (that is, a z/OSMF profile or another mainframe service).
+4. **[Base profiles](appendix/zowe-glossary.md#base-profile)** that you create.
     These can contain credentials for use with multiple services and/or an API ML login token.
 5. **Default option value**.
 

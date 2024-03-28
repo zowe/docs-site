@@ -16,12 +16,3 @@ Plug-ins can gain control of Zowe CLI legitimately during the execution of every
 - [IDF Plug-in for Zowe CLI](cli-idfplugin.md)
 - [Visual Studio Code (VSCode) Extension for Zowe](ze-install.md)
 
-- [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
-
-    :::warning
-
-    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
-
-    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
-
-    :::

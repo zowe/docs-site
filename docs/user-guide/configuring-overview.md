@@ -21,9 +21,9 @@ Successful completion of steps 2, 3, and 4 may require elevated security permiss
 To cofigure Zowe runtime, choose from the following options:
 
 * **Option 1: Configure Zowe manually using the `zwe init` command group**  
-To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see [Zowe configuration file](./installandconfig/#zowe-configuration-file).
+To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#zowe-configuration-file) which details all of the started tasks in the article _Preparing for installation_.
 
-Once your configuration file is prepared, see [Initializing the z/OS system with `zwe init`](./initialize-zos-system.md), for more information about using the `zwe init` command group.
+Once your configuration file is prepared, see [Configuring Zowe with zwe init](./initialize-zos-system.md), for more information about using the `zwe init` command group.
 
 * **Option 2: Configure Zowe with z/OSMF workflows**  
 You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
@@ -56,7 +56,7 @@ For more information about granting the user permissions, see [Assigning securit
 
 The Zowe cross memory server (ZIS), provides privileged cross-memory services to the Zowe Desktop and runs as an APF-authorized program. The same cross memory server can be used by multiple Zowe desktops. The cross memory server is needed to be able to log on to the Zowe desktop and operate its apps such as the Code Editor. 
 
-For more information, see [Installing and configuring the Zowe cross memory server (ZWESISTC)](./configure-xmem-server.md).
+For more information, see [Configuring the Zowe cross memory server (ZIS)](./configure-xmem-server.md).
 
 
 

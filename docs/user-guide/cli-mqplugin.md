@@ -30,83 +30,19 @@ Use one of the following methods to install or update the plug-in:
 
 ## Creating a user profile
 
-You create an mq profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed. Use one of the following methods to create a profile:
+After you install the plug-in, create an MQ profile. An MQ profile is recommended to issue commands to the MQ resource. MQ profiles contain your host, port, user name, and password for the IBM MQ REST API server of your choice. You can create multiple profiles and switch between them as needed.
 
-- **Create plug-in profiles using a configuration file:** Specify your profile and connection details in the `zowe.config.json` configuration file.
-
-- **Create plug-in profiles using a command:** Issue the `zowe profiles create` command to create the profile.
-
-We recommend that you create profiles using the configuration file. We do not recommend using profile commands because we are removing them in a future major release.
-
-
-### Creating plug-in profiles using a configuration file
-
-When you issue various zowe config commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the MQ plug-in, the commands create an entry for an `mq profile` in your `zowe.config.json` file.
-
-Alternatively, you can create a mq profile manually by adding a section that contains the configuration details to your `zowe.config.json`ok configuration file.
-
-1. Browse to the following directory `C:\Users\<username>\.zowe`
-
-2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
-
-    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init --gc`
-
-3. Add code to the "profiles" section as shown in the following example: 
-
-    **Example:**
-    ```
-    "Your_mq_profile": {
-        "type": "mq",
-        "properties": {
-            "host": "Your_host_name",
-            "port": Your_port_number
-        },
-        "secure": [
-            "user",
-            "password"
-        ]
-    }
-    ```
-4. Save the file
-
-You can now use your profile when you issue commands in the mq command group.
-
-### Creating plug-in profiles using a command
-
-The following steps describe how to create a profile using the `zowe profiles create` command.
-
-1. Open a terminal window and issue the following command:
+**Follow these steps:**
+1.  Install the IBM MQ Plug-in for Zowe CLI.
+2.  Create an MQ profile:
 
     ```
-    zowe profiles create mq  <profile_name> --host <host> --port <port> --user <user> --password <password>
+    zowe config init
     ```
-
-    **`profile_name`:**
-
-    Specifies a name for your profile.
-
-    **`host`:**
-
-    Specifies the host name for the instance.
-
-    **`user`:**
-
-    Specifies your user name to log in to the instance.
-
-    **`password`:**
-
-    Specifies your password to log in to the instance.
-
-    **`port`:**
-
-    Specifies the port number to connect to the instance.
-
-    **Example:**
+3.  Set the port number to your MQ port:
 
     ```
-    zowe profiles create mq-profile queue1 --host mq.zowe.org --port 1443 --user zowe --password zowepass
+    zowe config set profiles.mq.properties.port <port number>
     ```
-
-2. Press Enter. The result of the command displays as a success or failure message.
 
 You can now use your profile when you issue commands in the mq command group.

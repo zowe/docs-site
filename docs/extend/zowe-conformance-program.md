@@ -8,6 +8,13 @@ Conformance provides Independent Software Vendors (ISVs), System Integrators (SI
 
 As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe, you are encouraged to get certified today.
 
+
+:::info find out more
+
+The [Zowe Conformance Program Explained](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) blog on Medium.com describes the conformance program in more detail.
+
+:::
+
 ## How to participate
 
 To participate in the Zowe Conformance Program, follow the process on the [Zowe Conformance Program website](https://openmainframeproject.org/our-projects/zowe-conformance-program/). You can also find a list of products that have earned Zowe Conformant status.  

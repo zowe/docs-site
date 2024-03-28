@@ -18,8 +18,7 @@ An extension must have a container image to run in a Zowe container environment.
 
 The core components define component Dockerfiles and use GitHub Actions to build images. For example,
 
-- `jobs-api` is a component which has built-in web service. To build the images, this component defines a Dockerfile at https://github.com/zowe/jobs/blob/v2.x/master/container/Dockerfile and defines a GitHub Actions workflow at https://github.com/zowe/jobs/tree/v2.x/master/.github/workflows.
-- `explorer-jes` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md). It defines a Dockerfile at https://github.com/zowe/explorer-jes/blob/v2.x/master/container/Dockerfile. Similar to `jobs-api`, it also defines a GitHub Actions workflow at https://github.com/zowe/explorer-jes/blob/v2.x/master/.github/workflows/build_test.yml to build the images.
+- `explorer-jes` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/containers/conformance.md). It defines a Dockerfile at https://github.com/zowe/explorer-jes/blob/v2.x/master/container/Dockerfile. It also defines a GitHub Actions workflow at https://github.com/zowe/explorer-jes/blob/v2.x/master/.github/workflows/build_test.yml to build the images.
 
 The following GitHub Actions are used by the core components to build conformant images. They might not be completely reusable for you, but are provided as an example.
 
