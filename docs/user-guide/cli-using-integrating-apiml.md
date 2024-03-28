@@ -6,7 +6,7 @@ You can use tokens or client certificates to integrate with API ML.
 
 Tokens allow you to access services through API ML without reauthenticating every time you issue a command. Tokens allow for secure interaction between the client and server. When you issue commands to API ML, the layer routes requests to an appropriate API instance based on system load and available API instances.
 
-Some  users prefer to use certificates to access API ML. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might be valid only for a short period of time. Certificates can be valid for much longer.
+Some users prefer to use certificates to access API ML. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might be valid only for a short period of time. Certificates can be valid for much longer.
 
 ## How token management works
 
@@ -20,7 +20,7 @@ Zowe CLI also supports standard token implementations such as Java Web Tokens (J
 
 ## Logging in
 
-To request a token and log in to API ML:
+Follow these steps to request a token and log in to API ML:
 
 1. Issue the following command to log in to API ML:
 
@@ -42,8 +42,7 @@ To request a token and log in to API ML:
 
     :::note
 
-    Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
-
+    Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](./cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
     :::
 
 3. Provide a base path and base profile on commands to connect to API ML.
@@ -68,7 +67,7 @@ To request a token and log in to API ML:
 
 Log out to prompt the API ML token to expire and remove it from your base profile.
 
-To log out of the API ML:
+Use the following logout prompt:
 
 ```
 zowe auth logout apiml
@@ -93,7 +92,7 @@ Ensure that you *do not* provide username, password, host, or port directly on t
 
 ### Specifying a base path with Zowe V2 profiles
 
-To specify a base path with Zowe V2 profiles:
+Use the following steps to specify a base path with Zowe V2 profiles:
 
 1. Note the complete path for a z/OSMF instance registered to API ML.
 
@@ -119,7 +118,7 @@ To specify a base path with Zowe V2 profiles:
 
 ### Specifying a base path with Zowe V1 profiles
 
-To specify a base path with Zowe V1 profiles:
+Use the following steps to specify a base path with Zowe V1 profiles:
 
 1. Note the complete path for a z/OSMF instance registered to API ML.
 
