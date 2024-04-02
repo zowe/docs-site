@@ -4,14 +4,24 @@ You can install plug-ins to extend the capabilities of Zowe&trade; CLI. Plug-ins
 
 :::info Important
 
-Plug-ins can gain control of your CLI application legitimately during the execution of every command. Install third-party plug-ins at your own risk. Zowe makes no warranties regarding the use of third-party plug-ins.
+Plug-ins can gain control of Zowe CLI legitimately during the execution of every command. Install third-party plug-ins at your own risk.
 
 :::
 
-- [Install Zowe CLI plug-ins](cli-installplugins.md)
+- [Installing Zowe CLI plug-ins](cli-installplugins.md)
 - [IBM® CICS Plug-in for Zowe CLI](cli-cicsplugin.md)
 - [IBM® Db2® Database Plug-in for Zowe CLI](cli-db2plugin.md)
 - [IBM® z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md)
-- [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
 - [IBM® MQ Plug-in for Zowe CLI](cli-mqplugin.md)
+- [IDF Plug-in for Zowe CLI](cli-idfplugin.md)
 - [Visual Studio Code (VSCode) Extension for Zowe](ze-install.md)
+
+- [IBM® IMS™ Plug-in for Zowe CLI](cli-imsplugin.md)
+
+    :::warning
+
+    As of Zowe v2.15, the **IBM IMS Plug-in** has been deprecated.
+
+    No additional security updates, bug fixes, or enhancements for the plug-in are expected.
+
+    :::

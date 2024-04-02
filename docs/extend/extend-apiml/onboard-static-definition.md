@@ -80,21 +80,21 @@ services:
         - gatewayUrl: api/v2
           serviceRelativeUrl: /v2
       authentication:
-              scheme: httpBasicPassTicket
-              applid: ZOWEAPPL
+        scheme: httpBasicPassTicket
+        applid: ZOWEAPPL
       apiInfo:
         - apiId: io.swagger.petstore
           gatewayUrl: api/v2
 
 catalogUiTiles:
     static:
-        title: Static API services
-        description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
+      title: Static API services
+      description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
 ```
 
 In this example, a suitable name for the file is `petstore.yml`.
 
-:::note**Notes:**
+:::note Notes:
 
 * The filename does not need to follow specific naming conventions but it requires the `.yml` extension.
 * The file can contain one or more services defined under the `services:` node.
@@ -103,7 +103,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 * The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
 
-:::tip**Tips:**
+:::tip Tips:
 
 * There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
@@ -330,65 +330,7 @@ additionalServiceMetadata:
     
 * **authentication**
 
-    Parameters under this grouping allow a service to accept the Zowe JWT token. The API Gateway translates the token to an authentication method supported by a service.
-        
-    * **authentication.scheme**
-    
-        This parameter specifies a service authentication scheme. 
-        The following schemes are supported by the API Gateway:
-        
-        * **bypass**
-        
-            This value specifies that the token is passed unchanged to the service. This is the default scheme when no authentication parameters are specified. 
-            
-         * **zoweJwt**   
-         
-            This value specifies that a service accepts the Zowe JWT token. No additional processing is done by the API Gateway.
-         
-         * **httpBasicPassTicket**
-         
-            This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-            It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.
-            
-            **Tip:** For more information, see [Enabling PassTicket creation for API Services that accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
-         
-        * **safIdt**
-
-            This value specifies that the application recognizes the SAF IDT scheme and fills the `X-SAF-Token` header with the token produced by the Saf IDT provider implementation.
-        
-            For more information, see [SAF IDT provider](implement-new-saf-provider.md)
-
-        * **x509**
-
-            This value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the southbound service, but rather the certificate that is forwarded in the header that authenticates the user.
-
-         * **zosmf**
-         
-            This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication).
-            This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.
-            
-            **Tip:** For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
-
-    * **authentication.headers**
-        
-        When the `x509` scheme is specified, use the `headers` parameter to select which values to send to a service. Use one of the following values:
-        
-        * `X-Certificate-Public`
-        
-           The public part of client certificate base64 encoded 
-
-        * `X-Certificate-DistinguishedName`
-        
-           The distinguished name from client certificate
-
-        * `X-Certificate-CommonName` 
-        
-          The common name from the client certificate
-          
-    * **authentication.applid**
-    
-        This parameter specifies a service APPLID.
-        This parameter is only valid for the `httpBasicPassTicket` authentication scheme.
+    The information about the possible ways to integrate authentication are available in [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md) article. 
 
 * **apiInfo**
 
@@ -473,11 +415,11 @@ additionalServiceMetadata:
            description: This is the second tile with ID tile2
    ```
 
-    * **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.\{tileId\}.title**
     
        This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-    * **catalogUiTile.{tileId}.description**
+    * **catalogUiTile.\{tileId\}.description**
     
        This parameter specifies the detailed description of the API Catalog UI dashboard tile. This value is displayed in the API Catalog UI dashboard as the tile description.
 
@@ -501,7 +443,7 @@ additionalServiceMetadata:
         
         All changes are applied. Existing parameters are overwritten.     
         
-    * **additionalServiceMetadata.{updatedParameter}**
+    * **additionalServiceMetadata.\{updatedParameter\}**
     
         This parameter specifies any metadata parameters that are updated.      
 
@@ -548,7 +490,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
     
     - To place your YAML file within the instance directory, copy your YAML file to the `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory. 
 
-    :::note**Notes:**
+    :::note Notes:
     - The `${zoweInstanceDir}/workspace/api-mediation/api-defs` directory is created the first time that Zowe starts. If you have not yet started Zowe, this directory might be missing.
     - The user ID `ZWESVUSR` that runs the Zowe started task must have permission to read the YAML file.
     :::  

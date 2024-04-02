@@ -24,6 +24,8 @@ zwe components install process-hook -c /path/to/zowe.yaml -n component-name
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name|-n|string|yes|Component name.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -38,6 +40,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

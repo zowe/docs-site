@@ -6,7 +6,7 @@ In an HA setup the different Zowe API Mediation Gateway servers share the same n
 
 Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`.  If you are running the caching service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
 
-To learn more about Caching Service, see [Using the Caching Service](../extend/extend-apiml/api-mediation-caching-service.md).  
+To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service). 
 
 :::note
 The Infinispan storage method is recommended for production usage.
@@ -18,7 +18,7 @@ The Infinispan storage method is recommended for production usage.
   
    To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
 
-   ```
+   ``` yaml
    zowe
      components:
        caching-service:
@@ -30,20 +30,21 @@ The Infinispan storage method is recommended for production usage.
              size: 10000
    ```
 
-## infinispan
+## Infinispan
 
   Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
   Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
-
-    ```
-    zowe
-      environments:
-            JGROUPS_BIND_PORT:
-            JGROUPS_BIND_ADDRESS:
-            CACHING_STORAGE_INFINISPAN_INITIALHOSTS:
-            CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION:
-    ```
+  ``` yaml
+  zowe
+    components:
+          caching-service:
+            storage:
+              mode: infinispan
+              infinispan: 
+                jgroups:
+                  port: 7098
+  ```
 
 ## VSAM
   
@@ -52,7 +53,7 @@ The Infinispan storage method is recommended for production usage.
 
   The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)`.  You can edit and submit this yourself, or else if use `zwe init vsam` which will copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and create a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.  
   
-  ```
+  ```yaml
   zowe:
     setup:
       mvs:
@@ -110,7 +111,7 @@ The Infinispan storage method is recommended for production usage.
    To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
    
    
-   ```
+   ```yaml
    zowe:
      components:
        caching-service:

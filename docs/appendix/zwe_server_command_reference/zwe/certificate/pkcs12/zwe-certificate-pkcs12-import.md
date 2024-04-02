@@ -9,6 +9,8 @@
 Import certificate and/or certificate authorities into PKCS12 keystore.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -31,6 +33,8 @@ Full name|Alias|Type|Required|Help message
 --source-password|-sp|string|no|Password of the source PKCS12 keystore.
 --source-alias|-sa|string|no|Private keys should also be exported.
 --trust-cas||string|no|PEM files of extra certificate authorities should be trusted, separated by comma.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -49,6 +53,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0179E|179|Failed to import certificate (authorities) into keystore %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

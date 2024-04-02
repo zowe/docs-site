@@ -66,7 +66,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
-* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/master/onboarding-enabler-java-sample-app)
+* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/v2.x.x/onboarding-enabler-java-sample-app)
 
 ## Configuring your project
 
@@ -536,7 +536,8 @@ where:
 
 ### Authentication parameters
 
-These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](authentication-for-apiml-services.md/#authentication-parameters).
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters).
+
     
 ### API Security
 
@@ -573,7 +574,8 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
+  
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -587,7 +589,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -604,7 +606,9 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md) Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md#api-ml-saf-keyring).
+
+Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings.
 
@@ -644,7 +648,7 @@ where:
 
 ### Custom Metadata
 
-For information about custom metadata, see the topic [Custom Metadata](custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](./custom-metadata.md).
     
 ##  Registering your service with API ML
 
@@ -732,88 +736,89 @@ The following steps outline the process of registering your service with API ML.
 The following code block is a full example of a context listener class implementation.
 
 **Example:**
+```
+import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
+import org.zowe.apiml.exception.ServiceDefinitionException;
+import lombok.extern.slf4j.Slf4j;
 
-    import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
-    import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
-    import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
-    import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
-    import org.zowe.apiml.exception.ServiceDefinitionException;
-    import lombok.extern.slf4j.Slf4j;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-    import javax.servlet.ServletContextEvent;
-    import javax.servlet.ServletContextListener;
+/**
+ *  API ML Micro service implementation of ServletContextListener interface.
+ */
+@Slf4j
+public class ApiDiscoveryListener implements ServletContextListener {
 
     /**
-     *  API ML Micro service implementation of ServletContextListener interface.
+     * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
      */
-    @Slf4j
-    public class ApiDiscoveryListener implements ServletContextListener {
+    private ApiMediationClient apiMediationClient;
 
-        /**
-         * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
-         */
-        private ApiMediationClient apiMediationClient;
+    /**
+     *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
+     *  and registers this micro service with API ML.
+     *
+     *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
+     *  {@link java.util.Map} or a string containing the configuration data.
+     *
+     *  Here we use the most convenient method for our Java Servlet based service,
+     *  i.e expecting all the necessary initialization information to be present
+     *  in the  {@link javax.servlet.ServletContext} init parameters.
 
-        /**
-         *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
-         *  and registers this micro service with API ML.
-         *
-         *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
-         *  {@link java.util.Map} or a string containing the configuration data.
-         *
-         *  Here we use the most convenient method for our Java Servlet based service,
-         *  i.e expecting all the necessary initialization information to be present
-         *  in the  {@link javax.servlet.ServletContext} init parameters.
-
-         *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
-         *  which is then used to register this service with API ML Discovery Service.
-         *
-         *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
-         *  and only can throw {@link ServiceDefinitionException} checked exception.
-         *
-         * @param sce
-         */
-        @Override
-        public void contextInitialized(ServletContextEvent sce) {
-            try {
+     *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
+     *  which is then used to register this service with API ML Discovery Service.
+     *
+     *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+     *  and only can throw {@link ServiceDefinitionException} checked exception.
+     *
+     * @param sce
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        try {
+            /*
+             * Load configuration method with ServletContext
+             */
+            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
+            if (config  != null) {
                 /*
-                 * Load configuration method with ServletContext
+                 * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
                  */
-                ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
-                if (config  != null) {
-                    /*
-                     * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
-                     */
-                    apiMediationClient = new ApiMediationClientImpl();
+                apiMediationClient = new ApiMediationClientImpl();
 
-                    /*
-                     * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
-                     */
-                    apiMediationClient.register(config);
-                }
-            } catch (ServiceDefinitionException sde) {
-                log.error("Service configuration failed. Check log for previous errors: ", sde);
+                /*
+                 * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
+                 */
+                apiMediationClient.register(config);
             }
-        }
-
-        /**
-         * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
-         */
-        @Override
-        public void contextDestroyed(ServletContextEvent sce) {
-            if (apiMediationClient != null) {
-                apiMediationClient.unregister();
-            }
-
-            apiMediationClient = null;
+        } catch (ServiceDefinitionException sde) {
+            log.error("Service configuration failed. Check log for previous errors: ", sde);
         }
     }
+
+    /**
+     * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
+     */
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        if (apiMediationClient != null) {
+            apiMediationClient.unregister();
+        }
+
+        apiMediationClient = null;
+    }
+}
+```
 
 ## Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 
@@ -845,9 +850,10 @@ Some logging frameworks provide other tools to suppress repeated messages. Consu
 The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
 
 Add the following code to your configuration file if you use XML configuration:  
-
-    <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
-        <AllowedRepetitions>0</AllowedRepetitions>
-    </turboFilter>
+```
+<turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+    <AllowedRepetitions>0</AllowedRepetitions>
+</turboFilter>
+```
 
 **Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 

@@ -2,7 +2,7 @@
 
 As a security administrator it is necessary to  configure the z/OS system for Zowe. Review the following article to learn about z/OS prerequisites, and z/OS configuration requirements for specific settings.
 
-:::info**Required role:** security administrator
+:::info Required role: security administrator
 :::
 
 ## z/OS prerequisites
@@ -123,7 +123,7 @@ Define or check the following configurations depending on whether ICSF is alread
         (repeat for user-acids IKED, NSSD, and Policy Agent)
 
 
-:::note**Notes:**
+:::note Notes
 - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
 - Refer to the [z/OS 2.3.0 z/OS Cryptographic Services ICSF System Programmer's Guide: Installation, initialization, and customization](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/iandi.htm).
 - CCA and/or PKCS #11 coprocessor for random number generation.
@@ -183,7 +183,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment. 
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
 
       /* Activate these changes */
 
@@ -199,7 +199,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
 - If you use Top Secret, complete the following steps:  
       
-   1. Define the BPX Resource and access for <zowe_stc_user>.
+   1. Define the BPX Resource and access for `<zowe_stc_user>`.
       ```
       TSS ADD(`owner-acid`) IBMFAC(BPX.)
       ```
@@ -209,7 +209,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
    2. Issue the following commands and review the output to check whether permission has been successfully granted:
       ```
       TSS WHOHAS IBMFAC(BPX.SERVER)
@@ -218,7 +218,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       TSS WHOHAS IBMFAC(BPX.DAEMON)
       ```
 - If you use ACF2, complete the following steps:
-   1. Define the BPX Resource and access for <zowe_stc_user>.
+   1. Define the BPX Resource and access for `<zowe_stc_user>`.
       ```
       SET RESOURCE(FAC)
       ```
@@ -228,7 +228,7 @@ If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDAT
       ```
       RECKEY BPX ADD(DAEMON ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
       ```
-      where <zowe_stc_user> is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.  
+      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
       ```
       F ACF2,REBUILD(FAC)
       ```
@@ -481,7 +481,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
 
-:::note**Notes:**
+:::note Notes
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::
@@ -693,7 +693,7 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 - [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
-:::notes**Notes**
+:::note Notes
 * To support the multi-factor authentication, it is necessary to apply z/OSMF APAR  [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
 
 * For information on using MFA in Zowe, see [Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).

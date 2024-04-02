@@ -1,6 +1,6 @@
 # Limiting access to information or services in the API Catalog
 
-:::info**Role:** system administrator
+:::info Role: system administrator
 :::
 
 As a system administrator, you can limit access to information and/or services available within the API Catalog and through the API Mediation Layer and check for the authorization of the user on certain endpoints.
@@ -14,7 +14,7 @@ Choose from the following use cases:
 
 * The API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked via an External Security Manager (ESM).
 
-    See the section [SAF Resource Checking](#saf-resource-checking).
+    See the article [SAF Resource Checking](./configuration-saf-resource-checking.md).
 
 ## Hide service information
 

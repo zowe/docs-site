@@ -1,4 +1,4 @@
-# Configuring Zowe Application Framework
+`# Configuring Zowe Application Framework
 
 After you install Zowe&trade;, you can optionally configure the Zowe Application Framework as a Mediation Layer client, configure connections for the terminal application plug-ins, or modify the Zowe Application Server and Zowe System Services (ZSS) configuration, as needed.
 
@@ -142,12 +142,12 @@ Prior to Zowe release 1.8.0, the location of the configuration directories were 
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <RUNTIME_DIR>/components/app-server/share
-| siteDir | <INSTANCE_DIR>/workspace/app-server/site | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
-| instanceDir | <INSTANCE_DIR>/workspace/app-server | zlux-app-server/deploy/instance |
-| groupsDir | <INSTANCE_DIR>/workspace/app-server/groups | zlux-app-server/deploy/instance/groups |
-| usersDir | <INSTANCE_DIR>/workspace/app-server/users | zlux-app-server/deploy/instance/users |
-| pluginsDir | <INSTANCE_DIR>/workspace/app-server/plugins | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
+| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within `<RUNTIME_DIR>/components/app-server/share`
+| siteDir | `<INSTANCE_DIR>/workspace/app-server/site` | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
+| instanceDir | `<INSTANCE_DIR>/workspace/app-server` | zlux-app-server/deploy/instance |
+| groupsDir | `<INSTANCE_DIR>/workspace/app-server/groups` | zlux-app-server/deploy/instance/groups |
+| usersDir | `<INSTANCE_DIR>/workspace/app-server/users` | zlux-app-server/deploy/instance/users |
+| pluginsDir | `<INSTANCE_DIR>/workspace/app-server/plugins` | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
 
 
 ## Application plug-in configuration
@@ -867,3 +867,4 @@ The API returns the following information in a JSON response:
 Swagger API documentation is provided in the `<RUNTIME_DIR>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
 **Note:** The "agent" end points interact with the agent specified in the `server.json` file. By default this is ZSS.
+`

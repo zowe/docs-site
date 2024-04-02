@@ -9,6 +9,8 @@
 Create a new  PKCS12 format certificate.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -40,6 +42,8 @@ Full name|Alias|Type|Required|Help message
 --validity||string|no|Validity days of certificate.
 --key-usage||string|no|Key usage of certificate.
 --extended-key-usage||string|no|Extended key usage of certificate.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -61,6 +65,8 @@ Error code|Exit code|Error message
 ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
 ZWEL0158E|158|%s already exists.
 ZWEL0169E|169|Failed to create certificate "%s".
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

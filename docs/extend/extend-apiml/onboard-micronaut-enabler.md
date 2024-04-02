@@ -75,43 +75,44 @@ Currently, the only build automation system for use with onboarding a Micronaut 
    The following example shows a sample `gradle.build` file:
 
     **Example:**
+    ```
+    plugins {
+        id "io.micronaut.application" version '1.0.5'
+        id 'com.github.johnrengelman.shadow' version '6.1.0'
+    }
+    mainClassName = 'org.zowe.apiml.Application'
 
-        plugins {
-            id "io.micronaut.application" version '1.0.5'
-            id 'com.github.johnrengelman.shadow' version '6.1.0'
-        }
-        mainClassName = 'org.zowe.apiml.Application'
+    shadowJar {
+        archiveBaseName.set('micronaut-enabler')
+        archiveClassifier.set('')
+        archiveVersion.set('1.0')
+    }
+    version "0.1"
+    group "org.zowe.apiml"
 
-        shadowJar {
-            archiveBaseName.set('micronaut-enabler')
-            archiveClassifier.set('')
-            archiveVersion.set('1.0')
-        }
-        version "0.1"
-        group "org.zowe.apiml"
+    repositories {
+        url artifactoryMavenRepo
+    }
 
-        repositories {
-            url artifactoryMavenRepo
+    micronaut {
+        version = "2.1.3"
+        runtime "netty"
+        testRuntime "junit5"
+        processing {
+            incremental true
+            annotations "org.zowe.apiml.*"
         }
+    }
 
-        micronaut {
-            version = "2.1.3"
-            runtime "netty"
-            testRuntime "junit5"
-            processing {
-                incremental true
-                annotations "org.zowe.apiml.*"
-            }
-        }
+    dependencies {
+        implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
+    }
 
-        dependencies {
-            implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
-        }
-
-        java {
-            sourceCompatibility = JavaVersion.toVersion('1.8')
-            targetCompatibility = JavaVersion.toVersion('1.8')
-        }
+    java {
+        sourceCompatibility = JavaVersion.toVersion('1.8')
+        targetCompatibility = JavaVersion.toVersion('1.8')
+    }
+    ```
 
 8. (Optional) Create a shadow jar.
 
@@ -286,4 +287,4 @@ Create a `logback.xml` file in the `resources` folder and include the `applicati
 
 ## Validate successful registration
 
-After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by teh Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
+After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by the Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.

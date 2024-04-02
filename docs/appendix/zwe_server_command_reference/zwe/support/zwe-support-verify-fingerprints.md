@@ -6,6 +6,8 @@
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -28,6 +30,8 @@ ZWEL0113E|113|Failed to find Zowe version. Please validate your Zowe directory.
 ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0181E|181|Failed to verify Zowe file fingerprints.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
