@@ -78,7 +78,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    This article provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
 
-- [**Zowe API ML repository**](https://github.com/zowe/zowe-api)
+- [**Zowe API ML repository**](https://github.com/zowe/api-layer)
 
    To start working with the code immediately, check out this code repository. 
 
@@ -90,7 +90,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    This article describes how API ML uses Transport Layer Security (TLS). Use this guide to familiarize yourself with the API ML security concepts.
 
-- [**Zowe API Mediation Layer Single-Sign-On Overview**](../extend/extend-apiml/api-mediation-sso.md)
+- [**Zowe API Mediation Layer Single Sign On Overview**](../user-guide/api-mediation-sso)
 
    This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation.
 

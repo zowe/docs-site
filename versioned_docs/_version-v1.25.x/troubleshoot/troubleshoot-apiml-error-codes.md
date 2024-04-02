@@ -1057,7 +1057,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The URI did not follow the format /{serviceId}/{type}/{version}/{endpoint} or /{type}/{version}/{serviceId}/{endpoint}.
+  The URI did not follow the format `/{serviceId}/{type}/{version}/{endpoint}` or `/{type}/{version}/{serviceId}/{endpoint}`.
 
   **Action:**
 

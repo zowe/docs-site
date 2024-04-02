@@ -2,7 +2,7 @@
 
 Review this overview article to familiarize yourself with key concepts used in the Zowe server-side installation process. After reviewing these key concepts, review the articles in this section to prepare your system for installation. 
 
-:::info**Required roles:** system programmer, security administrator, storage administrator
+:::info Required roles: system programmer, security administrator, storage administrator
 :::
 
 To prepare for Zowe server-side installation, we recommend that your installation team review the installation and configuration tasks and the indicated required roles to perform specific procedures. Doing so can help you complete the process without encountering delays waiting for tasks to be completed at the last minute.
@@ -68,7 +68,7 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
 ```
 
 ### `zwe` command
-The `zwe` command is provided in the <RUNTIME_DIR>/bin directory.
+The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory.
 
 The zwe init command is a combination of the following subcommands. Each subcommand defines a configuration.
 
@@ -87,7 +87,7 @@ Configures the system to launch the Zowe started task.
 
 In combination, these commands initialize Zowe, manage Zowe instances, and perform common tasks.
 
-:::tip**Tips:**
+:::tip Tips:
 * The `zwe` command has built in help that can be retrieved with the `-h` suffix. Use `zwe -h` to see all supported `zwe` commands.
 
   For more information about `zwe` see [zwe](../appendix/zwe_server_command_reference/zwe/zwe) in the appendix.
@@ -114,7 +114,7 @@ Zowe has the following started tasks:
    - **`ZWESLSTC`**  
    This started task brings up other features of the Zowe runtime on z/OS upon request. Features may include Desktop, API Mediation Layer, ZSS, and more. When using containerization, it is likely that the only feature will be ZSS. This task can be used for a single Zowe instance deployment, and can also be used for Zowe high availability deployment in Sysplex. This task brings up and stops Zowe instances, or specific Zowe components without restarting the entire Zowe instances.
    
-:::info**Important!**
+:::info Important
 * In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](configure-zos-system.md).
 * Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
 :::
@@ -162,7 +162,7 @@ To create this configuration, you can copy from `example-zowe.yaml` located in Z
 To learn more about this Zowe configuration file, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
 
 
-:::tip**zowe.yaml configuration tips:**  
+:::tip zowe.yaml configuration tips:  
 
 When you execute the `zwe` command, the `--config` or `-c` argument is used to pass the location of a `zowe.yaml` file.
 

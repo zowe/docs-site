@@ -1,6 +1,9 @@
-# (Optional) Addressing authentication requirements
+# (Recommended) Addressing authentication requirements
 
-The following features are optional with additional prerequisites.
+The following features are not required, but are recommended with additional prerequisites.
+
+:::info Roles required: security administrator
+:::
 
 ## Multi-Factor Authentication (MFA)
 
@@ -19,7 +22,7 @@ For information about using MFA in Zowe Application Framework, see [Application 
 Multi-factor authentication requires configuration with Single-Sign-On (SSO). Ensure that SSO is configured before you use MFA in Zowe.
 :::
 
-## Single Sign-On (SSO)
+## Single Sign On (SSO)
 
 Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
 
@@ -27,7 +30,8 @@ Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
 
-For more information about single-sign-on (SSO), see [Zowe API Mediation Layer Single-Sign-On Overview](../extend/extend-apiml/api-mediation-sso.md).
+For more information about single sign on (SSO), see [Zowe API Mediation Layer Single Sign On Overview](./api-mediation-sso).
+
 
 ## API Mediation Layer OIDC Authentication
 
