@@ -42,7 +42,7 @@ Follow these steps to request a token and log in to API ML:
 
     :::note
 
-    Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](./cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
+    Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
     :::
 
 3. Provide a base path and base profile on commands to connect to API ML.
@@ -190,6 +190,6 @@ Zowe CLI procures a security token from the API ML and adds that token to the ba
 
 :::note
 
-If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
 
 :::
