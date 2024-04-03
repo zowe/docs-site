@@ -686,20 +686,33 @@ module.exports = {
               items: [
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
                 "extend/extend-apiml/quick-start-for-development",
+                "extend/extend-apiml/api-mediation-layer-development-setup",
               ]
             },
-            "extend/extend-apiml/onboard-plain-java-enabler",
+            {
+              type: "category",
+              label: "Libraries for integration (Enablers)",
+              items: [
+                "extend/extend-apiml/onboard-plain-java-enabler",
+                "extend/extend-apiml/onboard-spring-boot-enabler",
+                "extend/extend-apiml/onboard-micronaut-enabler",
+                "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-static-definition"    
+              ]
+            },
+            {
+              type: "category",
+              label: "Routing",
+              items: [
+                "extend/extend-apiml/api-mediation-versioning",
+                "extend/extend-apiml/api-mediation-websockets"
+              ]
+            },
             "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/onboard-spring-boot-enabler",
-            "extend/extend-apiml/onboard-micronaut-enabler",
-            "extend/extend-apiml/onboard-nodejs-enabler",
-            "extend/extend-apiml/onboard-static-definition",
             "extend/extend-apiml/create-apiml-extension",
             "extend/extend-apiml/api-mediation-message-service",
             "extend/extend-apiml/custom-metadata",
-            "extend/extend-apiml/api-mediation-versioning",
             "extend/extend-apiml/implement-new-saf-provider",
-            "extend/extend-apiml/api-mediation-layer-development-setup",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
