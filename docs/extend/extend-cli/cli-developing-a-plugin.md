@@ -19,7 +19,9 @@ If you are interested in creating a credential manager plug-in, see the [Zowe CL
 
 1. Open a terminal and run the command `mkdir zowe-tutorial`.
     
-    **Note:** All the files created through this tutorial are saved in this tutorial directory.
+    :::note
+    All the files created through this tutorial are saved in this tutorial directory.
+    :::
 2. Enter `cd zowe-tutorial` to change directory into your `zowe-tutorial` folder.
 3. Download the [source code zip file](https://github.com/zowe/zowe-cli-sample-plugin/archive/refs/heads/master.zip) from the Zowe CLI sample plug-in repository.
 4. In your File Explorer, extract the zip file to the  `zowe-tutorial` folder.
@@ -43,7 +45,9 @@ If you are interested in creating a credential manager plug-in, see the [Zowe CL
 
     When successful, a progress bar displays. Once the plug-in is installed, a message displays the status of the packages in the `node_modules` directory.
 
-    **Note:** If vulnerabilities are found in any of the installed dependencies, refer to [npm Docs](https://docs.npmjs.com/cli/v9/commands/npm-audit) for how to fix them.
+    :::note
+    If vulnerabilities are found in any of the installed dependencies, refer to [npm Docs](https://docs.npmjs.com/cli/v9/commands/npm-audit) for how to fix them.
+    :::
 
 **To create a unique plug-in:** Change the `files-util` directory to a name applicable for your project.
 
@@ -65,7 +69,7 @@ This tutorial uses `@zowe/files-util` as the tutorial plug-in name.
 
 Define json configurations for the plug-in to Imperative.
 
-Change the `src/imperative.ts` file to contain the following configurations:
+Change the `src/pluginDef.ts` file to contain the following configurations:
 
 ```typescript
 import { IImperativeConfig } from "@zowe/imperative";
@@ -80,7 +84,7 @@ const config: IImperativeConfig = {
 export = config;
 ```
 
-When successful, the `src/imperative.ts` file contains the new configurations.
+When successful, the `src/pluginDef.ts` file contains the new configurations.
 
 **To create a unique plug-in:** Change the plug-in name, display name, and description according to your project.
 
@@ -268,7 +272,11 @@ Follow these steps:
     ```
     When successful, the `Diff.definition.ts`, `DataSets.definition.ts`, and `DataSets.handler.ts` files contain the new code.
 
-**Note:** If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
+:::note
+
+If you are adding multiple commands to your CLI plug-in, consider moving the code that creates a session into a base handler class that can be shared across multiple commands. See the [sample plugin code](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/src/cli/list/ListBaseHandler.ts) for an example of how this can be done.
+
+:::
 
 **To create a unique plug-in:** Refer to file names specific to your project. Your code likely follows the same structure, but command name, handler, definition, and other information would differ.
 
@@ -314,7 +322,7 @@ Follow these steps:
 
     When successful, the output displays plain text diffs of the entered data sets.
 
-**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plug-in name in the `src/imperative.ts` file.
+**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plug-in name in the `src/pluginDef.ts` file.
 
 ## Bringing together new tools!
 
@@ -332,7 +340,11 @@ Follow these steps:
 
 1. Run `npm install --global diff2html-cli` to install `diff2html`.
 
-    **Note:** Zowe is not associated with `diff2html-cli`.
+    :::note
+
+    Zowe is not associated with `diff2html-cli`.
+    
+    :::
 
 2. To pipe your Zowe CLI plug-in output to `diff2html`, run the following command with your information:
 
