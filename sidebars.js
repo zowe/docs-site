@@ -50,11 +50,11 @@ module.exports = {
             id: "appendix/zowe-security-glossary",
             },
             { type: "doc",
-              label: "Digital Certificates",
+              label: "Zowe Certificates overview",
               id: "getting-started/zowe-certificates-overview",
             },
             { type: "doc",
-              label: "User authentication",
+              label: "Zowe User Authentication",
               id: "getting-started/zowe-security-authentication",
             }
           ],
