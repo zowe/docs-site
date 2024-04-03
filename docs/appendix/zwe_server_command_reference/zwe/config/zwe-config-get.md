@@ -26,6 +26,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
 --path|-p|string|yes|Path of the configuration. For example, `components.gateway.port`.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -43,7 +45,9 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0303E|303|Invalid config path syntax for %s. Get only supports single period delimiters between values.### Inherited from parent command
+ZWEL0303E|303|Invalid config path syntax for %s. Get only supports single period delimiters between values.
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---

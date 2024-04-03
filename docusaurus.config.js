@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.14.x";
+const LATEST_VERSION = "v2.15.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -29,7 +29,7 @@ module.exports = {
     }),
   },
   themeConfig: {
-    docs: {
+        docs: {
       sidebar: {
         hideable: true
       }
@@ -225,6 +225,9 @@ module.exports = {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v2.14.x": {
+              label: "v2.14.x LTS",              
             },
             "v2.13.x": {
               label: "v2.13.x LTS",

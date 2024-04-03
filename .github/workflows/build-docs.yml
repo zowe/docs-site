@@ -32,12 +32,14 @@ jobs:
 
       - name: Cache Webpack Build
         uses: actions/cache@v3
+        env:
+          TAR_OPTIONS: "--remove-files"
         with:
           path: node_modules/.cache/webpack
           key: cache-webpack-${{ github.base_ref || github.ref_name }}
 
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --omit=dev
 
       - name: Build with Docusaurus
         run: npm run build
@@ -62,7 +64,7 @@ jobs:
         if: ${{ steps.deploy.conclusion == 'skipped' }}
         run: |
           echo "PR_NUMBER=${{ github.event.pull_request.number }}" > build/.env
-          tar --zstd -cf build.tar.zst build
+          tar --remove-files --zstd -cf build.tar.zst build
 
       - name: Upload Build Artifact
         if: ${{ steps.deploy.conclusion == 'skipped' }}

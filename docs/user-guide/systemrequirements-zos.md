@@ -25,6 +25,21 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
+- System Display and Search Facility (SDSF)
+
+  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zwe init certificate`, `zwe start`, and `zwe stop`. Ensure that you have SDSF installed on z/OS. 
+  
+  Not having SDSF installed may result in the following error message:
+
+  `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
+
+ :::note
+ The `zwe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zwe init certificate` is unnecessary.
+Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zwe start` and `zwe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
+ :::
+ 
+For more information about SDSF, see the _Abstract for z/OS SDSF Operation and Customization_ in the IBM documentation.
+
 - (Optional, recommended) z/OS OpenSSH
   
   Some features of Zowe require SSH, such as the SSH terminal of the Desktop. Install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
@@ -32,6 +47,36 @@ Be sure your z/OS system meets the following prerequisites:
 - (Optional) Parallel Sysplex.
   
   To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. For more information, see [Configuring Sysplex for high availability](configure-sysplex.md).
+
+### Mainframe Resources Consumption 
+
+During Zowe startup, there is high resource consumption in order for Zowe to be operational as soon as possible. Subsequent resource consumption depends on the processing load of Zowe services. When Zowe is idle, resource consumption is relatively lower.
+
+#### Resource consumption during Zowe startup 
+
+* **CPU consumption**  
+Zowe consumes approximately 300 CPU seconds on the z15 T01 processor during startup. Approximately 50 percent of CPU consumption is zIIP eligible.
+
+* **I/O**  
+Zowe performs approximately 5,000,000 I/O operations during startup.
+
+#### Resource consumption when Zowe is idling  
+
+* **CPU consumption**  
+Zowe consumes approximately 90 CPU seconds on the z15 T01 processor during 1 hour of operation when no external load is processed. Approximately 60 percent of CPU consumption is zIIP eligible.
+
+* **I/O**  
+Zowe performs approximately 17,000 I/O operations during 1 hour of operation when no external load is processed.
+
+:::note 
+Zowe consumption reference data were measured with the default Zowe configuration. The following components were enabled:
+* Gateway
+* Discovery Service
+* API Catalog
+* Caching Service
+* ZSS
+* Zowe Desktop 
+:::
 
 ### Node.js
 

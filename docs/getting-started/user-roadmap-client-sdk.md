@@ -4,7 +4,7 @@ This roadmap outlines information resources that are applicable to the various u
 
 The following definition of skill levels about Zowe will help you gather most relevant resources for you. 
 
-* Beginner: You're starting out and want to learn the fundamentals.
+* Beginner: You are starting out and want to learn the fundamentals.
 * Intermediate: You have some experience but want to learn more in-depth skills. 
 * Advanced: You have lots of experience and are looking to learn about specialized topics.
 
@@ -14,11 +14,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
 - [**Zowe Client SDK overview**](overview.md#zowe-client-software-development-kits-sdks)
 
-   New to Zowe Client SDKs? This overview topic briefly introduces what it is.
+   New to Zowe Client SDKs? This overview topic briefly introduces what the SDK is.
 
 - [**Blog: Zowe SDKs - Build z/OS Connected Applications Faster**](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9)
 
-   This blog introduces the Zowe SDKs and their benefits.
+   This blog introduces Zowe SDKs and their benefits.
 
 ## Installing
 

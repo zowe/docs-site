@@ -12,7 +12,7 @@ Before filing an issue, check if the error stems from either the Zowe Explorer f
     - Errors arising from the Zowe Explorer CICS extension identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
     - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
 
-2. File issues with Zowe Explorer for IBM CICS to the [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/vscode-extension-for-cics/issues) and include all relevant information.
+2. File issues with Zowe Explorer for IBM CICS to the [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/cics-for-zowe-client/issues) and include all relevant information.
 
 ## Chatting with the community
 
