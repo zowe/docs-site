@@ -41,8 +41,7 @@ zwe install -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
---dataset-prefix,--ds-prefix||string|no|Install Zowe to this dataset prefix.\nIf you specify this value, --config is not required.
-
+--dataset-prefix,--ds-prefix||string|no|Install Zowe to this dataset prefix. If you specify this value, `--config` is not required.
 
 ### Inherited from parent command
 
