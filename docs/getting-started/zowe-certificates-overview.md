@@ -19,8 +19,8 @@ A certificate contains an identity (a hostname, or an organization, or an indivi
 Certificates can be self-signed or issued by a Certificate Authority (CA). A CA is an organization which provides infrastructure for the creation, validation, and revocation of certificates according to  contemporary security standards.
 
 :::note
-For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform. Use of self-signed certificates, however, is **not recommended** for production environments.
-:::
+For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by a company local CA, or certificates that are signed by a CA created by Zowe security tools specific for the target technology platform. Use of self-signed certificates is **not recommended** for production environments.
+::: 
 
 ## Digital certificates usage
 
@@ -78,7 +78,7 @@ as well as between client applications and Zowe server components.
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 :::note
-When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation.
+When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation. For more information, see [Configuring AT-TLS for API Mediation Layer](../user-guide/api-mediation/configuration-at-tls.md).
 :::
 
 ## Digital certificates types
