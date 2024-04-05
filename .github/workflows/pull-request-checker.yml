@@ -132,7 +132,7 @@ jobs:
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
           prefix_mode: true
-          one_of: "release:"
+          any_of: "release:"
           repo_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Missing Release Label Comment PR
         if: failure()
