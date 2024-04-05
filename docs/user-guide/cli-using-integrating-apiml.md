@@ -82,7 +82,7 @@ To access mainframe services through API ML using the token in your base profile
 
 * `--base-path`: Indicates the base path of the API ML instance that you want to access.
 
-    - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-v2-profiles) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
+    - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-v2-profiles).
 * `--disable-defaults`: Prevents default values from being stored in service profiles. If you do not use this flag, the defaults can override values in your base profile.
 
 :::note
@@ -105,7 +105,7 @@ To specify a base path with Zowe V2 profiles:
 
     The format of base paths can vary based on how API ML is configured at your site.
 
-2. Using the example included in Step 1, access the API ML instance by creating or updating a [service profile](../user-guide/cli-using-using-team-profiles#zowe-cli-profile-types), or issuing a command, with the `--base-path` value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
+2. Using the example included in Step 1, access the API ML instance by creating or updating a [service profile](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types), or issuing a command, with the `--base-path` value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
 
     To create or update a service profile with the preceding base path in a **project** team configuration file:
 
