@@ -70,7 +70,7 @@ Being familiar with the key concepts and terms describing TLS security helps to 
 
 The following diagram illustrates the TLS handshake steps:
 
-<img src="../images/certificates/ssl-handshake-10-steps.png" width="50%" height="50%" alt="TLS handshake v 1.2"/>
+![TLS handshake v 1.2](../images/certificates/ssl-handshake-10-steps.png)
 
 The architecture of Zowe strictly relies on Transport Layer Security (TLS) to secure communication channels between Zowe components,
 as well as between client applications and Zowe server components.
