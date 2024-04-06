@@ -58,7 +58,7 @@ Create a secondary association for your Zowe Explorer profiles.
 
 You have successfully created the secondary association for your Zowe Explorer profile.
 
-For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
+For more information, see [Associating Zowe CLI Profiles](https://github.com/zowe/zowe-explorer-vscode/blob/master/docs/README-Extending.md#associating-zowe-cli-profiles).
 
 ## Enabling Secure Credential Store with Zowe Explorer
 
