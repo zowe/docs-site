@@ -6,6 +6,6 @@ You can use environment variables in an automation server, such as Jenkins, to w
  - The `SET` command within your scripts
  - The Jenkins web interface to navigate to **Manage Jenkins \> Configure System \> Global Properties** and define an environment variable in the Jenkins GUI.
 
-For an example of using the web interface, see the image below:
+For an example of using the web interface, see the following image:
 
 ![jenkins gui](../images/guides/CLI/envVarsJenkins.png)
