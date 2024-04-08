@@ -683,9 +683,9 @@ module.exports = {
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
+              link: {type:"doc", id:"extend/extend-apiml/quick-start-for-development"},
               items: [
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/quick-start-for-development",
                 "extend/extend-apiml/api-mediation-layer-development-setup",
               ]
             },
