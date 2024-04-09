@@ -8,7 +8,7 @@ The type of script that you write depends on the programming languages that you 
 
 :::
 
-**Follow these steps:**
+To write a script:
 
 1. Create a new file on your computer with the extension .sh. For example, `testScript.sh`.
 
@@ -17,7 +17,7 @@ The type of script that you write depends on the programming languages that you 
     On Mac and Linux, an extension is not required. To make the file executable, issue the command `chmod u+x testScript`.
 
     :::
-2. **(Mac and Linux only)** At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/bash`.
+2. For Mac and Linux only: At the top of the file, specify the interpreter that your script requires. For example, type `#!/bin/sh` or `#!/bin/bash`.
 
     :::note 
     

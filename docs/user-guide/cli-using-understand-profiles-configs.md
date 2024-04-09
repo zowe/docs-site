@@ -108,6 +108,6 @@ The table below shows how Zowe CLI determines which profiles, properties, and va
 
 <b>*</b> If the same profile exists in both a global configuration file and a project configuration file, the project configuration profile completely replaces the global profile. This is true even when the project profile has fewer properties in the same profile found in the global file.<br/>
 
-The rules above apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
+The preceding rules apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
 
 For more information on how configuration files work together, see [How Zowe CLI team configuration files are merged together](https://github.com/zowe/zowe-cli/blob/master/docs/How_config_files_are_merged.md).
