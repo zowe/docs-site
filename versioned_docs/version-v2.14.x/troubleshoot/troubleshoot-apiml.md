@@ -35,6 +35,8 @@ Use debug mode to activate the following functions:
 - Enable changing log level for individual code components
 - Gather atypical debug information
 
+When on z/OS, API ML log messages are written to the STC job log.
+
 **Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
 its performance and create large log files that consume a large volume of disk space.
