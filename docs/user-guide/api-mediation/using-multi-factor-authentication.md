@@ -26,7 +26,7 @@ Update the z/OSMF configuration with the following parameter:
 
 After applying this change, each authentication call results in generating a new JWT.
 For more information, see [Configuring z/OSMF](../../user-guide/systemrequirements-zosmf).
-to properly work with API ML, and [Multi-factor authentication configuration](../mvd-configuration/#multi-factor-authentication-configuration) in Configuring Zowe Application Framework.
+to properly work with API ML, and [Multi-factor authentication configuration](../../user-guide/mvd-configuration#multi-factor-authentication-configuration) in Configuring Zowe Application Framework.
 
 ### No Notification when Additional Input is Required
 
