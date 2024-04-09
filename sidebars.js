@@ -581,7 +581,6 @@ module.exports = {
                 "user-guide/cli-using-global-storing-properties-automatically",
               ],
             },
-            "user-guide/cli-using-using-profiles-v1",
             "user-guide/cli-using-integrating-apiml",
             "user-guide/cli-using-working-certificates",
             {

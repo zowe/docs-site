@@ -18,7 +18,7 @@ If configuration files were used in the example above, the user would have neede
 
 ## Learning the terminology
 
-Zowe version 2.0 introduces the use of team profiles in configuration files. 
+As of Zowe V2, Zowe CLI relies on the profiles stored in configuration files to obtain connection information.
 
 Both *user* and *team* profiles are stored in configuration files, and these configuration files can either be *project* configuration files or *global* configuration files. It is helpful to understand how these differ.
 
@@ -49,7 +49,7 @@ When checking all possible configuration file types, Zowe CLI categorizes files 
 
 ![Zowe CLI Config File Table](../images/common/cli-config-file-table.jpg)
 
-This order is applied no matter the directory in which you issue a Zowe CLI command. As a user, it can be easy to trace this logic when configuration files are all either in your ZOWE_CLI_HOME directory (i.e., broad scope) or your project directory (i.e., narrow scope).
+This order is applied no matter the directory in which you issue a Zowe CLI command. As a user, it can be easy to trace this logic when configuration files are all either in your ZOWE_CLI_HOME directory (broad scope) or your project directory (narrow scope).
 
 But when there are configuration files across directories (meaning, in a project directory *and* a home directory), tracking how these files work together can seem more complicated.
 
@@ -57,7 +57,7 @@ Read on to go over some examples.
 
 ## Using a profile found in multiple configuration files
 
-Consider a user that has all configuration file types as in the following scenario:
+Consider a user that has all configuration file types, as in the following scenario:
 
 | specificity type | file type | profile | property | value |
 |----------- | ----------- | ----------- | ----------- | ----------- |
@@ -102,12 +102,12 @@ The table below shows how Zowe CLI determines which profiles, properties, and va
 
 | Configuration files in use &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; | Specificity rules | Profiles, properties <br/> and values used &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; |
 | :--------- | :------------ |:------------ |
-| - global user profile <br/> - global team profile | - When the same property exists within the same profile in both config files, the property value from the global user config is used. <br/> - When the same profile exists in both config files, but a property of that profile exists in only one file, that property is used. <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* south <br/> **abc:** *numbers:* 123 <br/> **def:** *shape:* circle <br/> **ghi:** *texture:* bumpy <br/> **pqr:** *distance:* near |
-| - project team profile <br/> - global user profile <br/> - global team profile | - When a profile exists in all three config files, the project team profile is used.<sup>*</sup> <br/> - If a profile exists in only one config file, that profile is used in its entirety. | **abc:** *direction:* east <br/> **def:** *shape:* square <br/> **ghi:** *texture:* bumpy <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
-| - project user profile <br/> - project team profile <br/> - global user profile <br/> - global team profile | - When the same profile with the same properties exists in all four config files, the property values from the project user config is used. <br/> - When the same profile exists in all four config files, the project files override the global files. If a property of the profile exists in only one of the two project configurations, that property is used.<sup>*</sup> <br/> - If a profile exists in only one config file, that profile is used in its entirety. |  **abc:** *direction:* north <br/> **def:** *shape:* triangle <br/> **ghi:** *texture:* bumpy <br/> **jkl:** *temperature:* cold <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
+| <ul><li> global user profile </li> <li> global team profile </li></ul> | <ul><li> When the same property exists within the same profile in both config files, the property value from the global user config is used. </li> <li> When the same profile exists in both config files, but a property of that profile exists in only one file, that property is used. </li> <li> If a profile exists in only one config file, that profile is used in its entirety.</li> </ul> | **abc:** *direction:* south <br/> **abc:** *numbers:* 123 <br/> **def:** *shape:* circle <br/> **ghi:** *texture:* bumpy <br/> **pqr:** *distance:* near |
+| <ul><li> project team profile </li> <li> global user profile </li> <li> global team profile </li> </ul>| <ul><li> When a profile exists in all three config files, the project team profile is used.<sup>*</sup> </li> <li> If a profile exists in only one config file, that profile is used in its entirety. </li> </ul> | **abc:** *direction:* east <br/> **def:** *shape:* square <br/> **ghi:** *texture:* bumpy <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
+| <ul><li> project user profile </li> <li> project team profile </li> <li> global user profile </li> <li> global team profile </li> </ul> | <ul><li> When the same profile with the same properties exists in all four config files, the property values from the project user config is used. </li> <li> When the same profile exists in all four config files, the project files override the global files. If a property of the profile exists in only one of the two project configurations, that property is used.<sup>*</sup> </li> <li> If a profile exists in only one config file, that profile is used in its entirety. </li> </ul> |  **abc:** *direction:* north <br/> **def:** *shape:* triangle <br/> **ghi:** *texture:* bumpy <br/> **jkl:** *temperature:* cold <br/> **mno:** *fruit:* banana <br/> **pqr:** *distance:* near |
 
-<b>*</b> If the same profile exists in both a global configuration file and a project configuration file, the project configuration profile completely replaces the global profile. This is true even when the project profile has fewer properties in the same profile found in the global file.<br/><br/>
+<b>*</b> If the same profile exists in both a global configuration file and a project configuration file, the project configuration profile completely replaces the global profile. This is true even when the project profile has fewer properties in the same profile found in the global file.<br/>
 
-The rules above apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
+The preceding rules apply when profiles have the same name. To maintain the same set of properties in two different profiles, give each profile a different name so that Zowe CLI uses a specific profile, if needed.
 
 For more information on how configuration files work together, see [How Zowe CLI team configuration files are merged together](https://github.com/zowe/zowe-cli/blob/master/docs/How_config_files_are_merged.md).
