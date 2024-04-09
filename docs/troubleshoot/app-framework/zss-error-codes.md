@@ -4,6 +4,42 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ## ZSS informational messages
 
+### ZWES1007I
+
+  webContent was not found in plugin definition for '%s'
+
+  **Reason:**
+
+  The `webContent` was not found in plugin definition for `<plugin-ID>`.
+
+  **Action:**
+
+  No action required.
+
+### ZWES1008I
+
+  libraryVersion was not found in plugin definition for '%s'
+
+  **Reason:**
+
+  The `libraryVersion` was not found in plugin definition for `<plugin-ID>`.
+
+  **Action:**
+
+  No action required.
+
+### ZWES1010I
+
+  Plugin ID and/or location was not found in '%s'
+
+  **Reason:**
+
+  The plugin ID and/or location was not found in `<path>`.
+
+  **Action:**
+
+  No action required.
+
 ### ZWES1013I
 
   ZSS Server has started. Version '%s' '%s'
@@ -46,7 +82,19 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   No action required.
-  
+
+### ZWES1038I
+
+  Server timeouts file '%s' either not found or invalid JSON. ZSS sessions will use the default length of one hour.
+
+  **Reason:**
+
+  The server timeouts file `<path>` either was not found or is invalid JSON. ZSS sessions uses the default length of one hour.
+
+  **Action:**
+
+  No action required.
+
 ### ZWES1039I
 
   Installing '%s' service...
@@ -77,7 +125,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`. HA is mode enabled.
+  Caching Service settings are gateway host `<Gateway-host>`, port `<Gateway-port>`. HA mode is enabled.
 
   **Action:**
 
@@ -157,6 +205,29 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ## ZSS error messages
 
+### ZWES1001E
+
+  Log level '%d' is incorrect.
+
+  **Reason:**
+
+  The logging level `<log-level>` is incorrect.
+
+  **Action:**
+
+  Verify the `<log-level>` is in range `0..5`.
+
+### ZWES1002E
+
+  Error in timeouts file: Could not parse config file as a JSON object.
+
+  **Reason:**
+
+  There is an error in timeouts file: could not parse config file as a JSON object.
+
+  **Action:**
+
+  Verify the timeouts file is a valid JSON.
 
 ### ZWES1006E
 
@@ -165,11 +236,70 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Reason:**
 
   An error occurred while parsing `<plugin-definition-file>`: `<error-details>`.
-  
 
   **Action:**
 
   If you are a plugin developer check `<error-details>` and fix the error by editing `<plugin-definition-file>`, otherwise, report the error to the plugin vendor.
+
+### ZWES1011E
+
+  Error while parsing: '%s'
+
+  **Reason:**
+
+  There is an error while parsing: `<json-statement>`.
+
+  **Action:**
+
+  Review the `<json-statement>` and correct it.
+
+### ZWES1016E
+
+  Cannot validate file permission, path is not defined.
+
+  **Reason:**
+
+  Cannot validate the file permission, path is not defined.
+
+### ZWES1017E
+
+  Could not get file info on config path='%s': Ret='%d', res='%d'
+
+  **Reason:**
+
+  Could not get the file information on config path=`<path>`: Ret=`<return-code>`, res=`<reason-code>`
+
+  **Action:**
+
+  Contact support.
+
+### ZWES1020E
+
+  Skipping validation of file permissions: Disabled during compilation, using file '%s'.
+
+  **Reason:**
+
+  Skipping validation of file permissions: disabled during compilation, using the file `<file>`.
+
+  **Action:**
+
+  Contact support.
+
+### ZWES1021E
+
+  Cannot validate file permissions: Path is not defined.
+
+  **Reason:**
+
+  Cannot validate the file permissions: path is not defined.
+
+### ZWES1022E
+
+  Cannot validate file permissions: Path is for a directory and not a file.
+
+  **Reason:**
+
+  Cannot validate the file permissions. Given path is a directory path only without a file.
 
 ### ZWES1034E
 
@@ -201,7 +331,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  ZSS port number is already occupped. 
+  ZSS port number is already occupied. 
 
   **Action:**
 
@@ -219,6 +349,17 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Check agent https settings.
 
+### ZWES1500E
+
+  Failed to generate PassTicket - userId='%s', applId='%s', %s
+
+  **Reason:**
+
+  Failed to generate the PassTicket for userId=`<user-id>`, applId=`<application-name>`, `<error-text>`.
+
+  **Action:**
+
+  Review your security product to determine that it meets all passTickets requirements.
 
 ## ZSS warning messages
 
@@ -234,6 +375,18 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   If your privileged server name is `ZWESIS_STD` then no action required. Otherwise set `components.zss.crossMemoryServerName` property in configuration to the correct name.
 
+### ZWES1004W
+
+  Expected plugin ID '%s', instead received '%s'
+
+  **Reason:**
+
+  Expected plugin ID is `<plugin-ID>`, but it was received `<wrong-plugin-ID>`.
+
+  **Action:**
+
+  Verify the plugin JSON definition.
+
 ### ZWES1005W
 
   Plugin ID was not found in '%s'
@@ -244,7 +397,19 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  If you are a plugin developer add `pluginId` property into `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
+  If you are a plugin developer add the `pluginId` property to the `<path-to-pluginDefinition.json>` file. Otherwise, contact the plugin vendor.
+
+### ZWES1009W
+
+  Plugin ID '%s' is NULL and cannot be loaded.
+
+  **Reason:**
+
+  The plugin with `<plugin-ID>` was not succesfully created and cannot be loaded.
+
+  **Action:**
+
+  Verify the plugin JSON definition.
 
 ### ZWES1012W
 
@@ -282,6 +447,20 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Examine the return code at [https://www.ibm.com/docs/en/zos/2.2.0?topic=requeststatus-return-codes] and correct the error.
 
+### ZWES1200W
+
+  Could not %s file '%s': Ret='%d', res='%d'
+
+  **Reason:**
+
+  Could not `<action>` file `<file>`, return code is `<return-code>`, resason code is `<reason-code>`.
+
+  `<action>` specifies for which file operation a problem was detected.
+
+  **Action:**
+
+  No action required.
+
 ### ZWES1201W
 
   Could not %s file '%s': Ret='%d', res='%d'
@@ -294,6 +473,18 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
+### ZWES1202W
+
+  Transfer type has not been set.
+
+  **Reason:**
+
+  The transfer type was not set.
+
+  **Action:**
+
+  No action required.
+
 ### ZWES1103W
 
   Could not get metadata for file '%s': Ret='%d', res='%d'
@@ -305,6 +496,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
+
 
 ### ZWES1602W
 
@@ -361,7 +553,6 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Reason:**
 
   Failed to get JWK - `<reason>`, retry in `<n>` seconds. ZSS Server was unable to get JSON Web Key(JWK), it will try to repeat the attempt in `<n>` seconds.
-
 
   **Action:**
 
