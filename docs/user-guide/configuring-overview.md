@@ -21,7 +21,7 @@ Successful completion of steps 2, 3, and 4 may require elevated security permiss
 To cofigure Zowe runtime, choose from the following options:
 
 * **Option 1: Configure Zowe manually using the `zwe init` command group**  
-To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#zowe-configuration-file) which details all of the started tasks in the article _Preparing for installation_.
+To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#runtime-directory) which details all of the started tasks in the article _Preparing for installation_.
 
 Once your configuration file is prepared, see [Configuring Zowe with zwe init](./initialize-zos-system.md), for more information about using the `zwe init` command group.
 

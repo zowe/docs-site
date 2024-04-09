@@ -23,11 +23,11 @@ Configures the VSAM files needed to run the Zowe caching service used for high a
 Configures the system to launch the Zowe started task.
 
 :::info Recommendation:
-We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security) in this configuration documentation.
+We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security.md) in this configuration documentation.
 ::: 
 
 :::tip
-Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
+Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-vsam.md) for detailed explanation, examples, and parameters. 
 :::
 
 ## zwe init arguments
@@ -55,10 +55,10 @@ zwe init --config /path/to/zowe.yaml
 Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
 :::
 
-For more information about `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview).
+For more information about `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
 
 ## Next step
 
-After all `zwe init` subcommands are successfully executed, the next step is to [configure the z/OS system for Zowe](./configure-zos-system).
+After all `zwe init` subcommands are successfully executed, the next step is to configure the z/OS system for Zowe. For more information, see [Addressing z/OS requirements for Zowe](./configure-zos-system.md).
 
 For detailed information about individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
