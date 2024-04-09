@@ -56,7 +56,7 @@ The current API Gateway contains Authentication and Authorization Services. This
 ### Breaking changes
 
 * Removing V1 profile support
-* Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/vscode-extension-for-zowe/issues/2238)
+* Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)
 * Changing profile creation menus
 * Storing extension settings in local storage
 
@@ -67,7 +67,7 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Pre-release availability
 
-* V3 pre-release versions are available via [GitHub releases](https://github.com/zowe/vscode-extension-for-zowe/releases) or via the [Open VSX Registry](https://open-vsx.org/extension/Zowe/vscode-extension-for-zowe).
+* V3 pre-release versions are available via [GitHub releases](https://github.com/zowe/zowe-explorer-vscode/releases) or via the [Open VSX Registry](https://open-vsx.org/extension/Zowe/vscode-extension-for-zowe).
 
 ## Installation and Packaging
 

@@ -50,11 +50,11 @@ module.exports = {
             id: "appendix/zowe-security-glossary",
             },
             { type: "doc",
-              label: "Digital Certificates",
+              label: "Zowe Certificates overview",
               id: "getting-started/zowe-certificates-overview",
             },
             { type: "doc",
-              label: "User authentication",
+              label: "Zowe User Authentication",
               id: "getting-started/zowe-security-authentication",
             }
           ],
@@ -683,9 +683,9 @@ module.exports = {
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
+              link: {type:"doc", id:"extend/extend-apiml/quick-start-for-development"},
               items: [
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/quick-start-for-development",
                 "extend/extend-apiml/api-mediation-layer-development-setup",
               ]
             },
@@ -693,41 +693,45 @@ module.exports = {
               type: "category",
               label: "Libraries for integration (Enablers)",
               items: [
-                "extend/extend-apiml/onboard-plain-java-enabler",
+                {
+                  type: "category",
+                  label: "Plain Java Enabler",
+                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
+                  items: [
+                    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+                    "extend/extend-apiml/api-mediation-message-service",
+                  ]
+                },
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
-                "extend/extend-apiml/onboard-static-definition"    
+                "extend/extend-apiml/onboard-static-definition",
+                "extend/extend-apiml/custom-metadata",    
               ]
             },
             {
               type: "category",
               label: "Routing",
+              link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
               items: [
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
-            "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/create-apiml-extension",
-            "extend/extend-apiml/api-mediation-message-service",
-            "extend/extend-apiml/custom-metadata",
-            "extend/extend-apiml/implement-new-saf-provider",
+            {
+              type: "category",
+              label: "Runtime Extensions",
+              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
+              items: [
+                "extend/extend-apiml/implement-new-saf-provider"
+              ]
+            },
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/api-medation-sso-integration-extenders",
-                "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
-                "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",                
-              ],
-            },
-            {
-              type: "category",
-              label: "Implementing routing to API Gateway",
-			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
-              items: [
               ],
             },
           ],

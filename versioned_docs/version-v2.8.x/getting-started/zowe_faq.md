@@ -366,7 +366,7 @@ You can also watch [Getting Started with Zowe Explorer](https://www.youtube.com/
 
 <summary></summary>
 
-You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Theia.md).
+You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) or in Theia. For more information about Zowe Explorer in Theia, see [the Theia Readme](https://github.com/zowe/zowe-explorer-vscode/blob/main/docs/README-Theia.md).
 
 </details>
 
@@ -377,7 +377,7 @@ You can use Zowe Explorer either in [VSCode](https://marketplace.visualstudio.co
 <summary></summary>
 
 - Use [the Zowe Explorer channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F) in Slack to ask the Zowe Explorer community for help.
-- Open a question or issue directly in [the Zowe Explorer GitHub repository](https://github.com/zowe/vscode-extension-for-zowe/issues).
+- Open a question or issue directly in [the Zowe Explorer GitHub repository](https://github.com/zowe/zowe-explorer-vscode/issues).
 
 </details>
 
@@ -427,7 +427,7 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 - Fix bugs in Zowe Explorer, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
 
-   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/main/docs/README-Extending.md).
+   Note: For more information, see [Extending Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/blob/main/docs/README-Extending.md).
 
 </details>
 
