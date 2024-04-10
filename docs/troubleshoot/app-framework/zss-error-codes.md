@@ -433,7 +433,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Ensure that ZSS certificate is configured correctly. Check GSKit return code and description for additional information. 
+  Ensure that the ZSS certificate is configured correctly. Check GSKit return code and description for additional information. 
 
 ### ZWES1103W
 
@@ -471,7 +471,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
+  Action depends on return/reason code. For additional information examine the reason code with the [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
 ### ZWES1202W
 
@@ -497,6 +497,188 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Action depends on return/reason code. For additional information examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
 
+### ZWES1200W
+
+  Could not %s file '%s': Ret='%d', res='%d'
+
+  **Reason:**
+
+  Could not `<action>` file `<file>`, return code is `<return-code>`, resason code is `<reason-code>`.
+  
+  `<action>` specifies for which file operation a problem was detected.
+
+  **Action:**
+
+  No action required.
+
+### ZWES1202W
+
+  Transfer type has not been set.
+
+  **Reason:**
+
+  The transfer type was not set.
+
+  **Action:**
+
+  No action required.
+
+### ZWES1400W
+
+  Non standard class provided for '%s' '%s', ending request...
+
+  **Reason:**
+
+  Non standard class was provided for `<HTTP-setting>` `<HTTP-method>`, the request was ended.
+
+### ZWES1401W
+
+  Profile not provided for profiles GET, ending request...
+
+  **Reason:**
+
+  The profile not provided for profiles GET, the request was ended.
+
+### ZWES1402W
+
+  Profile name required for '%s' '%s'
+
+  **Reason:**
+
+  The profile name is required for `<HTTP-setting>` `<HTTP-method>`
+
+### ZWES1403W
+
+  User ID required for user POST/PUT
+
+  **Reason:**
+
+  The user ID is required for user POST or PUT.
+
+### ZWES1404W
+
+  Body not provided for user POST/PUT, ending request...
+
+  **Reason:**
+
+  The body was not provided for user POST or PUT, the request was ended.
+
+### ZWES1406W
+
+  Unknown access type '%d' provided for user POST/PUT, ending request...
+
+  **Reason:**
+
+  Unknown access type `<access-type>` provided for user POST or PUT, the request was ended.
+
+### ZWES1407W
+
+  Access list can only be retrieved in bulk, ending request...
+
+  **Reason:**
+
+  The access list can only be retrieved in bulk, the request was ended.
+
+### ZWES1408W
+
+  Access list buffer with size '%u' not allocated, ending request...
+
+  **Reason:**
+
+  The access list buffer with size `<size>` was not allocated, the request was ended.
+
+### ZWES1409W
+
+  Access list size out of range '%u', ending request...
+
+  **Reason:**
+
+  The size of access list is out of range `<number>`, the request was ended.
+
+### ZWES1410W
+
+  Access list entry name required for access list DELETE
+
+  **Reason:**
+
+  The access list entry name is required for access list `DELETE`.
+
+### ZWES1411W
+
+  Class-mgmt query string is invalid, ending request...
+
+  **Reason:**
+
+  `Class-mgmt`` query string is invalid, the request was ended.
+
+### ZWES1412W
+
+  Group name required for '%s' '%s'
+
+  **Reason:**
+
+  The group name required for `<HTTP-setting>` `<HTTP-method>`.
+
+### ZWES1413W
+
+  Body not provided for group POST, ending request...
+
+  **Reason:**
+
+  The body was not provided for group `POST`, the request was ended.
+
+
+### ZWES1414W
+
+  Superior not provided for group POST, ending request...
+
+  **Reason:**
+
+  Superior not provided for group `POST`, the request was ended.
+
+### ZWES1415W
+
+  Bad superior group provided for group POST, ending request...
+
+  **Reason:**
+
+  Bad superior group was provided for group `POST`, the request was ended.
+
+### ZWES1416W
+
+  Access type not provided for user POST/PUT, ending request...
+
+  **Reason:**
+
+  The access type was not provided for user `POST` or `PUT`, the request was ended.
+
+### ZWES1417W
+
+  Unknown access type, use [USE, CREATE, CONNECT, JOIN]
+
+  **Reason:**
+
+  Unknown access type, use `USE`, `CREATE`, `CONNECT` or `JOIN`.
+
+### ZWES1418W
+
+  Access list will be re-allocated with capacity '%u'
+
+  **Reason:**
+
+  The access list will be re-allocated with capacity `<size>`.
+
+  **Action:**
+
+  No action required.  
+
+### ZWES1419W
+
+  Group-mgmt query string is invalid, ending request...
+
+  **Reason:**
+
+  `<Group-mgmt>` query string is invalid and the requested was ended.
 
 ### ZWES1602W
 
@@ -556,5 +738,4 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-No action required.
-
+  No action required.
