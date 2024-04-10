@@ -1,21 +1,23 @@
 # Single Sign On Integration for Extenders
 
-::info Role: infrastructure application developer
+::infoRole: infrastructure application developer
 :::
 
 As an infrastructure application developer, review the ways a service can integrate with API Mediation Layer (API ML) and participate in the Single Sign On for REST APIs on the z/OS platform. This article does not cover the client methods to call API ML and authenticate. For more information about API ML authentication, see the [Single Sign On Overview](../../user-guide/api-mediation-sso.md) in the User Guide. 
 
-There are three possible ways to integrate with API Mediation Layer which can leverage Single Sign On:
+To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
+
 - Accepting JWT token 
 - Accepting SAF IDT token
 - Accepting Passticket
 
-Two additional possibilities that do not properly integrate with the standard API ML provided Single Sign-On are:
+Two additional possibilities can potentially be leveraged to enable Single Sign On but are not properly integrated with the standard API ML:
+
 - Bypassing the authentication for the service
 - Asking for details about the x509 certificate used for authentication  
-  **Note:** Asking for details about the x509 certificate does not properly participate in SSO as this method cannot accept all authentication methods that are supported north of API Mediation Layer. 
+  **Note:** Asking for details about the x509 certificate does not properly participate in SSO as this method cannot accept all authentication methods that are supported upstream of API Mediation Layer. 
 
-Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property states what type of authentication the service expects and is shared across all types of authentication. 
+Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication. 
 
 **Example:**
 
@@ -26,7 +28,7 @@ authentication:
 ```
 
 * **authentication.scheme**  
-The value of this parameter specifies a service authentication scheme. The following schemes that participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
+Specifies a service authentication scheme. The following schemes participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
 
 In the event that there is an issue with authentication, API Mediation Layer sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also be passed to the downstream services without setting the valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
@@ -42,7 +44,7 @@ authentication:
 * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
 * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the downstream service performs the authentication.
 * If the downstream service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-The HTTP header is then added to each request towards the downstream service and contains the Zowe JWT to be consumed by the service. For more information,sSee [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
+The HTTP header is then added to each request towards the downstream service and contains the Zowe JWT to be consumed by the service. For more information, see [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
 
 ## Accepting SAF IDT
 
@@ -82,7 +84,9 @@ Specifies the `APPLID` value that is used by the API service for PassTicket supp
 
 Using the scheme value `bypass` specifies that the token is passed unchanged to the service.
 
-**Note:** This is the default scheme when no authentication parameters are specified.
+:::note
+This is the default scheme when no authentication parameters are specified.
+:::
 
 ```yaml
 authentication:

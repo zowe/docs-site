@@ -94,7 +94,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   No action required.
-  
+
 ### ZWES1039I
 
   Installing '%s' service...
@@ -236,7 +236,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Reason:**
 
   An error occurred while parsing `<plugin-definition-file>`: `<error-details>`.
-  
+
   **Action:**
 
   If you are a plugin developer check `<error-details>` and fix the error by editing `<plugin-definition-file>`, otherwise, report the error to the plugin vendor.
@@ -447,6 +447,20 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   Examine the return code at [https://www.ibm.com/docs/en/zos/2.2.0?topic=requeststatus-return-codes] and correct the error.
 
+### ZWES1200W
+
+  Could not %s file '%s': Ret='%d', res='%d'
+
+  **Reason:**
+
+  Could not `<action>` file `<file>`, return code is `<return-code>`, resason code is `<reason-code>`.
+
+  `<action>` specifies for which file operation a problem was detected.
+
+  **Action:**
+
+  No action required.
+
 ### ZWES1201W
 
   Could not %s file '%s': Ret='%d', res='%d'
@@ -458,6 +472,18 @@ The following error message codes may appear on ZSS log. Use the following messa
   **Action:**
 
   Action depends on return/reason code. For additional information examine the reason code with the [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command.
+
+### ZWES1202W
+
+  Transfer type has not been set.
+
+  **Reason:**
+
+  The transfer type was not set.
+
+  **Action:**
+
+  No action required.
 
 ### ZWES1103W
 
