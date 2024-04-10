@@ -714,6 +714,7 @@ module.exports = {
               label: "Routing",
               link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
               items: [
+                "extend/extend-apiml/api-mediation-routing",
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
