@@ -40,6 +40,7 @@ module.exports = {
       collapsed: false,
       items: [
         "getting-started/zowe-architecture",
+        "user-guide/api-mediation/api-mediation-overview",
         {
           type: "category",
           label: "Zowe security",
@@ -50,11 +51,11 @@ module.exports = {
             id: "appendix/zowe-security-glossary",
             },
             { type: "doc",
-              label: "Digital Certificates",
+              label: "Zowe Certificates overview",
               id: "getting-started/zowe-certificates-overview",
             },
             { type: "doc",
-              label: "User authentication",
+              label: "Zowe User Authentication",
               id: "getting-started/zowe-security-authentication",
             }
           ],
@@ -225,65 +226,76 @@ module.exports = {
           ],
         },
         {
-          type: "category",
-          label: "Advanced API Mediation Layer Configuration",
-          link: { type: "doc", id: "user-guide/advanced-apiml-configuration" },
-          items: [
+          "type": "category",
+          "label": "Advanced API Mediation Layer Configuration",
+          "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
+          "items": [
             {
-              type: "category",
-              label: "Enabling single sign on for clients",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-single-sign-on-user" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for clients",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-single-sign-on-user" },
+              "items": [
                 "user-guide/api-mediation/configuration-client-certificates",
                 "user-guide/api-mediation/configuration-personal-access-token",
                 "user-guide/api-mediation/configuration-jwt"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Enabling single sign on for extending services",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
-              items: [
+              "type": "category",
+              "label": "Enabling single sign on for extending services",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+              "items": [
                 "user-guide/api-mediation/configuration-extender-jwt",
                 "user-guide/api-mediation/configuration-extender-passtickets"
-                  ],
+              ]
             },
             {
-              type: "category",
-              label: "Customizing routing behavior",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-routing" },
-              items: [
-                {
-                  type: "category",
-                  label: "Customizing management of API ML load limits",
-                  link: { type: "doc", id: "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                    items: [
-                        "user-guide/api-mediation/configuration-connection-limits",
-                        "user-guide/api-mediation/configuration-gateway-timeouts"
-                      ],
-                },
+              "type": "category",
+              "label": "Customizing routing behavior",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
+              "items": [
+                "user-guide/api-mediation/configuration-multi-tenancy-routing",
                 "user-guide/api-mediation/configuration-cors",
                 "user-guide/api-mediation/configuration-url-handling",
                 "user-guide/api-mediation/configuration-gateway-retry-policy",
                 "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
-                "user-guide/api-mediation/configuration-set-consistent-service-id"
-                  ],
-            },
+                "user-guide/api-mediation/configuration-set-consistent-service-id",
+                {
+                  "type": "category",
+                  "label": "Customizing management of API ML load limits",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-connection-limits",
+                    "user-guide/api-mediation/configuration-gateway-timeouts"
+                  ]
+                }
+              ]
+            },            
             {
-              type: "category",
-              label: "Configuring authorization for API ML",
-              link: { type: "doc", id: "user-guide/api-mediation/configuration-authorization" },
-              items: [
+              "type": "category",
+              "label": "Configuring authorization for API ML",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
+              "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
                 "user-guide/api-mediation/configuration-saf-resource-checking"
-              ],
-            },                
+              ]
+            },
+            "user-guide/authentication-providers-for-apiml",
+            {
+              "type": "category",
+              "label": "Configuring storage for the Caching service",
+              "items": [
+                "extend/extend-apiml/api-mediation-infinispan",
+                "extend/extend-apiml/api-mediation-vsam",
+                "extend/extend-apiml/api-mediation-redis"
+              ]
+            },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls"
-          ],
-          }
+          ]
+        }        
         ],
     },    
     {
@@ -457,6 +469,7 @@ module.exports = {
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
                 "user-guide/api-mediation/authenticating-with-personal-access-token",
+                "extend/extend-apiml/api-mediation-oidc-authentication",
               ],
             },
             {
@@ -668,46 +681,61 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
-            "extend/extend-apiml/onboard-plain-java-enabler",
-            "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/onboard-direct-eureka-call",
-            "extend/extend-apiml/onboard-spring-boot-enabler",
-            "extend/extend-apiml/onboard-micronaut-enabler",
-            "extend/extend-apiml/onboard-nodejs-enabler",
-            "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/create-apiml-extension",
-            "extend/extend-apiml/api-mediation-message-service",
-            "extend/extend-apiml/custom-metadata",
-            "extend/extend-apiml/api-mediation-versioning",
-            "extend/extend-apiml/implement-new-saf-provider",
+            {
+              type: "category",
+              label: "API Mediation Layer Quick start for development",
+              link: {type:"doc", id:"extend/extend-apiml/quick-start-for-development"},
+              items: [
+                "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/api-mediation-layer-development-setup",
+              ]
+            },
+            {
+              type: "category",
+              label: "Libraries for integration (Enablers)",
+              items: [
+                {
+                  type: "category",
+                  label: "Plain Java Enabler",
+                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
+                  items: [
+                    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+                    "extend/extend-apiml/api-mediation-message-service",
+                  ]
+                },
+                "extend/extend-apiml/onboard-spring-boot-enabler",
+                "extend/extend-apiml/onboard-micronaut-enabler",
+                "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-static-definition",
+                "extend/extend-apiml/custom-metadata",    
+              ]
+            },
+            {
+              type: "category",
+              label: "Routing",
+              link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
+              items: [
+                "extend/extend-apiml/api-mediation-routing",
+                "extend/extend-apiml/api-mediation-versioning",
+                "extend/extend-apiml/api-mediation-websockets"
+              ]
+            },
+            {
+              type: "category",
+              label: "Runtime Extensions",
+              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
+              items: [
+                "extend/extend-apiml/implement-new-saf-provider"
+              ]
+            },
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
-                "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
-                "extend/extend-apiml/authentication-for-apiml-services",
-                "extend/extend-apiml/zaas-client",
-                "extend/extend-apiml/certificate-management-in-zowe-apiml",
-                "extend/extend-apiml/api-mediation-oidc-authentication",
+                "extend/extend-apiml/api-medation-sso-integration-extenders",
+                "extend/extend-apiml/zaas-client",                
               ],
             },
-            {
-              type: "category",
-              label: "Implementing routing to API Gateway",
-			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
-              items: [
-              ],
-            },
-            {
-              type: "category",
-              label: "Configuring storage for the Caching service",
-              items: [
-                "extend/extend-apiml/api-mediation-infinispan",
-                "extend/extend-apiml/api-mediation-vsam",
-                "extend/extend-apiml/api-mediation-redis",
-                "extend/extend-apiml/api-mediation-infinispan",
-              ],
-            }
           ],
         },
         {

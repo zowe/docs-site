@@ -65,7 +65,7 @@ This tutorial uses `@zowe/files-util` as the tutorial plug-in name.
 
 Define json configurations for the plug-in to Imperative.
 
-Change the `src/imperative.ts` file to contain the following configurations:
+Change the `src/pluginDef.ts` file to contain the following configurations:
 
 ```typescript
 import { IImperativeConfig } from "@zowe/imperative";
@@ -80,7 +80,7 @@ const config: IImperativeConfig = {
 export = config;
 ```
 
-When successful, the `src/imperative.ts` file contains the new configurations.
+When successful, the `src/pluginDef.ts` file contains the new configurations.
 
 **To create a unique plug-in:** Change the plug-in name, display name, and description according to your project.
 
@@ -314,7 +314,7 @@ Follow these steps:
 
     When successful, the output displays plain text diffs of the entered data sets.
 
-**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plug-in name in the `src/imperative.ts` file.
+**To create a unique plug-in:** Use Step 3 to run your new command. Note that the command is different based on the plug-in name in the `src/pluginDef.ts` file.
 
 ## Bringing together new tools!
 
