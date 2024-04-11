@@ -2051,10 +2051,8 @@
 | Third-party Software | Version | License | GitHub |
 | -------------------- | --------| ------- | ------ |
 | antlr/antlr | 2.7.7 | BSD License | [antlr](http://www.antlr.org/) | 
-| ch.qos.logback/logback-classic | 1.2.9 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
-| ch.qos.logback/logback-classic | 1.2.12 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
-| ch.qos.logback/logback-core | 1.2.9 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
-| ch.qos.logback/logback-core | 1.2.12 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
+| ch.qos.logback/logback-classic | 1.2.13 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
+| ch.qos.logback/logback-core | 1.2.13 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
 | com.fasterxml.jackson.core/jackson-annotations | 2.13.2 | The Apache Software License, Version 2.0 | [jackson-annotations](http://github.com/FasterXML/jackson) | 
 | com.fasterxml.jackson.core/jackson-annotations | 2.14.0 | The Apache Software License, Version 2.0 | [jackson-annotations](https://github.com/FasterXML/jackson) | 
 | com.fasterxml.jackson.core/jackson-core | 2.13.2 | The Apache Software License, Version 2.0 | [jackson-core](https://github.com/FasterXML/jackson-core) | 
@@ -2111,10 +2109,10 @@
 | org.apache.logging.log4j/log4j-api | 2.17.2 | Apache License, Version 2.0 | [log4j-api](https://logging.apache.org/log4j/2.x/log4j-api/) | 
 | org.apache.logging.log4j/log4j-to-slf4j | 2.17.2 | Apache License, Version 2.0 | [log4j-to-slf4j](https://logging.apache.org/log4j/2.x/log4j-to-slf4j/) | 
 | org.apache.sling/org.apache.sling.javax.activation | 0.1.0 | The Apache Software License, Version 2.0 | [org.apache.sling.javax.activation](http://sling.apache.org/org.apache.sling.javax.activation) | 
-| org.apache.tomcat/tomcat-annotations-api | 9.0.82 | Apache License, Version 2.0 | [tomcat-annotations-api](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-core | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-el | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-websocket | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
+| org.apache.tomcat/tomcat-annotations-api | 9.0.87 | Apache License, Version 2.0 | [tomcat-annotations-api](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-core | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-el | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-websocket | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
 | org.ccil.cowan.tagsoup/tagsoup | 1.2.1 | Apache License 2.0 | [tagsoup](http://home.ccil.org/~cowan/XML/tagsoup/) | 
 | org.checkerframework/checker-qual | 3.5.0 | The MIT License | [checker-qual](https://checkerframework.org) | 
 | org.checkerframework/checker-qual | 3.33.0 | The MIT License | [checker-qual](https://checkerframework.org/) | 
@@ -2185,10 +2183,8 @@
 | Third-party Software | Version | License | GitHub |
 | -------------------- | --------| ------- | ------ |
 | antlr/antlr | 2.7.7 | BSD License | [antlr](http://www.antlr.org/) | 
-| ch.qos.logback/logback-classic | 1.2.9 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
-| ch.qos.logback/logback-classic | 1.2.12 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
-| ch.qos.logback/logback-core | 1.2.9 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
-| ch.qos.logback/logback-core | 1.2.12 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
+| ch.qos.logback/logback-classic | 1.2.13 | GNU Lesser General Public License | [logback-classic](http://logback.qos.ch/logback-classic) | 
+| ch.qos.logback/logback-core | 1.2.13 | GNU Lesser General Public License | [logback-core](http://logback.qos.ch/logback-core) | 
 | com.fasterxml/classmate | 1.5.1 | Apache License, Version 2.0 | [classmate](https://github.com/FasterXML/java-classmate) | 
 | com.fasterxml.jackson.core/jackson-annotations | 2.13.2 | The Apache Software License, Version 2.0 | [jackson-annotations](http://github.com/FasterXML/jackson) | 
 | com.fasterxml.jackson.core/jackson-annotations | 2.14.0 | The Apache Software License, Version 2.0 | [jackson-annotations](https://github.com/FasterXML/jackson) | 
@@ -2246,10 +2242,10 @@
 | org.apache.logging.log4j/log4j-api | 2.17.2 | Apache License, Version 2.0 | [log4j-api](https://logging.apache.org/log4j/2.x/log4j-api/) | 
 | org.apache.logging.log4j/log4j-to-slf4j | 2.17.2 | Apache License, Version 2.0 | [log4j-to-slf4j](https://logging.apache.org/log4j/2.x/log4j-to-slf4j/) | 
 | org.apache.sling/org.apache.sling.javax.activation | 0.1.0 | The Apache Software License, Version 2.0 | [org.apache.sling.javax.activation](http://sling.apache.org/org.apache.sling.javax.activation) | 
-| org.apache.tomcat/tomcat-annotations-api | 9.0.82 | Apache License, Version 2.0 | [tomcat-annotations-api](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-core | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-el | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
-| org.apache.tomcat.embed/tomcat-embed-websocket | 9.0.82 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
+| org.apache.tomcat/tomcat-annotations-api | 9.0.87 | Apache License, Version 2.0 | [tomcat-annotations-api](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-core | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-core](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-el | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-el](https://tomcat.apache.org/) | 
+| org.apache.tomcat.embed/tomcat-embed-websocket | 9.0.87 | Apache License, Version 2.0 | [tomcat-embed-websocket](https://tomcat.apache.org/) | 
 | org.ccil.cowan.tagsoup/tagsoup | 1.2.1 | Apache License 2.0 | [tagsoup](http://home.ccil.org/~cowan/XML/tagsoup/) | 
 | org.checkerframework/checker-qual | 3.5.0 | The MIT License | [checker-qual](https://checkerframework.org) | 
 | org.checkerframework/checker-qual | 3.33.0 | The MIT License | [checker-qual](https://checkerframework.org/) | 
@@ -3916,7 +3912,7 @@
 | date-format | 4.0.14 | MIT | [date-format](https://github.com/nomiddlename/date-format#readme) | 
 | debug | 2.6.9 | MIT | [debug](https://github.com/visionmedia/debug#readme) | 
 | debug | 4.3.4 | MIT | [debug](https://github.com/debug-js/debug#readme) | 
-| decamelize | 1.2.0 | MIT | [decamelize](https://github.com/sindresorhus/decamelize#readme) | 
+| decamelize | 1.2.0 | MIT | [decamelize](https://github.com/sindresorhus/decamelize.git) | 
 | deepmerge | 3.0.0 | MIT | [deepmerge](https://github.com/KyleAMathews/deepmerge) | 
 | depd | 1.1.2 | MIT | [depd](https://github.com/dougwilson/nodejs-depd#readme) | 
 | emoji-regex | 8.0.0 | MIT | [emoji-regex](https://mths.be/emoji-regex) | 
@@ -3988,7 +3984,7 @@
 | minizlib | 2.1.2 | MIT | [minizlib](https://github.com/isaacs/minizlib#readme) | 
 | mkdirp | 1.0.4 | MIT | [mkdirp](https://github.com/isaacs/node-mkdirp#readme) | 
 | moment | 2.29.4 | MIT | [moment](https://momentjs.com) | 
-| ms | 2.0.0 | MIT | [ms](https://github.com/zeit/ms#readme) | 
+| ms | 2.0.0 | MIT | [ms](https://github.com/zeit/ms.git) | 
 | ms | 2.1.2 | MIT | [ms](https://github.com/zeit/ms#readme) | 
 | ms | 2.1.3 | MIT | [ms](https://github.com/vercel/ms#readme) | 
 | mustache | 2.3.2 | MIT | [mustache](https://github.com/janl/mustache.js) | 
@@ -4018,8 +4014,8 @@
 | promise-retry | 1.1.1 | MIT | [promise-retry](https://github.com/IndigoUnited/node-promise-retry#readme) | 
 | promise-retry | 2.0.1 | MIT | [promise-retry](https://github.com/IndigoUnited/node-promise-retry#readme) | 
 | q | 1.4.1 | MIT | [q](https://github.com/kriskowal/q) | 
-| read-package-json-fast | 1.2.2 | ISC | [read-package-json-fast](https://github.com/npm/read-package-json-fast.git) | 
-| readable-stream | 1.1.14 | MIT | [readable-stream](https://github.com/isaacs/readable-stream.git) | 
+| read-package-json-fast | 1.2.2 | ISC | [read-package-json-fast](https://github.com/npm/read-package-json-fast#readme) | 
+| readable-stream | 1.1.14 | MIT | [readable-stream](https://github.com/nodejs/readable-stream) | 
 | readline-sync | 1.4.10 | MIT | [readline-sync](https://github.com/anseki/readline-sync) | 
 | require-directory | 2.1.1 | MIT | [require-directory](https://github.com/troygoode/node-require-directory/) | 
 | require-main-filename | 2.0.0 | ISC | [require-main-filename](https://github.com/yargs/require-main-filename#readme) | 
@@ -4047,7 +4043,7 @@
 | string_decoder | 0.10.31 | MIT | [string_decoder](https://github.com/rvagg/string_decoder) | 
 | strip-ansi | 6.0.0 | MIT | [strip-ansi](https://github.com/chalk/strip-ansi#readme) | 
 | strip-ansi | 6.0.1 | MIT | [strip-ansi](https://github.com/chalk/strip-ansi#readme) | 
-| supports-color | 5.5.0 | MIT | [supports-color](https://github.com/chalk/supports-color.git) | 
+| supports-color | 5.5.0 | MIT | [supports-color](https://github.com/chalk/supports-color#readme) | 
 | tar | 6.1.11 | ISC | [tar](https://github.com/npm/node-tar#readme) | 
 | tmp | 0.2.1 | MIT | [tmp](http://github.com/raszi/node-tmp) | 
 | tweetnacl | 0.14.5 | Unlicense | [tweetnacl](https://tweetnacl.js.org) | 
