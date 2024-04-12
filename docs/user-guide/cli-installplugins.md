@@ -15,38 +15,40 @@ You can install the following Zowe plug-ins:
 
 Use either of the following methods to install plug-ins:
 
-- Install from an online NPM registry. Use this method when your computer ***can*** access the Internet.
+- Install from an online NPM registry. Use this method when your computer can access the Internet.
 
     For more information, see [Installing plug-ins from an online registry](#installing-plug-ins-from-an-online-registry).
 
-- Install from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` files. Use this method when your computer ***cannot*** access the Internet.
+- Install from a local package. With this method, you download and install the plug-ins from a bundled set of `.tgz` files. Use this method when your computer cannot access the Internet.
 
     For more information, see [Installing plug-ins from a local package](#installing-plug-ins-from-a-local-package).
 
 ## Installing plug-ins from an online registry
 
-Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this article assume that you previously installed the core CLI.
+The following procedure assumes that you previously installed Zowe CLI core.
 
-**Follow these steps:**
+To install Zowe CLI plug-ins on Windows, Mac, and Linux:
 
-1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you install.
+1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) to be installed.
 
-2.  Issue the following command to install a plug-in from public npm:
+2. Issue the following command to install a plug-in from public npm:
 
       ```
       zowe plugins install <my-plugin>
       ```
-    
-    Replace `<my-plugin>` with the installation command syntax in the following table
 
-    | Plug-in | Syntax |
-    |---------|-----------------------------|
-    | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v2-lts` |
-    | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v2-lts` |
-    | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v2-lts` |
-    | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v2-lts` |
+      - `<my-plugin>`
+      
+        Specifies the command syntax for the plug-in to be installed. Use the following table to determine the syntax for your plug-in.
 
-3.  (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with one space.
+        | Plug-in | Syntax |
+        |---------|-----------------------------|
+        | IBM CICS Plug-in for Zowe CLI | `@zowe/cics-for-zowe-cli@zowe-v3-lts` |
+        | IBM Db2 Plug-in for Zowe CLI| `@zowe/db2-for-zowe-cli@zowe-v3-lts` |
+        | IBM z/OS FTP Plug-in for Zowe CLI | `@zowe/zos-ftp-for-zowe-cli@zowe-v3-lts` |
+        | IBM MQ Plug-in for Zowe CLI | `@zowe/mq-for-zowe-cli@zowe-v3-lts` |
+
+3. (Optional) Issue the following command to install two or more plug-ins using one command. Separate the `<my-plugin>` names with a single space.
 
     ```
     zowe plugins install <@zowe/my-plugin1> <@zowe/my-plugin2> <@zowe/my-plugin3> ...
@@ -58,25 +60,32 @@ Install Zowe CLI plug-ins on Windows, Mac, and Linux. The procedures in this art
 
     :::
 
-    You have successfully installed Zowe CLI plug-ins.
+    You have successfully installed the specified Zowe CLI plug-in(s).
 
 ## Installing plug-ins from a local package
 
-Install plug-ins from a local package on any computer that has limited or no access to the Internet. The procedure assumes that you previously installed the core CLI.
+The following procedure assumes that you previously installed Zowe CLI core.
 
-**Follow these steps:**
+To install plug-ins from a local package on any computer that has limited or no access to the Internet:
 
-1.  Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
+1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) that you want to install.
 
-2.  Obtain the installation files.
+2. Obtain the installation files.
 
-    From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-*v*.*r*.*m*.zip` to your computer.
-
-    :::note
+    From the Zowe [Download](https://zowe.org/download/) website, click **Download Zowe CLI** to download the Zowe CLI installation package named `zowe-cli-package-<X.Y.Z>.zip` to your computer.
     
-    `v` indicates the version, `r` indicates the release number, and `m` indicates the modification number.
+    - `v`
 
-    :::
+        Specifies the version number
+    
+    - `r`
+    
+        Specifies the release number
+    
+    - `m` 
+    
+        Specifies the modification number.
+
 
 3. Open a command-line window, such as Windows Command Prompt. Browse to the directory where you downloaded the Zowe CLI installation package (.zip file). Issue the following command, or use your preferred method to unzip the files:
 
@@ -85,7 +94,7 @@ Install plug-ins from a local package on any computer that has limited or no acc
     ```
     **Example:**
     ```
-    unzip zowe-cli-package-1.9.0.zip
+    unzip zowe-cli-package-3.0.0.zip
     ```
 
     By default, the unzip command extracts the contents of the zip file to the directory where you downloaded the .zip file. You can extract the contents of the zip file to your preferred location.
@@ -118,7 +127,8 @@ zowe plugins validate [plugin]
 ```
 
   - **`[plugin]`**
-    (Optional) Specifies the name of the plug-in that you want to
+    
+    Specifies the name of the plug-in that you want to
     validate. If you do not specify a plug-in name, the command
     validates all installed plug-ins. The name of the plug-in is not always the same as the name of the NPM package.
 
@@ -169,7 +179,7 @@ zowe plugins update [plugin...] [--registry <registry>]
 The following example illustrates the syntax to use to update an installed plug-in to the latest version:
 
 ```
-zowe plugins update @zowe/my-plugin@zowe-v2-lts
+zowe plugins update @zowe/my-plugin@zowe-v3-lts
 ```
 
 The following example illustrates the syntax to use to update a plug-in to a specific version:

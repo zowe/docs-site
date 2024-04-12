@@ -2,7 +2,7 @@
 
 Before installing a Zowe&trade; CLI plug-in, meet the software requirements to run the plug-in as expected.
 
-:::info**Required role:** systems administrator
+:::info Required role: systems administrator
 :::
 
 | Plug-in | Requirements |
