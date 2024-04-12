@@ -1,8 +1,6 @@
 # API Versioning
 
- ## Introduction
-
- _API Catalog_ is the catalog of published API services and their associated documentation that have been
+ The _API Catalog_ is the catalog of published API services and their associated documentation that have been
  discovered or might get available if provisioned from the service catalog.
 
  _Application program interface (API)_ is a set of functions and procedures that allow the creation
@@ -40,42 +38,50 @@
 
  _(this a [UML class diagram](https://en.wikipedia.org/wiki/Class_diagram))_
 
- **Catalog Tile** - API Catalog UI groups API services into tiles. An API service can be in multiple tiles. The
+ * **Catalog Tile**  
+ The API Catalog UI groups API services into tiles. An API service can be in multiple tiles. The
  purpose of titles is to organize API services on the dashboard of the API Catalog. Default catalog tiles
  are constructed from the definitions provided by the services. In future, it will be possible for
  the user to modify the tiles.
 
- **API** - _Api_ object represents a collection of specific versions of the same API which share the
+ * **API**  
+ An _Api_ object represents a collection of specific versions of the same API which share the
  same _apiId_.
 
- **API Version** represents a specific version of the API. This version can be documented by an
- external documentation or by a Swagger document. This information is set by the developer of the
- API.
+ * **API Version**  
+ Specifies the version of the API. This version can be documented by an
+ external documentation or by a Swagger document. This information is set by the developer of the API.
 
- **Swagger** represents a Swagger specification instance for a specific API version. See
+ * **Swagger**  
+ The Swagger specification instance for a specific API version. See
  https://swagger.io/docs/specification/ for more details.
 
- **API Association** provides information how a specific API version is provides by a specific
+ * **API Association**  
+ Information how a specific API version is provided by a specific
  service. Different services can use different basePath. The full path to access endpoints is:
  `scheme://host:port/basePath/endpointPath`. This information is set by the service developer.
 
- **Service** represents a collection of all service instances. The description and title are taken
+ * **Service**  
+ Represents a collection of all service instances. The description and title are taken
  from the service with highest version, in case if this is not clear then the latest registered
  wins. API clients are using a service and the API gateway chooses what service instance will be
  accessed. The same API version can be implemented by multiple services. Such services are not
  interchangeable because they contain or access different data.
 
- **Service instance** is a real implementation of a service. It contains the information about where
+ * **Service instance**  
+ The implementation of a service. It contains the information about where
  service is running. The information are provided by the system programmer. The default title and
  description is provided by service developer. Instances are interchangeable and they are used to
  achieve high availability.
 
- **Route** - _Routes_ provide a way how service URLs are mapped to the gateway. Gateway translates
- an URL based on the start of the base path on the gateway and translates it to a base path that is
+ * **Route**  
+ Specifies how service URLs are mapped to the gateway. The Gateway translates
+ a URL based on the start of the base path on the gateway, and translates it to a base path that is
  used in the URL to access the service. The purpose is to make possible to access services via the
  gateway with a consistent URL format no matter what is the format at the service.
 
- **Version** type follows semantic versioning (http://semver.org/) and is used on multiple places.
+ * **Version**  
+ Type follows semantic versioning (http://semver.org/) and is used on multiple places.
 
  ### Service and instance
 
@@ -104,7 +110,7 @@
  documentation for the highest version of the specified major version that is supported by all
  running services.
 
- Guidelines:
+ **Guidelines:**
 
 - The version of the API, not dependent on the product release
 

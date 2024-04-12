@@ -469,8 +469,7 @@ ssl:
 
 ### Custom Metadata
 
-Custom metadata are described [here](custom-metadata.md).
-
+For information about customizing metadata to add to the instance information registered in the Discovery Service, see [Customizing Metadata](./custom-metadata.md).
 
 ## Registering and unregistering your service with API ML
 
@@ -484,7 +483,7 @@ Unregistering a service onboarded with API ML is done automatically at the end o
 
 ### Basic routing
 
-See [API ML Basic Routing](api-mediation-routing.md) for more information about basic routing in the API ML.
+For information about basic routing in the API ML, see [API ML Basic Routing](./api-mediation-routing.md) 
 
 ## Adding API documentation
 

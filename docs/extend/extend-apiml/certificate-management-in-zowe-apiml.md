@@ -1,6 +1,6 @@
 # Certificate management in Zowe API Mediation Layer
 
-Review details of certificate management in Zowe API Mediation Layer. This article decribes both how to manage certificates when running on localhost, as well as certificate management using Zowe runtime on z/OS. Additional information is provided about about the API ML truststore and keystore, and API ML SAF Keyring.
+Review details of certificate management in Zowe API Mediation Layer (API ML). This article decribes both how to manage certificates when running on localhost, as well as certificate management using Zowe runtime on z/OS. Additional information is provided about about the API ML truststore and keystore, and API ML SAF Keyring.
 
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
@@ -15,15 +15,18 @@ Review details of certificate management in Zowe API Mediation Layer. This artic
       - [Procedure if the service is not trusted](#procedure-if-the-service-is-not-trusted)
   - [API ML truststore and keystore](#api-ml-truststore-and-keystore)
   - [API ML SAF Keyring](#api-ml-saf-keyring)
+
 ## Running on localhost
 
 ### How to start API ML on localhost with full HTTPS
 
-The https://github.com/zowe/api-layer repository contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
+The [api-layer repository](https://github.com/zowe/api-layer) contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
 
 For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
-**Note:** When running on localhost, only the combination of using a keystore and truststore is supported.
+:::note
+When running on localhost, only the combination of using a keystore and truststore is supported.
+:::
 
 
 ### Certificate management guide
@@ -58,8 +61,8 @@ There are two ways to set up certificates on a z/OS machine:
 - Certificates in UNIX files (keystore and truststore)
  
 For detailed instructions about how to set up certificates during installation, see the following articles:
-* [Configuring PKCS12 certificates](../../user-guide/use-certificates.md#use-pkcs12-certificates)
-* [Configuring JCERACFS certificates in a key ring](../../user-guide/use-certificates.md#use-jceracfks-certificates) 
+* [Use PKCS12 certificates](../../user-guide/use-certificates.md#use-pkcs12-certificates)
+* [Use JCERACFS certificates](../../user-guide/use-certificates.md#use-jceracfks-certificates) in a keyring 
 
 Follow the procedure in the applicable section described in this article during installation.
 

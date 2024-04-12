@@ -17,6 +17,19 @@ zFS is a UNIX file system where Zowe runtime files and folders are installed. Zo
 
 For more information about USS, see [Addressing UNIX System Servies (USS) Requirements](./configure-uss.md).
 
+:::tip
+Zowe runs in USS and makes heavy use of shell scripts and TCP/IP sockets, which creates temporary files and ENQUEUES within the /tmp directory. It is not likely that the increased volume of temporary files and ENQUEUES will impact your system, as this volume is on the scale of a few thousand temporary files and ENQUEUES, which are subsequently freed after configuration and startup. 
+
+If, in your specific case, this increase in the /tmp directory results in impacts to your system, or you are concerned about the possible impact of this increased volume in the /tmp directory, we recommend you update the following property in the zowe.yaml to move the created files and ENQUEUES to different directory:
+
+```
+environments:
+  TMPDIR: /your_path_to/zowe/tmp1
+  TEMP_DIR: /your_path_to/zowe/tmp2
+  CATALINA_TMPDIR: /your_path_to/zowe/tmp3
+```
+:::
+
 ### Runtime directory  
 The runtime directory contains the binaries, executable files, scripts, and other elements that are run when Zowe is started. Creating a Zowe runtime directory involves setting up the necessary environment for Zowe to run on your system. 
 
