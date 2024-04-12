@@ -3,7 +3,7 @@
 Before you begin, [set up](cli-setting-up.md) your local environment to install a plug-in.
 
 ## Overview
-This tutorial covers installing and running this bundled Zowe&trade; CLI plugin as-is (without modification), which will display your current directory contents. 
+This tutorial covers installing and running this bundled Zowe&trade; CLI plugin as-is (without modification), which displays your current directory contents.
 
 The plug-in adds a command to the CLI that lists the contents of a directory on your computer.
 

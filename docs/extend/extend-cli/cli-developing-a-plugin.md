@@ -174,13 +174,11 @@ Follow these steps:
 
 ## Building your plug-in source
 
-Confirm that your project builds successfully.
-
-Follow these steps:
+To confirm that your project builds successfully:
 
 1. Due to missing license headers, you will come across linting errors. Run `npm run lint:fix` to resolve the errors automatically.
 
-    When successful, an unrelated warning might display but no errors are returned and the `lib` directory contains the built javascript files.
+    When successful, no errors are returned, although an unrelated warning might display. Additionally, the `lib` directory contains the built javascript files.
 
 2. In the terminal, run `npm run build` to verify there are no errors.
 
@@ -192,9 +190,7 @@ Follow these steps:
 
 ## Creating a Zowe CLI command
 
-Define the command that calls the client-side API.
-
-Follow these steps:
+To define the command that calls the client-side API:
 
 1. In `src/cli`, create a folder named `diff`.
 2. In the `diff` directory, create a file named `Diff.definition.ts`.
@@ -307,7 +303,7 @@ Follow these steps:
     If you encounter installation errors due to conflicting profiles or command groups, uninstall the sample plug-in or modify the profile definition in the `src/pluginDef.ts` file.
     :::
 
-3. Issue the following command (the new **Files Util Plug-in** command) replacing the data set names with valid mainframe data set names on your system:
+3. Replace the data set names with valid mainframe data set names on your system:
 
     ```
     zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)"
