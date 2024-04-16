@@ -35,8 +35,8 @@ Use the following steps to configure an M1 (or later architecture) processor to 
 
     - If you are installing the plug-in from a local package, continue with Step 2 in [Installing from a local package](../user-guide/cli-db2plugin.md#installing-from-a-local-package). 
 
-:::warning Important 
+:::warning Important
 
-You must issue the `intel` command every time that you open a new terminal window to help ensure that Zowe CLI, secure credential storage **[is it correct to include scs here?]**, and the DB2 plug-in function properly on x86_64 architecture. Also, issue the command *before* you issue Zowe CLI commands.
+You must issue the `intel` command every time that you open a new terminal window to ensure that the DB2 plug-in functions properly on x86_64 architecture.
 
 :::

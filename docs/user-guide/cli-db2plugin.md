@@ -90,7 +90,7 @@ sudo xcode-select --install
 
 With the Db2 ODBC CLI driver downloaded, set the `IBM_DB_INSTALLER_URL` environment variable and install the Db2 plug-in to Zowe CLI:
 
-1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-bundle.zip` file **[is this file name correct? or should it be `zowe-cli-package-<X.Y.Z>.zip`]**. If you do not have the `zowe-cli-bundle.zip` file, see [Installing Zowe CLI and Zowe CLI plug-ins from a local package](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-a-local-package) for information about how to obtain and extract it.
+1. Open a command line window and change the directory to the location where you extracted the `zowe-cli-plugins-<X.Y.Z>.zip` file. If you do not have the `zowe-cli-bundle.zip` file, see [Installing Zowe CLI and Zowe CLI plug-ins from a local package](../user-guide/cli-installcli.md#installing-zowe-cli-and-zowe-cli-plug-ins-from-a-local-package) for information about how to obtain and extract it.
 
 2. From a command line window, set the `IBM_DB_INSTALLER_URL` environment variable:
 
@@ -133,7 +133,7 @@ Error:    [IBM][CLI Driver] SQL1598N An attempt to connect to the database serve
 
 ### Server-side license
 
-You can execute the utility `db2connectactivate` on z/OS to enable a Db2 database to accept client requests. For more information, see [db2connectactivate - Server license activation utility](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.licensing.doc/doc/r0057377.html) **[is this the correct ibm doc version?]**. This avoids having to apply the Db2 Connect license on each database client that connects directly to the server. It is also the preferred approach to enabling users of the Zowe Db2 CLI because it avoids individual client license distribution and configuration.
+You can execute the utility `db2connectactivate` on z/OS to enable a Db2 database to accept client requests. For more information, see [db2connectactivate - Server license activation utility](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.licensing.doc/doc/r0057377.html). This avoids having to apply the Db2 Connect license on each database client that connects directly to the server. It is also the preferred approach to enabling users of the Zowe Db2 CLI because it avoids individual client license distribution and configuration.
 
 ### Client-side license
 
@@ -180,7 +180,7 @@ Alternatively, you can create a Db2 profile manually by adding a section that co
     ```
     zowe config init
     ```
-3.  If using a non-standard port, set the port number to your Db2 connection: **[is this step correct/applicable to Db2?]**
+3.  Set the port number to the port configured for a Db2 connection on your mainframe.
 
     ```
     zowe config set profiles.db2.properties.port <port number>
@@ -189,10 +189,10 @@ Alternatively, you can create a Db2 profile manually by adding a section that co
     - `<port number>`
 
       Specifies the port number for the instance.
-4. If using an insecure connection, set the `secureDb2` value to `false`: **[is this step correct/applicable to Db2?]**
+4. If an SSL file is available, set the `sslFile` value to SSL file path:
 
     ```
-    zowe config set profiles.db2.properties.secureFtp false
+    zowe config set profiles.db2.properties.sslFile <SSL file path>
     ```
     You can now use your profile when you issue commands in the Db2 command group.
 

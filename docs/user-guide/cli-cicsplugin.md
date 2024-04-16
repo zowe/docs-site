@@ -42,7 +42,7 @@ Specify your plug-in profile and connection details in the `zowe.config.json` co
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the CICS plug-in and then issue a `zowe config` command **[correct?]**, the command creates an entry for a CICS profile in your `zowe.config.json` file.
+If you have the CICS plug-in installed and issue the `zowe config init`, `zowe config auto-init`, or `zowe config convert-profiles` command, the command creates an entry for a CICS profile in your `zowe.config.json file`.
 
 Alternatively, you can create a CICS profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
 
@@ -54,7 +54,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
     ```
     zowe config init
     ```
-3.  If using a non-standard port, set the port number to your CICS connection: **[is this step correct/applicable to cics?]**
+3.  Set the port number to the port configured for a CICS connection on your mainframe.
 
     ```
     zowe config set profiles.cics.properties.port <port number>
@@ -63,11 +63,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
     - `<port number>`
 
       Specifies the port number for the instance.
-4. If using an insecure connection, set the `secureCics` value to `false`: **[is this step correct/applicable to cics?]**
 
-    ```
-    zowe config set profiles.cics.properties.secureFtp false
-    ```
     You can now use your profile when you issue commands in the cics command group.
 
 #### Creating a CICS profile manually

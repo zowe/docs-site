@@ -31,7 +31,7 @@ To install Zowe CLI plug-ins on Windows, Mac, and Linux:
 
 1. Meet the [software requirements for each plug-in](cli-swreqplugins.md) to be installed.
 
-2. Issue the following command to install a plug-in from public npm:
+2. Install a plug-in from public npm:
 
       ```
       zowe plugins install <my-plugin>

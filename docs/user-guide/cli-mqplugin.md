@@ -41,7 +41,7 @@ Specify your plug-in profile and connection details in the `zowe.config.json` co
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the MQ plug-in and then issue a `zowe config` command **[correct?]**, the command creates an entry for an MQ profile in your `zowe.config.json` file.
+If you have the MQ plug-in installed and issue the `zowe config init`, `zowe config auto-init`, or `zowe config convert-profiles` command, the command creates an entry for a MQ profile in your `zowe.config.json file`.
 
 Alternatively, you can create an MQ profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
 
@@ -53,7 +53,7 @@ Alternatively, you can create an MQ profile manually by adding a section that co
     ```
     zowe config init
     ```
-3.  If using a non-standard port, set the port number to your MQ connection: **[is this step correct/applicable to MQ?]**
+3.  Set the port number to the port configured for an MQ connection on your mainframe.
 
     ```
     zowe config set profiles.mq.properties.port <port number>
@@ -62,11 +62,7 @@ Alternatively, you can create an MQ profile manually by adding a section that co
     - `<port number>`
 
       Specifies the port number for the instance.
-4. If using an insecure connection, set the `secureMq` value to `false`: **[is this step correct/applicable to MQ?]**
 
-    ```
-    zowe config set profiles.mq.properties.secureFtp false
-    ```
     You can now use your profile when you issue commands in the MQ command group.
 
 #### Creating an MQ profile manually
@@ -94,7 +90,6 @@ Alternatively, you can create an MQ profile manually by adding a section that co
     "properties": {
         "host": "Your_host_name",
         "port": Your_port_number,
-        "database": “Your_database”
     },
     "secure": [
         "user",

@@ -44,7 +44,7 @@ After you install the plug-in, create an FTP profile. An FTP profile is recommen
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the FTP plug-in and then issue a `zowe config` command **[correct?]**, the command creates an entry for an FTP profile in your `zowe.config.json` file.
+If you have the IBM® z/OS FTP plug-in installed and issue the `zowe config init`, `zowe config auto-init`, or `zowe config convert-profiles` command, the command creates an entry for a FTP profile in your `zowe.config.json file`.
 
 Alternatively, you can create an FTP profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file.
 
@@ -97,7 +97,7 @@ Alternatively, you can create an FTP profile manually by adding a section that c
       "properties": {
           "host": "Your_host_name",
           "port": Your_port_number,
-          "regionName": “Your_FTP_region”
+          "secureFtp": true
       },
       "secure": [
         "user",
