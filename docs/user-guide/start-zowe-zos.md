@@ -16,13 +16,13 @@ Zowe main started task
 
 ## Starting and stopping the cross memory server `ZWESISTC` on z/OS
 
-The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`, and supports reusable address spaces. This task can be started through SDSF with the operator start command with the `REUSASID=YES` keyword:
+The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`, and supports reusable address spaces. This task can be started through with the operator start command with the `REUSASID=YES` keyword:
 
 ```
-/S ZWESISTC,REUSASID=YES
+S ZWESISTC,REUSASID=YES
 ```
 :::note
-If MVS commands are used to start the cross memory server, the `/` before `S` should be removed.
+If using SDSF to start the cross memory server, enter `/` before `S`.
 :::
 
 The `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. Do not start the `ZWESASTC` task manually.
@@ -31,13 +31,14 @@ The `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. Do not start
 Starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, the instances share the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` affects the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example `ZWESIS_STD`. The Zowe cross memory server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross memory server is started with a new version of its load module, the cross memory server abandons its current load module instance in LPA and loads the updated version.
 :::
 
-To end the Zowe cross memory server process, issue the operator stop command through SDSF:
+To end the Zowe cross memory server process, issue the operator stop command:
 
 ```
-/P ZWESISTC
+S ZWESISTC
 ```
+
 :::note
-If MVS commands are used to stop the cross memory server, the `/` before `P` should be removed.
+If using SDSF to start the cross memory server, enter `/` before `S`.
 :::
 
 
