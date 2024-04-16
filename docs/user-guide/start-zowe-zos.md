@@ -38,7 +38,7 @@ S ZWESISTC
 ```
 
 :::note
-If using SDSF to start the cross memory server, enter `/` before `S`.
+If using SDSF to stop the cross memory server, enter `/` before `S`.
 :::
 
 
