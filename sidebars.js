@@ -453,6 +453,7 @@ module.exports = {
           link: {type:"doc", id:"user-guide/mvd-using"},
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270",
           ],
         },
         {
