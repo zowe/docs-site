@@ -174,26 +174,23 @@ Follow these steps:
 
 ## Building your plug-in source
 
-Confirm that your project builds successfully.
+To confirm that your project builds successfully:
 
-Follow these steps:
+1. Due to missing license headers, you will come across linting errors. Run `npm run lint:fix` to resolve the errors automatically.
 
-1. In the terminal, run `npm run build` to verify there are no errors.
+    When successful, no errors are returned, although an unrelated warning might display. Additionally, the `lib` directory contains the built javascript files.
+
+2. In the terminal, run `npm run build` to verify there are no errors.
 
     This command builds your typescript files by looking at the configuration details in `tsconfig.json` and placing the output javascript files in the `lib` directory.
     
     The `lib` directory is configurable by modifying [this value](https://github.com/zowe/zowe-cli-sample-plugin/blob/master/tsconfig.json#L12) in the `tsconfig.json` file.
 
-2. Optional: If you come across linting errors, run `npm run lint:fix` to resolve the errors automatically.
-
-    When successful, no errors are returned and the `lib` directory contains the built javascript files.
-
 **To create a unique plug-in:** Follow these same steps.
 
 ## Creating a Zowe CLI command
-Define the command that calls the client-side API.
 
-Follow these steps:
+To define the command that calls the client-side API:
 
 1. In `src/cli`, create a folder named `diff`.
 2. In the `diff` directory, create a file named `Diff.definition.ts`.
@@ -292,11 +289,21 @@ Follow these steps:
 
 1. Repeat the steps in [Building your plug-in source](../extend-cli/cli-developing-a-plugin#building-your-plug-in-source).
 
-2. Issue the `zowe plugins install` command to install Files Util Plug-in into Zowe CLI.
+    As you make changes, repeat these steps to make sure the changes are reflected in the working plug-in.
+
+2. Issue the following command to install **Files Util Plug-in** into Zowe CLI:
+
+    ```
+    zowe plugins install .
+    ```
 
     A success message displays if installed correctly.
 
-3. Issue the following command (the new Files Util Plug-in command) replacing the data set names with valid mainframe data set names on your system:
+    :::note
+    If you encounter installation errors due to conflicting profiles or command groups, uninstall the sample plug-in or modify the profile definition in the `src/pluginDef.ts` file.
+    :::
+
+3. Replace the data set names with valid mainframe data set names on your system:
 
     ```
     zowe files-util diff data-sets "IBMUSER.REXX(TESTADD)" "IBMUSER.REXX(TESTSUB)"
@@ -330,7 +337,7 @@ You have created a simple CLI plug-in that provides plain text diffs of two data
 
 Depending on the complexity of your changes, it can be difficult to identify data set differences with plain text.
 
-To help fix this, you can extend Files Util Plug-in to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
+To help fix this, you can extend **Files Util Plug-in** to create a more visual output. For this tutorial, use [diff2html](https://diff2html.xyz/) to generate side-by-side diffs that make it easier to compare changes, as seen in the image below.
 
 | ![Side by Side Diff](../../images/guides/CLI/htmlDiff2.png) |
 |:--:|
