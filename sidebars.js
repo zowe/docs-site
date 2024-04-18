@@ -453,6 +453,7 @@ module.exports = {
           link: {type:"doc", id:"user-guide/mvd-using"},
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270",
           ],
         },
         {
@@ -681,6 +682,7 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
+            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
