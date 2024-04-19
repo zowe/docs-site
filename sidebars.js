@@ -682,7 +682,6 @@ module.exports = {
           label: "Developing for Zowe API Mediation Layer",
           items: [
             "extend/extend-apiml/onboard-overview",
-            "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
