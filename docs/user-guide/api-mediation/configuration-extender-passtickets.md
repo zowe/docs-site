@@ -29,9 +29,9 @@ The API Gateway provides the user ID and password in the Authorization header of
 The following steps outline the procedure for enabling PassTicket Support:
 
 1. Follow the API service documentation that explains how to activate support for PassTickets.
-  - The PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API Service in a secure mainframe environment.
+  **Note:** PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API service in a secure mainframe environment.
 2. Record the value of the APPLID of the API service.
-3. Enable the Zowe started task user ID to generate PassTickets for the API service.
+3. Enable the Zowe started task user ID to generate PassTickets for the API service. See the following examples for which allow for `UPDATE` and `READ` access, which apply to the ESM you are using.
 4. Enable PassTicket support in the API Gateway for your API service.
 
 ### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
