@@ -29,9 +29,15 @@ The API Gateway provides the user ID and password in the Authorization header of
 The following steps outline the procedure for enabling PassTicket Support:
 
 1. Follow the API service documentation that explains how to activate support for PassTickets.
-  **Note:** PassTickets for the API service must have the replay protection switched off. The PassTickets are exchanged between Zowe API Gateway and the API service in a secure mainframe environment.
+
+  **Note:** PassTickets for the API service must have the replay protection switched off. 
+  
+  **Example:** `APPLDATA('NO REPLAY PROTECTION')
+
+  The PassTickets are exchanged between Zowe API Gateway and the API service in a secure mainframe environment.
+
 2. Record the value of the APPLID of the API service.
-3. Enable the Zowe started task user ID to generate PassTickets for the API service. See the following examples for which allow for `UPDATE` and `READ` access, which apply to the ESM you are using.
+3. Enable the Zowe started task user ID to generate PassTickets for the API service. Grant `UPDATE` access to the Zowe started task by submitting commands in one of the three ESMs: ACF2, Top Secret, or RACF.
 4. Enable PassTicket support in the API Gateway for your API service.
 
 ### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
@@ -40,11 +46,15 @@ Consult with your security administrator to issue security commands to allow the
 
 Use the following variables to generate PassTickets for the API service to enable the Zowe started task user ID:
 
-- `<applid>` is the APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
+- **`<applid>`**  
+The APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
 
-- `<zowesrv>` is Zowe started task user ID used during the Zowe installation
+- **`<zowesrv>`**  
+The Zowe started task user ID used during the Zowe installation
 
-Replace the variables in the following examples with actual values.
+In the following examples of ESM configuration, replace these variables with actual values.
+
+Use the the configuration format in the following examples that corresponds to your ESM.
 
 #### ACF2
 
