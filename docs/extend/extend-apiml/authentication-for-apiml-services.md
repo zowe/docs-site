@@ -143,7 +143,8 @@ The following schemes are supported by the API Gateway:
     * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
     * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the southbound service performs the authentication.
     * If the southbound service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request header.
+    The HTTP header is then added to each request towards the southbound service and contains the Zowe JWT to be consumed by the service. See [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
+    
 
   * **httpBasicPassTicket**  
 
@@ -153,7 +154,7 @@ The following schemes are supported by the API Gateway:
     * When a JWT is provided, the service validates the Zowe JWT to use for passticket generation.
     * When a client certificate is provided, the service validates the certificate by mapping it to a mainframe user to use for passticket generation.
     * If the southbound service needs to consume the user ID and the passticket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-    The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. See [Advanced Gateway features configuration](../../user-guide/api-mediation/api-gateway-configuration.md) for more information about the custom HTTP request headers.
+    * The HTTP headers are then added to each request towards the southbound service. The headers contain the user ID and the passticket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
       
     For more information, see [Authentication with PassTickets](#authentication-with-passtickets).
 
@@ -197,6 +198,10 @@ API ML contains the following providers to handle authentication for the API Gat
 * `SAF Authentication Provider`
 * `Dummy Authentication Provider`
 
+In most cases, we recommend you use  the z/OSMF Authentication Provider. z/OSMF is part of z/OS. As such, this provider is the best option for providing the authentication API.
+
+When z/OSMF is not available, we recommend you use the SAF Authentication provider. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by API Gateway via SAF APIs.
+
 ### z/OSMF Authentication Provider
 
 The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with the z/OSMF service. The user needs z/OSMF access in order to authenticate.
@@ -220,7 +225,7 @@ apiml.security.auth.provider: saf
 
 The `Dummy Authentication Provider` implements simple authentication for development purposes using dummy credentials (username:  `user`, password `user`). The `Dummy Authentication Provider` makes it possible for the API Gateway to run without authenticating with the z/OSMF service.
 
-Use the following property of API Gateway to enable the `Dummy Authentication Provider`:
+Use the following property of the API Gateway to enable the `Dummy Authentication Provider`:
 ```
 apiml.security.auth.provider: dummy
 ```

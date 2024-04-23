@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.14.x";
+const LATEST_VERSION = "v2.15.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -32,9 +32,9 @@ module.exports = {
     announcementBar: {
       id: 'announcementBar-1', // increment on change
       content:
-          '📌 <b>Support for Zowe Version 1 ends on Sept. 30, 2024</b>. Follow <a href="https://docs.zowe.org/stable/extend/migrate-extensions/" target="_blank">this guide</a> to migrate to Zowe Version 2.',
+          '📌  <b>The Zowe V3 release is delayed</b>. Release schedule for Zowe V2 to be updated. See <a href="https://docs.zowe.org/stable/whats-new/zowe-announcements" target="_blank">Zowe announcements</a> for more information. ',
       textColor: '#000',
-    },
+      },
     docs: {
       sidebar: {
         hideable: true
@@ -231,6 +231,9 @@ module.exports = {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v2.14.x": {
+              label: "v2.14.x LTS",              
             },
             "v2.13.x": {
               label: "v2.13.x LTS",

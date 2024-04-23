@@ -7,7 +7,7 @@ Additional metadata can be added to the instance information that is registered 
     When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.
           
     :::info Important
-    When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For  more information, see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
+    When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For  more information, see [Zowe runtime](../../user-guide/install-zos.md#zowe-runtime) in Zowe server-side installation overview.
     :::
 
     :::note
@@ -53,7 +53,7 @@ Additional metadata can be added to the instance information that is registered 
 * **customMetadata.apiml.corsEnabled**
     
     When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
-    For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Cors configuration](../../user-guide/api-mediation/configuration-cors.md).
+    For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
     Additional information can be found in this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
     
     :::note
@@ -63,7 +63,7 @@ Additional metadata can be added to the instance information that is registered 
 
 * **customMetadata.apiml.gatewayAuthEndpoint**
 
-  Specifies the Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md)
+  Specifies the Gateway authentication endpoint used by the ZAAS Client configuration. The default value is `/api/v1/gateway/auth`. For more information about ZAAS Client, see [ZAAS Client](zaas-client.md).
 
   :::note
   If you use the Spring enabler, use the following parameter name:
@@ -88,7 +88,7 @@ Additional metadata can be added to the instance information that is registered 
   `apiml.service.customMetadata.apiml.corsAllowedOrigins`
   :::
 
-    For more information, refer to enabling CORS with Custom Metadata on the Gateway: [CORS configuration](../../user-guide/api-mediation/configuration-cors.md).
+    For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
   
  * **customMetadata.apiml.lb.type**
    
@@ -111,7 +111,7 @@ Additional metadata can be added to the instance information that is registered 
 
       This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
 
-      In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do so, follow the steps described in [Distributed load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache).
+      In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do so, follow the steps described in [Distributing the load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache).
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
     
    When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   

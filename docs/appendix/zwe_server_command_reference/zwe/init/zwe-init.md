@@ -161,7 +161,8 @@ components:
   This configuration is optional. Default value is `ZWESASTC`.
 
 - `zowe.setup.certificate.type` is the type of certificate. Valid values are
-  "PKCS12" (USS keystore) or "JCERACFKS" (z/OS keyring).
+  "PKCS12" (USS keystore) or "JCEKS", "JCECCAKS", "JCERACFKS", "JCECCARACFKS",
+  and "JCEHYBRIDRACFKS (z/OS keyring).
 - `zowe.setup.certificate.dname` is the distinguished name of the certificate.
   You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`,
   `state`, and / or `country`. These configurations are optional.
@@ -169,13 +170,15 @@ components:
   This is optional.
 - `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the
   certificate if they are different from `zowe.externalDomains`. Please note,
-  for `JCERACFKS` type, with limitation of RACDCERT command, this should
-  contain exact one hostname (domain) and one IP address.
+  for `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, and `JCEHYBRIDRACFKS`
+  type, with limitation of RACDCERT command, this should contain exact one
+  hostname (domain) and one IP address.
 - `zowe.setup.certificate.importCertificateAuthorities` is the list of
-  certificate authorities will be imported to Zowe PKCS12 keystore or JCERACFKS
-  keyring. Please note, for JCERACFKS type, only maximum 2 CAs is supported.
+  certificate authorities will be imported to Zowe PKCS12 keystore or
+  keyring. Please note, for keyring type, only maximum 2 CAs is supported.
   If you are using `PKCS12` certificate, this should be USS files in PEM format.
-  If you are using `JCERACFKS` certificate, this should be certificate labels
+  If you are using `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, or
+  `JCEHYBRIDRACFKS` certificate, this should be certificate labels
   on the z/OS system.
 
 **For `PKCS12` certificate users,**
@@ -200,13 +203,14 @@ components:
   the certificate will be saved as alias specified in
   `zowe.setup.certificate.pkcs12.name`.
 
-**For `JCERACFKS` certificate (z/OS keyring) users,**
+**For keyring certificate users,**
 
 - `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and
   default value is `zowe.setup.security.users.zowe`. If it's also not defined,
   the default value is `ZWESVUSR`.
 - `zowe.setup.certificate.keyring.name` is the keyring name will be created
-  on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
+  on z/OS. This is required if `zowe.setup.certificate.type` is one of `JCEKS`,
+  `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, or `JCEHYBRIDRACFKS`.
 - If you want to let Zowe to generate new certificate,
   * You can also customize `label` and `caLabel` under
     `zowe.setup.certificate.keyring` if you want to generate new certificate.
@@ -277,6 +281,8 @@ Full name|Alias|Type|Required|Help message
 --security-dry-run||boolean|no|Whether to dry run security related setup.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 --update-config||boolean|no|Whether to update YAML configuration file with initialization result.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -291,6 +297,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 

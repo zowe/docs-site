@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
@@ -28,6 +29,7 @@ module.exports = {
       ],
     },
     "whats-new/zowe-v3-office-hours",
+    "whats-new/breaking-changes-v3",
   ],
   "getting-started": [
     {
@@ -107,11 +109,11 @@ module.exports = {
             "user-guide/systemrequirements-zos",
             "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
+            "user-guide/address-authentication-requirements",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",
             "user-guide/address-browser-requirements",
-            "user-guide/address-authentication-requirements"
           ]
         },
         {
@@ -752,6 +754,7 @@ module.exports = {
         },
         
         "extend/extend-ze/ze-extensions",
+        "getting-started/user-roadmap-client-sdk",
         "extend/extend-sdks",      
       ],
     },    
@@ -987,7 +990,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.14.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
     },
   ],
 }

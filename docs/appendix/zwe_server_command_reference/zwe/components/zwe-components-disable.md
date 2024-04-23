@@ -26,6 +26,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name,--component|-o|string|yes|Component name to be disabled.
 --ha-instance|-i|string|no|Zowe high availability instance ID from zowe.yaml.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -44,6 +46,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0152E|152|Cannot find component %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

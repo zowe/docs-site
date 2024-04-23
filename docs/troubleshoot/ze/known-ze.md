@@ -10,7 +10,45 @@ These bidirectional (BiDi) languages are not currently supported in Visual Studi
 
 As a result, VS Code extensions like Zowe Explorer, Zowe Explorer CICS Extension, and Zowe Explorer FTP Extension are not able to support BiDi languages in files.
 
-## Data Set Creation Error
+## Client certificate support
+
+Some Zowe Explorer users prefer to use certificates to access the API Mediation Layer. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might only be valid for a short period of time. On the other hand, certificates can be valid for much longer.
+
+Zowe Explorer does not support authenticating to the API ML using client certificates. However, it is possible to use Zowe CLI to authenticate to the API ML using client certificates and receive a token that Zowe Explorer can use for API ML access.
+
+To use a client certificate to generate an API ML token:
+
+1. Open a command line window and issue the following command:
+
+    ```
+    zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path>
+    ```
+    - `<APIML Host>`
+    
+        Specifies the API ML host.
+    - `<APIML Port>`
+        
+        Specifies the API ML port.
+    - `<PEM Public Certificate Path>`
+    
+        Specifies the path for the PEM public certificate.
+    - `<PEM Private Certificate Path>`
+    
+        Specifies the path to the PEM private certificate.
+
+    Zowe CLI procures a security token from the API ML and adds that token to the base profile in the applicable configuration file.
+
+2. Open Zowe Explorer, or reload it if already open.
+
+    Zowe Explorer can access the API ML token in the base profile for authentication.
+    
+    :::note
+    
+    If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+
+    :::
+
+## Data Set creation error
 
 **Symptom:**
 
@@ -24,7 +62,7 @@ Error running command zowe.createDataset: z/OSMF REST API Error: http(s) request
 
 Set the value of the Reject-Unauthorized parameter to `false`. Use the profile edit function to change profile's parameters.
 
-## Opening Binary Files Error
+## Opening binary files error
 
 **Symptom:**
 
@@ -49,7 +87,7 @@ Detail: File seems to be binary and cannot be opened as text. This is likely cau
 
 There is no solution or workaround at this time.
 
-## Theia Mainframe Connection Error
+## Theia mainframe connection error
 
 **Symptom:**
 

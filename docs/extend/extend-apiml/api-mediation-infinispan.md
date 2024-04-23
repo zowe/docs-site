@@ -44,18 +44,31 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The port number used by Infinispan to synchronise data among cahing-service instances.
 
 
-  **Example of Caching service configuration using Infinispan:**
+  **Example of Caching service HA configuration using Infinispan:**
 
   ```yaml
   zowe
-    components:
-      caching-service:
-        storage:
-          mode: infinispan
-          infinispan: 
-            initialHosts: lpar123[7099]
-            jgroups:
-              port: 7098
-            persistence:
-              dataLocation: data01
+  haInstances:
+    lpar1:
+      components:
+        caching-service:
+          storage:
+            mode: infinispan
+            infinispan: 
+              initialHosts: lpar2[7099]
+              jgroups:
+                port: 7098
+              persistence:
+                dataLocation: /global/zowe/workspace/caching-service/data01
+    lpar2:
+      components:
+        caching-service:
+          storage:
+            mode: infinispan
+            infinispan: 
+              initialHosts: lpar1[7098]
+              jgroups:
+                port: 7099
+              persistence:
+                dataLocation: /global/zowe/workspace/caching-service/data02
   ```

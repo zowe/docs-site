@@ -10,9 +10,9 @@ For help with error codes from a back-end vendor, refer to the vendor’s help d
 
 ### Reaching out for support
 
-1. Is there already a GitHub issue (open or closed) that covers the problem? Check the following repositories: 
+1. Is there already a GitHub issue (open or closed) that covers the problem? Check the following repositories:
 
-    - [IBM CICS Plug-in issues](https://github.com/zowe/zowe-cli-cics-plugin/issues)
+    - [IBM CICS Plug-in issues](https://github.com/zowe/cics-for-zowe-client/issues)
     - [IBM Db2 Database Plug-in issues](https://github.com/zowe/zowe-cli-db2-plugin/issues)
     - [IBM MQ Plug-in issues](https://github.com/zowe/zowe-cli-mq-plugin/issues)
     - [IBM z/OS FTP Plug-in issues](https://github.com/zowe/zowe-cli-ftp-plugin/issues)

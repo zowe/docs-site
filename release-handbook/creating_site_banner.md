@@ -27,7 +27,7 @@ Depending on the changes you make, you also might need to edit the `custom.css` 
 
 1. In the `docs-site` repository, find the `docusaurus.config.js` file and open it.
 
-2. After `themeConfig: {:` (in Line 26), add the following code:
+2. After `themeConfig: {:` (in Line 31), add the following code:
 
     ```
     announcementBar: {
