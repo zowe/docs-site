@@ -40,7 +40,6 @@ module.exports = {
       collapsed: false,
       items: [
         "getting-started/zowe-architecture",
-        "user-guide/api-mediation/api-mediation-overview",
         {
           type: "category",
           label: "Zowe security",
@@ -453,7 +452,6 @@ module.exports = {
           link: {type:"doc", id:"user-guide/mvd-using"},
           items: [
             "user-guide/mvd-editor",
-            "user-guide/mvd-3270",
           ],
         },
         {
@@ -685,9 +683,9 @@ module.exports = {
             {
               type: "category",
               label: "API Mediation Layer Quick start for development",
-              link: {type:"doc", id:"extend/extend-apiml/quick-start-for-development"},
               items: [
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
+                "extend/extend-apiml/quick-start-for-development",
                 "extend/extend-apiml/api-mediation-layer-development-setup",
               ]
             },
@@ -695,46 +693,41 @@ module.exports = {
               type: "category",
               label: "Libraries for integration (Enablers)",
               items: [
-                {
-                  type: "category",
-                  label: "Plain Java Enabler",
-                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
-                  items: [
-                    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-                    "extend/extend-apiml/api-mediation-message-service",
-                  ]
-                },
+                "extend/extend-apiml/onboard-plain-java-enabler",
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
-                "extend/extend-apiml/onboard-static-definition",
-                "extend/extend-apiml/custom-metadata",    
+                "extend/extend-apiml/onboard-static-definition"    
               ]
             },
             {
               type: "category",
               label: "Routing",
-              link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
               items: [
-                "extend/extend-apiml/api-mediation-routing",
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
-            {
-              type: "category",
-              label: "Runtime Extensions",
-              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
-              items: [
-                "extend/extend-apiml/implement-new-saf-provider"
-              ]
-            },
+            "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+            "extend/extend-apiml/create-apiml-extension",
+            "extend/extend-apiml/api-mediation-message-service",
+            "extend/extend-apiml/custom-metadata",
+            "extend/extend-apiml/implement-new-saf-provider",
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/api-medation-sso-integration-extenders",
+                "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
+                "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",                
+              ],
+            },
+            {
+              type: "category",
+              label: "Implementing routing to API Gateway",
+			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
+              items: [
               ],
             },
           ],
@@ -774,11 +767,11 @@ module.exports = {
           link: {type:"doc", id:"extend/extend-cli/cli-devTutorials"},
           items: [
             "extend/extend-cli/cli-setting-up",
+            "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
             "extend/extend-cli/cli-installing-sample-plugin",
             "extend/extend-cli/cli-extending-a-plugin",
             "extend/extend-cli/cli-developing-a-plugin",
             "extend/extend-cli/cli-implement-profiles",
-            "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
           ],
         },
         
@@ -808,6 +801,7 @@ module.exports = {
         "troubleshoot/k8s-troubleshoot",
         "troubleshoot/servers/return-codes",
         "troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/troubleshoot-zos-startup",
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
