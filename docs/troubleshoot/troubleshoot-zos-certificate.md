@@ -57,7 +57,7 @@ For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the conne
 
 The connection failed but the certificate appears to be correct. A keyring certificate is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
 
-**Solutions**
+**Solution**
 
 The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to fill the `password` with *password* as shown in the following example:
 
