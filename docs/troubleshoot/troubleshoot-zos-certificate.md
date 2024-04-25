@@ -43,7 +43,7 @@ When using the entrusted signed z/OSMF certificate a problem may occur whereby t
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
 ```
 
-**Solutions**
+**Solution**
 
 The error indicates that the keyring does not exist or cannot be found.
 
