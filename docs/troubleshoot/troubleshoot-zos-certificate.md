@@ -37,7 +37,7 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 
 **Symptoms**
 
-When using the entrusted signed z/OSMF certificate an problem may occur whereby the AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
+When using the entrusted signed z/OSMF certificate a problem may occur whereby the ZLUX AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
 
 ```
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
