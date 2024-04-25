@@ -28,8 +28,8 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 - Set the flag `keystore.pkcs12.legacy` to enabled with no value to create a PKCS12 keystore that can be loaded.
 
 :::note
-* If you already have an existing keystore or you are using keyrings, this error will not happen. Ensure that the existing keystore part is  created with a compatible java version.
-* If you do not use ZSS, this error will not happen because ZSS is on by default.
+* If you already have an existing keystore or you are using keyrings, this error will not happen.
+* If you do not use ZSS, this error will not happen. ZSS is enabled by default.
 * If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
 :::
 
@@ -37,13 +37,13 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 
 **Symptoms**
 
-When using the entrusted signed z/OSMF certificate an problem may occur whereby the AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
+When using the entrusted signed z/OSMF certificate a problem may occur whereby the ZLUX AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
 
 ```
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
 ```
 
-**Solutions**
+**Solution**
 
 The error indicates that the keyring does not exist or cannot be found.
 
@@ -57,7 +57,7 @@ For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the conne
 
 The connection failed but the certificate appears to be correct. A keyring certificate is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
 
-**Solutions**
+**Solution**
 
 The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to assign a value to `password` as shown in the following example:
 
