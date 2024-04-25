@@ -29,7 +29,7 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 
 :::note
 * If you already have an existing keystore or you are using keyrings, this error will not happen.
-* If you do not use ZSS, this error will not happen because ZSS is on by default.
+* If you do not use ZSS, this error will not happen. ZSS is enabled by default.
 * If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
 :::
 
