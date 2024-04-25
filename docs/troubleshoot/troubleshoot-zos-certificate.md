@@ -1,22 +1,22 @@
 # Troubleshooting the certificate configuration
 
-The following topic provides the information that can help you troubleshoot problems when you encounter errors or warnings in configuring certificates.
+You may encounter problems when configuring certificates. Review the following article for  information that can help you troubleshoot problems when errors or warnings occur when configuring certificates.
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
 **Symptoms**
 
-When you let Zowe server install create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. Then, parts of Zowe cannot be used. 
+When you let Zowe server install create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. As such, parts of Zowe cannot be used. 
 
 **Solutions**
 
-This error occurs because of the incompatibility which is found between Java and GSK regarding cryptography.
+This error occurs because of the incompatibility between Java and GSK regarding cryptography.
 
-You can try one of the following options if you are affected by this error.
+Try one of the following options if you are affected by this error.
 
 - Temporarily downgrade Java, for example, to Java 8 SR7FP10.
 
-- Use the flags as below when generating a keystore. 
+- Use the flags as presented in the following codeblock when generating a keystore: 
 
 ```
 -J-Dkeystore.pkcs12.certProtectionAlgorithm=PBEWithSHAAnd40BitRC2 -J-
@@ -25,12 +25,57 @@ Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHAAnd3KeyTripleDES -J-
 Dkeystore.pkcs12.keyPbeIterationCount=50000
 ```
 
-- Set the flag `keystore.pkcs12.legacy` enabled with no value to create a PKCS12 keystore that can be loaded.
+- Set the flag `keystore.pkcs12.legacy` to enabled with no value to create a PKCS12 keystore that can be loaded.
 
-**Notes**
+:::note
+* If you already have an existing keystore or you are using keyrings, this error will not happen.
+* If you do not use ZSS, this error will not happen because ZSS is on by default.
+* If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
+:::
 
-If you already have an existing keystore or you are using keyrings, this error will not happen.
+## Eureka request failed when using entrusted signed z/OSMF certificate
 
-If you do not use ZSS, this error will not happen because ZSS is on by default.
+**Symptoms**
 
-If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
+When using the entrusted signed z/OSMF certificate an problem may occur whereby the AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
+
+```
+<ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
+```
+
+**Solutions**
+
+The error indicates that the keyring does not exist or cannot be found.
+
+Look at the keyring information and confirm the corresponding certificate authorities. Ensure that you specify the `certificateAuthorities` variable with the correct keyring label and the label of the conected CA in the `zowe.certificate` section of your `zowe.yaml` file. 
+
+For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` varaible should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
+
+## Error reported: wrong certificate setup (keyring certificate)
+
+**Symptoms**
+
+The connection failed but the certificate appears to be correct. A keyring certificate is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
+
+**Solutions**
+
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to fill the `password` with *password* as shown in the following example:
+
+**Example:**
+```
+certificate:
+    keystore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZWEKeyring
+      password: password
+      alias: ZoweCert
+    truststore:
+      type: JCERACFKS
+      file: safkeyring:////ZWESVUSR/ZWEKering
+      password: password
+    pem:
+      key:
+      certificate:
+      certificateAuthorities: safkeyring:////ZWESVUSR/ZWEKering&zoweCA
+```
+
