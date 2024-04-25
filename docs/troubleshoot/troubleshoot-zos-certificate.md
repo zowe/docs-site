@@ -28,7 +28,7 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 - Set the flag `keystore.pkcs12.legacy` to enabled with no value to create a PKCS12 keystore that can be loaded.
 
 :::note
-* If you already have an existing keystore or you are using keyrings, this error will not happen.
+* If you already have an existing keystore or you are using keyrings, this error will not happen. Ensure that the existing keystore part is  created with a compatible java version.
 * If you do not use ZSS, this error will not happen because ZSS is on by default.
 * If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
 :::
@@ -59,7 +59,7 @@ The connection failed but the certificate appears to be correct. A keyring certi
 
 **Solutions**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to fill the `password` with *password* as shown in the following example:
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to assign a value to `password` as shown in the following example:
 
 **Example:**
 ```
