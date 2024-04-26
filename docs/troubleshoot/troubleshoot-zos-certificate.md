@@ -6,7 +6,11 @@ You may encounter problems when configuring certificates. Review the following a
 
 **Symptoms**
 
-When you let Zowe server install create a PKCS12 keystore, the keystore that is generated cannot be read by ZSS. As such, parts of Zowe cannot be used. 
+When you let Zowe create a PKCS12 keystore, some Zowe Desktop applications do not work and messages appear in the log such as the following:
+* ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
+* ZWES1065E Failed to configure https server. Check agent https setting
+
+ The keystore that is generated cannot be read by ZSS. As such, parts of Zowe cannot be used. 
 
 **Solutions**
 
@@ -14,7 +18,7 @@ This error occurs because of the incompatibility between Java and GSK regarding 
 
 Try one of the following options if you are affected by this error.
 
-- Temporarily downgrade Java, for example, to Java 8 SR7FP10.
+- Temporarily downgrade Java, for example to Java 8 SR7FP10, and generate the PKCS12 keystore again.
 
 - Use the flags as presented in the following codeblock when generating a keystore: 
 
@@ -28,9 +32,8 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 - Set the flag `keystore.pkcs12.legacy` to enabled with no value to create a PKCS12 keystore that can be loaded.
 
 :::note
-* If you already have an existing keystore or you are using keyrings, this error will not happen.
-* If you do not use ZSS, this error will not happen. ZSS is enabled by default.
-* If you already use your own PKCS12 files instead of the files that Zowe generates for you, this error will not happen. 
+* If you already have an existing keystore created with a proper java version, or are using keyrings, this error will not occur.
+* If you are not planning to use Zowe Desktop then you can disable the ZSS component to avoid receiving ZSS component errors in the log.
 :::
 
 ## Eureka request failed when using entrusted signed z/OSMF certificate
@@ -55,7 +58,7 @@ For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the conne
 
 **Symptoms**
 
-The connection failed but the certificate appears to be correct. A keyring certificate is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
+The certificate appears to be correct, but the Gateway and the Discovery Service are failing to start. A keyring certificate used is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
 
 **Solution**
 
