@@ -2,7 +2,7 @@
 
 ## Zowe Version 3.0 technical preview
 
-Zowe publishes technical preview builds for Version 3 for all components involved. Installation of  server-side components can be performed in a variety of ways including via PAX, SMP/E build, and PSWI. The latest versions are downloadable from the Zowe JFrog Artifactory directory - 
+Zowe publishes technical preview builds for Version 3 for all components involved. Installation of server-side components can be performed in a variety of ways including via PAX, SMP/E build, and PSWI. The latest versions are downloadable from the Zowe JFrog Artifactory directory - 
 [https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/nightly/v3/](https://zowe.jfrog.io/zowe/libs-release-local/org/zowe/nightly/v3/). The server-side includes the API Mediation Layer, Virtual Desktop, ZSS, and ZIS. The build is released nightly.
 
 Client-side components are also available. The CLI is available from NPM. The version starts with 8.0.0.next - [https://www.npmjs.com/package/@zowe/cli/v/8.0.0-next.202404191414](https://www.npmjs.com/package/@zowe/cli/v/8.0.0-next.202404191414).  Explorer for VSCode is available from GitHub releases - [https://github.com/zowe/zowe-explorer-vscode/releases](https://github.com/zowe/zowe-explorer-vscode/releases). Explorer for Intellij is available from the Intellij Marketplace - [https://plugins.jetbrains.com/plugin/18688-zowe-explorer](https://plugins.jetbrains.com/plugin/18688-zowe-explorer)
