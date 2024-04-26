@@ -74,11 +74,11 @@ certificate:
       alias: ZoweCert
     truststore:
       type: JCERACFKS
-      file: safkeyring:////ZWESVUSR/ZWEKering
+      file: safkeyring:////ZWESVUSR/ZWEKeyring
       password: password
     pem:
       key:
       certificate:
-      certificateAuthorities: safkeyring:////ZWESVUSR/ZWEKering&zoweCA
+      certificateAuthorities: safkeyring:////ZWESVUSR/ZWEKeyring&zoweCA
 ```
 
