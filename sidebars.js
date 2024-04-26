@@ -268,7 +268,8 @@ module.exports = {
                 "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
-                "user-guide/api-mediation/configuration-set-consistent-service-id"
+                "user-guide/api-mediation/configuration-set-consistent-service-id",
+                "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
                   ],
             },
             {

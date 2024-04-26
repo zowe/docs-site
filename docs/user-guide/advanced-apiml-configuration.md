@@ -11,4 +11,4 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Configuring SAF Resource Checking](./api-mediation/configuration-saf-resource-checking)
 * [Retrieving a specific service within your environment](./api-mediation/configuration-access-specific-instance-of-service)
 * [Setting a consistent service ID](./api-mediation/configuration-set-consistent-service-id)
-
+* [Configuring Java heap size](./api-mediation/configuration-customizing-java-heap-sizes.md)
