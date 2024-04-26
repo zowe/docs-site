@@ -10,7 +10,7 @@ For more information about variable names in the following table, see the [Zowe 
 
 | Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
-| 2157 | zowe.environments.JGROUPS_KEYEXCHANGE_PORT | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
+| 2157 | - | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
 | 7098 | zowe.components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster.
 | 7552 | zowe.components.api-catalog.port | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
 | 7553 | zowe.components.discovery.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
