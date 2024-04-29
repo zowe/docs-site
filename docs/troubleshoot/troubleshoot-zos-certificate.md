@@ -1,6 +1,6 @@
 # Troubleshooting certificate configuration
 
-You may encounter problems when configuring certificates. Review the following article for troubleshooting solutions to errors or warnings that can occur when configuring certificates.
+You may encounter problems when configuring certificates. Review the following article for troubleshoot errors or warnings that can occur when configuring certificates.
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -10,7 +10,7 @@ Some Zowe Desktop applications do not work when Zowe creates a PKCS12 keystore. 
 * ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
 * ZWES1065E Failed to configure https server. Check agent https setting.
 
-These messages indicate that ZSS cannot read the generated keystore. As such, parts of Zowe cannot be used. 
+These messages indicate that ZSS cannot read the generated keystore. As such, parts of Zowe are not functional. 
 
 **Solutions**
 
