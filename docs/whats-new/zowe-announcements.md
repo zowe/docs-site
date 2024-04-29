@@ -14,6 +14,7 @@ The Zowe V3 release is postponed from its original March 28 date. The schedule f
 We expect to have a <b>new V3 release date</b> and additional information on Zowe V2 releases by the end of March. Notifications will go out at that time.
 
 For updates, see [vNext](https://www.zowe.org/vnext) in Zowe.org.
+For information about changes to Zowe components to be introduced in Zowe v3, see [Breaking changes and Important Updates in Zowe v3](breaking-changes-v3.md).
 
 ## Archiving Zowe Version 1.0
 
