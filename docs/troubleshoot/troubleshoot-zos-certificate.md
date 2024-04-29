@@ -54,7 +54,7 @@ Look at the keyring information and confirm the corresponding certificate author
 
 For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` varaible should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
 
-## Error reported: wrong certificate setup (keyring certificate)
+## Zowe startup fails with empty password field in the keyring setup
 
 **Symptoms**
 
