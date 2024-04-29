@@ -10,13 +10,13 @@ When you let Zowe create a PKCS12 keystore, some Zowe Desktop applications do no
 * ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
 * ZWES1065E Failed to configure https server. Check agent https setting
 
- The keystore that is generated cannot be read by ZSS. As such, parts of Zowe cannot be used. 
+ZSS cannot read the generated keystore. As such, parts of Zowe cannot be used. 
 
 **Solutions**
 
-This error occurs because of the incompatibility between Java and GSK regarding cryptography.
+This error results from the incompatibility between Java and GSK regarding cryptography.
 
-Try one of the following options if you are affected by this error.
+Try one of the following options if you are affected by this error:
 
 - Temporarily downgrade Java, for example to Java 8 SR7FP10, and generate the PKCS12 keystore again.
 
@@ -33,14 +33,14 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 
 :::note
 * If you already have an existing keystore created with a proper java version, or are using keyrings, this error will not occur.
-* If you are not planning to use Zowe Desktop then you can disable the ZSS component to avoid receiving ZSS component errors in the log.
+* If you are not planning to use Zowe Desktop, you can disable the ZSS component to avoid receiving ZSS component errors in the log.
 :::
 
 ## Eureka request failed when using entrusted signed z/OSMF certificate
 
 **Symptoms**
 
-When using the entrusted signed z/OSMF certificate a problem may occur whereby the ZLUX AppServer cannot register with Eureka. Review of the logs indicate that the cause is the self-signed certificate:
+When using the entrusted signed z/OSMF certificate a problem may occur whereby the ZLUX AppServer cannot register with Eureka. The logs indicate that the cause is the self-signed certificate:
 
 ```
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
@@ -50,7 +50,7 @@ When using the entrusted signed z/OSMF certificate a problem may occur whereby t
 
 The error indicates that the keyring does not exist or cannot be found.
 
-Look at the keyring information and confirm the corresponding certificate authorities. Ensure that you specify the `certificateAuthorities` variable with the correct keyring label and the label of the conected CA in the `zowe.certificate` section of your `zowe.yaml` file. 
+Look at the keyring information and confirm the corresponding certificate authorities. Ensure that you specify the `certificateAuthorities` variable with the correct keyring label, and the label of the connected CA in the `zowe.certificate` section of your `zowe.yaml` file. 
 
 For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` varaible should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
 
@@ -58,11 +58,11 @@ For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the conne
 
 **Symptoms**
 
-The certificate appears to be correct, but the Gateway and the Discovery Service are failing to start. A keyring certificate used is setup which does not need a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
+The certificate appears to be correct, but the Gateway and the Discovery Service fail during start. The setup of the keyring certificate does not require a value for `password` in the `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password`. 
 
 **Solution**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. However in some configurations Zowe can't work with empty password value in the keyring configuration, so it is recommended to assign a value to `password` as shown in the following example:
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
 
 **Example:**
 ```
