@@ -1,16 +1,16 @@
-# Troubleshooting the certificate configuration
+# Troubleshooting certificate configuration
 
-You may encounter problems when configuring certificates. Review the following article for  information that can help you troubleshoot problems when errors or warnings occur when configuring certificates.
+You may encounter problems when configuring certificates. Review the following article for troubleshooting solutions to errors or warnings that can occur when configuring certificates.
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
 **Symptoms**
 
-When you let Zowe create a PKCS12 keystore, some Zowe Desktop applications do not work and messages appear in the log such as the following:
+Some Zowe Desktop applications do not work when Zowe creates a PKCS12 keystore. A message may appear in the log such as the following:
 * ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
-* ZWES1065E Failed to configure https server. Check agent https setting
+* ZWES1065E Failed to configure https server. Check agent https setting.
 
-ZSS cannot read the generated keystore. As such, parts of Zowe cannot be used. 
+These messages indicate that ZSS cannot read the generated keystore. As such, parts of Zowe cannot be used. 
 
 **Solutions**
 
@@ -40,7 +40,7 @@ Dkeystore.pkcs12.keyPbeIterationCount=50000
 
 **Symptoms**
 
-When using the entrusted signed z/OSMF certificate a problem may occur whereby the ZLUX AppServer cannot register with Eureka. The logs indicate that the cause is the self-signed certificate:
+A problem may occur when using the entrusted signed z/OSMF certificate, whereby the ZLUX AppServer cannot register with Eureka. Logs indicate that the cause is the self-signed certificate:
 
 ```
 <ZWED:198725> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
@@ -62,7 +62,7 @@ The certificate appears to be correct, but the Gateway and the Discovery Service
 
 **Solution**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
 
 **Example:**
 ```
