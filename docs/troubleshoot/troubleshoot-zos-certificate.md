@@ -62,7 +62,7 @@ The certificate appears to be correct, but the Gateway and the Discovery Service
 
 **Solution**
 
-The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. It is recommended to assign a value to `password` as shown in the following example:
+The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. However in some configurations Zowe can't work with empty password value in the keyring configuration, so it is recommended to assign a value to `password` as shown in the following example:
 
 **Example:**
 ```
