@@ -3,11 +3,11 @@
 :::info Role: system programmer
 :::
 
-The Zowe API Mediation Layer is a Java-based application, as such one of the main performance considerations is the size of the Java memory heap, where all objects are stored.
-Its size has a direct impact on the available capacity of the applications. Aspects to consider when defining the size are for example how many concurrent requests it should support and the expected size of average requests.
-As a systems programmer, you can customize the Java memory heap size available for the API Mediation Layer components.
+The Zowe API Mediation Layer is a Java-based application. As such, one of the main performance considerations is the size of the Java memory heap, where all objects are stored.
+The Java heap size has a direct impact on the available capacity of the applications. Aspects to consider when defining the size are, for example, how many concurrent requests the application should support, and the expected size of average requests.
+As a systems programmer, you can customize the available Java memory heap size for API Mediation Layer components.
 
-By default, all services (Gateway, Discovery, API Catalog, Caching Service) have a Java heap size of 32 MB as the initial size and a maximum heap size of 512 MB.
+By default, all services (Gateway, Discovery, API Catalog, Caching Service) have a Java heap size of 32 MB as the initial size, and a maximum heap size of 512 MB.
 
 To change the default settings, set `components.<component>.heap.init` and `components.<component>.heap.max` 
 
