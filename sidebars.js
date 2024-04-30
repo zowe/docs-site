@@ -276,6 +276,8 @@ module.exports = {
                 "user-guide/api-mediation/configuration-gateway-timeouts",
                 "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
               ]
+	    }
+	   ]
             },
             {
               "type": "category",
