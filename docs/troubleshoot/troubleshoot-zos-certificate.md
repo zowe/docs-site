@@ -20,16 +20,7 @@ Try one of the following options if you are affected by this error:
 
 - Temporarily downgrade Java, for example to Java 8 SR7FP10, and generate the PKCS12 keystore again.
 
-- Use the flags as presented in the following codeblock when generating a keystore: 
-
-```
--J-Dkeystore.pkcs12.certProtectionAlgorithm=PBEWithSHAAnd40BitRC2 -J-
-Dkeystore.pkcs12.certPbeIterationCount=50000 -J-
-Dkeystore.pkcs12.keyProtectionAlgorithm=PBEWithSHAAnd3KeyTripleDES -J-
-Dkeystore.pkcs12.keyPbeIterationCount=50000
-```
-
-- Set the flag `keystore.pkcs12.legacy` to enabled with no value to create a PKCS12 keystore that can be loaded.
+- Upgrade Zowe to a later version 2.11.0 or a newer which has this issue fixed.
 
 :::note
 * If you already have an existing keystore created with a proper java version, or are using keyrings, this error will not occur.
