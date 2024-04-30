@@ -268,7 +268,9 @@ module.exports = {
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id",
               ]
-            },
+	    }
+	  ]
+        },
             {
               "type": "category",
               "label": "Customizing management of API ML load limits",
