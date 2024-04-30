@@ -1,6 +1,6 @@
 # Installing Zowe Explorer FTP Extension
 
-Zowe Explorer FTP extension adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe) VS Code extension, allowing you to use z/OS FTP profiles to connect and interact with z/OS USS.
+Zowe Explorer FTP extension adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode) VS Code extension, allowing you to use z/OS FTP profiles to connect and interact with z/OS USS.
 
 ## Installing
 

@@ -15,7 +15,7 @@ Both certificate types are self-signed certificates.
 
 ## Creating a PKCS12 keystore
 
-Use can create PKCS12 certificates tht are stored in USS. Thiscertificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to server communcation. Zowe uses a keystore directory to contain its external certificate, and a truststore directory to hold the public keys of servers it communicate with (for example z/OSMF).
+Use can create PKCS12 certificates tht are stored in USS. This certificate is used for encrypting TLS communication between Zowe clients and Zowe z/OS servers, as well as intra z/OS Zowe server to server communcation. Zowe uses a keystore directory to contain its external certificate, and a truststore directory to hold the public keys of servers it communicate with (for example z/OSMF).
 
 Follow these steps to generate a PKCS12 keystore:
 
@@ -148,7 +148,7 @@ The `zwe init certificate` command generates a certificate based on `zowe.yaml` 
 ```
 
 4. (Optional) For details about the certificate you generated, run the following command:  
-`keytool -v -list keystore localhost.keystore.p12 -storetype PKCS12`
+`keytool -v -list -keystore localhost.keystore.p12 -storetype PKCS12`
 
 You completed the procedure to generate a PKCS12 keystore.
 
@@ -226,7 +226,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 
    `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
-    When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS meember `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
+    When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS member `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
 
 The following command output shows the generation of a JCERACFKS certificate using the default values. Note that some detailed output messages have been omitted.
 
