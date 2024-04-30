@@ -267,17 +267,18 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id",
-                {
-                  "type": "category",
-                  "label": "Customizing management of API ML load limits",
-                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                  "items": [
-                    "user-guide/api-mediation/configuration-connection-limits",
-                    "user-guide/api-mediation/configuration-gateway-timeouts"
-                  ]
-                }
+            {
+              "type": "category",
+              "label": "Customizing management of API ML load limits",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+              "items": [
+                "user-guide/api-mediation/configuration-connection-limits",
+                "user-guide/api-mediation/configuration-gateway-timeouts",
+                "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
               ]
-            },            
+	    }
+	   ]
+            },
             {
               "type": "category",
               "label": "Configuring authorization for API ML",
