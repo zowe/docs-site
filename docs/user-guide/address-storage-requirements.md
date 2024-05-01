@@ -22,6 +22,5 @@ Component name | Memory usage
 Gateway service | 256MB
 Discovery service | 256MB
 API Catalog | 512MB
-Metrics service | 512MB
 Caching service | 512MB
 

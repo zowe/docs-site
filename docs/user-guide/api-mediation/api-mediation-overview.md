@@ -47,4 +47,3 @@ The most important part of the ecosystem are the real API services that provide 
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The URL of the Caching service is `https://<ZOWE_HOST_IP>:7555`. 
 For more information, see [Using the Caching Service](../api-mediation/api-mediation-caching-service).
-

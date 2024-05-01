@@ -1,23 +1,24 @@
-# Team configuration for team leaders
+# Configuration for team leaders
 
-As a Dev-Ops advocate or team leader, you can share team profiles with your team members so that they can easily access mainframe services.
+As a team leader or Dev-Ops advocate, you can share the profiles stored in a team configuration file with your team members so that they can easily access mainframe services.
 
-## Sharing team configuration files
+## Reasons to share team configuration files
 
-As a DevOps advocate or team leader, you might want to share a team configuration *globally* in the following scenarios:
+Consider sharing a team configuration *globally* in the following scenarios:
 
 - You want to share profiles with application developers so that they can work with a defined set of mainframe services. The recipient of the file places it in their local `~/.zowe` folder manually before issuing CLI commands.
 - You want to add the profiles to your project directory in a software change management (SCM) tool, such as GitHub. When you store the profiles in an SCM, application developers can pull the project to their local computer and use the defined configuration. Zowe CLI commands that you issue from within the project directory use the configuration scheme for the project automatically.
 - You want to enable test automation in a CI/CD pipeline, which lets your pipelines make use of the project configuration.
 
 For information about how to share team configuration files, see [Sharing team configuration files](../user-guide/cli-using-sharing-team-config-files.md).
-## Profile scenarios
 
-The following topics describe various profile scenarios that DevOps advocates (team leaders) can share with their teams, and application developers that function as DevOps advocates can create.
+## Profile use cases
 
-### Access to one or more LPARs that contain services that share the same credentials
+The following topics describe various profile scenarios that team leaders can share with their teams, and application developers that function as DevOps advocates can create.
 
-The following example illustrates that the settings are using nested profiles to access multiple services directly on one or more LPARs that share the same username and password.
+### Accessing LPARs that contain services that share the same credentials
+
+In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs: **[is this explanation correct?]**
 
 ```
 {
@@ -83,9 +84,9 @@ The following example illustrates that the settings are using nested profiles to
     "autoStore": true
 }
 ```
-### Access to one or more LPARs contain services that do not share the same credentials
+### Accessing LPARs that contain services that do not share the same credentials
 
-The following example illustrates that the settings are using nested profiles to access multiple services directly on one or more LPARs that do not share (different) user names and passwords.
+In the following configuration, nested profiles use the credentials from different service profiles to access services directly on multiple LPARs.
 
 ```
 {
@@ -156,9 +157,9 @@ The following example illustrates that the settings are using nested profiles to
 }
 ```
 
-### Access to LPARs that access services through one API Mediation Layer
+### Accessing LPARs that access services through one API Mediation Layer
 
-The following example illustrates that the settings access multiple services using the API ML where multi-factor authentication (MFA) or single sign-on (SSO) is achievable using token-based authorization.
+In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile.
 
 ```
 {
@@ -205,9 +206,9 @@ The following example illustrates that the settings access multiple services usi
 }
 ```
 
-### Access to LPARs that access services through one API Mediation Layer using certificate authentication
+### Accessing LPARs that access services through one API Mediation Layer using certificate authentication
 
-Access LPARs containing multiple services through API Mediation Layer with certificate authentication
+In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile.
 
 ```
 {

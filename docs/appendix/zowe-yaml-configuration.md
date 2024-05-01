@@ -35,8 +35,6 @@ zowe:
     - [Configure component caching-service](#configure-component-caching-service)
     - [Configure component app-server](#configure-component-app-server)
     - [Configure component zss](#configure-component-zss)
-    - [Configure component jobs-api](#configure-component-jobs-api)
-    - [Configure component files-api](#configure-component-files-api)
     - [Configure component explorer-jes](#configure-component-explorer-jes)
     - [Configure component explorer-mvs](#configure-component-explorer-mvs)
     - [Configure component explorer-uss](#configure-component-explorer-uss)
@@ -546,26 +544,6 @@ These configurations can be used under the `components.zss` section:
 
 - **`port`**  
  Defines the port which ZSS should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-
-#### Configure component jobs-api
-
-These configurations can be used under the `components.jobs-api` section:
-
-- **`port`**  
- Defines the port which Jobs API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-
- - **`debug`**  
- Defines whether to enable debug logging for the Jobs API.
-
-#### Configure component files-api
-
-These configurations can be used under the `components.files-api` section:
-
-- **`port`**  
- Defines the port which Files API should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-
- - **`debug`**  
- Defines whether to enable debug logging for the Files API.
 
 #### Configure external extension
 

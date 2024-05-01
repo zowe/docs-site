@@ -12,7 +12,7 @@ Security is central to a wide range of functionalities in Zowe. As such, a separ
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
 
-## Core Zowe Projects
+## All Core Zowe Projects
 
 ### Zowe API Mediation Layer (API ML)
 
@@ -195,13 +195,13 @@ The Zowe Support Provider Conformance Program gives vendors the ability to showc
 
 #### Base profile
 
-A type of team configuration profile that stores connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once.
+An object in a team configuration file that stores connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once.
 
 The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
 #### Convenience build
 
-  The Zowe installation file for Zowe z/OS components that is distributed as a PAX file in z/OS Unix and contains the runtimes and scripts to install and launch the z/OS runtime. It is the most common method to install Zowe.
+The Zowe installation file for Zowe z/OS components that is distributed as a PAX file in z/OS Unix and contains the runtimes and scripts to install and launch the z/OS runtime. It is the most common method to install Zowe.
 
 #### Extension directory
 
@@ -219,13 +219,17 @@ The standard z/OS Unix directory where Zowe logs are stored. It is specified in 
 
 Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as an OMVS segment, for the user ID associated with any unit of work requesting these services. To learn more consult [IBM Documentation](https://www.ibm.com/docs/en/zos/2.5.0?topic=profiles-omvs-segment-in-user).
 
+#### Parent profile
+
+An object in a team configuration file that groups service profiles together that share the same properties and values (for example, hostname or credentials). A parent profile makes it possible to define properties for its group of service profiles in one place rather than duplicating values throughout a configuration.
+
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
 
 #### Service profile
 
-A type of team configuration profile that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
+An object in a team configuration file that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
 
 #### SMP/E
 

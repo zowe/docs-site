@@ -14,14 +14,11 @@ You can complete the following tasks with the z/OSMF workflow:
 
 - Configure the Zowe instance directory
 - Enable the API ML Gateway
-- Enable the metrics service
 - Enable the API catalog
 - Enable automatic discovery
 - Enable a caching service
 - Enable an application server
 - Enable the ZSS component
-- Enable the jobs API
-- Enable the files API
 - Enable JES Explorer
 - Enable MVS Explorer
 - Enable USS Explorer
