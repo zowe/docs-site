@@ -1,6 +1,6 @@
 # Troubleshooting certificate configuration
 
-You may encounter problems when configuring certificates. Review the following article for troubleshoot errors or warnings that can occur when configuring certificates.
+You may encounter problems when configuring certificates. Review the following article to troubleshoot errors or warnings that can occur when configuring certificates.
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -20,11 +20,11 @@ Try one of the following options if you are affected by this error:
 
 - Temporarily downgrade Java, for example to Java 8 SR7FP10, and generate the PKCS12 keystore again.
 
-- Upgrade Zowe to a later version 2.11.0 or a newer which has this issue fixed.
+- Upgrade Zowe to a later version 2.11.0 or a newer version in which this issue is fixed.
 
 :::note
-* If you already have an existing keystore created with a proper java version, or are using keyrings, this error will not occur.
-* If you are not planning to use Zowe Desktop, you can disable the ZSS component to avoid receiving ZSS component errors in the log.
+* This error will not occur if you already have an existing keystore created with a proper Java version, or are using keyrings.
+* If you do not plan to use Zowe Desktop, you can disable the ZSS component to avoid receiving ZSS component errors in the log.
 :::
 
 ## Eureka request failed when using entrusted signed z/OSMF certificate
@@ -41,9 +41,9 @@ A problem may occur when using the entrusted signed z/OSMF certificate, whereby 
 
 The error indicates that the keyring does not exist or cannot be found.
 
-Look at the keyring information and confirm the corresponding certificate authorities. Ensure that you specify the `certificateAuthorities` variable with the correct keyring label, and the label of the connected CA in the `zowe.certificate` section of your `zowe.yaml` file. 
+Review the keyring information and confirm the corresponding certificate authorities. Ensure that you specify the `certificateAuthorities` variable with the correct keyring label, and the label of the connected CA in the `zowe.certificate` section of your `zowe.yaml` file. 
 
-For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` varaible should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
+For example, if the keyring label is `ZoweKeyring` and the LABLCERT of the connected CA is `CA Internal Cert`, the `certificateAuthorities` variable should be `certificateAuthorities: safkeyring://ZWESVUSR/ZoweKeyring&CA Internal Cert`.
 
 ## Zowe startup fails with empty password field in the keyring setup
 
