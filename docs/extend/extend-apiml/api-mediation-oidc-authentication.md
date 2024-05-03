@@ -83,6 +83,28 @@ API ML provides a Zowe CLI plugin to help administrators generate a JCL for crea
 
   See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
+Once the commands are generated from the IDF(Identity Federation cli plugin) tool, admin can run them on corresponding ESMs to create disrtibuted filters.
+
+- RACF :
+RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
+
+SETROPTS RACLIST(IDIDMAP) REFRESH
+
+- ACF2 :
+ACF
+SET PROFILE(USER) DIVISION(IDMAP)
+INSERT userid.ZWEDNMAP IDMAPDN(distributed-identity-user-name) -
+IDMAPRN(distributed-identity-registry-name) IDLABEL(label-name)
+
+F ACF2,REBUILD(USR),CLASS(P),DIVISION(IDMAP)
+END
+
+- TSS :
+  TSS ADD(userid) IDMAP(ZWEDNMAP) IDMAPDN('distributed-identity-user-name') -
+  IDMAPRN('distributed-identity-registry-name') IDLABEL('label-name')
+
+  TSS REFRESH
+
 Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
 
 - For RACF, consult the [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
