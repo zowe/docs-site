@@ -79,7 +79,7 @@ A distributed identity consists of two parts:
 - A distributed identity name
 - A trusted registry which governs that identity
 
-Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter or filters:
 
   Below are the commands to create distributed identity filter in ESMs.
 
