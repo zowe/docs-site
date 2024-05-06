@@ -79,37 +79,42 @@ A distributed identity consists of two parts:
 - A distributed identity name
 - A trusted registry which governs that identity
 
-API ML provides a Zowe CLI plugin to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system.
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
 
-  See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+  Below are the commands to create distributed identity filter in ESMs.
 
-Once the commands are generated from the IDF(Identity Federation cli plugin) tool, admin can run them on corresponding ESMs to create disrtibuted filters.
+- For RACF, 
 
-- RACF :
-RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
+  RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
 
-SETROPTS RACLIST(IDIDMAP) REFRESH
+  SETROPTS RACLIST(IDIDMAP) REFRESH
+  
+  For more details, Please refer [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
 
-- ACF2 :
-ACF
-SET PROFILE(USER) DIVISION(IDMAP)
-INSERT userid.ZWEDNMAP IDMAPDN(distributed-identity-user-name) -
-IDMAPRN(distributed-identity-registry-name) IDLABEL(label-name)
+- For Top Secret,
 
-F ACF2,REBUILD(USR),CLASS(P),DIVISION(IDMAP)
-END
-
-- TSS :
   TSS ADD(userid) IDMAP(ZWEDNMAP) IDMAPDN('distributed-identity-user-name') -
   IDMAPRN('distributed-identity-registry-name') IDLABEL('label-name')
 
   TSS REFRESH
 
-Alternatively, administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter/s:
+  For more details, Please refer [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
 
-- For RACF, consult the [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
-- For CA Top Secret, use the [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
-- For CA ACF2, use [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
+- For ACF2, 
+
+  ACF
+  SET PROFILE(USER) DIVISION(IDMAP)
+  INSERT userid.ZWEDNMAP IDMAPDN(distributed-identity-user-name) -
+  IDMAPRN(distributed-identity-registry-name) IDLABEL(label-name)
+
+  F ACF2,REBUILD(USR),CLASS(P),DIVISION(IDMAP)
+  END
+
+  For more details, Please refer [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
+
+Alternatively, API ML provides a Zowe CLI plugin to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system and those JCLs can be sumbitted on corresponding ESM to create distributed identity filter.
+
+  See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
 
 ## API ML OIDC configuration
 
