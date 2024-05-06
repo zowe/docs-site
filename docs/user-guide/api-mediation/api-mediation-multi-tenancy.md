@@ -44,7 +44,7 @@ It is not necessary for the Gateway service to provide different routing pattern
 
 ### Static Onboarding for domain Gateways (deprecated)
 
-Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the prefered method.
+Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the preferred method.
 
 For static onboarding, make sure that the following parameters are correctly specified in the static definition file:
 
@@ -59,23 +59,104 @@ For static onboarding, be sure to use the [Gateway static definition example](#g
 
 ## Establishing a trust relationship between domain Gateways and the Cloud Gateway
 
-The following keytool commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway.
+For routing to work in a MultiTenancy configuration, the Cloud Gateway must trust the domain Gateways, and vice versa.
+In other words the root and intermediate (if applicable) public certificates needs to be shared between Cloud Gateway and domain Gateways. 
 
-- Import the public key certificate of all domain Gateways into the truststore of the Cloud Gateway.
+Let's take a look at the following example:
 
-  Use the following example of the keytool command when the domain Gateways running on CA11 and CA32 import the certificate into the Cloud Gateway running on CA31:
+Cloud Gateway is installed on system X, domain Gateways are installed on system Y and Z.
 
-  `keytool -import -file keystore/ca11/local_ca/local_ca.cer -alias gateway_ca11 -keystore keystore/ca31/localhost/localhost.truststore.p12`
+The following commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway.
 
-  `keytool -import -file keystore/ca32/local_ca/local_ca.cer -alias gateway_ca32 -keystore keystore/ca31/localhost/localhost.truststore.p12`
+- Import the root and intermediate (if applicable) public key certificate of domain Gateways running on system Y and Z into the truststore of the Cloud Gateway running on system X.
 
-- Import a public key certificate of the Cloud Gateway into the truststore of all domain Gateways.
+  - **PKCS12**
+  
+    Use the following example of the keytool commands:
+  
+    `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
+  
+    `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
 
-  Use the following example of the keytool command  when the certificate of the Cloud Gateway running on CA31 is imported into the truststore of the domain Gateways running on CA11 and CA32:
+  - **Keyring**
+      
+    Use the following examples of the commands to add certificates from the dataset and connect them to the keyring used by Cloud Gateway:
+        
+    - RACF
+      
+      ```
+      RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
+      RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
+      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+      SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+      ```
 
-  `keytool -import -file keystore/ca31/local_ca/local_ca.cer -alias gateway_ca31 -keystore keystore/ca11/localhost/localhost.truststore.p12`
+    - ACF2
+      
+      ```
+      ACF
+      SET PROFILE(USER) DIV(CERTDATA)
+      INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
+      INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
+      F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+      
+      SET PROFILE(USER) DIVISION(KEYRING)
+      CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+      CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+      F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+      ```
+      
+    - TopSecret
+      
+      ```
+      TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
+      TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
+      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
+      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
+      ```
 
-  `keytool -import -file keystore/ca31/local_ca/local_ca.cer -alias gateway_ca31 -keystore keystore/ca32/localhost/localhost.truststore.p12`
+- Import root and intermediate (if applicable) public key certificate of the Cloud Gateway running on system X into the truststore of the domain Gateways running on system Y and Z.
+
+  - **PKCS12**
+
+    Use the following example of the keytool commands:
+
+    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+
+    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
+  
+  - **Keyring**
+
+     Use the following examples of the commands to add certificates from the dataset and connect them to the keyrings used by domain Gateways:
+  
+    - RACF
+  
+      ```
+      RACDCERT ADD('SHARE.SYSX.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA1') TRUST
+      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA1') RING(ZoweKeyring) USAGE(CERTAUTH))
+      SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+      ```
+  
+    - ACF2
+  
+      ```
+      ACF
+      SET PROFILE(USER) DIV(CERTDATA)
+      INSERT CERTAUTH.SYSXINTR DSNAME('SHARE.SYSX.INTERCA.CER') LABEL(DigiCert CA1) TRUST
+      F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+      
+      SET PROFILE(USER) DIVISION(KEYRING)
+      CONNECT CERTDATA(CERTAUTH.SYSXINTR) LABEL(DigiCert CA1) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+      F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+      ```
+  
+    - TopSecret
+  
+      ```
+      TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.INTERCA.CER)  DIGICERT(SYSXINTR) LABLCERT('DigiCert CA1') TRUST
+      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXINTR) USAGE(CERTAUTH)
+      ```
 
 ## Using the /registry endpoint in Cloud Gateway
 
