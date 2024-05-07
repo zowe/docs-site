@@ -59,7 +59,7 @@ Ensure that the following prerequisites are met:
   
 ### OIDC provider prerequisites
 
-- Client Application configuration in the OIDC provider.
+- Client Application configuration in the OIDC provider
 
   Depending on the OIDC provider and client application capabilities, configuration of the OIDC provider varies.
 For example, web applications with a secure server side component can use `code grant authorization flow` and can be granted a Refresh Token, whereas a Single Page Application running entirely in the User Agent (browser) is more limited regarding its security capabilities.  
@@ -68,7 +68,7 @@ For example, web applications with a secure server side component can use `code 
   Consult your OIDC provider documentation for options and requirements available for your type of client application.
   :::
 
-- Users have been assigned to the Client Application.
+- Users have been assigned to the Client Application
 
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.
 
@@ -82,6 +82,10 @@ A distributed identity consists of two parts:
 Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter or filters:
 
 Use the commands specific to your ESM to create distributed identity filter.
+
+:::note
+User specified parameters are presented in the section [Parameters in the ESM commands](#parameters-in-the-esm-commands).
+:::
 
 - **For RACF:**
 ```markup
@@ -130,7 +134,7 @@ Use the commands specific to your ESM to create distributed identity filter.
    ```
 Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity filter.
 
-For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation .
+For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation.
 
 ## API ML OIDC configuration
 
@@ -151,7 +155,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 - **`components.gateway.apiml.security.oidc.registry`**  
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
-- **`components.gateway.apiml.security.oidc.jwks.uri`**
+- **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
 
 - **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**
