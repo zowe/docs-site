@@ -60,19 +60,19 @@ For static onboarding, be sure to use the [Gateway static definition example](#g
 ## Establishing a trust relationship between domain Gateways and the Cloud Gateway
 
 For routing to work in a MultiTenancy configuration, the Cloud Gateway must trust the domain Gateways, and vice versa.
-In other words the root and intermediate (if applicable) public certificates needs to be shared between Cloud Gateway and domain Gateways. 
+In other words it is necessary that the root and, if applicable, intermediate public certificates be shared between the Cloud Gateway and domain Gateways. 
 
-Let's take a look at the following example:
+The following example describes this relationship. 
 
-Cloud Gateway is installed on system X, domain Gateways are installed on system Y and Z.
+In this example, the Cloud Gateway is installed on system X, and domain Gateways are installed on systems Y and Z.
 
-The following commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway.
+The following commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway for both PKCS12 certificates and when using keyrings.
 
-- Import the root and intermediate (if applicable) public key certificate of domain Gateways running on system Y and Z into the truststore of the Cloud Gateway running on system X.
+1. Import the root and, if applicable, the intermediate public key certificate of the domain Gateways running on systems Y and Z into the truststore of the Cloud Gateway running on system X.
 
   - **PKCS12**
   
-    Use the following example of the keytool commands:
+    For PKCS12 certificates, use the following example of  keytool commands:
   
     `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
   
@@ -80,9 +80,9 @@ The following commands are examples of establishing a trust relationship between
 
   - **Keyring**
       
-    Use the following examples of the commands to add certificates from the dataset and connect them to the keyring used by Cloud Gateway:
+    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by the Cloud Gateway:
         
-    - RACF
+    - **For RACF:**
       
       ```
       RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
@@ -92,7 +92,7 @@ The following commands are examples of establishing a trust relationship between
       SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
       ```
 
-    - ACF2
+    - **For ACF2:**
       
       ```
       ACF
@@ -107,7 +107,7 @@ The following commands are examples of establishing a trust relationship between
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
       ```
       
-    - TopSecret
+    - **For TopSecret:**
       
       ```
       TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
@@ -116,11 +116,11 @@ The following commands are examples of establishing a trust relationship between
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
       ```
 
-- Import root and intermediate (if applicable) public key certificate of the Cloud Gateway running on system X into the truststore of the domain Gateways running on system Y and Z.
+2. Import root and, if applicable, intermediate the public key certificate of the Cloud Gateway running on system X into the truststore of the domain Gateways running on system Y and Z.
 
   - **PKCS12**
 
-    Use the following example of the keytool commands:
+    For PKCS12 certificates, use the following example of the keytool commands:
 
     `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
 
@@ -128,9 +128,9 @@ The following commands are examples of establishing a trust relationship between
   
   - **Keyring**
 
-     Use the following examples of the commands to add certificates from the dataset and connect them to the keyrings used by domain Gateways:
+     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyrings used by domain Gateways:
   
-    - RACF
+    - **For RACF:**
   
       ```
       RACDCERT ADD('SHARE.SYSX.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA1') TRUST
@@ -138,7 +138,7 @@ The following commands are examples of establishing a trust relationship between
       SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
       ```
   
-    - ACF2
+    - **For ACF2:**
   
       ```
       ACF
@@ -151,7 +151,7 @@ The following commands are examples of establishing a trust relationship between
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
       ```
   
-    - TopSecret
+    - **For TopSecret:**
   
       ```
       TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.INTERCA.CER)  DIGICERT(SYSXINTR) LABLCERT('DigiCert CA1') TRUST
