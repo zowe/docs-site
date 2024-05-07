@@ -57,7 +57,7 @@ Ensure that the following prerequisites are met:
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
 - ZSS must be enabled and properly configured in the Zowe installation.
   
-### OIDC provider
+### OIDC provider prerequisites
 
 - Client Application configuration in the OIDC provider.
 
@@ -72,7 +72,7 @@ For example, web applications with a secure server side component can use `code 
 
   To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.
 
-### ESM configuration
+### ESM configuration prerequisites
 
 The user identity mapping is defined as a distributed user identity filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts:
@@ -81,26 +81,26 @@ A distributed identity consists of two parts:
 
 Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter or filters:
 
-  Below are the commands to create distributed identity filter in ESMs.
+Use the commands specific to your ESM to create distributed identity filter.
 
-- For RACF 
+- **For RACF:**
 ```markup
   RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
 
   SETROPTS RACLIST(IDIDMAP) REFRESH
  ``` 
-  For more details, Please refer [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
+  For more details about the RACMAP command, see [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
 
-- For Top Secret
+- **For Top Secret:**
 ```markup
   TSS ADD(userid) IDMAP(ZWEDNMAP) IDMAPDN('distributed-identity-user-name') - <br>
   IDMAPRN('distributed-identity-registry-name') IDLABEL('label-name')
 
   TSS REFRESH
 ```
-  For more details, Please refer [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
+  For more details about mapping a distributed identify username and a distributed registry name to a Top Secret ACID, see [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
 
-- For ACF2
+- **For ACF2:**
 ```markup
   ACF
   SET PROFILE(USER) DIVISION(IDMAP)
@@ -110,23 +110,27 @@ Administrators can use the installed ESM functionality to create, delete, list, 
   F ACF2,REBUILD(USR),CLASS(P),DIVISION(IDMAP)
   END
 ```
-  For more details, Please refer [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
+  For more details about mapping a distributed user to a logonid, see [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
-   In the above commands
+#### Parameters in the ESM commands
 
-      * `userid` is ESM user id
-      * `distributed-identity-user-name` is user id for distributed-identity-registry
-      * `distributed-identity-registry-name` is the hostname of the registry
-      * `label-name` is the name for the distributed-identity filter
+  * **`userid`**  
+   Specifies the ESM user id
+  * **`distributed-identity-user-name`**  
+   Specifies the user id for distributed-identity-registry
+  * **`distributed-identity-registry-name`**  
+   Specifies the hostname of the registry
+  * **`label-name`**  
+   Specifies the name for the distributed-identity filter
    
    **Example for RACF:**
 
    ```markup
    RACMAP ID(ab00001) MAP USERDIDFILTER(NAME('aaa.bbb@richradioham.com')) REGISTRY(NAME('ldaps://us.richradioham.com')) WITHLABEL('identity mapping for ab00001')
    ```
-Alternatively, API ML provides a Zowe CLI plugin to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system and those JCLs can be sumbitted on corresponding ESM to create distributed identity filter.
+Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity filter.
 
-  See the [Identity Federation cli plugin](../../user-guide/cli-idfplugin.md) documentation for details about how to use the plugin tool to set up the mapping in the ESM of your z/OS system.
+For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation .
 
 ## API ML OIDC configuration
 
