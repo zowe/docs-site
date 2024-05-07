@@ -1,13 +1,16 @@
 # API Mediation Layer routing
 
+The API Mediation Layer routing explains how the requests are pa
+
 As an application developer, you can route your service through the Gateway using the API Mediation Layer to consume a specific resource.
 
 There are two ways to route your service to the API Mediation Layer:
 
-* Basic Routing (using Service ID and version)
-* Basic Routing (using only the service ID)
-
 ## Terminology
+
+* **Instance**
+
+  Instance of a specific service providing one or more APIs. 
 
 * **Service**
 
@@ -22,6 +25,33 @@ There are two ways to route your service to the API Mediation Layer:
 * **URI (Uniform Resource Identifier)**
 
   A string of characters used to identify a resource. Each URI must point to a single corresponding resource that does not require any additional information, such as HTTP headers.
+
+## Routing
+
+### Single API Mediation Layer Instance
+
+#### Single instance of service
+
+##### One version of the API
+
+![Single instance](../../images/api-mediation/SimpleRouting.png "Simple Routing")
+
+##### Multiple version of the API
+
+![Multiple versions](../../images/api-mediation/RoutingVersioned.png "Versioned Routing")
+
+#### Multiple instances of service
+
+TO BE DONE
+
+### Multiple API Mediation Layer Instances
+
+![Same LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexSameLpar.png "Same LPAR Multiple API Mediation Layer Instances")
+
+![Different LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexDifferentLpar.png "Differente LPAR Multiple API Mediation Layer Instances")
+
+
+
 
 ## APIML Basic Routing (using Service ID and version)
 
