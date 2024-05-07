@@ -34,11 +34,11 @@ Starting and stopping of the `ZWESLSTC` started task for the main Zowe servers i
 To end the Zowe cross memory server process, issue the operator stop command:
 
 ```
-S ZWESISTC
+P ZWESISTC
 ```
 
 :::note
-If using SDSF to stop the cross memory server, enter `/` before `S`.
+If using SDSF to stop the cross memory server, enter `/` before `P`.
 :::
 
 
