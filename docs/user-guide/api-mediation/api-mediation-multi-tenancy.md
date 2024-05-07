@@ -57,18 +57,27 @@ For static onboarding, make sure that the following parameters are correctly spe
 
 For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
 
-## Establishing a trust relationship between domain Gateways and the Cloud Gateway
+## Establishing a trust relationship between Domain API ML and the Central API ML
 
-For routing to work in a MultiTenancy configuration, the Cloud Gateway must trust the domain Gateways, and vice versa.
-In other words it is necessary that the root and, if applicable, intermediate public certificates be shared between the Cloud Gateway and domain Gateways. 
+For routing to work in a MultiTenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
+In other words it is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API ML. 
 
 The following example describes this relationship. 
 
-In this example, the Cloud Gateway is installed on system X, and domain Gateways are installed on systems Y and Z.
+![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
-The following commands are examples of establishing a trust relationship between domain Gateways and the Cloud Gateway for both PKCS12 certificates and when using keyrings.
+On this example diagram:
 
-1. Import the root and, if applicable, the intermediate public key certificate of the domain Gateways running on systems Y and Z into the truststore of the Cloud Gateway running on system X.
+Central APIML is installed on system X, Domain APIMLs are installed on system Y and Z.
+For secure communication Domain APIML 1 and 2 are using different private keys signed with different public keys (they don't trust each other).
+Central APIML should have all public keys from the certificate chain of all Domain APIMLs (DigiCert Root CA, DigiCert Root CA1, DigiCert CA) added to its truststore to be able to register them, otherwise Central APIML will not trust them.
+Central APIML is using a private key which is sign by Local CA public key for secure communication. 
+Domain APIML 1 and 2 should have Local CA public key to be able to accept the routing requests from Central APIML, otherwise Domain APIMLs will not trust it.
+On this diagram you can see all added certificates surrounded by red dashed line.
+
+The following commands are examples of establishing a trust relationship between Domain API ML and the Central API ML for both PKCS12 certificates and when using keyrings.
+
+1. Import the root and, if applicable, the intermediate public key certificate of Domain API MLs running on systems Y and Z into the truststore of the Central API ML running on system X.
 
   - **PKCS12**
   
@@ -80,7 +89,7 @@ The following commands are examples of establishing a trust relationship between
 
   - **Keyring**
       
-    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by the Cloud Gateway:
+    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by Central API ML:
         
     - **For RACF:**
       
@@ -116,7 +125,7 @@ The following commands are examples of establishing a trust relationship between
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
       ```
 
-2. Import root and, if applicable, intermediate the public key certificate of the Cloud Gateway running on system X into the truststore of the domain Gateways running on system Y and Z.
+2. Import root and, if applicable, intermediate the public key certificate of the Central API ML running on system X into the truststore of the Domain API MLs running on system Y and Z.
 
   - **PKCS12**
 
@@ -128,13 +137,13 @@ The following commands are examples of establishing a trust relationship between
   
   - **Keyring**
 
-     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyrings used by domain Gateways:
+     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyrings used by Domain API MLs:
   
     - **For RACF:**
   
       ```
-      RACDCERT ADD('SHARE.SYSX.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA1') TRUST
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA1') RING(ZoweKeyring) USAGE(CERTAUTH))
+      RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
+      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
       SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
       ```
   
@@ -143,19 +152,19 @@ The following commands are examples of establishing a trust relationship between
       ```
       ACF
       SET PROFILE(USER) DIV(CERTDATA)
-      INSERT CERTAUTH.SYSXINTR DSNAME('SHARE.SYSX.INTERCA.CER') LABEL(DigiCert CA1) TRUST
+      INSERT CERTAUTH.SYSXROOT DSNAME('SHARE.SYSX.ROOTCA.CER') LABEL(Local CA) TRUST
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
       
       SET PROFILE(USER) DIVISION(KEYRING)
-      CONNECT CERTDATA(CERTAUTH.SYSXINTR) LABEL(DigiCert CA1) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+      CONNECT CERTDATA(CERTAUTH.SYSXROOT) LABEL(Local CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
       ```
   
     - **For TopSecret:**
   
       ```
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.INTERCA.CER)  DIGICERT(SYSXINTR) LABLCERT('DigiCert CA1') TRUST
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXINTR) USAGE(CERTAUTH)
+      TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.ROOTCA.CER)  DIGICERT(SYSXROOT) LABLCERT('Local CA') TRUST
+      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXROOT) USAGE(CERTAUTH)
       ```
 
 ## Using the /registry endpoint in Cloud Gateway
