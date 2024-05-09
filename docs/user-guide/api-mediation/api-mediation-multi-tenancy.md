@@ -8,21 +8,21 @@ In the multi-tenancy environment, certain Zowe components may be enabled, while 
 
 When using a multi-tenancy environment, ensure that the following Zowe components are either enabled or disabled:
 
-- Domain API ML
+- **Domain API ML**
   - Gateway and Discovery Service: **enabled**
   - Cloud Gateway: **disabled**
 
-- Central API ML
+- **Central API ML**
   - Cloud Gateway and Discovery Service: **enabled**
   - Gateway: **disabled**
 
 ## Onboarding Domain Gateways to the central Cloud Gateway
 
-The Cloud Gateway must onboard all domain Gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of the specific services (e.g. domain gateways).  
+The Cloud Gateway must onboard all domain gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of the specific services (e.g. domain gateways).  
 
 ### Dynamic Onboarding (recommended) for domain Gateways
 
-To dynamically onboard to the Discovery Service in the central cluster, set the following property for all domain Gateways:
+To dynamically onboard to the Discovery service in the central cluster, set the following property for all domain gateways:
 
 `components.gateway.apiml.service.additionalRegistration`
 
@@ -39,12 +39,12 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 
 :::note
-It is not necessary for the Gateway service to provide different routing patterns for the central discovery service. These metadata can be the same for every cluster.
+It is not necessary for the Gateway service to provide different routing patterns for the central Discovery service. These metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding for domain Gateways (deprecated)
 
-Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the preferred method.
+Alternatively, you can statically onboard all domain gateways on the Central Discovery service. Note that dynamic onboarding is the preferred method.
 
 For static onboarding, make sure that the following parameters are correctly specified in the static definition file:
 
@@ -62,18 +62,25 @@ For static onboarding, be sure to use the [Gateway static definition example](#g
 For routing to work in a MultiTenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
 In other words it is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API ML. 
 
-The following example describes this relationship. 
+The following diagram is a visual description of this relationship. 
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
-On this example diagram:
+As shown in this example diagram, the Central APIML is installed on system X. Domain APIMLs are installed on system Y and Z.
 
-Central APIML is installed on system X, Domain APIMLs are installed on system Y and Z.
-For secure communication Domain APIML 1 and 2 are using different private keys signed with different public keys (they don't trust each other).
-Central APIML should have all public keys from the certificate chain of all Domain APIMLs (DigiCert Root CA, DigiCert Root CA1, DigiCert CA) added to its truststore to be able to register them, otherwise Central APIML will not trust them.
-Central APIML is using a private key which is sign by Local CA public key for secure communication. 
-Domain APIML 1 and 2 should have Local CA public key to be able to accept the routing requests from Central APIML, otherwise Domain APIMLs will not trust it.
-On this diagram you can see all added certificates surrounded by red dashed line.
+For secure communication, Domain APIML 1 and 2 are using different private keys signed with different public keys. These keys do not trust each other.
+
+In order for the Central APIML to register with all Domain APIMLs, it is necessary that the Central APIML have all public keys from the certificate chain of all Domain APIMLs:
+* DigiCert Root CA
+* DigiCert Root CA1
+* DigiCert CA
+These shared public keys are required for the Central APIML to establish trust with the Domain APIMLs. 
+
+The Central APIML uses a private key which is signed by Local CA public key for secure communication. 
+
+Domain APIMLs 1 and 2 require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Centrl API ML requests will not be trusted by the Domain APIMLs.
+
+The diagram indicates all of the added certificates inside the red dashed lines.
 
 The following commands are examples of establishing a trust relationship between Domain API ML and the Central API ML for both PKCS12 certificates and when using keyrings.
 
