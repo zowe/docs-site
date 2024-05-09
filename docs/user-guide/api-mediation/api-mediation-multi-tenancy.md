@@ -1,12 +1,12 @@
-# Routing MultiTenancy Configuration
+# Routing Multitenancy Configuration
 
 Zowe supports management of multiple sysplexes whereby different sysplexes can serve different purposes or different customers. The use case for multi-sysplex support is when a service provider manages sysplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different sysplexes. 
 
 ## Component Layout example
 
-In the multi-tenancy environment, certain Zowe components may be enabled, while others may be disabled. The multi-tenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
+In the Multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
 
-When using a multi-tenancy environment, ensure that the following Zowe components are either enabled or disabled:
+When using a multitenancy environment, ensure that the following Zowe components are either enabled or disabled:
 
 - **Domain API ML**
   - Gateway and Discovery Service: **enabled**
@@ -59,36 +59,38 @@ For static onboarding, be sure to use the [Gateway static definition example](#g
 
 ## Establishing a trust relationship between Domain API ML and the Central API ML
 
-For routing to work in a MultiTenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
-In other words it is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API ML. 
+For routing to work in a multitenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
+It is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API MLs. 
 
-The following diagram is a visual description of this relationship. 
+The following diagram is a visual description of the relationship between the Central APIML and Domain APIMLs. 
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
 As shown in this example diagram, the Central APIML is installed on system X. Domain APIMLs are installed on system Y and Z.
 
-For secure communication, Domain APIML 1 and 2 are using different private keys signed with different public keys. These keys do not trust each other.
+For secure communication, Domain APIML 1 and 2 are using different private keys signed by different public keys. These keys do not trust each other.
 
 In order for the Central APIML to register with all Domain APIMLs, it is necessary that the Central APIML have all public keys from the certificate chain of all Domain APIMLs:
 * DigiCert Root CA
 * DigiCert Root CA1
 * DigiCert CA
+
 These shared public keys are required for the Central APIML to establish trust with the Domain APIMLs. 
 
-The Central APIML uses a private key which is signed by Local CA public key for secure communication. 
+The Central APIML uses a private key which is signed by the Local CA public key for secure communication. 
 
-Domain APIMLs 1 and 2 require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Centrl API ML requests will not be trusted by the Domain APIMLs.
-
+Domain APIMLs 1 and 2 require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
 The diagram indicates all of the added certificates inside the red dashed lines.
 
-The following commands are examples of establishing a trust relationship between Domain API ML and the Central API ML for both PKCS12 certificates and when using keyrings.
+### Commands to establish trust bewtween Domain and Central API MLs
+
+The following commands are examples of establishing a trust relationship between a Domain API ML and the Central API ML for both PKCS12 certificates and when using keyrings.
 
 1. Import the root and, if applicable, the intermediate public key certificate of Domain API MLs running on systems Y and Z into the truststore of the Central API ML running on system X.
 
   - **PKCS12**
   
-    For PKCS12 certificates, use the following example of  keytool commands:
+    For PKCS12 certificates, use the following example of keytool commands:
   
     `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
   
@@ -96,7 +98,7 @@ The following commands are examples of establishing a trust relationship between
 
   - **Keyring**
       
-    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by Central API ML:
+    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by the Central API ML:
         
     - **For RACF:**
       
@@ -132,7 +134,7 @@ The following commands are examples of establishing a trust relationship between
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
       ```
 
-2. Import root and, if applicable, intermediate the public key certificate of the Central API ML running on system X into the truststore of the Domain API MLs running on system Y and Z.
+2. Import root and, if applicable, intermediate  public key certificates of the Central API ML running on system X into the truststore of the Domain API MLs running on systems Y and Z.
 
   - **PKCS12**
 
@@ -144,7 +146,7 @@ The following commands are examples of establishing a trust relationship between
   
   - **Keyring**
 
-     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyrings used by Domain API MLs:
+     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by Domain API MLs:
   
     - **For RACF:**
   
@@ -174,7 +176,7 @@ The following commands are examples of establishing a trust relationship between
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXROOT) USAGE(CERTAUTH)
       ```
 
-## Using the /registry endpoint in Cloud Gateway
+## Using the `/registry` endpoint in Cloud Gateway
 
 The `/registry` endpoint provides information about services onboarded to all domain Gateways and the Central Gateway. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
@@ -185,7 +187,7 @@ The `/registry` endpoint is disabled by default. Use the following environment v
 `APIML_CLOUDGATEWAY_REGISTRY_ENABLED=TRUE`
 
 ### Authentication for `/registry`
-The `/registry` endpoint is authenticated by the client certificate. Cloud Gateway accepts certificates that are trusted. The user name is obtained from the common name of the client certificate.
+The `/registry` endpoint is authenticated by the client certificate. The Cloud Gateway accepts certificates that are trusted. The user name is obtained from the common name of the client certificate.
 
 Unsuccessful authentication returns a 401 error code.
 
@@ -246,7 +248,7 @@ This request lists services in the apimlId domain.
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
-## Troubleshooting
+## Troubleshooting MultiTenancy Configuration
 
 ### ZWESG100W  
 
