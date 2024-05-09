@@ -43,7 +43,7 @@ The following diagram illustrates the interactions between the participants of t
 - The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work. 
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
 - The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or PassTicket) which are expected by the target mainframe service.
@@ -76,6 +76,7 @@ For example, web applications with a secure server side component can use `code 
 
 The user identity mapping is defined as a distributed user identity filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts:
+
 - A distributed identity name
 - A trusted registry which governs that identity
 
@@ -88,23 +89,28 @@ User specified parameters are presented in the section [Parameters in the ESM co
 :::
 
 - **For RACF:**
+
 ```markup
   RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
 
   SETROPTS RACLIST(IDIDMAP) REFRESH
- ``` 
+ ```
+
   For more details about the RACMAP command, see [RACMAP command](https://www.ibm.com/docs/en/zos/2.3.0?topic=rcs-racmap-create-delete-list-query-distributed-identity-filter).
 
 - **For Top Secret:**
+
 ```markup
   TSS ADD(userid) IDMAP(ZWEDNMAP) IDMAPDN('distributed-identity-user-name') - <br>
   IDMAPRN('distributed-identity-registry-name') IDLABEL('label-name')
 
   TSS REFRESH
 ```
+
   For more details about mapping a distributed identify username and a distributed registry name to a Top Secret ACID, see [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
 
 - **For ACF2:**
+
 ```markup
   ACF
   SET PROFILE(USER) DIVISION(IDMAP)
@@ -114,24 +120,26 @@ User specified parameters are presented in the section [Parameters in the ESM co
   F ACF2,REBUILD(USR),CLASS(P),DIVISION(IDMAP)
   END
 ```
+
   For more details about mapping a distributed user to a logonid, see [IDMAP User Profile Data Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/user-profile-records/idmap-user-profile-records.html).
 
 #### Parameters in the ESM commands
 
-  * **`userid`**  
+- **`userid`**  
    Specifies the ESM user id
-  * **`distributed-identity-user-name`**  
+- **`distributed-identity-user-name`**  
    Specifies the user id for distributed-identity-registry
-  * **`distributed-identity-registry-name`**  
+- **`distributed-identity-registry-name`**  
    Specifies the hostname of the registry
-  * **`label-name`**  
+- **`label-name`**  
    Specifies the name for the distributed-identity filter
-   
+
    **Example for RACF:**
 
    ```markup
    RACMAP ID(ab00001) MAP USERDIDFILTER(NAME('aaa.bbb@richradioham.com')) REGISTRY(NAME('ldaps://us.richradioham.com')) WITHLABEL('identity mapping for ab00001')
    ```
+
 Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity filter.
 
 For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation.
@@ -182,7 +190,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
 **Symptom**  
 The Gateway log contains the following ERROR message:  
-`Failed to validate the OIDC access token. Unexpected response: XXX.` 
+`Failed to validate the OIDC access token. Unexpected response: XXX.`
 
 - **_XXX_**  
 is the HTTP status code returned by the Identity Provider.
@@ -207,25 +215,23 @@ The client application is not properly configured in the API ML Gateway.
 **Solution**  
 Check that the URL `jwks_uri` contains the key for  OIDC token validation.
 
-
 :::tip
 API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The call to the endpoint `/gateway/api/v1/auth/oidc-token/validate` verifies if the OIDC token is trusted by API ML. Note that the Gateway service does not perform the mapping request to the ESM when the `/gateway/api/v1/auth/oidc-token/validate` endpoint is called.
 
 Use the following curl command to make a REST request with the OIDC token to the validate token endpoint:
+
 ```shell
 curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
 ```
+
 An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
 :::note Azure Entra ID OIDC notes:
 API ML uses the `sub` claim of the ID Token to identify the user, and to map to the mainframe account. Note that the structure of the `sub` claim varies between the Azure token and the OKTA ID token:
-* The Azure token `sub` is an alphanumeric value.  
+- The Azure token `sub` is an alphanumeric value.  
 For more information, see the topic _Use claims to reliably identify a user_ in the Microsoft Learn documentation.
-* The OKTA ID token has an email in the `sub` claim.
+- The OKTA ID token has an email in the `sub` claim.
 
 For more information about Entra ID token format see _ID token claims reference_ in the Microsoft documentation.
 :::
-
-
-
