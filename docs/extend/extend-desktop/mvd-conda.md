@@ -5,7 +5,7 @@ a standardized and simple way to find, install, upgrade, and list Plugins in you
 is important to make it easy to get the most out of Zowe.
 
 Package management as a concept generally provides a way to find packages such as plugins,
-check and possible co-install dependencies the package has, and ultimately install the desired package.
+check and possibly co-install dependencies the package has, and ultimately install the desired package.
 Post-install, management tasks such as upgrading and uninstalling are common.
 
 Conda is one such package manager, and if you are familiar with apt, yum, or npm, you will find
