@@ -38,6 +38,12 @@ components.gateway.apiml.service.additionalRegistration:
                 serviceUrl: /
 ```
 
+```
+components.gateway.apiml.security.x509:
+    #  cloud gateway port 
+        certificatesUrl: https://ca32.lvn.broadcom.net:27558/gateway/certificates
+```
+
 :::note
 It is not necessary for the Gateway service to provide different routing patterns for the central discovery service. These metadata can be the same for every cluster.
 :::
@@ -111,6 +117,9 @@ This request lists services in all domains.
 * `GET /cloud-gateway/api/v1/registry/{apimlId}`  
 This request lists services in the apimlId domain.
 
+* `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`  
+  This request gets the specific service in the specific apimlId domain.
+* 
 ### Response with `/registry`
 
 **Example:**
@@ -122,7 +131,10 @@ This request lists services in the apimlId domain.
         "services": [
             {
                 "status": "UP",
-                "customMetadata": {},
+                "customMetadata": {
+                 "zos.sysname": "ca32",
+				 "zos.sysplex": "sysplex"
+				},
                 "apiId": [
         "zowe.apiml.gateway"
 ],
@@ -135,11 +147,24 @@ This request lists services in the apimlId domain.
         "services": [
             {
                 "status": "UP",
-                "customMetadata": {},
+                "customMetadata": {
+                 "zos.sysname": "ca32",
+				 "zos.sysplex": "sysplex"
+				},
                 "apiId": [
         "zowe.apiml.gateway"
 ],
                 "serviceId": "gateway"
+            },
+            {
+                "status": "UP",
+                "customMetadata": {
+                 "zos.sysname": "ca32",
+				 "zos.sysplex": "sysplex"},
+                "apiId": [
+        "zowe.apiml.catalog"
+],
+                "serviceId": "catalog"
             }
         ]
 ]
@@ -149,6 +174,68 @@ This request lists services in the apimlId domain.
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
+## Response with `/registry{apimlId}`
+
+**Example:**
+
+* `GET /cloud-gateway/api/v1/registry/apiml2`
+
+```
+[
+    {
+        "apimlId": "apiml2",
+        "services": [
+            {
+                "status": "UP",
+                "customMetadata": {
+               "zos.sysname": "ca32",
+			   "zos.sysplex": "sysplex"
+				},
+                "apiId": [
+        "zowe.apiml.gateway"
+  ],
+                "serviceId": "gateway"
+            },
+            {
+                "status": "UP",
+                "customMetadata": {
+                 "zos.sysname": "ca32",
+				"zos.sysplex": "sysplex"
+				},
+                "apiId": [
+        "zowe.apiml.catalog"
+  ],
+                "serviceId": "catalog"
+            }
+        ]
+]
+```
+
+## Response with `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`
+
+**Example:**
+
+* `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway?serviceId=catalog`
+
+```
+ [
+    {
+        "apimlId": "apiml2",
+        "services": [
+            {
+                "status": "UP",
+                "customMetadata": {
+                "zos.sysname": "ca32",
+				"zos.sysplex": "sysplex"
+                },
+                "apiId": [
+        "zowe.apiml.catalog"
+    ],
+                "serviceId": "catalog"
+            }
+        ]
+]
+```
 ## Troubleshooting
 
 ### ZWESG100W  
