@@ -6,6 +6,11 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
 * [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
   * [Dynamic Onboarding (recommended) for domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
   * [Static Onboarding for domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
+* [Onboarding a domain cloud-gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
+    * [Dynamic Configurations to the central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
+        * [Dynamic configuration: YML](#dynamic-configuration-yml)
+        * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
+    * [Validating successful configuration](#validating-successful-configuration)
 * [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
   * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
 * [Using the `/registry` endpoint in Cloud Gateway](#using-the-registry-endpoint-in-cloud-gateway)
@@ -15,15 +20,10 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
   * [Requests with `/registry`](#requests-with-registry)
   * [Response with `/registry`](#response-with-registry)
 * [Validate successful configuration with `/registry`](#validate-successful-configuration-with-registry)  
+* [Gateway static definition example](#gateway-static-definition-example)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to Gateway-CA32 completed with onComplete are produced](#no-debug-messages-similar-to-gateway-ca32-completed-with-oncomplete-are-produced)
-  * [Onboarding a domain cloud-gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
-    * [Dynamic Configurations to the central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
-      * [Dynamic configuration: YML](#dynamic-configuration-yml)
-      * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
-    * [Validating successful configuration](#validating-successful-configuration)
-   * [Gateway static definition example](#gateway-static-definition-example) 
 ## Component Layout example
 
 In the Multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
@@ -81,27 +81,28 @@ For static onboarding, be sure to use the [Gateway static definition example](#g
 
 ## Establishing a trust relationship between Domain API ML and Central API ML
 
-For routing to work in a multitenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
-It is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API MLs. 
+For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
+The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
+It is necessary that the root and, if applicable, intermediate public certificates be shared between Central API Mediation Layer and Domain API Mediation Layers. 
 
-The following diagram is a visual description of the relationship between the Central APIML and Domain APIMLs. 
+The following diagram is a visual description of the relationship between the Central API ML and Domain API MLs. 
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
 As shown in this example diagram, the Central APIML is installed on system X. Domain APIMLs are installed on system Y and Z.
 
-For secure communication, Domain APIML 1 and 2 are using different private keys signed by different public keys. These keys do not trust each other.
+To establish secure communications, "Domain APIML 1" and "Domain APIML 2" are using different private keys signed with different public keys. These APIMLs do not trust each other.
 
-In order for the Central APIML to register with all Domain APIMLs, it is necessary that the Central APIML have all public keys from the certificate chain of all Domain APIMLs:
+In order for all Domain APIMLs to register with the Central APIML, it is necessary that the Central APIML have all public keys from the certificate chains of all Domain APIMLs:
 * DigiCert Root CA
 * DigiCert Root CA1
 * DigiCert CA
 
-These shared public keys are required for the Central APIML to establish trust with the Domain APIMLs. 
+These public keys are required for the Central APIML to establish trust with the "Domain APIML 1" and "Domain APIML 2". 
 
 The Central APIML uses a private key which is signed by the Local CA public key for secure communication. 
 
-Domain APIMLs 1 and 2 require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
+"Domain APIML 1" and "Domain APIML 2" require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
 The diagram indicates all of the added certificates inside the red dashed lines.
 
 ### Commands to establish trust between Domain and Central API MLs
@@ -132,6 +133,11 @@ The following commands are examples of establishing a trust relationship between
       SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
       ```
 
+      Verify:
+      ```
+      RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+      ```
+
     - **For ACF2:**
       
       ```
@@ -147,6 +153,12 @@ The following commands are examples of establishing a trust relationship between
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
       ```
       
+      Verify:
+      ```
+      SET PROFILE(USER) DIVISION(KEYRING)
+      LIST LIKE(ZWESVUSR.-)
+      ```
+
     - **For TopSecret:**
       
       ```
@@ -154,6 +166,11 @@ The following commands are examples of establishing a trust relationship between
       TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
+      ```
+
+      Verify:
+      ```
+      TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
 
 2. Import root and, if applicable, intermediate  public key certificates of the Central API ML running on system X into the truststore of the Domain API MLs running on systems Y and Z.
@@ -177,7 +194,12 @@ The following commands are examples of establishing a trust relationship between
       RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
       SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
       ```
-  
+
+      Verify:
+      ```
+      RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+      ```
+
     - **For ACF2:**
   
       ```
@@ -190,13 +212,26 @@ The following commands are examples of establishing a trust relationship between
       CONNECT CERTDATA(CERTAUTH.SYSXROOT) LABEL(Local CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
       F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
       ```
-  
+
+      Verify:
+      ```
+      SET PROFILE(USER) DIVISION(KEYRING)
+      LIST LIKE(ZWESVUSR.-)
+      ```
+
     - **For TopSecret:**
   
       ```
       TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.ROOTCA.CER)  DIGICERT(SYSXROOT) LABLCERT('Local CA') TRUST
       TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXROOT) USAGE(CERTAUTH)
       ```
+
+      Verify:
+      ```
+      TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
+      ```
+
+You completed certificates setup for MultiTenancy configuration, so Domain API MLs can trust Central API ML and vise versa.
 
 ## Using the `/registry` endpoint in Cloud Gateway
 
@@ -272,7 +307,7 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 
 ## Troubleshooting multitenancy configuration
 
-### ZWESG100W  
+### ZWESG100W
 
 Cannot receive information about services on API Gateway with apimlId 'Gateway-CA32' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
 
@@ -340,8 +375,9 @@ To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform 
 ```
 /eureka/apps
 ```
- 
+
 ## Gateway static definition example
+
 This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. There is no naming restriction of the filename, but the file extension must be yml.
 
 **Example:**
