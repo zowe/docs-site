@@ -2,6 +2,28 @@
 
 Zowe supports management of multiple sysplexes whereby different sysplexes can serve different purposes or different customers. The use case for multi-sysplex support is when a service provider manages sysplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different sysplexes. 
 
+* [Component Layout example](#component-layout-example)
+* [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
+  * [Dynamic Onboarding (recommended) for domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
+  * [Static Onboarding for domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
+* [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
+  * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
+* [Using the `/registry` endpoint in Cloud Gateway](#using-the-registry-endpoint-in-cloud-gateway)
+  * [Configuration for `/registry`](#configuration-for-registry)
+  * [Authentication for `/registry`](#authentication-for-registry)
+  * [Authorization for `/registry`](#authorization-with-registry)
+  * [Requests with `/registry`](#requests-with-registry)
+  * [Response with `/registry`](#response-with-registry)
+* [Validate successful configuration with `/registry`](#validate-successful-configuration-with-registry)  
+* [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
+  * [ZWESG100W](#zwesg100w)
+  * [No debug messages similar to Gateway-CA32 completed with onComplete are produced](#no-debug-messages-similar-to-gateway-ca32-completed-with-oncomplete-are-produced)
+  * [Onboarding a domain cloud-gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
+    * [Dynamic Configurations to the central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
+      * [Dynamic configuration: YML](#dynamic-configuration-yml)
+      * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
+    * [Validating successful configuration](#validating-successful-configuration)
+   * [Gateway static definition example](#gateway-static-definition-example) 
 ## Component Layout example
 
 In the Multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
@@ -57,7 +79,7 @@ For static onboarding, make sure that the following parameters are correctly spe
 
 For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
 
-## Establishing a trust relationship between Domain API ML and the Central API ML
+## Establishing a trust relationship between Domain API ML and Central API ML
 
 For routing to work in a multitenancy configuration, the Central API ML must trust the Domain API ML, and vice versa for registration.
 It is necessary that the root and, if applicable, intermediate public certificates be shared between Central API ML and Domain API MLs. 
@@ -82,7 +104,7 @@ The Central APIML uses a private key which is signed by the Local CA public key 
 Domain APIMLs 1 and 2 require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
 The diagram indicates all of the added certificates inside the red dashed lines.
 
-### Commands to establish trust bewtween Domain and Central API MLs
+### Commands to establish trust between Domain and Central API MLs
 
 The following commands are examples of establishing a trust relationship between a Domain API ML and the Central API ML for both PKCS12 certificates and when using keyrings.
 
@@ -248,7 +270,7 @@ This request lists services in the apimlId domain.
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
-## Troubleshooting MultiTenancy Configuration
+## Troubleshooting multitenancy configuration
 
 ### ZWESG100W  
 
