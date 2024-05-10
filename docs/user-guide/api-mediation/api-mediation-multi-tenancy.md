@@ -6,8 +6,8 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
 * [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
   * [Dynamic Onboarding (recommended) for Domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
   * [Static Onboarding for Domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
-* [Onboarding a Domain Cloud-Gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
-    * [Dynamic Configurations to the central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
+* [Onboarding a Domain Cloud-Gateway service to Central Discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
+    * [Dynamic Configurations to the Central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
         * [Dynamic configuration: YML](#dynamic-configuration-yml)
         * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
     * [Validating successful configuration](#validating-successful-configuration)
@@ -19,14 +19,15 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
   * [Authorization for `/registry`](#authorization-with-registry)
   * [Requests with `/registry`](#requests-with-registry)
   * [Response with `/registry`](#response-with-registry)
-* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)  
+* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry) 
 * [Gateway static definition example](#gateway-static-definition-example)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to Gateway-CA32 completed with onComplete are produced](#no-debug-messages-similar-to-gateway-ca32-completed-with-oncomplete-are-produced)
+
 ## Multitenancy component enablement settings
 
-In the Multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
+In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
 
 When using a multitenancy environment, ensure that the following Zowe components are either enabled or disabled:
 
@@ -40,7 +41,7 @@ When using a multitenancy environment, ensure that the following Zowe components
 
 ## Onboarding Domain Gateways to the central Cloud Gateway
 
-The Cloud Gateway must onboard all domain gateways. This can be done dynamically or by the static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of the specific services (e.g. domain gateways).  
+The Cloud Gateway must onboard all domain gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of  specific services (e.g. domain gateways).  
 
 ### Dynamic Onboarding (recommended) for domain Gateways
 
@@ -58,30 +59,32 @@ components.gateway.apiml.service.additionalRegistration:
  	    routes:
               - gatewayUrl: /
                 serviceUrl: /
-```
-
+For routing to work in a MultiTenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
+The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
+The certification chain of the Domain API Mediation Layers must be included in the Central API Mediation Layer's truststore and the certification chain of the Central API Mediation Layer must be included in the Domain Mediation Layer's truststore.
 :::note
-It is not necessary for the Gateway service to provide different routing patterns for the central Discovery service. These metadata can be the same for every cluster.
+It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding for domain Gateways (deprecated)
 
-Alternatively, you can statically onboard all domain gateways on the Central Discovery service. Note that dynamic onboarding is the preferred method.
+Central API ML is installed on system X, Domain API MLs are installed on systems Y and Z.
 
-For static onboarding, make sure that the following parameters are correctly specified in the static definition file:
-
-- **services.serviceId**  
-  Specify this parameter to GATEWAY
+* To establish secure communications, "Domain API ML 1" and "Domain API ML 2" are using different private keys signed with different public keys (they don't trust each other).
+* Central API ML should have all the public keys from the certificate chains of all Domain API MLs ("DigiCert Root CA", "DigiCert Root CA1", "DigiCert CA") added to its truststore to be able to register them, otherwise the Central API ML will not trust them.
+* Central API ML is using a private key which is signed by "Local CA" public key for secure communication. 
+"Domain API ML 1" and "Domain API ML 2" should have Local CA's public key to be able to accept the routing requests from Central API ML, otherwise Domain API MLs will not trust it.
+On this diagram you can see all added certificates surrounded by red dashed line.
 - **services.instanceBaseUrls**  
   Specifies the URL of the Domain Gateway
 - **services.customMetadata.apiml.service.apimlId**  
   Specifies the id of the API ML environment
 
-For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
+For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example).
 
 ## Onboarding a domain cloud-gateway service to central discovery service
 
-The central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+The Central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
@@ -90,7 +93,7 @@ The central Cloud Gateway can onboard Cloud Gateways of all domains. This servic
 
 #### Dynamic configuration: YML
 
-Users must set the following property for the domain cloud-gateway to dynamically onboard to the central Discovery Service.
+Users must set the following property for the Domain Cloud-Gateway to dynamically onboard to the Central Discovery service.
 
 `components.cloud-gateway.apiml.service.additionalRegistration`
 
@@ -118,11 +121,11 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
-This Zowe configuration transforms the zowe.yaml configuration file into the environment variables that are shown above. 
+This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
 
 ### Validating successful configuration
 
-The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central Discovery service. 
+The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the Central Discovery service. 
 
 To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
 
@@ -140,7 +143,7 @@ The following diagram is a visual description of the relationship between the Ce
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
-As shown in this example diagram, the Central APIML is installed on system X. Domain APIMLs are installed on system Y and Z.
+As shown in this example diagram, the Central APIML is installed on system X. Domain APIMLs are installed on systems Y and Z.
 
 To establish secure communications, "Domain APIML 1" and "Domain APIML 2" are using different private keys signed with different public keys. These APIMLs do not trust each other.
 
@@ -282,7 +285,7 @@ The following commands are examples of establishing a trust relationship between
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
 
-You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust Central API ML and vise versa.
+You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust Central API ML and vice versa.
 
 ## Using the `/registry` endpoint in Cloud Gateway
 
@@ -355,9 +358,12 @@ This request lists services in the apimlId domain.
 ## Validating successful configuration with `/registry`
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
+## Gateway static definition example (deprecated)
 
-## Gateway static definition example
+The gateway static definition file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. 
+There is no naming restriction of the filename, but the file extension must be `yml`.
 
+This method is deprecated in favor of dynamic onboarding.
 This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. There is no naming restriction of the filename, but the file extension must be yml.
 
 **Example:**
