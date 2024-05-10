@@ -122,9 +122,9 @@ This Zowe configuration transforms the zowe.yaml configuration file into the env
 
 ### Validating successful configuration
 
-The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
+The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central Discovery service. 
 
-To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the central discovery service:
+To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
 
 ```
 /eureka/apps
@@ -134,7 +134,7 @@ To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform 
 
 For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
 The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
-It is necessary that the root and, if applicable, intermediate public certificates be shared between Central API Mediation Layer and Domain API Mediation Layers. 
+It is necessary that the root and, if applicable, intermediate public certificates be shared between the Central API Mediation Layer and Domain API Mediation Layers. 
 
 The following diagram is a visual description of the relationship between the Central API ML and Domain API MLs. 
 
@@ -149,11 +149,11 @@ In order for all Domain APIMLs to register with the Central APIML, it is necessa
 * DigiCert Root CA1
 * DigiCert CA
 
-These public keys are required for the Central APIML to establish trust with the "Domain APIML 1" and "Domain APIML 2". 
+These public keys are required for the Central APIML to establish trust with "Domain APIML 1" and "Domain APIML 2". 
 
 The Central APIML uses a private key which is signed by the Local CA public key for secure communication. 
 
-"Domain APIML 1" and "Domain APIML 2" require a Local CA public key to be able to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
+"Domain APIML 1" and "Domain APIML 2" require a Local CA public key in order to accept the routing requests from the Central APIML, otherwise the Central APIML requests will not be trusted by the Domain APIMLs.
 The diagram indicates all of the added certificates inside the red dashed lines.
 
 ### Commands to establish trust between Domain and Central API MLs
@@ -172,7 +172,7 @@ The following commands are examples of establishing a trust relationship between
 
   - **Keyring**
       
-    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect them to the keyring used by the Central API ML:
+    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the Central API ML:
         
     - **For RACF:**
       
@@ -282,7 +282,7 @@ The following commands are examples of establishing a trust relationship between
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
 
-You completed certificates setup for MultiTenancy configuration, so Domain API MLs can trust Central API ML and vise versa.
+You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust Central API ML and vise versa.
 
 ## Using the `/registry` endpoint in Cloud Gateway
 
@@ -355,8 +355,6 @@ This request lists services in the apimlId domain.
 ## Validating successful configuration with `/registry`
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
-
-
 
 ## Gateway static definition example
 
