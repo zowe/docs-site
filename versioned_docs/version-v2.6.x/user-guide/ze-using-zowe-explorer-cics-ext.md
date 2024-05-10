@@ -1,6 +1,6 @@
 # Using Zowe Explorer CICS Extension
 
-The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension, [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe). This extension allows you to interact with CICS regions and programs, and run commands against them.
+The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension, [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode). This extension allows you to interact with CICS regions and programs, and run commands against them.
 
 ## Features
 

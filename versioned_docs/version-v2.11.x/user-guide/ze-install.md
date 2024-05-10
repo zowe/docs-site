@@ -47,7 +47,7 @@ Use the following steps to install Zowe Explorer:
 
 The extension is now installed and available for use.
 
-* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe#build-locally).
+* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/zowe-explorer-vscode#build-locally).
 
 You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
 
@@ -133,7 +133,7 @@ To configure confirmation settings for submitting a job, follow these steps:
 
 In this section you can find useful links and other information relevant to Zowe Explorer that can improve your experience with the extension.
 
-- For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/wiki/Developing-for-Theia).
-- For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer).
+- For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/zowe-explorer-vscode/wiki/Developing-for-Theia).
+- For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/wiki/Extending-Zowe-Explorer).
 
 - Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.

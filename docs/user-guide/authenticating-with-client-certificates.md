@@ -26,7 +26,7 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 :::note Notes:
 * Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
-* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos).
+* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
 When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
@@ -86,12 +86,12 @@ This metadata can be used for TLS client authentication.
   Additional details are likely described in your security system documentation.
 
 2. Import the external CA to the truststore or keyring of the API Mediation Layer.
-3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates).
+3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::caution Important:
-* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets).
+* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system/#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
 :::
 
 :::note Notes:
@@ -99,7 +99,7 @@ This metadata can be used for TLS client authentication.
 
 * Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and the SAF user ID, however the use of the internal API ML mapper is the recommended method.  
 
-* For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration/#configure-component-zss) in the References section of Zowe Docs.
+* For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
 :::
 
 ### Enabling the internal API ML mapper
@@ -109,7 +109,7 @@ To enable the internal API ML mapper, set the following property in zowe.yaml:
 gateway:  
   apiml:  
     security:  
-      userInternalMapper: true 
+      useInternalMapper: true 
 ```
 Note that the internal API ML mapper option is only available for Zowe release 2.14 and later releases. 
 
