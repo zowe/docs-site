@@ -247,15 +247,6 @@ module.exports = {
             "v2.8.x": {
               label: "v2.8.x LTS",
             },
-            "v2.7.x": {
-              label: "v2.7.x LTS",
-           },
-            "v2.6.x": {
-              label: "v2.6.x LTS",
-           },
-            "v2.5.x": {
-              label: "v2.5.x LTS",
-           },
             "v1.28.x": {
               label: "v1.28.x LTS",
             },
