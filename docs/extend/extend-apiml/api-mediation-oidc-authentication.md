@@ -74,15 +74,15 @@ For example, web applications with a secure server side component can use `code 
 
 ### ESM configuration prerequisites
 
-The user identity mapping is defined as a distributed user identity filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
+The user identity mapping is defined as a distributed user identity mapping filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts:
 
 - A distributed identity name
 - A trusted registry which governs that identity
 
-Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity filter or filters:
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters:
 
-Use the commands specific to your ESM to create distributed identity filter.
+Use the commands specific to your ESM to create distributed identity mapping filter.
 
 :::note
 User specified parameters are presented in the section [Parameters in the ESM commands](#parameters-in-the-esm-commands).
@@ -132,7 +132,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
 - **`distributed-identity-registry-name`**  
    Specifies the URL value of the distributed-identity-registry where user is defined
 - **`label-name`**  
-   Specifies the name for the distributed-identity filter
+   Specifies the name for the distributed-identity mapping filter
 
    **Example for RACF:**
 
@@ -140,7 +140,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
    RACMAP ID(ab00001) MAP USERDIDFILTER(NAME('aaa.bbb@richradioham.com')) REGISTRY(NAME('ldaps://us.richradioham.com')) WITHLABEL('identity mapping for ab00001')
    ```
 
-Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity filter.
+Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity mapping filter.
 
 For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation.
 
