@@ -59,37 +59,42 @@ components.gateway.apiml.service.additionalRegistration:
  	    routes:
               - gatewayUrl: /
                 serviceUrl: /
-For routing to work in a MultiTenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
+```
+For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
+
 The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
-The certification chain of the Domain API Mediation Layers must be included in the Central API Mediation Layer's truststore and the certification chain of the Central API Mediation Layer must be included in the Domain Mediation Layer's truststore.
+The certification chain of the Domain API Mediation Layers must be included in the Central API Mediation Layer's truststore. Additionally, the certification chain of the Central API Mediation Layer must be included in the Domain Mediation Layer's truststore.
+
 :::note
 It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding for domain Gateways (deprecated)
 
-Central API ML is installed on system X, Domain API MLs are installed on systems Y and Z.
+Alternatively, you can statically onboard all domain Gateways on the Central Discovery service. Note that dynamic onboarding is the prefered method.
 
-* To establish secure communications, "Domain API ML 1" and "Domain API ML 2" are using different private keys signed with different public keys (they don't trust each other).
-* Central API ML should have all the public keys from the certificate chains of all Domain API MLs ("DigiCert Root CA", "DigiCert Root CA1", "DigiCert CA") added to its truststore to be able to register them, otherwise the Central API ML will not trust them.
-* Central API ML is using a private key which is signed by "Local CA" public key for secure communication. 
-"Domain API ML 1" and "Domain API ML 2" should have Local CA's public key to be able to accept the routing requests from Central API ML, otherwise Domain API MLs will not trust it.
+In the example of this onboarding method, the Central API ML is installed on system X, and Domain API MLs are installed on systems Y and Z.
+
+* To establish secure communications, "Domain API ML 1" and "Domain API ML 2" use different private keys signed with different public keys. Mutual trust is not established.
+* The Central API ML requires that all the public keys from the certificate chains of all Domain API MLs ("DigiCert Root CA", "DigiCert Root CA1", "DigiCert CA") be added to the Central API ML truststore to be able to register these keys, otherwise the Central API ML will not trust these keys.
+* The Central API ML uses a private key which is signed by the "Local CA" public key for secure communication. 
+* "Domain API ML 1" and "Domain API ML 2" require the public key of the Local CA in order to accept the routing requests from the Central API ML, otherwise Domain API MLs will not trust the Central API ML.
 On this diagram you can see all added certificates surrounded by red dashed line.
 - **services.instanceBaseUrls**  
   Specifies the URL of the Domain Gateway
 - **services.customMetadata.apiml.service.apimlId**  
   Specifies the id of the API ML environment
 
-For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example).
+For static onboarding, use the [Gateway static definition example](#gateway-static-definition-example) presented later in this article.
 
-## Onboarding a domain cloud-gateway service to central discovery service
+## Onboarding a domain cloud-gateway service to the Central Discovery service
 
 The Central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
 
-### Dynamic Configurations to the central Discovery Service
+### Dynamic Configurations to the Central Discovery service
 
 #### Dynamic configuration: YML
 
@@ -285,7 +290,7 @@ The following commands are examples of establishing a trust relationship between
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
 
-You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust Central API ML and vice versa.
+You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust the Central API ML and vice versa.
 
 ## Using the `/registry` endpoint in Cloud Gateway
 
@@ -362,9 +367,6 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 
 The gateway static definition file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. 
 There is no naming restriction of the filename, but the file extension must be `yml`.
-
-This method is deprecated in favor of dynamic onboarding.
-This file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. There is no naming restriction of the filename, but the file extension must be yml.
 
 **Example:**
 ```
