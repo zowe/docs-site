@@ -45,7 +45,7 @@ components.gateway.apiml.security.x509:
 ```
 
 :::note
-It is not necessary for the Gateway service to provide different routing patterns for the central discovery service. These metadata can be the same for every cluster.
+It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding for domain Gateways (deprecated)
@@ -175,7 +175,7 @@ This request lists services in the apimlId domain.
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
 ### Response with `/registry{apimlId}`
-	Should contain inforamtion about all the services in specific domain 
+	Should contain information about all services in a specific domain 
 
 **Example:**
 
@@ -212,7 +212,7 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 ]
 ```
 ### Response with `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`
-	Should contain inforamtion about specific service in specific domain 
+	Should contain information about a specific service in a specific domain 
 **Example:**
 
 * `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway?serviceId=catalog`
