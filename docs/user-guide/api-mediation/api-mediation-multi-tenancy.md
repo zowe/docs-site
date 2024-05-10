@@ -174,7 +174,8 @@ This request lists services in the apimlId domain.
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
-## Response with `/registry{apimlId}`
+### Response with `/registry{apimlId}`
+	Should contain inforamtion about all the services in specific domain 
 
 **Example:**
 
@@ -210,9 +211,8 @@ Use the `/registry` endpoint to validate successful configuration. The response 
         ]
 ]
 ```
-
-## Response with `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`
-
+### Response with `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`
+	Should contain inforamtion about specific service in specific domain 
 **Example:**
 
 * `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway?serviceId=catalog`
