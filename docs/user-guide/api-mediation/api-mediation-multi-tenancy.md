@@ -2,11 +2,11 @@
 
 Zowe supports management of multiple sysplexes whereby different sysplexes can serve different purposes or different customers. The use case for multi-sysplex support is when a service provider manages sysplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different sysplexes. 
 
-* [Component Layout example](#component-layout-example)
+* [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
 * [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
-  * [Dynamic Onboarding (recommended) for domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
-  * [Static Onboarding for domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
-* [Onboarding a domain cloud-gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
+  * [Dynamic Onboarding (recommended) for Domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
+  * [Static Onboarding for Domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
+* [Onboarding a Domain Cloud-Gateway service to central discovery service](#onboarding-a-domain-cloud-gateway-service-to-central-discovery-service)
     * [Dynamic Configurations to the central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
         * [Dynamic configuration: YML](#dynamic-configuration-yml)
         * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
@@ -19,12 +19,12 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
   * [Authorization for `/registry`](#authorization-with-registry)
   * [Requests with `/registry`](#requests-with-registry)
   * [Response with `/registry`](#response-with-registry)
-* [Validate successful configuration with `/registry`](#validate-successful-configuration-with-registry)  
+* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)  
 * [Gateway static definition example](#gateway-static-definition-example)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to Gateway-CA32 completed with onComplete are produced](#no-debug-messages-similar-to-gateway-ca32-completed-with-oncomplete-are-produced)
-## Component Layout example
+## Multitenancy component enablement settings
 
 In the Multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one central API ML that handles the discovery and registration as well as routing to the API ML installed in specific sysplexes. As such, different setups are required for the V2 version of the API ML on the central node and on the specific customer environments. 
 
@@ -78,6 +78,57 @@ For static onboarding, make sure that the following parameters are correctly spe
   Specifies the id of the API ML environment
 
 For static onboarding, be sure to use the [Gateway static definition example](#gateway-static-definition-example) presented at the end of this article.
+
+## Onboarding a domain cloud-gateway service to central discovery service
+
+The central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+
+- Dynamic configuration via zowe.yaml
+- Dynamic configuration via Environment variables
+
+### Dynamic Configurations to the central Discovery Service
+
+#### Dynamic configuration: YML
+
+Users must set the following property for the domain cloud-gateway to dynamically onboard to the central Discovery Service.
+
+`components.cloud-gateway.apiml.service.additionalRegistration`
+
+Use the following example as a template for how to set the value of this property in zowe.yml.
+
+**Example:**
+```
+components.cloud-gateway.apiml.service.additionalRegistration:
+    # central API ML (in HA, for non-HA mode use only 1 hostname)
+       - discoveryServiceUrls:      https://ca32.lvn.broadcom.net:27554/eureka/,https://ca32.lvn.broadcom.net:37554/eureka/
+ 	    routes:
+              - gatewayUrl: /
+                serviceUrl: /
+```
+
+#### Dynamic configuration: Environment variables
+
+The list of additional registrations is extracted from environment variables. You can define a list of objects by following YML->Environment translation rules. 
+
+The previous example can be substituted with the following variables:
+
+```
+ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://ca32.lvn.broadcom.net:27554/eureka/,https://ca32.lvn.broadcom.net:37554/eureka/
+ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
+ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
+```
+
+This Zowe configuration transforms the zowe.yaml configuration file into the environment variables that are shown above. 
+
+### Validating successful configuration
+
+The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
+
+To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the central discovery service:
+
+```
+/eureka/apps
+```
 
 ## Establishing a trust relationship between Domain API ML and Central API ML
 
@@ -301,80 +352,11 @@ This request lists services in the apimlId domain.
 ]
 ```
 
-## Validate successful configuration with `/registry`
+## Validating successful configuration with `/registry`
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all API ML domains represented by `apimlId`, and information about onboarded services.
 
-## Troubleshooting multitenancy configuration
 
-### ZWESG100W
-
-Cannot receive information about services on API Gateway with apimlId 'Gateway-CA32' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
-
-**Reason**  
-The trust between the domain and the Cloud Gateway was not established. 
-
-**Action**  
-Review your certificate configuration.
-
-### No debug messages similar to Gateway-CA32 completed with onComplete are produced
-
- **Reason**  
- Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
- 
- **Action**  
- Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
-
-## Onboarding a domain cloud-gateway service to central discovery service
-
-The central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
-
-- Dynamic configuration via zowe.yaml
-- Dynamic configuration via Environment variables
-
-### Dynamic Configurations to the central Discovery Service
-
-#### Dynamic configuration: YML
-
-Users must set the following property for the domain cloud-gateway to dynamically onboard to the central Discovery Service.
-
-`components.cloud-gateway.apiml.service.additionalRegistration`
-
-Use the following example as a template for how to set the value of this property in zowe.yml.
-
-**Example:**
-```
-components.cloud-gateway.apiml.service.additionalRegistration:
-    # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://ca32.lvn.broadcom.net:27554/eureka/,https://ca32.lvn.broadcom.net:37554/eureka/
- 	    routes:
-              - gatewayUrl: /
-                serviceUrl: /
-```
-
-#### Dynamic configuration: Environment variables
-
-The list of additional registrations is extracted from environment variables. You can define a list of objects by following YML->Environment translation rules. 
-
-The previous example can be substituted with the following variables:
-
-```
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://ca32.lvn.broadcom.net:27554/eureka/,https://ca32.lvn.broadcom.net:37554/eureka/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
-```
-
-This Zowe configuration transforms the zowe.yaml configuration file into the environment variables that are shown above. 
-
-### Validating successful configuration
-
-The corresponding ‘Cloud-Gateway’ service should appear in the Eureka console of the central discovery service. 
-
-To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the central discovery service:
-
-```
-/eureka/apps
-```
 
 ## Gateway static definition example
 
@@ -450,3 +432,22 @@ catalogUiTiles:
        description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
 
 ```
+## Troubleshooting multitenancy configuration
+
+### ZWESG100W
+
+Cannot receive information about services on API Gateway with apimlId 'Gateway-CA32' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
+
+**Reason**  
+The trust between the domain and the Cloud Gateway was not established. 
+
+**Action**  
+Review your certificate configuration.
+
+### No debug messages similar to Gateway-CA32 completed with onComplete are produced
+
+ **Reason**  
+ Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
+ 
+ **Action**  
+ Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
