@@ -23,7 +23,7 @@ Zowe supports management of multiple sysplexes whereby different sysplexes can s
 * [Gateway static definition example](#gateway-static-definition-example)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
-  * [No debug messages similar to Gateway-CA32 completed with onComplete are produced](#no-debug-messages-similar-to-gateway-ca32-completed-with-oncomplete-are-produced)
+  * [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
 
 ## Multitenancy component enablement settings
 
@@ -55,7 +55,7 @@ Use the following example as a template for how to set the value for this proper
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://ca32.lvn.broadcom.net:27554/eureka/,https://ca32.lvn.broadcom.net:37554/eureka/
+       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys1:{discoveryServicePort}/eureka/
  	    routes:
               - gatewayUrl: /
                 serviceUrl: /
@@ -64,7 +64,7 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 components.gateway.apiml.security.x509:
     #  cloud gateway port 
-        certificatesUrl: https://sys1:10018/gateway/certificates
+        certificatesUrl: https://sys1:{cloudGatewayPort}/gateway/certificates
 ```
 
 For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
@@ -115,7 +115,7 @@ Use the following example as a template for how to set the value of this propert
 ```
 components.cloud-gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:10011/eureka/,https://sys1:10021/eureka/
+       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys1:{discoveryServicePort}/eureka/
  	    routes:
               - gatewayUrl: /
                 serviceUrl: /
@@ -128,7 +128,7 @@ The list of additional registrations is extracted from environment variables. Yo
 The previous example can be substituted with the following variables:
 
 ```
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:10011/eureka/,https://sys1:10021/eureka/
+ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:{discoveryServicePort}/eureka/,https://sys1:{discoveryServicePort}/eureka/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
@@ -364,7 +364,7 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                     "customMetadata": {
-                 "zos.sysname": "sys1",
+                 "zos.sysname": "sys2",
 		 "zos.sysplex": "sysplex"
 				        },
                 "apiId": [
@@ -375,7 +375,7 @@ This request lists services in the apimlId domain.
             {
              "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys1",
+                 "zos.sysname": "sys2",
  		 "zos.sysplex": "sysplex"},
                 "apiId": [
         "zowe.apiml.catalog"
@@ -470,7 +470,7 @@ services:
      title: Statically Defined API Service  # Title of the service in the API catalog
      description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
      instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys1:10010/  # scheme://hostname:port/contextPath
+         - https://sys1:{gatewayPort}/  # scheme://hostname:port/contextPath
      homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
      statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
      healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
@@ -485,10 +485,10 @@ services:
      apiInfo:
          - apiId: zowe.apiml.gateway
            gatewayUrl: api/v1
-           swaggerUrl: https://sys1:10012/discoverableclient/v2/api-docs
+           swaggerUrl: https://sys1:{discoverableClientPort}/discoverableclient/v2/api-docs
      customMetadata:
          apiml:
-             service.apimlId: Gateway-CA32
+             service.apimlId: apiml1
              okToRetryOnAllOperations: true
 
 
@@ -497,7 +497,7 @@ services:
      title: Statically Defined API Service  # Title of the service in the API catalog
      description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
      instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys1:10020/  # scheme://hostname:port/contextPath
+         - https://sys1:{gatewayPort}/  # scheme://hostname:port/contextPath
      homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
      statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
      healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
@@ -512,10 +512,10 @@ services:
      apiInfo:
          - apiId: zowe.apiml.gateway
            gatewayUrl: api/v1
-           swaggerUrl: https://sys1:10022/discoverableclient/v2/api-docs
+           swaggerUrl: https://sys1:{discoverableClientPort}/discoverableclient/v2/api-docs
      customMetadata:
          apiml:
-             service.apimlId: Gateway-CA11
+             service.apimlId: apiml2
              okToRetryOnAllOperations: true
 
 
@@ -530,7 +530,7 @@ catalogUiTiles:
 
 ### ZWESG100W
 
-Cannot receive information about services on API Gateway with apimlId 'Gateway-CA32' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
+Cannot receive information about services on API Gateway with apimlId 'apiml1' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
 
 **Reason**  
 The trust between the domain and the Cloud Gateway was not established. 
@@ -538,7 +538,7 @@ The trust between the domain and the Cloud Gateway was not established.
 **Action**  
 Review your certificate configuration.
 
-### No debug messages similar to Gateway-CA32 completed with onComplete are produced
+### No debug messages similar to apiml1 completed with onComplete are produced
 
  **Reason**  
  Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
