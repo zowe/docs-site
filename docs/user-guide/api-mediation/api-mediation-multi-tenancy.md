@@ -400,7 +400,7 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys1",
+                 "zos.sysname": "sys2",
 	 	 "zos.sysplex": "sysplex"
 				},
                 "apiId": [
@@ -411,7 +411,7 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys1",
+                 "zos.sysname": "sys2",
 		 "zos.sysplex": "sysplex"
 				},
                 "apiId": [
@@ -436,7 +436,7 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-                "zos.sysname": "sys1",
+                "zos.sysname": "sys2",
 		"zos.sysplex": "sysplex"
                 },
                 "apiId": [
@@ -497,7 +497,7 @@ services:
      title: Statically Defined API Service  # Title of the service in the API catalog
      description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
      instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys1:{gatewayPort}/  # scheme://hostname:port/contextPath
+         - https://sys2:{gatewayPort}/  # scheme://hostname:port/contextPath
      homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
      statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
      healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
@@ -512,7 +512,7 @@ services:
      apiInfo:
          - apiId: zowe.apiml.gateway
            gatewayUrl: api/v1
-           swaggerUrl: https://sys1:{discoverableClientPort}/discoverableclient/v2/api-docs
+           swaggerUrl: https://sys2:{discoverableClientPort}/discoverableclient/v2/api-docs
      customMetadata:
          apiml:
              service.apimlId: apiml2
