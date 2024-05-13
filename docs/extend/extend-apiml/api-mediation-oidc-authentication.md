@@ -86,7 +86,7 @@ A distributed identity consists of two parts:
 
 Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters:
 
-Use the commands specific to your ESM to create distributed identity mapping filter.
+Use the commands specific to your ESM to create a distributed identity mapping filter.
 
 :::note
 User specified parameters are presented in the section [Parameters in the ESM commands](#parameters-in-the-esm-commands).
@@ -154,7 +154,7 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
 
 :::tip
 You can leverage the Zowe CLI Identity Federation (IDF) Plug-in for Zowe CLI to extend Zowe CLI to make it easier to map mainframe users with an identity provided by an external identity provider.
-The Plug-in is designed to work with the ESMs: IBM RACF, Broadcom ACF2, and Broadcom Top Secret.
+This plug-in is designed to work with the ESMs: IBM RACF, Broadcom ACF2, and Broadcom Top Secret.
 
 For more information about the Zowe CLI Identity Federation Plug-in, see the [README file in the api-layer repo](https://github.com/zowe/api-layer/edit/v3.x.x/zowe-cli-id-federation-plugin/README.md).
 :::
@@ -170,7 +170,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
 
-- **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**
+- **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**  
    Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
 
 - **`components.gateway.apiml.security.oidc.identityMapperUser`**  
@@ -180,7 +180,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
 - **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
-  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/authenticating-with-client-certificates.md#enabling-the-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
     The following URL is the default value for Zowe and ZSS:
 
