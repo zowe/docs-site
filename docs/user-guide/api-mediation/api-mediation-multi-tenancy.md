@@ -349,7 +349,7 @@ This request lists services in the apimlId domain.
                 "status": "UP",
                 "customMetadata": {
                   "zos.sysname": "sys1",
-				          "zos.sysplex": "sysplex"
+		  "zos.sysplex": "sysplex"
                 },
                 "apiId": [
         "zowe.apiml.gateway"
@@ -365,7 +365,7 @@ This request lists services in the apimlId domain.
                 "status": "UP",
                     "customMetadata": {
                  "zos.sysname": "sys1",
-				         "zos.sysplex": "sysplex"
+		 "zos.sysplex": "sysplex"
 				        },
                 "apiId": [
         "zowe.apiml.gateway"
@@ -376,7 +376,7 @@ This request lists services in the apimlId domain.
              "status": "UP",
                 "customMetadata": {
                  "zos.sysname": "sys1",
-				 "zos.sysplex": "sysplex"},
+ 		 "zos.sysplex": "sysplex"},
                 "apiId": [
         "zowe.apiml.catalog"
           ],
@@ -400,8 +400,8 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-               "zos.sysname": "sys1",
-			   "zos.sysplex": "sysplex"
+                 "zos.sysname": "sys1",
+	 	 "zos.sysplex": "sysplex"
 				},
                 "apiId": [
         "zowe.apiml.gateway"
@@ -412,7 +412,7 @@ This request lists services in the apimlId domain.
                 "status": "UP",
                 "customMetadata": {
                  "zos.sysname": "sys1",
-				"zos.sysplex": "sysplex"
+		 "zos.sysplex": "sysplex"
 				},
                 "apiId": [
         "zowe.apiml.catalog"
@@ -437,7 +437,7 @@ This request lists services in the apimlId domain.
                 "status": "UP",
                 "customMetadata": {
                 "zos.sysname": "sys1",
-				"zos.sysplex": "sysplex"
+		"zos.sysplex": "sysplex"
                 },
                 "apiId": [
         "zowe.apiml.catalog"
