@@ -30,7 +30,7 @@ Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend u
 
 As of Zowe Version 2.11, Zowe Explorer and the Zowe Explorer API no longer use `node-keytar`, which was used to manage mainframe credentials. This change might cause some users issues when trying to interact with remote environments.
 
-See [Usage in Remote Environments](https://github.com/zowe/vscode-extension-for-zowe/wiki/Usage-in-Remote-Environments) to learn more about how to resolve credential errors.
+See [Usage in Remote Environments](https://github.com/zowe/zowe-explorer-vscode/wiki/Usage-in-Remote-Environments) to learn more about how to resolve credential errors.
 
 ## Using a specific version of Zowe Explorer
 
