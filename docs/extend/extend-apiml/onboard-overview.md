@@ -4,7 +4,10 @@ As an API developer, you can onboard a REST API service to the Zowe&trade; API M
 
 The specific method you use to onboard a REST API to the API ML depends on the programming language or framework used to build your REST service.
 
-**Note:** To streamline the process of onboarding new REST API services to the Zowe API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../../user-guide/onboard-wizard.md)
+
+:::note
+To streamline the process of onboarding new REST API services to the Zowe API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../../user-guide/onboard-wizard.md)
+:::
 
 This Onboarding Overview article addresses the following topics:
 
@@ -23,11 +26,11 @@ Meet the following prerequisites before you onboard your service:
   
 - A certificate that is trusted by Zowe and certificate(s) to trust Zowe services
 
-  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [Certificate management in API Mediation Layer](../extend-apiml/certificate-management-in-zowe-apiml.md) and [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements)
-
+  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [Certificate management in API Mediation Layer](../extend-apiml/certificate-management-in-zowe-apiml.md) and [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements)
+  
 - A REST API-enabled service that you want to onboard
 
-  If you do not have a specific REST API service, you can use the [sample service](#Sample-REST-API-Service). 
+  If you do not have a specific REST API service, you can use the [sample service](#sample-rest-api-service). 
   
   Your service should be documented in a valid `OpenApi 2.0/3.0` Swagger JSON format.
 
@@ -64,7 +67,9 @@ Use one of the following guides if your service is not built with Java, or you d
 
 Enabler version 1.2 and previous versions are no longer supported.
 
-**Tip**: We recommend you use the enabler version 1.3 or higher to onboard your REST API service to the Zowe API Medaition Layer.
+:::tip
+We recommend you use the enabler version 1.3 or higher to onboard your REST API service to the Zowe API Medaition Layer.
+:::
 
 ## Verify successful onboarding to the API ML
 
@@ -74,14 +79,12 @@ Verifying that your service was successfully onboraded to the API ML can be done
 
 Verify that your service is discovered by the Discovery Service with the following procedure.
 
-**Follow these steps:**
-
  1. Issue a HTTP GET request to the Discovery Service endpoint `/eureka/apps` to get service instance information:
 
     ```
     https://{zowe-hostname}:{discovery-service-port}/eureka/apps/{serviceId}
     ```
-    **Note**: The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP GET request.
+    **Note:** The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP GET request.
 
  2. Check your service metadata.
 
@@ -119,15 +122,14 @@ Verify that your service is discovered by the Discovery Service with the followi
         </metadata>
     </application>
     ```
-    **Tips:**
+    :::tip Tips:
     - Ensure that addresses and user credentials for individual API ML components correspond to your target runtime environment.
     - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
+    :::
 
 ### Verifying service discovery through the API Catalog
 
  Services may not be immediately visible in the API Catalog. We recommend you wait for 2 minutes as it may take a moment for your service to be visible in the Catalog. If your service still does not appear in the Catalog, ensure that your configuration settings are correct.
-
-**Follow these steps:**
 
   1. Check to see that your API service is displayed in the API Catalog UI, and that all information including API documentation is correct.
 
@@ -142,7 +144,9 @@ You can build this service using instructions in the source code of the [Spring 
 
 The Sample REST API Service has a base URL. When you start this service on your computer, the _service base URL_ is: `http://localhost:8080`. 
 
-**Note:** If a service is deployed to a web application server, the base URL of the service (application) has the following format: `https://application-server-hostname:port/application-name`.
+:::note
+If a service is deployed to a web application server, the base URL of the service (application) has the following format: `https://application-server-hostname:port/application-name`.
+:::
 
 This sample service provides one API that has the base path `/v2`, which is represented in the base URL of the API as `http://localhost:8080/v2`. In this base URL, `/v2` is a qualifier of the base path that was chosen by the developer of this API. Each API has a base path depending on the particular implementation of the service. 
 
@@ -152,7 +156,8 @@ This sample API has only one single endpoint:
 
 This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer, an error is returned. These are conditions set in the sample service.
 
-**Tip:** Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
+:::tip
+Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
 
 ```json
 {
@@ -179,8 +184,11 @@ This endpoint in the sample service returns information about a pet when the `{i
     ]
 }
 ```
+:::
 
-**Note:** The onboarding guides demonstrate how to add the Sample REST API Service to the API Mediation Layer to make the service available through the `petstore` service ID.
+:::note
+The onboarding guides demonstrate how to add the Sample REST API Service to the API Mediation Layer to make the service available through the `petstore` service ID.
+:::
 
 The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API Gateway:
 

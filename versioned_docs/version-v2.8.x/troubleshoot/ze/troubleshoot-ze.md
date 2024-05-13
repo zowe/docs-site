@@ -4,7 +4,7 @@ As a Zowe Explorer user, you may encounter problems when using Visual Studio Cod
 
 ## Before reaching out for support
 
-1. Is there already a GitHub issue (open or closed) that covers the problem? Check [Zowe Explorer Issues](https://github.com/zowe/vscode-extension-for-zowe/issues).
+1. Is there already a GitHub issue (open or closed) that covers the problem? Check [Zowe Explorer Issues](https://github.com/zowe/zowe-explorer-vscode/issues).
 2. Review the current list of [Known issues](known-ze.md) in documentation. Also, try searching using the Zowe Docs search bar.
 3. Collect the following information to help diagnose the issue:
     - Zowe Explorer and Visual Studio Code versions installed.

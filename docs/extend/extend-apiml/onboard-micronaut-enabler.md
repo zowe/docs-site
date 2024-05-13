@@ -2,7 +2,9 @@
 
 As an API developer, you can onboard a REST service to the Zowe API Mediation Layer using the Micronaut framework. While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use the procedure described in this article to onboard a service using the Micronaut framework.
 
-**Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+:::note
+For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
+:::
 
 For Micronaut-related documentation, see the [Micronaut website](https://docs.micronaut.io/latest/guide/index#introduction).
 
@@ -20,8 +22,6 @@ For Micronaut-related documentation, see the [Micronaut website](https://docs.mi
 ## Set up your build automation system
 
 Currently, the only build automation system for use with onboarding a Micronaut based service is _Gradle_.
-
-**Follow these steps:**
 
 1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
@@ -75,43 +75,44 @@ Currently, the only build automation system for use with onboarding a Micronaut 
    The following example shows a sample `gradle.build` file:
 
     **Example:**
+    ```
+    plugins {
+        id "io.micronaut.application" version '1.0.5'
+        id 'com.github.johnrengelman.shadow' version '6.1.0'
+    }
+    mainClassName = 'org.zowe.apiml.Application'
 
-        plugins {
-            id "io.micronaut.application" version '1.0.5'
-            id 'com.github.johnrengelman.shadow' version '6.1.0'
-        }
-        mainClassName = 'org.zowe.apiml.Application'
+    shadowJar {
+        archiveBaseName.set('micronaut-enabler')
+        archiveClassifier.set('')
+        archiveVersion.set('1.0')
+    }
+    version "0.1"
+    group "org.zowe.apiml"
 
-        shadowJar {
-            archiveBaseName.set('micronaut-enabler')
-            archiveClassifier.set('')
-            archiveVersion.set('1.0')
-        }
-        version "0.1"
-        group "org.zowe.apiml"
+    repositories {
+        url artifactoryMavenRepo
+    }
 
-        repositories {
-            url artifactoryMavenRepo
+    micronaut {
+        version = "2.1.3"
+        runtime "netty"
+        testRuntime "junit5"
+        processing {
+            incremental true
+            annotations "org.zowe.apiml.*"
         }
+    }
 
-        micronaut {
-            version = "2.1.3"
-            runtime "netty"
-            testRuntime "junit5"
-            processing {
-                incremental true
-                annotations "org.zowe.apiml.*"
-            }
-        }
+    dependencies {
+        implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
+    }
 
-        dependencies {
-            implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
-        }
-
-        java {
-            sourceCompatibility = JavaVersion.toVersion('1.8')
-            targetCompatibility = JavaVersion.toVersion('1.8')
-        }
+    java {
+        sourceCompatibility = JavaVersion.toVersion('1.8')
+        targetCompatibility = JavaVersion.toVersion('1.8')
+    }
+    ```
 
 8. (Optional) Create a shadow jar.
 
@@ -147,11 +148,8 @@ Use the following procedure to add API ML configuration to the application.yaml.
      #rest of the configuration
     ```
 
-    where:
-
-    - **`fill.your.service`**
-
-        specifies the ID of your service
+    - **`fill.your.service`**  
+    Specifies the ID of your service
   
 2. Add SSL-resolving properties as shown in the following example. Ensure that you structure the nested objects within `apiml.service` as arrays. Be sure to include `-` (hyphen) before `enabled` thereby indicating the first element of the array.
 
@@ -177,14 +175,14 @@ apiml:
             ciphers: ${fill.your.ciphers}
 
 ```
-**Note:** For a sample of this configuration, see [API ML Onboarding Configuration Sample](onboard-spring-boot-enabler.md#api-ml-onboarding-configuration-sample).
+:::note
+For a sample of this configuration, see [API ML Onboarding Configuration Sample](./onboard-spring-boot-enabler.md#api-ml-onboarding-configuration-sample).
+:::
 
 The yaml now contains configuration to register to the API Mediation Layer. 
 
 ### Add Micronaut configuration
 Once you complete API ML configuration, add configuration to provide correct mapping between API ML and micronaut parameters. 
-
-**Follow these steps:**
 
 1. Add the following yaml snippet with the micronaut configuration parameters:
 
@@ -212,51 +210,39 @@ Once you complete API ML configuration, add configuration to provide correct map
             ciphers: ${apiml.service.ssl[0].ciphers}
             protocol: ${apiml.service.ssl[0].protocol}
     ```
-    where:
 
-    - **`apiml.service.serviceId`**
+    - **`apiml.service.serviceId`**  
+    Specifies the ID of your service
 
-        specifies the ID of your service
+    - **`apiml.service.port`**  
+    Specifies the port on which the service listens
 
-    - **`apiml.service.port`**
+    - **`apiml.service.ssl[0].keyPassword`**  
+    Specifies the password that protects the key in keystore
 
-        specifies the port on which the service listens
+    - **`apiml.service.ssl[0].keyStoreType`**  
+    Specifies the type of the keystore, (Example: PKCS12)
 
-    - **`apiml.service.ssl[0].keyPassword`**
+    - **`apiml.service.ssl[0].keyStore`**  
+    Specifies the location of the keystore 
 
-        specifies the password that protects the key in keystore
+    - **`apiml.service.ssl[0].keyAlias`**  
+    Specifies the alias under which the key is stored in the keystore
 
-    - **`apiml.service.ssl[0].keyStoreType`**
+    - **`apiml.service.ssl[0].trustStorePassword`**  
+    Specifies the password that protects the certificates in the truststore
 
-        specifies the type of the keystore, (Example: PKCS12)
+    - **`apiml.service.ssl[0].trustStore`**  
+    Specifies the location of the truststore
 
-    - **`apiml.service.ssl[0].keyStore`**
+    - **`apiml.service.ssl[0].trustStoreType`**  
+    Specifies the type of the truststore, (Example: PKCS12)
 
-        specifies the location of the keystore 
+    - **`apiml.service.ssl[0].ciphers`**  
+    Specifies the list of ciphers that user wants to enable for TLS communication
 
-    - **`apiml.service.ssl[0].keyAlias`**
-
-        specifies the alias under which the key is stored in the keystore
-
-    - **`apiml.service.ssl[0].trustStorePassword`**
-
-        specifies the password that protects the certificates in the truststore
-
-    - **`apiml.service.ssl[0].trustStore`**
-
-        specifies the location of the truststore
-
-    - **`apiml.service.ssl[0].trustStoreType`**
-
-        specifies the type of the truststore, (Example: PKCS12)
-
-    - **`apiml.service.ssl[0].ciphers`**
-
-        specifies the list of ciphers that user wants to enable for TLS communication
-
-    - **`apiml.service.ssl[0].protocol`**
-
-        specifies the type of SSL/TLS protocol (Example: TLSv1.2)
+    - **`apiml.service.ssl[0].protocol`**  
+    Specifies the type of SSL/TLS protocol (Example: TLSv1.2)
 
 ### (Optional) Set up logging configuration
 
@@ -286,4 +272,4 @@ Create a `logback.xml` file in the `resources` folder and include the `applicati
 
 ## Validate successful registration
 
-After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see the article [validating the discoverability of your API service by teh Discovery Service](onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.
+After you complete the configuration, ensure that your application is visible within Zowe API ML. For more information, see [Validating the discoverability of your API service by the Discovery Service](./onboard-spring-boot-enabler.md#validating-the-discoverability-of-your-api-service-by-the-discovery-service), which describes the validation procedure common for all enablers.

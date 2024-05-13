@@ -1,6 +1,6 @@
 # Zowe API Mediation Layer Security Overview
 
-Review this article to learn about topics which address security features in Zowe API Mediation Layer.
+Review this article to learn about topics which address security features in Zowe API Mediation Layer:
 
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)
@@ -36,7 +36,7 @@ API ML uses the following authentication methods:
 
 - **OIDC authentication**
  
-  API ML is now able to authenticate mainframe users with an external/distributed Identity Provider (IDP) implemented by an OIDC/OAuth2 provider, such as OKTA, KeyCloak and others.
+  API ML is now able to authenticate mainframe users with an external/distributed Identity Provider (IDP) implemented by an OIDC/OAuth2 provider, such as OKTA, KeyCloak, Microsoft Entra ID (a.k.a. Azure Active Directory) and others.
   Client applications can ask their users to log in at the authentication page of the OIDC provider, and then access APIs with the JWT Access Token that is provided by the external IDP. The following process outlines that basic flow:
   - The client application intiates the OIDC authentication flow with the distributed OIDC provider.  
   - The user provides credentials as required at the provider's authentication page/end-point.
@@ -44,7 +44,7 @@ API ML uses the following authentication methods:
   - The client application passes the access JWT token to the API ML Gateway with subsequent requests for mainframe resources.
   - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials.
 
-For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md)
+For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md).
 
 ### Zowe API ML services
 

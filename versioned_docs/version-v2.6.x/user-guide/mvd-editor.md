@@ -67,6 +67,6 @@ The following keyboard shortcuts can be used in the editor to navigate or perfor
 |ALT+P|Search Bar focus|
 |ALT+1   	|Primary editing component focus |
 |ALT+R+Shift|Refresh active tab|
-|ALT+PgUp(or <)| Switch to left tab|
-|ALT+PgDown(or >)|Switch to right tab|
+|ALT+PgUp(or \<)| Switch to left tab|
+|ALT+PgDown(or \>)|Switch to right tab|
 |ALT+B|Show/hide left-hand side file tree|

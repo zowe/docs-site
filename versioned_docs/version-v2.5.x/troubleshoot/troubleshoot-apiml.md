@@ -108,7 +108,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **{name}**
+    - **\{name\}**
 
          Specifies the logger name
 
@@ -170,7 +170,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 
 <img src={require("../images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
-The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESLSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
 2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
@@ -380,7 +380,7 @@ To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You c
 
    then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
 
-- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESLSTC` started task that launches the API Mediation Layer.
 
    
 In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`.
@@ -403,7 +403,7 @@ jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_C
 
 **Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
 
-After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
+After you remove `GCM`, restart the `ZWESLSTC` started task for the change to take effect.
 
 ### API Components unable to handshake
 

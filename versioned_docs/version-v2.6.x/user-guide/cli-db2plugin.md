@@ -145,7 +145,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
       ```
       <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
       ```
-    **Tip:** By default, <zowe_home> is set to `~/.zowe` on \*UNIX Aand Mac systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
+    **Tip:** By default, `<zowe_home>` is set to `~/.zowe` on \*UNIX Aand Mac systems, and `C:\Users\<Your_User>\.zowe` on Windows systems.
 
     After the license is copied, you can use the Db2 plugin functionality.
 
@@ -169,7 +169,7 @@ Alternatively, you can create a db2 profile manually by adding a section that co
 
 2. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ. 
 
-    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init -–gc`
+    **NOTE:** If the file does not exist, issue the following command to create the configuration file: `zowe config init --gc`
 
 3. Add code to the "profiles" section as shown in the following example:
     ```
@@ -197,7 +197,7 @@ The following steps describe how to create a profile using the `zowe profiles cr
 
 1. Open a terminal window and issue the following command:
     ```
-    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> -–region-name <region>
+    zowe profiles create db2 <profile_name> –-host <host> --port <port> --user <user> --password <password> --region-name <region>
     ```
 
    **`profile_name`:** 

@@ -9,6 +9,8 @@
 Create a new PKCS12 format certificate authority.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -34,6 +36,8 @@ Full name|Alias|Type|Required|Help message
 --state||string|no|State of certificate authority.
 --country||string|no|Country of certificate authority.
 --validity||string|no|Validity days of certificate authority.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -55,6 +59,8 @@ Error code|Exit code|Error message
 ZWEL0300W||%s already exists. This %s will be overwritten during configuration.
 ZWEL0158E|158|%s already exists.
 ZWEL0168E|168|Failed to create certificate authority %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

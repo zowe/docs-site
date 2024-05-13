@@ -15,7 +15,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
     * [API Components unable to handshake](#api-components-unable-to-handshake)
     * [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
     * [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
-    * [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+    * [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
@@ -110,7 +110,7 @@ This activates the application/loggers endpoints in each API ML internal service
     GET scheme://hostname:port/application/loggers/{name}
     ```
 
-    - **{name}**
+    - **\{name\}**
 
          Specifies the logger name
 
@@ -184,7 +184,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 
 <img src={require("../images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
-The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESLSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
 2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
@@ -394,7 +394,7 @@ To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You c
 
    then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
 
-- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESLSTC` started task that launches the API Mediation Layer.
 
    
 In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`.
@@ -417,7 +417,7 @@ jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_C
 
 **Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
 
-After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
+After you remove `GCM`, restart the `ZWESLSTC` started task for the change to take effect.
 
 ### API Components unable to handshake
 
@@ -490,7 +490,7 @@ Caused by: java.security.UnrecoverableKeyException: Given final block not proper
 
 Make sure that the private key stored in the keyring is not encrypted by a password, or that the private key integrity is not protected by a password. This is not related to SAF keyrings themselves, which are not usually protected by password, but rather to is related to the concrete certificate private key pair stored in the SAF keyring. 
 
-### Exception thrown when reading SAF keyring {ZWED0148E}
+### Exception thrown when reading SAF keyring \{ZWED0148E\}
 
 **Symptom:**
 

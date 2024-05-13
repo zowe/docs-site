@@ -6,13 +6,21 @@ Zowe CLI V2 introduces the concept of **team profiles**, which add *team* config
 
 Both team and user configurations can be applied either *globally* or *per project*, as described in the following definitions:
 
-- A **user configuration file** stores *user profiles* and is used for one person who needs their own unique properties to run commands.
-
 - A **team configuration file** stores *team profiles* and is used by a group of people who need the same properties to run commands.
 
-- A **global configuration file** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default). It contains global *user profiles* and global *team profiles*.
+    - The most frequently used configuration type due to its versatility and efficient maintenance.
 
-- A **project configuration file** resides in a directory of your choice. It contains project *user profiles* and project *team profiles*.
+- A **user configuration file** stores *user profiles* and is used for one person who needs their own unique properties to run commands.
+
+    - The necessity for user configuration is rare, and setting up a user configuration should not be a priority unless there is a specific need for one.
+
+- A **project configuration file** resides in a directory of your choice. It contains project *team profiles* and project *user profiles*.
+
+    - Zowe CLI commands executed within that directory use the profiles from the project configuration. Similarly, when the directory is opened as a Visual Studio Code workspace, Zowe Explorer uses the project config for profiles.
+
+- A **global configuration file** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default). It contains global *team profiles* and global *user profiles*.
+
+    - Global config profiles are used for any Zowe CLI command regardless of the directory in which the command is run. The profiles are always available in Zowe Explorer regardless of the location of the current Visual Studio Code workspace.
 
 ## Zowe CLI profile types
 
@@ -22,7 +30,32 @@ The following profile types were introduced in Zowe V1 and continue to be used i
 
 - **Service profiles** let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
-- **Base profiles** let you store connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+- **Base profiles** let you store connection information for use with one or more services. Typically, there is only one base profile in a configuration file. Service profiles can pull information from a base profile as needed, so that you can specify a common username and password once. A base profile can optionally store tokens to connect to the Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+
+- **Parent profiles** let you nest service profiles that share some of the same properties and values into groups. There can be multiple parent profiles within a configuration file. This makes it possible to define shared properties (for example, hostname or credentials) only once in your configuration file, rather than duplicating values for each service profile. Parent profiles and nested service profiles are useful when your configuration uses multiple kinds of authentication or if your configuration is used to connect to multiple hosts.
+
+## Updating secure credentials
+
+To change an existing username or password in a team config profile, use the `zowe config secure` command for a quick update:
+
+1. Open the Zowe CLI command prompt.
+
+2. To update values for secure fields in a **project team** configuration file:
+    ```
+    zowe config secure
+    ``` 
+    To update values for secure fields in a **global team** configuration file:
+    ```
+    zowe config secure --global-config
+    ```
+   Prompts request new values for all secure fields defined in the configuration file. In most cases, these properties include a username or password, but some users may include other fields, such as a token value or connection properties.
+
+3. Respond to prompts as needed. Press `Enter` to leave the value unchanged.
+
+    New values are saved in the [secure credential store](../appendix/zowe-glossary#secure-credential-store). After the last secure value is submitted, the user returns to the system command prompt.
+
+For more ways to secure credentials in config profiles, see [Managing credential security](../user-guide/cli-using-team-managing-credential-security).
+
 ## Benefits of team profiles
 
 Using team profiles in configuration files helps to improve the initial setup of Zowe CLI by making service connection details easier to share and easier to store within projects.
@@ -54,10 +87,6 @@ You can continue using Zowe CLI V1 profiles with Zowe CLI V2. However, we highly
    
 :::
 
-
 - Commands in the `zowe config` [command group](../user-guide/cli-using-understanding-core-command-groups#config) now let you manage security for any option value.
 
-- The `zowe scs` and `zowe config` command groups were repurposed to work with team profiles.
-
 - Zowe CLI V2 prompts you to enter the username and password securely by default.
-

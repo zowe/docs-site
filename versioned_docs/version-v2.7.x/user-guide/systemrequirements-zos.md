@@ -28,13 +28,15 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version in active support, such as Version 2.3 and Version 2.4
+- z/OS version is in active support, such as Version 2.4 and 2.5.
 
-   **Note:** z/OS V2.2 reached end of support on 30 September 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
+   **Note:** Zowe Version 2.11 or higher is required when using z/OS Version 3.1
 
-- zFS volume with at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+   **Note:** z/OS V2.3 reached end of support on 30 September 2022. For more information, see the z/OS v2.3 lifecycle details [https://www.ibm.com/support/pages/zos23x-withdrawal-notification](https://www.ibm.com/support/pages/zos23x-withdrawal-notification)
 
-- (Optional, recommended) z/OS OpenSSH V2.2.0 or later
+- zFS volume has at least 1200 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+
+- (Optional, recommended) z/OS OpenSSH
   
   Some features of Zowe require SSH, such as the Desktop's SSH terminal. Or, you want to install and manage Zowe via SSH, as an alternative to OMVS over TN3270. 
 
@@ -44,7 +46,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### Node.js
 
-- Node.js v14.x (except v14.17.2), or v16.x
+- Node.js v16.x or v18.x
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Installing Node.js on z/OS](install-nodejs-zos.md).
   
@@ -56,7 +58,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OSMF (Optional) 
 
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.2, Version 2.3 or Version 2.4.
+- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.4, Version 2.5 or Version 3.1.
 
   z/OSMF is included with z/OS so does not need to be separately installed.  If z/OSMF is present, Zowe will detect this when it is configured and use z/OSMF for the following purposes:
 
@@ -85,7 +87,7 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 | Class  | ID     | Access |  Reason |
 |--------|--------|--------|---------|
 | CSFSERV | `Multiple` | READ | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable will include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
-| FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESVSTC processes to access the Zowe ZIS cross memory server |
+| FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server |
 | FACILITY | `BPX.SERVER` + `BPX.DAEMON` | UPDATE | To allow the Zowe Desktop ZLUX server to run code on behalf of the API requester's TSO user ID. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching). |
 | FACILITY | `IRR.RUSERMAP` | READ | To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-identity-mapping) | 
 | FACILITY | `BPX.JOBNAME` | READ | To allow z/OS address spaces for unix processes to be renamed for [ease of identification](./configure-zos-system.md#configure-address-space-job-naming) |
@@ -171,12 +173,17 @@ Requirements:
 
 ## Memory requirements
 
-Zowe API ML components have following memory requiremets:
+Zowe's components have following memory requirements:
 
-Component name | Memory usage
----|---
-Gateway service | 256MB
-Discovery service | 256MB
-API Catalog | 512MB
-Metrics service | 512MB
-Caching service | 512MB
+Component name | Category | Average memory usage
+---|---|---
+Gateway service | API Mediation Layer | 512MB
+Discovery service | API Mediation Layer |  512MB
+API Catalog | API Mediation Layer |  512MB
+Metrics service | API Mediation Layer |  512MB
+Caching service | API Mediation Layer |  512MB
+ZSS | Application Framework | 32MB
+App Server | Application Framework | 350MB
+
+Each of the above components can be enabled or disabled to optimize your resource consumption according to your use cases.
+Zowe can use more memory if there are extensions installed.

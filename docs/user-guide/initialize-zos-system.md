@@ -1,54 +1,64 @@
-# Initializing the z/OS system
+# Configuring Zowe with `zwe init`
 
-After you install the Zowe runtime, you must initialize Zowe with proper security configurations and complete some configurations before you can start it. To do this, you run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
+Once you complete the installation of the Zowe runtime, begin configuration by initializing Zowe with proper security configurations. To simplify this configuration process, one option is to run the `zwe init` command. This step is common for installing and configuring Zowe from either a convenience build or from an SMP/E build.
+
+:::info Required roles: system programmer, security administrator
+:::
 
 ## About the `zwe init` command
 
 The `zwe init` command is a combination of the following subcommands. Each subcommand defines a configuration. 
 
-- **`mvs`**: Copy the data sets provided with Zowe to custom data sets.
-- **`security`**: Create the user IDs and security manager settings.
-- **`apfauth`**: APF authorize the LOADLIB containing the modules that need to perform z/OS privileged security calls. 
-- **`certificate`**: Configure Zowe to use TLS certificates.
-- **`vsam`**: Configure the VSAM files needed to run the Zowe caching service used for high availability (HA)
-- **`stc`**: Configure the system to launch the Zowe started task.
+- **mvs**  
+Copies the data sets provided with Zowe to custom data sets.
+- **security**  
+Creates the user IDs and security manager settings.
+- **apfauth**  
+APF authorizes the LOADLIB containing the modules that need to perform z/OS privileged security calls. 
+- **certificate**  
+Configures Zowe to use TLS certificates.
+- **vsam**  
+Configures the VSAM files needed to run the Zowe caching service used for high availability (HA)
+- **stc**  
+Configures the system to launch the Zowe started task.
 
-You can type `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init) for detailed explanation, examples, and parameters. 
-
-`zwe init` command requires a [Zowe configuration file](installandconfig#zowe-configuration-file) to proceed. This configuration file instructs how Zowe should be initialized. You must create and review this file before proceeding. If you don't have the file already, you can copy from `example-zowe.yaml` located in the Zowe runtime directory.
+:::info Recommendation:
+We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security.md) in this configuration documentation.
+::: 
 
 :::tip
-The following `zwe init` arguments might be useful:
-
-- The `--update-config` argument allows the init process to update your configuration file based on automatic detection and your `zowe.setup` settings. For example, if `java.home` and `node.home` are not defined, they can be updated based on the information that is collected on the system. The `zowe.certificate` section can also be updated automatically based on your `zowe.setup.certificate` settings.
-- The `--allow-overwrite` argument allows you to rerun the `zwe init` command repeatedly regardless of whether some data sets are already created.
-- The `-v` or `--verbose` argument provides execution details of the `zwe` command. You can use it for troubleshooting purposes if the error message is not clear enough.
-- The `-vv` or `--trace` argument provides you more execution details than the `--verbose` mode for troubleshooting purposes.
+Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-vsam.md) for detailed explanation, examples, and parameters. 
 :::
 
-## Procedure
+## zwe init arguments
 
-To initialize the z/OS system and permissions that Zowe requires, run the following command. 
+The following `zwe init` arguments can assist you with the initization process:
+
+- **--update-config**  
+ This argument allows the init process to update your configuration file based on automatic detection and your `zowe.setup` settings. For example, if `java.home` and `node.home` are not defined, they can be updated based on the information that is collected on the system. `zowe.certificate` section can also be updated automatically based on your `zowe.setup.certificate` settings.
+- **--allow-overwrite**  
+ This argument allows you to rerun the `zwe init` command repeatedly regardless of whether some data sets are already created.
+- **-v** or **--verbose**  
+   This argument provides execution details of the `zwe` command. You can use it for troubleshooting purposes if the error message is not clear enough.
+- **T-vv** or **--trace**  
+ This argument provides you more execution details than the `--verbose` mode for troubleshooting purposes.
+
+## Zowe initilization command
+
+The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file preparted and have security administrator privileges, or security and certificates setup was already completed on the system, you can run the following command:
 
 ```
 zwe init --config /path/to/zowe.yaml
 ```
 
-## Next steps
+:::caution Validate successful initialization
+Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
+:::
 
-The `zwe init` command runs the subcommands in sequence automatically. If you have successfully ran the above command, you can move on to [start Zowe](./start-zowe-zos.md).
+For more information about `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
 
-You can choose to run the subcommands one by one to define each step based on your need, or if you encounter some failures with `zwe init` command, you can pick up the failed subcommands step specifically and rerun it.
+## Next step
 
-1. [Prepare custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets.
-2. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.
+After all `zwe init` subcommands are successfully executed, the next step is to configure the z/OS system for Zowe. For more information, see [Addressing z/OS requirements for Zowe](./configure-zos-system.md).
 
-   If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
-
-3. [APF authorize load libraries containing the modules that need to perform z/OS privileged security calls.](apf-authorize-load-library.md).
-4. [Configure Zowe to use TLS certificates](generate-certificates.md).
-5. (Required only if you are configuring Zowe for cross LPAR sysplex high availability): [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). 
-6. [Install Zowe main started tasks](install-stc-members.md).
-
-To learn how to run the `zwe init` command step by step, type `zwe init <sub-command> --help`. For example, `zwe init stc --help`.
-
+For detailed information about individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).

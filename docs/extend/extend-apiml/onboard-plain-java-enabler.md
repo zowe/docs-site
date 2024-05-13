@@ -2,7 +2,9 @@
 
 This article is part of a series of onboarding guides, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service with the API ML with the Zowe API Mediation Layer using our Plain Java Enabler (PJE). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
-**Tip:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+:::tip
+For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+:::
 
 ## Introduction
 
@@ -21,8 +23,10 @@ The PJE library serves the needs of Java developers who are not using either [Sp
 
 Additionally, this enabler is not intended for use in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the PJE and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
-**Tip:** For more information about how to utilize another API ML enablers, see the documentation in
+:::tip
+For more information about how to utilize another API ML enablers, see the documentation in
 the [Onboarding Overview](onboard-overview.md).
+:::
 
 ## Onboarding your REST service with API ML
 
@@ -60,19 +64,22 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 * The REST API service to onboard is written in Java
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection
 
-**Notes:**
+:::noteNotes:
 
-* This documentation is valid for API ML version `ZoweApimlVersion 1.3.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.
+* This documentation is valid for API ML version `ZoweApimlVersion 1.3.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
-* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/master/onboarding-enabler-java-sample-app)
+* The API Mediation Layer provides the sample application using the Plain Java Enabler in the [api-layer repository](https://github.com/zowe/api-layer/tree/v2.x.x/onboarding-enabler-java-sample-app)
+:::
 
 ## Configuring your project
 
 Use either _Gradle_ or _Maven_ build automation systems to configure the project with the service to be onboarded. Use the appropriate configuration procedure that corresponds to your build automation system.
 
-**Note:** You can use either the Zowe Artifactory or an artifactory of your choice. If you decide to build the API ML from source, you are required to publish the enabler artifact to your artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+:::note
+You can use either the Zowe Artifactory or an artifactory of your choice. If you decide to build the API ML from source, you are required to publish the enabler artifact to your artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+:::
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -165,7 +172,9 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 To configure your service, create the configuration file `service-configuration.yml` in your service source tree resources directory. The default path for a java application is `src/main/resources`. The `service-configuration.yml` file is used to set the application properties and eureka metadata. Application properties are for your service runtime. For example, the `ssl` section specifies the keystore and trustore. The eureka metadata is used for registration with API Mediation Layer.
 
-**Note:** To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
+:::note
+To externalize service onboarding configuration, see: [Externalizing onboarding configuration](onboard-plain-java-enabler-external-configuration.md).
+:::
 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
 are in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
@@ -323,11 +332,9 @@ statusPageRelativeUrl: /application/info
 healthCheckRelativeUrl: /application/health
 ```
 
-where:
-
 * **homePageRelativeUrl**
 
-    specifies the relative path to the home page of your service. 
+    Specifies the relative path to the home page of your service. 
     
     Start this path with `/`. If your service has no home page, leave this parameter blank.
 
@@ -338,7 +345,7 @@ where:
 
 * **statusPageRelativeUrl**
 
-    specifies the relative path to the status page of your service.
+    Specifies the relative path to the status page of your service.
 
     Start this path with `/`.
 
@@ -351,7 +358,7 @@ where:
 
 * **healthCheckRelativeUrl**
 
-    specifies the relative path to the health check endpoint of your service.
+    Specifies the relative path to the health check endpoint of your service.
 
     Start this path with `/`.
 
@@ -387,10 +394,9 @@ apiInfo:
             console.log('hello');
 ```
 
-where:
 * **apiInfo.apiId**
 
-    specifies the API identifier that is registered in the API ML installation.
+    Specifies the API identifier that is registered in the API ML installation.
         The API ID uniquely identifies the API in the API ML.
          The `apiId` can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
         The `apiId` must be a string of up to 64 characters
@@ -398,7 +404,7 @@ where:
 
 * **apiInfo.version**
 
-    specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
+    Specifies the api `version`. This parameter is used to correctly retrieve the API documentation according to requested version of the API.
 
 * **apiInfo.gatewayUrl**
 
@@ -407,20 +413,20 @@ where:
 
 * **apiInfo.swaggerUrl** (Optional)
 
-     specifies the Http or Https address where the Swagger JSON document is available.
+    Specifies the Http or Https address where the Swagger JSON document is available.
 
 * **apiInfo.documentationUrl** (Optional)
 
-     specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
+    Specifies the link to the external documentation. A link to the external documentation can be included along with the Swagger documentation.
 
 * **apiInfo.defaultApi** (Optional)
 
-    specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
+    Specifies that this API is the default one shown in the API Catalog. If no apiInfo fields have `defaultApi` set to `true`, the default API is the one
     with the highest API `version`.
 
 * **apiInfo.codeSnippet** (Optional)
 
-  specifies the customized code snippet for a specific endpoint (API operation). The snippet is displayed in the API Catalog under the specified operation, after executing
+  Specifies the customized code snippet for a specific endpoint (API operation). The snippet is displayed in the API Catalog under the specified operation, after executing
   the request using the *Try it out* functionality.
   When specifying this configuration, you need to provide the following parameters:
     * **`endpoint`**  
@@ -449,11 +455,10 @@ routes:
     - gatewayUrl: api/v1/api-doc
       serviceUrl: /sampleservice-api/api-doc
 ```
-   where:
 
 * **routes**
 
-    specifies the container element for the route.
+    Specifies the container element for the route.
 
 * **routes.gatewayUrl**
 
@@ -510,11 +515,9 @@ The following code block is an example of configuration of a service tile in the
         version: 1.0.0
 ```
 
-where:
-
 * **catalog.tile.id**
 
-    specifies the unique identifier for the product family of API services.
+    Specifies the unique identifier for the product family of API services.
     This is a value used by the API ML to group multiple API services into a single tile.
     Each unique identifier represents a single API dashboard tile in the Catalog.
 
@@ -522,11 +525,11 @@ where:
 
 * **catalog.tile.title**
 
-    specifies the title of the product family of the API service. This value is displayed in the API Catalog dashboard as the tile title.
+    Specifies the title of the product family of the API service. This value is displayed in the API Catalog dashboard as the tile title.
 
 * **catalog.tile.description**
 
-    is the detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
+    The detailed description of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile description.
 
 * **catalog.tile.version**
 
@@ -536,7 +539,8 @@ where:
 
 ### Authentication parameters
 
-These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](authentication-for-apiml-services.md/#authentication-parameters).
+These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters).
+
     
 ### API Security
 
@@ -547,7 +551,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security overview](zowe-api-mediation-layer-security-overview.md).
+For more information about API ML security, see [API ML security overview](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -573,7 +577,8 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
+  
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -587,7 +592,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -604,7 +609,9 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md/#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md) Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
+For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md#api-ml-saf-keyring).
+
+Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 
 The following example shows enabler configuration with keyrings.
 
@@ -635,8 +642,6 @@ discoveryServiceUrls:
 - http://......
 ```
 
-where:
-
 * **discoveryServiceUrls**
 
     Specifies the public URL of the Discovery Service. The system administrator at the customer site defines this parameter.
@@ -644,7 +649,7 @@ where:
 
 ### Custom Metadata
 
-For information about custom metadata, see the topic [Custom Metadata](custom-metadata).
+For information about custom metadata, see the topic [Custom Metadata](./custom-metadata.md).
     
 ##  Registering your service with API ML
 
@@ -732,88 +737,89 @@ The following steps outline the process of registering your service with API ML.
 The following code block is a full example of a context listener class implementation.
 
 **Example:**
+```
+import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
+import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
+import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
+import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
+import org.zowe.apiml.exception.ServiceDefinitionException;
+import lombok.extern.slf4j.Slf4j;
 
-    import org.zowe.apiml.eurekaservice.client.ApiMediationClient;
-    import org.zowe.apiml.eurekaservice.client.config.ApiMediationServiceConfig;
-    import org.zowe.apiml.eurekaservice.client.impl.ApiMediationClientImpl;
-    import org.zowe.apiml.eurekaservice.client.util.ApiMediationServiceConfigReader;
-    import org.zowe.apiml.exception.ServiceDefinitionException;
-    import lombok.extern.slf4j.Slf4j;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-    import javax.servlet.ServletContextEvent;
-    import javax.servlet.ServletContextListener;
+/**
+ *  API ML Micro service implementation of ServletContextListener interface.
+ */
+@Slf4j
+public class ApiDiscoveryListener implements ServletContextListener {
 
     /**
-     *  API ML Micro service implementation of ServletContextListener interface.
+     * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
      */
-    @Slf4j
-    public class ApiDiscoveryListener implements ServletContextListener {
+    private ApiMediationClient apiMediationClient;
 
-        /**
-         * @{link ApiMediationClient} instance used to register and unregister the service with API ML Discovery service.
-         */
-        private ApiMediationClient apiMediationClient;
+    /**
+     *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
+     *  and registers this micro service with API ML.
+     *
+     *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
+     *  {@link java.util.Map} or a string containing the configuration data.
+     *
+     *  Here we use the most convenient method for our Java Servlet based service,
+     *  i.e expecting all the necessary initialization information to be present
+     *  in the  {@link javax.servlet.ServletContext} init parameters.
 
-        /**
-         *  Loads a {@link ApiMediationServiceConfig} using an instance of class ApiMediationServiceConfigReader
-         *  and registers this micro service with API ML.
-         *
-         *  {@link ApiMediationServiceConfigReader} has several methods for loading configuration from YAML file,
-         *  {@link java.util.Map} or a string containing the configuration data.
-         *
-         *  Here we use the most convenient method for our Java Servlet based service,
-         *  i.e expecting all the necessary initialization information to be present
-         *  in the  {@link javax.servlet.ServletContext} init parameters.
-
-         *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
-         *  which is then used to register this service with API ML Discovery Service.
-         *
-         *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
-         *  and only can throw {@link ServiceDefinitionException} checked exception.
-         *
-         * @param sce
-         */
-        @Override
-        public void contextInitialized(ServletContextEvent sce) {
-            try {
+     *  After successful initialization, this method creates an {@link ApiMediationClient} instance,
+     *  which is then used to register this service with API ML Discovery Service.
+     *
+     *  The registration method of ApiMediationClientImpl catches all RuntimeExceptions
+     *  and only can throw {@link ServiceDefinitionException} checked exception.
+     *
+     * @param sce
+     */
+    @Override
+    public void contextInitialized(ServletContextEvent sce) {
+        try {
+            /*
+             * Load configuration method with ServletContext
+             */
+            ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
+            if (config  != null) {
                 /*
-                 * Load configuration method with ServletContext
+                 * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
                  */
-                ApiMediationServiceConfig config = new ApiMediationServiceConfigReader().loadConfiguration(sce.getServletContext());
-                if (config  != null) {
-                    /*
-                     * Instantiate {@link ApiMediationClientImpl} which is used to un/register the service with API ML Discovery Service.
-                     */
-                    apiMediationClient = new ApiMediationClientImpl();
+                apiMediationClient = new ApiMediationClientImpl();
 
-                    /*
-                     * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
-                     */
-                    apiMediationClient.register(config);
-                }
-            } catch (ServiceDefinitionException sde) {
-                log.error("Service configuration failed. Check log for previous errors: ", sde);
+                /*
+                 * Call the {@link ApiMediationClient} instance to register your micro service with API ML Discovery Service.
+                 */
+                apiMediationClient.register(config);
             }
-        }
-
-        /**
-         * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
-         */
-        @Override
-        public void contextDestroyed(ServletContextEvent sce) {
-            if (apiMediationClient != null) {
-                apiMediationClient.unregister();
-            }
-
-            apiMediationClient = null;
+        } catch (ServiceDefinitionException sde) {
+            log.error("Service configuration failed. Check log for previous errors: ", sde);
         }
     }
+
+    /**
+     * If apiMediationClient is not null, attempt to unregister this service from API ML registry.
+     */
+    @Override
+    public void contextDestroyed(ServletContextEvent sce) {
+        if (apiMediationClient != null) {
+            apiMediationClient.unregister();
+        }
+
+        apiMediationClient = null;
+    }
+}
+```
 
 ## Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 
@@ -821,11 +827,15 @@ Once you are able to build and start your service successfully, you can use the 
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
-**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
+:::note
+If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
 for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
 with actual addresses of API ML components and the respective user credentials.
+:::
 
-**Tip:** Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
+:::tip
+Wait for the Discovery Service to discover your service. This process may take a few minutes after your service was successfully started.
+:::
 
 ## Troubleshooting
 
@@ -842,12 +852,13 @@ Some logging frameworks provide other tools to suppress repeated messages. Consu
 
 **Example:** 
 
-The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
-
 Add the following code to your configuration file if you use XML configuration:  
+```
+<turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
+    <AllowedRepetitions>0</AllowedRepetitions>
+</turboFilter>
+```
 
-    <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
-        <AllowedRepetitions>0</AllowedRepetitions>
-    </turboFilter>
-
-**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
+:::note
+For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
+:::

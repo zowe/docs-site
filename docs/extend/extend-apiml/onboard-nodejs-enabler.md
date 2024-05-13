@@ -2,7 +2,9 @@
 
 This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
 
-**Note:** For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+:::note
+For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
+:::
 
 ## Introduction
 
@@ -36,7 +38,9 @@ Install the onboarding Node.js enabler package as a dependency of your service. 
 ```
 npm i @zowe/apiml-onboarding-enabler-nodejs@latest --dev-save
 ```
-**Note:** If you have a multi-module project, you have to run the npm command from the submodule where your Node.js project is located.
+:::note
+If you have a multi-module project, you have to run the npm command from the submodule where your Node.js project is located.
+:::
 
 ## Configuring your service
 
@@ -122,8 +126,6 @@ The following example shows a sample configuration.
 
 To register your service with API ML, use the following procedure.
 
-**Follow these steps:**
-
 1. Inside your Node.js service `index.js`, add the following code block to register your service with Eureka:
 
    ```js
@@ -141,8 +143,6 @@ To register your service with API ML, use the following procedure.
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-**Follow these steps:**
-
   1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
@@ -151,10 +151,10 @@ Once you build and start your service successfully, you can use the option of va
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
-**Notes:**  
+:::note Notes:
 * If you are working with a local installation of API ML, and you are using our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
 with actual addresses of API ML components and the respective user credentials.  
 * Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
 service starts successfully.
-
+:::
 

@@ -56,6 +56,8 @@ zwe init vsam -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -88,6 +90,8 @@ ZWEL0161E|161|Failed to run JCL %s.
 ZWEL0162E|162|Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0301W|0|Zowe Caching Service is not configured to use VSAM. Command skipped.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message

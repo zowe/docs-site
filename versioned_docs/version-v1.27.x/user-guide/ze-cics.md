@@ -1,6 +1,6 @@
 # Using Zowe Explorer CICS Extension
 
-The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension, [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe). This extension allows you to interact with CICS regions and programs, and run commands against them.
+The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension, [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode). This extension allows you to interact with CICS regions and programs, and run commands against them.
 
 ## Contents
 
@@ -68,7 +68,7 @@ Before you perform the following steps, ensure that you have installed Zowe Expl
 
 If your Zowe Explorer is installed, please follow the steps below to install Zowe Explorer CICS Extension from a VSIX file.
 
-1. Visit the [download site](https://github.com/zowe/vscode-extension-for-cics). Select the **Latest** button which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
+1. Visit the [download site](https://github.com/zowe/cics-for-zowe-client). Select the **Latest** button which directs to a page that includes the latest version of `.vsix` file. Download it to your PC.
 
    ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
 
@@ -88,20 +88,20 @@ The Zowe Explorer pane will show tree views for **Data Sets**, **Unit System Ser
 
 ### Creating profile
 
-If you already have a Zowe CICS CLI profile, the CICS tree will load the default profile on startup.  
+If you already have a Zowe CICS CLI profile, the CICS tree will load the default profile on startup.
 
 If you don't have an existing Zowe CICS CLI profile, follow these steps to create one:
 
 1. Select the **+** button in the CICS tree.
 2. Select the **Create a CICS profile** option to open a panel that defines connection details.
 
-**Note**: The connection must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.  
+**Note**: The connection must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.
 
 Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store doesn't recognize, see [Untrusted TLS certificates](#untrusted-tls-certificates).
 
 ![Zowe CICS Explorer profiles](../images/ze-cics/create-profile.gif)
 
-To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown. To view all Zowe CICS CLI profiles, issue the command `zowe profiles list cics` from a terminal.  
+To show more than one CICS profiles in the tree, select the **+** button and choose from the list of profiles. Only profiles that not already included in the CICS tree will be shown. To view all Zowe CICS CLI profiles, issue the command `zowe profiles list cics` from a terminal.
 
 ### Updating profile
 
@@ -147,7 +147,7 @@ Expand a CICS region to show folders for the resource types **Programs**, **Tran
 
 The list of resources is pre-filtered to exclude many of the IBM supplied ones to narrow the contents to just include user programs.
 
-- Use the search icon against a resource type to apply a filter. You can enter an exact resource name or use wildcards. The search history is saved so you can recall previous searches.  
+- Use the search icon against a resource type to apply a filter. You can enter an exact resource name or use wildcards. The search history is saved so you can recall previous searches.
 
 - To reset the filter to its initial criteria, use the clear filter icon against the resource type.  If you want to see all resources in a region (including IBM supplied ones), you can use __*__ as a filter.
 
@@ -172,7 +172,7 @@ Similar to filtering resources in a region, you can apply a filter on a all regi
 Plexes includes **All Programs**, **All Local Transactions** and **All Local Files** trees which contain all the corresponding resources from all regions in the plex.
 
 - To view resources under these trees, use the search icon inline with the tree and apply a filter.
-   
+
    ![Zowe CICS Explorer All Resource Filter](../images/ze-cics/all-resources.gif)
 
 - If the applied filter results in over 500 records, you can change the filter to narrow down the search, or click the **view X more ...** item to retrieve 'X' more resources.
@@ -181,7 +181,7 @@ Plexes includes **All Programs**, **All Local Transactions** and **All Local Fil
 
 Right-click and use the pop-up menu against a program to list the available actions that can be performed.
 
-For every resource, including a CICS region, the **Show Attributes** option opens a viewer listing all attributes and their values. The attributes page has a filter box at the top that lets you search for attributes matching the criteria.  
+For every resource, including a CICS region, the **Show Attributes** option opens a viewer listing all attributes and their values. The attributes page has a filter box at the top that lets you search for attributes matching the criteria.
 
 ![Zowe CICS Explorer Show Attributes](../images/ze-cics/show-attributes.gif)
 
@@ -192,7 +192,7 @@ For every resource, including a CICS region, the **Show Attributes** option open
 
 2. Click **Disable [CICS resource]** to disable the resource. A disabled resource is identified by a `(Disabled)` text next to its name.
 
-When a resource is already disabled, you can enable it again by clicking **Enable [CICS resource]** in the pop-up menu. 
+When a resource is already disabled, you can enable it again by clicking **Enable [CICS resource]** in the pop-up menu.
 
 ![Zowe CICS Explorer Disable and Enable](../images/ze-cics/disable-enable.gif)
 
@@ -208,13 +208,13 @@ The `New copy count` for a program which is greater than zero is shown next to t
 
 **Open a local file**
 
-1. Right-click against a closed local file. 
+1. Right-click against a closed local file.
 2. Select **Open Local File** to toggle the `openstatus` attribute to `OPEN`.
 
 **Close a local file**
 
-1. Right-click against an open local file and select **Close Local File**. 
-2. When prompted, choose one option: **Wait**, **No Wait**, or **Force**. 
+1. Right-click against an open local file and select **Close Local File**.
+2. When prompted, choose one option: **Wait**, **No Wait**, or **Force**.
 
    After you select an option, the local file name will be appended with a `(Closed)` label upon success.
 
@@ -226,7 +226,7 @@ If the CMCI connection uses a TLS certificate that does not exist in your PC's t
 
 To override this behavior, you can set the `Only accept trusted TLS certificates` field to `False` on the form when creating or updating the profile. This is the same as setting `rejectUnauthorized=false` on the Zowe CICS CLI profile.
 
-If you define a profile as only accepting trusted TLS certificates when the Zowe Explorer first connects, it will detect the mismatch and pop up a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.  
+If you define a profile as only accepting trusted TLS certificates when the Zowe Explorer first connects, it will detect the mismatch and pop up a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.
 
 ![Image that shows how to accept untrusted TLS certificate](../images/ze-cics/untrusted-cert.gif)
 
@@ -240,7 +240,7 @@ If you define a profile as only accepting trusted TLS certificates when the Zowe
 
 ## Providing feedback or contributing
 
-You are welcome to contribute to the Zowe Explorer CICS Extension in many forms and help make it better! 
+You are welcome to contribute to the Zowe Explorer CICS Extension in many forms and help make it better!
 
 - [Checking the source of an error](#checking-the-source-of-an-error)
 - [Filing an issue](#filing-an-issue)
@@ -256,7 +256,7 @@ Before filing an issue, check if an error is arising from the Zowe Explorer for 
 
 ### Filing an issue
 
-To file issues, use the [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/vscode-extension-for-cics/issues), or chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating the message is for the Zowe Explorer for IBM CICS extension.
+To file issues, use the [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/cics-for-zowe-client/issues), or chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating the message is for the Zowe Explorer for IBM CICS extension.
 
 ## Uninstalling
 
