@@ -1,6 +1,6 @@
 # Zowe API Mediation Layer Security Overview
 
-Review this article to learn about topics which address security features in Zowe API Mediation Layer.
+Review this article to learn about topics which address security features in Zowe API Mediation Layer:
 
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)

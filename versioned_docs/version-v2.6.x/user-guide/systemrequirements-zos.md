@@ -87,7 +87,7 @@ The task starts a USS environment using `BPXBATSL` that executes the core Zowe D
 | Class  | ID     | Access |  Reason |
 |--------|--------|--------|---------|
 | CSFSERV | `Multiple` | READ | To generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment). The list of IDs to enable will include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements). |
-| FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESVSTC processes to access the Zowe ZIS cross memory server |
+| FACILITY | `ZWES.IS` | READ | To allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server |
 | FACILITY | `BPX.SERVER` + `BPX.DAEMON` | UPDATE | To allow the Zowe Desktop ZLUX server to run code on behalf of the API requester's TSO user ID. For more information, see [Security Environment Switching](./configure-zos-system.md#configure-security-environment-switching). |
 | FACILITY | `IRR.RUSERMAP` | READ | To allow Zowe to [map an X.509 client certificate to a z/OS identity](./configure-zos-system.md#configure-main-zowe-server-to-use-identity-mapping) | 
 | FACILITY | `BPX.JOBNAME` | READ | To allow z/OS address spaces for unix processes to be renamed for [ease of identification](./configure-zos-system.md#configure-address-space-job-naming) |
@@ -115,7 +115,7 @@ The following ports are required for Zowe. These are default values. You can cha
 | Port number | zowe.yaml variable name | Purpose |
 |------|------|------|
 | 7552 | zowe.components.api-catalog.port | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
-| 7553 | zowe.components.api-catalog.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
+| 7553 | zowe.components.discovery.port | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
 | 7554 | zowe.components.gateway.port | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
 | 7555 | zowe.components.caching-service.port | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
 | 7556 | zowe.components.app-server.port | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.

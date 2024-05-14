@@ -47,7 +47,7 @@ Ensure that you meet the following prerequisites before you use the extension:
 
 The extension is now installed and available for use.
 
-* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README.md).
+* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/zowe-explorer-vscode/blob/master/docs/README.md).
 
 You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
 
@@ -90,6 +90,6 @@ Configure Zowe Explorer in the settings file of the extension. To access the ext
 
 In this section you can find useful links and other relevant to Zowe Explorer information that can improve your experience with the extension. Check the following links:
 
-* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Theia.md).
-* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/docs/README-Extending.md).
+* For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/zowe-explorer-vscode/blob/master/docs/README-Theia.md).
+* For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/blob/master/docs/README-Extending.md).
 * Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.

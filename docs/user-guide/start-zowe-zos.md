@@ -16,11 +16,14 @@ Zowe main started task
 
 ## Starting and stopping the cross memory server `ZWESISTC` on z/OS
 
-The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`, and supports reusable address spaces. This task can be started through SDSF with the operator start command with the `REUSASID=YES` keyword:
+The cross memory server is run as a started task from the JCL in the PROCLIB member `ZWESISTC`, and supports reusable address spaces. This task can be started through with the operator start command with the `REUSASID=YES` keyword:
 
 ```
-/S ZWESISTC,REUSASID=YES
+S ZWESISTC,REUSASID=YES
 ```
+:::note
+If using SDSF to start the cross memory server, enter `/` before `S`.
+:::
 
 The `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. Do not start the `ZWESASTC` task manually.
 
@@ -28,12 +31,15 @@ The `ZWESISTC` task starts and stops the `ZWESASTC` task as needed. Do not start
 Starting and stopping of the `ZWESLSTC` started task for the main Zowe servers is independent of the `ZWESISTC` cross memory server, which is an angel process. If you are running more than one `ZWESLSTC` instance on the same LPAR, the instances share the same `ZWESISTC` cross memory server. Stopping `ZWESISTC` affects the behavior of all Zowe servers on the same LPAR that use the same cross-memory server name, for example `ZWESIS_STD`. The Zowe cross memory server is designed to be a long-lived address space. There is no requirement to recycle regularly. When the cross memory server is started with a new version of its load module, the cross memory server abandons its current load module instance in LPA and loads the updated version.
 :::
 
-To end the Zowe cross memory server process, issue the operator stop command through SDSF:
+To end the Zowe cross memory server process, issue the operator stop command:
 
 ```
-/P ZWESISTC
+S ZWESISTC
 ```
 
+:::note
+If using SDSF to stop the cross memory server, enter `/` before `S`.
+:::
 
 
 ## Starting and stopping the cross memory auxiliary server `ZWESASTC` on z/OS
@@ -102,7 +108,7 @@ To stop Zowe, run the following command:
 
 ## Starting and stopping Zowe main server `ZWESLSTC` on z/OS manually
 
-To start Zowe main server, you can issue the `S ZWESLSTC` command. Similar to the the JES `S` command, you can customize the `JOBNAME`.
+To start Zowe main server, you can issue the `S ZWESLSTC` command. Similar to the the MVS system command, you can customize the `JOBNAME`.
 
 **Example:**
 
@@ -134,7 +140,7 @@ With Zowe version 1, you can issue `C` command to stop Zowe main server. This co
 
 ## Stopping and starting a Zowe component without restarting Zowe main server
 
-You can restart a Zowe component with the JES modify command without restarting the whole Zowe main server. Before issuing the modify command consider the following points:
+You can restart a Zowe component with the MVS system command  without restarting the whole Zowe main server. Before issuing the modify command consider the following points:
 
 - By default, your Zowe main server job name is configured as `ZWE1SV`. You can find your customized value by checking the `zowe.job.name` defined in the Zowe configuration file.
 - Determine the component name you want to stop or start. You can find a full list of installed components by listing the `<RUNTIME>/components` directory and the Zowe extension directory.  

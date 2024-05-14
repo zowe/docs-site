@@ -15,7 +15,7 @@ It is possible to customize some predefined values in the SMF record. For more i
 This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have _read_ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESVSTC` started task has `READ` access to this profile.
+To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has `READ` access to this profile.
 
 - If you use RACF, issue the following command:
     ```
@@ -33,7 +33,7 @@ To check whether you already have the auditing profile defined, issue the follow
     LIST LIKE(IRR-)
     ```
 
-If the user `ZWESVUSR` who runs the `ZWESVSTC` started task does not have `READ` access to this profile, follow the procedure that corresponds to your ESM:
+If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have `READ` access to this profile, follow the procedure that corresponds to your ESM:
 
 - If you use RACF, update permission in the `FACILITY` class.
 
