@@ -371,7 +371,6 @@ The high-level configuration `java` supports these definitions:
  Defines the path to the Java runtime directory.
 
 :::tip
-
 Ensure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains `bin/node`. 
 **Example:**
 ```
@@ -380,7 +379,6 @@ node:
 ```
 
 The above value is valid only when the path `/usrlppSysplex/nodejs/node-v12.16.1/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, check to ensure that the value contains `bin/node`.
-
 :::
 
 
