@@ -2,12 +2,22 @@
 
 Perform the following configurations on headless and z/Linux operating systems.
 
+:::note
+
+For CI/CD pipelines, we recommend using the credential management provided by the CI/CD tool (for example, Jenkins credentials or GitHub secrets) to store credentials and load them into environment variables in the pipeline. See [Using environment variables](../user-guide/cli-using-using-environment-variables.md#store-credentials-securely-in-cicd-pipelines) for more information.
+
+:::
+
 ## Headless Linux requirements
 
 - Ensure that you installed the Secure Credential Store requirements that are described in [System Requirements](../user-guide/systemrequirements-cli.md).
 - Unlock the Gnome keyring to allow you to load and store credentials on headless Linux operating systems. You can unlock the keyring manually or automatically.
 
-**Note:** On z/Linux operating systems, complete the steps in [Configuring z/Linux](#configuring-zlinux) before you continue.  
+:::note
+
+On z/Linux operating systems, complete the steps in [Configuring z/Linux](#configuring-zlinux) before you continue.
+
+:::
 
 ### Unlocking the keyring manually
 
@@ -18,13 +28,21 @@ export $(dbus-launch)
 gnome-keyring-daemon -r --unlock --components=secrets
 ```
 
-**Note:** The `gnome-keyring-daemon -r --unlock --components=secrets` prompts you to specify a password. Press `Ctrl+D` twice after you specify the password. 
+:::note
+
+The `gnome-keyring-daemon -r --unlock --components=secrets` prompts you to specify a password. Press `Ctrl+D` twice after you specify the password.
+
+:::
 
 ### Unlocking the keyring automatically
 
 When you are using SSH or TTY to log in to Linux, you can configure the Gnome keyring to unlock automatically when you log in.
 
-**Note:** The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions. 
+:::note
+
+The following steps were tested on CentOS, SUSE, and Ubuntu operating systems. The steps do not work on WSL (Windows Subsystem for Linux) because it bypasses TTY login. Results may vary on other Linux distributions.
+
+:::
 
 **Follow these steps:**
 
@@ -78,7 +96,11 @@ The following steps describe how to install and build the credential store binar
     - libsecret-devel (sometimes available as libsecret-1-dev)
     - Python 3.6 or later
 
-    **Note:** If you are installing the Linux packages on a z/Linux system, the system where you are configuring SCS might require Internet access. When a site hosts its own package repositories, the repositories might not contain all of the packages that are required to configure the SCS. In this scenario, the z/Linux system requires Internet access to install the required packages.
+    :::note
+    
+    If you are installing the Linux packages on a z/Linux system, the system where you are configuring SCS might require Internet access. When a site hosts its own package repositories, the repositories might not contain all of the packages that are required to configure the SCS. In this scenario, the z/Linux system requires Internet access to install the required packages.
+
+    :::
 
 2. If you are configuring SCS on a Ubuntu z/Linux operating system, no further action is required. You can now install Zowe CLI. For all other platforms (RHEL), continue to the next step.
 

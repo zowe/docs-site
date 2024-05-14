@@ -21,7 +21,7 @@ After your installation of Zowe runtime, you can run the `zwe init` command to p
 * Configure VSAM files to run the Zowe caching service used for high availability (HA)
 * Configure the system to launch the Zowe started task
 
-For more information about this z/OS runtime initialization method, see [Initializing the z/OS system with zwe init](./initialize-zos-system)
+For more information about this z/OS runtime initialization method, see [Configuring Zowe with zwe init](./initialize-zos-system.md)
 
 ## Configure Zowe with z/OSMF workflows
 

@@ -18,20 +18,20 @@ The following diagram illustrates the difference in locations of Zowe components
 
 ![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
 
-Zowe has high availability feature build-in. To enable this feature, you can define `haInstances` section in your YAML configuration file.
+Zowe has a high availability feature built in. To enable this feature, you can define the `haInstances` section in your YAML configuration file.
 
-The diagram above shows that `ZWESLSTC` has started two Zowe instances running on two separate LPARs that can be on the same or different sysplexes.  
+The preceding diagram shows that `ZWESLSTC` has started two Zowe instances running on two separate LPARs that can be on the same or different sysplexes.  
 
-- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared so that incoming requests can be routed to either the gateway on LPAR A or LPAR B.
-- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated on the diagram, each component has two input lines: one from the API gateway on its own LPAR and one from the gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the sysplex providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
+- Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared so that incoming requests can be routed to either the Gateway on LPAR A or LPAR B.
+- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API Gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated in the diagram, each component has two input lines: one from the API Gateway on its own LPAR and one from the Gateway on the other LPAR.  When one of the LPARs goes down, the other LPAR remains operating within the Sysplex, thereby  providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
 
 The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, thereby providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
 
-The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the gateway of the second LPAR, all desktop traffic is routed there.  
+The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the Gateway of the second LPAR, all desktop traffic is routed there.  
 
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set.  This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-For simplification of the diagram above, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
+For simplification of the preceding diagram, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API Gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
 
 To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex.md).
 
@@ -59,16 +59,16 @@ The App Server is a portable, extensible HTTPS server written in node.js. It can
 
 ![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 
-When the API gateway is running, this server and the Desktop are accessible at `https://<ZOWE_HOST_IP>:7554/zlux/ui/v1/`.
-When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Application Server` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zlux/zlux`
+When the API Gateway is running, this server and the Desktop are accessible at `https://<ZOWE_HOST_IP>:7554/zlux/ui/v1/`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Application Server`, which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zlux/zlux`.
 When running on z/OS, this server uses the jobname suffix of DS1. 
 
 ## ZSS
 
 Zowe System Services (ZSS) is a z/OS native, extensible HTTPS server which allows you to empower web programs with z/OS functionality due to ZSS' conveniences for writing REST and Websocket APIs around z/OS system calls. The Zowe desktop delegates a number of its services to the ZSS server.
 
-When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/zss/api/v1`.
-When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe System Services (ZSS)` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zss/zss`
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/zss/api/v1`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe System Services (ZSS)` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zss/zss`
 When running on z/OS, the server uses the jobname suffix of SZ.
 
 ## ZIS
@@ -79,26 +79,26 @@ Unlike all of the servers described above which run under the `ZWESLSTC` started
 
 ## API Gateway
 
-The API Gateway is a proxy server that routes requests from clients on its northbound edge, such as web browsers or the Zowe command line interface, to servers on its southbound edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
+The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
 
 ![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
 
-When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/`.
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/`.
 When running on z/OS, the server uses the jobname suffix of AG.
 
 ## API Catalog
 
-The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound servers, as well as test REST API calls.  
+The API Catalog provides a list of the API services that have registered themselves as catalog tiles. These tiles make it possible to view the available APIs from Zowe's southbound (downstream) servers, as well as test REST API calls.  
 
 ![Zowe API Catalog](../images/api-mediation/api-catalog.png)
 
-When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1`.
-When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
 When running on z/OS, the server uses the jobname suffix of AC.
 
 ## API Discovery
 
-The API Discovery server acts as the registration service broker between the API Gateway and its southbound servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
+The API Discovery server acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
 
 ![Zowe API Discovery](../images/api-mediation/api-discovery.png)
 
@@ -107,10 +107,10 @@ When running on z/OS, the server uses the jobname suffix of AD.
 ## Caching service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The Caching service URL is `https://<ZOWE_HOST_IP>:7555`.
-For more information about the Caching service, see the [Caching service documentation](../user-guide/api-mediation/api-mediation-caching-service).
+For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service).
 
-When the API gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
-When the API catalog is running, this server's API documentation is accessible at the API catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
 When running on z/OS, the server uses the jobname suffix of CS.
 
 ## Desktop Apps
@@ -121,10 +121,10 @@ Zowe provides a number of rich GUI web applications for working with z/OS. Such 
 
 ### File API and JES API
 
-The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs can be abled in zowe server configuration.  
+The File API server provides a set of REST APIs for working with z/OS data sets and Unix files. These APIs can be enabled in Zowe server configuration.  
 
-The JES API server provides a set of REST APIs for working with JES. These APIs can be abled in zowe server configuration.
+The JES API server provides a set of REST APIs for working with JES. These APIs can be enabled in Zowe server configuration.
 
-Both the File API and JES API servers are registered as tiles on the API Catalog, so users can view the Swagger definition and test API requests and responses.
+Both the File API and JES API servers are registered as tiles in the API Catalog, so users can view the Swagger definition and test API requests and responses.
 
 

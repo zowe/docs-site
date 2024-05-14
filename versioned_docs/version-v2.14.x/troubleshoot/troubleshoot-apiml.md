@@ -35,6 +35,8 @@ Use debug mode to activate the following functions:
 - Enable changing log level for individual code components
 - Gather atypical debug information
 
+When on z/OS, API ML log messages are written to the STC job log.
+
 **Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
 its performance and create large log files that consume a large volume of disk space.
@@ -205,7 +207,7 @@ SEC0002 error typically appears when users fail to log in to API Catalog. The fo
 
 <img src={require("../images/common/Error.png").default} alt="SEC0002 Error" title="SEC0002 Error" width="450" height="350"/>
 
-The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESVSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
+The error is caused by failed z/OSMF authentication. To determine the reason authentication failed, open the ZWESLSTC joblog and look for a message that contains `ZosmfAuthenticationProvider`. The following is an example of the message that contains `ZosmfAuthenticationProvider`:
 
 ```
 2019-08-05 11:25:03.431 ERROR 5 --- .0.0-7552-exec-3. c.c.m.s.l.ZosmfAuthenticationProvider    : Can not access z/OSMF service. Uri 'https://ABC12.slv.broadcom.net:1443' returned: I/O error on GET request for "https://ABC12.slv.broadcom.net:1443/zosmf/info": ... 
@@ -415,7 +417,7 @@ To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You c
 
    then, the `$JAVA_HOME/lib/security/java.security` file will be `/usr/lpp/java/J8.0_64/lib/security/java.security`.
 
-- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESVSTC` started task that launches the API Mediation Layer.
+- Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESLSTC` started task that launches the API Mediation Layer.
 
    
 In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`.
@@ -438,7 +440,7 @@ jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, 3DES_EDE_C
 
 **Note:** The file permissions of `java.security` might be restricted for privileged users at most z/OS sites.  
 
-After you remove `GCM`, restart the `ZWESVSTC` started task for the change to take effect.
+After you remove `GCM`, restart the `ZWESLSTC` started task for the change to take effect.
 
 ### API Components unable to handshake
 

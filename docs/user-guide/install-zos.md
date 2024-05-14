@@ -16,13 +16,13 @@ Zowe Application Framework modernizes and simplifies working on the mainframe vi
 Zowe API ML provides a reverse proxy and enables REST APIs by providing a single point of access for mainframe service REST APIs like MVS Data Sets, JES, as well as working with z/OSMF. Zowe API ML has dynamic discovery capability for these services and Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality.
 
 - **Z System Services Server (ZSS)**  
-ZSS serves as one of the primary, authenticated back-ends that communicates with z/OS and works closely with ZIS. ZSS  provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, security management, and others. The Zowe Desktop delegates a number of services to ZSS which can then be  accessed through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.
+ZSS serves as one of the primary, authenticated backends that communicates with z/OS and works closely with the Zowe Cross Memory Server (ZIS). ZSS provides Zowe with a number of APIs including z/OS Unix files and data sets, control of the plug-ins and services lifecycle, security management, and other APIs. The Zowe Desktop delegates a number of services to ZSS which can then be  accessed through the default http port `7557`. ZSS is written in C and uses native calls to z/OS to provide its services.
 
 ## The Zowe Cross Memory Server (ZIS)  
 
 After the installation of Zowe runtime, install the Zowe Cross Memory Server (ZIS).
 
-The Zowe Cross Memeory Server, also referred to as Zowe Interprocess Services (ZIS) is an APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, ZIS is not an HTTP server. Instead, this server has a trust relationship with ZSS.
+The Zowe Cross Memory Server, also referred to as Zowe Interprocess Services (ZIS) is an APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, ZIS is not an HTTP server. Instead, this server has a trust relationship with ZSS.
 
 Other Zowe components can work through ZSS to handle z/OS data that would otherwise be unavailable or where access to these data could be vulnerable to security breaches.
 
@@ -32,15 +32,15 @@ To avoid interuptions in the installation of Zowe&trade; server-side components,
 
 ### Security administrator
 
-To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](address-security-requirements#tasks-performed-by-your-security-administrator).
+To configure Zowe security for production environments, it is likely that your organization's security administrator will be required to perform specific tasks. For more information, see [Addressing security requirements](./address-security-requirements.md#tasks-performed-by-your-security-administrator).
 
 ### Storage administrator
 
-Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requrements to install Zowe. For more information, see [Addressing storage requirements](address-storage-requirements).
+Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requrements to install Zowe. For more information, see [Addressing storage requirements](./address-storage-requirements.md).
 
 ### Network administrator
 
-Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](address-network-requirements).
+Notify your organization's network administrator to assign port numbers, reserve these port numbers, and arrange them for you. For more information about network setup, see [Addressing network requirements](./address-network-requirements.md).
 
 ### System programmer
 
@@ -54,7 +54,7 @@ The following diagram illustrates the full ecosystem for installing Zowe server-
 
 ## Stage 1: Prepare for installation
 
-Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](installandconfig):
+Begin the installation process by familiarizing yourself with the following topics which are covered in the section [Preparing for installation](./installandconfig.md):
 
 - Zowe's hardware and software requirements
 - The `zwe` utility used for installing, configuring, and managing Zowe
@@ -88,9 +88,9 @@ While the procedures to obtain and install the convenience build, SMP/E build or
 
 1. Obtain and install the Zowe build.
 
-   - For more information about how to obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](install-zowe-zos-convenience-build.md).
-   - For more information about how to obtain and install the SMP/E build, see [Installing Zowe SMP/E overview](install-zowe-smpe-overview.md).
-   - For more information about how to obtain and install the PSWI, see [Installing Zowe from a Portable Software Instance](install-zowe-pswi.md).
+   - For more information about how to obtain and install the convenience build, see [Installing Zowe runtime from a convenience build](./install-zowe-zos-convenience-build.md).
+   - For more information about how to obtain and install the SMP/E build, see [Installing Zowe SMP/E overview](./install-zowe-smpe-overview.md).
+   - For more information about how to obtain and install the PSWI, see [Installing Zowe from a Portable Software Instance](./install-zowe-pswi.md).
 
 Successful installation of either a convenience build or an SMP/E build creates a zFS folder that contains the following artifacts:
 * The unconfigured Zowe runtime directory
@@ -105,8 +105,8 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 ![Configure the Zowe z/OS runtime](../images/install/config.png)
 
 Choose from the following methods to configure the Zowe runtime: 
-- [Use a combination of JCL and the zwe command `zwe init`](initialize-zos-system.md)
-- [Use z/OSMF Workflows](configure-zowe-zosmf-workflow.md)
+- [Use a combination of JCL and the zwe command `zwe init`](./initialize-zos-system.md)
+- [Use z/OSMF Workflows](./configure-zowe-zosmf-workflow.md)
 
 :::tip
 We recommend you open the links to this configuration procedure in new tabs.
@@ -123,22 +123,22 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 1. [Prepare the zowe.yaml configuration file](../appendix/zowe-yaml-configuration.md) if the file does not already exist.
 2. [Prepare the custom MVS data sets](initialize-mvs-datasets.md). Copy the data sets provided with Zowe to custom data sets.  
 (Uses the command `zwe init mvs`)
-3. [Initialize Zowe security configurations](initialize-security-configuration.md). Create the user IDs and security manager settings.  
+3. [Initialize Zowe security configurations](./initialize-security-configuration.md). Create the user IDs and security manager settings.  
   (Uses the command `zwe init security`)  
 
 :::note
 If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
 :::
-4. [Perform APF authorization of load libraries](apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS priviledged security calls.  
+4. [Perform APF authorization of load libraries](./apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS priviledged security calls.  
 (Uses the command `zwe init apfauth`)
-5. [Configure Zowe to use TLS certificates](configure-certificates.md)  
+5. [Configure Zowe to use TLS certificates](./configure-certificates.md)  
 (Uses the command `zwe init certificate`)
-6. [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](initialize-vsam-dataset.md). Note that this step is only required if you are configuring Zowe for cross LPAR sysplex high availability.  
+6. [Create the VSAM data sets used by the Zowe API Mediation Layer caching service](./initialize-vsam-dataset.md). Note that this step is only required if you are configuring Zowe for cross LPAR sysplex high availability.  
 (Uses the command `zwe init vsam`)
-7. [Install Zowe main started tasks](zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).  
+7. [Install Zowe main started tasks](./zwe-init-subcommand-overview.md#installing-zowe-main-started-tasks-zwe-init-stc).  
 (Uses command `zwe init stc`)
 
-Once you complete the Zowe z/OS runtime, you can [verify the installation](verify-zowe-runtime-install.md) to determine that Zowe is installed correctly on z/OS.
+Once you complete the Zowe z/OS runtime, you can [verify the installation](./verify-zowe-runtime-install.md) to determine that Zowe is installed correctly on z/OS.
 
 :::tip
 * For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verifyCertificates: DISABLED`.
@@ -157,18 +157,18 @@ Now that you have the permissions, certificates, files, and datasets necessary t
 - Customizing the behavior of a component, such as turning on optional features or logging
    
 :::tip
-We recommended that the first customization you perform is to [set `zwe` to use the Configuration Manager](configmgr-using.md).
+We recommended that the first customization you perform is to [set `zwe` to use the Configuration Manager](./configmgr-using.md)
 
-See [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) for other customization options.
+See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) for other customization options.
 :::
 
 ## Stage 5: (Optional) Installing and managing extensions
 
-Before installing extensions, we recommend you [start zowe](start-zowe-zos.md). 
+Before installing extensions, we recommend you [start zowe](./start-zowe-zos.md). 
 
 After Zowe is customized according to your needs, you can leverage more Zowe functionalities by installing extensions. These extensions can be optional components from the Zowe project or from other vendors.
 
-For more information about installing and managing extensions, see [Zowe server component and extension management](./install-configure-zos-extensions).
+For more information about installing and managing extensions, see [Zowe server component and extension management](./install-configure-zos-extensions.md).
 
 ## How to troubleshoot problems with the installation
 
@@ -180,4 +180,4 @@ For more information on the server configuration file, see the [Zowe YAML config
 
 ## Next step
 
-Before starting the installation process, first review the article [Preparing for installation](installandconfig) and the address the requirements outlined in the sub-articles in this section.
+Before starting the installation process, first review the article [Preparing for installation](./installandconfig.md) and the address the requirements outlined in the sub-articles in this section.
