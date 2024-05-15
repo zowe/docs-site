@@ -107,6 +107,8 @@ When there is one instance of the API Mediation Layer in the system, the API ML 
 
 ![Single instance](../../images/api-mediation/SimpleRouting.png "Simple Routing")
 
+<!-- Maybe "Transform authentication" could be "JWT to PassTicket transformation" -->
+
 ##### A GET call to a service with multiple versions on a single instance
 
 <!-- We should include a statement describing the diagram, perhaps something like, "The following diagram shows the process in a GET call to a service with multiple versions available through z/OSMF:" --> 
@@ -123,6 +125,7 @@ The following diagrams show the process of making a GET call through DVIPA when 
 The following diagram shows the High Availability setup for API Mediation Layer, where the L5 load balancer is used in front of the API Gateway. 
 
 #### Same LPAR Multiple API Mediation Layer Instances
+<!-- I hink we need some brief explanation about what DVIPA is/does and an examle of LPAR routing. I think we should show an example of the routing in the yaml code rather than in the diagram. It's confusing to read this on diagonal lines in a diagram.-->
 
 ![Same LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexSameLpar.png "Same LPAR Multiple API Mediation Layer Instances")
 
