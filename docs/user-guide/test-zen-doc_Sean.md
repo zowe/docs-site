@@ -1,23 +1,23 @@
 # Zowe Server Install Wizard Overview
 
-The Zowe Server Install Wizard is an installation wizard for Zowe server-side components. You can install the wizard on Microsoft Windows, Mac OS, and Linux system. It is an alternative to the existing Zowe installation process and improves the user experience.
+The Zowe Server Install Wizard is an installation wizard for Zowe server-side components. You can install the wizard on Microsoft Windows, Mac OS, and Linux system. Performing installation via the installation wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
 
-# Benefits of the wizard
+# Benefits of wizard installation
 
-- It reduces interactions with z/OS Unix and YAML, because it handles the Unix and YAML operations for you based upon the answers you give to prompts.
+- Reduces interactions with z/OS Unix and YAML, by handling these operations for you based on inputs to the prompts presented in the wizard UI.
 
-- Each answer you give for prompts is validated, so any commands being issued are further protected against invalid input or typos.
+- Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented. 
 
-- In each step, you can review the commands about to be executed, for greater confidence in your installation progress.
+- In each step, you can review the commands to be executed to ensure accuracy.
 
-- It provides easier separation of duties. You can skip a particular step and a team member with sufficient user privileges can complete it for you outside of the wizard.
+- Required separation of duties such as steps to be performed by a security administrator is made easier, whereby a system programer or system administrator can skip particular steps where elevated user permissions are required, whereupon security administrators can perform such steps outside of the wizard.
 
-- Results for each step and the YAML configuration output can be reviewed for reference alongside activites done outside the wizard, or for future use.
+- Results for each step and the YAML configuration output can be reviewed for reference alongside activites performed outside of the wizard, or for future use.
 
 # Prerequisites of the wizard
 
-- A computer with Microsoft Windows or Apple Mac OS or a Linux computer with an X11 or Wayland server display which can install programs from .rpm or .deb formats. 
-- An FTP or FTPS connection to the z/OS computer for the Zowe installation.
+- Microsoft Windows or Apple Mac OS, or a Linux with an X11 or Wayland server display which can install programs from .rpm or .deb formats. 
+- An FTP or FTPS connection to the z/OS computer for Zowe installation.
 - An account on z/OS that has access to z/OS UNIX for Zowe installation. 
 - A security administrator to configure required permissions in z/OS and z/OSMF.
 - A security administrator to generate certificates for Zowe.
@@ -26,8 +26,8 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 
 # Downloading the wizard
 
-Visit [Zowe.org](https://www.zowe.org/download.html) website to download the latest version of the wizard on your computer.
-You must download the appropriate type based upon your Operating System:
+To download the latest version of the wizard, visit [Zowe.org](https://www.zowe.org/download.html).
+Ensure that you download the appropriate file extension type based upon your Operating System:
 
 Operating System | File Extension Type
 ---|---
@@ -36,9 +36,9 @@ Apple Mac OS | .dmg
 Linux (debian-based) | .deb
 Linux (RedHat or SuSE-based) | .rpm
 
-After installation of the wizard, you can run the program to start your Zowe server installation process.
+After you complete the installation of the wizard, you can run the program to start your Zowe server installation process.
 
-# Installing Zowe
+# Installing Zowe installation wizard
 
 
 1. Select **New Zowe Installation**.
@@ -53,19 +53,19 @@ FTP Port  |The FTP Port number for internal use. The default port is 21. If not 
 User Name |Your z/OS username.
 Password  |Your z/OS password.
 
-        1. Select Use FTP over TLS (Highly Recommended). Provide details as described in the following table:
+3. Select Use FTP over TLS (Highly Recommended). Provide details as described in the following table:
         
 Field name | Description
 ---|---
 Min TLS    |Select the minimum TLS version to accept the certificate from the server.
 Max TLS    |Select the maximum TLS version to accept the certificate from the server.
-        2. Select **Accept all certificates**.
-3. Click **VALIDATE CREDENTIALS**.
-4. Click **Save & Close** if you want to go back to the **New Zowe Installation** screen.
-5. Click **Continue**.
-6. In the **Before you start** window, review the instructions. 
-7. In the **Job statement** field, customize the job statement if needed and click **SAVE AND VALIDATE**.
-8. In the **Planning window**, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
+4. Select **Accept all certificates**.
+5. Click **VALIDATE CREDENTIALS**.
+6. Click **Save & Close** if you want to go back to the **New Zowe Installation** screen.
+7. Click **Continue**.
+8. In the **Before you start** window, review the instructions. 
+9. In the **Job statement** field, customize the job statement if needed and click **SAVE AND VALIDATE**.
+10. In the **Planning window**, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
 Provide details as for z/OSMF. 
@@ -79,24 +79,26 @@ Provide details as for z/OSMF.
 
 Type | Description
 ---|---
-Download Zowe convenience build PAX from internet | Download the latest Zowe convenience build in .PAX format from [zowe website] (https://zowe.org) using the wizard without visiting the website.        1 Click **License Agreement**. 2 On the End User License Agreement for Zowe page, click **AGREE**.
-Upload Zowe PAX for offline install | Upload a local (already downloaded) Zowe .PAX file using this option.               1. Click **UPLOAD PAX**. 2. Select the downloaded PAX file and click **Open**.
-SMP/E | Use this option to install Zowe through SMP/E build outside the wizard. 1. Provide the location of the Runtime Directory. 2. Click **VALIDATE LOCATION**.                          **Note** In the case of SMP/E installation, in the Initialization window, under the **Installation** tab, confirm the dataset names used during installation and click **Save**. 
+Download Zowe convenience build PAX from internet | Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br /> &nbsp;&nbsp;       1 Click **License Agreement**. <br /> &nbsp;&nbsp; 2 On the End User License Agreement for Zowe page, click **AGREE**.
+Upload Zowe PAX for offline install | Upload a local (already downloaded) Zowe .PAX file using this option. <br /> &nbsp;&nbsp; 1. Click **UPLOAD PAX**.  <br /> &nbsp;&nbsp; 2. Select the downloaded PAX file and click **Open**.
+SMP/E | Use this option to install Zowe through SMP/E build outside the wizard. <br /> &nbsp;&nbsp; 1. Provide the location of the Runtime Directory. <br /> &nbsp;&nbsp; 2. Click **VALIDATE LOCATION**.                           <br /> &nbsp;&nbsp; **Note:** In the case of SMP/E installation, in the Initialization window, under the **Installation** tab, confirm the dataset names used during installation. <br /> &nbsp;&nbsp; 3. Click **Save**. 
 
 
 12. Click **Continue to Component Installation**.
 
 ## Zowe Server Configuration
 
-Each page of the wizard from this point onward will prompt you for configuration values for a particular step of Zowe server configuration.
-Some pages may require an additional administrator with sufficient privileges to complete the step. If you encounter such a page, you can **Skip** the page to allow the step to be completed externally to the wizard. It is also possible to input the correct values on the page, and use the **View Job** button to collect the job content to provide to an administrator without submitting it.
-Each value entered in a page will be validated, and when you complete entry on the page, the following actions can be performed:
+Perform Zowe server configuration in the wizard by providing inputs to the prompts for configuration values.
+Some steps may require an administrator with sufficient privileges to complete the step. You have the option to **Skip** the page to allow the step to be completed externally to the wizard. It is also possible to input the correct values on the page, and click **View Job** to collect the job content to provide to an administrator without submitting it.
+Each value entered is validated. When you complete an entry the following actions can be performed:
 
-* View/Edit YAML: This button lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the wizard are used to automatically generate its contents, but you can review it, edit it, or import and export its contents.
-* View/Submit Job: When you are happy with the values for the step, you can press the job submit button to execute the operations of the configuration step upon the z/OS system.
-* View Job output: Upon submission of the job, the output will be available for review.
+* **View/Edit YAML**  
+This feature lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file.
+* **View/Submit Job**  
+When you have completed providing the values for each step, you can click **View/Submit Job** to execute the operations of the configuration step upon the z/OS system.
+* After a job is submitted, job output is available for review.
 
 ## Final Review
 
-The last page of the wizard contains a summary of which steps were completed, skipped, or had errors. You can revisit any step to retry it, and you can also use this last page for exporting the final YAML that was generated.
+After completing the steps presented in the wizard, a summary is provided indicating which steps were completed, skipped, or had errors. You can revisit any step to retry performing the step. You also have the option to export the final YAML file that was generated.
  
