@@ -1,14 +1,71 @@
-# Routing
+# API Mediation Layer Routing Documentation
 
-Learn more about the different ways the API Mediation Layer works together with the southbound services to route
-the user's requests.
+## Overview
 
-API Mediation Layer provides API Gateway service. The service serves as Level 7 Load Balancer, accepting the requests, 
-understanding, validating and tranforming authentication and handling other concerns like observability for all the 
-services onboarded. To do so, the API Gateway needs to route the accepted requests to the relevant service, it's instance
-in the right place, that is accepting connections. 
+The API Mediation Layer (APIML) in Zowe acts as a Level 7 Load Balancer, using the API Gateway to route requests to backend 
+services. It supports both single and multiple APIML instances.
 
 ![Services Diagram](../../images/api-mediation/RoutingNorthboundSouthbound.png "Example services diagram")
+
+**Key Concepts**
+- Service ID: Unique identifier for each service.
+- Instance Routing: Routes requests based on service instances.
+- Versioning: Supports routing to specific service versions.
+
+**Basic Routing**
+
+Requests are routed using the service ID and optionally, the service version:
+
+- Example: https://gateway-url/api/v1/service-id
+
+**Routing Mechanism**
+
+1. Single APIML Instance: Routes directly to the service based on service ID.
+2. Multiple APIML Instances: Uses Eureka metadata for service discovery and load balancing.
+
+**Implementation Details**
+Routing configuration is defined in Eureka metadata. Ensure proper setup for accurate routing. Below is an example of Eureka metadata configuration:
+
+```yaml
+apiml:
+    service:                               
+        routes:
+            -   gateway-url: "ui/v1"
+                service-url: ${apiml.service.contextPath}
+            -   gateway-url: "api/v1"
+                service-url: ${apiml.service.contextPath}/api/v1
+            -   gateway-url: "ws/v1"
+                service-url: ${apiml.service.contextPath}/ws
+```
+
+
+**Instance Routing**
+APIML supports routing to multiple instances of the same service, distributing requests based on load balancing policies. Ensure each service instance registers with a unique instance ID in Eureka.
+
+**Versioning**
+APIML allows specifying a version for a service in the route. If a version is not specified, the latest version is used by default. This provides flexibility in deploying and updating services without affecting existing clients.
+
+**Example Usage**
+To route to a specific version of a service:
+
+```http
+https://gateway-url/api/v1/service-id?version=1.2
+```
+
+If no version is specified, the request defaults to the latest service version:
+
+```http
+https://gateway-url/api/v1/service-id
+```
+
+### Advanced Configuration
+
+Advanced routing configurations can include custom load balancing rules, fallback options, and route-specific policies. Refer to the detailed configuration guide for more advanced settings and examples.
+
+### Troubleshooting
+
+- Common Issues: Misconfigured metadata, incorrect service IDs, and network issues.
+- Debugging Tips: Check Eureka registration details, API Gateway logs, and network connectivity.
 
 ## Terminology
 
@@ -63,90 +120,3 @@ API Gateway is used.
 #### Different LPAR Multiple API Mediation Layer Instances
 
 ![Different LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexDifferentLpar.png "Different LPAR Multiple API Mediation Layer Instances")
-
-## APIML Basic Routing (using Service ID and version)
-
-This method of basic routing is based on the service ID that identifies the service. The specific instance is selected
-by the API Gateway. All instances require an identical response.
-
-The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of
-the same service are provided. For example, when a service is running in high-availability (HA) mode.
-
-In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which you can specify a major
-version. The Gateway routes a request only to an instance that provides the specified major version of the API.
-
-The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs and the prefix `/ws/` applies
-to [WebSockets](websocket.md) `/graphql/` applies to GraphQL APIs.
-
-The URL format expected by the API Gateway is:
-
-`https://{gatewayHost}:{port}/{serviceId}/api/v{majorVersion}/{resource}`
-
-**Example:**
-
-The following address shows the original URL of a resource exposed by a service:
-
-```
-http://service:10015/enablerv1sampleapp/api/v1/samples
-```
-
-The following address shows the API Gateway URL of the resource:
-
-```
-https://gateway:10010/enablerv1sampleapp/api/v1/samples
-```
-
-The following diagram illustrates how basic routing works:
-
-<img src={require("../../images/api-mediation/Basic-Routing.png").default} alt="Zowe API Mediation basic routing"/>
-
-### Implementation Details
-
-Service instances provide information about routing to the API Gateway via Eureka metadata.
-
-**Example:**
-
-    metadata-map:
-        apiml:
-            routes:
-                ui_v1:
-                    gatewayUrl: "ui/v1"
-                    serviceUrl: "/helloworld"
-                api_v1:
-                    gatewayUrl: "api/v1"
-                    serviceUrl: "/helloworld/v1"
-                api_v2:
-                    gatewayUrl: "api/v2"
-                    serviceUrl: "/helloworld/v2"
-
-In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
-
-* **UI** - `https://gateway/helloworldservice/ui/v1` routed to `https://hwServiceHost:port/helloworld/`
-* **API major version 1** - `https://gateway/helloworldservice/api/v1` routed
-  to `https://hwServiceHost:port/helloworld/v1`
-* **API major version 2** - `https://gateway/helloworldservice/api/v2` routed
-  to `https://hwServiceHost:port/helloworld/v2`
-
-where:
-
-* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`,
-  where `urlPath` is `serviceId/prefix/resourcePath`.
-* The service ID is used to find the service host and port.
-* The `serviceUrl` is used to prefix the `resourcePath` at the service host.
-
-**Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
-
-### Basic Routing (using only the service ID)
-
-One example that only uses a service ID is z/OSMF.
-
-**Example:**
-
-z/OSMF URL through the Gateway: `https://gateway:10010/zosmf/api/restjobs/jobs/...`
-
-where:
-
-* `zosmf` is the service ID.
-* `/restjobs/1.0/...` is the rest of the endpoint segment.
-
-Note that no version is specified in this URL.
