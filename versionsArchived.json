@@ -1,4 +1,7 @@
 {
+  "v2.7.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.6.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.6.x/getting-started/overview/",
+  "v2.5.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.5.x/getting-started/overview/",
   "v2.4.x LTS": "https://64f0183059547b28bc3c6040--zowe-docs-master.netlify.app/v2.4.x/getting-started/overview",
   "v2.3.x LTS": "https://deploy-preview-2745--zowe-docs-master.netlify.app/v2.3.x/getting-started/overview",
   "v2.2.x LTS": "https://deploy-preview-2745--zowe-docs-master.netlify.app/v2.2.x/getting-started/overview",

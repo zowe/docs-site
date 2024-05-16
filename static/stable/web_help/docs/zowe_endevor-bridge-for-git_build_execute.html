@@ -10,7 +10,7 @@
 <p>Build changes against remote git repository's Endevor Bridge for Git synchronized branch, using work area or build subsystem.It does not support autogen for building dependencies.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build execute [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -18,36 +18,6 @@
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-</ul>
-<h4>Endevor work area options</h4>
-<ul>
-<li>
-<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
-<ul>
-<li>Endevor work area ID. Name-masking is not allowed.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM environment where your build subsystem resides.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM system where your build subsystem resides.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -82,6 +52,33 @@
 <p>Starts the build process after cleaning the build subsystem.</p>
 <p>Default value: false</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>Endevor work area options</h4>
+<ul>
+<li>
+<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<ul>
+<li>Endevor work area ID. Name-masking is not allowed.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM environment where your build subsystem resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM system where your build subsystem resides.</li>
 </ul>
 </li>
 </ul>
