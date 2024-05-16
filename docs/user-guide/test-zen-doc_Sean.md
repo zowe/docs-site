@@ -2,11 +2,11 @@
 
 The Zowe Server Install Wizard is an installation wizard for Zowe server-side components. You can install the wizard on Microsoft Windows, Mac OS, and Linux systems. Performing installation via the installation wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
 
-# Benefits of wizard installation
+## Benefits of wizard installation
 
 - Reduces interactions with z/OS Unix and YAML by handling these operations for you based on inputs to the prompts presented in the wizard UI.
 
-- Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented. 
+- Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented.  
 
 - In each step, you can review the commands to be executed to ensure accuracy.
 
@@ -14,7 +14,7 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 
 - Results for each step and the YAML configuration output can be reviewed for reference alongside activites performed outside of the wizard, or for future use.
 
-# Prerequisites of the wizard
+## Prerequisites of the wizard
 
 - Microsoft Windows or Apple Mac OS, or a Linux with an X11 or Wayland server display which can install programs from .rpm or .deb formats 
 - An FTP or FTPS connection to z/OS for Zowe installation
@@ -22,12 +22,11 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 - A security administrator to configure required permissions in z/OS and z/OSMF
 - A security administrator to generate certificates for Zowe
 - A network administrator to open ports used by Zowe 
- 
 
-# Downloading the wizard
+## Downloading the wizard
 
 To download the latest version of the wizard, visit [Zowe.org](https://www.zowe.org/download.html).
-Ensure that you download the appropriate file extension type based upon your operating system:
+Ensure that you download the appropriate file extension type according to your operating system:
 
 Operating System | File Extension Type
 ---|---
@@ -38,13 +37,13 @@ Linux (RedHat or SuSE-based) | .rpm
 
 After you complete the installation of the wizard, you can run the program to start your Zowe server installation process.
 
-# Installing Zowe server-side components
+## Installing Zowe server-side components
 Follow the prompts as presented in the wizard UI.
 
 1. Select **New Zowe Installation**.
 2. In the Connection window, provide details as described in the following table:
 
-## Setup Wizard connection to z/OS
+### Setup Wizard connection to z/OS
 
 Field name| Description                
 ---|---
@@ -68,9 +67,12 @@ Max TLS    |Select the maximum TLS version to accept the certificate from the se
 10. In the **Planning window**, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
-Provide details as for z/OSMF. 
+Provide details for z/OSMF. 
 
-1. After specifying all the mandatory details , click **VALIDATE LOCATIONS**. You will receive a confirmation message for Java and Node.js locations.
+1. After specifying all the mandatory details , click **VALIDATE LOCATIONS**.
+
+  You will receive a confirmation message for Java and Node.js locations.
+
 2. Click **Continue to Installation Options**.
 
 ## Choosing the Server Installation Type
