@@ -1,6 +1,7 @@
 # Multitenancy Configuration
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
+
 * [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
 * [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
 * [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
@@ -25,18 +26,16 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
 
-
 ## Overview of Central and Domain API MLs
 
 The following diagram illustrates communication between the "central" API Mediation Layer and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
 
-Domain-Central is where the "central" API ML is running, and may be on  z/OS, or off z/OS, for example in Kubernetes. This API ML is referred to as the Central API ML.
+Domain-Central is where the "central" API ML is running, and may be on z/OS, or off z/OS, for example in Kubernetes. This API ML is referred to as the Central API ML.
 The Central API ML serves as a single point of access to all API Mediation Layers registered in it, and by extension, to all services registered in those secondary API MLs.
 
-Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are referred to as  Domain API MLs.
-
+Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are referred to as Domain API MLs.
 
 ## Multitenancy component enablement settings
 
