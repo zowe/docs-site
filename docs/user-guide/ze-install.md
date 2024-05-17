@@ -1,139 +1,132 @@
-# Visual Studio Code (VS Code) Extension for Zowe
+# Installing Zowe Explorer
 
-<img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/>
-<img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/>
+<a href="https://app.codecov.io/gh/zowe/zowe-explorer-vscode"><img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/></a>
+<a href="https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F"><img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/></a>
 
-The Zowe Explorer extension for Visual Studio Code (VS Code) modernizes the way developers and system administrators interact with z/OS mainframes, and lets you interact with data sets, USS files, and jobs.
+:::info Required roles: systems administrator
+:::
 
-Install the extension directly to [VSCode](https://code.visualstudio.com/) to enable the extension within the GUI. Working with data sets and USS files from VSCode can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
+Install Zowe Explorer directly to [Visual Studio Code](https://code.visualstudio.com/) to enable the extension within the GUI. 
+
+Working with data sets and USS files from VS Code can be more convenient than using 3270 emulators, and complements your Zowe CLI experience. The extension provides the following benefits:
 
 - Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
 - Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
 - Provides a more streamlined way to access data sets, USS files, and jobs.
 - Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
 
-**Note:** Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
+:::note
 
-## Software Requirements
+Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension demonstrates the potential for plug-ins powered by Zowe.
 
-Ensure that you meet the following prerequisites before you use the extension:
-
-- Get access to z/OSMF.
-- Install [Visual Studio Code](https://code.visualstudio.com/).
-- Configure TSO/E address space services, z/OS data set, file REST interface, and z/OS jobs REST interface. For more information, see [z/OS Requirements](https://docs.zowe.org/stable/user-guide/systemrequirements-zosmf#z-os-requirements).
-- Create a Zowe CLI `zosmf` profile so that the extension can communicate with the mainframe.
-- For development, install [Node.js](https://nodejs.org/en/download/) v14.0 or later.
-
-### Profile notes:
-
-- You can use existing Zowe CLI `zosmf` profiles created with Zowe CLI v.2.0.0 or later.
-
-- Zowe CLI `zosmf` profiles that are created in Zowe Explorer can be interchangeably used in Zowe CLI.
-
-- *Optionally*, you can continue using Zowe CLI V1 profiles with Zowe Explorer. For more information, see [Working with Zowe Explorer profiles](https://docs.zowe.org/stable/user-guide/ze-profiles#working-with-zowe-explorer-profiles).
+:::
 
 ## Installing Zowe Explorer
 
-Use the following steps to install Zowe Explorer:
+### Installing from VS Code Extensions
 
-1. Address [the software requirements](#software-requirements).
-2. Open Visual Studio Code, and navigate to the **Extensions** tab on the **Activity Bar**.
+To install Zowe Explorer:
+
+1. Address [the system requirements](#system-requirements).
+2. Open VS Code, and navigate to the **Extensions** tab on the **Activity Bar**.
 3. Type `Zowe Explorer` in the **Search** field.
-  
-   Zowe Explorer appears in the list of extensions in the **Side Bar**.
 
+   `Zowe Explorer` appears in the list of extensions in the **Side Bar**.
 4. Click the green **Install** button to install the extension.
-5. Restart Visual Studio Code.
+5. Restart VS Code.
 
 The extension is now installed and available for use.
 
-* **Note:** For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe#build-locally).
+### Installing from a `VSIX` file
 
-You can also watch the following videos to learn how to get started with Zowe Explorer, and work with data sets.
+For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe#build-locally).
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+## Installing a specific version of Zowe Explorer
 
-<iframe class="embed-responsive-item" id="youtubeplayer2" title="How to Work with Data Sets" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+Depending on their circumstances, developers might want to run a specific version of Zowe Explorer. To ensure that a particular version remains installed on VS Code, refer to the procedure for one of the following scenarios:
 
-## Configuring Zowe Explorer
+### When Zowe Explorer is not installed
 
-Configure Zowe Explorer in the settings file of the extension.
+If Zowe Explorer is not installed, you can install the current release of the extension and then revert to a previous version.
 
-To access the extension settings, follow these steps:
+#### Installing a previous version of Zowe Explorer
 
-1. Click the **Settings** icon at the bottom of the **Activity Bar**.
+1. Select the **Extensions** tab on the **Activities Bar** to display the **Search Extensions in Marketplace** field.
+2. In the **Side Bar**, search for `Zowe Explorer`. Click the **Install** button on the Zowe Explorer search result item. This opens a Zowe Explorer tab in the **Editor** area.
+   ![Zowe Explorer search result item](../images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
+<br/><br/>
+3. Click the **Down** arrow next to the **Uninstall** button. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
+4. Search for and click the version of Zowe Explorer you want to install.
 
-2. Select the **Settings** option.
-3. Open the **Extension** option listed in the **Commonly Used** menu.
-4. Select **Zowe Explorer** to access its settings.
-5. Scroll the list to find the setting that needs modification.
+### When Zowe Explorer is installed
 
-### Modifying creation settings for data sets, USS files, and jobs
+#### Installing a specific previous version
 
-Follow these steps:
+1. Select the **Extensions** tab on the **Activities Bar** to display a list of installed extensions.
+2. In the **Side Bar**, click the **Gear** icon next to Zowe Explorer to open a dropdown menu that lists available options.
+3. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
+4. Click the version of Zowe Explorer you want to install.
 
-1. In Zowe Explorer settings, scroll to a data set, USS file, or job setting type.
-2. Click the setting's corresponding **Edit in settings.json** link.
+#### Preventing automatic updates to retain a specific version
 
-    This opens the `settings.json` file in an **Editor** tab. (The suggestions widget also opens if the functionality is enabled.)
-
-3. Edit the settings in the file as needed.
-4. Save the file to keep changes.
-
-    ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
-
-### Modifying temporary file location settings
-
-Change the default folder location where temporary files are stored with the following steps:
-
-   1. Navigate to Zowe Explorer settings.
-   2. Under the data set, USS, or jobs settings that you want to edit, click the **Edit in settings.json** link.
-   3. Modify the following definition in the file:
-
-      ```json
-      "zowe.files.temporaryDownloadsFolder": {
-          "folderPath": "/path/to/directory"
-        }
-      ```
-
-      Replace **/path/to/directory** with the new folder location.
-
-4. Save the file to keep the change.
-
-### Modifying the `Secure Credentials Enabled` setting
-
-When environment conditions do not support the Zowe CLI built-in Credential Manager, change the `Secure Credentials Enabled` setting with the following steps:
-
- 1. Navigate to Zowe Explorer settings.
- 2. Scroll to **Security: Secure Credentials Enabled**.
- 3. Deselect the checkbox to disable secure credentials.
-
-    When disabled, if the `autoStore` setting in the `zowe.config.json` file is set to *true*, z/OS credentials are stored as text in the file.
-
-    If the `autoStore` setting is set to *false*, you are prompted for the missing credentials in Visual Studio Code. These are stored and used for the duration of the session.
-
-### Setting confirmation requirements for submitting jobs
-
-Submitting the wrong job can risk potential problems on your server. This can happen when the user enters the wrong job or inadvertently selects the **Submit Jobs** option.
-
-To help prevent this, enable the option to require confirmation before submitting a job. Once enabled, a dialog window asking for user confirmation displays when **Submit Jobs** is selected.
-
-![Confirm Submit Job](../images/ze/ZE-SubmitJobConfirm.gif)
-
-To configure confirmation settings for submitting a job, follow these steps:
+By default, VS Code automatically updates extensions as new versions are released. Refer to the following steps to prevent automatic updates:
 
 1. On the VS Code menu bar, click **File**, **Preferences**, and click **Settings** to display the Settings editor.
+2. Select the **User** or **Workspace** tab, depending on which settings you want to update.
+3. In the Settings navigation menu, click **Features** and click **Extensions**.
+4. In the **Auto Update** dropdown menu, select **None**. This prevents VS Code from updating your extensions automatically.
 
-2. Select the **User** or **Workspace** tab, depending on the settings you want to update.
-3. In the Settings navigation menu, open the **Extensions** menu and click **Zowe Explorer**.
-4. In the **Jobs: Confirm Submission** section, open the drop-down menu to select a different confirmation setting.
-    - If enabled, a confirmation dialog displays when a job matching the selected option is submitted.
+      VS Code is configured to stop updating your extensions, and Zowe Explorer extensions, automatically.
 
-## Relevant Information
+## Installing Zowe Explorer extensions
 
-In this section you can find useful links and other information relevant to Zowe Explorer that can improve your experience with the extension.
+### Installing from VS Code Extensions
 
-- For information about how to develop for Eclipse Theia, see [Theia README](https://github.com/zowe/vscode-extension-for-zowe/wiki/Developing-for-Theia).
-- For information about how to create a VSCode extension for Zowe Explorer, see [VSCode extensions for Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer).
+1. Navigate to **Extensions** tab of your VS Code application.
+2. In the **Search** field, enter the name of the Zowe Explorer extension.
 
-- Visit the **#zowe-explorer** channel on [Slack](https://openmainframeproject.slack.com/) for questions and general guidance.
+    The name of the extension appears in the list that displays in the **Side Bar**.
+
+3. Click **Install** at the top of the page.
+
+   The selected extension is installed in VS Code.
+
+### Installing Zowe Explorer for IBM CICS Extension from a `VSIX` file
+
+Before you install the Zowe Explorer for IBM CICS Extension from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. For more information, see [Installing Zowe Explorer](#installing-zowe-explorer-1).
+
+If  Zowe Explorer is installed, you can install the Zowe Explorer for IBM CICS Extension from a `VSIX` file.
+
+1. Go to the [Zowe Explorer for IBM CICS Extension download](https://github.com/zowe/cics-for-zowe-client) site. Select the **Latest** button, which directs to a page that includes the latest version of the `.vsix` file. Download it to your PC.
+
+   ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
+
+2. Open the Extensions icon in the **Side Bar**, navigate to the **...** menu, select **Install from VSIX ...** and select the downloaded `Zowe.cics-extension-for-zowe-2.x.x.vsix` file.
+
+   ![Installing Zowe CICS Explorer](../images/ze-cics/zowe-cics-explorer-install.gif)
+
+   The following message indicates that the extension is installed successfully.
+
+   ![Zowe CICS Explorer install completed](../images/ze-cics/info-message-install-completed.png)
+
+   The Zowe Explorer pane shows tree views for **Data Sets**, **Unit System Services (USS)** and **Jobs**, and a new view for **CICS**.
+
+   ![CICS tree in Zowe pane](../images/ze-cics/cics-tree-in-zowe-pane.png)
+
+### Installing Zowe Explorer Extension for FTP from a `VSIX` file
+
+1. Go to the [Zowe Explorer Extension for FTP download](https://open-vsx.org/extension/Zowe/zowe-explorer-ftp-extension) site.
+
+2. Select the `DOWNLOAD` button to download the latest version of the `.vsix` file.
+
+3. Open the Extensions icon in the **Side Bar**, navigate to the **...** menu, select **Install from VSIX ...** and select the downloaded `Zowe.zowe-explorer-ftp-extension-3.x.x-next.<DATE>` file.
+
+      A message displays to confirm the installation was successful.
+
+4. Close and reopen VS Code to check that the notification message "Zowe Explorer was modified for FTP support" displays.
+
+   Once installed, the notification displays every time you open VS Code to confirm that the FTP extension is available.
+
+## Updating Zowe Explorer and Zowe Explorer extensions
+
+By default, VS Code automatically updates extensions as new versions are released. To stop automatic updates, see [Preventing automatic updates to retain a specific version](#preventing-automatic-updates-to-retain-a-specific-version).

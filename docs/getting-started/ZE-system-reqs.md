@@ -1,13 +1,15 @@
-# Zowe Explorer System Requirements
+# Zowe Explorer system requirements
 
 Before installing Zowe Explorer, make sure that you meet the following requirements.
+
+:::info Required roles: systems administrator, devops architect
+:::
 
 ## Client side requirements
 
 ### Operating systems
 
-
-- MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey)
+- MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey), 13 (Ventura), 14 (Sonoma) **are all these correct?**
 - Unix-like:
    - [CentOS](https://www.centos.org/) 8+
    - [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) 8+
@@ -16,18 +18,20 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
 
 ### Integrated development environments: 
 
-- [VS Code](https://code.visualstudio.com/) 1.53.2+
-- [Eclipse Che](https://www.eclipse.org/che/)
-- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces)
-- [Theia](https://theia-ide.org/) 1.18+
+- [GitHub Codespaces](https://github.com/features/codespaces) (see Note)
+- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces) (see Note)
+- [VS Code](https://code.visualstudio.com/) 1.79.0+
+    
+:::note
 
-   - Zowe Explorer is compatible with Theia 1.18.0 or higher. However, we recommend using a [Theia community release](https://theia-ide.org/releases/) as Zowe Explorer could experience possible unexpected behaviors with the latest Theia releases.
+Secure credentials are not supported in GitHub Codespaces or Red Hat CodeReady Workspaces as the keyrings are not unlocked by default.
+
+:::
 
 ## Server side requirements
 
 - IBM z/OSMF is configured and running.
-	- Minimally, an instance of IBM z/OSMF must be running on the mainframe before you can run Zowe Explorer successfully.
-    - z/OSMF enables the core capabilities, such as retrieving data sets, executing TSO commands, submitting jobs, and more.
+	- See [z/OSMF REST services for Zowe clients](/user-guide/systemrequirements-zosmf/#zosmf-rest-services-for-the-zowe-cli) for a list of services that need configuration.
     
 - Applicable plug-in services are configured and running on the mainframe.
     - Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands.

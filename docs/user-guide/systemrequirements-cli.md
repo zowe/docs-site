@@ -1,8 +1,8 @@
-# Zowe CLI software requirements
+# Zowe CLI system requirements
 
 Before installing Zowe CLI, ensure that your environment meets the prerequisites that are described here.
 
-:::info**Required role:** systems administrator
+:::info Required role: systems administrator
 :::
 
 ## Client-side requirements

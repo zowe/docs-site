@@ -5,7 +5,7 @@ This checklist outlines the required steps for a first-time installation of Zowe
 :::info Required roles: systems administrator, devops architect, security administrator, systems programmer
 :::
 
-The checklist includes a brief description of the steps, with links to more comprehensive information required for the installation. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team to focus on the tasks for which they are responsible.
+The checklist includes a brief description of the steps required for installation of Zowe CLI. The checklist also identifies the roles that are typically required to complete the step, which enables the pre-installation planning team to focus on the tasks for which they are responsible.
 
 For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installation_Checklist.xlsx" target="_blank">click here</a>.
 

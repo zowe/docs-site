@@ -1,11 +1,13 @@
 # Installing Zowe client-side components
 
-Review this topic to prepare to install, configure, and deploy Zowe client-side components.
+Review this article to prepare to install, configure, and deploy Zowe client-side components.
 
-:::info**Required roles:** systems programmer, security administrator, storage administrator
+:::info Required roles: systems programmer, security administrator, storage administrator
 :::
 
-To prepare for an installation or upgrade, your installation team should review the installation and configuration tasks outlined in the component documentation to determine the high-level requirements by role. Doing so can help you complete the process faster without any delays waiting for tasks to be completed at the last minute.
+To prepare for an installation or upgrade, your installation team should review the configuration requirements for both z/OSMF and the particular component to be installed.
+
+Doing so can help you complete the process faster without any delays waiting for tasks to be completed at the last minute.
 
 To install your product, we recommend that your team understands the following topics:
 
