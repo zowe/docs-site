@@ -1,11 +1,10 @@
 # Configuring AT-TLS for API Mediation Layer
 
-The communication server on z/OS provides a functionality to encrypt HTTP communication for on-platform running jobs. This functionality is refered to as Application Transparent Transport Layer Security (AT-TLS).
 
 Review this article for descriptions of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS, and security recommendations.
 
 :::info Role: security administrator
-:::
+::: 
 
 - [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
 - [AT-TLS rules](#at-tls-rules)
@@ -24,43 +23,12 @@ Review this article for descriptions of the configuration parameters required to
 Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
 :::
 
-Follow these steps to configure Zowe to support AT-TLS:
-
-1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
-
-**Example:**
-
-```yaml
-zowe:
-  components:
-    gateway:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-      server:
-        internal:
-          ssl:
-            enabled: false
-
-    discovery:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-```
-
 While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Esure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
-2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
+If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
 :::note Notes
-* Currently, AT-TLS is not supported in the API Cloud Gateway Mediation Layer component.
+* AT-TLS is supported in the API Cloud Gateway Mediation Layer component since version 2.17.
 
 * As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
