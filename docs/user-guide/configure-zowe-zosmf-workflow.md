@@ -181,4 +181,4 @@ After you execute each step, the step is marked as Complete. The workflow is exe
 
 ## Next step
 
-After you successfully execute the workflow, you are ready to [configure the z/OS system for Zowe](./configure-zos-system.md).
+After you successfully execute the workflow, you are ready to configure the z/OS system for Zowe. For more information, see [Addressing z/OS requirements for Zowe](./configure-zos-system.md).

@@ -32,8 +32,6 @@ For a better understanding of Zowe Explorer, review the various reference materi
 
 <iframe class="embed-responsive-item" id="youtubeplayer2" title="How to Work with Data Sets" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/X4oSHrI4oN4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
-
-
 ## Contributing to Zowe Explorer
 
 - Review the [**Contribution Guidelines**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md) for a summary of conventions and best practices for development of the Visual Studio Code Extension for Zowe.

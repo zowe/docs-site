@@ -56,7 +56,7 @@ To identify the resources most relevant for you, use the following definitions o
 
 > Zowe skill level: Advanced
 
-* [**Extend Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer)
+* [**Extend Zowe Explorer**](https://github.com/zowe/zowe-explorer-vscode/wiki/Extending-Zowe-Explorer)
 
    Learn how to create extensions for Zowe Explorer to introduce new functionalities.
 
@@ -68,11 +68,11 @@ To identify the resources most relevant for you, use the following definitions o
 
    Learn how to install and use the FTP extension. The extension adds the FTP protocol to the Zowe Explorer VS Code extension, which lets use z/OS FTP Plug-in for Zowe CLI profiles to connect and interact with z/OS USS.
 
-* [**Zowe Explorer repository**](https://github.com/zowe/vscode-extension-for-zowe)
+* [**Zowe Explorer repository**](https://github.com/zowe/zowe-explorer-vscode)
 
    The GitHub repository of contains the source code of Zowe Explorer and other Zowe Explorer-related extensions. Check out the landing page README in the repository to find out how to contribute to the extension.
 
-* [**Developing for Eclipse Theia**](https://github.com/zowe/vscode-extension-for-zowe/wiki/Developing-for-Theia)
+* [**Developing for Eclipse Theia**](https://github.com/zowe/zowe-explorer-vscode/wiki/Developing-for-Theia)
 
    This article contains information on how to develop for Eclipse Theia.
 
@@ -80,7 +80,7 @@ To identify the resources most relevant for you, use the following definitions o
 
 > Zowe skill level: Advanced
 
-* [**Contributing guidelines**](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
+* [**Contributing guidelines**](https://github.com/zowe/zowe-explorer-vscode/blob/master/CONTRIBUTING.md)
 
    This document is intended to be a living summary of conventions & best practices for development of the Visual Studio Code Extension for Zowe.
 
@@ -98,7 +98,7 @@ To identify the resources most relevant for you, use the following definitions o
 
    Learn about the tools and techniques that are available to help you troubleshoot and resolve problems. You can also find the list of Zowe Explorer issues.
 
-* [**Submit an issue**](https://github.com/zowe/vscode-extension-for-zowe/issues)
+* [**Submit an issue**](https://github.com/zowe/zowe-explorer-vscode/issues)
 
    If you have an issue that is specific to Zowe Explorer, you can submit an issue against the `vscode-extension-for-zowe` repository.
 

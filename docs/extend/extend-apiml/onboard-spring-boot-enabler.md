@@ -3,13 +3,17 @@
 This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
 As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
-**Note:** Before API ML version 1.2, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.3 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions. API ML core services (Discovery Service, Gateway, and API Catalog) support both the old and new enabler versions. 
+:::note
+Before API ML version 1.2, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.3 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions. API ML core services (Discovery Service, Gateway, and API Catalog) support both the old and new enabler versions. 
+:::
 
-**Tip:** For more information about how to utilize another onboarding method, see:
+:::tip
+For more information about how to utilize another onboarding method, see:
 
   * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
   * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
   * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
+:::
 
 ## Outline of onboarding a REST service using Spring Boot
 
@@ -50,13 +54,17 @@ Add a dependency on the Spring Enabler version to your project build configurati
   * onboarding-enabler-spring-v1
   * onboarding-enabler-spring-v2
 
-**Note:** The process of onboarding an API service is the same for both Spring Boot enabler versions.
+:::note
+The process of onboarding an API service is the same for both Spring Boot enabler versions.
+:::
 
 ## Configuring your project
 
 Use either _Gradle_ or _Maven_ as your build automation system to manage your project builds.
 
-**Note:** You can download the selected enabler artifact from the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+:::note
+You can download the selected enabler artifact from the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for latest stable versions.. Alternatively, if you decide to build the API ML from source, it is necessary to publish the enabler artifact to your Artifactory. Publish the enabler artifact by using the _Gradle_ tasks provided in the source code.
+:::
 
 ### Gradle build automation system
 Use the following procedure to use _Gradle_ as your build automation system.
@@ -310,8 +318,10 @@ A property notation provided in the format `-Dproperty.key=PROPERTY_VALUE` can b
         key: PROPERTY_VALUE
     ```
 
-**Note**: System properties provided with `-D` notation on the command line will not replace properties defined
+:::note
+System properties provided with `-D` notation on the command line will not replace properties defined
 in any of the YAML configuration files.
+:::
 
 ### Authentication properties
 These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters) for more details.
@@ -409,7 +419,8 @@ apiml:
 # and other properties
 ```
 
-**Tip:** To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
+:::tip
+To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
 ```yaml
 logging:
@@ -417,6 +428,7 @@ logging:
      ROOT: INFO
      org.zowe.apiml: DEBUG
 ```
+:::
 
 3. Provide the suitable parameter corresponding to your runtime environment:
 
@@ -457,8 +469,7 @@ ssl:
 
 ### Custom Metadata
 
-Custom metadata are described [here](custom-metadata.md).
-
+For information about customizing metadata to add to the instance information registered in the Discovery Service, see [Customizing Metadata](./custom-metadata.md).
 
 ## Registering and unregistering your service with API ML
 
@@ -472,7 +483,7 @@ Unregistering a service onboarded with API ML is done automatically at the end o
 
 ### Basic routing
 
-See [API ML Basic Routing](api-mediation-routing.md) for more information about basic routing in the API ML.
+For information about basic routing in the API ML, see [API ML Basic Routing](./api-mediation-routing.md) 
 
 ## Adding API documentation
 
@@ -567,8 +578,10 @@ Use the following procedure to add Swagger API documentation to your project.
 3. Customize this configuration according to your specifications. For more information about customization properties,
 see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
 
-   **Note:** The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
-    For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
+:::note
+The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
+For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
+:::
 
 ## Validating the discoverability of your API service by the Discovery Service
 
@@ -583,12 +596,15 @@ Once you build and start your service successfully, you can use the option of va
 
 Specific addresses and user credentials for the individual API ML components depend on your target runtime environment.
 
-**Note:** If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
+:::note
+If you are working with local installation of API ML and you are using our dummy identity provider, enter `user`
 for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you
 with actual addresses of API ML components and the respective user credentials.
+:::
 
-**Tip:** Wait for the Discovery Service to fully register your service. This process may take a few minutes after your
-service was successfully started.
+:::tip
+Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+:::
 
 
 ## Troubleshooting
@@ -607,8 +623,6 @@ Some logging frameworks provide other tools to suppress repeated messages. Consu
 
 **Example:** 
 
-The Logback framework provides a filter tool, [DuplicateMessageFilter](http://logback.qos.ch/manual/filters.html#DuplicateMessageFilter). 
-
 Add the following code to your configuration file if you use XML configuration: 
 
 ```
@@ -616,4 +630,7 @@ Add the following code to your configuration file if you use XML configuration:
         <AllowedRepetitions>0</AllowedRepetitions>
     </turboFilter>
 ```    
-**Note:** For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
+
+:::note
+For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
+:::

@@ -7,7 +7,7 @@ Perform the following configurations on headless Linux or z/Linux operating syst
 
 :::note
 
-For CI/CD pipelines we recommend using the credential management provided by the CI/CD tool (for example, Jenkins credentials or GitHub secrets) to store credentials and load them into environment variables in the pipeline. See [Using environment variables](../user-guide/cli-using-using-environment-variables.md#store-credentials-securely-in-cicd-pipelines) for more information.
+For CI/CD pipelines, we recommend using the credential management provided by the CI/CD tool (for example, Jenkins credentials or GitHub secrets) to store credentials and load them into environment variables in the pipeline. See [Using environment variables](../user-guide/cli-using-using-environment-variables.md#store-credentials-securely-in-cicd-pipelines) for more information.
 
 :::
 

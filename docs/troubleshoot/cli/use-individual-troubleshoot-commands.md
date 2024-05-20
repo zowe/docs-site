@@ -61,13 +61,14 @@ The values for these variables can be **echo**ed.
 
 ![Home Directory](../../images/troubleshoot/cli/home_struc.png)
 
-### Location of logs
+### Location and types of logs
 
-There are two sets of logs to be aware of:
+Zowe client logs are located in the `~/.zowe/logs` directory:
 
-- Imperative CLI Framework log, which generally contains installation and configuration information.
-
-- Zowe CLI log, which contains information about interaction between CLI and the server endpoints.
+- **Imperative CLI Framework log**, `imperative.log`
+    - Generally contains installation and configuration information
+- **Zowe CLI log**, `zowe.log`
+    - Contains information about interaction between the CLI and the server endpoints
 
 Analyze these logs for any information relevant to your issue.
 
