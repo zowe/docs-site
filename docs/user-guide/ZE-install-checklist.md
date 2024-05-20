@@ -30,5 +30,5 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
 | [Creating Zowe Explorer profiles](../user-guide/ze-profiles.md) | Connect to the mainframe with a Zowe Explorer profile. | Systems administrator | 30 min. |
-| [Configuring Zowe Explorer](../user-guide/ze-install-configuring-ze) | Save your preferences as settings. | **WHAT ROLE?** | 30 min. |
+| [Configuring Zowe Explorer](../user-guide/ze-install-configuring-ze) | Save your preferences as settings. | Developer | 30 min. |
 | [Verifying your Zowe Explorer installation](../user-guide/ze-install-verify-your-installation.md) | Confirm the connection to z/OSMF. | Systems administrator and/or DevOps architect | 15 min. |

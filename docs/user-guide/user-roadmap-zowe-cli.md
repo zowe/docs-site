@@ -56,6 +56,4 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 Administered by the Open Mainframe Project, the [Zowe Conformance Program](../extend/zowe-conformance-program.md) aims to give users the confidence that when they use a product, app, or distribution that leverages Zowe, they can **expect a high level of common functionality**, **interoperability**, and **user experience**.
 
-   As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today. **[is it appropriate to add this graf to this CLI page?]**
-
-   Read the blog post [**Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) for more details about the Conformance Program, including useful references.
+Read the blog post [**Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) for more details about the Conformance Program, including useful references.

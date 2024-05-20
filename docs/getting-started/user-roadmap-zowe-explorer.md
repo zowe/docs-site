@@ -14,7 +14,7 @@ For a better understanding of Zowe Explorer, review the various reference materi
 
 - Review the system requirements and steps for installing the Zowe Explorer in [**Installing Zowe Explorer**](../user-guide/ze-install.md).
 
-- Learn how to create and work with [**Zowe Explorer profiles**](../user-guide/ze-profiles.md). A profile enables you to use all functions of the extension, integrate with API Mediation Layer **[correct?]**, and more.
+- Learn how to create and work with [**Zowe Explorer profiles**](../user-guide/ze-profiles.md). A profile enables you to connect to services running on a mainframe, integrate with the API Mediation Layer, and more.
 
 ## Getting the most out of Zowe Explorer
 
@@ -56,6 +56,6 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 Administered by the Open Mainframe Project, the [Zowe Conformance Program](../extend/zowe-conformance-program.md) aims to give users the confidence that when they use a product, app, or distribution that leverages Zowe, they can **expect a high level of common functionality**, **interoperability**, and **user experience**.
 
-As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe Explorer **[this used to say "Zowe CLI" but I changed it to say ZE. Is ZE correct here?]**, you are encouraged to get certified today.
+As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe Explorer, you are encouraged to get certified today.
 
 Read the blog post [**Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) for more details about the Conformance Program, including useful references.

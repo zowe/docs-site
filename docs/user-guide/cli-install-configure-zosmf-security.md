@@ -7,11 +7,11 @@ Review the tasks that security administrators must complete to configure z/OSMF 
 
 ## Configuring z/OS REST services SAF security
 
-A security administrator must configure security to allow z/OSMF System Authorization Facility (SAF) access to the resources that Zowe client-side components **(Is "Zowe client-side components" correct?)** require. Zowe client-side components **(Is "Zowe client-side components" correct?)** use REST endpoints that are associated with each z/OSMF REST API. After you complete all z/OSMF and z/OSMF cloud provisioning configurations, you can test your connection to z/OSMF to verify that your Zowe client-side components **(Is "Zowe client-side components" correct?)** can communicate with z/OS systems.
+A security administrator must configure security to allow z/OSMF System Authorization Facility (SAF) access to the resources that Zowe client-side components require. Zowe client-side components use REST endpoints that are associated with each z/OSMF REST API. After you complete all z/OSMF and z/OSMF cloud provisioning configurations, you can test your connection to z/OSMF to verify that your Zowe client-side components can communicate with z/OS systems.
 
 :::caution
 
-Before you allow users to issue z/OS console commands with Zowe client-side components **(Is "Zowe client-side components" correct?)**, security administrators should ensure that they provide access to commands that are appropriate for their organization.
+Before you allow users to issue z/OS console commands with Zowe client-side components, security administrators should ensure that they provide access to commands that are appropriate for their organization.
 
 :::
 
@@ -55,6 +55,6 @@ Ensure that you implement all the required security for the plug-ins. For more i
 :::note
 
 - For systems that are secured by RACF, ensure that the TRUSTED attribute is assigned to the CEA started task.
-- To enable Zowe client-side components **(Is "Zowe client-side components" correct?)** to authenticate to z/OSMF using certificates, security administrators can configure the certificates for users of Zowe client-side components **(Is "Zowe client-side components" correct?)**. For more information, see [Using the z/OSMF REST services](https://www.ibm.com/docs/en/zos/2.2.0?topic=guide-using-zosmf-rest-services) in the IBM Documentation.
+- To enable Zowe client-side components to authenticate to z/OSMF using certificates, security administrators can configure the certificates for users of Zowe client-side components. For more information, see [Using the z/OSMF REST services](https://www.ibm.com/docs/en/zos/2.2.0?topic=guide-using-zosmf-rest-services) in the IBM Documentation.
 
 :::

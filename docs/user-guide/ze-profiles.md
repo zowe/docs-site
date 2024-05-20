@@ -12,7 +12,7 @@ You can use a text editor or an IDE to populate configuration files with profile
 
 :::note
 
-When multiple profiles with the same name are available in Zowe CLI **[is it accurate to say zowe cli here?]**, project configuration takes precedence over global configuration. To learn more, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs).
+When multiple profiles with the same name are available in Zowe Explorer, project configuration takes precedence over global configuration. To learn more, see [How Zowe CLI uses configurations](../user-guide/cli-using-understand-profiles-configs).
 
 :::
 

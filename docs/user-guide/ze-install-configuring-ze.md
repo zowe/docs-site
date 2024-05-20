@@ -1,9 +1,7 @@
 # Configuring Zowe Explorer
 
-:::info Required roles: WHAT ROLE?
+:::info Required role: Developer
 :::
-
-**WHAT ROLE SHOULD GO HERE?**
 
 Configure Zowe Explorer in the settings file so the extension performs according to your preferences.
 
