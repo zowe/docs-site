@@ -10,17 +10,7 @@ The following diagram shows the request for specific job from customer and the s
 ![Services Diagram](../../images/api-mediation/RoutingNorthboundSouthbound.png "Example services diagram")
 
 **Key Concepts**
-- **Service ID**  
- Unique identifier for each service.
-- **Instance Routing**  
-Routes requests based on service instances.
-- **Versioning**  
-Supports routing to specific service versions.
-
-
-## Terminology
-
-* **Service**
+- **Service**
 
   A service provides one or more APIs and is identified by a service ID. Note that sometimes the term "service name" is
   used to mean service ID.
@@ -31,10 +21,15 @@ Supports routing to specific service versions.
   Ensure that you detail how to specify the name in your service documentation. 
 
   Services are deployed using one or more service instances, which share the same service ID and implementation.
-
-* **Instance**
+- **Instance**
 
   Refers to the instance of a specific service providing one or more APIs.
+- **Service ID**  
+  Unique identifier for each service.
+- **Instance Routing**  
+  Routes requests based on service instances.
+- **Versioning**  
+  Supports routing to specific service versions.
 
 ## Basic Routing
 
@@ -160,11 +155,4 @@ Refer to the detailed configuration guide for more advanced settings and example
 
 By default, routing through the API Mediation Layer selects the instance to route to in Round-robin fashion for each
 specific request. It is possible to change this behavior to assign a specific user to a specific instance or to change 
-the behavior by providing the option to go to a specific instance of a service. 
-
-## Troubleshooting
-
-<!-- TODO: Add more details or link to the correct places. -->
-
-- Common Issues: Misconfigured metadata, incorrect service IDs, and network issues.
-- Debugging Tips: Check Eureka registration details, API Gateway logs, and network connectivity.
+the behavior by providing the option to go to a specific instance of a service.
