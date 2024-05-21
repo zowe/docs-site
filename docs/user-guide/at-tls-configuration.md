@@ -12,20 +12,8 @@ To enable AT-TLS for Zowe components, configure the following parameters:
 zowe:
     network:
         server:
-            attls: true
-```
-
-### High Availability Setup
-
-In a high availability setup where one LPAR (e.g., lpar1) is using AT-TLS and the second (e.g., lpar2) is  not using AT-TLS, configure as follows:
-
-```yaml
-zowe:
-    haInstances:
-        lpar1:
-            attls: true
-        lpar2:
-            attls: false
+            tls:
+                attls: true
 ```
 
 ## Component-Specific Configuration
