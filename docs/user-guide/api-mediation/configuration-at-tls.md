@@ -1,7 +1,7 @@
 # Configuring AT-TLS for API Mediation Layer
 
 
-Review this article for descriptions of the configuration parameters required to make the Zowe API Mediation Layer work with AT-TLS, and security recommendations.
+Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, and security recommendations.
 
 :::info Role: security administrator
 ::: 
@@ -35,7 +35,7 @@ If there is an outbound AT-TLS rule configured for the link between the API Gate
 
 :::caution Important security consideration
 
-Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings, specifically as these settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
+Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
 Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support x.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
@@ -92,7 +92,10 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
+:::important
+
 Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
+:::
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
