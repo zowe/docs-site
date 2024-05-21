@@ -14,8 +14,8 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
 |[Addressing Zowe Explorer system requirements](../getting-started/ZE-system-reqs.md) | Check the following items: <ul><li>your operating system</li><li>development environments</li></ul> | Systems administrator | 15 min. |
-| [Configuring z/OSMF](../user-guide/cli-install-configure-zosmf.md) | Confirm that z/OS components, region sizes, and user IDs meet Zowe Explorer requirements. | Systems programmer | 40 min. |
-| [Configuring z/OSMF security](../user-guide/cli-install-configure-zosmf-security.md) | Configure security for: <ul><li>SAF access to REST endpoints</li><li>z/OS console REST interface</li><li>z/OS data set and file REST services</li></ul> | Security administrator| 50 min. |
+| (Optional) [Configuring z/OSMF](../user-guide/cli-install-configure-zosmf.md) | Confirm that z/OS components, region sizes, and user IDs meet Zowe Explorer requirements. <br/> Required step when using a z/OSMF profile connection. | Systems programmer | 40 min. |
+| (Optional) [Configuring z/OSMF security](../user-guide/cli-install-configure-zosmf-security.md) | Configure security for: <ul><li>SAF access to REST endpoints</li><li>z/OS console REST interface</li><li>z/OS data set and file REST services</li></ul> Required step when using a z/OSMF profile connection.| Security administrator| 50 min. |
 | (Optional) [Installing Zowe CLI](../user-guide/cli-install-cli-checklist) | Set up team configuration with Zowe CLI to communicate with the mainframe. | Systems administrator | 60 min. |
 
 ## Installing Zowe Explorer

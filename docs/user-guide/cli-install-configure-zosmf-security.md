@@ -7,6 +7,12 @@ Review the tasks that security administrators must complete to configure z/OSMF 
 
 ## Configuring z/OS REST services SAF security
 
+:::note
+
+If you are connecting to the mainframe with other methods than a z/OSMF profile, you do not need to configure z/OSMF security. Other connection options might include using FTP, or your custom API.
+
+:::
+
 A security administrator must configure security to allow z/OSMF System Authorization Facility (SAF) access to the resources that Zowe client-side components require. Zowe client-side components use REST endpoints that are associated with each z/OSMF REST API. After you complete all z/OSMF and z/OSMF cloud provisioning configurations, you can test your connection to z/OSMF to verify that your Zowe client-side components can communicate with z/OS systems.
 
 :::caution

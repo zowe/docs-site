@@ -9,7 +9,13 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
 
 ### Operating systems
 
-- MacOS 10.15 (Catalina), 11 (Big Sur), 12 (Monterey), 13 (Ventura), 14 (Sonoma) **are all these correct?**
+- macOS
+
+    :::note
+
+    Only Mac operating system versions supported by Apple.
+
+    :::
 - Unix-like:
    - [CentOS](https://www.centos.org/) 8+
    - [RHEL](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) 8+
@@ -18,15 +24,14 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
 
 ### Integrated development environments: 
 
-- [GitHub Codespaces](https://github.com/features/codespaces) (see Note)
-- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces) (see Note)
+- [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces) 
+
+    :::note
+
+    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyrings are not unlocked by default.
+
+    :::
 - [VS Code](https://code.visualstudio.com/) 1.79.0+
-    
-:::note
-
-Secure credentials are not supported in GitHub Codespaces or Red Hat CodeReady Workspaces as the keyrings are not unlocked by default.
-
-:::
 
 ## Server side requirements
 
