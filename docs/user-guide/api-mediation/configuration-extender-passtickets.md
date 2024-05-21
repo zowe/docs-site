@@ -36,9 +36,42 @@ The following steps outline the procedure for enabling PassTicket Support:
 
   The PassTickets are exchanged between Zowe API Gateway and the API service in a secure mainframe environment.
 
-2. Record the value of the APPLID of the API service.
-3. Enable the Zowe started task user ID to generate PassTickets for the API service. Grant `UPDATE` access to the Zowe started task by submitting commands in one of the three ESMs: ACF2, Top Secret, or RACF.
-4. Enable PassTicket support in the API Gateway for your API service.
+2. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Executing the following command:
+```
+SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
+```
+
+3. Specify the application name requiring access through PassTicket for the UMS server with the following commands:
+```
+RDEFINE APPL UACC(NONE)
+SETROPTS CLASSACT(APPL)
+SETROPTS GENERIC(PTKTDATA)
+```
+
+Replace _NONE_ with a one to 8 character name designated for the application. 
+
+:::note
+This name is usually provided by the site security administrator.
+:::
+
+4. Define the profile for the application with the following command:
+
+```
+RDEFINE PTKTDATA SSIGNON(<key_description>())
+```
+
+This links a secured sign-on application key with the application.
+Replace with the application name defined previously.
+
+5. Grant a ZOWE user ID access to the application with the following command:
+```
+PERMIT APPLNAME CLASS(APPL) ID() ACCESS(READ)
+```
+Add the permitted user ID.
+
+6. Record the value of the APPLID of the API service.
+7. Enable the Zowe started task user ID to generate PassTickets for the API service. Grant `UPDATE` access to the Zowe started task by submitting commands in one of the three ESMs: ACF2, Top Secret, or RACF.
+8. Enable PassTicket support in the API Gateway for your API service.
 
 ### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
 
