@@ -80,7 +80,7 @@ If your implementation uses an external security manager other than RACF (for ex
 :::
 
 ## z/OSMF REST services for Zowe clients
-Zowe clients use z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
+[Zowe clients](../appendix/zowe-glossary.md#zowe-client-projects) use z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
   ---|---|---

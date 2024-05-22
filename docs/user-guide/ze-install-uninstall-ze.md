@@ -6,7 +6,7 @@ You can uninstall Zowe™ Explorer from Visual Studio Code (VS Code) if you no l
 :::
 
 :::warning Important
-The uninstall process does not delete the profiles and credentials that you created when using the product from your computer. To delete the profiles from your computer, delete them before you uninstall Zowe Explorer. **Copied this admonition from the Zowe CLI uninstall doc. Can we use this for ZE too?**
+The uninstall process does not delete the profiles and credentials that you created when using the product from your computer. To delete the profiles from your computer, delete them before you uninstall Zowe Explorer.
 :::
 
 ## Uninstalling the Zowe Explorer VS Code extension

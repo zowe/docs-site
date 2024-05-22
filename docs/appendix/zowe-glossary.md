@@ -49,7 +49,9 @@ Provides a command-line interface that lets you interact with the mainframe remo
 
 ### Zowe client projects
 
-Includes all the Zowe projects that are installed on the user's PC. Also known as *Zowe client-side projects*. 
+Includes all the Zowe projects, or components, that are installed on the user's PC. Also known as *Zowe client-side projects* or *Zowe client-side components*.
+
+Examples include Zowe CLI, Zowe Explorer for Visual Studio Code, Zowe Explorer for IntelliJ, and Zowe Client SDKs.
 
 ### Zowe Client SDKs
 
