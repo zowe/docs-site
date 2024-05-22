@@ -43,12 +43,12 @@ SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 
 3. Specify the application name requiring access through PassTicket for the UMS server with the following commands:
 ```
-RDEFINE APPL UACC(NONE)
+RDEFINE APPL <application-name> UACC(READ)
 SETROPTS CLASSACT(APPL)
 SETROPTS GENERIC(PTKTDATA)
 ```
 
-Replace _NONE_ with a one to 8 character name designated for the application. 
+Replace <application-name> with a one to 8 character name designated for the application. 
 
 :::note
 This name is usually provided by the site security administrator.
@@ -57,7 +57,7 @@ This name is usually provided by the site security administrator.
 4. Define the profile for the application with the following command:
 
 ```
-RDEFINE PTKTDATA SSIGNON(<key_description>())
+RDEFINE PTKTDATA <application-name> SSIGNON(())
 ```
 
 This links a secured sign-on application key with the application.
