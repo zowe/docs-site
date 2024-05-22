@@ -1,7 +1,6 @@
 # Configuring AT-TLS for API Mediation Layer
 
-
-Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, and security recommendations.
+Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, including AT-TLS inbound and outbound rules, Using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
 
 :::info Role: security administrator
 ::: 
@@ -23,12 +22,12 @@ Review this article for descriptions of the configuration parameters required to
 Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
 :::
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Esure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
+While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
 :::note Notes
-* AT-TLS is supported in the API Cloud Gateway Mediation Layer component since version 2.17.
+* AT-TLS is supported in the API Cloud Gateway Mediation Layer component beginning with  version 2.17.
 
 * As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
@@ -92,10 +91,9 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 - API Catalog: default port 7552
 - Metrics Service: default port 7551
 
-:::important
+**Follow this step:**
 
 Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
-:::
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
