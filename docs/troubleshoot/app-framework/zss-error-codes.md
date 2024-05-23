@@ -738,4 +738,17 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  No action required.
+  * This message is repeated each `<n>` seconds. After the succesfull attempt the message `ZWES1601I` is displayed and no action is required.
+  * If there is no message `ZWES1601I` and this message is `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds`, consider following:
+    * TLSv1.3 recommends encryption `ChaCha20-Poly1305`, but this might be restricted by `ICSF FIPS 140-2` policy. When ZSS requests `ChaCha20-Poly1305`, such request will fail.
+    * Following change to `zowe.yaml` will use TLSv1.2 to avoid the problem with `ChaCha20-Poly1305`:
+```
+zowe:
+  network:
+    server:
+      tls:
+        maxTls: "TLSv1.2"
+    client:
+      tls:
+        maxTls: "TLSv1.2"
+```
