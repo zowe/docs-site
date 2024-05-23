@@ -200,6 +200,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/at-tls-configuration",
               ],
             },
             {
