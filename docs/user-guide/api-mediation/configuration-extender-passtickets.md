@@ -28,50 +28,69 @@ The API Gateway provides the user ID and password in the Authorization header of
 
 The following steps outline the procedure for enabling PassTicket Support:
 
-1. Follow the API service documentation that explains how to activate support for PassTickets.
+#### RACF
 
-  **Note:** PassTickets for the API service must have the replay protection switched off. 
-  
-  **Example:** `APPLDATA('NO REPLAY PROTECTION')
-
-  The PassTickets are exchanged between Zowe API Gateway and the API service in a secure mainframe environment.
-
-2. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Executing the following command:
+1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Executing the following command:
 ```
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 ```
 
-3. Specify the application name requiring access through PassTicket for the UMS server with the following commands:
+2. Specify the application ID requiring access through PassTicket for the UMS server with the following commands:
 ```
-RDEFINE APPL <application-name> UACC(READ)
+RDEFINE APPL <applid> UACC(READ)
 SETROPTS CLASSACT(APPL)
 SETROPTS GENERIC(PTKTDATA)
 ```
 
-Replace <application-name> with a one to 8 character name designated for the application. 
+Replace <applid> with a one to 8 character name designated for the application. 
 
 :::note
 This name is usually provided by the site security administrator.
 :::
 
-4. Define the profile for the application with the following command:
-
+3. Define the profile for the application with the following command:
 ```
-RDEFINE PTKTDATA <application-name> SSIGNON(())
+RDEFINE PTKTDATA <applid> SSIGNON(KEYMASKED(<key-description>))
 ```
+key-description is the secured signon hexadecimal application key
 
+
+PassTickets for the API service must have the replay protection switched off. 
+```
+APPLDATA('NO REPLAY PROTECTION')
+```
 This links a secured sign-on application key with the application.
 Replace with the application name defined previously.
 
-5. Grant a ZOWE user ID access to the application with the following command:
+4. Grant a ZOWE user ID access to the application with the following command:
 ```
-PERMIT APPLNAME CLASS(APPL) ID() ACCESS(READ)
+PERMIT APPLNAME CLASS(APPL) ID(<zowe-user-id>) ACCESS(READ)
 ```
-Add the permitted user ID.
+Add the permitted user ID, in this case Zowe server user.
 
-6. Record the value of the APPLID of the API service.
-7. Enable the Zowe started task user ID to generate PassTickets for the API service. Grant `UPDATE` access to the Zowe started task by submitting commands in one of the three ESMs: ACF2, Top Secret, or RACF.
-8. Enable PassTicket support in the API Gateway for your API service.
+#### TSS
+
+Define PassTicket for application ID <applid> without replay protection
+
+```
+TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
+```
+
+#### ACF2
+
+Define PassTicket for application ID <applid> without replay protection
+```
+SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
+INSERT <applid> SSKEY(<key-description>) MULT-USE
+F ACF2,REBUILD(PTK),CLASS(P)
+```
+Add Zowe user to the defined application ID.
+```
+SET RESOURCE(APL)
+RECKEY <applid> ADD(UID(<zowe-user-id>) ALLOW)
+F ACF2,REBUILD(APL)
+```
+
 
 ### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
 
