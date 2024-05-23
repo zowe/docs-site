@@ -487,7 +487,8 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Routing",
+              label: "API ML Routing Overview",
+              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
