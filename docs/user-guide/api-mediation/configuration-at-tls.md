@@ -41,12 +41,31 @@ zowe:
       server:
         ssl:
           enabled: false
-      server:
         internal:
           ssl:
             enabled: false
-
     discovery:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    api-catalog:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    caching-service:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    metrics-service:
       spring:
         profiles:
           active: attls
@@ -87,7 +106,7 @@ TTLSRule ApimlServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 10310-10320
+  LocalPortRange 7551-7555
   Jobname ZWE*
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -139,7 +158,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 449
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -172,8 +191,8 @@ TTLSRule ApimlClientRule
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 10310-10320
-  Jobname ZWEA*
+  RemotePortRange 7551-7555
+  Jobname ZWE1A*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -204,7 +223,7 @@ TTLSRule ApimlServiceClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 40030
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
