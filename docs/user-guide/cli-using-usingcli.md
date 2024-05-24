@@ -4,7 +4,9 @@ In this section, learn about how to use Zowe CLI, including connecting to the ma
 
 You can use the CLI interactively from a command window on any computer on which it is installed, or run it in a container or automation environment.
 
-**Tip:** If you want to use the CLI together with a screen reader to provide accessibility, we recommend using the Mac™ Terminal application enabled for Accessibility through [System Preferences > Accessibility](https://support.apple.com/zh-sg/guide/terminal/trml1020/mac). On Windows™, adjust the Properties settings in Command Prompt. For other operating systems, or for alternative terminals, check the specification for the terminal to ensure that it meets accessibility requirements.
+:::tip
+Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` [environment variable](../user-guide/cli-configuringcli-ev.md#setting-other-environment-variables) to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
+:::
 
 ## Supported CPU architectures, operating systems, and package/resource managers
 
