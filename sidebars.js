@@ -487,8 +487,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API ML Routing Overview",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
+              label: "Routing APIs",
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
@@ -719,9 +718,10 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Routing",
-              link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
+              label: "API ML Routing Overview",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
+                "extend/extend-apiml/implementing-routing-to-the-api-gateway",
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
