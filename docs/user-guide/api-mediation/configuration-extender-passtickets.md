@@ -30,7 +30,7 @@ The following steps outline the procedure for enabling PassTicket Support:
 
 #### RACF
 
-1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Executing the following command:
+1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Execute the following command:
 ```
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 ```
