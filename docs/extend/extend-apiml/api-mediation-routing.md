@@ -1,110 +1,145 @@
-# API Mediation Layer routing
+# API ML Routing Overview
 
-As an application developer, you can route your service through the Gateway using the API Mediation Layer to consume a specific resource.
+The API Mediation Layer (API ML) in Zowe acts as a Level 7 Load Balancer, using the API Gateway to route requests to backend 
+services. The routing feature supports both single and multiple API ML instances.
 
-There are two ways to route your service to the API Mediation Layer:
+The following diagram shows a request for a specific job from a customer and the services involved in the delivery of the request.
 
-* Basic Routing (using Service ID and version)
-* Basic Routing (using only the service ID)
+![Services Diagram](../../images/api-mediation/RoutingNorthboundSouthbound.png "Example services diagram")
 
-## Terminology
+**Key Concepts**
+- **Service**
 
-* **Service**
-
-  A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term "service name" is used to mean service ID.
+  A service provides one or more APIs and is identified by a service ID. Note that sometimes the term "service name" refers to the service ID.
 
   The default service ID is provided by the service developer in the service configuration file.
 
-  A system administrator can replace the service ID with a deployment environment specific name using additional configuration that is external to the service deployment unit. Most often, this is configured in a JAR or WAR file.
+  A system administrator can replace the service ID with a specific name of the deployment environment using additional configuration that is external to the service deployment unit. Typically, this name is configured in a JAR or WAR file. 
+  Ensure that you detail how to specify the name in your service documentation. 
 
   Services are deployed using one or more service instances, which share the same service ID and implementation.
 
-* **URI (Uniform Resource Identifier)**
+- **Instance**  
+  Refers to the instance of a specific service providing one or more APIs
+- **Service ID**  
+  The unique identifier for each service
+- **Instance Routing**  
+  Routes requests based on service instances
+- **Versioning**  
+  Supports routing to specific service versions
 
-  A string of characters used to identify a resource. Each URI must point to a single corresponding resource that does not require any additional information, such as HTTP headers.
+## Basic Routing
 
-## APIML Basic Routing (using Service ID and version)
+In basic routing, requests are routed using the service ID and optionally, the service version:
 
-This method of basic routing is based on the service ID that identifies the service. The specific instance is selected by the API Gateway. All instances require an identical response. Eureka and Zuul expect this type of routing.
+**Example:** `https://gateway-url/api/v1/service-id`
 
-The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided. For example, when a service is running in high-availability (HA) mode.
+**Routing Mechanism**
+Routing can be configured for either single or multiple API ML instances
 
-Services of the same product that provide different resources, such as SYSVIEW on one system and SYSVIEW in a different sysplex, cannot have the same service ID (the same URI cannot have two different meanings).
+* **Single API ML Instance**  
+Uses Eureka metadata for direct routing to a service based on the service ID
 
-In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which you can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
+* **Multiple API ML Instances**  
+Uses Eureka metadata for service discovery and load balancing
 
-The `/api/` prefix is used for REST APIs. The prefix `/ui/` applies to web UIs and the prefix `/ws/` applies to [WebSockets](websocket.md).
+**Implementation Details**  
+Routing configuration is defined in Eureka metadata.
+Ensure proper setup for accurate routing. The following yaml file is an example of Eureka metadata configuration:
 
-You can implement additional routing using a Zuul pre-filter. For more information about how to implement a Zuul filter, see [Router and Filter: Zuul](https://cloud.spring.io/spring-cloud-netflix/multi/multi__router_and_filter_zuul.html)
-
-The URL format expected by the API Gateway is:
-
-`https://{gatewayHost}:{port}/{serviceId}/api/v{majorVersion}/{resource}`
-
-**Example:**
-
-The following address shows the original URL of a resource exposed by a service:
-
+```yaml
+apiml:
+    service:                               
+        routes:
+            -   gateway-url: "ui/v1"
+                service-url: ${apiml.service.contextPath}
+            -   gateway-url: "api/v1"
+                service-url: ${apiml.service.contextPath}/api/v1
+            -   gateway-url: "ws/v1"
+                service-url: ${apiml.service.contextPath}/ws
 ```
-http://service:10015/enablerv1sampleapp/api/v1/samples
+
+This part of the service metadata configuration defines how the request coming from the upstream (northbound) service will be
+accepted and then passed to the downstream (southbound) service.
+
+The following shows service URL tansformations if the downstream (southbound) service has the contextPath zosmf: 
+- The request `https://apiml/ui/v1/desktop` from the user is transformed to `https://service/zosmf/desktop`
+- The request `https://apiml/api/v1/desktop` from the user is transformed to `https://service/zosmf/api/v1/desktop`
+- The request `https://apiml/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
+
+**Instance Routing**  
+API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. Ensure each service instance registers with a unique instance ID in Eureka.
+
+**Versioning**  
+API ML makes it possible to specify the version of a service in the route. If a version is not specified, the latest version is used by default. Version specified routing provides flexibility in deploying and updating services without affecting existing clients.
+
+**Example Usage**  
+The following URL is an example of routing to a specific version of a service:
+
+```http
+https://gateway-url/api/v1/service-id?version=1.2
 ```
 
-The following address shows the API Gateway URL of the resource:
+Note that if no version is specified, as in the following example, the request defaults to the latest service version:
 
+```http
+https://gateway-url/api/v1/service-id
 ```
-https://gateway:10010/enablerv1sampleapp/api/v1/samples
-```
 
-The following diagram illustrates how basic routing works:
+## Deployments
 
-<img src={require("../../images/api-mediation/Basic-Routing.png").default} alt="Zowe API Mediation basic routing"/>
+Deployment can be for single or multiple instances.
 
-### Implementation Details
+- **A single instance** of the API Mediation Layer with one or more instances of the services onboarded
+- **Multiple instances** of the API Mediation Layer in High Availability setup with one or more instances of the services onboarded
 
-Service instances provide information about routing to the API Gateway via Eureka metadata.
+The onboarded services may be onboarded in one or more instances and the APIs that the services provide may be versioned. API Mediation Layer supports distinction on the major version boundary. 
 
-**Example:**
+### Making a GET call to a service through single instance of API ML
 
-    metadata-map:
-        apiml:
-            routes:
-                ui_v1:
-                    gatewayUrl: "ui/v1"
-                    serviceUrl: "/helloworld"
-                api_v1:
-                    gatewayUrl: "api/v1"
-                    serviceUrl: "/helloworld/v1"
-                api_v2:
-                    gatewayUrl: "api/v2"
-                    serviceUrl: "/helloworld/v2"
+When there is one instance of the API Mediation Layer in the system, the API ML is expected to be the entry point to the system. The following diagrams show the process of making a `GET` call to a service available on a single instance. 
 
-In this example, the service has a service ID of `helloworldservice` that exposes the following endpoints:
+#### A GET call to a service with a single version on a single instance 
 
-* **UI** - `https://gateway/helloworldservice/ui/v1` routed to `https://hwServiceHost:port/helloworld/`
-* **API major version 1** - `https://gateway/helloworldservice/api/v1` routed to `https://hwServiceHost:port/helloworld/v1`
-* **API major version 2** - `https://gateway/helloworldservice/api/v2` routed to `https://hwServiceHost:port/helloworld/v2`
+The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with one instance. z/OSMF in this case does not version the API. 
 
-where:
+![Single instance](../../images/api-mediation/SimpleRouting.png "Simple Routing")
 
-* The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `serviceId/prefix/resourcePath`.
-* The service ID is used to find the service host and port.
-* The `serviceUrl` is used to prefix the `resourcePath` at the service host.
+#### A GET call to a service with multiple versions on a single instance
 
-**Note:** The service ID is not included in the routing metadata, but the service ID is in the basic Eureka metadata.
+The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with one instance. In this case, z/OSMF versions the API and the request is intended for a specific major version.  
 
-## Basic Routing (using only the service ID)
+![Multiple versions](../../images/api-mediation/RoutingVersioned.png "Versioned Routing")
 
-This method of routing is similar to the previous method, but does not use the version part of the URL. This approach is useful for services that handle versioning themselves with different granularity.
+#### GET calls to multiple instances of a service
 
-One example that only uses a service ID is z/OSMF.
+The following diagram shows the flow of a `GET` request through different involved components to the z/OSMF service deployed on one LPAR with multiple instances. In this case, z/OSMF versions the API and the request is intended for a specific major version.
 
-**Example:**
+![Multiple Instances](../../images/api-mediation/RoutingOneLparMultipleInstances.png "Multiple Instances")
 
-z/OSMF URL through the Gateway: `https://gateway:10010/zosmf/api/restjobs/jobs/...`
+### A GET call to a service through multiple API Mediation Layer Instances
 
-where:
+When there are multiple API Mediation Layer Instances in the system, DVIPA is expected as the load balancer which distributes requests to API Mediation Layer instances. API Mediation Layer subsequently distributes the requests to the running instances of the specific service. The following diagrams shows the flow of a single request. 
 
-* `zosmf` is the service ID.
-* `/restjobs/1.0/...` is the rest of the endpoint segment.
+#### Same LPAR Multiple API Mediation Layer Instances
 
-Note that no version is specified in this URL.
+The following diagram shows the flow of the `GET` request through different involved components to the z/OSMF service deployed on multiple LPARs with multiple instances on one LPAR, and one instance on another LPAR. In this case, z/OSMF versions the API and the request is intended for a specific major version. DVIPA randomly selects one of the available API Mediation Layer instances, which then randomly selects one of the available service instances (in this case on the same LPAR). 
+
+![Same LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexSameLpar.png "Same LPAR Multiple API Mediation Layer Instances")
+
+#### Different LPAR Multiple API Mediation Layer Instances
+
+The following diagram shows the flow of the `GET` request through different involved components to the z/OSMF service deployed on multiple LPARs with multiple instances on one LPAR, and one instance on another LPAR. In this case, z/OSMF versions the API and the request is intended for a specific major version. DVIPA randomly selects one of the available API Mediation Layer instances, which subsequently randomly selects one of the available service instances regardless whether the 
+instance resides on the same LPAR. In this case the selected instance is on another LPAR. 
+
+
+![Different LPAR Multiple API Mediation Layer Instances](../../images/api-mediation/RoutingSysplexDifferentLpar.png "Different LPAR Multiple API Mediation Layer Instances")
+
+## Advanced Configuration
+
+Advanced routing configurations can include custom load balancing rules, fallback options, and route-specific policies. 
+Refer to the detailed configuration guide for more advanced settings and examples.
+
+By default, routing through the API Mediation Layer selects the instance to route to in Round-robin fashion for each
+specific request. It is possible to change this behavior to assign a specific user to a specific instance or to change 
+the behavior by providing the option to go to a specific instance of a service.
