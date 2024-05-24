@@ -488,7 +488,7 @@ module.exports = {
             {
               type: "category",
               label: "API ML Routing Overview",
-              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-routing"},
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
