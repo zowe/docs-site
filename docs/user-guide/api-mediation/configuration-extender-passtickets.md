@@ -1,6 +1,6 @@
 # Enabling single sign on for extending services via PassTicket configuration
 
-As a system programmer, you can configure Zowe to use PassTickets for API services that are compatible to accept them to authenticate your service with the API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
+Single sign on can be enabled by configuring Zowe to use PassTickets for API services to authenticate  with API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 
 :::info Roles: system programmer, security administrator
 :::
