@@ -63,9 +63,9 @@ This part of the service metadata configuration defines how the request coming f
 accepted and then passed to the downstream (southbound) service.
 
 The following shows service URL tansformations if the downstream (southbound) service has the contextPath zosmf: 
-- The request `https://apiml/ui/v1/desktop` from the user is transformed to `https://service/zosmf/desktop`
-- The request `https://apiml/api/v1/desktop` from the user is transformed to `https://service/zosmf/api/v1/desktop`
-- The request `https://apiml/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
+- The request `https://apiml/zosmf/ui/v1/desktop` from the user is transformed to `https://service/zosmf/desktop`
+- The request `https://apiml/zosmf/api/v1/desktop` from the user is transformed to `https://service/zosmf/api/v1/desktop`
+- The request `https://apiml/zosmf/ws/v1/desktop` from the user is transformed to `https://service/zosmf/ws/desktop`
 
 **Instance Routing**  
 API ML supports routing to multiple instances of the same service, thereby distributing requests based on load balancing policies. Ensure each service instance registers with a unique instance ID in Eureka.
@@ -77,13 +77,13 @@ API ML makes it possible to specify the version of a service in the route. If a 
 The following URL is an example of routing to a specific version of a service:
 
 ```http
-https://gateway-url/api/v1/service-id?version=1.2
+https://gateway-url/service-id/api/v1?version=1.2
 ```
 
 Note that if no version is specified, as in the following example, the request defaults to the latest service version:
 
 ```http
-https://gateway-url/api/v1/service-id
+https://gateway-url/service-id/api/v1
 ```
 
 ## Deployments
