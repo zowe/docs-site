@@ -1,6 +1,9 @@
-# Configuring AT-TLS
+# Enabling AT-TLS across your Zowe environment
 
 The communication server on z/OS provides functionality to encrypt HTTP communication for on-platform jobs. This functionality is referred to as Application Transparent Transport Layer Security (AT-TLS).
+
+:::info Required roles: security administrator
+:::
 
 ## Configuration Parameters
 
@@ -9,20 +12,8 @@ To enable AT-TLS for Zowe components, configure the following parameters:
 zowe:
     network:
         server:
-            attls: true
-```
-
-### High Availability Setup
-
-In a high availability setup where one LPAR (e.g., lpar1) is using AT-TLS and the second (e.g., lpar2) is also using AT-TLS, configure as follows:
-
-```yaml
-zowe:
-    haInstances:
-        lpar1:
-            attls: true
-        lpar2:
-            attls: true
+            tls:
+                attls: true
 ```
 
 ## Component-Specific Configuration
