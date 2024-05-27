@@ -238,6 +238,19 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 - Gateway Service to southbound services running in another LPAR.
 - Southbound services to Discovery Service. This applies during onboarding.
 
+## Multi-tenancy deployment
+
+For specific scenario when Central API ML is running on z/OS with AT-TLS enabled, it is important to override protocol for external URL. This information is used by the Central API ML to call domain API ML and it needs to reflect outbound AT-TLS rule. In this case, update your domain API ML configuration as follows:
+
+```
+zowe:
+  components:
+    gateway: 
+      apiml:
+        gateway:
+          externalProtocol: http
+```
+
 ## AT-TLS Troubleshooting
 
 This section describes some common issues when using AT-TLS with API ML and how to resolve these issues.
