@@ -8,23 +8,33 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_log.html">log</a> › <a href="zowe_ejes_log_stream.html">stream</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Outputs the operations log or system log to stdout.  Behaves like a Linux tail function with support for standard tail options --follow (-f), --lines (-n), -q, -v, and --version.</p>
-<pre><code>  Set the position in the log to begin output using \-\-find, \-\-line, \-\-time, and \-\-offset\.  
+<pre><code>  Set the position in the log to begin output using \-\-find, \-\-line, \-\-time, and \-\-offset.  
 
-  Use OPERLOG Message Filtering Options to create a windowed log by filtering for and outputting only lines that fit criteria, e\.g\., fetch only lines associated with an IAT6xxxx message by specifying: \-\-msgId &quot;IAT6\*&quot;\.  After filtering the log, output is positioned at the bottom\.  Use position options to change that\.
+  Use OPERLOG Message Filtering Options to create a windowed log by filtering for and outputting only lines that fit criteria, e.g., fetch only lines associated with an IAT6xxxx message by specifying: \-\-msgId &quot;IAT6\*&quot;.  After filtering the log, output is positioned at the bottom.  Use position options to change that.
 
-  Turn on highlighting for \-\-find using \-\-hilite\.  Perform regex text matching with highlighting using \-\-match\.  Enable MCS console color emulation with \-\-mcs\.  To prevent ANSI escape characters from being output and to instead use accessibility\-friendly text\-only indicators, specify: \-\-nocolor &quot;on&quot;\.
+  Turn on highlighting for \-\-find using \-\-hilite.  Perform regex text matching with highlighting using \-\-match.  Enable MCS console color emulation with \-\-mcs.  To prevent ANSI escape characters from being output and to instead use accessibility\-friendly text\-only indicators, specify: \-\-nocolor &quot;on&quot;.
 
   The order of host commands issued during initialization are fixed in this program in this order:
 </code></pre>
-<p>1. All OPERLOG message filtering options, e.g., --msgId and --msgTxt</p>
-<p>2. --line</p>
-<p>3. --time</p>
-<p>4. --find</p>
-<p>5. --offset</p>
-<pre><code>  Conceptually and depending on specified options, the program can create a window into the log data using message filtering options, then can point to a line in the data such as the first line, then can position at a time, then find arbitrary text, then offset the view up and down by seconds to days or a number of lines\.
-
-  The program outputs trailer diagnostic lines at the end of the run to stderr\.  Use this information to make your queries more efficient\.  The trailer and header lines can be muted using the \-\-quiet (\-q) option or setting the EJES\_LOG\_CLI\_QUIET environment variable\.  The program outputs a bottom\-of\-data line to stdout that is considered an output line by \-\-lines with a line\-count argument\.  To disable it, set the EJES\_LOG\_CLI\_NO\_BOTTOM environment variable\.
-</code></pre>
+<ol>
+<li>
+<p>All OPERLOG message filtering options, e.g., --msgId and --msgTxt</p>
+</li>
+<li>
+<p>--line</p>
+</li>
+<li>
+<p>--time</p>
+</li>
+<li>
+<p>--find</p>
+</li>
+<li>
+<p>--offset</p>
+<p>Conceptually and depending on specified options, the program can create a window into the log data using message filtering options, then can point to a line in the data such as the first line, then can position at a time, then find arbitrary text, then offset the view up and down by seconds to days or a number of lines.</p>
+<p>The program outputs trailer diagnostic lines at the end of the run to stderr.  Use this information to make your queries more efficient.  The trailer and header lines can be muted using the --quiet (-q) option or setting the EJES_LOG_CLI_QUIET environment variable.  The program outputs a bottom-of-data line to stdout that is considered an output line by --lines with a line-count argument.  To disable it, set the EJES_LOG_CLI_NO_BOTTOM environment variable.</p>
+</li>
+</ol>
 <h4>Usage</h4>
 <p>zowe ejes log stream [log-type] [options]</p>
 <h4>Positional Arguments</h4>
@@ -49,13 +59,13 @@
 <ul>
 <li>
 <p>Limit output to a number of lines or a time span.  10 lines is used if the option is not specified.</p>
-<pre><code>  Specify a maximum number of lines up to 999,999 lines (supports multipliers), or specify a time span of 0\.01 to 999 seconds, minutes, hours, or days by specifying a number followed by &quot;s&quot;, &quot;m&quot;, &quot;h&quot;, or &quot;d&quot;\.  Specify  &quot;all&quot; for unlimited output\.
+<pre><code>  Specify a maximum number of lines up to 999,999 lines (supports multipliers), or specify a time span of 0.01 to 999 seconds, minutes, hours, or days by specifying a number followed by &quot;s&quot;, &quot;m&quot;, &quot;h&quot;, or &quot;d&quot;.  Specify  &quot;all&quot; for unlimited output.
 
-  When \-\-request\-format\-json (\-\-rfj) is specified, the number of lines up to 5,000 specified on this option (or the default of 10) determines the number of lines fetched from the host and stored in the output json data array\.  With \-\-rfj, this option overrides \-\-enumValue\.
+  When \-\-request\-format\-json (\-\-rfj) is specified, the number of lines up to 5,000 specified on this option (or the default of 10) determines the number of lines fetched from the host and stored in the output json data array.  With \-\-rfj, this option overrides \-\-enumValue.
 
-  Supports Linux positioning syntax of \+ followed by a line number\.  This is the same as specifying \-\-line n \-\-lines all\.  When the intent is to fetch middle lines from the log, use \-\-line to position and \-\-lines to limit the count\.
+  Supports Linux positioning syntax of \+ followed by a line number.  This is the same as specifying \-\-line n \-\-lines all.  When the intent is to fetch middle lines from the log, use \-\-line to position and \-\-lines to limit the count.
 
-  Note: When there are no positioning requests, the program attempts to get the bottom n lines\.  However, the log is a dynamic data set and the actual log type may be different than assumed\.  The bottom\-of\-data line will output only if the number of lines is not exceeded when bottom is found\.
+  Note: When there are no positioning requests, the program attempts to get the bottom n lines.  However, the log is a dynamic data set and the actual log type may be different than assumed.  The bottom\-of\-data line will output only if the number of lines is not exceeded when bottom is found.
 </code></pre>
 <p>Allowed values: all, ^(?:[1-9]|\d\.)\d{0,2}[smhd]$, ^[1-9]\d{0,5}$, ^\+[1-9]\d*$, ^[1-9]\d{0,2}(b|kB|K|MB|M|GB|G|KiB|MiB|GiB)$</p>
 </li>
@@ -108,11 +118,11 @@
 <ul>
 <li>
 <p>Specify case-independent text to match and highlight using ANSI escape characters.</p>
-<pre><code>  Specify a string, a Javascript regex pattern without the enclosing slashes (e\.g\., &quot;login|logoff|force&quot;), or a Javascript regex pattern string with slashes and regex option flags (e\.g\., &quot;/\[Ll\]ogo\.{1,2}|Signoff/g&quot;)\.  If the first or second type is used, the flags default to ig (ignore\-case and global match)\.
+<pre><code>  Specify a string, a Javascript regex pattern without the enclosing slashes (e.g., &quot;login|logoff|force&quot;), or a Javascript regex pattern string with slashes and regex option flags (e.g., &quot;/\[Ll\]ogo.{1,2}|Signoff/g&quot;).  If the first or second type is used, the flags default to ig (ignore\-case and global match).
 
-  Matching does not position for output the way \-\-find does; it can be used in conjuction with a \-\-find\.  Matching is done on each output line separately\.  All matches in a line will be highlighted\.  If \-\-no\-color on is specified, the line will be prefixed with &quot;&gt;&quot;\.  If the built\-in highlight attribute isn't visible on your terminal, either change the foreground color or set the environment variable EJES\_LOG\_CLI\_ANSIMATCHATTR\.  0 to 256 are valid as defined on this Wikipedia page:
+  Matching does not position for output the way \-\-find does; it can be used in conjuction with a \-\-find.  Matching is done on each output line separately.  All matches in a line will be highlighted.  If \-\-no\-color on is specified, the line will be prefixed with &quot;&gt;&quot;.  If the built\-in highlight attribute isn't visible on your terminal, either change the foreground color or set the environment variable EJES\_LOG\_CLI\_ANSIMATCHATTR.  0 to 256 are valid as defined on this Wikipedia page:
 
-  &lt;https://en\.wikipedia\.org/wiki/ANSI\_escape\_code\#8\-bit&gt;
+  &lt;https://en.wikipedia.org/wiki/ANSI\_escape\_code\#8\-bit&gt;
 </code></pre>
 </li>
 </ul>
@@ -125,9 +135,9 @@
 <ul>
 <li>
 <p>Position start of output using (E)JES host FIND command syntax (below).  Find positioning is done after --line and --time, but before --offset.  Limit lines to found lines with --only.  Limit excessive enumeration and provide context with --context.</p>
-<pre><code>  NOTE: To search for specific message IDs or find text in messages on the OPERLOG, use \-\-msgId or \-\-msgText instead\.  OPERLOG message filtering Options show entire messages and may be more efficient\.  Since these options position at the bottom of the log, specify \-\-line to position at the first message or specify \-\-find to find further refine your search\.  Refer to OPERLOG Message Filtering Options for further alternatives to FIND\.
+<pre><code>  NOTE: To search for specific message IDs or find text in messages on the OPERLOG, use \-\-msgId or \-\-msgText instead.  OPERLOG message filtering Options show entire messages and may be more efficient.  Since these options position at the bottom of the log, specify \-\-line to position at the first message or specify \-\-find to find further refine your search.  Refer to OPERLOG Message Filtering Options for further alternatives to FIND.
 
-  (E)JES Host FIND Command Syntax:  Only the find\-string is required\.  It should be enclosed in single quotes if it contains spaces or special characters\.  Case\-independent search is the default\.  Case dependent is specified using c'find\-string'\. Searching for double\-quotes is not supported\.  (The search\-type arguments &quot;next&quot; and &quot;prev&quot; carry over  3270 display behavior\.  In this program, &quot;prev&quot; means find the last occurrence above the last 53 lines of the log; the default &quot;next&quot; searches forward starting 53 lines before the bottom\.)  Refer to the (E)JES Reference for the FIND command for detailed find syntax and option documention\.
+  (E)JES Host FIND Command Syntax:  Only the find\-string is required.  It should be enclosed in single quotes if it contains spaces or special characters.  Case\-independent search is the default.  Case dependent is specified using c'find\-string'. Searching for double\-quotes is not supported.  (The search\-type arguments &quot;next&quot; and &quot;prev&quot; carry over  3270 display behavior.  In this program, &quot;prev&quot; means find the last occurrence above the last 53 lines of the log; the default &quot;next&quot; searches forward starting 53 lines before the bottom.)  Refer to the (E)JES Reference for the FIND command for detailed find syntax and option documention.
 
   \['|c'|p'|x'\]find\-string\['\] \[NEXT|prev|first|last\] \[CHARS|prefix|pre|suffix|suf|word\] \[startcol\[ endcol\]\]
 </code></pre>
@@ -140,9 +150,9 @@
 <ul>
 <li>
 <p>Use in conjunction with --find to highlight found strings using ANSI escape characters.  If --no-color on is specified, the line will be prefixed with &quot;=&quot;.</p>
-<pre><code>  If the built\-in highlight attribute isn't visible on your terminal, either change the foreground color or set the environment variable EJES\_LOG\_CLI\_ANSIFINDATTR to 8, 6, or 3\.  0 to 256 are valid as defined on this Wikipedia page:
+<pre><code>  If the built\-in highlight attribute isn't visible on your terminal, either change the foreground color or set the environment variable EJES\_LOG\_CLI\_ANSIFINDATTR to 8, 6, or 3.  0 to 256 are valid as defined on this Wikipedia page:
 
-  &lt;https://en\.wikipedia\.org/wiki/ANSI\_escape\_code\#8\-bit&gt;
+  &lt;https://en.wikipedia.org/wiki/ANSI\_escape\_code\#8\-bit&gt;
 </code></pre>
 </li>
 </ul>
@@ -185,12 +195,12 @@
 <ul>
 <li>
 <p>Positions a time on the current day or to a time and date.  With no argument, positions to the beginning of the day.  Positioning done before --find and --offset, but after --line.</p>
-<pre><code>  The argument is hh:mm:ss:th\-date, where ss or ss:th and the date are optional\.
+<pre><code>  The argument is hh:mm:ss:th\-date, where ss or ss:th and the date are optional.
 </code></pre>
 <p>The date, if specified, is specified as yyyy.ddd, yyyy-ddd, yyyy/mm/dd, yyyy/dd/mm, mm/dd/yyyy, dd/mm/yyyy, yyyy-mm-dd, yyyy-dd-mm, mm-dd-yyyy, or dd-mm-yyyy. The Julian date form is always valid.</p>
-<pre><code>  The Gregorian date form depends upon your current date format setting, though both slash (/) and dash (\-) are accepted as separator characters\.  Specify &quot;?&quot; to return the Gregorian date format and quit, i\.e\., \-\-time &quot;?&quot;
+<pre><code>  The Gregorian date form depends upon your current date format setting, though both slash (/) and dash (\-) are accepted as separator characters.  Specify &quot;?&quot; to return the Gregorian date format and quit, i.e., \-\-time &quot;?&quot;
 
-  Two copy\-paste date\-time formats are supported\.  A date\-time may copied from the log and pasted, enclosed in quotes, after the \-\-time option\.  Operlog: &quot;yyyydddd hh:mm:ss\.th&quot;\.  Syslog: &quot;yyyyddd hhmmsst&quot;\.
+  Two copy\-paste date\-time formats are supported.  A date\-time may copied from the log and pasted, enclosed in quotes, after the \-\-time option.  Operlog: &quot;yyyydddd hh:mm:ss.th&quot;.  Syslog: &quot;yyyyddd hhmmsst&quot;.
 </code></pre>
 <p>Allowed values: (?:^(20\d{5}) (\d{7})$)|(?:^(20\d{5}) ((\d\d:\d\d:\d\d.\d\d))$)|(?:^(\d\d\:\d\d(?:\:\d\d){0,2}(?:-(?:(?:\d{4}[.-]\d{3}$)|(?:^\d{4}(?:[\/|-]\d{2}){2}$)|(?:^(?:\d{2}[\/|-]){2}\d{4})))*){0,1}$|^\?$)</p>
 </li>
@@ -270,11 +280,11 @@
 <ul>
 <li>
 <p>Filter OPERLOG by setting the time and optionally the date of the bottom of the log to use.  Up to 23 characters.</p>
-<pre><code>  The boundary specifications may be either fixed time\-date values, e\.g\.&quot;16:00:12:90\-2021/02/12&quot; (see “Time\-Date Values” in the (E)JES Reference) or calculated relative to the time stamp associated with the record shown at 57 lines from the bottom of the log at start\-up\.
+<pre><code>  The boundary specifications may be either fixed time\-date values, e.g.&quot;16:00:12:90\-2021/02/12&quot; (see “Time\-Date Values” in the (E)JES Reference) or calculated relative to the time stamp associated with the record shown at 57 lines from the bottom of the log at start\-up.
 
-  A relative value is indicated by the presence of a next (\+) or previous preceding the boundary specification, e\.g\., prev1h\. After the next or previous you may specify either a number of seconds, minutes, hours, or days as indicated by using a 's', 'm', 'h', or 'd' suffix\. Assumes 'h' if omitted\.
+  A relative value is indicated by the presence of a next (\+) or previous preceding the boundary specification, e.g., prev1h. After the next or previous you may specify either a number of seconds, minutes, hours, or days as indicated by using a 's', 'm', 'h', or 'd' suffix. Assumes 'h' if omitted.
 
-  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display\.
+  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display.
 </code></pre>
 <p>Allowed values: ^(\+|next|prev)*(\d+[smhd]{0,1})$|(?:^(20\d{5}) ((\d\d:\d\d:\d\d.\d\d))$)|^(?:(\d\d\:\d\d(?:\:\d\d){0,2}(?:-(?:(?:\d{4}[.-]\d{3})|(?:\d{4}(?:[\/|-]\d{2}){2})|(?:(?:\d{2}[\/|-]){2}\d{4})))*){0,1}|\?)$</p>
 </li>
@@ -285,11 +295,11 @@
 <ul>
 <li>
 <p>Filter OPERLOG by setting the time and optionally the date of the top of the log to use.  Up to 23 characters.</p>
-<pre><code>  The boundary specifications may be either fixed time\-date values, e\.g\.&quot;16:00:12:90\-2021/02/12&quot; (see “Time\-Date Values” in the (E)JES Reference) or calculated relative to the time stamp associated with the record shown at 57 lines from the bottom of the log at start\-up\.
+<pre><code>  The boundary specifications may be either fixed time\-date values, e.g.&quot;16:00:12:90\-2021/02/12&quot; (see “Time\-Date Values” in the (E)JES Reference) or calculated relative to the time stamp associated with the record shown at 57 lines from the bottom of the log at start\-up.
 
-  A relative value is indicated by the presence of a next (\+) or previous preceding the boundary specification, e\.g\., prev1h\. After the next or previous you may specify either a number of seconds, minutes, hours, or days as indicated by using a 's', 'm', 'h', or 'd' suffix\. Assumes 'h' if omitted\.
+  A relative value is indicated by the presence of a next (\+) or previous preceding the boundary specification, e.g., prev1h. After the next or previous you may specify either a number of seconds, minutes, hours, or days as indicated by using a 's', 'm', 'h', or 'd' suffix. Assumes 'h' if omitted.
 
-  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display\.
+  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display.
 </code></pre>
 <p>Allowed values: ^(\+|next|prev)*(\d+[smhd]{0,1})$|(?:^(20\d{5}) ((\d\d:\d\d:\d\d.\d\d))$)|^(?:(\d\d\:\d\d(?:\:\d\d){0,2}(?:-(?:(?:\d{4}[.-]\d{3})|(?:\d{4}(?:[\/|-]\d{2}){2})|(?:(?:\d{2}[\/|-]){2}\d{4})))*){0,1}|\?)$</p>
 </li>
@@ -300,9 +310,9 @@
 <ul>
 <li>
 <p>Filter OPERLOG for MPF/Exit flags with a &quot;value mask&quot; of eight hexadecimal characters, e.g., 00000291. Use in conjunction with the &quot;result directive&quot; (see --result-directive).</p>
-<pre><code>  The filtering is performed by ANDing the hexadecimal value mask against a message’s MPF/Exit Flags value and then displaying the message based upon the result directive (zero or non\-zero)\.  For example, a mask and result directive of 00000001 and NZ will display messages that were suppressed by MPF\. Specifying 00000001 and Z displays messages that were not suppressed\.
+<pre><code>  The filtering is performed by ANDing the hexadecimal value mask against a message’s MPF/Exit Flags value and then displaying the message based upon the result directive (zero or non\-zero).  For example, a mask and result directive of 00000001 and NZ will display messages that were suppressed by MPF. Specifying 00000001 and Z displays messages that were not suppressed.
 
-  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display\.  Multiline messages are output in their entirety\.  
+  Note: The response time can be seriously impacted by the use of filtering criteria that results in too few messages being considered for display.  Multiline messages are output in their entirety.  
 </code></pre>
 <p>Default value: FFFFFFFF<br>
 Allowed values: ^[0-9A-F]{8}$, ^[0-9a-f]{8}$</p>
@@ -617,7 +627,7 @@ Allowed values: http, https</p>
 </li>
 <li>
 <p>Find all system messages that required action for the hour after midnight.  Specifying --only shows just found lines.  Specifying --lines with &quot;1h&quot; tells the program to output lines up to one hour from the first line output. The --top option here specifies a time without a date, which means the current day.  This logically sets the top of the log, windowing it, to midnight today (with no lines above it).  Specifying --find with the first verb tells to search from the top.  The character in the find string has a special meaning  indicating that a message requires action.  The special characters &quot;|&quot;, &quot;-&quot;, &quot;@&quot;, &quot; * &quot;, and &quot;+&quot; can be indexed from column 54 and &quot; * &quot; is a column 4 character, thus 58 below.</p>
-<p><a href="https://www%5C.ibm%5C.com/docs/en/zos/2%5C.4%5C.0?topic=consoles%5C-special%5C-screen%5C-characters">https://www\.ibm\.com/docs/en/zos/2\.4\.0?topic=consoles\-special\-screen\-characters</a>:</p>
+<p><a href="https://www.ibm.com/docs/en/zos/2.4.0?topic=consoles%5C-special%5C-screen%5C-characters">https://www.ibm.com/docs/en/zos/2.4.0?topic=consoles\-special\-screen\-characters</a>:</p>
 <ul>
 <li><code>zowe ejes log stream --find  &quot;'*' first 58 58&quot; --only --top &quot;00:00&quot;  --lines 1h</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ejes log stream --find  &quot;'*' first 58 58&quot; --only --top &quot;00:00&quot;  --lines 1h">Copy</button></li>
 </ul>
