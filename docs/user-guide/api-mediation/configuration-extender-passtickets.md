@@ -65,7 +65,7 @@ TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 ```
 
-2. Specify the application ID requiring access through PassTicket for the UMS server with the following commands:
+2. Specify the application ID requiring access through PassTicket for the ZOWE server with the following commands:
 ```
 RDEFINE APPL <applid> UACC(READ)
 SETROPTS CLASSACT(APPL)
@@ -74,10 +74,8 @@ SETROPTS GENERIC(PTKTDATA)
 
 Replace _applid_ with a one to 8 character name designated for the application. 
 
-:::note Notes
+:::note 
 * This name is usually provided by the site security administrator.
-* For information about Unified Management Server for z/OS, see [Security of UMS for z/OS](https://www.ibm.com/docs/en/umsfz/1.2.0?topic=120-security-ums-zos) in the IBM documentation.
-
 :::
 
 3. Define the profile for the application with the following command:
@@ -87,6 +85,7 @@ RDEFINE PTKTDATA <applid> SSIGNON(KEYMASKED(<key-description>))
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key
 
+Replace with the application name defined previously.
 
 :::caution Important
 
@@ -96,7 +95,6 @@ PassTickets for the API service must have the replay protection switched off.
 APPLDATA('NO REPLAY PROTECTION')
 ```
 This links a secured sign-on application key with the application.
-Replace with the application name defined previously.
 :::
 
 4. Grant the Zowe user ID access to the application with the following command, and add the permitted user ID (In this case, the Zowe server user).
@@ -159,6 +157,15 @@ RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
 PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
+
+### Validate if the PassTicket Application is created
+
+```
+RLIST APPL APPLNAME ALL
+RLIST PTKTDATA IRRPTAUTH.APPLNAME.* ALL
+```
+Your application and the specific access of the application will be displayed
+
 
 ## Adding custom HTTP Auth headers to store user ID and PassTicket
 
