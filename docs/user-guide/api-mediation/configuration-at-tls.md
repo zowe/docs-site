@@ -74,7 +74,7 @@ zowe:
           enabled: false
 ```
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Esure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
+While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
 2. If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
@@ -137,11 +137,13 @@ TTLSConnectionAction ApimlServerConnectionAction
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-- Gateway: default port 7554
-- Discovery: default port 7553
-- Caching Service: 7555
-- API Catalog: default port 7552
-- Metrics Service: default port 7551
+| Component | Port |   
+|----|-----------------------|
+| Gateway | default port 7554 |    
+| Discovery | default port 7553 |
+|Caching Service | 7555 |
+|API Catalog | default port 7552 |
+| Metrics Service | default port 7551 |
 
 Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
