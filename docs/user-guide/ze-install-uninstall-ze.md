@@ -11,6 +11,8 @@ The uninstall process does not delete the profiles and credentials that you crea
 
 ## Uninstalling the Zowe Explorer VS Code extension
 
+Uninstall Zowe Explorer once any installed Zowe Explorer extensions have already been removed. See [Uninstalling Zowe Explorer CICS Extension](#uninstalling-zowe-explorer-cics-extension) and [Uninstalling Zowe Explorer FTP Extension](#uninstalling-zowe-explorer-ftp-extension) for instructions.
+
 1. Navigate to the **Extensions**  icon on the **Activity Bar** in VS Code to display a list of installed extensions.
 2. Find `Zowe Explorer` and click it.
 

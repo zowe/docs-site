@@ -7,7 +7,7 @@ Configure Zowe Explorer in the settings file so the extension performs according
 
 To access Zowe Explorer settings:
 
-1. Click the **Settings** icon at the bottom of the **Activity Bar**.
+1. Click the **Manage** icon at the bottom of the **Activity Bar**.
 2. Select the **Settings** option.
 3. Open the **Extension** option listed in the **Commonly Used** menu.
 4. Select **Zowe Explorer** to access its settings.
@@ -34,9 +34,7 @@ Change the default folder location where temporary files are stored:
    3. Modify the following definition in the file:
 
       ```json
-      "zowe.files.temporaryDownloadsFolder": {
-          "folderPath": "/path/to/directory"
-        }
+        "zowe.files.temporaryDownloadsFolder.path": "/path/to/directory"
       ```
 
       Replace `/path/to/directory` with the new folder location.

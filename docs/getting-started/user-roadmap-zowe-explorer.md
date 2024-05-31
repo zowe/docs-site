@@ -40,15 +40,15 @@ For a better understanding of Zowe Explorer, review the various reference materi
 
 The Zowe ecosystem is more than a collection of applications and extensions. An entire community exists to work on enhancements, help answer questions, and discuss plans for the future of the open source project.
 
-- Join the [**#zowe-explorer-vsce**](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) Slack channel to ask questions, propose new ideas, and interact with the Zowe community.
+- Join the [**#zowe-explorer-vscode**](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) Slack channel to ask questions, propose new ideas, and interact with the Zowe community.
 
-- You can join **Zowe Explorer squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar).
+- You can join **Zowe Explorer squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
 - Read informative [**blog posts about Zowe**](https://medium.com/zowe) on Medium to explore use cases, best practices, and more.
 
 - **Discuss Zowe topics** in the [Open Mainframe Project community forums](https://community.openmainframeproject.org/c/zowe).
 
-- If you have an issue that is specific to Zowe Explorer, you can [**submit an issue**](https://github.com/zowe/zowe-explorer-vscode/issues/new/choose) in the `vscode-extension-for-zowe` repository on GitHub.
+- If you have an issue that is specific to Zowe Explorer, you can [**submit an issue**](https://github.com/zowe/zowe-explorer-vscode/issues/new/choose) in the `zowe-explorer-vscode` repository on GitHub.
 
 ## Zowe Conformance Program
 

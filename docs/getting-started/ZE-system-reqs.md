@@ -22,13 +22,13 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
    - [Ubuntu](https://ubuntu.com/) 20.04+
 - Windows 10+
 
-### Integrated development environments: 
+### Integrated development environments:
 
 - [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces) 
 
     :::note
 
-    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyrings are not unlocked by default.
+    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyring is not unlocked by default.
 
     :::
 - [VS Code](https://code.visualstudio.com/) 1.79.0+

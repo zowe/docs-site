@@ -8,7 +8,7 @@ After you install Zowe Explorer, you must have a Zowe Explorer profile to use al
 
 Zowe uses [team configuration](/appendix/zowe-glossary.md#team-configuration) to simplify profile management by letting you edit, store, and share mainframe connection details in one location, a configuration file.
 
-You can use a text editor or an IDE to populate configuration files with profiles, which contain the connection information for your mainframe services. By default, your *global* team configuration file is located in the `.zowe` home folder, whereas a *project* configuration file is located in the main directory of your project.
+You can use a text editor or an IDE to populate configuration files with profiles, which contain the connection information for your mainframe services. By default, your *global* team configuration file is located in the `.zowe` folder in your home folder, whereas a *project* configuration file is located in the main directory of your project.
 
 :::note
 
