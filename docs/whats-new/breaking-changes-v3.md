@@ -1,33 +1,41 @@
-# Breaking Changes and Important Updates in Zowe v3
+# Important Updates in Zowe v3
 
 The upcoming release of Zowe v3 will bring a range of major changes in Zowe functionality. Review this article for details about changes to various Zowe components to be introduced in Zowe v3.
 
 ## API Mediation Layer (API ML)
 
+The following table presents changes to the API Mediation Layer in v3 and if there are any required actions for the API ML user.
+
 ### Breaking Changes to API ML
 
-* Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1`
-* Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported.
-* Datasets API will be archived
-* Jobs API will be archived
-* Metrics service will be archived
-* IMS API will be archived
-* Java 17 will be required for the API Mediation Layer to run
-* z/OSMF in version V2R5 with APAR PH12143 applied
-* Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://`
+| Change in  Zowe v3 | Required action |  
+|----|-----------------------|
+| Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1` | ??? |
+| Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported | ??? |
+| Datasets API will be archived | ??? |
+| Jobs API will be archived | ??? |
+| Metrics service will be archived | ??? |
+| IMS API will be archived | ??? |
+| Java 17 will be required for the API Mediation Layer to run | ??? |
+| z/OSMF in version V2R5 with APAR PH12143 applied | ??? |
+| Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://` | ??? |
 
-### Important updates
 
-The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly
+### Important API ML updates
+
+The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly.
  
 ## Application Framework
 
 ### Breaking changes
 
-* Updating Angular to Version 16 from Version 12
-* Removing the core-js dependency
-* Updating Webpack to version 5
-* Updating Typescript to 4.9
+| Change in  Zowe v3 | Required action |  
+|----|-----------------------|
+| Updating Angular to Version 16 from Version 12 | ??? |
+| Removing the core-js dependency | ??? |
+| Updating Webpack to version 5 | ??? |
+| Updating Typescript to 4.9 | ??? |
+
 
 ## CLI
 
