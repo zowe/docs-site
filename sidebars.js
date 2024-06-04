@@ -124,6 +124,11 @@ module.exports = {
         },
         {
           type: "category",
+          label: "Zowe Server Install Wizard Overview",
+          link: {type:"doc", id: "user-guide/server-install-wizard-overview"},
+        },
+        {
+          type: "category",
           label: "Installing Zowe via SMP/E",
           link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
           items: [
