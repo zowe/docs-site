@@ -8,7 +8,6 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 
 - Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented.  
 
-
 - The separation of duties for steps to be performed by a security administrator is made easier, whereby a system programmer or system administrator can skip particular steps where elevated user permissions are required, whereupon security administrators can perform such steps outside of the wizard.
 
 - Results for each step and the YAML configuration output can be reviewed for reference alongside activites performed outside of the wizard, or for future use.
