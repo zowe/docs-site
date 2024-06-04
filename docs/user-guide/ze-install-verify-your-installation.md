@@ -9,7 +9,7 @@ Verify that Zowe Explorer has been installed successfully by searching data sets
 
 1. Expand **DATA SETS** in the **Side Bar**, and hover over the profile you want to filter.
 2. Click the **Search** icon.
-3. Use the **picker** field to enter your username and password when prompted.
+3. Use the **input box** field to enter your username and password when prompted.
 4. Select the **+ Create a new filter** option.
 5. Enter the criteria to filter search results.
 

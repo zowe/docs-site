@@ -4,7 +4,7 @@
 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 2. Hover over the profile you want to search and click the **Search** icon.
-3. In the **picker** field, enter or select the path that you want as the root of your displayed tree and press `Enter`.
+3. In the **Quick Pick** field, enter or select the path that you want as the root of your displayed tree and press `Enter`.
    
    All child files and directories of that path display in the **Side Bar**.
 
@@ -45,7 +45,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
 2. Select a USS file you want to rename.
 3. Right-click the USS file and select the **Rename USS file** option.
-4. In the **picker** field, change the name of the USS file and press `Enter`.
+4. In the **input box**, change the name of the USS file and press `Enter`.
 
 ## Downloading, editing, and uploading existing USS files
 
@@ -72,7 +72,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 
 2. Right-click the directory where you want to add the new directory.
-3. Select the **Create Directory** option and enter the directory name in the **picker** field.
+3. Select the **Create Directory** option and enter the directory name in the **input box**.
 4. Press `Enter` to create the directory.
 
 ### Creating a file
@@ -80,7 +80,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 
 2. Right-click the directory to which you want to add the new file.
-3. Select the **Create File** option and enter the file name in the **picker** field.
+3. Select the **Create File** option and enter the file name in the **input box**.
 4. Press `Enter` to create the file.
 
 ### Deleting a file
@@ -101,6 +101,6 @@ To select one or more files or folders in the tree and drag them to a folder or 
 ## Viewing and accessing multiple USS profiles simultaneously
 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**, and click the **+** icon.
-2. Select or enter a profile in the **picker** drop-down menu to add it to the **Side Bar**.
+2. Select or enter a profile in the **Quick Pick** menu to add it to the **Side Bar**.
 
    ![View Profiles](../images/ze/ZE-profile2.gif)
