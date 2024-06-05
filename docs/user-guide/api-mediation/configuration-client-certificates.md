@@ -1,8 +1,79 @@
 # Enabling single sign on for clients via client certificate configuration
 
-
 :::info Roles: system programmer, system administrator, security administrator
 :::
+
+The possibility to authenticate against the API ML onboarded APIs is disabled by default. This article explains steps 
+necessary for enabling it. 
+
+There are two ways to enable client certificate functionality. The older and default one is via ZSS. The newer and recommended
+one is internal mapper that is part of API Mediation Layer. The Internal Mapper is simpler to configure and provides
+more functionality than ZSS. The article below outlines configuration necessary for both of the routes. 
+
+To learn more about the usage of the client certificate, if you have them enabled consult 
+[Authenticating with client certificates](../authenticating-with-client-certificates.md)
+
+## General pre-requisites
+
+1. Zowe have correct TLS setup. 
+2. The external CA used for issuing client certificates to specific users is imported to the truststore or keyring of the API Mediation Layer.
+
+:::caution Important:
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+  :::
+
+:::note Notes:
+* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and the SAF user ID, however the use of the internal API ML mapper is the recommended method.
+
+* For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
+  :::
+
+## Configure Internal Mapper
+
+Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
+
+1. Open the `zowe.yaml` configuration file.
+2. Configure the following properties:
+
+   * **components.gateway.apiml.security.x509.enabled**  
+     This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
+   * **components.gateway.apiml.security.useInternalMapper**
+     This property is the global feature toggle. Set the value to `true` to enable Internal Mapper
+
+3. Restart Zowe.
+
+## Configure ZSS
+
+For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
+
+### Prerequisites
+
+When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate 
+authentication. 
+
+1. Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password.
+
+For RACF, issue the following TSO command:
+
+`ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`
+
+For other security systems, refer to the documentation for an equivalent command.
+
+2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
+
+:::note
+Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
+:::
+
+:::caution Important:
+* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+  :::
+
+:::tip
+There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, and are using Zowe v2.14 or a later version, use the recommended internal API ML mapper.
+:::
+
+### Procedure for enabling
 
 Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. 
 
