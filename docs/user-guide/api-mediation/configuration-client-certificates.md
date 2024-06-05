@@ -7,13 +7,14 @@ You can authenticate against API ML onboarded APIs. This functionality is disabl
 
 There are two methods to enable client certificate functionality: 
 * The original and default method via ZSS 
-* The newer and recommended method via the internal mapper component of API Mediation Layer. The Internal Mapper is simpler to configure and provides more functionality than ZSS.
+* The newer and recommended method via the internal mapper component of API Mediation Layer  
+The internal mapper is simpler to configure and provides more functionality than ZSS.
 
 Review this article to learn about the required configuration to authenticate with either method. 
 
 For information about the usage of the client certificate when this feature is enabled, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
 
-## General pre-requisites
+## General prerequisites
 
 * Zowe has correct TLS setup 
 * The external CA used for issuing client certificates to specific users is imported to the truststore or keyring of the API Mediation Layer.
@@ -24,14 +25,14 @@ For information about the usage of the client certificate when this feature is e
 
 ## Configure Internal Mapper
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway.
+Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal mapper is the recommended method.
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
 
    * **components.gateway.apiml.security.x509.enabled**  
      This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
-   * **components.gateway.apiml.security.useInternalMapper**
+   * **components.gateway.apiml.security.useInternalMapper**  
      This property is the global feature toggle. Set the value to `true` to enable Internal Mapper
 
 3. Restart Zowe.
