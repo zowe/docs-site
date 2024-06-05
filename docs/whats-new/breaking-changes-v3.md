@@ -8,18 +8,18 @@ The following table presents changes to the API Mediation Layer in v3 and if the
 
 ### Breaking Changes to API ML
 
-| Change in  Zowe v3 | Required action |  
-|----|-----------------------|
-| Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1` | ??? |
-| Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported | ??? |
-| Datasets API will be archived | ??? |
-| Jobs API will be archived | ??? |
-| Metrics service will be archived | ??? |
-| IMS API will be archived | ??? |
-| Java 17 will be required for the API Mediation Layer to run | ??? |
-| z/OSMF in version V2R5 with APAR PH12143 applied | ??? |
-| Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://` | ??? |
-
+| Change in  Zowe v3 | Required action                                                                                                                                                                                                                                                                                                                                                      |  
+|----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1` | If you use the endpoints directly, change the URLs to start with `/gateway/api/v1`. If you use ZAAS client to integrate with API Mediation Layer, you don't need to do anything the change is handled in ZAAS client code.                                                                                                                                           |
+| Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported | Upgrade the extending service based on the Spring Enabler to Spring Boot 3 and Spring 6                                                                                                                                                                                                                                                                              |
+| Datasets API will be archived | The service was disabled by default in Version 2. If you enable the service via `components.data-sets.enabled: true` and use the APIs documented in [Data sets Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json) you need to move to the usage of the similar z/OSMF endpoints. |
+| Jobs API will be archived | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json) you need to move to the usage of the similar z/OSMF endpoints.               |
+| Metrics service will be archived | The service was in Technical Preview. Currently there is no replacement, but with V3 the Open Telemetry standard will be implemented that serves as replacement.                                                                                                                                                                                                     |
+| IMS API will be archived | The service wasn't fully supported, if you were using the API, please reach out to IBM team and consult with them the follow-up steps                                                                                                                                                                                                                                |
+| Java 17 will be required for the API Mediation Layer to run | For V3 you need to update z/OS to at least 2.5 as this brings support of Java 17 and then install Java 17 and provide the path to Java 17 to Zowe java configuration.                                                                                                                                                                                                |
+| z/OSMF in version V2R5 with APAR PH12143 applied | If you are running z/OS before 3.1 validate that PH12143 APAR was applied to the z/OSMF installation used by Zowe                                                                                                                                                                                                                                                    |
+| Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://` | If your zowe configuration contains `safkeyring:////` change this part to `safkeyring://`                                                                                                                                                                                                                                                                            |
+| Support access to the zosmf only via /ibmzosmf route. Supporting both created issues for CLI setup | If you use the zosmf via `{apimlUrl}/zosmf/{zosmfEndpoint}` you need to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}`                                                                                                                                                                                                                                                |
 
 ### Important API ML updates
 
