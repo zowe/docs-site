@@ -1,8 +1,16 @@
 # Configuring z/OSMF
 
-Complete the following IBM z/OSMF configuration tasks for your Zowe CLI implementation.
+For client-side components to communicate with the mainframe, z/OSMF requires configuration to make this happen.
 
 :::info Required role: systems programmer
+:::
+
+Complete the following IBM z/OSMF configuration tasks for the implementation of [Zowe CLI](../user-guide/user-roadmap-zowe-cli.md), [Zowe Explorer for Visual Studio Code](../getting-started/user-roadmap-zowe-explorer.md), or the [Zowe IntelliJ Plug-in](../user-guide/intellij-install.md).
+
+:::note
+
+If you are connecting to the mainframe with methods other than a z/OSMF profile, you do not need to configure z/OSMF. Other connection options might include using FTP, or your custom API.
+
 :::
 
 ## Obtaining z/OSMF installation and configuration materials
@@ -11,7 +19,7 @@ Before you start the configuration process, review [Overview of z/OSMF](https://
 
 ## Installing and configuring z/OSMF
 
-Zowe CLI was designed and tested to integrate with z/OSMF running on IBM version 2.5 z/OS mainframe systems. To use Zowe CLI, ensure that your z/OS system meets the requirements that are described in the following table:
+Zowe client-side components were designed and tested to integrate with z/OSMF running on IBM version 2.5 z/OS mainframe systems. To use Zowe client-side components, ensure that your z/OS system meets the requirements that are described in the following table:
 
 | Requirement        | Description |
 | ----------- | ----------- |

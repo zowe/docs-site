@@ -1,31 +1,37 @@
 # Configuring z/OSMF Security
 
-Review the tasks that security administrators must complete to configure z/OSMF security for your Zowe CLI implementation.
+Review the tasks that security administrators must complete to configure z/OSMF security for your installation of Zowe client-side components.
 
 :::info Required role: security administrator
 :::
 
 ## Configuring z/OS REST services SAF security
 
-A security administrator must configure security to allow z/OSMF System Authorization Facility (SAF) access to the resources that Zowe CLI requires. Zowe CLI uses REST endpoints that are associated with each z/OSMF REST API. After you complete all z/OSMF and z/OSMF cloud provisioning configurations, you can test your connection to z/OSMF to verify that Zowe CLI can communicate with z/OS systems.
+:::note
 
-:::caution
-
-Before you allow users to issue z/OS console commands with Zowe CLI, security administrators should ensure that they provide access to commands that are appropriate for their organization.
+If you are connecting to the mainframe with methods other than a z/OSMF profile, you do not need to configure z/OSMF security. Other connection options might include using FTP, or your custom API.
 
 :::
 
-The following table details the required z/OSMF REST services and examples of the Zowe CLI features they enable.
+A security administrator must configure security to allow z/OSMF System Authorization Facility (SAF) access to the resources that Zowe client-side components require. Zowe client-side components use REST endpoints that are associated with each z/OSMF REST API. After you complete all z/OSMF and z/OSMF cloud provisioning configurations, you can test your connection to z/OSMF to verify that your Zowe client-side components can communicate with z/OS systems.
+
+:::caution
+
+Before you allow users to issue z/OS console commands with Zowe client-side components, security administrators should ensure that they provide access to commands that are appropriate for their organization.
+
+:::
+
+The following table details the required z/OSMF REST services and examples of the features they enable.
 
 
 | z/OSMF REST Service        | REST Endpoint | Description | More information |
 | ----------- | ----------- | ---------- | ------------- |
-| Cloud provisioning services | Endpoints that begin with: `/zosmf/provisioning/` | Cloud provisioning for development environments (`zowe provisioning list instance-info`). | <ul><li>[Cloud provisioning services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-cloud-provisioning)</li></ul> |
-| TSO/E address space services | Endpoints that begin with: `/zosmf/tsoApp` | TSO commands (`zowe zos-tso issue`). | <ul><li>[TSO/E address space services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-tsoe-address-space)</li><li>[Class activations that z/OSMF requires](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTapi__title__1)</li></ul> |
-| z/OS console services | Endpoints that begin with: `/zosmf/restconsoles/`<br/> Example: `/zosmf/restconsoles/defcn` | Console commands (`zowe zos-console issue`). Any MVS console command such as MODIFY and DISPLAY. | <ul><li>[z/OS console services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-console)</li><li>[Resource authorizations for the z/OS console services REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__zOSConsolesRestAPI__title__1)</li></ul> |
-| z/OS data set and file REST interface | Endpoints that begin with: `/zosmf/restfiles/` Example: `/zosmf/restfiles/ds/<dsname>` | Create data sets (`zowe zos-files create`), delete data sets (`zowe zos-files delete`), read (download) data sets (`zowe zos-files download`), and write (upload) data sets (`zowe zos-files upload`). <br/>Access to access method services (IDCAMS) (`zowe zos-files invoke access-method-services`). | <ul><li>[z/OS data set and file REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-data-set-file-rest-interface)</li><li>[Resource authorizations for the z/OS data set and file REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTdsfilesAPI__title__1)</li></ul> |
-| z/OS jobs REST interface | Endpoints that begin with: `/zosmf/restjobs/` Example: `/zosmf/restjobs/jobs/<jobname>/<jobid>` | Submit jobs (`zowe zos-jobs submit`), purge jobs, and read job output. <br/>List jobs (`zowe zos-jobs list`). | <ul><li>[z/OS jobs REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-jobs-rest-interface)</li><li>[Resource authorizations for the z/OS jobs REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTapi__title__1)</li></ul> |
-| z/OSMF workflow services | Endpoints that begin with: `/zosmf/workflow/` | Cloud provisioning for development environments (`zowe zos-workflows list active-workflows`). | <ul><li>[z/OSMF workflow services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zosmf-workflow)</li></ul> |
+| Cloud provisioning services | Endpoints that begin with: `/zosmf/provisioning/` | Cloud provisioning for development environments (`zowe provisioning list instance-info`). | <ul><li>Used by Zowe CLI</li><li>[Cloud provisioning services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-cloud-provisioning)</li></ul> |
+| TSO/E address space services | Endpoints that begin with: `/zosmf/tsoApp` | TSO commands (`zowe zos-tso issue`). | <ul><li>Used by Zowe CLI, Zowe Explorer</li><li>[TSO/E address space services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-tsoe-address-space)</li><li>[Class activations that z/OSMF requires](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTapi__title__1)</li></ul> |
+| z/OS console services | Endpoints that begin with: `/zosmf/restconsoles/`<br/> Example: `/zosmf/restconsoles/defcn` | Console commands (`zowe zos-console issue`). Any MVS console command such as MODIFY and DISPLAY. | <ul><li>Used by Zowe CLI, Zowe Explorer</li><li>[z/OS console services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-console)</li><li>[Resource authorizations for the z/OS console services REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__zOSConsolesRestAPI__title__1)</li></ul> |
+| z/OS data set and file REST interface | Endpoints that begin with: `/zosmf/restfiles/` Example: `/zosmf/restfiles/ds/<dsname>` | Create data sets (`zowe zos-files create`), delete data sets (`zowe zos-files delete`), read (download) data sets (`zowe zos-files download`), and write (upload) data sets (`zowe zos-files upload`). <br/>Access to access method services (IDCAMS) (`zowe zos-files invoke access-method-services`). | <ul><li>Used by Zowe CLI, Zowe Explorer</li><li>[z/OS data set and file REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-data-set-file-rest-interface)</li><li>[Resource authorizations for the z/OS data set and file REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTdsfilesAPI__title__1)</li></ul> |
+| z/OS jobs REST interface | Endpoints that begin with: `/zosmf/restjobs/` Example: `/zosmf/restjobs/jobs/<jobname>/<jobid>` | Submit jobs (`zowe zos-jobs submit`), purge jobs, and read job output. <br/>List jobs (`zowe zos-jobs list`). | <ul><li>Used by Zowe CLI, Zowe Explorer</li><li>[z/OS jobs REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-jobs-rest-interface)</li><li>[Resource authorizations for the z/OS jobs REST interface](https://www.ibm.com/docs/en/zos/2.5.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__ResourceAuthorizationsForRESTapi__title__1)</li></ul> |
+| z/OSMF workflow services | Endpoints that begin with: `/zosmf/workflow/` | Cloud provisioning for development environments (`zowe zos-workflows list active-workflows`). | <ul><li>Used by Zowe CLI</li><li>[z/OSMF workflow services](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zosmf-workflow)</li></ul> |
 
 ## Configuring z/OS console REST interface
 
@@ -55,6 +61,6 @@ Ensure that you implement all the required security for the plug-ins. For more i
 :::note
 
 - For systems that are secured by RACF, ensure that the TRUSTED attribute is assigned to the CEA started task.
-- To enable Zowe CLI to authenticate to z/OSMF using certificates, security administrators can configure the certificates for Zowe CLI users. For more information, see [Using the z/OSMF REST services](https://www.ibm.com/docs/en/zos/2.2.0?topic=guide-using-zosmf-rest-services) in the IBM Documentation.
+- To enable Zowe client-side components to authenticate to z/OSMF using certificates, security administrators can configure the certificates for users of Zowe client-side components. For more information, see [Using the z/OSMF REST services](https://www.ibm.com/docs/en/zos/2.2.0?topic=guide-using-zosmf-rest-services) in the IBM Documentation.
 
 :::

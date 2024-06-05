@@ -79,8 +79,8 @@ If your implementation uses an external security manager other than RACF (for ex
 - [Configure z/OS Management Facility for ACF2](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-acf2.html)
 :::
 
-## z/OSMF REST services for the Zowe CLI
-The Zowe CLI uses z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
+## z/OSMF REST services for Zowe clients
+[Zowe clients](../appendix/zowe-glossary.md#zowe-client-projects) use z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
   z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
   ---|---|---

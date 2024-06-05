@@ -5,7 +5,7 @@ You can uninstall Zowe&trade; CLI from the desktop if you no longer need to use 
 :::info Required roles: Systems administrator
 :::
 
-:::info Important
+:::warning Important
 
 The uninstall process does not delete the profiles and credentials that you created when using the product from your computer. To delete the profiles from your computer, delete them before you uninstall Zowe CLI.
 

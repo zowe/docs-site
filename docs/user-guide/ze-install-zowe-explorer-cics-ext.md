@@ -35,14 +35,3 @@ The Zowe Explorer pane shows tree views for **Data Sets**, **Unit System Service
 
 ![CICS tree in Zowe pane](../images/ze-cics/cics-tree-in-zowe-pane.png)
 
-## Uninstalling
-
-To uninstall the Zowe Explorer CICS extension from the VS Code Extensions tab:
-
-1. Navigate to the **Extensions** tab of the VS Code application.
-
-2. Find `Zowe Explorer for IBM CICS` and click it.
-
-3. A panel opens. Click **Uninstall** at the top of the page.
-
-4. A reload may be required. If a button appears for reload, click it and the extension is no longer installed.

@@ -312,30 +312,27 @@ module.exports = {
       items: [
         {
           type: "category",
+          label: "Configuring z/OSMF",
+          link: {type:"doc", id:"user-guide/cli-install-configure-zosmf"},
+          items: [
+            "user-guide/cli-install-configure-zosmf-security", 
+          ],      
+        },
+        {
+          type: "category",
           label: "Zowe CLI installation",
           link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
           items: [
             "user-guide/cli-install-cli-checklist",
             {
               type: "category",
-              label: "Zowe CLI software requirements",
+              label: "Zowe CLI system requirements",
               link: {type:"doc", id:"user-guide/systemrequirements-cli"},
               items: [
                 "user-guide/cli-swreqplugins",
               ],
               },
             "user-guide/cli-install-configure-install-online-registry-proxy",
-            "user-guide/cli-install-configure-zosmf",
-            "user-guide/cli-install-configure-zosmf-security",
-          {
-          type: "category",
-          label: "Installing Zowe CLI and Zowe CLI plug-ins",
-          link: {type:"doc", id:"user-guide/cli-installcli"},
-          items: [
-            "user-guide/cli-configure-scs-on-headless-linux-os",
-            "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
-          ],
-          },
             "user-guide/cli-updatingcli",
             {
               type: "category",
@@ -360,13 +357,16 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe Explorer",
+          label: "Zowe Explorer installation",
           link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
           items: [
             "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
             "user-guide/ze-profiles",
+            "user-guide/ze-install-configuring-ze",
+            "user-guide/ze-install-verify-your-installation",
+            "user-guide/ze-install-uninstall-ze",
           ],
         },
         {

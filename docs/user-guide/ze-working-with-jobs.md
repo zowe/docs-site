@@ -21,7 +21,7 @@
 
 1. Expand **JOBS** in the **Side Bar**.
 2. Click on the **Sort** icon to the right of a profile.
-3. Select the **Sort Direction** option and select either **Ascending** or **Descending** from the **picker** field.
+3. Select the **Sort Direction** option and select either **Ascending** or **Descending** from the **Quick Pick** field.
 4. Select a sort type from the list of available options:
    - **Job ID (default)**
    - **Date Submitted**
@@ -38,7 +38,7 @@
 
    Alternatively, press the `F1` key to open the **Command Pallette**, and then select the **Zowe Expolorer: Issue MVS Command** option.
 
-3. In the **picker** field, enter a new command or select a saved command.
+3. In the **Quick Pick**, enter a new command or select a saved command.
 4. Press `Enter` to execute the command.
 
    ![Issue a MVS command](../images/ze/ZE-Jobs-Issue-TSO-Command.gif)
@@ -50,7 +50,7 @@
 
    Alternatively, press the `F1` key to open the **Command Pallette**, then select the **Zowe Explorer: Issue TSO Command** option.
 
-3. In the **picker** field, enter a new command or select a saved command.
+3. In the **Quick Pick** field, enter a new command or select a saved command.
 4. Press `Enter` to execute the command.
 
    The output displays in the **Output** panel.
