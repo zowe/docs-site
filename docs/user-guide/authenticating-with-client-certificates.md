@@ -3,16 +3,14 @@
 :::info Required roles: system administrator, security administrator
 :::
 
-Authentication for integration with API ML can also be performed by the client when the service endpoint is called through 
-the API ML Gateway with client certificates. The client certification must be enabled and configured. The configuration
-is explained in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md)
+Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through 
+the API ML Gateway with client certificates. Client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
-* When calling the login endpoint with basic authentication credentials as well as with client certificate, the basic 
-  authentication credentials take precedence and client certificate is ignored. 
+* When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
+  authentication credentials take precedence and the client certificate is ignored. 
 
-* If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication.
-  In this case, the Basic authentication is not part of the authenticated request.
+* If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
 ## How the Gateway resolves authentication 
@@ -40,7 +38,7 @@ When sending a request to the login endpoint with a client certificate, the Gate
 ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method. 
 :::
 
-The ZSS route related diagram is below. 
+The following diagram shows how routing works with ZSS. 
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -48,9 +46,9 @@ The ZSS route related diagram is below.
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 :::
 
-## Configure your z/OS system to support client certificate authentication for specific user
+## Configure your z/OS system to support client certificate authentication for a specific user
 
-1. Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
+Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
 
   **Example command in RACF:**  
 
@@ -66,9 +64,9 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
   Additional details are likely described in your security system documentation.
 
-:::note
-Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
-Ensure that the client certificate has the following `Extended Key Usage` metadata:  
+:::note Notes
+* Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
+* Ensure that the client certificate has the following `Extended Key Usage` metadata:  
 `OID: 1.3.6.1.5.5.7.3.2`  
 This metadata can be used for TLS client authentication.
 :::
