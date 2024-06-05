@@ -8,7 +8,7 @@ You can authenticate against API ML onboarded APIs. This functionality is disabl
 There are two methods to enable client certificate functionality: 
 * The original and default method via ZSS 
 * The newer and recommended method via the internal mapper component of API Mediation Layer  
-The internal mapper is simpler to configure and provides more functionality than ZSS.
+The internal API ML mapper is simpler to configure and provides more functionality than ZSS.
 
 Review this article to learn about the required configuration to authenticate with either method. 
 
@@ -23,9 +23,9 @@ For information about the usage of the client certificate when this feature is e
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
   :::
 
-## Configure Internal Mapper
+## Configure Internal API ML Mapper
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal mapper is the recommended method.
+Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
