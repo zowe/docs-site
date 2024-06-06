@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create fmp-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_fmp-profile.html">fmp-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>File Master Plus profile schema.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create fmp-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new fmp profile. You can load this profile by using the name on commands that support the &quot;--fmp-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>FMP Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies File Master Plus server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies File Master Plus server port.</p>
+<p>Default value: 51914</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Mainframe user name. May be the same as TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Mainframe password. May be the same as TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies File Master Plus REST API protocol.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the fmp profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a fmp profile with http protocol:</p>
+<ul>
+<li><code>zowe profiles create fmp-profile fmp123 --host fmphost --port 19853 --user mfuser --password m4pass --protocol http</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create fmp-profile fmp123 --host fmphost --port 19853 --user mfuser --password m4pass --protocol http">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a fmp profile with https protocol and allow self-signed certificates:</p>
+<ul>
+<li><code>zowe profiles create fmp-profile fmp234 --host fmphost --port 19854 --user mfuser --password m4pass --protocol https --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create fmp-profile fmp234 --host fmphost --port 19854 --user mfuser --password m4pass --protocol https --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a fmp profile with API Mediation layer:</p>
+<ul>
+<li><code>zowe profiles create fmp-profile fmpAPIML --host fmpAPIML --port 2020 --user mfuser --pass mfp4ss --protocol https --reject-unauthorized false --base-path /api/v1/serviceID</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create fmp-profile fmpAPIML --host fmpAPIML --port 2020 --user mfuser --pass mfp4ss --protocol https --reject-unauthorized false --base-path /api/v1/serviceID">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
