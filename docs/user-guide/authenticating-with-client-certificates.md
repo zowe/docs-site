@@ -3,14 +3,12 @@
 :::info Required roles: system administrator, security administrator
 :::
 
-Authentication for integration with API ML can also be performed by the client when the service endpoint is called through the API ML Gateway with client certificates. 
-
-:::tip
-There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, and are using Zowe v2.14 or a later version, use the recommended internal API ML mapper.
-:::
+Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through 
+the API ML Gateway with client certificates. Client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
-* When calling the login endpoint with basic authentication credentials as well as with client certificate, the basic authentication credentials take precedence and client certificate is ignored. 
+* When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
+  authentication credentials take precedence and the client certificate is ignored. 
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
@@ -40,36 +38,17 @@ When sending a request to the login endpoint with a client certificate, the Gate
 ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method. 
 :::
 
+The following diagram shows how routing works with ZSS. 
+
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
 :::tip
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 :::
 
-## Prerequisites when using ZSS
+## Configure your z/OS system to support client certificate authentication for a specific user
 
-When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate authentication. These prerequsites do not apply when using the internal API ML mapper.
-
-1. Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password. 
-
-  For RACF, issue the following TSO command:  
-
-  `ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)`  
-
-  For other security systems, refer to the documentation for an equivalent command.
-
-2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
-
-:::note
-Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF. 
-Ensure that the client certificate has the following `Extended Key Usage` metadata:  
-`OID: 1.3.6.1.5.5.7.3.2`  
-This metadata can be used for TLS client authentication.
-:::
-
-## Configure your z/OS system to support client certificate authentication
-
-1. Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
+Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
 
   **Example command in RACF:**  
 
@@ -85,34 +64,12 @@ This metadata can be used for TLS client authentication.
 
   Additional details are likely described in your security system documentation.
 
-2. Import the external CA to the truststore or keyring of the API Mediation Layer.
-3. Configure the Gateway for client certificate authentication. Follow the procedure described in [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
-
-:::caution Important:
-* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
-
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+:::note Notes
+* Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
+* Ensure that the client certificate has the following `Extended Key Usage` metadata:  
+`OID: 1.3.6.1.5.5.7.3.2`  
+This metadata can be used for TLS client authentication.
 :::
-
-:::note Notes:
-* The internal API ML mapper can provide the API for API ML if enabled in the zowe.yaml file. Use of the internal API ML mapper is the recommended method. Note that the mapper feature is available for Zowe release 2.14 and later releases. Alternatively, ZSS can be configured to participate in Zowe SSO. 
-
-* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and the SAF user ID, however the use of the internal API ML mapper is the recommended method.  
-
-* For more information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
-:::
-
-### Enabling the internal API ML mapper
-
-To enable the internal API ML mapper, set the following property in zowe.yaml:
-```
-gateway:  
-  apiml:  
-    security:  
-      useInternalMapper: true 
-```
-Note that the internal API ML mapper option is only available for Zowe release 2.14 and later releases. 
-
 
 ## Validate the client certificate functionality
 
