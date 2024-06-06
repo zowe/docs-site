@@ -1,4 +1,4 @@
-# Zowe Server Install Wizard Overview
+# Installing Zowe via Zowe Server Install Wizard
 
 The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, Mac OS, and Linux systems.  Performing Zowe installation via the wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
 
