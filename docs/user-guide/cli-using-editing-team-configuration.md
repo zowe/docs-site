@@ -24,7 +24,7 @@ To define additional mainframe services and other profiles in an existing global
                     "port": 443
                 }
             },
-            "base": {
+            "global_base": {
                 "type": "base",
                 "properties": {
                     "host": "example1.com"
@@ -37,7 +37,7 @@ To define additional mainframe services and other profiles in an existing global
         },
         "defaults": {
             "zosmf": "zosmf",
-            "base": "base"
+            "base": "global_base"
         },
     }
     ```

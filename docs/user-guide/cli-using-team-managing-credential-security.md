@@ -34,13 +34,13 @@ Create a configuration file and set its secure properties (such as usernames and
     ```
     A configuration file is created, if one does not already exist.
     
-    Additionally, the `profiles.base.properties.user` and `profiles.base.properties.password` fields are added to the base profile `secure` array for that configuration file. Zowe CLI stores the username and password in the [secure credential store](../appendix/zowe-glossary#secure-credential-store).
+    Additionally, the `user` and `password` fields are added to the generated base profile's `secure` array for that configuration file. Zowe CLI stores the username and password in the [secure credential store](../appendix/zowe-glossary#secure-credential-store).
 
 3. If needed, add other fields to the secure array.
     - Use a text editor or an IDE (such as Visual Studio Code) to edit the configuration file.
     - Issue the `zowe config set --secure <property-path>` command to secure a specific property in a specific profile.
         
-        For example, `zowe config set profiles.base.properties.password pw123 --secure` adds the `password` property to the base profile's `secure` array and saves the password `pw123` in the secure credential store.
+        For example, in a global configuration file, `zowe config set profiles.global_base.properties.password pw123 --secure` adds the `password` property to the `global_base` profile's `secure` array and saves the password `pw123` in the secure credential store.
 
         If you issue the command for a property that is already secured, the CLI prompts you to enter a new property value.
 

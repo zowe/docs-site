@@ -55,7 +55,7 @@ Generate a *user* configuration file that overrides the values defined in the gl
                 "properties": {},
                 "secure": []
             },
-            "base": {
+            "global_base": {
                 "type": "base",
                 "properties": {},
                 "secure": []

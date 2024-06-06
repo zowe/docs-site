@@ -102,7 +102,7 @@ You can use this example to customize your own profiles in a configuration file.
         }
       }
     },
-    "my_base": {
+    "project_base": {
       "type": "base",
       "properties": {
         "rejectUnauthorized": false
@@ -115,7 +115,7 @@ You can use this example to customize your own profiles in a configuration file.
     "tso": "lpar1.tso",
     "ssh": "lpar1.ssh",
     "zftp": "lpar1.zftp",
-    "base": "my_base"
+    "base": "project_base"
   },
   "plugins": []
 }
