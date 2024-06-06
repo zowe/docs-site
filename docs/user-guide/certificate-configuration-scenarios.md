@@ -1,7 +1,7 @@
 # Certificate configuration scenarios 
 
 
- After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, review the five scenarios presented in this article for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
+ After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, review the five scenarios presented in this article to configure Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
 
 :::info Required roles: system programmer, security administrator
 :::
@@ -20,15 +20,15 @@ Zowe can then automate the certificate setup via the `zwe init certificate` comm
 
 
 :::note 
-Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate*, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
+Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate *, and the corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate`, which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 :::
 
 ## <b>*</b> What is a valid certificate in Zowe?
 
-A valid certificate for use in Zowe has the following qualities:
+A valid certificate for use in Zowe conforms to one of the following two options: 
 
 * The certificate does not contain the _Extended Key Usage_ section.
-* The certificate contains the _Extended Key Usage_ section and also includes the **Server** and **Client** authentication fields.
+* The certificate does contain the _Extended Key Usage_ section, and also includes the **Server** and **Client** authentication fields.
 
 ## Considerations for certificate scenario selection
 
@@ -102,6 +102,14 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
         sample IP address
         - 12.34.56.78
      ```
+:::note
+A bug in Java SDK 8.0.8.10 has been discovered that makes configuration scenario 1 non-operational. If you see the following message, upgrade or downgrade your java version:
+
+```
+keytool error (likely untranslated): java.lang.IllegalArgumentException: java.util.Vector incompatible with [Ljava.lang.Object;
+```
+For more information, see this article in [IBM Support](https://www.ibm.com/support/pages/apar/IJ48749).
+:::
 
   **Example zowe yaml for scenario 1:**  
 
