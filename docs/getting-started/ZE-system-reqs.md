@@ -22,13 +22,13 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
    - [Ubuntu](https://ubuntu.com/) 20.04+
 - Windows 10+
 
-### Integrated development environments: 
+### Integrated development environments:
 
 - [Red Hat CodeReady Workspaces](https://www.redhat.com/en/technologies/jboss-middleware/codeready-workspaces) 
 
     :::note
 
-    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyrings are not unlocked by default.
+    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyring is not unlocked by default. However, you can use the [Kubernetes Secrets plug-in for Zowe CLI and Zowe Explorer](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an alternative, or you can create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
 
     :::
 - [VS Code](https://code.visualstudio.com/) 1.79.0+

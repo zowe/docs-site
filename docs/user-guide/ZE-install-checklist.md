@@ -22,8 +22,8 @@ For a printable version of this checklist, <a href="/stable/Zowe_CLI_Installatio
 
 | Step        | Description | Role       | Time Estimate |
 | ----------- | ----------- | ---------- | ------------- |
-| [Installing Zowe Explorer](../user-guide/ze-install#installing-zowe-explorer) and [Zowe Explorer extensions](../user-guide/ze-install.md#installing-zowe-explorer-extensions) | Install Zowe Explorer and Zowe Explorer extensions from the Visual Studio Markerplace or with a `VSIX` file. | Systems administrator | 10 min. |
-| [Updating Zowe Explorer and Zowe Explorer extensions](../user-guide/ze-install.md#updating-zowe-explorer-and-zowe-explorer-extensions) | Updates are done automatically unless otherwise specified. | Systems administrator | 10 min. |
+| [Installing Zowe Explorer](../user-guide/ze-install#installing-zowe-explorer) and [Zowe Explorer extensions](../user-guide/ze-install.md#installing-zowe-explorer-extensions) | Install Zowe Explorer and Zowe Explorer extensions from the Visual Studio Marketplace or with a `VSIX` file. | Systems administrator and/or developer | 10 min. |
+| [Updating Zowe Explorer and Zowe Explorer extensions](../user-guide/ze-install.md#updating-zowe-explorer-and-zowe-explorer-extensions) | Updates are done automatically unless otherwise specified. | Systems administrator and/or developer | 10 min. |
 
 ## Configuring Zowe Explorer
 

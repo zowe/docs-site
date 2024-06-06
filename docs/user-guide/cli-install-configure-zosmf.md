@@ -9,7 +9,7 @@ Complete the following IBM z/OSMF configuration tasks for the implementation of 
 
 :::note
 
-If you are connecting to the mainframe with other methods than a z/OSMF profile, you do not need to configure z/OSMF. Other connection options might include using FTP, or your custom API.
+If you are connecting to the mainframe with methods other than a z/OSMF profile, you do not need to configure z/OSMF. Other connection options might include using FTP, or your custom API.
 
 :::
 

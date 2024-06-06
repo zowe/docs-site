@@ -41,31 +41,17 @@ The extension is now installed and available for use.
 
 For information about how to install the extension from a `VSIX` file and run system tests on the extension, see the [Developer README](https://github.com/zowe/vscode-extension-for-zowe#build-locally).
 
-## Installing a specific version of Zowe Explorer
+## Changing the installed version of Zowe Explorer
 
-Depending on their circumstances, developers might want to run a specific version of Zowe Explorer. To ensure that a particular version remains installed on VS Code, refer to the procedure for one of the following scenarios:
+Depending on their circumstances, developers might want to run a specific version of Zowe Explorer.
 
-### When Zowe Explorer is not installed
+To install a particular version on VS Code:
 
-If Zowe Explorer is not installed, you can install the current release of the extension and then revert to a previous version.
-
-#### Installing a previous version of Zowe Explorer
-
-1. Select the **Extensions** tab on the **Activities Bar** to display the **Search Extensions in Marketplace** field.
-2. In the **Side Bar**, search for `Zowe Explorer`. Click the **Install** button on the Zowe Explorer search result item. This opens a Zowe Explorer tab in the **Editor** area.
-   ![Zowe Explorer search result item](../images/ze/ZE-zowe-explorer-result-item.jpg "Zowe Explorer search result item")
-<br/><br/>
-3. Click the **Down** arrow next to the **Uninstall** button. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
-4. Search for and click the version of Zowe Explorer you want to install.
-
-### When Zowe Explorer is installed
-
-#### Installing a specific previous version
-
-1. Select the **Extensions** tab on the **Activities Bar** to display a list of installed extensions.
-2. In the **Side Bar**, click the **Gear** icon next to Zowe Explorer to open a dropdown menu that lists available options.
-3. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
-4. Click the version of Zowe Explorer you want to install.
+1. Refer to [Installing Zowe Explorer](#installing-zowe-explorer) to install Zowe Explorer for Visual Studio Code if not already installed.
+2. In VS Code, select the **Extensions** tab on the **Activities Bar** to display a list of installed extensions.
+3. In the **Side Bar**, click the **Manage** icon next to Zowe Explorer to open a dropdown menu that lists available options.
+4. Select **Install Another Version…** to open a dropdown menu that lists previous versions of Zowe Explorer.
+5. Click the version of Zowe Explorer you want to install.
 
 #### Preventing automatic updates to retain a specific version
 

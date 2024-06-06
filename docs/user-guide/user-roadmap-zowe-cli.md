@@ -46,7 +46,7 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - Join the [**#zowe-cli**](https://openmainframeproject.slack.com/archives/CC8AALGN6) Slack channel to **ask questions about Zowe CLI**, propose new ideas, and interact with the Zowe community.
 
-- You can join **Zowe CLI squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar).
+- You can join **Zowe CLI squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
 - **Discuss Zowe topics** in the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
 
