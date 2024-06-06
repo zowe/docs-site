@@ -103,7 +103,7 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
         - 12.34.56.78
      ```
 :::note
-A bug in Java SDK 8.0.8.10 has been discovered that makes configuration scenario 1 non-operational. If you see the following message, upgrade or downgrade your java version:
+A bug in Java SDK 8.0.8.10 has been discovered that makes configuration scenario 1 non-operational. If you see the following message when running the `zwe init certificate` command, upgrade or downgrade your Java version:
 
 ```
 keytool error (likely untranslated): java.lang.IllegalArgumentException: java.util.Vector incompatible with [Ljava.lang.Object;
