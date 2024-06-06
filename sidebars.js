@@ -16,6 +16,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
@@ -272,17 +273,18 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id",
-                {
-                  "type": "category",
-                  "label": "Customizing management of API ML load limits",
-                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                  "items": [
-                    "user-guide/api-mediation/configuration-connection-limits",
-                    "user-guide/api-mediation/configuration-gateway-timeouts"
-                  ]
-                }
+            {
+              "type": "category",
+              "label": "Customizing management of API ML load limits",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+              "items": [
+                "user-guide/api-mediation/configuration-connection-limits",
+                "user-guide/api-mediation/configuration-gateway-timeouts",
+                "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
               ]
-            },            
+	    }
+	   ]
+            },
             {
               "type": "category",
               "label": "Configuring authorization for API ML",
@@ -491,7 +493,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Routing",
+              label: "Routing APIs",
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
@@ -704,41 +706,46 @@ module.exports = {
               type: "category",
               label: "Libraries for integration (Enablers)",
               items: [
-                "extend/extend-apiml/onboard-plain-java-enabler",
+                {
+                  type: "category",
+                  label: "Plain Java Enabler",
+                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
+                  items: [
+                    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+                    "extend/extend-apiml/api-mediation-message-service",
+                  ]
+                },
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
-                "extend/extend-apiml/onboard-static-definition"    
+                "extend/extend-apiml/onboard-static-definition",
+                "extend/extend-apiml/custom-metadata",    
               ]
             },
             {
               type: "category",
-              label: "Routing",
+              label: "API ML Routing Overview",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
+                "extend/extend-apiml/implementing-routing-to-the-api-gateway",
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
-            "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/create-apiml-extension",
-            "extend/extend-apiml/api-mediation-message-service",
-            "extend/extend-apiml/custom-metadata",
-            "extend/extend-apiml/implement-new-saf-provider",
+            {
+              type: "category",
+              label: "Runtime Extensions",
+              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
+              items: [
+                "extend/extend-apiml/implement-new-saf-provider"
+              ]
+            },
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/api-medation-sso-integration-extenders",
-                "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
-                "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",                
-              ],
-            },
-            {
-              type: "category",
-              label: "Implementing routing to API Gateway",
-			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
-              items: [
               ],
             },
           ],
@@ -1024,7 +1031,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.16.x.md",
     },
   ],
 }
