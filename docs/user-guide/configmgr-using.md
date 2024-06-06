@@ -2,7 +2,7 @@
 
 When you install the Zowe&trade; server components on z/OS, a utility called `configmgr` or "Configuration Manager" is bundled within. It can be used directly in a few ways, or leveraged by the `zwe` command to empower it with several abilities and even performance enhancements.
 
-The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files, and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
+The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
 
 ## Using zwe with Configuration Manager
 
@@ -53,7 +53,7 @@ With the schema file, you can see that there are listed choices for certificate 
             },
 ```
 
-The type can only one from the `enum` list. This allows you to not only detect this error but also see the options available.
+The type can only be one from the `enum` list. This allows you to not only detect this error but also see the options available.
 
 When `zwe` runs and fails schema validation due to the "PCKS12" typo, it will print out the following message:
 
