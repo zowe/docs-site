@@ -40,7 +40,7 @@ Various routing options can be used for APIs when using API Mediation Layer:
 * [Routing requests to REST APIs](./routing-requests-to-rest-apis)
 * [Routing with WebSickets](../routing-with-websockets)
 * [Using GraphQL APIs](use-graphql-api)
-* [Routing MultiTenancy Configuration](./api-mediation-multi-tenancy)
+* [MultiTenancy Configuration](./api-mediation-multi-tenancy)
 
 ### Learning more about APIs 
 

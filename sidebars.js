@@ -17,6 +17,7 @@ module.exports = {
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
         "whats-new/release-notes/v3_0_0",
+        "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
@@ -200,6 +201,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/at-tls-configuration",
               ],
             },
             {
@@ -1039,7 +1041,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.16.x.md",
     },
   ],
 }
