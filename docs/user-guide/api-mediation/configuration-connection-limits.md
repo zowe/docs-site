@@ -15,7 +15,7 @@ Use the following procedure to change the number of concurrent connections:
 
 ## Websocket Limits
 
-The API Mediation Layer supports Websocket connections. It is possible to configure the limits around timeouts. All the values are in milliseconds. Customizing this limit may be practical if you see problems such as with the usage of the TN32790 terminal in Virtual Desktop. 
+The API Mediation Layer supports Websocket connections. It is possible to configure the limits around timeouts. All the values are in milliseconds. Customizing this limit may be practical if you see problems such as with the usage of the TN3270 terminal in Virtual Desktop. 
 
 ```
 zowe:
