@@ -21,6 +21,7 @@ The API Gateway provides the user ID and password in the Authorization header of
   - [Enabling Zowe to use PassTickets with ACF2](#enabling-zowe-to-use-passtickets-with-acf2)
   - [Enabling Zowe to use PassTickets with Top Secret (TSS)](#enabling-zowe-to-use-passtickets-with-top-secret-tss)
   - [Enabling Zowe to use PassTickets with RACF](#enabling-zowe-to-use-passtickets-with-racf)
+
 -[Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
 
 ### Enabling PassTicket support
@@ -62,9 +63,9 @@ Use the the configuration format in the following examples that corresponds to y
 ### Enabling Zowe to use PassTickets
 
 Choose from the following methods to use PassTickets based on the ESM that you are using:
-* Enabling Zowe to use PassTickets with ACF2
-* Enabling Zowe to use PassTickets with Top Secret (TSS)
-* Enabling Zowe to use PassTickets with RACF
+* [Enabling Zowe to use PassTickets with ACF2](#enabling-zowe-to-use-passtickets-with-acf2)
+* [Enabling Zowe to use PassTickets with Top Secret (TSS)](#enabling-zowe-to-use-passtickets-with-top-secret-tss)
+* [Enabling Zowe to use PassTickets with RACF](#enabling-zowe-to-use-passtickets-with-racf)
 
 #### Enabling Zowe to use PassTickets with ACF2
 
