@@ -16,11 +16,12 @@ The API Gateway provides the user ID and password in the Authorization header of
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 
 - [Enabling PassTicket support](#enabling-passticket-support)
-- [Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service](#security-configuration-that-allows-the-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-
-    - [ACF2](#acf2)
-    - [Top Secret](#top-secret)
-    - [RACF](#racf)
+- [Security configuration to allow Zowe API Gateway to generate PassTickets for an API service](#security-configuration-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
+- [Enabling Zowe to use PassTickets](#enabling-zowe-to-use-passtickets)
+  - [Enabling Zowe to use PassTickets with ACF2](#enabling-zowe-to-use-passtickets-with-acf2)
+  - [Enabling Zowe to use PassTickets with Top Secret (TSS)](#enabling-zowe-to-use-passtickets-with-top-secret-tss)
+  - [Enabling Zowe to use PassTickets with RACF](#enabling-zowe-to-use-passtickets-with-racf)
+-[Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
 
 ### Enabling PassTicket support
 
@@ -42,7 +43,7 @@ The following steps outline the procedure for enabling PassTicket Support:
 PassTickets must be enabled for every user who requires access to the API service.
 :::
 
-### Security configuration that allows the Zowe API Gateway to generate PassTickets for an API service
+### Security configuration to allow Zowe API Gateway to generate PassTickets for an API service
 
 Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
@@ -58,7 +59,7 @@ In the following examples of ESM configuration, replace these variables with act
 
 Use the the configuration format in the following examples that corresponds to your ESM.
 
-### Use your ESM to enable Zowe to use PassTickets
+### Enabling Zowe to use PassTickets
 
 Choose from the following methods to use PassTickets based on the ESM that you are using:
 * Enabling Zowe to use PassTickets with ACF2
@@ -220,7 +221,7 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 </details>
 
-# Adding custom HTTP Auth headers to store user ID and PassTicket
+## Adding custom HTTP Auth headers to store user ID and PassTicket
 
 If a southbound service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
