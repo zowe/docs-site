@@ -28,35 +28,60 @@ The API Gateway provides the user ID and password in the Authorization header of
 ## Configuring Zowe to use PassTickets
 
 Configuring Zowe to use PassTickets involves two processes:
-* Enabling PassTicket support for your ESM
+* Enable PassTicket in the operating system
 * Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
 
-### Enabling PassTicket support
+### Enable PassTicket in the operating system
 
+This section is dedicated to the users who don't have PassTickets enabled in the system or those who need to define a PassTciket for a new APPLID. In case you need to use existing one, skip to the next section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
 #### PassTicket enablement with ACF2
+Follow these steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator.
 
-1. Define PassTicket for application ID _applid_ without replay protection.
+1.	Define the application session key by entering the following commands, if it has not already been set up:
 ```
-SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
+SET PROFILE(PTKTDATA) DIV(SSIGNON)
 INSERT <applid> SSKEY(<key-description>) MULT-USE
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
-2. Add the Zowe user to the defined application ID.
-```
-SET RESOURCE(APL)
-RECKEY <applid> ADD(UID(<zowe-user-id>) ALLOW)
-F ACF2,REBUILD(APL)
-```
+
+* **MULT-USE**  
+This setting lets you reuse the same PassTicket multiple times.
+
+* **key-description**  
+ Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 #### PassTicket enablement with Top Secret
 
+Follow these steps to configure Zowe to use PassTickets using Top Secret. Note that this procedure should be performed by your security administrator.
+
+Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
+
+1.	Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
+
+If PTKTDATA is not a predefined class:
+```
+TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE) MAXLEN(37) 
+```
+The PTKTDATA resource is added to the RDT.
+
+:::note
+Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
+:::
+
+2.	Assign ownership for the PassTicket resource (`IRRPTAUT`) by entering the following commands:
+```
+TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
+```
 Define PassTicket for application ID _applid_ without replay protection.
 
 ```
 TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 ```
+
+* **key-description**  
+ Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 #### PassTicket enablement with RACF
 
@@ -80,10 +105,10 @@ Replace _applid_ with a one to 8 character name designated for the application.
 
 3. Define the profile for the application with the following command:
 ```
-RDEFINE PTKTDATA <applid> SSIGNON(KEYMASKED(<key-description>))
+RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>)
 ```
 * **key-description**  
- Specifies the secured sign-on hexadecimal application key
+ Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 Replace with the application name defined previously.
 
@@ -97,10 +122,6 @@ APPLDATA('NO REPLAY PROTECTION')
 This links a secured sign-on application key with the application.
 :::
 
-4. Grant the Zowe user ID access to the application with the following command, and add the permitted user ID (In this case, the Zowe server user).
-```
-PERMIT APPLNAME CLASS(APPL) ID(<zowe-user-id>) ACCESS(READ)
-```
 
 ### Configuring security to allow Zowe API Gateway to generate PassTickets for an API service
 
@@ -111,7 +132,7 @@ Use the following variables to generate PassTickets for the API service to enabl
 - **`<applid>`**  
 The APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
 
-- **`<zowesrv>`**  
+- **`<zowe-user-id>`**  
 The Zowe started task user ID used during the Zowe installation
 
 In the following examples of ESM configuration, replace these variables with actual values.
@@ -121,14 +142,13 @@ Use the configuration format that corresponds to your ESM as presented in the fo
 #### Generating PassTickets using ACF2
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
-The following code is an example of security commands that need to be issued.
 
 **Example:**
 
 ```markup
 ACF
 SET RESOURCE(PTK)
-RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowesrv>) SERVICE(UPDATE,READ) ALLOW)
+RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowe-user-id>) SERVICE(UPDATE,READ) ALLOW)
 F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
@@ -140,21 +160,18 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 **Example:**
 
 ```markup
-TSS PERMIT(<zowesrv>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
+TSS PERMIT(<zowe-user-id>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
 
 #### Generating PassTickets using RACF
-
-To enable PassTicket creation for API service users, define the profile `IRRPTAUTH.<applid>.*` in the `PTKTDATA` class and set the universal access authority to `NONE`.
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
 
 ```markup
-RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
-PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowesrv>) ACCESS(UPDATE)
+PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowe-user-id>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 
