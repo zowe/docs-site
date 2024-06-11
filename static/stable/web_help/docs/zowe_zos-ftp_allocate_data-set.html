@@ -24,7 +24,7 @@
 <li>
 <p><code>--dcb</code> <em>(string)</em></p>
 <ul>
-<li>DCB parameters for dataset allocation. It's space separated like &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;. For the list of possible DCB parameters, visit <a href="https://github.com/IBM/zos-node-accessor/tree/1.0.x#allocate">https://github.com/IBM/zos-node-accessor/tree/1.0.x#allocate</a>.</li>
+<li>DCB parameters for dataset allocation. It's space separated like &quot;RECFM=FB LRECL=326 BLKSIZE=23472&quot;. For the list of possible DCB parameters, visit <a href="https://github.com/IBM/zos%5C-node%5C-accessor/tree/1.0.x%5C#allocate">https://github.com/IBM/zos\-node\-accessor/tree/1.0.x\#allocate</a>.</li>
 </ul>
 </li>
 </ul>
@@ -123,7 +123,10 @@
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>

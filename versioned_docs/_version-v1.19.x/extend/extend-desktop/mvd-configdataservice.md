@@ -136,7 +136,7 @@ GET `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>`
 
 PUT `/plugins/com.rs.configjs/services/data/<plugin>/<scope>/<resource>?name=<element>`
 
-Stores a single element (must be a JSON object {...}) within the requested scope, ignoring aggregation policies, depending on the user privilege. For example: 
+Stores a single element (must be a JSON object `{...}`) within the requested scope, ignoring aggregation policies, depending on the user privilege. For example: 
 
   ```/plugins/com.rs.configjs/services/data/org.openmainframe.zowe.codeeditor/user/sessions/default?name=tabs```
 
