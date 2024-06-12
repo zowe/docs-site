@@ -225,7 +225,7 @@ You can now use any method from `ZaasClient` in your class.
 For login, use the following code snippet:
 
 ```java
-   String zaasClientToken = zaasClient.login("user", "user");
+   String zaasClientToken = zaasClient.login("user", "password");
  ```
 
 The following codeblock is an example of a `SampleZaasClientImplementation`.
