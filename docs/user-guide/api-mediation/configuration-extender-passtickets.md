@@ -76,7 +76,7 @@ The following steps outline the procedure for enabling PassTicket Support for yo
 
 #### Enabling Zowe to use PassTickets with ACF2
 
-Follow these steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator.
+Follow these steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator. 
 
 <details>
 <summary> Click here for details how to enable Zowe to use PassTickets with ACF2</summary>  
