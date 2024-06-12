@@ -632,6 +632,7 @@ module.exports = {
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
+            "user-guide/ze-working-with-commands",
             {
               type: "category",
               label: "Zowe Explorer extensions",
