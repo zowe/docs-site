@@ -22,7 +22,7 @@ zowe:
   components:
     gateway:
       server:
-        websocket:
+        webSocket:
           connectTimeout: 15000
           stopTimeout: 30000
           asyncWriteTimeout: 60000
