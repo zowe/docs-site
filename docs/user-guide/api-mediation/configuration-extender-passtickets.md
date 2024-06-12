@@ -61,10 +61,18 @@ Use the the configuration format in the following examples that corresponds to y
 
 ### Enabling Zowe to use PassTickets
 
+If you do not have an existing PassTicket already set up, you can choose from the following ESMs to ..... PassTickets:
+
 Choose from the following methods to use PassTickets based on the ESM that you are using:
 * [Enabling Zowe to use PassTickets with ACF2](#enabling-zowe-to-use-passtickets-with-acf2)
 * [Enabling Zowe to use PassTickets with Top Secret (TSS)](#enabling-zowe-to-use-passtickets-with-top-secret-tss)
 * [Enabling Zowe to use PassTickets with RACF](#enabling-zowe-to-use-passtickets-with-racf)
+
+If you are uncertain if you already have a PassTicket available, you can verify if a PassTicket is already set up.
+<!-- Add steps to verify if a PassTicket is set up. -->
+
+If you already have an existing PassTicket, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service). <!--Add this section from PR#3673 -->
+The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
 #### Enabling Zowe to use PassTickets with ACF2
 
@@ -73,7 +81,7 @@ Follow these steps to configure Zowe to use PassTickets using ACF2. Note that th
 <details>
 <summary> Click here for details how to enable Zowe to use PassTickets with ACF2</summary>  
 
-1.	Define the application session key by entering the following commands, if it has not already been set up:
+1.	Define the application session key by entering the following commands, if it <!-- What is "it"? What hasn't been set up? --> has not already been set up:
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
 INSERT applid SSKEY(0123456789ABCDEF) MULT-USE
