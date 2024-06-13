@@ -20,7 +20,7 @@ Single sign on can be enabled by configuring Zowe to use PassTickets for API ser
 
 API clients can use various supported methods such as a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
 
-When an API client provides a valid authentication method to the API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTickets is a one-time only password that is generated for a specific user ID. PassTickets can be used only once and expire within 10 minutes of being generated.
+When an API client provides a valid authentication method to API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTicket is a one-time only password that is generated for a specific user ID. 
 The API Gateway uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme). 
@@ -33,12 +33,14 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in the operating system
 
-This section is dedicated to the users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
+This section applies users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
 #### PassTicket enablement with ACF2
-Follow these steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator.
+<details>
+<summary> Click here for steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator. </summary>
+
 
 1.	Define the application session key by entering the following commands, if it has not already been set up:
 <!-- What is "it" in the previous sentence? What specifically is set up? -->
@@ -54,9 +56,12 @@ This setting lets you reuse the same PassTicket multiple times.
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
+</details>
+
 #### PassTicket enablement with Top Secret
 
-Follow these steps to configure Zowe to use PassTickets using Top Secret. Note that this procedure should be performed by your security administrator.
+<details>
+<summary> Click here for steps to configure Zowe to use PassTickets using Top Secret. Note that this procedure should be performed by your security administrator. </summary>
 
 Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
 
@@ -89,7 +94,13 @@ TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
+</details>
+
 #### PassTicket enablement with RACF
+
+
+<details>
+<summary> Click here for steps to configure Zowe to use PassTickets using RACF. Note that this procedure should be performed by your security administrator. </summary>
 
 1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Execute the following command:
 ```
@@ -122,6 +133,7 @@ Replace with the application name defined previously.
 PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
 :::
 
+</details>
 
 ### Configuring security to allow Zowe API Gateway to generate PassTickets for an API service
 
