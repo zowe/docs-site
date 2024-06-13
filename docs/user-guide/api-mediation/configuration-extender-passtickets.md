@@ -153,7 +153,9 @@ Use the configuration format that corresponds to your ESM as presented in the fo
 
 #### Generating PassTickets using ACF2
 
-Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
+<details>
+<summary>
+Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.</summary>
 
 **Example:**
 
@@ -164,10 +166,13 @@ RECKEY IRRPTAUTH ADD(<_applid_>.- UID(<_zowe-user-id_>) SERVICE(UPDATE,READ) ALL
 F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
+</details>
 
 #### Generating PassTickets using Top Secret
 
-Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
+<details>
+<summary>
+Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.</summary>
 
 **Example:**
 
@@ -175,10 +180,13 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 TSS PERMIT(<_zowe-user-id_>) PTKTDATA(IRRPTAUTH.<_applid_>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
+</details>
 
 #### Generating PassTickets using RACF
 
-Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
+<details>
+<summary>
+Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.</summary>
 
 **Example:**
 
@@ -186,6 +194,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 PERMIT IRRPTAUTH.<_applid_>.* CL(PTKTDATA) ID(<_zowe-user-id_>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
+</details>
 
 ### Validate if the PassTicket Application is created
 
