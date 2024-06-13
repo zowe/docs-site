@@ -50,6 +50,9 @@ INSERT <applid> SSKEY(<key-description>) MULT-USE
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 
+* **applid**  
+Specifies the application ID used for PassTicket validation to authenticate connections to the server.
+
 * **MULT-USE**  
 This setting lets you reuse the same PassTicket multiple times.
 
