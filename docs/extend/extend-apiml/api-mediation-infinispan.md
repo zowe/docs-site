@@ -31,6 +31,8 @@ Configure Infinispan as a storage solution through the Caching service by settin
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
 
+  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
+
 * **`zowe.components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store. 
