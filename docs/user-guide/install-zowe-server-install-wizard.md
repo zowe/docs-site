@@ -1,18 +1,18 @@
 # Installing Zowe via Zowe Server Install Wizard
 
-The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, Mac OS, and Linux systems.  Performing Zowe installation via the wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
+The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, Mac OS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
 
-## Benefits of wizard installation
+## Benefits of Wizard installation
 
-- Reduces the need for YAML editing in z/OS Unix by handling these operations for you based on inputs to the prompts presented in the wizard UI.
+- Reduces the need for YAML editing in z/OS Unix by handling these operations for you based on inputs to the prompts presented in the Wizard UI.
 
 - Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented.  
 
-- The separation of duties for steps to be performed by a security administrator is made easier, whereby a system programmer or system administrator can skip particular steps where elevated user permissions are required, whereupon security administrators can perform such steps outside of the wizard.
+- The separation of duties for steps to be performed by a security administrator is made easier, whereby a system programmer or system administrator can skip particular steps where elevated user permissions are required, whereupon security administrators can perform such steps outside of the Wizard.
 
-- Results for each step and the YAML configuration output can be reviewed for reference alongside activites performed outside of the wizard, or for future use.
+- Results for each step and the YAML configuration output can be reviewed for reference alongside activites performed outside of the Wizard, or for future use.
 
-## Prerequisites of the wizard
+## Prerequisites of the Wizard
 
 - Microsoft Windows, Apple Mac OS, or a Linux with an X11 or Wayland server display which can install programs from .rpm or .deb formats 
 - An FTP or FTPS connection to z/OS for Zowe installation
@@ -21,9 +21,9 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 - A security administrator to generate certificates for Zowe
 - A network administrator to open ports used by Zowe 
 
-## Downloading the wizard
+## Downloading the Wizard
 
-To download the latest version of the wizard, visit [Zowe.org](https://www.zowe.org/download.html).
+To download the latest version of the Wizard, visit [Zowe.org](https://www.zowe.org/download.html).
 Ensure that you download the appropriate file extension type according to your operating system:
 
 Operating System | File Extension Type
@@ -72,7 +72,7 @@ Provide details for z/OSMF.
 
 ## Choosing the Server Installation Type
 
-1. In the **Installation Type** window, select one of the following three installation types in the wizard:
+1. In the **Installation Type** window, select one of the following three installation types in the Wizard:
 
 Type | Description
 ---|---
@@ -122,5 +122,57 @@ This option makes it possible to skip an installation step that you cannot perfo
 
 ## Final Review
 
-After completing the steps presented in the wizard, a summary is provided indicating which steps were completed, skipped, or have errors. Errors are stored in the View Job Output. You can revisit any step to retry performing the step. You also have the option to export the final generated YAML file.
+After completing the steps presented in the Wizard, a summary is provided indicating which steps were completed, skipped, or have errors. Errors are stored in the View Job Output. You can revisit any step to retry performing the step. You also have the option to export the final generated YAML file.
 
+## Troubleshooting
+
+### Failure to establish a TLS connection
+
+When attempting to establish a TLS connection, you may encounter the following message:
+
+```
+Client network socket disconnected before secure TLS connection was established
+```
+
+If you receive this message, go back to the Connection page and attempt to re-establish the connection. If the connection cannot be established, restart the Wizard.
+
+### Unable to continue with Wizard installation
+
+If you encounter strange behavior that prohibits you from continuing with wizard installation, we recommend you follow this procedure:
+
+1. View the Job output within the wizard.
+2. If Job output is still unknown, view the output of the log file according to your platform:
+
+    **For Linux:**  
+` ~/.config/{app name}/logs/main.log`
+
+    **For macOS:**  
+` ~/Library/Logs/{app name}/main.log`
+
+    **For Windows:**  
+`%USERPROFILE%\AppData\Roaming{app name}\logs\main.log`
+
+If you are still unsure how to proceed, make a backup of these log files, and then use the following procedure to remove the Wizard's cache. 
+
+1. Close the Wizard.
+2. Follow these steps according to your operating system:  
+  **For Windows:**  
+    (a) Open File Explorer. In the address bar type `%APPDATA%`. This takes you to the directory where your app data is stored. The typical directory path is `C:\Users[Your User Name]\AppData\Roaming`.
+  
+    (b) Locate the folder corresponding to `zowe-install-wizard`.
+
+    **For macOS:**  
+    (a) Open Finder. In the menu bar select **Go > Go to Folder**.
+
+    (b) Type `~/Library/Application Support/` and press **Enter**. 
+    (c) Locate the folder corresponding to `zowe-install-wizard`
+
+    **For Linux:**  
+    (a) Open a terminal or file manager.  
+    (b) Navigate to `~/.config/`, which is where most apps store their configuration data.  
+    (c) In the terminal, enter the following command:  
+ `cd ~/.config/`.   
+    (d) Locate the folder corresponding to `zowe-install-wizard`.
+
+4. Delete this folder to remove all stored data.
+5. Restart the Wizard.
