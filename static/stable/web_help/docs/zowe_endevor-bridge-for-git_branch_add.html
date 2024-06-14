@@ -76,12 +76,6 @@
 </ul>
 </li>
 <li>
-<p><code>--only-work-environment</code> <em>(boolean)</em></p>
-<ul>
-<li>If specified, only elements from the Endevor work environment will be synchronized.</li>
-</ul>
-</li>
-<li>
 <p><code>--mapping-mode</code> <em>(string)</em></p>
 <ul>
 <li>
@@ -94,6 +88,16 @@
 <p><code>--like</code> <em>(string)</em></p>
 <ul>
 <li>Add branch using parameters from another branch in the same repository</li>
+</ul>
+</li>
+<li>
+<p><code>--repository-check</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>If set to allowNonEmpty, user can proceed with initialization of the branch even if the branch exists.</p>
+<p>Default value: REQUIRE_EMPTY<br>
+Allowed values: REQUIRE_EMPTY, ALLOW_NON_EMPTY</p>
+</li>
 </ul>
 </li>
 </ul>

@@ -6,7 +6,8 @@ Before you install Zowe&trade; on z/OS, you must install IBM SDK for Node.js on 
 :::
 
 :::note
-Node.js is not required if using Docker or if you are only using Zowe CLI.
+Node.js is required when installing the Zowe servers on z/OS.
+Node.js is not required if using Docker instead of z/OS, or if running Zowe without the app-server enabled on v2.16.0 or higher.
 :::
 
 - [Supported Node.js versions](#supported-nodejs-versions)
@@ -31,10 +32,14 @@ IBM SDK for Node.js withdrew v16 from marketing on September 4, 2023. The v14 se
    - z/OS V2R5: PTFs [UI64830](https://www.ibm.com/support/pages/apar/PH14560), [UI64837](https://www.ibm.com/support/pages/apar/PH15674),[UI64940](https://www.ibm.com/support/pages/apar/PH16038).
 
 - v18.x
-   - z/OS V2R4: PTFs UI78913, UI81096, UI78103, UI80155
-   - z/OS V2R5: PTFs UI78912, UI81095, UI80156
+   - z/OS V2R4: PTFs UI78913, UI81096, UI78103, UI80155, UI83490
+   - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
 
-
+- V20.x
+   - z/OS V2R4: PTFs UI80106, UI81096, UI78103, UI80155, UI83490
+   - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
+   - z/OS V3R1: No PTFs needed.
+ 
 
 ## How to obtain IBM SDK for Node.js - z/OS
 

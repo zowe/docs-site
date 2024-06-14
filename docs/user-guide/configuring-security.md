@@ -16,19 +16,19 @@ Choose from the following methods to initialize Zowe security configurations:
 * Configuring with `zwe init security`
 * Configuring with `ZWESECUR` JCL
 
-For more information about both of these methods, see [Initialize Zowe security configurations](./initialize-security-configuration).
+For more information about both of these methods, see [Initialize Zowe security configurations](./initialize-security-configuration.md).
 
 ## Perform APF authorization of load libraries
 
-Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. For more information about how to issue the `zwe init apfauth` command to perform APF authority commands, see [Performing APF authorization of load libraries](./apf-authorize-load-library).
+Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. For more information about how to issue the `zwe init apfauth` command to perform APF authority commands, see [Performing APF authorization of load libraries](./apf-authorize-load-library.md).
 
 ## Configure the z/OS system for Zowe
 
-Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Configuring the z/OS system for Zowe](./configure-zos-system).
+Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Configuring the z/OS system for Zowe](./configure-zos-system.md).
 
 ## Assign security permissions to users
 
-Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users](./assign-security-permissions-to-users).
+Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users](./assign-security-permissions-to-users.md).
 
 ## Zowe Feature specific configuration tasks
 
@@ -43,12 +43,12 @@ Depending on the specific Zowe server-side components that your organization is 
 | API Mediation Layer certificate mapping                                                                                                         | [Configuring main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping)                                                                                                                                                                                     |
 | API Mediation Layer identity mapping                                                                                                            | [Configuring main Zowe server to use distributed identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping)                                                                                                                                                                                                   |
 | API Mediation Layer Identity Tokens (IDT)                                                                                                       | [Configuring signed SAF Identity tokens (IDT)](./configure-zos-system.md#configure-signed-saf-identity-tokens-idt)                                                                                                                                                                                                                                             |
-| Cross memory server (ZIS)                                                                                                                       | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](./configure-xmem-server.md/#saf-configuration) |
+| Cross memory server (ZIS)                                                                                                                       | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](./configure-xmem-server.md#saf-configuration) |
 
 
 ## Next step
 
-After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./zwe-init-subcommand-overview/#installing-zowe-main-started-tasks-zwe-init-stc).
+After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./zwe-init-subcommand-overview.md#installing-zowe-main-started-tasks-zwe-init-stc).
 
 
  
