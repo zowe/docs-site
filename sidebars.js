@@ -125,8 +125,8 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe Server Install Wizard Overview",
-          link: {type:"doc", id: "user-guide/server-install-wizard-overview"},
+          label: "Installing Zowe via Server Install Wizard",
+          link: {type:"doc", id: "user-guide/install-zowe-server-install-wizard"},
         },
         {
           type: "category",
