@@ -178,7 +178,11 @@ If a command includes a path similar to the following example:
   ```
   A:/ibmuser/my_dir
   ```
-  **Note:** Depending on the root directory, the Git Bash conversion can add other directories it assumes to be included in the path.
+  :::note
+  
+  Depending on the root directory, the Git Bash conversion can add other directories it assumes to be included in the path.
+
+  :::
 
 **Solutions:**
 
@@ -214,3 +218,15 @@ The installation fails on Linux or macOS.
 **Solution:**
 
 Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
+
+## Missing data set search results with `--mainframe-search` option
+
+**Valid on Windows, Mac, or Linux**
+
+**Symptom:**
+
+When the `zowe zos-files search data-sets` command is issued with the `--mainframe-search` option, results can omit data sets that are in binary format.
+
+**Solution:**
+
+Issue the `zowe files search ds` command without the `--mainframe-search` option. This returns results that include data sets in binary format.
