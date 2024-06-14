@@ -56,7 +56,7 @@ In the following configuration, nested profiles use the credentials from the sam
                 }
             }
         },
-        "base": {
+        "project_base": {
             "type": "base",
             "properties": {
                 "rejectUnauthorized": true
@@ -71,7 +71,7 @@ In the following configuration, nested profiles use the credentials from the sam
         "zosmf": "lpar2.zosmf",
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
-        "base": "base"
+        "base": "project_base"
     },
     "autoStore": true
 }
@@ -132,7 +132,7 @@ In the following configuration, profiles are nested to use the credentials from 
                 "password"
             ]
         },
-        "base": {
+        "project_base": {
             "type": "base",
             "properties": {
                 "rejectUnauthorized": true
@@ -143,7 +143,7 @@ In the following configuration, profiles are nested to use the credentials from 
         "zosmf": "lpar2.zosmf",
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
-        "base": "base"
+        "base": "project_base"
     },
     "autoStore": true
 }
@@ -175,7 +175,7 @@ In the following configuration, services are accessed through the API ML (where 
                 "basePath": "ibmdb2/api/v1"
             }
         },
-        "base": {
+        "project_base": {
             "type": "base",
             "properties": {
                 "host": "example.com",
@@ -192,7 +192,7 @@ In the following configuration, services are accessed through the API ML (where 
         "zosmf": "zosmf",
         "cics": "cics",
         "db2": "db2",
-        "base": "base"
+        "base": "project_base"
     },
     "autoStore": true
 }
@@ -224,7 +224,7 @@ In the following configuration, services are accessed through the API ML using c
                 "basePath": "api/v1/db2"
             }
         },
-        "base": {
+        "project_base": {
             "type": "base",
             "properties": {
                 "certFile": "./zowe-cert.pem",
@@ -239,7 +239,7 @@ In the following configuration, services are accessed through the API ML using c
         "zosmf": "zosmf",
         "cics": "cics",
         "db2": "db2",
-        "base": "base"
+        "base": "project_base"
     },
     "autoStore": true
 }
