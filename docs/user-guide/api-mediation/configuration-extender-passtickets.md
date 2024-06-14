@@ -33,7 +33,7 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in the operating system
 
-This section applies users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
+This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
