@@ -54,19 +54,23 @@ LIST LIKE(IZUDFLT-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
 ```
+
 </details>
+
 <details>
-<summary>
-**For Top Secret**</summary>
+<summary>**For Top Secret**</summary>
+
 ```
 TSS WHOHAS APPL(IZUDFLT)
 TSS WHOHAS PTKTDATA(IZUDFLT)
 TSS WHOHAS PTKTDATA(IRRPTAUTH.IZUDFLT.)
 ```
+
 </details>
+
 <details>
-<summary>
-**For RACF**</summary>
+<summary>**For RACF**</summary>
+
 ```
 RLIST APPL * ALL -validate all APPL
 RLIST APPL IZUDFLT ALL  - validate particular APPL
@@ -74,10 +78,10 @@ RLIST PTKTDATA IZUDFLT SSIGNON ALL
 RLIST PTKTDATA IRRPTAUTH.IZUDFLT.* ALL 
 ```
 Ensure that you validate PKTDATA access for appl.
+
 </details>
+
 :::
-
-
 
 The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
