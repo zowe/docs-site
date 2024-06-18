@@ -2,7 +2,7 @@
 
 Single sign on can be enabled by configuring Zowe to use PassTickets for API services to authenticate with API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 
-:::info Roles: system programmer, security administrator
+:::info Role: security administrator
 :::
 
 - [Overview of how PassTickets are used](#overview-of-how-passtickets-are-used)
@@ -223,9 +223,9 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 
 ### Configuring security to allow Zowe API Gateway to generate PassTickets for an API service
 
-Consult with your security administrator to issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
+As a security administrator, you can issue security commands to allow the Zowe started task user ID to generate PassTickets for the API service.
 
-Use the following variables to generate PassTickets for the API service to enable the Zowe started task user ID:
+Specify the following variables when generating PassTickets for the API service to enable the Zowe started task user ID:
 
 - **`<applid>`**  
 The APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
