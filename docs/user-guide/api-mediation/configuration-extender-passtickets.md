@@ -90,11 +90,11 @@ The following steps outline the procedure for enabling PassTicket Support for yo
 <summary> Click here for steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator. </summary>
 
 
-1.	Define the application session key by entering the following commands, if it has not already been set up:
-<!-- What is "it" in the previous sentence? What specifically is set up? -->
+1.	Define the application session key by entering the following commands, if the session key is not already defined. 
+
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
-INSERT <applid> SSKEY(<key-description>) MULT-USE
+INSERT <applid> SSKEY(<_key-description_>) MULT-USE
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 
@@ -107,6 +107,18 @@ This setting lets you reuse the same PassTicket multiple times.
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
+2. Complete the PassTicket setup by entering the following commands:
+```
+F ACF2,REBUILD(PTK),CLASS(P)
+```
+The PassTicket record is now active in the system.
+
+3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
+```
+SET RESOURCE(PTK) 
+RECKEY IRRPTAUTH ADD(applid.userid UID(<_uid-of-userid_>) SERVICE(UPDATE,READ) ALLOW)
+```
+
 </details>
 
 #### PassTicket enablement with Top Secret
@@ -118,13 +130,13 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
 
 1.	Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
 
-If PTKTDATA is not a predefined class:
+:::note
+The PTKTDATA resource is not a predefined class.
+:::
 ```
 TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE) MAXLEN(37) 
 ```
 The PTKTDATA resource is added to the RDT.
-
-<!-- What if PTKTDATA IS a predefined class? -->
 
 :::note
 Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
@@ -134,16 +146,23 @@ Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed re
 ```
 TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
 ```
-Define PassTicket for application ID _applid_ without replay protection.
+3. Define PassTicket for application ID _applid_ without replay protection.
 
 ```
-TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
+TSS ADDTO(NDT) PSTKAPPL(<_applid_>) SESSKEY(<_key-description_>) SIGNMULTI
 ```
-
-<!-- Where is it defined that replay protection is disabled? -->
 
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
+
+4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
+```
+TSS PERMIT(<_stc-userid_>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
+```
+
+* **stc-userid**  
+Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
+	
 
 </details>
 
@@ -153,7 +172,9 @@ TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 <details>
 <summary> Click here for steps to configure Zowe to use PassTickets using RACF. Note that this procedure should be performed by your security administrator. </summary>
 
-1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information. Execute the following command:
+1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.  
+Execute the following command:
+
 ```
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 ```
@@ -173,7 +194,7 @@ This name is usually provided by the site security administrator.
 
 3. Define the profile for the application with the following command:
 ```
-RDEFINE PTKTDATA  <_applid_> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
+RDEFINE PTKTDATA  <_applid_> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<_key-description_>) APPLDATA('NO REPLAY PROTECTION')
 ```
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
@@ -183,6 +204,20 @@ Replace with the application name defined previously.
 :::caution Important
 PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
 :::
+
+4. Allow the application ID (applid) to use PassTickets:
+
+```
+PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
+```
+
+* **userid**  
+Specifies the value of the LDAP Server started task.
+
+5. Refresh the RACF PTKTDATA definition with the new profile:
+```
+SETROPTS RACLIST(PTKTDATA) REFRESH
+```
 
 </details>
 
