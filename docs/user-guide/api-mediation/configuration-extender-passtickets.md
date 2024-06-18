@@ -33,7 +33,7 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in the operating system
 
-This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
+This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
 To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
@@ -297,7 +297,7 @@ RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 Your application and the specific access of the application will be displayed.
 
 
-## Adding custom HTTP Auth headers to store user ID and PassTicket
+## Adding custom HTTP Auth headers to store user ID and PassTicket (Optional)
 
 If a downstream (southbound) service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
