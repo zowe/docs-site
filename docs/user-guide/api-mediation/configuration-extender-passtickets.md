@@ -35,6 +35,44 @@ Configuring Zowe to use PassTickets involves two processes:
 
 This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to ... , skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
+:::tip
+To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
+
+* **For ACF2**
+
+```
+SET RESOURCE(SAF)
+LIST LIKE(-)
+
+SET RESOURCE(SAF)
+LIST LIKE(IZUDFLT-)
+
+SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
+LIST LIKE(IZUDFLT-)
+
+SET RESOURCE(PTK)
+LIST LIKE(IRRPTAUTH-)
+```
+
+* **For Top Secret**
+```
+TSS WHOHAS APPL(IZUDFLT)
+TSS WHOHAS PTKTDATA(IZUDFLT)
+TSS WHOHAS PTKTDATA(IRRPTAUTH.IZUDFLT.)
+```
+
+* **For RACF**
+```
+RLIST APPL * ALL -validate all APPL
+RLIST APPL IZUDFLT ALL  - validate particular APPL
+RLIST PTKTDATA IZUDFLT SSIGNON ALL
+RLIST PTKTDATA IRRPTAUTH.IZUDFLT.* ALL 
+```
+Ensure that you validate PKTDATA access for appl.
+:::
+
+
+
 The following steps outline the procedure for enabling PassTicket Support for your ESM:
 
 #### PassTicket enablement with ACF2
