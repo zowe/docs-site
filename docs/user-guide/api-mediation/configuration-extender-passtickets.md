@@ -46,10 +46,10 @@ SET RESOURCE(SAF)
 LIST LIKE(-)
 
 SET RESOURCE(SAF)
-LIST LIKE(<_applid_>-)
+LIST LIKE(<applid>-)
 
 SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
-LIST LIKE(<_applid_>-)
+LIST LIKE(<applid>-)
 
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
@@ -61,9 +61,9 @@ LIST LIKE(IRRPTAUTH-)
 <summary>**For Top Secret**</summary>
 
 ```
-TSS WHOHAS APPL(<_applid_>)
-TSS WHOHAS PTKTDATA(<_applid_>)
-TSS WHOHAS PTKTDATA(IRRPTAUTH.<_applid_>.)
+TSS WHOHAS APPL(<applid>)
+TSS WHOHAS PTKTDATA(<applid>)
+TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
 ```
 
 </details>
@@ -73,9 +73,9 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<_applid_>.)
 
 ```
 RLIST APPL * ALL -validate all APPL
-RLIST APPL <_applid_> ALL  - validate particular APPL
-RLIST PTKTDATA <_applid_> SSIGNON ALL
-RLIST PTKTDATA IRRPTAUTH.<_applid_>.* ALL 
+RLIST APPL <applid> ALL  - validate particular APPL
+RLIST PTKTDATA <applid> SSIGNON ALL
+RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL 
 ```
 Ensure that you validate PKTDATA access for appl.
 
@@ -94,7 +94,7 @@ The following steps outline the procedure for enabling PassTicket Support for yo
 
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
-INSERT <applid> SSKEY(<_key-description_>) MULT-USE
+INSERT <applid> SSKEY(<key-description>) MULT-USE
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 
@@ -116,7 +116,7 @@ The PassTicket record is now active in the system.
 3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 ```
 SET RESOURCE(PTK) 
-RECKEY IRRPTAUTH ADD(applid.userid UID(<_uid-of-userid_>) SERVICE(UPDATE,READ) ALLOW)
+RECKEY IRRPTAUTH ADD(applid.userid UID(<uid-of-userid>) SERVICE(UPDATE,READ) ALLOW)
 ```
 
 </details>
@@ -149,7 +149,7 @@ TSS ADDTO(department) PTKTDATA(IRRPTAUT)
 3. Define PassTicket for application ID _applid_ without replay protection.
 
 ```
-TSS ADDTO(NDT) PSTKAPPL(<_applid_>) SESSKEY(<_key-description_>) SIGNMULTI
+TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 ```
 
 * **key-description**  
@@ -157,7 +157,7 @@ TSS ADDTO(NDT) PSTKAPPL(<_applid_>) SESSKEY(<_key-description_>) SIGNMULTI
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
 ```
-TSS PERMIT(<_stc-userid_>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
+TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 ```
 
 * **stc-userid**  
@@ -181,7 +181,7 @@ SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 
 2. Specify the application ID requiring access through PassTicket for the ZOWE server with the following commands:
 ```
-RDEFINE APPL <_applid_> UACC(READ)
+RDEFINE APPL <applid> UACC(READ)
 SETROPTS CLASSACT(APPL)
 SETROPTS GENERIC(PTKTDATA)
 ```
@@ -194,7 +194,7 @@ This name is usually provided by the site security administrator.
 
 3. Define the profile for the application with the following command:
 ```
-RDEFINE PTKTDATA  <_applid_> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<_key-description_>) APPLDATA('NO REPLAY PROTECTION')
+RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
 ```
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
@@ -205,7 +205,7 @@ Replace with the application name defined previously.
 PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
 :::
 
-4. Allow the application ID (applid) to use PassTickets:
+4. Allow the application ID (_applid_) to use PassTickets:
 
 ```
 PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
@@ -250,7 +250,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 ```markup
 ACF
 SET RESOURCE(PTK)
-RECKEY IRRPTAUTH ADD(<_applid_>.- UID(<_zowe-user-id_>) SERVICE(UPDATE,READ) ALLOW)
+RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowe-user-id>) SERVICE(UPDATE,READ) ALLOW)
 F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
@@ -267,7 +267,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 **Example:**
 
 ```markup
-TSS PERMIT(<_zowe-user-id_>) PTKTDATA(IRRPTAUTH.<_applid_>.) ACCESS(READ,UPDATE)
+TSS PERMIT(<zowe-user-id>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
 </details>
@@ -283,7 +283,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 **Example:**
 
 ```markup
-PERMIT IRRPTAUTH.<_applid_>.* CL(PTKTDATA) ID(<_zowe-user-id_>) ACCESS(UPDATE)
+PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowe-user-id>) ACCESS(UPDATE)
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 </details>
@@ -291,8 +291,8 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 ### Validate if the PassTicket Application is created
 
 ```
-RLIST APPL <_applid_> ALL
-RLIST PTKTDATA IRRPTAUTH.<_applid_>.* ALL
+RLIST APPL <applid> ALL
+RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
 Your application and the specific access of the application will be displayed.
 
