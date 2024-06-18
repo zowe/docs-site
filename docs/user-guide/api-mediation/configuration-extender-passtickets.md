@@ -205,8 +205,9 @@ Use the configuration format that corresponds to your ESM as presented in the fo
 #### Generating PassTickets using ACF2
 
 <details>
-<summary> Click here for details about generating PassTickets using ACF2.
-</summary>
+
+<summary> Click here for details about generating PassTickets using ACF2. </summary>
+
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
@@ -223,9 +224,9 @@ END
 #### Generating PassTickets using Top Secret
 
 <details>
-<summary>
-Click here for details about generating PassTickets using Top Secret.
-</summary>
+
+<summary>Click here for details about generating PassTickets using Top Secret.</summary>
+
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
@@ -239,9 +240,8 @@ TSS REFRESH
 #### Generating PassTickets using RACF
 
 <details>
-<summary>
-Click here for details about generating PassTickets using RACF.
-</summary>
+
+<summary> Click here for details about generating PassTickets using RACF.</summary>
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
