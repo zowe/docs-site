@@ -38,7 +38,8 @@ This section applies to users who do not have PassTickets enabled in the system 
 :::tip
 To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
 
-* **For ACF2**
+<details>
+<summary>**For ACF2**</summary>
 
 ```
 SET RESOURCE(SAF)
@@ -53,15 +54,19 @@ LIST LIKE(IZUDFLT-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
 ```
-
-* **For Top Secret**
+</details>
+<details>
+<summary>
+**For Top Secret**</summary>
 ```
 TSS WHOHAS APPL(IZUDFLT)
 TSS WHOHAS PTKTDATA(IZUDFLT)
 TSS WHOHAS PTKTDATA(IRRPTAUTH.IZUDFLT.)
 ```
-
-* **For RACF**
+</details>
+<details>
+<summary>
+**For RACF**</summary>
 ```
 RLIST APPL * ALL -validate all APPL
 RLIST APPL IZUDFLT ALL  - validate particular APPL
@@ -69,6 +74,7 @@ RLIST PTKTDATA IZUDFLT SSIGNON ALL
 RLIST PTKTDATA IRRPTAUTH.IZUDFLT.* ALL 
 ```
 Ensure that you validate PKTDATA access for appl.
+</details>
 :::
 
 
