@@ -123,11 +123,7 @@ module.exports = {
             "user-guide/address-browser-requirements",
           ]
         },
-        {
-          type: "category",
-          label: "Installing Zowe via Server Install Wizard",
-          link: {type:"doc", id: "user-guide/install-zowe-server-install-wizard"},
-        },
+      "user-guide/install-zowe-server-install-wizard",
         {
           type: "category",
           label: "Installing Zowe via SMP/E",
