@@ -1,7 +1,6 @@
 # Single Sign On Integration for Extenders
 
-:::info Role:
-infrastructure application developer
+:::info Role: Infrastructure application developer
 :::
 
 As an infrastructure application developer, review the ways a service can integrate with API Mediation Layer (API ML) and participate in the Single Sign On for REST APIs on the z/OS platform. This article does not cover the client methods to call API ML and authenticate. For more information about API ML authentication, see the [Single Sign On Overview](../../user-guide/api-mediation-sso.md) in the User Guide. 
