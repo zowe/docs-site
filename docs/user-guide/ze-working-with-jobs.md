@@ -1,6 +1,6 @@
 # Working with jobs
 
-## Viewing a job spool output 
+## Viewing job spool output
 
 1. Expand the **JOBS** tree in the **Side Bar**.
 2. Click on the **Search** icon next to a profile and enter search criteria.
@@ -38,7 +38,7 @@
 3. Right-click on the desired job and select either:
 
    - **Download All** to download all the spool files to a folder on your local disk.
-   - **Download All (Binary)** to download all the spool files in binary formaton your local disk. **[correct?]**
+   - **Download All (Binary)** to download all the spool files in binary format on your local disk.
 
    The selected files are saved in a folder that is the job name in the specified location.
 
@@ -54,7 +54,7 @@
 4. Right-click on the spool file and select either:
 
    - **Download All** to download all the spool file contents to a folder on your local disk.
-   - **Download All (Binary)** to download all the spool file contents in binary format on your local disk. **[correct?]**
+   - **Download All (Binary)** to download all the spool file contents in binary format on your local disk.
 
    The selected file is saved in the specified location.
 
@@ -76,7 +76,7 @@
 
 Users can periodically refresh a spool file during long-running jobs to get the latest job outputs. This avoids having to close and reopen a spool file to get the latest job outputs.
 
-There are two main ways to poll a spool file: automatically at set intervals or manually on demand.
+There are two ways to poll a spool file: automatically at set intervals or manually on demand.
 
 ### Defining a default interval for polling spool files
 <br/>

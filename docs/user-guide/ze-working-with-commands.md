@@ -9,23 +9,21 @@ MVS commands can be used to obtain information from the zOS console, while SSH c
 1. Expand **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** in the **Side Bar**.
 2. Right-click on your profile and select the **Issue MVS Command** option.
 
-   Alternatively, press the `F1` key to open the **Command Pallette**, and then select the **Zowe Expolorer: Issue MVS Command** option.
+   Alternatively, press the `F1` key to open the **Command Palette**, and then select the **Zowe Expolorer: Issue MVS Command** option.
 
 3. In the **Quick Pick**, enter a new command or select a saved command.
 4. Press the `Enter` key to execute the command.
 
     The output displays in the **Output** panel.
 
-> Example command: Issue `profile` to get information on your zOS system user profile.
-
-   ![Issue a MVS command](../images/ze/ZE-Jobs-Issue-TSO-Command.gif)
+> Example command: Issue `D T` to get the system time.
 
 ## Issuing SSH commands
 
 1. Expand **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** in the **Side Bar**.
 2. Right-click on your profile and select the **Issue Unix Command** option.
 
-   Alternatively, press the `F1` key to open the **Command Pallette**, then select the **Zowe Explorer: Issue Unix Command** option.
+   Alternatively, press the `F1` key to open the **Command Palette**, then select the **Zowe Explorer: Issue Unix Command** option.
 
 3. In the **Quick Pick**, enter a new command or select a saved command.
 4. Press the `Enter` key to execute the command.
@@ -39,7 +37,7 @@ MVS commands can be used to obtain information from the zOS console, while SSH c
 1. Expand **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** in the **Side Bar**.
 2. Right-click on your profile and select the **Issue TSO Command** option.
 
-   Alternatively, press the `F1` key to open the **Command Pallette**, then select the **Zowe Explorer: Issue TSO Command** option.
+   Alternatively, press the `F1` key to open the **Command Palette**, then select the **Zowe Explorer: Issue TSO Command** option.
 
 3. In the **Quick Pick**, enter a new command or select a saved command.
 4. Press the `Enter` key to execute the command.
@@ -48,4 +46,4 @@ MVS commands can be used to obtain information from the zOS console, while SSH c
 
    ![Issue a TSO command](../images/ze/ZE-TSO-Command.gif)
 
-> Example command: Issue `display time` to get the system time.
+> Example command: Issue `profile` to get information on your zOS system user profile.

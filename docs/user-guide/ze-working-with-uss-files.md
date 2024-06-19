@@ -38,7 +38,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 4. Click and hold the region containing the selected items to start the drag process.
 5. As the items are selected, move your cursor to the desired folder or session. Release the mouse button to start the move operation.
    - If the move operation might overwrite one or more files, an “overwrite confirmation" message displays. Select **Confirm** to relocate these items. Select **Cancel** to stop the move operation.
-   - Items can be moved across different profiles or LPARs, which may cause a brief delay due to the transfer process. **[is this bullet correct?]**
+   - Items can be moved across different profiles or LPARs, which may cause a brief delay due to the transfer process. 
 6. When items are moved, the tree view refreshes and the moved items appear in the destination folder.
 
    ![Dragging and dropping USS files](../images/ze/ZE-uss-drag-drop.gif)
@@ -48,7 +48,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 1. Hover over **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 2. Click the **Refresh All** button.
 
-   The list of directories and child files is updated to reflect the latest changes. **[correct?]**
+   The list of directories and child files is updated to reflect the latest changes.
 
    ![Refresh All](../images/ze/ZE-refreshUSS.gif)
 
@@ -74,11 +74,11 @@ To select one or more files or folders in the tree and drag them to a folder or 
 3. Select the files or folders you want to move.
    - Select multiple items by pressing the `Ctrl` key as you select each item.
    - Select a continuous range of items by selecting the first item in the range, then hold down the `Shift` key until selecting the last item in the range.
-4. Right click the selected items and select the **Copy** option from the menu
+4. Right-click the selected items and select the **Copy** option from the menu
 5. Navigate in the USS tree to the folder where you want to paste the files.
 
    Files can be moved across different profiles or LPARs, which may cause a brief delay due to the transfer process.
-6. Right click on the folder and select the **Paste** option from the menu.
+6. Right-click on the folder and select the **Paste** option from the menu.
 
    The copied items display in the new location.
 

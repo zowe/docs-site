@@ -1,7 +1,7 @@
 # Working with data sets
 
 ## Viewing and accessing multiple profiles simultaneously 
-**[should these instructions be added to the jobs sections?]**
+
 1. Expand the **DATA SETS** tree in the **Side Bar**, and click the **+** icon.
 2. Select the profiles from the **Quick Pick** menu to add them to the **Side Bar**.
 3. Click the **Search** icon for each profile to search and select associated data sets.
@@ -40,7 +40,7 @@
 1. Hover over  **DATA SETS** in the **Side Bar**.
 2. Click the **Refresh All** icon.
 
-   The list of data sets is updated to reflect the latest changes. **[correct?]**
+   The list of data sets is updated to reflect the latest changes. 
 
 ## Renaming data sets
 
@@ -189,12 +189,8 @@
 ## Creating data sets and data set members
 
 1. Expand the **DATA SETS** tree in the **Side Bar**.
-2. Right-click on the profile where you want to create a data set and select **Create New Data Set**.
-3. Enter a name for your data set in the **input box** and press the `Enter` key.
-4. From the **Quick Pick** menu, select the data set type that you want to create.
-5. Select **+Allocate Data Set** to create your data set.
-6. In the **Side Bar**, right-click your newly-created data set and select **Create New Member**.
-7. Enter a name for your new data set member in the **input box** and press the `Enter` key.
+2. In the **Side Bar**, right-click on a partitioned data set and select **Create New Member**.
+3. Enter a name for your new data set member in the **input box** and press the `Enter` key.
 
    The member is created and opened in an **Editor**.
 
@@ -205,12 +201,6 @@
 3. Right-click the member and select **Delete Member**.
 4. Confirm the deletion by selecting **Delete** on the **Quick Pick** menu.
 5. To delete a data set, right-click the data set and select **Delete Data Set**, then confirm the deletion.
-
-  :::note
-  
-  You can delete a data set before you delete its members.
-
-  :::
 
    ![Delete](../images/ze/ZE-delete-ds.gif)
 
@@ -352,6 +342,6 @@ Sort partitioned data set members in the **DATA SETS** tree view by member **Nam
 3. Right-click a data set and select the **Allocate Like (New File with Same Attributes)** option.
 4. Enter the new data set name in the **input box** and press the `Enter` key.
 
-   The new data set displays under the selected profile. **[is 'data set' correct here?]**
+   The new data set displays under the selected profile.
 
    ![Allocate Like](../images/ze/ZE-allocate.gif)
