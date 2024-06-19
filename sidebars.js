@@ -219,15 +219,15 @@ module.exports = {
                 "user-guide/configure-caching-service-ha",
                   ],
             },
-              ],
+                 ],
+             ],
         {
         type: "category",
         label: "Starting and stopping Zowe",
         link: {type:"doc", id:"user-guide/start-zowe-zos"},
         items: [
           "user-guide/api-mediation/configuration-api-mediation-standalone",
-                ],
-            },     
+                ],     
         },
         "user-guide/verify-zowe-runtime-install",
         {
