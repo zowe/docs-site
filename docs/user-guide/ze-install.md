@@ -45,6 +45,12 @@ For information about how to install the extension from a `VSIX` file and run sy
 
 Depending on their circumstances, developers might want to run a specific version of Zowe Explorer.
 
+:::important
+
+Releases older than Zowe Explorer v2.10 do not support secure credentials in Visual Studio Code v1.83+ due to the removal of the keytar library from VS Code.
+
+:::
+
 To install a particular version on VS Code:
 
 1. Refer to [Installing Zowe Explorer](#installing-zowe-explorer) to install Zowe Explorer for Visual Studio Code if not already installed.
