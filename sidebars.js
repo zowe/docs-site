@@ -220,8 +220,15 @@ module.exports = {
                   ],
             },
               ],
+        {
+        type: "category",
+        label: "Starting and stopping Zowe",
+        link: {type:"doc", id:"user-guide/start-zowe-zos"},
+        items: [
+          "user-guide/api-mediation/configuration-api-mediation-standalone",
+                ],
+            },     
         },
-        "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
