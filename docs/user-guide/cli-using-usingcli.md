@@ -5,6 +5,9 @@ In this section, learn how to use Zowe CLI, including how to connect to the main
 You can use the CLI interactively from a command window on any computer on which it is installed, or run it in a container or automation environment.
 
 :::tip
+Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` [environment variable](../user-guide/cli-configuringcli-ev.md#setting-other-environment-variables) to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
+:::
+
 
 Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` [environment variable](../user-guide/cli-configuringcli-ev.md#setting-other-environment-variables) to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
 

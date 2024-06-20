@@ -25,7 +25,8 @@ Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup 
 Follow these steps to configure Zowe to support AT-TLS:
 
 1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, and `caching-service` in the `zowe.components` section.
+
+Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
 
 **Example:**
 
@@ -39,12 +40,31 @@ zowe:
       server:
         ssl:
           enabled: false
-      server:
         internal:
           ssl:
             enabled: false
-
     discovery:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    api-catalog:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    caching-service:
+      spring:
+        profiles:
+          active: attls
+      server:
+        ssl:
+          enabled: false
+    metrics-service:
       spring:
         profiles:
           active: attls
@@ -53,7 +73,7 @@ zowe:
           enabled: false
 ```
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Esure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
+While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
@@ -85,7 +105,7 @@ TTLSRule ApimlServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 10310-10320
+  LocalPortRange 7551-7555
   Jobname ZWE*
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -116,10 +136,13 @@ TTLSConnectionAction ApimlServerConnectionAction
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-- Gateway: default port 7554
-- Discovery: default port 7553
-- Caching Service: 7555
-- API Catalog: default port 7552
+| Component | Port |   
+|----|-----------------------|
+| Gateway | default port 7554 |    
+| Discovery | default port 7553 |
+|Caching Service | 7555 |
+|API Catalog | default port 7552 |
+| Metrics Service | default port 7551 |
 
 **Follow this step:**
 
@@ -138,7 +161,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 449
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -171,8 +194,8 @@ TTLSRule ApimlClientRule
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 10310-10320
-  Jobname ZWEA*
+  RemotePortRange 7551-7555
+  Jobname ZWE1A*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -203,7 +226,7 @@ TTLSRule ApimlServiceClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 40030
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction

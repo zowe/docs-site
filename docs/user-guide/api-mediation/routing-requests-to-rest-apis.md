@@ -4,11 +4,11 @@ API consumers can access any services onboarded to the API Mediation Layer throu
 
 Types of services include both versioned and nonversioned services:
 
-* **Versioned services**
-Routing with serviceId and version
+* **Versioned services**  
+Routing with service ID and version
 
 * **Nonversioned services**  
-Using only the service Id
+Using only the service ID
 
 Under certain conditions it is possible to route to a specific instance of service.
 
@@ -75,21 +75,22 @@ Zowe has a high availability feature built-in. To enable this feature, you can d
 
 The preceding diagram shows that `ZWESLSTC` started two Zowe instances running on two separate LPARs. These LPARs can be on the same or different sysplexes.  
 
-- The Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared, which makes it possible for  incoming requests to be routed to either the gateway on LPAR A or LPAR B.
-- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API Gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated in the diagram, each component has two input lines: one from the API Gateway on its own LPAR, and one from the Gateway on the other LPAR. When one of the LPARs goes down, the other LPAR remains operating within the sysplex thereby providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
+- Sysplex distributor port sharing enables the API Gateway 7554 ports to be shared, which makes it possible for  incoming requests to be routed to either the Gateway on LPAR A or LPAR B.
+- The discovery servers on each LPAR communicate with each other and share their registered instances, which allows the API Gateway on LPAR A to dispatch APIs to components either on its own LPAR, or alternatively to components on LPAR B. As indicated in the diagram, each component has two input lines: one from the API Gateway on its own LPAR, and one from the Gateway on the other LPAR. When one of the LPARs goes down, the other LPAR remains operating within the sysplex, thereby providing high availability to clients that connect through the shared port irrespective of which Zowe instance is serving the API requests.
 
 The `zowe.yaml` file can be configured to start Zowe instances on more than two LPARS, and also to start more than one Zowe instance on a single LPAR, thereby providing a grid cluster of Zowe components that can meet availability and scalability requirements.  
 
 The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the gateway of the second LPAR, all desktop traffic is routed to the second LPAR.  
 
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user, irrespective of where the request is routed.
+The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+
+For simplification of the preceding diagram, the Jobs and Files API servers are not shown as being started. If the user defines Jobs and Files API servers to be started in the `zowe.yaml` configuration file, these servers behave the same as the servers that are illustrated. In other words, these services register to their API discovery server which then communicates with other discovery servers on other Zowe instances on either the same or other LPARs. The API traffic received by any API Gateway on any Zowe instance is routed to any of the Jobs or Files API components that are available.  
 
 To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../configure-sysplex).
 
 ## API Versioning
 
-Service instances provide one or more different API versions. This is based on the  assumption that one service instance will not provide two versions with the same major version. No assumptions are made regarding which versions will be provided and how. As such, an instance can provide only one version and another
-version will be provided by a different instance, and other services can have instances that provide multiple versions.
+Service instances provide one or more different API versions. One important assumption is that one service instance does not provide two versions with the same major version. No assumptions are made regarding which versions are provided and how. As such, an instance can provide only one version and that another version is provided by a different instance, and other services can have instances that provide multiple versions.
 
 The API user specifies only the major version in the URI. The API Catalog needs to differentiate between different _full versions_ internally and be able to return a specific full version or return documentation for the highest version of the specified major version that is supported by all running services.
 

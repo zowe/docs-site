@@ -339,7 +339,7 @@ This request lists services in all domains.
 * `GET /cloud-gateway/api/v1/registry/{apimlId}`  
 This request lists services in the apimlId domain.
 
-* `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`  
+* `GET /cloud-gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`  
   This request gets the specific service in the specific apimlId domain.
 
 ### Response with `/registry`
@@ -431,13 +431,13 @@ Should contain information about all services in a specific domain
 ]
 ```
 
-### Response with `GET /cloud-gateway/api/v1/registry/{apimlId}apiId={apiId}?serviceId={serviceId}`
+### Response with `GET /cloud-gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
 
 Should contain information about a specific service in a specific domain 
 
 **Example:**
 
-* `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway?serviceId=catalog`
+* `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway&serviceId=catalog`
 
 ```
  [
