@@ -98,9 +98,6 @@ When you complete an entry the following actions can be performed:
 * **View/Edit Yaml**  
 This option lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file. This option also allows you to copy the YAML in its current state, which can than be sent to an administrator that is authorized to perform the task. Copying the YAML also includes a relevant JCL sample and explanation for the particular step.
 
-* **View/Submit Job**  
-This option executes the operations of the configuration step upon the z/OS system. After a job is submitted, job output is available for review.
-
 * **View Job Output**  
 This option presents the results of the jobs that were submitted. Details are provided if a job fails or returns a warning.
 
@@ -141,7 +138,7 @@ If you receive this message, go back to the Connection page and attempt to re-es
 If you encounter strange behavior that prohibits you from continuing with wizard installation, we recommend you follow this procedure:
 
 1. View the Job output within the wizard.
-2. If Job output is still unknown, view the output of the log file according to your platform:
+2. If the error is not clear from the Job output, view the output of the log file according to your platform:
 
     **For Linux:**  
 ` ~/.config/{app name}/logs/main.log`
