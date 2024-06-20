@@ -1,6 +1,20 @@
 # Installing Zowe via Zowe Server Install Wizard
 
-The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, Mac OS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation.
+The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the wizard, setting up the wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
+
+* [Benefits of Wizard Installation](#benefits-of-wizard-installation)
+* [Prerequisites of the Wizard](#prerequisites-of-the-wizard)
+* [Downloading the Wizard](#downloading-the-wizard)
+* [Installing Zowe server-side components](#installing-zowe-server-side-components)
+  * [Setup Wizard connection to z/OS](#setup-wizard-connection-to-zos)
+  * [Setting z/OSMF Attributes (optional)](#setting-zosmf-attributes-optional)
+* [Choosing the Server Installation Type](#choosing-the-server-installation-type)
+* [Zowe Server Configuration](#zowe-server-configuration)
+* [Final Review](#final-review)
+* [Troubleshooting](#troubleshooting)
+  * [Failure to establish a TLS connection](#failure-to-establish-a-tls-connection)
+  * [Unable to continue with Wizard installation](#unable-to-continue-with-wizard-installation)
+
 
 ## Benefits of Wizard installation
 
