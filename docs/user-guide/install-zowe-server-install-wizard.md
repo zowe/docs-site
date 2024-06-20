@@ -80,7 +80,7 @@ Provide details for z/OSMF.
 
 1. After specifying all the mandatory details , click **VALIDATE LOCATIONS**.
 
-  You will receive a confirmation message for Java and Node.js locations.
+    You will receive a confirmation message for Java and Node.js locations.
 
 2. Click **Continue to Installation Options**.
 
@@ -88,21 +88,39 @@ Provide details for z/OSMF.
 
 1. In the **Installation Type** window, select one of the following three installation types in the Wizard:
 
-Type | Description
----|---
-Download Zowe convenience build PAX from internet | Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />       1. Click **License Agreement**. <br />2. On the End User License Agreement for Zowe page, click **AGREE**.
-Upload Zowe PAX for offline install | Upload a local (already downloaded) Zowe .PAX file using this option. <br />1. Click **UPLOAD PAX**.  <br />2. Select the downloaded PAX file and click **Open**.
-SMP/E | Use this option to install Zowe through SMP/E build outside the wizard. <br />1. Provide the location of the Runtime Directory. <br />2. Click **VALIDATE LOCATION**.                           <br />**Note:** In the case of SMP/E installation, in the Initialization window, under the **Installation** tab, confirm the dataset names used during installation. <br />3. Click **Save**. 
+    <details>
+    <summary>Download Zowe convenience build PAX from internet</summary>
 
+    Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />       1. Click **License Agreement**. <br />2. On the End User License Agreement for Zowe page, click **AGREE**.
+    </details>
+
+    <details>
+    <summary>Upload Zowe PAX for offline install</summary>
+    Upload a local (already downloaded) Zowe .PAX file using this option. 
+    1. Click **UPLOAD PAX**.
+    2. Select the downloaded PAX file and click **Open**.
+    </details>
+
+    <details>
+    <summary> Install Zowe using SMP/E</summary> 
+
+    Use this option to install Zowe through SMP/E build outside the wizard.
+    1. Provide the location of the Runtime Directory.
+    2. Click **VALIDATE LOCATION**.  
+    :::note
+    When using SMP/E installation, in the Initialization window, under the **Installation** tab, confirm the dataset names used during installation.
+    :::
+    3. Click **Save**.
+    </details>
 
 2. Click **Continue to Component Installation**.
 
 ## Zowe Server Configuration
 
-Perform Zowe server configuration in the wizard by providing inputs to the prompts for configuration values.
+Perform Zowe server configuration in the Wizard by providing inputs to the prompts for configuration values.
 Some steps may require an administrator with sufficient privileges to complete the step. 
 
-Click **Skip** the page to allow the step to be completed externally to the wizard. 
+Click **Skip** the page to allow the step to be completed externally to the Wizard. 
 
 Click **View Job Output** to collect the job content to provide to an administrator without submitting it.
 Each value entered is validated against the schema.
@@ -110,7 +128,7 @@ Each value entered is validated against the schema.
 When you complete an entry the following actions can be performed:
 
 * **View/Edit Yaml**  
-This option lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file. This option also allows you to copy the YAML in its current state, which can than be sent to an administrator that is authorized to perform the task. Copying the YAML also includes a relevant JCL sample and explanation for the particular step.
+This option lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the Wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file. This option also allows you to copy the YAML in its current state, which can than be sent to an administrator that is authorized to perform the task. Copying the YAML also includes a relevant JCL sample and explanation for the particular step.
 
 * **View Job Output**  
 This option presents the results of the jobs that were submitted. Details are provided if a job fails or returns a warning.
@@ -154,36 +172,44 @@ If you encounter strange behavior that prohibits you from continuing with wizard
 1. View the Job output within the wizard.
 2. If the error is not clear from the Job output, view the output of the log file according to your platform:
 
-    **For Linux:**  
-` ~/.config/{app name}/logs/main.log`
+    <details>
+    <summary>For Windows</summary>
+    `%USERPROFILE%\AppData\Roaming{app name}\logs\main.log`
+    </details>
+    
+    <details>
+    <summary>For macOS</summary>
+    ` ~/Library/Logs/{app name}/main.log`
+    </details>
 
-    **For macOS:**  
-` ~/Library/Logs/{app name}/main.log`
-
-    **For Windows:**  
-`%USERPROFILE%\AppData\Roaming{app name}\logs\main.log`
+    <details>
+    <summary>For Linux</summary>
+    ` ~/.config/{app name}/logs/main.log`
+    </details>
 
 If you are still unsure how to proceed, make a backup of these log files, and then use the following procedure to remove the Wizard's cache. 
 
 1. Close the Wizard.
-2. Follow these steps according to your operating system:  
-  **For Windows:**  
-    (a) Open File Explorer. In the address bar type `%APPDATA%`. This takes you to the directory where your app data is stored. The typical directory path is `C:\Users[Your User Name]\AppData\Roaming`.
-  
-    (b) Locate the folder corresponding to `zowe-install-wizard`.
+2. Follow the steps according to your operating system: 
+    <details>
+    <summary>For Windows</summary>
+    1. Open File Explorer. In the address bar type `%APPDATA%`. This takes you to the directory where your app data is stored. The typical directory path is `C:\Users[Your User Name]\AppData\Roaming`.
+    2. Locate the folder corresponding to `zowe-install-wizard`.
+    </details>
 
-    **For macOS:**  
-    (a) Open Finder. In the menu bar select **Go > Go to Folder**.
+    <details>
+    <summary>For macOS</summary>
+    1. Open Finder. In the menu bar select **Go > Go to Folder**.
+    2. Type `~/Library/Application Support/` and press **Enter**. 
+    3. Locate the folder corresponding to `zowe-install-wizard`
+    </details>
 
-    (b) Type `~/Library/Application Support/` and press **Enter**. 
-    (c) Locate the folder corresponding to `zowe-install-wizard`
-
-    **For Linux:**  
-    (a) Open a terminal or file manager.  
-    (b) Navigate to `~/.config/`, which is where most apps store their configuration data.  
-    (c) In the terminal, enter the following command:  
- `cd ~/.config/`.   
-    (d) Locate the folder corresponding to `zowe-install-wizard`.
-
-4. Delete this folder to remove all stored data.
-5. Restart the Wizard.
+    <details>
+    <summary>For Linux</summary>
+    1. Open a terminal or file manager.  
+    2. Navigate to `~/.config/`, which is where most apps store their configuration data.  
+    3. In the terminal, enter the following command:  `cd ~/.config/`.   
+    4. Locate the folder corresponding to `zowe-install-wizard`.
+    </details>
+3. Delete this folder to remove all stored data.
+4. Restart the Wizard.
