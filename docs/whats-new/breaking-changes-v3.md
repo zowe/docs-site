@@ -41,9 +41,11 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Breaking changes
 
-* Introducing a new format for error messages to improve clarity
-* Removing V1 profile support
-* Removing deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)
+| Change in Zowe v3 | Required action|
+|-|-|
+|Introducing a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
+|Removing V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
+|Removing deprecated items - [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/zowe-cli/issues/1873)|Zowe CLI extenders or users of the Zowe Client Node.js SDK will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
 
 ### Pre-release availability
 
@@ -63,10 +65,12 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Breaking changes
 
-* Removing V1 profile support
-* Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)
+| Change in Zowe v3 | Required action|
+|-|-|
+|Removing V1 profile support|Implement a team configuration or use Zowe Explorer's built-in V1 profile conversion functionality|
+|Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)|Zowe Explorer extenders or users of the Zowe Explorer APIs will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
+|Storing extension settings in local storage|Settings and history previously stored in the .vscode settings folder will no longer be available. Users will have to adjust their Zowe Explorer settings after updating to V3|
 * Changing profile creation menus
-* Storing extension settings in local storage
 
 ### Important updates
 
