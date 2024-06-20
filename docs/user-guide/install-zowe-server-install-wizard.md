@@ -193,23 +193,34 @@ If you are still unsure how to proceed, make a backup of these log files, and th
 2. Follow the steps according to your operating system: 
     <details>
     <summary>For Windows</summary>
-    1. Open File Explorer. In the address bar type `%APPDATA%`. This takes you to the directory where your app data is stored. The typical directory path is `C:\Users[Your User Name]\AppData\Roaming`.
+    
+    1. Open File Explorer. In the address bar type `%APPDATA%`. This takes you to the directory where your app data is stored. The typical directory path is `C:\Users[Your User Name]\AppData\Roaming`.  
+    
     2. Locate the folder corresponding to `zowe-install-wizard`.
+
     </details>
 
     <details>
     <summary>For macOS</summary>
+
     1. Open Finder. In the menu bar select **Go > Go to Folder**.
+
     2. Type `~/Library/Application Support/` and press **Enter**. 
+
     3. Locate the folder corresponding to `zowe-install-wizard`
     </details>
 
     <details>
     <summary>For Linux</summary>
-    1. Open a terminal or file manager.  
-    2. Navigate to `~/.config/`, which is where most apps store their configuration data.  
+
+    1. Open a terminal or file manager. 
+
+    2. Navigate to `~/.config/`, which is where most apps store their configuration data. 
+
     3. In the terminal, enter the following command:  `cd ~/.config/`.   
+
     4. Locate the folder corresponding to `zowe-install-wizard`.
     </details>
+
 3. Delete this folder to remove all stored data.
 4. Restart the Wizard.
