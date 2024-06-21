@@ -17,7 +17,7 @@ Use the following procedure to change the number of concurrent connections:
 
 The API Mediation Layer supports Websocket connections. It is possible to configure the limits around timeouts. All the values are in milliseconds. Customizing this limit may be practical if you see problems such as with the usage of the TN32790 terminal in Virtual Desktop. 
 
-```
+```yaml
 zowe:
   components:
     gateway:
@@ -26,7 +26,8 @@ zowe:
           connectTimeout: 15000
           stopTimeout: 30000
           asyncWriteTimeout: 60000
-          maxIdleTimeout:3600000
+          maxIdleTimeout: 3600000
+          requestBufferSize: 8192
 ```
 
 Use the following procedure to change the limits:
@@ -36,3 +37,4 @@ Use the following procedure to change the limits:
 3. Find or add the property `zowe.components.gateway.server.websocket.stopTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the API Gateway waits before it fails on stop message for the Websocket connection. The default is 30 seconds.
 4. Find or add the property `zowe.components.gateway.server.websocket.asyncWriteTimeout`, and set the value to an appropriate positive integer. This timeout handles how long it takes before the server fails with unsuccessful response when trying to write message to the Websocket connection. The default is 60 seconds.
 5. Find or add the property `zowe.components.gateway.server.websocket.maxIdleTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour.
+6. Find or add the property `zowe.components.gateway.server.websocket.requestBufferSize` and set the value to an appropriate positive integer. This property handles the max request size allowed in WebSocket handshake requests. The default is 8K.
