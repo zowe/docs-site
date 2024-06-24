@@ -358,6 +358,7 @@ module.exports = {
             "user-guide/cli-install-verify-your-installation", 
           ],
         },
+        
         {
           type: "category",
           label: "Zowe Explorer installation",
@@ -366,6 +367,15 @@ module.exports = {
             "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
             "user-guide/ze-install",
+            {
+              type: "category",
+              label: "Installing Zowe Explorer extensions",
+              link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
+              items: [
+                "user-guide/ze-install-zowe-explorer-cics-ext",
+                "user-guide/ze-ftp-install-ze-ftp-ext",
+              ],
+            },
             "user-guide/ze-profiles",
             "user-guide/ze-install-configuring-ze",
             "user-guide/ze-install-verify-your-installation",
@@ -642,23 +652,21 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Zowe Explorer CICS Extension",
-                  link: {type:"doc", id:"user-guide/ze-install-zowe-explorer-cics-ext"},
+                  label: "Using Zowe Explorer CICS Extension",
+                  link: {type:"doc", id:"user-guide/ze-using-zowe-explorer-cics-ext"},
                   items: [
-                    "user-guide/ze-using-zowe-explorer-cics-ext",
+                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
                 {
                   type: "category",
-                  label: "Zowe Explorer FTP Extension",
-                  link: {type:"doc", id:"user-guide/ze-ftp-install-ze-ftp-ext"},
+                  label: "Using Zowe Explorer FTP Extension",
+                  link: {type:"doc", id:"user-guide/ze-ftp-using-ze-ftp-ext"},
                   items: [
-                    "user-guide/ze-ftp-using-ze-ftp-ext",
                     "user-guide/ze-ftp-supported-functions",
                     "user-guide/ze-ftp-provide-feedback-contribute",
                   ],

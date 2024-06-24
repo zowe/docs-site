@@ -1,9 +1,16 @@
 # Usage tips
 
-The following tips can help you perform tasks more efficiently when working with the CICS extension:
+**[does this page have any real value? maybe remove it altogether? or find more tips to add here?]**
 
-- All menu action commands available when right-clicking a profile or resource (excluding **Show Attributes**) can be applied to multiple items. To do this, select the multiple nodes of the same type before right-clicking and selecting the command.
+Make the best use of the Zowe Explorer CICS Extension with the following tips.
 
-- To select multiple nodes, you can hold `Ctrl` or `Cmd` key while clicking on the resources. You can also select multiple consecutive nodes by selecting the first item in a list of nodes and then holding the `Shift` key while selecting the last item in the list.
+## Multi-select functionality
 
-- Click the refresh icon at the top of the CICS view to reload the resources in every region.
+Apply an action to multiple objects at the same time for increased efficiency. All menu action commands available when right-clicking a profile or resource (excluding **Show Attributes**) can be applied to multiple items. To do this, select the multiple nodes of the same type before right-clicking and selecting the command.
+
+To select multiple nodes, you can hold the `Ctrl` or `Cmd` key while selecting the resources. You can also select multiple consecutive nodes by selecting the first item in a list of nodes and then holding the `Shift` key while selecting the last item in the list.
+
+## Refreshing the resources view
+**[is this title good/correct?]**
+
+Click the **Refresh** icon at the top of the **CICS** tree view to reload the resources in every region.
