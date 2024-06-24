@@ -20,8 +20,8 @@ For information about the usage of the client certificate when this feature is e
 * The external CA used for issuing client certificates to specific users is imported to the truststore or keyring of the API Mediation Layer.
 
 :::caution Important:
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
-  :::
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../../user-guide/configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+:::
 
 ## Configure Internal API ML Mapper
 
@@ -39,7 +39,7 @@ Use the following procedure to enable the zowe.yaml file to use a client certifi
 
 ## Configure ZSS
 
-For information about configuring ZSS, see [Configure components zss](../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
+For information about configuring ZSS, see [Configure components zss](../../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
 
 ### Prerequisites for ZSS
 
@@ -60,7 +60,8 @@ Ensure that you have the Issuer certificate imported in the truststore or in the
 :::
 
 :::caution Important:
-* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](./configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+
 :::
 
 :::tip
