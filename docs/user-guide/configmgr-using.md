@@ -2,7 +2,7 @@
 
 When you install the Zowe&trade; server components on z/OS, a utility called `configmgr` or "Configuration Manager" is bundled within. It can be used directly in a few ways, or leveraged by the `zwe` command to empower it with several abilities and even performance enhancements.
 
-The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files, and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
+The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
 
 ## Using zwe with Configuration Manager
 
@@ -53,7 +53,7 @@ With the schema file, you can see that there are listed choices for certificate 
             },
 ```
 
-The type can only one from the `enum` list. This allows you to not only detect this error but also see the options available.
+The type can only be one from the `enum` list. This allows you to not only detect this error but also see the options available.
 
 When `zwe` runs and fails schema validation due to the "PCKS12" typo, it will print out the following message:
 
@@ -128,6 +128,17 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 When you use multiple storage types, Zowe constructs the unified configuration by having the storage types listed on the left override the values of storage types to their right in the list. This means the left-most storage type's values take priority, and the right-most storage type should be treated as a set of defaults. Here is an example of splitting configuration into multiple files:
 
 ![multi yaml example](../images/configure/multiyaml.png)
+
+## Parmlib support
+
+Zowe YAML content can be stored in PARMLIB as well. The structure is the same as in the unix files, so be sure to have sufficient record length to fit the YAML content within the member. The syntax is `PARMLIB(datasetname(member))`, and although you can have multiple `PARMLIB` entries, each must have the same member name.
+In the previous section, there was an example of using multiple files to split configuration into parts. This ability can be done with PARMLIB, FILE, or any mix of the two. An example of using PARMLIB with Zowe configuration may look like this in your STC JCL:
+
+```
+CONFIG=PARMLIB(LPAR.PARMLIB(ZWECFG))\
+:PARMLIB(SYSPLEX.PARMLIB(ZWECFG))\
+:FILE(/global/zowe/example-zowe.yaml)
+```
 
 ## Configuration templates
 

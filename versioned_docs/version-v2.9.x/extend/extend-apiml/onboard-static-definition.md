@@ -463,11 +463,11 @@ additionalServiceMetadata:
            description: This is the second tile with ID tile2
    ```
 
-    * **catalogUiTile.{tileId}.title**
+    * **catalogUiTile.\{tileId\}.title**
     
        This parameter specifies the title of the API services product family. This value is displayed in the API Catalog UI dashboard as the tile title.
     
-    * **catalogUiTile.{tileId}.description**
+    * **catalogUiTile.\{tileId\}.description**
     
        This parameter specifies the detailed description of the API Catalog UI dashboard tile. This value is displayed in the API Catalog UI dashboard as the tile description.
 
@@ -491,7 +491,7 @@ additionalServiceMetadata:
         
         All changes are applied. Existing parameters are overwritten.     
         
-    * **additionalServiceMetadata.{updatedParameter}**
+    * **additionalServiceMetadata.\{updatedParameter\}**
     
         This parameter specifies any metadata parameters that are updated.      
 
@@ -526,7 +526,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 **Follow these steps:**
 
-1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
+1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESLSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
 
     **Note:** We use the `${zoweInstanceDir}` symbol in following instructions.
 

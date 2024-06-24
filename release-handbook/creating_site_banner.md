@@ -27,7 +27,7 @@ Depending on the changes you make, you also might need to edit the `custom.css` 
 
 1. In the `docs-site` repository, find the `docusaurus.config.js` file and open it.
 
-2. After `themeConfig: {:` (in Line 26), add the following code:
+2. After `themeConfig: {:` (in Line 31), add the following code:
 
     ```
     announcementBar: {
@@ -68,10 +68,13 @@ To edit the custom css:
     ```
 3. If necessary, change the font and background colors to suit the tone of the message. Use colors listed in the [Zowe Colors pallette](https://docs.zowe.org/stable/contribute/guidelines-ui/colors).
 
-    For example:
-    - Use blue hues for neutral messages.
-    - Use yellow hues for cautionary messages.
-    - Use red hues for warning messages.
+    Enter the following code in the parenthetical:
+    - Blue hues for **neutral** messages:
+        - `35deg,#edf2fa,#edf2fa 20px,#c9d9f2 10px, #c9d9f2 40px`
+    - Yellow hues for **cautionary** messages:
+        - `35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px`
+    - Red hues for **warning** messages:
+        - `35deg,#fbecec,#fbecec 20px,#f3c6c6 10px, #f3c6c6 40px`
 
 ## Example of a Zowe Docs banner
 

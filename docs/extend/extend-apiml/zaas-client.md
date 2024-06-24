@@ -63,7 +63,9 @@ To integrate login, call one of the following methods for login in the `ZaasClie
 
 These methods return the JWT token as a String. This token can then be used to authenticate the user in subsequent APIs.
 
-**Note:** Both methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
+:::note
+Both methods automatically use the truststore file to add a security layer, which requires configuration in the `ConfigProperties` class.
+:::
 
 ### Validate and get details from the token (`query`)
 
@@ -109,7 +111,9 @@ This method has an added layer of security, whereby you do not have to provide a
 
 In return, this method provides a valid pass ticket as a String to the authorized user.
 
-**Tip:** For additional information about PassTickets in API ML see [Enabling PassTicket creation for API Services that Accept PassTickets](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-passtickets.html).
+:::tip
+For additional information about PassTickets in API ML see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
+:::
 
 ## Getting Started (Step by Step Instructions)
 
@@ -120,7 +124,7 @@ To use this library, use the procedure described in this section.
 1. Add `zaas-client` as a dependency in your project.  
 You will need to specify the version of the `zaas-client` you want. `zaas-client` versioning following the semantic versioning format of `major.minor.patch`. For example, `1.22.0`.
 
-    Gradle:
+    **Gradle:**
 
       1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
@@ -151,7 +155,7 @@ You will need to specify the version of the `zaas-client` you want. `zaas-client
         }
         ```
 
-    Maven:
+    **Maven:**
 
       1. Add the following _XML_ tags within the newly created `pom.xml` file:
 
@@ -221,7 +225,7 @@ You can now use any method from `ZaasClient` in your class.
 For login, use the following code snippet:
 
 ```java
-   String zaasClientToken = zaasClient.login("user", "user");
+   String zaasClientToken = zaasClient.login("user", "password");
  ```
 
 The following codeblock is an example of a `SampleZaasClientImplementation`.
