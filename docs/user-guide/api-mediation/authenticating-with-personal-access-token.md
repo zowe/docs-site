@@ -22,8 +22,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
-:::note
-An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::note Notes
+* An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md).
+* In order to enable the Personal Access Tokens support when using the Caching Service, **Infinispan** is required as the storage solution.
 :::
 
 For detailed information about using the Personal Access Token as part of single sign on, see the section [Using the Personal Access Token to authenticate](#using-the-personal-access-token-to-authenticate) later in this article. 
