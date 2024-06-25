@@ -13,7 +13,7 @@ The CICS Extension for Zowe Explorer adds additional functionality to the popula
 
 The following services must be installed, configured, and running on the mainframe:
 
-- CMCI APIs
+- CICS Management Client Interface (CMCI) APIs
 - z/OSMF (optional but recommended)
 
 ## Features

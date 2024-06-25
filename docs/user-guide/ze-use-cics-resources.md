@@ -19,7 +19,7 @@ Expand a CICS profile to see the region name, and expand the region to view its 
 
    Enter an exact resource name or use wildcards. The search history is saved so you can recall previous searches.
    
-   To reset the filter to its initial criteria, use the **Clear** filter icon in the resource type. To see all resources in a region (including those supplied by IBM), use `*` as a filter.
+   To reset the filter to its initial criteria, use the **Clear** filter icon in the resource type. To see all resources in a region (including those supplied by IBM), use an `*` as a filter.
 
    ![Zowe CICS Explorer Filter](../images/ze-cics/region-filter.gif)
 
@@ -47,7 +47,7 @@ Apply a filter on all region resources in a plex.
 
 ::: Tip
 
-To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
+To apply multiple filters, separate entries with a comma. Append a filter with an`*` to indicate wildcard searching.
 
 :::
 
@@ -63,7 +63,7 @@ To view resources under these trees:
 
    ![Zowe CICS Explorer All Resource Filter](../images/ze-cics/all-resources.gif)
 
-   If the applied filter results in more than 500 records, you can change the filter to narrow the search, or click the **view X more ...** option to retrieve the specified quantity of resources.
+   If the applied filter results in more than 500 records, change the filter to narrow the search, or click the **view X more ...** option to retrieve the specified quantity of resources.
 
 ## Showing attributes
 

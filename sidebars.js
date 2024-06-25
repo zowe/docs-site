@@ -659,7 +659,6 @@ module.exports = {
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
                     "user-guide/ze-use-cics-resources",
                     "user-guide/ze-override-tls-certs",
-                    "user-guide/ze-provide-feedback-contribute",
                   ],
                 },
                 {
@@ -668,7 +667,6 @@ module.exports = {
                   link: {type:"doc", id:"user-guide/ze-ftp-using-ze-ftp-ext"},
                   items: [
                     "user-guide/ze-ftp-supported-functions",
-                    "user-guide/ze-ftp-provide-feedback-contribute",
                   ],
                 },
               ],
@@ -684,7 +682,8 @@ module.exports = {
             "user-guide/intellij-working-sets",
           ],
         },
-        "user-guide/sdks-using",        
+        "user-guide/sdks-using",
+        "user-guide/providing-feedback-and-contributing-client-side",        
       ],
     },
   ],

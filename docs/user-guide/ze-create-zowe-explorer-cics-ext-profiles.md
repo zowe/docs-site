@@ -1,10 +1,10 @@
 # Managing Zowe Explorer CICS Extension profiles
 
-To use all functions of the extension, you need to have a Zowe Explorer profile.
+To use all functions of the Zowe Explorer CICS extension, you need to have a Zowe Explorer profile.
 
 If you already have a Zowe CICS CLI profile, the CICS tree in the VS Code **Side Bar** loads the default profile on startup.  
 
-If you do not have an existing Zowe CICS CLI profile, follow these steps to create one:
+If you do not have an existing Zowe CICS CLI profile, refer to the following instructions.
 
 ## Using Zowe team configuration
 
@@ -26,7 +26,7 @@ If you do not have an existing Zowe CICS CLI profile, follow these steps to crea
 
 ::: Note
 
-The connection **[To what?]** must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or else a stand-alone Single Management Application Programming (SMSS) region.  
+The connection **[To what? between what two things?]** must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or a stand-alone Single Management Application Programming (SMSS) **[is SMSS really the correct acronym? the letters don't match the extended name]** region.  
 
 Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store does not recognize, see [Overriding untrusted TLS certificates](ze-override-tls-certs.md).
 

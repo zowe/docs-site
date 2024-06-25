@@ -1,20 +1,11 @@
 # Overriding untrusted TLS certificates
 
+There are occasions where a user would want to override a rejected TLS certificate.
 
+By default, if the CICS Management Client Interface (CMCI) connection uses a TLS certificate that does not exist in your PC's trust store, Zowe Explorer rejects the connection because the certificate could originate from an unsafe site.
 
-If the CICS Management Client Interface (CMCI) connection uses a TLS certificate that does not exist in your PC's trust store, then by default the connection is rejected **[rejected by whom/what?]** because the certificate could be from an unsafe site.
+You might want to override this behavior if you are using certificates not signed by a recognized certificate-issuing authority. For instance, z/OSMF might only have certificates created on the mainframe, resulting in self-signed certificates. Zowe Explorer rejects these types of certificates by default as a security measure.
 
-To override this behavior, set the `Only accept trusted TLS certificates` field to `False` on the form when creating or updating the profile. This is the same as setting `rejectUnauthorized=false` on the Zowe CICS CLI profile. **[why would users want to override this behavior?]**
-
-If you define a profile to accept trusted TLS certificates only when the Zowe Explorer first connects, it detects the mismatch and displays a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.  
-
-
-=======
-
-If the CMCI connection uses a TLS certificate that does not exist in your PC's trust store, then by default the connection is rejected because the certificate could be from an unsafe site.
-
-To override this behavior, set the `Only accept trusted TLS certificates` field to `False` on the form when creating or updating the profile. This is the same as setting `rejectUnauthorized=false` on the Zowe CICS CLI profile.
-
-If you define a profile to accept trusted TLS certificates only when the Zowe Explorer first connects, it detects the mismatch and displays a message. You can select **Yes** to override the profile's setting to accept the untrusted certificate authority.  
+To override this behavior, set the `Only accept trusted TLS certificates` field to `False` for the **[CICS?]** profile in the team configuration file. This is the same as setting `rejectUnauthorized=false` on the Zowe CICS CLI profile.
 
 ![Image that shows how to accept untrusted TLS certificate](../images/ze-cics/untrusted-cert.gif)
