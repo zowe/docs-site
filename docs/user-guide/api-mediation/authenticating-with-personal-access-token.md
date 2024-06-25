@@ -24,7 +24,7 @@ APIs for security administrators are protected by SAF resource checking and can 
 
 :::note Notes
 * An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md).
-* In order to enable the Personal Access Tokens support when using the Caching Service, **Infinispan** is required as the storage solution.
+* To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution.
 :::
 
 For detailed information about using the Personal Access Token as part of single sign on, see the section [Using the Personal Access Token to authenticate](#using-the-personal-access-token-to-authenticate) later in this article. 

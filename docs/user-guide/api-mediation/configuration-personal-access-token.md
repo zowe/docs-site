@@ -13,5 +13,5 @@ Use the following procedure to enable Personal Access Tokens.
 For more information about using Personal Access Tokens, see [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token.md).
 
 :::note
-In order to enable the Personal Access Tokens support when using the Caching Service, **Infinispan** is required as the storage solution.
+To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution.
 :::
