@@ -17,6 +17,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required.
 
+### ZWEAM001I
+
+  API Mediation Layer started
+
+  **Reason:**
+
+  All key API Mediation Layer services started.
+
+  **Action:**
+
+  No action required.
+
 ## API mediation common messages
 
 ### ZWEAO102E

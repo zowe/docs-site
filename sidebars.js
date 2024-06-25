@@ -16,6 +16,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
@@ -199,6 +200,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/at-tls-configuration",
               ],
             },
             {
@@ -215,11 +217,16 @@ module.exports = {
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
-                  ],
-            },
-              ],
+              ]
+            }
+          ]   
         },
-        "user-guide/start-zowe-zos",
+        {
+          type: "category",
+          label: "Starting and stopping Zowe",
+          link: { type: "doc", id: "user-guide/start-zowe-zos" },
+          items: ["user-guide/api-mediation/configuration-api-mediation-standalone"]
+        },
         "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
@@ -487,7 +494,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Routing",
+              label: "Routing APIs",
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
@@ -718,9 +725,10 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Routing",
-              link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
+              label: "API ML Routing Overview",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
               items: [
+                "extend/extend-apiml/implementing-routing-to-the-api-gateway",
                 "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
@@ -1024,7 +1032,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.16.x.md",
     },
   ],
 }
