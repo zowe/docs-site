@@ -20,7 +20,7 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 
 - Reduces the need for YAML editing in z/OS Unix by handling these operations for you based on inputs to the prompts presented in the Wizard UI.
 
-- Inputs to the prompts are validated, so that invalid input or typos entered in any commands are prevented.  
+- Inputs to the prompts are validated, so that invalid input or typos entered in most commands are prevented.  
 
 - The separation of duties for steps to be performed by a security administrator is made easier, whereby a system programmer or system administrator can skip particular steps where elevated user permissions are required, whereupon security administrators can perform such steps outside of the Wizard.
 
@@ -62,23 +62,27 @@ FTP Port  |The FTP Port number for internal use. The default port is 21. If not 
 User Name |Your z/OS username.
 Password  |Your z/OS password.
 
-3. Select Use FTP over TLS (Highly Recommended). Provide details as described in the following table:
+3. Select (Recommended) Use FTP with TLS. Provide details as described in the following table:
         
 Field name | Description
 ---|---
 Min TLS    |Select the minimum TLS version to accept the certificate from the server.
 Max TLS    |Select the maximum TLS version to accept the certificate from the server.
-4. Select **Accept all certificates**.
+
+:::note
+Selecting all certificiates disables certificate verifiaction.
+
+4. (Optional) Select **Accept all certificates**. Note that selecting all certificiates disables certificate verifiction. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
 6. Click **Continue**.
 7. In the **Before you start** window, review the instructions. 
 8. In the **Job statement** field, customize the job statement if needed and click **SAVE AND VALIDATE**.
-9. In the **Planning window**, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
+9. Further down the **Planning** page, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
 Provide details for z/OSMF. 
 
-1. After specifying all the mandatory details , click **VALIDATE LOCATIONS**.
+1. After specifying all the mandatory details, click **VALIDATE LOCATIONS**.
 
     You will receive a confirmation message for Java and Node.js locations.
 
@@ -92,6 +96,7 @@ Provide details for z/OSMF.
     <summary>Download Zowe convenience build PAX from internet</summary>
 
     Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />       1. Click **License Agreement**. <br />2. On the End User License Agreement for Zowe page, click **AGREE**.
+    3. In Download Zowe Pax, click **BEGIN DOWNLOAD**.
     </details>
 
     <details>
@@ -102,7 +107,7 @@ Provide details for z/OSMF.
     </details>
 
     <details>
-    <summary> Install Zowe using SMP/E</summary> 
+    <summary>SMP/E</summary> 
 
     Use this option to install Zowe through SMP/E build outside the wizard.
     1. Provide the location of the Runtime Directory.
