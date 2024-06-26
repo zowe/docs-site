@@ -13,7 +13,7 @@ Expand a CICS profile to see the region name, and expand the region to view its 
 
 3. Expand each resource type to view their resources. (The number of resources in a resource tree displays in square brackets next to the tree name.)
 
-   The list of resources is pre-filtered to exclude many of the IBM-supplied resources **[is "resources" correct?]**. This narrows the contents to include only user programs.
+   The list of resources is pre-filtered to exclude many of the IBM-supplied resources. This narrows the contents to include only user programs.
 
 4. Use the **Search** icon in a resource type to apply a filter.
 
@@ -91,7 +91,7 @@ To view resources under these trees:
 
    The resource is disabled. A disabled resource is identified by a `(Disabled)` indicator next to its name.
 
-4. To enable resource, right-click a disabled program, local transaction, or local file **[is this correct? i'm looking to confirm that resource = prog, transact, file]** and select the **Enable [CICS resource]** option from the context menu to re-enable it.
+4. To enable resource, right-click a disabled program, local transaction, or local file and select the **Enable [CICS resource]** option from the context menu to re-enable it.
 
 ![Zowe CICS Explorer Disable and Enable](../images/ze-cics/disable-enable.gif)
 
@@ -105,11 +105,11 @@ Use the **New Copy** and the **Phase In** actions against a CICS program to get 
 
    The program is applied to the CICS region to use it on the associated transaction, and a pop-up message displays the status of the operation.
 
-   The `New copy count` for a program (which is greater than zero) **[is this parenthetical really needed?]** is shown next to the program in the **CICS** tree.
+   The `New copy count` for a program is shown next to the program in the **CICS** tree.
 
 3. Select the program and click on the **Phase In** icon next to it, or right-click a program and select the **Phase In** option from the context menu.
 
-   The program is ... **[what happens to the program?]**, and a pop-up message displays the status of the **[what action?]**.
+   The program is applied to the CICS region whether or not the program is actively running, and a pop-up message displays the status of the operation. **[correct?]**
 
 ![Zowe CICS Explorer NewCopy Program](../images/ze-cics/new-copy.gif)
 
@@ -120,16 +120,16 @@ To open a local file:
 1. Right-click a closed local file.
 2. Select the **Open Local File** option from the context menu.
 
-   The `openstatus` attribute is set to `OPEN` **[where is this attribute stored/located?]**.
+   The `openstatus` attribute for the file **[correct?]** is set to `OPEN`.
 
 To close a local file:
 
 1. Right-click an open local file.
 2. Select the **Close Local File** option from the context menu.
 3. When prompted, choose one of the following options from the pop-up window:
-   - **Wait** to **[DO WHAT?]**.
-   - **No Wait** to **[DO WHAT?]**.
-   - **Force** to **[DO WHAT?]**.
+   - **Wait** for the file/resource to not be in use.
+   - **No Wait** to close the file/resource without waiting.
+   - **Force** to abort any process that was using the file/resource.
 
    After an option is selected, the local file name is appended with a `(Closed)` label.
 
