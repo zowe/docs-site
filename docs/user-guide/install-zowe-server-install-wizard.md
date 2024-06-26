@@ -49,9 +49,12 @@ Linux (RedHat or SuSE-based) | .rpm
 
 
 ## Installing Zowe server-side components
+On the landing page of the Zowe Server Installation Wizard, select from the two presented options:
+* **New Zowe Installation**  
+This option directs you to the Connection window. Provide details as presented in the following table: **Setup Wizard connection to z/OS**.
+* **Zowe Installation Dry Run**  
+This option allows you to follow the installation steps without running the installation.
 
-1. Select **New Zowe Installation**.
-2. In the Connection window, provide details as described in the following table:
 
 ### Setup Wizard connection to z/OS
 
@@ -73,7 +76,7 @@ Max TLS    |Select the maximum TLS version to accept the certificate from the se
 5. Click **VALIDATE CREDENTIALS**.
 6. Click **Continue**.
 7. In the **Before you start** window, review the instructions. Customize the job statement, or use the default.
-8. In the **Job statement** field, customize the job statement if needed and click **SAVE AND VALIDATE**.
+8. In the **Job statement** field, customize the job statement as necessary and click **SAVE AND VALIDATE**.
 9. Further down the **Planning** page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
