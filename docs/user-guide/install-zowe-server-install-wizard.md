@@ -62,22 +62,19 @@ FTP Port  |The FTP Port number for internal use. The default port is 21. If not 
 User Name |Your z/OS username.
 Password  |Your z/OS password.
 
-3. Select (Recommended) Use FTP with TLS. Provide details as described in the following table:
+3. Select **Use FTP with TLS**. This is the recommended option. Provide details as described in the following table:
         
 Field name | Description
 ---|---
 Min TLS    |Select the minimum TLS version to accept the certificate from the server.
 Max TLS    |Select the maximum TLS version to accept the certificate from the server.
 
-:::note
-Selecting all certificiates disables certificate verifiaction.
-
-4. (Optional) Select **Accept all certificates**. Note that selecting all certificiates disables certificate verifiction. Checking this option is not recommended.
+4. (Optional) You can select **Accept all certificates**. Note that selecting all certificiates disables certificate verifiction. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
 6. Click **Continue**.
-7. In the **Before you start** window, review the instructions. 
+7. In the **Before you start** window, review the instructions. Customize the job statement, or use the default.
 8. In the **Job statement** field, customize the job statement if needed and click **SAVE AND VALIDATE**.
-9. Further down the **Planning** page, provide details for z/OS Unix locations, identifiers, and z/OSMF details. 
+9. Further down the **Planning** page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
 Provide details for z/OSMF. 
@@ -95,27 +92,34 @@ Provide details for z/OSMF.
     <details>
     <summary>Download Zowe convenience build PAX from internet</summary>
 
-    Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />       1. Click **License Agreement**. <br />2. On the End User License Agreement for Zowe page, click **AGREE**.
-    3. In Download Zowe Pax, click **BEGIN DOWNLOAD**.
+    Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />        
+     1. Click **License Agreement**. <br />
+     2. On the _End User License Agreement for Zowe_ page, click **AGREE**.
+    <br />
+    3. In Download Zowe Pax, click **UNPAX** and **BEGIN DOWNLOAD**.
     </details>
 
     <details>
     <summary>Upload Zowe PAX for offline install</summary>
-    Upload a local (already downloaded) Zowe .PAX file using this option. 
+    Upload a local (already downloaded) Zowe .PAX file using this option. <br />
+    
     1. Click **UPLOAD PAX**.
-    2. Select the downloaded PAX file and click **Open**.
+    <br />
+    2. Select **downloaded PAX file**, and click **Open**.
+    <br />
     </details>
 
     <details>
     <summary>SMP/E</summary> 
 
-    Use this option to install Zowe through SMP/E build outside the wizard.
+    Use this option to install Zowe through a SMP/E build outside the wizard.
     1. Provide the location of the Runtime Directory.
+
     2. Click **VALIDATE LOCATION**.  
-    :::note
+    **Note:**
     When using SMP/E installation, in the Initialization window, under the **Installation** tab, confirm the dataset names used during installation.
-    :::
-    3. Click **Save**.
+    
+    2. Click **Save**.
     </details>
 
 2. Click **Continue to Component Installation**.
