@@ -101,12 +101,13 @@ Provide details for z/OSMF.
 
     <details>
     <summary>Upload Zowe PAX for offline install</summary>
+
     Upload a local (already downloaded) Zowe .PAX file using this option. <br />
     
     1. Click **UPLOAD PAX**.
     <br />
     2. Select **downloaded PAX file**, and click **Open**.
-    <br />
+    
     </details>
 
     <details>
