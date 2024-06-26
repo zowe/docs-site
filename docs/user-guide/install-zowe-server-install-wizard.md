@@ -187,16 +187,19 @@ If you encounter strange behavior that prohibits you from continuing with wizard
 
     <details>
     <summary>For Windows</summary>
+
     `%USERPROFILE%\AppData\Roaming{app name}\logs\main.log`
     </details>
     
     <details>
     <summary>For macOS</summary>
+
     ` ~/Library/Logs/{app name}/main.log`
     </details>
 
     <details>
     <summary>For Linux</summary>
+    
     ` ~/.config/{app name}/logs/main.log`
     </details>
 
