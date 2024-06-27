@@ -10,9 +10,9 @@ If you do not have an existing Zowe CICS CLI profile, refer to the following ins
 
 1. Expand the **CICS** tree in the **Side Bar**, and click the **+** icon.
 
-2. In the **Quick Pick** menu, select the **Create New CICS profile** option to open the configuration file.
+2. In the **Quick Pick** menu, select the **Create New CICS profile** option to open the configuration file. If no configuration file is available, select the **Create a new Team Configuration File** option from the **Quick Pick** menu.
 
-   The associated **[is there a better way/word to describe this?]** configuration file opens in an **Editor**.
+   The active configuration file opens in an **Editor**. If none exists, a new configuration file opens in an **Editor**.
 
 3. Edit the configuration file to add a CICS profile.
 
@@ -26,7 +26,7 @@ If you do not have an existing Zowe CICS CLI profile, refer to the following ins
 
 ::: Note
 
-The connection **[To what? between what two things?]** must point to a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex, or a stand-alone Single Management Application Programming (SMSS) **[is SMSS really the correct acronym? the letters don't match the extended name]** region.  
+The CICS profile must specify a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex or a stand-alone CICS System Management Single Server (SMSS) region.  
 
 Configuring a CICS region to have a connection is a system programmer task and more details can be found in [Setting up CMCI with CICSPlex SM](https://www.ibm.com/docs/en/cics-ts/5.3?topic=explorer-setting-up-cmci-cicsplex-sm) or [Setting up CMCI in a stand-alone CICS region](https://www.ibm.com/docs/en/cics-ts/5.3?topic=suace-setting-up-cmci-in-stand-alone-cics-region). If your CMCI connection is configured to use a self-signed certificate that your PC's trust store does not recognize, see [Overriding untrusted TLS certificates](ze-override-tls-certs.md).
 

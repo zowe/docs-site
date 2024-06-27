@@ -9,6 +9,5 @@ Apply an action to multiple objects at the same time for increased efficiency. A
 To select multiple nodes, hold the `Ctrl` or `Cmd` key while selecting the resources. You can also select multiple consecutive nodes by selecting the first item in a list of nodes and then holding the `Shift` key while selecting the last item in the list.
 
 ## Refreshing the resources view
-**[is this title good/correct?]**
 
 Click the **Refresh** icon at the top of the **CICS** tree view to reload the resources in every region.

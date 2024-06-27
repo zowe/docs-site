@@ -10,7 +10,7 @@ There are two ways to override a rejected TLS certificate.
 
 ## Updating the CICS profile with Zowe Explorer
 
-1. Attempt the CMCI connection. **[is this correct? is there a better way to explain this step?]**
+1. Attempt the CMCI connection.
 
     Zowe Explorer rejects the TLS certificate and displays a pop-up message warning about the certificate.
 

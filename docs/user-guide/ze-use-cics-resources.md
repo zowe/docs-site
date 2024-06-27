@@ -109,7 +109,7 @@ Use the **New Copy** and the **Phase In** actions against a CICS program to get 
 
 3. Select the program and click on the **Phase In** icon next to it, or right-click a program and select the **Phase In** option from the context menu.
 
-   The program is applied to the CICS region whether or not the program is actively running, and a pop-up message displays the status of the operation. **[correct?]**
+   The program is applied to the CICS region whether or not the program is actively running, and a pop-up message displays the status of the operation.
 
 ![Zowe CICS Explorer NewCopy Program](../images/ze-cics/new-copy.gif)
 
@@ -120,7 +120,7 @@ To open a local file:
 1. Right-click a closed local file.
 2. Select the **Open Local File** option from the context menu.
 
-   The `openstatus` attribute for the file **[correct?]** is set to `OPEN`.
+   The `openstatus` attribute for the file is set to `OPEN`.
 
 To close a local file:
 
