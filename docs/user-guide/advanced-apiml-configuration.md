@@ -26,7 +26,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
     * [Limiting access to information or services in the API Catalog](./api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog.md)
     * [Configuring SAF resource checking](./api-mediation/configuration-saf-resource-checking.md)
 * [Configuring an authentication provider for API Mediation Layer](./authentication-providers-for-apiml.md)
-* **Configuring storage for the Caching service**
+* Configuring storage for the Caching service
     * [Using Infinispan as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-infinispan.md)
     * [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md)
     * [Using Redis as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-redis.md)
