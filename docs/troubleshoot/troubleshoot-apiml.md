@@ -11,7 +11,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
 * [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
 * [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
 * [Debug and Fix Common Problems with SSL/TLS Setup]
-* [SDSF Job search fails]
+* [SDSF Job search fails](#sdsf-job-search-fails)
 (#debug-and-fix-common-problems-with-ssltls-setup)
 * [Known Issues](#known-issues)
     * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
