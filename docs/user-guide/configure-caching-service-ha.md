@@ -9,7 +9,7 @@ Zowe uses the Caching Service to centralize the state data persistent in high av
 To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service). 
 
 :::note
-The Infinispan storage method is recommended for production usage.
+To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution. Infinispan is the recommended storage method to use in production.
 :::
 
 ## inMemory
