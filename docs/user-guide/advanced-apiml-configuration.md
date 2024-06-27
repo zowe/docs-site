@@ -11,7 +11,7 @@ There are multiple options for customizing Zowe API Mediation Layer according to
     * [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets.md)
 * [Customizing routing behavior](./api-mediation/configuration-routing.md)
     * [Configuring routing in a multi-tenant environment](./api-mediation/configuration-multi-tenancy-routing.md)
-    * [Customizing Cross-Origin Resource Sharing (CORS)](.api-mediation/configuration-cors.md)
+    * [Customizing Cross-Origin Resource Sharing (CORS)](./api-mediation/configuration-cors.md)
     * [Using encoded slashes](./api-mediation/configuration-url-handling.md)
     * [Customizing Gateway retry policy](./api-mediation/configuration-gateway-retry-policy.md)
     * [Configuring a unique cookie name for a specific API ML instance](./api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances.md)
