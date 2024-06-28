@@ -18,7 +18,12 @@ The following services must be installed, configured, and running on the mainfra
 
 ## Zowe Explorer FTP Extension system requirements
 
-**[are any other requirements needed here? I'm wondering if the FTP reqs should include the items in the CICS reqs]**
+### Client side requirements
+
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Zowe Explorer V3](../user-guide/ze-install#installing-zowe-explorer)
+
+### Server side requirements
 
 - Ensure that you can obtain remote access to a z/OS FTP service before using the extension.
 
