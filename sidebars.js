@@ -370,7 +370,7 @@ module.exports = {
             {
               type: "category",
               label: "Installing Zowe Explorer extensions",
-              link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
+              link: {type:"doc", id:"getting-started/install-ze-extensions"},
               items: [
                 "user-guide/ze-install-zowe-explorer-cics-ext",
                 "user-guide/ze-ftp-install-ze-ftp-ext",
@@ -384,7 +384,7 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe Chat (Technical Preview)",
+          label: "Zowe Chat (technical preview)",
           link: {type:"doc", id:"user-guide/zowe-chat/introduction"},
           items: [
             "user-guide/zowe-chat/systemrequirements-chat",
@@ -476,6 +476,7 @@ module.exports = {
             "user-guide/intellij-configure",
           ],
         },
+        "getting-started/install-zowe-sdks",
   ],
 },
   ],             

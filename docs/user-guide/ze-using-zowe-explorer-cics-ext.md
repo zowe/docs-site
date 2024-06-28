@@ -2,20 +2,6 @@
 
 The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode). This extension allows you to interact with CICS regions and programs, and run commands against them.
 
-## System requirements
-
-### Client side requirements
-
-- [Visual Studio Code](https://code.visualstudio.com/download)
-- [Zowe Explorer V3](../user-guide/ze-install#installing-zowe-explorer)
-
-### Server side requirements
-
-The following services must be installed, configured, and running on the mainframe:
-
-- CICS Management Client Interface (CMCI) APIs
-- z/OSMF (optional but recommended)
-
 ## Features
 
 - Create new Zowe CICS profiles and connect to them.

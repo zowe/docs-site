@@ -2,44 +2,79 @@
 
 To help make Zowe client-side components better, you are welcome to contribute in different ways.
 
-## Filing an issue for Zowe Explorer
+## Zowe CLI
 
-**[will work on this in the "FTP use" PR]**
+### Chatting with the Zowe CLI community
 
-## Chatting with the community
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CC8AALGN6).
 
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating the message is for the Zowe Explorer for IBM CICS extension.
+### Filing an issue for Zowe CLI
 
-## Filing an issue for Zowe Explorer CICS Extension
+Go to the [Zowe CLI issue list](https://github.com/zowe/zowe-cli/issues) to file an issue. Include all relevant information.
 
-Before filing an issue, check if the error stems from either the Zowe Explorer for IBM CICS extension or Zowe Explorer.
+## Zowe Explorer
 
-1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
+### Chatting with the Zowe Explorer community
 
-    ![Image that shows how to check the error source](../images/ze-cics/expand-error-cics.gif)
-    - Errors arising from the Zowe Explorer CICS extension identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
-    - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating whether the message about Zowe Explorer, Zowe Explorer for IBM CICS extension, or the Zowe Explorer FTP Extension.
 
-2. File issues with Zowe Explorer for IBM CICS to the [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/cics-for-zowe-client/issues) and include all relevant information.
+### Filing an issue for Zowe Explorer and Zowe Explorer extensions
 
-## Chatting with the community
+Before filing an issue, check if the error stems from either Zowe Explorer, the Zowe Explorer for IBM CICS extension or the Zowe Explorer FTP Extension.
 
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating the message is for the Zowe Explorer for IBM CICS extension.
-
-==========
-
-## Filing an issue for Zowe Explorer FTP Extension
-
-Before filing an issue, check if the error stems from either the Zowe Explorer FTP Extension or Zowe Explorer.
+To file an issue:
 
 1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
 
     ![Image that shows how to check the error source](../images/ze/ZE-ftp-find-source.gif)
-    - Errors arising from the Zowe Explorer FTP extension identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
     - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
+    - Errors arising from the Zowe Explorer CICS extension identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
+    - Errors arising from the Zowe Explorer FTP extension identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
 
-2. File issues with Zowe Explorer FTP Extension to the [Zowe Explorer FTP Extension issue list](https://github.com/zowe/zowe-explorer-ftp-extension/issues) and include all relevant information.
+2. Go to the extension repository to file an issue. Include all relevant information.
+    - [Zowe Explorer issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
+    - [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/cics-for-zowe-client/issues)
+    - [Zowe Explorer FTP Extension issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
+        - Add the label `zFTP` to indicate the extension.
 
-## Chatting with the community
+## Zowe Chat *technical preview*
 
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating the message is for the Zowe Explorer FTP Extension.
+### Chatting with the Zowe Chat community
+
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C03NNABMN0J).
+
+### Filing an issue for Zowe Chat
+
+Go to the [Zowe Chat issue list](https://github.com/zowe/zowe-chat/issues) to file an issue. Include all relevant information.
+
+## Zowe IntelliJ Plug-in
+
+### Chatting with the Zowe Zowe IntelliJ Plug-in community
+
+Chat with the community on ...
+
+### Filing an issue for Zowe Zowe IntelliJ Plug-in
+
+Go to the Zowe Zowe IntelliJ Plug-in issue list ...
+
+## Zowe Client SDKs
+
+### Chatting with the Zowe Client SDKs community
+
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C010AUS5MK5) by indicating whether the message is about Zowe Client Node.js SDK, Zowe Client Python SDK, Zowe Client Kotlin SDK, or Zowe Client Java SDK.
+
+### Zowe Client Node.js SDK
+
+Go to the [Zowe Client Node.js SDK issue list](https://github.com/zowe/zowe-cli/issues) to file an issue. Include all relevant information.
+
+### Zowe Client Python SDK *technical preview*
+
+Go to the [Zowe Client Python SDK issue list](https://github.com/zowe/zowe-client-python-sdk/issues) to file an issue. Include all relevant information.
+
+### Zowe Client Kotlin SDK *technical preview*
+
+Go to the [Zowe Client Kotlin SDK issue list](https://github.com/zowe/zowe-client-kotlin-sdk/issues) to file an issue. Include all relevant information.
+
+### Zowe Client Java SDK *under development*
+
+Go to the [Zowe Client Java SDK issue list](https://github.com/zowe/zowe-client-java-sdk/issues) to file an issue. Include all relevant information.
