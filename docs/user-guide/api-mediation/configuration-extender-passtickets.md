@@ -19,7 +19,7 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
 - [Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
 ## Overview of how PassTickets are used
 
-API clients can use various supported methods such as a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
+API clients can use various supported methods such as a Zowe JWT token or a client certificate to access an API service even if the API service itself does not support the JWT token or a client certificate.
 
 When an API client provides a valid authentication method to API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTicket is a one-time only password that is generated for a specific user ID. 
 The API Gateway uses the PassTicket to access that API service.
@@ -34,7 +34,7 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enable the use of PassTickets in your External Security Manager (ESM)
 
-This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
+This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
 To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
@@ -57,6 +57,11 @@ To validate if a PassTicket is already defined, use the commands that correspond
     SET RESOURCE(PTK)
     LIST LIKE(IRRPTAUTH-)
     ```
+    * **`-`**  
+A wildcard symbol that lists all resources
+
+    * **`<applid>-`**  
+    Lists everything related to specified applid in a resource (in this case, SAF), or specified in a profile (in this case, PTKTDATA)
 
     </details>
 
@@ -70,6 +75,10 @@ To validate if a PassTicket is already defined, use the commands that correspond
     TSS WHOHAS PTKTDATA(<applid>)
     TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
+
+    * **`IRRPTAUTH.<applid>.`**  
+Returns everything about the specified applid for IRRPTAUTH
+
 
     </details>
 
@@ -86,11 +95,17 @@ To validate if a PassTicket is already defined, use the commands that correspond
     ```
     Ensure that you validate PKTDATA access for appl.
 
+    * **`RLIST PTKTDATA <applid> SSIGNON ALL`**  
+Validates all applid for PTKDATA class
+
+    * **`RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL`**  
+Validates all applid permissions for PTKDATA class
+
     </details>
 
 :::
 
-The following steps outline the procedure for enabling PassTicket Support for your ESM. Consult with your security administrator to perform the following procedures. 
+Follow these steps to enable PassTicket Support specific to your ESM. Consult with your security administrator to perform the following procedures. 
 
 #### Enable PassTickets with ACF2
 <details>
@@ -125,6 +140,7 @@ The PassTicket record is now active in the system.
 SET RESOURCE(PTK) 
 RECKEY IRRPTAUTH ADD(applid.userid UID(<uid-of-userid>) SERVICE(UPDATE,READ) ALLOW)
 ```
+PassTicket generation is enabled. 
 
 </details>
 
@@ -171,6 +187,7 @@ TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 * **stc-userid**  
 Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
 	
+PassTicket generation is enabled.
 
 </details>
 
@@ -227,6 +244,8 @@ Specifies the value of the LDAP Server started task.
 ```
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
+
+PassTicket generation is enabled.
 
 </details>
 
