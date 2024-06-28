@@ -42,7 +42,7 @@ To validate if a PassTicket is already defined, use the commands that correspond
 * **Validate an existing PassTicket for ACF2**
 
     <details>
-    <summary>Click here for details.</summary>
+    <summary>Click here for details about validating an existing PassTicket for ACF2.</summary>
 
     ```
     SET RESOURCE(SAF)
@@ -68,7 +68,7 @@ A wildcard symbol that lists all resources
 * **Validate an existing PassTicket for Top Secret**
 
     <details>
-    <summary>Click here for details.</summary>
+    <summary>Click here for details about validating an existing PassTicket for Top Secret.</summary>
 
     ```
     TSS WHOHAS APPL(<applid>)
@@ -85,15 +85,15 @@ Returns everything about the specified applid for IRRPTAUTH
 * **Validate an existing PassTicket for RACF**
 
     <details>
-    <summary>Click here for details.</summary>
+    <summary>Click here for details about validating an existing PassTicket for RACF.</summary>
 
     ```
-    RLIST APPL * ALL -validate all APPL
-    RLIST APPL <applid> ALL  - validate particular APPL
+    RLIST APPL * ALL 
+    RLIST APPL <applid> ALL  
     RLIST PTKTDATA <applid> SSIGNON ALL
     RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL 
     ```
-    Ensure that you validate PKTDATA access for appl.
+    Ensure that you validate PKTDATA access for APPL.
 
     * **`RLIST PTKTDATA <applid> SSIGNON ALL`**  
 Validates all applid for PTKDATA class
@@ -109,7 +109,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
 #### Enable PassTickets with ACF2
 <details>
-<summary> Click here for steps to configure Zowe to use PassTickets using ACF2. </summary>
+<summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 
 1.	Define the application session key by entering the following commands, if the session key is not already defined. 
@@ -138,9 +138,13 @@ The PassTicket record is now active in the system.
 3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 ```
 SET RESOURCE(PTK) 
-RECKEY IRRPTAUTH ADD(applid.userid UID(<uid-of-userid>) SERVICE(UPDATE,READ) ALLOW)
+RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
 ```
-PassTicket generation is enabled. 
+* `<userid>`  
+Specifies the Zowe server user ID
+
+
+You configured Zowe to use PassTickets using ACF2. 
 
 </details>
 
@@ -148,7 +152,7 @@ PassTicket generation is enabled.
 
 <details>
 
-<summary> Click here for steps to configure Zowe to use PassTickets using Top Secret.</summary>
+<summary> Click here for details about configuring Zowe to use PassTickets using Top Secret.</summary>
 
 Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
 
@@ -175,8 +179,9 @@ TSS ADDTO(department) PTKTDATA(IRRPTAUT)
 ```
 TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 ```
+* `<applid>`  
 
-* **key-description**  
+* `key-description`  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
@@ -187,7 +192,7 @@ TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 * **stc-userid**  
 Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
 	
-PassTicket generation is enabled.
+You configured Zowe to use PassTickets using Top Secret.
 
 </details>
 
@@ -196,7 +201,7 @@ PassTicket generation is enabled.
 
 <details>
 
-<summary> Click here for steps to configure Zowe to use PassTickets using RACF.</summary>
+<summary> Click here for details about configuring Zowe to use PassTickets using RACF.</summary>
 
 1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.  
 Execute the following command:
@@ -245,7 +250,7 @@ Specifies the value of the LDAP Server started task.
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 
-PassTicket generation is enabled.
+You configured Zowe to use PassTickets using RACF.
 
 </details>
 
@@ -322,7 +327,7 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 RLIST APPL <applid> ALL
 RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
-Your application and the specific access of the application will be displayed.
+Successful execution of this validation command shows your application and the specific access of the application.
 
 
 ## Adding custom HTTP Auth headers to store user ID and PassTicket (Optional)
