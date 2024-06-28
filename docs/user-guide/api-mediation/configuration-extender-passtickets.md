@@ -10,7 +10,7 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
     - [Enabling PassTicket support](#enabling-passticket-support)
         - [Enable PassTickets with ACF2](#enable-passtickets-with-acf2)
         - [Enable PassTickets with Top Secret](#enable-passtickets-with-top-secret)
-        - [Enable PassTicketd with RACF](#enable-passtickets-with-racf)
+        - [Enable PassTickets with RACF](#enable-passtickets-with-racf)
     - [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
         - [Generate PassTickets using ACF2](#generate-passtickets-using-acf2)
         - [Generate PassTickets using Top Secret](#generate-passtickets-using-top-secret)
