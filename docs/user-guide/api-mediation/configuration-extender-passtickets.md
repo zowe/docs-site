@@ -44,6 +44,8 @@ To validate if a PassTicket is already defined, use the commands that correspond
     <details>
     <summary>Click here for details about validating an existing PassTicket for ACF2.</summary>
 
+    In your ESM command line interface or other security environment, execute the following commands:
+
     ```
     SET RESOURCE(SAF)
     LIST LIKE(-)
@@ -70,6 +72,7 @@ A wildcard symbol that lists all resources
     <details>
     <summary>Click here for details about validating an existing PassTicket for Top Secret.</summary>
 
+    In your ESM command line interface or other security environment, execute the following commands:
     ```
     TSS WHOHAS APPL(<applid>)
     TSS WHOHAS PTKTDATA(<applid>)
@@ -86,6 +89,8 @@ Returns everything about the specified applid for IRRPTAUTH
 
     <details>
     <summary>Click here for details about validating an existing PassTicket for RACF.</summary>
+
+    In your ESM command line interface or other security environment, execute the following commands:
 
     ```
     RLIST APPL * ALL 
@@ -112,7 +117,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 <summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 
-1.	Define the application session key by entering the following commands, if the session key is not already defined. 
+1.	In your ESM command line interface or other security environment, Ddefine the application session key by entering the following commands, if the session key is not already defined. 
 
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
@@ -203,8 +208,9 @@ You configured Zowe to use PassTickets using Top Secret.
 
 <summary> Click here for details about configuring Zowe to use PassTickets using RACF.</summary>
 
-1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.  
-Execute the following command:
+1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.
+
+In your ESM command line interface or other security environment, execute the following command:
 
 ```
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
@@ -322,6 +328,8 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 </details>
 
 ### Validate if the PassTicket Application is created
+
+In your ESM command line interface or other security environment, execute the following commands:
 
 ```
 RLIST APPL <applid> ALL
