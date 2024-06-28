@@ -37,16 +37,6 @@ To file an issue:
     - [Zowe Explorer FTP Extension issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
         - Add the label `zFTP` to indicate the extension.
 
-## Zowe Chat *technical preview*
-
-### Chatting with the Zowe Chat community
-
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C03NNABMN0J).
-
-### Filing an issue for Zowe Chat
-
-Go to the [Zowe Chat issue list](https://github.com/zowe/zowe-chat/issues) to file an issue. Include all relevant information.
-
 ## Zowe IntelliJ Plug-in
 
 ### Chatting with the Zowe Zowe IntelliJ Plug-in community
@@ -78,3 +68,13 @@ Go to the [Zowe Client Kotlin SDK issue list](https://github.com/zowe/zowe-clien
 ### Zowe Client Java SDK *under development*
 
 Go to the [Zowe Client Java SDK issue list](https://github.com/zowe/zowe-client-java-sdk/issues) to file an issue. Include all relevant information.
+
+## Zowe Chat *technical preview*
+
+### Chatting with the Zowe Chat community
+
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C03NNABMN0J).
+
+### Filing an issue for Zowe Chat
+
+Go to the [Zowe Chat issue list](https://github.com/zowe/zowe-chat/issues) to file an issue. Include all relevant information.

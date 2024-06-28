@@ -44,11 +44,43 @@ pip install <fileName>.whl
 
 ### Kotlin *technical preview*
 
-If you install Kotlin SDK packages from the online registry, the required dependencies are installed automatically.
+To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/.
+
+To set up the SDK as a dependency:
+
+```
+<dependency>
+  <groupId>org.zowe.sdk</groupId>
+  <artifactId>zowe-kotlin-sdk</artifactId>
+  <version>{version}</version>
+</dependency>
+```
+
+To use:
+
+```
+import org.zowe.kotlinsdk
+```
 
 ### Java *under development*
 
-If you install Java SDK packages from the online registry, the required dependencies are installed automatically.
+To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk.
+
+For a Maven project, add the SDK as a dependency by updating your `pom.xml` as follows::
+
+```
+<dependency>
+    <groupId>org.zowe.client.java.sdk</groupId>
+    <artifactId>zowe-client-java-sdk</artifactId>
+    <version>2.2.0</version>
+</dependency>  
+```
+
+For a Gradle project, add the SDK as a dependency by updating your `build.gradle` as follows:
+
+```
+implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'  
+```
 
 ## Getting started
 
