@@ -1,24 +1,25 @@
 # Enabling single sign on for extending services via PassTicket configuration
 
-Single sign on can be enabled by configuring Zowe to use PassTickets for API services to authenticate with API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
+One option for enabling single sign on is by configuring Zowe to use PassTickets, whereby API services can authenticate with API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
 
-:::info Role: security administrator
+:::info Required Role: security administrator
 :::
 
 - [Overview of how PassTickets are used](#overview-of-how-passtickets-are-used)
 - [Configuring Zowe to use PassTickets](#configuring-zowe-to-use-passtickets)
     - [Enabling PassTicket support](#enabling-passticket-support)
-        - [PassTicket enablement with ACF2](#passticket-enablement-with-acf2)
-        - [PassTicket enablement with Top Secret](#passticket-enablement-with-top-secret)
-        - [PassTicket enablement with RACF](#passticket-enablement-with-racf)
+        - [Enable PassTickets with ACF2](#enable-passtickets-with-acf2)
+        - [Enable PassTickets with Top Secret](#enable-passtickets-with-top-secret)
+        - [Enable PassTickets with RACF](#enable-passtickets-with-racf)
     - [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-        - [Generating PassTickets using ACF2](#generating-passtickets-using-acf2)
-        - [Generating PassTickets using Top Secret](#generating-passtickets-using-top-secret)
-        - [Generating PassTickets using RACF](#generating-passtickets-using-racf)
+        - [Generate PassTickets using ACF2](#generate-passtickets-using-acf2)
+        - [Generate PassTickets using Top Secret](#generate-passtickets-using-top-secret)
+        - [Generate PassTickets using RACF](#generate-passtickets-using-racf)
+        - [Validate if the PassTicket Application is created](#validate-if-the-passticket-application-is-created)
 - [Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
 ## Overview of how PassTickets are used
 
-API clients can use various supported methods such as a Zowe JWT token or client certificate to access an API service even if the API service itself does not support the JWT token or client certificate.
+API clients can use various supported methods such as a Zowe JWT token or a client certificate to access an API service even if the API service itself does not support the JWT token or a client certificate.
 
 When an API client provides a valid authentication method to API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTicket is a one-time only password that is generated for a specific user ID. 
 The API Gateway uses the PassTicket to access that API service.
@@ -28,69 +29,95 @@ The API Gateway provides the user ID and password in the Authorization header of
 ## Configuring Zowe to use PassTickets
 
 Configuring Zowe to use PassTickets involves two processes:
-* Enabling the use of PassTickets in the operating system
-* Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
+* Enable the use of PassTickets in your External Security Manager (ESM)
+* Configure security to allow the Zowe API Gateway to generate PassTickets for an API service
 
-### Enabling the use of PassTickets in the operating system
+### Enable the use of PassTickets in your External Security Manager (ESM)
 
-This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you will use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
+This section applies to users who do not have PassTickets enabled in the system or those who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
 To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
 
-<details>
-<summary>**For ACF2**</summary>
+* **Validate an existing PassTicket for ACF2**
 
-```
-SET RESOURCE(SAF)
-LIST LIKE(-)
+    <details>
+    <summary>Click here for details about validating an existing PassTicket for ACF2.</summary>
 
-SET RESOURCE(SAF)
-LIST LIKE(<applid>-)
+    In your ESM command line interface or other security environment, execute the following commands:
 
-SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
-LIST LIKE(<applid>-)
+    ```
+    SET RESOURCE(SAF)
+    LIST LIKE(-)
 
-SET RESOURCE(PTK)
-LIST LIKE(IRRPTAUTH-)
-```
+    SET RESOURCE(SAF)
+    LIST LIKE(<applid>-)
 
-</details>
+    SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
+    LIST LIKE(<applid>-)
 
-<details>
-<summary>**For Top Secret**</summary>
+    SET RESOURCE(PTK)
+    LIST LIKE(IRRPTAUTH-)
+    ```
+    * **`-`**  
+A wildcard symbol that lists all resources
 
-```
-TSS WHOHAS APPL(<applid>)
-TSS WHOHAS PTKTDATA(<applid>)
-TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
-```
+    * **`<applid>-`**  
+    Lists everything related to specified applid in a resource (in this case, SAF), or specified in a profile (in this case, PTKTDATA)
 
-</details>
+    </details>
 
-<details>
-<summary>**For RACF**</summary>
+* **Validate an existing PassTicket for Top Secret**
 
-```
-RLIST APPL * ALL -validate all APPL
-RLIST APPL <applid> ALL  - validate particular APPL
-RLIST PTKTDATA <applid> SSIGNON ALL
-RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL 
-```
-Ensure that you validate PKTDATA access for appl.
+    <details>
+    <summary>Click here for details about validating an existing PassTicket for Top Secret.</summary>
 
-</details>
+    In your ESM command line interface or other security environment, execute the following commands:
+    ```
+    TSS WHOHAS APPL(<applid>)
+    TSS WHOHAS PTKTDATA(<applid>)
+    TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
+    ```
+
+    * **`IRRPTAUTH.<applid>.`**  
+Returns everything about the specified applid for IRRPTAUTH
+
+
+    </details>
+
+* **Validate an existing PassTicket for RACF**
+
+    <details>
+    <summary>Click here for details about validating an existing PassTicket for RACF.</summary>
+
+    In your ESM command line interface or other security environment, execute the following commands:
+
+    ```
+    RLIST APPL * ALL 
+    RLIST APPL <applid> ALL  
+    RLIST PTKTDATA <applid> SSIGNON ALL
+    RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL 
+    ```
+    Ensure that you validate PKTDATA access for APPL.
+
+    * **`RLIST PTKTDATA <applid> SSIGNON ALL`**  
+Validates all applid for PTKDATA class
+
+    * **`RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL`**  
+Validates all applid permissions for PTKDATA class
+
+    </details>
 
 :::
 
-The following steps outline the procedure for enabling PassTicket Support for your ESM:
+Follow these steps to enable PassTicket Support specific to your ESM. Consult with your security administrator to perform the following procedures. 
 
-#### PassTicket enablement with ACF2
+#### Enable PassTickets with ACF2
 <details>
-<summary> Click here for steps to configure Zowe to use PassTickets using ACF2. Note that this procedure should be performed by your security administrator. </summary>
+<summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 
-1.	Define the application session key by entering the following commands, if the session key is not already defined. 
+1.	In your ESM command line interface or other security environment, Ddefine the application session key by entering the following commands, if the session key is not already defined. 
 
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
@@ -116,15 +143,21 @@ The PassTicket record is now active in the system.
 3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 ```
 SET RESOURCE(PTK) 
-RECKEY IRRPTAUTH ADD(applid.userid UID(<uid-of-userid>) SERVICE(UPDATE,READ) ALLOW)
+RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
 ```
+* `<userid>`  
+Specifies the Zowe server user ID
+
+
+You configured Zowe to use PassTickets using ACF2. 
 
 </details>
 
-#### PassTicket enablement with Top Secret
+#### Enable PassTickets with Top Secret
 
 <details>
-<summary> Click here for steps to configure Zowe to use PassTickets using Top Secret. Note that this procedure should be performed by your security administrator. </summary>
+
+<summary> Click here for details about configuring Zowe to use PassTickets using Top Secret.</summary>
 
 Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
 
@@ -151,8 +184,9 @@ TSS ADDTO(department) PTKTDATA(IRRPTAUT)
 ```
 TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 ```
+* `<applid>`  
 
-* **key-description**  
+* `key-description`  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
@@ -163,17 +197,20 @@ TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 * **stc-userid**  
 Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
 	
+You configured Zowe to use PassTickets using Top Secret.
 
 </details>
 
-#### PassTicket enablement with RACF
+#### Enable PassTickets with RACF
 
 
 <details>
-<summary> Click here for steps to configure Zowe to use PassTickets using RACF. Note that this procedure should be performed by your security administrator. </summary>
 
-1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.  
-Execute the following command:
+<summary> Click here for details about configuring Zowe to use PassTickets using RACF.</summary>
+
+1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.
+
+In your ESM command line interface or other security environment, execute the following command:
 
 ```
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
@@ -219,6 +256,8 @@ Specifies the value of the LDAP Server started task.
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 
+You configured Zowe to use PassTickets using RACF.
+
 </details>
 
 ### Configuring security to allow Zowe API Gateway to generate PassTickets for an API service
@@ -237,7 +276,7 @@ In the following examples of ESM configuration, replace these variables with act
 
 Use the configuration format that corresponds to your ESM as presented in the following examples.
 
-#### Generating PassTickets using ACF2
+#### Generate PassTickets using ACF2
 
 <details>
 
@@ -256,7 +295,7 @@ END
 ```
 </details>
 
-#### Generating PassTickets using Top Secret
+#### Generate PassTickets using Top Secret
 
 <details>
 
@@ -272,7 +311,7 @@ TSS REFRESH
 ```
 </details>
 
-#### Generating PassTickets using RACF
+#### Generate PassTickets using RACF
 
 <details>
 
@@ -290,11 +329,13 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 
 ### Validate if the PassTicket Application is created
 
+In your ESM command line interface or other security environment, execute the following commands:
+
 ```
 RLIST APPL <applid> ALL
 RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
-Your application and the specific access of the application will be displayed.
+Successful execution of this validation command shows your application and the specific access of the application.
 
 
 ## Adding custom HTTP Auth headers to store user ID and PassTicket (Optional)
