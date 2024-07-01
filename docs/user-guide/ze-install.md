@@ -1,4 +1,4 @@
-# Installing Zowe Explorer
+# Installing and updating Zowe Explorer
 
 <a href="https://app.codecov.io/gh/zowe/zowe-explorer-vscode"><img src="https://codecov.io/gh/zowe/vscode-extension-for-zowe/branch/main/graph/badge.svg" alt="codecov" scope="external"/></a>
 <a href="https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F"><img src="https://img.shields.io/badge/chat-on%20Slack-blue" alt="slack" scope="external"/></a>
@@ -83,27 +83,6 @@ By default, VS Code automatically updates extensions as new versions are release
 
    The selected extension is installed in VS Code.
 
-### Installing Zowe Explorer for IBM CICS Extension from a `VSIX` file
-
-Before you install the Zowe Explorer for IBM CICS Extension from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. For more information, see [Installing Zowe Explorer](#installing-zowe-explorer-1).
-
-If  Zowe Explorer is installed, you can install the Zowe Explorer for IBM CICS Extension from a `VSIX` file.
-
-1. Go to the [Zowe Explorer for IBM CICS Extension download](https://github.com/zowe/cics-for-zowe-client) site. Select the **Latest** button, which directs to a page that includes the latest version of the `.vsix` file. Download it to your PC.
-
-   ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
-
-2. Open the Extensions icon in the **Side Bar**, navigate to the **...** menu, select **Install from VSIX ...** and select the downloaded `Zowe.cics-extension-for-zowe-2.x.x.vsix` file.
-
-   ![Installing Zowe CICS Explorer](../images/ze-cics/zowe-cics-explorer-install.gif)
-
-   The following message indicates that the extension is installed successfully.
-
-   ![Zowe CICS Explorer install completed](../images/ze-cics/info-message-install-completed.png)
-
-   The Zowe Explorer pane shows tree views for **Data Sets**, **Unit System Services (USS)** and **Jobs**, and a new view for **CICS**.
-
-   ![CICS tree in Zowe pane](../images/ze-cics/cics-tree-in-zowe-pane.png)
 
 ### Installing Zowe Explorer Extension for FTP from a `VSIX` file
 
