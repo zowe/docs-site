@@ -90,7 +90,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Java 
 
-- IBM SDK for Java Technology Edition V8
+- IBM® Semeru Runtime Certified Edition for z/OS® version 17
 
 ### z/OSMF (Optional) 
 

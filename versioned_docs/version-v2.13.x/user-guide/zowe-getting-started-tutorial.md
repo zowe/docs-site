@@ -6,6 +6,7 @@ Learn how to start using Zowe components, applications, and plug-ins.
 
 - [Using Zowe Desktop](mvd-using.md)
 - [Using Zowe API Mediation Layer](api-mediation/using-api-mediation-layer.md)
+- [Using Zowe IntelliJ Plug-in](intellij-using.md)
 - [Zowe cross memory server](../user-guide/configure-xmem-server.md)
 
 ## Zowe client-side components
@@ -18,7 +19,6 @@ Learn how to start using Zowe components, applications, and plug-ins.
 
 - [Zowe CLI plug-ins](cli-extending.md)
 - [Zowe Explorer extensions](ze-using-zowe-explorer-cics-ext.md)
-- [Using Zowe IntelliJ Plug-in](intellij-using.md)
 
 ### Incubator components
 
