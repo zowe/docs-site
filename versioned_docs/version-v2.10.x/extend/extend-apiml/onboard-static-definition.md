@@ -100,7 +100,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 
-* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
+* The file on USS should be encoded in Unicode (UTF-8 / UTF-16) to be read correctly by the API Mediation Layer.
 
 **Tips:**
 
