@@ -5,8 +5,10 @@ Leverage the Zowe Client Software Development Kits (SDKs) to build client applic
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
 The following SDKs are available.
-- Zowe Node.js Client SDK
-- Zowe Python Client SDK
+- Zowe Client Node.js SDK
+- Zowe Client Python SDK
+- Zowe Client Kotlin SDK
+- Zowe Client Java SDK
 
 ## SDK documentation
 
