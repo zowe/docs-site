@@ -41,11 +41,11 @@ To file an issue:
 
 ### Chatting with the Zowe Zowe IntelliJ Plug-in community
 
-Chat with the community on ...
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
 
 ### Filing an issue for Zowe Zowe IntelliJ Plug-in
 
-Go to the Zowe Zowe IntelliJ Plug-in issue list ...
+Go to the [Zowe IntelliJ Plug-in  issue list](https://github.com/zowe/zowe-explorer-intellij/issues) to file an issue. Include all relevant information.
 
 ## Zowe Client SDKs
 
@@ -53,21 +53,21 @@ Go to the Zowe Zowe IntelliJ Plug-in issue list ...
 
 Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C010AUS5MK5) by indicating whether the message is about Zowe Client Node.js SDK, Zowe Client Python SDK, Zowe Client Kotlin SDK, or Zowe Client Java SDK.
 
-### Zowe Client Node.js SDK
+### Filing an issue for Zowe Client Java SDK
 
-Go to the [Zowe Client Node.js SDK issue list](https://github.com/zowe/zowe-cli/issues) to file an issue. Include all relevant information.
+Go to the [Zowe Client Java SDK issue list](https://github.com/zowe/zowe-client-java-sdk/issues) to file an issue. Include all relevant information.
 
-### Zowe Client Python SDK *technical preview*
-
-Go to the [Zowe Client Python SDK issue list](https://github.com/zowe/zowe-client-python-sdk/issues) to file an issue. Include all relevant information.
-
-### Zowe Client Kotlin SDK *technical preview*
+### Filing an issue for Zowe Client Kotlin SDK
 
 Go to the [Zowe Client Kotlin SDK issue list](https://github.com/zowe/zowe-client-kotlin-sdk/issues) to file an issue. Include all relevant information.
 
-### Zowe Client Java SDK *under development*
+### Filing an issue for Zowe Client Node.js SDK
 
-Go to the [Zowe Client Java SDK issue list](https://github.com/zowe/zowe-client-java-sdk/issues) to file an issue. Include all relevant information.
+Go to the [Zowe Client Node.js SDK issue list](https://github.com/zowe/zowe-cli/issues) to file an issue. Include all relevant information.
+
+### Filing an issue for Zowe Client Python SDK *technical preview*
+
+Go to the [Zowe Client Python SDK issue list](https://github.com/zowe/zowe-client-python-sdk/issues) to file an issue. Include all relevant information.
 
 ## Zowe Chat *technical preview*
 

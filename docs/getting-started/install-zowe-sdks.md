@@ -5,18 +5,69 @@ Leverage the Zowe Client Software Development Kits (SDKs) to build client applic
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
 The following SDKs are available.
+- Zowe Client Java SDK
+- Zowe Client Kotlin SDK
 - Zowe Client Node.js SDK
 - Zowe Client Python SDK *technical preview*
-- Zowe Client Kotlin SDK *technical preview*
-- Zowe Client Java SDK *under development*
 
 ## SDK documentation
 
 For detailed SDK documentation, see the following:
-- [Zowe Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
-- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/)
+- [Zowe Client Java SDK](https://github.com/Zowe-Java-SDK)
+- [Zowe Client Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
+- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
 
-## Software requirements
+## Installation and software requirements
+
+### Java
+
+Requires Java Runtime Environment (JRE) 17.
+
+To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk.
+
+For a Maven project, add the SDK as a dependency by updating your `pom.xml` file:
+
+```
+<dependency>
+    <groupId>org.zowe.client.java.sdk</groupId>
+    <artifactId>zowe-client-java-sdk</artifactId>
+    <version>2.2.0</version>
+</dependency>  
+```
+
+For a Gradle project, add the SDK as a dependency by updating your `build.gradle` file:
+
+```
+implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'  
+```
+
+### Kotlin
+
+Requires Java Runtime Environment (JRE) 17.
+
+To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/.
+
+For a Maven project, to set up the SDK as a dependency:
+
+```
+<dependency>
+  <groupId>org.zowe.sdk</groupId>
+  <artifactId>zowe-kotlin-sdk</artifactId>
+  <version>{version}</version>
+</dependency>
+```
+
+For a Gradle project, add the SDK as a dependency by updating your `build.gradle.kts` file:
+
+```
+implementation("org.zowe.sdk:zowe-kotlin-sdk:$version")
+```
+
+To use:
+
+```
+import org.zowe.kotlinsdk
+```
 
 ### Node.js
 
@@ -40,46 +91,6 @@ If you download the Python SDK packages from Zowe.org, the downloaded folder con
 
 ```
 pip install <fileName>.whl
-```
-
-### Kotlin *technical preview*
-
-To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/.
-
-To set up the SDK as a dependency:
-
-```
-<dependency>
-  <groupId>org.zowe.sdk</groupId>
-  <artifactId>zowe-kotlin-sdk</artifactId>
-  <version>{version}</version>
-</dependency>
-```
-
-To use:
-
-```
-import org.zowe.kotlinsdk
-```
-
-### Java *under development*
-
-To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk.
-
-For a Maven project, add the SDK as a dependency by updating your `pom.xml` as follows::
-
-```
-<dependency>
-    <groupId>org.zowe.client.java.sdk</groupId>
-    <artifactId>zowe-client-java-sdk</artifactId>
-    <version>2.2.0</version>
-</dependency>  
-```
-
-For a Gradle project, add the SDK as a dependency by updating your `build.gradle` as follows:
-
-```
-implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'  
 ```
 
 ## Getting started
