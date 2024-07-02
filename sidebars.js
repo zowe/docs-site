@@ -7,7 +7,9 @@ module.exports = {
       label: "Zowe vNext",
       link: {type:"doc", id:"whats-new/breaking-changes-v3"},
       items: [
-        "whats-new/zowe-v3-office-hours",       
+        "whats-new/zowe-v3-office-hours",
+        "whats-new/zowe-v3-conformance-criteria",
+        "whats-new/zowe-v3-frequently-asked-questions",
       ],
     },
     {
