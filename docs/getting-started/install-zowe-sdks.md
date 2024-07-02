@@ -25,7 +25,7 @@ Requires Java Runtime Environment (JRE) 17.
 
 To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk.
 
-For a Maven project, add the SDK as a dependency by updating your `pom.xml` file:
+For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
 
 ```
 <dependency>
@@ -35,7 +35,7 @@ For a Maven project, add the SDK as a dependency by updating your `pom.xml` file
 </dependency>  
 ```
 
-For a Gradle project, add the SDK as a dependency by updating your `build.gradle` file:
+For a Gradle project, add the SDK as a dependency by updating the `build.gradle` file:
 
 ```
 implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'  
@@ -47,7 +47,7 @@ Requires Java Runtime Environment (JRE) 17.
 
 To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/.
 
-For a Maven project, to set up the SDK as a dependency:
+For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
 
 ```
 <dependency>
@@ -57,7 +57,7 @@ For a Maven project, to set up the SDK as a dependency:
 </dependency>
 ```
 
-For a Gradle project, add the SDK as a dependency by updating your `build.gradle.kts` file:
+For a Gradle project, add the SDK as a dependency by updating the `build.gradle.kts` file:
 
 ```
 implementation("org.zowe.sdk:zowe-kotlin-sdk:$version")
