@@ -52,7 +52,7 @@ To get started, import the SDK packages to your project. You can pull the packag
 
 ### Install Node.js and Pyhton SDK from online registry
 
-Pull the packages from an online registry such as npm or PyPi or maven.
+Pull the packages from an online registry such as npm or PyPi.
 
 **Follow these steps:**
 
@@ -70,6 +70,7 @@ Pull the packages from an online registry such as npm or PyPi or maven.
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
     - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
+
 ### Install Java SDK from online registry
 
 To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get the necessary artifact:
