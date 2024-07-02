@@ -106,7 +106,7 @@ Pull the packages from an online registry such as PyPi.
 
     - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
-### Install Node.js and Pyhton SDK from online registry
+### Install Node.js and Python SDK from online registry
 
 Download and install the packages.
 
