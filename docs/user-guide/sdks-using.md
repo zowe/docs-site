@@ -50,26 +50,23 @@ Requires Java runtime version 11 and above.
 
 To get started, import the SDK packages to your project. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
 
-### Install Node.js and Pyhton SDK from online registry
+### Install Node.js from online registry
 
-Pull the packages from an online registry such as npm or PyPi.
+Pull the packages from an online registry such as npm.
 
 **Follow these steps:**
 
 1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
 
    - To import a Node.js package: `npm install <PackageName>`
-   - To import a Python package: `pip install <PackageName>`
 
-   *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
+     *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    The packages are installed. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+     The packages are installed. Node packages are defined in `package.json` in your project. 
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
-
-    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
 ### Install Java SDK from online registry
 
@@ -79,17 +76,35 @@ https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk
 
 For a Maven project add the SDK as a dependency by updating your pom.xml as follows:
 
-<dependency>
-    <groupId>org.zowe.client.java.sdk</groupId>
-    <artifactId>zowe-client-java-sdk</artifactId>
-    <version>2.2.0</version>
-</dependency>
+    <dependency>
+        <groupId>org.zowe.client.java.sdk</groupId>
+        <artifactId>zowe-client-java-sdk</artifactId>
+        <version>2.2.0</version>
+    </dependency>
 
 For a Gradle project add the SDK as a dependency by updating your build.gradle as follows:
 
-implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
+    implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
 
 The version 2.2.0 can change. Look at the artifact link to select latest version. 
+
+### Install Pyhton SDK from online registry
+
+Pull the packages from an online registry such as PyPi.
+
+**Follow these steps:**
+
+1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+
+   - To import a Python package: `pip install <PackageName>`
+
+     *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+     Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+
+2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
+
+    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
 ### Install SDK from local package
 
