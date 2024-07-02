@@ -7,8 +7,8 @@ The SDKs include programmatic APIs, each of which performs a particular mainfram
 The following SDKs are available: 
   
 - Zowe Node.js Client SDK
-- Zowe Python Client SDK
 - Zowe Java Client SDK
+- Zowe Python Client SDK
 
 ## SDK documentation
 
