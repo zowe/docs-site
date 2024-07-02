@@ -25,51 +25,17 @@ Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup 
 Follow these steps to configure Zowe to support AT-TLS:
 
 1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+Update `zowe.yaml` with the following:
 
 **Example:**
 
 ```yaml
 zowe:
-  components:
-    gateway:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-        internal:
-          ssl:
-            enabled: false
-    discovery:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    api-catalog:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    caching-service:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    metrics-service:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
+  network:
+    server:
+      tls:
+        attls: true
+
 ```
 
 While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
@@ -93,192 +59,9 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 
 ## AT-TLS rules
 
-This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
+Follow the examples within [at-tls configuration](../../at-tls-configuration)
 
-### Inbound rules
 
-A generic inbound rule can be set for all core API Mediation Layer services:
-
-```pagent
-TTLSRule ApimlServerRule
-{
-  LocalAddr All
-  RemoteAddr All
-  LocalPortRange 7551-7555
-  Jobname ZWE*
-  Direction Inbound
-  TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ApimlServerEnvironmentAction
-  TTLSConnectionActionRef ApimlServerConnectionAction
-}
-
-TTLSGroupAction ServerGroupAction
-{
-  TTLSEnabled On
-}
-
-TTLSEnvironmentAction ApimlServerEnvironmentAction
-{
-  HandshakeRole ServerWithClientAuth
-  EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ApimlKeyring
-}
-
-TTLSConnectionAction ApimlServerConnectionAction
-{
-  HandshakeRole ServerWithClientAuth
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlConnectionAdvParms
-}
-```
-
-The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
-
-| Component | Port |   
-|----|-----------------------|
-| Gateway | default port 7554 |    
-| Discovery | default port 7553 |
-|Caching Service | 7555 |
-|API Catalog | default port 7552 |
-| Metrics Service | default port 7551 |
-
-**Follow this step:**
-
-Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
-
-Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
-
-### Outbound rules
-
-#### For z/OSMF
-
-```pagent
-TTLSRule ApimlZosmfClientRule
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 449
-  Jobname ZWE1AG*
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
-}
-
-TTLSGroupAction ClientGroupAction
-{
-  TTLSEnabled ON
-}
-
-TTLSEnvironmentAction ApimlClientEnvironmentAction
-{
-  HandshakeRole Client
-  TTLSKeyringParmsRef ApimlKeyring
-  TTLSCipherParmsRef CipherParms
-  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-}
-```
-
-:::note
-`Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
-:::
-
-#### For communication between API Gateway and other core services
-
-```pagent
-TTLSRule ApimlClientRule
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7551-7555
-  Jobname ZWE1A*
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction
-}
-
-TTLSConnectionAction ApimlX509ClientConnAction
-{
-  HandshakeRole Client
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
-}
-
-TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
-{
-  ApplicationControlled Off
-  CertificateLabel Zowe Server
-  SecondaryMap Off
-}
-```
-
-#### For communication between API Gateway and southbound services
-
-```pagent
-TTLSRule ApimlServiceClientRule
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 40030
-  Jobname ZWE1AG*
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
-}
-
-TTLSConnectionAction ApimlNoX509ClientConnAction
-{
-  HandshakeRole Client
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
-}
-
-TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
-{
-  ApplicationControlled Off
-  SecondaryMap Off
-}
-```
-:::important
-- The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
-
-- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
-:::
-
-### Ciphers
-
-:::note
-This list of ciphers is provided as an example only. Actual ciphers should be customized according to your specific configuration.
-:::
-
-The list of supported ciphers should be constructed according to the TLS supported versions.
-Ensure that the cipher list has matches with non-AT-TLS-aware clients.
-
-```pagent
-TTLSCipherParms CipherParms
-{
-  V2CipherSuites TLS_RC4_128_WITH_MD5
-  V2CipherSuites TLS_RC4_128_EXPORT40_WITH_MD5
-  V2CipherSuites TLS_RC2_CBC_128_CBC_WITH_MD5
-  V2CipherSuites TLS_RC2_CBC_128_CBC_EXPORT40_WITH_MD5
-  V2CipherSuites TLS_RC2_CBC_128_CBC_EXPORT40_WITH_MD5
-  V2CipherSuites TLS_DES_192_EDE3_CBC_WITH_MD5
-  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-  V3CipherSuites TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-  V3CipherSuites TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-  V3CipherSuites TLS_AES_128_GCM_SHA256
-  V3CipherSuites TLS_AES_256_GCM_SHA384
-  V3CipherSuites TLS_CHACHA20_POLY1305_SHA256
-}
-```
 
 ## Using AT-TLS for API ML in High Availability
 
