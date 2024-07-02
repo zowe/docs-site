@@ -3,18 +3,21 @@
 :::info Role: system programmer
 ::: 
 
-The `components.gateway.apiml.gateway.health.protected` parameter configures the security setting for the health check endpoint of the API Gateway. This setting determines whether the health check endpoint is accessible without authentication, or alternatively requires authentication. Enabling protection for the health check endpoint can enhance the security of the API Gateway by restricting access to sensitive status information about the Gateway.
+As a system programmer, you can configure the security setting for the health check endpoint of the API Gateway. This setting determines whether the health check endpoint is accessible without authentication, or alternatively requires authentication. Enabling protection for the health check endpoint can enhance the security of the API Gateway by restricting access to sensitive status information about the Gateway.
 
-## Possible Parameter Values 
+Use the following procedure to set the value of the health check endpoint of the API Gateway:  
 
-* **false**  
-This is the default value. When set to `false`, the health check endpoint is not protected and can be accessed without authentication. This allows anyone to access the health check endpoint and obtain information about the status of the Gateway. This setting might be suitable for development or testing environments where security is less of a concern.
+1. Open the file `zowe.yaml`.
+2. Configure the following property:
 
-* **true**  
-When set to `true`, the health check endpoint is protected and requires authentication. Only authenticated users can access the health check endpoint. This ensures that sensitive information about the status of the Gateway is not exposed to unauthenticated users.
+* `components.gateway.apiml.gateway.health.protected`  
+This property defines whether the health check endpoint is accessible with or without authentication.
 
-To configure the API Gateway to require authentication for the health check endpoint, set the parameter in your configuration file: 
+:::note
+The default value of this parameter is `false`.
+:::
 
+**Example:**
 ```yaml
 zowe:
   components:
@@ -25,7 +28,9 @@ zowe:
                 protected: true
 ```
 
-To allow open access to the health check endpoint, set the parameter to `false`.
+In this example, setting `protected` to ` true` protects  the health check endpoint by requiring authentication. Only authenticated users can access the health check endpoint. This ensures that sensitive information about the status of the Gateway is not exposed to unauthenticated users.
+
+To allow open access to the health check endpoint, set the parameter to `false`. Setting this parameter to `false` permits access to this endpoint without authentication. In this case, anyone can access the health check endpoint and obtain information about the status of the Gateway.
 
 ## Environment Recommendations
 
