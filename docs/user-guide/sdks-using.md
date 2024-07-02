@@ -156,21 +156,13 @@ For information about the Python SDK, including usage and syntax examples, see t
 For Java SDK usage and syntax examples, refer to the following package readmes:
 
 - [teamconfig](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations. 
-
 - [z/OS Console](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosconsole/README.md) - Perform z/OS console operations.
-
 - [z/OS Files-dsn](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/dsn/README.md) - Work with data sets on z/OS.
-
 - [z/OS Files-uss](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/uss/README.md) - Work with UNIX system services (USS) files on z/OS.
-
 - [z/OS Jobs](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosjobs/README.md) - Work with batch jobs on z/OS.
-
 - [z/OS Log](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zoslogs/README.md)
-
 - [z/OS Management Facility](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosmfinfo/README.md) - Return data about z/OSMF, such as connection status or a list of available systems.
-
 - [z/OS TSO](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zostso/README.md) - Interact with TSO/E address spaces on z/OS.
-
 - [z/OS USS](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosuss/README.md) - ssh unix command request operation.   
 
 SDK Javadoc:
