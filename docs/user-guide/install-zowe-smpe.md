@@ -10,6 +10,9 @@ Review this article and the procedures to install and activate the functions of 
 * You can use the sample jobs that are provided to perform part or all of the installation tasks. The SMP/E jobs assume that all DDDEF entries that are required for SMP/E execution have been defined in appropriate zones.
 * You can use the SMP/E dialogs instead of the sample jobs to accomplish the SMP/E installation steps.
 :::
+:::tip
+You can now perform Zowe installation via the Zowe Server Install Wizard. Using the wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. For more information about the wizard, see [Installing Zowe via Zowe Server Install Wizard](./install-zowe-server-install-wizard.md).
+:::
 
 ### SMP/E considerations for installing Zowe
 
