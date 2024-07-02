@@ -4,8 +4,10 @@ Leverage the Zowe Client Software Development Kits (SDKs) to build client applic
 
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
-The following SDKs are available.
+The following SDKs are available: 
+  
 - Zowe Node.js Client SDK
+- Zowe Java Client SDK
 - Zowe Python Client SDK
 
 ## SDK documentation
@@ -40,32 +42,71 @@ If you download the Python SDK packages from Zowe.org, the downloaded folder con
 pip install <fileName>.whl
 ```
 
+### Java
+
+Requires Java runtime version 11 and above.  
+
 ## Getting started
 
 To get started, import the SDK packages to your project. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
 
-### Install SDK from online registry
+### Install Node.js from online registry
 
-Pull the packages from an online registry such as npm or PyPi.
+Pull the packages from an online registry such as npm.
 
 **Follow these steps:**
 
 1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
 
    - To import a Node.js package: `npm install <PackageName>`
-   - To import a Python package: `pip install <PackageName>`
 
-   *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
+     *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    The packages are installed. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+     The packages are installed. Node packages are defined in `package.json` in your project. 
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
+### Install Java SDK from online registry
+
+To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get the necessary artifact:
+
+https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk
+
+For a Maven project add the SDK as a dependency by updating your pom.xml as follows:
+
+    <dependency>
+        <groupId>org.zowe.client.java.sdk</groupId>
+        <artifactId>zowe-client-java-sdk</artifactId>
+        <version>2.2.0</version>
+    </dependency>
+
+For a Gradle project add the SDK as a dependency by updating your build.gradle as follows:
+
+    implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
+
+The version 2.2.0 can change. Look at the artifact link to select latest version. 
+
+### Install Pyhton SDK from online registry
+
+Pull the packages from an online registry such as PyPi.
+
+**Follow these steps:**
+
+1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+
+   - To import a Python package: `pip install <PackageName>`
+
+     *where* `<packageName>` is the name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+     Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+
+2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
+
     - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
-### Install SDK from local package
+### Install Node.js and Python SDK from online registry
 
 Download and install the packages.
 
@@ -109,6 +150,28 @@ For Node SDK usage and syntax examples, refer to the following package Readmes:
 ### Using - Python
 
 For information about the Python SDK, including usage and syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
+
+### Using - Java
+
+For Java SDK usage and syntax examples, refer to the following package readmes:
+
+- [teamconfig](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations. 
+- [z/OS Console](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosconsole/README.md) - Perform z/OS console operations.
+- [z/OS Files-dsn](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/dsn/README.md) - Work with data sets on z/OS.
+- [z/OS Files-uss](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/uss/README.md) - Work with UNIX system services (USS) files on z/OS.
+- [z/OS Jobs](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosjobs/README.md) - Work with batch jobs on z/OS.
+- [z/OS Log](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zoslogs/README.md)
+- [z/OS Management Facility](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosmfinfo/README.md) - Return data about z/OSMF, such as connection status or a list of available systems.
+- [z/OS TSO](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zostso/README.md) - Interact with TSO/E address spaces on z/OS.
+- [z/OS USS](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosuss/README.md) - ssh unix command request operation.   
+
+SDK Javadoc:
+
+https://javadoc.io/doc/org.zowe.client.java.sdk/zowe-client-java-sdk/latest/index.html
+
+See the following GitHub organization location Zowe-Java-SDK for demo apps and code examples for most API calls:
+
+https://github.com/Zowe-Java-SDK
 
 ## Contributing
 
