@@ -24,7 +24,7 @@ To enable this storage method, set the value of `zowe.components.caching-service
                   port: 7098
   ```
 
-## Enabling Persoanl Access Tokens
+## Enabling Personal Access Tokens
 
 Use the following procedure to enable Personal Access Tokens.
 
