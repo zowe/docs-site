@@ -19,7 +19,7 @@ For detailed SDK documentation, see the following:
 
 ## Installation and software requirements
 
-### Java
+### Java SDK
 
 Requires Java Runtime Environment (JRE) 17.
 
@@ -41,7 +41,7 @@ For a Gradle project, add the SDK as a dependency by updating the `build.gradle`
 implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'  
 ```
 
-### Kotlin
+### Kotlin SDK
 
 Requires Java Runtime Environment (JRE) 17.
 
@@ -69,7 +69,7 @@ To use:
 import org.zowe.kotlinsdk
 ```
 
-### Node.js
+### Node.js SDK
 
 If you install Node SDK packages from the online registry, the required dependencies are installed automatically.
 
@@ -83,7 +83,7 @@ npm install imperative.tgz
 npm install core-for-zowe-sdk.tgz
 ```
 
-### Python *technical preview*
+### Python SDK *technical preview*
 
 If you install Python SDK packages from the online registry, the required dependencies are installed automatically.
 
