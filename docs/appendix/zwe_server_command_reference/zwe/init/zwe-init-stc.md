@@ -13,7 +13,7 @@ NOTE: You require proper permission to write to target procedure library.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:

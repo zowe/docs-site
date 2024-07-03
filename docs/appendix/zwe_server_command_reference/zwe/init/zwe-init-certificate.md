@@ -15,7 +15,7 @@ be written back to your Zowe YAML configuration file:
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -156,13 +156,13 @@ zOSMF:
     Zowe the label of existing certificate.
 - If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`)
   is provided, Zowe will try to trust z/OSMF certificate.
-  * If you are using `RACF` security manager, Zowe will try to automatically
-    detect the z/OSMF CA based on certificate owner specified by
+  * If you are using `RACF` or `TSS` security manager, Zowe will try to
+    automatically detect the z/OSMF CA based on certificate owner specified by
     `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is
     `IZUSVR`. If the automatic detection failed, you will need to define
     `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of
     z/OSMF root certificate authority.
-  * If you are using `ACF2` or `TSS` (Top Secret) security manager,
+  * If you are using `ACF2` security manager,
     `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicates what is
     the label of z/OSMF root certificate authority.
 

@@ -1,53 +1,29 @@
-# zwe start
+# zwe internal config output
 
-[zwe](././zwe) > [start](./zwe-start)
+[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [config](././zwe-internal-config) > [output](./zwe-internal-config-output)
 
-	zwe start [parameter [parameter]...]
+	zwe internal config output [parameter [parameter]...]
 
 ## Description
 
-Start Zowe with main started task.
+Outputs the merged YAML used at Zowe runtime into zowe.workspaceDirectory/.env/.zowe-merged.yaml
 
-These Zowe YAML configurations showing with sample values are used:
 
-```yaml
-zowe:
-  setup:
-    security:
-      stcs:
-        zowe: ZWESLSTC
-  job:
-    name: ZWE1SV
-haInstances:
-  [ha-instance]:
-    sysname: ZLP1
-```
 
-- `zowe.setup.security.stcs.zowe` is Zowe started task name.
-  This configuration is optional. Default value is `ZWESLSTC`.
-- `zowe.job.name` is the optional customized job name to start Zowe. If it's
-  empty, the start command will not pass `JOBNAME=` option to `S` command.
-- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
-  If you pass `--ha-instance` parameter, this is the SYSNAME the start command
-  will be routed to.
 
-Note: `zwe start` is only identifying an already configured instance of Zowe.
-Any additional changes to the `zowe.yaml` config could possibly require
-either manual changes or running related `zwe` commands before issuing `zwe start`.
+### Inherited from parent command
 
+WARNING: This command is for experimental purposes and could be changed in the future releases.
 
 ## Examples
 
 ```
-zwe start -c /path/to/zowe.yaml
+zwe internal config output -c /path/to/zowe.yaml
 
 ```
 
 ## Parameters
 
-Full name|Alias|Type|Required|Help message
-|---|---|---|---|---
---ha-instance|-i|string|no|Zowe high availability instance ID.
 
 
 ### Inherited from parent command
@@ -65,9 +41,6 @@ Full name|Alias|Type|Required|Help message
 
 ## Errors
 
-Error code|Exit code|Error message
-|---|---|---
-ZWEL0165E|165|Failed to start job %s: %s.
 
 
 ### Inherited from parent command

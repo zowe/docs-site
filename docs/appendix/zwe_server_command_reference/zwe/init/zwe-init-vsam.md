@@ -6,12 +6,12 @@
 
 ## Description
 
-This command will run ZWECSVSM jcl to create VSAM data set for Zowe APIML
+This command will run ZWECSVSM JCL to create VSAM data set for Zowe APIML
 Caching Service.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -29,9 +29,9 @@ components:
         name: IBMUSER.ZWE.CUST.CACHE2
 ```
 
-- `zowe.setup.dataset.prefix` shows where the `SZWESAMP` data set is installed,
-- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe will create customized
-  ZWESECUR JCL here before applying it.
+- `zowe.setup.dataset.prefix` shows where the `SZWESAMP` data set is installed.
+- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may
+  generate sample JCLs and put into this data set.
 - `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level
   Sharing (RLS) services or not. Valid value is `RLS` or `NONRLS`.
 - `zowe.setup.vsam.volume` indicates the name of volume.

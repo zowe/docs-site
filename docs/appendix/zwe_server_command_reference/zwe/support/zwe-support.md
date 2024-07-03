@@ -18,6 +18,8 @@ This command will collect these information:
   * z/OS version
   * Java version
   * Node.js version
+  * External Security Manager
+  * CEE Runtime Options
 - Zowe configurations
   * Zowe manifest.json
   * Zowe configuration file
