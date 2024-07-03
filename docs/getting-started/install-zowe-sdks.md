@@ -14,6 +14,7 @@ The following SDKs are available.
 
 For detailed SDK documentation, see the following:
 - [Zowe Client Java SDK](https://github.com/Zowe-Java-SDK)
+- [Zowe Client Kotlin SDK](https://for-mainframe.github.io/r2z/)
 - [Zowe Client Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
 - [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
 
