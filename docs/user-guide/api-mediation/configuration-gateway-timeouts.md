@@ -23,4 +23,7 @@ Use the following procedure to change the global timeout value for the API Media
   * **components.gateway.ribbon.connectionManagerTimeout**  
   The HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the connections that are managed serve as proxies for real connections. `ConnectionManagerTimeout` specifies a period during which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
+  * **components.gateway.httpclient.requestConnectionTimeout**
+  Configure HTTP Client Request Connection Timeout for southbound services from the API Gateway. How long the API Gateway waits for response from the southbound server before issuing connection refused.
+
 3. Restart Zowe.
