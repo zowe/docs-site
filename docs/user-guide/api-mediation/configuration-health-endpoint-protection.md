@@ -40,4 +40,4 @@ When setting this parameter, we recommend applying the following values accordin
 It is recommended to set `apiml.gateway.health.protected` to `true` to enhance security and protect sensitive information about the API Gateway's health status.
 
 * **In Development/Testing Environments**  
-For ease of access and testing purposes, setting `apiml.gateway.health.protected` to `false` might be more convenient.
+ setting `apiml.gateway.health.protected` to `false` can simplify the testing process, reduce development overhead, and assist with debugging.  
