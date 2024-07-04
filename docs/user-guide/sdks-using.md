@@ -155,7 +155,7 @@ For information about the Python SDK, including usage and syntax examples, see t
 
 For Java SDK usage and syntax examples, refer to the following package readmes:
 
-- [teamconfig](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations. 
+- [Team Config](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations. 
 - [z/OS Console](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosconsole/README.md) - Perform z/OS console operations.
 - [z/OS Files-dsn](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/dsn/README.md) - Work with data sets on z/OS.
 - [z/OS Files-uss](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/uss/README.md) - Work with UNIX system services (USS) files on z/OS.
