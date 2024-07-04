@@ -50,7 +50,7 @@ Requires Java runtime version 11 and above.
 
 To get started, import the SDK packages to your project. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
 
-### Install Node.js from online registry
+### Install Node.js from an online registry
 
 Pull the packages from an online registry such as npm.
 
@@ -68,13 +68,13 @@ Pull the packages from an online registry such as npm.
 
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
-### Install Java SDK from online registry
+### Install Java SDK from an online registry
 
 To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get the necessary artifact:
 
 https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk
 
-For a Maven project add the SDK as a dependency by updating your pom.xml as follows:
+For a Maven project add the SDK as a dependency by updating your `pom.xml` as follows:
 
     <dependency>
         <groupId>org.zowe.client.java.sdk</groupId>
@@ -82,13 +82,13 @@ For a Maven project add the SDK as a dependency by updating your pom.xml as foll
         <version>2.2.0</version>
     </dependency>
 
-For a Gradle project add the SDK as a dependency by updating your build.gradle as follows:
+For a Gradle project add the SDK as a dependency by updating your `build.gradle` as follows:
 
     implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
 
 The version 2.2.0 can change. Look at the artifact link to select latest version. 
 
-### Install Pyhton SDK from online registry
+### Install Pyhton SDK from an online registry
 
 Pull the packages from an online registry such as PyPi.
 
