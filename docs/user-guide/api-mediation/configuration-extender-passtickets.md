@@ -128,7 +128,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 <summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 
-1.	In your ESM command line interface or other security environment, Ddefine the application session key by entering the following commands, if the session key is not already defined. 
+1.	In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined. 
 
 ```
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
@@ -251,7 +251,7 @@ RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(K
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
-Replace with the application name defined previously.
+Replace `key-description` with the application name defined previously.
 
 :::caution Important
 PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
@@ -308,6 +308,7 @@ RECKEY IRRPTAUTH ADD(<applid>.- UID(<zowe-user-id>) SERVICE(UPDATE,READ) ALLOW)
 F ACF2,REBUILD(PTK),CLASS(P)
 END
 ```
+
 </details>
 
 #### Generating PassTickets using Top Secret
@@ -324,6 +325,8 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 TSS PERMIT(<zowe-user-id>) PTKTDATA(IRRPTAUTH.<applid>.) ACCESS(READ,UPDATE)
 TSS REFRESH
 ```
+
+
 </details>
 
 #### Generating PassTickets using RACF
