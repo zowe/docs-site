@@ -99,7 +99,8 @@ Provide details for z/OSMF.
      1. Click **License Agreement**. <br />
      2. On the _End User License Agreement for Zowe_ page, click **AGREE**.
     <br />
-    3. In Download Zowe Pax, click **UNPAX** and **BEGIN DOWNLOAD**.
+    3. In Download Zowe Pax, click **UNPAX** and **BEGIN DOWNLOAD**. Ensure that all statuses finish before continuing to the next step.
+
     </details>
 
     <details>
@@ -203,7 +204,7 @@ If you encounter strange behavior that prohibits you from continuing with wizard
     ` ~/.config/{app name}/logs/main.log`
     </details>
 
-If you are still unsure how to proceed, make a backup of these log files, and then use the following procedure to remove the Wizard's cache. 
+If you are still unsure how to proceed, you can optionally make a backup of these log files, and then use the following procedure to remove the Wizard's cache. 
 
 1. Close the Wizard.
 2. Follow the steps according to your operating system: 
