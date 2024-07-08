@@ -1,6 +1,6 @@
 # Installing Zowe via Zowe Server Install Wizard
 
-The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the wizard, setting up the wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
+The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
 
 * [Benefits of Wizard Installation](#benefits-of-wizard-installation)
 * [Prerequisites of the Wizard](#prerequisites-of-the-wizard)
@@ -28,7 +28,7 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 
 ## Prerequisites of the Wizard
 
-- Microsoft Windows, Apple Mac OS, or a Linux with an X11 or Wayland server display which can install programs from .rpm or .deb formats 
+- Microsoft Windows, Apple macOS, or a Linux with an X11 or Wayland server display, which can install programs from .rpm or .deb formats 
 - An FTP or FTPS connection to z/OS for Zowe installation
 - An account on z/OS that has access to z/OS UNIX for Zowe installation 
 - A security administrator to configure required permissions in z/OS and z/OSMF
@@ -43,7 +43,7 @@ Ensure that you download the appropriate file extension type according to your o
 Operating System | File Extension Type
 ---|---
 Microsoft Windows | .exe
-Apple Mac OS | .dmg
+Apple macOS | .dmg
 Linux (debian-based) | .deb
 Linux (RedHat or SuSE-based) | .rpm
 
@@ -61,7 +61,7 @@ This option allows you to follow the installation steps without running the inst
 Field name| Description                
 ---|---
 Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
-FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the wizard uses the default port.
+FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
 User Name |Your z/OS username.
 Password  |Your z/OS password.
 
@@ -95,7 +95,7 @@ Provide details for z/OSMF.
     <details>
     <summary>Download Zowe convenience build PAX from internet</summary>
 
-    Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the wizard without visiting the website.  <br />        
+    Download the latest Zowe convenience build in .PAX format from [zowe.org](https://zowe.org) using the Wizard without visiting the website.  <br />        
      1. Click **License Agreement**. <br />
      2. On the _End User License Agreement for Zowe_ page, click **AGREE**.
     <br />
@@ -106,7 +106,7 @@ Provide details for z/OSMF.
     <details>
     <summary>Upload Zowe PAX for offline install</summary>
 
-    Upload a local (already downloaded) Zowe .PAX file using this option. <br />
+    Use this option to upload a local (already downloaded) Zowe .PAX file. <br />
     
     1. Click **UPLOAD PAX**.
     <br />
@@ -134,38 +134,33 @@ Provide details for z/OSMF.
 Perform Zowe server configuration in the Wizard by providing inputs to the prompts for configuration values.
 Some steps may require an administrator with sufficient privileges to complete the step. 
 
-Click **Skip** the page to allow the step to be completed externally to the Wizard. 
-
-Click **View Job Output** to collect the job content to provide to an administrator without submitting it.
-Each value entered is validated against the schema.
-
-When you complete an entry the following actions can be performed:
+The following following actions can be performed during Wizard configuration:
 
 * **View/Edit Yaml**  
 This option lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the Wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file. This option also allows you to copy the YAML in its current state, which can than be sent to an administrator that is authorized to perform the task. Copying the YAML also includes a relevant JCL sample and explanation for the particular step.
 
 * **View Job Output**  
-This option presents the results of the jobs that were submitted. Details are provided if a job fails or returns a warning.
+This option presents the results of the jobs that were submitted. Details are provided if a job fails or returns a warning. This option allows you to collect the job content which can be provide to an administrator without submitting it. Each value entered is validated against the schema.
 
 * **Skip**  
-This option makes it possible to skip an installation step that you cannot perform such as an administrative security action that you cannot perform yourself.  
+This option makes it possible to skip an installation step that you cannot perform such as an administrative security action that you cannot perform yourself. This option makes it possible to complete an action external to the Wizard. 
 
 |Install Wizard Initalization Step|Description|Sample JCL|
 |---|---|---|
 |Installation|**Purpose:**<br /> Create datasets for Zowe's PARMLIB content and non-ZFS extension content for a given Zowe Instance<br /><br />**Action:**<br />1.  Allocate the PDSE FB80 dataset with at least 15 tracks named from Zowe parameter `zowe.setup.dataset.parmlib`<br />2. Allocate the PDSE FB80 dataset with at least 30 tracks named from Zowe parameter `zowe.setup.dataset.authPluginLib`<br />3. Copy the ZWESIP00 member from `zowe.setup.dataset.prefix`.SZWESAMP into `zowe.setup.dataset.parmlib`|[ZWEIMVS](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIMVS)|
 |APF Auth|**Purpose:**<br /> Zowe contains one privileged component, ZIS, which enables the security model. The majority of Zowe is unprivileged and in key 8. The load library for the ZIS component and its extension library must be set as APF authorized and run in key 4. This enables ZIS and components that depend on ZIS.<br /><br />**Action:**<br />1. APF authorize the datasets defined at `zowe.setup.dataset.authLoadlib` and `zowe.setup.dataset.authPluginLib`.<br />2. <!-- This should be validated --> Define PPT entries for the members ZWESIS01 and ZWESAUX as Key 4, NOSWAP in the SCHEDxx member of the system PARMLIB.|[ZWEIAPF](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIAPF)|
 |Security|**Purpose:**<br /> The STC accounts for Zowe need permissions for operating servers, and users need permissions for interacting with the servers.<br /><br />**Action:**<br /> [Set SAF permissions for accounts](https://docs.zowe.org/stable/user-guide/assign-security-permissions-to-users#security-permissions-reference-table)|RACF: [ZWEIRAC](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIRAC)<br /><br />TSS: [ZWEITSS](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEITSS)<br /><br />ACF2: [ZWEIACF](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIACF)|
-|Security|(z/OS v2.4 ONLY) Create Zowe SAF Resource Class|This is not needed on z/OS v2.5+. On z/OS v2.4, the SAF resource class for Zowe is not included, and must be created, for example see these samples:<br /><br />RACF: [ZWEIRACZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIRACZ)<br /><br />TSS: [ZWEITSSZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEITSSZ)<br /><br />ACF2: [ZWEIACFZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEITACFZ)|
+|Security|(z/OS v2.4 ONLY) Create Zowe SAF Resource Class|This is not needed on z/OS v2.5+. On z/OS v2.4, the SAF resource class for Zowe is not included, and must be created. See these samples for examples:<br /><br />RACF: [ZWEIRACZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIRACZ)<br /><br />TSS: [ZWEITSSZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEITSSZ)<br /><br />ACF2: [ZWEIACFZ](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEITACFZ)|
 |Certificates Option 1|Zowe creates a keyring and populates it with a newly generated certificate and certificate authority. The certificate would be seen as "self-signed" by clients unless import of the CA to clients is performed.|RACF: [ZWEIKRR1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR1)<br /><br />TSS: [ZWEIKRT1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT1)<br /><br />ACF2: [ZWEIKRA1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA1)|
 |Certificates Option 2|Zowe creates a keyring and populates the keyring by connecting pre-existing certificates and CAs that you specify.|RACF: [ZWEIKRR2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR2)<br /><br />TSS: [ZWEIKRT2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT2)<br /><br />ACF2: [ZWEIKRA2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA2)|
 |Certificates Option 3|Zowe creates a keyring and populates the keyring by importing PKCS12 content from a dataset that you specify.|RACF: [ZWEIKRR3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR3)<br /><br />TSS: [ZWEIKRT3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT3)<br /><br />ACF2: [ZWEIKRA3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA3)|
 |STC|**Purpose**:<br /> ZWESLSTC is the job for running Zowe's webservers. ZWESISTC runs the APF authorized cross-memory server. The ZWESASTC job is started by ZWESISTC on an as-needed basis.<br /><br />**Action**:<br /> Copy the members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB. If the job names are customized, modify the job name YAML values in `zowe.setup.security.stcs`|[ZWEISTC](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEISTC)|
-|(Optional) VSAM for Caching Service (NYI)|**Purpose:**<br /> To use VSAM as your storage method forteh Caching Service. For more information, see [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md).<br /><br />**Action:**<br /> Create a RLM or NONRLM dataset for the Caching service, and set the name into the YAML value `components.caching-service.storage.vsam.name`|[ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWECSVSM)|
+|(Optional) VSAM for Caching Service (NYI)|**Purpose:**<br /> To use VSAM as your storage method for the Caching Service. Note that Infinispan is the recommended storage method. For more information, see [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md).<br /><br />**Action:**<br /> Create a RLM or NONRLM dataset for the Caching service, and set the name into the YAML value `components.caching-service.storage.vsam.name`|[ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWECSVSM)|
 
 
 ## Final Review
 
-After completing the steps presented in the Wizard, a summary is provided indicating which steps were completed, skipped, or have errors. Errors are stored in the View Job Output. You can revisit any step to retry performing the step. You also have the option to export the final generated YAML file.
+After completing the steps presented in the Wizard, a summary is provided indicating which steps were completed, skipped, or have errors. Errors are stored and can be reviewed in **View Job Output**. You can revisit any step to retry performing the step. You also have the option to export the final generated YAML file.
 
 ## Troubleshooting
 
@@ -177,13 +172,13 @@ When attempting to establish a TLS connection, you may encounter the following m
 Client network socket disconnected before secure TLS connection was established
 ```
 
-If you receive this message, go back to the Connection page and attempt to re-establish the connection. If the connection cannot be established, restart the Wizard.
+If you receive this message, go back to the _Connection_ page and attempt to re-establish the connection. If the connection cannot be established, restart the Wizard.
 
 ### Unable to continue with Wizard installation
 
-If you encounter strange behavior that prohibits you from continuing with wizard installation, we recommend you follow this procedure:
+If you encounter strange behavior that prohibits you from continuing with Wizard installation, we recommend you follow this procedure:
 
-1. View the Job output within the wizard.
+1. View the Job output within the Wizard.
 2. If the error is not clear from the Job output, view the output of the log file according to your platform:
 
     <details>
