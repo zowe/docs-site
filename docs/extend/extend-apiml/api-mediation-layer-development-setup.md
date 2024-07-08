@@ -1,4 +1,4 @@
-# Deploy API Mediation Layer locally
+# Deploying API Mediation Layer locally
 
 ## General information
 
