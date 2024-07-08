@@ -6,10 +6,10 @@ The Zowe Server Install Wizard is an installation wizard for Zowe server-side co
 * [Prerequisites of the Wizard](#prerequisites-of-the-wizard)
 * [Downloading the Wizard](#downloading-the-wizard)
 * [Installing Zowe server-side components](#installing-zowe-server-side-components)
-  * [Setup Wizard connection to z/OS](#setup-wizard-connection-to-zos)
+  * [Connecting the Wizard to z/OS](#connecting-the-wizard-to-zos)
   * [Setting z/OSMF Attributes (optional)](#setting-zosmf-attributes-optional)
 * [Choosing the Server Installation Type](#choosing-the-server-installation-type)
-* [Zowe Server Configuration](#zowe-server-configuration)
+* [Configuring the Zowe Server](#configuring-the-zowe-server)
 * [Final Review](#final-review)
 * [Troubleshooting](#troubleshooting)
   * [Failure to establish a TLS connection](#failure-to-establish-a-tls-connection)
@@ -49,28 +49,33 @@ Linux (RedHat or SuSE-based) | .rpm
 
 
 ## Installing Zowe server-side components
-On the landing page of the Zowe Server Installation Wizard, select from the two presented options:
-* **New Zowe Installation**  
-This option directs you to the Connection window. Provide details as presented in the following table: **Setup Wizard connection to z/OS**.
-* **Zowe Installation Dry Run**  
+
+Once the Wizard is installed, use the procedure as presented in the Wizard. The following steps outline the procedure and provide additional details.
+
+1. On the landing page of the Zowe Server Installation Wizard, select from the two presented options:
+
+  * **New Zowe Installation**  
+This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
+  * **Zowe Installation Dry Run**  
 This option allows you to follow the installation steps without running the installation.
 
+### Connecting the Wizard to z/OS
 
-### Setup Wizard connection to z/OS
+2. Set the following fields according to your environment:
 
-Field name| Description                
----|---
-Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
-FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
-User Name |Your z/OS username.
-Password  |Your z/OS password.
+  Field name| Description                
+  ---|---
+  Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
+  FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
+  User Name |Your z/OS username.
+  Password  |Your z/OS password.
 
 3. Select **Use FTP with TLS**. This is the recommended option. Provide details as described in the following table:
         
-Field name | Description
----|---
-Min TLS    |Select the minimum TLS version to accept the certificate from the server.
-Max TLS    |Select the maximum TLS version to accept the certificate from the server.
+  Field name | Description
+  ---|---
+  Min TLS    |Select the minimum TLS version to accept the certificate from the server.
+  Max TLS    |Select the maximum TLS version to accept the certificate from the server.
 
 4. (Optional) You can select **Accept all certificates**. Note that selecting all certificiates disables certificate verifiction. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
@@ -129,12 +134,12 @@ Provide details for z/OSMF.
 
 2. Click **Continue to Component Installation**.
 
-## Zowe Server Configuration
+## Configuring the Zowe Server 
 
 Perform Zowe server configuration in the Wizard by providing inputs to the prompts for configuration values.
 Some steps may require an administrator with sufficient privileges to complete the step. 
 
-The following following actions can be performed during Wizard configuration:
+The following actions can be performed during Wizard configuration:
 
 * **View/Edit Yaml**  
 This option lets you preview or adjust the YAML configuration that is used by Zowe. The prompts of the Wizard are used to automatically generate the YAML contents, but you also have the options to review, edit, or import and export contents of the YAML file. This option also allows you to copy the YAML in its current state, which can than be sent to an administrator that is authorized to perform the task. Copying the YAML also includes a relevant JCL sample and explanation for the particular step.
@@ -144,6 +149,8 @@ This option presents the results of the jobs that were submitted. Details are pr
 
 * **Skip**  
 This option makes it possible to skip an installation step that you cannot perform such as an administrative security action that you cannot perform yourself. This option makes it possible to complete an action external to the Wizard. 
+
+The following table presents the steps in the installation, detailed descriptions of the steps, and corresponding sample JCLs:
 
 |Install Wizard Initalization Step|Description|Sample JCL|
 |---|---|---|
@@ -155,7 +162,7 @@ This option makes it possible to skip an installation step that you cannot perfo
 |Certificates Option 2|Zowe creates a keyring and populates the keyring by connecting pre-existing certificates and CAs that you specify.|RACF: [ZWEIKRR2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR2)<br /><br />TSS: [ZWEIKRT2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT2)<br /><br />ACF2: [ZWEIKRA2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA2)|
 |Certificates Option 3|Zowe creates a keyring and populates the keyring by importing PKCS12 content from a dataset that you specify.|RACF: [ZWEIKRR3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR3)<br /><br />TSS: [ZWEIKRT3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT3)<br /><br />ACF2: [ZWEIKRA3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA3)|
 |STC|**Purpose**:<br /> ZWESLSTC is the job for running Zowe's webservers. ZWESISTC runs the APF authorized cross-memory server. The ZWESASTC job is started by ZWESISTC on an as-needed basis.<br /><br />**Action**:<br /> Copy the members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB. If the job names are customized, modify the job name YAML values in `zowe.setup.security.stcs`|[ZWEISTC](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEISTC)|
-|(Optional) VSAM for Caching Service (NYI)|**Purpose:**<br /> To use VSAM as your storage method for the Caching Service. Note that Infinispan is the recommended storage method. For more information, see [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md).<br /><br />**Action:**<br /> Create a RLM or NONRLM dataset for the Caching service, and set the name into the YAML value `components.caching-service.storage.vsam.name`|[ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWECSVSM)|
+|(Optional) VSAM for Caching Service (NYI)|**Purpose:**<br /> To use VSAM as your storage method for the Caching Service. Note that Infinispan is the recommended storage method. For more information, see [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md).<br /><br />**Action:**<br /> Create a RLM or NONRLM dataset for the Caching service, and set the name as the value for `components.caching-service.storage.vsam.name`|[ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWECSVSM)|
 
 
 ## Final Review
