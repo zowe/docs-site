@@ -26,4 +26,17 @@ Use the following procedure to change the global timeout value for the API Media
   * **components.gateway.httpclient.requestConnectionTimeout**  
   Specifies the HTTP Client Request Connection Timeout for southbound services from the API Gateway. This setting defines the period that the API Gateway waits for response from the southbound server before issuing a connection refused response. The value is in milliseconds and example for 30 seconds connection timeout would be 30000. 
 
+**Example:**
+
+```yaml
+components:
+    gateway:
+       ribbon:
+           connectTimeout: 30000
+           readTimeout: 60000
+           connectionManagerTimeout: 45000
+       httpclient:
+           requestConnectionTimeout: 60000
+```
+
 3. Restart Zowe.
