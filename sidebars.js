@@ -370,7 +370,7 @@ module.exports = {
             {
               type: "category",
               label: "Installing Zowe Explorer extensions",
-              link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
+              link: {type:"doc", id:"getting-started/install-ze-extensions"},
               items: [
                 "user-guide/ze-install-zowe-explorer-cics-ext",
                 "user-guide/ze-ftp-install-ze-ftp-ext",
@@ -384,7 +384,16 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe Chat (Technical Preview)",
+          label: "Zowe IntelliJ Plug-in",
+          link: {type:"doc", id:"user-guide/intellij-install"},
+          items: [
+            "user-guide/intellij-configure",
+          ],
+        },
+        "getting-started/install-zowe-sdks",
+        {
+          type: "category",
+          label: "Zowe Chat (technical preview)",
           link: {type:"doc", id:"user-guide/zowe-chat/introduction"},
           items: [
             "user-guide/zowe-chat/systemrequirements-chat",
@@ -468,17 +477,9 @@ module.exports = {
             "user-guide/zowe-chat/chat_uninstall",
           ],
         },
-        {
-          type: "category",
-          label: "Zowe IntelliJ Plug-in",
-          link: {type:"doc", id:"user-guide/intellij-install"},
-          items: [
-            "user-guide/intellij-configure",
-          ],
-        },
   ],
 },
-  ],             
+],             
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -673,7 +674,6 @@ module.exports = {
             },
           ],
         },
-        "user-guide/zowe-chat/chat_use_interact_methods",
         {
           type: "category",
           label: "Using Zowe IntelliJ Plug-in",
@@ -683,6 +683,7 @@ module.exports = {
           ],
         },
         "user-guide/sdks-using",
+        "user-guide/zowe-chat/chat_use_interact_methods",
         "user-guide/providing-feedback-and-contributing-client-side",        
       ],
     },
@@ -908,8 +909,8 @@ module.exports = {
             "troubleshoot/ze/ze-issues",
           ],
         },
-        "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
-        "troubleshoot/troubleshoot-intellij",        
+        "troubleshoot/troubleshoot-intellij",   
+        "troubleshoot/zowe-chat-troubleshoot/troubleshooting",     
       ],
     }  
   ],
@@ -953,6 +954,8 @@ module.exports = {
         }
       ]
     },
+    "appendix/zowe-yaml-configuration",
+    "appendix/server-component-manifest",
     {
       type: "category",
       label: "Zowe Chat command reference",
@@ -1044,8 +1047,6 @@ module.exports = {
         },
       ]
     },
-    "appendix/zowe-yaml-configuration",
-    "appendix/server-component-manifest",
     "appendix/bill-of-materials",
     {
       type: "link",
