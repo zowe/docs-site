@@ -1,125 +1,123 @@
-# Frequently Asked Questions about V3
+# Zowe V3 Frequently Asked Questions
 
-1. When will be Zowe V3 released?
+## General questions
+
+1. When will Zowe V3 be released?
   
-   The plan is to release on 09/28/2024. Any change to the plan will be communicated via all available channels.
+   Zowe V3 is scheduled to be released on Sept. 28, 2024. Any changes to the plan will be communicated via all available channels.
 
-2. When will Zowe V3 be available for preview. 
+2. When will Zowe V3 be available for preview?
   
-   The current V3 PAX as well as V3 client side projects are available. 
+   Currently, Zowe V3 pre-release versions are available for the PAX, Zowe CLI, Zowe Client Node.js SDKs, and Zowe Explorer for Visual Studio Code. **[Intellij? Zowe Desktop?]**
 
-## Extenders focused
+## Extender questions
 
 ### API Mediation Layer
 
-1. Do we need to move away from the passtickets as the method of authentication from the API Mediation Layer?
+1. Do we need to move away from passtickets as the method of authentication to the API Mediation Layer?
     
-   No, we don't intend to remove the support, but it would be good to figure out some plan to move of them as setting up of 
-   passticket configuration shifts the burden to the user's side who need to properly configure the passtickets on their system for every service using them.
+   No, we will continue to support passtickets. However, we no longer recommend passtickets because configuration can be inefficient. For every service that uses them, a user must configure a passticket.
 
-2. With the introduction of the new cloud-gateway, how is the configuration going to change?
+2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
-   We intend to move the configuration for V3 to the currently used gateway configuration space e.g. zowe.components.gateway 
-   therefore the configuration that was Zuul specific will be removed and the one that is Spring Cloud Gateway will be added to this space. 
+   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (for example, zowe.components.gateway).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
 
-3. How does the client certificate authentication work in Zowe V3?
+3. How does client certificate authentication work in Zowe V3?
 
-   The northbound authentication works by accepting the client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication such as JWT token or SAF IDT or passtickets and these needs to be accepted by the southbound services. We currently don't authenticate with client certificate towards the z/OSMF but it's a possibility for future.
+   Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or passticket) and this new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
 
-4. Will you mark the usage of deprecated functionality such as passtickets?
+4. Will you identify deprecated functionality such as passtickets? **[where will this functionality be identified? are passtickets really deprecated? first FAQ says no.]**
 
-   The plan is to do so, we just don't know yet how exactly will we do that.
+   We plan to identify deprecated functionality. We will announce how this functionality will be identified in the near future.
 
 5. How do you intend to work with the the bypass scheme?
 
-   The bypass scheme remains and you still can claim conformance for services that provides only public endpoints that doesn't require authentication.
+   The bypass scheme remains and you can still claim conformance for services that only provide public endpoints that do not require authentication.
 
-6. Do the dependency changes mean that I need Java 17 to run Zowe?
+6. Do the dependency changes mean that I need Java 17 to run Zowe V3?
 
    Yes. Java 17 is required to run the API Mediation Layer in Zowe V3.
 
-### Zowe Explorer for VS Code
+### Zowe Explorer for Visual Studio Code
 
-1. Will the functionality to convert profiles from profiles to Team Config remain available for V3?
+1. Will the functionality to convert Zowe V1 profiles to team configuration remain available for Zowe V3?
 
-   Yes, unlike the support for the V1 profiles.
+Yes. However, users will not be able to use Zowe V1 profiles to connect to services on the mainframe.
 
-2. Will the APIs provided by CLI for the people scripting remain the same?
+2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-   Yes, unless they are among the dropped ones in these lists [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/imperative/issues/970)
+In broad terms, yes. However, some of the functionaity that was available in Zowe V2 has been changed (or removed). The changes are listed in these [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes. **[use box docs]**
 
-### Zowe App Framework, ZSS
+### Zowe Application Framework, ZSS
 
-1. Is it possible to have side by side 32 bits plugin to ZSS with 64 bits ones?
+1. Is it possible to run 32-bit plug-ins at the same time as 64-bit plug-ins with ZSS?
 
-   No, it is not possible right now. It is possible to run just one type of plugins as there is the possibility to run only one ZSS.
+   No. ZSS runs in either 32-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
 
-2. Are the libraries updated to the currently latest versions?
+2. Are **[what kind of?]** libraries updated to the current latest versions?
 
-   Angular 16 is most up-to-date. Webpack 5 is most up to date.
+In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.**[are there other libraries that aren't up-to-date, and if so, should we list them here?]**
 
-3. What React versions are supported?
+3. What React versions are supported by Zowe Desktop?
 
-   It is possible for the Desktop extensions to bring in different versions of React as the desktop is compatible with React but not built on top of React.
+It is possible for Desktop extensions to use different versions of React. While the Desktop is not built on React, it is still compatible with extensions that import React.
 
-4. Is the ZEN application running on desktop or on z/OS?
+4. Is the ZEN application running on Zowe Desktop or on z/OS?
 
-   ZEN is running on laptop/desktop and connects to z/OS via standard methods.
+ZEN runs on a laptop/desktop and connects to z/OS via standard methods.
 
-5. Is it possible to validate and change the zowe.yaml and job definition within the ZEN?
+5. Is it possible to validate and change the `zowe.yaml` file and job definition within ZEN?
 
-   Yes
+Yes.
 
-6. What happens if in ZEN you click on the SMP/E?
+6. What happens if in ZEN you click on the SMP/E? **[what is smp/e here? is it a button? a drop-down option? how do users get to smp/e?]**
 
-   You will be guided through the different set of pages that relate to the SMP/E installation.
+You are guided through the SMP/E installation steps.
 
 7. What is the connection between Zowe Store and ZEN?
 
-   It is a different topic and it is not linked other than by sharing the zwe commands.
+Zowe Store is separate from ZEN, but they do share **[some commands? all commands?]** `zwe` commands.
 
-8. Does the App Store for Zowe handle Zowe upgrades?
+8. Does the Zowe Store handle Zowe upgrades?
 
-   No, it is focused on the server side extensions. 
+No, it offers server side extensions.
 
 ### Zowe System Installation and Configuration
 
-1. What does Zowe do with respect to the SBOM?
+1. Does Zowe provide a Software Bill of Materials (SBOM)?
 
-   Zowe provides the SBOMs with V3 in updated SPDX Formats.
+   Zowe V3 provides SBOMs in an SPDX format. **[have there been changes to the format? if so, what are the changes?]**
 
-## Users focused
+## User questions
 
 ### Zowe API Mediation Layer
 
-1. APIML v3 won't support clients with onboarding enabler v2, right?
+1. Will Zowe V3 APIML support clients with onboarding enabler V2?
 
-   The API ML in version 3 supports clients with onboarding enablers from version 2. It also works the other way around the onboarding enablers from version 3 will continue working with Zowe v2
+   The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 will continue working with Zowe V2 API ML.
 
-2. For us, as for extenders, the jump to Java 17 means that we have to maintain two separate versions of our application - one with apiml-enabler v2 and another one with v3 to support customers who want to stay with Java 8. Do you have a recommendation or a workaround for supporting both java versions?
+2. The jump to Java 17 means that we have to maintain two separate versions of our application, one with apiml-enabler V2 and one with V3, to support customers who want to stay with Java 8. Do you have a recommendation or a workaround for supporting both Java versions?
 
-   Plain Java Enabler in v2 will work in v3 - you can keep this for 1 - 2 years
+   The plain Java Enabler from Zowe V2 works in Zowe V3. You can keep this until Zowe V4.
 
-   Using Spring Boot, Java 17 requirement comes from SPRING, recommendation is to MOVE if you are using something from SPRING
+   Zowe V4 will only support Spring Boot, which requires Java 17. We recommend building applications for Java 17 to ensure that applications continue to be compatible with API ML.
 
-3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API-ML with separate config.
+3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate config.
 
-   The goal is to have one: spring-cloud gateway. The spring-cloud-gateway configuration should move under the component.gateway namespace. We expect to have one cluster od spring cloud gateway ahead of multiple sysplexes and then one cluster on every sysplex. Most of the configuration that was used should remain, new one from Spring Cloud Gateway remains.
+   We expect to support only Spring Cloud Gateway. The spring-cloud-gateway configuration should move under the component.gateway namespace. We expect to have **[should users be doing the config here?]** one Spring Cloud Gateway cluster ahead **[ahead or between?]** of multiple sysplexes and then one cluster on every sysplex. Most of the configuration that was used should remain, including the new one for Spring Cloud Gateway.
 
-4. If you have a legacy gateway deployed will there be migration help? / is the old gateway gone?
+4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
-   It is gone in V3, but nothing should change from the point of view of the user… if we discover that is not true we will plan to deliver a configuration utility to help with this transition
+   The old gateway is removed in Zowe V3, but nothing should change from the point of view of the user. However, we may deliver a configuration utility to help with this transition, if needed.
 
-5. Can you talk us through how a client-side end-user will find and obtain the correct APIML service instance ID for the desired instance of their service?
+5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
 
-   Since one service can have multiple instances, living on different LPARS or different Environments how can clients identify a specific service on a specific system?
+   In Zowe V2 **[is V2 correct here?]**, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
 
-   TODAY - Clients can use the header instance ID to route to a specific instance / get information from specific services via an API on discovery service, but this part is going to be improved in 2Q 2024
+6. Will the LPAR ID be available for the clients to obtain?
 
-6. Will the LPAR id be available for the clients to obtain?
+   It is not currently available, but we are scheduled to work on this functionality in 2024.
 
-   It isn't now, but we will work on this functionality in 2Q 2024
+7. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
 
-7. Regarding Static Onboarding - we're using a template that Zowe upon startup would find through manifest, then read, fill variables and put into the api-defs directory, no manual user action required. Will this still be available?
-
-   It will remain available. The recommendation is through the V3 to move the directory away from Zowe workspace, if it isn't away by now. The zowe.yaml contains parameter specifying where the static definitions directories live components.discovery.alternativeStaticApiDefinitionsDirectories
+   Static onboarding will continue to be available. The recommendation for Zowe V3 is to move the directory from Zowe workspace **[what is Zowe workspace?]**. The `zowe.yaml` file contains a parameter called `components.discovery.alternativeStaticApiDefinitionsDirectories` that specifies where the directories for static definitions reside. 
