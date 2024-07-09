@@ -46,7 +46,7 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-In broad terms, yes. However, some of the functionaity that was available in Zowe V2 has been changed (or removed). The changes are listed in these [CLI](https://github.com/zowe/zowe-cli/issues/1694) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes. **[use box docs]**
+   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in these [CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes. **[use box docs]**
 
 ### Zowe Application Framework, ZSS
 
@@ -56,31 +56,31 @@ In broad terms, yes. However, some of the functionaity that was available in Zow
 
 2. Are **[what kind of?]** libraries updated to the current latest versions?
 
-In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.**[are there other libraries that aren't up-to-date, and if so, should we list them here?]**
+   In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.**[are there other libraries that aren't up-to-date, and if so, should we list them here?]**
 
 3. What React versions are supported by Zowe Desktop?
 
-It is possible for Desktop extensions to use different versions of React. While the Desktop is not built on React, it is still compatible with extensions that import React.
+   It is possible for Desktop extensions to use different versions of React. While the Desktop is not built on React, it is still compatible with extensions that import React.
 
 4. Is the ZEN application running on Zowe Desktop or on z/OS?
 
-ZEN runs on a laptop/desktop and connects to z/OS via standard methods.
+   ZEN runs on a laptop/desktop and connects to z/OS via standard methods.
 
 5. Is it possible to validate and change the `zowe.yaml` file and job definition within ZEN?
 
-Yes.
+   Yes.
 
 6. What happens if in ZEN you click on the SMP/E? **[what is smp/e here? is it a button? a drop-down option? how do users get to smp/e?]**
 
-You are guided through the SMP/E installation steps.
+   You are guided through the SMP/E installation steps.
 
 7. What is the connection between Zowe Store and ZEN?
 
-Zowe Store is separate from ZEN, but they do share **[some commands? all commands?]** `zwe` commands.
+   Zowe Store is separate from ZEN, but they do share **[some commands? all commands?]** `zwe` commands.
 
 8. Does the Zowe Store handle Zowe upgrades?
 
-No, it offers server side extensions.
+   No, it offers server side extensions.
 
 ### Zowe System Installation and Configuration
 
