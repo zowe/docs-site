@@ -13,6 +13,10 @@ the API ML Gateway with client certificates. Client certification must be enable
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
+### Enabling the Internal API ML Mapper
+
+This section was moved to [Enabling single sign on for clients via client certificate configuration](https://docs.zowe.org/stable/user-guide/api-mediation/configuration-client-certificates#configure-internal-api-ml-mapper)
+
 ## How the Gateway resolves authentication 
 
 When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
