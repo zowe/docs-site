@@ -136,13 +136,13 @@ INSERT <applid> SSKEY(<key-description>) MULT-USE
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 
-* **applid**  
+* **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
-* **MULT-USE**  
+* **`MULT-USE`**  
 This setting lets you reuse the same PassTicket multiple times.
 
-* **key-description**  
+* **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 2. Complete the PassTicket setup by entering the following commands:
@@ -156,7 +156,7 @@ The PassTicket record is now active in the system.
 SET RESOURCE(PTK) 
 RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
 ```
-* `<userid>`  
+* **`userid`**    
 Specifies the Zowe server user ID
 
 
@@ -175,13 +175,13 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
 1.	Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
 
 :::note
-The PTKTDATA resource is not a predefined class.
+The `PTKTDATA` resource is not a predefined class.
 :::
 
 ```
 TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE) MAXLEN(37) 
 ```
-The PTKTDATA resource is added to the RDT.
+The `PTKTDATA` resource is added to the RDT.
 
 :::note
 Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
@@ -197,10 +197,10 @@ TSS ADDTO(department) PTKTDATA(IRRPTAUT)
 TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 ```
 
-* **applid**  
+* **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
-* **key-description**    
+* **`key-description`**    
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
@@ -208,7 +208,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 ```
 
-* **stc-userid**  
+* **`stc-userid`**  
 Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
 	
 You configured Zowe to use PassTickets using Top Secret.
@@ -237,7 +237,7 @@ SETROPTS CLASSACT(APPL)
 SETROPTS GENERIC(PTKTDATA)
 ```
 
-* ***applid**  
+* **`applid`**  
 A one to 8 character name designated for the application. 
 
 :::note 
@@ -248,7 +248,7 @@ This name is usually provided by the site security administrator.
 ```
 RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
 ```
-* **key-description**  
+* **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 Replace `key-description` with the application name defined previously.
@@ -263,7 +263,7 @@ PassTickets for the API service must have the replay protection switched off. Th
 PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
 ```
 
-* **userid**  
+* **`userid`**  
 Specifies the value of the LDAP Server started task.
 
 5. Refresh the RACF PTKTDATA definition with the new profile:
@@ -281,7 +281,7 @@ As a security administrator, you can issue security commands to allow the Zowe s
 
 Specify the following variables when generating PassTickets for the API service to enable the Zowe started task user ID:
 
-* **applid**  
+* **`applid**  
 The APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
 
 * **zowe-user-id**   
@@ -354,7 +354,7 @@ RLIST APPL <applid> ALL
 RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
 
-* **applid**  
+* **`applid`**  
 The APPLID value used by the API service for PassTicket support
 
 Successful execution of this validation command shows your application and the specific access of the application.
