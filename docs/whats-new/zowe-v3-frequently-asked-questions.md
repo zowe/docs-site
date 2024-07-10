@@ -8,7 +8,7 @@
 
 2. When will Zowe V3 be available for preview?
   
-   Currently, Zowe V3 pre-release versions are available for the PAX, Zowe CLI, Zowe Client Node.js SDKs, and Zowe Explorer for Visual Studio Code. **[Intellij? Zowe Desktop?]**
+   Currently, Zowe V3 pre-release versions are available for the PAX, Zowe CLI, Zowe Client Node.js SDKs, Zowe Explorer for Visual Studio Code, and the Zowe IntelliJ Plug-in.
 
 ## Extender questions
 
@@ -16,7 +16,7 @@
 
 1. Do we need to move away from passtickets as the method of authentication to the API Mediation Layer?
     
-   No, we will continue to support passtickets. However, we no longer recommend passtickets because configuration can be inefficient. For every service that uses them, a user must configure a passticket.
+   No, we will continue to support passtickets. However, passtickets will be deprecated in Zowe V3 and are no longer recommend because configuration can be inefficient. For every service that uses them, a user must configure a passticket, for example.
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
@@ -26,9 +26,11 @@
 
    Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or passticket) and this new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
 
-4. Will you identify deprecated functionality such as passtickets? **[where will this functionality be identified? are passtickets really deprecated? first FAQ says no.]**
+4. Will you identify deprecated functionality such as passtickets?
 
-   We plan to identify deprecated functionality. We will announce how this functionality will be identified in the near future.
+    Passtickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
+
+    We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
 
 5. How do you intend to work with the the bypass scheme?
 
@@ -54,9 +56,9 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
    No. ZSS runs in either 32-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
 
-2. Are **[what kind of?]** libraries updated to the current latest versions?
+2. Are Angular and Webpack updated to the latest current versions?
 
-   In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.**[are there other libraries that aren't up-to-date, and if so, should we list them here?]**
+   In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.
 
 3. What React versions are supported by Zowe Desktop?
 
@@ -86,7 +88,7 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 1. Does Zowe provide a Software Bill of Materials (SBOM)?
 
-   Zowe V3 provides SBOMs in an SPDX format. **[have there been changes to the format? if so, what are the changes?]**
+   SBOMs are available in the SPDX format from the Downloads page on Zowe.org.
 
 ## User questions
 
@@ -102,7 +104,7 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
    Zowe V4 will only support Spring Boot, which requires Java 17. We recommend building applications for Java 17 to ensure that applications continue to be compatible with API ML.
 
-3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate config.
+3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
    We expect to support only Spring Cloud Gateway. The spring-cloud-gateway configuration should move under the component.gateway namespace. We expect to have **[should users be doing the config here?]** one Spring Cloud Gateway cluster ahead **[ahead or between?]** of multiple sysplexes and then one cluster on every sysplex. Most of the configuration that was used should remain, including the new one for Spring Cloud Gateway.
 
@@ -112,7 +114,7 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
 
-   In Zowe V2 **[is V2 correct here?]**, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
+   In Zowe V2, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
 
 6. Will the LPAR ID be available for the clients to obtain?
 
@@ -120,4 +122,4 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 7. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
 
-   Static onboarding will continue to be available. The recommendation for Zowe V3 is to move the directory from Zowe workspace **[what is Zowe workspace?]**. The `zowe.yaml` file contains a parameter called `components.discovery.alternativeStaticApiDefinitionsDirectories` that specifies where the directories for static definitions reside. 
+   Static onboarding will continue to be available. The recommendation for Zowe V3 is to move the api-defs directory out of the [Zowe workspace](../appendix/zowe-glossary.md#workspace-directory). The `zowe.yaml` file contains a parameter called `components.discovery.alternativeStaticApiDefinitionsDirectories` that specifies where the directories for static definitions reside.
