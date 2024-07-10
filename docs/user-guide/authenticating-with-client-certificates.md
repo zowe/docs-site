@@ -23,7 +23,7 @@ When sending a request to a service with a client certificate, the Gateway perfo
 4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. 
 
 :::note Notes:
-* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
+* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enable the internal API ML mapper](#enable-the-internal-api-ml-mapper) described in this article.
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
@@ -71,19 +71,16 @@ Register the client certificate with the user ID in your ESM. The following comm
 This metadata can be used for TLS client authentication.
 :::
 
-## Enabling the internal API ML mapper
+## Enable the internal API ML mapper
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
-
-1. Open the `zowe.yaml` configuration file.
-2. Configure the following properties:
-
-   * **components.gateway.apiml.security.x509.enabled**  
-     This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
-   * **components.gateway.apiml.security.useInternalMapper**  
-     This property is the global feature toggle. Set the value to `true` to enable Internal Mapper
-
-3. Restart Zowe.
+To enable the internal API ML mapper, set the following property in zowe.yaml:
+```
+gateway:  
+  apiml:  
+    security:  
+      useInternalMapper: true 
+```
+Note that the internal API ML mapper option is only available for Zowe release 2.14 and later releases. 
 
 ## Validate the client certificate functionality
 
