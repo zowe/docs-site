@@ -71,6 +71,20 @@ Register the client certificate with the user ID in your ESM. The following comm
 This metadata can be used for TLS client authentication.
 :::
 
+## Enabling the internal API ML mapper
+
+Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
+
+1. Open the `zowe.yaml` configuration file.
+2. Configure the following properties:
+
+   * **components.gateway.apiml.security.x509.enabled**  
+     This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
+   * **components.gateway.apiml.security.useInternalMapper**  
+     This property is the global feature toggle. Set the value to `true` to enable Internal Mapper
+
+3. Restart Zowe.
+
 ## Validate the client certificate functionality
 
 To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication](#configure-your-zos-system-to-support-client-certificate-authentication) described previously in this article. 
