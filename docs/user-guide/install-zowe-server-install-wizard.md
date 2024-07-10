@@ -243,3 +243,6 @@ If you are still unsure how to proceed, you can optionally make a backup of thes
 
 3. Delete this folder to remove all stored data.
 4. Restart the Wizard.
+
+### Unable to save specific setting to Zowe configuration YAML via the Wizard's UI or editor
+Updating and saving to `YAML` in the UI may not always work as intended. If you are not able to save specific setting to the Zowe configuration `YAML` via the install wizard's UI or editor it is recommended to make a manual edit to the configuration `YAML` file in `z/OS Unix` and then follow the steps in the wizard.
