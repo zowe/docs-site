@@ -52,9 +52,9 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 ### Zowe Application Framework, ZSS
 
-1. Is it possible to run 32-bit plug-ins at the same time as 64-bit plug-ins with ZSS?
+1. Is it possible to run 31-bit plug-ins at the same time as 64-bit plug-ins with ZSS?
 
-   No. ZSS runs in either 32-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
+   No. ZSS runs in either 31-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
 
 2. Are Angular and Webpack updated to the latest current versions?
 
@@ -64,21 +64,21 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
    It is possible for Desktop extensions to use different versions of React. While the Desktop is not built on React, it is still compatible with extensions that import React.
 
-4. Is the ZEN application running on Zowe Desktop or on z/OS?
+4. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
 
-   ZEN runs on a laptop/desktop and connects to z/OS via standard methods.
+   The Zowe Server Install Wizard runs on a laptop/desktop and connects to z/OS via standard methods.
 
-5. Is it possible to validate and change the `zowe.yaml` file and job definition within ZEN?
+5. Is it possible to validate and change the `zowe.yaml` file and job definition within the Zowe Server Install Wizard?
 
    Yes.
 
-6. What happens if in ZEN you click on the SMP/E? **[what is smp/e here? is it a button? a drop-down option? how do users get to smp/e?]**
+6. What happens if in the Zowe Server Install Wizard you click the SMP/E option? 
 
    You are guided through the SMP/E installation steps.
 
-7. What is the connection between Zowe Store and ZEN?
+7. What is the connection between Zowe Store and Zowe Server Install Wizard?
 
-   Zowe Store is separate from ZEN, but they do share **[some commands? all commands?]** `zwe` commands.
+   Zowe Store is separate from Zowe Server Install Wizard, but they do share **[some commands? all commands?]** `zwe` commands.
 
 8. Does the Zowe Store handle Zowe upgrades?
 
