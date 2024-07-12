@@ -23,7 +23,7 @@ When sending a request to a service with a client certificate, the Gateway perfo
 4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. 
 
 :::note Notes:
-* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the internal API ML mapper, see [Enabling the internal API ML mapper](#enabling-the-internal-api-ml-mapper) described in this article.
+* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the enabling the internal API ML mapper, see [Configure Internal API ML Mapper](./api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper) in the article _Enabling single sign on for clients via client certificate configuration_.
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
@@ -35,7 +35,7 @@ When sending a request to the login endpoint with a client certificate, the Gate
 4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
 
 :::note
-ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method. 
+ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method.
 :::
 
 The following diagram shows how routing works with ZSS. 
@@ -70,6 +70,7 @@ Register the client certificate with the user ID in your ESM. The following comm
 `OID: 1.3.6.1.5.5.7.3.2`  
 This metadata can be used for TLS client authentication.
 :::
+
 
 ## Validate the client certificate functionality
 
