@@ -1,4 +1,4 @@
-# Zowe V3 Office hours 
+# Zowe V3 Office Hours
 
 Zowe Office Hours are a chance for users and extenders to hear directly from Zowe developers about what to expect from the next major Zowe release.
 
