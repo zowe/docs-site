@@ -76,14 +76,6 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
    You are guided through the SMP/E installation steps.
 
-7. What is the connection between Zowe Store and Zowe Server Install Wizard?
-
-   Zowe Store is separate from Zowe Server Install Wizard, but they do share **[some commands? all commands?]** `zwe` commands.
-
-8. Does the Zowe Store handle Zowe upgrades?
-
-   No, it offers server side extensions.
-
 ### Zowe System Installation and Configuration
 
 1. Does Zowe provide a Software Bill of Materials (SBOM)?
@@ -106,20 +98,21 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
 3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
-   We expect to support only Spring Cloud Gateway. The spring-cloud-gateway configuration should move under the component.gateway namespace. We expect to have **[should users be doing the config here?]** one Spring Cloud Gateway cluster ahead **[ahead or between?]** of multiple sysplexes and then one cluster on every sysplex. Most of the configuration that was used should remain, including the new one for Spring Cloud Gateway.
+   Spring Cloud Gateway is replacing Zuul as the technology to provide API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move it from `components.cloud-gateway` to `components.gateway`
+   
 
-4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
+5. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
    The old gateway is removed in Zowe V3, but nothing should change from the point of view of the user. However, we may deliver a configuration utility to help with this transition, if needed.
 
-5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
+6. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
 
    In Zowe V2, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
 
-6. Will the LPAR ID be available for the clients to obtain?
+7. Will the LPAR ID be available for the clients to obtain?
 
    It is not currently available, but we are scheduled to work on this functionality in 2024.
 
-7. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
+8. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
 
    Static onboarding will continue to be available. The recommendation for Zowe V3 is to move the api-defs directory out of the [Zowe workspace](../appendix/zowe-glossary.md#workspace-directory). The `zowe.yaml` file contains a parameter called `components.discovery.alternativeStaticApiDefinitionsDirectories` that specifies where the directories for static definitions reside.
