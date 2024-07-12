@@ -14,9 +14,9 @@
 
 ### API Mediation Layer
 
-1. Do we need to move away from passtickets as the method of authentication to the API Mediation Layer?
+1. Do we need to move away from PassTickets as the method of authentication to the API Mediation Layer?
     
-   No, we will continue to support passtickets. However, passtickets will be deprecated in Zowe V3 and are no longer recommend because configuration can be inefficient. For every service that uses them, a user must configure a passticket, for example.
+   No, we will continue to support PassTickets. However, PassTickets will be deprecated in Zowe V3 and are no longer recommend because configuration can be inefficient. For every service that uses them, for example, a user must configure a PassTicket.
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
@@ -24,11 +24,11 @@
 
 3. How does client certificate authentication work in Zowe V3?
 
-   Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or passticket) and this new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
+   Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or PassTicket) and this new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
 
-4. Will you identify deprecated functionality such as passtickets?
+4. Will you identify deprecated functionality such as PassTickets?
 
-    Passtickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
+    PassTickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
 
     We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
 
@@ -44,11 +44,11 @@
 
 1. Will the functionality to convert Zowe V1 profiles to team configuration remain available for Zowe V3?
 
-Yes. However, users will not be able to use Zowe V1 profiles to connect to services on the mainframe.
+   Yes. However, users will not be able to use Zowe V1 profiles to connect to services on the mainframe.
 
 2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in these [CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
+   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
 
 ### Zowe Application Framework, ZSS
 
@@ -72,15 +72,11 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 
    Yes.
 
-6. What happens if in the Zowe Server Install Wizard you click the SMP/E option? 
-
-   You are guided through the SMP/E installation steps.
-
 ### Zowe System Installation and Configuration
 
 1. Does Zowe provide a Software Bill of Materials (SBOM)?
 
-   SBOMs are available in the SPDX format from the Downloads page on Zowe.org.
+   SBOMs are available in the SPDX format from the [Bill of Materials](https://docs.zowe.org/stable/appendix/bill-of-materials/) page on Zowe Docs.
 
 ## User questions
 
@@ -99,20 +95,19 @@ Yes. However, users will not be able to use Zowe V1 profiles to connect to servi
 3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
    Spring Cloud Gateway is replacing Zuul as the technology to provide API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move it from `components.cloud-gateway` to `components.gateway`
-   
 
-5. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
+4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
    The old gateway is removed in Zowe V3, but nothing should change from the point of view of the user. However, we may deliver a configuration utility to help with this transition, if needed.
 
-6. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
+5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
 
    In Zowe V2, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
 
-7. Will the LPAR ID be available for the clients to obtain?
+6. Will the LPAR ID be available for the clients to obtain?
 
    It is not currently available, but we are scheduled to work on this functionality in 2024.
 
-8. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
+7. API ML static onboarding locates templates that are then used to set variables in the api-defs directory. No manual user action is required. Will this automated process still be available in Zowe V3?
 
    Static onboarding will continue to be available. The recommendation for Zowe V3 is to move the api-defs directory out of the [Zowe workspace](../appendix/zowe-glossary.md#workspace-directory). The `zowe.yaml` file contains a parameter called `components.discovery.alternativeStaticApiDefinitionsDirectories` that specifies where the directories for static definitions reside.
