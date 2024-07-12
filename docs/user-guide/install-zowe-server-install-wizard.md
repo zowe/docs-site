@@ -77,12 +77,12 @@ This option allows you to follow the installation steps without running the inst
   Min TLS    |Select the minimum TLS version to accept the certificate from the server.
   Max TLS    |Select the maximum TLS version to accept the certificate from the server.
 
-4. (Optional) You can select **Accept all certificates**. Note that selecting all certificiates disables certificate verifiction. Checking this option is not recommended.
+4. (Optional) You can select **Accept all certificates**. Note that selecting all certificiates disables certificate verification. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
 6. Click **Continue**.
 7. In the **Before you start** window, review the instructions. Customize the job statement, or use the default.
 8. In the **Job statement** field, customize the job statement as necessary and click **SAVE AND VALIDATE**.
-9. Further down the **Planning** page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
+9. Further down the _Planning_ page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
 
 ### Setting z/OSMF Attributes (optional)
 Provide details for z/OSMF. 
@@ -244,5 +244,6 @@ If you are still unsure how to proceed, you can optionally make a backup of thes
 3. Delete this folder to remove all stored data.
 4. Restart the Wizard.
 
-### Unable to save specific setting to Zowe configuration YAML via the Wizard's UI or editor
-Updating and saving to `YAML` in the UI may not always work as intended. If you are not able to save specific setting to the Zowe configuration `YAML` via the install wizard's UI or editor it is recommended to make a manual edit to the configuration `YAML` file in `z/OS Unix` and then follow the steps in the wizard.
+### Unable to save setting to zowe.yaml via the Wizard's UI or editor
+
+Updating and saving to zowe.yaml in the UI may not always work as intended. If you are not able to save a specific setting to zowe.yaml it is recommended to make a manual edit to the configuration `YAML` file in `z/OS Unix`, and then follow the steps presented in the Wizard.
