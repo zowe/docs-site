@@ -4,7 +4,7 @@ module.exports = {
     "whats-new/zowe-announcements",
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
-      label: "Zowe v3 preview",
+      label: "Zowe V3 preview",
       link: {type:"doc", id:"whats-new/breaking-changes-v3"},
       items: [
         "whats-new/zowe-v3-office-hours",
