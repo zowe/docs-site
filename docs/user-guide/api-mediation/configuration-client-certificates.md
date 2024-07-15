@@ -20,8 +20,7 @@ For information about the usage of the client certificate when this feature is e
 * The external CA used for issuing client certificates to specific users is imported to the truststore or keyring of the API Mediation Layer.
 
 :::caution Important:
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
-
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
 :::
 
 ## Configure Internal API ML Mapper
@@ -61,8 +60,7 @@ Ensure that you have the Issuer certificate imported in the truststore or in the
 :::
 
 :::caution Important:
-* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
-
+* PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 :::
 
 :::tip

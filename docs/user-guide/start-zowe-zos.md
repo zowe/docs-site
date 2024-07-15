@@ -34,11 +34,11 @@ Starting and stopping of the `ZWESLSTC` started task for the main Zowe servers i
 To end the Zowe cross memory server process, issue the operator stop command:
 
 ```
-S ZWESISTC
+P ZWESISTC
 ```
 
 :::note
-If using SDSF to stop the cross memory server, enter `/` before `S`.
+If using SDSF to stop the cross memory server, enter `/` before `P`.
 :::
 
 
@@ -52,7 +52,9 @@ Zowe ships [`zwe start`](../appendix/zwe_server_command_reference/zwe/zwe-start.
 
 To start Zowe, run the following command:
 
-`zwe start --config /path/to/my/zowe.yaml` 
+```
+zwe start --config /path/to/my/zowe.yaml
+```
 
  This command issues the `S` command to Zowe `ZWESLSTC`.
 
@@ -74,7 +76,10 @@ Job name `ZWE1SV` can be customized with `zowe.job.name` in your Zowe configurat
 You can use `zwe start` command to start a Zowe high availability instance defined on other LPAR within the Sysplex.
 
 **Example:**
- `zwe start --config /path/to/my/zowe.yaml --ha-instance hainst2`. 
+
+```
+zwe start --config /path/to/my/zowe.yaml --ha-instance hainst2
+```
  
  The following information must be defined in the Zowe configuration file:
 
@@ -89,7 +94,9 @@ The `zwe start` command uses the `ROUTE` command to send the `S ZWESLSTC` comman
 
 To stop Zowe, run the following command:
 
-`zwe stop --config /path/to/my/zowe.yaml` 
+```
+zwe stop --config /path/to/my/zowe.yaml
+```
  
  This command issues the `P` command to the Zowe job.
 
@@ -112,13 +119,17 @@ To start Zowe main server, you can issue the `S ZWESLSTC` command. Similar to th
 
 **Example:**
 
- `S ZWESLSTC,JOBNAME=ZWE1SV`.
+```
+S ZWESLSTC,JOBNAME=ZWE1SV
+```
 
 If you have a Zowe high availability instance defined and want to start a specific HA instance, for example `myinst1`, you can pass with the `HAINST` parameter.
 
 **Example:**
 
-`S ZWESLSTC,HAINST=myinst1,JOBNAME=ZWE1SV1`. 
+```
+S ZWESLSTC,HAINST=myinst1,JOBNAME=ZWE1SV1
+```
 
 :::note
 The Zowe high availability instance name is case insensitive. 
@@ -130,7 +141,9 @@ If you are starting a Zowe high availability instance for another LPAR in the Sy
 **Example:**
  To start an HA instance `myinst2` on `LPAR2` when working on SYSNAME `LPAR1`, issue the following command:
  
- `RO LPAR2,S ZWESLSTC,HAINST=myinst2,JOBNAME=ZWE1SV2`.
+```
+RO LPAR2,S ZWESLSTC,HAINST=myinst2,JOBNAME=ZWE1SV2
+```
 
 To stop the Zowe main server, issue the `P <jobname>` command.
 
@@ -147,17 +160,31 @@ You can restart a Zowe component with the MVS system command  without restarting
 
 To stop a running Zowe component, issue the following command:
 
-`F <zowe-job>,APPL=STOP(<component-name>)`
+```
+F <zowe-job>,APPL=STOP(<component-name>)
+```
 
 **Example:**
-To stop `app-server`, issue `F ZWE1SV,APPL=STOP(app-server)`.
+
+To stop `app-server`, issue the following command:
+
+```
+F ZWE1SV,APPL=STOP(app-server)
+```
 
 To start a stopped Zowe component, issue the following command:
 
-`F <zowe-job>,APPL=START(<component-name>)` command.
+```
+F <zowe-job>,APPL=START(<component-name>)
+```
 
 **Example:**
-To start `app-server`, issue `F ZWE1SV,APPL=START(app-server)`.
+
+To start `app-server`, issue the following command:
+
+```
+F ZWE1SV,APPL=START(app-server)
+```
 
 :::note
 Not all components can be restarted with this method. Some components may rely on other components. It may be necessary to restart affected components.

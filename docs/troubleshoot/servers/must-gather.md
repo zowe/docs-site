@@ -30,7 +30,7 @@ To find the z/OS release level, issue the following command in SDSF:
 
 #### Zowe version
 
-Locate the file manifest.json within the zowe installation directory.
+Locate the file `manifest.json` within the zowe installation directory.
 At the top, you will find the version number.
 
 
@@ -53,8 +53,8 @@ Below are some tracing you can turn on when needed:
 
 * When running a `zwe` command, you can run it with `--trace` to get the most output from it.
 * `zwe` startup tracing can be set via the zowe configuration file property `zowe.launchScript.logLevel="trace"`. [You can see the property in the example file here](https://github.com/zowe/zowe-install-packaging/blob/677a607686e6ee7ecb349dc5925a6f58dd9e61da/example-zowe.yaml#L356)
-* app-server tracing can be enabled by setting various loggers in the property `components.app-server.logLevels` in the zowe configuration file. [The full list is documented here](https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json#L378). [More information](../../user-guide/mvd-configuration#logging-configuration)
-* zss-tracing tracing can be enabled by setting various loggers in the property `components.zss.logLevels` in the zowe configuration file. [The full list is documented here](https://github.com/zowe/zss/blob/v2.x/master/schemas/zss-config.json#L216). [More information](../../user-guide/mvd-configuration#logging-configuration) 
+* app-server tracing can be enabled by setting various loggers in the property `components.app-server.logLevels` in the zowe configuration file. [The full list is documented here](https://github.com/zowe/zlux-app-server/blob/v2.x/master/schemas/app-server-config.json#L442). [More information](../../user-guide/mvd-configuration#logging-configuration)
+* zss-tracing tracing can be enabled by setting various loggers in the property `components.zss.logLevels` in the zowe configuration file. [The full list is documented here](https://github.com/zowe/zss/blob/v2.x/master/schemas/zss-config.json#L251). [More information](../../user-guide/mvd-configuration#logging-configuration) 
 * discovery, gateway, api-catalog and other servers can have tracing enabled by setting `debug: true` within their zowe configuration file section, such as `components.gateway.debug=true`
 
 You may find more detail within the Mediation Layer and Application Framework troubleshooting categories.
