@@ -1,6 +1,6 @@
 # Zowe V3 conformance criteria
 
-The final version of Zowe V2 Conformance Criteria is published here.
+The final version of Zowe V3 Conformance Criteria is published here.
 
 See each section below for a link to a PDF with the specific criteria for the corresponding project.
 
