@@ -82,7 +82,7 @@ The request requires the body in the following format:
 The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
 :::
 
-When validation is successful, the response to the request is an empty body with a status code of `200`. When validation fails, the user receives a status code of `401`.
+When validation is successful, the response to the request is an empty body with a status code of `204`. When validation fails, the user receives a status code of `401`.
 
 ### Invalidate a specific token
 
@@ -103,7 +103,7 @@ The request requires the body in the following format:
 When the `/auth/access-token/revoke` endpoint is called, the provided hash of the PAT is stored in the cache by the Caching Service under the `invalidTokens` key. As such, the token is invalidated.
 Access to these entries is protected by the API ML client certificate.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Invalidate all tokens
 
@@ -126,7 +126,7 @@ If the body is not provided, the timestamp value defaults to the current date.
 When the `/auth/access-token/revoke/tokens` endpoint is called, the provided user rule is stored in the cache by the Caching Service under the `invalidUsers` key. As such, all of the tokens of the user are invalidated.
 Access to these entries is protected by the client certificate of the API ML.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ## Security Administrator APIs
 
@@ -174,7 +174,7 @@ used to specify that tokens created before the date specified in the timestamp a
 
 By calling this endpoint, the user rule is stored in the cache by the Caching Service under the `invalidUsers` key.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Invalidate all tokens for a service
 
@@ -205,7 +205,7 @@ after that date are not affected by the service rule.
 
 Calling this endpoint stores the service rule in the cache by the Caching Service under the `invalidScopes` key.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Evict non-relevant tokens and rules
 

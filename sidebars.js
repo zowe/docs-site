@@ -292,7 +292,8 @@ module.exports = {
               "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
               "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                "user-guide/api-mediation/configuration-saf-resource-checking"
+                "user-guide/api-mediation/configuration-saf-resource-checking",
+                "user-guide/api-mediation/configuration-health-endpoint-protection"
               ]
             },
             "user-guide/authentication-providers-for-apiml",
