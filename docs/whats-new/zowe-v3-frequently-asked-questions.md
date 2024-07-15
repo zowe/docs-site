@@ -16,29 +16,29 @@
 
 1. Do we need to move away from PassTickets as the method of authentication to the API Mediation Layer?
     
-   No, we will continue to support PassTickets. However, PassTickets will be deprecated in Zowe V3 and are no longer recommend because configuration can be inefficient. For every service that uses them, for example, a user must configure a PassTicket.
+   No, we will continue to support PassTickets. However, PassTickets will be deprecated in Zowe V3, and are no longer recommended due to the inefficiency of configuration wherein users must configure a PassTicket for every service that uses them. 
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
-   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (for example, zowe.components.gateway).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
+   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (For example, `zowe.components.gateway`).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
 
 3. How does client certificate authentication work in Zowe V3?
 
-   Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or PassTicket) and this new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
+   Northbound authentication accepts client certificates. The API Mediation Layer then transforms the client certificate to another method of authentication (such as a JWT token, SAF IDT, or PassTicket). This new method is then accepted by southbound services. Currently, we do not plan to support authentication with client certificates to z/OSMF.
 
 4. Will you identify deprecated functionality such as PassTickets?
 
-    PassTickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
+   PassTickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
 
-    We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
+   We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
 
 5. How do you intend to work with the the bypass scheme?
 
-   The bypass scheme remains and you can still claim conformance for services that only provide public endpoints that do not require authentication.
+   The bypass scheme will remain. You can still claim conformance for services that only provide public endpoints that do not require authentication.
 
 6. Do the dependency changes mean that I need Java 17 to run Zowe V3?
 
-   Yes. Java 17 is required to run the API Mediation Layer in Zowe V3.
+   Yes, Java 17 is required to run the API Mediation Layer in Zowe V3.
 
 ### Zowe Explorer for Visual Studio Code
 
@@ -60,9 +60,9 @@
 
    In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.
 
-3. What React versions are supported by Zowe Desktop?
+3. What _React_ versions are supported by Zowe Desktop?
 
-   It is possible for Desktop extensions to use different versions of React. While the Desktop is not built on React, it is still compatible with extensions that import React.
+   It is possible for Desktop extensions to use different versions of _React_. While the Desktop is not built on _React_, it is still compatible with extensions that import _React_.
 
 4. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
 
@@ -82,7 +82,7 @@
 
 ### Zowe API Mediation Layer
 
-1. Will Zowe V3 APIML support clients with onboarding enabler V2?
+1. Will Zowe V3 API ML support clients with the V2 onboarding enabler?
 
    The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 will continue working with Zowe V2 API ML.
 
@@ -94,15 +94,15 @@
 
 3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
-   Spring Cloud Gateway is replacing Zuul as the technology to provide API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move it from `components.cloud-gateway` to `components.gateway`
+   Spring Cloud Gateway is replacing Zuul as the technology to provide the API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move this configuration from `components.cloud-gateway` to `components.gateway`.
 
 4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
-   The old gateway is removed in Zowe V3, but nothing should change from the point of view of the user. However, we may deliver a configuration utility to help with this transition, if needed.
+   The old gateway is removed in Zowe V3, but nothing should change from the point of view of the user. However, we may deliver a configuration utility to help with this transition if required.
 
-5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of their service?
+5. How would a client-side end user find and obtain the correct API ML service instance ID for the desired instance of the user's service?
 
-   In Zowe V2, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
+   In Zowe V2, clients can use the header instance ID to route communications to a specific instance. Clients can get instance IDs for specific services via an API on the Discovery service. We are planning to improve the method for finding service IDs in Zowe V3.
 
 6. Will the LPAR ID be available for the clients to obtain?
 
