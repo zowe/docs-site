@@ -512,6 +512,18 @@ These configurations can be used under the `components.caching-service` section:
  Specifies eviction strategy to be used when the storage size is achieved.
 - **`storage.vsam.name`**  
  Specifies the data set name of the caching service VSAM data set.
+- **`storage.infinispan.initialHosts`**
+
+  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.i˚nfinispan.jgroups.port}]`.  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
+
+- **`storage.infinispan.persistence.dataLocation`**
+
+  The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
+  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+
+- **`storage.infinispan.jgroups.port`**
+
+  The port number used by Infinispan to synchronise data among cahing-service instances.
 - **`storage.redis.masterNodeUri`**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **`storage.redis.timeout`**  
