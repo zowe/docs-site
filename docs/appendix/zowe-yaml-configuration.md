@@ -449,6 +449,32 @@ These configurations can be used under the `components.gateway` section:
  Specifies the maximum connections for each service.
 - **`apiml.server.maxTotalConnections`**  
  Specifies the total connections for all services registered under API Mediation Layer.
+- **`apiml.security.oidc.enabled`**  
+  Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
+
+- **`apiml.security.oidc.registry`**  
+  Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
+
+- **`apiml.security.oidc.jwks.uri`**  
+  Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
+
+- **`apiml.security.oidc.jwks.refreshInternalHours`**  
+  Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
+
+- **`apiml.security.oidc.identityMapperUser`**  
+  (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+
+  **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+
+- **`apiml.security.oidc.identityMapperUrl`**  
+  Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
+  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/authenticating-with-client-certificates.md#enabling-the-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+
+  The following URL is the default value for Zowe and ZSS:
+
+    ```
+    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    ```
 
 #### Configure component discovery
 
