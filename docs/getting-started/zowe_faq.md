@@ -34,7 +34,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 <summary></summary>
 
-Zowe consists of several components. The primary languages are Java and JavaScript. Zowe CLI and Desktop are written in TypeScript. ZSS is written in C, while the cross memory server is written in metal C.
+Zowe consists of several components. The primary languages for API Mediation Layer are Java and JavaScript. Zowe CLI, Explorer for VSCode and Desktop are written in TypeScript. Explorer for IntelliJ is written in Kotlin, ZSS is written in C, while the cross memory server is written in metal C.
 
 </details>
 
