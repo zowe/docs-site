@@ -16,10 +16,11 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.4, 2.5, and 3.1
+- z/OS version is in active support, such as Version 2.5, and 3.1
 
   :::note Notes:
   * Zowe Version 2.11 or higher is required when using z/OS Version 3.1.
+  * z/OS V2.4 reached end of support on 30 September, 2024. For more information, see the [z/OS v2.4 lifecycle details](https://www.ibm.com/support/pages/zos24x-withdrawal-notification).
   * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
 
@@ -94,11 +95,11 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### z/OSMF (Optional) 
 
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.4, Version 2.5, or Version 3.1.
+- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.5, or Version 3.1.
 
   z/OSMF is included with z/OS so does not need to be separately installed. If z/OSMF is present, Zowe  detects z/OSMF during configuration and uses z/OSMF for the following purposes:
 
-  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143). If z/OSMF is not available, Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
+  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).   
 
   - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
