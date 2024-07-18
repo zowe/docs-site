@@ -1,6 +1,6 @@
 # Installing Zowe via Zowe Server Install Wizard
 
-The Zowe Server Install Wizard is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
+The Zowe Server Install Wizard 1.0 is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
 
 :::note
 The Zowe Server Install Wizard is currently available only as a technical preview. This preview includes some of the installation options. Future releases will include more options including validation and discovery properties that can assist with Zowe server installation.
@@ -44,6 +44,7 @@ To review open issues, ask questions, find solutions, and report bugs, see [Issu
 
 ## Prerequisites of the Wizard
 
+- Zowe version 2.16.0 or above for SMP/E as well as .PAX 
 - Microsoft Windows, Apple macOS, or a Linux with an X11 or Wayland server display, which can install programs from .rpm or .deb formats 
 - An FTP or FTPS connection to z/OS for Zowe installation
 - An account on z/OS that has access to z/OS UNIX for Zowe installation 
@@ -262,4 +263,4 @@ If you are still unsure how to proceed, you can optionally make a backup of thes
 
 ### Unable to save setting to zowe.yaml via the Wizard's UI or editor
 
-Updating and saving to zowe.yaml in the UI may not always work as intended. If you are not able to save a specific setting to zowe.yaml it is recommended to make a manual edit to the configuration `YAML` file in `z/OS Unix`, and then follow the steps presented in the Wizard.
+The accurate updating & saving to `YAML` in the UI may not always work as intended. If you have issues saving a specific setting to the `Zowe configuration YAML` via the Wizard's UI or editor (or an advanced setting is not available to be edited), it is recommended to make a manual edit to the configuration `YAML` file in `z/OS Unix` & then proceed with the Wizard as intended.
