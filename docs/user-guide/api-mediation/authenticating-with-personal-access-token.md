@@ -6,6 +6,8 @@
 You can use API Mediation Layer to generate, validate, and invalidate a **Personal Access Token (PAT)** that can enable access to tools such as VCS without having to use credentials of a specific person. The use of PAT does not require storing mainframe credentials as part of the automation configuration on a server during application development on z/OS.
 Additionally, using a PAT makes it possible to limit access to specific services and users by means of token revocation when using a token. 
 
+To enable the Personal Access Token functionality read: [Enable Personal Access Token](./configuration-personal-access-token.md)
+
 Gateway APIs are available to both users as well as security administrators.
 APIs for users can accomplish the following functions:
 
