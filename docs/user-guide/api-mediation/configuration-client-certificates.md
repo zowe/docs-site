@@ -6,9 +6,9 @@
 You can authenticate against API ML onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs. 
 
 There are two methods to enable client certificate functionality: 
-* The original and default method via ZSS 
-* The newer and recommended method via the internal mapper component of API Mediation Layer  
+* The default and recommended method via the internal mapper component of API Mediation Layer  
 The internal API ML mapper is simpler to configure and provides more functionality than ZSS.
+* The older and deprecated method via ZSS
 
 Review this article to learn about the required configuration to authenticate with either method. 
 
@@ -64,7 +64,7 @@ Ensure that you have the Issuer certificate imported in the truststore or in the
 :::
 
 :::tip
-There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, and are using Zowe v2.14 or a later version, use the recommended internal API ML mapper.
+There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper.
 :::
 
 ### Enabling zowe.yaml to use a client certificate
