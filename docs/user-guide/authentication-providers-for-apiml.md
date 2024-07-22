@@ -24,7 +24,7 @@ The `z/OSMF Authentication Provider` allows the API Gateway to authenticate with
 Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
 ```
 components.gateway.security.auth.provider: zosmf
-components.gateway.security.auth.zosmfServiceId: zosmf  # Replace me with the correct z/OSMF service id
+components.gateway.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
 ## SAF Authentication Provider
 
