@@ -1,6 +1,6 @@
 # Changing an expired password via API Catalog
 
-In case of expiration of a mainframe password, the API Catalog offers the possibility to set a new password. When your password expires, you are prompted with a form and a warning message:
+In case of expiration of a mainframe password, the API Catalog, when using SAF as authentication provider offers the possibility to set a new password. When your password expires, you are prompted with a form and a warning message:
 
 <img src={require("../images/api-mediation/catalog-pass-expired-warn.png").default} alt="api refresh error" width="700px"/>
 
