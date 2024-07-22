@@ -18,15 +18,11 @@ Review this article for descriptions of the configuration parameters required to
 
 ## AT-TLS configuration for Zowe
 
-:::tip
-Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
-:::
-
 Follow these steps to configure Zowe to support AT-TLS:
 
 1. Enable the AT-TLS profile and disable the TLS application in API ML.  
 
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `zaas` in the `zowe.components` section.
 
 **Example:**
 
@@ -64,7 +60,7 @@ zowe:
       server:
         ssl:
           enabled: false
-    metrics-service:
+    zaas:
       spring:
         profiles:
           active: attls
@@ -78,8 +74,6 @@ While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
 :::note Notes
-* AT-TLS is supported in the API Cloud Gateway Mediation Layer component beginning with version 2.17.
-
 * As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 :::
 
@@ -136,13 +130,13 @@ TTLSConnectionAction ApimlServerConnectionAction
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-| Component | Port |   
-|----|-----------------------|
-| Gateway | default port 7554 |    
-| Discovery | default port 7553 |
-|Caching Service | 7555 |
-|API Catalog | default port 7552 |
-| Metrics Service | default port 7551 |
+| Component       | Port              |   
+|-----------------|-------------------|
+| Gateway         | default port 7554 |    
+| Discovery       | default port 7553 |
+| Caching Service | default port 7555 |
+| API Catalog     | default port 7552 |
+| ZAAS            | default port      |
 
 **Follow this step:**
 

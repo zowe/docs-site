@@ -8,7 +8,7 @@ By default, the Gateway, Zowe System Services, and Virtual Desktop start when
  support this setup.
  
 Once Zowe is installed, use the following procedure to limit which components start. Keep in mind that Zowe System Services are needed
-for some of the functionalities of the API Mediation Layer such as Client Certificates or OIDC
+for some of the functionalities of the API Mediation Layer such as SAF IDT tokens.
 
 **Follow these steps:**
 
