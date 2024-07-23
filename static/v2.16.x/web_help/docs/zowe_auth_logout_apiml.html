@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>auth logout apiml</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_auth.html">auth</a> › <a href="zowe_auth_logout.html">logout</a> › <a href="zowe_auth_logout_apiml.html">apiml</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Log out of the Zowe API Mediation Layer authentication service and revoke the token so it can no longer authenticate. Also remove the token from the default base profile, if it is stored on disk.</p>
+<h4>Usage</h4>
+<p>zowe auth logout apiml [options]</p>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</p>
+<p>Allowed values: apimlAuthenticationToken.*, jwtToken, LtpaToken2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Log out of an API ML instance to revoke the token that was in use and remove it from your base profile:</p>
+<ul>
+<li><code>zowe auth logout apiml</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth logout apiml">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Log out of an API ML instance to revoke a token that was not stored in a profile:</p>
+<ul>
+<li><code>zowe auth logout apiml --token-value &lt;token&gt;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe auth logout apiml --token-value &lt;token&gt;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

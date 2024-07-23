@@ -4,18 +4,11 @@ module.exports = {
     "whats-new/zowe-announcements",
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
-      label: "Zowe vNext",
-      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
-      items: [
-        "whats-new/zowe-v3-office-hours",       
-      ],
-    },
-    {
-      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Release notes",
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
@@ -35,6 +28,16 @@ module.exports = {
         "whats-new/release-notes/v2_2_0",
         "whats-new/release-notes/v2_1_0",
         "whats-new/release-notes/v2_0_0",
+      ],
+    },
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V3 preview",
+      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
+      items: [
+        "whats-new/zowe-v3-office-hours",
+        "whats-new/zowe-v3-conformance-criteria",
+        "whats-new/zowe-v3-frequently-asked-questions",
       ],
     },
   ],
@@ -293,7 +296,8 @@ module.exports = {
               "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
               "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                "user-guide/api-mediation/configuration-saf-resource-checking"
+                "user-guide/api-mediation/configuration-saf-resource-checking",
+                "user-guide/api-mediation/configuration-health-endpoint-protection"
               ]
             },
             "user-guide/authentication-providers-for-apiml",
@@ -1033,7 +1037,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.16.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.17.x.md",
     },
   ],
 }
