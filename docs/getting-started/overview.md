@@ -107,7 +107,7 @@ with keys.
 
 #### Onboarding APIs
 Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics 
-to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
+to learn more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
