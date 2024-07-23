@@ -28,11 +28,18 @@ A certificate contains an identity (a hostname, or an organization, or an indivi
 
 A certificate can be self-signed or issued by a Certificate Authority (CA). A CA is a trusted organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
 
-**Note:** 
-For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by the company's local CA, or even certificates issued by Zowe security tools and signed by generated CA specific for the target technology platform.
+:::note
+
+For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by the company's local Certificate Authority (CA), or even certificates issued by Zowe security tools and signed by generated CA specific for the target technology platform.
 Use of certificates signed by generated CA, however, is not recommended for production environments.
 
-**Tip:** Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+:::
+
+:::tip
+
+Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+
+:::
 
 ### Digital certificates usage
 Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that a client-user (the service user) identity is known to the mainframe security facility.   
