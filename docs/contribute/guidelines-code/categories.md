@@ -19,7 +19,11 @@ For each area of the codebase, there are established and favored programming lan
 - **APIs** - C, Assembler, Java, Spring
 - **API Mediation Layer** - Java, Spring, JavaScript
 
-**Note:** JavaScript is not recommended and should be avoided in favor of Typescript to utilize typing.
+:::note
+
+JavaScript is not recommended and should be avoided in favor of Typescript to utilize typing.
+
+:::
 
 ## Component-specific guidelines and tutorials
 
