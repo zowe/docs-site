@@ -1,12 +1,12 @@
 # Implementing profiles in a plug-in
-You can use this profile template to create a profile for your product.  
 
-The profile definition is placed in the `imperative.ts` file.
+Create a profile template that you can apply to create a profile for your product.  
 
-The `type: "someproduct"` property represents the profile name that you might require on various commands to have credentials loaded 
-from a secure credential manager and retain the host/port information, so that you can easily swap to different servers from the CLI.
+The profile definition is placed in the `imperative.ts` file. **[what is the "profile definition" here? are we saying that this code should be added to the imperative file?]**
 
- By default, if your plug-in that is installed into Zowe™ CLI contains a profile definition that is similar to the following example, a profile template is added automatically to team config JSON when you run the `zowe config init` command. Any properties for which `includeInTemplate` is true are included in the template. Additionally, commands that manage V1 profiles are created automatically under `zowe profiles`. For example, `create`, `validate`, `set-default`, `list`, and so on.
+The `type: "someproduct"` property represents the profile name that you might require on various commands to have credentials loaded from a secure credential manager and retain the host/port information, so that you can easily swap to different servers from the CLI.
+
+ By default, if your plug-in that is installed into Zowe™ CLI contains a profile definition that is similar to the following example, a profile template is added automatically to team config JSON **[which team config?]** when you run the `zowe config init` command. Any properties for which `includeInTemplate` is true are included in the template.
 
 
 ```typescript

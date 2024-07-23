@@ -5,5 +5,6 @@ The Zowe SDKs are open source. You can contribute to add features, enhancements,
 The functionality is currently limited to the interfaces provided by IBM z/OSMF. As a plug-in developer, you can enhance the SDK by creating a packages that exposes programmatic APIs for your service.
 
 For detailed contribution guidelines, see the following documents:
-- [Node.js SDK guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-- **Coming soon! Python SDK guidelines**
+
+- [Zowe Node.js Client SDK guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
+- [Zowe Python Client SDK guidelines](https://github.com/zowe/zowe-client-python-sdk/blob/main/CONTRIBUTING.md)
