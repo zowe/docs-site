@@ -442,9 +442,9 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.authorization.endpoint.url`**  
  Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
+ Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+ Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in truststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`apiml.server.maxConnectionsPerRoute`**  
  Specifies the maximum connections for each service.
 - **`apiml.server.maxTotalConnections`**  
@@ -453,7 +453,7 @@ These configurations can be used under the `components.gateway` section:
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **`apiml.security.oidc.registry`**  
-  Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
+  Specifies the SAF registry used to group the identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
 - **`apiml.security.oidc.jwks.uri`**  
   Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
@@ -464,7 +464,11 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.oidc.identityMapperUser`**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
 
-  **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+:::note
+
+User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+
+:::
 
 - **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
@@ -540,16 +544,16 @@ These configurations can be used under the `components.caching-service` section:
  Specifies the data set name of the caching service VSAM data set.
 - **`storage.infinispan.initialHosts`**
 
-  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.i˚nfinispan.jgroups.port}]`.  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
+  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`. 
 
 - **`storage.infinispan.persistence.dataLocation`**
 
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
-  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 - **`storage.infinispan.jgroups.port`**
 
-  The port number used by Infinispan to synchronise data among cahing-service instances.
+  The port number used by Infinispan to synchronise data among caching-service instances.
 - **`storage.redis.masterNodeUri`**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **`storage.redis.timeout`**  
