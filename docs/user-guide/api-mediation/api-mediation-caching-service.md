@@ -61,7 +61,6 @@ Redis is a common storage solution that runs outside of the z/OS platform. It ca
 
 For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-redis.md).
 
-
 ### InMemory
 
 The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
