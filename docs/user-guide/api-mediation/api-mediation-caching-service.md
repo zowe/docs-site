@@ -1,13 +1,14 @@
 # Using the Caching Service
 
-As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching Service makes it possible to store, retrieve, and delete data associated with keys. The Caching Service is designed to make resource sharing possible for services that cannot be made stateless in two ways:
+As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching Service makes it possible to store, retrieve, and delete data associated with keys. The Caching Service is designed to make resource sharing possible for services that cannot be made stateless by using following backends:
 
-- Using VSAM to store key/value pairs for production
-
-- Using InMemory
+- Using Infinispan that is part of Caching Service
+- Using Redis running off-platform
+- \{Deprecated\} Using VSAM
+- \{Development Use Only\} Using InMemory
 
 :::note
-In the current implementation of the Caching Service, VSAM is required for the storage of key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.
+In the current implementation of the Caching Service, Infinispan is recommended for the storage of key/value pairs for production, as it has the best performance characteristics without additional services.
 :::
 
 The Caching Service is available only for internal Zowe applications, and is not exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
@@ -48,7 +49,7 @@ Infinispan is a storage solution that can also run on the z/OS platform. It can 
 
 For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](../../extend/extend-apiml/api-mediation-infinispan.md).
 
-### VSAM
+### VSAM (deprecated)
 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
@@ -59,7 +60,6 @@ For more information about the VSAM storage access method, see [Using VSAM as a 
 Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
 For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-redis.md).
-
 
 ### InMemory
 

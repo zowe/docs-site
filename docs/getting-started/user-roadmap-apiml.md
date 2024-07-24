@@ -28,11 +28,11 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. The API Mediation Layer is one of the server-side components. 
 
-- [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
+- [**Planning**](../user-guide/installandconfig.md)
 
   This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory, instance directory, and keystore directory.
 
-- [**Installing API Mediation Layer**](../user-guide/install-zos.md#z-os-installation-roadmap)
+- [**Installing API Mediation Layer**](../user-guide/install-zos.md#end-to-end-installation)
 
    This article provides an overview of the essential steps involved in installing the API Mediation Layer.
 
@@ -42,9 +42,9 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - **Configuring API Mediation Layer**
 
-   - [Advanced Gateway features configuration](../user-guide/advanced-apiml-configuration.md)
+   - [Advanced API Mediation Layer features configuration](../user-guide/advanced-apiml-configuration.md)
       
-      This article is for system programmers who want to configure advanced Gateway features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced Gateway features.
+      This article is for system programmers who want to configure advanced features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced features.
 
 ## Using Zowe API Mediation Layer
 
@@ -98,7 +98,8 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    This blog takes a deeper dive into the SSO feature of API ML.
    
-- [**Blog: Zowe client certificate authentication**](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579)   
+- [**Blog: Zowe client certificate authentication**](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579) 
+- [**Blog: CLI and Client Certificates](https://medium.com/zowe/zowe-cli-and-client-certificates-dae341f8f52a)
 
 ## Contributing to Zowe API Mediation Layer
 

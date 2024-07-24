@@ -51,11 +51,7 @@ API ML consists of these core components: the API Gateway, the Discovery Service
 - The API Gateway provides secure routing of API requests from clients to registered API services.
 - The Discovery Service allows dynamic registration of microservices and enables their discoverability and status updates.
 - The API Catalog provides a user-friendly interface to view and try out all registered services, read their associated APIs documentation in OpenAPI/Swagger format.
-- The API ML Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data in-memory or using Redis, or VSAM storage. 
-
-Core Zowe also provides out of the box services for working with MVS Data Sets, JES, as well as working with z/OSMF REST APIs.
-
-**Note:** The MVS datasets and JES services are deprecated and will not be available in Zowe V3. 
+- The API ML Caching Service allows components to store, search and retrieve their state. The Caching service can be configured to store the cached data using various backends. Recommended is usage of Inifinispan packaged with the Caching Service.  
 
 The API Mediation Layer offers enterprise, cloud-like features such as high-availability, scalability, dynamic API discovery, consistent security, a single sign-on experience, and API documentation.
 
@@ -68,7 +64,7 @@ The API Mediation Layer offers enterprise, cloud-like features such as high-avai
 * High-Availability: API Mediation Layer is designed with high-availability of services and scalability in mind.
 * Caching Service: This feature is designed for Zowe components in a high availability configuration, and supports high availability of all components within Zowe. As such, components can remain stateless whereby the state of the component is offloaded to a location accessible by all instances of the service, including those which just started.
 * Redundancy and Scalability: API service throughput is easily increased by starting multiple API service instances without the need to change configuration.
-* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. Access to the contents of the API Catalog is controlled through a z/OS security facility.
+* Presentation of Services: The API Catalog component provides easy access to discovered API services and their associated documentation in a user-friendly manner. 
 * Encrypted Communication: API ML facilitates secure and trusted communication across both internal components and discovered API services.
 
 #### API Mediation Layer structural architecture
@@ -79,32 +75,39 @@ The following diagram illustrates the single point of access through the Gateway
 #### Components
 The API Layer consists of the following key components:
 
-**API Gateway**
+**Gateway Service**
 
-Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway is built using Netflix Zuul and Spring Boot technologies.
+Services that comprise the API ML service ecosystem are located behind a gateway (reverse proxy). All end users and API 
+client applications interact through the Gateway. Each service is assigned a unique service ID that is used in the access URL. 
+Based on the service ID, the Gateway forwards incoming API requests to the appropriate service. Multiple Gateway instances 
+can be started to achieve high-availability. The Gateway access URL remains unchanged. The Gateway Service is built on Spring
+Cloud Gateway and Spring Boot technology.
 
 **Discovery Service**
 
-The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service continuously collects and aggregates service information and serves as a repository of active services. When a service is started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are available to help with service on-boarding of various application architectures including plain Java applications and Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
-
-**Discovery Service TLS/SSL**
-
-HTTPS protocol can be enabled during API ML configuration and is highly recommended. Beyond encrypting communication, the HTTPS configuration for the Discovery Service enables heightened security for service registration. Without HTTPS, services provide a username and password to register in the API ML ecosystem. When using HTTPS, only trusted services that provide HTTPS certificates signed by a trusted certificate authority can be registered.
+The Discovery Service is the central repository of active services in the API ML ecosystem. The Discovery Service 
+continuously collects and aggregates service information and serves as a repository of active services. When a service is 
+started, it sends its metadata, such as the original URL, assigned serviceId, and status information to the Discovery Service. 
+Back-end microservices register with this service either directly or by using a Eureka client. Multiple enablers are 
+available to help with service on-boarding of various application architectures including plain Java applications and 
+Java applications that use the Spring Boot framework. The Discovery Service is built on Eureka and Spring Boot technology.
 
 **API Catalog**
 
-The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service instances, which provide exactly the same service for high-availability or scalability.
-
-**Catalog Security**
-
-Access to the API Catalog can be protected with an Enterprise z/OS Security Manager such as IBM RACF, ACF2, or Top Secret. Only users who provide proper mainframe credentials can access the Catalog. Client authentication is implemented through the z/OSMF API.
+The API Catalog is the catalog of published API services and their associated documentation. The Catalog provides both 
+the REST APIs and a web user interface (UI) to access them. The web UI follows the industry standard Swagger UI component 
+to visualize API documentation in OpenAPI JSON format for each service. A service can be implemented by one or more service 
+instances, which provide exactly the same service for high-availability or scalability. API Catalog requires authentication
+from the accessing user. 
 
 **Caching Service**
 
-An API is provided in high-availability mode which offers the possibility to store, retrieve, and delete data associated with keys. The service can only be used by internal Zowe services and is not exposed to the internet.
+An API is provided in high-availability mode which offers the possibility to store, retrieve, and delete data associated 
+with keys. 
 
 #### Onboarding APIs
-Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics to discover more about adding new APIs to the API Mediation Layer and using the API Catalog:
+Essential to the API Mediation Layer ecosystem is the API services that expose their useful APIs. Use the following topics 
+to learn more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)

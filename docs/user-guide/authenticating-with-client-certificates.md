@@ -19,7 +19,7 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 1. The client calls the service endpoint through the API ML Gateway with the client certificate.
 2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. As of Zowe version 2.14, the API for API ML can be provided by the internal API ML mapper if the mapper is enabled. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, although we recommend using the internal API ML mapper.
+3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. The API for API ML can be provided by the internal API ML mapper if the mapper is enabled. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, although we recommend using the internal API ML mapper.
 4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. 
 
 :::note Notes:
@@ -31,7 +31,7 @@ When sending a request to the login endpoint with a client certificate, the Gate
 
 1. The client calls the API ML Gateway login endpoint with the client certificate.
 2. The client certificate is verified to ensure this is a valid TLS client certificate against the trusted CAs of the Gateway.
-3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. As of Zowe release 2.14, the internal API ML mapper can provide this API for API ML if enabled in the zowe.yaml file. Alternatively, ZSS can provide this API for API ML, with the noted exception when using ACF2.
+3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. The internal API ML mapper can provide this API for API ML if enabled in the zowe.yaml file. Alternatively, ZSS can provide this API for API ML, with the noted exception when using ACF2.
 4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
 
 :::note

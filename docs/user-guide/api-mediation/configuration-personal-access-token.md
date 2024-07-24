@@ -4,6 +4,8 @@
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
+For Personal Access Token functionality to work properly, Caching Service with Infinispan ad backedn provider needs to be started. 
+
 Use the following procedure to enable personal access tokens.
 
 1. Open the file `zowe.yaml`.

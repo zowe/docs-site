@@ -13,7 +13,7 @@ As a system administrator, you can customize the API Catalog UI to have a simila
 It is possible to customize the logotype and selected style options directly in `zowe.yaml`.
 
 1. Open the file `zowe.yaml`.
-2. Configure the following properties by setting them under `ZWE_configs_apiml_catalog_customStyles`:
+2. Configure the following properties by setting them under `configs.apiml.catalog.customStyles`:
 
    - **logo**  
    Specifies the location of the logo that will replace the default Zowe logo in the API Catalog header. The supported image formats are: `svg`, `png` and `jpg/jpeg`.

@@ -17,6 +17,7 @@ Specifies one of the following services:
   - `discovery`
   - `caching-service`
   - `api-catalog` 
+  - `zaas`
 
 **Example with Gateway Service:**
 
