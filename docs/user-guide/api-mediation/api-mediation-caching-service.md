@@ -4,8 +4,8 @@ As an API developer, you can use the Caching Service as a storage solution to en
 
 - Using Infinispan that is part of Caching Service
 - Using Redis running off-platform
-- {Deprecated} Using VSAM
-- {Development Use Only} Using InMemory
+- \{Deprecated\} Using VSAM
+- \{Development Use Only\} Using InMemory
 
 :::note
 In the current implementation of the Caching Service, Infinispan is recommended for the storage of key/value pairs for production, as it has the best performance characteristics without additional services.
