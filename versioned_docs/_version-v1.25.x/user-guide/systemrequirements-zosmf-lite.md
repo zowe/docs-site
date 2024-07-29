@@ -401,7 +401,7 @@ To find the URL of the Welcome page, look for message IZUG349I in the z/OSMF ser
 #### Procedure
 
 1.  Open a web browser to the z/OSMF Welcome page. The URL for the Welcome page
-    has the following format: https://hostname:port/zosmf/
+    has the following format: `https://hostname:port/zosmf/`
 
     Where:
     -   *hostname* is the host name or IP address of the system in which z/OSMF is
