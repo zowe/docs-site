@@ -1,12 +1,12 @@
 # Certificate configuration scenarios 
 
 
- After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, review the five scenarios presented in this article for configuring Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
+ After you complete the Zowe certificates configuration questionnaire to determine your specific configuration use case, choose from the five scenarios presented in this article to configure Zowe for automatic certificate setup. Examples of the zowe.yaml files are provided for each scenario.
 
 :::info Required roles: system programmer, security administrator
 :::
 
-:::tip **Tip**
+:::tip 
 To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through quetions that lead to a specific configuration scenario presented in this article.
 :::
 
@@ -19,16 +19,16 @@ This automation can be performed by defining and customizing the `zowe.setup.cer
 Zowe can then automate the certificate setup via the `zwe init certificate` command. 
 
 
-:::note Note:  
-Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate*, and the  corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate` which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
+:::note 
+Automated generation of certificates is an option, but is not required. If you already have a keystore that contains a valid certificate <b>*</b>, and the corresponding private key of the certificate, along with a truststore which validates the certificate and any other certificates you expect to encounter, then you also have the option to directly define the parameter `zowe.certificate`, which specifies the location of each of these certificates and their storage objects. Note that this parameter should not be confused with the parameter `zowe.setup.certificate`.
 :::
 
 ## <b>*</b> What is a valid certificate in Zowe?
 
-A valid certificate for use in Zowe has the following qualities:
+A valid certificate for use in Zowe conforms to one of the following two options: 
 
 * The certificate does not contain the _Extended Key Usage_ section.
-* The certificate contains the _Extended Key Usage_ section and also includes the **Server** and **Client** authentication fields.
+* The certificate does contain the _Extended Key Usage_ section, and also includes the **Server** and **Client** authentication fields.
 
 ## Considerations for certificate scenario selection
 
@@ -56,7 +56,10 @@ Ensure that all alias values for all scenarios use only lower-case.
 
 ## Scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates
 
-Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use generated PKCS12 certificates to be used with a keystore directory to store your certificates.
+Use this procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use generated PKCS12 certificates to be used with a keystore directory to store your certificates.
+
+<details>
+<summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to `PKCS12`.
 
@@ -102,6 +105,14 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
         sample IP address
         - 12.34.56.78
      ```
+:::note
+A bug in Java SDK 8.0.8.10 has been discovered that makes configuration scenario 1 non-operational. If you see the following message when running the `zwe init certificate` command, upgrade or downgrade your Java version:
+
+```
+keytool error (likely untranslated): java.lang.IllegalArgumentException: java.util.Vector incompatible with [Ljava.lang.Object;
+```
+For more information, see this article in [IBM Support](https://www.ibm.com/support/pages/apar/IJ48749).
+:::
 
   **Example zowe yaml for scenario 1:**  
 
@@ -129,11 +140,16 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
 ```
 Your yaml file is now configured to enable Zowe to use generated PKCS12 certificates.
 
-Check out the [video tutorials](https://www.youtube.com/playlist?list=PL8REpLGaY9QERUmM--1USMF8yOG-Awzwn) on YouTube. Or read [this blog](https://medium.com/zowe/step-by-step-guide-use-a-pkcs12-file-based-keystore-with-zowe-generated-certificate-365dc48eea29) for more information about using a file-based PKCS12 certificate in Zowe services.
+For more information about using a file-based PKCS12 certificate in Zowe services, see  the [video tutorials](https://www.youtube.com/playlist?list=PL8REpLGaY9QERUmM--1USMF8yOG-Awzwn) on YouTube. More information about this certificate configuration scenario is also availabe in [this Medium blog post](https://medium.com/zowe/step-by-step-guide-use-a-pkcs12-file-based-keystore-with-zowe-generated-certificate-365dc48eea29).
+
+</details>
 
 ## Scenario 2: Use a file-based (PKCS12) keystore and import a certificate generated by another CA
 
-Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use a file-based PKCS12 keystore to import a certificate generted by another CA. 
+Use this procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use a file-based PKCS12 keystore to import a certificate generated by another CA. 
+
+<details>
+<summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to `PKCS12`.
 
@@ -190,9 +206,15 @@ PEM format certificate authorities can be imported and trusted.
        - /certs/extca.2.cer
    ```
 Your yaml file is now configured to enable Zowe to use a file-based PKCS12 keystore to import a certificate generted by another CA.
+
+</details>
+
 ##  Scenario 3: Use a z/OS keyring-based keystore with Zowe generated certificates
 
-Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
+Use this procedure to configure the `zowe.setup.certificate` section in your yaml file to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
+
+<details>
+<summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
 
@@ -268,9 +290,15 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
          - 12.34.56.78
    ```
 Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
+
+</details>
+
 ## Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate
 
-Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to use a z/OS keyring-based keystore and connect to an existing certificate.
+Use this procedure to configure the `zowe.setup.certificate` section in your yaml file to use a z/OS keyring-based keystore and connect to an existing certificate.
+
+<details>
+<summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
 
@@ -302,7 +330,7 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
 Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.
 ::: 
   
-The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, read [this blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f). Or you can check out the video tutorials [here](https://www.youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
+The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, see [this Medium blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f), or the video tutorials in [this YouTube playlist](https://www.youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
 
   **Example zowe yaml for scenario 4:**
 
@@ -328,9 +356,15 @@ If you would like to use this example in your Zowe configuration YAML file, repl
 * Replace `zOSMFCA` with the certificate authority that is used to sign the certificate. 
 
 Your yaml file is now configured to use a z/OS keyring-based keystore and connect to an existing certificate.
+
+</details>
+
 ## Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set
 
-Use the following procedure to configure the `zowe.setup.certificate` section in your yaml file to use a z/OS keyring-based keystore and import a certificate stored in a data set.
+Use this procedure to configure the `zowe.setup.certificate` section in your yaml file to use a z/OS keyring-based keystore and import a certificate stored in a data set.
+
+<details>
+<summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
 
@@ -373,3 +407,5 @@ Use the following procedure to configure the `zowe.setup.certificate` section in
        password: password
 ```
 Your yaml file is now configured to use a z/OS keyring-based keystore and import a certificate stored in a data set.
+
+</details>

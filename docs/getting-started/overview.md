@@ -213,6 +213,7 @@ For more information, see [Information roadmap for Zowe Explorer](user-roadmap-z
 The Zowe Client SDKs consist of programmatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
 
 - Zowe Node.js Client SDK
+- Zowe Java Client SDK
 - Zowe Python Client SDK
 
 For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
