@@ -1,10 +1,10 @@
 {
-  "v2.13.x LTS":
-  "v2.12.x LTS":
-  "v2.11.x LTS":
-  "v2.10.x LTS":
-  "v2.9.x LTS":
-  "v2.8.x LTS":
+  "v2.13.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.12.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.11.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.10.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.9.x LTS":  "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
+  "v2.8.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
   "v2.7.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.7.x/getting-started/overview/",
   "v2.6.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.6.x/getting-started/overview/",
   "v2.5.x LTS": "https://65eb3d30af0985b3e05ba0b9--zowe-docs-master.netlify.app/v2.5.x/getting-started/overview/",
