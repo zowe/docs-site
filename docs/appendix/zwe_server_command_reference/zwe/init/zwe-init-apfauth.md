@@ -12,7 +12,7 @@ NOTE: You require proper permission to run APF authorize command.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:

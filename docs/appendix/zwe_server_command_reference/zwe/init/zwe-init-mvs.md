@@ -10,7 +10,7 @@ This command will prepare Zowe custom data sets.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:

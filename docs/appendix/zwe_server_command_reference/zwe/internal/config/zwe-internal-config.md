@@ -7,6 +7,7 @@
 ## Sub-commands
 
 * [get](./zwe-internal-config-get.md)
+* [output](./zwe-internal-config-output.md)
 * [set](./zwe-internal-config-set.md)
 
 
