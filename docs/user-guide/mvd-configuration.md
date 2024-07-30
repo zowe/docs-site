@@ -86,24 +86,12 @@ The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaul
 
 **Note:** The following attributes are to be defined in the Zowe configuration file.
 
-The App Server can be accessed over HTTP and/or HTTPS, provided it has been configured for either. HTTPS should be used, as HTTP is not secure unless AT-TLS is used.
-When AT-TLS is used by ZSS, `components.zss.agent.http.attls` must be set to true.
+The App Server and ZSS are HTTPS servers by default. However, AT-TLS can be used instead, as seen in the guide [for configuring AT-TLS](./at-tls-configuration)
 
 ### HTTPS
 
-Both `app-server` and `zss` server components use HTTPS by default, and the `port` parameters `components.app-server.port` and `components.zss.port` control which port they are accessible from. However, each have advanced configuration options to control their HTTPS behavior.
-
-The `app-server` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.app-server.node.https` as defined within the [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L15)
-
-The `zss` component configuration can be used to customize its HTTPS connection such as which certificate and ciphers to use, and these parameters are to be set within `components.zss.agent.https` as defined within the [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L81)
-
-
-### HTTP
-
-The `app-server` can be configured for HTTP via the `components.app-server.node.http` section of the Zowe configuration file, as specified within the `app-server` [json-schema file](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json#L73).
-
-The `zss` server can be configured for HTTP via the `components.zss.agent.http` section of the Zowe configuration file, as specified within the `zss` [json-schema file](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json#L99). Note that `components.zss.tls` must be set to false for HTTP to take effect, and that `components.zss.agent.http.attls` must be set to true for AT-TLS to be recognized correctly.
-
+Both `app-server` and `zss` server components use HTTPS by default, and the `port` parameters `components.app-server.port` and `components.zss.port` control which port they are accessible from.
+Parameters such as TLS version and ciphers can be customized within the `zowe.network.server.tls` and `zowe.network.client.tls` objects of the Zowe configuration, which may also be placed within each component to control a particular component, such as `components.zss.zowe.network.server.tls`. For more information, see [TLS configuration](./tls-configuration);
 
 
 ## Configuration Directories
