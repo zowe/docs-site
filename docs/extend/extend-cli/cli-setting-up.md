@@ -21,26 +21,20 @@ Before you follow the development tutorials for creating a Zowe&trade; CLI plug-
     1. Open a terminal and enter `cd zowe-tutorial` to change directory into your `zowe-tutorial` folder.
     2. Enter `git clone https://github.com/zowe/zowe-cli-sample-plugin` to clone the `zowe-cli-sample-plugin` repository.
     3. Enter `cd zowe-cli-sample-plugin` to change directory into your `zowe-cli-sample-plugin` folder.
-    4. Enter `git checkout master` navigate to the `master` branch.
-    5. Enter `npm install` to install all dependencies and modules for the project.
-    6. Enter `npm run build` to create a production build.
-    
-    **[are steps 1-6 correct?]**
+    4. Enter `npm install` to install all dependencies and modules for the project.
+    5. Enter `npm run build` to create a production build.
 
-### Optional step: Run the automated tests
-**[is "the" really needed in Line 28?]**
+### Optional step: Run automated tests
 
 We recommend running automated tests on all code changes.
 
 To run automated tests:
 
 1. Open a terminal and enter `cd __tests__/__resources__/properties` to change directory into your `__tests__/__resources__/properties` folder.
-2. Copy the content in the `example_properties.yaml` file to the `custom_properties.yaml` file. **[where does this happen? a files explorer window? in a terminal w/ a command?]**
-3. Edit the properties within `custom_properties.yaml` to contain valid system information for your site. **[what tool/app is used to edit, an ide?]**
+2. Use Visual Studio Code or your file explorer to copy the content in the `example_properties.yaml` file to the `custom_properties.yaml` file.
+3. Use a text editor to edit the properties within `custom_properties.yaml` to contain valid system information for your site.
 4. In a terminal, enter `cd zowe-cli-sample-plugin`  to change directory into your `zowe-cli-sample-plugin` folder.
 5. Enter `npm run test` to run the automated test.
-
-**[are steps 1-5 correct?]**
 
 ## Next steps
 

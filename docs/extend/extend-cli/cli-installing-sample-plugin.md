@@ -41,7 +41,7 @@ Open a terminal and issue the `zowe zowe-cli-sample list directory-contents` com
     ```
     npm run test
     ```
-**[What happens when the command is issued? What/who performs the tests? How can the user see the results?]**
+    The command runs the automated unit and system tests defined in the `__tests__` folder. Test results are displayed in the terminal with the count of passed and failed tests. Failed tests are identified in the results.
 
 ## Next steps
 

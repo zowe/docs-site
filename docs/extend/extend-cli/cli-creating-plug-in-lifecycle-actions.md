@@ -25,13 +25,13 @@ To add the `pluginLifeCycle` property to your plug-in definition file and includ
 
 1. Navigate to the plug-in definition file.
 
-    This file is the value for the `configurationModule` property in the plug-in `package.json` file.
-
-    See this [`IImperativeConfig.ts` file](https://github.com/zowe/imperative/blob/master/packages/imperative/src/doc/IImperativeConfig.ts) to view an example of the detailed format used in the plug-in definition file. **[this repo is archived. what else can we link to here?]**
+    The path to this file is the value for the `configurationModule` property in the plug-in `package.json` file.
 
 2. In the plug-in definition file, use the `pluginLifeCycle` property to add the path to the javascript file the plug-in uses to implement the class containing lifecycle functions.
 
-    This plug-in lifecycle functions class extends the `AbstractPluginLifeCycle` class [found in the Imperative package of utility functions](https://github.com/zowe/imperative/blob/master/packages/imperative/src/plugins/AbstractPluginLifeCycle.ts). **[this repo is archived. what else can we link to here?]**
+    The `pluginLifeCycle` property is defined in [this file](https://github.com/zowe/zowe-cli/blob/master/packages/imperative/src/imperative/src/doc/IImperativeConfig.ts).
+
+    The class defined by this property extends the `AbstractPluginLifeCycle` class [found in the Imperative package of utility functions](https://github.com/zowe/zowe-cli/blob/master/packages/imperative/src/imperative/src/plugins/AbstractPluginLifeCycle.ts). 
 
 3. In the plug-in lifecycle functions class you created, add instructions for both the `postInstall` and `preUninstall` functions.
 
