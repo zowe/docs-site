@@ -135,15 +135,12 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
 ```acf2
 SET PROFILE(PTKTDATA) DIV(SSIGNON)
-INSERT <applid> SSKEY(<key-description>) MULT-USE
+INSERT <applid> SSKEY(<key-description>)
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 
 - **applid**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
-
-- **MULT-USE**  
-This setting lets you reuse the same PassTicket multiple times.
 
 - **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
@@ -203,7 +200,7 @@ TSS ADDTO(department) PTKTDATA(IRRPTAUT)
 3. Define PassTicket for application ID _applid_
 
 ```tss
-TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
+TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>)
 ```
 
 - **applid**  
