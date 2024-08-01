@@ -70,7 +70,7 @@ This API can also be used in any Node.js application.
 
     The `Typicode` class provides two programmatic APIs, `getTodos` and `getTodo`, to get an array of `ITodo` objects or a specific `ITodo`, respectively.
 
-    The Node.js APIs use `@zowe/imperative` infrastructure to provide logging, parameter validation, and to call a REST API. See the [Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) for more information. **[this repo is archived. what else can we link to here?]**
+    The Node.js APIs use `@zowe/imperative` infrastructure to provide logging, parameter validation, and to call a REST API. See the [Imperative CLI Framework documentation](https://github.com/zowe/zowe-cli/wiki) for more information.
 
 #### Exporting the interface and programmatic API for other Node.js applications
 

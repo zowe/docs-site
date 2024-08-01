@@ -41,8 +41,7 @@ A Zowe CLI plug-in minimally contains the following:
 3. Handler implementation: To invoke your programmatic API to display information in the format that you defined in the definition.
 
 #### Imperative CLI Framework documentation
-**[this repo is archived. what else can we link to here? should we simply remove this section?]**
-[Imperative CLI Framework documentation](https://github.com/zowe/imperative/wiki) is a key source of information to learn about the features of Imperative CLI Framework, the code framework that you use to build plug-ins for Zowe CLI. Refer to these supplementary documents during development to learn about specific features such as:
+[Imperative CLI Framework documentation](https://github.com/zowe/zowe-cli/wiki) is a key source of information to learn about the features of Imperative CLI Framework, the code framework that you use to build plug-ins for Zowe CLI. Refer to these supplementary documents during development to learn about specific features such as:
 
 - Auto-generated help
 - JSON responses
