@@ -127,6 +127,14 @@ This method saves team-specific profiles in the `zowe.config.json` configuration
 
 A suite of web apps on the [Zowe Desktop](#zowe-desktop) that are part of the [Zowe Application Framework](#zowe-application-framework) and the core Zowe server installation. They include the [JES](#jes-explorer), [MVS](#mvs-multiple-virtual-storage-explorer), [USS](#uss-explorer), and IP Explorers. Not related to [ Zowe Explorer](#zowe-explorer).
 
+#### Versions
+
+Zowe is a collection of projects that, together, has been released in iterative versions. While each Zowe project is developed for a particular version of Zowe (as in API ML V1 or API ML V2) each project can also have its own particular version series. For example, Zowe CLI v7.24.1 is part of Zowe v2.16.
+
+The Zowe V1 suite of components is in maintenance state. The Zowe V2 suite of components is in active state, meaning that new features are being actively added in every minor release. Zowe V3 is scheduled for release on Sept. 30, 2024, at which time Zowe V1 reaches its End of Support phase.
+
+To learn more about how versioning is applied in Zowe, see [Understanding Zowe release versions](../troubleshoot/troubleshoot-zowe-release.md).
+
 #### ZIS (Zowe Interprocess Services)
 
 An APF-authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, it is not an HTTP server. Instead, this server has a trust relationship with ZSS.
