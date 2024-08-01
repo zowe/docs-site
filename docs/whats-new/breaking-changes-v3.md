@@ -1,14 +1,14 @@
-# Important Updates in Zowe v3
+# Important Updates in Zowe V3
 
-The upcoming release of Zowe v3 will bring a range of major changes in Zowe functionality. Review this article for details about changes to various Zowe components to be introduced in Zowe v3.
+The upcoming release of Zowe V3 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
+
+Review this article for details about changes to various Zowe components to be introduced in Zowe V3, and any actions required you might need to take.
 
 ## API Mediation Layer (API ML)
 
-The following table presents changes to the API Mediation Layer in v3 and if there are any required actions for the API ML user.
+### Breaking changes
 
-### Breaking Changes to API ML
-
-| Change in  Zowe v3 | Required action                                                                                                                                                                                                                                                                                                                                                      |  
+| Change in  Zowe V3 | Required action                                                                                                                                                                                                                                                                                                                                                      |  
 |----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1` | If you use the endpoints directly, change the URLs to start with `/gateway/api/v1`. If you use ZAAS client to integrate with API Mediation Layer, no action is required as the change is handled in the ZAAS client code.                                                                                                                                           |
 | Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported | Upgrade the extending service based on the Spring Enabler to Spring Boot 3 and Spring 6.                                                                                                                                                                                                                                                                              |
@@ -20,7 +20,6 @@ The following table presents changes to the API Mediation Layer in v3 and if the
 | z/OSMF in version V2R5 with APAR PH12143 applied | If you are running a version of z/OS before 3.1, validate that PH12143 APAR was applied to the z/OSMF installation used by Zowe                                                                                                                                                                                                                                                    |
 | Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://` | If your Zowe configuration contains `safkeyring:////`, change this part to `safkeyring://`                                                                                                                                                                                                                                                                            |
 | Support access to z/OSMF only via /ibmzosmf route. Supporting both created issues for CLI setup | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` you need to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}`                                                                                                                                                                                                                                                |
-
 ### Important API ML updates
 
 The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly.
@@ -29,19 +28,18 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Breaking changes
 
-| Change in  Zowe v3 | Required action |  
+| Change in  Zowe V3 | Required action |  
 |----|-----------------------|
 | Updating Angular to Version 16 from Version 12 | ??? |
 | Removing the core-js dependency | ??? |
 | Updating Webpack to version 5 | ??? |
 | Updating Typescript to 4.9 | ??? |
 
-
 ## CLI
 
 ### Breaking changes
 
-| Change in Zowe v3 | Required action|
+| Change in Zowe V3 | Required action|
 |-|-|
 |Introducing a new format for error messages to improve clarity|Adjust Zowe CLI scripts that parse error messages to handle the new error format|
 |Removing V1 profile support|Implement a team configuration or use Zowe CLI's built-in V1 profile conversion command: `zowe config convert`|
@@ -65,7 +63,7 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Breaking changes
 
-| Change in Zowe v3 | Required action|
+| Change in Zowe V3 | Required action|
 |-|-|
 |Removing V1 profile support|Implement a team configuration or use Zowe Explorer's built-in V1 profile conversion functionality|
 |Removing deprecated items - [Explorer for VSCode](https://github.com/zowe/zowe-explorer-vscode/issues/2238)|Zowe Explorer extenders or users of the Zowe Explorer APIs will need to review the breaking changes and adjust their code to account for removed/changed classes, functions, and constants|
