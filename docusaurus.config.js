@@ -235,27 +235,6 @@ module.exports = {
             "v2.14.x": {
               label: "v2.14.x LTS",              
             },
-            "v2.13.x": {
-              label: "v2.13.x LTS",
-            },
-            "v2.12.x": {
-              label: "v2.12.x LTS",
-            },
-            "v2.11.x": {
-              label: "v2.11.x LTS",
-            },
-            "v2.10.x": {
-              label: "v2.10.x LTS",
-            },
-            "v2.9.x": {
-              label: "v2.9.x LTS",
-            },
-            "v2.8.x": {
-              label: "v2.8.x LTS",
-            },
-            "v1.28.x": {
-              label: "v1.28.x LTS",
-            },
           },
         },
         googleAnalytics: {
