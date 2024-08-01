@@ -4,9 +4,7 @@ Before you begin, be sure to complete the [Installing the sample plug-in](cli-in
 
 ## Overview
 
-This tutorial demonstrates how to extend the plug-in that is bundled with this sample.
-
-Specifically, the tutorial shows data from [this URI](https://jsonplaceholder.typicode.com/todos) by [Typicode](https://jsonplaceholder.typicode.com/). Typicode serves sample REST JSON data for testing purposes. To do this, use the `@zowe/imperative` infrastructure to surface REST API data on our Zowe&trade; CLI plug-in. **[What is "this" in "To do this ..."? Can we use another verb other than "surface"?]**
+This tutorial uses the Typicode REST API as a guide for how to build a Zowe CLI plug-in that interacts with REST APIs on the mainframe.
 
 At the end of this tutorial, you are able to use the following new command from the Zowe CLI interface:
 
@@ -83,7 +81,7 @@ export * from "./api/Typicode";
 
 This allows a separate, standalone Node.js application to use APIs from the sample Typicode plug-in to get data from the REST API at jsonplaceholder.typicode.com.
 
-The following code is an example of how a Node.js application could apply your API: **[re: Lines 84-86: I did some editing. Is this correct?]**
+The following code is an example of how a Node.js application could import classes from your API to interact with the Typicode REST API:
 
 ```typescript
 import { Typicode } from "@zowe/zowe-cli-sample-plugin";
