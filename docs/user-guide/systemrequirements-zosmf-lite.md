@@ -50,7 +50,7 @@ Information about installing these procedures is provided in [Copying the IBM pr
 Setting up z/OSMF Lite requires that you have access to a z/OS V2R2 system or later. Also, your z/OS system must meet the following minimum software requirements:
 
 - [Minimum Java level](#minimum-java-level)
-- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere®-liberty-profile-z-osmf-v2r3-and-later)
+- [WebSphere® Liberty profile (z/OSMF V2R3 and later)](#websphere-liberty-profile-zosmf-v2r3-and-later)
 - [System settings](#system-settings)
 - [Web browser](#web-browser)
 
@@ -101,11 +101,11 @@ To check your web browser's level, click **About** in the web browser.
 The following system changes are described in this chapter:
 
 - [Running job IZUNUSEC to create security](#running-job-izunusec-to-create-security)
-- [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z-osmf-user-file-system)
+- [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system)
 - [Copying the IBM procedures into JES PROCLIB](#copying-the-ibm-procedures-into-jes-proclib)
-- [Starting the z/OSMF server](#starting-the-z-osmf-server)
-- [Accessing the z/OSMF Welcome page](#accessing-the-z-osmf-welcome-page)
-- [Mounting the z/OSMF user file system at IPL time](#mounting-the-z-osmf-user-file-system-at-ipl-time)
+- [Starting the z/OSMF server](#starting-the-zosmf-server)
+- [Accessing the z/OSMF Welcome page](#accessing-the-zosmf-welcome-page)
+- [Mounting the z/OSMF user file system at IPL time](#mounting-the-zosmf-user-file-system-at-ipl-time)
 
 The following sample jobs that you might use are included in the package and available for download:
 
@@ -371,7 +371,7 @@ To log into z/OSMF, enter a valid z/OS user ID and password. Your account might 
 
 ### Mounting the z/OSMF user file system at IPL time
 
-Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-z-osmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, update the BPXPRMxx parmlib member on your z/OS system.
+Previously, in [Running job IZUMKFS to create the z/OSMF user file system](#running-job-izumkfs-to-create-the-zosmf-user-file-system), you ran job IZUMKFS to create and mount the z/OSMF user file system. Now you should ensure that the z/OSMF user file system is mounted automatically for subsequent IPLs. To do so, update the BPXPRMxx parmlib member on your z/OS system.
 
 ####  Before you begin
 
@@ -430,10 +430,10 @@ BPXF013I FILE SYSTEM IZU.SIZUUSRD WAS SUCCESSFULLY MOUNTED.
 You must enable a set of z/OSMF REST services for the Zowe framework.
 
 The following system changes are described in this topic:
-- [Enabling the z/OSMF JOB REST services](#enabling-the-z-osmf-job-rest-services)
+- [Enabling the z/OSMF JOB REST services](#enabling-the-zosmf-job-rest-services)
 - [Enabling the TSO REST services](#enabling-the-tso-rest-services)
-- [Enabling the z/OSMF data set and file REST services](#enabling-the-z-osmf-data-set-and-file-rest-services)
-- [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-z-osmf-workflow-rest-services-and-workflows-task-ui)
+- [Enabling the z/OSMF data set and file REST services](#enabling-the-zosmf-data-set-and-file-rest-services)
+- [Enabling the z/OSMF Workflow REST services and Workflows task UI](#enabling-the-zosmf-workflow-rest-services-and-workflows-task-ui)
 
 
 ### Enabling the z/OSMF JOB REST services
@@ -631,7 +631,7 @@ To verify, log on to z/OSMF (or refresh it) and verify that the Workflows task a
 
 At this point, you have completed the setup of z/OSMF Lite.
 
-Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-z-osmf).
+Optionally, you can add more users to z/OSMF, as described in [Appendix C. Adding more users to z/OSMF](#appendix-c-adding-more-users-to-zosmf).
 
 
 ## Troubleshooting problems

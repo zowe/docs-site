@@ -65,7 +65,7 @@ zowe plugins list
 
 You can update Zowe CLI to the latest version from the online registry on Windows, Mac, and Linux computers.
 
-**Note:** The following steps assume that you previously installed the CLI as described in [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
+**Note:** The following steps assume that you previously installed the CLI as described in [Install Zowe CLI from npm](cli-installcli.md#install-zowe-cli-from-npm).
 
 1. Update Zowe CLI. Open a command line window and issue the following command:
 
@@ -93,6 +93,6 @@ npm install -g @zowe/cli@7.0.0
 
 ## Update Zowe CLI from a local package
 
-To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install from a Local package instructions. For more information, see [Uninstalling Zowe CLI](cli-uninstall.md) and [Installing Zowe CLI from a local package](cli-installcli.md#installing-zowe-cli-from-a-local-package).
+To update Zowe CLI from an offline (`.tgz`), local package, uninstall your current package then reinstall from a new package using the Install from a Local package instructions. For more information, see [Uninstalling Zowe CLI](cli-uninstall.md) and [Install Zowe CLI from a local package](cli-installcli.md#install-zowe-cli-from-a-local-package).
 
 **Important!** Recreate any user profiles that you created before the update.

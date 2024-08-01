@@ -262,7 +262,6 @@ The onboarding configuration parameters are broken down into the following group
 - [SAF Keyring configuration](#saf-keyring-configuration)
 - [Eureka Discovery Service](#eureka-discovery-service)
 - [Custom Metadata](#custom-metadata)
-- [Connection Timeout](#connection-timeout)
 
 ### REST service identification
 

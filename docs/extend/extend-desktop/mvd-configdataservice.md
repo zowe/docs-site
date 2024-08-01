@@ -15,7 +15,7 @@ The behavior of the Configuration Dataservice is dependent upon the Resource str
         1. [GET](#get)
         1. [PUT](#put)
         1. [DELETE](#delete)
-    1. [Administrative Access & Group](#administrative-access-group)
+    1. [Administrative Access & Group](#administrative-access-and-group)
 1. [App API](#application-api)
 1. [Internal and Bootstrapping](#internal-and-bootstrapping)
 1. [Packaging Defaults](#packaging-defaults)
