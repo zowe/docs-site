@@ -3,7 +3,7 @@
 After you install Zowe Explorer, you must have a Zowe Explorer profile to use all functions of the extension.
 
 :::info
-You can continue using Zowe V1 profiles with Zowe Explorer V2. See [Working with Zowe CLI V1 profiles](#working-with-zowe-cli-v1-profiles) for more information.
+You can continue using Zowe V1 profiles with Zowe Explorer V2. See [Working with Zowe V1 profiles](#working-with-zowe-v1-profiles) for more information.
 :::
 
 ## Configuring Zowe V2 profiles
