@@ -36,6 +36,9 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in your External Security Manager (ESM)
 
+:::note
+Since Zowe 2.17 release it is no longer needed to disable the replay protection. If you are upgrading Zowe from a prior release, these protections can be activated again.
+
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
