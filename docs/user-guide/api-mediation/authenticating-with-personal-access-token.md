@@ -24,8 +24,9 @@ APIs for security administrators are protected by SAF resource checking and can 
    * [Invalidate all tokens for a service](#invalidate-all-tokens-for-a-service)
    * [Evict non-relevant tokens and rules](#evict-non-relevant-tokens-and-rules)
 
-:::note
-An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md)
+:::note Notes
+* An SMF record can be issued when a Personal Access Token is generated. For more information, see [SMF records issued by API ML](api-mediation-smf.md).
+* To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution.
 :::
 
 For detailed information about using the Personal Access Token as part of single sign on, see the section [Using the Personal Access Token to authenticate](#using-the-personal-access-token-to-authenticate) later in this article. 
@@ -83,7 +84,7 @@ The request requires the body in the following format:
 The user has the option of calling this API to validate the token, however, validation is also automatically performed by the API ML.
 :::
 
-When validation is successful, the response to the request is an empty body with a status code of `200`. When validation fails, the user receives a status code of `401`.
+When validation is successful, the response to the request is an empty body with a status code of `204`. When validation fails, the user receives a status code of `401`.
 
 ### Invalidate a specific token
 
@@ -104,7 +105,7 @@ The request requires the body in the following format:
 When the `/auth/access-token/revoke` endpoint is called, the provided hash of the PAT is stored in the cache by the Caching Service under the `invalidTokens` key. As such, the token is invalidated.
 Access to these entries is protected by the API ML client certificate.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Invalidate all tokens
 
@@ -127,7 +128,7 @@ If the body is not provided, the timestamp value defaults to the current date.
 When the `/auth/access-token/revoke/tokens` endpoint is called, the provided user rule is stored in the cache by the Caching Service under the `invalidUsers` key. As such, all of the tokens of the user are invalidated.
 Access to these entries is protected by the client certificate of the API ML.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ## Security Administrator APIs
 
@@ -175,7 +176,7 @@ used to specify that tokens created before the date specified in the timestamp a
 
 By calling this endpoint, the user rule is stored in the cache by the Caching Service under the `invalidUsers` key.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Invalidate all tokens for a service
 
@@ -206,7 +207,7 @@ after that date are not affected by the service rule.
 
 Calling this endpoint stores the service rule in the cache by the Caching Service under the `invalidScopes` key.
 
-When invalidation is successful, the response to the request is an empty body with a status code of `200`. When invalidation fails, the user receives a status code of `401`.
+When invalidation is successful, the response to the request is an empty body with a status code of `204`. When invalidation fails, the user receives a status code of `401`.
 
 ### Evict non-relevant tokens and rules
 

@@ -17,6 +17,7 @@ module.exports = {
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
         "whats-new/release-notes/v3_0_0",
+        "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
@@ -218,11 +219,16 @@ module.exports = {
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
-                  ],
-            },
-              ],
+              ]
+            }
+          ]   
         },
-        "user-guide/start-zowe-zos",
+        {
+          type: "category",
+          label: "Starting and stopping Zowe",
+          link: { type: "doc", id: "user-guide/start-zowe-zos" },
+          items: ["user-guide/api-mediation/configuration-api-mediation-standalone"]
+        },
         "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
@@ -288,7 +294,8 @@ module.exports = {
               "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
               "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                "user-guide/api-mediation/configuration-saf-resource-checking"
+                "user-guide/api-mediation/configuration-saf-resource-checking",
+                "user-guide/api-mediation/configuration-health-endpoint-protection"
               ]
             },
             "user-guide/authentication-providers-for-apiml",
@@ -1051,7 +1058,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.16.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.17.x.md",
     },
   ],
 }
