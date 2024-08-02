@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import readingTime from "reading-time";
+import readingTime from "reading-time/lib/reading-time";
 import { DocProvider } from "@docusaurus/theme-common/internal";
 
 //Components
