@@ -40,7 +40,7 @@ Follow these high-level steps to download and install Zowe Open Source Project (
   7. [Perform SMP/E RECEIVE](#perform-smpe-receive)
   8. [Allocate SMP/E target and distribution libraries](#allocate-smpe-target-and-distributions-libraries)
   9. [Allocate, create and mount ZSF files (Optional)](#allocate-create-and-mount-zsf-files-optional)
-  10. [Allocate z/OS UNIX paths](#allocate-z-os-unix-paths)
+  10. [Allocate z/OS UNIX paths](#allocate-zos-unix-paths)
   11. [Create DDDEF Entries](#create-dddef-entries)
   12. [Perform SMP/E APPLY](#perform-smpe-apply)
   13. [Perform SMP/E ACCEPT](#perform-smpe-accept)
@@ -387,7 +387,7 @@ Customize the statements is this job statement with the following values:
 The following supplied jobs might fail due to disk space allocation errors for [GIMUNZIP](#gimunzip). Review the following sections for example error and actions that you can take to resolve the error.
 - [ZWE2RCVE](#zwe2rcve)
 - [ZWE1SMPE and ZWE4ZFS](#zwe1smpe-and-zwe4zfs)
-- [ZWEMKDIR,  ZWE1SMPE, ZWE2RCVE, ZWE3ALOC,  ZWE4ZFS and ZWE5MKD](#zwemkdir-zwe1smpe-zwe2rcve-zwe3aloc-zwe4zfs-and-zwe5mkd)
+- [ZWEMKDIR, ZWE1SMPE, ZWE2RCVE, ZWE3ALOC, ZWE4ZFS and ZWE5MKD](#zwemkdir-zwe1smpe-zwe2rcve-zwe3aloc-zwe4zfs-and-zwe5mkd)
 
 #### ZWE2RCVE
 
@@ -420,7 +420,7 @@ IDC0002I IDCAMS PROCESSING COMPLETE. MAXIMUM CONDITION CODE WAS 12
 **Action**  
 Uncomment the `VOLUMES(...)` control statements and refer to the comments at the start of the JCL job for related necessary changes.
 
-#### ZWEMKDIR,  ZWE1SMPE, ZWE2RCVE, ZWE3ALOC,  ZWE4ZFS and ZWE5MKD
+#### ZWEMKDIR, ZWE1SMPE, ZWE2RCVE, ZWE3ALOC, ZWE4ZFS and ZWE5MKD
 
 **Example error:**
 ```
@@ -622,7 +622,7 @@ For more information about **REPORT CROSSZONE**, see the SMP/E manuals.
 
 ### Cleaning up obsolete data sets, paths, and DDDEFs
 
-The web download data sets listed in [DASD storage requirements](#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E installation.
+The web download data sets listed in [DASD storage requirements](install-zowe-smpe-overview.md#dasd-storage-requirements) are temporary data sets. You can delete these data sets after you complete the SMP/E installation.
 
 ## Activating Zowe
 

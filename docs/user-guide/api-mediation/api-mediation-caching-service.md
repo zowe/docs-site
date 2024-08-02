@@ -14,7 +14,7 @@ The Caching Service is available only for internal Zowe applications, and is not
 
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
-  - [Infinispan](#infinispan)
+  - [Infinispan](#infinispan-recommended)
   - [VSAM](#vsam)
   - [Redis](#redis)
   - [InMemory](#inmemory)

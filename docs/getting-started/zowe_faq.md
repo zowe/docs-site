@@ -344,7 +344,7 @@ As a developer, you can extend Zowe CLI in the following ways:
 
 - Fix bugs in Zowe CLI or plug-in code, submit enhancement requests via GitHub issues, and raise your ideas with the community in Slack.
 
-    **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md#how-can-i-contribute).
+    **Note:** For more information, see [Developing for Zowe CLI](../extend/extend-cli/cli-devTutorials.md#how-to-contribute).
 
 </details>
 

@@ -5,9 +5,9 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
 :::info Required Role: security administrator
 :::
 
-- [Overview of PassTickets](#overview-of-how-passtickets-are-used)
+- [Overview of PassTickets](#overview-of-passtickets)
 - [Configuring Zowe to use PassTickets](#configuring-zowe-to-use-passtickets)
-    - [Enabling PassTicket support](#enabling-passticket-support)
+    - [Enabling the use of PassTickets in your External Security Manager](#enabling-the-use-of-passtickets-in-your-external-security-manager-esm)
         - [Enabling PassTickets with ACF2](#enabling-passtickets-with-acf2)
         - [Enable PassTickets with Top Secret](#enabling-passtickets-with-top-secret)
         - [Enabling PassTickets with RACF](#enabling-passtickets-with-racf)
@@ -16,7 +16,7 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
         - [Generating PassTickets using Top Secret](#generating-passtickets-using-top-secret)
         - [Generating PassTickets using RACF](#generating-passtickets-using-racf)
         - [Validating if the PassTicket Application is created](#validating-if-the-passticket-application-is-created)
-- [Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
+- [Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket-optional)
 
 ## Overview of PassTickets 
 
