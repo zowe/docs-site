@@ -5,19 +5,6 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
 :::info Required Role: security administrator
 :::
 
-- [Overview of PassTickets](#overview-of-passtickets)
-- [Configuring Zowe to use PassTickets](#configuring-zowe-to-use-passtickets)
-- [Enabling the use of PassTickets in your External Security Manager (ESM)](#enabling-the-use-of-passtickets-in-your-external-security-manager-esm)
-  - [Enabling PassTickets with ACF2](#enabling-passtickets-with-acf2)
-  - [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret)
-  - [Enabling PassTickets with RACF](#enabling-passtickets-with-racf)
-- [Configuring security to allow Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-  - [Generating PassTickets using ACF2](#generating-passtickets-using-acf2)
-  - [Generating PassTickets using Top Secret](#generating-passtickets-using-top-secret)
-  - [Generating PassTickets using RACF](#generating-passtickets-using-racf)
-- [Validating if the PassTicket Application is created](#validating-if-the-passticket-application-is-created)
-- [Adding custom HTTP Auth headers to store user ID and PassTicket (Optional)](#adding-custom-http-auth-headers-to-store-user-id-and-passticket-optional)
-
 ## Overview of PassTickets
 
 API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for this support can be through the use of PassTickets.
@@ -38,6 +25,7 @@ Configuring Zowe to use PassTickets involves two processes:
 
 :::note
 Since Zowe 2.17 release it is no longer needed to disable the replay protection. If you are upgrading Zowe from a prior release, these protections can be activated again.
+:::
 
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
