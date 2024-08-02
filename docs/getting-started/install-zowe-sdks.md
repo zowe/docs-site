@@ -10,6 +10,16 @@ The following SDKs are available.
 - Zowe Client Node.js SDK
 - Zowe Client Python SDK *technical preview*
 
+## Fundamentals
+
+- [**Zowe Client SDK overview**](overview.md#zowe-client-software-development-kits-sdks)
+
+   New to Zowe Client SDKs? This overview topic briefly introduces what the SDK is.
+
+- [**Blog: Zowe SDKs - Build z/OS Connected Applications Faster**](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9)
+
+   This blog introduces Zowe SDKs and their benefits.
+
 ## SDK documentation
 
 For detailed SDK documentation, see the following:
@@ -17,8 +27,12 @@ For detailed SDK documentation, see the following:
 - [Zowe Client Kotlin SDK](https://for-mainframe.github.io/r2z/)
 - [Zowe Client Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
 - [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
+- [Zowe SDK Sample Scripts](https://github.com/zowe/zowe-sdk-sample-scripts/)
 
-## Installation and software requirements
+
+
+
+## SDK software requirements and dependencies
 
 ### Java SDK
 
@@ -70,9 +84,9 @@ To use:
 import org.zowe.kotlinsdk
 ```
 
-### Node.js SDK
+### Node.js
 
-If you install Node SDK packages from the online registry, the required dependencies are installed automatically.
+If you install Node SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically.
 
 If you download Node SDK packages from Zowe.org, the folder contains dependencies that you must install manually. Extract the `TGZ` files from the folder, copy the files to your project, and issue the following commands to install the dependencies.
 
@@ -86,7 +100,7 @@ npm install core-for-zowe-sdk.tgz
 
 ### Python SDK *technical preview*
 
-If you install Python SDK packages from the online registry, the required dependencies are installed automatically.
+If you install Python SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically. **[should we add this sentence to the Kotlin and Java sections above?]**
 
 If you download the Python SDK packages from Zowe.org, the downloaded folder contains dependencies that you must install manually. Extract the `WHL` files from the folder, copy the files to your project, and issue the following command for each dependency:
 
@@ -94,6 +108,52 @@ If you download the Python SDK packages from Zowe.org, the downloaded folder con
 pip install <fileName>.whl
 ```
 
-## Getting started
+## Installing a Zowe Client SDK
 
-To get started, import the SDK packages to your project. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
+To get started, import the SDK package to your project. You can pull the packages from an online registry, or download the packages from Zowe.org to install locally.
+
+### Installing an SDK from an online registry
+
+Pull the packages from an online registry such as npm or PyPi:
+
+1. In command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
+
+   - To import a Node.js package: `npm install <PackageName>`
+   - To import a Python package: `pip install <PackageName>`
+
+      - `<packageName>`
+      The name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+    The package is installed. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows). **[what about java and kotlin?]**
+
+2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
+
+    - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
+
+    - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
+
+    **[what about java and kotlin?]**
+
+### Installing an SDK from a local package
+
+Download and install the packages:
+
+1. Navigate to [Zowe.org Downloads](https://www.zowe.org/download.html). Select your desired programming language in the **Zowe Client SDKs** section.
+
+   The SDK is downloaded to your computer.
+
+2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
+
+3. Install required dependencies, which are included in the bundle. See [Software requirements and dependencies](#software-requirements-and-dependencies) for more information.
+
+3. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
+
+   - To install a Node.js package: `npm install <packageName>.tgz`
+   - To install a Python package: `pip install <packageName>.whl`
+
+      -`<packageName>`
+      The name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
+
+4. Repeat the command for each package that you need.
+
+    Packages are now installed.
