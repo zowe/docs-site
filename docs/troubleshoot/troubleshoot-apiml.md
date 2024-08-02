@@ -268,8 +268,8 @@ Check the rest of the message, and identify the cause of the problem. The follow
 
 - [Connection refused](#connection-refused)
 - [Configure z/OSMF](#configure-zosmf)
-- [Missing z/OSMF host name in subject alternative names](#missing-z-osmf-host-name-in-subject-alternative-names)
-- [Invalid z/OSMF host name in subject alternative names](#invalid-z-osmf-host-name-in-subject-alternative-names)
+- [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
 - [Secure Fix](#secure-fix)
 - [Insecure Fix](#insecure-fix)
 - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
@@ -327,7 +327,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Note:** Apply the insecure fix only if you use API Catalog for testing purposes.
 
-- [Secure fix](#Secure-fix)
+- [Secure fix](#secure-fix)
 - [Insecure fix](#insecure-fix)
 
 #### Secure fix
@@ -368,7 +368,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md/#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 

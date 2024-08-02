@@ -24,10 +24,10 @@ Click here for descriptions of the various components that form the API Mediatio
 </summary>
 
 #### API Catalog  
-Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
+Displays API services that have been discovered by the [API Mediation Layer](#zowe-api-mediation-layer-api-ml).
 
 #### API Discovery Service  
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
+As the central repository of active services in the [API Mediation Layer](#zowe-api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
 
 #### API Gateway    
 A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
@@ -233,7 +233,7 @@ The Zowe installation for Zowe z/OS components that is distributed as an SMP/E p
 
 #### SMP/E with z/OSMF workflow
 
-A similar process as [SMP/E](zowe-glossary.md#smp/e), except done through the z/OSMF web interface as a Zowe SMP/E workflow. It is the third most common way to install Zowe.
+A similar process as [SMP/E](zowe-glossary.md#smpe), except done through the z/OSMF web interface as a Zowe SMP/E workflow. It is the third most common way to install Zowe.
 
 #### Started task (STC)
 
@@ -275,11 +275,11 @@ A user group on the system that [ZWESVUSR](#zwesiusr) and [ZWESIUSR](#zwesvusr) 
 
 #### ZWESIUSR
 
-A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [ZWESIUSR requirements](../user-guide/systemrequirements-zos.md/#zwesiusr).
+A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [ZWESIUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/systemrequirements-zos.md#zwesvusr).
+A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 ## Plug-ins and extensions
 
@@ -287,7 +287,7 @@ A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS enviro
 
 #### API Catalog
 
-Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
+Displays API services that have been discovered by the [API Mediation Layer](#zowe-api-mediation-layer-api-ml).
 
 ### Zowe Application Framework
 
@@ -357,7 +357,7 @@ A collection of enablers which help to simplify the process of onboarding a REST
 
 #### Accessing the Desktop
 
-The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The Desktop URL uses the following format:
+The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#zowe-api-mediation-layer-api-ml). The Desktop URL uses the following format:
 ```
 https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 ```

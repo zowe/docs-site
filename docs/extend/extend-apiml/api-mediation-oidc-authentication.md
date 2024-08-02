@@ -20,8 +20,8 @@ The OIDC feature is currently unavailable on ACF2 systems.
 - [Usage](#usage)
 - [Authentication flow](#authentication-flow)
 - [Prerequisites](#prerequisites)
-  - [OIDC provider](#oidc-provider)
-  - [ESM configuration](#esm-configuration)
+  - [OIDC provider](#oidc-provider-prerequisites)
+  - [ESM configuration](#esm-configuration-prerequisites)
 - [API ML configuration](#api-ml-oidc-configuration)
 - [Troubleshooting](#troubleshooting)
 
@@ -57,9 +57,9 @@ The following diagram illustrates the interactions between the participants of t
 Ensure that the following prerequisites are met:  
 
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
-- Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider) in this topic.
-- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
-- If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Enabling the internal API ML mapper](../../user-guide/authenticating-with-client-certificates.md#enabling-the-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
+- Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.
+- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.
+- If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
   
 ### OIDC provider prerequisites
 
@@ -165,7 +165,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **`components.gateway.apiml.security.oidc.registry`**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
+   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
 
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
@@ -180,7 +180,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
 - **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
-  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/authenticating-with-client-certificates.md#enabling-the-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
     The following URL is the default value for Zowe and ZSS:
 

@@ -8,7 +8,7 @@ When developing a new service, it is not recommended to onboard a REST service u
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
-* [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+* [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
 * [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
 * [Route your API](#route-your-api)
 * [Customize configuration parameters](#customize-configuration-parameters)
