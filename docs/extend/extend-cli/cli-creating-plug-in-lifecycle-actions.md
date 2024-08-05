@@ -19,7 +19,7 @@ Creating and using lifecycle actions is optional, but they can be useful tools. 
 When creating a plug-in to override Zowe CLI's built-in credential manager, it is necessary to implement a post-install action to configure your plug-in as the credential manager.
 :::
 
-## Implenting lifeycyle actions
+## Implementing lifeycyle actions
 
 To add the `pluginLifeCycle` property to your plug-in definition file and include a plug-in class to implement lifecycle functions:
 
