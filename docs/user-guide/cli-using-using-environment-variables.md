@@ -10,7 +10,7 @@ You can define environment variables to execute commands more efficiently. Store
 
 The term *environment* can refer to your operating system, container environment, or automation server such as Jenkins.
 
-Consider assigning a variable in the scenarios outlined in the following table.
+Consider assigning a variable in the scenarios outlined in the following table. See [Formatting environment variables](cli-using-formatting-environment-variables.md) for instructions.
 
 | Use case | Example | Benefit |
 | - | - | - |

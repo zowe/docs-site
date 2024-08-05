@@ -36,7 +36,7 @@ For more information about developing for Zowe Application Framework, see [Zowe 
 
 ### Extend Zowe CLI
 
-Zowe CLI extenders can build plug-ins that provide new commands. Zowe CLI is built using Node.js and is typically run on a machine other than z/OS, such as a PC, where the CLI can be driven through a terminal or command prompt, or on an automation machine such as a DevOps pipeline orchestrator.
+Zowe CLI extenders can build plug-ins that provide new commands. Zowe CLI is built using Node.js and is typically run on a machine other than a mainframe, such as a PC, where the CLI can be driven through a terminal or command prompt, or on an automation machine such as a DevOps pipeline orchestrator.
 
 For more information about extending the Zowe CLI, see [Developing a new plug-in](extend-cli/cli-developing-a-plugin.md). This article includes a sample plug-in that is provided with the tutorial; see [Installing the sample plug-in](extend-cli/cli-installing-sample-plugin.md).
 

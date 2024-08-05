@@ -23,6 +23,8 @@ As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL
 
 Find out what's happening with Zowe in the Zowe Quarterly Update Webinar Series.
 
+- [Zowe Quarterly Update Webinar: May 2024](https://youtu.be/57IKsRfM_F0)
+- [Zowe Quarterly Update Webinar: February 2024](https://youtu.be/d9eA9eZRREI)
 - [Zowe Quarterly Update Webinar: October 2021](https://youtu.be/b0Xo6WIy3vc)
 - [Zowe Quarterly Update Webinar: July 2021](https://youtu.be/T3Z4hMwElII)
 - [Zowe Quarterly Update Webinar: April 2021](https://youtu.be/9rQCcZGVDzQ)

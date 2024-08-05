@@ -30,7 +30,7 @@ If you are running the Caching Service on z/OS, there are three storage methods 
     - Part of the Caching service
     - Does not need separate processes
     - Highly performant
-- [VSAM](../user-guide/configure-caching-service-ha.md#vsam)
+- [VSAM (*deprecated*)](../user-guide/configure-caching-service-ha.md#vsam)
     - Familiar to z/OS engineers
     - Slow
 - [Redis](../extend/extend-apiml/api-mediation-redis.md#redis-configuration)

@@ -2,7 +2,7 @@
 
 ## Zowe runtime configuration parameters
 
-As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `<Zowe install directory>/components/discovery/bin/start.sh` file:
+As an application developer who wants to run Zowe, set the following parameters during the Zowe runtime configuration by modifying the `zowe.yaml` file:
 
 * **[API ML configuration](#api-ml-configuration)**
 
@@ -13,24 +13,24 @@ As an application developer who wants to run Zowe, set the following parameters 
 1. Open the file `zowe.yaml`.
 2. Configure the following properties:
 
-* **apiml.service.hostname**
+* **haInstance.hostname**
 
-  This property is used to set the Discovery Service hostname. The value can be set by defining the `ZWE_haInstance_hostname` property in the `zowe.yaml` file.
+  This property is used to set the Discovery Service hostname. The value can be set by defining the `haInstance.hostname` property in the `zowe.yaml` file.
 
-* **apiml.service.port**
+* **components.discovery.port**
 
-  This property is used to set the Discovery Service port. The value can be set by defining the `ZWE_configs_port` property in the `zowe.yaml` file.
+  This property is used to set the Discovery Service port. The value can be set by defining the `components.discovery.port` property in the `zowe.yaml` file.
   
-* **apiml.discovery.staticApiDefinitionsDirectories**
+* **environments.ZWE_STATIC_DEFINITIONS_DIR**
 
-  The value of `apiml.discovery.staticApiDefinitionsDirectories` can be set by defining the `ZWE_STATIC_DEFINITIONS_DIR` property in `zowe.yaml`. The static definition directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contain the definitions of static services.
+  The static definition directories can be specified as a parameter at startup and will be scanned by the Discovery Service. These directories contain the definitions of static services.
   **Example:**
   ```yaml
-  ZWE_STATIC_DEFINITIONS_DIR: config/local/api-defs;config/local2/api-defs
+  environments:
+      ZWE_STATIC_DEFINITIONS_DIR: config/local/api-defs;config/local2/api-defs
   ```
-* **apiml.discovery.allPeersUrls**
+* **environments.ZWE_DISCOVERY_SERVICES_LIST**
 
-  The value of `apiml.discovery.allPeersUrls` can be set by defining the `ZWE_DISCOVERY_SERVICES_LIST` property in `zowe.yaml`. 
   This parameter contains the list of URLs of the Discovery Service in case of multiple instances of the service on different host.
   **Example:**
     ```yaml

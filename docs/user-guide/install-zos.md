@@ -46,7 +46,7 @@ Notify your organization's network administrator to assign port numbers, reserve
 
 In most cases, the system programmer performs the Zowe installation and configuration, and starts Zowe. Ensure that your system programmers have general knowledge about SMP/E, z/OSMF workflows, and regular maintanance procedures. In many cases, the system programmer also prepares jobs for other administrators.
 
-## End-to-end installation 
+## End-to-end installation
 
 The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
 
