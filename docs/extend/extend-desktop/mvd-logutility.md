@@ -10,7 +10,6 @@ The `zlux-shared` repository provides a logging utility for use by dataservices 
         1. [Web](#web)
     1. [Component Logger](#component-logger)
         1. [App Server](#app-server-1)
-        1. [Web](#web-1)
 1. [Logger API](#logger-api)
 1. [Component Logger API](#component-logger-api)
 1. [Log Levels](#log-levels)

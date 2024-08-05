@@ -133,7 +133,7 @@ Issue the following command:
       pref("security.enterprise_roots.enabled", true);
       ```
 
-### Generate a keystore and truststore for a new service on z/OS	
+### Generate a keystore and truststore for a new service on z/OS
 
 You can generate a keystore and truststore for a new service using the local CA in the keystore directory.
 
