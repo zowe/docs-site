@@ -171,13 +171,14 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
 - **`components.gateway.apiml.security.oidc.validationType`**  
-   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To use Microsoft Entra ID with OIDC, Please set this property to `endpoint`. This will enble access token validation using the `userInfo` endpoint.
+   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To use Entra ID with OIDC, Set this property to `endpoint`. This will enble access token validation using the `userInfo` endpoint.
   
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
 
 - **`components.gateway.apiml.security.oidc.userInfo.uri`**  
-   Specifies the URI obtained from the authorization server's metadata where the Gateway will query the Microsoft Graph API's userInfo endpoint for access token validation.
+   Specifies the URI obtained from the authorization server's metadata where the Gateway will query the userInfo endpoint for access token validation. 
+    To enble this property, ensure that `oidc.enabled` is set `true` and `oidc.validationType` is set to `endpoint`.
 
 - **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**  
    Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
