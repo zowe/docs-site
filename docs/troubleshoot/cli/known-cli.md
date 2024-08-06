@@ -12,12 +12,11 @@ After you install Zowe CLI, and the installation appears to complete successfull
 
 - `zowe config init`
 - `zowe config secure`
-- `zowe profiles create`
 - Most Zowe commands that access your mainframe environment
 
 This behavior occurs under the following conditions:
 
-- npm version 8.11.0 or 8.12.0 is running on your computer.
+- npm version 8.11.0 or 8.12.0 is running on your computer. **[what should the versions be for V3?]**
 - The computer on which you installed Zowe CLI cannot access the Internet or it has limited access to the Internet. Your site does not allow connections to https://github.com/.
 - You installed Zowe CLI from a local package or from an NPM public online registry
 
@@ -25,14 +24,14 @@ This behavior occurs under the following conditions:
 
 1. Define the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
 
-    - **Windows Command Prompt:** `set npm_config_global=true`
-    - **Windows PowerShell:** `$env:npm_config_global="true"`
-    - **macOS/Linux Bash:** `export npm_config_global=true`
+    - Windows Command Prompt: `set npm_config_global=true`
+    - Windows PowerShell: `$env:npm_config_global="true"`
+    - macOS/Linux Bash: `export npm_config_global=true`
 2. Install or reinstall Zowe CLI using your preferred installation method.
 3. After the Zowe CLI installation completes, reset the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
-    - **Windows Command Prompt:** `set npm_config_global=`
-    - **Windows PowerShell:** `$env:npm_config_global=""`
-    - **macOS/Linux Bash:** `export npm_config_global=`
+    - Windows Command Prompt: `set npm_config_global=`
+    - Windows PowerShell: `$env:npm_config_global=""`
+    - macOS/Linux Bash: `export npm_config_global=`
 4. Continue configuring Zowe CLI. Or, reissue a Zowe command that returned an error message. You should no longer get an error message.
 
 ## Chain commands fail in a batch script
@@ -81,9 +80,9 @@ To correct this behavior, verify the following:
 - Node.js and NPM are installed.
 - PATH contains the correct path to the NodeJS folder.
 
-**More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md)
+For more information, see [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md).
 
-## EACCESS error when issing `npm install` command
+## EACCESS error when issuing `npm install` command
 
 **Valid on Windows, Mac, or Linux**
 
@@ -137,10 +136,10 @@ report success using the following workarounds:
 
   - Issue the `npm cache clean` command.
 
-  - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](../../user-guide/cli-installcli.md).
+  - Uninstall and reinstall Zowe CLI. For instructions,
+    see the [Zowe CLI installation checklist](../../user-guide/cli-install-cli-checklist.md).
 
-  - `Add the --no-optional` flag to the end of the `npm install` command.
+  - Add the `--no-optional` flag to the end of the `npm install` command. **[is "flag" here correct?]**
 
 ## `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
 
@@ -155,7 +154,7 @@ You receive the error message `npm ERR! Cannot read property 'pause' of undefine
 This behavior is due to a problem with Node Package Manager (npm). If
 you encounter this problem, revert to a previous version of npm that
 does not contain this defect. To revert to a previous version of npm,
-issue the following command:
+issue the following command: **[is the version correct? if not, what should it be?]**
 ```
 npm install npm@5.3.0 -g
 ```
