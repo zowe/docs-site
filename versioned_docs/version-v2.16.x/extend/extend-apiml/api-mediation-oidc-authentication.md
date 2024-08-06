@@ -168,7 +168,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
 - **`components.gateway.apiml.security.oidc.validationType`**  
-   Specifies the validation type for OIDC, its 'JWK' by default, to validate EntraID access token, it has to be set to 'endpoint'. So, the access tokens are valided by /userU\Info endpoint.
+   Specifies the validation type for OIDC, its `JWK` by default. To validate EntraID access token, it has to be set to `endpoint`. So, the access tokens are valided by `userInfo` endpoint.
   
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
