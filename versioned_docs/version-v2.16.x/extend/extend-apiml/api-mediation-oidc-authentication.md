@@ -44,10 +44,13 @@ The following diagram illustrates the interactions between the participants of t
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
+- The Gateway validates the access token in two ways:
+    -  By comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
+    -  By quering the UserInfo endpoint to verify the token's validity and retrive user information.
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys, UserInfo endpoint queries and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
+- The URL to the specific authorization server's UserInfo endpoint should be set using the property `userInfo_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or PassTicket) which are expected by the target mainframe service.
@@ -212,6 +215,7 @@ The HTTP code is one of the 40X variants that provides the reason for the failur
 
 Correct the Gateway configuration according to the code returned by the OIDC Identity Provider.
 
+
 ### The access token validation fails with HTTP error
 
 **Symptom**  
@@ -223,7 +227,7 @@ The OIDC provider returns an HTTP 40x error code.
 The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
-Check that the URL `jwks_uri` contains the key for  OIDC token validation.
+Check that the URL `jwks_uri` contains the key for OIDC token validation. If `oidc.validationType` is set to `endpoint`, ensure that the `userInfo_uri` is properly configured and valid. 
 
 :::tip
 API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The call to the endpoint `/gateway/api/v1/auth/oidc-token/validate` verifies if the OIDC token is trusted by API ML. Note that the Gateway service does not perform the mapping request to the ESM when the `/gateway/api/v1/auth/oidc-token/validate` endpoint is called.
