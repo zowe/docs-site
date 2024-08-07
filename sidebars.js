@@ -309,7 +309,7 @@ module.exports = {
             },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls",
-            "user-guide/api-mediation/configuration-logging"  
+            "user-guide/api-mediation/configuration-logging",  
           ]
         }        
         ],

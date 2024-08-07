@@ -86,7 +86,7 @@ The following `logback.xml` file is used by default in all API Mediation Layer c
 
 ## Customization example
 
-One of the examples of possible customization is a change of the pattern for the logged messages. Pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, it will print log messages as follows:
+One of the examples of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, the API Mediation Layer prints log messages, as in the following example:
 ```log
 2024-08-01 12:52:27.922 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:33948829> ZWESVUSR INFO (o.z.a.g.h.GatewayHealthIndicator) ZWEAM001 API Mediation Layer started
 ```
@@ -101,4 +101,4 @@ In the following table you can see each part of the `apimlLogPattern` in the exa
 | `%clr(\\(%logger{15}\\)){cyan}`                                                     | `(o.z.a.g.h.GatewayHealthIndicator)`                          |
 | `%msg`                                                                              | `ZWEAM001 API Mediation Layer started`                        |
 
-You can edit, move, remove or add some parts in the pattern based on your requirements.
+You can edit, move, remove, or add some parts in the pattern based on your requirements.
