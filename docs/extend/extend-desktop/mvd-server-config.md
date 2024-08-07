@@ -92,7 +92,7 @@ node.https.certificates="../defaults/serverConfig/server.cert"
 * Numbers are treated as numbers, not strings. 
 * false & true are treated as boolean.
 * commas are for arrays. An array of length 1 has a comma at the end
-* strings can have quotes, but otherwise everything that isnt an array, boolean, or number is a string
+* strings can have quotes, but otherwise everything that isn't an array, boolean, or number is a string
 * objects are never values. They are the keys.
 
 
@@ -101,7 +101,7 @@ Below is some more detail on certain parameters than can be covered within the j
 
 ## Configuration Directories
 When running, the App Server will access the server's settings and read/modify the contents of its resource storage.
-All of this data is stored within a heirarchy of a few folders, which is correspond to scopes:
+All of this data is stored within a hierarchy of a few folders, which is correspond to scopes:
 - Product: The contents of this folder are not meant to be modified, but used as defaults for a product.
 - Site: The contents of this folder are intended to be shared across multiple App Server instances, perhaps on a network drive.
 - Instance: This folder represents the broadest scope of data within the given App Server instance.

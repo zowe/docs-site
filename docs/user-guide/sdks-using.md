@@ -90,7 +90,7 @@ Pull the packages from an online registry such as npm.
 
     - To define the versioning scheme for Node packages, use [semantic versioning](https://docs.npmjs.com/about-semantic-versioning).
 
-### Install Pyhton SDK from an online registry
+### Install Python SDK from an online registry
 
 Pull the packages from an online registry such as PyPi.
 
