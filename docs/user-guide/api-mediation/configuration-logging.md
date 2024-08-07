@@ -84,6 +84,10 @@ The following `logback.xml` file is used by default in all API Mediation Layer c
 </configuration>
 ```
 
+:::note
+The current default configuration you can find in [APIML GitHub repository](https://github.com/zowe/api-layer/blob/v2.x.x/apiml-common/src/main/resources/logback.xml).
+:::
+
 ## Customization example
 
 One of the examples of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, the API Mediation Layer prints log messages, as in the following example:
@@ -102,3 +106,7 @@ In the following table you can see each part of the `apimlLogPattern` in the exa
 | `%msg`                                                                              | `ZWEAM001 API Mediation Layer started`                        |
 
 You can edit, move, remove, or add some parts in the pattern based on your requirements.
+
+:::note
+The full documentation of Logback pattern are available on [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
+:::
