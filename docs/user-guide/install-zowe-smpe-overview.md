@@ -18,7 +18,7 @@ Basic Machine-Readable Materials are materials that are supplied under the base 
 
 ### Basic machine-readable material
 
-The distribution medium for this program is via downloadable files. This program is in SMP/E RELFILE format and is installed using SMP/E. See [Installation instructions](#installation-instructions) for more information about how to install the program.
+The distribution medium for this program is via downloadable files. This program is in SMP/E RELFILE format and is installed using SMP/E. See [Installation instructions](./install-zowe-smpe.md) for more information about how to install the program.
 
 ### Program source materials
 

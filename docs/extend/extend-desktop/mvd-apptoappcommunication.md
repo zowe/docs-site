@@ -10,7 +10,8 @@ The constructs are: the Dispatcher, Actions, Recognizers, Registry, and the feat
 1. [Actions](#actions)
 1. [Recognizers](#recognizers)
 1. [Dispatcher](#dispatcher)
-1. [URI Parameters](#uri-parameters)
+1. [Registry](#registry)
+1. [Pulling it all together in an example](#pulling-it-all-together-in-an-example)
 
 ## Why use application-to-application communication?
 

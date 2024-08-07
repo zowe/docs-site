@@ -24,10 +24,10 @@ Click here for descriptions of the various components that form the API Mediatio
 </summary>
 
 #### API Catalog  
-Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
+Displays API services that have been discovered by the [API Mediation Layer](#zowe-api-mediation-layer-api-ml).
 
 #### API Discovery Service  
-As the central repository of active services in the [API Mediation Layer](#api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
+As the central repository of active services in the [API Mediation Layer](#zowe-api-mediation-layer-api-ml) ecosystem, the API Discovery Service continuously collects and aggregates service information to provide status updates. This enables the discoverability of services.
 
 #### API Gateway    
 A proxy server that routes requests from clients on its northbound edge (such as web browsers or [Zowe CLI](#zowe-cli)) to servers on its southbound edge that are able to provide data to serve the request.
@@ -126,6 +126,14 @@ This method saves team-specific profiles in the `zowe.config.json` configuration
 #### Web Explorers
 
 A suite of web apps on the [Zowe Desktop](#zowe-desktop) that are part of the [Zowe Application Framework](#zowe-application-framework) and the core Zowe server installation. They include the [JES](#jes-explorer), [MVS](#mvs-multiple-virtual-storage-explorer), [USS](#uss-explorer), and IP Explorers. Not related to [ Zowe Explorer](#zowe-explorer).
+
+#### Versions
+
+Zowe is a collection of projects that, together, has been released in iterative versions. While each Zowe project is developed for a particular version of Zowe (as in API ML V1 or API ML V2) each project can also have its own particular version series. For example, Zowe CLI v7.24.1 is part of Zowe v2.16.
+
+The Zowe V1 suite of components is in maintenance state. The Zowe V2 suite of components is in active state, meaning that new features are being actively added in every minor release. Zowe V3 is scheduled for release on Sept. 30, 2024, at which time Zowe V1 reaches its End of Support phase.
+
+To learn more about how versioning is applied in Zowe, see [Understanding Zowe release versions](../troubleshoot/troubleshoot-zowe-release.md).
 
 #### ZIS (Zowe Interprocess Services)
 
@@ -233,7 +241,7 @@ The Zowe installation for Zowe z/OS components that is distributed as an SMP/E p
 
 #### SMP/E with z/OSMF workflow
 
-A similar process as [SMP/E](zowe-glossary.md#smp/e), except done through the z/OSMF web interface as a Zowe SMP/E workflow. It is the third most common way to install Zowe.
+A similar process as [SMP/E](zowe-glossary.md#smpe), except done through the z/OSMF web interface as a Zowe SMP/E workflow. It is the third most common way to install Zowe.
 
 #### Started task (STC)
 
@@ -275,11 +283,11 @@ A user group on the system that [ZWESVUSR](#zwesiusr) and [ZWESIUSR](#zwesvusr) 
 
 #### ZWESIUSR
 
-A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [ZWESIUSR requirements](../user-guide/systemrequirements-zos.md/#zwesiusr).
+A started task ID used to run the PROCLIB ZWESISTC that launches the cross memory server (also known as ZIS). It must have a valid [OMVS](#omvs) segment. For more information, see [ZWESIUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/systemrequirements-zos.md#zwesvusr).
+A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 ## Plug-ins and extensions
 
@@ -287,7 +295,7 @@ A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS enviro
 
 #### API Catalog
 
-Displays API services that have been discovered by the [API Mediation Layer](#api-mediation-layer-api-ml).
+Displays API services that have been discovered by the [API Mediation Layer](#zowe-api-mediation-layer-api-ml).
 
 ### Zowe Application Framework
 
@@ -357,7 +365,7 @@ A collection of enablers which help to simplify the process of onboarding a REST
 
 #### Accessing the Desktop
 
-The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#api-mediation-layer-api-ml). The Desktop URL uses the following format:
+The [Zowe Desktop](#zowe-desktop) is accessed through the [API ML](#zowe-api-mediation-layer-api-ml). The Desktop URL uses the following format:
 ```
 https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 ```

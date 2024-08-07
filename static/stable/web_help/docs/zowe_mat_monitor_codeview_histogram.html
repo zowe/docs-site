@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>mat monitor codeview histogram</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_monitor.html">monitor</a> › <a href="zowe_mat_monitor_codeview.html">codeview</a> › <a href="zowe_mat_monitor_codeview_histogram.html">histogram</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Get the Histogram details for the measurement.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor codeview histogram [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+<li>
+<p><code>--module</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the module name that you request the Histogram data for. You get the module value from the 'codeview csect' command response. The module name can be empty (e.g., --module &quot;IGZCPAC&quot; or --module '&quot;&quot;').</li>
+</ul>
+</li>
+<li>
+<p><code>--csect</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the CSECT name that you request the Histogram data for. You get the csect value from the 'codeview csect' command response. The CSECT name can be empty (e.g.,  --csect &quot;TUNCOB01&quot; or --csect '&quot;&quot;').</li>
+</ul>
+</li>
+<li>
+<p><code>--group</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the histogram group size parameter that defines the resolution of the histogram (e.g., --group 32). If you do not specify the group parameter, the group size value defaults to 4 bytes. If the source program listing is registered with MAT, the group size parameter is ignored. The --group parameter is optional. Lower values of the --group parameter result in more granular representation of the histogram data. Values: numbers between 2 and 999999.</li>
+</ul>
+</li>
+<li>
+<p><code>--top</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the maximum number of the top consuming CSECT activity locations that you want to obtain in the response (e.g., --top 5). If you specify --top 0, you get the list of all CSECT activity locations that MAT has detected during the measurement.The --top parameter is optional. Values: numbers between 0 and 300.</li>
+</ul>
+</li>
+<li>
+<p><code>--listing</code> <em>(boolean)</em></p>
+<ul>
+<li>Enables you to retrieve program listing details that pertain to the specific CSECT and statement. To use the listing retrieval option, you must install and configure the Endevor® Web Services and have the program listing for the specific measurement registered with MAT. The source code listing is retrieved through Endevor® footprints for Cobol, C/C++, and Assembler programs. The program listing file is downloaded to your local directory that you specified with the 'listingDir' parameter in your MAT configuration profile. When you request the histogram details with the '--listing' option, the 'histogram' command returns the additional 'listing' column that contains a reference to the program listing with the specific CSECT name, program type, line and column number that pertain to the requested CSECT and statement, for example, c:listingsSA420LE.asm:382:51. If you use Visual Studio Code (VS Code) IDE, you can click on the reference in the command responce in your VS Code terminal to navigate directly to the indicated source program location.The --listing parameter is optional.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram details for the latest monitor in the TESTPROF profile for CSECT name TUNCOB01, empty module name, limiting the group size to 32 bytes and the number of returned records to 5 top consumers:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --profile TESTPROF --csect &quot;TUNCOB01&quot; --module '&quot;&quot;' --top 5 --group 32">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, limit the number of returned records to 5 top consumers, and request the listing details:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --top 5 --listing">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the Histogram details for monitor number 5, CSECT name TUNCOB01, and module name RUNCOB, with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor codeview histogram --mon_num 5 --csect &quot;TUNCOB01&quot; --module &quot;RUNCOB&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
