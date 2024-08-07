@@ -10,7 +10,7 @@ The workaround installation options are, in order of preference:
 - Configure NPM proxy to access the public NPM registry (npmjs.org) so that the install from TGZ can succeed. To configure an NPM proxy:
   - If your proxy is HTTP: `npm config set proxy <proxyUrl>`
   - If your proxy is HTTPS: `npm config set https-proxy <proxyUrl>`
-- Install CLI from an online registry instead of TGZ. This may also require configuring an NPM proxy. See [Installing Zowe CLI from an online registry](cli-installcli.md#installing-zowe-cli-from-an-online-registry).
+- Install CLI from an online registry instead of TGZ. This may also require configuring an NPM proxy. See [Install Zowe CLI from online registry via proxy](install-cli-via-proxy.md).
 - Downgrade NPM to version 6. To downgrade from a newer version of NPM, issue the command: `npm install -g npm@6.x`
 
 ## Additional Considerations

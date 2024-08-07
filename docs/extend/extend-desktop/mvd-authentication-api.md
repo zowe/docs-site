@@ -35,7 +35,7 @@ These plugins are given an object, `context`, in the constructor.
 Context has attributes to help the plugin know about the server configuration, provide a named logger, and more. The parameters include:
 
 * pluginDefinition: The object describing the plugin's definition file
-* pluginConf: An object that gives the plugin its configuration from the [Config Service internal storage](mvd-configdataservice.md#internal--bootstrapping-use)
+* pluginConf: An object that gives the plugin its configuration from the [Config Service internal storage](mvd-configdataservice.md#internal-and-bootstrapping)
 * serverConfiguration: The object describing the server's current configuration
 * context: An object holding contextual objects
     * logger: A logger with the name of the plugin's ID

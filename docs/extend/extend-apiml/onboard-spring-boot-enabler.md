@@ -33,7 +33,6 @@ The following steps outline the overall process to onboard a REST service with t
     * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
     * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Custom Metadata](#custom-metadata)
-    * [Api Mediation Layer specific metadata](#api-mediation-layer-specific-metadata)
     
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
     

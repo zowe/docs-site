@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create endevor-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_endevor-profile.html">endevor-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The endevor profile schema, where you specify your endevor session information and credentials</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create endevor-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new endevor profile. You can load this profile by using the name on commands that support the &quot;--endevor-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the endevor session</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
+<ul>
+<li>The port number of the endevor session</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>The username of the endevor session</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>The password of the user</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path used for connecting to Endevor Rest API</p>
+<p>Default value: EndevorService/api/v2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>If set, the server certificate is verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> | <code>--rd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The default path where any reports will be written to, either absolute or relative to current directory</p>
+<p>Default value: .</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the endevor profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create an endevor profile called 'ndvrSample' to connect to Endevor web services at host ndvr123 and port 8080,using http protocol, with / EndevorService/api/v2 base path, allowing self-signed certificates:</p>
+<ul>
+<li><code>zowe profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create endevor-profile ndvrSample --host ndvr123 --port 8080 --user ibmuser --password myp4ss --prot http --base-path  EndevorService/api/v2 --reject-unauthorized false">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
