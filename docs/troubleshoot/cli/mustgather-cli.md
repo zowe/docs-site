@@ -40,7 +40,6 @@ zowe config list --locations
 The output provides a brief overview with the following information:
 
 - Configuration file locations
-
 - Profile names and types
 - Profile type defaults
 - All property values (host, port, etc.)
@@ -61,7 +60,7 @@ The output provides a list of configuration files that affect your Zowe commands
 
 Add the `--show-inputs-only` option to any Zowe command.
 
-For example, if you want to check the command to list a data set, you add the option to the following command:
+For example, if you want to check the command to list a data set, add the option to the following command:
 
 ```
 zowe zos-files list data-set "SYS1.PARMLIB*" --show-inputs-only
