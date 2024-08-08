@@ -44,7 +44,7 @@ The following diagram illustrates the interactions between the participants of t
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
+- The Gateway validates the access token by comparing the key ID of the token against the key ids obtained from the authorization server's JWK keys endpoint.
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
 - In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
@@ -132,7 +132,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
 - **`userid`**  
    Specifies the ESM user id
 - **`distributed-identity-user-name`**  
-   Specifies the user id for distributed-identity-registry
+   Specifies the user ID for distributed-identity-registry
 - **`distributed-identity-registry-name`**  
    Specifies the URL value of the distributed-identity-registry where user is defined
 - **`label-name`**  
