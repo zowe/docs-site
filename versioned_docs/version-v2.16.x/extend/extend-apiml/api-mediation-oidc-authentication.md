@@ -45,7 +45,7 @@ The following diagram illustrates the interactions between the participants of t
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 - The Gateway validates the access token in two ways:
-    -  By comparing the key ID of the token against the key ids obtained from the authorization server's JWK keys endpoint (`oidc.validationType: JWK` or omited configuration (`oidc.validationType`)).
+    -  By comparing the key ID of the token against the key IDs obtained from the authorization server's JWK keys endpoint (`oidc.validationType: JWK` or omited configuration (`oidc.validationType`)).
     -  By querying the UserInfo endpoint to verify the token's validity and retrive user information (`oidc.validationType: endpoint`).
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
@@ -171,7 +171,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
 
 - **`components.gateway.apiml.security.oidc.validationType`**  
-   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
+   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
   
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
