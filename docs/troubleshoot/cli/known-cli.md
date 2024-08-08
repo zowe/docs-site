@@ -16,7 +16,7 @@ After you install Zowe CLI, and the installation appears to complete successfull
 
 This behavior occurs under the following conditions:
 
-- npm version 8.11.0 or 8.12.0 is running on your computer. **[what should the versions be for V3?]**
+- npm version 8.11.0 or 8.12.0 is running on your computer.
 - The computer on which you installed Zowe CLI cannot access the Internet or it has limited access to the Internet. Your site does not allow connections to https://github.com/.
 - You installed Zowe CLI from a local package or from an NPM public online registry
 
@@ -139,25 +139,7 @@ report success using the following workarounds:
   - Uninstall and reinstall Zowe CLI. For instructions,
     see the [Zowe CLI installation checklist](../../user-guide/cli-install-cli-checklist.md).
 
-  - Add the `--no-optional` flag to the end of the `npm install` command. **[is "flag" here correct?]**
-
-## `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
-
-**Valid on Windows or Linux**
-
-**Symptom:**
-
-You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product.
-
-**Solution:**
-
-This behavior is due to a problem with Node Package Manager (npm). If
-you encounter this problem, revert to a previous version of npm that
-does not contain this defect. To revert to a previous version of npm,
-issue the following command: **[is the version correct? if not, what should it be?]**
-```
-npm install npm@5.3.0 -g
-```
+  - Add the `--no-optional` flag to the end of the `npm install` command.
 
 ## Paths converting in Git Bash
 
