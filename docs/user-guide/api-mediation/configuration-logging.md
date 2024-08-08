@@ -24,7 +24,7 @@ components:
 
 ## Default logging configuration file
 
-The following `logback.xml` file is used by default in all API Mediation Layer components:
+The following `logback.xml` is an example of logging configuration file which is used by default in all API Mediation Layer components:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -85,7 +85,7 @@ The following `logback.xml` file is used by default in all API Mediation Layer c
 ```
 
 :::note
-The current default configuration you can find in [APIML GitHub repository](https://github.com/zowe/api-layer/blob/v2.x.x/apiml-common/src/main/resources/logback.xml).
+You can find the current default logging configuration file by following [this link](https://github.com/zowe/api-layer/blob/v2.x.x/apiml-common/src/main/resources/logback.xml).
 :::
 
 ## Customization example
