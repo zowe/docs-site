@@ -60,7 +60,7 @@ Required to establish communication with z/OSMF. Specifies that the client is se
 
 - `;`
 
-    Indicates that the header has no value. (Not all commands require a value.)
+    Indicates that the header has no value. (Not all headers require a value.)
 
     To pass an additional header with a value, use a colon to separate the key and value. For example: `--header "X-IBM-Data-Type: binary"`.
 

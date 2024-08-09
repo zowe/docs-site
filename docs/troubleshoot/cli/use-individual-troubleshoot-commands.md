@@ -18,7 +18,7 @@ Display the version of your globally-installed Zowe CLI through the following NP
 npm list -g @zowe/cli
 ```
 
-More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Zowe CLI Releases](https://github.com/zowe/zowe-cli/blob/1ec04a68c7b86acebc26e2af834ce48192794ea0/RELEASE_HISTORY.md#zowe-v3x-lts-releases).
+More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Zowe CLI Releases](https://github.com/zowe/zowe-cli/blob/1ec04a68c7b86acebc26e2af834ce48192794ea0/RELEASE_HISTORY.md).
 
 ## Identify the currently installed versions of plug-ins
 
@@ -109,7 +109,7 @@ npm config set logs-max 50
 
         - This command increases the log count to 50, so that more log files will be stored on the system. Now you can run tests multiple times and not lose the log files. The logs can be passed to Support for analysis.
 
-Log files are created only when an npm command fails. To see what is executed, increase the log level of npm:
+By default, log files are created only when an npm command fails. To see what is executed, increase the log level of npm:
 
 ```
 npm config set loglevel verbose
