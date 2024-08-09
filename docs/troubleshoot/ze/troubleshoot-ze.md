@@ -2,9 +2,6 @@
 
 As a Zowe Explorer user, you may encounter problems when using Visual Studio Code extension functions. Review Zowe Explorer known issues and troubleshooting solutions here.
 
-**[--add troubleshooting note on how to clear user credentials from secure storage. Maybe document later for cli and ze; could be included in troubleshooting section if users are having an issue w/ their stored secrete creds, steps to clear cache and start fresh]**
-
-
 ## Before reaching out for support
 
 1. Is there already a GitHub issue (open or closed) that covers the problem? Check [Zowe Explorer Issues](https://github.com/zowe/zowe-explorer-vscode/issues).
