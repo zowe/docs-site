@@ -19,7 +19,11 @@ Add cURL options to establish communication between Zowe CLI and z/OSMF, as in t
 ```
 curl --location --request <API method> "https://<host>:<port>/<API>" --header "X-CSRF-ZOSMF-HEADER;" --insecure --user "<ID>:<PASSWORD>"
 ```
-**NOTE:** Some terminals may require single quotes rather than double quotes.
+:::note
+
+Some terminals might require single quotes rather than double quotes.
+
+:::
 
 
 ### `--location`
@@ -32,21 +36,31 @@ When the server attempts to redirect and `--location` is not included in the com
 
 Use `--request` to identify the API method (such as `POST`, `GET`, `PUT`, `DELETE`). Not necessary when the API method is `GET`.
 
-- `<API method>`: Specifies the API method used in the request.
+- `<API method>`
+
+    Specifies the API method used in the request.
 
 ### `"https://<host>:<port>/<API>"`
 
 Indicates the protocol and URL.
 
-- `<host>`: Specifies the host name where the z/OSMF services are running.
-- `<port>`: Specifies the REST port number. If not specified, defaults to 443 for HTTPS.
-- `<API>`: Specifies the API endpoint used in the request.
+- `<host>`
+
+    Specifies the host name where the z/OSMF services are running.
+- `<port>`
+
+    Specifies the REST port number. If not specified, defaults to 443 for HTTPS.
+- `<API>`
+    
+    Specifies the API endpoint used in the request.
 
 ### `--header "X-CSRF-ZOSMF-HEADER;"`
 
 Required to establish communication with z/OSMF. Specifies that the client is sending a cross-site request to the REST interface.
 
-- `;`: Indicates that the header has no value. (Not all commands require a value.)
+- `;`
+
+    Indicates that the header has no value. (Not all headers require a value.)
 
     To pass an additional header with a value, use a colon to separate the key and value. For example: `--header "X-IBM-Data-Type: binary"`.
 
@@ -60,10 +74,18 @@ For example, this bypasses SSL certificate verification for servers with self-si
 
 Required and displays as plain text. Also possible to [use an environment variable](../../user-guide/cli-using-using-environment-variables.md).
 
-- `<ID>`: Specifies the z/OSMF user identification.
-- `<PASSWORD>`: Specifies the user password for z/OSMF.
+- `<ID>`
 
-**NOTE:** To be prompted for a password instead of displaying it in plain text, omit the password from the command and enter `--user "<ID>"`.
+    Specifies the z/OSMF user identification.
+- `<PASSWORD>`
+
+    Specifies the user password for z/OSMF.
+
+:::note
+
+To be prompted for a password instead of displaying it in plain text, omit the password from the command and enter `--user "<ID>"`.
+
+:::
 
 ## Comparing commands
 

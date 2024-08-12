@@ -811,12 +811,20 @@ module.exports = {
           label: "Developing for Zowe CLI",
           link: {type:"doc", id:"extend/extend-cli/cli-devTutorials"},
           items: [
-            "extend/extend-cli/cli-setting-up",
+            {
+              type: "category",
+              label: "Tutorials for extenders",
+              link: {type:"doc", id:"extend/extend-cli/cli-tutorials"},
+              items: [
+                "extend/extend-cli/cli-setting-up",
+                "extend/extend-cli/cli-installing-sample-plugin",
+                "extend/extend-cli/cli-extending-a-plugin",
+                "extend/extend-cli/cli-developing-a-plugin",
+                "extend/extend-cli/cli-implement-profiles",
+              ],
+            },
+            "extend/extend-cli/cli-authentication-mechanisms",
             "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
-            "extend/extend-cli/cli-installing-sample-plugin",
-            "extend/extend-cli/cli-extending-a-plugin",
-            "extend/extend-cli/cli-developing-a-plugin",
-            "extend/extend-cli/cli-implement-profiles",
           ],
         },
         
