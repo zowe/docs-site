@@ -18,7 +18,7 @@ Display the version of your globally-installed Zowe CLI through the following NP
 npm list -g @zowe/cli
 ```
 
-More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Zowe CLI Releases](https://github.com/zowe/zowe-cli/blob/1ec04a68c7b86acebc26e2af834ce48192794ea0/RELEASE_HISTORY.md).
+More information regarding versioning conventions for Zowe CLI and plug-ins is located in [Zowe CLI Releases](https://github.com/zowe/zowe-cli/blob/master/RELEASE_HISTORY.md#zowe-v3x-lts-releases).
 
 ## Identify the currently installed versions of plug-ins
 
