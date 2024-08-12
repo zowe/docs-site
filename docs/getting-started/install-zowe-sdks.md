@@ -12,7 +12,7 @@ The following SDKs are available.
 
 ## Fundamentals
 
-- New to Zowe Client SDKs? This [Zowe Client SDK overview](overview.md#zowe-client-software-development-kits-sdks) briefly introduces the SDK.
+- New to Zowe Client SDKs? This [Zowe Client SDK overview](overview.md#zowe-client-software-development-kits-sdks) briefly introduces the SDKs.
 
 - The blog [Zowe SDKs - Build z/OS Connected Applications Faster](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9) introduces Zowe SDKs and their benefits.
 
