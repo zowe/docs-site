@@ -1,7 +1,7 @@
 # Enabling single sign on for extending services via PassTicket configuration
-<!-- Enable Single Sign On for Extending Services Using PassTickets-->
-One option for enabling single sign on is by configuring Zowe to use PassTickets, whereby API services can authenticate with API Mediation Layer. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
-<!-- Configure Zowe API ML PassTickets to enable single sign-on (SSO) to your extending REST API services. Passtickets are encoded and encrypted and are only valid for a few minutes after you generate them. PassTickets enable z/OS components and products to authenticate a user ID without storing or caching z/OS passwords or sending the passwords through the network.-->
+
+One option to enable single sign-on (SSO) to your extending REST API services is to configure Zowe API ML PassTickets. Passtickets are encoded and encrypted and are only valid for a few minutes after you generate them. PassTickets enable z/OS components and products to authenticate a user ID without storing or caching z/OS passwords or sending the passwords through the network. Follow the procedures described in this article to configure Zowe to use PassTickets, and to enable Zowe to use PassTickets to authenticate towards specific extending services.
+
 :::info Required Role: security administrator
 :::
 
@@ -15,36 +15,36 @@ One option for enabling single sign on is by configuring Zowe to use PassTickets
         - [Generating PassTickets using ACF2](#generating-passtickets-using-acf2)
         - [Generating PassTickets using Top Secret](#generating-passtickets-using-top-secret)
         - [Generating PassTickets using RACF](#generating-passtickets-using-racf)
-        - [Validating if the PassTicket Application is created](#validating-if-the-passticket-application-is-created)
-- [Adding custom HTTP Auth headers to store user ID and PassTicket](#adding-custom-http-auth-headers-to-store-user-id-and-passticket)
+        - [Verifying your PassTicket Application](#verifying-your-passticket-application)
+- [Adding custom HTTP Auth headers to store user ID and PassTicket](#optional-adding-custom-http-auth-headers-to-store-user-id-and-passticket)
 
 ## Overview of PassTickets 
-API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for this support can be through the use of PassTickets.
-<!--Are there only three supported methods in addition to basic authentication: JWT, PassTickets and SAF IDT? 'An intermediary for this support can be through the use of PassTickets.' Does it mean that Passtickets is just one of the methods or some sort of compromise between client certificates and JWT tokens?-->
+API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for support of JWT or a client certificate can be through the use of PassTickets.
+
 When an API client provides a valid authentication method to API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTicket is a one-time only password that is generated for a specific user ID. 
 The API Gateway uses the PassTicket to access that API service.
 The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
 <!-- Consider adding a diagram to illustrate the workflow above on how PassTickets work. What happens after the user ID and password appear in the auth header of your HTTP request? -->
 ## Configuring Zowe to use PassTickets
-<!-- Configure Zowe API ML to use PassTickets-->
+
 Configuring Zowe to use PassTickets involves two processes:
 * Enabling the use of PassTickets in your External Security Manager (ESM)
 * Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
 
 ### Enabling the use of PassTickets in your External Security Manager (ESM)
-<!-- Enable PassTickets Using an External Security Manager -->
+
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
 To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
 <!-- In each validation scenario below using different ESMs, how does the sec admin know whether a PassTicket is defined? What is the expected result in each case? 'the access of the zoweuser can be determined' not clear what this means-->
 * **Validating an existing PassTicket for ACF2**
-<!-- Validate an Existing .. -->
+
     <details>
 
     <summary>Click here for details about validating an existing PassTicket for ACF2.</summary>
-<!-- To validate an existing PassTicket for ACF2, view command details. -->
+
     In your ESM command line interface or other security environment, execute the following commands:
 
     ```
@@ -69,11 +69,11 @@ To validate if a PassTicket is already defined, use the commands that correspond
     </details>
 
 * **Validating an existing PassTicket for Top Secret**
-<!-- Validate an Existing .. -->
+
     <details>
 
-    <summary>Click here for details about validating an existing PassTicket for Top Secret.</summary>
-<!-- To validate an existing PassTicket for Top Secret, view command details. -->
+    <summary>Click here for command details about validating an existing PassTicket for Top Secret.</summary>
+
     In your ESM command line interface or other security environment, execute the following commands:
     ```
     TSS WHOHAS APPL(<applid>)
@@ -90,11 +90,11 @@ To validate if a PassTicket is already defined, use the commands that correspond
     </details>
 
 * **Validating an existing PassTicket for RACF**
-<!-- Validate an Existing .. -->
+
     <details>
 
-    <summary>Click here for details about validating an existing PassTicket for RACF.</summary>
-<!-- To validate an existing PassTicket for RACF, view command details. -->
+    <summary>Click here for command details about validating an existing PassTicket for RACF.</summary>
+
     In your ESM command line interface or other security environment, execute the following commands:
 
     ```
@@ -118,15 +118,14 @@ To validate if a PassTicket is already defined, use the commands that correspond
 
 :::
 
-Follow these steps to enable PassTicket Support specific to your ESM. Consult with your security administrator to perform the following procedures.
-<!-- 'Consult with your security administrator to perform the following procedures' you already got this covered by specifying the role above. I would assume that you are the security admin here, because you already set that expectation. -->
+Follow these steps to enable PassTicket Support specific to your ESM. 
+
 
 #### Enabling PassTickets with ACF2
-<!-- Enable ...>
+
 <details>
 
 <summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
-<!-- To enable Zowe API ML PassTickets using ACF2, view procedure details-->
 
 1.	In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined. 
 
@@ -140,8 +139,7 @@ F ACF2,REBUILD(PTK),CLASS(P)
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
 * **`MULT-USE`**  
-This setting lets you reuse the same PassTicket multiple times.
-<!-- Enables you to reuse the same PassTicket multiple times-->
+Enables you reuse the same PassTicket multiple times.
 
 * **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
@@ -161,17 +159,16 @@ RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
 Specifies the Zowe server user ID
 
 
-You configured Zowe to use PassTickets using ACF2.
-<!-- ... and enabled SSO? I like the fact that you included intermediary and end results -->
+You configured Zowe to use PassTickets for single sign on using ACF2.
 
 </details>
 
 #### Enabling PassTickets with Top Secret
-<!-- Enable -->
+
 <details>
 
 <summary> Click here for details about configuring Zowe to use PassTickets using Top Secret.</summary>
-<!-- To enable Zowe API ML PassTickets using Top Secret, view procedure details-->
+
 Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
 <!-- Do they know how do do this? -->
 1.	Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
@@ -211,19 +208,19 @@ TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
 ```
 
 * **`stc-userid`**  
-Specifies the ACID that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
-<!-- What is ACID?-- **Default:** CALDAP>	
+Specifies the Accessor ID (ACID) that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
+
+**Default:** CALDAP	
 You configured Zowe to use PassTickets using Top Secret.
 
 </details>
 
 #### Enabling PassTickets with RACF
-<!-- Enable ..-->
 
 <details>
 
 <summary> Click here for details about configuring Zowe to use PassTickets using RACF.</summary>
-<!-- To enable Zowe API ML PassTickets using RACF, view procedure details-->
+
 1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.
 
 In your ESM command line interface or other security environment, execute the following command:
@@ -232,8 +229,8 @@ In your ESM command line interface or other security environment, execute the fo
 SETROPTS CLASSACT(PTKTDATA) RACLIST(PTKTDATA)
 ```
 
-2. Specify the application ID requiring access through PassTicket for the ZOWE server with the following commands:
-<!-- Zowe not all caps -->
+2. Specify the application ID requiring access through PassTicket for the Zowe server with the following commands:
+
 ```
 RDEFINE APPL <applid> UACC(READ)
 SETROPTS CLASSACT(APPL)
@@ -241,8 +238,8 @@ SETROPTS GENERIC(PTKTDATA)
 ```
 
 * **`applid`**  
-A one to 8 character name designated for the application. 
-<!-- Specifies the application ID used for PassTicket validation to authenticate connections to the server.-->
+Specifies the application ID used for PassTicket validation to authenticate connections to the server.  (One to 8 characters) 
+
 :::note 
 This name is usually provided by the site security administrator.
 :::
@@ -285,8 +282,7 @@ As a security administrator, you can issue security commands to allow the Zowe s
 Specify the following variables when generating PassTickets for the API service to enable the Zowe started task user ID:
 
 * **`applid**  
-The APPLID value used by the API service for PassTicket support (e.g. `OMVSAPPL`)
-<!-- for example, OMVSAPPL -->
+The APPLID value used by the API service for PassTicket support (for example, `OMVSAPPL`)
 
 * **zowe-user-id**   
 The Zowe started task user ID used during the Zowe installation
@@ -296,11 +292,11 @@ In the following examples of ESM configuration, replace these variables with act
 Use the configuration format that corresponds to your ESM as presented in the following examples.
 
 #### Generating PassTickets using ACF2
-<!-- Generate -->
+
 <details>
 
 <summary> Click here for details about generating PassTickets using ACF2. </summary>
-<!-- To generate PassTickets using ACF2, view example details-->
+
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
@@ -316,11 +312,11 @@ END
 </details>
 
 #### Generating PassTickets using Top Secret
-<!-- Generate -->
+
 <details>
 
 <summary>Click here for details about generating PassTickets using Top Secret.</summary>
-<!-- To generate PassTickets using Top Secret, view example details-->
+
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
@@ -334,11 +330,11 @@ TSS REFRESH
 </details>
 
 #### Generating PassTickets using RACF
-<!-- Generate -->
+
 <details>
 
 <summary> Click here for details about generating PassTickets using RACF.</summary>
-<!-- To generate PassTickets using Top Secret, view example details-->
+
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
 **Example:**
@@ -349,8 +345,8 @@ SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
 </details>
 
-### Validating if the PassTicket Application is created
-<!-- Verify Your PassTicket Application -->
+### Verifying your PassTicket Application
+
 In your ESM command line interface or other security environment, execute the following commands:
 
 ```
@@ -359,14 +355,13 @@ RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
 
 * **`applid`**  
-The APPLID value used by the API service for PassTicket support
-<!--Specifies the application ID used for PassTicket validation to authenticate connections to the server.-->
+Specifies the application ID used for PassTicket validation to authenticate connections to the server
+
 Successful execution of this validation command shows your application and the specific access of the application.
 <!-- Can you provide an example?-->
 
+## (Optional) Adding custom HTTP Auth headers to store user ID and PassTicket 
 
-## Adding custom HTTP Auth headers to store user ID and PassTicket (Optional)
-<!-- (Optional) Add Custom -->
 If a downstream (southbound) service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
 
