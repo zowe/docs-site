@@ -43,7 +43,7 @@ Any plug-in installed before specifying the environment variable cannot be manag
 
 You can set the log level to adjust the level of detail that is written to log files.
 
-:::info Important
+:::warning
 
 Setting the log level to `TRACE` or `ALL` might result in sensitive data being logged. For example, command line arguments are logged when `TRACE` is set.
 
