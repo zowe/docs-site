@@ -12,13 +12,9 @@ The following SDKs are available.
 
 ## Fundamentals
 
-- [**Zowe Client SDK overview**](overview.md#zowe-client-software-development-kits-sdks)
+- New to Zowe Client SDKs? This [Zowe Client SDK overview](overview.md#zowe-client-software-development-kits-sdks) briefly introduces the SDK.
 
-   New to Zowe Client SDKs? This overview topic briefly introduces what the SDK is.
-
-- [**Blog: Zowe SDKs - Build z/OS Connected Applications Faster**](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9)
-
-   This blog introduces Zowe SDKs and their benefits.
+- The blog [Zowe SDKs - Build z/OS Connected Applications Faster](https://medium.com/zowe/zowe-sdks-build-z-os-connected-applications-faster-b786ba7bb0d9) introduces Zowe SDKs and their benefits.
 
 ## SDK documentation
 
@@ -29,16 +25,15 @@ For detailed SDK documentation, see the following:
 - [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
 - [Zowe SDK Sample Scripts](https://github.com/zowe/zowe-sdk-sample-scripts/)
 
-
-
-
 ## SDK software requirements and dependencies
 
 ### Java SDK
 
 Requires Java Runtime Environment (JRE) 17.
 
-To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk.
+To install this library in your project, use a build tool such as Maven, Gradle, or Ant. Get the necessary artifacts from the [Java SDK repository](https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk).
+
+If you add the Java SDK as a dependency to your project, Maven or Gradle automatically downloads the dependencies.
 
 For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
 
@@ -60,7 +55,15 @@ implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', 
 
 Requires Java Runtime Environment (JRE) 17.
 
-To install this library in your project, use a build tool such as Maven, Gradle or Ant. Use the following link to get necessary artifacts: https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/.
+To install this library in your project, use a build tool such as Maven, Gradle, or Ant. Get the necessary artifacts from the [Kotlin SDK repository](https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/).
+
+If you add the Kotlin SDK as a dependency to your project, Maven or Gradle automatically downloads the dependencies.
+
+:::note
+
+You must download the `JAR` file and install it into your local repository using Maven or Gradle.
+
+:::
 
 For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
 
@@ -100,7 +103,7 @@ npm install core-for-zowe-sdk.tgz
 
 ### Python SDK *technical preview*
 
-If you install Python SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically. **[should we add this sentence to the Kotlin and Java sections above?]**
+If you install Python SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically.
 
 If you download the Python SDK packages from Zowe.org, the downloaded folder contains dependencies that you must install manually. Extract the `WHL` files from the folder, copy the files to your project, and issue the following command for each dependency:
 
@@ -124,7 +127,11 @@ Pull the packages from an online registry such as npm or PyPi:
       - `<packageName>`
       The name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-    The package is installed. Node packages are defined in `package.json` in your project. Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows). **[what about java and kotlin?]**
+    The package is installed.
+      
+      - Node packages are defined in `package.json` in your project.
+      - Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
+      - For the Java and Kotlin SDKs, Maven puts libraries in the `~/.m2/repository` directory and Gradle puts libraries in the `~/.gradle/caches/modules-2/files-2.1` directory, where `~` represents the path to the user's home directory.
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
@@ -132,7 +139,11 @@ Pull the packages from an online registry such as npm or PyPi:
 
     - To define versioning for Python packages, specify versions or version ranges in a `requirements.txt` file checked-in to your project. For more information, see [pip install](https://pip.pypa.io/en/stable/cli/pip_install/) in the pip documentation.
 
-    **[what about java and kotlin?]**
+   - To define versioning for Python packages, specify versions or version ranges in the `pom.xml` or `build.gradle` files checked-in to your project.
+   
+      - In Maven, versioning ranges can be [specified in the `pom.xml` file](https://cwiki.apache.org/confluence/display/MAVENOLD/Dependency+Mediation+and+Conflict+Resolution#DependencyMediationandConflictResolution-DependencyVersionRanges).
+
+      - In Gradle, versioning ranges can be [specified in the `build.gradle` file](https://docs.gradle.org/current/userguide/single_versions.html).
 
 ### Installing an SDK from a local package
 
