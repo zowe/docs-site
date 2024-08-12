@@ -33,7 +33,7 @@ Requires Java Runtime Environment (JRE) 17.
 
 To install this library in your project, use a build tool such as Maven, Gradle, or Ant. Get the necessary artifacts from the [Java SDK repository](https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk).
 
-If you add the Java SDK as a dependency to your project, Maven or Gradle automatically downloads the dependencies.
+If you add the Java SDK as a dependency to your project, Maven or Gradle automatically downloads any additional dependencies needed to use the SDK.
 
 For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
 
@@ -57,7 +57,8 @@ Requires Java Runtime Environment (JRE) 17.
 
 To install this library in your project, use a build tool such as Maven, Gradle, or Ant. Get the necessary artifacts from the [Kotlin SDK repository](https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/).
 
-If you add the Kotlin SDK as a dependency to your project, Maven or Gradle automatically downloads the dependencies.
+If you add the Kotlin SDK as a dependency to your project, Maven or Gradle automatically downloads any additional dependencies needed to use the SDK.
+
 
 :::note
 
@@ -91,7 +92,7 @@ import org.zowe.kotlinsdk
 
 If you install Node SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically.
 
-If you download Node SDK packages from Zowe.org, the folder contains dependencies that you must install manually. Extract the `TGZ` files from the folder, copy the files to your project, and issue the following commands to install the dependencies.
+If you download Node SDK packages from Zowe.org, the downloaded folder contains dependencies that you must install manually. Extract the `TGZ` files from the folder, copy the files to your project, and issue the following commands to install the dependencies:
 
 ```
 npm install imperative.tgz
