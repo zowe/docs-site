@@ -4,7 +4,7 @@ After the Zowe&trade; started task `ZWESLSTC` is running, follow the instruction
 
 - [Verifying Zowe Application Framework installation](#verifying-zowe-application-framework-installation)
 - [Verifying API Mediation installation](#verifying-api-mediation-installation)
-- [Verifying z/OS Services installation](#verifying-z-os-services-installation)
+- [Verifying z/OS Services installation](#verifying-zos-services-installation)
 
 :::note
 Not all components may have been started. Which components have been started depends on your setting of the component `enabled` status in Zowe configuration file (usually `zowe.yaml`). 

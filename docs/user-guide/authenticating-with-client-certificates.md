@@ -74,7 +74,7 @@ This metadata can be used for TLS client authentication.
 
 ## Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication](#configure-your-zos-system-to-support-client-certificate-authentication) described previously in this article. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication for a specific user](#configure-your-zos-system-to-support-client-certificate-authentication-for-a-specific-user) described previously in this article. 
 
 Validate using _CURL_, a command line utility that runs on Linux based systems:
 

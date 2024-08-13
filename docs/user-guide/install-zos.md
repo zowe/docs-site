@@ -72,7 +72,7 @@ Begin the installation process by familiarizing yourself with the following topi
    Each method to perform Zowe server-side component installation contains the same contents. Choose the method based on your needs. The Zowe z/OS binaries are distributed in the following formats: 
 
    - **Convenience build**  
-   The Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer these binaries to a USS directory and expand the contents. Use the [zwe](installandconfig.md#zwe-server-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
+   The Zowe z/OS binaries are packaged as a PAX file which is a full product install. Transfer these binaries to a USS directory and expand the contents. Use the [zwe](installandconfig.md#zwe-command) command `zwe install` to extract a number of PDS members which contain load modules, JCL scripts, and PARMLIB entries. 
 
    - **SMP/E build**  
    Zowe z/OS binaries are packaged as the following files that you can download. You install this build through SMP/E.  

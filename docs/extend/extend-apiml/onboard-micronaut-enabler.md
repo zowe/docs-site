@@ -9,10 +9,6 @@ For more information about onboarding API services with the API ML, see the [Onb
 For Micronaut-related documentation, see the [Micronaut website](https://docs.micronaut.io/latest/guide/index#introduction).
 
 - [Set up your build automation system](#set-up-your-build-automation-system)
-  - [Specify the main class](#specify-the-main-class)
-  - [Define the output jar file](#define-the-output-jar-file)
-  - (Optional) [Create a shadow jar](#create-a-shadow-jar)
-  - [Start the application](#start-the-application)
 - [Configure the Micronaut application](#configure-the-micronaut-application)
   - [Add API ML configuration](#add-api-ml-configuration)
   - [Add Micronaut configuration](#add-micronaut-configuration)

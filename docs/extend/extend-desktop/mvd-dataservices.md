@@ -123,7 +123,7 @@ To create multiple instances of Tomcat on non-Windows computers, the Zowe Applic
 ## Using dataservices with RBAC
 If your administrator configures the Zowe Application Framework to use role-based access control (RBAC), then when you create a dataservice you must consider the length of its paths.
 
-To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Applying role-based access control to dataservices](../../user-guide/mvd-configuration.md#applying-role-based-access-control-to-dataservices).
+To control access to dataservices, administrators can enable RBAC, then use a z/OS security product such as RACF to map roles and authorities to a System Authorization Facility (SAF) profile. For information on RBAC, see [Controlling access to dataservices](../../user-guide/mvd-configuration.md#controlling-access-to-dataservices).
 
 SAF profiles have the following format:
 
