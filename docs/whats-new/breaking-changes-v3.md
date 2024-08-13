@@ -16,7 +16,7 @@ Review this article for details about changes to various Zowe components to be i
 | Jobs API will be archived | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json) you need to move to the usage of the similar z/OSMF endpoints.               |
 | Metrics service will be archived | The service was in Technical Preview. Currently there is no replacement. In V3, the Open Telemetry standard will be implemented that serves as a replacement.                                                                                                                                                                                                     |
 | IMS API will be archived | The service was not fully supported. If you were using the API, please reach out to the IBM team for follow-up steps.                                                                                                                                                                                                                                |
-| Java 17 will be required for the API Mediation Layer to run | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. It is necessary to install Java 17 and provide the path to Java 17 to Zowe J ava configuration.                                                                                                                                                                                                |
+| Java 17 will be required for the API Mediation Layer to run | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. It is necessary to install Java 17 and provide the path to Java 17 to Zowe Java configuration.                                                                                                                                                                                                |
 | z/OSMF in version V2R5 with APAR PH12143 applied | If you are running a version of z/OS before 3.1, validate that PH12143 APAR was applied to the z/OSMF installation used by Zowe                                                                                                                                                                                                                                                    |
 | Configuration of keyrings will require transformation from `safkeyring:////` to `safkeyring://` | If your Zowe configuration contains `safkeyring:////`, change this part to `safkeyring://`                                                                                                                                                                                                                                                                            |
 | Support access to z/OSMF only via /ibmzosmf route. Supporting both created issues for CLI setup | If you use z/OSMF via `{apimlUrl}/zosmf/{zosmfEndpoint}` you need to move to `{apimlUrl}/ibmzosmf/{zosmfEndpoint}`                                                                                                                                                                                                                                                |
@@ -24,17 +24,6 @@ Review this article for details about changes to various Zowe components to be i
 
 The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly.
  
-## Application Framework
-
-### Breaking changes
-
-| Change in  Zowe V3 | Required action |  
-|----|-----------------------|
-| Updating Angular to Version 16 from Version 12 | ??? |
-| Removing the core-js dependency | ??? |
-| Updating Webpack to version 5 | ??? |
-| Updating Typescript to 4.9 | ??? |
-
 ## CLI
 
 ### Breaking changes
@@ -48,6 +37,15 @@ The current API Gateway contains Authentication and Authorization Services. This
 ### Pre-release availability
 
 * V3 pre-release versions are available via [npm](https://www.npmjs.com/package/@zowe/cli?activeTab=readme) under the 'next' tag
+
+## Application Framework
+
+### Breaking changes
+
+* Updating Angular to Version 16 from Version 12 
+* Removing the core-js dependency 
+* Updating Webpack to version 5 
+* Updating Typescript to 4.9 
 
 ## Explorer for Intellij
 
