@@ -1,4 +1,4 @@
-# Important Updates in Zowe V3
+# Important updates in Zowe V3
 
 The upcoming release of Zowe V3 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
 
