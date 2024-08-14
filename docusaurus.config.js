@@ -232,9 +232,6 @@ module.exports = {
             "v2.15.x": {
               label: "v2.15.x LTS",
             },
-            "v2.14.x": {
-              label: "v2.14.x LTS",              
-            },
           },
         },
         googleAnalytics: {
