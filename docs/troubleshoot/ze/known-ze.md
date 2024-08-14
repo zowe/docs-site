@@ -87,7 +87,7 @@ Detail: File seems to be binary and cannot be opened as text. This is likely cau
 
 There is no solution or workaround at this time.
 
-## Theia mainframe connection error
+## Visual Studio Code mainframe connection error
 
 **Symptom:**
 
@@ -101,6 +101,6 @@ When performing an action that requires a mainframe connection (such as searchin
 
 **Solution:**
 
-In Theia settings, search for `proxy` and change the http.proxySupport setting to `off`, as in the following image:
+In VS Code settings, search for `proxy` and change the http.proxySupport setting to `off`, as in the following image:
 
 ![Proxy Support set to off](../../images/ze/ZE-proxy-support-off.png)

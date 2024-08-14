@@ -94,7 +94,7 @@ Your application then properly recognizes the SAF IDT scheme and fills the `X-SA
 
 You can generate and verify an existing SAF token by using an implementation of the SAF IDT provider that utilizes a ZSS solution. 
 
-[SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/master/gateway-service/src/main/java/org/zowe/apiml/gateway/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
+[SafRestAuthenticationService](https://github.com/zowe/api-layer/blob/v3.x.x/zaas-service/src/main/java/org/zowe/apiml/zaas/security/service/saf/SafRestAuthenticationService.java) is an example of the SAF IDT provider implementation which uses REST as a method of communication.
 
 To use `SafRestAuthenticationService` ensure that `ZWE_configs_apiml_security_saf_provider` is set to `rest`. (This is the default value)
 Set the following environment parameters in `zowe.yaml`:

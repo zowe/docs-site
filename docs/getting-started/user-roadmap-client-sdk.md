@@ -2,12 +2,6 @@
 
 This roadmap outlines information resources that are applicable to the various user roles who are interested in Zowe Client Software Development Kits (SDKs) which is a Zowe component still under development. These resources provide information about various subject areas, such as learning basic skills, installation, developing, and troubleshooting for Zowe Client SDKs.
 
-
-
-
-
-
-
 ## Troubleshooting and support
 
 - [**Sumit an issue**](https://github.com/zowe/zowe-cli/issues/new)

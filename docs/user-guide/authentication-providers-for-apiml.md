@@ -4,7 +4,7 @@
 :::
 
 Choose from the following providers to handle authentication for the API Gateway:  
-* [z/OSMF Authentication Provider](#z-osmf-authentication-provider)
+* [z/OSMF Authentication Provider](#zosmf-authentication-provider)
 * [SAF Authentication Provider](#saf-authentication-provider)
 
 :::note

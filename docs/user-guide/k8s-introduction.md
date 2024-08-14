@@ -14,6 +14,10 @@ Using containers for installation has the following advantages:
 
 For more information about containers, see the [Kubernetes website](https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/) to learn about key concepts.
 
+:::tip
+You can now perform Zowe installation via the Zowe Server Install Wizard. Using the wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. For more information about the wizard, see [Installing Zowe via Zowe Server Install Wizard](./install-zowe-server-install-wizard.md).
+:::
+
 ## End-to-end container installation
 
 ![Container installation](../images/install/containerization-install.png)

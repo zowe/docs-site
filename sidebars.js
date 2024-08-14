@@ -4,14 +4,6 @@ module.exports = {
     "whats-new/zowe-announcements",
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
-      label: "Zowe vNext",
-      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
-      items: [
-        "whats-new/zowe-v3-office-hours",       
-      ],
-    },
-    {
-      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Release notes",
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
@@ -37,6 +29,16 @@ module.exports = {
         "whats-new/release-notes/v2_2_0",
         "whats-new/release-notes/v2_1_0",
         "whats-new/release-notes/v2_0_0",
+      ],
+    },
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V3 preview",
+      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
+      items: [
+        "whats-new/zowe-v3-office-hours",
+        "whats-new/zowe-v3-conformance-criteria",
+        "whats-new/zowe-v3-frequently-asked-questions",
       ],
     },
   ],
@@ -125,6 +127,7 @@ module.exports = {
             "user-guide/address-browser-requirements",
           ]
         },
+      "user-guide/install-zowe-server-install-wizard",
         {
           type: "category",
           label: "Installing Zowe via SMP/E",
@@ -309,7 +312,8 @@ module.exports = {
               ]
             },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
-            "user-guide/api-mediation/configuration-at-tls"
+            "user-guide/api-mediation/configuration-at-tls",
+            "user-guide/api-mediation/configuration-logging",  
           ]
         }        
         ],

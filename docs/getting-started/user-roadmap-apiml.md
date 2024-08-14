@@ -32,7 +32,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
   This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory, instance directory, and keystore directory.
 
-- [**Installing API Mediation Layer**](../user-guide/install-zos.md#end-to-end-installation)
+- [**Installing API Mediation Layer**](../user-guide/install-zos.md)
 
    This article provides an overview of the essential steps involved in installing the API Mediation Layer.
 
@@ -66,7 +66,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 > Zowe skill level: Advanced
 
-- [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extend-zowe-api-mediation-layer) 
+- [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extending-zowe-api-mediation-layer) 
 
    Learn how you can extend the Zowe API Mediation Layer. Extenders make it possible to build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog, and for routing through the API Gateway.
 

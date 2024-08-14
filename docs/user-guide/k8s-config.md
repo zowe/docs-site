@@ -168,9 +168,9 @@ Review the following table for steps you may take depending on the Kubernetes pr
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
 | minikube                  | LoadBalancer or NodePort | Port Forward (on next section Starting, stopping, and monitoring)|
 | docker-desktop            | LoadBalancer             | none                                                       |
-| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4b-create-ingress-for-bare-metal-only)   |
+| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4b-create-ingress-bare-metal)            |
 | cloud-vendors             | LoadBalancer             | none                                                       |
-| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4c-create-route-for-openshift-only)        |
+| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4c-create-route-openshift)                 |
 
 
 #### Defining api-catalog service
@@ -233,7 +233,7 @@ kubectl apply -f samples/discovery-service-np.yaml
 
 ```kubectl get services --namespace zowe``` 
 
-Upon completion of all the preceding steps in this [a. Create service](#a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
+Upon completion of all the preceding steps in this [4a. Create service](#4a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
 
 ### 4b. Create Ingress (Bare-metal)
 

@@ -35,6 +35,8 @@ zowe:
     - [Configure component caching-service](#configure-component-caching-service)
     - [Configure component app-server](#configure-component-app-server)
     - [Configure component zss](#configure-component-zss)
+    - [Configure component jobs-api](#configure-component-jobs-api)
+    - [Configure component files-api](#configure-component-files-api)
     - [Configure component explorer-jes](#configure-component-explorer-jes)
     - [Configure component explorer-mvs](#configure-component-explorer-mvs)
     - [Configure component explorer-uss](#configure-component-explorer-uss)
@@ -407,7 +409,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 - **`components.<component>.enabled`**  
  Defines if you want to start this component in this Zowe instance. This allows you to control each component instead of a group.
 - **`components.<component>.certificate`**  
- You can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations-certificate). If this is not customized, the component will use certificates defined in `zowe.certificate`.
+ You can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this is not customized, the component will use certificates defined in `zowe.certificate`.
 - **`components.<component>.launcher`**  
  Any component can have a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 

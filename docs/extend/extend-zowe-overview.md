@@ -6,7 +6,7 @@ Zowe can be extended in the following ways:
 
 **[Extending the server side](#extending-the-server-side)**
 
-- [Extend Zowe API Mediation Layer](#extend-zowe-api-mediation-layer)
+- [Extending Zowe API Mediation Layer](#extending-zowe-api-mediation-layer)
 - [Developing for Zowe Application Framework](#developing-for-zowe-application-framework)
 
 **[Extending the client side](#extending-the-client-side)**
@@ -17,7 +17,7 @@ Zowe can be extended in the following ways:
 
 To assist with extension development, see the following [Sample extensions](#sample-extensions):
 
-- [Sample Zowe API and API Catalog extension](#sample-zowe-api-and-api-catalog-extension)
+- [Sample Zowe API and API Catalog onboarded service](#sample-zowe-api-and-api-catalog-onboarded-service)
 - [Sample Zowe Desktop extension](#sample-zowe-desktop-extension)
 
 ## Extending the server side

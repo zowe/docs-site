@@ -14,9 +14,11 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Workaround for MD links without extensions being detected as broken
+      # TODO Pass Lychee option "--fallback-extensions md" once it's available
+      # See https://github.com/lycheeverse/lychee/pull/1422
       - name: Create symlinks
         run: |
           find docs -name "*.md" -type f | while read f; do
@@ -24,15 +26,16 @@ jobs:
           done
 
       - name: Restore lychee cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .lycheecache
           key: cache-lychee-${{ github.base_ref || github.ref_name }}
           restore-keys: cache-lychee-
+          save-always: true
 
       - name: Run lychee
         uses: lycheeverse/lychee-action@v1
         with:
-          args: "--accept 403,406,429 --cache --max-cache-age 1d --max-concurrency 2 --no-progress --timeout 60 --verbose 'docs/**/*.md'"
+          args: "--accept 403,406,429 --cache --include-fragments --max-cache-age 1d --max-concurrency 2 --no-progress --timeout 60 --verbose 'docs/**/*.md'"
           fail: true
           token: ${{ secrets.GITHUB_TOKEN }}

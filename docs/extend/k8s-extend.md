@@ -36,7 +36,7 @@ To start your component in Kubernetes, you must define a [Deployment](https://ku
 To define `Deployment` for your component, you can copy from `samples/sample-deployment.yaml` and modify all occurrences of the following variables:
 
 - `<my-component-name>`: this is your component name. For example, `sample-node-api`.
-- `<my-component-image>`: this is your component image described in [Build and publish an extension image to a registry](#build-and-publish-an-extension-image-to-a-registry). For example, `zowe-docker-release.jfrog.io/ompzowe/sample-node-api:latest-ubuntu`.
+- `<my-component-image>`: this is your component image described in [Build and publish an extension image to a registry](#1-build-and-publish-an-extension-image-to-a-registry). For example, `zowe-docker-release.jfrog.io/ompzowe/sample-node-api:latest-ubuntu`.
 - `<my-component-port>`: this is the port of your service. For example, `8080`.
 
 Continue to customize the specification to fit in your component requirements:
