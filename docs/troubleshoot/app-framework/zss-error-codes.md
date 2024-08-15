@@ -373,9 +373,9 @@ No action required.
 
   **Reasons:**
 
-  authPluginLib was missing in the `ZWESASTC JCL` and the `ZWESISTS JCL`.
+  authPluginLib was missing in the `ZWESASTC JCL` and the `ZWESISTC JCL`.
 
   **Action:**
  
-  The `IZPSRGSP`,`IZPSRGAD`, and `ZWESVUSR` need read access to the profile `OMVSAPPL`. Then the ZWESASTC started task was started successfully by the ZWESISTS started task.
+  When the Zowe STC userid has read access to the profile SAF `OMVSAPPL`, the `ZWESASTC` task will be able to successfully be started on an as-needed basis from `ZWESISTC`.
 
