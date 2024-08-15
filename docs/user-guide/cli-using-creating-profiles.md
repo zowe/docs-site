@@ -244,3 +244,72 @@ In the following configuration, services are accessed through the API ML using c
     "autoStore": true
 }
 ```
+
+## Accessing services for multiple API ML instances
+
+In the following configuration, the profiles are structured to allow multiple instances of the API ML.
+
+```
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar1": {
+            "properties": {
+                "host": "example1.com",
+                "port": 7554,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "basePath": "api/v1"
+                    }
+                },
+                "tso": {
+                    "type": "tso",
+                    "properties": {
+                        "account": "ACCT#",
+                        "codePage": "1047",
+                        "logonProcedure": "IZUFPROC"
+                    }
+                },
+                "ssh": {
+                    "type": "ssh",
+                    "properties": {
+                        "port": 22
+                    }
+                }
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        },
+        "lpar2": {
+            "properties": {
+                "host": "example2.com",
+                "port": 7554,
+                "rejectUnauthorized": false,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "basePath": "api/v1"
+                    }
+                }
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar2.zosmf",
+        "tso": "lpar1.tso",
+        "ssh": "lpar1.ssh"
+    },
+    "autoStore": true
+}
+```
