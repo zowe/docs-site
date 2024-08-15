@@ -323,7 +323,7 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Action:**
 
-  If the next message is `ZWES1037E` then refer [ZWES1037E](###ZWES1037E). Otherwise, examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command, e.g. use `bpxmtext 744c7247` if you got `res='0x744c7247'`
+  If the next message is `ZWES1037E` then refer [ZWES1037E](#zwes1037e). Otherwise, examine the reason code with [`bpxmtext`](https://www.ibm.com/docs/en/zos/2.4.0?topic=descriptions-bpxmtext-display-reason-code-text) command, e.g. use `bpxmtext 744c7247` if you got `res='0x744c7247'`
 
 ### ZWES1037E
 

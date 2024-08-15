@@ -6,7 +6,7 @@ This article describes the process of configuring a REST service to onboard with
 * [Configuring a REST service for API ML onboarding](#configuring-a-rest-service-for-api-ml-onboarding)
 * [Plain Java Enabler service onboarding](#plain-java-enabler-service-onboarding-api)
     * [Automatic initialization of the onboarding configuration by a single method call](#automatic-initialization-of-the-onboarding-configuration-by-a-single-method-call)
-* [Validating successful onboarding with the API Mediation Layer](#Validating-successful-onboarding-with-the-API-Mediation-Layer)
+* [Validating successful onboarding with the API Mediation Layer](#validating-successful-onboarding-with-the-api-mediation-layer)
 * [Loading YAML configuration files](#loading-yaml-configuration-files)
     * [Loading a single YAML configuration file](#loading-a-single-yaml-configuration-file)
     * [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files)
@@ -130,7 +130,7 @@ After successfully loading a configuration file, the loading method `loadConfigu
 ### Loading a single YAML configuration file
   
 To build your configuration from multiple sources, load a single configuration file, and then 
-rewrite parameters as needed using values from another configuration source. See: [Loading and merging two YAML configuration files](#Loading-and-merging-two-YAML-configuration-files) described later in this article.   
+rewrite parameters as needed using values from another configuration source. See: [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files) described later in this article.   
 
 Use the following method to load a single _YAML_ configuration file:
  

@@ -69,7 +69,7 @@ The zssServer is used for secure services for the Zowe desktop.
 ZWES1013I ZSS Server has started. Version '2.5.0+20221130' 31-bit
 ```
 
-The zssServer will register itself with the cross memory server running under the address space `ZWESISTC`.  You can use the attach message ID `ZWES1014I` to check that this has occurred successfully.  If this message contains a nonzero return code in the `cmsRC=` value, then a failure occurred. For more information on how to diagnose these, see [ZSS server unable to communicate with X-MEM](./app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-x-mem).
+The zssServer will register itself with the cross memory server running under the address space `ZWESISTC`.  You can use the attach message ID `ZWES1014I` to check that this has occurred successfully.  If this message contains a nonzero return code in the `cmsRC=` value, then a failure occurred. For more information on how to diagnose these, see [ZSS server unable to communicate with ZIS](./app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-zis).
 
 ```
 ZWES1014I ZIS status - 'Ok' (name='ZWESIS_STD      ', cmsRC='0', description='Ok', clientVersion='2')
