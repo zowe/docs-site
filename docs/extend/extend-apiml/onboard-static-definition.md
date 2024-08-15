@@ -8,7 +8,7 @@ When developing a new service, it is not recommended to onboard a REST service u
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
-* [Identify the API that you want to expose](#identify-the-api-that-you-want-to-expose)
+* [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
 * [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
 * [Route your API](#route-your-api)
 * [Customize configuration parameters](#customize-configuration-parameters)
@@ -478,7 +478,7 @@ After you define and validate the service in YAML format, you are ready to add y
 
 **Follow these steps:**
 
-1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESVSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
+1. Locate the Zowe instance directory. The Zowe instance directory is the directory from which Zowe was launched, or else was passed as an argument to the SDSF command used to start Zowe.  If you are unsure which instance directory a particular Zowe job is using, open the `JESJCL` spool file and navigate to the line that contains `STARTING EXEC ZWESLSTC,INSTANCE=`. This is the fully qualified path to the instance directory.
 
 :::note
 The `${zoweInstanceDir}` symbol is used in following instructions.

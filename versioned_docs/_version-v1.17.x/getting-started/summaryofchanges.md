@@ -112,7 +112,7 @@ The following enhancement was made to enable support for Node.js v14 for the **I
 
 #### Zowe Explorer
 
-- Added login and logout functions for base profiles. You can now log in to API Mediation Layer and generate a token for your base profile. [#914](https://github.com/zowe/vscode-extension-for-zowe/issues/914)
+- Added login and logout functions for base profiles. You can now log in to API Mediation Layer and generate a token for your base profile. [#914](https://github.com/zowe/zowe-explorer-vscode/issues/914)
 
 #### Zowe JES/MVS/USS Explorers
 <!-- JES Explorer <1.0.7> -->
@@ -144,9 +144,9 @@ The following bug was fixed in the **Imperative CLI Framework**:
 
 #### Zowe Explorer
 
-- Fixed the empty profile folders in Favorites issue. [#1026](https://github.com/zowe/vscode-extension-for-zowe/issues/1026)
-- Fixed the initialization error that occurred when base profiles were used while being logged out from API ML. [#1063](https://github.com/zowe/vscode-extension-for-zowe/issues/1063)
-- Fixed the issue preventing the tree refresh function from updating extender profiles. [#1078](https://github.com/zowe/vscode-extension-for-zowe/issues/1078)
+- Fixed the empty profile folders in Favorites issue. [#1026](https://github.com/zowe/zowe-explorer-vscode/issues/1026)
+- Fixed the initialization error that occurred when base profiles were used while being logged out from API ML. [#1063](https://github.com/zowe/zowe-explorer-vscode/issues/1063)
+- Fixed the issue preventing the tree refresh function from updating extender profiles. [#1078](https://github.com/zowe/zowe-explorer-vscode/issues/1078)
 
 ## Version 1.16.0 LTS (October 2020)
 
@@ -208,13 +208,13 @@ The following enhancements were added to the **core CLI**:
 - Added new options `--lrecl` and `--recfm` to the `zos-files create` command. Use these options to specify a logical record length and record format for data sets that you create. [#788](https://github.com/zowe/zowe-cli/issues/788)
 
 #### Zowe Explorer
-<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release 1.8.0. Includes 1.9.0 changes.-->
-- Added the Allocate Like feature. [#904](https://github.com/zowe/vscode-extension-for-zowe/issues/904)
-- Added the ability to disable/enable profile validation. [#922](https://github.com/zowe/vscode-extension-for-zowe/issues/922)
-- Added the ability to access other profiles during profile validation. [#953](https://github.com/zowe/vscode-extension-for-zowe/issues/953)
-- Grouped Favorites by profile for Datasets, USS, and Jobs. [#168](https://github.com/zowe/vscode-extension-for-zowe/issues/168)
-- Once entered, datasets and members are displayed in uppercase. [#962](https://github.com/zowe/vscode-extension-for-zowe/issues/962)
-- Updated the environment check for Theia compatibility. [#1009](https://github.com/zowe/vscode-extension-for-zowe/issues/1009)
+<!-- Pulled from https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release 1.8.0. Includes 1.9.0 changes.-->
+- Added the Allocate Like feature. [#904](https://github.com/zowe/zowe-explorer-vscode/issues/904)
+- Added the ability to disable/enable profile validation. [#922](https://github.com/zowe/zowe-explorer-vscode/issues/922)
+- Added the ability to access other profiles during profile validation. [#953](https://github.com/zowe/zowe-explorer-vscode/issues/953)
+- Grouped Favorites by profile for Datasets, USS, and Jobs. [#168](https://github.com/zowe/zowe-explorer-vscode/issues/168)
+- Once entered, datasets and members are displayed in uppercase. [#962](https://github.com/zowe/zowe-explorer-vscode/issues/962)
+- Updated the environment check for Theia compatibility. [#1009](https://github.com/zowe/zowe-explorer-vscode/issues/1009)
 
 #### Zowe JES/MVS/USS Explorers
 
@@ -271,9 +271,9 @@ The following bug was fixed in the **FTP plug-in for Zowe CLI**:
 
 ### Zowe Explorer
 
-- Fixed USS renaming issues. [#911](https://github.com/zowe/vscode-extension-for-zowe/issues/911)
-- Fixed the deletion of datasets issue. [#963](https://github.com/zowe/vscode-extension-for-zowe/issues/963).
-- Removed errors in Favorites items caused by profiles that are created by other extensions. [#968](https://github.com/zowe/vscode-extension-for-zowe/issues/968)
+- Fixed USS renaming issues. [#911](https://github.com/zowe/zowe-explorer-vscode/issues/911)
+- Fixed the deletion of datasets issue. [#963](https://github.com/zowe/zowe-explorer-vscode/issues/963).
+- Removed errors in Favorites items caused by profiles that are created by other extensions. [#968](https://github.com/zowe/zowe-explorer-vscode/issues/968)
 
 
 ## Version 1.15.0 LTS (September 2020)
@@ -361,7 +361,7 @@ The following features and enhancements were added to the **Secure Credential St
 - Changed the `scs update` and `scs revert` commands so that they fail if Secure Credential Manager is not enabled. [#23](https://github.com/zowe/zowe-cli-scs-plugin/pull/23)
 
 <!--#### Zowe Explorer -->
-<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release publish date Aug 13. No changes.-->
+<!-- Pulled from https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md . Based on change history and date, pull updates after last release publish date Aug 13. No changes.-->
 
 #### Zowe JES/MVS/USS Explorers
 
@@ -405,7 +405,7 @@ The following bug was fixed in the **Imperative CLI Framework**:
 - Fixed an issue with `ConnectionPropsForSessCfg` where the user would be prompted for user/password even if a token was present. [#436](https://github.com/zowe/imperative/pull/436)
 
 <!--#### Zowe Explorer -->
-<!-- Pulled from https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md no changes since Aug 13.-->
+<!-- Pulled from https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md no changes since Aug 13.-->
 
 #### Zowe JES/MVS/USS Explorers
 
@@ -719,7 +719,7 @@ The following features and enhancements were added to the **z/OS FTP Plug-in for
 
 #### Zowe Explorer
 
-Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+Review the [Zowe Explorer Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
@@ -827,7 +827,7 @@ Reference the appropriate version in each of the following changelogs to learn a
 
 #### Zowe Explorer
 
-Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+Review the [Zowe Explorer Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
@@ -932,7 +932,7 @@ The Secure Credential Store plug-in is now packaged with tools that build depend
 
 #### Zowe Explorer
 
-Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+Review the [Zowe Explorer Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
@@ -1061,7 +1061,7 @@ The IBM® CICS® Plug-in is updated with the following functionality:
 
 #### Zowe Explorer
 
-Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+Review the [Zowe Explorer Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
@@ -1142,7 +1142,7 @@ For more information about how to install Zowe z/OS components, see [Installatio
 
 #### Zowe Explorer
 
-Review the [Zowe Explorer Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
+Review the [Zowe Explorer Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest features, enhancements, and fixes.
 
 You can install the latest version of the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe).
 
@@ -1226,7 +1226,7 @@ The following features and enhancements were added.
 #### Zowe Explorer (Extension for VSCode)
 
 - The name of the extension was changed from "VSCode Extension for Zowe" to "Zowe Explorer".
-- The VSCode Extension for Zowe contains various changes in this release. For more information, see the [VSCode Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md#0270).
+- The VSCode Extension for Zowe contains various changes in this release. For more information, see the [VSCode Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md#0270).
 
 ### Bug fixes
 
@@ -1265,7 +1265,7 @@ The following enhancement was added:
 
 ### What's new in the Visual Studio Code (VSC) Extension for Zowe
 
-The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension.
+The Visual Studio Code (VSC) Extension for Zowe lets you interact with data sets and USS files from a convenient graphical interface. Review the [Change Log](https://github.com/zowe/zowe-explorer-vscode/blob/master/CHANGELOG.md) to learn about the latest improvements to the extension.
 
 You can [download the latest version](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) from the VSC Marketplace.
 
@@ -1419,7 +1419,7 @@ You can now explore the Zowe CLI command help in an interactive online format. S
 
 The following new commands and enhancements are added:
 
-- The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. [(#32)](https://github.com/zowe/vscode-extension-for-zowe/issues/32)
+- The [VSCode Extension for Zowe](https://marketplace.visualstudio.com/items?itemName=Zowe.vscode-extension-for-zowe) now supports manipulation of USS files. [(#32)](https://github.com/zowe/zowe-explorer-vscode/issues/32)
 - You can now archive z/OS workflows using a wildcard. [(#435)](https://github.com/zowe/zowe-cli/pull/435)
 - The z/OS Workflows functionality is now exported to an API. Developers can leverage the exported APIs to create applications and scripts without going through the CLI layer. [(#482)](https://github.com/zowe/zowe-cli/pull/482)
 - The CLI now exploits all "z/OS data set and file REST interface" options that are provided in z/OSMF v2.3. [(#491)](

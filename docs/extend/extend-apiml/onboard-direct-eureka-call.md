@@ -276,7 +276,7 @@ This parameter specifies a service authentication scheme. The following schemes 
 
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme. It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.  
-    **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
+    **Tip:** For more information, see [Accepting PassTickets](api-medation-sso-integration-extenders.md#accepting-passtickets).
 
     * **zosmf**  
     This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
@@ -368,5 +368,4 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
 
 ## External Resources
 
- - https://blog.asarkar.org/technical/netflix-eureka/
  - https://github.com/Netflix/eureka/wiki/Eureka-REST-operations

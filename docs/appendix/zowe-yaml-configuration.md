@@ -37,9 +37,6 @@ zowe:
     - [Configure component zss](#configure-component-zss)
     - [Configure component jobs-api](#configure-component-jobs-api)
     - [Configure component files-api](#configure-component-files-api)
-    - [Configure component explorer-jes](#configure-component-explorer-jes)
-    - [Configure component explorer-mvs](#configure-component-explorer-mvs)
-    - [Configure component explorer-uss](#configure-component-explorer-uss)
     - [Configure external extension](#configure-external-extension)
 - [YAML configurations - haInstances](#yaml-configurations---hainstances)
 - [Auto-generated environment variables](#auto-generated-environment-variables)
@@ -370,6 +367,18 @@ The high-level configuration `java` supports these definitions:
 - **`home`**  
  Defines the path to the Java runtime directory.
 
+:::tip
+Ensure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains `bin/node`. 
+**Example:**
+```
+node:
+  home: "/usrlppSysplex/nodejs/node-v12.16.1"
+```
+The above value is valid only when the path `/usrlppSysplex/nodejs/node-v12.16.1/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, check to ensure that the value contains `bin/node`.
+:::
+
+
+
 ### YAML configurations - node
 
 The high-level configuration `node` supports these definitions:
@@ -397,7 +406,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 - **`components.<component>.enabled`**  
  Defines if you want to start this component in this Zowe instance. This allows you to control each component instead of a group.
 - **`components.<component>.certificate`**  
- You can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations-certificate). If this is not customized, the component will use certificates defined in `zowe.certificate`.
+ You can customize a component to use different certificate from default values. This section follows same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this is not customized, the component will use certificates defined in `zowe.certificate`.
 - **`components.<component>.launcher`**  
  Any component can have a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 

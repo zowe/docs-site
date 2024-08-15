@@ -264,7 +264,7 @@ A started task ID used to run the PROCLIB ZWESISTC that launches the cross memor
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESVSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/systemrequirements-zos.md#zwesvusr).
+A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/systemrequirements-zos.md#zwesvusr).
 
 ## Plug-ins and extensions
 

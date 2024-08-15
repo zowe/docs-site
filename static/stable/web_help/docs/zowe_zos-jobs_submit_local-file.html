@@ -57,6 +57,31 @@
 <li>A string of JCL symbols to use for substitution. For symbol values with no spaces: &quot;symbol1=value1 symbol2=value2 ...&quot;. When a value contains spaces, enclose the value in single quotes: &quot;symbol1='value 1 with spaces' symbol2='value 2 with spaces' ...&quot;. To embed a single quote in a value, use two single quotes: &quot;NAME=O''Brian&quot;.</li>
 </ul>
 </li>
+<li>
+<p><code>--job-encoding</code> | <code>--je</code> <em>(string)</em></p>
+<ul>
+<li>The encoding that should be used to read the JCL into the z/OSMF JCL reader. JCL will be converted into this codepage from UTF-8 for the JES subsystem to parse.</li>
+</ul>
+</li>
+<li>
+<p><code>--job-record-length</code> | <code>--jrl</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The logical record length of the JCL being submitted.</p>
+<p>Default value: 80</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--job-record-format</code> | <code>--jrf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The record format of the JCL being submitted, where V is variable, and F is fixed.</p>
+<p>Default value: F<br>
+Allowed values: F, V</p>
+</li>
+</ul>
+</li>
 </ul>
 <h4>Zosmf Connection Options</h4>
 <ul>

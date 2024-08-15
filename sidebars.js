@@ -8,6 +8,8 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v2_17_0",
+        "whats-new/release-notes/v2_16_0",
         "whats-new/release-notes/v2_15_0",       
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
@@ -28,8 +30,16 @@ module.exports = {
         "whats-new/release-notes/v2_0_0",
       ],
     },
-    "whats-new/zowe-v3-office-hours",
-    "whats-new/breaking-changes-v3",
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V3 preview",
+      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
+      items: [
+        "whats-new/zowe-v3-office-hours",
+        "whats-new/zowe-v3-conformance-criteria",
+        "whats-new/zowe-v3-frequently-asked-questions",
+      ],
+    },
   ],
   "getting-started": [
     {
@@ -50,11 +60,11 @@ module.exports = {
             id: "appendix/zowe-security-glossary",
             },
             { type: "doc",
-              label: "Digital Certificates",
+              label: "Zowe Certificates overview",
               id: "getting-started/zowe-certificates-overview",
             },
             { type: "doc",
-              label: "User authentication",
+              label: "Zowe User Authentication",
               id: "getting-started/zowe-security-authentication",
             }
           ],
@@ -116,6 +126,7 @@ module.exports = {
             "user-guide/address-browser-requirements",
           ]
         },
+      "user-guide/install-zowe-server-install-wizard",
         {
           type: "category",
           label: "Installing Zowe via SMP/E",
@@ -193,6 +204,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/at-tls-configuration",
               ],
             },
             {
@@ -209,11 +221,16 @@ module.exports = {
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
                 "user-guide/configure-caching-service-ha",
-                  ],
-            },
-              ],
+              ]
+            }
+          ]   
         },
-        "user-guide/start-zowe-zos",
+        {
+          type: "category",
+          label: "Starting and stopping Zowe",
+          link: { type: "doc", id: "user-guide/start-zowe-zos" },
+          items: ["user-guide/api-mediation/configuration-api-mediation-standalone"]
+        },
         "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
@@ -261,24 +278,26 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id",
-                {
-                  "type": "category",
-                  "label": "Customizing management of API ML load limits",
-                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-                  "items": [
-                    "user-guide/api-mediation/configuration-connection-limits",
-                    "user-guide/api-mediation/configuration-gateway-timeouts"
-                  ]
-                }
+            {
+              "type": "category",
+              "label": "Customizing management of API ML load limits",
+              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+              "items": [
+                "user-guide/api-mediation/configuration-connection-limits",
+                "user-guide/api-mediation/configuration-gateway-timeouts",
+                "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
               ]
-            },            
+	    }
+	   ]
+            },
             {
               "type": "category",
               "label": "Configuring authorization for API ML",
               "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
               "items": [
                 "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                "user-guide/api-mediation/configuration-saf-resource-checking"
+                "user-guide/api-mediation/configuration-saf-resource-checking",
+                "user-guide/api-mediation/configuration-health-endpoint-protection"
               ]
             },
             "user-guide/authentication-providers-for-apiml",
@@ -480,7 +499,7 @@ module.exports = {
             },
             {
               type: "category",
-              label: "API Routing",
+              label: "Routing APIs",
               items: [
                 "user-guide/api-mediation/routing-requests-to-rest-apis",
                 "user-guide/routing-with-websockets",
@@ -686,35 +705,53 @@ module.exports = {
               items: [
                 "extend/extend-apiml/certificate-management-in-zowe-apiml",
                 "extend/extend-apiml/quick-start-for-development",
+                "extend/extend-apiml/api-mediation-layer-development-setup",
               ]
             },
-            "extend/extend-apiml/onboard-plain-java-enabler",
-            "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-            "extend/extend-apiml/onboard-spring-boot-enabler",
-            "extend/extend-apiml/onboard-micronaut-enabler",
-            "extend/extend-apiml/onboard-nodejs-enabler",
-            "extend/extend-apiml/onboard-static-definition",
-            "extend/extend-apiml/create-apiml-extension",
-            "extend/extend-apiml/api-mediation-message-service",
-            "extend/extend-apiml/custom-metadata",
-            "extend/extend-apiml/api-mediation-versioning",
-            "extend/extend-apiml/implement-new-saf-provider",
-            "extend/extend-apiml/api-mediation-layer-development-setup",
+            {
+              type: "category",
+              label: "Libraries for integration (Enablers)",
+              items: [
+                {
+                  type: "category",
+                  label: "Plain Java Enabler",
+                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
+                  items: [
+                    "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
+                    "extend/extend-apiml/api-mediation-message-service",
+                  ]
+                },
+                "extend/extend-apiml/onboard-spring-boot-enabler",
+                "extend/extend-apiml/onboard-micronaut-enabler",
+                "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-static-definition",
+                "extend/extend-apiml/custom-metadata",    
+              ]
+            },
+            {
+              type: "category",
+              label: "API ML Routing Overview",
+              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
+              items: [
+                "extend/extend-apiml/implementing-routing-to-the-api-gateway",
+                "extend/extend-apiml/api-mediation-versioning",
+                "extend/extend-apiml/api-mediation-websockets"
+              ]
+            },
+            {
+              type: "category",
+              label: "Runtime Extensions",
+              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
+              items: [
+                "extend/extend-apiml/implement-new-saf-provider"
+              ]
+            },
             {
               type: "category",
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/api-medation-sso-integration-extenders",
-                "extend/extend-apiml/zowe-api-mediation-layer-security-overview",
-                "extend/extend-apiml/authentication-for-apiml-services",
                 "extend/extend-apiml/zaas-client",                
-              ],
-            },
-            {
-              type: "category",
-              label: "Implementing routing to API Gateway",
-			        link: {type:"doc", id:"extend/extend-apiml/implementing-routing-to-the-api-gateway"},
-              items: [
               ],
             },
           ],
@@ -788,6 +825,7 @@ module.exports = {
         "troubleshoot/k8s-troubleshoot",
         "troubleshoot/servers/return-codes",
         "troubleshoot/troubleshoot-zos-certificate",
+        "troubleshoot/troubleshoot-zos-startup",
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
@@ -999,7 +1037,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.15.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.17.x.md",
     },
   ],
 }

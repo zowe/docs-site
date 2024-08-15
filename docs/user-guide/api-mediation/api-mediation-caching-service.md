@@ -14,7 +14,7 @@ The Caching Service is available only for internal Zowe applications, and is not
 
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
-  - [Infinispan](#infinispan)
+  - [Infinispan](#infinispan-recommended)
   - [VSAM](#vsam)
   - [Redis](#redis)
   - [InMemory](#inmemory)
@@ -40,25 +40,25 @@ Information from cached APIs is stored as a JSON in the following format:
 
 The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
 
-For information about configuring your storage method for the Caching Service for high availability, see [Configuring the Caching Service for high availability](../../user-guide/configure-caching-service-ha)
+For information about configuring your storage method for the Caching Service for high availability, see [Configuring the Caching Service for high availability](../../user-guide/configure-caching-service-ha.md).
 
 ### Infinispan (recommended)
 
 Infinispan is a storage solution that can also run on the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
-For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](../../extend/extend-apiml/api-mediation-infinispan).
+For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](../../extend/extend-apiml/api-mediation-infinispan.md).
 
 ### VSAM
 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
-For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam)
+For more information about the VSAM storage access method, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam.md)
 
 ### Redis
 
 Redis is a common storage solution that runs outside of the z/OS platform. It can store data structures in key-value pairs, has high-availability support, and is highly performant.
 
-For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-redis).
+For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-redis.md).
 
 
 ### InMemory

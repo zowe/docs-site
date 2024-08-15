@@ -151,7 +151,7 @@ The Zowe Application Framework consists of the following components:
 
 - **Application plug-ins**
 
-    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plug-ins).
+    Several application-type plug-ins are provided. For more information, see [Using the Zowe Application Framework application plug-ins](../user-guide/mvd-using.md#zowe-desktop-application-plugins).
 
 </details>
 
@@ -215,6 +215,7 @@ For more information, see [Information roadmap for Zowe Explorer](user-roadmap-z
 The Zowe Client SDKs consist of programmatic APIs that you can use to build client applications or scripts that interact with z/OS. The following SDKs are available:
 
 - Zowe Node.js Client SDK
+- Zowe Java Client SDK
 - Zowe Python Client SDK
 
 For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).

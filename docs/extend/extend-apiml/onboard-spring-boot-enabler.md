@@ -33,7 +33,6 @@ The following steps outline the overall process to onboard a REST service with t
     * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
     * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Custom Metadata](#custom-metadata)
-    * [Api Mediation Layer specific metadata](#api-mediation-layer-specific-metadata)
     
 4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
     
@@ -469,8 +468,7 @@ ssl:
 
 ### Custom Metadata
 
-Custom metadata are described [here](custom-metadata.md).
-
+For information about customizing metadata to add to the instance information registered in the Discovery Service, see [Customizing Metadata](./custom-metadata.md).
 
 ## Registering and unregistering your service with API ML
 
@@ -484,7 +482,7 @@ Unregistering a service onboarded with API ML is done automatically at the end o
 
 ### Basic routing
 
-See [API ML Basic Routing](api-mediation-routing.md) for more information about basic routing in the API ML.
+For information about basic routing in the API ML, see [API ML Basic Routing](./api-mediation-routing.md) 
 
 ## Adding API documentation
 

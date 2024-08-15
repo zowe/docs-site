@@ -10,7 +10,7 @@
 <p>Build changes from git local repository in Endevor by submitting a job. It supports autogen for building dependencies using with the option of selecting autogen span. After submitting, the command 'build job-report' must be issued to finalize processing.</p>
 <h4>Usage</h4>
 <p>zowe endevor-bridge-for-git build job-submit [options]</p>
-<h4>Required Options</h4>
+<h4>Options</h4>
 <ul>
 <li>
 <p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
@@ -18,42 +18,6 @@
 <li>The Endevor Web Services Endevor configuration name.</li>
 </ul>
 </li>
-<li>
-<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
-<ul>
-<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
-</ul>
-</li>
-</ul>
-<h4>Endevor work area options</h4>
-<ul>
-<li>
-<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
-<ul>
-<li>Endevor work area ID. Name-masking is not allowed.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM environment where your build subsystem resides.</li>
-</ul>
-</li>
-<li>
-<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
-<ul>
-<li>The Endevor SCM system where your build subsystem resides.</li>
-</ul>
-</li>
-</ul>
-<h4>Options</h4>
-<ul>
 <li>
 <p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
 <ul>
@@ -85,6 +49,42 @@ SUBSYSTEMS - Generates using elements from all Subsystems with the same-named Sy
 <p>Default value: NONE<br>
 Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 </li>
+</ul>
+</li>
+</ul>
+<h4>Endevor work area options</h4>
+<ul>
+<li>
+<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<ul>
+<li>Endevor work area ID. Name-masking is not allowed.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM environment where your build subsystem resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM system where your build subsystem resides.</li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
+<ul>
+<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca%5C-mainframe%5C-software/devops/ca%5C-endevor%5C-integrations%5C-for%5C-enterprise%5C-devops/1%5C-0/ca%5C-endevor%5C-bridge%5C-for%5C-git/set%5C-up%5C-and%5C-run%5C-the%5C-ca%5C-endevor%5C-bridge%5C-for%5C-git/configuration%5C-for%5C-build%5C-using%5C-zowe%5C-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca\-mainframe\-software/devops/ca\-endevor\-integrations\-for\-enterprise\-devops/1\-0/ca\-endevor\-bridge\-for\-git/set\-up\-and\-run\-the\-ca\-endevor\-bridge\-for\-git/configuration\-for\-build\-using\-zowe\-cli.html</a></li>
 </ul>
 </li>
 </ul>
@@ -259,7 +259,10 @@ Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>

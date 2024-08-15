@@ -262,7 +262,6 @@ The onboarding configuration parameters are broken down into the following group
 - [SAF Keyring configuration](#saf-keyring-configuration)
 - [Eureka Discovery Service](#eureka-discovery-service)
 - [Custom Metadata](#custom-metadata)
-- [Connection Timeout](#connection-timeout)
 
 ### REST service identification
 
@@ -551,7 +550,7 @@ The Zowe API ML Discovery Service communicates with its clients in secure Https 
 Client services need to configure several TLS/SSL parameters in order to communicate with the API ML Discovery service.
 When an enabler is used to onboard a service, the configuration is provided in the `ssl` section/group in the same _YAML_ file that is used to configure the Eureka parameters and the service metadata.
 
-For more information about API ML security, see [API ML security overview](zowe-api-mediation-layer-security-overview.md).
+For more information about API ML security, see [API ML security overview](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md).
 
 TLS/SSL configuration consists of the following parameters:
 
@@ -577,7 +576,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
+  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
   
 
   If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
@@ -592,7 +591,7 @@ TLS/SSL configuration consists of the following parameters:
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
+  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
@@ -609,7 +608,7 @@ TLS/SSL configuration consists of the following parameters:
 ### SAF Keyring configuration
 
 You can choose to use SAF keyring instead of keystore and truststore for storing certificates.
-For information about required certificates, see [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md#api-ml-saf-keyring).
+For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements). For information about running Java on z/OS with keyring, see [SAF Keyring](./certificate-management-in-zowe-apiml.md#api-ml-saf-keyring).
 
 Make sure that the enabler can access and read the keyring. Please refer to documentation of your security system for details.
 

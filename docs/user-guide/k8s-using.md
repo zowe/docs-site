@@ -57,7 +57,7 @@ Kubernetes provides a container that allows you to manage your cluster through a
 
 ### Monitoring Zowe containers via CLI
 
-`kubectl` allows you to see the status of any kind of object with the `get` command. This applies to the [table in the configuring section](#configuring) but also for the pods that run the Zowe containers.
+`kubectl` allows you to see the status of any kind of object with the `get` command. This applies to the [table in the Configuring article](k8s-config.md) but also for the pods that run the Zowe containers.
 
 Here are a few commands you can use to monitor your environment:
 

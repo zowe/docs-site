@@ -1,6 +1,6 @@
 # Zowe API Mediation Layer Security Overview
 
-Review this article to learn about topics which address security features in Zowe API Mediation Layer.
+Review this article to learn about topics which address security features in Zowe API Mediation Layer:
 
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)
@@ -8,7 +8,7 @@ Review this article to learn about topics which address security features in Zow
     - [Zowe API ML services](#zowe-api-ml-services)
     - [Zowe API ML TLS requirements](#zowe-api-ml-tls-requirements)
   - [Setting ciphers for API ML services](#setting-ciphers-for-api-ml-services)
-  - [JSON Web Token(JWT)](#json-web-tokenjwt)
+  - [JSON Web Token (JWT)](#json-web-token-jwt)
   - [z/OSMF JSON Web Tokens Support](#zosmf-json-web-tokens-support)
 
 ## How API ML transport security works

@@ -12,11 +12,11 @@ This article contains the following topics:
 
 * [Pre-requisites](#pre-requisites)
 * [API Documentation](#api-documentation)
-    * [Obtain a JWT token (`login`)](#obtain-a-jwt-token---login--)
-    * [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token---query--)
-    * [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token---logout--)
-    * [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket---passticket--)
-* [Getting Started (Step by Step Instructions)](#getting-started--step-by-step-instructions-)
+    * [Obtain a JWT token (`login`)](#obtain-a-jwt-token-login)
+    * [Validate and get details from the token (`query`)](#validate-and-get-details-from-the-token-query)
+    * [Invalidate a JWT token (`logout`)](#invalidate-a-jwt-token-logout)
+    * [Obtain a PassTicket (`passTicket`)](#obtain-a-passticket-passticket)
+* [Getting Started (Step by Step Instructions)](#getting-started-step-by-step-instructions)
 ## Pre-requisites
 
 - Java SDK version 1.8.
@@ -225,7 +225,7 @@ You can now use any method from `ZaasClient` in your class.
 For login, use the following code snippet:
 
 ```java
-   String zaasClientToken = zaasClient.login("user", "user");
+   String zaasClientToken = zaasClient.login("user", "password");
  ```
 
 The following codeblock is an example of a `SampleZaasClientImplementation`.
