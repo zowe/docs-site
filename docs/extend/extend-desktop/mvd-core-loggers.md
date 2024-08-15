@@ -1,7 +1,7 @@
 This is a list of core loggers (and descriptions of each) that you can enable and increase verbosity on within the logging framework. See [the logging utility](mvd-logutility.md) for more info.
 
 # Loggers for Zowe Application Server Core
-The log prefix for the Zowe Application Server is `_zsf`, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the _zsf prefix.)
+The log prefix for the Zowe Application Server is `_zsf`, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the `_zsf` prefix.)
 The following are the logger names that you can specify:
 * **_zsf.bootstrap**: Logging that pertains to the startup of the server.
 * **_zsf.auth**: Logging for network calls that must be checked for authentication and authorization purposes.
