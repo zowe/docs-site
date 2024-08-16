@@ -22,10 +22,9 @@ One option to enable single sign-on (SSO) to your extending REST API services is
 API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for support of JWT or a client certificate can be through the use of PassTickets.
 
 When an API client provides a valid authentication method to API ML, the API Gateway generates a valid PassTicket for any API service that supports PassTickets. A PassTicket is a one-time only password that is generated for a specific user ID. 
-The API Gateway uses the PassTicket to access that API service.
-The API Gateway provides the user ID and password in the Authorization header of the HTTP requests using the
+The API Gateway uses the PassTicket to access that API service. The API Gateway provides the user ID and password in the Authorization header which serves as basic authentication in HTTP requests using the
 [Basic authentication scheme](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication#Basic_authentication_scheme).
-<!-- Consider adding a diagram to illustrate the workflow above on how PassTickets work. What happens after the user ID and password appear in the auth header of your HTTP request? -->
+<!-- Consider adding a diagram to illustrate the workflow above on how PassTickets work. -->
 ## Configuring Zowe to use PassTickets
 
 Configuring Zowe to use PassTickets involves two processes:
@@ -34,11 +33,15 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in your External Security Manager (ESM)
 
+:::note
+Since the Zowe 2.17 release, it is no longer necessary to disable replay protection. If you are upgrading Zowe from a prior release, these protections can be activated again. For earlier Zowe versions, ensure that the API service has replay protection switched off. This links a secured sign-on application key with the application.
+:::
+
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
-To validate if a PassTicket is already defined, use the commands that correspond to your ESM. If the PassTicket is defined, the access of the zoweuser can be determined.
-<!-- In each validation scenario below using different ESMs, how does the sec admin know whether a PassTicket is defined? What is the expected result in each case? 'the access of the zoweuser can be determined' not clear what this means-->
+To validate if a PassTicket is already defined, use the commands that correspond to your ESM. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
+
 * **Validating an existing PassTicket for ACF2**
 
     <details>
@@ -190,7 +193,7 @@ Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed re
 ```
 TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
 ```
-3. Define PassTicket for application ID _applid_ without replay protection.
+3. Define PassTicket for application ID _applid_:
 
 ```
 TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
@@ -199,8 +202,8 @@ TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
-* **`key-description`**    
- Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
+* **`key-description`**  
+Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
 ```
@@ -251,13 +254,9 @@ RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(K
 * **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
-Replace `key-description` with the application name defined previously.
+4. Replace `key-description` with the application name defined previously.
 
-:::caution Important
-PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
-:::
-<!-- Does this important note apply to all three scenarios?--> 
-4. Allow the application ID (_applid_) to use PassTickets:
+5. Allow the application ID (_applid_) to use PassTickets:
 
 ```
 PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
@@ -266,7 +265,7 @@ PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
 * **`userid`**  
 Specifies the value of the LDAP Server started task.
 
-5. Refresh the RACF PTKTDATA definition with the new profile:
+6. Refresh the RACF PTKTDATA definition with the new profile:
 ```
 SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
@@ -362,7 +361,7 @@ Successful execution of this validation command shows your application and the s
 
 ## (Optional) Adding custom HTTP Auth headers to store user ID and PassTicket 
 
-If a downstream (southbound) service needs to consume the PassTicket and the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
+If a downstream (southbound) service needs to consume the PassTicket as well as the user ID from custom headers to participate in the Zowe SSO, you can define the custom HTTP headers names as part of the Gateway configuration.
 The southbound service must use the `httpBasicPassTicket` scheme in order to leverage this functionality. Once the HTTP headers names are defined, each request to the southbound service contains the PassTicket and the user ID in the custom headers.
 
 Use the following procedure to add the custom HTTP headers.
