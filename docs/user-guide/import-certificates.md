@@ -69,13 +69,13 @@ Trust in the API ML server is a necessary precondition for secure communication 
  If a SAF keyring is used and set up with `ZWEKRING` JCL, the procedure to obtain the certificate does not apply. In this case, we recommended that you work with your security system administrator to obtain the certificate.  
 :::
 
-The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored in a USS directory a defined in the `zowe.yaml` configuration file at section `zowe.certificate.pem.certificateAuthorities`  . The certificate is stored in UTF-8 encoding so you need to transfer it as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored in a USS directory a defined in the `zowe.yaml` configuration file in the section `zowe.certificate.pem.certificateAuthorities`. The certificate is stored in UTF-8 encoding so you need to transfer the certificate as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 :::note  
 Windows currently does not recognize the PEM format. For Windows, use the P12 version of the `local_cer`.
 :::
 
-**Importing commands according to your operating system**
+#### Importing commands according to your operating system
 
 To import the certificate to your root certificate store and trust it, follow the applicable procedure based on your operating system.
 

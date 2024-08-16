@@ -342,7 +342,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Re-create the Zowe keystore by deleting it and re-creating it. 
-2. In the `zowe.yanl` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `DISABLED` or `NONSTRICT`.  The default value is `STRICT` which ensures that Zowe will validate the certificate authority's signing chain is trusted, as well as the IP address for Zowe's servers match the certificate's subject alternative name. 
+2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `DISABLED` or `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name. 
 
 **Important!** Disabling `zowe.verifyCertificates` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
 
