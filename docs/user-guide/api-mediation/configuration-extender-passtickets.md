@@ -46,7 +46,7 @@ To validate if a PassTicket is already defined, use the commands that correspond
 
     <details>
 
-    <summary>Click here for details about validating an existing PassTicket for ACF2.</summary>
+    <summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
 
     In your ESM command line interface or other security environment, execute the following commands:
 
@@ -294,7 +294,7 @@ Use the configuration format that corresponds to your ESM as presented in the fo
 
 <details>
 
-<summary> Click here for details about generating PassTickets using ACF2. </summary>
+<summary> Click here for command details about generating PassTickets using ACF2. </summary>
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
@@ -314,7 +314,7 @@ END
 
 <details>
 
-<summary>Click here for details about generating PassTickets using Top Secret.</summary>
+<summary>Click here for command details about generating PassTickets using Top Secret.</summary>
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
@@ -332,7 +332,7 @@ TSS REFRESH
 
 <details>
 
-<summary> Click here for details about generating PassTickets using RACF.</summary>
+<summary> Click here for command details about generating PassTickets using RACF.</summary>
 
 Grant the Zowe started task user ID permission to generate PassTickets for users of the API service.
 
