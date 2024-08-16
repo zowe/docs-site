@@ -280,10 +280,10 @@ As a security administrator, you can issue security commands to allow the Zowe s
 
 Specify the following variables when generating PassTickets for the API service to enable the Zowe started task user ID:
 
-* **`applid**  
+* **`applid`**  
 The APPLID value used by the API service for PassTicket support (for example, `OMVSAPPL`)
 
-* **zowe-user-id**   
+* **`zowe-user-id`**   
 The Zowe started task user ID used during the Zowe installation
 
 In the following examples of ESM configuration, replace these variables with actual values.
