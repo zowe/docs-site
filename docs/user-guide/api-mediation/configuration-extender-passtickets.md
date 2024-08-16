@@ -5,19 +5,6 @@ One option to enable single sign-on (SSO) to your extending REST API services is
 :::info Required Role: security administrator
 :::
 
-- [Overview of PassTickets](#overview-of-how-passtickets-are-used)
-- [Configuring Zowe to use PassTickets](#configuring-zowe-to-use-passtickets)
-    - [Enabling PassTicket support](#enabling-passticket-support)
-        - [Enabling PassTickets with ACF2](#enabling-passtickets-with-acf2)
-        - [Enable PassTickets with Top Secret](#enabling-passtickets-with-top-secret)
-        - [Enabling PassTickets with RACF](#enabling-passtickets-with-racf)
-    - [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service)
-        - [Generating PassTickets using ACF2](#generating-passtickets-using-acf2)
-        - [Generating PassTickets using Top Secret](#generating-passtickets-using-top-secret)
-        - [Generating PassTickets using RACF](#generating-passtickets-using-racf)
-        - [Verifying your PassTicket Application](#verifying-your-passticket-application)
-- [Adding custom HTTP Auth headers to store user ID and PassTicket](#optional-adding-custom-http-auth-headers-to-store-user-id-and-passticket)
-
 ## Overview of PassTickets 
 API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for support of JWT or a client certificate can be through the use of PassTickets.
 
