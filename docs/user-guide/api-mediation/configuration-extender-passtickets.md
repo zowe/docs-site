@@ -128,7 +128,7 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <details>
 
-<summary> Click here for details about configuring Zowe to use PassTickets using ACF2. </summary>
+<summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 1.	In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined. 
 
@@ -170,7 +170,7 @@ You configured Zowe to use PassTickets for single sign on using ACF2.
 
 <details>
 
-<summary> Click here for details about configuring Zowe to use PassTickets using Top Secret.</summary>
+<summary> Click here for command details about configuring Zowe to use PassTickets using Top Secret.</summary>
 
 Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
 <!-- Do they know how do do this? -->
@@ -222,7 +222,7 @@ You configured Zowe to use PassTickets using Top Secret.
 
 <details>
 
-<summary> Click here for details about configuring Zowe to use PassTickets using RACF.</summary>
+<summary> Click here for command details about configuring Zowe to use PassTickets using RACF.</summary>
 
 1. Activate the `PTKTDATA` class, which encompasses all profiles containing PassTicket information.
 
