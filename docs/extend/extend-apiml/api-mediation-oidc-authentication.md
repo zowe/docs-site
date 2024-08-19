@@ -60,8 +60,8 @@ The following diagram illustrates the interactions between the participants of t
 Ensure that the following prerequisites are met:  
 
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
-- Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.	- Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider) in this topic.
-- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration) in this topic.
+- Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.
+- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	
 - If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
   
 ### OIDC provider prerequisites
