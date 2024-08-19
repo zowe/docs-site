@@ -78,7 +78,9 @@ Windows currently does not recognize the PEM format. For Windows, use the P12 ve
 #### Importing commands according to your operating system
 
 To import the certificate to your root certificate store and trust it, follow the applicable procedure based on your operating system.
+
 <details>
+
 <summary>
 For Windows, click here for command details. 
 </summary>
@@ -88,10 +90,12 @@ certutil -enterprise -f -v -AddStore Root" localca.cer
 ```
 
 **Note:** Ensure that you open the terminal as **administrator**. This operation installs the certificate to the Trusted Root Certification Authorities.
+
 </details>
 
 <details>
-<summary>For macOS, click here for command details.
+<summary>
+For macOS, click here for command details.
 </summary>  
     
 ```
@@ -114,6 +118,7 @@ Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files 
 /* Enable experimental Windows truststore support */
 pref("security.enterprise_roots.enabled", true);
 ```
+
 </details>
 
 :::tip
