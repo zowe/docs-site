@@ -46,7 +46,7 @@ The following diagram illustrates the interactions between the participants of t
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 - The Gateway validates the access token in two ways:
     -  By comparing the key ID of the token against the key IDs obtained from the authorization server's JWK keys endpoint (`oidc.validationType: JWK` or omited configuration (`oidc.validationType`)).
-    -  By querying the UserInfo endpoint to verify the token's validity and retrive user information (`oidc.validationType: endpoint`).
+    -  By querying the UserInfo endpoint to verify the token's validity and retrieve user information (`oidc.validationType: endpoint`).
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
 - In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys, UserInfo endpoint queries, and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
@@ -168,7 +168,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **`components.gateway.apiml.security.oidc.registry`**  
-  Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
+  Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
 
 - **`components.gateway.apiml.security.oidc.validationType`**  
    Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
