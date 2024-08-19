@@ -2,8 +2,8 @@
 
 You can use the API ML to update a mainframe password. The Mainframe password change is possible through Gateway REST APIs and is supported by two authentication providers:
 
-* [Change password with SAF provider](#change-password-with-saf-provider)
-* [Change password with z/OSMF provider](#change-password-with-zosmf-provider)
+* [Changing password with SAF provider](#changing-password-with-saf-provider)
+* [Changing password with z/OSMF provider](#changing-password-with-zosmf-provider)
 
 :::note
 This feature is also available in the API Catalog. For more information about how to update the mainframe password via API Catalog, see [Change expired password via API Catalog](../api-mediation-change-password-via-catalog.md).
