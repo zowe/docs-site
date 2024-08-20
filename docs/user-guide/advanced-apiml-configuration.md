@@ -32,4 +32,5 @@ There are multiple options for customizing Zowe API Mediation Layer according to
     * [Using Redis as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-redis.md)
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui.md)
 * [Configuring AT-TLS for API Mediation Layer](./api-mediation/configuration-at-tls.md)
+* [Customizing logging for API Mediation Layer](./api-mediation/configuration-logging.md)
 
