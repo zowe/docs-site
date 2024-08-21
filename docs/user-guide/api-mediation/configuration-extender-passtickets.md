@@ -27,7 +27,7 @@ Since the Zowe 2.17 release, it is no longer necessary to disable replay protect
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
-To validate if a PassTicket is already defined, use the commands that correspond to your ESM. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
+To validate if a PassTicket is already defined, list the APPL and PKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
 
 * **Validating an existing PassTicket for ACF2**
 
@@ -159,8 +159,8 @@ You configured Zowe to use PassTickets for single sign on using ACF2.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using Top Secret.</summary>
 
-Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined.
-<!-- Do they know how do do this? -->
+Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined as described in the previous tip.
+
 1.	Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
 
 :::note
@@ -344,7 +344,17 @@ RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 Specifies the application ID used for PassTicket validation to authenticate connections to the server
 
 Successful execution of this validation command shows your application and the specific access of the application.
-<!-- Can you provide an example?-->
+
+**Output example:**
+```
+ CLASS      NAME
+ -----      ----
+ PTKTDATA   IRRPTAUTH.ZWEADMIN.* (G)
+
+ USER      ACCESS
+ ----      ------
+ ZWESVUSR  UPDATE
+ ```
 
 ## (Optional) Adding custom HTTP Auth headers to store user ID and PassTicket 
 
