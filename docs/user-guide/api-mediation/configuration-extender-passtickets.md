@@ -50,6 +50,7 @@ To validate if a PassTicket is already defined, list the APPL and PKTDATA with a
     SET RESOURCE(PTK)
     LIST LIKE(IRRPTAUTH-)
     ```
+
     * **`-`**  
     A wildcard symbol that lists all resources
 
@@ -93,6 +94,7 @@ To validate if a PassTicket is already defined, list the APPL and PKTDATA with a
     RLIST PTKTDATA <applid> SSIGNON ALL
     RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL 
     ```
+    
     Ensure that you validate PKTDATA access for APPL.
 
     * **`*`**  
