@@ -110,7 +110,7 @@ To manually poll a spool file:
 
 1. In the **Side Bar**, double click a spool file to open it in an **Editor** tab.
 2. With the spool file in an active tab, press the keyboard shortcut.
-    - See [Configuring the keyboard shortcut for manual polling](#Configuring-the-keyboard-shortcut-for-manual-polling) to set the keyboard shortcut.
+    - See [Configuring the keyboard shortcut for manual polling](#configuring-the-keyboard-shortcut-for-manual-polling) to set the keyboard shortcut.
 
    <br/>
    

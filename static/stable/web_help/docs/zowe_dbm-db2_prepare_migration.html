@@ -41,7 +41,7 @@ ALIAS &lt;schema.name&gt;<br>
 SYNONYM &lt;schema.name&gt;<br>
 MQT &lt;schema.name&gt;<br>
 SEQUENCE &lt;schema.name&gt;<br>
-TRIGGER &lt;schema.name&gt;<br>
+TRIGGER &lt;schema.name[.version]&gt;<br>
 FUNCTION &lt;schema.name[.version]&gt;<br>
 PROCEDURE &lt;schema.name[.version]&gt;</p>
 <p>The optional include clause (&lt;related-object-type&gt;,...) identifies one or more related Db2 object types to include in the object list.</p>
@@ -273,7 +273,10 @@ TBTS TESTTS% PRODTS%</p>
 <li>
 <p><code>--cert-file</code> <em>(local file path)</em></p>
 <ul>
-<li>The file path to a certificate file to use for authentication</li>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
 </ul>
 </li>
 <li>
