@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IOverridePromptConnProps | Zowe Node.js SDK - v2.17.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.17.0">
+	<title>IOverridePromptConnProps | Zowe Node.js SDK - v2.18.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.18.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.17.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v2.18.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -60,7 +60,7 @@
 					<a href="_zowe_imperative.ioverridepromptconnprops.html">IOverridePromptConnProps</a>
 				</li>
 			</ul>
-			<h1>Interface IOverridePromptConnProps</h1>
+			<h1>Interface IOverridePromptConnProps&lt;SessCfgType&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -81,6 +81,14 @@
 					</dl>
 				</div>
 			</section>
+			<section class="tsd-panel tsd-type-parameters">
+				<h3>Type parameters</h3>
+				<ul class="tsd-type-parameters">
+					<li>
+						<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a> = <span class="tsd-signature-type">ISession</span></h4>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -99,6 +107,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioverridepromptconnprops.html#argumentname" class="tsd-kind-icon">argument<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioverridepromptconnprops.html#propertiesoverridden" class="tsd-kind-icon">properties<wbr>Overridden</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioverridepromptconnprops.html#propertyname" class="tsd-kind-icon">property<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.ioverridepromptconnprops.html#propstopromptfor" class="tsd-kind-icon">props<wbr>ToPrompt<wbr>For</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,7 +121,7 @@
 					<div class="tsd-signature tsd-kind-icon">argument<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.27.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L29">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L29">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -125,10 +134,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="propertiesoverridden" class="tsd-anchor"></a>
 					<h3>properties<wbr>Overridden</h3>
-					<div class="tsd-signature tsd-kind-icon">properties<wbr>Overridden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">keyof </span><a href="_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">properties<wbr>Overridden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.27.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L37">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L37">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -146,12 +155,28 @@
 					<div class="tsd-signature tsd-kind-icon">property<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.27.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L23">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L23">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Indicates the session property that should be considered in the prompting logic.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="propstopromptfor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> props<wbr>ToPrompt<wbr>For</h3>
+					<div class="tsd-signature tsd-kind-icon">props<wbr>ToPrompt<wbr>For<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts#L43">@zowe/imperative/src/rest/src/session/doc/IOverridePromptConnProps.ts:43</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Allows passing additional properties for which to prompt.
+							Used in cases of an incorrect or missing key passphrase.</p>
 						</div>
 					</div>
 				</section>
@@ -208,7 +233,7 @@
 					<li class="current tsd-kind-module">
 						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
 						<ul>
-							<li class="current tsd-kind-interface tsd-parent-kind-module">
+							<li class="current tsd-kind-interface tsd-parent-kind-module tsd-has-type-parameter">
 								<a href="_zowe_imperative.ioverridepromptconnprops.html" class="tsd-kind-icon">IOverride<wbr>Prompt<wbr>Conn<wbr>Props</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -219,6 +244,9 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.ioverridepromptconnprops.html#propertyname" class="tsd-kind-icon">property<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.ioverridepromptconnprops.html#propstopromptfor" class="tsd-kind-icon">props<wbr>ToPrompt<wbr>For</a>
 									</li>
 								</ul>
 							</li>
