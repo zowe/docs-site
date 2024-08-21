@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create rse-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_rse-profile.html">rse-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>A profile to issue commands to a z/OS system with a working Zowe REST server,Mediation Layer, or IBM RSE (Remote System Explorer) API server installation.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create rse-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new rse profile. You can load this profile by using the name on commands that support the &quot;--rse-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Zowe REST Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OS host name running the Zowe REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The server port used by the REST API.</p>
+<p>Default value: 6800</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The user name for the Zowe REST API operations.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>The password of the user for the Zowe REST API operations.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path of the API for the REST API operations.</p>
+<p>Default value: rseapi</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>http or https, depending whether a TLS handshake is required to access REST API.</p>
+<p>Default value: https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>The encoding for download and upload of z/OS data set and USS files. The encoding should be specified in the form of &quot;IBM-1047&quot;.</li>
+</ul>
+</li>
+<li>
+<p><code>--tokenType</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>JWT token type assigned to profile when &quot;zowe rse auth login&quot; is used for authentication.</li>
+</ul>
+</li>
+<li>
+<p><code>--tokenValue</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>JWT token value assigned to profile when &quot;zowe rse auth login&quot; is used for authentication.</li>
+</ul>
+</li>
+<li>
+<p><code>--tokenExpiration</code> | <code>--te</code> <em>(number)</em></p>
+<ul>
+<li>JWT token expiration assigned to profile when &quot;zowe rse auth login&quot; is used for authentication.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the rse profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create an RSE API profile named 'myRseApiProfile' to connect to z/OS using the RSE API server at host zos123 that runs on port 6800 and has a base path of 'rseapi' and uses the 'http' protocol. An example base URL to RSE API would be: '<a href="http://zos123:6800/rseapi/api/v1/">http://zos123:6800/rseapi/api/v1/</a>':</p>
+<ul>
+<li><code>zowe profiles create rse-profile myRseApiProfile --host zos123 --port 6800 --user ibmuser --pass myp4ss --bp rseapi --protocol http --ru false</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create rse-profile myRseApiProfile --host zos123 --port 6800 --user ibmuser --pass myp4ss --bp rseapi --protocol http --ru false">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a profile named 'myZoweRestProfile' to connect to z/OS using the Zowe REST APIs at host zos123 that runs the Zowe REST API server on port 8443, requires a TLS handshake using 'https' with SSL certificates, and has a default encoding of IBM-285. An example base URL to Zowe REST API would be: '<a href="https://zos123:6800/api/v1/">https://zos123:6800/api/v1/</a>':</p>
+<ul>
+<li><code>zowe profiles create rse-profile myZoweRestProfile --host zos123 --port 8443 --user ibmuser --pass myp4ss --ru false --protocol https --ec IBM-285</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create rse-profile myZoweRestProfile --host zos123 --port 8443 --user ibmuser --pass myp4ss --ru false --protocol https --ec IBM-285">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

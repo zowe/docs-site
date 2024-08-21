@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>rse-api-for-zowe-cli upload dir-to-uss</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_rse-api-for-zowe-cli.html">rse-api-for-zowe-cli</a> › <a href="zowe_rse-api-for-zowe-cli_upload.html">upload</a> › <a href="zowe_rse-api-for-zowe-cli_upload_dir-to-uss.html">dir-to-uss</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Upload a local directory to a z/OS UNIX System Services directory.</p>
+<p>An optional .zosattributes file in the source directory can be used to control file conversion and tagging.</p>
+<p>An example .zosattributes file:<br>
+# pattern        local-encoding        remote-encoding<br>
+# Don't upload the node_modules directory<br>
+.*               -<br>
+*.jpg            binary                binary<br>
+# Convert CICS Node.js profiles to EBCDIC<br>
+*.profile        ISO8859-1             EBCDIC</p>
+<p>Lines starting with the ‘#’ character are comments. Each line can specify up to three positional attributes:</p>
+<ul>
+<li>A pattern to match a set of files. Pattern-matching syntax follows the same rules as those that apply in .gitignore files (note that negated patterns that begin with ‘!’ are not supported). See <a href="https://git">https://git</a>-scm.com/docs/gitignore#_pattern_format.<br>
+local-encoding, * A local-encoding to identify a file’s encoding on the local workstation. If '-' is specified for files that match the pattern are not transferred.</li>
+<li>A remote-encoding to specify the file’s desired character set on z/OS UNIX System Services. This attribute must either match the local encoding or be set to EBCDIC. If set to EBCDIC, files are transferred in text mode and converted, otherwise they are transferred  in binary mode. Remote files are tagged either with the remote encoding or as binary.</li>
+</ul>
+<p>Due to a limitation, files that are transferred in text mode are converted to the default EBCDIC code page on the z/OS system. Therefore the only EBCDIC code page to specify as the remote encoding is the default code page for your system.</p>
+<p>A .zosattributes file can either be placed in the top-level directory you want to upload, or its location can be specified by using the --attributes parameter. .zosattributes files that are placed in nested directories are ignored.</p>
+<h4>Usage</h4>
+<p>zowe rse-api-for-zowe-cli upload dir-to-uss &lt;inputDir&gt; &lt;USSDir&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>inputDir</code>		 <em>(string)</em></p>
+<ul>
+<li>The local directory path that you want to upload to a z/OS UNIX System Services directory</li>
+</ul>
+</li>
+<li>
+<p><code>USSDir</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the z/OS UNIX System Services directory to which you want to upload the local directory</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--attributes</code> | <code>--attrs</code> <em>(string)</em></p>
+<ul>
+<li>Path of an attributes file to control how files are uploaded</li>
+</ul>
+</li>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Data content in binary mode, which means that no data conversion is performed. The data transfer process returns each record as-is, without translation. No delimiters are added between records.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Upload the file content with encoding mode, which means that data conversion is performed using the file encoding specified.</li>
+</ul>
+</li>
+<li>
+<p><code>--max-concurrent-requests</code> | <code>--mcr</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies the maximum number of concurrent REST API requests to upload files. Increasing the value results in faster uploads. However, increasing the value increases resource consumption on z/OS and can be prone to errors caused by making too many concurrent requests. If the upload process encounters an error, the following message displays:<br>
+The maximum number of TSO address spaces have been created. When you specify 0, Zowe CLI attempts to upload all members at once without a maximum number of concurrent requests.</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--recursive</code> | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Upload all directories recursively.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--rse-profile</code> | <code>--rse-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (rse) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; z/OS UNIX System Services directory:&quot;:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Upload all files from the &quot;local_dir&quot; directory and all its sub-directories, to the &quot;/a/ibmuser/my_dir&quot; z/OS UNIX System Services directory::</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
