@@ -43,18 +43,3 @@ In this example, the command `zwe init certificate -c ./zowe.yaml --security-dr
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### Use multiple certificate authorities
-
-If you use mutiple certificate authorites, the syntax in the `zowe.yaml` is shown as below.
-
-```
-certificate:
-  pem:                                                                           
-    key: ""                                                                      
-    certificate: ""                                                              
-    certificateAuthorities:                                                      
-    - "safkeyring:////stcusername/KeyName&ca name 1"        
-    - "safkeyring:////stcusername/KeyName&ca name 2"
-```
-
-If you receive the error message, `<ZWED:527259> ZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and verify that the syntax is correct.

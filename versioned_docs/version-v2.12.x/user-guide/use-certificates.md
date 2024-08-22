@@ -42,19 +42,3 @@ The two most common scenarios for using a JCERACFKS certificate are:
 In this example, the command `zwe init certificate -c ./zowe.yaml --security-dry-run` allows the JCL to be inspected before submission, as well as handed off to a security administrator who has privileges to submit the JCL under their user ID. By default, the JCL id submitted immediately. For details about this example, see this [playlist](https://youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-### Use multiple certificate authorities
-
-If you use mutiple certificate authorites, the syntax in the `zowe.yaml` is shown as below.
-
-```
-certificate:
-  pem:                                                                           
-    key: ""                                                                      
-    certificate: ""                                                              
-    certificateAuthorities:                                                      
-    - "safkeyring:////stcusername/KeyName&ca name 1"        
-    - "safkeyring:////stcusername/KeyName&ca name 2"
-```
-
-If you receive the error message, `<ZWED:527259> ZOWE CRITICAL unable to get issuer certificate`, check this section in your `zowe.yaml` file and verify that the syntax is correct.
