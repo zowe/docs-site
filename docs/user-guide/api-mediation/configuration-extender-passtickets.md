@@ -132,9 +132,6 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
-* **`MULT-USE`**  
-Enables you reuse the same PassTicket multiple times.
-
 * **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
