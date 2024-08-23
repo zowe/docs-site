@@ -145,10 +145,10 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 
 3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 
-```
-SET RESOURCE(PTK) 
-RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
-```
+    ```
+    SET RESOURCE(PTK) 
+    RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
+    ```
   
 * **`userid`**    
 Specifies the Zowe server user ID
@@ -168,44 +168,44 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
 
 1. Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
 
-:::note
-The `PTKTDATA` resource is not a predefined class.
-:::
+    :::note
+    The `PTKTDATA` resource is not a predefined class.
+    :::
 
-```
-TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE) MAXLEN(37) 
-```
-The `PTKTDATA` resource is added to the RDT.
+    ```
+    TSS ADDTO(RDT) RESCLASS(PTKTDATA) RESCODE(n) ACLST(ALL,READ,UPDATE) MAXLEN(37) 
+    ```
+    The `PTKTDATA` resource is added to the RDT.
   
-:::note
-Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
-:::
+    :::note
+    Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
+    :::
   
 2.	Assign ownership for the PassTicket resource (`IRRPTAUT`). Execute the following commands: 
-```
-TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
-```
+    ```
+    TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
+    ```
   
 3. Define PassTicket for application ID _applid_:
   
-```tss
-TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>)
-```
+    ```tss
+    TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>)
+    ```
 
-- **applid**  
+- **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.
 
-- **key-description**
- Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
+- **`key-description`**  
+Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
 
-```tss
-TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
-```
+    ```tss
+    TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
+    ```
   
 * **`stc-userid`**  
-Specifies the Accessor ID (ACID) that you created when you created LDAP Server started task User IDs. The parameter is "CALDAP" by default.	
+Specifies the Accessor ID (ACID) that you created when you created LDAP Server started task User IDs.
 
 **Default:** CALDAP	
 
@@ -229,24 +229,24 @@ You configured Zowe to use PassTickets using Top Secret.
 
 2. Specify the application ID requiring access through PassTicket for the Zowe server with the following commands:
 
-```
-RDEFINE APPL <applid> UACC(READ)
-SETROPTS CLASSACT(APPL)
-SETROPTS GENERIC(PTKTDATA)
-```
+    ```
+    RDEFINE APPL <applid> UACC(READ)
+    SETROPTS CLASSACT(APPL)
+    SETROPTS GENERIC(PTKTDATA)
+    ```
 
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server.  (One to 8 characters) 
 
-:::note
-This name is usually provided by the site security administrator.
-:::
+    :::note
+    This name is usually provided by the site security administrator.
+    :::
 
 3. Define the profile for the application with the following command:
 
-```
-RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
-```
+    ```
+    RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
+    ```
 * **`key-description`**  
   Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
@@ -254,17 +254,17 @@ RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(K
 
 5. Allow the application ID (_applid_) to use PassTickets:
 
-```racf
-PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
-```
+    ```racf
+    PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
+    ```
 
 * **`userid`**  
 Specifies the value of the LDAP Server started task.
 
 6. Refresh the RACF PTKTDATA definition with the new profile:
-```
-SETROPTS RACLIST(PTKTDATA) REFRESH
-```
+    ```
+    SETROPTS RACLIST(PTKTDATA) REFRESH
+    ```
 
 You configured Zowe to use PassTickets using RACF.
 
