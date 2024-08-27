@@ -6,7 +6,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 * [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
 * [Authentication with SAF Identity Tokens](#authentication-with-saf-identity-tokens)
 * [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
-* [Certificate Authority Advanced Authentication Mainframe (CA AAM)](#certificate-authority-advanced-authentication-mainframe-ca-aam)
+* [Advanced Authentication Mainframe (AAM)](#advanced-authentication-mainframe-aam)
 
 ## Authentication with JSON Web Tokens(JWT)
 
@@ -40,7 +40,7 @@ For more information about configuring the token, see [Configure signed SAF Iden
 ## Multi-factor authentication (MFA)
 
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work with Zowe:
-- [CA Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
+- [Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
 Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
@@ -48,6 +48,6 @@ It does not rely on the mainframe MFA technology, but is equally secure.
 
 For details about multi-factor authentication, see [the MFA documentation here](../user-guide/mvd-configuration.md#multi-factor-authentication-configuration).
 
-## Certificate Authority Advanced Authentication Mainframe (CA AAM)
+## Advanced Authentication Mainframe (AAM)
 
-To add a dynamic element to the authentication, you can configure the Certificate Authority Advanced Authentication Mainframe to enable multi-factor authentication. For more information about CA AAM, see the [Advanced Authentication Mainframe documentation](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html).
+To add a dynamic element to the authentication, you can configure the Advanced Authentication Mainframe to enable multi-factor authentication. For more information about AAM, see the [Advanced Authentication Mainframe documentation](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html).
