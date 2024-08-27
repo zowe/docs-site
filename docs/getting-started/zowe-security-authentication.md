@@ -6,7 +6,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 * [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
 * [Authentication with SAF Identity Tokens](#authentication-with-saf-identity-tokens)
 * [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
-* [Advanced Authentication Mainframe (AAM)](#certificate-authority-advanced-authentication-mainframe-ca-aam)
+* [Advanced Authentication Mainframe (AAM)](#advanced-authentication-mainframe-aam)
 
 ## Authentication with JSON Web Tokens(JWT)
 
