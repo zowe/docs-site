@@ -48,7 +48,7 @@ Specifies whether all operations can be retried for this service. The default va
 * **customMetadata.apiml.corsEnabled**  
 When this parameter is set to `true`, CORS handling by the Gateway is enabled on the service level for all service routes. 
 
-For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
+  For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
 Additional information can be found in this article about [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS).
     
   :::note
@@ -88,9 +88,9 @@ Optionally, service can specify which origins will be accepted by Gateway during
   * **`headerRequest`**  
   This value applies the Header Request load balancing schema. Clients can call the API Gateway and provide a special header with the value of the requested instanceId. The Gateway understands this as a request from the client for routing to a specific instance. Clients have several possibilities for understanding the topology of service instances, such as via the `/eureka/apps` endpoint on the Discovery service, or the `/gateway/services` endpoint on the Gateway.  In either case, the information is provided. The client can then request a specific instance by using the special header described below.
 
-  The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in the registration of the Discovery service.
+    The header name is `X-InstanceId`, and the sample value is `discoverable-client:discoverableclient:10012`. This is identical to `instanceId` property in the registration of the Discovery service.
     
-  In combination with enabling [Routed instance header](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md), the client can achieve sticky session functionality. (The term, 'sticky session' refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
+    In combination with enabling [Routed instance header](../../user-guide/api-mediation/configuration-access-specific-instance-of-service.md), the client can achieve sticky session functionality. (The term, 'sticky session' refers to the feature of many load balancing solutions to route the requests for a particular session to the same physical machine that serviced the first request for that session). The benefit of this approach is that there is no session on the Gateway, and the client ultimately decides whether or not to go to a specific instance. This method uses the following sequence:
     
     1. The client calls API Gateway and gets routed to a service.
     2. The client reads the `X-InstanceId` header value from the response to understand the service was routed to.
@@ -100,7 +100,7 @@ Optionally, service can specify which origins will be accepted by Gateway during
   * **`authentication`**  
   This value applies the Authentication load balancing schema. This is a sticky session functionality based on the ID of the user. The user ID is understood from the Zowe SSO token on the client's request. Requests without the token are routed in a round robin fashion. The user is first routed in a round robin fashion, and then the routed instance Id is cached. The instance information is used for subsequent requests to route the client to the cached target service instance. This session's default expiration time is 8 hours. After the session expires, the process initiates again.
 
-  In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do so, follow the steps described in [Distributing the load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache.md).
+    In default configuration, this cache is stored on each Gateway instance. You can choose to distribute this cache between the Gateway's instances. To do so, follow the steps described in [Distributing the load balancer cache](../../user-guide/api-mediation/configuration-distributed-load-balancer-cache.md).
 
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
 When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
@@ -111,7 +111,7 @@ When this parameter is set to `true`, API ML compresses content for all response
 * **customMetadata.apiml.response.compressRoutes**  
 When the `customMetadata.apiml.response.compress` parameter is set to `true`, this parameter allows services to further limit the compressed routes. The parameter accepts [ant style](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/AntPathMatcher.html) routes deliminated by `,` . The expectation is to provide the absolute paths. 
     
-If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not need to be specifically defined, use `**/{pathYouAreInterestedIn}`
+  If relative paths are provided, the starting `/` is added. If the beginning of the pattern does not need to be specifically defined, use `**/{pathYouAreInterestedIn}`
 
   **Examples:** 
 
