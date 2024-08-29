@@ -486,6 +486,10 @@ apiInfo:
 
   Specifies the Http or Https address where the Swagger JSON document is available.
 
+* **apiInfo.graphqlUrl** (Optional)
+
+  Specifies the Http or Https address where the GraphQL server is available.
+
 _Specific for REST API_
 
 * **apiInfo.documentationUrl** (Optional)
