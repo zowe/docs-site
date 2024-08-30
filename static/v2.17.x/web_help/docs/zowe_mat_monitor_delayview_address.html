@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>mat monitor delayview address</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_monitor.html">monitor</a> › <a href="zowe_mat_monitor_delayview.html">delayview</a> › <a href="zowe_mat_monitor_delayview_address.html">address</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Get the delay address details for the measurement.</p>
+<h4>Usage</h4>
+<p>zowe mat monitor delayview address [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile that you want to analyze. When you specify the profile name, you get the data for the latest measurement within the specified profile.</li>
+</ul>
+</li>
+<li>
+<p><code>--mon_num</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the unique monitor number of the measurement.</li>
+</ul>
+</li>
+<li>
+<p><code>--majorcategory</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the major delay category name identified for the analysis item (e.g., --majorcategory &quot;PC routine delay&quot;). You get the majorcategory value from the 'delayview delay' command response.</li>
+</ul>
+</li>
+<li>
+<p><code>--minorcategory</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the minor delay category name identified for the analysis item (e.g.,  --minorcategory &quot;PC CALL&quot;). You get the minorcategory value from the 'delayview delay' command response.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Get the delay address details for majorcategory &quot;PC routine delay&quot; and minorcategory &quot;PC CALL&quot; for monitor number 5:</p>
+<ul>
+<li><code>zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the delay address details for majorcategory &quot;PC routine delay&quot; and minorcategory &quot;PC CALL&quot; for the latest monitor in the TESTPROF profile:</p>
+<ul>
+<li><code>zowe mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor delayview address --profile TESTPROF –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Get the delay address details for majorcategory &quot;PC routine delay&quot; and minorcategory &quot;PC CALL&quot; for monitor number 5, with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat monitor delayview address --mon_num 5 –-majorcategory &quot;PC routine delay&quot; –-minorcategory &quot;PC CALL&quot; --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

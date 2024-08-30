@@ -44,10 +44,13 @@ The following diagram illustrates the interactions between the participants of t
 - The user is asked to provide valid credentials (authentication factors).
 - After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 - The client can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-- The Gateway validates the access token by comparing the key id of the token against the key ids obtained from the authorization server's JWK keys endpoint.
+- The Gateway validates the access token in two ways:
+    -  By comparing the key ID of the token against the key IDs obtained from the authorization server's JWK keys endpoint (`oidc.validationType: JWK` or omited configuration (`oidc.validationType`)).
+    -  By querying the UserInfo endpoint to verify the token's validity and retrieve user information (`oidc.validationType: endpoint`).
 - The URL to the specific authorization server's JWK keys endpoint should be set using the property `jwks_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The JWK Keys obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `jwks.refreshInternalHours` (The default value is one hour).
-- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
+- In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWK keys, UserInfo endpoint queries, and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
+- The URL to the specific authorization server's UserInfo endpoint should be set using the property `userInfo_uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 - The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe, SAF JWT, or PassTicket) which are expected by the target mainframe service.
@@ -58,7 +61,7 @@ Ensure that the following prerequisites are met:
 
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
 - Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.
-- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.
+- SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	
 - If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
   
 ### OIDC provider prerequisites
@@ -132,7 +135,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
 - **`userid`**  
    Specifies the ESM user id
 - **`distributed-identity-user-name`**  
-   Specifies the user id for distributed-identity-registry
+   Specifies the user ID for distributed-identity-registry
 - **`distributed-identity-registry-name`**  
    Specifies the URL value of the distributed-identity-registry where user is defined
 - **`label-name`**  
@@ -165,7 +168,17 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **`components.gateway.apiml.security.oidc.registry`**  
-   Specifies the SAF registry used to group the identities recognized as having a OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
+  Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
+
+- **`components.gateway.apiml.security.oidc.validationType`**  
+   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
+  
+- **`components.gateway.apiml.security.oidc.jwks.uri`**  
+   Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
+
+- **`components.gateway.apiml.security.oidc.userInfo.uri`**  
+   Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation. 
+    To enable this property, ensure that `oidc.enabled` is set to `true` and `oidc.validationType` is set to `endpoint`.
 
 - **`components.gateway.apiml.security.oidc.jwks.uri`**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
@@ -179,7 +192,6 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
     **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
 - **`apiml.security.oidc.identityMapperUrl`**  
-  Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID.
   This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
     The following URL is the default value for Zowe and ZSS:
@@ -217,7 +229,7 @@ The OIDC provider returns an HTTP 40x error code.
 The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
-Check that the URL `jwks_uri` contains the key for  OIDC token validation.
+Check that the URL `components.gateway.apiml.security.oidc.jwks.uri` contains the key for OIDC token validation. If `oidc.validationType` is set to `endpoint`, ensure that the `components.gateway.apiml.security.oidc.userInfo.uri` is properly configured and valid.
 
 :::tip
 API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The call to the endpoint `/gateway/api/v1/auth/oidc-token/validate` verifies if the OIDC token is trusted by API ML. Note that the Gateway service does not perform the mapping request to the ESM when the `/gateway/api/v1/auth/oidc-token/validate` endpoint is called.
