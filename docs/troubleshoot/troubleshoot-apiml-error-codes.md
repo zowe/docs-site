@@ -1911,6 +1911,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Check the status of the message for more information and the health of the Discovery Service.
 
+### ZWEAC105W
+
+  API Documentation not retrieved for service '%s' due to communication error, %s
+
+  **Reason:**
+
+  Unable to fetch API documentation.
+
+  **Action:**
+
+  Make sure the service documentation url or server transport encoding is configured correctly.
+
 ### ZWEAC700E
 
   Failed to update cache with discovered services: '%s'
