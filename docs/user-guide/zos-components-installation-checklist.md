@@ -16,7 +16,7 @@ Choose from the following installation options to install Zowe server-side compo
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
+|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))<br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**<br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
 
 ## Configuring Zowe z/OS Components 
 
