@@ -24,8 +24,7 @@ The Zowe Servers will use this certificate. Ensure that the certificate either d
 * **Certificate Authorities**  
 Every intermediate and root Certificate Authority (CA) that Zowe interacts with must be within the Keyring, unless the `zowe.yaml` value `zowe.verifyCertificates` is set to `DISABLED`. CAs that must be within the keyring include z/OSMF's CAs if using z/OSMF, and Zowe's own certificate's CAs as Zowe servers must be able to verify each other.
 
-There are four options for setting up keyrings: Three scenarios presented in the following table include JCL samples where a keyring is created for you. The forth option can be used where you can provide your own keyring. <br />
-If you already have a keyring that meets the requirements, configure Zowe to use this keyring by configuring `zowe.yaml` values within `zowe.certificate` according to the following example:
+There are four options for setting up keyrings: Three scenarios presented in the following table include JCL samples where a keyring is created for you. If you already have a keyring, you can  configure Zowe to use this keyring by configuring `zowe.yaml` values within `zowe.certificate` according to the following example:
 
 ```
 zowe:
@@ -40,12 +39,13 @@ zowe:
       file: "safkeyring://<STC Account Name>/<Ring Name>"
       password: "password" #literally "password". keyrings do not use passwords, so this is a placeholder.
 ```
-If you would like Zowe to create a keyring instead, you can do one of these three options:
+If you would like Zowe to create a keyring, choose from the following three options: 
+
 | Keyring Setup Options | Description | Sample JCL|
 |--------------------|-------------|-----------|
 |Option 1 | Zowe creates a keyring and populates it with a newly generated certificate and certificate authority. The certificate is seen as "self-signed" by clients unless the import of the CA to clients is performed. | RACF : [ZWEIKRR1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR1) <br /> TSS: [ZWEIKRT1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT1) <br /> ACF2: [ZWEIKRA1](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA1) 
 |Option 2| Zowe creates a keyring and populates it by connecting pre-existing certificates and CAs that you specify.| RACF : [ZWEIKRR2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR2)<br /> TSS: [ZWEIKRT2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT2) <br /> ACF2: [ZWEIKRA2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA2) 
-|Option 3 | Zowe creates a keyring and populates it by importing PKCS12 content from a dataset that you specify. | RACF: [ZWEIKRR3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR3) <br /> TSS: [ZWEIKRT3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT3) <br /> ACF2: [ZWEIKRA3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA3)
+|Option 3 | Zowe creates a keyring and populates it by importing PKCS12 content from a data set that you specify. | RACF: [ZWEIKRR3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR3) <br /> TSS: [ZWEIKRT3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT3) <br /> ACF2: [ZWEIKRA3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA3)
 
 ## (Optional) Caching Service VSAM Task: 
 If you plan to use the Zowe Caching service component, such as for high availability and fault tolerance reasons, it is required to choose a form of database for the service to use. Among the choices is for it to use a VSAM dataset of your choice.
