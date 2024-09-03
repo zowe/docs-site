@@ -1,9 +1,13 @@
 # Using VSAM as a storage solution through the Caching service **Deprecated**
 
-The VSAM as a storage solution is deprecated in V3, please use [Infinispan](./api-mediation-infinispan), which is packaged as part of the Caching Service. 
+:::info Required roles: system administrator, security administrator
+:::
 
-As a system programmer, you can configure VSAM as a storage solution through the Caching service. The procedure in this article
-describes how to configure your storage solution for VSAM. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
+:::caution Important
+The VSAM as a storage solution is deprecated in V3, please use [Infinispan](./api-mediation-infinispan), which is packaged as part of the Caching Service. 
+:::
+
+As a system programmer, you can configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
 
 - [Understanding VSAM](#understanding-vsam)
 - [VSAM configuration](#vsam-configuration)

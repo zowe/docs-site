@@ -1,7 +1,9 @@
 # Using Infinispan as a storage solution through the Caching service
 
-As a system programmer, you can configure Infinispan as a storage solution through the Caching service. This article describes how to configure your storage solution for Infinispan.
-You can configure Infinispan for high availability as well as to replicate data to provide data durability and availability.
+:::info Required roles: system administrator, security administrator
+:::
+
+You can configure Infinispan as a storage solution through the Caching service, as well as configure Infinispan for high availability to replicate data to provide data durability and availability.
 
 - [Using Infinispan as a storage solution through the Caching service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
   - [Understanding Infinispan](#understanding-infinispan)
