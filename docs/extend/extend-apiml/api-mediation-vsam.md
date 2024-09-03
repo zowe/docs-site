@@ -4,10 +4,10 @@
 :::
 
 :::caution Important
-The VSAM as a storage solution is deprecated in V3, please use [Infinispan](./api-mediation-infinispan), which is packaged as part of the Caching Service. 
+VSAM as a storage solution is deprecated in Zowe V3, please use [Infinispan](./api-mediation-infinispan), which is packaged as part of the Caching Service. 
 :::
 
-As a system programmer, you can configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
+In Zowe v2 or previous versions, it is possible to configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
 
 - [Understanding VSAM](#understanding-vsam)
 - [VSAM configuration](#vsam-configuration)
