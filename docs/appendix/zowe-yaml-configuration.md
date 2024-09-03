@@ -440,7 +440,11 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.auth.provider`**  
  Defines the authentication provider used by the API Gateway.
 - **`apiml.security.authorization.endpoint.url`**  
- Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
+  Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
+- **`apiml.security.personalAccessToken.enabled`**
+  Enable Personal Access Tokens  
+- **`apiml.security.useInternalMapper`**
+  This property is the global feature toggle. Set the value to true to enable Internal Mapper
 - **`apiml.security.oidc.enabled`**  
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
