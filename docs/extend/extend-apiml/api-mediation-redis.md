@@ -1,7 +1,9 @@
 # Using Redis as a storage solution through the Caching service
 
-As an API developer, you can configure Redis as a storage solution through the Caching service. This article describes how to configure your storage solution for Redis.
-You can configure Redis for high availability as well as to replicate data to provide data durability and availability.
+:::info Required roles: system administrator, security administrator
+:::
+
+You can configure Redis as a storage solution through the Caching service, as well as configure Redis for high availability to replicate data to provide data durability and availability.
 
 - [Understanding Redis](#understanding-redis)
 - [Redis configuration](#redis-configuration)
