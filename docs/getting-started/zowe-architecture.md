@@ -4,7 +4,7 @@ Zowe&trade; is a collection of components that together form a framework that ma
 
 The following diagram illustrates the high-level Zowe architecture.
 
-![Zowe Architecture Diagram](../../../docs-site-2/docs-site/docs/images/common/zowe-architecture.png)
+![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
 The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
@@ -37,7 +37,7 @@ For simplification of the preceding diagram, the Jobs and Files API servers are 
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
 
-![Zowe Architecture Diagram in Kubernetes](../../../docs-site-2/docs-site/docs/images/common/zowe-architecture-k8s.png)
+![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
 
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
