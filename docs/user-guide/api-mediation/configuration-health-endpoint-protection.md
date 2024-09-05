@@ -3,7 +3,7 @@
 :::info Role: system programmer
 ::: 
 
-As a system programmer, you can disable the security setting for the health check endpoint of the API Gateway. This setting determines whether the health check endpoint is accessible without authentication, or alternatively requires authentication. The V2 behavior was that the authentication wasn't required. Disabling protection for the health check endpoint can limit the security of the API Gateway by allowing access to sensitive status information about the Gateway.
+As a system programmer, you can disable the security setting for the health check endpoint of the API Gateway. This setting determines whether the health check endpoint is accessible without authentication, or alternatively requires authentication. In Zowe V2, authentication was not required. Disabling protection for the health check endpoint can limit the security of the API Gateway by allowing access to sensitive status information about the Gateway.
 
 Use the following procedure to set the value of the health check endpoint of the API Gateway:  
 
@@ -27,7 +27,7 @@ components:
                     protected: true
 ```
 
-In this example, setting `protected` to `true` protects the health check endpoint by requiring authentication. Only authenticated users can access the health check endpoint. This ensures that sensitive information about the status of the Gateway is not exposed to unauthenticated users.
+In this example, setting `protected` to `true` protects the health check endpoint by requiring authentication. Only authenticated users can access the health check endpoint. Requiring authentication ensures that sensitive information about the status of the Gateway is not exposed to unauthenticated users.
 
 To allow open access to the health check endpoint, set the parameter to `false`. Setting this parameter to `false` permits access to this endpoint without authentication. In this case, anyone can access the health check endpoint and obtain information about the status of the Gateway.
 

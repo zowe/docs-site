@@ -77,7 +77,12 @@ Unlike all of the servers described above which run under the `ZWESLSTC` started
 
 ## API Mediation Layer
 
-Collection of services for management and administration of APIs. 
+AC\THe API Mediation Layer is a collection of services for management and administration of APIs, and is comprised of the following components that are described in detail below:
+
+* API Gateway
+* API Catalog
+* API Discovery
+* Caching service
 
 ### API Gateway
 
@@ -95,7 +100,7 @@ The API Catalog provides a list of the API services that have registered themsel
 ![Zowe API Catalog](../images/api-mediation/api-catalog.png)
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1`.
-When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
 When running on z/OS, the server uses the jobname suffix of AC.
 
 ### API Discovery
@@ -112,7 +117,7 @@ The Caching service aims to provide an API which offers the possibility to store
 For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service).
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
-When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
 When running on z/OS, the server uses the jobname suffix of CS.
 
 ## Desktop Apps
