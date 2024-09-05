@@ -4,8 +4,15 @@ One option to configure Zowe is by directly customizing JCLs. The Zowe Runtime D
 
 Edit and submit the job `SZWESAMP(ZWEGENER)` to validate the contents of your `zowe.yaml` before resolving the `JCL templates` and placing the resulting JCL into a separate data set created by the job ZWEGENER. The location is specified in `zowe.setup.dataset.jcllib`.
 
-When the JCL is prepared, the following jobs can be submitted to perform the following instance configuration actions:
-## Core task
+When the JCL is prepared, the following jobs can be submitted to perform the following instance configuration actions.
+In addition to core JCL samples, you can also customize JCL samples for various keyring setup options according to your security manager. 
+
+* For sample JCLs corresponding to core tasks, see the table [Core Tasks](#core-tasks). 
+* For sample JCLs corresponding to keyring tsks, see the section [Keyring Tasks](#keyring-tasks) later in this article. 
+* For JCL samples if you are using VSAM as your storage solution for the Caching service, see the table corresponding to [(Optional) Caching Service VSAM Task](#optional-caching-service-vsam-task).
+
+## Core Tasks
+
 | Task | Description | Sample JCL|
 |------|-------------|-----------|
 |Create Instance Datasets | <br />**Purpose:**<br /> Create datasets for Zowe's PARMLIB content and non-ZFS extension content for a given Zowe Instance <br /> **Action:**<br /> 1) Allocate the PDSE FB80 dataset with at least 15 tracks named from Zowe parameter `zowe.setup.dataset.parmlib`<br/>2) Allocate the PDSE FB80 dataset with at least 30 tracks named from Zowe parameter `zowe.setup.dataset.authPluginLib`<br/>3) Copy the member `ZWESIP00` from `zowe.setup.dataset.prefix.SZWESAMP` into `zowe.setup.dataset.parmlib` | [ZWEIMVS](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIMVS)
@@ -47,8 +54,9 @@ If you would like Zowe to create a keyring, choose from the following three opti
 |Option 2| Zowe creates a keyring and populates it by connecting pre-existing certificates and CAs that you specify.| RACF : [ZWEIKRR2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR2)<br /> TSS: [ZWEIKRT2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT2) <br /> ACF2: [ZWEIKRA2](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA2) 
 |Option 3 | Zowe creates a keyring and populates it by importing PKCS12 content from a data set that you specify. | RACF: [ZWEIKRR3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRR3) <br /> TSS: [ZWEIKRT3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRT3) <br /> ACF2: [ZWEIKRA3](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWEIKRA3)
 
-## (Optional) Caching Service VSAM Task: 
+## (Optional) Caching Service VSAM Task 
 If you plan to use the Zowe Caching service component, such as for high availability and fault tolerance reasons, it is required to choose a form of database for the service to use. Among the choices is for it to use a VSAM dataset of your choice.
+
 | Task | Description | Sample JCL|
 |------|-------------|-----------|
 |Create VSAM Dataset for Caching Service | **Action**: Create a RLS or NONRLS dataset for the caching service, and set the name into the YAML value `components.caching-service.storage.vsam.name` | [ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/feature/v3/jcl/files/SZWESAMP/ZWECSVSM)
