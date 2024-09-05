@@ -8,7 +8,7 @@ When the JCL is prepared, the following jobs can be submitted to perform the fol
 In addition to core JCL samples, you can also customize JCL samples for various keyring setup options according to your security manager. 
 
 * For sample JCLs corresponding to core tasks, see the table [Core Tasks](#core-tasks). 
-* For sample JCLs corresponding to keyring tsks, see the section [Keyring Tasks](#keyring-tasks) later in this article. 
+* For sample JCLs corresponding to keyring tasks, see the section [Keyring Tasks](#keyring-tasks) later in this article. 
 * For JCL samples if you are using VSAM as your storage solution for the Caching service, see the table corresponding to [(Optional) Caching Service VSAM Task](#optional-caching-service-vsam-task).
 
 ## Core Tasks
