@@ -245,9 +245,11 @@ In the following configuration, services are accessed through the API ML using c
 }
 ```
 
-## Accessing services for multiple API ML instances
+## Accessing services through multiple API ML gateways
 
-In the following configuration, the profiles are structured to allow multiple instances of the API ML.
+In the following configuration, the profiles are structured to connect to services using multiple API ML gateways.
+
+To authenticate to a specific API ML gateway from this configuration, you can run `zowe auth login apiml --base-profile lpar1` or `zowe auth login apiml --base-profile lpar2`.
 
 ```
 {
