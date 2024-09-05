@@ -1281,9 +1281,6 @@ The following error message codes may appear on logs or API responses. Use the f
   ```
   Apply one of the following values:
 
-  * **auto**
-  Signifies that API ML is enabled to resolve the JWT producer
-
   * **jwt**
   Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
 
