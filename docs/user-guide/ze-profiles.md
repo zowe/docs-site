@@ -144,7 +144,7 @@ Connect your service profile with a base profile and token:
 4. In the next **Quick Pick** menu, select the appropriate option for authenticating to the API ML
 5. Answer the proceeding prompts for information.
 
-    Tokens are stored in a base profile. If no base profile exists, one is created. A local base profile is created that contains your token. For more information about the process, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
+    Tokens are stored either in a base profile or, if using a nested profile structure, in a parent profile that has a secure array that contains `tokenValue`. If not using a nested profile structure, and if a base profile does not exist, a base profile is created that contains your token. For more information about API integration and using tokens, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
 
 ### Logging out of the API ML using SSO
 
