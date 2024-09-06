@@ -156,5 +156,3 @@ If you do not want to store your token, request the server to revoke your token 
 4. In the **Quick Pick**, select the **Log out from Authentication Service** option.
 
     Your token has been successfully invalidated.
-
-
