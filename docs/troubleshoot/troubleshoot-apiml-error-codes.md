@@ -1,7 +1,7 @@
 
 # Error Message Codes
 
-The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
+The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
 
 ## API mediation utility messages
 
@@ -727,7 +727,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {validity: int , scopes: [string]}.
+  Use a valid body in the request. Format of a message: `{validity: int , scopes: [string]}`.
 
 ### ZWEAT606E
 
@@ -747,7 +747,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Unexpected error occurred when mapping between distributed and mainframe identity 
+  Unexpected error occurred when mapping between distributed and mainframe identity
 
   **Action:**
 
@@ -909,7 +909,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  When this error occurs it is necessary to get a new JWT token. 
+  When this error occurs it is necessary to get a new JWT token.
 
 ### ZWEAS120E
 
@@ -957,7 +957,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Log the message from the exception and then handle the exception based on the information provided there. 
+  Log the message from the exception and then handle the exception based on the information provided there.
 
 ### ZWEAS400E
 
@@ -1079,7 +1079,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
 
 ### ZWEAD401E
 
@@ -1091,7 +1091,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
 
 ### ZWEAD700W
 
@@ -1129,7 +1129,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Review the mentioned static API definition file for errors.
   Refer to the specific log message to determine the exact cause of the problem:
- 
+
   - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId.
   - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
   - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
@@ -1488,7 +1488,7 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URI is not valid. Ensure the service is providing a valid URL.
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
- 
+
 
 ### ZWEAC706E
 
@@ -1528,7 +1528,7 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URI is not valid. Ensure the service is providing a valid URL.
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
- 
+
 
 ### ZWEAC709E
 
