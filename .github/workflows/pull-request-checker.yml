@@ -8,6 +8,9 @@ on:
       - anax-test-branch # TODO Delete this line before merging PR
     types: [opened, reopened, edited, labeled]
 
+permissions:
+  pull-requests: write
+
 jobs:
   initial-comment:
     name: PR Instructions
