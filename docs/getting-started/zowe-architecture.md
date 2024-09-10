@@ -77,7 +77,7 @@ Unlike all of the servers described above which run under the `ZWESLSTC` started
 
 ## API Mediation Layer
 
-AC\THe API Mediation Layer is a collection of services for management and administration of APIs, and is comprised of the following components that are described in detail below:
+The API Mediation Layer is a collection of services for management and administration of APIs, and is comprised of the following components that are described in detail below:
 
 * API Gateway
 * API Catalog
