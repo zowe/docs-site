@@ -23,7 +23,7 @@ To review open issues, ask questions, find solutions, and report bugs, see [Issu
 * [Downloading the Wizard](#downloading-the-wizard)
 * [Installing Zowe server-side components](#installing-zowe-server-side-components)
   * [Connecting the Wizard to z/OS](#connecting-the-wizard-to-zos)
-  * [Setting z/OSMF Attributes (optional)](#setting-zosmf-attributes-optional)
+  * [Setting z/OSMF Attributes](#setting-zosmf-attributes)
 * [Choosing the Server Installation Type](#choosing-the-server-installation-type)
 * [Configuring the Zowe Server](#configuring-the-zowe-server)
 * [Final Review](#final-review)
