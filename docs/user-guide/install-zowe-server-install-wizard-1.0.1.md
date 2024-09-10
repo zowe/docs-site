@@ -64,7 +64,7 @@ Apple macOS | .dmg
 Linux (debian-based) | .deb
 Linux (RedHat or SuSE-based) | .rpm
 
-**Note**: If you are using Apple macOS you will receive an error message that says "zowe-install-wizrd" is damaged and can't be opened. You should move it to the Bin. In this case, go to the terminal and run `sudo xattr -rd com.apple.quarantine /Applications/zowe-install-wizard.app` command and you will be able to use the .dmg file on macOS. 
+**Note**: If you are using Apple macOS you might receive an error message that says *"zowe-install-wizrd is damaged and can't be opened. You should move it to the Bin".* In that case, go to the terminal and run `sudo xattr -rd com.apple.quarantine /Applications/zowe-install-wizard.app` command and you will be able to use the .dmg file on macOS. 
 
 ## Installing Zowe server-side components
 
