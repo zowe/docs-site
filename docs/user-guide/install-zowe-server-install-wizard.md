@@ -64,7 +64,13 @@ Apple macOS | .dmg
 Linux (debian-based) | .deb
 Linux (RedHat or SuSE-based) | .rpm
 
-**Note**: If you are using Apple macOS you might receive an error message that says *"zowe-install-wizrd is damaged and can't be opened. You should move it to the Bin".* In that case, go to the terminal and run `sudo xattr -rd com.apple.quarantine /Applications/zowe-install-wizard.app` command and you will be able to use the .dmg file on macOS. 
+:::note
+If you are using Apple macOS you might receive the following error message: 
+`zowe-install-wizard is damaged and can't be opened. You should move it to the Bin`
+If you receive this message, open terminal and run the following command:  
+`sudo xattr -rd com.apple.quarantine /Applications/zowe-install-wizard.app`  
+This command enables you to use the .dmg file on macOS. 
+:::
 
 ## Installing Zowe server-side components
 
@@ -107,7 +113,7 @@ Provide details for z/OSMF.
 
 1. After specifying all the mandatory details, click **VALIDATE LOCATIONS**.
 
-    You will see green check marks against Java Home Directory and Node.js Home Directory fields as  confirmation that the locations are validated successfully.
+    You will see green check marks next to the Java Home Directory and Node.js Home Directory fields as confirmation that the locations are validated successfully.
 
 2. Click **Continue to Installation Options**.
 
