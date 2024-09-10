@@ -149,7 +149,7 @@
             "user-guide/address-browser-requirements"
           ]
         },
-        "user-guide/install-zowe-server-install-wizard",
+        "user-guide/install-zowe-server-install-wizard-1.0.0",
         {
           "type": "category",
           "label": "Installing Zowe via SMP/E",
