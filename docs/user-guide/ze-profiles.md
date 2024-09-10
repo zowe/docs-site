@@ -1,6 +1,7 @@
 # Creating Zowe Explorer profiles
 
 After you install Zowe Explorer, you must have a Zowe Explorer profile to use all functions of the extension.
+
 :::info Required roles: Systems administrator
 :::
 
@@ -120,3 +121,38 @@ You can use this example to customize your own profiles in a configuration file.
   "plugins": []
 }
 ```
+
+## Using base profiles and tokens with existing profiles
+
+As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate using Zowe API Mediation Layer (API ML). You can use base profiles with more than one service profile. For more information, see [Base Profiles](../user-guide/cli-using-using-profiles-v1.md#base-profiles).
+
+::: note
+
+If you want to access services through multiple API ML gateways, the same following steps apply. However, you must first edit your configuration file to follow a specific structure.
+
+Review [Accessing services for multiple API ML instances](../user-guide/cli-using-creating-profiles.md#accessing-services-for-multiple-api-ml-instances) to see how profiles are structured in the configuration file.
+
+:::
+
+### Accessing services through API ML using SSO
+
+Connect your service profile with a base profile and token:
+
+1. Right-click on the profiles you want to connect through with the API ML.
+2. Select the **Manage Profile** option from the context menu
+3. In the **Quick Pick**, select **Log in to Authentication Service**.
+4. In the next **Quick Pick** menu, select the appropriate option for authenticating to the API ML
+5. Answer the proceeding prompts for information.
+
+    Tokens are stored either in a base profile or, if using a nested profile structure, in a parent profile that has a secure array that contains `tokenValue`. If not using a nested profile structure, and if a base profile does not exist, a base profile is created that contains your token. For more information about API integration and using tokens, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
+
+### Logging out of the API ML using SSO
+
+If you do not want to store your token, request the server to revoke your token and delete it from your local profile. Use the **Log out from Authentication Service** feature to invalidate the token.
+
+1. Open Zowe Explorer.
+2. Right-click your profile.
+3. Select the **Manage Profile** option.
+4. In the **Quick Pick**, select the **Log out from Authentication Service** option.
+
+    Your token has been successfully invalidated.
