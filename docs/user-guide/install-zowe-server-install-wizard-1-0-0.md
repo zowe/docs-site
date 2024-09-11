@@ -1,11 +1,9 @@
 # Installing Zowe via Zowe Server Install Wizard
 
-The Zowe Server Install Wizard version 1.0.1 is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
-
-:::note You need to upgrade the Zowe Server Install Wizard version 1.0.0 to 1.0.1 to use Zowe versions 2.18 and later. :::
+The Zowe Server Install Wizard 1.0 is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
 
 :::note
-The Zowe Server Install Wizard is currently available only as a technical preview. This preview includes some of the installation options. Future releases will include more options including validation and discovery properties that can assist with Zowe server installation. ::: 
+The Zowe Server Install Wizard is currently available only as a technical preview. This preview includes some of the installation options. Future releases will include more options including validation and discovery properties that can assist with Zowe server installation.
 
 This technical preview includes the following features:
 * Install a PAX or SMP/E edition of Zowe (including offline PAX upload)
@@ -14,6 +12,7 @@ This technical preview includes the following features:
 
 Future Wizard releases will include post-install configuration tasks
 including customizing the behavior of individual Zowe components, and the enablement of tracing. Currently, these tasks must be performed manually in the zowe.yaml file.
+:::
 
 :::tip
 To review open issues, ask questions, find solutions, and report bugs, see [Issues](https://github.com/zowe/zen/issues) in the Zowe Server Install Wizard GitHub repository.
@@ -24,7 +23,7 @@ To review open issues, ask questions, find solutions, and report bugs, see [Issu
 * [Downloading the Wizard](#downloading-the-wizard)
 * [Installing Zowe server-side components](#installing-zowe-server-side-components)
   * [Connecting the Wizard to z/OS](#connecting-the-wizard-to-zos)
-  * [Setting z/OSMF Attributes](#setting-zosmf-attributes)
+  * [Setting z/OSMF Attributes (optional)](#setting-zosmf-attributes-optional)
 * [Choosing the Server Installation Type](#choosing-the-server-installation-type)
 * [Configuring the Zowe Server](#configuring-the-zowe-server)
 * [Final Review](#final-review)
@@ -65,13 +64,6 @@ Apple macOS | .dmg
 Linux (debian-based) | .deb
 Linux (RedHat or SuSE-based) | .rpm
 
-:::note
-If you are using Apple macOS you might encounter the following error message: 
-`zowe-install-wizard is damaged and can't be opened. You should move it to the Bin`
-To resolve this, open terminal and run the following command:  
-`sudo xattr -rd com.apple.quarantine /Applications/zowe-install-wizard.app`  
-This command enables you to use the .dmg file on macOS. 
-:::
 
 ## Installing Zowe server-side components
 
@@ -109,12 +101,12 @@ This option allows you to follow the installation steps without running the inst
 8. In the **Job statement** field, customize the job statement as necessary and click **SAVE AND VALIDATE**.
 9. Further down the _Planning_ page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
 
-### Setting z/OSMF Attributes
+### Setting z/OSMF Attributes (optional)
 Provide details for z/OSMF. 
 
 1. After specifying all the mandatory details, click **VALIDATE LOCATIONS**.
 
-    You will see green check marks next to the Java Home Directory and Node.js Home Directory fields as confirmation that the locations are validated successfully.
+    You will receive a confirmation message for Java and Node.js locations.
 
 2. Click **Continue to Installation Options**.
 
