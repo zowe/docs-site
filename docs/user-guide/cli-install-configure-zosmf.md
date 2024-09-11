@@ -5,7 +5,7 @@ For client-side components to communicate with the mainframe, z/OSMF requires co
 :::info Required role: systems programmer
 :::
 
-Complete the following IBM z/OSMF configuration tasks for the implementation of [Zowe CLI](../user-guide/user-roadmap-zowe-cli.md), [Zowe Explorer for Visual Studio Code](../getting-started/user-roadmap-zowe-explorer.md), or the [Zowe IntelliJ Plug-in](../user-guide/intellij-install.md).
+Complete the following IBM z/OSMF configuration tasks for the implementation of [Zowe CLI](../user-guide/user-roadmap-zowe-cli.md), [Zowe Explorer for Visual Studio Code](../getting-started/user-roadmap-zowe-explorer.md), or the [Zowe Explorer plug-in for IntelliJ IDEA](../user-guide/intellij-configure.md).
 
 :::note
 

@@ -11,7 +11,7 @@ Learn how to start using Zowe components, applications, and plug-ins.
 ## Zowe client-side components
 
 - [Using Zowe CLI](cli-using-usingcli.md)
-- [Using Zowe Explorer for IntelliJ](intellij-using.md)
+- [Using Zowe Explorer plug-in for IntelliJ IDEA](intellij-use-cases.md)
 - [Using Zowe Explorer for Visual Studio Code](ze-usage.md)
 - [Using Zowe SDKs](sdks-using.md)
 

@@ -31,3 +31,10 @@ For Node SDK usage and syntax examples, refer to the following package Readmes:
 ### Using Python
 
 For information about the Python SDK, including usage and syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
+
+### Using Kotlin
+
+For information about Zowe Client Kotlin SDK, including a setup guide and source code documentation, see the [Zowe Client Kotlin SDK docs](https://zowe.github.io/zowe-client-kotlin-sdk/).
+
+### Using Java
+For information about how to use Zowe Client Java SDK, see [this README.md section](https://github.com/zowe/zowe-client-java-sdk/?tab=readme-ov-file#examples).

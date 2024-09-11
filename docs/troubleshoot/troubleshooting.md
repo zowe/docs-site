@@ -46,7 +46,7 @@ You can also find error messages and codes, must-gathers, and information about 
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
 - [Troubleshooting Zowe Explorer](./ze/troubleshoot-ze.md)
 - [Troubleshooting Zowe Chat](./zowe-chat-troubleshoot/troubleshooting.md)
-- [Troubleshooting Zowe IntelliJ plug-in](troubleshoot-intellij.md)
+- [Troubleshooting Zowe Explorer plug-in for IntelliJ IDEA](troubleshoot-intellij.md)
 
 ## Verifying a Zowe release's integrity
 

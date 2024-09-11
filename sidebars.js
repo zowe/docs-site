@@ -11,7 +11,7 @@ module.exports = {
         "whats-new/release-notes/v3_0_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
-        "whats-new/release-notes/v2_15_0",       
+        "whats-new/release-notes/v2_15_0",
         "whats-new/release-notes/v2_14_0",
         "whats-new/release-notes/v2_13_0",
         "whats-new/release-notes/v2_12_0",
@@ -213,7 +213,7 @@ module.exports = {
               label: "Configuring the Zowe cross memory server (ZIS)",
               link: {type:"doc", id:"user-guide/configure-xmem-server"},
               items: [],
-            }, 
+            },
             {
               type: "category",
               label: "Configuring high availability (optional)",
@@ -224,7 +224,7 @@ module.exports = {
                 "user-guide/configure-caching-service-ha",
               ]
             }
-          ]   
+          ]
         },
         {
           type: "category",
@@ -313,11 +313,11 @@ module.exports = {
             },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls",
-            "user-guide/api-mediation/configuration-logging",  
+            "user-guide/api-mediation/configuration-logging",
           ]
-        }        
+        }
         ],
-    },    
+    },
     {
       type: "category",
       label: "Installing Zowe client-side components",
@@ -329,8 +329,8 @@ module.exports = {
           label: "Configuring z/OSMF",
           link: {type:"doc", id:"user-guide/cli-install-configure-zosmf"},
           items: [
-            "user-guide/cli-install-configure-zosmf-security", 
-          ],      
+            "user-guide/cli-install-configure-zosmf-security",
+          ],
         },
         {
           type: "category",
@@ -364,12 +364,12 @@ module.exports = {
                   ],
                 },
               ],
-            }, 
+            },
             "user-guide/cli-uninstall",
-            "user-guide/cli-install-verify-your-installation", 
+            "user-guide/cli-install-verify-your-installation",
           ],
         },
-        
+
         {
           type: "category",
           label: "Zowe Explorer installation",
@@ -395,9 +395,10 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Zowe IntelliJ Plug-in",
-          link: {type:"doc", id:"user-guide/intellij-install"},
+          label: "Zowe Explorer plug-in for IntelliJ IDEA",
           items: [
+            "user-guide/intellij-install-prereqs",
+            "user-guide/intellij-install",
             "user-guide/intellij-configure",
           ],
         },
@@ -490,7 +491,7 @@ module.exports = {
         },
   ],
 },
-],             
+],
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -575,7 +576,7 @@ module.exports = {
             "user-guide/api-mediation/api-mediation-update-password",
             "user-guide/api-mediation/api-mediation-smf",
           ],
-        },        
+        },
       ],
     },
     {
@@ -645,9 +646,9 @@ module.exports = {
                 "user-guide/cli-mqplugin",
                 "user-guide/cli-idfplugin",
               ],
-            },    
+            },
           ],
-        },        
+        },
         {
           type: "category",
           label: "Using Zowe Explorer",
@@ -687,21 +688,27 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Using Zowe IntelliJ Plug-in",
-          link: {type:"doc", id:"user-guide/intellij-using"},
+          label: "Using Zowe Explorer plug-in for IntelliJ IDEA",
           items: [
+            "user-guide/intellij-use-cases",
+            "user-guide/intellij-settings",
             "user-guide/intellij-working-sets",
+            "user-guide/intellij-zos-files",
+            "user-guide/intellij-uss-files",
+            "user-guide/intellij-copy-cut",
+            "user-guide/intellij-jes-explorer",
+            "user-guide/intellij-tso-cli",
           ],
         },
         "user-guide/sdks-using",
         "user-guide/zowe-chat/chat_use_interact_methods",
-        "user-guide/providing-feedback-and-contributing-client-side",        
+        "user-guide/providing-feedback-and-contributing-client-side",
       ],
     },
   ],
   "extending": [
     "extend/extend-zowe-overview",
-    "extend/zowe-conformance-program",  
+    "extend/zowe-conformance-program",
     {
       type: "category",
       label: "Developing server-side components",
@@ -750,7 +757,7 @@ module.exports = {
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
                 "extend/extend-apiml/onboard-static-definition",
-                "extend/extend-apiml/custom-metadata",    
+                "extend/extend-apiml/custom-metadata",
               ]
             },
             {
@@ -776,7 +783,7 @@ module.exports = {
               label: "Zowe API Mediation Layer Security",
               items: [
                 "extend/extend-apiml/api-medation-sso-integration-extenders",
-                "extend/extend-apiml/zaas-client",                
+                "extend/extend-apiml/zaas-client",
               ],
             },
           ],
@@ -802,7 +809,7 @@ module.exports = {
             "extend/extend-desktop/mvd-logutility",
             "extend/extend-desktop/mvd-conda",
           ],
-        },        
+        },
       ],
     },
     {
@@ -831,12 +838,12 @@ module.exports = {
             "extend/extend-cli/cli-creating-plug-in-lifecycle-actions",
           ],
         },
-        
+
         "extend/extend-ze/ze-extensions",
         "getting-started/user-roadmap-client-sdk",
-        "extend/extend-sdks",      
+        "extend/extend-sdks",
       ],
-    },    
+    },
   ],
   "troubleshooting": [
     {
@@ -928,10 +935,10 @@ module.exports = {
             "troubleshoot/ze/ze-issues",
           ],
         },
-        "troubleshoot/troubleshoot-intellij",   
-        "troubleshoot/zowe-chat-troubleshoot/troubleshooting",     
+        "troubleshoot/troubleshoot-intellij",
+        "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
       ],
-    }  
+    }
   ],
   "contributing": [
     "contribute/roadmap-contribute",
@@ -960,7 +967,7 @@ module.exports = {
     "contribute/contributing",
   ],
   "reference": [
-    "appendix/server-component-manifest",    
+    "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
     {
       type: "category",
@@ -1054,7 +1061,7 @@ module.exports = {
       ]
     },
     "appendix/zowe-cli-command-reference",
-    "appendix/zowe-yaml-configuration",    
+    "appendix/zowe-yaml-configuration",
     {
       type: "category",
       label: "ZWE Server Command Reference",
@@ -1066,7 +1073,7 @@ module.exports = {
         }
       ]
     },
-    "appendix/bill-of-materials",   
+    "appendix/bill-of-materials",
     {
       type: "link",
       label: "Third Party Software Requirements",

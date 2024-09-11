@@ -20,7 +20,7 @@ The following SDKs are available.
 
 For detailed SDK documentation, see the following:
 - [Zowe Client Java SDK](https://github.com/Zowe-Java-SDK)
-- [Zowe Client Kotlin SDK](https://for-mainframe.github.io/r2z/)
+- [Zowe Client Kotlin SDK](https://zowe.github.io/zowe-client-kotlin-sdk/)
 - [Zowe Client Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
 - [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
 - [Zowe SDK Sample Scripts](https://github.com/zowe/zowe-sdk-sample-scripts/)
@@ -55,38 +55,7 @@ implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', 
 
 Requires Java Runtime Environment (JRE) 17.
 
-To install this library in your project, use a build tool such as Maven, Gradle, or Ant. Get the necessary artifacts from the [Kotlin SDK repository](https://zowe.jfrog.io/artifactory/libs-release/org/zowe/sdk/zowe-kotlin-sdk/).
-
-If you add the Kotlin SDK as a dependency to your project, Maven or Gradle automatically downloads any additional dependencies needed to use the SDK.
-
-
-:::note
-
-You must download the `JAR` file and install it into your local repository using Maven or Gradle.
-
-:::
-
-For a Maven project, add the SDK as a dependency by updating the `pom.xml` file:
-
-```
-<dependency>
-  <groupId>org.zowe.sdk</groupId>
-  <artifactId>zowe-kotlin-sdk</artifactId>
-  <version>{version}</version>
-</dependency>
-```
-
-For a Gradle project, add the SDK as a dependency by updating the `build.gradle.kts` file:
-
-```
-implementation("org.zowe.sdk:zowe-kotlin-sdk:$version")
-```
-
-To use:
-
-```
-import org.zowe.kotlinsdk
-```
+For detailed information about how to install the library, refer to [the official installation guide for Zowe Client Kotlin SDK](https://zowe.github.io/zowe-client-kotlin-sdk/#installation)
 
 ### Node.js
 

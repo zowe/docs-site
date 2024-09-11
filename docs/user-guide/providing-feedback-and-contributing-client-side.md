@@ -37,15 +37,15 @@ To file an issue:
     - [Zowe Explorer FTP Extension issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
         - Add the label `zFTP` to indicate the extension.
 
-## Zowe IntelliJ Plug-in
+## Zowe Explorer plug-in for IntelliJ IDEA
 
-### Chatting with the Zowe Zowe IntelliJ Plug-in community
+### Chatting with the Zowe Explorer plug-in for IntelliJ IDEA community
 
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
+Chat with the community in [Slack](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
 
-### Filing an issue for Zowe Zowe IntelliJ Plug-in
+### Filing an issue for Zowe Explorer plug-in for IntelliJ IDEA
 
-Go to the [Zowe IntelliJ Plug-in  issue list](https://github.com/zowe/zowe-explorer-intellij/issues) to file an issue. Include all relevant information.
+Go to the [Zowe Explorer plug-in for IntelliJ IDEA issue list](https://github.com/zowe/zowe-explorer-intellij/issues) to file an issue. Include all relevant information.
 
 ## Zowe Client SDKs
 

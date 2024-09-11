@@ -34,7 +34,7 @@ Zowe technology can be used by a variety of mainframe IT and non-IT professional
 
 <summary></summary>
 
-Zowe consists of several components. The primary languages for API Mediation Layer are Java and JavaScript. Zowe CLI, Explorer for VSCode and Desktop are written in TypeScript. Explorer for IntelliJ is written in Kotlin, ZSS is written in C, while the cross memory server is written in metal C.
+Zowe consists of several components. The primary languages for API Mediation Layer are Java and JavaScript. Zowe CLI, Explorer for VSCode, and Desktop are written in TypeScript. Zowe Explorer plug-in for IntelliJ IDEA is written in Kotlin, ZSS is written in C, while the cross memory server is written in metal C.
 
 </details>
 
@@ -499,19 +499,19 @@ As a developer, you may contribute to Zowe Explorer in the following ways:
 
 </details>
 
-## Zowe IntelliJ plug-in FAQ
+## Zowe Explorer plug-in for IntelliJ IDEA FAQ
 
-### Why might I use Zowe IntelliJ plug-in versus a traditional ISPF interface to perform mainframe tasks?
+### Why would I use the plug-in versus a traditional ISPF interface to perform mainframe tasks?
 
 <details className="zowe-faq">
 
 <summary></summary>
 
-Zowe IntelliJ plug-in allows you to access and work with data sets, members and jobs directly from your IntelliJ-based IDE.
+Zowe Explorer plug-in for IntelliJ IDEA allows you to access and work with data sets, members and jobs directly from your IntelliJ-based IDE, such as IntelliJ IDEA, PyCharm, Android Studio, etc.
 
 </details>
 
-### How can I get started with Zowe IntelliJ plug-in?
+### How can I get started with Zowe Explorer plug-in for IntelliJ IDEA?
 
 <details className="zowe-faq">
 
@@ -521,42 +521,32 @@ Install the plug-in in your IntelliJ-based IDE directly from marketplace or down
 
 </details>
 
-### Where can I use Zowe IntelliJ plug-in?
+### Where can I use Zowe Explorer plug-in for IntelliJ IDEA?
 
 <details className="zowe-faq">
 
 <summary></summary>
 
-You can use it in any IntelliJ-based IDE. 
+You can use it in any IntelliJ-based IDE, such as IntelliJ IDEA, PyCharm, Android Studio, etc.
 
 </details>
 
-### How do I get help with using Zowe IntelliJ plug-in?
+### How do I get help with using Zowe Explorer plug-in for IntelliJ IDEA?
 
 <details className="zowe-faq">
 
 <summary></summary>
 
-You can read detailed user guide and find any information you need [here](https://plugins.jetbrains.com/plugin/18688-zowe-explorer/user-guide). Also, you can ask any questions in the Zowe Slack channel [#zowe-explorer-intellij](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
+You can start with the [Use cases](../user-guide/intellij-use-cases.md) section to learn about use cases and how to install and use the plug-in. Also, you can ask any questions in our [Zowe Slack channel (#zowe-explorer-intellij)](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
 
 </details>
 
-### How can I create, edit and delete z/OSMF connection?
+### How can I contribute to Zowe Explorer plug-in for IntelliJ IDEA?
 
 <details className="zowe-faq">
 
 <summary></summary>
 
-To create a connection, expand plug-in panel on an IDE sidebar (on the right side of your screen) and press the "wrench" pictogram, or go to **File** -> **Settings** (CTRL+ALT+S), select **Zowe Explorer (Zowe IntelliJ plugin)** and then switch to the **z/OSMF connection** tab. Press the “+” button and fill inn all necessary fields.
-
-</details>
-
-### How can I contribute to Zowe IntelliJ plug-in?
-
-<details className="zowe-faq">
-
-<summary></summary>
-
-If you have something to introduce but there is no related issue in the project repo, then you can either create the issue by yourself or contact us to help you with it. See more information in the [CONTRIBUTION.md](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md) file.  
+If you have ideas on how to improve the plug-in, or have an issue/bug fix in mind, visit the [contribution guide](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md). Also, you can ask for help in our [Zowe Slack channel (#zowe-explorer-intellij)](https://openmainframeproject.slack.com/archives/C020BGPSU0M).
 
 </details>
