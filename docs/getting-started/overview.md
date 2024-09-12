@@ -214,6 +214,7 @@ The Zowe Client SDKs consist of programmatic APIs that you can use to build clie
 
 - Zowe Node.js Client SDK
 - Zowe Java Client SDK
+- Zowe Kotlin Client SDK
 - Zowe Python Client SDK
 
 For more information, see [Using the Zowe SDKs](../user-guide/sdks-using.md).
@@ -268,21 +269,21 @@ ZEBRA Provides re-usable and industry compliant JSON formatted RMF/SMF data reco
 
 For more information, see the [ZEBRA documentation](https://github.com/zowe/zebra/tree/main/Documentation).
 
-### Zowe IntelliJ Plug-in
+### Zowe Explorer plug-in for IntelliJ IDEA
 
-Zowe IntelliJ plug-in for Intellij-based IDEs is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
+Zowe Explorer plug-in for IntelliJ IDEA is a smart and interactive mainframe code editing tool that allows you to browse, edit, and create data on z/OS via z/OSMF REST API. 
 
-Zowe IntelliJ plug-in helps you to: 
-- Start working with z/OS easily with no complex configurations.
-- Organize datasets on z/OS, files on USS into working sets.
-- Allocate datasets, create members, files and directories with different permissions.
-- Perform operations like renaming, copying and moving data in a modern way.
-- Edit datasets, files and members. Smart auto-save keeps your content both in the editor and on the mainframe in-sync.
-- Create multiple connections to different z/OS systems.
-- Perform all available operations with jobs.
-- Highlight all IntelliJ supported languages automatically and recognize them once opened from the mainframe.
+The plug-in helps to: 
+- Start working with z/OS easily with no complex configurations
+- Organize data sets on z/OS, files on USS into working sets
+- Allocate data sets, create members, files and directories with different permissions
+- Perform operations like renaming, copying and moving data in a modern way
+- Edit data sets, files and members. Smart auto-save keeps your content both in the editor and on the mainframe in sync
+- Create multiple connections to different z/OS systems
+- Perform all available operations with jobs
+- Work with TSO Console directly in the IDE
 
-For more information, see [Using Zowe IntelliJ plug-in](../user-guide/intellij-using.md).
+To learn more about the plug-in, you can start with [Zowe Explorer plug-in for IntelliJ IDEA use cases](../user-guide/intellij-use-cases.md).
 
 ## Zowe Bill of Materials
 

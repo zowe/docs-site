@@ -41,11 +41,11 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 * V3 pre-release versions are available via [npm](https://www.npmjs.com/package/@zowe/cli?activeTab=readme) under the 'next' tag
 
-## Explorer for Intellij
+## Explorer for IntelliJ IDEA
 
 ### Important updates
 
-* Explorer for Intellij will be part of the Zowe Core
+* Explorer for IntelliJ IDEA will be part of the Zowe Core
 * Working with USS Files
 * Working with Data Sets
 * Working with JES Working Sets

@@ -51,11 +51,11 @@ Provides a command-line interface that lets you interact with the mainframe remo
 
 Includes all the Zowe projects, or components, that are installed on the user's PC. Also known as *Zowe client-side projects* or *Zowe client-side components*.
 
-Examples include Zowe CLI, Zowe Explorer for Visual Studio Code, Zowe Explorer for IntelliJ, and Zowe Client SDKs.
+Examples include Zowe CLI, Zowe Explorer for Visual Studio Code, Zowe Explorer for IntelliJ IDEA, and Zowe Client SDKs.
 
 ### Zowe Client SDKs
 
-Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin/z/OSMF, Python, Swift, and Java.
+Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin, Python, Swift, and Java.
 
 ### Zowe Explorer
 
@@ -173,9 +173,9 @@ Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so
 
 The set of programs (for example, `zwe` command) and utilities (for example, JCL, scripts) which manage the Zowe server configuration and components. The infrastructure standardizes the packaging of components and controls how they are started, stopped, and how configuration is provided to them.
 
-#### Zowe IntelliJ Plug-in
+#### Zowe Explorer plug-in for IntelliJ IDEA
 
-Uses the IntelliJ IDE to provide the ability to work with z/OS data sets and USS files, and to explore and manage JES jobs.
+Uses the IntelliJ IDEA platform IDEs to provide the ability to work with z/OS data sets, USS files, to explore and manage JES jobs and to work with TSO Console.
 
 #### Zowe Launcher
 

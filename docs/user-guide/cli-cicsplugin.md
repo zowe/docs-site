@@ -72,7 +72,7 @@ Alternatively, you can create a CICS profile manually by adding a section that c
 
 2. Browse to the directory `C:\Users\<username>\.zowe`.
 
-3. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ.
+3. Open the `zowe.config.json` configuration file using a text editor or IDE, such as Visual Studio Code or IntelliJ IDEA.
 
     :::note
     

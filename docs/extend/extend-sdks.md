@@ -8,6 +8,7 @@ The functionality is currently limited to the interfaces provided by IBM z/OSMF.
 
 For detailed contribution guidelines, see the following documents:
 - [Node.js SDK guidelines](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
+- [Kotlin SDK guidelines](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
 - **Coming soon! Python SDK guidelines**
 
 ## Community resources 
@@ -16,4 +17,3 @@ For detailed contribution guidelines, see the following documents:
 - You can join one of the [Zowe CLI squad meetings](https://lists.openmainframeproject.org/g/zowe-dev/calendar) to discuss Zowe SDKs issues and contibute to Zowe SDKs.
 - Read a series of [blogs about Zowe](https://medium.com/zowe) on Medium to explore use cases, best practices, and more. 
 - Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
-
