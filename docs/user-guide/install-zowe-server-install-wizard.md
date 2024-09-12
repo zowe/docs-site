@@ -2,10 +2,11 @@
 
 The Zowe Server Install Wizard version 1.0.1 is an installation wizard for Zowe server-side components available on Microsoft Windows, macOS, and Linux systems.  Performing Zowe installation via the Wizard streamlines the installation process and is an alternative to performing manual Zowe server-side component installation. Review this article for details about installing Zowe server-side components via the Wizard, setting up the Wizard connection to z/OS, and details including sample JCLs for the Install Wizard initialization steps. There is also a troubleshooting section in case you encounter issues when installing Zowe via the Install Wizard.
 
-:::note You need to upgrade the Zowe Server Install Wizard version 1.0.0 to 1.0.1 to use Zowe versions 2.18 and later. :::
+:::note Notes 
+* You need to upgrade the Zowe Server Install Wizard version 1.0.0 to 1.0.1 to use Zowe versions 2.18 and later.
 
-:::note
-The Zowe Server Install Wizard is currently available only as a technical preview. This preview includes some of the installation options. Future releases will include more options including validation and discovery properties that can assist with Zowe server installation. ::: 
+* The Zowe Server Install Wizard is currently available only as a technical preview. This preview includes some of the installation options. Future releases will include more options including validation and discovery properties that can assist with Zowe server installation. 
+::: 
 
 This technical preview includes the following features:
 * Install a PAX or SMP/E edition of Zowe (including offline PAX upload)
@@ -15,9 +16,10 @@ This technical preview includes the following features:
 Future Wizard releases will include post-install configuration tasks
 including customizing the behavior of individual Zowe components, and the enablement of tracing. Currently, these tasks must be performed manually in the zowe.yaml file.
 
+
 :::tip
 To review open issues, ask questions, find solutions, and report bugs, see [Issues](https://github.com/zowe/zen/issues) in the Zowe Server Install Wizard GitHub repository.
-:::
+
 
 * [Benefits of Wizard Installation](#benefits-of-wizard-installation)
 * [Prerequisites of the Wizard](#prerequisites-of-the-wizard)
