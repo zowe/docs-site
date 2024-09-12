@@ -180,6 +180,7 @@ module.exports = {
               items: [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configuring-zowe-via-jcl",
                 "user-guide/configure-zowe-zosmf-workflow",
               ],
             },
