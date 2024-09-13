@@ -26,7 +26,7 @@ In addition to core JCL samples, you can also customize JCL samples for various 
 Ensure that your Zowe keyring has the following elements:
 
 * **Private key & certificate pair**  
-The Zowe Servers will use this certificate. Ensure that the certificate either does not have the `Extended Key Usage` attribute, or alternatively, that the certificate does have `Extended Key Usage` with both `Server Authorization` and `Client Authorization` values. For more information about extended key usage, see [Extended key usage](./configure-certificates.md/#extended-key-usage) heading in the article _Configuring certificates_.
+The Zowe Servers will use this certificate. Ensure that the certificate either does not have the `Extended Key Usage` attribute, or alternatively, that the certificate does have `Extended Key Usage` with both `Server Authorization` and `Client Authorization` values. For more information about extended key usage, see [Extended key usage](./configure-certificates.md#extended-key-usage) heading in the article _Configuring certificates_.
 
 * **Certificate Authorities**  
 Every intermediate and root Certificate Authority (CA) that Zowe interacts with must be within the Keyring, unless the `zowe.yaml` value `zowe.verifyCertificates` is set to `DISABLED`. CAs that must be within the keyring include z/OSMF's CAs if using z/OSMF, and Zowe's own certificate's CAs as Zowe servers must be able to verify each other.
