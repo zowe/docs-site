@@ -46,9 +46,17 @@ Depending on the specific Zowe server-side components that your organization is 
 | Cross memory server (ZIS)                                                                                                                       | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](./configure-xmem-server.md#saf-configuration) |
 
 
-## Next step
+## Next steps
 
-After these aforementioned security configuration steps are completed, the next step is to [install Zowe main started tasks](./zwe-init-subcommand-overview.md#installing-zowe-main-started-tasks-zwe-init-stc).
+After these security configuration steps are completed, and [Zowe z/OS runtime is initialized](./configure-zowe-runtime.md), the next step is [Configuring certificates](./configure-certificates.md).
+Note that configuring certificates requires security administrator authorization. 
+
+:::note
+For more information about security administrator tasks, see:
+* [Addressing security requirements](./address-security-requirements.md) 
+* [Configuring security](./configuring-security.md)
+* [Configuring certificates](./configure-certificates.md)
+:::
 
 
  
