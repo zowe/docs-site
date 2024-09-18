@@ -536,7 +536,8 @@ To apply role-based access control (RBAC) to dataservice endpoints, you must ena
 You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#administering-the-servers-and-plugins-using-an-api) from the App Framework and ZSS servers. Any dataservice added as part of an app plugin is a service dataservice.
 
 ### Defining the RACF ZOWE class
-:::note Note: Starting with z/OS V2R5, the ZOWE class has been predefined to RACF. If you have previously defined the ZOWE class manually, this class can be deleted after all of the systems that share the RACF database are upgraded to z/OS V2R5.
+:::note Note: 
+Starting with z/OS V2R5, the ZOWE class has been predefined to RACF. If you have previously defined the ZOWE class manually, this class can be deleted after all of the systems that share the RACF database are upgraded to z/OS V2R5.
 
 If you use RACF security, take the following steps define the ZOWE class to the CDT class:
 
