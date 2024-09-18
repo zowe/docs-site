@@ -47,9 +47,9 @@ For the Zowe Desktop to work, the node server that runs under the ZWESLSTC start
 
 There are three known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these three connections likely failed. 
 
-1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with ](#zss-server-unable-to-communicate-with-zis).  The architecture diagram below has been annotated with a (1) to show this connection.
-2. The Zowe Desktop Application Framework server connection to the zssServer across the default port 7557. If this fails, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
-3. The Zowe Desktop Application Framework server cannot connect to API Mediation Layer for authentication. If this fails, see [Application Framework unable to communicate with API Mediation Layer](#zlux-unable-to-communicate-with-api-mediation-layer).
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with ZIS](#zss-server-unable-to-communicate-with-zis).  The architecture diagram below has been annotated with a (1) to show this connection.
+2. The Zowe Desktop Application Framework server connection to the zssServer across the default port 7557. If this fails, see [Application Framework unable to communicate with zssServer](#application-framework-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
+3. The Zowe Desktop Application Framework server cannot connect to API Mediation Layer for authentication. If this fails, see [Application Framework unable to communicate with API Mediation Layer](#application-framework-unable-to-communicate-with-api-mediation-layer).
 
 <img src={require("../../images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
@@ -67,7 +67,7 @@ There are three known problems that might cause this error.  The [Zowe architect
      ZIS status - Ok (name='ZWESIS_STD      ', cmsRC=0, description='Ok'
      ```
    
-     If the communication works, the problem is likely that the Application Framework server is unable to communicate to the zssServer. For more information, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).
+     If the communication works, the problem is likely that the Application Framework server is unable to communicate to the zssServer. For more information, see [Application Framework unable to communicate with zssServer](#application-framework-unable-to-communicate-with-zssserver).
 
    - If the communication is not working, the message includes `Failure`. For example:
 

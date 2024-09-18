@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>mat profile invoke</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_mat.html">mat</a> › <a href="zowe_mat_profile.html">profile</a> › <a href="zowe_mat_profile_invoke.html">invoke</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Invoke a MAT monitor profile to start measurement.</p>
+<h4>Usage</h4>
+<p>zowe mat profile invoke [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--profile</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the profile in MAT that you invoke (e.g. PROFILE1). Values: 1 to 8 characters, a combination of alphanumeric and national characters (A-Z, 0-9, and @), the first character must be an alphabetic or @. The profile name must not contain characters # and $.</li>
+</ul>
+</li>
+<li>
+<p><code>--jobname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the job to be measured (e.g. JOB1). Values: 1 to 8 characters, alphanumeric (A-Z capitals only and 0-9), national (#, $, @), and wildcards (* or %).</li>
+</ul>
+</li>
+<li>
+<p><code>--targsys</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the target system in SYSPLEX. Values: a comma separated list of up to 4 values is allowed, maximum 8 characters each, a combination of alphanumeric (A-Z and 0-9) and national (@,#,$), the first character must be an alphabetic (A-Z) or a national (@, #, $) (e.g. AA31,AA32).</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--mondsn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the monitor data set name where MAT saves the measurement (e.g. DEMO.MAT.MONITOR). Values: data set name pattern, maximum 46 characters. If not specified, your default MAT monitor DSN pattern is applied.</li>
+</ul>
+</li>
+<li>
+<p><code>--moiuuid</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the MOI UUID. Values: maximum 61 characters, alphanumeric (A-Z and 0-9). If you use this parameter for command execution, the value cannot be blank.</li>
+</ul>
+</li>
+<li>
+<p><code>--moitimestamp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the MOI timestamp. Values: maximum 12 characters, numbers only (0-9). If you use this parameter for command execution, the value cannot be blank.</li>
+</ul>
+</li>
+<li>
+<p><code>--listing</code> <em>(boolean)</em></p>
+<ul>
+<li>Activates automated registration of Cobol, C/C++, and Assembler program listings through Endevor® footprints. After completion of the measurement that you invoke with the --listing parameter, the MAT Analyze plug-in for Zowe CLI automatically retrieves the program listing that is associated with the monitored job and registers the listing with MAT. A registered program listing enhances the analysis possibilities of the 'codeview histogram' command  the 'codeview histogram' command and enables you to inspect the source code statements that are associated with specific modules and CSECTs.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--mat-profile</code> | <code>--mat-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (mat) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system :</p>
+<ul>
+<li><code>zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system and save the measurement result in the DEMO.MAT.MONITOR.PROFILE1 data set:</p>
+<ul>
+<li><code>zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --mondsn DEMO.MAT.MONITOR.PROFILE1</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --mondsn DEMO.MAT.MONITOR.PROFILE1">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system and register the program listing:</p>
+<ul>
+<li><code>zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --listing</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --listing">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Invoke the PROFILE1 monitor profile to measure job JOB1 that runs on the AA31 system with the specific MAT profile details defined:</p>
+<ul>
+<li><code>zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe mat profile invoke --profile PROFILE1 --jobname JOB1 --targsys AA31 --host &quot;example.com&quot; --port 12345 --user johndoe --password qwerty">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

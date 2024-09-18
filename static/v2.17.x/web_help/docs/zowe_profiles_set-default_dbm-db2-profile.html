@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles set-default dbm-db2-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_set-default.html">set-default</a> › <a href="zowe_profiles_set-default_dbm-db2-profile.html">dbm-db2-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The dbm-db2 set default-profiles command allows you to set the default profiles for this command group. When a dbm-db2 command is issued and no profile override options are specified, the default profiles for the command group are automatically loaded for the command based on the commands profile requirements.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles set-default dbm-db2-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specify a<br>
+profile for default usage within the dbm-db2 group. When you issue commands within the dbm-db2 group without a profile specified as part of the command, the default will be loaded instead.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Set the default profile for type dbm-db2 to the profile named 'profilename':</p>
+<ul>
+<li><code>zowe profiles set-default dbm-db2-profile profilename</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles set-default dbm-db2-profile profilename">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

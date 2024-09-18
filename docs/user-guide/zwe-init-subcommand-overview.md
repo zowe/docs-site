@@ -31,7 +31,7 @@ For modification and execution, it is necessary to create custom data sets by us
 
 The `zowe.yaml` section that contains the parameters for the data set names is:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -163,11 +163,11 @@ Once you have completed security configuration, you can install the Zowe main st
 
 The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.  
 
-```
-zowe
-  setup
-    security
-      stcs
+```yaml
+zowe:
+  setup:
+    security:
+      stcs:
         zowe: ZWESLSTC
         zis: ZWESISTC
         aux: ZWESASTC

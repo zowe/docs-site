@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>plugins validate</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_plugins.html">plugins</a> › <a href="zowe_plugins_validate.html">validate</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Validate a plug-in that has been installed.</p>
+<h4>Usage</h4>
+<p>zowe plugins validate [plugin] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>plugin</code>		 <em>(string)</em></p>
+<ul>
+<li>
+<p>The name of the plug-in to validate.<br>
+Validation issues identified for this plug-in are displayed.</p>
+<p>If the plug-in argument is omitted, all installed plug-ins are validated.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--fail-on-error</code> | <code>--foe</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Enables throwing an error and setting an error code if plugin validation detects an error</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--fail-on-warning</code> | <code>--fow</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Treat validation warnings as errors. Requires fail-on-error.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Validate a plug-in named my-plugin:</p>
+<ul>
+<li><code>zowe plugins validate my-plugin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins validate my-plugin">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Validate all installed plug-ins:</p>
+<ul>
+<li><code>zowe plugins validate</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins validate">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Validate a plug-in named my-plugin, and treat warnings as errors:</p>
+<ul>
+<li><code>zowe plugins validate my-plugin --fail-on-warning</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins validate my-plugin --fail-on-warning">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
