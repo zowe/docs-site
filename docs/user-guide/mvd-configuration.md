@@ -537,7 +537,7 @@ You can apply access control to Zowe endpoints and to your app endpoints. Zowe p
 
 ### Defining the RACF ZOWE class
 
-:::note Note 
+:::note 
 Starting with z/OS V2R5, the ZOWE class has been predefined to RACF. If you have previously defined the ZOWE class manually, this class can be deleted after all of the systems that share the RACF database are upgraded to z/OS V2R5.
 :::
 
