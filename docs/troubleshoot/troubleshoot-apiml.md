@@ -9,7 +9,9 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
 * [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
 * [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
 * [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+* [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
 * [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
+* [SDSF Job search fails](#sdsf-job-search-fails)
 * [Known Issues](#known-issues)
     * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
     * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
@@ -140,7 +142,7 @@ This activates the application/loggers endpoints in each API ML internal service
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
 
-### Gather atypical debug informaiton
+### Gather atypical debug information
 
 * **ZWE_configs_debug**  
 This property can be used to unconditionally add active debug profiles.
@@ -158,6 +160,40 @@ For more information, see the article **_Debugging Utilities_** in the IBM docum
 This property can also be enabled for other API ML components.
 :::
 
+
+## Services that are not running appear to be running
+
+Services that are not running appear to be running. The following message is displayed in the Discovery Service:
+
+   **EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**
+    
+**Cause:**
+
+This message is expected behavior of the discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, it initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
+
+**Solution:**
+
+Use one of the following options to exit self preservation mode:
+
+   - **Restart the services that appear to be running**  
+   Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service.
+
+   - **Restart the discovery service**  
+   Manually restart the discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
+
+   - **Adjust the threshold of services in eviction status**  
+   Change the frequency of the discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+
+        **Note:** The default threshold is .85. This results in the discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
+       
+        **Example:**
+   
+        ```
+        eureka.renewalPercentThreshold=0.3
+        ```
+   
+        This threshold limit causes the discovery service to enter self preservation mode when less than 30 percent of services are not responding.
+   
 ## Debug and Fix Common Problems with SSL/TLS Setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
@@ -168,6 +204,24 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 * How to debug remote services
 * How to enable mutual authentication using a client certificate
 * How to add a trusted certificate to a SAF Key ring
+
+## SDSF Job search fails
+
+Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
+
+### Solution:
+
+You must be authorized to use SDSF with REXX on your z/OS system. For authorization, activate the SDSF RACF class and add the following 3 profiles to your system:
+
+- `GROUP.ISFSORIG`
+- `GROUP.ISFSPROG.SDSF`
+- `ISF.CONNECT.`
+
+Users must belong to a group that has READ access to these profiles.
+
+This is quite a complex area and you should ask your systems programmer for advice. On most systems, the GROUP.\* profiles are not required and it is sufficient to have the following ISF profile defined:
+
+class profile SDSF ISF.CONNECT.\*\* (G)
 
 ## Known Issues
 
@@ -214,8 +268,8 @@ Check the rest of the message, and identify the cause of the problem. The follow
 
 - [Connection refused](#connection-refused)
 - [Configure z/OSMF](#configure-zosmf)
-- [Missing z/OSMF host name in subject alternative names](#missing-z-osmf-host-name-in-subject-alternative-names)
-- [Invalid z/OSMF host name in subject alternative names](#invalid-z-osmf-host-name-in-subject-alternative-names)
+- [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
 - [Secure Fix](#secure-fix)
 - [Insecure Fix](#insecure-fix)
 - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
@@ -273,7 +327,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Note:** Apply the insecure fix only if you use API Catalog for testing purposes.
 
-- [Secure fix](#Secure-fix)
+- [Secure fix](#secure-fix)
 - [Insecure fix](#insecure-fix)
 
 #### Secure fix
@@ -288,9 +342,9 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Re-create the Zowe keystore by deleting it and re-creating it. 
-2. In the `zowe-setup-certificates.env` file that is used to generate the keystore, ensure that the property `VERIFY_CERTIFICATES` and `NONSTRICT_VERIFY_CERTIFICATES` are set to `false`.
+2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `DISABLED` or `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name. 
 
-**Important!** Disabling `VERIFY_CERTIFICATES` or `NONSTRICT_VERIFY_CERTIFICATES` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
+**Important!** Disabling `zowe.verifyCertificates` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
 
 #### Invalid z/OSMF host name in subject alternative names
 
@@ -314,7 +368,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 #### Re-create the Zowe keystore
 
-Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Configuring PKCS12 certificates](../user-guide/configure-certificates.md/#pkcs12-certificates-in-a-keystore).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
+Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md/#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
 ### API ML throws I/O error on GET request and cannot connect to other services
 

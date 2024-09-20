@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 job-definition update-job-trigger-successor</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_job-definition.html">job-definition</a> › <a href="zowe_ca7_job-definition_update-job-trigger-successor.html">update-job-trigger-successor</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Modify Job Trigger Successor</p>
+<h4>Usage</h4>
+<p>zowe ca7 job-definition update-job-trigger-successor [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the job name whose successful completion causes triggering.<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job</code> | <code>--tj</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the job name that the completion of the triggering job triggers.<br>
+Limits: 1 to 8 alphanumeric characters</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--schid</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies for which schedule ID of the triggering job the triggered-job is scheduled.<br>
+Default: 0 (all schedule IDs)<br>
+Limits: 1 to 3 numeric characters from 0 through 999</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job-schid</code> | <code>--tjs</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Denotes a replacement schedule ID to use when the triggered-job is placed into the request queue.<br>
+Default: 0 (no replacement)<br>
+Limits: 1 to 3 numeric characters from 0 through 999<br>
+Note: If triggered-job-schid is used, it replaces the schid value of the triggered job. Any jobs triggered (by triggered-job or data sets it creates) use this triggered-job-schid for their schedule ID unless they also have a triggered-job-schid value.</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job-due-out-time</code> | <code>--tjdot</code> <em>(string)</em></p>
+<ul>
+<li>(Required if triggered-job-queue-time is omitted) Specifies the due-out time of day of the triggered-job rounded down to 10-minute increments.<br>
+If this parameter is used, triggered-job-queue-time must be omitted.<br>
+Limits: 4 numeric characters that are specified as hhmm, where hh can be 00 through 24 and mm can be 00 through 59, the highest value being 2400. If specified, the lowest value is 10.<br>
+Note: If used and the due-out-time of the triggering job is after the triggered-job-due-out-time, the following calendar day is assumed.</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job-queue-time</code> | <code>--tjqt</code> <em>(string)</em></p>
+<ul>
+<li>(Required if triggered-job-due-out-time is omitted) Specifies the elapsed queue time of triggered-job rounded down to 10-minute increments.<br>
+If this parameter is used, triggered-job-due-out-time must be omitted because due-out time is then calculated as deadline time plus runtime.<br>
+Deadline time is calculated as current date/time plus queue time.<br>
+Limits: 4 numeric characters that are specified as hhmm, where hh can be 00 through 24.<br>
+The mm can be 00 through 59, the highest value being 2400.</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job-lead-time</code> | <code>--tjlt</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies the elapsed lead time for triggered-job rounded to 10-minute increments. This parameter specifies the lead or processing time necessary to ensure triggered-job meets its due-out time.<br>
+Default: 0000<br>
+Limits: 4 numeric characters that are specified as hhmm, where hh can be 00 through 24.<br>
+The mm can be 00 through 59, the highest value being 2400.</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered-job-submit-time</code> | <code>--tjst</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>(Optional) Imposes a submit time of day requirement on triggered-job. When used, the job is not submitted before this time.<br>
+The triggered-job-submit-time is always rounded down to 15-minute increments.<br>
+Default: 0 (no specific submit time requirement)<br>
+Limits: 4 numeric characters that are specified as hhmm, where hh can be 00 through 24 and mm can be 00 through 59, the highest value being 2400.Note: If triggered-job-queue-time is used, the date for the submit time requirement is the same as the deadline start date.</p>
+<p>If triggered-job-due-out-time is used and the triggered-job-submit-time is less than the triggered-job-due-out-time, the date for the triggered-job-submit-time is the same as the deadline start date. Otherwise, the triggered-job-submit-time date is the previous day.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Updates the Job JOBA having Triggered JOBB with triggered-job-due-out-time with addition of triggered-job-lead-time to 0030 and triggered-job-submit-time to 1030:</p>
+<ul>
+<li><code>zowe ca7 job-definition update-job-trigger-successor --job JOBA --tj JOBB --tjdot 0830 --tjlt 0030 --tjst 1030</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-definition update-job-trigger-successor --job JOBA --tj JOBB --tjdot 0830 --tjlt 0030 --tjst 1030">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

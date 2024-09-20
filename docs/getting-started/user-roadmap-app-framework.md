@@ -32,11 +32,11 @@ The following definition of skill levels about Zowe will help you gather most re
 
    Review this topic to ensure that your system meets the requirements for installing the Zowe Application Framework. Zowe Application Framework is one of the server-side components. 
 
-- [**Planning**](../user-guide/installandconfig.md#planning-the-installation-of-zowe-server-components)
+- [**Planning**](../user-guide/installandconfig.md)
 
   This article provides details about planning for the installation, the Zowe z/OS launch process, and so on.
 
-- [**Installing Zowe Application Framework**](../user-guide/install-zos.md#z-os-installation-roadmap)
+- [**Installing Zowe Application Framework**](../user-guide/install-zos.md)
 
    This article provides an overview of the essential steps involved in installing Zowe Application Framework. If you want to use Docker for the installation, instead follow the link below.
 
@@ -114,7 +114,7 @@ The following definition of skill levels about Zowe will help you gather most re
    
    Join the Slack channel to ask questions, propose new ideas, and interact with the Zowe community.  <!--which slack channel is appropriate?-->
 
-- [**Zowe WebUI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe WebUI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe WebUI squad meetings to get involved.
 

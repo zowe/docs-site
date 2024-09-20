@@ -26,10 +26,10 @@ function DocsInfo({ docsPluginId, ...props }) {
                   <time
                     className="margin-right--sm"
                     dateTime={new Date(
-                      props.lastUpdatedAt * 1000
+                      props.lastUpdatedAt
                     ).toISOString()}
                   >
-                    {new Date(props.lastUpdatedAt * 1000).toLocaleDateString()}
+                    {new Date(props.lastUpdatedAt).toLocaleDateString()}
                   </time>
                   {props.lastUpdatedBy && " "}
                 </>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands subtm</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_subtm.html">subtm</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>SUBTM modifies the required submit time-of-day for a job in the request queue</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands subtm [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--ca7num</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>ca7num=0016</p>
+<p>Specifies the CA 7 job number of the job or which you want to add, modify, or remove a submit time-of-day requirement.</p>
+<p>Limits: 1 to 4 alphanumeric characters</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--time</code> | <code>--tm</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: 1830</p>
+<p>(Optional) Specifies the new submit time-of-day in hours and minutes.</p>
+<p>TIME is required to add a submit time-of-day requirement when none exists or to change an existing requirement.</p>
+<p>If TIME is omitted, an existing submit time-of-day restriction is removed. Format:hhmm</p>
+<p>Defines the time-of-day where hh is hours (0 through 24) and</p>
+<p>mm is minutes (00 through 59). Maximum is 2400.</p>
+<p>If the value given is less than the current time (when the command is processed), the submit day is incremented by one.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Modifies the required submit time for a ca7 number, 0016:</p>
+<ul>
+<li><code>zowe ca7 commands subtm --ca7num 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands subtm --ca7num 0016">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
