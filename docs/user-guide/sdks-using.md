@@ -56,8 +56,7 @@ To install this library in your project, use a build tool such as Maven, Gradle 
 
 https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk
 
-For a Maven project, add the SDK as a dependency by updating your `pom.xml` as in the following code extract:
-
+For a Maven project, add the SDK as a dependency by updating your `pom.xml`: 
 ```
     <dependency>
         <groupId>org.zowe.client.java.sdk</groupId>
@@ -66,7 +65,7 @@ For a Maven project, add the SDK as a dependency by updating your `pom.xml` as i
     </dependency>
 ```
 
-For a Gradle project add the SDK as a dependency by updating your `build.gradle` as in the following code extract:
+For a Gradle project, add the SDK as a dependency by updating your `build.gradle`: 
 
 ```
     implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
@@ -97,7 +96,8 @@ Pull the packages from an online registry such as PyPi.
 
 1. In the command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
 
-   - To import a Python package: `pip install <PackageName>`
+   - To import a Python package, use the following syntax:  
+    `pip install <PackageName>`
 
      * `<packageName>`  
      The name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
@@ -122,8 +122,11 @@ Download and install the packages.
 
 4. In a command-line window, navigate to your project directory. Issue *one* of the following commands:
 
-   - To install a Node.js package: `npm install <packageName>.tgz`
-   - To install a Python package: `pip install <packageName>.whl`
+   - To install a Node.js package, use the following syntax:  
+    `npm install <packageName>.tgz`
+
+   - To install a Python package, use the following syntax:  
+    `pip install <packageName>.whl`
 
     * `<packageName>`  
     The name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
