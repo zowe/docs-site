@@ -8,9 +8,9 @@ The upcoming release of Zowe v3 will bring a range of major changes in Zowe func
 
 * Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1`
 * Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported.
-* Datasets API will be archived
-* Jobs API will be archived
-* Metrics service will be archived
+* Datasets API has been removed, as the project is archived.
+* Jobs API has been removed, as the project is archived.
+* Metrics service has been removed, as the project is archived.
 * IMS API will be archived
 * Java 17 will be required for the API Mediation Layer to run
 * z/OSMF in version V2R5 with APAR PH12143 applied
