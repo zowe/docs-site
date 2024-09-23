@@ -807,7 +807,6 @@ module.exports = {
             "extend/extend-desktop/mvd-iframecomm",
             "extend/extend-desktop/mvd-errorreportingui",
             "extend/extend-desktop/mvd-logutility",
-            "extend/extend-desktop/mvd-conda",
           ],
         },
       ],
