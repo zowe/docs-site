@@ -21,4 +21,4 @@ For more information about variable names in the following table, see the [Zowe 
 | N/A | zowe.components.explorer-jes | Port of the JES Explorer GUI for viewing and working with jobs in the Zowe Desktop.
 | N/A | zowe.components.explorer-mvs | Port of the MVS Explorer GUI for working with data sets in the Zowe Desktop.
 | N/A | zowe.components.explorer-uss | Port of the USS Explorer GUI for working with USS in the Zowe Desktop.
-
+| 7653 | zowe.components.zaas.port | 
