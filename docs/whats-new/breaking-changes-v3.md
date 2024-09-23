@@ -24,10 +24,7 @@ The current API Gateway contains Authentication and Authorization Services. This
 
 ### Breaking changes
 
-* Updating Angular to Version 16 from Version 12
-* Removing the core-js dependency
-* Updating Webpack to version 5
-* Updating Typescript to 4.9
+* Updated Angular to Version 18 from Version 12. Apps built upon angular, exluding iframe apps, will need to be updated to be compatible with the V3 Desktop.
 
 ## CLI
 
