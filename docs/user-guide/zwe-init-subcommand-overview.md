@@ -10,7 +10,6 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 * [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
 * [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
 * [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
-* [Creating VSAM caching service datasets (`zwe init vsam`)](#creating-vsam-caching-service-datasets-zwe-init-vsam)
 * [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
@@ -139,17 +138,6 @@ Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z
 
 For more information, see [Configuring certificates](./configure-certificates).
 
-## Creating VSAM caching service datasets (`zwe init vsam`)
-
-Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.
-
-:::info Required roles: system programmer
-:::
-
-The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.
-
-For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha#vsam)
-
 ## Installing Zowe main started tasks (`zwe init stc`)
 
 Execute the subcommand `zwe init stc` to install Zowe main started tasks.
@@ -193,6 +181,20 @@ Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 >> Zowe main started tasks are installed successfully.
 #>
 ```
+
+## (Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)
+
+This command is no longer required as the Caching service by default uses Infinispan instead. You only need to run this command if you wish the Caching service to use VSAM for its storage medium.
+
+Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.
+
+:::info Required roles: system programmer
+:::
+
+The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.
+
+For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha#vsam)
+
 
 ## Next steps
 
