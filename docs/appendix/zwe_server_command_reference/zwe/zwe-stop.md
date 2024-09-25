@@ -10,7 +10,7 @@ Stop Zowe main job.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     security:

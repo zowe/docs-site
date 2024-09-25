@@ -737,7 +737,7 @@ The following error message codes may appear on ZSS log. Use the following messa
   Failed to get JWK - `<reason>`, retry in `<n>` seconds. ZSS Server was unable to get JSON Web Key(JWK), it will try to repeat the attempt in `<n>` seconds.
 
   **Action:**
-
+  
   * This message is repeated each `<n>` seconds. After a succesfull attempt, the message `ZWES1601I` is displayed and no action is required.
   * If message `ZWES1601I` does not appear, but rather the message `ZWES1606W Failed to get JWK. rc=failed to init HTTP request (9), rsn=TLS error (17). Retry in 10 seconds`, consider the following:
     * TLSv1.3 recommends encryption `ChaCha20-Poly1305`. However, this encryption may be restricted by the `ICSF FIPS 140-2` policy. When ZSS requests `ChaCha20-Poly1305`, such request will fail.
@@ -752,3 +752,15 @@ zowe:
       tls:
         maxTls: "TLSv1.2"
 ```
+
+### ZWES0054E
+
+  ZIS AUX Server started in wrong key 8
+
+  **Reasons:**
+
+  authPluginLib was missing in the `ZWESASTC` JCL and the `ZWESISTC` JCL.
+
+  **Action:**
+ 
+  When the Zowe STC userid has read access to the profile SAF `OMVSAPPL`, the `ZWESASTC` task will be able to successfully be started on an as-needed basis from `ZWESISTC`.
