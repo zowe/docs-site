@@ -1,6 +1,6 @@
-# Breaking Changes and Important Updates in Zowe v3
+# Breaking changes and important updates in Zowe V3
 
-The upcoming release of Zowe v3 will bring a range of major changes in Zowe functionality. Review this article for details about changes to various Zowe components to be introduced in Zowe v3.
+The upcoming release of Zowe V3 will bring a range of major changes in Zowe functionality. Review this article for details about changes to various Zowe components to be introduced in Zowe V3.
 
 ## API Mediation Layer (API ML)
 
@@ -18,13 +18,13 @@ The upcoming release of Zowe v3 will bring a range of major changes in Zowe func
 
 ### Important updates
 
-The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly
+The current API Gateway contains Authentication and Authorization Services. This service will be separated as a standalone service. This is the only API Mediation Layer service that needs z/OS directly.
  
 ## Application Framework
 
 ### Breaking changes
 
-* Updated Angular to Version 18 from Version 12. Apps built upon angular, exluding iframe apps, will need to be updated to be compatible with the V3 Desktop.
+* Updated Angular to Version 18 from Version 12. Apps built upon Angular, excluding iframe apps, will need to be updated to be compatible with the V3 Desktop.
 
 ## CLI
 

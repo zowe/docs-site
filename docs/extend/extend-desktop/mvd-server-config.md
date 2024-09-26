@@ -84,7 +84,11 @@ In the configuration file, a directory can be specified which contains JSON file
 
 To include Apps, be sure to define the location of the Plugins directory in the configuration file, via the top-level attribute *pluginsDir*
 
-**NOTE: In this example, the directory for these JSON files is [/defaults/plugins](https://github.com/zowe/zlux-app-server/tree/v3.x/master/defaults/plugins). Yet, in order to separate configuration files from runtime files, the App Server will initialize by copying the contents of this folder into the defined instance directory, of which the default is ~/.zowe/workspace/app-server. So, the example configuration file uses the latter directory.**
+:::note
+
+In this example, the directory for these JSON files is [/defaults/plugins](https://github.com/zowe/zlux-app-server/tree/v3.x/master/defaults/plugins). Yet, in order to separate configuration files from runtime files, the App Server will initialize by copying the contents of this folder into the defined instance directory, of which the default is ~/.zowe/workspace/app-server. So, the example configuration file uses the latter directory.
+
+:::
 
 ### Plugins directory example
 ```

@@ -18,21 +18,21 @@ When Zowe is ready, the app-server can be found at `https://<zowe.externalDomain
 
 The `app-server` should be accessed through the `gateway` when both are present. When both are ready, the Desktop can be accessed from the API Mediation Layer Gateway, such as
 
-`https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which will redirect to `https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+`https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/`, which redirects to `https://<zowe.externalDomain>:<components.gateway.port>/zlux/ui/v1/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 Although you access the App server via the Gateway port, the App server still needs a port assigned to it which is the value of the *components.app-server.port* variable in the Zowe configuration file.
 
-(Not recommended): If the mediation layer is not used, the Desktop will be accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`
+(Not recommended): If the mediation layer is not used, the Desktop is accessible from the App server directly at `/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`.
 
 ## Accessing ZSS
 
 The `zss` server should be accessed  through the `gateway` when both are present. When both are ready, ZSS can be accessed from the API Mediation Layer Gateway, such as
 
-`https://<zowe.externalDomain>:<components.gateway.port>/zss/api/v1/`
+`https://<zowe.externalDomain>:<components.gateway.port>/zss/api/v1/`.
 
 Although you access the ZSS server via the Gateway port, the ZSS server still needs a port assigned to it which is the value of the *components.zss.port* variable in the Zowe configuration file.
 
-If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomain>:<components.zss.port>/`
+If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomain>:<components.zss.port>/`.
 
 ## Configuration file
 
