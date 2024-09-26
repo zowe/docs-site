@@ -4,12 +4,17 @@ These parameters can be specified in two ways: configuration files, or environme
 Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zlux-config-schema.json)
 
 # Configuration file
+
 In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
 
 # Environment variables
-The format is `ZWED_key=value`, where "ZWED_" is a prefix for any configuration object.
+
+The format is `ZWED_key=value`, where `ZWED_` is a prefix for any configuration object.
+
 The key maps to a YAML object attribute, so to set the value of a nested object, such as the https configuration, you need multiple values.
+
 For example:
+
 ```
 node: 
     https: 
@@ -25,7 +30,9 @@ logLevels:
   org.zowe.terminal.tn3270.*: 5
 
 ```
+
 In Environment variable format, this is specified as
+
 ```
 ZWED_node_https_ipAddresses=0.0.0.0
 ZWED_node_https_port=8554
@@ -53,10 +60,11 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * strings can have quotes, but otherwise everything that isnt an array, boolean, or number is a string
 * objects are never values. They are the keys.
 
-# Parameter Details
+# Parameter details
 Below is some more detail on certain parameters than can be covered within the json-schema.
 
-## Configuration Directories
+## Configuration directories
+
 When running, the App Server will access the server's settings and read/modify the contents of its resource storage.
 All of this data is stored within a hierarchy of a few folders, which is correspond to scopes:
 - Product: The contents of this folder are not meant to be modified, but used as defaults for a product.
@@ -68,6 +76,7 @@ All of this data is stored within a hierarchy of a few folders, which is corresp
 These directories dictate where the [Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) will store content.
 
 ### Directories example
+
 ```
   "productDir":"../defaults",
   "siteDir":"/home/myuser/.zowe/workspace/app-server/site",
@@ -77,8 +86,8 @@ These directories dictate where the [Configuration Dataservice](https://github.c
 
 ```
 
-
 ## App configuration
+
 This section does not cover any dynamic runtime inclusion of Apps, but rather Apps defined in advance.
 In the configuration file, a directory can be specified which contains JSON files which tell the server what App is to be included and where to find it on disk. The backend of these Apps use the Server's Plugin structure, so much of the server-side references to Apps use the term Plugin.
 
@@ -86,11 +95,12 @@ To include Apps, be sure to define the location of the Plugins directory in the 
 
 :::note
 
-In this example, the directory for these JSON files is [/defaults/plugins](https://github.com/zowe/zlux-app-server/tree/v3.x/master/defaults/plugins). Yet, in order to separate configuration files from runtime files, the App Server will initialize by copying the contents of this folder into the defined instance directory, of which the default is ~/.zowe/workspace/app-server. So, the example configuration file uses the latter directory.
+In this example, the directory for these JSON files is [/defaults/plugins](https://github.com/zowe/zlux-app-server/tree/v3.x/master/defaults/plugins). Yet, in order to separate configuration files from runtime files, the App Server will initialize by copying the contents of this folder into the defined instance directory, of which the default is `~/.zowe/workspace/app-server`. So, the example configuration file uses the latter directory.
 
 :::
 
-### Plugins directory example
+### Plug-ins directory example
+
 ```
 // All paths relative to zlux-app-server/lib
 // In real installations, these values will be configured during the install.
@@ -103,6 +113,7 @@ In this example, the directory for these JSON files is [/defaults/plugins](https
 For more information, see [Logging Utility](mvd-logutility.md).
 
 ## ZSS Configuration
+
 When running ZSS, it will require a configuration file similar or the same as the one used for the App Server. The attributes that are needed for ZSS, at minimum, are: *productDir*, *siteDir*, *instanceDir*, *groupsDir*, *usersDir*, *pluginsDir* and **agent**. All of these attributes have the same meaning as described above for the App server, but if the App server and ZSS are not run from the same location, then these directories may be different if desired.
 
 ### ZSS Networking
@@ -110,6 +121,7 @@ When running ZSS, it will require a configuration file similar or the same as th
 The attributes that control ZSS exclusively are within the **agent** object. ZSS uses HTTPS by default, but AT-TLS can also be used by setting `zowe.network.server.tls.attls` or `components.zss.zowe.network.server.tls.attls` to `true`.  The value `agent.https.port` tells ZSS which ports to bind to and where the app-server can find ZSS. The values `agent.host` is used to tell app-server where to find ZSS as well, though `zowe.network.server.listenAddresses` or `components.zss.zowe.network.server.listenAddresses` tell ZSS which addresses to bind to. For addresses, at this time only the first value of that array is used, and it may either be a hostname or an ipv4 address.
 
 Example of the agent body:
+
 ```
   agent: 
     host: localhost

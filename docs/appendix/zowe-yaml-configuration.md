@@ -1,6 +1,6 @@
 # Zowe YAML server configuration file reference
 
-Zowe v3 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+Zowe V3 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
 For details on the schema technology and where to find the schema files within our source code, see [Using the Configuration Manager](../user-guide/configmgr-using.md#json-schema-validation).
@@ -17,33 +17,6 @@ zowe:
 ```
 
 :::
-
-**Table of Contents**
-
-- [High-level overview of YAML configuration file](#high-level-overview-of-yaml-configuration-file)
-- [Extract sharable configuration out of zowe.yaml](#extract-sharable-configuration-out-of-zoweyaml)
-- [Configuration override](#configuration-override)
-- [YAML configurations - certificate](#yaml-configurations---certificate)
-- [YAML configurations - zowe](#yaml-configurations---zowe)
-- [YAML configurations - java](#yaml-configurations---java)
-- [YAML configurations - node](#yaml-configurations---node)
-- [YAML configurations - zOSMF](#yaml-configurations---zosmf)
-- [YAML configurations - components](#yaml-configurations---components)
-    - [Configure component gateway](#configure-component-gateway)
-    - [Configure component discovery](#configure-component-discovery)
-    - [Configure component api-catalog](#configure-component-api-catalog)
-    - [Configure component caching-service](#configure-component-caching-service)
-    - [Configure component app-server](#configure-component-app-server)
-    - [Configure component zss](#configure-component-zss)
-    - [Configure component jobs-api](#configure-component-jobs-api)
-    - [Configure component files-api](#configure-component-files-api)
-    - [Configure component explorer-jes](#configure-component-explorer-jes)
-    - [Configure component explorer-mvs](#configure-component-explorer-mvs)
-    - [Configure component explorer-uss](#configure-component-explorer-uss)
-    - [Configure external extension](#configure-external-extension)
-- [YAML configurations - haInstances](#yaml-configurations---hainstances)
-- [Auto-generated environment variables](#auto-generated-environment-variables)
-- [Troubleshooting your YAML with the Red Hat VSCode extension](#troubleshooting-your-yaml-with-the-red-hat-vs-code-extension)
 
 ### High-level overview of YAML configuration file
 
@@ -65,14 +38,13 @@ The YAML configuration file has few high-level sections:
 ### Extract sharable configuration out of zowe.yaml
 
 The Zowe YAML configuration file supports splitting into several files or PARMLIB members. This can help simplify grouping configuration changes by type or owner.
-More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#splitting-configuration-into-multiple-storage-types)
-
+More details can be found [in the configmgr documentation](../user-guide/configmgr-using.md#splitting-configuration-into-multiple-storage-types).
 
 ### Creating portable references
 
 The Zowe YAML configuration file has template logic for relating one value to another, a system environment variable or symbol, or even to add conditional behavior.
 It can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
-More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#configuration-templates)
+More details can be found [in the configmgr documentation](../user-guide/configmgr-using.md#configuration-templates).
 
 ### Configuration override
 
