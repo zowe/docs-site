@@ -1,6 +1,8 @@
+# Advanced Server Configuration
+
 The Zowe's App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more. 
 
-# Configuration file
+## Configuration file
 
 The servers use a YAML file for configuration. The [global schema](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/zowe-yaml-schema.json) describes the parts of configuration that are common between servers.
 
@@ -10,7 +12,7 @@ ZSS is instead configured by the `components.zss` section, following [the ZSS sc
 
 The App server can additionally use CLI arguments or environment variables to override the YAML file.
 
-# Environment variables (app-server only)
+## Environment variables (app-server only)
 
 CLI arguments take precedence over the configuration file, but are overridden by the CLI arguments.
 The format is `ZWED_key=value`, where `WED_` is a prefix for any configuration object.
@@ -64,7 +66,7 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * Objects are never values, they are the keys.
 
 
-# CLI arguments (app-server only)
+## CLI arguments (app-server only)
 
 CLI arguments take precedence over environment variable and configuration files.
 
@@ -106,11 +108,11 @@ ZSS does not support CLI arguments.
 * Strings can have quotes, but otherwise everything that is not an array, boolean, or number is a string.
 * Objects are never values, they are the keys.
 
-# Parameter Details
+## Parameter Details
 
 Below is some more detail on certain parameters than can be covered within the json-schema.
 
-## Configuration Directories
+### Configuration Directories
 
 When running, the App Server will access the server's settings and read/modify the contents of its resource storage.
 
@@ -123,7 +125,7 @@ All of this data is stored within a hierarchy of a few folders, which is corresp
 
 These directories dictate where the [Configuration Dataservice](https://github.com/zowe/zlux/wiki/Configuration-Dataservice) will store content.
 
-### Directories example
+#### Directories example
 
 ```
   "productDir":"../defaults",
@@ -133,7 +135,7 @@ These directories dictate where the [Configuration Dataservice](https://github.c
   "usersDir":"/home/myuser/.zowe/workspace/app-server/users",
 ```
 
-## App configuration
+### App configuration
 
 This section does not cover any dynamic runtime inclusion of Apps, but rather Apps defined in advance.
 
@@ -147,7 +149,7 @@ In this example, the directory for these JSON files is [/defaults/plugins](https
 
 :::
 
-### Plug-ins directory example
+#### Plug-ins directory example
 
 ```
 // All paths relative to zlux-app-server/lib
@@ -156,15 +158,15 @@ In this example, the directory for these JSON files is [/defaults/plugins](https
   "pluginsDir":"../defaults/plugins",
 ```
 
-## Logging configuration
+### Logging configuration
 
 For more information, see [Logging Utility](mvd-logutility.md).
 
-## ZSS Configuration
+### ZSS Configuration
 
 ZSS is configured by the same Zowe YAML file used by the App server, within the `components.zss` section of the file. The [ZSS schema for components.zss be found here](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zss-config.json). More information about the configuration can be found in its [README file](https://github.com/zowe/zss/#quick-run-how-to-start-zss).
 
-### Connecting ZSS to App Server
+#### Connecting ZSS to App Server
 
 The App Server can connect to ZSS either directly or through the API Mediation Layer Gateway when that is running.
 
