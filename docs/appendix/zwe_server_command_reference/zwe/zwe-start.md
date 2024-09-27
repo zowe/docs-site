@@ -10,13 +10,14 @@ Start Zowe with main started task.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     security:
       stcs:
         zowe: ZWESLSTC
-  jobname: ZWE1SV
+  job:
+    name: ZWE1SV
 haInstances:
   [ha-instance]:
     sysname: ZLP1
@@ -29,6 +30,10 @@ haInstances:
 - `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
+
+Note: `zwe start` is only identifying an already configured instance of Zowe.
+Any additional changes to the `zowe.yaml` config could possibly require
+either manual changes or running related `zwe` commands before issuing `zwe start`.
 
 
 ## Examples
