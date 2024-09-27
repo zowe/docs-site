@@ -807,6 +807,7 @@ module.exports = {
             "extend/extend-desktop/mvd-apptoappcommunication",
             "extend/extend-desktop/mvd-iframecomm",
             "extend/extend-desktop/mvd-errorreportingui",
+            "extend/extend-desktop/mvd-server-config",
             "extend/extend-desktop/mvd-logutility",
           ],
         },
