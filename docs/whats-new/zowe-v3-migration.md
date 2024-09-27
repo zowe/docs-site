@@ -35,8 +35,8 @@ components:
 
 #### Gateway z/OSMF service configuration
 
-The service ID for gateway zosmf has changed to **ibmzosmf** <br>
-The `jwtAutoconfiguration` should be set to **jwt** (default) or **ltpa**, **auto** is not supported anymore.<br>
+The service ID for gateway zosmf has changed to **ibmzosmf** <br/>
+The `jwtAutoconfiguration` should be set to **jwt** (default) or **ltpa**, **auto** is not supported anymore.<br/>
 If you are using zosmf as your auth service, this needs to be updated.
 
 ```yaml
@@ -52,8 +52,8 @@ components:
 
 #### Caching Service
 
-The caching service now defaults to **Infinispan** mode instead of **VSAM**.<br>
-**VSAM** is deprecated (still supported but not recommended).<br>
+The caching service now defaults to **Infinispan** mode instead of **VSAM**.<br/>
+**VSAM** is deprecated (still supported but not recommended).<br/>
 A new parameter for the key exchange port has been added to the default configuraion.
 
 ```yaml
@@ -97,8 +97,8 @@ components:
 
 #### Removed Components:
 
-**metrics-service**: This service has been deprecated and removed, currently there is no replacement. The Open Telemetry standard will be implemented later, which will serve as a replacement.<br>
-**cloud-gateway**: The cloud-gateway component has been removed as a standalone component and merged into the gateway.<br>
+**metrics-service**: This service has been deprecated and removed, currently there is no replacement. The Open Telemetry standard will be implemented later, which will serve as a replacement.<br/>
+**cloud-gateway**: The cloud-gateway component has been removed as a standalone component and merged into the gateway.<br/>
 **jobs-api** and **files-api**: These components were deprecated in Zowe v2 and are now removed in v3. You should switch to using equivalent z/OSMF endpoints.
 
 
@@ -125,7 +125,7 @@ If you are migrating from Zowe **v2.16.0** or lower, ensure the following `zowe.
 
 ### Migrating from Zowe v2.10.0 or Lower
 
-If you are migrating from Zowe **v2.10.0** or lower, consider taking advantage of the new **sysMessages** feature.<br>
+If you are migrating from Zowe **v2.10.0** or lower, consider taking advantage of the new **sysMessages** feature.<br/>
 The `zowe.sysMessages` is a new array that allows you to select messages that when found by the launcher will be duplicated into the system's log.
 
 ### Migrating from Zowe v2.3.0 or Lower
