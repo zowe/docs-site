@@ -7,7 +7,7 @@ This guide outlines the steps and changes required to migrate from Zowe v2 to Zo
 
 Before starting the migration, ensure the following system requirements are met:
 
-- **z/OSMF**: Version V2R5 with APAR PH12143 is required.
+- **z/OSMF**: Version V2R5 with APAR PH12143 is required or V3R1. 
 - **Java**: `java.home` should point to **Java 17** location.
 - **Node.js**: `node.home` should be set to **Node.js 18** version or above.
 - **Keyrings**: If you are using keyrings, verify that you use correct syntax: `safkeyring://` instead of `safkeyring:////`.
