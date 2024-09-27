@@ -38,7 +38,7 @@ The following definition of skill levels about Zowe will help you gather most re
 
 ### Zowe Node.js SDK
 
-- [**Using Zowe Node.js SDKs**](../user-guide/sdks-using.md#using-node-js)
+- [**Using Zowe Node.js SDKs**](../user-guide/sdks-using.md#using---nodejs)
 
    This information provides links to different pakcage Readmes that describes how to use the Zowe Node SDK. 
 
@@ -86,7 +86,7 @@ The following definition of skill levels about Zowe will help you gather most re
    
    Join the #zowe-cli Slack channel to ask questions about Zowe CLI and Zowe SDKs, propose new ideas, and interact with the Zowe community. 
 
-- [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe CLI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe CLI squad meetings to discuss Zowe SDKs issues and contibute to Zowe SDKs.
 

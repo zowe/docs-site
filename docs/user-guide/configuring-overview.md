@@ -21,14 +21,19 @@ Successful completion of steps 2, 3, and 4 may require elevated security permiss
 To cofigure Zowe runtime, choose from the following options:
 
 * **Option 1: Configure Zowe manually using the `zwe init` command group**  
-To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#zowe-configuration-file) which details all of the started tasks in the article _Preparing for installation_.
+To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#runtime-directory) which details all of the started tasks in the article _Preparing for installation_.
 
 Once your configuration file is prepared, see [Configuring Zowe with zwe init](./initialize-zos-system.md), for more information about using the `zwe init` command group.
 
-* **Option 2: Configure Zowe with z/OSMF workflows**  
+* **Option 2: Configure Zowe via JCL**
+You can configure Zowe by directly customizing JCLs. The Zowe Runtime Dataset `SZWESAMP` contains JCL samples that have templates referencing `zowe.yaml` parameters. These samples should not be submitted without modification.
+
+For more information, see [Configuring Zowe via JCL](./configuring-zowe-via-jcl.md)
+
+* **Option 3: Configure Zowe with z/OSMF workflows**  
 You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
 
-For more information, see [Configure Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md).
+For more information, see [Configuring Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md).
 
 ## Configuring the z/OS system for Zowe
 

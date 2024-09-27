@@ -108,6 +108,7 @@ ZSS does not support CLI arguments.
 * Strings can have quotes, but otherwise everything that is not an array, boolean, or number is a string.
 * Objects are never values, they are the keys.
 
+
 ## Parameter Details
 
 Below is some more detail on certain parameters than can be covered within the json-schema.

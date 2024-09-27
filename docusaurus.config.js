@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.15.x";
+const LATEST_VERSION = "v2.18.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -29,13 +29,7 @@ module.exports = {
     }),
   },
   themeConfig: {
-    announcementBar: {
-      id: 'announcementBar-1', // increment on change
-      content:
-          '📌  <b>The Zowe V3 release is delayed</b>. Release schedule for Zowe V2 to be updated. See <a href="https://docs.zowe.org/stable/whats-new/zowe-announcements" target="_blank">Zowe announcements</a> for more information. ',
-      textColor: '#000',
-      },
-    docs: {
+        docs: {
       sidebar: {
         hideable: true
       }
@@ -232,38 +226,14 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
-            "v2.14.x": {
-              label: "v2.14.x LTS",              
+            "v2.17.x": {
+              label: "v2.17.x LTS",
             },
-            "v2.13.x": {
-              label: "v2.13.x LTS",
+            "v2.16.x": {
+              label: "v2.16.x LTS",
             },
-            "v2.12.x": {
-              label: "v2.12.x LTS",
-            },
-            "v2.11.x": {
-              label: "v2.11.x LTS",
-            },
-            "v2.10.x": {
-              label: "v2.10.x LTS",
-            },
-            "v2.9.x": {
-              label: "v2.9.x LTS",
-            },
-            "v2.8.x": {
-              label: "v2.8.x LTS",
-            },
-            "v2.7.x": {
-              label: "v2.7.x LTS",
-           },
-            "v2.6.x": {
-              label: "v2.6.x LTS",
-           },
-            "v2.5.x": {
-              label: "v2.5.x LTS",
-           },
-            "v1.28.x": {
-              label: "v1.28.x LTS",
+            "v2.15.x": {
+              label: "v2.15.x LTS",
             },
           },
         },

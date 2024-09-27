@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>caview list export-rules</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_caview.html">caview</a> › <a href="zowe_caview_list.html">list</a> › <a href="zowe_caview_list_export-rules.html">export-rules</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List export rules defined for a report.<br>
+Use the returned 'Identifier' in the 'export report' command to reference that rule.</p>
+<h4>Usage</h4>
+<p>zowe caview list export-rules &lt;reportId&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>reportId</code>		 <em>(string)</em></p>
+<ul>
+<li>Report ID (Name).</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--output-format</code> | <code>--output</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: ^tabular$, ^csv$, ^json$, ^xml$</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-header</code> | <code>--header</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
+This option is ignored when you specify any other output format.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-field</code> | <code>-f</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Field to include in the output. Multiple fields can be specified.<br>
+Fields appear in the order you specify.</p>
+<p>Allowed values: Identifier,Name,Description,Owner,Public</p>
+<p>Default value: Identifier,Name,Description</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>View Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Hostname or ip address of the target View REST API instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Port of the target View REST API instance.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>User name used to authenticate against the target View REST API instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> <em>(string)</em></p>
+<ul>
+<li>Password used to authenticate against the target View REST API instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Context name of the target View REST API instance.</p>
+<p>Default value: web-viewer</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol of the target View REST API instance.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--caview-profile</code> | <code>--caview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (caview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

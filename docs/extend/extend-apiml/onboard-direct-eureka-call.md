@@ -189,7 +189,7 @@ This parameter specifies a short description of the API service.
 This value is displayed in the API Catalog when a specific API service instance is selected.
 
 * **apiml.enableUrlEncodedCharacters**  
-When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `false` is the recommended setting. Change this setting to `true` only if you expect certain encoded characters in your application's requests.  
+When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. The default setting of `true` is the recommended setting. Change this setting to `false` only if you do not want certain encoded characters in your application's requests.  
 **Important!**  When the expected encoded character is an encoded slash or backslash (`%2F`, `%5C`), make sure the Gateway is also configured to allow encoded slashes. For more info see [Installing the Zowe runtime on z/OS](../../user-guide/install-zos.md).
 
 * **apiml.connectTimeout**  
@@ -276,7 +276,7 @@ This parameter specifies a service authentication scheme. The following schemes 
 
     * **httpBasicPassTicket**  
     This value specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme. It is necessary to provide a service APPLID in the `apiml.authentication.applid` parameter.  
-    **Tip:** For more information, see [Enabling PassTicket creation for API Services that Accept PassTickets](authentication-for-apiml-services.md#authentication-with-passtickets).
+    **Tip:** For more information, see [Accepting PassTickets](api-medation-sso-integration-extenders.md#accepting-passtickets).
 
     * **zosmf**  
     This value specifies that a service accepts z/OSMF LTPA (Lightweight Third-Party Authentication). This scheme should only be used for a z/OSMF service used by the API Gateway Authentication Service, and other z/OSMF services that are using the same LTPA key.  
@@ -368,5 +368,4 @@ Ensure that you successfully onboarded a service with the API Mediation Layer.
 
 ## External Resources
 
- - https://blog.asarkar.org/technical/netflix-eureka/
  - https://github.com/Netflix/eureka/wiki/Eureka-REST-operations

@@ -3538,7 +3538,7 @@
 | @zowe/zos-uss-for-zowe-sdk | 7.21.1 | EPL-2.0 | [zos-uss-for-zowe-sdk](https://github.com/zowe/zowe-cli/tree/master/packages/zosuss#readme) | 
 | @zowe/zos-workflows-for-zowe-sdk | 7.21.1 | EPL-2.0 | [zos-workflows-for-zowe-sdk](https://github.com/zowe/zowe-cli/tree/master/packages/workflows#readme) | 
 | @zowe/zosmf-for-zowe-sdk | 7.21.0 | EPL-2.0 | [zosmf-for-zowe-sdk](https://github.com/zowe/zowe-cli/tree/master/packages/zosmf#readme) | 
-| @zowe/zowe-explorer-api | 2.13.1 | EPL-2.0 | [zowe-explorer-api](https://github.com/zowe/vscode-extension-for-zowe#readme) | 
+| @zowe/zowe-explorer-api | 2.13.1 | EPL-2.0 | [zowe-explorer-api](https://github.com/zowe/zowe-explorer-vscode#readme) | 
 
 ### Zowe Desktop IP Explorer Plug-in Dependency Attributions
 | Third-party Software | Version | License | GitHub |
