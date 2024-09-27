@@ -1,7 +1,7 @@
 
 # Error Message Codes
 
-The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
+The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
 ## API mediation utility messages
 
@@ -727,7 +727,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: `{validity: int , scopes: [string]}`.
+  Use a valid body in the request. Format of a message: {validity: int , scopes: [string]}.
 
 ### ZWEAT606E
 
@@ -747,7 +747,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Unexpected error occurred when mapping between distributed and mainframe identity
+  Unexpected error occurred when mapping between distributed and mainframe identity 
 
   **Action:**
 
@@ -909,7 +909,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  When this error occurs it is necessary to get a new JWT token.
+  When this error occurs it is necessary to get a new JWT token. 
 
 ### ZWEAS120E
 
@@ -957,7 +957,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Log the message from the exception and then handle the exception based on the information provided there.
+  Log the message from the exception and then handle the exception based on the information provided there. 
 
 ### ZWEAS400E
 
@@ -1079,7 +1079,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
 
 ### ZWEAD401E
 
@@ -1091,7 +1091,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
 
 ### ZWEAD700W
 
@@ -1129,7 +1129,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Review the mentioned static API definition file for errors.
   Refer to the specific log message to determine the exact cause of the problem:
-
+ 
   - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId.
   - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
   - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
@@ -1214,178 +1214,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Contact the system administrator and request enablement of encoded slashes in the Gateway.
-
-### ZWEAG704E
-
-  Configuration error '%s' when trying to read the public and private key for signing JWT: %s
-
-  **Reason:**
-
-  A problem occurred while trying to read the certificate-key pair from the keystore.
-
-  **Action:**
-
-  Review the mandatory fields used in the configuration such as the keystore location path, the keystore and key password, and the keystore type.
-
-### ZWEAG705E
-
-  Failed to load public or private key from key with alias '%s' in the keystore '%s'. Gateway is shutting down.
-
-  **Reason:**
-
-  Failed to load a public or private key from the keystore during JWT Token initialization.
-
-  **Action:**
-
-  Check that the key alias is specified and correct. Verify that the keys are present in the keystore.
-
-### ZWEAG706E
-
-  RequestContext is not prepared for load balancing.
-
-  **Reason:**
-
-  Custom Ribbon load balancing is not in place before calling Ribbon.
-
-  **Action:**
-
-  Contact Broadcom support.
-
-### ZWEAG707E
-
-  The request to the URL '%s' aborted without retrying on another instance. Caused by: %s
-
-  **Reason:**
-
-  The request to the server instance failed and will not be retried on another instance.
-
-  **Action:**
-
-  Refer to 'Caused by' details for troubleshooting.
-
-### ZWEAG708E
-
-  The request to the URL '%s' failed after retrying on all known service instances. Caused by: %s
-
-  **Reason:**
-
-  Request to the server instance could not be executed on any known service instance.
-
-  **Action:**
-
-  Verify the status of the requested instance.
-
-### ZWEAG709E
-
-  Service is not available at URL '%s'. Error returned: '%s'
-
-  **Reason:**
-
-  The service is not available.
-
-  **Action:**
-
-  Make sure that the service is running and is accessible by the URL provided in the message.
-
-### ZWEAG710E
-
-  Load balancer does not have available server for client: %s
-
-  **Reason:**
-
-  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available.
-
-  **Action:**
-
-  Try the request later, or remove the request for the specific instance.
-
-### ZWEAG711E
-
-  The principal '%s' is missing queried authorization.
-
-  **Reason:**
-
-  The principal does not have the queried access to the resource name within the resource class.
-
-  **Action:**
-
-  No action is needed.
-
-### ZWEAG712E
-
-  The URI '%s' is an invalid format
-
-  **Reason:**
-
-  The URI does not follow the format `/{serviceId}/{type}/{version}/{endpoint}` or `/{type}/{version}/{serviceId}/{endpoint}`.
-
-  **Action:**
-
-  Use a properly formatted URI.
-
-### ZWEAG713E
-
-  Configuration error when trying to establish JWT producer. Events: %s
-
-  **Reason:**
-
-  A problem occurred while trying to make sure that there is a valid JWT producer available. A possible cause of the problem is that API ML does not recognize the authentication type used by z/OSMF.
-
-  **Action:**
-
-  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
-
-  Use the following configuration format:
-  ```
-  apiml: 
-    security: 
-       auth: 
-           zosmf: 
-               jwtAutoconfiguration:
-  ```
-  Apply one of the following values:
-
-  * **jwt**
-  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
-
-  * **ltpa**
-  Signifies that z/OSMF does not support JWT
-
-### ZWEAG714E
-
-  Unknown error occurred while retrieving the used public key
-
-  **Reason:**
-
-  An unknown problem occurred when retrieving the used public key. This should never occur.
-
-  **Action:**
-
-  Try again later.
-
-### ZWEAG715E
-
-  The wrong amount of keys retrieved. The amount of retrieved keys is: %s
-
-  **Reason:**
-
-  There are too many keys in the JWK set. As such, it is not possible to choose the correct one.
-
-  **Action:**
-
-  Verify the configuration of the z/OSMF to make sure that z/OSMF provides only one used key.
-
-### ZWEAG716E
-
-  The system does not know what key should be used.
-
-  **Reason:**
-
-  Typically z/OSMF is either unavailable or offline.
-
-  **Action:**
-
-  Verify that z/OSMF is available, accessible by the Gateway service, and online.
 
 ### ZWEAG717E
 
@@ -1660,7 +1488,7 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URI is not valid. Ensure the service is providing a valid URL.
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
-
+ 
 
 ### ZWEAC706E
 
@@ -1700,7 +1528,7 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URI is not valid. Ensure the service is providing a valid URL.
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
-
+ 
 
 ### ZWEAC709E
 
