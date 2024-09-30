@@ -22,6 +22,7 @@ function arrayFrom(items) {
 }
 var isInIframe = window.location !== window.parent.location;
 var links = arrayFrom(document.getElementsByTagName("a"));
+var sameOrigin = window.location.protocol !== "file:" ? window.location.origin : "*";
 // Process all <a> tags on page
 links.forEach(function (link) {
     var url = link.getAttribute("href");
@@ -34,7 +35,10 @@ links.forEach(function (link) {
     }
     else if (isInIframe) {
         // If link is relative and page is inside an iframe, then send signal to command tree when link is clicked to make it update selected node
-        link.setAttribute("onclick", "window.parent.postMessage(this.href, '*'); return true;");
+        link.onclick = function (e) {
+            window.parent.postMessage(e.target.href, sameOrigin);
+            return true;
+        };
     }
 });
 // Show Print button if inside iframe
@@ -83,9 +87,10 @@ function findCurrentCmdAnchor() {
 if (isInIframe && window.location.href.indexOf("/all.html") !== -1) {
     var currentCmdName_1;
     window.onscroll = function (_) {
-        var cmdName = findCurrentCmdAnchor().getAttribute("name");
+        var _a;
+        var cmdName = (_a = findCurrentCmdAnchor()) === null || _a === void 0 ? void 0 : _a.getAttribute("name");
         if (cmdName != null && cmdName !== currentCmdName_1) {
-            window.parent.postMessage(cmdName + ".html", window.location.origin);
+            window.parent.postMessage(cmdName + ".html", sameOrigin);
             currentCmdName_1 = cmdName;
         }
     };

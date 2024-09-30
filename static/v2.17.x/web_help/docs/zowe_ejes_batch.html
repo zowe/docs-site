@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ejes batch</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_batch.html">batch</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The (E)JES batch interface provides much of the power of the on-line environment to automated programs or scripts.</p>
+<p>Using the batch interface, procedures may be created that issue commands or alter other resources based upon the condition of jobs in the JESplex and the contents of spool information (e.g., reports, condition codes, JES messages) produced by those jobs. System housekeeping functions containing (E)JES batch procedures may be submitted at scheduled times, on demand, or when certain system conditions are met. Practically any function that requires access to spool or other (E)JES-provided information can be automated.</p>
+<h4>Usage</h4>
+<p>zowe ejes batch &lt;command&gt;</p>
+<p>Where &lt;command&gt; is one of the following:</p>
+<h4>Commands</h4>
+<ul>
+<li><a href="zowe_ejes_batch_activity.html">activity | ac</a> - * Display job activity.</li>
+<li><a href="zowe_ejes_batch_apfds.html">apfds | apf</a> - * APF-authorized libraries.</li>
+<li><a href="zowe_ejes_batch_class.html">class | cl</a> - * Display job classes.</li>
+<li><a href="zowe_ejes_batch_cmdstack.html">cmdstack | cmd | stack | stk</a> - # Shell a command stack.</li>
+<li><a href="zowe_ejes_batch_command.html">command</a> - * Display the long command processor.</li>
+<li><a href="zowe_ejes_batch_djc.html">djc | dj</a> - * Display JES3 dependent job network.</li>
+<li><a href="zowe_ejes_batch_dynexit.html">dynexit | dynex | dynx</a> - * Display dynamic exits.</li>
+<li><a href="zowe_ejes_batch_enclave.html">enclave | enc</a> - * Display enclaves.</li>
+<li><a href="zowe_ejes_batch_enq.html">enq</a> - * Display ENQs.</li>
+<li><a href="zowe_ejes_batch_enqc.html">enqc</a> - * Display ENQ contentions.</li>
+<li><a href="zowe_ejes_batch_enqd.html">enqd</a> - * Display ENQ SYSDSN resources.</li>
+<li><a href="zowe_ejes_batch_entry.html">entry | ent</a> - * Display entry panel.</li>
+<li><a href="zowe_ejes_batch_fss.html">fss</a> - * Display functional subsystems.</li>
+<li><a href="zowe_ejes_batch_group.html">group | gr</a> - * Display job class groups.</li>
+<li><a href="zowe_ejes_batch_hcheck.html">hcheck | hchk | hc</a> - * Display health checks.</li>
+<li><a href="zowe_ejes_batch_hold.html">hold | h</a> - * Display jobs in hold status.</li>
+<li><a href="zowe_ejes_batch_init.html">init</a> - * Display JES2 initiators.</li>
+<li><a href="zowe_ejes_batch_input.html">input | i</a> - * Display jobs in input status.</li>
+<li><a href="zowe_ejes_batch_jesplex.html">jesplex | jesp</a> - * Display JESplex table.</li>
+<li><a href="zowe_ejes_batch_jgroup.html">jgroup | jg</a> - * Display job groups.</li>
+<li><a href="zowe_ejes_batch_line.html">line | li</a> - * Display JES3 dependent job network.</li>
+<li><a href="zowe_ejes_batch_lnklst.html">lnklst | lnkl | lnk</a> - * Display link list data sets.</li>
+<li><a href="zowe_ejes_batch_log.html">log</a> - * Display the log.</li>
+<li><a href="zowe_ejes_batch_lpalst.html">lpalst | lpal | lpa</a> - * Display link pack data sets.</li>
+<li><a href="zowe_ejes_batch_mds.html">mds | md</a> - * Display JES3 MDS jobs.</li>
+<li><a href="zowe_ejes_batch_memusage.html">memusage | memuse | memu</a> - * Display memory usage tabl.</li>
+<li><a href="zowe_ejes_batch_menu.html">menu</a> - * Display or control the (E)JES menu.</li>
+<li><a href="zowe_ejes_batch_mounts.html">mounts | mount | mo</a> - * Display z/OS UNIX mounts.</li>
+<li><a href="zowe_ejes_batch_netconn.html">netconn | netc | nc</a> - * Display network job entry connections.</li>
+<li><a href="zowe_ejes_batch_netserv.html">netserv | nets</a> - * Display network servers.</li>
+<li><a href="zowe_ejes_batch_nje.html">nje</a> - * Display JES3 NJE sysout.</li>
+<li><a href="zowe_ejes_batch_node.html">node | ph</a> - * Display NJE nodes.</li>
+<li><a href="zowe_ejes_batch_nop.html">nop</a> - # Start/resume session with no operation.</li>
+<li><a href="zowe_ejes_batch_offload.html">offload | off</a> - * Display JES2 spool offloader devices.</li>
+<li><a href="zowe_ejes_batch_Output.html">Output | o</a> - * Display JES2 output sysout.</li>
+<li><a href="zowe_ejes_batch_pageds.html">pageds | pag | page | paged</a> - * Display page data set resources.</li>
+<li><a href="zowe_ejes_batch_parmlib.html">parmlib | parml | parm</a> - * Display parameter library data sets.</li>
+<li><a href="zowe_ejes_batch_printer.html">printer | pr</a> - * Display printers and punches.</li>
+<li><a href="zowe_ejes_batch_proclib.html">proclib | procl | proc</a> - * Display proclib data sets.</li>
+<li><a href="zowe_ejes_batch_pstatus.html">pstatus | pstat | ps</a> - * Display UNIX process statuses.</li>
+<li><a href="zowe_ejes_batch_query.html">query</a> - * Display your authorization.</li>
+<li><a href="zowe_ejes_batch_resmon.html">resmon | resm | rmon | rm</a> - * Display JES2 resource monitor.</li>
+<li><a href="zowe_ejes_batch_resource.html">resource | reso</a> - * Display WLM resources.</li>
+<li><a href="zowe_ejes_batch_schenv.html">schenv | sch</a> - * Display WLM scheduling environments.</li>
+<li><a href="zowe_ejes_batch_session.html">session | sess</a> - * Display (E)JES session activity.</li>
+<li><a href="zowe_ejes_batch_shell.html">shell | sh | prompt</a> - # Start the EJES Batch Shell without logging in.</li>
+<li><a href="zowe_ejes_batch_spart.html">spart | spa</a> - * Display spool partitions.</li>
+<li><a href="zowe_ejes_batch_spvol.html">spvol | spv</a> - * Display spool volume extents.</li>
+<li><a href="zowe_ejes_batch_status.html">status | st</a> - * Display job status.</li>
+<li><a href="zowe_ejes_batch_subsys.html">subsys | subsy | subs</a> - * Display MVS subsystems.</li>
+<li><a href="zowe_ejes_batch_symbol.html">symbol | sym</a> - * Display system symbols.</li>
+<li><a href="zowe_ejes_batch_syscls.html">syscls | sysc</a> - * Display sysout classes.</li>
+<li><a href="zowe_ejes_batch_sysplex.html">sysplex | sysp | sys</a> - * Display sysplex members.</li>
+<li><a href="zowe_ejes_batch_sysreq.html">sysreq | sysr | sr</a> - * Display system requests.</li>
+<li><a href="zowe_ejes_batch_ulog.html">ulog | ph</a> - * Display your ULOG.</li>
+<li><a href="zowe_ejes_batch_writer.html">writer | w</a> - * Display JES3 writer sysout.</li>
+<li><a href="zowe_ejes_batch_zero.html">zero | z</a> - * Display JES3 Job zero sysout datasets.</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
