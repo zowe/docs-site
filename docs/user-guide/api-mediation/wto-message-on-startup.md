@@ -21,7 +21,7 @@ This functionality requires the following changes to the zowe.yaml:
     ```
    This change make sure that message containing `ZWEAM001I` will be presented in the Syslog. 
    
-   **Example:** 
+   **Example of the Syslog:** 
 
     `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
