@@ -1,17 +1,16 @@
-# Configure initial API Mediation Layer startup message for Syslog
+# Configuring initial API Mediation Layer startup message for Syslog
 
 :::info Role: system programmer
 :::
 
-:::note Functionality is available from Zowe 2.18 
+:::note Functionality of this feature is available from Zowe 2.18. 
 :::
 
-The goal is to make sure that Syslog contains one message that clearly states that the API Mediation Layer is started and 
-ready. Usually this is used together with Workload Automation tools to manage the lifecycle of Zowe. 
+Startup of the API Mediation Layer can be configured to present a message in the Syslog that the API Mediation Layer is started and ready. This setup is typically used in combination with Workload Automation tools to manage the lifecycle of Zowe. 
 
-The required functionality requires following changes to the zowe.yaml
+This functionality requires the following changes to the zowe.yaml:
 
-1) Change property `zowe.sysMessages` by adding the `- "ZWWEAM001I""` value
+1. Change the property `zowe.sysMessages` by adding the value `- "ZWWEAM001I""`
     ```
     zowe:
       # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -20,11 +19,14 @@ The required functionality requires following changes to the zowe.yaml
       sysMessages:
         - "ZWEAM001I"
     ```
-   This change make sure that message containing the ZWEAM001I will be present in the Syslog. It will look something like:
+   This change make sure that message containing `ZWEAM001I` will be presented in the Syslog. 
+   
+   **Example:** 
+
     `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
-2) Prepare custom logging configuration
-   The current default logging implementation starts with the information about the current time unlike with the message id as is typical in the z/OS world. To change this behavior we introduced the possibility to configure the logging configuration. The general details are here: https://docs.zowe.org/stable/user-guide/api-mediation/configuration-logging
+2. Prepare custom logging configuration.
+   The current default logging implementation starts with information about the current time. This message content is unlike the message id which is typical in z/OS. To change this message behavior, configure the logging configuration. For details about how to configure API Mediation logging, see [Customizing Zowe API Mediation Layer logging](./configuration-logging.md). 
 
     ```
     <?xml version="1.0" encoding="UTF-8"?>
@@ -83,7 +85,7 @@ The required functionality requires following changes to the zowe.yaml
         </root>
     </configuration>
     ```
-3) Change the structure of the log messages for the Gateway within the API Mediation Layer
+3. Change the structure of the log messages for the Gateway within the API Mediation Layer:
 
     ```
     components:
@@ -92,6 +94,7 @@ The required functionality requires following changes to the zowe.yaml
           config: /path/to/logback.xml
     ```
 
-After that you should see the message ZWEAM001I in the Syslog when the API Mediation Layer fully starts and is ready to tackle requests. 
+You successfully changed the structure of the log message if you see the message ZWEAM001I in the Syslog when the API Mediation Layer fully starts and is ready to handle requests. 
 
-The message looks like `ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
+**Message example:**
+`ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
