@@ -21,7 +21,7 @@ The required functionality requires following changes to the zowe.yaml
         - "ZWEAM001I"
     ```
    This change make sure that message containing the ZWEAM001I will be present in the Syslog. It will look something like:
-    `[AG] 2024-09-26 08:44:35.200 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:28573> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
+    `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
 2) Prepare custom logging configuration
    The current default logging implementation starts with the information about the current time unlike with the message id as is typical in the z/OS world. To change this behavior we introduced the possibility to configure the logging configuration. The general details are here: https://docs.zowe.org/stable/user-guide/api-mediation/configuration-logging
@@ -34,7 +34,7 @@ The required functionality requires following changes to the zowe.yaml
         <property name="MIN_INDEX" value="${rollingPolicy.minIndex:-1}"/>
         <property name="MAX_FILE_SIZE" value="${rollingPolicy.file.maxSize:-50MB}"/>
         <property name="STORAGE_LOCATION" value="${apiml.logs.location}" />
-        <property name="apimlLogPattern" value="%msg{8} %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\\(%logger{15}\\)){cyan} %msg%n"/>
+        <property name="apimlLogPattern" value="%.-9msg %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\\(%logger{15}\\)){cyan} %msg%n"/>
     
         <turboFilter class="org.zowe.apiml.product.logging.UseridFilter"/>
         <if condition='property("spring.profiles.include").contains("debug")||property("spring.profiles.include").contains("diag")||property("spring.profiles.include").contains("dev")'>
@@ -83,7 +83,7 @@ The required functionality requires following changes to the zowe.yaml
         </root>
     </configuration>
     ```
-4) Change the structure of the log messages for the Gateway within the API Mediation Layer
+3) Change the structure of the log messages for the Gateway within the API Mediation Layer
 
     ```
     components:
@@ -93,3 +93,5 @@ The required functionality requires following changes to the zowe.yaml
     ```
 
 After that you should see the message ZWEAM001I in the Syslog when the API Mediation Layer fully starts and is ready to tackle requests. 
+
+The message looks like `ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
