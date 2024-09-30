@@ -7,7 +7,7 @@ For details on the schema technology and where to find the schema files within o
 
 :::note
 
-In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with value `PKCS12`, you should set value for this entry in the `zowe.yaml`:
+In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with the value `PKCS12`, you should set the value for this entry in the `zowe.yaml`:
 
 ```yaml
 zowe:
@@ -104,7 +104,7 @@ Inside `zowe.yaml`, you can define default values and they may be overridden in 
 
 ### YAML configurations - certificate
 
-In Zowe YAML configuration, certificate definition shares the same format and this format can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
+In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
 
 - **`keystore.type`**  
  Defines the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
@@ -304,7 +304,7 @@ zowe:
 - `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
 - `zowe.setup.certificate.importCertificateAuthorities` is the list of certificate authorities will be imported to Zowe `PKCS12` keystore or `JCERACFKS` keyring. Please note, for JCERACFKS type, only maximum 2 CAs is supported. If you are using `PKCS12` certificate, this should be USS files in PEM format. If you are using `JCERACFKS` certificate, this should be certificate labels on the z/OS system.
 
-**For `PKCS12` certificate users,**
+**For `PKCS12` certificate users**
 
 - `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
 - `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. The default value is true.
@@ -313,7 +313,7 @@ zowe:
 - `zowe.setup.certificate.pkcs12.import.password` is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
 - `zowe.setup.certificate.pkcs12.import.alias` is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After imported, the certificate will be saved as alias specified in `zowe.setup.certificate.pkcs12.name`.
 
-**For `JCERACFKS` certificate (z/OS keyring) users,**
+**For `JCERACFKS` certificate (z/OS keyring) users**
 
 - `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
 - `zowe.setup.certificate.keyring.name` is the keyring name will be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
@@ -458,15 +458,15 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
   Specifies the maximum connections for each service.
 - **`server.maxTotalConnections`**  
   Specifies the total connections for all services registered under API Mediation Layer.
-- **`server.ssl.enabled`**
+- **`server.ssl.enabled`**  
   This handles whether TLS is used
-- **`server.webSocket.maxIdleTimeout`**
+- **`server.webSocket.maxIdleTimeout`**  
   This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour (3600000 milliseconds).
-- **`server.webSocket.connectTimeout`**
+- **`server.webSocket.connectTimeout`**  
   This timeout limits how long the API Gateway waits until it drops connection if it cannot reach the target server. The default is 45 seconds (45000 milliseconds). 
-- **`server.webSocket.asyncWriteTimeout`**
+- **`server.webSocket.asyncWriteTimeout`**  
   This timeout handles how long it takes before the server fails with unsuccessful response when trying to write a message to the Websocket connection. The default is 60 seconds (60000 milliseconds).
-- **`server.webSocket.requestBufferSize`**
+- **`server.webSocket.requestBufferSize`**  
   This property handles the max request size allowed in WebSocket handshake requests. The default is 8K.
 
 
@@ -632,10 +632,10 @@ Each line of Zowe YAML configuration will have a matching environment variable d
   * any non-alphabetic-numeric characters will be converted to underscore `_`,
   * and no double underscores like `__`.
 
-For examples:
+**Examples:**
 
-- `ZWE_zowe_runtimeDirectory`, parent directory of where `zwe` server command is located.
-- `ZWE_zowe_workspaceDirectory` is the path of user customized workspace directory.
+- `ZWE_zowe_runtimeDirectory` is parent directory where `zwe` server command is located.
+- `ZWE_zowe_workspaceDirectory` is the path of the user customized workspace directory.
 - `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
 - `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.
 - `ZWE_zowe_setup_dataset_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
