@@ -155,10 +155,9 @@ Now that you have the permissions, certificates, files, and datasets necessary t
 - Enabling or disabling components so you only run what you need
 - Changing the network ports Zowe runs on to suit your environment
 - Customizing the behavior of a component, such as turning on optional features or logging
+- Splitting, templating, and placing your configuration into PARMLIBs with the [Zowe Configuration Manager](./configmgr-using.md)
    
 :::tip
-We recommended that the first customization you perform is to [set `zwe` to use the Configuration Manager](./configmgr-using.md)
-
 See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) for other customization options.
 :::
 

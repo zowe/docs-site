@@ -19,7 +19,6 @@ Be sure your z/OS system meets the following prerequisites:
 - z/OS version is in active support, such as Version 2.5, and 3.1
 
   :::note Notes:
-  * Zowe Version 2.11 or higher is required when using z/OS Version 3.1.
   * z/OS V2.4 reached end of support on 30 September, 2024. For more information, see the [z/OS v2.4 lifecycle details](https://www.ibm.com/support/pages/zos24x-withdrawal-notification).
   * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
