@@ -10,7 +10,7 @@ Startup of the API Mediation Layer can be configured to present a message in the
 
 This functionality requires the following changes to the zowe.yaml:
 
-1. Change the property `zowe.sysMessages` by adding the value `- "ZWEAM001I""`
+1. Change the property `zowe.sysMessages` by adding the value `- "ZWEAM001I"`
     ```
     zowe:
       # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
