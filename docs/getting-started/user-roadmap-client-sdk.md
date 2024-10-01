@@ -14,7 +14,7 @@ This roadmap outlines information resources that are applicable to the various u
    
    Join the #zowe-cli Slack channel to ask questions about Zowe CLI and Zowe SDKs, propose new ideas, and interact with the Zowe community. 
 
-- [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe CLI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe CLI squad meetings to discuss Zowe SDKs issues and contibute to Zowe SDKs.
 

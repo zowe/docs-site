@@ -522,6 +522,45 @@ To apply role-based access control (RBAC) to dataservice endpoints, you must ena
 
 You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#administering-the-servers-and-plugins-using-an-api) from the App Framework and ZSS servers. Any dataservice added as part of an app plugin is a service dataservice.
 
+### Defining the RACF ZOWE class
+
+:::note 
+Starting with z/OS V2R5, the ZOWE class has been predefined to RACF. If you have previously defined the ZOWE class manually, this class can be deleted after all of the systems that share the RACF database are upgraded to z/OS V2R5.
+:::
+
+If you use RACF security, take the following steps define the ZOWE class to the CDT class:
+
+1. Make sure that the CDT class is active and RACLISTed.
+2. In TSO, issue the following command:
+    ```
+    RDEFINE CDT ZOWE UACC(NONE)
+    CDTINFO(
+        DEFAULTUACC(NONE)
+        FIRST(ALPHA) OTHER(ALPHA,NATIONAL,NUMERIC,SPECIAL)
+        MAXLENGTH(246)
+        POSIT(607)
+        RACLIST(DISALLOWED))
+    ```
+    If you receive the following message, ignore it:
+    ```
+    "Warning: The POSIT value is not within the recommended ranges for installation use. The valid ranges are 19-56 and 128-527."
+    ```
+3. In TSO, issue the following command to refresh the CDT class:
+    ```
+    SETROPTS RACLIST(CDT) REFRESH
+    ```
+4. In TSO, issue the following command to activate the ZOWE class:
+    ```
+    SETROPTS CLASSACT(ZOWE)
+    ```
+5. In TSO, issue the following command
+    ```
+    SETROPTS GENERIC(ZONE) REFRESH
+    ```
+    **Note** You must run this command before creating generic profiles within ZOWE class.
+
+For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
+
 ### Creating authorization profiles
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
 

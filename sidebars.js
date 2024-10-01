@@ -128,7 +128,14 @@ module.exports = {
             "user-guide/address-browser-requirements",
           ]
         },
-      "user-guide/install-zowe-server-install-wizard",
+        {
+        type: "category",
+        label: "Installing Zowe Server Install Wizard",
+        link: {type:"doc", id: "user-guide/install-zowe-server-install-wizard"},
+        items: [
+          "user-guide/troubleshooting-zowe-server-install-wizard",
+        ]
+        },  
         {
           type: "category",
           label: "Installing Zowe via SMP/E",
@@ -181,6 +188,7 @@ module.exports = {
               items: [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configuring-zowe-via-jcl",
                 "user-guide/configure-zowe-zosmf-workflow",
               ],
             },
@@ -315,6 +323,7 @@ module.exports = {
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls",
             "user-guide/api-mediation/configuration-logging",
+            "user-guide/api-mediation/wto-message-on-startup",  
           ]
         }
         ],
