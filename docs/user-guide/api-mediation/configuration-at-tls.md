@@ -3,8 +3,6 @@
 
 Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
 
-Use the procedures in this article to configure AT-TLS for zLUX, which includes the Zowe App Server and ZSS.
-
 :::info Role: security administrator
 :::
 
