@@ -8,13 +8,13 @@ This guide outlines the steps and changes required to migrate from Zowe v2 to Zo
 Before starting the migration, ensure the following system requirements are met:
 
 - **z/OSMF**  
-Version V2R5 with APAR PH12143 is required or V3R1. 
+Version V2R5 with APAR PH12143 or V3R1 is required. JWT support for z/OSMF must be enabled, [as seen in their documentation.](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support)
 - **Java**  
-`java.home` should point to **Java 17** location.
+Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
 - **Node.js**  
-`node.home` should be set to **Node.js 18** version or above.
+The Zowe YAML parameter `node.home` value should be a **Node.js 18 or 20** home location, as Node 16 and below are no longer supported.
 - **Keyrings**  
-If you are using keyrings, verify that you use correct syntax: `safkeyring://` instead of `safkeyring:////`.
+If you are using keyrings, verify that Zowe YAML references to `safkeyring` uses 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
 
 
 
