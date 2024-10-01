@@ -10,5 +10,5 @@ The `Dummy Authentication Provider` implements simple authentication for develop
 
 Use the following property of the API Gateway to enable the `Dummy Authentication Provider`:
 ```
-components.gateway.security.auth.provider: dummy
+components.gateway.apiml.security.auth.provider: dummy
 ```

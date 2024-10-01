@@ -1,14 +1,8 @@
-# Using the Configuration Manager
+# Zowe Configuration Manager
 
 When you install the Zowe&trade; server components on z/OS, a utility called `configmgr` or "Configuration Manager" is bundled within. It can be used directly in a few ways, or leveraged by the `zwe` command to empower it with several abilities and even performance enhancements.
 
 The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
-
-## Using zwe with Configuration Manager
-
-Starting in Zowe version 2.3, the `zwe` command can use `configmgr` to gain several abilities and even performance enhancements. This is designed to be non-disruptive, with no changes needed to Zowe Components that are v2 conformant. The biggest change is that enabling Configuration Manager mode enforces strict validation of Zowe configuration. This is helpful to ensure there's no configuration problems and even helps pinpoint issues, but if you previously had silent issues in your configuration, enabling this may reveal them.
-
-To enable Configuration Manager mode, you can either set `zowe.useConfigmgr=true` in your Zowe configuration file, or you can add the `--configmgr` flag to a `zwe` command you are using. Not all `zwe` operations support Configuration Manager yet, but many do and eventually all will.
 
 ## Validation error reporting
 
@@ -155,6 +149,10 @@ To make a template, you use the syntax `${{ assignment }}` in which there must b
 Here are some examples of templates that you can use to simplify your configuration:
 
 ![templating example](../images/configure/templating.png)
+
+### Template functions
+
+
 
 ## Configuration Manager Unix executable
 

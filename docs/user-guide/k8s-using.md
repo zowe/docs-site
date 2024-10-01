@@ -68,16 +68,16 @@ Here are a few commands you can use to monitor your environment:
 
 ## Stopping, pausing or removing Zowe containers
 
-To temporarily stop a component, locate the `Deployment` component and scale down to `0`. For example, if you want to stop the `jobs-api` container, run this command:
+To temporarily stop a component, locate the `Deployment` component and scale down to `0`. For example, if you want to stop the `api-catalog` container, run this command:
 
 ```
-kubectl scale -n zowe deployment jobs-api --replicas=0
+kubectl scale -n zowe deployment api-catalog --replicas=0
 ```
 
 You can later re-enable a component by scaling the component back to 1 or more.
 
-If you want to permanently remove a component, you can delete the component `Deployment`. To use `jobs-api` as an example, run this command:
+If you want to permanently remove a component, you can delete the component `Deployment`. To use `api-catalog` as an example, run this command:
 
 ```
-kubectl delete -n zowe deployment jobs-api
+kubectl delete -n zowe deployment api-catalog
 ```
