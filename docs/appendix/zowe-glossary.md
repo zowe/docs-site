@@ -10,7 +10,7 @@ Security is central to a wide range of functionalities in Zowe and includes nume
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
 
-## Core Zowe Projects
+## All Core Zowe Projects
 
 ### Zowe API Mediation Layer (API ML)
 
@@ -47,11 +47,13 @@ Provides a command-line interface that lets you interact with the mainframe remo
 
 ### Zowe client projects
 
-Includes all the Zowe projects that are installed on the user's PC. Also known as *Zowe client-side projects*. 
+Includes all the Zowe projects, or components, that are installed on the user's PC. Also known as *Zowe client-side projects* or *Zowe client-side components*.
+
+Examples include Zowe CLI, Zowe Explorer for Visual Studio Code, Zowe Explorer for IntelliJ IDEA, and Zowe Client SDKs.
 
 ### Zowe Client SDKs
 
-Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin/z/OSMF, Python, Swift, and Java.
+Allow extenders to build applications on top of existing programmatic APIs such as z/OSMF. Currently supported client SDKs include Node.js (core), Kotlin, Python, Swift, and Java.
 
 ### Zowe Explorer
 
@@ -169,9 +171,9 @@ Provides re-usable and industry-compliant JSON-formatted RMF/SMF data records so
 
 The set of programs (for example, `zwe` command) and utilities (for example, JCL, scripts) which manage the Zowe server configuration and components. The infrastructure standardizes the packaging of components and controls how they are started, stopped, and how configuration is provided to them.
 
-#### Zowe IntelliJ Plug-in
+#### Zowe Explorer plug-in for IntelliJ IDEA
 
-Uses the IntelliJ IDE to provide the ability to work with z/OS data sets and USS files, and to explore and manage JES jobs.
+Uses the IntelliJ IDEA platform IDEs to provide the ability to work with z/OS data sets, USS files, to explore and manage JES jobs and to work with TSO Console.
 
 #### Zowe Launcher
 
@@ -201,7 +203,7 @@ The Zowe Support Provider Conformance Program gives vendors the ability to showc
 
 #### Base profile
 
-A type of team configuration profile that stores connection information for use with one or more services. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once.
+An object in a team configuration file that stores connection information for use with one or more services. Depending on your configuration file type, the base profile can be either a `global_base` or `project_base` profile. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once, for example.
 
 The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
 
@@ -225,13 +227,17 @@ The standard z/OS Unix directory where Zowe logs are stored. It is specified in 
 
 Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as an OMVS segment, for the user ID associated with any unit of work requesting these services. To learn more consult [IBM Documentation](https://www.ibm.com/docs/en/zos/2.5.0?topic=profiles-omvs-segment-in-user).
 
+#### Parent profile
+
+An object in a team configuration file that groups service profiles together that share the same properties and values (for example, hostname or credentials). A parent profile makes it possible to define properties for its group of service profiles in one place rather than duplicating values throughout a configuration.
+
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
 
 #### Service profile
 
-A type of team configuration profile that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
+An object in a team configuration file that stores connection information for a specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the CICS profile to connect to IBM CICS.
 
 #### SMP/E
 

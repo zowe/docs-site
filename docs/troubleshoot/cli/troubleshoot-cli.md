@@ -19,8 +19,11 @@ These instructions apply to Zowe CLI installed on Windows, Mac OS X, and Linux s
 Collect the following information to help diagnose the issue:
 
 - Zowe CLI version installed.
+    - Issue the [Zowe CLI](../troubleshoot-check-your-zowe-version.md#zowe-cli) command to get the version number.
 - List of plug-ins installed and their version numbers.
+    - Issue the [Zowe CLI plug-ins](../troubleshoot-check-your-zowe-version.md#zowe-cli-plug-ins) command to get the version number(s).
 - Node.js and NPM versions installed.
+    - Issue the [Node.js and npm](../../troubleshoot/cli/use-individual-troubleshoot-commands.md#nodejs-and-npm) commands to get the version numbers.
 - List of environment variables in use.
 
 For instructions on using commands to collect this information, see [Gathering information to troubleshoot Zowe CLI](mustgather-cli.md) or [Using individual commands for troubleshooting](use-individual-troubleshoot-commands).
