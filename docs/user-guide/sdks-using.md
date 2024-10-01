@@ -4,11 +4,11 @@ Leverage the Zowe Client Software Development Kits (SDKs) to build client applic
 
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
-The following SDKs are available: 
-  
-- Zowe Java Client SDK
-- Zowe Node.js Client SDK
-- Zowe Client Python SDK
+The following SDKs are available.
+- Zowe Client Java SDK
+- Zowe Client Kotlin SDK
+- Zowe Client Node.js SDK
+- Zowe Client Python SDK *technical preview*
 
 ## SDK documentation
 
@@ -173,10 +173,13 @@ For Node SDK usage and syntax examples, refer to the following package READMEs:
 - [z/OS USS](https://www.npmjs.com/package/@zowe/zos-uss-for-zowe-sdk) - Work with UNIX system services (USS) files on z/OS.
 - [z/OS Workflows](https://www.npmjs.com/package/@zowe/zos-workflows-for-zowe-sdk) - Create and manage z/OSMF workflows on z/OS.
 
-### Using - Python
+### Using Python
 
 For information about the Python SDK, including usage and syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
 
-## Contributing
+### Using Kotlin
 
-For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](../extend/extend-sdks.md).
+For information about Zowe Client Kotlin SDK, including a setup guide and source code documentation, see the [Zowe Client Kotlin SDK docs](https://zowe.github.io/zowe-client-kotlin-sdk/).
+
+### Using Java
+For information about how to use Zowe Client Java SDK, see [this README.md section](https://github.com/zowe/zowe-client-java-sdk/?tab=readme-ov-file#examples).

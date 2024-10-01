@@ -1,6 +1,6 @@
 # Raising a CLI issue on GitHub
 
-When necessary, you can raise GitHub issues against the Zowe&trade; CLI repository [here](https://github.com/zowe/zowe-cli/issues). It is suggested that you use either the bug or enhancement template.
+When necessary, raise a GitHub issue in the [Zowe&trade; CLI repository](https://github.com/zowe/zowe-cli/issues). It is suggested that you use either the bug or enhancement template.
 
 ## Raising a bug report
 
