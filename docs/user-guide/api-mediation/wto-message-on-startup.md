@@ -10,7 +10,7 @@ Startup of the API Mediation Layer can be configured to present a message in the
 
 This functionality requires the following changes to the zowe.yaml:
 
-1. Change the property `zowe.sysMessages` by adding the value `- "ZWWEAM001I""`
+1. Change the property `zowe.sysMessages` by adding the value `- "ZWEAM001I""`
     ```
     zowe:
       # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -19,14 +19,16 @@ This functionality requires the following changes to the zowe.yaml:
       sysMessages:
         - "ZWEAM001I"
     ```
-   This change make sure that message containing `ZWEAM001I` will be presented in the Syslog. 
+   This property change ensures that the message containing `ZWEAM001I` is presented in the Syslog. 
    
    **Example of the Syslog:** 
 
     `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
 2. Prepare custom logging configuration.
-   The current default logging implementation starts with information about the current time. This message content is unlike the message id which is typical in z/OS. To change this message behavior, you need to change the logback.xml configuration. The example below shows the custom logback.xml which prepends the message with the first 9 characters of the message. 
+   The current default logging implementation starts with information about the current time. This message content is unlike the message id which is typical in z/OS. To change this message behavior, it is necessary to change the logback.xml configuration. The following example shows the custom logback.xml which prepends the message with the first 9 characters of the message. 
+
+   **Example:**
 
     ```
     <?xml version="1.0" encoding="UTF-8"?>
@@ -85,10 +87,13 @@ This functionality requires the following changes to the zowe.yaml:
         </root>
     </configuration>
     ```
-   
-    To learn how to exactly provide this changed configuration look at [Customizing Zowe API Mediation Layer logging](./configuration-logging.md).
+   Custom configuration that changes the structure of the message to prepend 9 characters to the beginning is prepared.
 
-3. In the previous step we prepared custom configuration that will change the structure of message to prepend 9 characters to the beginning. In this step we make sure that API Mediation Layer properly uses this configuration for the Gateway service, which issues the message that the API Mediation Layer started. 
+    :::tip
+    For detailed information about how to provide this changed configuration, see [Customizing Zowe API Mediation Layer logging](./configuration-logging.md).
+    :::
+
+3. Validate that API Mediation Layer properly uses this new configuration for the Gateway service, which issues the message that the API Mediation Layer started. 
 
     ```
     components:
@@ -97,7 +102,7 @@ This functionality requires the following changes to the zowe.yaml:
           config: /path/to/logback.xml
     ```
 
-You successfully changed the structure of the log message if you see the message ZWEAM001I in the Syslog when the API Mediation Layer fully starts and is ready to handle requests. 
+You successfully changed the structure of the log message if you see the message `ZWEAM001I` in the Syslog when the API Mediation Layer fully starts and is ready to handle requests. 
 
 **Message example:**
 `ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
