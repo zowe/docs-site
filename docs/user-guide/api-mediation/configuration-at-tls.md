@@ -3,7 +3,7 @@
 
 Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
 
-To configure AT-TLS for Zlux follow the instructions here.
+Use the procedures in this article to configure AT-TLS for zLUX, which includes the Zowe App Server and ZSS.
 
 :::info Role: security administrator
 :::
@@ -22,7 +22,7 @@ To configure AT-TLS for Zlux follow the instructions here.
   - [The message `This combination of port requires SSL` is thrown ](#the-message-this-combination-of-port-requires-ssl-is-thrown-)
   - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
   - [Non matching ciphers](#non-matching-ciphers)
-- [Full example](#full-example)
+- [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
 
 ## AT-TLS configuration for Zowe
 
@@ -238,6 +238,9 @@ This list of ciphers is provided as an example only. Actual ciphers should be cu
 The list of supported ciphers should be constructed according to the TLS supported versions.
 Ensure that the cipher list has matches with non-AT-TLS-aware clients.
 
+<details>
+<summary>Click here for an example of Cipher parameters.</summary>
+
 ```pagent
 TTLSCipherParms CipherParms
 {
@@ -257,6 +260,8 @@ TTLSCipherParms CipherParms
   V3CipherSuites TLS_CHACHA20_POLY1305_SHA256
 }
 ```
+
+</details>
 
 ## Using AT-TLS for API ML in High Availability
 
@@ -306,10 +311,13 @@ An error can occur if the [list of ciphers](#ciphers) does not match between the
 **Solution:**  
 Review the supported TLS versions and ciphers used in both the client and the server.
 
-## Full example
+## Full example of AT-TLS configuration
 
-The following is a full working example to use as reference. All port values are examples.
-The example is commented for convenience.
+Review a full working example of an AT-TLS configuration file on z/OS, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
+The example is commented for convenience. 
+<details>
+
+<summary>Click here to display the full AT-TLS configuration file.</summary>
 
 ```pagent
 # Main inbound rule, all API ML core services have it defined.
@@ -592,3 +600,4 @@ TTLSCipherParms                   CipherParms
   V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA
 }
 ```
+</details>
