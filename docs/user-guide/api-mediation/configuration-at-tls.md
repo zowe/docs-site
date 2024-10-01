@@ -1,9 +1,12 @@
+<!-- omit in toc -->
 # Configuring AT-TLS for API Mediation Layer
 
 Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
 
+To configure AT-TLS for Zlux follow the instructions here.
+
 :::info Role: security administrator
-::: 
+:::
 
 - [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
 - [AT-TLS rules](#at-tls-rules)
@@ -14,62 +17,34 @@ Review this article for descriptions of the configuration parameters required to
     - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
   - [Ciphers](#ciphers)
 - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
+- [Multi-tenancy deployment](#multi-tenancy-deployment)
 - [AT-TLS Troubleshooting](#at-tls-troubleshooting)
+  - [The message `This combination of port requires SSL` is thrown ](#the-message-this-combination-of-port-requires-ssl-is-thrown-)
+  - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
+  - [Non matching ciphers](#non-matching-ciphers)
+- [Full example](#full-example)
 
 ## AT-TLS configuration for Zowe
 
 :::tip
-Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
+Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version.
 :::
 
 Follow these steps to configure Zowe to support AT-TLS:
 
-1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
-
-**Example:**
+These instructions are valid for Zowe 2.18 onwards:
 
 ```yaml
 zowe:
-  components:
-    gateway:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-        internal:
-          ssl:
-            enabled: false
-    discovery:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    api-catalog:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    caching-service:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
-    metrics-service:
-      spring:
-        profiles:
-          active: attls
-      server:
-        ssl:
-          enabled: false
+    network:
+        # For inbound traffic rules:
+        server:
+            tls:
+                attls: true
+        # If outbound traffic rules will be configured:
+        client:
+          tls:
+            attls: false
 ```
 
 While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
@@ -135,9 +110,9 @@ TTLSConnectionAction ApimlServerConnectionAction
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-| Component | Port |   
+| Component | Port |
 |----|-----------------------|
-| Gateway | default port 7554 |    
+| Gateway | default port 7554 |
 | Discovery | default port 7553 |
 |Caching Service | 7555 |
 |API Catalog | default port 7552 |
@@ -218,6 +193,8 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 #### For communication between API Gateway and southbound services
 
+In this example, the rule covers all outbound connections originating from the API Gateway to a given southbound service listening on port 40030. This covers routing scenarios.
+
 ```pagent
 TTLSRule ApimlServiceClientRule
 {
@@ -245,6 +222,7 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
   SecondaryMap Off
 }
 ```
+
 :::important
 - The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
 
@@ -292,12 +270,12 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 ## Multi-tenancy deployment
 
-For specific scenario when Central API ML is running on z/OS with AT-TLS enabled, it is important to override protocol for external URL. This information is used by the Central API ML to call domain API ML and it needs to reflect outbound AT-TLS rule. In this case, update your domain API ML configuration as follows:
+For specific scenario when Central API ML is running on z/OS with AT-TLS enabled, it is important to override the protocol for the external URL. This information is used by the Central API ML to call domain API ML and it needs to reflect outbound AT-TLS rule. In this case, update your domain API ML configuration as follows:
 
-```
+```yaml
 zowe:
   components:
-    gateway: 
+    gateway:
       apiml:
         gateway:
           externalProtocol: http
@@ -327,3 +305,290 @@ An error can occur if the [list of ciphers](#ciphers) does not match between the
 
 **Solution:**  
 Review the supported TLS versions and ciphers used in both the client and the server.
+
+## Full example
+
+The following is a full working example to use as reference. All port values are examples.
+The example is commented for convenience.
+
+```pagent
+# Main inbound rule, all API ML core services have it defined.
+TTLSRule ApimlServerRule
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7554-7559
+  Jobname ZWE*
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ApimlServerEnvironmentAction
+  TTLSConnectionActionRef ApimlServerConnectionAction
+}
+
+# Example southbound service inbound rule
+TTLSRule ApimlDCServerRule
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 40030-40040 # Example service ports
+  Jobname ZWEDC*
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ApimlDCServerEnvironmentAction
+  TTLSConnectionActionRef ApimlServerConnectionAction
+}
+
+TTLSGroupAction ServerGroupAction
+{
+  TTLSEnabled On
+}
+
+# Environment action for API ML core services
+TTLSEnvironmentAction ApimlServerEnvironmentAction
+{
+  HandshakeRole ServerWithClientAuth
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ApimlKeyring
+  TTLSSignatureParmsRef TNESigParms
+}
+
+# Environment action for sample southbound service
+TTLSEnvironmentAction ApimlDCServerEnvironmentAction
+{
+  HandshakeRole Server
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ApimlKeyring
+  TTLSSignatureParmsRef TNESigParms
+}
+
+# Keyring, used for TLS
+TTLSKeyringParms ApimlKeyring
+{
+  Keyring ZWEKRNG
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+# ClientAuthType Full to support optional x509 client cert authentication
+TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
+{
+  ClientAuthType Full
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Server Connection Action for API ML core services.
+# Needs ServerWithClientAuth to support client certificate authentication between them.
+TTLSConnectionAction ApimlServerConnectionAction
+{
+  HandshakeRole ServerWithClientAuth
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ApimlConnectionAdvParms
+  TTLSSignatureParmsRef TNESigParms
+}
+
+# API ML Server connection action.
+# Certificate label indicates which certificate is used in the client certificate authentication process between core services.
+TTLSConnectionAdvancedParms ApimlConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  CertificateLabel apimlcert
+  SecondaryMap Off
+}
+
+# Example outbound TTLS rule for a client calling API ML
+# In this scenario this client (a southbound service) presents client certificate to authenticate (for example during onboarding)
+TTLSRule ApimlClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7554-7559 # API ML Core services ports
+  Jobname ZWEA*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction
+}
+
+# Example outbound rule for connections from API ML Gateway to a southbound service running in port 40030 (during request routing)
+# Note ConnectionAction doesn't configure a client certificate.
+TTLSRule ApimlServiceClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 40030 # Service ports
+  Jobname ZWEAAG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Optional. Can configure the outbound connection from Gateway to work with AT-TLS while connecting to z/OSMF.
+TTLSRule ApimlZosmfClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 449
+  Jobname ZWEAAG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Example outbound rule from app server to gateway.
+TTLSRule ApimlZLUXClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556
+  Jobname ZWEAAG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+TTLSEnvironmentAction ApimlClientEnvironmentAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef ApimlKeyring
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
+  EnvironmentUserInstance 0
+  TTLSSignatureParmsRef TNESigParms
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DESKEYCHECK OFF
+  CLIENTEDHGROUPSIZE legacy
+  SERVEREDHGROUPSIZE legacy
+  PEERMINCERTVERSION any
+  SERVERSCSV OFF
+  MIDDLEBOXCOMPATMODE Off
+  CertValidationMode Any
+}
+
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled ON
+}
+
+TTLSConnectionAction ApimlX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
+}
+
+TTLSConnectionAction ApimlNoX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
+}
+
+TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
+{
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  ApplicationControlled Off
+  SecondaryMap Off
+  TLSv1.2 On
+  TLSv1.3 Off
+}
+
+# In case the connection requires a client certificate authentication, this is where the label is set for outbound connections.
+TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
+{
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  CertificateLabel apimlcert
+  SecondaryMap Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+TTLSSignatureParms TNESigParms
+{
+  CLientECurves Any
+}
+
+# Example list of supported ciphers in handshake
+TTLSCipherParms                   CipherParms
+{
+  V3CipherSuites                  TLS_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_CHACHA20_POLY1305_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA
+}
+```

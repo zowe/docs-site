@@ -8,6 +8,7 @@ The communication server on z/OS provides functionality to encrypt HTTP communic
 ## Configuration Parameters
 
 To enable AT-TLS for Zowe components, configure the following parameters:
+
 ```yaml
 zowe:
     network:
@@ -19,5 +20,6 @@ zowe:
 ## Component-Specific Configuration
 
 For detailed configuration instructions specific to each component, refer to the following guides:
+
 - [Configuring AT-TLS for API Mediation Layer](../user-guide/api-mediation/configuration-at-tls.md)
 - [Using AT-TLS in the App Framework](../user-guide/mvd-configuration#using-at-tls-in-the-app-framework)
