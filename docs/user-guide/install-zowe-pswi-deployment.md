@@ -45,13 +45,12 @@ Before installing, make sure the [z/OSMF requirements](install-zowe-pswi-address
     You will receive a return code of 0 if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     :::
     
-    8. Complete **ZOWE Mount Workflow** to mount the Zowe zFS. For this step complete both steps in the workflow. Perform the following steps to execute each step individually:
+    8. Complete **Mount Workflow** to mount the Zowe zFS. For this step complete both steps in the workflow. Perform the following steps to execute each step individually:
        1. Click the title of the step.
        2. Select the Perform tab.
        3. Review the step contents and update the JCL if needed.
        4. Select Next.
-
-       Repeat the previous two steps to complete all items until the Finish option is available. 
+       5. Repeat the previous two steps to complete all items until the Finish option is available. 
 
     9. (Optional) Follow [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md) article to configure Zowe instance.
 
