@@ -4,7 +4,58 @@ This guide outlines the steps and changes required to migrate from Zowe v2 to Zo
 Follow the steps described in this article to ensure a smooth migration.
 
 
-## Prerequisites
+## Upgrading to the latest version of Zowe v2 (v2.18)
+
+Before upgrading to Zowe v3.0.0, first upgrade to Zowe v2.18, as the rest of the migration instructions are based upon Zowe v2.18.
+Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
+
+### Migrating from Zowe v2.16.0 or Lower
+
+If you are migrating from Zowe **v2.16.0** or a lower version, perform the following tasks:
+
+1) Ensure the following `zowe.network` section is added to your configuration:
+
+```yaml
+  network:
+    server:
+      tls:
+        attls: false
+        # TLS settings only apply when attls=false
+        # Else you must use AT-TLS configuration for TLS customization.
+        minTls: "TLSv1.2"
+        maxTls: "TLSv1.3"
+    client:
+      tls:
+        attls: false
+```
+
+2) Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
+This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
+
+
+### Migrating from Zowe v2.15.0 or Lower
+
+
+If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
+This section is no longer needed and can cause startup error in newer versions of Zowe.
+
+### Migrating from Zowe v2.10.0 or Lower
+
+If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
+
+The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
+
+### Migrating from Zowe v2.9.0 or Lower
+
+If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
+In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
+
+### Migrating from Zowe v2.3.0 or Lower
+
+If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
+
+
+## V3 Prerequisite Changes
 
 Before starting the migration, ensure the following system requirements are met:
 
@@ -14,8 +65,6 @@ Version V2R5 with APAR PH12143 or V3R1 is required. JWT support for z/OSMF must 
 Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
 - **Node.js**  
 The Zowe YAML parameter `node.home` value should be a **Node.js 18 or 20** home location, as Node 16 and below are no longer supported.
-- **Keyrings**  
-If you are using keyrings, verify that Zowe YAML references to `safkeyring` uses 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
 
 
 
@@ -39,6 +88,10 @@ components:
 
 ### Updated Configuration Parameters
 ---
+
+#### Keyrings
+
+If you are using keyrings, verify that Zowe YAML references to `safkeyring` uses 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
 
 #### Gateway z/OSMF service configuration
 
@@ -117,32 +170,4 @@ These two components were deprecated in Zowe v2 and are now removed in v3. Ensur
 
 
 
-## Special Considerations for Older Versions
 
-### Migrating from Zowe v2.16.0 or Lower
-
-If you are migrating from Zowe **v2.16.0** or a lower version, ensure the following `zowe.network` section is added to your configuration:
-
-```yaml
-  network:
-    server:
-      tls:
-        attls: false
-        # TLS settings only apply when attls=false
-        # Else you must use AT-TLS configuration for TLS customization.
-        minTls: "TLSv1.2"
-        maxTls: "TLSv1.3"
-    client:
-      tls:
-        attls: false
-```
-
-### Migrating from Zowe v2.10.0 or Lower
-
-If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
-
-The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
-
-### Migrating from Zowe v2.3.0 or Lower
-
-If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
