@@ -1,4 +1,4 @@
-# Zowe V3 Frequently Asked Questions
+# Zowe V3 FAQs
 
 ## General questions
 
