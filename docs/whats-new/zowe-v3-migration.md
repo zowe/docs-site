@@ -21,7 +21,7 @@ zowe:
       password: "<your v1 KEYSTORE_PASSWORD value>"
     truststore:
       type: "<your v1 KEYSTORE_TYPE value>"
-      file: "<your v1 KEYSTORE value>"
+      file: "<your v1 TRUSTSTORE value>"
       password: "<your v1 KEYSTORE_PASSWORD value>"
     pem: # DELETE THIS PEM SECTION AND THE LINES BELOW IF USING KEYRINGS (type=JCERACFKS)
       key: "<your v1 KEYSTORE_KEY value>"
