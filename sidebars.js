@@ -8,6 +8,7 @@ module.exports = {
       className: "ToCheadercolor",
       link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
       items: [
+        "whats-new/release-notes/v3_0_0",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -1048,7 +1049,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.0.x.md",
     },
   ],
 }
