@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create dbm-db2-options-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_dbm-db2-options-profile.html">dbm-db2-options-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The DBM-Db2 options profile is a named set of DBM Data Service parameters that are implicitly used with the zowe dbm-db2 commands. The profile includes execution-dependent details.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create dbm-db2-options-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new dbm-db2-options profile. You can load this profile by using the name on commands that support the &quot;--dbm-db2-options-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator global change set that changes Db2 objects during a command execution.</p>
+<p>Format:</p>
+<p>&lt;change-set-creator.change-set-name&gt;</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set-values</code> | <code>--csv</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specifies the global change specifications that modify Db2 object attributes during a command execution.</p>
+<p>Format:</p>
+<p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
+<p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
+<p>For a list of global change set attributes, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Example:</p>
+<p>The following example demonstrates changes to the table schema (creator) and tablespace names:</p>
+<p>TBCR TEST% PROD%<br>
+TBTS TESTTS% PRODTS%</p>
+<p>Note:<br>
+- If change-set and change-set-file are both specified, specifications in change-set-file take precedence.<br>
+- The changeSetValues options-profile option has the same behavior as the change-set-file command option.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</li>
+</ul>
+</li>
+<li>
+<p><code>--description</code> | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>Specifies a 1- to 25-character description for the RC/Migrator compare strategy.</li>
+</ul>
+</li>
+<li>
+<p><code>--id</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the 1- to 8-character name of the RC/Migrator compare strategy that is created on the target Db2 subsystem during a command execution.</p>
+<p>Format: The name must begin with a non-numeric character and contain the following characters only: uppercase letters from A to Z, numbers from 0 to 9, and special characters $, #, and @.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--match-set</code> | <code>--ms</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
+<p>Format:</p>
+<p>&lt;match-set-creator.match-set-name&gt;</p>
+<p>For more information about mask services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Note: If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--match-set-values</code> | <code>--msv</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specifies the mapping mask specifications. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. For example, a mask specification can account for different schema naming patterns across environments. Matching determines whether the 'change-set' or 'rule-set' options are applied.</p>
+<p>Format:</p>
+<p>&lt;object-type&gt; &lt;source-name-mask&gt; &lt;target-name-mask&gt;;</p>
+<p>STOGROUP &lt;name&gt; &lt;name&gt;<br>
+DATABASE &lt;name&gt; &lt;name&gt;<br>
+TABLESPACE &lt;database.name&gt; &lt;database.name&gt;<br>
+TABLE &lt;schema.name&gt; &lt;schema.name&gt;<br>
+INDEX &lt;schema.name&gt; &lt;schema.name&gt;<br>
+VIEW &lt;schema.name&gt; &lt;schema.name&gt;<br>
+SYNONYM &lt;schema.name&gt; &lt;schema.name&gt;<br>
+ALIAS &lt;schema.name&gt; &lt;schema.name&gt;<br>
+TRIGGER &lt;schema.name&gt; &lt;schema.name&gt;<br>
+SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt;<br>
+FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;<br>
+PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt;</p>
+<p>Note:<br>
+- &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters.<br>
+- &lt;schema&gt; must be between 1 and 128 characters.<br>
+- &lt;version&gt; must be between 1 and 64 characters.</p>
+<p>A mask specification can include the following wildcard characters:</p>
+<p>Percent sign (%) indicates that zero or more characters can occupy that position and all remaining positions to the end of the name, or to the next character. The percent sign can be used anywhere in the name. However, the source and target characters must match exactly.</p>
+<p>Hyphen or dash (-) indicates that any character can occupy that position, but a character must exist at that position, and the source and target character must match exactly. The hyphen can be repeated in several places in the name.</p>
+<p>Asterisk (*) indicates matching values. An asterisk cannot be used with other characters.</p>
+<p>Use a semicolon to separate mask specifications. Multiple mask specifications for the same object type are supported.</p>
+<p>Example:</p>
+<p>The following example demonstrates different ways of matching the table MYNAME.MYTABLE to the table YOURNAME.YOURTABLE:</p>
+<p>TABLE MY%.%TABLE YOUR%.%TABLE;<br>
+TABLE MYN-M-.MYT% YOURN-M-.YOURT%;<br>
+TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;<br>
+TABLE *.MYTABLE *.YOURTABLE;</p>
+<p>For a list of mask specifications, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Note:<br>
+- If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.<br>
+- The matchSetValues options-profile option has the same behavior as the match-set-file command option.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files if they exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--rule-set</code> | <code>--rs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator rule set that overrides Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file. The changes only apply to existing objects, as determined by match-set processing.</p>
+<p>Format:</p>
+<p>&lt;rule-set-creator.rule-set-name&gt;</p>
+<p>For more information about rule database services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used in generated SET CURRENT SQLID statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the source Db2 subsystem or data sharing group where the objects that you want to use in a command are located.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--target-db2</code> | <code>--td</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the target Db2 subsystem or data sharing group where you want to use a command.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character to use in DDL generation when the default termination character conflicts with the SQL statements that are used in triggers, XML indexes, and routines (external SQL functions and native SQL stored procedures). The default termination character is a semi-colon (;). You cannot specify a comma, double quote, single quote, left or right parentheses, or an underscore.</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the type of DDL statements that you want to generate. You can generate CREATE or DROP statements.</p>
+<p>Allowed values: drop, create</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--verify</code> | <code>-v</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies whether to verify that the objects to be created do not exist on the Db2 subsystem and that the related objects that are required for successful creation of the objects exist on the Db2 subsystem or in the input DDL.</p>
+<p>Default value: no</p>
+<p>Allowed values: yes, no</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix (high-level qualifier) in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the dbm-db2-options profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
