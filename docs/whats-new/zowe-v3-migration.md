@@ -67,6 +67,22 @@ Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Jav
 The Zowe YAML parameter `node.home` value should be a **Node.js 18 or 20** home location, as Node 16 and below are no longer supported.
 
 
+## System and Security Changes
+
+- Existing SAF settings for Zowe do not need to be changed for v3, so install steps such as `zwe init security`, the job or workflow ZWESECUR, and the jobs ZWEIRAC, ZWEITSS, and ZWEIACF are not required to be re-run.
+
+- Existing keyrings and keystores do not need to be changed for v3, so install steps such as `zwe init certificate`, the job or workflow ZWEKRING or jobs starting with ZWEIKR* are not required to be re-run.
+
+- The following network changes are needed for added or removed servers:
+
+| Component name | Change | Default Port | Default Jobname | Details |
+|----------------|--------|--------------|-----------------|---------|
+| zaas | Added | 7558 | ZWE1AZ | This component is required when using the API Mediation Layer |
+| metrics-service | Removed | 7551 | ZWE1MS | |
+| jobs-api | Removed | 7558 | ZWE1EJ | |
+| files-api | Removed | 7559 | ZwE1EF | |
+| cloud-gateway | Removed | 7563 | ZWE1CG | |
+
 
 ## Configuration changes
 
