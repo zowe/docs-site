@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_compare.html">compare</a> › <a href="zowe_zos-files_compare_local-file-data-set.html">local-file-data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Compare content of a local file and a z/os dataset on your terminal (stdout).</p>
+<p>Compare the contents of a local file and a z/OS data set in your terminal (stdout).</p>
 <h4>Usage</h4>
 <p>zowe zos-files compare local-file-data-set &lt;localFilePath&gt; &lt;dataSetName&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +15,7 @@
 <li>
 <p><code>localFilePath</code>		 <em>(string)</em></p>
 <ul>
-<li>The path of the local file  you want to compare.</li>
+<li>The path of the local file you want to compare.</li>
 </ul>
 </li>
 <li>
@@ -30,7 +30,7 @@
 <li>
 <p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
 <ul>
-<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both datasets are transferred in binary mode.</li>
+<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both data sets are transferred in binary mode.</li>
 </ul>
 </li>
 <li>
@@ -69,7 +69,7 @@
 <li>
 <p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
 <ul>
-<li>Opens the diffs between two given files in browser</li>
+<li>Opens the diffs between two given files in browser.</li>
 </ul>
 </li>
 <li>
@@ -185,7 +185,7 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p>Compare the contents of the local file and the data set member &quot;./a.txt&quot; and &quot;sys1.samplib(antxtso)&quot;without sequence numbers:</p>
+<p>Compare the contents of the local file and the data set member &quot;./a.txt&quot; and &quot;sys1.samplib(antxtso)&quot; without sequence numbers:</p>
 <ul>
 <li><code>zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare local-file-data-set &quot;./a.txt&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum">Copy</button></li>
 </ul>

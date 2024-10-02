@@ -8,7 +8,7 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_edit.html">edit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Edit an existing config file in your system's default text editor.</p>
-<p>In a graphical environment, the application associated with JSON files will be launched. In a command-line environment, vi will be launched. To override the command-line editor used, specify it in the ZOWE_EDITOR environment variable.</p>
+<p>In a graphical environment, the application associated with JSON files will be launched. In a command-line environment, vi will be launched. To override the command-line editor used, specify it with the --editor option.</p>
 <h4>Usage</h4>
 <p>zowe config edit [options]</p>
 <h4>Options</h4>
@@ -29,6 +29,12 @@
 <p>Target the user config files.</p>
 <p>Default value: false</p>
 </li>
+</ul>
+</li>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Editor that overrides the default editor for this file type. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;.</li>
 </ul>
 </li>
 </ul>
