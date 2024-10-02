@@ -33,7 +33,7 @@ module.exports = {
     },
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
-      label: "Zowe V3 preview",
+      label: "Get to know Zowe V3",
       link: {type:"doc", id:"whats-new/breaking-changes-v3"},
       items: [
         "whats-new/zowe-v3-office-hours",
