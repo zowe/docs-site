@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create sysview-format-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_sysview-format-profile.html">sysview-format-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The SYSVIEW format profile schema, where you specify display settings</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create sysview-format-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new sysview-format profile. You can load this profile by using the name on commands that support the &quot;--sysview-format-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>display options</h4>
+<ul>
+<li>
+<p><code>--context-fields</code> | <code>--cf</code> <em>(array)</em></p>
+<ul>
+<li>Context fields to display. Defaults to hiding all context</li>
+</ul>
+</li>
+<li>
+<p><code>--overview</code> | <code>-o</code> <em>(boolean)</em></p>
+<ul>
+<li>Display the overview section</li>
+</ul>
+</li>
+<li>
+<p><code>--info</code> | <code>-i</code> <em>(boolean)</em></p>
+<ul>
+<li>Display the information area, if any</li>
+</ul>
+</li>
+<li>
+<p><code>--pretty</code> | <code>-p</code> <em>(boolean)</em></p>
+<ul>
+<li>Display formatted data</li>
+</ul>
+</li>
+<li>
+<p><code>--blank-if-zero</code> | <code>--biz</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Show a blank space instead of '0' values</li>
+</ul>
+</li>
+<li>
+<p><code>--truncate</code> | <code>--tr</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Truncate displays that are too wide for the console</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the sysview-format profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a SYSVIEW format profile to display the context fields 'commandName' and 'screenTitle', the information area, and not the overview area for all requests. Data will be formatted, and '0's will be blanked:</p>
+<ul>
+<li><code>zowe profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create sysview-format-profile myFormat --cf commandName screenTitle --overview false --info true --pretty true --biz true">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
