@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>provisioning perform action</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_provisioning.html">provisioning</a> › <a href="zowe_provisioning_perform.html">perform</a> › <a href="zowe_provisioning_perform_action.html">action</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Perform actions on instances previously provisioned with z/OSMF cloud<br>
+provisioning services. To view the list of provisioned instances, use the<br>
+&quot;zowe provisioning list registry-instances&quot; command. Once you have<br>
+obtained an instance name you can use the &quot;zowe provisioning list<br>
+instance-info &lt;name&gt;&quot; command to view the available instance actions.</p>
+<h4>Usage</h4>
+<p>zowe provisioning perform action &lt;name&gt; &lt;actionname&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>name</code>		 <em>(string)</em></p>
+<ul>
+<li>Provisioned Instance name.</li>
+</ul>
+</li>
+<li>
+<p><code>actionname</code>		 <em>(string)</em></p>
+<ul>
+<li>The action name. Use the &quot;zowe provisioning list instance-info &lt;name&gt;&quot;<br>
+command to view available instance actions.</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Perform the &quot;start&quot; action on the provisioned instance &quot;instance1&quot;:</p>
+<ul>
+<li><code>zowe provisioning perform action instance1 start</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe provisioning perform action instance1 start">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

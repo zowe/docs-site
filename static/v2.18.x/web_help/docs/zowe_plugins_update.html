@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>plugins update</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_plugins.html">plugins</a> › <a href="zowe_plugins_update.html">update</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update plug-ins.</p>
+<h4>Usage</h4>
+<p>zowe plugins update [plugin...] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>plugin...</code>		 <em>(string)</em></p>
+<ul>
+<li>
+<p>The name of the plug-in to update.</p>
+<p>If the plug-in argument is omitted, no action is taken.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--registry</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The npm registry that is used when installing remote packages. When this value is omitted, the value returned by `npm config get registry` is used.</p>
+<p>For more information about npm registries, see: <a href="https://docs.npmjs.com/misc/registry">https://docs.npmjs.com/misc/registry</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--login</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>The flag to add a registry user account to install from secure registry. It saves credentials to the .npmrc file using `npm login`. When this value is omitted, credentials from .npmrc file is used. If you used this flag once for specific registry, you don't have to use it again, it uses credentials from .npmrc file.</p>
+<p>For more information about npm registries, see:<br>
+<a href="https://docs.npmjs.com/cli/login">https://docs.npmjs.com/cli/login</a> for NPM &gt;= 9<br>
+<a href="https://docs.npmjs.com/cli/adduser">https://docs.npmjs.com/cli/adduser</a> for NPM &lt; 9</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update a plug-in:</p>
+<ul>
+<li><code>zowe plugins update my-plugin</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins update my-plugin">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update a remote plug-in from the registry which requires authorization(don't need to use this flag if you have already logged in before):</p>
+<ul>
+<li><code>zowe plugins update my-plugin --registry https://registry.npmjs.org/ --login</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe plugins update my-plugin --registry https://registry.npmjs.org/ --login">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles create mat-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_create.html">create</a> › <a href="zowe_profiles_create_mat-profile.html">mat-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>MAT Analyze CLI profile schema.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config init' command</p>
+<h4>Usage</h4>
+<p>zowe profiles create mat-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new mat profile. You can load this profile by using the name on commands that support the &quot;--mat-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>MAT Profile Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol defined for the MAT REST API server (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the hostname or IP address defined for the MAT REST API server (e.g. 127.0.0.0 or localhost).</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the server port (e.g. 8080).</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe username.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your mainframe password.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--listingDir</code> | <code>--ldir</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the directory where you want to store the registered program listings (e.g. 'c:\listings') for your immediate source code inspection. You can use the advantage of automated listing registration with MAT and listing retrieval through Endevor® footprints for Cobol, C/C++, and Assembler programs. When a source program listing is registered with MAT, you can enhance the histogram analysis data with the program listing details that pertain to the specific CSECT and program statement. The listing is transfered to the specified directory, which enables you to navigate directly to the line of the source code in you VS Code IDE and inspect the program statement. To use the listing retrieval option through Endevor® footprints, you need to have the Endevor® Web Services installed and configured and specify the Endevor® web server details in the MAT database configuration.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--overwrite</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Overwrite the mat profile when a profile of the same name exists.</li>
+</ul>
+</li>
+<li>
+<p><code>--disable-defaults</code> | <code>--dd</code> <em>(boolean)</em></p>
+<ul>
+<li>Disable populating profile values of undefined properties with default values.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Create a MAT profile called 'matprofile' using your MAT configuration and REST API details, with the MAT REST API server integrated with the Zowe API Mediation Layer:</p>
+<ul>
+<li><code>zowe profiles create mat-profile matprofile --o http --H localhost --P 1234 --u user --pw pass --base-path 'API\MAT'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create mat-profile matprofile --o http --H localhost --P 1234 --u user --pw pass --base-path 'API\MAT'">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a MAT profile called 'matprofile' using your MAT configuration and the details of the MAT REST API server without integration with the Zowe API Mediation Layer,and define the 'c:\listings' directory to store program listings for instant analysis from your VS Code IDE:</p>
+<ul>
+<li><code>zowe profiles create mat-profile matprofile --o http --H localhost --P 1234 --u user --pw pass --listingDir 'c:\listings'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles create mat-profile matprofile --o http --H localhost --P 1234 --u user --pw pass --listingDir 'c:\listings'">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
