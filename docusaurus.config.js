@@ -227,7 +227,7 @@ module.exports = {
               label: `${LATEST_VERSION}` + " LTS",
             },
             "v2.18.x": {
-              label: "v2.17.x LTS",
+              label: "v2.18.x LTS",
             },
             "v2.17.x": {
               label: "v2.17.x LTS",
