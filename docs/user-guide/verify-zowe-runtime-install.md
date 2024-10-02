@@ -65,14 +65,14 @@ The response `UP` confirms that API Mediation Layer is installed and is running 
 
 Zowe z/OS services usually are registered with Zowe APIML Discovery and exposed with certain service url like `/<service>/api/v1`.
 
-To verify a service is necessary to call any available endpoint, for example:
+Here we give an example of verifying `jobs-api` shipped with Zowe. Please be aware that `jobs-api` is not enabled by default if you created your Zowe configuration file from `example-zowe.yaml`. To enable `jobs-api`, you need to set `components.jobs-api.enabled` to be `true` and restart Zowe. You can verify the installation of `jobs-api` service from an internet browser by entering the following case-sensitive URL:
 
 ```
-https://hostName:gatewayPort/serviceId/api/v1/version
+https://hostName:gatewayPort/jobs/api/v1/jobs?prefix=*
 ```
 
 where, 
 
 `gatewayPort` is the port number that is assigned to `zowe.externalPort` in the `zowe.yaml` file used to launch Zowe. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration#domain-and-port-to-access-zowe).
 
-The path `serviceId/api/v1/version` depends on a specific service. You can also use API Catalog to verify a registered service.
+The above link should prompt you to login. After you input correct user name and password of your target z/OS system, you should see JSON format data of all jobs running on the system.

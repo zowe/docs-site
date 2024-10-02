@@ -55,9 +55,7 @@ Every instance of an application's web content within Zowe is given context and 
 
 When the Window is created, the application's web content is encapsulated dependent upon its framework type. The following are valid framework types:
 
-- "angular": The web content is written in Angular, and packaged with Webpack. Application framework objects are given through @injectables and imports.
-
-- "react": The web content is written in React, and packaged with Webpack. Application framework objects are given through `this.props`.
+- "angular2": The web content is written in Angular, and packaged with Webpack. Application framework objects are given through @injectables and imports.
 
 - "iframe": The web content can be written using any framework, but is included through an iframe tag. Applications within an iframe can access framework objects through `parent.ZoweZLUX` and callbacks.
 

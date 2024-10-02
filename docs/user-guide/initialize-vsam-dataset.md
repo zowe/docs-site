@@ -1,13 +1,10 @@
 # Creating VSAM caching service datasets
 
-:::info Deprecated: The Caching service uses Infinispan by default, no longer requiring the VSAM setup action.
-:::
-
 Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor.  If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.  
 
 In an HA setup the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`), and client traffic to this port is distributed between separate gateways that in turn dispatch their work to different services.  When any of the services individually become unavailable the work can be routed to available services, which means that the initial northbound request will be fulfilled.  
 
-There are different storage methods that can be used as as the caching service for Zowe.  One of these is `VSAM` and this chapter describes how to create the data sets if you are using `VSAM` as your caching service. By default you do not need this step because `infinispan` is the storage mode used instead.  For more information on the different caching services see [Configuring the Caching Service for HA](../user-guide/configure-caching-service-ha.md).
+There are different storage methods that can be used as as the caching service for Zowe.  One of these is `VSAM` and this chapter describes how to create the data sets if you are using `VSAM` as your caching service.  If you are using another caching service such as `redis` or `infinispan` then you do not need to create any VSAM files and you can skip the step described in this chapter.  For more information on the different caching services see [Configuring the Caching Service for HA](../user-guide/configure-caching-service-ha.md).
 
 ## Using `zwe init vsam` command
 

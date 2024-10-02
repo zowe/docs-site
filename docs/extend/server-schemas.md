@@ -1,6 +1,6 @@
 # Server component schemas
 
-Each Component in Zowe must contain a [json schema](https://json-schema.org/) describing the configuration parameters that are valid for its component section in Zowe's server configuration. If a component does not have anything that can be configured, this file can just be boilerplate specifying that it fully inherits generic Component parameters and nothing more.
+Starting with Zowe v2.0, each Component in Zowe must contain a [json schema](https://json-schema.org/) describing the configuration parameters that are valid for its component section in Zowe's server configuration. If a component does not have anything that can be configured, this file can just be boilerplate specifying that it fully inherits generic Component parameters and nothing more.
 
 The server infrastructure will utilize each components' schema files to validate a Zowe instance configuration every startup, so this requirement is enforced by code.
 

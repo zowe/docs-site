@@ -81,6 +81,8 @@ The Zowe runtime directory delivers its core components in the `<RUNTIME_DIR>/co
   /app-server
   /explorer-jes
   /explorer-mvs
+  /files-api
+  /jobs-api
   /...
 ```
 

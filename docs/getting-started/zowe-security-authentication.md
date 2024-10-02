@@ -4,6 +4,7 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 * [Authentication with JSON Web Tokens (JWT)](#authentication-with-json-web-tokensjwt)
 * [Authentication with client certificates](#authentication-with-client-certificates)
 * [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
+* [Authentication with SAF Identity Tokens](#authentication-with-saf-identity-tokens)
 * [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
 * [Advanced Authentication Mainframe (AAM)](#advanced-authentication-mainframe-aam)
 
@@ -30,6 +31,11 @@ A Personal Access Token (PAT) is a specific scoped JWT with a configurable valid
 - Secure. If a security breech is suspected, the security administrator can invalidate all the tokens based on criteria as established by rules.
 
 For more information about PAT, see [Authenticating with a Personal Access Token documentation](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
+
+## Authentication with SAF Identity Tokens
+The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
+
+For more information about configuring the token, see [Configure signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md#configure-signed-saf-identity-tokens-idt).
 
 ## Multi-factor authentication (MFA)
 
