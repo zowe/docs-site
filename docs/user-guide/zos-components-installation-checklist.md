@@ -16,7 +16,7 @@ Choose from the following installation options to install Zowe server-side compo
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
+|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))<br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**<br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
 
 ## Configuring Zowe z/OS Components 
 
@@ -24,7 +24,7 @@ Choose the following options to initialize  Zowe z/OS runtime:
 
 | Task | Results | Time Estimate |  
 |-----------------------|----|------|
-|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass. | 1 hour
+|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  <br /><br /> **Option 3: [Configure Zowe with JCL](../user-guide/configuring-zowe-via-jcl.md)** | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass.   | 1 hour 
 
 ## Configuring security
 
