@@ -140,7 +140,7 @@ The following definition of skill levels about Zowe assist you with gathering th
    
    Join the #zowe-api Slack channel to ask questions about Zowe API ML, propose new ideas, and interact with the Zowe community. 
 
-- [**Zowe API ML squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe API ML squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe API ML squad meetings to get involved.
 
