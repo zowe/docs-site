@@ -13,7 +13,7 @@ As a system administrator, you can customize the API Catalog UI to have a simila
 It is possible to customize the logotype and selected style options directly in `zowe.yaml`.
 
 1. Open the file `zowe.yaml`.
-2. Configure the following properties by setting them under `configs.apiml.catalog.customStyles`:
+2. Configure the following properties by setting them under `ZWE_configs_apiml_catalog_customStyles`:
 
    - **logo**  
    Specifies the location of the logo that will replace the default Zowe logo in the API Catalog header. The supported image formats are: `svg`, `png` and `jpg/jpeg`.
@@ -67,6 +67,9 @@ Nothing is displayed on the Gateway home page and the Catalog is removed from `/
 
 - **alternative-catalog**   
 An alternative to the API Catalog is displayed
+
+- **metrics-dashboard**  
+ A possible dashboard that could appear in place of the API Catalog 
 
 :::note Notes:
 - If the application contains the `homePageUrl` and `statusPageRelativeUrl`, then the full set of information is displayed.

@@ -1,6 +1,6 @@
 # Supported functionality
 
-Review the following list for the functionality available in Zowe Explorer FTP Extension.
+The functionality available in Zowe Explorer FTP Extension is detailed in the following list:
 
 ## Supported data set functionalities
 
@@ -39,7 +39,6 @@ Review the following list for the functionality available in Zowe Explorer FTP E
 - View file in text/binary mode
 - Edit file
 - Save file
-- Copy/paste folders and files
 - Create a new directory/new file
 - Upload file
 - Rename file/directory

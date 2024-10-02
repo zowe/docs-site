@@ -52,3 +52,7 @@ Use the following request body format in the `POST` REST call against the URL `/
  "newPassword" : "<newPassword>"
 }
 ```
+
+:::note
+In order to use the password change functionality via z/OSMF, it is necessary to install the PTF for APAR PH34912.
+:::

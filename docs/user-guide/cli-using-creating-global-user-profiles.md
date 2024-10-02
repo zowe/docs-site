@@ -38,7 +38,7 @@ In your user-specific file , observe that the "defaults" object is empty and the
             "properties": {},
             "secure": []
         },
-        "global_base": {
+        "base": {
             "type": "base",
             "properties": {},
             "secure": []
@@ -67,7 +67,7 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
                 "port": 443
             }
         },
-        "global_base": {
+        "base": {
             "type": "base",
             "properties": {
                 "host": "example1.com"
@@ -80,7 +80,7 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
     },
     "defaults": {
         "zosmf": "zosmf",
-        "base": "global_base"
+        "base": "base"
     },
 }
 ```

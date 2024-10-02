@@ -17,13 +17,9 @@ For each area of the codebase, there are established and favored programming lan
 - **CLI** - Node.js, TypeScript
 - **Desktop UI** - Node.js, JavaScript
 - **APIs** - C, Assembler, Java, Spring
-- **API Mediation Layer** - Java, Spring, JavaScript
+- **API Mediation Layer** - Java, Spring
 
-:::note
-
-JavaScript is not recommended and should be avoided in favor of Typescript to utilize typing.
-
-:::
+**Note:** JavaScript is not recommended and should be avoided in favor of Typescript to utilize typing.
 
 ## Component-specific guidelines and tutorials
 

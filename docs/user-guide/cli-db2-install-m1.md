@@ -1,4 +1,4 @@
-# Apple Silicon processor installation for IBM Db2 Database Plug-in
+# M1 processor installation
 
 The IBM ODBC DB2 driver functions only on MacOS x86_64 architecture.
 
@@ -31,12 +31,8 @@ Use the following steps to configure an M1 (or later architecture) processor to 
 5. Reinstall Zowe CLI.
 6. After you complete these steps, do one of the following:
 
-    - If you are installing the plug-in from an online registry, continue with Step 2 in [Installing from an online registry](.//cli-db2plugin.md#installing-from-an-online-registry).
+    - If you are installing the plug-in from an online registry, continue with Step 2 in [Install from an online registry](.//cli-db2plugin.md#installing-from-an-online-registry).
 
     - If you are installing the plug-in from a local package, continue with Step 2 in [Installing from a local package](../user-guide/cli-db2plugin.md#installing-from-a-local-package). 
 
-:::warning Important
-
-You must issue the `intel` command every time that you open a new terminal window to ensure that the DB2 plug-in functions properly on x86_64 architecture.
-
-:::
+**Important!** You must issue the `intel` command **every time** that you open a new terminal window to help ensure that Zowe CLI, Secure Credential Storage and the DB2 plug-in function properly on x86_64 architecture. Also, issue the command **before** you issue Zowe CLI commands.
