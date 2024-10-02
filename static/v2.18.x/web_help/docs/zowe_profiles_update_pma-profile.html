@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update pma-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_pma-profile.html">pma-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>MAT Detect CLI profile schema.</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles update pma-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new pma profile. You can load this profile by using the name on commands that support the &quot;--pma-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>PMA Connection Options</h4>
+<ul>
+<li>
+<p><code>--job_acct</code> | <code>--ja</code> <em>(string)</em></p>
+<ul>
+<li>Specifies z/OS TSO/E accounting information. Values: numeric characters (0-9)</li>
+</ul>
+</li>
+<li>
+<p><code>--job_class</code> | <code>--jc</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS class information. Values: alphanumeric characters (A-Z, 0-9)</li>
+</ul>
+</li>
+<li>
+<p><code>--job_mclass</code> | <code>--jmc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the MSGCLASS parameter value and assigns the job log to the specified output class. The specified MSGCLASS value is used in all JCLs that PMA runs while you execute the commands. If you do not provide the job_mclass parameter, the default MSGCLASS value is used. Values: alphanumeric characters (A-Z, 0-9)</li>
+</ul>
+</li>
+<li>
+<p><code>--job_load</code> | <code>--jl</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the PMA loadlib data set name that you defined during the PMA customization (&amp;HLQ.CEETLOAD)</li>
+</ul>
+</li>
+<li>
+<p><code>--job_pmahlq</code> | <code>--jph</code> <em>(string)</em></p>
+<ul>
+<li>Specifies your PMA HLQ to access the KSDSALT, KSDSJOB, and KSDSEXC VSAM files that ensure the collection of the necessary data</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
