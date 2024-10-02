@@ -23,8 +23,6 @@ As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL
 
 Find out what's happening with Zowe in the Zowe Quarterly Update Webinar Series.
 
-- [Zowe Quarterly Update Webinar: May 2024](https://youtu.be/57IKsRfM_F0)
-- [Zowe Quarterly Update Webinar: February 2024](https://youtu.be/d9eA9eZRREI)
 - [Zowe Quarterly Update Webinar: October 2021](https://youtu.be/b0Xo6WIy3vc)
 - [Zowe Quarterly Update Webinar: July 2021](https://youtu.be/T3Z4hMwElII)
 - [Zowe Quarterly Update Webinar: April 2021](https://youtu.be/9rQCcZGVDzQ)
@@ -52,7 +50,7 @@ The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59
 
 **Connect with the community through meetings** 
 
-- [Zowe meeting calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe meetings to get latest Zowe updates and get involved in different squads and initiatives.
 

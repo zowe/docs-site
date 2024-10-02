@@ -17,10 +17,10 @@ Creates the user IDs and security manager settings.
 APF authorizes the LOADLIB containing the modules that need to perform z/OS privileged security calls. 
 - **certificate**  
 Configures Zowe to use TLS certificates.
+- **vsam**  
+Configures the VSAM files needed to run the Zowe caching service used for high availability (HA)
 - **stc**  
 Configures the system to launch the Zowe started task.
-- (Deprecated) **vsam**  
-Configures the VSAM files needed if the Caching service is set to VSAM mode. This is not required nor the default, and exists for compatibility.
 
 :::info Recommendation:
 We recommend you to run these sub commands one by one to clearly see the output of each step. To successfully run `zwe init security`, `zwe init apfauth`, and `zwe init certificate`, it is likely that your organization requires elevated permissions. We recommend you consult with your security administrator to run these commands. For more information about tasks for the security administrator, see the section [Configuring security](./configuring-security.md) in this configuration documentation.
@@ -40,7 +40,7 @@ The following `zwe init` arguments can assist you with the initization process:
  This argument allows you to rerun the `zwe init` command repeatedly regardless of whether some data sets are already created.
 - **-v** or **--verbose**  
    This argument provides execution details of the `zwe` command. You can use it for troubleshooting purposes if the error message is not clear enough.
-- **T-vv** or **--trace**  
+- **-vv** or **--trace**  
  This argument provides you more execution details than the `--verbose` mode for troubleshooting purposes.
 
 ## Zowe initilization command
@@ -51,14 +51,19 @@ The `zwe init` command runs the subcommands in sequence automatically. If you ha
 zwe init --config /path/to/zowe.yaml
 ```
 
-:::caution Validate successful initialization
-Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
+:::note
+For more information about the individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
 :::
 
-For more information about `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
+:::caution Validate successful initialization
+Output from the execution of this command indicates the command ran successfully. However, to determine if each of the subcommands ran successfully, check the full output log. Failed execution of some subcommands may be the result of insufficient user permissions. Consult with your security administrator to find out if elevated permissions are required to successfully execute some of the `zwe init` subcommands.   
 
-## Next step
+For more information about security administrator tasks, see:
+* [Addressing security requirements](./address-security-requirements.md) 
+* [Configuring security](./configuring-security.md)
+* [Configuring certificates](./configure-certificates.md)
+:::
 
-After all `zwe init` subcommands are successfully executed, the next step is to configure the z/OS system for Zowe. For more information, see [Addressing z/OS requirements for Zowe](./configure-zos-system.md).
+## Next steps
 
 For detailed information about individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).
