@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>dbm-db2 generate ddl</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_generate.html">generate</a> › <a href="zowe_dbm-db2_generate_ddl.html">ddl</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Generate CREATE or DROP DDL statements for specified Db2 objects into an output DDL file. For example, use this command to generate CREATE TABLE definitions that you can then edit and use to update the table definition on a Db2 subsystem with the 'zowe dbm compare ddl' command.</p>
+<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm%5C-db2%5C-for%5C-zowe%5C-cli">https://github.com/BroadcomMFD/dbm\-db2\-for\-zowe\-cli</a></p>
+<h4>Usage</h4>
+<p>zowe dbm-db2 generate ddl [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--object</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the Db2 objects to be generated in DDL. Use the optional include clause to include related Db2 objects.</p>
+<pre><code> Format: see the object\-file description
+
+Note: The \-\-object and \-\-object\-file options are mutually exclusive.
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--object-file</code> | <code>--of</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the name of the local input file that contains a list of Db2 objects to be generated in DDL. Use a semicolon to separate objects. Use the optional include clause to include related Db2 objects.</p>
+<p>Format:</p>
+<p>&lt;object-type&gt; &lt;object-name&gt; [include(&lt;related-object-type&gt;,...)];</p>
+<p>The required clause &lt;object-type&gt; &lt;object-name&gt;  identifies the specific Db2 (base) object:</p>
+<p>STOGROUP &lt;name&gt;<br>
+DATABASE &lt;name&gt;<br>
+TABLESPACE &lt;dbname.name&gt;<br>
+TABLE &lt;schema.name&gt;<br>
+INDEX &lt;schema.name&gt;<br>
+VIEW &lt;schema.name&gt;<br>
+ALIAS &lt;schema.name&gt;<br>
+SYNONYM &lt;schema.name&gt;<br>
+MQT &lt;schema.name&gt;<br>
+SEQUENCE &lt;schema.name&gt;<br>
+TRIGGER &lt;schema.name[.version]&gt;<br>
+FUNCTION &lt;schema.name[.version]&gt;<br>
+PROCEDURE &lt;schema.name[.version]&gt;</p>
+<p>The optional include clause (&lt;related-object-type&gt;,...) identifies one or more related Db2 object types to include in the object list.</p>
+<p>You can specify the following object types: STOGROUP, DATABASE, TABLESPACE, TABLE, INDEX, VIEW, SYNONYM, MQT-ALL, TRIGGER, ROUTINE, PARENTS, CHILDREN, and ALL.</p>
+<p>Example:</p>
+<p>table sysibm.systables include (tablespace, database, index);<br>
+database db1 include(children);</p>
+<p>Note: The --object and --object-file options are mutually exclusive.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--source-db2</code> | <code>--sd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the source Db2 subsystem or data sharing group where the objects that you want to use in a command are located.</p>
+<p>Note: If you specify the data sharing group, the first active Db2 subsystem in the group is used.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--change-set</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the creator and name of an existing RC/Migrator global change set that changes Db2 objects during a command execution.</p>
+<p>Format:</p>
+<p>&lt;change-set-creator.change-set-name&gt;</p>
+<p>For more information about global change services, see the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Note: If change-set and change-set-file are both specified, specifications in change-set-file take precedence.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--change-set-file</code> | <code>--csf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the name of the local input file that contains the global change specifications that modify attributes of Db2 objects.</p>
+<p>Format:</p>
+<p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
+<p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in &lt;from-value&gt; and &lt;to-value&gt;. If the same &lt;object-attribute&gt; is specified multiple times, the first occurrence takes precedence.</p>
+<p>For a full list of attributes, see Global Change Set Attributes in the RC/Migrator documentation at <a href="https://techdocs.broadcom.com/db2rcmig">https://techdocs.broadcom.com/db2rcmig</a></p>
+<p>Example:</p>
+<p>The following example demonstrates changes to the table schema (creator) and tablespace names:</p>
+<p>TBCR TEST% PROD%<br>
+TBTS TESTTS% PRODTS%</p>
+<p>Note:<br>
+- If change-set and change-set-file are both specified, specifications in change-set-file take precedence.<br>
+- The changeSetValues options-profile option has the same behavior as the change-set-file command option.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>-t</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the type of DDL statements that you want to generate. You can generate CREATE or DROP statements.</p>
+<p>Default value: create<br>
+Allowed values: drop, create</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-ddl-file</code> | <code>--odf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output file name that contains the generated DDL for the objects that are identified by the --object-file or --object option.</p>
+<p>Default value: output.sql</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output error file in YAML format. The file contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
+<p>Default value: error.log</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--dbm-db2-options-profile</code> | <code>--dbm-db2-options-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2-options) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--dbm-db2-profile</code> | <code>--dbm-db2-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
+</ul>
+</li>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix (high-level qualifier) in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files if they exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--authid</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process.</li>
+</ul>
+</li>
+<li>
+<p><code>--sqlid</code> | <code>-s</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the authorization ID that is used in generated SET CURRENT SQLID statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--termination-character</code> | <code>--tc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the SQL termination character to use in DDL generation when the default termination character conflicts with the SQL statements that are used in triggers, XML indexes, and routines (external SQL functions and native SQL stored procedures). The default termination character is a semi-colon (;). You cannot specify a comma, double quote, single quote, left or right parentheses, or an underscore.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all DBM DS resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Generate CREATE DDL statements for a tablespace and its child table:</p>
+<ul>
+<li><code>zowe dbm-db2 generate ddl --object &quot;tablespace my.tbsp include(table)&quot; --source-db2 SRC --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 generate ddl --object &quot;tablespace my.tbsp include(table)&quot; --source-db2 SRC --output-ddl-file objects.sql">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Generate CREATE DDL statements for a database and its children and apply changes as defined in the change set:</p>
+<ul>
+<li><code>zowe dbm-db2 generate ddl --object &quot;database my.db include(children)&quot; --source-db2 SRC --change-set USER1.CHANGSET --output-ddl-file objects.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 generate ddl --object &quot;database my.db include(children)&quot; --source-db2 SRC --change-set USER1.CHANGSET --output-ddl-file objects.sql">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Generate DROP DDL statements only for the input object list:</p>
+<ul>
+<li><code>zowe dbm-db2 generate ddl --object-file objects.txt --source-db2 SRC --type drop --output-ddl-file output.sql</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 generate ddl --object-file objects.txt --source-db2 SRC --type drop --output-ddl-file output.sql">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
