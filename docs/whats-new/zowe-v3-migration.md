@@ -3,6 +3,32 @@
 This guide outlines the steps and changes required to migrate from Zowe v2 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
 Follow the steps described in this article to ensure a smooth migration.
 
+## Upgrading from Zowe v1
+
+If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
+Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take.
+
+If you are using v1.27 or newer, you can retain your keyring or keystore with Zowe v2 and v3. 
+During v2 or v3 installation, once your Zowe YAML configuration file is created, you can define a section `zowe.certificate` as follows to re-use your certificates.
+
+```yaml
+zowe:
+  certificate:
+    keystore:
+      type: "<your v1 KEYSTORE_TYPE value>"
+      file: "<your v1 KEYSTORE value>"
+      alias: "<your v1 KEY_ALIAS value>"
+      password: "<your v1 KEYSTORE_PASSWORD value>"
+    truststore:
+      type: "<your v1 KEYSTORE_TYPE value>"
+      file: "<your v1 TRUSTSTORE value>"
+      password: "<your v1 KEYSTORE_PASSWORD value>"
+    pem: # DELETE THIS PEM SECTION AND THE LINES BELOW IF USING KEYRINGS (type=JCERACFKS)
+      key: "<your v1 KEYSTORE_KEY value>"
+      certificate: "<your v1 KEYSTORE_CERTIFICATE value>"
+      certificateAuthorities: "<your v1 KEYSTORE_CERTIFICATE_AUTHORITY value>"
+```
+
 
 ## Upgrading to the latest version of Zowe v2 (v2.18)
 
