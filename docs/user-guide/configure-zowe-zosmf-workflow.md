@@ -47,8 +47,6 @@ When you select it from the list of Workflow Definition Files you should see a s
 
 ![Configuration of Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
-[TODO]: # (I used screenshot from apimlpc_zowe-218-pswi-test2 deployment; we might need a better screenshot)
-
 You can see the workflow details by expanding the Workflow details panel.
 This workflow has three main steps.
 
@@ -58,8 +56,6 @@ This workflow step includes the list of Zowe variables. It contains many child s
 When you expand this step you should see a screen like below:
 
 ![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
-
-[TODO]: # (need to update this image to correspond to V3, becasue the list of components has changed)
 
 First you need to define the main variables, it is intended as a general configuration variables form. 
 The other sub-steps are optional and depending on what the components you will choose to enable.
@@ -74,8 +70,6 @@ Perform the following steps to execute each sub-step individually:
    The below image shows how this page looks like:
 
     ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
-
-   [TODO]: # (need to update this image to correspond to V3, becasue the list of components has changed)
 
    :::note
    All the components that you enabled need to be configured in the next sub-steps of **Define variables** step. 
