@@ -1,6 +1,6 @@
-# Zowe V3 Migration Guide
+# Migrating from Zowe V2 to Zowe V3
 
-This guide outlines the steps and changes required to migrate from Zowe v2 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
+Follow the procedure outlined in this article to migrate from Zowe v2 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
 Follow the steps described in this article to ensure a smooth migration.
 
 
@@ -11,7 +11,7 @@ Please follow the instructions from the version of Zowe you have and newer in or
 
 ### Migrating from Zowe v2.16.0 or Lower
 
-If you are migrating from Zowe **v2.16.0** or a lower version, perform the following tasks:
+ <details>To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
 
 1) Ensure the following `zowe.network` section is added to your configuration:
 
@@ -32,29 +32,49 @@ If you are migrating from Zowe **v2.16.0** or a lower version, perform the follo
 2) Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
 This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
 
+</details>
 
 ### Migrating from Zowe v2.15.0 or Lower
+
+ <details>To migrate from Zowe **v2.15.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
 
 
 If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
 This section is no longer needed and can cause startup error in newer versions of Zowe.
 
+</details>
+
 ### Migrating from Zowe v2.10.0 or Lower
+
+ <details>To migrate from Zowe **v2.10.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
 
 If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
 
 The `zowe.sysMessages` is a new array that allows you to select messages that, when found by the launcher, will be duplicated into the system's log.
 
+</details>
+
 ### Migrating from Zowe v2.9.0 or Lower
+
+ <details>To migrate from Zowe **v2.9.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
 
 If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
 
+</details>
+
 ### Migrating from Zowe v2.3.0 or Lower
+
+<details>To migrate from Zowe **v2.3.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
 
 If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
 
-## Migrating from Zowe v1
+</details>
+
+### Migrating from Zowe v1
+
+ <details>To migrate from Zowe **v1** perform the following tasks. <summary>Click here for configuration details.</summary>
+
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. [More details](../extend/migrate-extensions.md)
 
@@ -78,6 +98,8 @@ zowe:
       certificate: "<your v1 KEYSTORE_CERTIFICATE value>"
       certificateAuthorities: "<your v1 KEYSTORE_CERTIFICATE_AUTHORITY value>"
 ```
+
+</details>
 
 ## V3 Prerequisite Changes
 
