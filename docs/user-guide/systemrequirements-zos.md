@@ -98,7 +98,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
   z/OSMF is included with z/OS so does not need to be separately installed. If z/OSMF is present, Zowe  detects z/OSMF during configuration and uses z/OSMF for the following purposes:
 
-  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143).   
+  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143) and that JWT generation is [enabled by following z/OSMF documentation](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support).
 
   - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
