@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update tso-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_tso-profile.html">tso-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>z/OS TSO/E User Profile</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles update tso-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new tso profile. You can load this profile by using the name on commands that support the &quot;--tso-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>TSO ADDRESS SPACE OPTIONS</h4>
+<ul>
+<li>
+<p><code>--account</code> | <code>-a</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS TSO/E accounting information.</li>
+</ul>
+</li>
+<li>
+<p><code>--character-set</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>Character set for address space to convert messages and responses from UTF-8 to EBCDIC.</li>
+</ul>
+</li>
+<li>
+<p><code>--code-page</code> | <code>--cp</code> <em>(string)</em></p>
+<ul>
+<li>Codepage value for TSO/E address space to convert messages and responses from UTF-8 to EBCDIC.</li>
+</ul>
+</li>
+<li>
+<p><code>--columns</code> | <code>--cols</code> <em>(number)</em></p>
+<ul>
+<li>The number of columns on a screen.</li>
+</ul>
+</li>
+<li>
+<p><code>--logon-procedure</code> | <code>-l</code> <em>(string)</em></p>
+<ul>
+<li>The logon procedure to use when creating TSO procedures on your behalf.</li>
+</ul>
+</li>
+<li>
+<p><code>--region-size</code> | <code>--rs</code> <em>(number)</em></p>
+<ul>
+<li>Region size for the TSO/E address space.</li>
+</ul>
+</li>
+<li>
+<p><code>--rows</code> <em>(number)</em></p>
+<ul>
+<li>The number of rows on a screen.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update a tso profile called myprof with new JES accounting information:</p>
+<ul>
+<li><code>zowe profiles update tso-profile myprof -a NEWACCT</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update tso-profile myprof -a NEWACCT">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
