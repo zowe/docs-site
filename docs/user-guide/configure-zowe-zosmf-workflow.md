@@ -17,6 +17,7 @@ You can complete the following tasks with the **Configuration of Zowe 3.0** work
 
 - Configure the Zowe instance
 - Enable the Gateway service
+- Enable ZAAS
 - Enable the API Catalog
 - Enable the Discovery service
 - Enable the Caching service
@@ -44,7 +45,7 @@ post-deployment workflow for mounting.
 After you successfully performed the Zowe Mount workflow you can start the **Configuration of Zowe 3.0** workflow.
 When you select it from the list of Workflow Definition Files you should see a screen like the one shown below:
 
-![Configuration of Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.jpg)
+![Configuration of Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
 [TODO]: # (I used screenshot from apimlpc_zowe-218-pswi-test2 deployment; we might need a better screenshot)
 
@@ -56,7 +57,7 @@ This workflow has three main steps.
 This workflow step includes the list of Zowe variables. It contains many child sub-steps.
 When you expand this step you should see a screen like below:
 
-![Step1: Define variables](../images/zosmf/workflow-defineVariables.jpg)
+![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
 
 [TODO]: # (need to update this image to correspond to V3, becasue the list of components has changed)
 
@@ -72,7 +73,7 @@ Perform the following steps to execute each sub-step individually:
    On the components page of **Define the main variables** sub-step you can select the components that you wish to enable. 
    The below image shows how this page looks like:
 
-    ![Enabling components](../images/zosmf/workflow-componentsVariables.jpg)
+    ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
 
    [TODO]: # (need to update this image to correspond to V3, becasue the list of components has changed)
 
