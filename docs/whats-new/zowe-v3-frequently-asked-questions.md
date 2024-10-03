@@ -1,26 +1,16 @@
 # Zowe V3 FAQs
 
-## General questions
-
-1. When will Zowe V3 be released?
-  
-   Zowe V3 is scheduled to be released on Sept. 28, 2024. Any changes to the plan will be communicated via all available channels.
-
-2. When will Zowe V3 be available for preview?
-  
-   Currently, Zowe V3 pre-release versions are available for the PAX, Zowe CLI, Zowe Client Node.js SDKs, Zowe Explorer for Visual Studio Code, and the Zowe IntelliJ Plug-in.
-
 ## Extender questions
 
 ### API Mediation Layer
 
 1. Do we need to move away from PassTickets as the method of authentication to the API Mediation Layer?
     
-   No, we will continue to support PassTickets. However, PassTickets will be deprecated in Zowe V3, and are no longer recommended due to the inefficiency of configuration wherein users must configure a PassTicket for every service that uses them. 
+   No, we will continue to support PassTickets. However, PassTickets are deprecated in Zowe V3, and are no longer recommended due to the inefficiency of configuration wherein users must configure a PassTicket for every service that uses them. 
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
-   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (For example, `zowe.components.gateway`).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
+   The cloud gateway configuration for V3 has moved to the currently used gateway configuration space (For example, `zowe.components.gateway`). The configuration that was Zuul specific has been removed and replaced with the Spring Cloud Gateway configuration.
 
 3. How does client certificate authentication work in Zowe V3?
 
@@ -28,7 +18,7 @@
 
 4. Will you identify deprecated functionality such as PassTickets?
 
-   PassTickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
+   PassTickets will be deprecated in V3, but PassTickets will still be supported, possibly even through to Zowe V4.
 
    We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
 
@@ -82,9 +72,9 @@
 
 ### Zowe API Mediation Layer
 
-1. Will Zowe V3 API ML support clients with the V2 onboarding enabler?
+1. Does Zowe V3 API ML support clients with the V2 onboarding enabler?
 
-   The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 will continue working with Zowe V2 API ML.
+   The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 continue to work with Zowe V2 API ML.
 
 2. The jump to Java 17 means that we have to maintain two separate versions of our application, one with apiml-enabler V2 and one with V3, to support customers who want to stay with Java 8. Do you have a recommendation or a workaround for supporting both Java versions?
 
@@ -94,7 +84,7 @@
 
 3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
-   Spring Cloud Gateway is replacing Zuul as the technology to provide the API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move this configuration from `components.cloud-gateway` to `components.gateway`.
+   In Zowe V3, Spring Cloud Gateway has replaced Zuul as the technology to provide the API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move this configuration from `components.cloud-gateway` to `components.gateway`.
 
 4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
