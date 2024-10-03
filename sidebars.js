@@ -94,7 +94,7 @@ module.exports = {
         "getting-started/zowe-office-hours",
         {
           type: "doc",
-          label: "Migrating Zowe server component from V1 to V2",
+          label: "Migrating from Zowe V1 to Zowe V2",
           className: "ToCitemcolor",
           id:"extend/migrate-extensions",
         },
