@@ -107,7 +107,7 @@ The Zowe YAML parameter `node.home` value should be a **Node.js 18 or 20** home 
 | metrics-service | Removed | 7551 | ZWE1MS | This service has been deprecated and removed. Currently, no replacement is available. The Open Telemetry standard will be implemented later, which will serve as a replacement |
 | jobs-api | Removed | 7558 | ZWE1EJ | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
 | files-api | Removed | 7559 | ZWE1EF | This component was deprecated in Zowe v2 and is now removed. Ensure that you switch to using equivalent z/OSMF endpoints |
-| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has replaced the main gateway component in v3 and is now accessible on 7554 as ZWE1AG |
+| cloud-gateway | Removed | 7563 | ZWE1CG | The cloud-gateway has been removed as a standalone component and merged into the gateway |
 
 
 ## Configuration changes
