@@ -6,9 +6,17 @@ module.exports = {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Release notes",
       className: "ToCheadercolor",
-      link: {type:"doc", id:"whats-new/release-notes/release-notes-overview"},
+      link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       items: [
         "whats-new/release-notes/v3_0_0",
+      ],
+    },
+    {
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V2 release notes",
+      className: "ToCheadercolor",
+      collapsed: false,
+      items: [
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -32,40 +40,33 @@ module.exports = {
         "whats-new/release-notes/v2_0_0",
       ],
     },
-    {
-      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
-      label: "Get to know Zowe V3",
-      link: {type:"doc", id:"whats-new/breaking-changes-v3"},
-      items: [
-        "whats-new/zowe-v3-office-hours",
-        "whats-new/zowe-v3-conformance-criteria",
-        "whats-new/zowe-v3-frequently-asked-questions",
-      ],
-    },
   ],
   "getting-started": [
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe fundamentals",
       className: "ToCheadercolor",
-      link: {type:"doc", id:"getting-started/overview"},
+      link: { type: "doc", id: "getting-started/overview" },
       collapsed: false,
       items: [
         "getting-started/zowe-architecture",
         {
           type: "category",
           label: "Zowe security",
-          link: {type: "doc", id: "getting-started/zowe-security-overview"},
+          link: { type: "doc", id: "getting-started/zowe-security-overview" },
           items: [
-            { type: "doc",
-            label: "Glossary of Zowe Security terminology",
-            id: "appendix/zowe-security-glossary",
+            {
+              type: "doc",
+              label: "Glossary of Zowe Security terminology",
+              id: "appendix/zowe-security-glossary",
             },
-            { type: "doc",
+            {
+              type: "doc",
               label: "Zowe Certificates overview",
               id: "getting-started/zowe-certificates-overview",
             },
-            { type: "doc",
+            {
+              type: "doc",
               label: "Zowe User Authentication",
               id: "getting-started/zowe-security-authentication",
             }
@@ -74,48 +75,48 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "getting-started/zowe_faq",
     "appendix/zowe-glossary",
+    "getting-started/zowe-resources",
     {
-      type: "category",
-      label: "Zowe FAQ",
-      className: "ToCheadercolor",
-      link: {type: "doc", id: "getting-started/zowe_faq"},
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V3",
+      link: { type: "doc", id: "whats-new/breaking-changes-v3" },
       items: [
-        "getting-started/zowe_v2_faq",
+        "whats-new/zowe-v3-frequently-asked-questions",
+        "whats-new/zowe-v3-office-hours",
+        "whats-new/zowe-v3-conformance-criteria",
       ],
     },
-    "getting-started/zowe-office-hours",
     {
-      type: "doc",
-      label: "Zowe CLI quick start",
-      className: "ToCitemcolor",
-      id:"getting-started/cli-getting-started",
+      type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
+      label: "Zowe V2",
+      link: { type: "doc", id: "getting-started/zowe-v2-overview" },
+      items: [
+        "getting-started/zowe_v2_faq",
+        "getting-started/zowe-office-hours",
+        {
+          type: "doc",
+          label: "Migrating from Zowe V1 to Zowe V2",
+          className: "ToCitemcolor",
+          id: "extend/migrate-extensions",
+        },
+      ],
     },
-    {
-      type: "doc",
-      label: "Migrating Zowe server component from V1 to V2",
-      className: "ToCitemcolor",
-      id:"extend/migrate-extensions",
-    },
-    {
-      type: "doc",
-      label: "Zowe learning resources",
-      className: "ToCitemcolor",
-      id:"getting-started/zowe-resources",
-    },
+    "getting-started/cli-getting-started",
   ],
-  "setup":[
+  "setup": [
     "user-guide/install-overview",
     {
       type: "category",
       label: "Installing Zowe server-side components",
-      link: {type: "doc", id: "user-guide/install-zos"},
+      link: { type: "doc", id: "user-guide/install-zos" },
       collapsed: false,
       items: [
         {
           type: "category",
           label: "Preparing for installation",
-          link: {type: "doc", id: "user-guide/installandconfig"},
+          link: { type: "doc", id: "user-guide/installandconfig" },
           items: [
             "user-guide/zos-components-installation-checklist",
             "user-guide/systemrequirements-zos",
@@ -129,17 +130,17 @@ module.exports = {
           ]
         },
         {
-        type: "category",
-        label: "Installing Zowe Server Install Wizard",
-        link: {type:"doc", id: "user-guide/install-zowe-server-install-wizard"},
-        items: [
-          "user-guide/troubleshooting-zowe-server-install-wizard",
-        ]
-        },  
+          type: "category",
+          label: "Installing Zowe Server Install Wizard",
+          link: { type: "doc", id: "user-guide/install-zowe-server-install-wizard" },
+          items: [
+            "user-guide/troubleshooting-zowe-server-install-wizard",
+          ]
+        },
         {
           type: "category",
           label: "Installing Zowe via SMP/E",
-          link: {type:"doc", id: "user-guide/install-zowe-smpe-overview"},
+          link: { type: "doc", id: "user-guide/install-zowe-smpe-overview" },
           items: [
             "user-guide/install-zowe-smpe",
           ]
@@ -147,7 +148,7 @@ module.exports = {
         {
           type: "category",
           label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
-          link: {type:"doc", id:"user-guide/zosmf-install"},
+          link: { type: "doc", id: "user-guide/zosmf-install" },
           items: [
             "user-guide/install-zowe-pswi-address-requirements",
             "user-guide/systemrequirements-zosmf",
@@ -155,20 +156,20 @@ module.exports = {
             {
               type: "category",
               label: "Installing Zowe via z/OSMF from PSWI",
-              link: {type:"doc", id:"user-guide/install-zowe-pswi"},
+              link: { type: "doc", id: "user-guide/install-zowe-pswi" },
               items: [
                 "user-guide/install-zowe-pswi-acquire",
                 "user-guide/install-zowe-pswi-deployment",
               ],
-              },
-              "user-guide/install-zowe-smpe-zosmf-workflow",
-            ],
+            },
+            "user-guide/install-zowe-smpe-zosmf-workflow",
+          ],
         },
         "user-guide/install-zowe-zos-convenience-build",
         {
           type: "category",
           label: "Installing Zowe via a containerization build (PAX file)",
-          link: {type:"doc", id:"user-guide/k8s-introduction"},
+          link: { type: "doc", id: "user-guide/k8s-introduction" },
           items: [
             "user-guide/k8s-prereqs",
             "user-guide/k8s-downloading",
@@ -176,15 +177,15 @@ module.exports = {
             "user-guide/k8s-using",
           ],
         },
-		    {
+        {
           type: "category",
           label: "Configuring",
-          link: {type:"doc", id:"user-guide/configuring-overview"},
+          link: { type: "doc", id: "user-guide/configuring-overview" },
           items: [
             {
               type: "category",
               label: "Initializing Zowe z/OS runtime",
-              link: {type:"doc", id:"user-guide/configure-zowe-runtime"},
+              link: { type: "doc", id: "user-guide/configure-zowe-runtime" },
               items: [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
@@ -195,18 +196,18 @@ module.exports = {
             {
               type: "category",
               label: "Configuring security",
-              link: {type:"doc", id:"user-guide/configuring-security"},
+              link: { type: "doc", id: "user-guide/configuring-security" },
               items: [
                 "user-guide/initialize-security-configuration",
                 "user-guide/apf-authorize-load-library",
                 "user-guide/configure-zos-system",
                 "user-guide/assign-security-permissions-to-users",
-                 ],
+              ],
             },
             {
               type: "category",
               label: "Configuring certificates",
-              link: {type:"doc", id:"user-guide/configure-certificates"},
+              link: { type: "doc", id: "user-guide/configure-certificates" },
               items: [
                 "user-guide/certificates-configuration-questionnaire",
                 "user-guide/certificate-configuration-scenarios",
@@ -220,13 +221,13 @@ module.exports = {
             {
               type: "category",
               label: "Configuring the Zowe cross memory server (ZIS)",
-              link: {type:"doc", id:"user-guide/configure-xmem-server"},
+              link: { type: "doc", id: "user-guide/configure-xmem-server" },
               items: [],
             },
             {
               type: "category",
               label: "Configuring high availability (optional)",
-              link: {type:"doc", id:"user-guide/zowe-ha-overview"},
+              link: { type: "doc", id: "user-guide/zowe-ha-overview" },
               items: [
                 "user-guide/configure-sysplex",
                 "user-guide/systemrequirements-zosmf-ha",
@@ -288,17 +289,17 @@ module.exports = {
                 "user-guide/api-mediation/configuration-access-specific-instance-of-service",
                 "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
                 "user-guide/api-mediation/configuration-set-consistent-service-id",
-            {
-              "type": "category",
-              "label": "Customizing management of API ML load limits",
-              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
-              "items": [
-                "user-guide/api-mediation/configuration-connection-limits",
-                "user-guide/api-mediation/configuration-gateway-timeouts",
-                "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
+                {
+                  "type": "category",
+                  "label": "Customizing management of API ML load limits",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-connection-limits",
+                    "user-guide/api-mediation/configuration-gateway-timeouts",
+                    "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
+                  ]
+                }
               ]
-	    }
-	   ]
             },
             {
               "type": "category",
@@ -323,21 +324,21 @@ module.exports = {
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
             "user-guide/api-mediation/configuration-at-tls",
             "user-guide/api-mediation/configuration-logging",
-            "user-guide/api-mediation/wto-message-on-startup",  
+            "user-guide/api-mediation/wto-message-on-startup",
           ]
         }
-        ],
+      ],
     },
     {
       type: "category",
       label: "Installing Zowe client-side components",
-      link: {type:"doc", id:"user-guide/install-zowe-client-side-components"},
+      link: { type: "doc", id: "user-guide/install-zowe-client-side-components" },
       collapsed: false,
       items: [
         {
           type: "category",
           label: "Configuring z/OSMF",
-          link: {type:"doc", id:"user-guide/cli-install-configure-zosmf"},
+          link: { type: "doc", id: "user-guide/cli-install-configure-zosmf" },
           items: [
             "user-guide/cli-install-configure-zosmf-security",
           ],
@@ -345,17 +346,17 @@ module.exports = {
         {
           type: "category",
           label: "Zowe CLI installation",
-          link: {type:"doc", id:"user-guide/user-roadmap-zowe-cli"},
+          link: { type: "doc", id: "user-guide/user-roadmap-zowe-cli" },
           items: [
             "user-guide/cli-install-cli-checklist",
             {
               type: "category",
               label: "Zowe CLI system requirements",
-              link: {type:"doc", id:"user-guide/systemrequirements-cli"},
+              link: { type: "doc", id: "user-guide/systemrequirements-cli" },
               items: [
                 "user-guide/cli-swreqplugins",
               ],
-              },
+            },
             "user-guide/cli-install-configure-install-online-registry-proxy",
             "user-guide/cli-updatingcli",
             {
@@ -368,7 +369,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Configuring daemon mode",
-                  link: {type:"doc", id:"user-guide/cli-using-using-daemon-mode"},
+                  link: { type: "doc", id: "user-guide/cli-using-using-daemon-mode" },
                   items: [
                     "user-guide/cli-configure-daemon-on-zlinux-os",
                   ],
@@ -383,7 +384,7 @@ module.exports = {
         {
           type: "category",
           label: "Zowe Explorer installation",
-          link: {type:"doc", id:"getting-started/user-roadmap-zowe-explorer"},
+          link: { type: "doc", id: "getting-started/user-roadmap-zowe-explorer" },
           items: [
             "user-guide/ZE-install-checklist",
             "getting-started/ZE-system-reqs",
@@ -391,7 +392,7 @@ module.exports = {
             {
               type: "category",
               label: "Installing Zowe Explorer extensions",
-              link: {type:"doc", id:"getting-started/install-ze-extensions"},
+              link: { type: "doc", id: "getting-started/install-ze-extensions" },
               items: [
                 "user-guide/ze-install-zowe-explorer-cics-ext",
                 "user-guide/ze-ftp-install-ze-ftp-ext",
@@ -416,18 +417,18 @@ module.exports = {
         {
           type: "category",
           label: "Zowe Chat (technical preview)",
-          link: {type:"doc", id:"user-guide/zowe-chat/introduction"},
+          link: { type: "doc", id: "user-guide/zowe-chat/introduction" },
           items: [
             "user-guide/zowe-chat/systemrequirements-chat",
             {
               type: "category",
               label: "Configuring chat platforms",
-              link: {type:"doc", id:"user-guide/zowe-chat/chat_configure_chat_platforms"},
+              link: { type: "doc", id: "user-guide/zowe-chat/chat_configure_chat_platforms" },
               items: [
                 {
                   type: "category",
                   label: "Configuring Mattermost",
-                  link: {type:"doc", id:"user-guide/zowe-chat/chat_prerequisite_mattermost"},
+                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_mattermost" },
                   items: [
                     "user-guide/zowe-chat/chat_prerequisite_install_mattermost",
                     "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account",
@@ -440,13 +441,13 @@ module.exports = {
                 {
                   type: "category",
                   label: "Configuring Microsoft Teams",
-                  link: {type:"doc", id:"user-guide/zowe-chat/chat_prerequisite_teams"},
+                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams" },
                   items: [
                     "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",
                     {
                       type: "category",
                       label: "Creating a bot for Microsoft Teams bot app",
-                      link: {type:"doc", id:"user-guide/zowe-chat/chat_prerequisite_teams_create_bot"},
+                      link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams_create_bot" },
                       items: [
                         "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_framework",
                         "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_azure",
@@ -455,7 +456,7 @@ module.exports = {
                     {
                       type: "category",
                       label: "Configuring messaging endpoint",
-                      link: {type:"doc", id:"user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint"},
+                      link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint" },
                       items: [
                         "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_framework",
                         "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_azure",
@@ -466,7 +467,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Configuring Slack",
-                  link: {type:"doc", id:"user-guide/zowe-chat/chat_prerequisite_slack"},
+                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_slack" },
                   items: [
                     "user-guide/zowe-chat/chat_prerequisite_slack_create_app",
                     {
@@ -488,7 +489,7 @@ module.exports = {
             {
               type: "category",
               label: "Configuring Zowe Chat",
-              link: {type:"doc", id:"user-guide/zowe-chat/chat_configure_server"},
+              link: { type: "doc", id: "user-guide/zowe-chat/chat_configure_server" },
               items: [
                 "user-guide/zowe-chat/chat_configure_mattermost",
                 "user-guide/zowe-chat/chat_configure_teams",
@@ -499,9 +500,9 @@ module.exports = {
             "user-guide/zowe-chat/chat_uninstall",
           ],
         },
+      ],
+    },
   ],
-},
-],
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -512,7 +513,7 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe Desktop",
-          link: {type:"doc", id:"user-guide/mvd-using"},
+          link: { type: "doc", id: "user-guide/mvd-using" },
           items: [
             "user-guide/mvd-editor",
           ],
@@ -520,13 +521,13 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe API Mediation Layer",
-          link: {type:"doc", id:"user-guide/api-mediation/using-api-mediation-layer"},
+          link: { type: "doc", id: "user-guide/api-mediation/using-api-mediation-layer" },
           items: [
             "getting-started/user-roadmap-apiml",
             {
               type: "category",
               label: "Using Single Sign On",
-              link: {type:"doc", id:"user-guide/api-mediation-sso"},
+              link: { type: "doc", id: "user-guide/api-mediation-sso" },
               items: [
                 "user-guide/authenticating-with-jwt-token",
                 "user-guide/authenticating-with-client-certificates",
@@ -537,7 +538,7 @@ module.exports = {
             {
               type: "category",
               label: "Using multi-factor authentication (MFA)",
-	      link: {type:"doc", id:"user-guide/api-mediation/using-multi-factor-authentication"},
+              link: { type: "doc", id: "user-guide/api-mediation/using-multi-factor-authentication" },
               items: [
               ],
             },
@@ -571,7 +572,7 @@ module.exports = {
             {
               type: "category",
               label: "Using the Caching Service",
-              link: {type:"doc", id:"user-guide/api-mediation/api-mediation-caching-service"},
+              link: { type: "doc", id: "user-guide/api-mediation/api-mediation-caching-service" },
               items: [
               ],
             },
@@ -597,7 +598,7 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe CLI",
-          link: {type:"doc", id:"user-guide/cli-using-usingcli"},
+          link: { type: "doc", id: "user-guide/cli-using-usingcli" },
           items: [
             "user-guide/cli-using-displaying-help",
             "user-guide/cli-using-command-precedence",
@@ -606,17 +607,17 @@ module.exports = {
             {
               type: "category",
               label: "Using team configuration",
-              link: {type:"doc", id:"user-guide/cli-using-using-team-profiles"},
+              link: { type: "doc", id: "user-guide/cli-using-using-team-profiles" },
               items: [
                 {
-                type: "category",
-                label: "Benefits of team configuration",
-                link: {type:"doc", id:"user-guide/cli-using-benefits-of-team-config"},
-                items: [
-                  "user-guide/cli-using-editing-team-configuration",
-                  "user-guide/cli-using-creating-profiles",
-                  "user-guide/cli-using-sharing-team-config-files",
-                  "user-guide/cli-using-initializing-user-configuration",
+                  type: "category",
+                  label: "Benefits of team configuration",
+                  link: { type: "doc", id: "user-guide/cli-using-benefits-of-team-config" },
+                  items: [
+                    "user-guide/cli-using-editing-team-configuration",
+                    "user-guide/cli-using-creating-profiles",
+                    "user-guide/cli-using-sharing-team-config-files",
+                    "user-guide/cli-using-initializing-user-configuration",
                   ],
                 },
                 "user-guide/cli-using-understand-profiles-configs",
@@ -629,7 +630,7 @@ module.exports = {
             {
               type: "category",
               label: "Using environment variables",
-              link: {type:"doc", id:"user-guide/cli-using-using-environment-variables"},
+              link: { type: "doc", id: "user-guide/cli-using-using-environment-variables" },
               items: [
                 "user-guide/cli-using-formatting-environment-variables",
                 "user-guide/cli-using-setting-environment-variables-in-automation-server",
@@ -640,14 +641,14 @@ module.exports = {
             {
               type: "category",
               label: "Zowe CLI plug-ins",
-              link: {type:"doc", id:"user-guide/cli-extending"},
+              link: { type: "doc", id: "user-guide/cli-extending" },
               items: [
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
                 {
                   type: "category",
                   label: "IBM® Db2® Database Plug-in for Zowe CLI",
-                  link: {type:"doc", id:"user-guide/cli-db2plugin"},
+                  link: { type: "doc", id: "user-guide/cli-db2plugin" },
                   items: [
                     "user-guide/cli-db2-install-m1",
                   ],
@@ -662,7 +663,7 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe Explorer",
-          link: {type:"doc", id:"user-guide/ze-usage"},
+          link: { type: "doc", id: "user-guide/ze-usage" },
           items: [
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
@@ -676,7 +677,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Using Zowe Explorer CICS Extension",
-                  link: {type:"doc", id:"user-guide/ze-using-zowe-explorer-cics-ext"},
+                  link: { type: "doc", id: "user-guide/ze-using-zowe-explorer-cics-ext" },
                   items: [
                     "user-guide/ze-cics-usage-tips",
                     "user-guide/ze-create-zowe-explorer-cics-ext-profiles",
@@ -687,7 +688,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Using Zowe Explorer FTP Extension",
-                  link: {type:"doc", id:"user-guide/ze-ftp-using-ze-ftp-ext"},
+                  link: { type: "doc", id: "user-guide/ze-ftp-using-ze-ftp-ext" },
                   items: [
                     "user-guide/ze-ftp-supported-functions",
                   ],
@@ -757,7 +758,7 @@ module.exports = {
                 {
                   type: "category",
                   label: "Plain Java Enabler",
-                  link: {type:"doc", id:"extend/extend-apiml/onboard-plain-java-enabler"},
+                  link: { type: "doc", id: "extend/extend-apiml/onboard-plain-java-enabler" },
                   items: [
                     "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
                     "extend/extend-apiml/api-mediation-message-service",
@@ -773,7 +774,7 @@ module.exports = {
             {
               type: "category",
               label: "API ML Routing Overview",
-              link: {type:"doc", id:"extend/extend-apiml/api-mediation-routing"},
+              link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
                 "extend/extend-apiml/api-mediation-versioning",
@@ -783,7 +784,7 @@ module.exports = {
             {
               type: "category",
               label: "Runtime Extensions",
-              link: {type:"doc", id:"extend/extend-apiml/create-apiml-extension"},
+              link: { type: "doc", id: "extend/extend-apiml/create-apiml-extension" },
               items: [
                 "extend/extend-apiml/implement-new-saf-provider"
               ]
@@ -830,12 +831,12 @@ module.exports = {
         {
           type: "category",
           label: "Developing for Zowe CLI",
-          link: {type:"doc", id:"extend/extend-cli/cli-devTutorials"},
+          link: { type: "doc", id: "extend/extend-cli/cli-devTutorials" },
           items: [
             {
               type: "category",
               label: "Tutorials for extenders",
-              link: {type:"doc", id:"extend/extend-cli/cli-tutorials"},
+              link: { type: "doc", id: "extend/extend-cli/cli-tutorials" },
               items: [
                 "extend/extend-cli/cli-setting-up",
                 "extend/extend-cli/cli-installing-sample-plugin",
@@ -859,7 +860,7 @@ module.exports = {
     {
       type: "category",
       label: "Troubleshooting overview",
-      link: {type:"doc", id:"troubleshoot/troubleshooting"},
+      link: { type: "doc", id: "troubleshoot/troubleshooting" },
       items: [
         "troubleshoot/troubleshoot-zowe-release",
         "troubleshoot/troubleshoot-check-your-zowe-version",
@@ -879,7 +880,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
-          link: {type:"doc", id:"troubleshoot/troubleshoot-apiml",},
+          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
           ],
@@ -887,7 +888,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe Application Framework",
-          link: {type:"doc", id:"troubleshoot/app-framework/app-troubleshoot"},
+          link: { type: "doc", id: "troubleshoot/app-framework/app-troubleshoot" },
           items: [
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
@@ -901,7 +902,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe Launcher",
-          link: {type:"doc", id:"troubleshoot/launcher/launcher-troubleshoot"},
+          link: { type: "doc", id: "troubleshoot/launcher/launcher-troubleshoot" },
           items: [
             "troubleshoot/launcher/launcher-error-codes"
           ],
@@ -916,7 +917,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe CLI",
-          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli"},
+          link: { type: "doc", id: "troubleshoot/cli/troubleshoot-cli" },
           items: [
             "troubleshoot/cli/mustgather-cli",
             "troubleshoot/cli/use-individual-troubleshoot-commands",
@@ -930,7 +931,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe CLI plug-ins",
-          link: {type:"doc", id:"troubleshoot/cli/troubleshoot-cli-plugins"},
+          link: { type: "doc", id: "troubleshoot/cli/troubleshoot-cli-plugins" },
           items: [
             "troubleshoot/cli/troubleshoot-ibm-db2-database-plug-in",
           ],
@@ -938,7 +939,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe Explorer",
-          link: {type:"doc", id:"troubleshoot/ze/troubleshoot-ze"},
+          link: { type: "doc", id: "troubleshoot/ze/troubleshoot-ze" },
           items: [
             "troubleshoot/ze/known-ze",
             "troubleshoot/ze/ze-known-limits",
@@ -965,7 +966,7 @@ module.exports = {
     {
       type: "category",
       label: "UI Guidelines",
-      link: {type:"doc", id:"contribute/guidelines-ui/ui"},
+      link: { type: "doc", id: "contribute/guidelines-ui/ui" },
       items: [
         "contribute/guidelines-ui/colors",
         "contribute/guidelines-ui/typography",
@@ -982,22 +983,22 @@ module.exports = {
     {
       type: "category",
       label: "Zowe Chat command reference",
-      link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference"},
+      link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference" },
       items: [
         {
           type: "category",
           label: "zos commands",
-          link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/zos-article"},
+          link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/zos-article" },
           items: [
             {
               type: "category",
               label: "zos job",
-              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/job/job-article"},
+              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/job/job-article" },
               items: [
                 {
                   type: "category",
                   label: "zos job list",
-                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/job/list/list-article"},
+                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/job/list/list-article" },
                   items: [
                     "appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
                   ]
@@ -1007,12 +1008,12 @@ module.exports = {
             {
               type: "category",
               label: "zos dataset",
-              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/dataset/dataset-article"},
+              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/dataset/dataset-article" },
               items: [
                 {
                   type: "category",
                   label: "zos dataset list",
-                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/dataset/list/list-article"},
+                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/dataset/list/list-article" },
                   items: [
                     "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
                     "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
@@ -1023,12 +1024,12 @@ module.exports = {
             {
               type: "category",
               label: "zos file",
-              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/file/file-article"},
+              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/file/file-article" },
               items: [
                 {
                   type: "category",
                   label: "zos file list",
-                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/file/list/list-article"},
+                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/file/list/list-article" },
                   items: [
                     "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
                     "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
@@ -1039,12 +1040,12 @@ module.exports = {
             {
               type: "category",
               label: "zos command",
-              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/command/command-article"},
+              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/command/command-article" },
               items: [
                 {
                   type: "category",
                   label: "zos command issue",
-                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/command/issue/issue-article"},
+                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/command/issue/issue-article" },
                   items: [
                     "appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
                   ]
@@ -1054,12 +1055,12 @@ module.exports = {
             {
               type: "category",
               label: "zos help",
-              link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/help/help-article"},
+              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/help/help-article" },
               items: [
                 {
                   type: "category",
                   label: "zos help list",
-                  link: {type:"doc", id:"appendix/zowe-chat-command-reference/zos/help/list/list-article"},
+                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/help/list/list-article" },
                   items: [
                     "appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
                   ]
@@ -1075,7 +1076,7 @@ module.exports = {
     {
       type: "category",
       label: "ZWE Server Command Reference",
-      link: {type:"doc", id:"appendix/zwe_server_command_reference_overview"},
+      link: { type: "doc", id: "appendix/zwe_server_command_reference_overview" },
       items: [
         {
           type: "autogenerated",
