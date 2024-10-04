@@ -11,7 +11,10 @@ Please follow the instructions from the version of Zowe you have and newer in or
 
 ### Migrating from Zowe v2.16.0 or Lower
 
- <details>To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>  
+
+To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks. 
 
 1) Ensure the following `zowe.network` section is added to your configuration:
 
@@ -36,8 +39,10 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 
 ### Migrating from Zowe v2.15.0 or Lower
 
- <details>To migrate from Zowe **v2.15.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>  
 
+To migrate from Zowe **v2.15.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.15.0** or a lower version, ensure that Zowe configurations using keyrings do not have the section `zowe.certificate.pem`.
 This section is no longer needed and can cause startup error in newer versions of Zowe.
@@ -46,7 +51,10 @@ This section is no longer needed and can cause startup error in newer versions o
 
 ### Migrating from Zowe v2.10.0 or Lower
 
- <details>To migrate from Zowe **v2.10.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>  
+
+To migrate from Zowe **v2.10.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.10.0** or a lower version, consider taking advantage of the new **sysMessages** feature.
 
@@ -56,7 +64,10 @@ The `zowe.sysMessages` is a new array that allows you to select messages that, w
 
 ### Migrating from Zowe v2.9.0 or Lower
 
- <details>To migrate from Zowe **v2.9.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>
+
+To migrate from Zowe **v2.9.0** or a lower version, perform the following tasks. 
 
 If you are migrating from Zowe **v2.9.0** or a lower version, it is recommended to delete the `<zowe.workspaceDirectory>/app-server/plugins` directory so that it can be regenerated on the next run of Zowe.
 In this version and prior there were old and no longer used Application Framework plugins and references to them will complicate logs with harmless errors.
@@ -65,7 +76,10 @@ In this version and prior there were old and no longer used Application Framewor
 
 ### Migrating from Zowe v2.3.0 or Lower
 
-<details>To migrate from Zowe **v2.3.0** or a lower version, perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>
+
+To migrate from Zowe **v2.3.0** or a lower version, perform the following tasks. 
 
 If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zowe v3 is highly recommended to avoid potential issues during the migration process.
 
@@ -73,7 +87,10 @@ If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zo
 
 ### Migrating from Zowe v1
 
- <details>To migrate from Zowe **v1** perform the following tasks. <summary>Click here for configuration details.</summary>
+<details>
+<summary>Click here for configuration details.</summary>
+
+To migrate from Zowe **v1** perform the following tasks. 
 
 If you are using v1, you must perform a clean install of Zowe rather than upgrading it as there is not a clear upgrade path from v1 to v2 or v3.
 Any extensions or products built upon Zowe v1 are unlikely to work in v2 or v3 without upgrading them. Refer to any product documentation on actions to take. [More details](../extend/migrate-extensions.md)
