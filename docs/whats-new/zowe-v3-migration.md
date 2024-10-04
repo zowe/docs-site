@@ -106,18 +106,18 @@ zowe:
 Before starting the migration, ensure the following system requirements are met:
 
 - **z/OSMF**  
-Version V2R5 with APAR PH12143 or V3R1 is required. JWT support for z/OSMF must be enabled, [as seen in their documentation.](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support)
+Version V2R5 with APAR PH12143 or V3R1 is required. JWT support for z/OSMF must be enabled. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
 - **Java**  
 Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
 - **Node.js**  
-The Zowe YAML parameter `node.home` value should be a **Node.js 18 or 20** home location, as Node 16 and below are no longer supported.
+Ensure that the Zowe YAML parameter `node.home` value is **Node.js 18 or 20** home location. Node 16 and earlier versions are no longer supported.
 
 
 ## System and Security Changes
 
-- Existing SAF settings for Zowe do not need to be changed for v3, so install steps such as `zwe init security`, the job or workflow ZWESECUR, and the jobs ZWEIRAC, ZWEITSS, and ZWEIACF are not required to be re-run.
+- Existing SAF settings for Zowe do not need to be changed for v3. Install steps such as `zwe init security`, the job or workflow ZWESECUR, and the jobs ZWEIRAC, ZWEITSS, and ZWEIACF are not required to be re-run.
 
-- Existing keyrings and keystores do not need to be changed for v3, so install steps such as `zwe init certificate`, the job or workflow ZWEKRING or jobs starting with ZWEIKR* are not required to be re-run.
+- Existing keyrings and keystores do not need to be changed for v3. Install steps such as `zwe init certificate`, the job or workflow ZWEKRING, or jobs starting with ZWEIKR* are not required to be re-run.
 
 - The following network changes are needed for added or removed servers:
 
@@ -153,7 +153,7 @@ components:
 
 #### Keyrings
 
-If you are using keyrings, verify that Zowe YAML references to `safkeyring` uses 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
+If you are using keyrings, verify that Zowe YAML references to `safkeyring` use 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
 
 #### Gateway z/OSMF service configuration
 
@@ -200,7 +200,7 @@ components:
       64bit: true
 ```
 
-### Deprecated Settings:
+### Deprecated Settings
 
 The following configuration parameters have been deprecated in Zowe v3. Ensure that these parameters are removed from your configuration.
 
