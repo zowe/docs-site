@@ -34,7 +34,7 @@ When sending a request to the login endpoint with a client certificate, the Gate
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
-The following diagram shows how routing works with ZSS. 
+The following diagram shows how routing works with ZSS, in the case where ZSS API is used for the identity mapping. 
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -59,7 +59,7 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   SDNFILTER('<subject's-distinguished-name-filter>')
   WITHLABEL('<label>')
   ```
-**Note:**  The `RACDCERT MAP` command allows mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it provides less security compared to the `RACDCERT ADD` command, which stores the certificate directly in RACF, offering better control and protection.
+  **Note:**  The `RACDCERT MAP` command allows mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID as it offers better control and protection.
 
 
   **Example command in ACF2:** 

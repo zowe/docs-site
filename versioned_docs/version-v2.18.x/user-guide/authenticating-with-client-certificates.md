@@ -63,7 +63,7 @@ Register the client certificate with the user ID in your ESM. The following comm
   SDNFILTER('<subject's-distinguished-name-filter>')
   WITHLABEL('<label>')
   ```
-  **Note:**  The `RACDCERT MAP` command allows mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it provides less security compared to the `RACDCERT ADD` command, which stores the certificate directly in RACF, offering better control and protection.
+  **Note:**  The `RACDCERT MAP` command allows mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID as it offers better control and protection.
 
   **Example command in ACF2:** 
 
