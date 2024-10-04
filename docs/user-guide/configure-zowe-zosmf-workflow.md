@@ -16,13 +16,13 @@ Ensure that you meet the following requirements before you start your Zowe confi
 You can complete the following tasks with the **Configuration of Zowe 3.0** workflow:
 
 - Configure the Zowe instance
-- Enable the Gateway service
+- Enable the API Gateway
 - Enable ZAAS
 - Enable the API Catalog
 - Enable the Discovery service
-- Enable the Caching service
-- Enable the Application server
-- Enable ZSS component
+- Enable a Caching service
+- Enable an Application server
+- Enable the ZSS component
 - Enable JES Explorer
 - Enable MVS Explorer
 - Enable USS Explorer

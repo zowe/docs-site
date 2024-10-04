@@ -12,10 +12,18 @@ From a supported browser, open the Zowe Desktop at `https://zowe.externalDomains
     
 Where:
 
--   *zowe.externalDomains* is the host on which you are running the Zowe Application Server, its the 
-    value that was assigned in the zowe configuration file.
+-   *zowe.externalDomains* is the host on which you are running the Zowe Application Server, its the value that was assigned in the zowe configuration file.
 -   *zowe.externalPort*  is the value of Gateway port that was assigned in the zowe configuration file.
     
+### Alternative Desktop access
+
+The above URL can be modified with query parameters for the following purposes:
+
+| Action | Query Parameter | Example | Detail |
+|--------|-----------------|---------|--------|
+| Access Desktop without Gateway proxy | zwed-no-redirect=1 | `https://zowe.externalDomains[0]:components.app-server.port/?zwed-no-redirect=1` | When the APIML Gateway is running, the Desktop should be reached through it instead of going to the app-server port directly. The Desktop avoids direct access by redirecting users to the gateway URL when possible. To disable this behavior for direct access, you can use "zwed-no-redirect=1". This is intended for troubleshooting and is not recommended otherwise since some Desktop apps will not work without being accessed via the gateway URL. |
+| Access the Zowe v2 Desktop | use-v2-desktop=true | `https://zowe.externalDomains[0]:zowe.externalPort/zlux/ui/v1/?use-v2-desktop=true` | Zowe V3 includes the Zowe v2 Desktop for ease of transition. By default, the V3 desktop is used but if you have an app that does not yet work on the V3 Desktop, you can use the v2 Desktop through this parameter. The v2 desktop is in maintenance mode and no longer receives enhancements. |
+
 
 ### Logging in and out of the Zowe Desktop
 

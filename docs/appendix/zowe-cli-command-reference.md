@@ -2,9 +2,10 @@
 
 View detailed documentation on commands, actions, and options in Zowe CLI. You can read an interactive online version, download a PDF document, or download a ZIP file containing the HTML for the online version.
 
-Currently, this reference documentation only contains the web help for 
-the Zowe CLI core component and CLI plug-ins maintained by Zowe. As third-party plug-ins are approved under the Zowe V2 LTS Conformance Program and contribute their web help to Zowe, we will update the documentation accordingly. To view the web help for V1 conformant plug-ins, click the version drop-menu on the top right corner of this page and click the link to any previous v1.xx.x version of this page.
+This reference documentation is organized to contain the web help for Zowe CLI, CLI plug-ins maintained by Zowe, and Zowe V3 LTS-conformant third-party CLI plug-ins. As third-party plug-ins are approved under the Zowe V3 LTS Conformance Program and contribute their web help to Zowe, we update the documentation accordingly.
 
-- <a href="/stable/web_help/index.html" target="_blank">Browse online</a>
-- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download CLI reference in PDF format</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Download CLI reference in ZIP format</a>
+To view the web help for V2 conformant plug-ins, click the version drop-menu on the top right corner of this page and click the link to any previous v2.xx.x version of this page.
+
+- <a href="/stable/web_help/index.html" target="_blank">Browse the interactive online version</a>
+- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download the CLI reference guide in PDF format</a>
+- <a href="/stable/zowe_web_help.zip" target="_blank">Download the CLI reference guide in ZIP format</a>

@@ -46,27 +46,27 @@
 
    No. ZSS runs in either 31-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
 
-2. Are Angular and Webpack updated to the latest current versions?
+2. Have the versions of libraries used in the Desktop changed?
 
-   In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.
+   In Zowe V3, the Application Framework uses Angular 18 with associated libraries such as webpack 5.
 
 3. What _React_ versions are supported by Zowe Desktop?
 
-   It is possible for Desktop extensions to use different versions of _React_. While the Desktop is not built on _React_, it is still compatible with extensions that import _React_.
-
-4. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
-
-   The Zowe Server Install Wizard runs on a laptop/desktop and connects to z/OS via standard methods.
-
-5. Is it possible to validate and change the `zowe.yaml` file and job definition within the Zowe Server Install Wizard?
-
-   Yes.
+   Zowe v3's React compatibility has not changed. It is possible for Desktop extensions to use different versions of _React_. While the Desktop is not built on _React_, it is still compatible with extensions that import _React_.
 
 ### Zowe System Installation and Configuration
 
 1. Does Zowe provide a Software Bill of Materials (SBOM)?
 
    SBOMs are available in the SPDX format from the [Bill of Materials](https://docs.zowe.org/stable/appendix/bill-of-materials/) page on Zowe Docs.
+  
+2. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
+
+   The Zowe Server Install Wizard runs on a laptop/desktop and connects to z/OS via standard methods.
+
+3. Is it possible to validate and change the `zowe.yaml` file and job definition within the Zowe Server Install Wizard?
+
+   Yes.
 
 ## User questions
 

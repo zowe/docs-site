@@ -99,14 +99,6 @@ Find the version number of your Zowe release in the `manifest.json` file.
 
     An **Editor** tab displays the Zowe Explorer extension's marketplace details. The version number is located next to the Zowe Explorer extension's name.
 
-### Zowe IntelliJ Plug-in
+### Zowe Explorer plug-in for IntelliJ IDEA
 
-1. Open the **File** menu and click **Settings**.
-
-    The **Settings** window opens.
-2. Click **Plugins**, then click **Installed** tab.
-    
-    A list of the installed extensions displays.
-3. Search for, and select, `Zowe Explorer`.
-    
-    The Zowe Explorer marketplace details display on the right side of the window. The version number is located adjacent to the Zowe Explorer name.
+See the [guide](./troubleshoot-intellij) for instructions.
