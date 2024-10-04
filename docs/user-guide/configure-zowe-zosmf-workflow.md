@@ -48,7 +48,7 @@ When you select this workflow from the list of Workflow Definition Files, the fo
 ![Configuration of Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
 You can see the workflow details by expanding the Workflow details panel.
-This workflow has three main steps.
+This workflow has three main steps:
 
 ### 1. **Define variables**
 
@@ -66,13 +66,13 @@ Perform the following steps to execute each sub-step individually:
 2. Select the **Perform** tab.
 3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
 
-   On the components page of **Define the main variables** sub-step select the components that you wish to enable. 
+   On the components page of **Define the main variables** sub-step, select the components that you wish to enable. 
 
     ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
 
    :::note
-   All the components that you enabled need to be configured in the next sub-steps of **Define variables** step. 
-   The sub-steps for configuring components will be in the Ready state, and all the rest in the Skipped state.
+   Ensire that all components that you enabled are  configured in the sub-steps presented in the **Define variables** step. 
+   The sub-steps for configuring components will be in the Ready state, and the remainder of components in the Skipped state.
    :::
 
 4. Select **Next**. 
@@ -88,18 +88,18 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 ### 2. **Create configuration**
 
 Execute this step to create a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
-In this step you can review your configurations and, if needed, you can make further changes directly in the JCL. 
+In this step you can review your configurations and, if necessary, make further changes directly in the JCL. 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note
-This step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
+The create configuration step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
 
 ### 3. **Zowe Installation**
 
-This step consumes the zowe.yaml configuration file you created in the previous step. It contains three sub-steps.
+This step consumes the zowe.yaml configuration file you created in the previous step. It contains three sub-steps:
 
-1. **(Optional) Run the Zowe install (only for convenience build)**. This step is required only for convenience build. It runs the `zwe install` command.
+1. **(Optional) Run the Zowe install (only for convenience build)**. This step is required only for the convenience build. It runs the `zwe install` command.
 2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
 3. **Run the Zowe init security** is optional, and requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands.
 
@@ -110,7 +110,6 @@ For more information about `zwe install` and `zwe init` commands, see the follow
 :::note
 An alternative to executing sub-step 3 is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
 :::
-
 
 The **Configuration of Zowe 3.0** workflow strictly follows the Zowe v3 install and configuration schema. This workflow generates the zowe.yaml file and runs the Zowe zwe CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI. 
