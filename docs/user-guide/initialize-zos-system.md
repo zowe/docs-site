@@ -66,4 +66,4 @@ For more information about security administrator tasks, see:
 
 ## Next steps
 
-After all `zwe init` subcommands are successfully executed, including `zwe init security`, `zwe init apfauth`, and `zwe init certificate` which require security adminstrator authorization to execute, the next step is [Configuring the Zowe cross memory server (ZIS)](./configure-xmem-server.md).
+For detailed information about individual `zwe init` subcommands, see [zwe init subcommand overview](./zwe-init-subcommand-overview.md).

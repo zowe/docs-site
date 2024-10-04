@@ -106,7 +106,7 @@ TABLE *.MYTABLE *.YOURTABLE;</p>
 <p>Specifies the name of the local input file that contains the global change specifications that modify attributes of Db2 objects. Depending on the backend configuration, the changes apply to either ALL objects in the DDL or to NEW objects only as determined by match-set processing.</p>
 <p>Format:</p>
 <p>&lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt;</p>
-<p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in the &lt;from-value&gt; and &lt;to-value&gt;. The first occurrence in multiple specifications for the same &lt;object-attribute&gt; has the highest precedence.</p>
+<p>The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in &lt;from-value&gt; and &lt;to-value&gt;. If the same &lt;object-attribute&gt; is specified multiple times, the first occurrence takes precedence.</p>
 <p>Example:</p>
 <p>The following example demonstrates changes to the table schema (creator) and tablespace names:</p>
 <p>TBCR TEST% PROD%<br>
