@@ -52,7 +52,7 @@ Check out the contribution guidelines for different components and squads to lea
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe IntelliJ plug-in](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
+  - [Zowe Explorer plug-in for IntelliJ IDEA](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
   - [Zowe Docs](./contributing)
   
 ## Promote Zowe

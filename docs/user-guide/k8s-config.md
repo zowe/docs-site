@@ -334,8 +334,6 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
      * `components.discovery.port` is `7553`,
      * `components.gateway.port` is `7554`,
      * `components.caching-service.port` is `7555`,
-     * `components.jobs-api.port` is `7600`,
-     * `components.files-api.port` is `7559`,
      * `components.app-server.port` is `7556`.
    * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values into `zowe.environments` section:
@@ -380,9 +378,7 @@ discovery-pdb      1               N/A               0                     1d
 explorer-jes-pdb   1               N/A               0                     1d
 explorer-mvs-pdb   1               N/A               0                     1d
 explorer-uss-pdb   1               N/A               0                     1d
-files-api-pdb      1               N/A               0                     1d
 gateway-pdb        1               N/A               0                     1d
-jobs-api-pdb       1               N/A               0                     1d
 ```
 
 ## `HorizontalPodAutoscaler`
@@ -410,9 +406,7 @@ discovery-hpa      StatefulSet/discovery     34%/70%   1         3         1    
 explorer-jes-hpa   Deployment/explorer-jes   10%/70%   1         3         1          9m59s
 explorer-mvs-hpa   Deployment/explorer-mvs   10%/70%   1         3         1          9m59s
 explorer-uss-hpa   Deployment/explorer-uss   10%/70%   1         3         1          9m59s
-files-api-hpa      Deployment/files-api      8%/70%    1         3         1          9m59s
 gateway-hpa        Deployment/gateway        20%/60%   1         5         1          9m59s
-jobs-api-hpa       Deployment/jobs-api       8%/70%    1         3         1          9m59s
 ```
 
 ## Kubernetes v1.21+

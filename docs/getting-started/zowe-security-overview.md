@@ -3,7 +3,7 @@
 Zowe implements comprehensive measures to secure mainframe services and data resources in transition and in rest:
 
 - Digital certificates are used by Zowe to facilitate secure electronic communication and data exchange between people, systems, and devices online.
-- User identity is authenticated through modern authentication methods such as OIDC/Oauth2, Multi-Factor Authentication (MFA), JWT, or Personal Access Token (PAT).
+- User identity is authenticated through modern authentication methods such as OIDC/Oauth2, JWT, or Personal Access Token (PAT). Potentially with added Multi-Factor Authentication (MFA).
 - User access is authorized by System Authorization Facility (SAF) / External Security Manager (ESM).
 
 Before installation and use of Zowe server-side components, it is practical to first learn about the core security features built into the Zowe architecture.
@@ -28,11 +28,18 @@ A certificate contains an identity (a hostname, or an organization, or an indivi
 
 A certificate can be self-signed or issued by a Certificate Authority (CA). A CA is a trusted organization which provides infrastructure for creation, validation and revocation of the certificates according to the contemporary security standards.
 
-**Note:** 
-For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by the company's local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform.
-Use of self-signed certificates, however, is not recommended for production environments.
+:::note
 
-**Tip:** Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by the company's local Certificate Authority (CA), or even certificates issued by Zowe security tools and signed by generated CA specific for the target technology platform.
+Use of certificates signed by generated CA, however, is not recommended for production environments.
+
+:::
+
+:::tip
+
+Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+
+:::
 
 ### Digital certificates usage
 Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that a client-user (the service user) identity is known to the mainframe security facility.   
@@ -44,9 +51,9 @@ Zowe uses digital certificates to secure the communication channel between Zowe 
 ## User Authentication
 Zowe always authenticates the users accessing its interfaces and services. 
 
-Zowe API ML implements a Singls-Sign-On feature which allows users to authenticate once, whereby users can access all mainframe resources that they are granted access rights to for the period in which the Zowe credentials remain valid.
+Zowe API ML implements a Single-Sign-On feature which allows users to authenticate once, whereby users can access all mainframe resources that they are granted access rights to for the period in which the Zowe credentials remain valid.
 
-API ML uses multiple authentication methods - from Basic Auth (username-password), to external Multi-Factor Authentication providers, and modern authentication protocols, such as OIDC/OAuth2.    
+API ML uses multiple authentication methods - Basic Auth (username-password), OIDC/OAuth2, Client certificates and Personal Access Tokens with possibility of strengthening of the security by adding external Multi-Factor Authentication provider.
 
 **Next steps:**
 - For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication) article.    
@@ -68,7 +75,7 @@ Access to a SAF resource is checked with the installed z/OS External Security Ma
 For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking).
 
 ## Additional resources
-For more information about getting started with certificates including dertermining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
+For more information about getting started with certificates including determining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
 
 - [Use-case based certificates configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
 - [Generate certificates for Zowe servers](../user-guide/generate-certificates.md)

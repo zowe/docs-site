@@ -12,9 +12,9 @@ Review this article for details about changes to various Zowe components that ar
 |----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Authentication endpoints will not support the route `/api/v1/gateway`, and instead will support only `/gateway/api/v1` | If you use the endpoints directly, change the URLs to start with `/gateway/api/v1`. If you use ZAAS client to integrate with API Mediation Layer, no action is required as the change is handled in the ZAAS client code.                                                                                                                                           |
 | Spring Enabler will be updated to Spring Boot 3 and Spring 6. Spring Boot 2 and Spring 5 versions will no longer be supported | Upgrade extending services based on the Spring Enabler to Spring Boot 3 and Spring 6.                                                                                                                                                                                                                                                                              |
-| Datasets API will be archived | This service was disabled by default in Version 2. If you enable the service via `components.data-sets.enabled: true` and use the APIs documented in [Data sets Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json), it is necessary to move to the usage of the similar z/OSMF endpoints. |
-| Jobs API will be archived | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json), it is necessary to move to the usage of the similar z/OSMF endpoints.               |
-| Metrics service will be archived | The service was in Technical Preview. Currently there is no replacement. In V3, the Open Telemetry standard will be implemented, which will serve as a replacement.                                                                                                                                                                                                     |
+| Datasets API has been removed, as the project is archived. | This service was disabled by default in Version 2. If you enable the service via `components.data-sets.enabled: true` and use the APIs documented in [Data sets Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/datasets.json), it is necessary to move to the usage of the similar z/OSMF endpoints. |
+| Jobs API has been removed, as the project is archived. | The service was disabled by default in Version 2. If you enable the service via `components.jobs.enabled: true` and use the APIs documented in [Jobs Swagger](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/jobs.json), it is necessary to move to the usage of the similar z/OSMF endpoints.               |
+| Metrics service has been removed, as the project is archived. | The service was in Technical Preview. Currently there is no replacement. In V3, the Open Telemetry standard will be implemented, which will serve as a replacement.                                                                                                                                                                                                     |
 | IMS API will be archived | The service was not fully supported. If you were using the API, please reach out to the IBM team for follow-up steps.                                                                                                                                                                                                                                |
 | Java 17 will be required for the API Mediation Layer to run | For V3, it is necessary to update z/OS to version 2.5 or later as this brings support of Java 17. It is necessary to install Java 17 and provide the path to Java 17 to Zowe Java configuration.                                                                                                                                                                                                |
 | z/OSMF in version V2R5 with APAR PH12143 applied | If you are running a version of z/OS before 3.1, validate that the PH12143 APAR was applied to the z/OSMF installation used by Zowe.                                                                                                                                                                                                                                                    |
@@ -24,6 +24,14 @@ Review this article for details about changes to various Zowe components that ar
 
 The current API Gateway contains the Authentication and Authorization Service. This service will be separated as a standalone service. The Authentication and Authorization Service is the only API ML service that directly requires z/OS.
  
+
+## Application Framework
+
+### Breaking changes
+
+* Updated Angular to Version 18 from Version 12. Apps built upon Angular, excluding iframe apps, will need to be updated to be compatible with the V3 Desktop.
+
+
 ## CLI
 
 ### Breaking changes
@@ -47,11 +55,11 @@ The current API Gateway contains the Authentication and Authorization Service. T
 * Updating Webpack to version 5 
 * Updating Typescript to 4.9 
 
-## Explorer for Intellij
+## Explorer for Intellij IDEA
 
 ### Important updates
 
-* Explorer for Intellij will be part of the Zowe Core
+* Explorer for IntelliJ IDEA will be part of the Zowe Core
 * Working with USS Files
 * Working with Data Sets
 * Working with JES Working Sets
