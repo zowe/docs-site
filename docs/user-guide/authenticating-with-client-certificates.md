@@ -59,20 +59,38 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   SDNFILTER('<subject's-distinguished-name-filter>')
   WITHLABEL('<label>')
   ```
-  **Note:**  The `RACDCERT MAP` command allows mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID as it offers better control and protection.
-
 
   **Example command in ACF2:** 
 
   `INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
 
+Alternatively, in case you are using the internal API ML mapper, you can use the following command:
+
+  ```
+  CERTMAP.<recid>     
+  SDNFILTR(<subject's-distinguished-name-filter>)
+  LABEL(<label>)
+  USERID(<userid>)
+  TRUST
+  ```
+
   **Example command in Top Secret:** 
 
   `TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
 
+Alternatively, in case you are using the internal API ML mapper, you can use the following command:
+
+  ```
+  TSS ADDT0(<userid>) CERTMAP(<recid>)
+  SDNFILTR('<subject's-distinguished-name-filter>')
+  USERID(<userid>)
+  TRUST
+  ```
+
   Additional details are likely described in your security system documentation.
 
 :::note Notes
+* The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID as it offers better control and protection.
 * Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
 * Ensure that the client certificate has the following `Extended Key Usage` metadata:  
 `OID: 1.3.6.1.5.5.7.3.2`  
