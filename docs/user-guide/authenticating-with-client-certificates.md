@@ -4,7 +4,7 @@
 :::
 
 Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through 
-the API ML Gateway with client certificates. Client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
+the API ML Gateway with client certificates. This method of authentication requires client certification to be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
 * When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
@@ -34,7 +34,7 @@ When sending a request to the login endpoint with a client certificate, the Gate
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
-The following diagram shows how routing works with ZSS, in the case where ZSS API is used for the identity mapping. 
+The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping. 
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -46,13 +46,15 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
 Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
 
-  **Example command in RACF:**  
+**RACF** 
+<details>
+<summary>Click here for an example command in RACF. </summary> 
 
   ``` 
   RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
-Alternatively, in case you are using the internal API ML mapper, you can use the following command:
+Alternatively, if you are using the internal API ML mapper, use the following command:
 
   ```
   RACDCERT ID(<userid>) MAP 
@@ -60,11 +62,16 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   WITHLABEL('<label>')
   ```
 
-  **Example command in ACF2:** 
+</details>
+
+**ACF2** 
+
+<details>
+<summary>Click here for an example command in ACF2. </summary>  
 
   `INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
 
-Alternatively, in case you are using the internal API ML mapper, you can use the following command:
+Alternatively, if you are using the internal API ML mapper, use the following command:
 
   ```
   CERTMAP.<recid>     
@@ -74,11 +81,17 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   TRUST
   ```
 
-  **Example command in Top Secret:** 
+</details>
+
+
+**Top Secret** 
+
+<details>
+<summary>Click here for an example command in Top Secret. </summary> 
 
   `TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
 
-Alternatively, in case you are using the internal API ML mapper, you can use the following command:
+Alternatively, if you are using the internal API ML mapper, use the following command:
 
   ```
   TSS ADDT0(<userid>) CERTMAP(<recid>)
@@ -86,11 +99,13 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   USERID(<userid>)
   TRUST
   ```
+</details>
 
-  Additional details are likely described in your security system documentation.
+
+Additional details are likely described in your security system documentation.
 
 :::note Notes
-* The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID as it offers better control and protection.
+* The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID, which offers better control and protection.
 * Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
 * Ensure that the client certificate has the following `Extended Key Usage` metadata:  
 `OID: 1.3.6.1.5.5.7.3.2`  

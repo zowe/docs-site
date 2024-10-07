@@ -81,16 +81,15 @@ For example, web applications with a secure server side component can use `code 
 
 ### ESM configuration prerequisites
 
-Follow the [security configuration](../../user-guide/configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping) article
-to ensure that all the security configuration prerequisites are met.
-
 The user identity mapping is defined as a distributed user identity mapping filter, which is maintained by the System Authorization Facility (SAF) / External Security Manager (ESM).
 A distributed identity consists of two parts:
 
 - A distributed identity name
 - A trusted registry which governs that identity
 
-Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters:
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters.
+
+Ensure that all the security configuration prerequisites are met by following the steps described in [configure the main Zowe server to use distributed identity mapping](../../user-guide/configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
 
 Use the commands specific to your ESM to create a distributed identity mapping filter.
 

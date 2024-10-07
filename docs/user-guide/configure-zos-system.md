@@ -572,7 +572,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     ```
     RDEFINE FACILITY IRR.IDIDMAP.QUERY
     ```
-4. Add user `ZWESVUSR` permission to read.
+4. Add user `ZWESVUSR` permission to with READ access.
     ```
     PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
@@ -588,13 +588,13 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has read access.
+1. Verify that user `ZWESVUSR` has READ access.
     ```      
     SET RESOURCE(FAC) 
     LIST LIKE(IRR-)
     ```    
 
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission with READ access.
     ```
     RECKEY IRR.IDIDMAP.QUERY ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
     ```
@@ -610,12 +610,12 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has read access.
+1. Verify that user `ZWESVUSR` has READ access.
     ```      
     TSS WHOHAS IBMFAC(IRR.IDIDMAP.QUERY)
     ```    
 
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission with READ access.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)
     ```
@@ -639,10 +639,10 @@ A part of the Signed SAF Identity token configuration is a nontrivial step that 
 
 ### Configure the main Zowe server to issue SMF records
 
-This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have _read_ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
+This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have READ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has `READ` access to this profile.
+To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
 
 - If you use RACF, issue the following command:
     ```
@@ -660,7 +660,7 @@ To check whether you already have the auditing profile defined, issue the follow
     LIST LIKE(IRR-)
     ```
 
-If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have `READ` access to this profile, follow the procedure that corresponds to your ESM:
+If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM:
 
 - If you use RACF, update permission in the `FACILITY` class.
 
@@ -675,7 +675,7 @@ If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have `READ`
       SETROPTS RACLIST(FACILITY) REFRESH
       ```
 
-- If you use Top Secret, add user `ZWESVUSR` permission to `READ`. Issue the following command:
+- If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
    ```
    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
    ```
