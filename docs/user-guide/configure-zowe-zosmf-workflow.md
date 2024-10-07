@@ -92,7 +92,7 @@ In this step you can review your configurations and, if necessary, make further 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note
-The create configuration step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
+The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
 
 ### 3. **Zowe Installation**
@@ -101,15 +101,15 @@ This step consumes the zowe.yaml configuration file you created in the previous 
 
 1. **(Optional) Run the Zowe install (only for convenience build)**. This step is required only for the convenience build. It runs the `zwe install` command.
 2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
-3. **Run the Zowe init security** is optional, and requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands.
+3. **Run the Zowe init security** is optional if you have preformed security setup for Zowe before. This sub-step requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands.
+
+:::note
+An alternative to executing **Run the Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+:::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
-
-:::note
-An alternative to executing sub-step 3 is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
-:::
 
 The **Configuration of Zowe 3.0** workflow strictly follows the Zowe v3 install and configuration schema. This workflow generates the zowe.yaml file and runs the Zowe zwe CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI. 

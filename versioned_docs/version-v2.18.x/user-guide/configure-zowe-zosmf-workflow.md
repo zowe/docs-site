@@ -95,7 +95,7 @@ In this step you can review your configurations and if needed you can make furth
 When you are done, click Finish and the zowe.yaml file will be ready, and the step will be marked as Complete.
 
 :::note
-This step is mandatory. The valid zowe.yaml is required to execute the **Zowe installation** step.
+The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
 
 ### 3. **Zowe Installation**
@@ -104,17 +104,16 @@ This step consumes the zowe.yaml configuration file you created in the previous 
 
 1. **(Optional) Run the Zowe install (only for convenience build)** is needed only for convenience build. It runs the `zwe install` command.
 2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
-3. **Run the Zowe init security** is optional, and requires Security Administrator permissions. It  runs the `zwe init apfauth` and `zwe init security` commands.
+3. **Run the Zowe init security** is optional if you have preformed security setup for Zowe before. This sub-step requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands.
+
+:::note
+An alternative to executing **Run the Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+:::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
 
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
-
-:::note
-An alternative to executing sub-step 3 is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
-:::
-
 
 The **Configuration of Zowe 2.0** workflow strictly follows Zowe v2 install and configuration schema. This workflow generates the zowe.yaml file and runs Zowe's zwe CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI.
