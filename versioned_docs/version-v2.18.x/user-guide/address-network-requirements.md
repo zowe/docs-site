@@ -14,16 +14,16 @@ Most Components of Zowe are HTTPS servers. The ports of each and their default j
 The ports can be customized for each component by editing the value of `components.<component-name>.port` within the Zowe YAML file.
 Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file.
 
-| Port number | Component | Default Jobname | Purpose |
-|------|------|------|
-| 7552 | api-catalog | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
-| 7553 | discovery | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
-| 7554 | gateway | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
-| 7555 | caching-service | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
-| 7556 | app-server | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
-| 7557 | zss | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
-| 7558 | jobs-api | Disabled by default, as it duplicates APIs found in zOSMF, and is only retained if needed by extensions.
-| 7559 | files-api | Disabled by default, as it duplicates APIs found in zOSMF, and is only retained if needed by extensions.
+| Port number | Category | Component | Default Jobname | Log Suffix | Purpose |
+|------|------|------|------|------|------|
+| 7552 | API Mediation Layer | api-catalog | ZWE1AC | AAC | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
+| 7553 | API Mediation Layer | discovery | ZWE1AD | ADS | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
+| 7554 | API Mediation Layer | gateway | ZWE1AG | AGW | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
+| 7555 | API Mediation Layer | caching-service | ZWE1CS | ACS | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
+| 7556 | App Framework | app-server | ZWE1DS | D | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
+| 7557 | App Framework | zss | ZWE1SZ | SZ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+| 7558 | | jobs-api | ZWE1EJ | EJ |Disabled by default, as it duplicates APIs found in zOSMF, and is only retained if needed by extensions.
+| 7559 | | files-api | ZWE1EF | EF | Disabled by default, as it duplicates APIs found in zOSMF, and is only retained if needed by extensions.
 
 ## Caching Service Infinispan ports
 
