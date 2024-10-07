@@ -35,7 +35,7 @@ The configuration workflow described in this article is executed directly from a
 
 ## Execute Configuration of Zowe 3.0 workflow from PSWI
 
-In the PSWI deployment phase, you are presented with the checklist that helps guide you during the deployment process.
+In the PSWI deployment phase, you are presented with a checklist that helps guide you during the deployment process.
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
@@ -66,12 +66,12 @@ Perform the following steps to execute each sub-step individually:
 2. Select the **Perform** tab.
 3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
 
-   On the components page of **Define the main variables** sub-step, select the components that you wish to enable. 
+   On the components page of the sub-step **Define the main variables**, select the components that you wish to enable. 
 
     ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
 
    :::note
-   Ensire that all components that you enabled are  configured in the sub-steps presented in the **Define variables** step. 
+   Ensure that all components you enabled are  configured in the sub-steps presented in the **Define variables** step. 
    The sub-steps for configuring components will be in the Ready state, and the remainder of components in the Skipped state.
    :::
 
