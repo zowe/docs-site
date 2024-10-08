@@ -3,11 +3,11 @@
 The Zowe's App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more. 
 These parameters can be specified in two ways: configuration files, or environment variables.
 
-Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zlux-config-schema.json)
+Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json)
 
 ## Configuration file
 
-In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
+In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
 
 ## Environment variables
 

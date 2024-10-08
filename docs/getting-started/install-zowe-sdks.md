@@ -125,9 +125,9 @@ Download and install the packages:
 
 2. Unzip the SDK folder, which contains the packages for each set of functionality (such as z/OS Jobs). Copy each file that you want to install and paste them into your project directory.
 
-3. Install required dependencies, which are included in the bundle. See [Software requirements and dependencies](#software-requirements-and-dependencies) for more information.
+3. Install required dependencies, which are included in the bundle. See [Software requirements and dependencies](#sdk-software-requirements-and-dependencies) for more information.
 
-3. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
+4. In a command-line window, navigate to your project directory. Issue *one* of the following commands.
 
    - To install a Node.js package: `npm install <packageName>.tgz`
    - To install a Python package: `pip install <packageName>.whl`
@@ -135,6 +135,6 @@ Download and install the packages:
       -`<packageName>`
       The name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-4. Repeat the command for each package that you need.
+5. Repeat the command for each package that you need.
 
     Packages are now installed.

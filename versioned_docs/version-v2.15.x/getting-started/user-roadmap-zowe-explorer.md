@@ -108,7 +108,7 @@ To identify the resources most relevant for you, use the following definitions o
 
    Join the `# zowe-explorer` Slack channel to ask questions, propose new ideas, and interact with the Zowe community.
 
-* [**Zowe Explorer squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+* [**Zowe Explorer squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe Explorer squad meetings to get involved.
 

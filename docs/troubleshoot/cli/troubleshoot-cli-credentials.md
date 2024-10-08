@@ -14,7 +14,7 @@ Zowe CLI accepts various methods, or mechanisms, of authentication when communic
 
 However, some services can accept multiple methods of authentication. When multiple methods are provided (in a configuration profile or command) for a service, the CLI follows an *order of precedence* to determine which method to apply.
 
-To find the authentication methods used for different services and their order of precedence, see the table in [Authentication mechanisms](../../extend/extend-cli/cli-devTutorials.md#authentication-mechanisms).
+To find the authentication methods used for different services and their order of precedence, see the table in [Authentication mechanisms](../../extend/extend-cli/cli-authentication-mechanisms.md).
 
 ### PEM certificate files
 

@@ -27,7 +27,7 @@ Zowe Explorer is a subcomponent of [Zowe](https://zowe.org/home/). The extension
 
 To install Zowe Explorer:
 
-1. Address [the system requirements](#system-requirements).
+1. Address [the system requirements](../getting-started/ZE-system-reqs.md).
 2. Open VS Code, and navigate to the **Extensions** tab on the **Activity Bar**.
 3. Type `Zowe Explorer` in the **Search** field.
 
