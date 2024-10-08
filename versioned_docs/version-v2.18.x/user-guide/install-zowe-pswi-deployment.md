@@ -48,7 +48,7 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
     :::tip Expected results:
     You will receive a return code of 0 if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     :::
-    
+     
     8. Complete **Mount Workflow** to mount the Zowe zFS. Complete both steps in the workflow. Perform the following steps to execute each step individually:
        1. Click the title of the step.
        2. Select the Perform tab.
