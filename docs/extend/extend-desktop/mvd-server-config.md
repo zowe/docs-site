@@ -62,7 +62,7 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * strings can have quotes, but otherwise everything that isnt an array, boolean, or number is a string
 * objects are never values. They are the keys.
 
-# Parameter details
+## Parameter details
 Below is some more detail on certain parameters than can be covered within the json-schema.
 
 ### Configuration directories
