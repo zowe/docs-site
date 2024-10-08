@@ -25,7 +25,7 @@ jobs:
             const body = context.payload.comment.body;
             if (body.startsWith("/labels ")) {
               console.log("Comment body:", body);
-              const repoLabels = (await github.rest.issues.listLabelsForRepo(context.repo)).data.map((label) => label.name);
+              const repoLabels = (await github.rest.issues.listLabelsForRepo({ ...context.repo, per_page: 100 })).data.map((label) => label.name);
               const labelMapping = {};
               for (const label of repoLabels) {
                 if (label.includes(": ")) {
