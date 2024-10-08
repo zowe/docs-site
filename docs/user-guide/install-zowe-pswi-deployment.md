@@ -58,7 +58,7 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
 
     9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md).
 
-   10. Specify the name and description of a new target software instance.
+   10. Specify the name and description of the new target software instance.
 
         - All workflows that are mentioned in the previous steps are part of the PSWI.  
         **Note:** You do not have to execute all workflows during PSWI provisioning in z/OSMF immediately.
