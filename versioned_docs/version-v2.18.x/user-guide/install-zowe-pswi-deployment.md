@@ -45,7 +45,7 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
     **Note:** If the target system for the deployment is in a JES Multi-Access Spool (MAS) and the mount point is only accessible from the target system, add a System Affinity (SYSAFF) to the job card to ensure execution on the system where the zFS resides.
 
     7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF.  
-    :::tip Expected results:
+    :::tip Expected results: 
     You will receive a return code of 0 if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     :::
      
