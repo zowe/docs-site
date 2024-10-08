@@ -26,7 +26,7 @@ For a better understanding of Zowe Explorer, review the various reference materi
 
 - Check out the [**Zowe Explorer GitHub repository**](https://github.com/zowe/vscode-extension-for-zowe#readme) to view the source code for Zowe Explorer and other Zowe Explorer-related extensions.
 
-- Watch the following videos to learn how to get started with Zowe Explorer, and work with data sets: 
+- Watch the following videos to learn how to get started with Zowe Explorer, and work with data sets:
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Getting Started with Zowe" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed/G_WCsFZIWt4" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
