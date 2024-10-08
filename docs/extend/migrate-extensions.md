@@ -1,4 +1,4 @@
-# Migrating Zowe server component from V1 to V2
+# Migrating from Zowe V1 to Zowe V2
 
 This doc guides you through migrating an existing Zowe server component from version 1 to version 2. 
 

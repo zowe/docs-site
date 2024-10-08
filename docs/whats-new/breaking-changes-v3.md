@@ -1,8 +1,8 @@
 # Important updates in Zowe V3
 
-The upcoming release of Zowe V3 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
+Zowe 3.0 brings a range of major changes in Zowe functionality, including *breaking changes*, or modifications that require updates to avoid disruptions in your applications.
 
-Review this article for details about changes to various Zowe components to be introduced in Zowe V3, and any actions required you might need to take.
+Review this article for details about changes to various Zowe components that are introduced in Zowe V3, and any required actions you need to take.
 
 ## API Mediation Layer (API ML)
 

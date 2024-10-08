@@ -1,4 +1,4 @@
-# Glossary of Zowe terminology
+# Zowe glossary
 
 This glossary is part of a growing list of terms and concepts used throughout the spectrum of Zowe  projects, which includes both technical as well as organizational terms that are specific to Zowe.
 
