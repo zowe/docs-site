@@ -40,7 +40,7 @@ The following steps outline the overall process to onboard a service with the AP
     * [Maven build automation system](#maven-build-automation-system)
 
 3. [Configuring your service](#configuring-your-service)
-    * [Service identification](#rest-service-identification)
+    * [Service identification](#service-identification)
     * [Administrative endpoints](#administrative-endpoints)
     * [API info](#api-info)
     * [API routing information](#api-routing-information)

@@ -140,7 +140,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
    
    Join the #zowe-cli Slack channel to ask questions about Zowe CLI, propose new ideas, and interact with the Zowe community. 
 
-- [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe CLI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe CLI squad meetings to get involved.
 
