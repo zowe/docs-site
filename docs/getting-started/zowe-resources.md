@@ -52,7 +52,7 @@ The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59
 
 **Connect with the community through meetings** 
 
-- [Zowe meeting calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe meetings to get latest Zowe updates and get involved in different squads and initiatives.
 

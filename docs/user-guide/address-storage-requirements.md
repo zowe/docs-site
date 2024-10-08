@@ -7,11 +7,11 @@ Ensure that you have sufficient storage depending on the installation method. Re
 
 ## Installing with SMP/E
 
-Before installing Zowe SMP/E, review the [DASD storage requirements](../user-guide/install-zowe-smpe/#dasd-storage-requirements).
+Before installing Zowe SMP/E, review the [DASD storage requirements](../user-guide/install-zowe-smpe-overview.md#dasd-storage-requirements).
 
 ## Installing Zowe runtime from a convenience build
 
-Before installing Zowe runtime from a convenience build, see the [storage requirements associated with MVS datasets](../user-guide/install-zowe-zos-convenience-build/#step-5-install-the-mvs-data-sets). 
+Before installing Zowe runtime from a convenience build, see the [storage requirements associated with MVS datasets](../user-guide/install-zowe-zos-convenience-build.md#about-the-mvs-data-sets). 
 
 ### Memory requirements for API Mediation Layer
 
