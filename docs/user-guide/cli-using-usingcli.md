@@ -9,7 +9,7 @@ Text colors could be difficult to read in some terminals. If this is the case, w
 :::
 
 
-Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` [environment variable](../user-guide/cli-configuringcli-ev.md#setting-other-environment-variables) to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
+Text colors could be difficult to read in some terminals. If this is the case, we suggest either adjusting the terminal settings, or setting the `FORCE_COLOR` environment variable to `0`. For other accessibility options, check the accessibility settings for your operating system or terminal.
 
 :::
 
