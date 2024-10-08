@@ -20,8 +20,6 @@ This article provides further detail about each of these use cases.
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
-For more information about _baseUrl_ or _basePath_, see [Components of a URL](../extend/extend-apiml/api-mediation-components-of-URL).
-
 ## Protecting Service Information
 
 Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessible only by authorized users and services.
