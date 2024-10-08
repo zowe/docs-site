@@ -2,7 +2,7 @@
 
 The Zowe Application ("App") Framework is configured in the Zowe configuration file. Configuration can be used to change things such as verbosity of logs, the way in which the App server communicates with the Mediation Layer, how ZSS operates, whether to use HTTPS or AT-TLS, what language the logs should be set, and many more attributes.
 
-When you install Zowe&trade;, the App Framework is configured as a Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content. 
+When you install Zowe&trade;, the App Framework is configured as a Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
 
 You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
 
@@ -204,7 +204,7 @@ zss:
 
 ### ZSS 64 or 31 bit modes
 
-Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other. 
+Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other.
 
 #### Verifying which ZSS mode is in use
 
@@ -429,7 +429,7 @@ The following steps can be followed to point a Zowe instance at a particular ZIS
       ```
 
       Where `ZWESIS_MYSRV` is the unique name of the new ZIS.
-      
+
 3. [Start the new ZIS](https://docs.zowe.org/stable/user-guide/configure-xmem-server#starting-and-stopping-the-cross-memory-server-on-zos) with whatever PROCLIB name was chosen.
 
 4. [Stop the Zowe instance you wish to point to the ZIS server](../user-guide/start-zowe-zos.md).
@@ -476,7 +476,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     - To make an app unavailable, delete it from the list of objects.
     - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
 
-5. [Restart the app server](start-zowe-zos.md). 
+5. [Restart the app server](start-zowe-zos.md).
 
 ### Controlling app access for individual users
 
@@ -521,45 +521,6 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 To apply role-based access control (RBAC) to dataservice endpoints, you must enable RBAC for Zowe, and then use a z/OS security product such as RACF to map roles and authorities to the endpoints. After you apply RBAC, Zowe checks authorities before allowing access to the endpoints.
 
 You can apply access control to Zowe endpoints and to your app endpoints. Zowe provides endpoints for a set of configuration dataservices and a set of core dataservices. Apps can use [configuration endpoints](../extend/extend-desktop/mvd-configdataservice.md#configuration-dataservice) to store and their own configuration and other data. Administrators can use core endpoints to [get status information](mvd-configuration.md#administering-the-servers-and-plugins-using-an-api) from the App Framework and ZSS servers. Any dataservice added as part of an app plugin is a service dataservice.
-
-### Defining the RACF ZOWE class
-
-:::note 
-Starting with z/OS V2R5, the ZOWE class has been predefined to RACF. If you have previously defined the ZOWE class manually, this class can be deleted after all of the systems that share the RACF database are upgraded to z/OS V2R5.
-:::
-
-If you use RACF security, take the following steps define the ZOWE class to the CDT class:
-
-1. Make sure that the CDT class is active and RACLISTed.
-2. In TSO, issue the following command:
-    ```
-    RDEFINE CDT ZOWE UACC(NONE)
-    CDTINFO(
-        DEFAULTUACC(NONE)
-        FIRST(ALPHA) OTHER(ALPHA,NATIONAL,NUMERIC,SPECIAL)
-        MAXLENGTH(246)
-        POSIT(607)
-        RACLIST(DISALLOWED))
-    ```
-    If you receive the following message, ignore it:
-    ```
-    "Warning: The POSIT value is not within the recommended ranges for installation use. The valid ranges are 19-56 and 128-527."
-    ```
-3. In TSO, issue the following command to refresh the CDT class:
-    ```
-    SETROPTS RACLIST(CDT) REFRESH
-    ```
-4. In TSO, issue the following command to activate the ZOWE class:
-    ```
-    SETROPTS CLASSACT(ZOWE)
-    ```
-5. In TSO, issue the following command
-    ```
-    SETROPTS GENERIC(ZONE) REFRESH
-    ```
-    **Note** You must run this command before creating generic profiles within ZOWE class.
-
-For more information on RACF security administration, see the IBM Knowledge Center at [https://www.ibm.com/support/knowledgecenter/](https://www.ibm.com/support/knowledgecenter/).
 
 ### Creating authorization profiles
 For users to access endpoints after you enable RBAC, in the ZOWE class you must create System Authorization Facility (SAF) profiles for each endpoint and give users READ access to those profiles.
@@ -648,7 +609,7 @@ The following is an example configuration for `sso-auth`, as seen in a default i
 ```
 components:
   app-server:
-    dataserviceAuthentication: 
+    dataserviceAuthentication:
       defaultAuthentication: saf
 ```
 
@@ -683,7 +644,7 @@ Swagger API documentation is provided in the `<zowe.runtimeDirectory>/components
 
 ## Managing Cluster Mode for app-server
 
-On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit. 
+On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit.
 
 When you **disable** cluster mode, you will lose the following benefits:
 
