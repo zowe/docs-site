@@ -114,7 +114,7 @@ The following definition of skill levels about Zowe will help you gather most re
    
    Join the Slack channel to ask questions, propose new ideas, and interact with the Zowe community.  <!--which slack channel is appropriate?-->
 
-- [**Zowe WebUI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe WebUI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    You can join one of the Zowe WebUI squad meetings to get involved.
 

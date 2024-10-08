@@ -421,7 +421,7 @@ These configurations can be used under the `components.gateway` section:
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **`apiml.security.oidc.registry`**  
-  Specifies the SAF registry used to group the identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration).
+  Specifies the SAF registry used to group the identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see the [ESM configuration](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
 
 - **`apiml.security.oidc.jwks.uri`**  
   Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
@@ -440,7 +440,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 
 - **`apiml.security.oidc.identityMapperUrl`**  
   Defines the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
-  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/authenticating-with-client-certificates.md#enabling-the-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
 
   The following URL is the default value for Zowe and ZSS:
 
