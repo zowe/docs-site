@@ -152,15 +152,13 @@ Here are some examples of templates that you can use to simplify your configurat
 
 ### Template functions
 
-
-
 ## Configuration Manager Unix executable
 
 `configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
 
 The `configmgr` executable needs the following as input:
 
-- A list of configuration locations. Each location can be a different type such as a Unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. The rules and syntax are the same as seen in the `config` property of the [Using `zwe` with Configuration Manager section](#using-zwe-with-configuration-manager).
+- A list of configuration locations. Each location can be a different type such as a Unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. 
 - A list of json-schema Unix files separated by a colon `:`, with the top-level schema being the left-most in the list. The unified configuration will be validated against this top-level schema and any references in the other schema files in the list.
    
 The `configmgr` executable can do the following with the input:

@@ -130,7 +130,7 @@ As a Zowe user, you can leverage the base profile functionality to access multip
 
 If you want to access services through multiple API ML gateways, the same following steps apply. However, you must first edit your configuration file to follow a specific structure.
 
-Review [Accessing services for multiple API ML instances](../user-guide/cli-using-creating-profiles.md#accessing-services-for-multiple-api-ml-instances) to see how profiles are structured in the configuration file.
+Review [Accessing services for multiple API ML instances](../user-guide/cli-using-creating-profiles.md#accessing-services-through-multiple-api-ml-gateways) to see how profiles are structured in the configuration file.
 
 :::
 

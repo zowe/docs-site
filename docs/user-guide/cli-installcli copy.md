@@ -38,8 +38,6 @@ To install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on a
 
 ### Prerequisite notes
 
-- If you are installing Zowe CLI on a computer that is running Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
-
 - If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet.
 
    Issue the following command ***before*** you install Zowe CLI:

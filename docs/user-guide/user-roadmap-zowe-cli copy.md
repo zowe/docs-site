@@ -111,7 +111,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 
    If you want to start working with the code immediately, check out this code repository. 
 
-- [**Tutorials**](../extend/extend-cli/cli-devTutorials.md#tutorials)
+- [**Tutorials**](../extend/extend-cli/cli-tutorials.md)
 
    Follow these tutorials to get started working with a sample plug-in.
 

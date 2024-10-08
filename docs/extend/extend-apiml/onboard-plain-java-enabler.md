@@ -312,7 +312,7 @@ customMetadata:
 ```
 The onboarding configuration parameters are broken down into the following groups:
 
-- [Service identification](#rest-service-identification)
+- [Service identification](#service-identification)
 - [Administrative endpoints](#administrative-endpoints)
 - [API info](#api-info)
 - [API routing information](#api-routing-information)
