@@ -19,12 +19,12 @@ To install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on a
 
 -  To install Zowe CLI on a z/Linux operating system and you **require** the Secure Credential Store:
    1. Follow the steps in [Configure Secure Credential Store on headless Linux operating systems](./cli-configure-scs-on-headless-linux-os.md).
-   2. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   2. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-local-package).
 -  To install Zowe CLI on a z/Linux operating system and you **do not require** the Secure Credential Store:
-   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-local-package).
    2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](./cli-configure-cli-on-os-where-scs-unavailable.md).
 -  To install Zowe CLI on a USS system or on an operating system where you **cannot install** the Secure Credential Store:
-   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-download).
+   1. Follow the steps in [Install Zowe CLI from npm](#install-zowe-cli-from-npm) or [Install Zowe CLI from a download](#install-zowe-cli-from-a-local-package).
    2. Follow the steps in [Configure Zowe CLI on operating systems where the Secure Credential Store is not available](./cli-configure-cli-on-os-where-scs-unavailable.md).
 
 ### Installation notes
@@ -37,8 +37,6 @@ To install Zowe CLI on **z/Linux**, **z/OS UNIX System Services (USS)**, or on a
 - Meet the [software requirements](../user-guide/cli-swreqplugins.md) for each plug-in.
 
 ### Prerequisite notes
-
-- If you are installing Zowe CLI on a computer that is running Node.js 16 on a Windows operating system, see [Installing Zowe CLI with Node.js 16 on Windows](../user-guide/cli-install-cli-nodejs-windows.md).
 
 - If you are running NPM version 7 (`npm@7`) or NPM version 8 (`npm@8`) on a Windows operating system, ensure that your computer is connected to the Internet.
 
