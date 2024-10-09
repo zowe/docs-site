@@ -111,7 +111,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
 
    If you want to start working with the code immediately, check out this code repository. 
 
-- [**Tutorials**](../extend/extend-cli/cli-devTutorials.md#tutorials)
+- [**Tutorials**](../extend/extend-cli/cli-tutorials.md)
 
    Follow these tutorials to get started working with a sample plug-in.
 
@@ -147,7 +147,7 @@ Zowe CLI extenders can build plug-ins that provide new commands.
    
    Join the #zowe-cli Slack channel to ask questions about Zowe CLI, propose new ideas, and interact with the Zowe community. 
 
-- [**Zowe CLI squad meetings**](https://lists.openmainframeproject.org/g/zowe-dev/calendar)
+- [**Zowe CLI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
 
    Join Zowe CLI squad meetings to get involved.
 

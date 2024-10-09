@@ -15,4 +15,4 @@ Verify that Zowe Explorer has been installed successfully by searching data sets
 
     If Zowe Explorer is able to connect with z/OSMF and the user credentials are valid, the filtered data sets display in the **DATA SETS** tree view.
 
-    If there is a problem with the z/OSMF connection and/or user credentials, an error displays. See [Troubleshooting Zowe Explorer](https://docs.zowe.org/stable/troubleshoot/ze/troubleshoot-ze.md) for possible next steps.
+    If there is a problem with the z/OSMF connection and/or user credentials, an error displays. See [Troubleshooting Zowe Explorer](../troubleshoot/ze/troubleshoot-ze.md) for possible next steps.

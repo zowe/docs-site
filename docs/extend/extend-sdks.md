@@ -14,6 +14,6 @@ For detailed contribution guidelines, see the following documents:
 ## Community resources 
 
 - Join the [#zowe-cli Slack channel](https://openmainframeproject.slack.com/) to ask questions about Zowe CLI and Zowe SDKs, propose new ideas, and interact with the Zowe community.
-- You can join one of the [Zowe CLI squad meetings](https://lists.openmainframeproject.org/g/zowe-dev/calendar) to discuss Zowe SDKs issues and contibute to Zowe SDKs.
+- You can join one of the [Zowe CLI squad meetings](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe) to discuss Zowe SDKs issues and contibute to Zowe SDKs.
 - Read a series of [blogs about Zowe](https://medium.com/zowe) on Medium to explore use cases, best practices, and more. 
 - Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).

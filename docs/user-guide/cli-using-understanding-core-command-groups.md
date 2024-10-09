@@ -258,7 +258,7 @@ The `zosmf` command group lets you work with Zowe CLI profiles and get general i
 
 With the `zosmf` command group, you can perform the following tasks:
 
-* Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Testing connections to z/OSMF](../user-guide/cli-using-test-zosmf-connection).
+* Verify that your profiles are set up correctly to communicate with z/OSMF on your system. For more information, see [Testing connections to z/OSMF](../user-guide/_cli-using-test-zosmf-connection.md).
 * Get information about the current z/OSMF version, host, port, and plug-ins installed on your system.
 
 :::note
