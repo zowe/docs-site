@@ -63,12 +63,13 @@ The Caching Service is a server of Zowe that improves the high availability and 
 It is enabled by default and uses Infinispan for its backing storage by default.
 
 Using VSAM instead of Infinispan is deprecated, but still possible. 
-<details><summary>Click here to see how to set up a VSAM dataset for the Caching Service.</summary>
+
+<details>
+<summary>Click here to see how to set up a VSAM dataset for the Caching Service.</summary>
 
  | Task | Description | Sample JCL|
 |------|-------------|-----------|
 |Create VSAM Dataset for Caching Service | **Action**: Create a RLS or NONRLS dataset for the caching service, and set the name into the YAML value `components.caching-service.storage.vsam.name` | [ZWECSVSM](https://github.com/zowe/zowe-install-packaging/tree/v3.x/master/files/SZWESAMP/ZWECSVSM)
-
 </details>
 
 You can also use JCL samples for removing Zowe configuration:
