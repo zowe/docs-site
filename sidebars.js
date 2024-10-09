@@ -7,6 +7,7 @@ module.exports = {
       label: "Release notes",
       className: "ToCheadercolor",
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
+      collapsed: false,
       items: [
         "whats-new/release-notes/v3_0_0",
       ],
@@ -15,7 +16,7 @@ module.exports = {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe V2 release notes",
       className: "ToCheadercolor",
-      collapsed: false,
+      collapsed: true,
       items: [
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
