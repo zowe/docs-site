@@ -14,7 +14,7 @@ This configuration is useful in advanced deployments of Zowe where client applic
 This article details the API ML OIDC authentication functionality, and how to configure the OIDC Authentication feature.
 
 :::note
-The OIDC feature is currently unavailable on ACF2 systems.
+There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper described in the [API ML OIDC configuration](#api-ml-oidc-configuration) section.
 :::
 
 - [Usage](#usage)
