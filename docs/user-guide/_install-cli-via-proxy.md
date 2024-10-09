@@ -64,7 +64,7 @@ You can install Zowe CLI from an online registry via proxy on Windows, macOS, or
 
    - [my-plugin]: The syntax for the plug-in. For example, `@zowe/cics@zowe-v2-lts`.
 ​
-6. **(Optional)** Test the connection to z/OSMF. See [Testing connections to z/OSMF](../user-guide/cli-using-test-zosmf-connection) 
+6. **(Optional)** Test the connection to z/OSMF. See [Testing connections to z/OSMF](../user-guide/_cli-using-test-zosmf-connection) 
 
 7. **(Optional)** Access the Zowe CLI Help (`zowe --help`) or the Zowe CLI Web Help for a complete reference of Zowe CLI.
 ​

@@ -9,11 +9,7 @@ The Zowe z/OS component runtime requires UNIX System Services (USS) to be config
 
 The UNIX System Services element of z/OS® is a UNIX operating environment, which is implemented within the z/OS operating system. It is also known as z/OS UNIX. z/OS UNIX files are organized in a hierarchy, as in a UNIX system.  All files are members of a directory, and each directory in turn is a member of another directory at a higher level in the hierarchy. The highest level of the hierarchy is the *root* directory. The z/OS UNIX files system is also known as zFS. This zFS directory is the location where the Zowe runtime files and folders are installed.
 
-For more information on USS, see the following resources:
-
-- [Introduction to z/OS UNIX for z/OS 2.2](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.2.0/com.ibm.zos.v2r2.bpxb200/int.htm)
-- [Introduction to z/OS UNIX for z/OS 2.3](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/int.htm)
-- [Introduction to z/OS UNIX for z/OS 2.4](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.bpxb200/int.htm)
+For more information on USS, see the [Introduction to z/OS UNIX](https://www.ibm.com/support/knowledgecenter/SSLTBW_3.1.0/com.ibm.zos.v3r1.bpxb200/int.htm)
 
 ## Setting up USS for the first time
 
@@ -21,11 +17,13 @@ If you have not enabled USS for your z/OS environment before, the SMP/E distribu
 
 ## Language environment
 
-To ensure that Zowe has enough memory, the recommended HEAP64 site should be large enough.
+The following Language Environment options should be set for Zowe.
 
-```
-HEAP64(4M,4M,KEEP,1M,1M,KEEP,0K,0K,FREE)
-```
+| Name | Value | Description |
+|------|-------|-------------|
+| HEAP64 | HEAP64(4M,4M,KEEP,1M,1M,KEEP,0K,0K,FREE) | You need to have HEAP64 large enough that Zowe has enough memory allocated to run. |
+| HEAPPOOLS | HEAPPOOLS(OFF) | Some parts of Zowe cannot run when HEAPPOOLS is enabled. |
+| HEAPPOOLS64 | HEAPPOOLS64(OFF) | Some parts of Zowe cannot run when HEAPPOOLS64 is enabled. |
 
 ## OMVS segment
 

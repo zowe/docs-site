@@ -3,11 +3,11 @@
 The Zowe's App Server and ZSS rely on many required or optional parameters to run, which includes setting up networking, deployment directories, plugin locations, and more. 
 These parameters can be specified in two ways: configuration files, or environment variables.
 
-Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zlux-config-schema.json)
+Every configuration option and requirement is documented within the application framework [json-schema file](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json)
 
 ## Configuration file
 
-In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
+In Zowe's server configuration file, app-server parameters can be specified within `components.app-server` as shown in the component [json-schema file](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/zowe-schema.json), or `components.zss` for ZSS.
 
 ## Environment variables
 
@@ -62,7 +62,7 @@ ZWED_logLevels_org____zowe____terminal____tn3270_x2e_x2a:5
 * strings can have quotes, but otherwise everything that isnt an array, boolean, or number is a string
 * objects are never values. They are the keys.
 
-# Parameter details
+## Parameter details
 Below is some more detail on certain parameters than can be covered within the json-schema.
 
 ### Configuration directories
