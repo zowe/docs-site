@@ -25,18 +25,19 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
-- System Display and Search Facility (SDSF)
+- (Optional, recommended) System Display and Search Facility (SDSF)
 
-  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zwe init certificate`, `zwe start`, and `zwe stop`. Ensure that you have SDSF installed on z/OS. 
+  SDSF is used for a few management tasks of Zowe, though there are alternative ways to accomplish the same tasks.
+
+  | Task | Command utilizing SDSF | Alternatives |
+  |-----------|-------------------------------|-------------|
+  | [Certificate setup](configure-certificates.md) | `zwe init certificate` | z/OSMF workflow "ZWEKRING", or the JCL samples "ZWEKRING" and those that begin with "ZWEIKR" can be used to create keyrings. |
+  | [Starting Zowe](start-zowe-zos.md) | `zwe start` | Products that can issue the MVS START command upon Zowe's STC such as Sysview or EJES can be used instead. |
+  | [Stopping Zowe](start-zowe-zos.md) | `zwe stop` | Products that can issue the MVS STOP command upon Zowe's STC such as Sysview or EJES can be used instead. |
   
   Not having SDSF installed may result in the following error message:
 
   `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
-
- :::note
- The `zwe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zwe init certificate` is unnecessary.
-Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zwe start` and `zwe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
- :::
  
 For more information about SDSF, see the _Abstract for z/OS SDSF Operation and Customization_ in the IBM documentation.
 
@@ -80,7 +81,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v16.x, v18.x, or v20.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
+- Node.js v18.x, or v20.x is required during installation. After installation, it is only required when running the app-server component.
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
