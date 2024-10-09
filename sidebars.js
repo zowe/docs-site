@@ -133,51 +133,57 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Installing Zowe Server Install Wizard",
-          link: { type: "doc", id: "user-guide/install-zowe-server-install-wizard" },
+          label: "Installing",
           items: [
-            "user-guide/troubleshooting-zowe-server-install-wizard",
-          ]
-        },
-        {
-          type: "category",
-          label: "Installing Zowe via SMP/E",
-          link: { type: "doc", id: "user-guide/install-zowe-smpe-overview" },
-          items: [
-            "user-guide/install-zowe-smpe",
-          ]
-        },
-        {
-          type: "category",
-          label: "Installing Zowe via z/OSMF from PSWI and SMP/E workflow",
-          link: { type: "doc", id: "user-guide/zosmf-install" },
-          items: [
-            "user-guide/install-zowe-pswi-address-requirements",
-            "user-guide/systemrequirements-zosmf",
-            "user-guide/systemrequirements-zosmf-lite",
+           {
+              type: "category",
+              label: "Installing the z/OS Build via Zowe Server Install Wizard",
+              link: { type: "doc", id: "user-guide/install-zowe-server-install-wizard" },
+              items: [
+                "user-guide/troubleshooting-zowe-server-install-wizard",
+              ]
+            },
             {
               type: "category",
-              label: "Installing Zowe via z/OSMF from PSWI",
-              link: { type: "doc", id: "user-guide/install-zowe-pswi" },
+              label: "Installing the z/OS Build via SMP/E",
+              link: { type: "doc", id: "user-guide/install-zowe-smpe-overview" },
               items: [
-                "user-guide/install-zowe-pswi-acquire",
-                "user-guide/install-zowe-pswi-deployment",
+                "user-guide/install-zowe-smpe",
+              ]
+            },
+            {
+              type: "category",
+              label: "Installing the z/OS Build via z/OSMF from PSWI and SMP/E workflow",
+              link: { type: "doc", id: "user-guide/zosmf-install" },
+              items: [
+                "user-guide/install-zowe-pswi-address-requirements",
+                "user-guide/systemrequirements-zosmf",
+                "user-guide/systemrequirements-zosmf-lite",
+                {
+                  type: "category",
+                  label: "Installing Zowe via z/OSMF from PSWI",
+                  link: { type: "doc", id: "user-guide/install-zowe-pswi" },
+                  items: [
+                    "user-guide/install-zowe-pswi-acquire",
+                    "user-guide/install-zowe-pswi-deployment",
+                  ],
+                },
+                "user-guide/install-zowe-smpe-zosmf-workflow",
               ],
             },
-            "user-guide/install-zowe-smpe-zosmf-workflow",
-          ],
-        },
-        "user-guide/install-zowe-zos-convenience-build",
-        {
-          type: "category",
-          label: "Installing Zowe via a containerization build (PAX file)",
-          link: { type: "doc", id: "user-guide/k8s-introduction" },
-          items: [
-            "user-guide/k8s-prereqs",
-            "user-guide/k8s-downloading",
-            "user-guide/k8s-config",
-            "user-guide/k8s-using",
-          ],
+            "user-guide/install-zowe-zos-convenience-build",
+            {
+              type: "category",
+              label: "Installing the Container Build with Kubernetes",
+              link: { type: "doc", id: "user-guide/k8s-introduction" },
+              items: [
+                "user-guide/k8s-prereqs",
+                "user-guide/k8s-downloading",
+                "user-guide/k8s-config",
+                "user-guide/k8s-using",
+              ],
+            }
+          ]
         },
         {
           type: "category",
