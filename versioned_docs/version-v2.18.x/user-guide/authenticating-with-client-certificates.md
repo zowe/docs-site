@@ -110,6 +110,7 @@ Alternatively, in case you are using the internal API ML mapper, you can use the
   Additional details are likely described in your security system documentation.
 
 :::note Notes
+* ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method.
 * The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID, which offers better control and protection.
 * Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
 * Ensure that the client certificate has the following `Extended Key Usage` metadata:  
