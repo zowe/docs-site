@@ -13,7 +13,7 @@ This configuration is useful in advanced deployments of Zowe where client applic
 
 This article details the API ML OIDC authentication functionality, and how to configure the OIDC Authentication feature.
 
-:::note
+<!-- Should this note be removed? Commands for ACF2 are included later in this article. -->
 The OIDC feature is currently unavailable on ACF2 systems.
 :::
 
