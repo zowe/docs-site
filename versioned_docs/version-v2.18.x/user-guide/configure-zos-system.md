@@ -564,13 +564,20 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     ```
     RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
     ```
-
-2. Add user `ZWESVUSR` permission to read.
+2. Activate the `IDIDMAP` class:
+    ```
+    SETROPTS CLASSACT(IDIDMAP) RACLIST(IDIDMAP)
+    ```
+3. Define the `IRR.IDIDMAP.QUERY` profile in the FACILITY class.
+    ```
+    RDEFINE FACILITY IRR.IDIDMAP.QUERY
+    ```
+4. Add user `ZWESVUSR` permission to read.
     ```
     PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
 
-3. Activate changes.
+5. Activate changes.
     ```
     SETROPTS RACLIST(FACILITY) REFRESH
     ```

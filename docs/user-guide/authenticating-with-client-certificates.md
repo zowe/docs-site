@@ -4,7 +4,7 @@
 :::
 
 Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through 
-the API ML Gateway with client certificates. Client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
+the API ML Gateway with client certificates. This method of authentication requires client certification to be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
 * When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
@@ -19,26 +19,22 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 1. The client calls the service endpoint through the API ML Gateway with the client certificate.
 2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. The API for API ML can be provided by the internal API ML mapper if the mapper is enabled. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, although we recommend using the internal API ML mapper.
-4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. 
-
-:::note Notes:
-* Currently, ZSS is the default API that provides this mapping between the public part of the client certificate and SAF user ID. However, the recommended method is to use the internal API ML mapper. For information about the enabling the internal API ML mapper, see [Configure Internal API ML Mapper](./api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper) in the article _Enabling single sign on for clients via client certificate configuration_.
-* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
-:::
+3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
+4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service.
 
 When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
 
 1. The client calls the API ML Gateway login endpoint with the client certificate.
 2. The client certificate is verified to ensure this is a valid TLS client certificate against the trusted CAs of the Gateway.
-3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. The internal API ML mapper can provide this API for API ML if enabled in the zowe.yaml file. Alternatively, ZSS can provide this API for API ML, with the noted exception when using ACF2.
+3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
 4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
 
-:::note
-ZSS is currently the default API that provides this mapping between the public part of the client certificate and SAF user ID. Using the internal API ML mapper is, however, the recommended method.
+:::note Notes:
+* As of Zowe release 3.0.0, the Internal API ML Mapper is the default API that provides this mapping between the public part of the client certificate and SAF user ID. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, with the noted exception when using ACF2, although we recommend using the internal API ML mapper.
+* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
-The following diagram shows how routing works with ZSS. 
+The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping. 
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -50,21 +46,66 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
 Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
 
-  **Example command in RACF:**  
+**RACF** 
+<details>
+<summary>Click here for an example command in RACF. </summary> 
 
-  `RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST` 
+  ``` 
+  RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
+  SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+  ```
+Alternatively, if you are using the internal API ML mapper, use the following command:
 
-  **Example command in ACF2:** 
+  ```
+  RACDCERT ID(<userid>) MAP 
+  SDNFILTER('<subject's-distinguished-name-filter>')
+  WITHLABEL('<label>')
+  ```
+
+</details>
+
+**ACF2** 
+
+<details>
+<summary>Click here for an example command in ACF2. </summary>  
 
   `INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
 
-  **Example command in Top Secret:** 
+Alternatively, if you are using the internal API ML mapper, use the following command:
+
+  ```
+  CERTMAP.<recid>     
+  SDNFILTR(<subject's-distinguished-name-filter>)
+  LABEL(<label>)
+  USERID(<userid>)
+  TRUST
+  ```
+
+</details>
+
+
+**Top Secret** 
+
+<details>
+<summary>Click here for an example command in Top Secret. </summary> 
 
   `TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
 
-  Additional details are likely described in your security system documentation.
+Alternatively, if you are using the internal API ML mapper, use the following command:
+
+  ```
+  TSS ADDT0(<userid>) CERTMAP(<recid>)
+  SDNFILTR('<subject's-distinguished-name-filter>')
+  USERID(<userid>)
+  TRUST
+  ```
+</details>
+
+
+Additional details are likely described in your security system documentation.
 
 :::note Notes
+* The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID, which offers better control and protection.
 * Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
 * Ensure that the client certificate has the following `Extended Key Usage` metadata:  
 `OID: 1.3.6.1.5.5.7.3.2`  
