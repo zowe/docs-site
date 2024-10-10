@@ -1,6 +1,6 @@
 # Configuring Zowe CLI environment variables
 
-This section explains how to configure Zowe CLI using environment variables.
+Configure Zowe CLI using environment variables to define directories, log levels, daemon mode properties, and more.
 
 :::info Required roles: Security administrator, DevOps architect
 :::
@@ -13,7 +13,7 @@ For information on how to define Zowe CLI environment variables to execute comma
 
 :::
 
-## Setting the CLI home directory
+## Setting the Zowe CLI home directory
 
 You can set the location on your computer where Zowe CLI creates the `.zowe` directory, which contains log files, profiles, and plug-ins for the product.
 
@@ -23,9 +23,9 @@ You can set the location on your computer where Zowe CLI creates the `.zowe` dir
 
 ## Setting a shared plug-in directory
 
-You can set the location of a shared directory to manage plug-ins for multiple users.
+You can set the location of a shared directory to manage Zowe CLI plug-ins for multiple users.
 
-A project administrator can pre-install, and update, a plug-in stored in the shared directory to make the same version of that plug-in available to all users. This avoids managing separate copies of a plug-in across a development team.
+A project administrator can pre-install, and update, a Zowe CLI plug-in stored in the shared directory to make the same version of that plug-in available to all users. This avoids managing separate copies of a plug-in across a development team.
 
 The plug-in directory must be defined before any Zowe CLI plug-ins are installed.
 
@@ -64,3 +64,13 @@ To change the location that the daemon uses, set the environment variables that 
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
 | All | `ZOWE_DAEMON_DIR` | Lets you override the complete path to the directory that will hold daemon files related to this user. The directory can contain the following files:<ul><li>`daemon.lock`</li><li>`daemon.sock`</li><li>`daemon_pid.json`</li></ul> | Any valid path on your computer | `<your_home_dir>/.zowe/daemon` <br/><br/> Examples: <br/><br/> Windows: `%HOMEPATH%\.zowe\daemon`<br/>Linux: `$HOME/.zowe/daemon` |
 | Windows (only) | `ZOWE_DAEMON_PIPE` | Lets you override the last two segments of the name of the communication pipe between the daemon executable (.exe) and the daemon. | Any valid path on your computer | `\\.\pipe\%USERNAME%\ZoweDaemon`
+
+## Showing secure values
+
+See the secure credentials used by a command to help troubleshoot a configuration problem.
+
+Use the `--show-inputs-only` option in a Zowe CLI command to view the property values used by the command. When the `ZOWE_SHOW_SECURE_ARGS` is set to `true`, the response also includes the secure values used and defined in the user's client configuration.
+
+| Environment variable | Description | Values | Default |
+| ---------------------- | ----------- |------- | ------- |
+| `ZOWE_SHOW_SECURE_ARGS`        | Displays secure property values used by a Zowe CLI command            | `TRUE`, `FALSE` | `FALSE` |
