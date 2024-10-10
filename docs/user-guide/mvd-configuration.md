@@ -19,7 +19,7 @@ If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomai
 ## Configuration file
 
 ### app-server configuration
-
+<!-- Check the file reference here. Throwing file not found error -->
 The app-server uses the Zowe server configuration file for customizing server behavior. For a full list of parameters, requirements, and descriptions, see [the json-schema document for the app-server](https://github.com/zowe/zlux/blob/v3.x/staging/schemas/zlux-config-schema.json) which describes attributes that can be specified within the configuration file section `components.app-server`
 
 ### zss configuration
