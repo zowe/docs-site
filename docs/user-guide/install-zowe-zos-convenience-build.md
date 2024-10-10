@@ -1,4 +1,4 @@
-# Installing Zowe via a convenience build (PAX file)
+# Installing the z/OS Build via Convenience Build (PAX file)
 
 You install the Zowe&trade; convenience build by obtaining a PAX file and using this to create the Zowe runtime environment.
 
