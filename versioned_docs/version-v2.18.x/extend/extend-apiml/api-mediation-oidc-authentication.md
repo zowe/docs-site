@@ -14,7 +14,7 @@ This configuration is useful in advanced deployments of Zowe where client applic
 This article details the API ML OIDC authentication functionality, and how to configure the OIDC Authentication feature.
 
 :::note
-The OIDC feature is currently unavailable on ACF2 systems.
+There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper described in the [API ML OIDC configuration](#api-ml-oidc-configuration) section.
 :::
 
 - [Usage](#usage)
@@ -87,7 +87,9 @@ A distributed identity consists of two parts:
 - A distributed identity name
 - A trusted registry which governs that identity
 
-Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters:
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters.
+
+Ensure that all the security configuration prerequisites are met by following the steps described in [configure the main Zowe server to use distributed identity mapping](../../user-guide/configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
 
 Use the commands specific to your ESM to create a distributed identity mapping filter.
 
