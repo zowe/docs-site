@@ -1,7 +1,7 @@
 
 # Error Message Codes
 
-The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
+The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
 ## API mediation utility messages
 
@@ -1129,7 +1129,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Review the mentioned static API definition file for errors.
   Refer to the specific log message to determine the exact cause of the problem:
-
   - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId.
   - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
   - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
@@ -1489,7 +1488,6 @@ The following error message codes may appear on logs or API responses. Use the f
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
 
-
 ### ZWEAC706E
 
   Service not located, %s
@@ -1528,7 +1526,6 @@ The following error message codes may appear on logs or API responses. Use the f
   - The URI is not valid. Ensure the service is providing a valid URL.
   - Not able to select a route for the URL of the specific service. The original URL is used. If necessary, check the routing metadata of the service.
   - The path of the service URL is not valid. Ensure the service is providing the correct path.
-
 
 ### ZWEAC709E
 
