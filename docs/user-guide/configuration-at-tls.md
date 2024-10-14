@@ -7,6 +7,7 @@ Review this article for descriptions of the configuration parameters required to
 :::
 
 - [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
+  - [Limitations](#limitations)
 - [AT-TLS rules](#at-tls-rules)
   - [Inbound rules](#inbound-rules)
   - [Outbound rules](#outbound-rules)
@@ -61,10 +62,15 @@ If there is an outbound AT-TLS rule configured for the link between the API Gate
 
 Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support x.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
+
+### Limitations
+
+If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
+LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
 
 ## AT-TLS rules
 
@@ -72,15 +78,15 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-A generic inbound rule can be set for all core API Mediation Layer services:
+A generic inbound rule can be set for all core Zowe services:
 
-```pagent
-TTLSRule ApimlServerRule
+```bash
+TTLSRule ZoweServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7551-7555
-  Jobname ZWE*
+  LocalPortRange 7551-7559 # Range covers all Zowe services
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ApimlServerEnvironmentAction
@@ -114,11 +120,13 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 |----|-----------------------|
 | Gateway | default port 7554 |
 | Discovery | default port 7553 |
-|Caching Service | 7555 |
-|API Catalog | default port 7552 |
+| Caching Service | default port 7555 |
+| API Catalog | default port 7552 |
 | Metrics Service | default port 7551 |
+| Zowe System Services (ZSS) | default port 7556 |
+| Zowe Application Server | default port 7557 |
 
-**Follow this step:**
+__Follow this step:__
 
 Replace `ApimlKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
@@ -128,18 +136,18 @@ Note the setting `HandshakeRole`. This setting applies to core services which au
 
 #### For z/OSMF
 
-```pagent
+```bash
 TTLSRule ApimlZosmfClientRule
 {
   LocalAddr All
-  LocalPortRange 1024-65535
+  LocalPortRange 1024-65535 # Using any outbound port
   RemoteAddr All
-  RemotePortRange 449
-  Jobname ZWE1AG*
+  RemotePortRange 449 # Set to z/OSMF port
+  Jobname ZWE1AG* # Generate according to zowe.job.prefix in zowe.yaml
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction # No X.509 Client Certificate required
 }
 
 TTLSGroupAction ClientGroupAction
@@ -162,18 +170,18 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 
 #### For communication between API Gateway and other core services
 
-```pagent
+```bash
 TTLSRule ApimlClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7551-7555
-  Jobname ZWE1A*
+  Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Authentication is required in cross-service API ML communication
 }
 
 TTLSConnectionAction ApimlX509ClientConnAction
@@ -193,20 +201,23 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 #### For communication between API Gateway and southbound services
 
-In this example, the rule covers all outbound connections originating from the API Gateway to a given southbound service listening on port 40030. This covers routing scenarios.
+In this example, the rule covers all outbound connections originating from the API Gateway to an example southbound service listening on port 8080.
+This rule applies for Zowe services as well, such as the ZSS and app-server if they are enabled.
 
-```pagent
+This covers routing scenarios.
+
+```bash
 TTLSRule ApimlServiceClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 40030
-  Jobname ZWE1AG*
+  RemotePortRange 8080 # Set to range of ports where services are listening
+  Jobname ZWE1AG* # Generate according to zowe.job.prefix in zowe.yaml
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction # Do not send X.509 Client Certificates
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
@@ -227,7 +238,7 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 
 - The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
 
-- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
+- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
 
 :::
 
@@ -243,7 +254,7 @@ Ensure that the cipher list has matches with non-AT-TLS-aware clients.
 <details>
 <summary>Click here for an example of Cipher parameters.</summary>
 
-```pagent
+```bash
 TTLSCipherParms CipherParms
 {
   V2CipherSuites TLS_RC4_128_WITH_MD5
@@ -290,7 +301,7 @@ zowe:
 
 ## AT-TLS Troubleshooting
 
-This section describes some common issues when using AT-TLS with API ML and how to resolve these issues.
+This section describes some common issues when using AT-TLS with Zowe and how to resolve these issues.
 
 ### The message `This combination of port requires SSL` is thrown
 
@@ -322,18 +333,18 @@ The example is commented for convenience.
 
 <summary>Click here to display the full AT-TLS configuration file.</summary>
 
-```pagent
-# Main inbound rule, all API ML core services have it defined.
-TTLSRule ApimlServerRule
+```bash
+# Main inbound rule, all Zowe services have it defined.
+TTLSRule ZoweServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7554-7559
-  Jobname ZWE*
+  LocalPortRange 7554-7559 # 
+  Jobname ZWE1*
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ApimlServerEnvironmentAction
-  TTLSConnectionActionRef ApimlServerConnectionAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
 # Example southbound service inbound rule
@@ -341,12 +352,12 @@ TTLSRule ApimlDCServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 40030-40040 # Example service ports
-  Jobname ZWEDC*
+  LocalPortRange 8080-8090 # Example service ports
+  Jobname ZWE1DC* # Jobname prefix (optional)
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ApimlDCServerEnvironmentAction
-  TTLSConnectionActionRef ApimlServerConnectionAction
+  TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
 TTLSGroupAction ServerGroupAction
@@ -357,7 +368,7 @@ TTLSGroupAction ServerGroupAction
 # Environment action for API ML core services
 TTLSEnvironmentAction ApimlServerEnvironmentAction
 {
-  HandshakeRole ServerWithClientAuth
+  HandshakeRole ServerWithClientAuth # API ML Servers use Client Certificate authentication
   EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
   TTLSKeyringParmsRef ApimlKeyring
@@ -365,26 +376,25 @@ TTLSEnvironmentAction ApimlServerEnvironmentAction
 }
 
 # Environment action for sample southbound service
-TTLSEnvironmentAction ApimlDCServerEnvironmentAction
+TTLSEnvironmentAction ZoweDCServerEnvironmentAction
 {
   HandshakeRole Server
   EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ApimlKeyring
+  TTLSKeyringParmsRef ZoweKeyring
   TTLSSignatureParmsRef TNESigParms
 }
 
 # Keyring, used for TLS
-TTLSKeyringParms ApimlKeyring
+TTLSKeyringParms ZoweKeyring
 {
   Keyring ZWEKRNG
 }
 
 # Advanced TLS settings, choose TLS versions supported.
-# ClientAuthType Full to support optional x509 client cert authentication
 TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
 {
-  ClientAuthType Full
+  ClientAuthType Full # Support optional Client Certificate authentication
   ApplicationControlled Off
   Renegotiation Disabled
   SSLv2 Off
@@ -396,10 +406,9 @@ TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
 }
 
 # Server Connection Action for API ML core services.
-# Needs ServerWithClientAuth to support client certificate authentication between them.
 TTLSConnectionAction ApimlServerConnectionAction
 {
-  HandshakeRole ServerWithClientAuth
+  HandshakeRole ServerWithClientAuth # API ML Core Services use Client Certificate authentication
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ApimlConnectionAdvParms
   TTLSSignatureParmsRef TNESigParms
@@ -417,13 +426,14 @@ TTLSConnectionAdvancedParms ApimlConnectionAdvParms
 
 # Example outbound TTLS rule for a client calling API ML
 # In this scenario this client (a southbound service) presents client certificate to authenticate (for example during onboarding)
-TTLSRule ApimlClientRule
+# TODO This requires explanation
+TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7554-7559 # API ML Core services ports
-  Jobname ZWEA*
+  Jobname ZWE1*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -438,7 +448,7 @@ TTLSRule ApimlServiceClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 40030 # Service ports
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -452,7 +462,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 449
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -466,11 +476,11 @@ TTLSRule ApimlZLUXClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7556
-  Jobname ZWEAAG*
+  Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction # Southbound services should not sent a client certificate to Gateway
 }
 
 TTLSEnvironmentAction ApimlClientEnvironmentAction
@@ -510,10 +520,10 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
 {
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
+  TTLSConnectionAdvancedParmsRef ZoweClientNoX509ConnAdvParms
 }
 
-TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
+TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
 {
   SSLv3 Off
   TLSv1 Off
@@ -525,7 +535,7 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 }
 
 # In case the connection requires a client certificate authentication, this is where the label is set for outbound connections.
-TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
+TTLSConnectionAdvancedParms ZoweClientX509ConnAdvParms
 {
   SSLv3 Off
   TLSv1 Off
