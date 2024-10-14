@@ -1,7 +1,7 @@
 <!-- omit in toc -->
-# Configuring AT-TLS for API Mediation Layer
+# Configuring AT-TLS for Zowe Server
 
-Review this article for descriptions of the configuration parameters required to make Zowe API Mediation Layer work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
+Review this article for descriptions of the configuration parameters required to make Zowe work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
 
 :::info Role: security administrator
 :::
@@ -17,7 +17,7 @@ Review this article for descriptions of the configuration parameters required to
 - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
 - [Multi-tenancy deployment](#multi-tenancy-deployment)
 - [AT-TLS Troubleshooting](#at-tls-troubleshooting)
-  - [The message `This combination of port requires SSL` is thrown ](#the-message-this-combination-of-port-requires-ssl-is-thrown-)
+  - [The message `This combination of port requires SSL` is thrown](#the-message-this-combination-of-port-requires-ssl-is-thrown)
   - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
   - [Non matching ciphers](#non-matching-ciphers)
 - [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
@@ -25,7 +25,7 @@ Review this article for descriptions of the configuration parameters required to
 ## AT-TLS configuration for Zowe
 
 :::tip
-Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup was not possible in some versions of Zowe. For full support, we recommend that you upgrade to v2.13 or a later version.
+For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
 :::
 
 Follow these steps to configure Zowe to support AT-TLS:
@@ -42,22 +42,24 @@ zowe:
         # If outbound traffic rules will be configured:
         client:
           tls:
-            attls: false
+            attls: true
 ```
 
-While API ML does not handle TLS on its own with AT-TLS enabled, API ML requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
+While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
 
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
 :::note Notes
-* AT-TLS is supported in the API Cloud Gateway Mediation Layer component beginning with version 2.17.
 
-* As the Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
+- AT-TLS is supported in the API Cloud Gateway Mediation Layer component beginning with version 2.17.
+
+- As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
+
 :::
 
 :::caution Important security consideration
 
-Configuring AT-TLS for the Zowe API Mediation Layer requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
+Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
 Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support x.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
@@ -222,9 +224,11 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 ```
 
 :::important
+
 - The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.  
 
 - Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts x.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
+
 :::
 
 ### Ciphers
@@ -288,31 +292,32 @@ zowe:
 
 This section describes some common issues when using AT-TLS with API ML and how to resolve these issues.
 
-### The message `This combination of port requires SSL` is thrown <!-- verify correct message -->
+### The message `This combination of port requires SSL` is thrown
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
 
-**Solution:**  
+__Solution:__
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
 
 ### AT-TLS rules are not applied
 
 If the application is responding in http, the application may not be properly configured to support http-only calls. AT-TLS is not correctly configured.
 
-**Solution:**  
+__Solution:__
+
 Ensure the rules are active and that the filters on port range and job names are properly set.
 
 ### Non matching ciphers
 
 An error can occur if the [list of ciphers](#ciphers) does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
 
-**Solution:**  
+__Solution:__
 Review the supported TLS versions and ciphers used in both the client and the server.
 
 ## Full example of AT-TLS configuration
 
 Review a full working example of an AT-TLS configuration file on z/OS, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
-The example is commented for convenience. 
+The example is commented for convenience.
 <details>
 
 <summary>Click here to display the full AT-TLS configuration file.</summary>
@@ -598,4 +603,5 @@ TTLSCipherParms                   CipherParms
   V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA
 }
 ```
+
 </details>
