@@ -2,6 +2,13 @@
 
 You can use the Zowe&trade; Application Framework to create application plugins for the Zowe Desktop. For more information, see [Extending the Zowe Application Framework](../extend/extend-desktop/mvd-extendingzlux.md). 
 
+## Enabling Server Components for the Desktop
+
+The Zowe Desktop requires the `app-server` Component of Zowe to be enabled.
+This is set by default, but can be controlled by the Zowe YAML property `components.app-server.enabled` which should be set to `true`.
+
+When this server is running, it will print the message `ZWED0031I` when fully ready.
+
 ## Navigating the Zowe Desktop
 
 From the Zowe Desktop, you can access Zowe applications.

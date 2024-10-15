@@ -15,8 +15,6 @@ Multi-factor authentication is provided by third-party products with which Zowe 
 
 To support the multi-factor authentication, it is necessary to apply z/OSMF APAR [PH39582](https://www.ibm.com/support/pages/apar/PH39582). 
 
-For information about using MFA in Zowe Application Framework, see [Application Framework Multi-Factor Authentication](mvd-configuration.md#multi-factor-authentication-configuration).
-
 
 :::important
 Multi-factor authentication requires configuration with Single-Sign-On (SSO). Ensure that SSO is configured before you use MFA in Zowe.
