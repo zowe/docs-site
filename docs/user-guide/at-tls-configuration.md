@@ -250,6 +250,7 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
 TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 {
   ApplicationControlled Off
+  CertificateLabel # Leave empty to avoid sending a client certificate (i.e. if the keyring has a default certificate)
   SecondaryMap Off
 }
 ```
@@ -357,7 +358,7 @@ TTLSRule ZoweServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7554-7559 # 
+  LocalPortRange 7554-7559 # Range covers all possible Zowe services
   Jobname ZWE1*
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -383,13 +384,13 @@ TTLSGroupAction ServerGroupAction
   TTLSEnabled On
 }
 
-# Environment action for API ML core services
-TTLSEnvironmentAction ApimlServerEnvironmentAction
+# Environment action for all Zowe service
+TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
-  HandshakeRole ServerWithClientAuth # API ML Servers use Client Certificate authentication
+  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support Client Certificate authentication
   EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ApimlKeyring
+  TTLSKeyringParmsRef ZoweKeyring
   TTLSSignatureParmsRef TNESigParms
 }
 
@@ -403,7 +404,7 @@ TTLSEnvironmentAction ZoweDCServerEnvironmentAction
   TTLSSignatureParmsRef TNESigParms
 }
 
-# Keyring, used for TLS
+# Keyring, used for TLS, will be used also to load trusted certificates
 TTLSKeyringParms ZoweKeyring
 {
   Keyring ZWEKRNG
@@ -424,17 +425,17 @@ TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
 }
 
 # Server Connection Action for API ML core services.
-TTLSConnectionAction ApimlServerConnectionAction
+TTLSConnectionAction ZoweServerConnectionAction
 {
   HandshakeRole ServerWithClientAuth # API ML Core Services use Client Certificate authentication
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlConnectionAdvParms
+  TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
   TTLSSignatureParmsRef TNESigParms
 }
 
 # API ML Server connection action.
 # Certificate label indicates which certificate is used in the client certificate authentication process between core services.
-TTLSConnectionAdvancedParms ApimlConnectionAdvParms
+TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 {
   ApplicationControlled Off
   ServerCertificateLabel apimlcert
@@ -541,19 +542,20 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
 }
 
 # ConnectionAdvanced parameters for connections not requiring x.509 Client Certificate authentication
+# If the set Keyring has a default certificate this will not prevent sending it
 TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
 {
   SSLv3 Off
   TLSv1 Off
   TLSv1.1 Off
   ApplicationControlled Off
+  CertificateLabel # Keep the Label empty to ensure a default certificate will not be picked from the keyring
   SecondaryMap Off
   TLSv1.2 On
   TLSv1.3 Off
 }
 
 # In case the connection requires a client certificate authentication, this is where the label is set for outbound connections.
-# Note: A missing label TODO
 TTLSConnectionAdvancedParms ZoweClientX509ConnAdvParms
 {
   SSLv3 Off
