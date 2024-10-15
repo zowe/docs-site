@@ -13,18 +13,26 @@ Follow these steps to register with additional Discovery Services:
    components.gateway.apiml.service.additionalRegistration: 
        <!-- central APIML -->
        - discoveryServiceUrls: https://sys1:10011/eureka/,https://sys1:10021/eureka/ 
-                    routes:
-                            gatewayUrl: /
-                            serviceUrl: /
-     <!-- APIML on System 2 -->
+         routes:
+              - gatewayUrl: /
+                serviceUrl: /
+       <!-- APIML on System 2 -->
        - discoveryServiceUrls: https://sys2:10011/eureka/,https://sys2:10021/eureka/
-                    routes:
-                            gatewayUrl: /
-                            serviceUrl: /
-      <!-- APIML on System 3 -->
+         routes:
+              - gatewayUrl: /
+                serviceUrl: /
+       <!-- APIML on System 3 -->
        - discoveryServiceUrls: https://sys3:10011/eureka/,https://sys3:10021/eureka/ 
-                    routes:
-                            gatewayUrl: /
-                            serviceUrl: /
+         routes:
+              - gatewayUrl: /
+                serviceUrl: /
     ```
+
+   :::note
+     The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
+     
+     Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
+     system, do not use DVIPA address. It could lead to unexpected behaviour.
+   :::
+
 3. Restart Zowe.

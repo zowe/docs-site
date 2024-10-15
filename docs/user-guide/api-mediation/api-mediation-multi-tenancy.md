@@ -67,11 +67,20 @@ Use the following example as a template for how to set the value for this proper
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
+ 	     routes:
               - gatewayUrl: /
                 serviceUrl: /
 ```
+
+:::note 
+  The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
+
+  Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
+  system, do not use DVIPA address. It could lead to unexpected behaviour.
+
+  Hostname `sys1` and `sys2` are names of LPAR in the sysplex.
+:::
 
 ```
 components.gateway.apiml.security.x509:
@@ -119,11 +128,20 @@ Use the following example as a template for how to set the value of this propert
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
+ 	     routes:
               - gatewayUrl: /
                 serviceUrl: /
 ```
+
+:::note
+  The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
+  
+  Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
+  system, do not use DVIPA address. It could lead to unexpected behaviour.
+  
+  Hostnames `sys1` and `sys2` are names of LPAR in the sysplex.
+:::
 
 #### Dynamic configuration: Environment variables
 
@@ -136,6 +154,14 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
+
+:::note
+  Value `#` in the properties name `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*` defines ID of APIML instance.
+  For HA is necessary to provide all address of Discovery service instances. Always provide the direct address to the
+  system, do not use DVIPA address. It could lead to unexpected behaviour.
+
+  Hostnames `sys1` and `sys2` are names of LPAR in the sysplex.
+:::
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
 
