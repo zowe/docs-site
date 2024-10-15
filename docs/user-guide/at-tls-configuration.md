@@ -124,8 +124,8 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 | Caching Service | default port 7555 |
 | API Catalog | default port 7552 |
 | Metrics Service | default port 7551 |
-| Zowe System Services (ZSS) | default port 7556 |
-| Zowe Application Server | default port 7557 |
+| Zowe System Services (ZSS) | default port 7557 |
+| Zowe Application Server | default port 7556 |
 
 __Follow this step:__
 
