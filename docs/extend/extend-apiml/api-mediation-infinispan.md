@@ -47,7 +47,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
 
-  (OPTIONAL)The default value is `7600`. The port number used by Infinispan to synchronise data among cahing-service instances.
+  (OPTIONAL)The default value is `7098`. The port number used by Infinispan to synchronise data among cahing-service instances.
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.host`**
 
@@ -56,7 +56,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
 
 * **`zowe.components.caching-service.storage.infinispan.keyExchange.port`**
 
-  (OPTIONAL)The default value is `7601`. The port number used by Infinispan to exchange encryption key among cahing-service instances.
+  (OPTIONAL)The default value is `7118`. The port number used by Infinispan to exchange encryption key among cahing-service instances.
 
 
   **Example of Caching service HA configuration using Infinispan:**
@@ -70,12 +70,12 @@ Configure Infinispan as a storage solution through the Caching service by settin
           storage:
             mode: infinispan
             infinispan: 
-              initialHosts: lpar2[7099]
+              initialHosts: lpar2[7098]
               jgroups:
                 port: 7098
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data01
-                indexLocation: global/zowe/workspace/caching-service/index01
+                indexLocation: /global/zowe/workspace/caching-service/index01
     lpar2:
       components:
         caching-service:
@@ -84,8 +84,8 @@ Configure Infinispan as a storage solution through the Caching service by settin
             infinispan: 
               initialHosts: lpar1[7098]
               jgroups:
-                port: 7099
+                port: 7098
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data02
-                indexLocation: global/zowe/workspace/caching-service/index02
+                indexLocation: /global/zowe/workspace/caching-service/index02
   ```
