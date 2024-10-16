@@ -74,10 +74,10 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 
 :::note 
-  The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
+  Ensure that the value of `discoveryServiceUrls` contains all instances of Discovery services for a specific API ML instance.
 
-  Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
-  system, do not use DVIPA address. It could lead to unexpected behaviour.
+  Do not provide multiple API ML instances in one `discoveryServiceUrls`. Always provide the direct address to the
+  system, and not the DVIPA address. Using the DVIPA address could result in unexpected behaviour.
 
   Hostname `sys1` and `sys2` are names of LPAR in the sysplex.
 :::
