@@ -74,10 +74,11 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 
 :::note 
-  Ensure that the value of `discoveryServiceUrls` contains all instances of Discovery services for a specific API ML instance.
+  Each API ML instance should be defined in a separated record. Do not mix different API ML instance in one record. 
+  The value `discoveryServiceUrls` could contain multiple URLs in case of HA setup. We highly recommend to provide all
+  available Discovery URLs in there.
 
-  Do not provide multiple API ML instances in one `discoveryServiceUrls`. Always provide the direct address to the
-  system, and not the DVIPA address. Using the DVIPA address could result in unexpected behaviour.
+  Always provide the direct address to the system, do not use DVIPA address. It could lead to unexpected behaviour.
 
   Hostname `sys1` and `sys2` are names of LPAR in the sysplex.
 :::
@@ -135,10 +136,11 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 
 :::note
-  The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
-  
-  Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
-  system, do not use DVIPA address. It could lead to unexpected behaviour.
+  Each API ML instance should be defined in a separated record. Do not mix different API ML instance in one record.
+  The value `discoveryServiceUrls` could contain multiple URLs in case of HA setup. We highly recommend to provide all
+  available Discovery URLs in there.
+
+  Always provide the direct address to the system, do not use DVIPA address. It could lead to unexpected behaviour.
   
   Hostnames `sys1` and `sys2` are names of LPAR in the sysplex.
 :::
@@ -156,9 +158,14 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
 :::note
-  Value `#` in the properties name `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*` defines ID of APIML instance.
-  For HA is necessary to provide all address of Discovery service instances. Always provide the direct address to the
-  system, do not use DVIPA address. It could lead to unexpected behaviour.
+  The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
+  defines ID of API ML instance.
+
+  Each API ML instance should be defined in a separated record. Do not mix different API ML instance in one record.
+  The value `discoveryServiceUrls` could contain multiple URLs in case of HA setup. We highly recommend to provide all
+  available Discovery URLs in there.
+
+  Always provide the direct address to the system, do not use DVIPA address. It could lead to unexpected behaviour.
 
   Hostnames `sys1` and `sys2` are names of LPAR in the sysplex.
 :::

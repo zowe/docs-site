@@ -29,10 +29,11 @@ Follow these steps to register with additional Discovery Services:
     ```
 
    :::note
-     The value `discoveryServiceUrls` should contain all instances of Discovery services for a specific API ML instance.
-     
-     Do not provide multiple API ML instance in one `discoveryServiceUrls`. Always provide the direct address to the
-     system, do not use DVIPA address. It could lead to unexpected behaviour.
+     Each API ML instance should be defined in a separated record. Do not mix different API ML instance in one record.
+     The value `discoveryServiceUrls` could contain multiple URLs in case of HA setup. We highly recommend to provide 
+     all available Discovery URLs in there.
+
+     Always provide the direct address to the system, do not use DVIPA address. It could lead to unexpected behaviour.
    :::
 
 3. Restart Zowe.
