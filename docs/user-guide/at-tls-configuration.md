@@ -18,16 +18,17 @@ Review this article for descriptions of the configuration parameters required to
 - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
 - [Multi-tenancy deployment](#multi-tenancy-deployment)
 - [AT-TLS Troubleshooting](#at-tls-troubleshooting)
-  - [The message `This combination of port requires SSL` is thrown](#the-message-this-combination-of-port-requires-ssl-is-thrown)
+  - [The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser](#the-message-this-combination-of-port-requires-ssl-is-thrown-when-accesing-an-api-ml-service-through-a-browser)
   - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
-  - [Non matching ciphers](#non-matching-ciphers)
+  - [Non matching ciphers / protocols](#non-matching-ciphers--protocols)
+  - [Additional troubleshooting](#additional-troubleshooting)
 - [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
 - [See also](#see-also)
 
 ## AT-TLS configuration for Zowe
 
 :::tip
-For full support, we recommend that you upgrade to v2.13 or a later version of Zowe.
+For full support, we recommend that you upgrade to v2.17 or a later version of Zowe.
 :::
 
 Follow these steps to configure Zowe to support AT-TLS:
@@ -53,7 +54,8 @@ If there is an outbound AT-TLS rule configured for the link between the API Gate
 
 :::note Notes
 
-- AT-TLS is supported in the API Cloud Gateway Mediation Layer component beginning with version 2.17.
+- AT-TLS is supported in the API Cloud Gateway Mediation Layer component (SCGW) beginning with version 2.17.
+  - Support is partial. X.509 Client Certificates are not supported, if the AT-TLS rule is not in effect, the SCGW will allow unsecured connections.
 
 - As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
 
@@ -140,7 +142,19 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 Careful consideration needs to be set especially regarding which rules will be configured to send a Client Certificate. Since this cannot be configured on a per-request basis.
-I.E. Do not configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. This will result in unintentionally authenticating the server ACID.
+I.E. __Do not__ configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. This will result in unintentionally authenticating the server ACID.
+
+__For example:__
+
+```yaml
+TTLSConnectionAction ClientConnectionAction  
+{  
+  HandshakeRole Client  
+  TTLSCipherParmsRef CipherParms  
+  TTLSConnectionAdvancedParmsRef ConnectionAdvancedParms  
+  CertificateLabel  
+}
+```
 
 #### For z/OSMF
 
@@ -261,6 +275,21 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 
 :::
 
+#### Services that validate tokens against the API Mediation Layer
+
+In this scenario, the services will issue a request against the API Gateway to validate the received authentication token.
+
+This includes services that set `zoweJwt` as authentication scheme, those that require an Open ID Connect (OIDC) token or forwarded X.509 certificates.
+
+In this case it's necessary to have an Outbound rule from the service to the API Gateway.
+
+These service will also already have an outbound rule set for the onboarding process against the Discovery Service.
+
+Ensure these rules are followed:
+
+- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding.
+- Outbound rule to API Gateway: __Do not__ set a Client Certificate.
+
 ### Ciphers
 
 :::note
@@ -322,9 +351,9 @@ zowe:
 
 This section describes some common issues when using AT-TLS with Zowe and how to resolve these issues.
 
-### The message `This combination of port requires SSL` is thrown
+### The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser
 
-Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on port 80 to the API Gateway, however the latter is still only listening on the secure port 443.
+Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on a application-controlled secured port.
 
 __Solution:__
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
@@ -337,12 +366,18 @@ __Solution:__
 
 Ensure the rules are active and that the filters on port range and job names are properly set.
 
-### Non matching ciphers
+### Non matching ciphers / protocols
 
-An error can occur if the [list of ciphers](#ciphers) does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
+An error can occur if the [list of ciphers](#ciphers) or the TLS protocol does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
 
 __Solution:__
 Review the supported TLS versions and ciphers used in both the client and the server.
+
+### Additional troubleshooting
+
+When asking for support make sure to follow IBM guides for troubleshooting AT-TLS problems. This is covered in the "Diagnosing Application Transparent Transport Layer Security (AT-TLS)" article on IBM documentation.
+
+Ensure you collect the logs and current configurations when contacting support.
 
 ## Full example of AT-TLS configuration
 
