@@ -62,7 +62,6 @@ Configure Infinispan as a storage solution through the Caching service by settin
   **Example of Caching service HA configuration using Infinispan:**
 
   ```yaml
-  zowe
   haInstances:
     lpar1:
       components:
@@ -71,8 +70,6 @@ Configure Infinispan as a storage solution through the Caching service by settin
             mode: infinispan
             infinispan: 
               initialHosts: lpar2[7098]
-              jgroups:
-                port: 7098
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data01
                 indexLocation: /global/zowe/workspace/caching-service/index01
@@ -83,8 +80,6 @@ Configure Infinispan as a storage solution through the Caching service by settin
             mode: infinispan
             infinispan: 
               initialHosts: lpar1[7098]
-              jgroups:
-                port: 7098
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data02
                 indexLocation: /global/zowe/workspace/caching-service/index02
