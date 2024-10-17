@@ -73,8 +73,10 @@ components.gateway.apiml.service.additionalRegistration:
                 serviceUrl: /
 ```
 
-:::note 
-  Ensure that each API ML instance is defined in a separate record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
   Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
@@ -133,8 +135,10 @@ components.gateway.apiml.service.additionalRegistration:
                 serviceUrl: /
 ```
 
-:::note 
-  Ensure that each API ML instance is defined in a separate record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
   Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
@@ -157,13 +161,13 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
   The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
   defines ID of API ML instance.
 
-  Each API ML instance should be defined in a separated record. Do not mix different API ML instance in one record.
-  The value `discoveryServiceUrls` could contain multiple URLs in case of HA setup. We highly recommend to provide all
-  available Discovery URLs in there.
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-  Always provide the direct address to the system, do not use DVIPA address. It could lead to unexpected behaviour.
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
-  Hostnames `sys1` and `sys2` are names of LPAR in the sysplex.
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
