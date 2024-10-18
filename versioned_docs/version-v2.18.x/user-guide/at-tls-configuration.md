@@ -14,6 +14,7 @@ Review this article for descriptions of the configuration parameters required to
     - [For z/OSMF](#for-zosmf)
     - [For communication between API Gateway and other core services](#for-communication-between-api-gateway-and-other-core-services)
     - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
+    - [Services that validate tokens against the API Mediation Layer](#services-that-validate-tokens-against-the-api-mediation-layer)
   - [Ciphers](#ciphers)
 - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
 - [Multi-tenancy deployment](#multi-tenancy-deployment)
@@ -74,6 +75,7 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 
 If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
 LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
+Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
 
 ## AT-TLS rules
 
@@ -119,15 +121,15 @@ TTLSConnectionAction ZoweServerConnectionAction
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-| Component | Port |
+| Component | Default Port |
 |----|-----------------------|
-| Gateway | default port 7554 |
-| Discovery | default port 7553 |
-| Caching Service | default port 7555 |
-| API Catalog | default port 7552 |
-| Metrics Service | default port 7551 |
-| Zowe System Services (ZSS) | default port 7557 |
-| Zowe Application Server | default port 7556 |
+| Gateway | 7554 |
+| Discovery | 7553 |
+| Caching Service | 7555 |
+| API Catalog | 7552 |
+| Metrics Service | 7551 |
+| Zowe System Services (ZSS) | 7557 |
+| Zowe Application Server | 7556 |
 
 __Follow this step:__
 
