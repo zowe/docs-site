@@ -299,7 +299,7 @@ This list of ciphers is provided as an example only. Actual ciphers should be cu
 :::
 
 The list of supported ciphers should be constructed according to the TLS supported versions.
-Ensure that the cipher list has matches with non-AT-TLS-aware clients.
+Ensure that the cipher list has matches with non-AT-TLS clients.
 
 <details>
 <summary>Click here for an example of Cipher parameters.</summary>
