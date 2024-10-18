@@ -335,6 +335,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 - Discovery Service to Discovery Service. This is the replica request.
 - Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
 - Southbound services to Discovery Service. This applies during onboarding.
+- All outbound connections need to account for all LPARs including the same where the rules are applied.
 
 ## Multi-tenancy deployment
 
