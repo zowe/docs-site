@@ -39,21 +39,11 @@ Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running eith
 
 ## Multitenancy component enablement settings
 
-In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. As such, different setups are required for the V2 version of the API ML on the central domain and on the specific customer environments. 
-
-When using a multitenancy environment, ensure that the following Zowe components are either enabled or disabled:
-
-- **Domain API ML**
-  - Gateway and Discovery Service: **enabled**
-  - Cloud Gateway: **disabled**
-
-- **Central API ML**
-  - Cloud Gateway and Discovery Service: **enabled**
-  - Gateway: **disabled**
+In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. 
 
 ## Onboarding Domain Gateways to the Central Gateway
 
-The Central Cloud Gateway must onboard all Domain Gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of specific services (e.g. domain gateways).  
+The Central Gateway must onboard all Domain Gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of specific services (e.g. domain gateways).  
 
 ### Dynamic Onboarding (recommended) for Domain Gateways
 
@@ -86,7 +76,7 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 components.gateway.apiml.security.x509:
     #  cloud gateway port 
-        certificatesUrl: https://sys1:{cloudGatewayPort}/gateway/certificates
+    certificatesUrl: https://sys1:{centralGatewayPort}/gateway/certificates
 ```
 
 :::note
@@ -110,7 +100,7 @@ For static onboarding, use the [Gateway static definition example (deprecated)](
 
 ## Onboarding a Domain Gateway service to the Central Discovery service
 
-The Central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+The Central Gateway can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
@@ -119,7 +109,7 @@ The Central Cloud Gateway can onboard Cloud Gateways of all domains. This servic
 
 #### Dynamic configuration: YML
 
-Users must set the following property for the Domain Cloud Gateway to dynamically onboard to the Central Discovery service.
+Users must set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
 
 `components.gateway.apiml.service.additionalRegistration`
 
@@ -128,7 +118,7 @@ Use the following example as a template for how to set the value of this propert
 **Example:**
 ```
 components.gateway.apiml.service.additionalRegistration:
-    # central API ML (in HA, for non-HA mode use only 1 hostname)
+       # central API ML (in HA, for non-HA mode use only 1 hostname)
        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
  	     routes:
               - gatewayUrl: /
@@ -174,7 +164,7 @@ This Zowe configuration transforms the zowe.yaml configuration file into the env
 
 ### Validating successful configuration
 
-The corresponding Cloud Gateway service should appear in the Eureka console of the Central Discovery service. 
+The corresponding Gateway service should appear in the Eureka console of the Central Discovery service. 
 
 To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
 
@@ -338,7 +328,7 @@ You completed certificates setup for multitenancy configuration, whereby Domain 
 
 ## Using the `/registry` endpoint in the Central Gateway
 
-The `/registry` endpoint provides information about services onboarded to all Domain Gateways and the Central Cloud Gateway. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
+The `/registry` endpoint provides information about services onboarded to all Domain Gateways (all domains and the central one). This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
 ### Configuration for `/registry`
 
@@ -348,7 +338,7 @@ The `/registry` endpoint is disabled by default. Use the following environment v
 
 ### Authentication for `/registry`
 
-The `/registry` endpoint is authenticated by the client certificate. The Central Cloud Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
+The `/registry` endpoint is authenticated by the client certificate. The Central Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
 
 Unsuccessful authentication returns a 401 error code.
 
@@ -387,12 +377,12 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-                  "zos.sysname": "sys1",
-		  "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys1",
+		            "zos.sysplex": "sysplex"
                 },
                 "apiId": [
-        "zowe.apiml.gateway"
-],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             }
         ]
@@ -402,26 +392,28 @@ This request lists services in the apimlId domain.
         "services": [
             {
                 "status": "UP",
-                    "customMetadata": {
-                 "zos.sysname": "sys2",
-		 "zos.sysplex": "sysplex"
-				        },
+                "customMetadata": {
+                    "zos.sysname": "sys2",
+		            "zos.sysplex": "sysplex"
+				},
                 "apiId": [
-        "zowe.apiml.gateway"
-],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             },
             {
-             "status": "UP",
+                "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
- 		 "zos.sysplex": "sysplex"},
+                    "zos.sysname": "sys2",
+ 		            "zos.sysplex": "sysplex"
+ 		        },
                 "apiId": [
-        "zowe.apiml.catalog"
-          ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
@@ -441,26 +433,27 @@ Should contain information about all services in a specific domain
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
-	 	 "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+	 	            "zos.sysplex": "sysplex"
 				},
                 "apiId": [
-        "zowe.apiml.gateway"
-  ],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             },
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
-		 "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+		            "zos.sysplex": "sysplex"
 				},
                 "apiId": [
-        "zowe.apiml.catalog"
-  ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
@@ -480,15 +473,16 @@ Should contain information about a specific service in a specific domain
             {
                 "status": "UP",
                 "customMetadata": {
-                "zos.sysname": "sys2",
-		"zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+		             "zos.sysplex": "sysplex"
                 },
                 "apiId": [
-        "zowe.apiml.catalog"
-    ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
@@ -526,7 +520,7 @@ services:
            serviceRelativeUrl: /
          - gatewayUrl: ws/v1
            serviceRelativeUrl: /ws
-       # List of APIs provided by the service (currently only one is supported):
+     # List of APIs provided by the service (currently only one is supported):
      apiInfo:
          - apiId: zowe.apiml.gateway
            gatewayUrl: api/v1
@@ -553,7 +547,7 @@ services:
            serviceRelativeUrl: /
          - gatewayUrl: ws/v1
            serviceRelativeUrl: /ws
-         # List of APIs provided by the service (currently only one is supported):
+     # List of APIs provided by the service (currently only one is supported):
      apiInfo:
          - apiId: zowe.apiml.gateway
            gatewayUrl: api/v1
@@ -578,7 +572,7 @@ catalogUiTiles:
 Cannot receive information about services on API Gateway with apimlId 'apiml1' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
 
 **Reason**  
-The trust between the domain and the Cloud Gateway was not established. 
+The trust between the domain and the central Gateway was not established. 
 
 **Action**  
 Review your certificate configuration.
