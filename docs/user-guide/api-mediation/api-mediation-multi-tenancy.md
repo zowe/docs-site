@@ -67,11 +67,21 @@ Use the following example as a template for how to set the value for this proper
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
+ 	     routes:
               - gatewayUrl: /
                 serviceUrl: /
 ```
+
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
 
 ```
 components.gateway.apiml.security.x509:
@@ -119,11 +129,21 @@ Use the following example as a template for how to set the value of this propert
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
+ 	     routes:
               - gatewayUrl: /
                 serviceUrl: /
 ```
+
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
 
 #### Dynamic configuration: Environment variables
 
@@ -136,6 +156,19 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
+
+:::note
+  The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
+  defines ID of API ML instance.
+
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
 
