@@ -4,24 +4,26 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 * [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
 * [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-* [Onboarding Domain Gateways to the central Gateway](#onboarding-domain-gateways-to-the-central-gateway)
+* [Onboarding Domain Gateways to the Central Gateway](#onboarding-domain-gateways-to-the-central-gateway)
   * [Dynamic Onboarding (recommended) for Domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
   * [Static Onboarding for Domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
-* [Onboarding a Domain Gateway service to Central Discovery service](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
-    * [Dynamic Configurations to the Central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
-        * [Dynamic configuration: YML](#dynamic-configuration-yml)
-        * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
-    * [Validating successful configuration](#validating-successful-configuration)
+* [Onboarding a Domain Gateway service to the Central Discovery service](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
+  * [Dynamic Configurations to the Central Discovery service](#dynamic-configurations-to-the-central-discovery-service)
+    * [Dynamic configuration: YML](#dynamic-configuration-yml)
+    * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
+  * [Validating successful configuration](#validating-successful-configuration)
 * [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
   * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
-* [Using the `/registry` endpoint in Cloud Gateway](#using-the-registry-endpoint-in-the-central-gateway)
+* [Using the `/registry` endpoint in the Central Gateway](#using-the-registry-endpoint-in-the-central-gateway)
   * [Configuration for `/registry`](#configuration-for-registry)
   * [Authentication for `/registry`](#authentication-for-registry)
-  * [Authorization for `/registry`](#authorization-with-registry)
+  * [Authorization with `/registry`](#authorization-with-registry)
   * [Requests with `/registry`](#requests-with-registry)
   * [Response with `/registry`](#response-with-registry)
-* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry) 
-* [Gateway static definition example](#gateway-static-definition-example-deprecated)
+  * [Response with `/registry{apimlId}`](#response-with-registryapimlid)
+  * [Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`](#response-with-get-gatewayapiv1registryapimlidapiidapiidserviceidserviceid)
+* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
+* [Gateway static definition example (deprecated)](#gateway-static-definition-example-deprecated)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
@@ -75,7 +77,7 @@ components.gateway.apiml.service.additionalRegistration:
 
 ```
 components.gateway.apiml.security.x509:
-    #  cloud gateway port 
+    # central gateway port 
     certificatesUrl: https://sys1:{centralGatewayPort}/gateway/certificates
 ```
 
@@ -332,9 +334,8 @@ The `/registry` endpoint provides information about services onboarded to all Do
 
 ### Configuration for `/registry`
 
-The `/registry` endpoint is disabled by default. Use the following environment variable to enable this feature:
-
-`APIML_CLOUDGATEWAY_REGISTRY_ENABLED=TRUE`
+The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
+environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
 
 ### Authentication for `/registry`
 
