@@ -1,7 +1,7 @@
 <!-- omit in toc -->
 # Configuring AT-TLS for Zowe Server
 
-Review this article for descriptions of the configuration parameters required to make Zowe work with AT-TLS, including AT-TLS inbound and outbound rules, using AT-TLS in high availability, and troubleshooting. Security recommendations are also provided.
+You can configure parameters in the Zowe server to enable Zowe work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 :::info Role: security administrator
 :::
@@ -24,7 +24,7 @@ Review this article for descriptions of the configuration parameters required to
   - [Non matching ciphers / protocols](#non-matching-ciphers--protocols)
   - [Additional troubleshooting](#additional-troubleshooting)
 - [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
-- [See also](#see-also)
+- [Additional Zowe feature configuration with AT-TLS](#additional-zowe-feature-configuration-with-at-tls)
 
 ## AT-TLS configuration for Zowe
 
@@ -34,7 +34,9 @@ For full support, we recommend that you upgrade to v2.17 or a later version of Z
 
 Follow these steps to configure Zowe to support AT-TLS:
 
-These instructions are valid for Zowe 2.18 onwards:
+:::note
+These instructions are valid for Zowe v2.18 and later versions of Zowe.
+:::
 
 ```yaml
 zowe:
@@ -49,7 +51,7 @@ zowe:
             attls: true
 ```
 
-While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. Ideally, AT-TLS should be configured with the same Zowe keyring.
+While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
 
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
@@ -66,7 +68,7 @@ If there is an outbound AT-TLS rule configured for the link between the API Gate
 
 Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
+Outbound AT-TLS rules (i.e. to make a transparent https calls through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
@@ -74,7 +76,7 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 ### Limitations
 
 If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
+A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
 Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
 
 ## AT-TLS rules
@@ -131,7 +133,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 | Zowe System Services (ZSS) | 7557 |
 | Zowe Application Server | 7556 |
 
-__Follow this step:__
+**Follow this step:**
 
 Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
@@ -143,10 +145,12 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
-Careful consideration needs to be set especially regarding which rules will be configured to send a Client Certificate. Since this cannot be configured on a per-request basis.
-I.E. __Do not__ configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. This will result in unintentionally authenticating the server ACID.
+:::caution Important:
+Careful consideration needs to be set especially regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID.
 
-__For example:__
+:::
+
+**Example:**
 
 ```yaml
 TTLSConnectionAction ClientConnectionAction  
@@ -162,7 +166,7 @@ TTLSConnectionAction ClientConnectionAction
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
-Remember to set `zowe.zOSMF.scheme` to `http` in zowe.yaml if this rule is set.
+Ensure that you set `zowe.zOSMF.scheme` to `http` in zowe.yaml if this rule is set.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -200,9 +204,9 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 
 Use the example in this section as a template for internal connections between API Mediation Layer core services.
 
-:::important
+:::caution Important
 
-- The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included (but keep the `CertificateLabel` field) to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.
+The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included (but keep the `CertificateLabel` field) to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.
 
 :::
 
@@ -271,9 +275,9 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 }
 ```
 
-:::important
+:::caution Important
 
-- Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
+Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
 
 :::
 
@@ -281,9 +285,9 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 
 In this scenario, the services will issue a request against the API Gateway to validate the received authentication token.
 
-This includes services that set `zoweJwt` as authentication scheme, those that require an Open ID Connect (OIDC) token or forwarded X.509 certificates.
+This scenario includes services that set `zoweJwt` as authentication scheme, those that require an Open ID Connect (OIDC) token, or forwarded X.509 certificates.
 
-In this case it's necessary to have an Outbound rule from the service to the API Gateway.
+In this case it is necessary to have an Outbound rule from the service to the API Gateway.
 
 These service will also already have an outbound rule set for the onboarding process against the Discovery Service.
 
@@ -339,7 +343,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 ## Multi-tenancy deployment
 
-For specific scenario when Central API ML is running on z/OS with AT-TLS enabled, it is important to override the protocol for the external URL. This information is used by the Central API ML to call domain API ML and it needs to reflect outbound AT-TLS rule. In this case, update your domain API ML configuration as follows:
+For a specific scenario when Central API ML is running on z/OS with AT-TLS enabled, it is important to override the protocol for the external URL. This information is used by the Central API ML to call domain API ML and needs to reflect the outbound AT-TLS rule. In this case, update your domain API ML configuration:
 
 ```yaml
 zowe:
@@ -358,14 +362,14 @@ This section describes some common issues when using AT-TLS with Zowe and how to
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on a application-controlled secured port.
 
-__Solution:__
+**Solution:**
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
 
 ### AT-TLS rules are not applied
 
 If the application is responding in http, the application may not be properly configured to support http-only calls. AT-TLS is not correctly configured.
 
-__Solution:__
+**Solution:**
 
 Ensure the rules are active and that the filters on port range and job names are properly set.
 
@@ -373,7 +377,7 @@ Ensure the rules are active and that the filters on port range and job names are
 
 An error can occur if the [list of ciphers](#ciphers) or the TLS protocol does not match between the ones configured in the AT-TLS rules and the ones used by non AT-TLS-aware clients.
 
-__Solution:__
+**Solution:**
 Review the supported TLS versions and ciphers used in both the client and the server.
 
 ### Additional troubleshooting
@@ -675,6 +679,6 @@ TTLSCipherParms                   CipherParms
 
 </details>
 
-## See also
+## Additional Zowe feature configuration with AT-TLS 
 
-- [Using AT-TLS in the App Framework](../user-guide/mvd-configuration#using-at-tls-in-the-app-framework)
+The Zowe Application Framework also leverages AT-TLS. For more information, see [Using AT-TLS in the App Framework](../user-guide/mvd-configuration#using-at-tls-in-the-app-framework).
