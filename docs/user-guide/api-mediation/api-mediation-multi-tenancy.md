@@ -78,7 +78,7 @@ components.gateway.apiml.service.additionalRegistration:
 ```
 components.gateway.apiml.security.x509:
     # central gateway port 
-    certificatesUrl: https://sys1:{centralGatewayPort}/gateway/certificates
+    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
 ```
 
 :::note
@@ -102,7 +102,7 @@ For static onboarding, use the [Gateway static definition example (deprecated)](
 
 ## Onboarding a Domain Gateway service to the Central Discovery service
 
-The Central Gateway can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
