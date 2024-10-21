@@ -139,7 +139,7 @@ Replace `ZoweKeyring` with the keyring configured for your installation. Follow 
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rest.
+For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the ones that do not (for example a rule covering API Gateway to an onboarded service).
 
 ### Outbound rules
 
@@ -679,6 +679,6 @@ TTLSCipherParms                   CipherParms
 
 </details>
 
-## Additional Zowe feature configuration with AT-TLS 
+## Additional Zowe feature configuration with AT-TLS
 
 The Zowe Application Framework also leverages AT-TLS. For more information, see [Using AT-TLS in the App Framework](../user-guide/mvd-configuration#using-at-tls-in-the-app-framework).
