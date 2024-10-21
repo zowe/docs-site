@@ -84,3 +84,16 @@ curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer
 ```
 Your Zowe instance is configured to accept x.509 client certificates authentication.
 
+**Java sample application**
+
+You can find a [Java sample application](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/src/main/java/org/zowe/apiml/Main.java) in the Zowe API Layer repository that can help you quickly get started with client certificate authentication. 
+
+To begin, replace the following placeholder values in the sample application with your actual configuration:
+
+```text
+  API_URL - URL that points to your API ML instance
+  CLIENT_CERT_PATH - PKCS12 keystore that contains your client certificate
+  CLIENT_CERT_PASSWORD - keystore password 
+  CLIENT_CERT_ALIAS - client certificate alias 
+  PRIVATE_KEY_ALIAS - client certificate private key alias - usualy is the same value
+```
