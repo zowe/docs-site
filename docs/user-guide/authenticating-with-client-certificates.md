@@ -86,7 +86,7 @@ Your Zowe instance is configured to accept x.509 client certificates authenticat
 
 **Java sample application**
 
-**Note:** This code sample requires JDK 17 or later.
+**Note:** This code sample requires JDK 17 or newer.
 
 You can find a [Java sample application](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/src/main/java/org/zowe/apiml/Main.java) in the Zowe API Layer repository. This sample can help you get started with client certificate authentication. 
 
