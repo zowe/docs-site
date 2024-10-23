@@ -62,7 +62,7 @@ Outbound AT-TLS rules (i.e. to make a transparent https call through http) that 
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
-Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include X.509 Client Certificate.
+Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include the X.509 Client Certificate.
 :::
 
 ### Limitations
