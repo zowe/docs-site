@@ -62,7 +62,7 @@ Outbound AT-TLS rules (i.e. to make a transparent https call through http) that 
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
-Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service must not include X.509 Client Certificate.
+Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include X.509 Client Certificate.
 :::
 
 ### Limitations
@@ -330,6 +330,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 - Discovery Service to Discovery Service. This is the replica request.
 - Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
+- Gateway Service to ZAAS running in another LPAR.
 - Southbound services to Discovery Service. This applies during onboarding.
 - All outbound connections need to account for all LPARs including the same where the rules are applied.
 
@@ -513,12 +514,26 @@ TTLSRule ApimlZosmfClientRule
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 449
+  RemotePortRange 449 # z/OSMF Port
   Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Configure the GW -> ZAAS rule
+TTLSRule ApimlZosmfClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7558 # ZAAS Port (default)
+  Jobname ZWE1AG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # Calls from GW to ZAAS are authenticated with client certificate.
 }
 
 # Example outbound rule from app server to gateway.
