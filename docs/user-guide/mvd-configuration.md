@@ -84,6 +84,11 @@ By default, all Zowe servers listen on the IP address `0.0.0.0`. This can be cus
 The Zowe YAML property `zowe.network.server.tls.listenAddresses` can be used to instruct both `app-server` and `zss` of which IP to listen on. This property can be nested within each component if it is desired to customize them individually. Alternatively, TCPIP port rules can be used to control the assignment of `0.0.0.0` into a particular alternative IP address.
 [You can read more about this in the network requirements page](./address-network-requirements.md).
 
+### Native TLS
+
+Both `app-server` and `zss` server components default to using HTTPS without the need for AT-TLS. AT-TLS is also possible. When using the native TLS, attributes such as TLS version and ciphers can be customized within the `zowe.network.server.tls` and `zowe.network.client.tls` objects of the Zowe configuration. These objects can also be placed within the `components.zss` and `components.app-server` objects, such as `components.zss.zowe.network.server.tls` in order to individually customize each server TLS configuration. For more information, read [TLS configuration](./tls-configuration).
+
+
 ### AT-TLS
 
 You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. This is for setting AT-TLS for all the Zowe servers. For more granular control, you can set the following:
