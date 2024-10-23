@@ -82,3 +82,4 @@ zowe:
         - "TLS_CHACHA20_POLY1305_SHA256"
     client: # Template below assigns same attributes as seen in server section
       tls: ${{ zowe.network.server.tls }}
+```
