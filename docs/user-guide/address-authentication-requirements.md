@@ -22,14 +22,18 @@ Multi-factor authentication requires configuration with Single-Sign-On (SSO). En
 
 ## Single Sign On (SSO)
 
-Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
+Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once.
 
 Requirements:
 
 - IBM z/OS Management Facility (z/OSMF)
 
-For more information about single sign on (SSO), see [Zowe API Mediation Layer Single Sign On Overview](./api-mediation-sso).
+:::note Notes:
+- For more information about single sign on (SSO) for users, see [Zowe API Mediation Layer Single Sign On Overview](./api-mediation-sso.md).
 
+- For more information about single sign on (SSO) for extenders, see [Single Sign On Integration for Extenders](../extend/extend-apiml/api-medation-sso-integration-extenders.md).
+
+:::
 
 ## API Mediation Layer OIDC Authentication
 
