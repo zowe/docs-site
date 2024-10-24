@@ -1,4 +1,4 @@
-# Enabling AT-TLS across your Zowe environment
+# Enabling AT-TLS
 
 The communication server on z/OS provides functionality to encrypt HTTP communication for on-platform jobs. This functionality is referred to as Application Transparent Transport Layer Security (AT-TLS).
 
