@@ -255,9 +255,6 @@ module.exports = {
           type: "category",
           label: "Advanced server-side configuration",
           items: [
-            "user-guide/configmgr-using",
-            "user-guide/install-configure-zos-extensions",
-            "user-guide/mvd-configuration",
             {
               "type": "category",
               "label": "Advanced API Mediation Layer Configuration",
@@ -332,7 +329,10 @@ module.exports = {
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
               ]
-            }
+            },
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions",
+            "user-guide/mvd-configuration",
           ],
         }
       ],
