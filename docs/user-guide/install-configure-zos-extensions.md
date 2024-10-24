@@ -34,8 +34,8 @@ More information such as parameters and examples can be found on the [`zwe compo
 
 ## Enable and disable component
 
-Each component and extension of Zowe can be enabled or disabled by changing the value of the "enabled" property of their object in the Zowe configuration YAML.
-For example, if you wish to enable or disable the API Catalog, it would be accomplished by setting this value in the YAML:
+Each component and extension of Zowe can be enabled or disabled by changing the value of the `enabled` property of their object in the Zowe configuration YAML.
+For example, to enable or disable the API Catalog, set this value to `true` or `false` in the YAML:
 
 ```yaml
 components:
