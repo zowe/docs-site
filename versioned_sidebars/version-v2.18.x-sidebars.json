@@ -388,6 +388,7 @@
               ]
             },
             "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+            "user-guide/api-mediation/configuration-at-tls-configuration",
             "user-guide/api-mediation/configuration-logging",
             "user-guide/api-mediation/wto-message-on-startup"
           ]
