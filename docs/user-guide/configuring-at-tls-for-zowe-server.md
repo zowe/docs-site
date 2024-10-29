@@ -1,5 +1,3 @@
-<!-- V3 -->
-<!-- omit in toc -->
 # Configuring AT-TLS for Zowe Server
 
 You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
@@ -7,25 +5,26 @@ You can configure parameters in the Zowe server to enable Zowe to work with AT-T
 :::info Role: security administrator
 :::
 
-- [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
-  - [Limitations](#limitations)
-- [AT-TLS rules](#at-tls-rules)
-  - [Inbound rules](#inbound-rules)
-  - [Outbound rules](#outbound-rules)
-    - [For z/OSMF](#for-zosmf)
-    - [For communication between API Gateway and other core services](#for-communication-between-api-gateway-and-other-core-services)
-    - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
-    - [Services that validate tokens against the API Mediation Layer](#services-that-validate-tokens-against-the-api-mediation-layer)
-  - [Ciphers](#ciphers)
-- [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
-- [Multi-tenancy deployment](#multi-tenancy-deployment)
-- [AT-TLS Troubleshooting](#at-tls-troubleshooting)
-  - [The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser](#the-message-this-combination-of-port-requires-ssl-is-thrown-when-accesing-an-api-ml-service-through-a-browser)
-  - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
-  - [Non matching ciphers / protocols](#non-matching-ciphers--protocols)
-  - [Additional troubleshooting](#additional-troubleshooting)
-- [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
-- [Additional Zowe feature configuration with AT-TLS](#additional-zowe-feature-configuration-with-at-tls)
+- [Configuring AT-TLS for Zowe Server](#configuring-at-tls-for-zowe-server)
+  - [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
+    - [Limitations](#limitations)
+  - [AT-TLS rules](#at-tls-rules)
+    - [Inbound rules](#inbound-rules)
+    - [Outbound rules](#outbound-rules)
+      - [For z/OSMF](#for-zosmf)
+      - [For communication between API Gateway and other core services](#for-communication-between-api-gateway-and-other-core-services)
+      - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
+      - [Services that validate tokens against the API Mediation Layer](#services-that-validate-tokens-against-the-api-mediation-layer)
+    - [Ciphers](#ciphers)
+  - [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
+  - [Multi-tenancy deployment](#multi-tenancy-deployment)
+  - [AT-TLS Troubleshooting](#at-tls-troubleshooting)
+    - [The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser](#the-message-this-combination-of-port-requires-ssl-is-thrown-when-accesing-an-api-ml-service-through-a-browser)
+    - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
+    - [Non matching ciphers / protocols](#non-matching-ciphers--protocols)
+    - [Additional troubleshooting](#additional-troubleshooting)
+  - [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
+  - [Additional Zowe feature configuration with AT-TLS](#additional-zowe-feature-configuration-with-at-tls)
 
 ## AT-TLS configuration for Zowe
 
@@ -127,11 +126,11 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 
 **Follow this step:**
 
-Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
+Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication(for example a rule covering API Gateway to an onboarded service).
+For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication (for example a rule covering API Gateway to an onboarded service).
 
 ### Outbound rules
 
