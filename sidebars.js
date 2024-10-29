@@ -223,7 +223,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
-                "user-guide/at-tls-configuration",
+                "user-guide/configuring-at-tls-for-zowe-server",
               ],
             },
             {
@@ -325,7 +325,6 @@ module.exports = {
                   ]
                 },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
-                "user-guide/api-mediation/configuration-at-tls",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
               ]
