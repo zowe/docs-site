@@ -101,7 +101,7 @@ components:
             attls: true
 ```
 
-Which would instruct only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. [You can read more about this in the Zowe AT-TLS configuration page](./at-tls-configuration.md)
+Which would instruct only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
 
 #### AT-TLS Rule Suggestions
 
