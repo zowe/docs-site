@@ -1,14 +1,16 @@
 # Customizing Native TLS
 
 Zowe's servers have built-in TLS support to enable HTTPS connections.
+
 This is the default, and an alternative to using AT-TLS which is [documented here](./at-tls-configuration).
 
-:::info Required roles: security administrator
+:::info Required role: security administrator
 :::
 
 ## Server Parameters
 
 Each Zowe server can be customized either by defining attributes within the `zowe.network.server` object of the Zowe YAML configuration file. The same object can be put within an individual component's configuration, such as `components.zss.zowe.network.server` for ZSS, which will allow you to customize each component separate from others.
+
 Extensions are recommended to adhere to this configuration, but you must check with documentation for extensions to be sure.
 
 ### IP Addresses
@@ -38,6 +40,7 @@ components:
 ### TLS Versions
 
 By default, Zowe servers use TLSv1.3.
+
 To customize this, you can use the parameters `zowe.network.server.tls.minTls` and `zowe.network.server.tls.maxTls`. The following values are allowed:
 
 * TLSv1.2
@@ -55,8 +58,10 @@ zowe:
 
 ### TLS Ciphers
 
-Zowe is always updating the ciphers used to follow industry best practice.
-Usually, this will match this reference: https://wiki.mozilla.org/Security/Server_Side_TLS
+Zowe is always updating the ciphers used to follow industry best practice. 
+
+Usually, the ciphers used by Zowe will match Mozilla's recommendations: https://wiki.mozilla.org/Security/Server_Side_TLS
+
 To customize which ciphers Zowe uses, you can define a list of IANA cipher names within the Zowe YAML parameter `zowe.network.server.tls.ciphers`. A list of [IANA ciphers can be found here](https://testssl.sh/openssl-iana.mapping.html).
 
 
