@@ -2,7 +2,7 @@
 
 Zowe's servers have built-in TLS support to enable HTTPS connections.
 
-This is the default, and an alternative to using AT-TLS which is [documented here](./at-tls-configuration).
+This is the default, and an alternative to using AT-TLS which is [documented here](./configuring-at-tls-for-zowe-server).
 
 :::info Required role: security administrator
 :::
