@@ -1,4 +1,3 @@
-<!-- omit in toc -->
 # Configuring AT-TLS for Zowe Server
 
 You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.

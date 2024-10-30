@@ -101,7 +101,7 @@ components:
             attls: true
 ```
 
-Which would instruct only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. [You can read more about this in the Zowe AT-TLS configuration page](./at-tls-configuration.md)
+Which would instruct only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
 
 #### AT-TLS Rule Suggestions
 
@@ -114,7 +114,7 @@ The Inbound rules can be filtered by the listening ports of the servers, but Out
 
 The ports and jobnames can be found in the [Addressing network requirements](./address-network-requirements.md) documentation.
 
-The Outbound rules can have HandshakeRole of Client, but when APIML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. [You can read more about this in the APIML AT-TLS documentation](api-mediation/configuration-at-tls#for-communication-between-api-gateway-and-other-core-services)
+The Outbound rules can have HandshakeRole of Client, but when APIML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#for-communication-between-api-gateway-and-other-core-services).
 
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
