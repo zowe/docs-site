@@ -245,14 +245,20 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 3. Define the profile for the application with the following command:
 
     ```
-    RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
+    RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>))
     ```
 * **`key-description`**  
   Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
 4. Replace `key-description` with the application name defined previously.
 
-5. Allow the application ID (_applid_) to use PassTickets:
+5. Define the profile `IRRPTAUTH` in `PTKTDATA` class for the `<applid>`
+
+    ```racf
+    RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
+    ```
+
+6. Allow the application ID (_applid_) to use PassTickets:
 
     ```racf
     PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
@@ -261,7 +267,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 * **`userid`**  
 Specifies the value of the LDAP Server started task.
 
-6. Refresh the RACF PTKTDATA definition with the new profile:
+7. Refresh the RACF PTKTDATA definition with the new profile:
     ```
     SETROPTS RACLIST(PTKTDATA) REFRESH
     ```
@@ -279,7 +285,7 @@ Specify the following variables when generating PassTickets for the API service 
 * **`applid`**  
 The APPLID value used by the API service for PassTicket support (for example, `OMVSAPPL`)
 
-* **`zowe-user-id`**   
+* **`zowe-user-id`**
 
 The Zowe started task user ID used during the Zowe installation
 
@@ -335,6 +341,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 **Example:**
 
 ```racf
+    RDEFINE PTKTDATA IRRPTAUTH.<applid>.* UACC(NONE)
     PERMIT IRRPTAUTH.<applid>.* CL(PTKTDATA) ID(<zowe-user-id>) ACCESS(UPDATE)
     SETROPTS RACLIST(PTKTDATA) REFRESH
 ```
