@@ -121,11 +121,8 @@ SETROPTS RACLIST(CSFSERV) REFRESH
 
 </details>
 
-
 <details>
-<summary>
-For ACF2, click here for command details.
-</summary>
+<summary>For ACF2, click here for command details.</summary>
 
 If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
 
