@@ -19,6 +19,8 @@ Customizing CORS enables the Gateway to handle Cross-Origin Resource Sharing req
 
 For more information, see [Customizing Cross-Origin Resource Sharing (CORS)](./configuration-cors.md)
 
+To configure a custom rate limiter, see [Configuring custom rate limiter](./configuration-rate-limiter.md)
+
 To onboard applications which expose endpoints that expect encoded slashes, see [Using encoded slashes](./configuration-url-handling.md)
 
 The Gateway retry policy, customizable through zowe.yaml, optimizes request handling, which can be especially useful in high availability scenarios.
