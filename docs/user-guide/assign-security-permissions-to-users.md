@@ -59,6 +59,23 @@ see [zwe init security](../appendix/zwe_server_command_reference/zwe/init/zwe-in
 | Cross memory server (ZIS)                                  | FACILITY       | `ZWES.IS`                   | READ                    | Allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server.                                                                                                                                                                                                                                                                                         | This parameter permits the Zowe main server to use ZIS cross memory server. Run the command that applies to your ESM. <br/>• [RACF](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L329) <br/>• [ACF2](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L560) <br/>• [Top Secret](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L780)                |
 
 
+## Configuring address space job naming
+
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+
+1. To display who is authorized to the profile, issue the following command:
+```
+RLIST FACILITY BPX.JOBNAME AUTHUSER
+```
+
+2. Activate the facility class, permit `BPX.JOBNAME`, and refresh facility class:
+```
+SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+PERMIT BPX.JOBNAME CLASS(FACILITY) ID(ZWESVUSR) ACCESS(READ)
+SETROPTS RACLIST(FACILITY) REFRESH
+```
+
+For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
 
 ## Granting users permission to access z/OSMF
 
