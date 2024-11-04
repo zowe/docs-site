@@ -121,7 +121,11 @@ SETROPTS RACLIST(CSFSERV) REFRESH
 
 </details>
 
+<details>
+
+<summary>
 For ACF2, click here for command details.
+</summary>
 
 
 If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
@@ -149,6 +153,7 @@ RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ
 ```
 F ACF2,REBUILD(CSF)
 ```
+</details>
 
 <details>
 
