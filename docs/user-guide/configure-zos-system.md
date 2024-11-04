@@ -54,6 +54,28 @@ Be sure your z/OS system meets the following prerequisites:
 | To use Single Sign-On (SSO) |  | [Single Sign-On (SSO)](#single-sign-on-sso) |
 | To use OIDC Authentication with API Mediation Layer | API ML | [API Mediation Layer OIDC Authentication](#api-mediation-layer-oidc-authentication) |
 
+### Configure address space job naming
+
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+
+:::note
+This procedure may require security administrator authorization. Consult with your security administrator.
+:::
+
+To display who is authorized to the profile, issue the following command:
+```
+RLIST FACILITY BPX.JOBNAME AUTHUSER
+```
+
+Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+```
+SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+PERMIT BPX.JOBNAME CLASS(FACILITY) ID(ZWESVUSR) ACCESS(READ)
+SETROPTS RACLIST(FACILITY) REFRESH
+```
+
+For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
+
 ### Configure an ICSF cryptographic services environment
 
 The zssServer uses cookies that require random number generation for security. To learn more about the zssServer, see the [Zowe architecture](../getting-started/zowe-architecture.md#zss). Integrated Cryptographic Service Facility (ICSF) is a secure way to generate random numbers. 
