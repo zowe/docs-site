@@ -109,4 +109,5 @@ Zowe consumption reference data were measured with the default Zowe configuratio
   :::
 
 :::note
-For specific z/OS security configuration options according to your 
+For specific z/OS security configuration options that apply to the specific Zowe server-side components in your configuration, see [Security customization of your z/OS system](./configure-zos-system.md).
+:::
