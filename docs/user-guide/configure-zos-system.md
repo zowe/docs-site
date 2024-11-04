@@ -121,8 +121,8 @@ SETROPTS RACLIST(CSFSERV) REFRESH
 
 </details>
 
-<details>
 
+<details>
 <summary>
 For ACF2, click here for command details.
 </summary>
