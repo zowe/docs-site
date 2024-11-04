@@ -97,7 +97,9 @@ Define or check the following configurations depending on whether ICSF is alread
 
 <details>
 
-<summary> For RACF, click here for command details. </summary>
+<summary>
+For RACF, click here for command details.
+</summary>
 
 If you use RACF, issue the following commands:
 ```
@@ -121,7 +123,8 @@ SETROPTS RACLIST(CSFSERV) REFRESH
 
 <details>
 
-<summary> For ACF2, click here for command details.
+<summary>
+For ACF2, click here for command details.
 </summary>
 
 If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
@@ -154,7 +157,8 @@ F ACF2,REBUILD(CSF)
 
 <details>
 
-<summary> For Top Secret, click here for command details.
+<summary>
+For Top Secret, click here for command details.
 </summary>
 
 If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
@@ -192,7 +196,8 @@ You can issue the following commands first to check whether you already have the
 
 <details>
 
-<summary> For RACF, click here for command details.
+<summary>
+For RACF, click here for command details.
 </summary>
 
 If you use RACF, issue the following commands:
@@ -206,6 +211,7 @@ RLIST FACILITY BPX.DAEMON AUTHUSER
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for command details.
 </summary>
@@ -221,6 +227,7 @@ TSS WHOHAS IBMFAC(BPX.DAEMON)
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for command details.
 </summary>
@@ -238,6 +245,7 @@ LIST BPX
 If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDATE access to both profiles follow the instructions according to your ESM.
 
 <details>
+
 <summary>
 For RACF, click here for procedure details.
 </summary>
@@ -283,7 +291,9 @@ RLIST FACILITY BPX.DAEMON AUTHUSER
 </details>
 
 <details>
-<summary> For Top Secret, click here for procedure details.
+
+<summary>
+For Top Secret, click here for procedure details.
 </summary>
 
 If you use Top Secret, complete the following steps:  
@@ -310,6 +320,7 @@ TSS WHOHAS IBMFAC(BPX.DAEMON)
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for procedure details.
 </summary>
@@ -337,12 +348,15 @@ SET RESOURCE(FAC)
 ```
 LIST BPX
 ```
+
 </details>
 
 You must also grant READ access to the OMVSAPPL profile in the APPL class to the Zowe STC user as well as **all other Zowe users** using various Zowe features. Skip the following steps when the OMVSAPPL profile is not defined in your environment.
 
 <details>
-<summary>For RACF, click here for procedure details.
+
+<summary>
+For RACF, click here for procedure details.
 </summary>
 
 If you use RACF, complete the following steps:
@@ -361,7 +375,9 @@ SETROPTS RACLIST(APPL) REFRESH
 </details>
 
 <details>
-<summary>For Top Secret, click here for procedure details.
+
+<summary>
+For Top Secret, click here for procedure details.
 </summary>
 
 If you use Top Secret, complete the following steps:
@@ -375,10 +391,13 @@ TSS WHOHAS APPL(OMVSAPPL)
 ```
 TSS PERMIT(<zowe_user>) APPL(OMVSAPPL)
 ```
+
 </details>
 
 <details>
-<summary>For ACF2, click here for procedure details.
+
+<summary>
+For ACF2, click here for procedure details.
 </summary>
 
 If you use ACF2, complete the following steps:
@@ -395,6 +414,7 @@ SET RESOURCE(APL)
 RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
 F ACF2,REBUILD(APL)
 ```
+
 </details>
 
 ### Configure multi-user address space (for TSS only)
@@ -485,6 +505,7 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group.  
 
 <details>
+
 <summary>
 For RACF, click here for command details.
 </summary>
@@ -498,6 +519,7 @@ SETROPTS REFRESH RACLIST(STARTED)
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for command details.
 </summary>
@@ -513,6 +535,7 @@ F ACF2,REFRESH(STC)
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for command details.
 </summary>
@@ -584,6 +607,7 @@ If you use RACF, issue the following commands:
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for command details.
 </summary>
@@ -603,6 +627,7 @@ F ACF2,REBUILD(FAC)
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for command details.
 </summary>
@@ -629,6 +654,7 @@ This security configuration is necessary for API ML to be able to map client cer
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps.
 
 <details>
+
 <summary>
 For RACF, click here for procedure details.
 </summary>
@@ -654,6 +680,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for procedure details.
 </summary>
@@ -681,6 +708,7 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for procedure details.
 </summary>
@@ -706,6 +734,7 @@ This security configuration is necessary for API ML to be able to map the associ
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps.
 
 <details>
+
 <summary>
 For RACF, click here for procedure details.
 </summary>
@@ -739,6 +768,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for procedure details.
 </summary>
@@ -766,6 +796,7 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for procedure details.
 </summary>
@@ -811,6 +842,7 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
 To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
 
 <details>
+
 <summary>
 For RACF, click here for command details.
 </summary>
@@ -823,6 +855,7 @@ RLIST FACILITY IRR.RAUDITX AUTHUSER
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for command details.
 </summary>
@@ -835,6 +868,7 @@ TSS WHOHAS IBMFAC(IRR.RAUDITX)
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for command details.
 </summary>
@@ -851,6 +885,7 @@ LIST LIKE(IRR-)
 If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM.
 
 <details>
+
 <summary>
 For RACF, click here for procedure details.
 </summary>
@@ -870,6 +905,7 @@ If you use RACF, update permission in the `FACILITY` class.
 </details>
 
 <details>
+
 <summary>
 For Top Secret, click here for procedure details.
 </summary>
@@ -882,6 +918,7 @@ TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
 </details>
 
 <details>
+
 <summary>
 For ACF2, click here for procedure details.
 </summary>
