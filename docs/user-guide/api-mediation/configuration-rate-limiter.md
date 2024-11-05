@@ -6,6 +6,7 @@ The API Gateway offers a way to customize the rate limit per service by introduc
 It’s essential for the system to prevent individual users from overloading it.
 By setting rate limits per user on selected services, this configuration helps ensure that one user's activity doesn’t negatively impact the experience of others,
 mitigating the risk of Distributed Denial-of-Service (DDoS) attacks and other automated exploit attempts. 
+
 ## Procedure
 
 1. In the zowe.yaml, set the following rate limiting properties in api/gateway/routing:
