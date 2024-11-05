@@ -223,7 +223,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
-                "user-guide/at-tls-configuration",
+                "user-guide/configuring-at-tls-for-zowe-server",
               ],
             },
             {
@@ -244,96 +244,90 @@ module.exports = {
             }
           ]
         },
-        {
-          type: "category",
-          label: "Starting and stopping Zowe",
-          link: { type: "doc", id: "user-guide/start-zowe-zos" },
-          items: ["user-guide/api-mediation/configuration-api-mediation-standalone"]
-        },
+        "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
         {
           type: "category",
           label: "Advanced server-side configuration",
           items: [
-            "user-guide/mvd-configuration",
-            "user-guide/configmgr-using",
-            "user-guide/install-configure-zos-extensions",
-          ],
-        },
-        {
-          "type": "category",
-          "label": "Advanced API Mediation Layer Configuration",
-          "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
-          "items": [
             {
               "type": "category",
-              "label": "Enabling single sign on for clients",
-              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-single-sign-on-user" },
+              "label": "Advanced API Mediation Layer Configuration",
+              "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
               "items": [
-                "user-guide/api-mediation/configuration-client-certificates",
-                "user-guide/api-mediation/configuration-personal-access-token",
-                "user-guide/api-mediation/configuration-jwt"
-              ]
-            },
-            {
-              "type": "category",
-              "label": "Enabling single sign on for extending services",
-              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
-              "items": [
-                "user-guide/api-mediation/configuration-extender-jwt",
-                "user-guide/api-mediation/configuration-extender-passtickets"
-              ]
-            },
-            {
-              "type": "category",
-              "label": "Customizing routing behavior",
-              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
-              "items": [
-                "user-guide/api-mediation/configuration-multi-tenancy-routing",
-                "user-guide/api-mediation/configuration-cors",
-                "user-guide/api-mediation/configuration-url-handling",
-                "user-guide/api-mediation/configuration-gateway-retry-policy",
-                "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
-                "user-guide/api-mediation/configuration-access-specific-instance-of-service",
-                "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
-                "user-guide/api-mediation/configuration-set-consistent-service-id",
                 {
                   "type": "category",
-                  "label": "Customizing management of API ML load limits",
-                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                  "label": "Enabling single sign on for clients",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-single-sign-on-user" },
                   "items": [
-                    "user-guide/api-mediation/configuration-connection-limits",
-                    "user-guide/api-mediation/configuration-gateway-timeouts",
-                    "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
+                    "user-guide/api-mediation/configuration-client-certificates",
+                    "user-guide/api-mediation/configuration-personal-access-token",
+                    "user-guide/api-mediation/configuration-jwt"
                   ]
-                }
+                },
+                {
+                  "type": "category",
+                  "label": "Enabling single sign on for extending services",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-enable-single-sign-on-extenders" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-extender-jwt",
+                    "user-guide/api-mediation/configuration-extender-passtickets"
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Customizing routing behavior",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-routing" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-multi-tenancy-routing",
+                    "user-guide/api-mediation/configuration-cors",
+                    "user-guide/api-mediation/configuration-url-handling",
+                    "user-guide/api-mediation/configuration-gateway-retry-policy",
+                    "user-guide/api-mediation/configuration-unique-cookie-name-for-multiple-zowe-instances",
+                    "user-guide/api-mediation/configuration-access-specific-instance-of-service",
+                    "user-guide/api-mediation/configuration-distributed-load-balancer-cache",
+                    "user-guide/api-mediation/configuration-set-consistent-service-id",
+                    {
+                      "type": "category",
+                      "label": "Customizing management of API ML load limits",
+                      "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-customizing-management-of-apiml-load-limits" },
+                      "items": [
+                        "user-guide/api-mediation/configuration-connection-limits",
+                        "user-guide/api-mediation/configuration-gateway-timeouts",
+                        "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "category",
+                  "label": "Configuring authorization for API ML",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
+                  "items": [
+                    "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
+                    "user-guide/api-mediation/configuration-saf-resource-checking",
+                    "user-guide/api-mediation/configuration-health-endpoint-protection"
+                  ]
+                },
+                "user-guide/authentication-providers-for-apiml",
+                {
+                  "type": "category",
+                  "label": "Configuring storage for the Caching service",
+                  "items": [
+                    "extend/extend-apiml/api-mediation-infinispan",
+                    "extend/extend-apiml/api-mediation-vsam",
+                    "extend/extend-apiml/api-mediation-redis"
+                  ]
+                },
+                "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
+                "user-guide/api-mediation/configuration-logging",
+                "user-guide/api-mediation/wto-message-on-startup",
               ]
             },
-            {
-              "type": "category",
-              "label": "Configuring authorization for API ML",
-              "link": { "type": "doc", "id": "user-guide/api-mediation/configuration-authorization" },
-              "items": [
-                "user-guide/api-mediation/configuration-limiting-access-to-info-or-services-in-api-catalog",
-                "user-guide/api-mediation/configuration-saf-resource-checking",
-                "user-guide/api-mediation/configuration-health-endpoint-protection"
-              ]
-            },
-            "user-guide/authentication-providers-for-apiml",
-            {
-              "type": "category",
-              "label": "Configuring storage for the Caching service",
-              "items": [
-                "extend/extend-apiml/api-mediation-infinispan",
-                "extend/extend-apiml/api-mediation-vsam",
-                "extend/extend-apiml/api-mediation-redis"
-              ]
-            },
-            "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
-            "user-guide/api-mediation/configuration-at-tls",
-            "user-guide/api-mediation/configuration-logging",
-            "user-guide/api-mediation/wto-message-on-startup",
-          ]
+            "user-guide/configmgr-using",
+            "user-guide/install-configure-zos-extensions",
+            "user-guide/mvd-configuration",
+          ],
         }
       ],
     },

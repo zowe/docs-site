@@ -5,10 +5,11 @@
 
 As a system programmer, you can customize how JWT authentication is performed, the service that provides the JWT authentication token, whether it's possible to refresh JWT token and other characteristics of JWT for consumption. 
 
-* [Using SAF as an authentication provider](#using-saf-as-an-authentication-provider)
-* [Enabling a JWT token refresh endpoint](#enabling-a-jwt-token-refresh-endpoint)
-* [Authorization](#authorization)
-* [Additional customizable properties when using JWT tokens](#additional-customizable-properties-when-using-jwt-tokens)
+- [Enabling single sign on for clients via JWT token configuration](#enabling-single-sign-on-for-clients-via-jwt-token-configuration)
+  - [Using SAF as an authentication provider](#using-saf-as-an-authentication-provider)
+  - [Enabling a JWT token refresh endpoint](#enabling-a-jwt-token-refresh-endpoint)
+  - [Authorization](#authorization)
+  - [Additional customizable properties when using JWT tokens](#additional-customizable-properties-when-using-jwt-tokens)
 
 ## Using SAF as an authentication provider
 
@@ -65,7 +66,7 @@ Authorization is used to set the access rights of an entity.
 In the API ML, authorization is performed by any of the following z/OS security managers:
 * [ACF2](https://www.broadcom.com/products/mainframe/identity-access/acf2)
 * [IBM RACF](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.zsecurity/zsecc_042.htm)
-* [Top Secret](https://www.broadcom.com/products/mainframe/identity-access/top-secret). 
+* [Top Secret](https://www.broadcom.com/products/mainframe/security/top-secret). 
 
 An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
