@@ -31,7 +31,7 @@ gnome-keyring-daemon -r --unlock --components=secrets
 
 :::note
 
-The `gnome-keyring-daemon -r --unlock --components=secrets` command can appear to delay, but it is waiting for you to enter a password. Type your keyring password (typically the same as your Linux user password), then press `Ctrl`+`D` twice to continue the terminal session.
+The `gnome-keyring-daemon -r --unlock --components=secrets` command can appear to hang, but it is waiting for you to enter a password. Type your keyring password (typically the same as your Linux user password), then press `Ctrl`+`D` twice to continue the terminal session.
 
 :::
 
