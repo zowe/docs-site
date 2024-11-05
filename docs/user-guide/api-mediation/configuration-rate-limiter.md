@@ -10,8 +10,7 @@ Below is an example configuration:
                 rateLimiterCapacity: 20
                 rateLimiterTokens: 20
                 rateLimiterRefillDuration: 1
-                servicesToLimitRequestRate: discoverableclient, apicatalog
-                cookieNameForRateLimit: apimlAuthenticationToken
+                servicesToLimitRequestRate: apicatalog
 
 
 
@@ -26,7 +25,3 @@ Description:
 
    Use servicesToLimitRequestRate to specify a list of services to limit.
 
-
-3. Define a cookie name for user identification:
-
-   Use cookieNameForRateLimit to specify a cookie name that identifies the user for rate-limiting purposes.
