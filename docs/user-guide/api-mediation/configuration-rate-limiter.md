@@ -2,8 +2,7 @@
 
 
 The API Gateway offers a way to customize rate limit per service by introducing a configurable rate limiter.
-Configuration example below:
-
+Below is an example configuration:
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     apiml:
         gateway: 
@@ -19,10 +18,15 @@ Configuration example below:
 Description: 
 1. Set rate limiting properties: 
 
-* `rateLimiterCapacity` - Defines the total number of requests that can be allowed at one time.
+* `rateLimiterCapacity` - Defines the total number of requests that can be allowed at one time per user.
 * `rateLimiterTokens` -  Defines the number of requests that are added to the service’s allowance at regular intervals. This controls how quickly requests are replenished after being consumed.
 * `rateLimiterRefillDuration` -  Sets the time interval (in minutes) at which new requests (or tokens) are added.
 
-2. Define a list of services to limit rate of in `servicesToLimitRequestRate`.
-3. Define a cookie name to be used as a user identifier in `cookieNameForRateLimit`.
+2. Define services to limit:
 
+   Use `servicesToLimitRequestRate` to specify a list of services to limit.
+
+
+3. Define a cookie name for user identification:
+
+    Use `cookieNameForRateLimit` to specify a cookie name that identifies the user for rate-limiting purposes.
