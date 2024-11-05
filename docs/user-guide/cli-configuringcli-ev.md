@@ -74,3 +74,13 @@ Use the `--show-inputs-only` option in a Zowe CLI command to view the property v
 | Environment variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
 | `ZOWE_SHOW_SECURE_ARGS`        | Displays secure property values used by a Zowe CLI command            | `TRUE`, `FALSE` | `FALSE` |
+
+## Using Zowe CLI with a proxy
+
+If your network configuration requires communication with the mainframe to be performed through a proxy server, set environment variables to route Zowe CLI traffic through an HTTP/HTTPS proxy.
+
+| Environment Variable         | Description   |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `HTTPS_PROXY`, `https_proxy` | Use the `https` proxy to route communication to the mainframe when your proxy server supports `https`.               |
+| `HTTP_PROXY`, `http_proxy`   | Use the `http` proxy to route communication to the mainframe.                                                        |
+| `NO_PROXY`                   | Set a list of host addresses (separated by commas) to connect to the specified hosts without going through a proxy.|
