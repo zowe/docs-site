@@ -29,7 +29,7 @@ Since the Zowe 2.17 release, it is no longer necessary to disable replay protect
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
-To validate if a PassTicket is already defined, list the APPL and PKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
+To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
 
 - **Validating an existing PassTicket for ACF2**
 
@@ -74,6 +74,7 @@ To validate if a PassTicket is already defined, list the APPL and PKTDATA with a
         TSS WHOHAS PTKTDATA(<applid>)
         TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
+    If APPL and PTKTDATA are not defined yet, follow the instruction to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
 
     - **`.`**  
         A wildcard symbol that lists all resources
@@ -98,7 +99,7 @@ To validate if a PassTicket is already defined, list the APPL and PKTDATA with a
         RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
     ```
 
-    Ensure that you validate PKTDATA access for APPL.
+    Ensure that you validate PTKTDATA access for APPL.
 
     - **`*`**  
         A wildcard symbol that resturns all resources
@@ -164,7 +165,7 @@ You configured Zowe to use PassTickets for single sign on using ACF2.
 <summary> Click here for command details about configuring Zowe to use PassTickets using Top Secret.</summary>
 
 
-Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUT`) have not already been defined as described in the previous tip.
+Before you begin this procedure, verify that the `PTKTDATA` class and ownership for the PassTicket resource (`IRRPTAUTH`) have not already been defined as described in the previous tip.
 
 1. Update the resource descriptor table (RDT) to define the `PTKTDATA` class by entering the following commands:
 
@@ -181,11 +182,13 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
     Include `RESCODE(n)` in the range of 101 to 13F to make `PTKTDATA` a prefixed resource class.
     :::
   
-2.	Assign ownership for the PassTicket resource (`IRRPTAUT`). Execute the following commands: 
+2.	Assign ownership for the PassTicket resource (`IRRPTAUTH`). Execute the following commands: 
     ```
-    TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
+    TSS ADDTO(<department>) PTKTDATA(IRRPTAUTH) 
     ```
-  
+- **`department`**  
+  Specifies the department for Zowe. The default department is `TSODEPT1`.
+
 3. Define PassTicket for application ID _applid_:
   
     ```tss
