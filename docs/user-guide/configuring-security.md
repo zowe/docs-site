@@ -5,13 +5,18 @@ During the initial installation of Zowe server-side components, it is necessary 
 :::info Required roles: system programmer, security administrator
 :::
 
+:::note
+For initial tasks to be performed by the security administrator before Zowe server-side installation, see [Addressing security requirements](./address-security-requirements.md).
+
+:::
+
 ## Validate and re-run `zwe init` commands
 
 During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail without sufficient user authorization. 
 
 ## Initialize Zowe security configurations
 
-This security configuration step is required for first time setup of Zowe and may require security autorization. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, and the `zwe init security` subcommand successfully ran when initializing the z/OS subsystem, you can skip this step unless told otherwise in the release documentation.
+This security configuration step is required for first time setup of Zowe and may require security authorization. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, and the `zwe init security` subcommand successfully ran when initializing the z/OS subsystem, you can skip this step unless told otherwise in the release documentation.
 
 Choose from the following methods to initialize Zowe security configurations:
 
@@ -97,9 +102,9 @@ If you run `ZWENOSEC` on a z/OS system, it is necessary to rerun `ZWESECUR` to r
 
 Zowe contains load modules that require access to make privileged z/OS security manager calls. These load modules are held in two load libraries which must be APF authorized. For more information about how to issue the `zwe init apfauth` command to perform APF authority commands, see [Performing APF authorization of load libraries](./apf-authorize-load-library.md).
 
-## Configure the z/OS system for Zowe
+## Customize security of your z/OS system
 
-Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Configuring the z/OS system for Zowe](./configure-zos-system.md).
+Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Security customization of your z/OS system](./configure-zos-system.md).
 
 ## Assign security permissions to users
 
@@ -123,15 +128,4 @@ Depending on the specific Zowe server-side components that your organization is 
 
 ## Next steps
 
-After these security configuration steps are completed, and [Zowe z/OS runtime is initialized](./configure-zowe-runtime.md), the next step is [Configuring certificates](./configure-certificates.md).
-Note that configuring certificates requires security administrator authorization. 
-
-:::note
-For more information about security administrator tasks, see:
-* [Addressing security requirements](./address-security-requirements.md) 
-* [Configuring security](./configuring-security.md)
-* [Configuring certificates](./configure-certificates.md)
-:::
-
-
- 
+After Zowe z/OS runtime is initialized, and you complete other procedures in the Configuring security section, the next step is [Configuring certificates](./configure-certificates.md).
