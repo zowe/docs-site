@@ -353,31 +353,82 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 If you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment, the commands are described below for reference.  
 
 - To create the `ZWEADMIN` group, issue the following command:
-  ```
-  ADDGROUP ZWEADMIN OMVS(AUTOGID) -
-  DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
-  ```
 
+  **RACF:**
+     ```
+     ADDGROUP ZWEADMIN OMVS(AUTOGID) -
+     DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
+     ```
+  **TSS:**
+     ```
+     TSS CREATE(<ZWEADMIN>) TYPE(GROUP) +
+       NAME('ZOWE ADMINISTRATORS') +
+       DEPT(<ADMIN_DEPARTMENT>)
+     TSS ADD(<ZWEADMIN>) GID(<ADMIN_GROUP_ID>)
+     ```
+  **ACF2:**
+     ```
+     SET PROFILE(GROUP) DIV(OMVS)
+     INSERT <ZWEADMIN> AUTOGID
+     F ACF2,REBUILD(GRP),CLASS(P)
+     ```
 - To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
-  ```
-    ADDUSER  ZWESVUSR -
-    NOPASSWORD -
-    DFLTGRP(ZWEADMIN) -
-    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-    NAME('ZOWE SERVER') -
-    DATA('ZOWE MAIN SERVER')
-  ```
+
+  **RACF:**  
+     ```
+   ADDUSER  <ZWESVUSR> -
+   NOPASSWORD -
+   DFLTGRP(<ZWEADMIN>) -
+   OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+   NAME('ZOWE SERVER') -
+   DATA('ZOWE MAIN SERVER')
+   ```
+  **TSS:**
+   ```
+   TSS CREATE(<ZWESVUSR>) TYPE(USER) PROTECTED +
+   NAME('ZOWE MAIN SERVER') +
+   DEPT(<STC_USER_DEPARTMENT>)
+   TSS ADD(<ZWESVUSR>) GROUP(<ZWEADMIN>) +
+   DFLTGRP(<ZWEADMIN>) +
+   HOME(/tmp) OMVSPGM(/bin/sh) UID(<ZOWE_USER_UID>)
+   ```
+  **ACF2:**
+   ```
+   SET LID
+   INSERT <ZWESVUSR> STC GROUP(<ZWEADMIN>)
+   SET PROFILE(USER) DIV(OMVS)
+   INSERT <ZWESVUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
+   F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
+   ```
 
 - To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
-  ```
-    ADDUSER ZWESIUSR -
-    NOPASSWORD -
-    DFLTGRP(ZWEADMIN) -
-    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-    NAME('ZOWE XMEM SERVER') -
-    DATA('ZOWE XMEM CROSS MEMORY SERVER')
-  ```
 
+  **RACF:**  
+   ```
+   ADDUSER <ZWESIUSR> -
+   NOPASSWORD -
+   DFLTGRP(<ZWEADMIN>) -
+   OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+   NAME('ZOWE XMEM SERVER') -
+   DATA('ZOWE XMEM CROSS MEMORY SERVER')
+   ```
+  **TSS:**
+   ```
+   TSS CREATE(<ZWESIUSR>) TYPE(USER) PROTECTED +
+    NAME('ZOWE ZIS CROSS MEMORY SERVER') +
+    DEPT(<STC_USER_DEPARTMENT>)
+   TSS ADD(<ZWESIUSR>) GROUP(<ZWEADMIN>) +
+    DFLTGRP(<ZWEADMIN>) +
+    HOME(/tmp) OMVSPGM(/bin/sh) UID(&ZISUID.)
+   ```
+  **ACF2:**
+   ```
+   SET LID
+   INSERT <ZWESIUSR> STC GROUP(<ZWEADMIN>)
+   SET PROFILE(USER) DIV(OMVS)
+   INSERT <ZWESIUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
+   F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
+   ```   
 
 ### Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID
 
