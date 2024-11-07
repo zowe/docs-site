@@ -286,6 +286,7 @@ module.exports = {
                   "items": [
                     "user-guide/api-mediation/configuration-connection-limits",
                     "user-guide/api-mediation/configuration-gateway-timeouts",
+                    "user-guide/api-mediation/customizing-gateway-rate-limiter",
                     "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
                   ]
 	              }
