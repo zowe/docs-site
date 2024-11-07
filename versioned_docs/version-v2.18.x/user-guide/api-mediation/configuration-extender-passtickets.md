@@ -355,9 +355,23 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 In your ESM command line interface or other security environment, execute the following commands:
 
+**RACF:**
 ```racf
-    RLIST APPL <applid> ALL
-    RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
+ RLIST APPL <applid> ALL
+ RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
+```
+**TSS:**
+```tss
+TSS WHOHAS APPL(<applid>)
+TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
+```
+
+**ACF2:**
+```acf2
+SET RESOURCE(SAF)
+LIST LIKE(<applid>-)
+SET RESOURCE(PTK)
+LIST LIKE(IRRPTAUTH-)
 ```
 
 * **`applid`**  
