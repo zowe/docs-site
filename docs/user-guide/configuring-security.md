@@ -7,18 +7,18 @@ During the initial installation of Zowe server-side components, it is necessary 
 
 ## Validate and re-run `zwe init` commands
 
-During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this JCL.
+During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail without sufficient user authorization. 
 
 ## Initialize Zowe security configurations
 
-This security configuration step is required for first time setup of Zowe. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, and the `zwe init security` subcommand successfully ran when initializing the z/OS subsystem, you can skip this step unless told otherwise in the release documentation.
+This security configuration step is required for first time setup of Zowe and may require security autorization. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, and the `zwe init security` subcommand successfully ran when initializing the z/OS subsystem, you can skip this step unless told otherwise in the release documentation.
 
 Choose from the following methods to initialize Zowe security configurations:
 
-* Configuring with `zwe init security` command
-* Configuring with `ZWESECUR` JCL <!-- Validate if this method should be removed -->
+<details>
+<summary>Click here to configure with the `zwe init security` command.</summary>
 
-## Configuring with `zwe init security` command
+**Configure with `zwe init security` command**
 
 The `zwe init security` command reads data from `zowe.yaml` and constructs a JCL member using `ZWESECUR` as a template which is then submitted. This is a convenience step to assist with driving Zowe configuration through a pipeline or when you prefer to use USS commands rather than directly edit and customize JCL members.
 
@@ -48,9 +48,15 @@ Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
 ```
 :::
 
+</details>
+
 <!-- Validate is the following section should be removed -->
 
-## Configuring with `ZWESECUR` JCL
+<details>
+<summary>Click here to configure with `ZWESECUR` JCL.<!-- Validate if this method should be removed --> </summary>
+ 
+
+**Configure with `ZWESECUR` JCL**
 
 An alternative to using `zwe init security` is to prepare a JCL member to configure the z/OS system, and edit `ZWESECUR` to make changes.  
 
@@ -73,6 +79,8 @@ It is expected that your security administrator will be required to review, edit
 The following video shows how to locate the `ZWESECUR` JCL member and execute it.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe ZWESECUR configure system for security (one-time)" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/-7PZFVESitI" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
+
+</details>
 
 <!-- Validate if the following section should be revised or removed -->
 
