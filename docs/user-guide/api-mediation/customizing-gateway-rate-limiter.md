@@ -1,5 +1,4 @@
-# Configuring custom rate limiter
-
+# Customizing Gateway rate limiter
 
 The API Gateway offers a way to customize the rate limit for each service via a configurable rate limiter, which prevents individual users from overloading the system.  Configuring the rate limiter helps ensure that a user's activity does not negatively impact the experience of other users by mitigating the risk of Distributed Denial-of-Service (DDoS) attacks and other automated exploit attempts. 
 
