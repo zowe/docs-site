@@ -6,11 +6,15 @@ Review this article to learn about the individual subcommands executed in `zwe i
 Some of the following `zwe init` subcommands require elevated permissions. See the required roles associated with each of these commands.
 :::
 
-* [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
-* [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
-* [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
-* [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
-* [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
+- [zwe init subcommand overview](#zwe-init-subcommand-overview)
+  - [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
+    - [Procedure to initialize Zowe custom data sets](#procedure-to-initialize-zowe-custom-data-sets)
+  - [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
+  - [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
+  - [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
+  - [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
+  - [(Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)](#deprecated-creating-vsam-caching-service-datasets-zwe-init-vsam)
+  - [Next steps](#next-steps)
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
 
@@ -108,7 +112,31 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, customize this member to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB`.  This member contains the commands required to perform the security configuration. 
 
-For more information about `zwe init security`, see [Initializing Zowe security configurations](./initialize-security-configuration).
+For more information about `zwe init security`, see [Configuring with `zwe init security` command](./configuring-security.md#configuring-with-zwe-init-security-command).
+
+:::tip
+
+To avoid having to run the `init security` command, you can specify the parameter `--security-dry-run`. This parameter enables you to construct a JCL member containing the security commmands without running the member. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
+
+**Example:**
+
+```
+#>zwe init security -c ./zowe.yaml --security-dry-run
+-------------------------------------------------------------------------------
+>> Run Zowe security configurations
+
+Modify ZWESECUR
+- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
+
+Dry-run mode, security setup is NOT performed on the system.
+Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
+>> Zowe security configurations are applied successfully.
+
+#>
+```
+For production environments, inform your security administrator to re-submit the `init security` command with proper authorization.
+
+:::
 
 
 ## Performing APF authorization of load libraries (`zwe init apfauth`)
