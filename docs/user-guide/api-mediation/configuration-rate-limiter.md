@@ -1,11 +1,7 @@
 # Configuring custom rate limiter
 
 
-The API Gateway offers a way to customize the rate limit per service by introducing a configurable rate limiter.
-
-It’s essential for the system to prevent individual users from overloading it.
-By setting rate limits per user on selected services, this configuration helps ensure that one user's activity doesn’t negatively impact the experience of others,
-mitigating the risk of Distributed Denial-of-Service (DDoS) attacks and other automated exploit attempts. 
+The API Gateway offers a way to customize the rate limit for each service via a configurable rate limiter, which prevents individual users from overloading the system.  Configuring the rate limiter helps ensure that a user's activity does not negatively impact the experience of other users by mitigating the risk of Distributed Denial-of-Service (DDoS) attacks and other automated exploit attempts. 
 
 ## Procedure
 
@@ -34,4 +30,5 @@ mitigating the risk of Distributed Denial-of-Service (DDoS) attacks and other au
                 rateLimiterRefillDuration: 1
                 servicesToLimitRequestRate: apicatalog
 ```
-In simple terms, this rate-limiting configuration allows to control how many requests users can make to specified services and how quickly their request allowance renews, promoting fair access and better overall system stability.
+You configured the properties of the rate limiter for the API Catalog, thereby improving user accessibility and overall system stability. 
+
