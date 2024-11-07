@@ -29,7 +29,7 @@ Since the Zowe 2.17 release, it is no longer necessary to disable replay protect
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
-To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the zoweuser can be determined.
+To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the ZWESVUSR can be determined.
 
 - **Validating an existing PassTicket for ACF2**
 
@@ -187,7 +187,7 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
     TSS ADDTO(<department>) PTKTDATA(IRRPTAUTH) 
     ```
 - **`department`**  
-  Specifies the department for Zowe. The default department is `TSODEPT1`.
+  Specifies the department for `PTKTDATA(IRRPTAUTH`. The default department is `TSODEPT1`.
 
 3. Define PassTicket for application ID _applid_:
   
