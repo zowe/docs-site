@@ -35,11 +35,11 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
 
     <details>
 
-    <summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
+    <summary>Click here for procedure details about validating an existing PassTicket for ACF2.</summary>
 
-    In your ESM command line interface or other security environment, execute the following commands:
+    In your ESM command line interface or other security environment, perform the following steps:
 
-     1. Issue a SHOW CLASMAP command in TSO ACF to verify whether or not the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the SHOW CLASMAP listing, run the following commands:
+     1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the SHOW CLASMAP listing, run the following commands:
 
         ```acf2
         SET CONTROL(GSO)
@@ -52,7 +52,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
         SET RESOURCE(APL)
         LIST LIKE(<applid>-)
         ```
-    3. Verify whether PTKTDATA is defined, by executing the following commands:
+    3. Verify if PTKTDATA is defined, by executing the following commands:
         ```
         SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
         LIST LIKE(<applid>-)
@@ -74,14 +74,14 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
 
     <summary>Click here for command details about validating an existing PassTicket for Top Secret.</summary>
 
-    In your ESM command line interface or other security environment, execute the following commands:
+    1. In your ESM command line interface or other security environment, execute the following commands:
 
     ```tss
         TSS WHOHAS APPL(<applid>)
         TSS WHOHAS PTKTDATA(<applid>)
         TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
-    If APPL and PTKTDATA are not defined yet, follow the instruction to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
+    2. If APPL and PTKTDATA are not yet defined, follow the steps to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
 
     - **`.`**  
         A wildcard symbol that lists all resources
@@ -129,13 +129,14 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
-1. Issue a SHOW CLASMAP command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+1. Issue the `SHOW CLASMAP` command in TSO ACF to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+   
    ```acf2
    SET RESOURCE(APL)
    RECKEY <applid> ADD(UID(<user>) ALLOW)
    F ACF2,REBUILD(APL)
    ```
-2. In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined.
+2. In your ESM command line interface or other security environment, define the application session key by entering the following commands if the session key is not already defined.
 
     ```acf2
     SET PROFILE(PTKTDATA) DIV(SSIGNON)
@@ -149,7 +150,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 * **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
-2. Complete the PassTicket setup by entering the following commands:
+3. Complete the PassTicket setup by entering the following commands:
 
     ```acf2
         F ACF2,REBUILD(PTK),CLASS(P)
@@ -157,7 +158,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 
     The PassTicket record is now active in the system.
 
-3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
+4. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 
     ```
     SET RESOURCE(PTK) 
@@ -366,18 +367,32 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 ### Verifying your PassTicket Application
 
-In your ESM command line interface or other security environment, execute the following commands:
+In your ESM command line interface or other security environment, execute the commands that correspond to your ESM:
+
+<details>
+<summary>Click here for command details for RACF</summary>
 
 **RACF:**
 ```racf
  RLIST APPL <applid> ALL
  RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
 ```
+
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
 **TSS:**
 ```tss
 TSS WHOHAS APPL(<applid>)
 TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 ```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
 
 **ACF2:**
 ```acf2
@@ -386,6 +401,7 @@ LIST LIKE(<applid>-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
 ```
+</details>
 
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server
