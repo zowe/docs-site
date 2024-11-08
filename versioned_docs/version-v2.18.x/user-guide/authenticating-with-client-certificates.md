@@ -50,7 +50,12 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
 ## Configure your z/OS system to support client certificate authentication for a specific user
 
-Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
+Register the client certificate with the user ID in your ESM. The following commands show options for both the internal API ML mapper and ZSS.
+
+:::note
+
+If using the internal API ML mapper and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format as displayed.
+:::
 
 **RACF**  
 
