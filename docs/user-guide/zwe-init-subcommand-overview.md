@@ -112,7 +112,7 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, customize this member to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB`.  This member contains the commands required to perform the security configuration. 
 
-For more information about `zwe init security`, see [Configuring with `zwe init security` command](./configuring-security.md#configuring-with-zwe-init-security-command).
+For more information about `zwe init security`, see _Configure with `zwe init security` command_ in [Configuring security](./configuring-security.md).
 
 :::tip
 
