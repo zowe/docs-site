@@ -79,8 +79,8 @@ Use the `--show-inputs-only` option in a Zowe CLI command to view the property v
 
 If your network configuration requires communication with the mainframe to be performed through a proxy server, set environment variables to route Zowe CLI traffic through an HTTP/HTTPS proxy.
 
-| Environment Variable         | Description   |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `HTTPS_PROXY`, `https_proxy` | Use the `https` proxy to route communication to the mainframe when your proxy server supports `https`.               |
-| `HTTP_PROXY`, `http_proxy`   | Use the `http` proxy to route communication to the mainframe.                                                        |
-| `NO_PROXY`                   | Set a list of host addresses (separated by commas) to connect to the specified hosts without going through a proxy.|
+| Environment Variable         | Description   |   Example Value |
+| - | - | - |
+| `HTTPS_PROXY`, `https_proxy` | Use an `https` proxy to route communication to the mainframe when your proxy server supports `https`.               | If authentication required: </br> `https://[user]:[password]@[address]:[port]` </br> If authentication not required: `https://[address]:[port]` |
+| `HTTP_PROXY`, `http_proxy`   | Use an `http` proxy to route communication to the mainframe when your proxy server does not support `https`.                                                        | If authentication required: </br> `http://[user]:[password]@[address]:[port]` </br> If authentication not required: `http://[address]:[port]`|
+| `NO_PROXY`                   | Set a list of host addresses (separated by commas) to connect to the specified hosts without going through a proxy.| `https://[address_1],https://[address_2]`, `http://[address_1],http://[address_2]`, `*.address_1,*.address_2` |
