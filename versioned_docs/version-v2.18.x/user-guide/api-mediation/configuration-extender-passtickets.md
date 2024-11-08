@@ -47,12 +47,12 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
         ```
   
     2. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
-        ```
+        ```acf2
         SET RESOURCE(APL)
         LIST LIKE(<applid>-)
         ```
     3. Verify whether PTKTDATA is defined, by executing the following commands:
-        ```
+        ```acf2
         SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
         LIST LIKE(<applid>-)
         SET RESOURCE(PTK)
@@ -129,17 +129,17 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
 1. Issue a SHOW CLASMAP command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
-        ```
-        SET RESOURCE(APL)
-        RECKEY <applid> ADD(UID(<user>) ALLOW)
-        F ACF2,REBUILD(APL)
-        ```
+    ```acf2
+    SET RESOURCE(APL)
+    RECKEY <applid> ADD(UID(<user>) ALLOW)
+    F ACF2,REBUILD(APL)
+    ```
 2. In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined.
    
     ```acf2
-        SET PROFILE(PTKTDATA) DIV(SSIGNON)
-        INSERT <applid> SSKEY(<key-description>)
-        F ACF2,REBUILD(PTK),CLASS(P)
+    SET PROFILE(PTKTDATA) DIV(SSIGNON)
+    INSERT <applid> SSKEY(<key-description>)
+    F ACF2,REBUILD(PTK),CLASS(P)
     ```
 
 * **`applid`**  
