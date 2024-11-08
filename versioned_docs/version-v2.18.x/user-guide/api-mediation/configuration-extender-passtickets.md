@@ -38,20 +38,26 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
     <summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
 
     In your ESM command line interface or other security environment, execute the following commands:
-
-    ```acf2
-        SET RESOURCE(SAF)
-        LIST LIKE(-)
-
-        SET RESOURCE(SAF)
+    1. Issue a SHOW CLASMAP command in TSO ACF to verify whether or not the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the SHOW CLASMAP listing, run the following commands:
+  
+        ```acf2
+        SET CONTROL(GSO)
+        INSERT CLASMAP.appl RESOURCE(APPL) RSRCTYPE(APL)
+        F ACF2,REFRESH(CLASMAP)
+        ```
+  
+    2. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+        ```
+        SET RESOURCE(APL)
         LIST LIKE(<applid>-)
-
+        ```
+    3. Verify whether PTKTDATA is defined, by executing the following commands:
+        ```
         SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
         LIST LIKE(<applid>-)
-
         SET RESOURCE(PTK)
         LIST LIKE(IRRPTAUTH-)
-    ```
+        ```
 
     - **`-`**  
         A wildcard symbol that lists all resources
@@ -122,8 +128,14 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
-1. In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined.
-
+1. Issue a SHOW CLASMAP command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+        ```
+        SET RESOURCE(APL)
+        RECKEY <applid> ADD(UID(<user>) ALLOW)
+        F ACF2,REBUILD(APL)
+        ```
+2. In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined.
+   
     ```acf2
         SET PROFILE(PTKTDATA) DIV(SSIGNON)
         INSERT <applid> SSKEY(<key-description>)
