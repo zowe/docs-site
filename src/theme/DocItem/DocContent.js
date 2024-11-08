@@ -5,8 +5,8 @@ import { MDXProvider } from "@mdx-js/react";
 import {
   useDoc,
   useDocsVersion,
-  useTitleFormatter,
-} from "@docusaurus/theme-common/internal";
+} from "@docusaurus/plugin-content-docs/client";
+import { useTitleFormatter } from "@docusaurus/theme-common/internal";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocPaginator from "@theme/DocPaginator";
