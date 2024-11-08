@@ -25,7 +25,7 @@ The Gateway retry policy, customizable through zowe.yaml, optimizes request hand
 
 To customize the Gateway retry policy, see [Customizing Gateway retry policy](./configuration-gateway-retry-policy.md).
 
-To configure a custom rate limiter, see [Configuring custom rate limiter](./configuration-rate-limiter.md).
+To configure a custom rate limiter, see [Configuring custom rate limiter](./customizing-gateway-rate-limiter.md).
 
 Additionally, API ML supports specific instance access and load balancer cache distribution, improving service identification and scalability. These configurations, including service ID adjustments for compatibility with Zowe v2, demonstrate Zowe's adaptability and robustness in API management.
 
