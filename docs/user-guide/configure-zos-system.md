@@ -66,47 +66,60 @@ Define or check the following configurations depending on whether ICSF is alread
 - Create CKDS, PKDS, TKDS VSAM data sets.
 - Define and activate the CSFSERV class:
 
-    - If you use RACF, issue the following commands:
-        ```
-        RDEFINE CSFSERV profile-name UACC(NONE)
-        ```
-        ```
-        PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
-        ```
-        ```
-        PERMIT profile-name CLASS(CSFSERV) ID(userid-list)   ... [for 
-        userids IKED, NSSD, and Policy Agent]
-        ```
-        ```
-        SETROPTS CLASSACT(CSFSERV)
-        ```
-        ```
-        SETROPTS RACLIST(CSFSERV) REFRESH
-        ```
-    - If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
-        ```
-        SET CONTROL(GSO)
-        ```
-        ```
-        INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
-        ```
-        ```
-        F ACF2,REFRESH(CLASMAP)
-        ```
-        ```
-        SET RESOURCE(CSF)
-        ```
-        ```
-        RECKEY profile-prefix ADD(profile-suffix uid(UID string for tcpip-stackname) SERVICE(READ) ALLOW)   
-        ```
-        ```
-        RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)
-        ```
-        (repeat for userids IKED, NSSD, and Policy Agent)
+<details>
+<summary>Click here for command details for RACF.</summary>
 
-        ```
-        F ACF2,REBUILD(CSF)
-        ```
+If you use RACF, issue the following commands:
+```
+RDEFINE CSFSERV profile-name UACC(NONE)
+```
+```
+PERMIT profile-name CLASS(CSFSERV) ID(tcpip-stackname) ACCESS(READ)
+```
+```
+PERMIT profile-name CLASS(CSFSERV) ID(userid-list)   ... [for 
+userids IKED, NSSD, and Policy Agent]
+```
+```
+SETROPTS CLASSACT(CSFSERV)
+```
+```
+SETROPTS RACLIST(CSFSERV) REFRESH
+```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
+If you use ACF2, issue the following commands (note that `profile-prefix` and `profile-suffix` are user-defined):
+```
+SET CONTROL(GSO)
+```
+```
+INSERT CLASMAP.CSFSERV RESOURCE(CSFSERV) RSRCTYPE(CSF)  
+```
+```
+F ACF2,REFRESH(CLASMAP)
+```
+```
+SET RESOURCE(CSF)
+```
+```
+RECKEY profile-prefix ADD(profile-suffix uid(UID string for tcpip-stackname) SERVICE(READ) ALLOW)   
+```
+```
+RECKEY profile-prefix ADD(profile-suffix uid(UID string for IZUSVR) SERVICE(READ) ALLOW)
+```
+(repeat for userids IKED, NSSD, and Policy Agent)
+
+```
+F ACF2,REBUILD(CSF)
+```
+
+</details>
+
+
     - If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
         ```
         TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
