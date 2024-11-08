@@ -3,17 +3,18 @@
 :::info Required roles: system administrator, security administrator
 :::
 
-Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through 
+Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through
 the API ML Gateway with client certificates. This method of authentication requires client certification to be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
+
 * When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
-  authentication credentials take precedence and the client certificate is ignored. 
+  authentication credentials take precedence and the client certificate is ignored.
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
-## How the Gateway resolves authentication 
+## How the Gateway resolves authentication
 
 When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
 
@@ -30,11 +31,12 @@ When sending a request to the login endpoint with a client certificate, the Gate
 4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
 
 :::note Notes:
+
 * As of Zowe release 3.0.0, the Internal API ML Mapper is the default API that provides this mapping between the public part of the client certificate and SAF user ID. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, with the noted exception when using ACF2, although we recommend using the internal API ML mapper.
 * For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
 :::
 
-The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping. 
+The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping.
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
@@ -42,24 +44,41 @@ The following diagram shows how routing works with ZSS, in the case where the ZS
 For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
 :::
 
-## Configure your z/OS system to support client certificate authentication for a specific user
+## Configure your z/OS system to support client certificate authentication for specific users
 
-Register the client certificate with the user ID in your ESM. The following commands apply to both the internal API ML mapper and ZSS.
+Register the client certificate with the user IDs in your ESM. 
 
-**RACF** 
+The following commands show options for both the internal API ML mapper and ZSS.
+
+:::note
+
+If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format as displayed.
+:::
+
+**RACF**
 <details>
-<summary>Click here for an example command in RACF. </summary> 
+<summary>Click here for an example command in RACF. </summary>
 
-  ``` 
-  RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
-  SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+  Activate the `DIGTNMAP` class:
+  
+  ```racf
+  SETROPTS CLASSACT(DIGTNMAP) RACLIST(DIGTNMAP)
   ```
-Alternatively, if you are using the internal API ML mapper, use the following command:
 
-  ```
+  Create the mapping for the user and a distinguished name filter:
+
+  ```racf
   RACDCERT ID(<userid>) MAP 
   SDNFILTER('<subject's-distinguished-name-filter>')
   WITHLABEL('<label>')
+  SETROPTS RACLIST(DIGTMAP) REFRESH
+  ```
+
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+
+  ```racf
+  RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
+  SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
 
 </details>
@@ -69,11 +88,9 @@ Alternatively, if you are using the internal API ML mapper, use the following co
 <details>
 <summary>Click here for an example command in ACF2. </summary>  
 
-  `INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST`
+  Create the mapping for the user and a distinguished name filter:
 
-Alternatively, if you are using the internal API ML mapper, use the following command:
-
-  ```
+  ```acf2
   CERTMAP.<recid>     
   SDNFILTR(<subject's-distinguished-name-filter>)
   LABEL(<label>)
@@ -81,30 +98,40 @@ Alternatively, if you are using the internal API ML mapper, use the following co
   TRUST
   ```
 
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+
+  ```acf2
+  INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST
+  ```
+
 </details>
 
-
-**Top Secret** 
+**Top Secret**
 
 <details>
-<summary>Click here for an example command in Top Secret. </summary> 
+<summary>Click here for an example command in Top Secret. </summary>
 
-  `TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST`
-
-Alternatively, if you are using the internal API ML mapper, use the following command:
-
-  ```
+  Create the mapping for the user and a distinguished name filter:
+  
+  ```tss
   TSS ADDT0(<userid>) CERTMAP(<recid>)
   SDNFILTR('<subject's-distinguished-name-filter>')
   USERID(<userid>)
   TRUST
   ```
-</details>
 
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+
+  ```tss
+  TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST
+  ```
+
+</details>
 
 Additional details are likely described in your security system documentation.
 
 :::note Notes
+
 * The alternative ESM map commands allow mapping a certificate to a user without adding the X.509 certificate to the ESM database. While this approach is more convenient, it could be considered less secure than adding the certificate to the ACID, which offers better control and protection.
 * Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
 * Ensure that the client certificate has the following `Extended Key Usage` metadata:  
@@ -112,16 +139,16 @@ Additional details are likely described in your security system documentation.
 This metadata can be used for TLS client authentication.
 :::
 
-
 ## Validate the client certificate functionality
 
-To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication for a specific user](#configure-your-zos-system-to-support-client-certificate-authentication-for-a-specific-user) described previously in this article. 
+To validate that the client certificate functionality works properly, call the login endpoint with the certificate that was set up using the steps in [Configure your z/OS system to support client certificate authentication for a specific user](#configure-your-zos-system-to-support-client-certificate-authentication-for-specific-users) described previously in this article.
 
 Validate using _CURL_, a command line utility that runs on Linux based systems:
 
 **Example:**
-```
+
+```bash
 curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
 ```
-Your Zowe instance is configured to accept x.509 client certificates authentication.
 
+Your Zowe instance is configured to accept x.509 client certificates authentication.
