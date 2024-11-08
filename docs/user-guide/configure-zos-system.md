@@ -119,22 +119,25 @@ F ACF2,REBUILD(CSF)
 
 </details>
 
+<details>
+<summary>Click here for command details for Top Secret</summary>
 
-    - If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
-        ```
-        TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
-        ```
-        ```                  
-        TSS ADD(owner-acid) CSFSERV(profile-prefix.)
-        ```
-        ```
-        TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        ```
-        ```
-        TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
-        ```
-        (repeat for user-acids IKED, NSSD, and Policy Agent)
+If you use Top Secret, issue the following command (note that `profile-prefix` and `profile-suffix` are user defined):
+```
+TSS ADDTO(owner-acid) RESCLASS(CSFSERV)              
+```
+```                  
+TSS ADD(owner-acid) CSFSERV(profile-prefix.)
+```
+```
+TSS PERMIT(tcpip-stackname) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
+```
+```
+TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
+```
+(repeat for user-acids IKED, NSSD, and Policy Agent)
 
+</details>
 
 :::note Notes
 - Determine whether you want SAF authorization checks against `CSFSERV` and set `CSF.CSFSERV.AUTH.CSFRNG.DISABLE` accordingly.
@@ -151,107 +154,146 @@ To enable impersonation, you must grant the user ID `ZWESVUSR` associated with t
 
 You can issue the following commands first to check whether you already have the impersonation profiles defined as part of another server configuration, such as the FTPD daemon. Review the output to confirm that the two impersonation profiles exist and the user `ZWESVUSR` who runs the Zowe server started task has UPDATE access to both profiles.
 
-- If you use RACF, issue the following commands:
-    ```
-    RLIST FACILITY BPX.SERVER AUTHUSER
-    ```
-    ```
-    RLIST FACILITY BPX.DAEMON AUTHUSER
-    ```
-- If you use Top Secret, issue the following commands:
-    ```
-    TSS WHOHAS IBMFAC(BPX.SERVER)
-    ```
-    ```
-    TSS WHOHAS IBMFAC(BPX.DAEMON)
-    ```
-- If you use ACF2, issue the following commands:
-    ```
-    SET RESOURCE(FAC)
-    ```
-    ```
-    LIST BPX
-    ```
+<details>
+<summary>Click here for command details for RACF.</summary>
+
+If you use RACF, issue the following commands:
+```
+RLIST FACILITY BPX.SERVER AUTHUSER
+```
+```
+RLIST FACILITY BPX.DAEMON AUTHUSER
+```
+
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
+If you use Top Secret, issue the following commands:
+```
+TSS WHOHAS IBMFAC(BPX.SERVER)
+```
+```
+TSS WHOHAS IBMFAC(BPX.DAEMON)
+```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
+If you use ACF2, issue the following commands:
+```
+SET RESOURCE(FAC)
+```
+```
+LIST BPX
+```
+
+</details>
 
 If the user `ZWESVUSR` who runs the Zowe server started task does not have UPDATE access to both profiles follow the instructions below.
 
-- If you use RACF, complete the following steps:
-      
-   1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
-      ```
-      SETROPTS GENERIC(FACILITY)
-      SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)                
-      ```
-   2. Define the impersonation profiles. This may have already been done on behalf of another server such as the FTPD daemon.  
-      ```
-      RDEFINE FACILITY BPX.SERVER UACC(NONE)
-      ```
-      ```
-      RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
-      ```             
-   3. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the Zowe server started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
-      ```
-      PERMIT BPX.SERVER CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
-      ```
-      ```
-      PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
-      ```
-      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
+<details>
+<summary>Click here for procedure details for RACF.</summary>
 
-      /* Activate these changes */
-
-      ```
-      SETROPTS RACLIST(FACILITY) REFRESH      
-      ```
-   4. Issue the following commands to check whether permission has been successfully granted:
-      ```
-      RLIST FACILITY BPX.SERVER AUTHUSER
-      ```
-      ```
-      RLIST FACILITY BPX.DAEMON AUTHUSER
-      ```
-- If you use Top Secret, complete the following steps:  
+If you use RACF, complete the following steps:
       
-   1. Define the BPX Resource and access for `<zowe_stc_user>`.
-      ```
-      TSS ADD(`owner-acid`) IBMFAC(BPX.)
-      ```
-      ```
-      TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
-      ```
-      ```
-      TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
-      ```
-      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
-   2. Issue the following commands and review the output to check whether permission has been successfully granted:
-      ```
-      TSS WHOHAS IBMFAC(BPX.SERVER)
-      ```
-      ```
-      TSS WHOHAS IBMFAC(BPX.DAEMON)
-      ```
-- If you use ACF2, complete the following steps:
-   1. Define the BPX Resource and access for `<zowe_stc_user>`.
-      ```
-      SET RESOURCE(FAC)
-      ```
-      ```
-      RECKEY BPX ADD(SERVER ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
-      ```
-      ```
-      RECKEY BPX ADD(DAEMON ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
-      ```
-      where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
-      ```
-      F ACF2,REBUILD(FAC)
-      ```
-   2. Issue the following commands and review the output to check whether permission has been successfully granted:
-      ```
-      SET RESOURCE(FAC)
-      ```
-      ```
-      LIST BPX
-      ```
+1. Activate and RACLIST the FACILITY class. This may have already been done on the z/OS environment if another z/OS server has been previously configured to take advantage of the ability to change its security environment, such as the FTPD daemon that is included with z/OS Communications Server TCP/IP services.  
+
+```
+SETROPTS GENERIC(FACILITY)
+SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)                
+```
+1. Define the impersonation profiles. This may have already been done on behalf of another server such as the FTPD daemon.  
+```
+RDEFINE FACILITY BPX.SERVER UACC(NONE)
+```
+```
+RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
+```             
+1. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the Zowe server started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+```
+PERMIT BPX.SERVER CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
+```
+```
+PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
+```
+where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
+
+/* Activate these changes */
+
+```
+SETROPTS RACLIST(FACILITY) REFRESH      
+```
+   1. Issue the following commands to check whether permission has been successfully granted:
+```
+RLIST FACILITY BPX.SERVER AUTHUSER
+```
+```
+RLIST FACILITY BPX.DAEMON AUTHUSER
+```
+
+</details>
+
+<details>
+<summary>Click here for procedure details for Top Secret.</summary>
+
+If you use Top Secret, complete the following steps:  
+      
+1. Define the BPX Resource and access for `<zowe_stc_user>`.
+```
+TSS ADD(`owner-acid`) IBMFAC(BPX.)
+```
+```
+TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.SERVER) ACCESS(UPDATE)
+```
+```
+TSS PERMIT(<zowe_stc_user>) IBMFAC(BPX.DAEMON) ACCESS(UPDATE)
+```
+where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
+
+2. Issue the following commands and review the output to check whether permission has been successfully granted:
+```
+TSS WHOHAS IBMFAC(BPX.SERVER)
+```
+```
+TSS WHOHAS IBMFAC(BPX.DAEMON)
+```
+
+</details>
+
+<details>
+<summary>Click here for procedure details for ACF2.</summary>
+
+If you use ACF2, complete the following steps:
+
+1. Define the BPX Resource and access for `<zowe_stc_user>`.
+```
+SET RESOURCE(FAC)
+```
+```
+RECKEY BPX ADD(SERVER ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
+```
+```
+RECKEY BPX ADD(DAEMON ROLE(<zowe_stc_user>) SERVICE(UPDATE) ALLOW)
+```
+where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
+```
+F ACF2,REBUILD(FAC)
+```
+
+2. Issue the following commands and review the output to check whether permission has been successfully granted:
+```
+SET RESOURCE(FAC)
+```
+```
+LIST BPX
+```
+
+</details>
+
 
 You must also grant READ access to the OMVSAPPL profile in the APPL class to the Zowe STC user as well as **all other Zowe users** using various Zowe features. Skip the following steps when the OMVSAPPL profile is not defined in your environment.
 
