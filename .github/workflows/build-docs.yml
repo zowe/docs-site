@@ -43,7 +43,7 @@ jobs:
         env:
           TAR_OPTIONS: "--remove-files"
         with:
-          path: node_modules/.cache/webpack
+          path: node_modules/.cache/rspack
           key: cache-webpack-${{ github.base_ref || github.ref_name }}
 
       - name: Install Dependencies
