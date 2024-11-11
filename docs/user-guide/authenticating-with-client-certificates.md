@@ -74,7 +74,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   SETROPTS RACLIST(DIGTMAP) REFRESH
   ```
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   ```racf
   RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
@@ -120,7 +120,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   TRUST
   ```
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   ```tss
   TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST
