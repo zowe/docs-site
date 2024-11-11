@@ -201,7 +201,7 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
     TSS ADDTO(<department>) PTKTDATA(IRRPTAUTH) 
     ```
 - **`department`**  
-  Specifies the department for `PTKTDATA(IRRPTAUTH`. The default department is `TSODEPT1`.
+  Specifies the department for `PTKTDATA(IRRPTAUTH)`. The default department is `TSODEPT1`.
 
 3. Define PassTicket for application ID _applid_:
   
