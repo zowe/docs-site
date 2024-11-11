@@ -567,34 +567,34 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
 <details>
 <summary>Click here for command details for RACF.</summary>
 
-- If you use RACF, issue the following commands:
-  ```
-  RDEFINE STARTED ZWESLSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
-  SETROPTS REFRESH RACLIST(STARTED)
-  ```
+If you use RACF, issue the following commands:
+```
+RDEFINE STARTED ZWESLSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
+SETROPTS REFRESH RACLIST(STARTED)
+```
 </details>
 
 <details>
 <summary>Click here for command details for ACF2.</summary>
 
-- If you use ACF2, issue the following commands:
+If you use ACF2, issue the following commands:
 
-  ```
-  SET CONTROL(GSO)
-  INSERT STC.ZWESLSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESLSTC)
-  F ACF2,REFRESH(STC)
-  ```
+```
+SET CONTROL(GSO)
+INSERT STC.ZWESLSTC LOGONID(ZWESVUSR) GROUP(ZWEADMIN) STCID(ZWESLSTC)
+F ACF2,REFRESH(STC)
+```
 
 </details>
 
 <details>
 <summary>Click here for command details for Top Secret.</summary>
 
-- If you use Top Secret, issue the following commands:
+If you use Top Secret, issue the following commands:
 
-  ```
-  TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
-  ```
+```
+TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
+```
 
 </details>
 
