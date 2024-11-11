@@ -38,7 +38,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
     <summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
 
     In your ESM command line interface or other security environment, execute the following commands:
-    1. Issue a SHOW CLASMAP command in TSO ACF to verify whether or not the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the SHOW CLASMAP listing, run the following commands:
+    1. Issue a `SHOW CLASMAP` command in TSO ACF to verify whether or not the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
   
         ```acf2
         SET CONTROL(GSO)
