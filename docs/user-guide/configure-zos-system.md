@@ -206,28 +206,31 @@ If you use RACF, complete the following steps:
 SETROPTS GENERIC(FACILITY)
 SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)                
 ```
-1. Define the impersonation profiles. This may have already been done on behalf of another server such as the FTPD daemon.  
+2. Define the impersonation profiles. This may have already been done on behalf of another server such as the FTPD daemon.  
 ```
 RDEFINE FACILITY BPX.SERVER UACC(NONE)
 ```
 ```
 RDEFINE FACILITY BPX.DAEMON UACC(NONE)                 
 ```             
-1. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the Zowe server started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
+3. Having activated and RACLIST the FACILITY class, the user ID `ZWESVUSR` who runs the Zowe server started task must be given update access to the BPX.SERVER and BPX.DAEMON profiles in the FACILITY class.
 ```
 PERMIT BPX.SERVER CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
 ```
 ```
 PERMIT BPX.DAEMON CLASS(FACILITY) ID(<zowe_stc_user>) ACCESS(UPDATE)
 ```
-where `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
+where:
+
+* `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
 
 /* Activate these changes */
 
 ```
 SETROPTS RACLIST(FACILITY) REFRESH      
 ```
-   1. Issue the following commands to check whether permission has been successfully granted:
+4. Issue the following commands to check whether permission has been successfully granted:
+   
 ```
 RLIST FACILITY BPX.SERVER AUTHUSER
 ```
@@ -297,45 +300,60 @@ LIST BPX
 
 You must also grant READ access to the OMVSAPPL profile in the APPL class to the Zowe STC user as well as **all other Zowe users** using various Zowe features. Skip the following steps when the OMVSAPPL profile is not defined in your environment.
 
-- If you use RACF, complete the following steps:
+<details>
+<summary>Click here for procedure details for RACF.</summary>
 
-    1. Check if you already have the required access defined as part of the environment configuration. Skip the following steps if access is already granted.
-         ```
-         RLIST APPL OMVSAPPL AUTHUSER
-         ```
+If you use RACF, complete the following steps:
 
-    2. Issue the following commands and review the output to check if permission has been successfully granted:
-         ```
-         PERMIT OMVSAPPL CLASS(APPL) ID(<zowe_user>) ACCESS(READ)
-         SETROPTS RACLIST(APPL) REFRESH
-         ```
+1. Check if you already have the required access defined as part of the environment configuration. Skip the following steps if access is already granted.
+```
+RLIST APPL OMVSAPPL AUTHUSER
+```
 
-- If you use Top Secret, complete the following steps:
+2. Issue the following commands and review the output to check if permission has been successfully granted:
+```
+PERMIT OMVSAPPL CLASS(APPL) ID(<zowe_user>) ACCESS(READ)
+SETROPTS RACLIST(APPL) REFRESH
+```
 
-    1. Check if you already have the required access as part of the environment configuration. Skip the following steps if access is already granted.
-         ```
-         TSS WHOHAS APPL(OMVSAPPL)
-         ```
+</details>
 
-    2. Issue the following commands and review the output to check if permission has been successfully granted:
-         ```
-         TSS PERMIT(<zowe_user>) APPL(OMVSAPPL)
-         ```
+<details>
+<summary>Click here for procedure details for Top Secret.</summary>
 
-- If you use ACF2, complete the following steps:
+If you use Top Secret, complete the following steps:
 
-    1. Check if you already have the required access defined as part of the environment configuration. Skip the following steps if access is already granted.
-         ```
-         SET RESOURCE(APL)
-         LIST OMVSAAPL
-         ```
+1. Check if you already have the required access as part of the environment configuration. Skip the following steps if access is already granted.
+```
+TSS WHOHAS APPL(OMVSAPPL)
+```
 
-    2. Issue the following commands and review the output to check if permission has been successfully granted:
-        ```
-          SET RESOURCE(APL)
-          RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
-          F ACF2,REBUILD(APL)
-        ```
+2. Issue the following commands and review the output to check if permission has been successfully granted:
+```
+TSS PERMIT(<zowe_user>) APPL(OMVSAPPL)
+```
+
+</details>
+
+<details>
+<summary>Click here for procedure details for ACF2.</summary>
+
+If you use ACF2, complete the following steps:
+
+1. Check if you already have the required access defined as part of the environment configuration. Skip the following steps if access is already granted.
+```
+SET RESOURCE(APL)
+LIST OMVSAAPL
+```
+
+2. Issue the following commands and review the output to check if permission has been successfully granted:
+```
+SET RESOURCE(APL)
+RECKEY OMVSAPPL ADD(SERVICE(READ) ROLE(<zowe_user>) ALLOW)
+F ACF2,REBUILD(APL)
+```
+
+</details>
 
 ### Configure address space job naming
 
@@ -407,13 +425,21 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 
 If you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment, the commands are described below for reference.  
 
-- To create the `ZWEADMIN` group, issue the following command:
+- To create the `ZWEADMIN` group, issue the following command according to your ESM:
+
+<details>
+<summary>Click here for command details for RACF.</summary>
 
   **RACF:**
      ```
      ADDGROUP ZWEADMIN OMVS(AUTOGID) -
      DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
      ```
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
   **TSS:**
      ```
      TSS CREATE(<ZWEADMIN>) TYPE(GROUP) +
@@ -421,16 +447,29 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
        DEPT(<ADMIN_DEPARTMENT>)
      TSS ADD(<ZWEADMIN>) GID(<ADMIN_GROUP_ID>)
      ```
+
+</details>  
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
   **ACF2:**
      ```
      SET PROFILE(GROUP) DIV(OMVS)
      INSERT <ZWEADMIN> AUTOGID
      F ACF2,REBUILD(GRP),CLASS(P)
      ```
-- To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+
+</details>
+
+ To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+
+<details>
+
+<summary>Click here for command details for RACF.</summary>
 
   **RACF:**  
-     ```
+   ```
    ADDUSER  <ZWESVUSR> -
    NOPASSWORD -
    DFLTGRP(<ZWEADMIN>) -
@@ -438,6 +477,11 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
    NAME('ZOWE SERVER') -
    DATA('ZOWE MAIN SERVER')
    ```
+</details>  
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
   **TSS:**
    ```
    TSS CREATE(<ZWESVUSR>) TYPE(USER) PROTECTED +
@@ -447,6 +491,12 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
    DFLTGRP(<ZWEADMIN>) +
    HOME(/tmp) OMVSPGM(/bin/sh) UID(<ZOWE_USER_UID>)
    ```
+
+</details> 
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
   **ACF2:**
    ```
    SET LID
@@ -455,8 +505,12 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
    INSERT <ZWESVUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
    F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
    ```
+</details>
 
 - To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
+
+<details>
+<summary>Click here for command details for RACF.</summary>
 
   **RACF:**  
    ```
@@ -467,6 +521,12 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
    NAME('ZOWE XMEM SERVER') -
    DATA('ZOWE XMEM CROSS MEMORY SERVER')
    ```
+
+</details> 
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
   **TSS:**
    ```
    TSS CREATE(<ZWESIUSR>) TYPE(USER) PROTECTED +
@@ -476,6 +536,11 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
     DFLTGRP(<ZWEADMIN>) +
     HOME(/tmp) OMVSPGM(/bin/sh) UID(&ZISUID.)
    ```
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
   **ACF2:**
    ```
    SET LID
@@ -483,7 +548,9 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
    SET PROFILE(USER) DIV(OMVS)
    INSERT <ZWESIUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
    F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
-   ```   
+   ``` 
+
+</details>  
 
 ### Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID
 
@@ -495,13 +562,20 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 ...
 ```
 
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group.  
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group. 
+
+<details>
+<summary>Click here for command details for RACF.</summary>
 
 - If you use RACF, issue the following commands:
   ```
   RDEFINE STARTED ZWESLSTC.* UACC(NONE) STDATA(USER(ZWESVUSR) GROUP(ZWEADMIN) PRIVILEGED(NO) TRUSTED(NO) TRACE(YES))  
   SETROPTS REFRESH RACLIST(STARTED)
   ```
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
 
 - If you use ACF2, issue the following commands:
 
@@ -511,11 +585,18 @@ If you have not run `ZWESECUR` and are configuring your z/OS environment manuall
   F ACF2,REFRESH(STC)
   ```
 
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
 - If you use Top Secret, issue the following commands:
 
   ```
   TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
   ```
+
+</details>
 
 ### Configure the cross memory server for SAF
 
@@ -534,7 +615,10 @@ Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access t
     
 To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
 
-- If you use RACF, issue the following commands:
+<details>
+<summary>Click here for command details for RACF.</summary>
+
+If you use RACF, issue the following commands:
 
     - To see the current class settings, use:
         ```
@@ -566,7 +650,12 @@ To do this, issue the following commands that are also included in the `ZWESECUR
         ```
         This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task user ID with READ access.
 
-- If you use ACF2, issue the following commands:
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
+If you use ACF2, issue the following commands:
 
     ```
     SET RESOURCE(FAC)
@@ -578,7 +667,12 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     F ACF2,REBUILD(FAC)
     ```
 
-- If you use Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
+If you use Top Secret, issue the following commands, where `owner-acid` can be IZUSVR or a different ACID:
 
     ```
     TSS ADD(`owner-acid`) IBMFAC(ZWES.)
@@ -586,6 +680,7 @@ To do this, issue the following commands that are also included in the `ZWESECUR
     ```
     TSS PERMIT(ZWESVUSR) IBMFAC(ZWES.IS) ACCESS(READ)
     ```
+</details>
 
 :::note Notes
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
@@ -597,7 +692,8 @@ To do this, issue the following commands that are also included in the `ZWESECUR
 This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps.
 
-#### Using RACF
+<details>
+<summary>Click here for procedure details for RACF.</summary>
 
 If you use RACF, verify and update permission in the `FACILITY` class.
 
@@ -618,7 +714,10 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     SETROPTS RACLIST(FACILITY) REFRESH
     ```
 
-#### Using ACF2
+</details>
+
+<details>
+<summary>Click here for procedure details for ACF2.</summary>
 
 If you use ACF2, verify and update permission in the `FACILITY` class.
 
@@ -640,7 +739,10 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
     F ACF2,REBUILD(FAC)
     ```      
 
-#### Using TSS
+</details>
+
+<details>
+<summary>Click here for procedure details for Top Secret.</summary>
 
 If you use TSS, verify and update permission in `FACILITY` class.
 
@@ -655,12 +757,15 @@ If you use TSS, verify and update permission in `FACILITY` class.
     TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
     ```
 
+</details>
+
 ### Configure main Zowe server to use distributed identity mapping
 
 This security configuration is necessary for API ML to be able to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have read access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps.
 
-#### Using RACF
+<details>
+<summary>Click here for procedure details for RACF.</summary>
 
 If you use RACF, verify and update permission in the `FACILITY` class.
 
@@ -688,7 +793,10 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     SETROPTS RACLIST(FACILITY) REFRESH
     ```
 
-#### Using ACF2
+</details>
+
+<details>
+<summary>Click here for procedure details for ACF2.</summary>
 
 If you use ACF2, verify and update permission in the `FACILITY` class.
 
@@ -709,8 +817,10 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
     ```
     F ACF2,REBUILD(FAC)
     ```   
+</details>
 
-#### Using TSS
+<details>
+<summary>Click here for procedure details for Top Secret.</summary>
 
 If you use TSS, verify and update permission in `FACILITY` class.
 
@@ -726,20 +836,22 @@ If you use TSS, verify and update permission in `FACILITY` class.
     TSS PER(ZWESVUSR) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)
     ```
 
+</details>
+
 ### Configure signed SAF Identity tokens (IDT)
 
 This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
 
-Follow these general steps:
+**Follow these steps:**
 
 1. Create PKCS#11 token 
 2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
 3. Define a SAF resource profile under the IDTDATA SAF resource class
 
 Details with examples can be found in documentation of external security products:
-* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ book, [link](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
-* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
-* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, [link](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
+* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ in the article [Activating and using the IDTA parameter in RACROUTE REQUEST=VERIFY](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
+* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, in the article [Maintain Identity Token (IDT) Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
+* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, in the article [IDTDATA Profile Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
 
 A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
 
@@ -750,54 +862,86 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
 
 To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
 
-- If you use RACF, issue the following command:
-    ```
-    RLIST FACILITY IRR.RAUDITX AUTHUSER
-    ```
-- If you use Top Secret, issue the following command:
-    ```
-    TSS WHOHAS IBMFAC(IRR.RAUDITX)
-    ```
-- If you use ACF2, issue the following commands:
-    ```
-    SET RESOURCE(FAC)
-    ```
-    ```
-    LIST LIKE(IRR-)
-    ```
+<details>
+<summary>Click here for command details for RACF.</summary>
+
+If you use RACF, issue the following command:
+```
+RLIST FACILITY IRR.RAUDITX AUTHUSER
+```
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
+If you use Top Secret, issue the following command:
+```
+TSS WHOHAS IBMFAC(IRR.RAUDITX)
+```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
+If you use ACF2, issue the following commands:
+```
+SET RESOURCE(FAC)
+```
+```
+LIST LIKE(IRR-)
+```
+
+</details>
 
 If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM:
 
-- If you use RACF, update permission in the `FACILITY` class.
+<details>
+<summary>Click here for procedure details for RACF.</summary>
 
-   **Follow these steps:**
+If you use RACF, update permission in the `FACILITY` class.
 
-   1. Add user `ZWESVUSR` permission to `READ`.
-      ```
-      PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
-      ```
-   2. Activate changes.
-      ```
-      SETROPTS RACLIST(FACILITY) REFRESH
-      ```
+**Follow these steps:**
 
-- If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
-   ```
-   TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
-   ```
+1. Add user `ZWESVUSR` permission to `READ`.
+```
+PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
+```
+2. Activate changes.
+```
+SETROPTS RACLIST(FACILITY) REFRESH
+```
 
-- If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
-   ```
-   SET RESOURCE(FAC)
-   ```
-   ```
-   RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
-   ```
-   ```
-   F ACF2,REBUILD(FAC)
-   ```
-   
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
+If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
+```
+TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
+
+If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
+```
+SET RESOURCE(FAC)
+```
+```
+RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
+```
+```
+F ACF2,REBUILD(FAC)
+```
+
+</details>   
+
 For more information about SMF records, see [SMF records](../user-guide/api-mediation/api-mediation-smf.md) in the Using Zowe API Mediation Layer documentation.
+
 ### Multi-Factor Authentication (MFA)
 
 Multi-factor authentication is supported for several components, such as the Desktop and API Mediation Layer.
