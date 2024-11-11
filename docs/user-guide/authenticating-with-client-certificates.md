@@ -46,13 +46,13 @@ For more information, see the Medium blog post [Zowe client certificate authenti
 
 ## Configure your z/OS system to support client certificate authentication for specific users
 
-Register the client certificate with the user IDs in your ESM. 
+Register the client certificate with the user IDs in your ESM.
 
 The following commands show options for both the internal API ML mapper and ZSS.
 
 :::note
 
-If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format as displayed.
+If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format of the certificate's distinguished name as displayed.
 :::
 
 **RACF**
@@ -148,7 +148,18 @@ Validate using _CURL_, a command line utility that runs on Linux based systems:
 **Example:**
 
 ```bash
-curl --cert /path/to/cert.pem --key /path/to/key.pem https://api-mediation-layer:7554/gateway/api/v1/login
+curl -X POST \
+--cert /path/to/cert.pem \
+--key /path/to/key.pem \
+https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
 ```
+
+Where:
+
+* `cert`: Specifies the certificate location
+* `key`: Path to the private key
+* `7554`: Replace with the configured API Gateway port in the intance
+
+x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 
 Your Zowe instance is configured to accept x.509 client certificates authentication.
