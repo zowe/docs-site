@@ -5,7 +5,7 @@ Before installing a Zowe&trade; CLI plug-in, meet the software requirements to r
 :::info Required role: systems administrator
 :::
 
-| Plug-in | Requirements!LLL |
+| Plug-in | Requirements |
 | --- | --- |
 | [IBM CICS Plug-in for Zowe CLI](cli-cicsplugin.md) | <ul><li>Ensure that [IBM CICS Transaction Server v5.2 or later](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.home.doc/welcomePage/welcomePage.html) is installed and running in your mainframe environment.</li><li>[IBM CICS Management Client Interface (CMCI)](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.clientapi.doc/topics/clientapi_overview.html) is configured and running in your CICS region.</li></ul> |
 | [IBM Db2 Database Plug-in for Zowe CLI](cli-db2plugin.md) | <ul> <li>[Download and prepare the ODBC driver](../user-guide/cli-db2plugin.md#downloading-the-odbc-driver) (required for only package installations) and address the licensing requirements. _Perform this task before you install the plug-in_.</li><li>**(MacOS)** Download and Install [Xcode](https://developer.apple.com/xcode/resources/).</li><li>**Note**: Node.js V22.0 is not yet supported.</li> </ul>|  [z/OS FTP Plug-in for Zowe CLI](cli-ftpplugin.md) | <ul> <li>Ensure that z/OS FTP service is enabled and configured with `JESINTERFACELEVEL` = 2.</li> <li>FTP over SSL is recommended.</li>   </ul> |
