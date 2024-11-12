@@ -5,26 +5,6 @@ You can configure parameters in the Zowe server to enable Zowe to work with AT-T
 :::info Role: security administrator
 :::
 
-- [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe)
-  - [Limitations](#limitations)
-- [AT-TLS rules](#at-tls-rules)
-  - [Inbound rules](#inbound-rules)
-  - [Outbound rules](#outbound-rules)
-    - [For z/OSMF](#for-zosmf)
-    - [For communication between API Gateway and other core services](#for-communication-between-api-gateway-and-other-core-services)
-    - [For communication between API Gateway and southbound services](#for-communication-between-api-gateway-and-southbound-services)
-    - [Services that validate tokens against the API Mediation Layer](#services-that-validate-tokens-against-the-api-mediation-layer)
-  - [Ciphers](#ciphers)
-- [Using AT-TLS for API ML in High Availability](#using-at-tls-for-api-ml-in-high-availability)
-- [Multi-tenancy deployment](#multi-tenancy-deployment)
-- [AT-TLS Troubleshooting](#at-tls-troubleshooting)
-  - [The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser](#the-message-this-combination-of-port-requires-ssl-is-thrown-when-accesing-an-api-ml-service-through-a-browser)
-  - [AT-TLS rules are not applied](#at-tls-rules-are-not-applied)
-  - [Non matching ciphers / protocols](#non-matching-ciphers--protocols)
-  - [Additional troubleshooting](#additional-troubleshooting)
-- [Full example of AT-TLS configuration](#full-example-of-at-tls-configuration)
-- [Additional Zowe feature configuration with AT-TLS](#additional-zowe-feature-configuration-with-at-tls)
-
 ## AT-TLS configuration for Zowe
 
 :::tip
@@ -117,6 +97,14 @@ TTLSConnectionAction ZoweServerConnectionAction
   HandshakeRole ServerWithClientAuth
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
+}
+
+TTLSConnectionAdvancedParms ZoweConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
+  CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
+  SecondaryMap Off
 }
 ```
 
