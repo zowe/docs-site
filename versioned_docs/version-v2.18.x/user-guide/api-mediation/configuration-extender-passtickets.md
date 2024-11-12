@@ -38,7 +38,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
     <summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
 
     In your ESM command line interface or other security environment, execute the following commands:
-    1. Issue a `SHOW CLASMAP` command in TSO ACF to verify whether or not the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
+    1. Issue a `SHOW CLASMAP` command in TSO ACF to verify whether the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
   
         ```acf2
         SET CONTROL(GSO)
@@ -46,7 +46,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
         F ACF2,REFRESH(CLASMAP)
         ```
   
-    2. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+    2. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
         ```acf2
         SET RESOURCE(APL)
         LIST LIKE(<applid>-)
@@ -128,7 +128,7 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
-1. Issue a SHOW CLASMAP command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+1. Issue a `SHOW CLASMAP` command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
     ```acf2
     SET RESOURCE(APL)
     RECKEY <applid> ADD(UID(<user>) ALLOW)
@@ -199,7 +199,7 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
     TSS ADDTO(<department>) PTKTDATA(IRRPTAUTH) 
     ```
 - **`department`**  
-  Specifies the department for `PTKTDATA(IRRPTAUTH`. The default department is `TSODEPT1`.
+  Specifies the department for `PTKTDATA(IRRPTAUTH)`. The default department is `TSODEPT1`.
 
 3. Define PassTicket for application ID _applid_:
   
@@ -379,8 +379,10 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 ```
 
 **ACF2:**
+
+Replace 'APL' with the type code listed in the `SHOW CLASMAP` output
 ```acf2
-SET RESOURCE(SAF)
+SET RESOURCE(APL)
 LIST LIKE(<applid>-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
