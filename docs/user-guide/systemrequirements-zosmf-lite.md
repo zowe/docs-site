@@ -88,9 +88,8 @@ Otherwise, you might encounter errors later in the process. If you encounter err
 
 For the best results with z/OSMF, use one of the following web browsers on your workstation:
 
--   Microsoft Internet Explorer Version 11 or later
-
 -   Microsoft Edge (Windows 10)
+To see websites that require Internet Explorer (IE), open the Microsoft Edge browser, then enable the IE mode, then see the websites.
 
 -   Mozilla Firefox ESR Version 52 or later.
 
