@@ -73,7 +73,7 @@ For a Gradle project, add the SDK as a dependency by updating your `build.gradle
 
 The version 2.2.0 can change. Look at the artifact link to select the latest version.
 
-### Install Node.js from an online registry
+### Install Node.js SDK from an online registry
 
 Pull the packages from an online registry such as npm.
 
