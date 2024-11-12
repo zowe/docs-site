@@ -39,7 +39,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
 
     In your ESM command line interface or other security environment, perform the following steps:
 
-     1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the SHOW CLASMAP listing, run the following commands:
+     1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
 
         ```acf2
         SET CONTROL(GSO)
@@ -47,7 +47,7 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
         F ACF2,REFRESH(CLASMAP)
         ```
 
-    2. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+    2. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
         ```
         SET RESOURCE(APL)
         LIST LIKE(<applid>-)
@@ -129,7 +129,7 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
-1. Issue the `SHOW CLASMAP` command in TSO ACF to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the SHOW CLASMAP output:
+1. Issue the `SHOW CLASMAP` command in TSO ACF to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
    
    ```acf2
    SET RESOURCE(APL)
@@ -395,8 +395,10 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 <summary>Click here for command details for ACF2.</summary>
 
 **ACF2:**
+
+Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
 ```acf2
-SET RESOURCE(SAF)
+SET RESOURCE(APL)
 LIST LIKE(<applid>-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)

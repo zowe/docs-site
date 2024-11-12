@@ -380,7 +380,7 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 
 **ACF2:**
 
-Replace 'APL' with the type code listed in the `SHOW CLASMAP` output
+Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
 ```acf2
 SET RESOURCE(APL)
 LIST LIKE(<applid>-)
