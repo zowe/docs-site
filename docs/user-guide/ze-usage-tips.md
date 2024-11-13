@@ -23,7 +23,7 @@ You can edit existing profiles listed in the **Side Bar** by clicking the profil
 In Zowe V1, you can permanently delete profiles by right-clicking the profile and selecting the **Delete Profile** option. The feature deletes the profile from your `.zowe` folder. In Zowe V2, right-click the profile, and select **Delete Profile** to open the configuration file and manually delete the profile.
 
 :::tip
-Alternatively, delete a profile by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In Zowe V1, you select the profile to delete. In Zowe V2, the configuration file opens for you to delete the profile manually.
+Alternatively, delete a profile by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In Zowe Explorer V1, you select the profile to delete. In Zowe Explorer V2 and above, the configuration file opens for you to delete the profile manually.
 :::
 
 ## Hide a profile
@@ -38,4 +38,4 @@ Zowe Explorer lets you open a list of members you have previously worked on. You
 
 Use your virtual workspaces to access multiple resources from the **Explorer** view, such as local files or resources from other file systems.
 
-In the **Data Sets** or **Unix System Services (USS)** tree, click on a profile **Search** icon. In the **Search** prompt, enter a data set search pattern or a USS file path. Right click on a resource to select the **Add to Workspace** context menu option.
+In the **Data Sets** or **Unix System Services (USS)** tree, click on a profile **Search** icon. In the **Search** prompt, enter a data set search pattern or a USS file path. Right click on a resource to select the **Add to Workspace** context menu option. The status bar message displays and the selected folder is listed in the **Explorer** view with any other files/resources.
