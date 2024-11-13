@@ -4,7 +4,7 @@ One option to enable single sign-on (SSO) to your extending REST API services is
 
 :::info Required Role: security administrator
 :::
-
+ 
 ## Overview of PassTickets 
 API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for support of JWT or a client certificate can be through the use of PassTickets.
 
