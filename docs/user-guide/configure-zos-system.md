@@ -427,20 +427,20 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
 
 - To create the `ZWEADMIN` group, issue the following command according to your ESM:
 
-<details>
-<summary>Click here for command details for RACF.</summary>
+    <details>
+    <summary>Click here for command details for RACF.</summary>
 
-  **RACF:**
-     ```
-     ADDGROUP ZWEADMIN OMVS(AUTOGID) -
-     DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
-     ```
-</details>
+    **RACF:**
+    ```
+    ADDGROUP ZWEADMIN OMVS(AUTOGID) -
+    DATA('STARTED TASK GROUP WITH OMVS SEGEMENT')
+    ```
+    </details>
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
 
-  **TSS:**
+    **TSS:**
      ```
      TSS CREATE(<ZWEADMIN>) TYPE(GROUP) +
        NAME('ZOWE ADMINISTRATORS') +
@@ -448,109 +448,109 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
      TSS ADD(<ZWEADMIN>) GID(<ADMIN_GROUP_ID>)
      ```
 
-</details>  
+    </details>  
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+    <details>
+    <summary>Click here for command details for ACF2.</summary>
 
-  **ACF2:**
+    **ACF2:**
      ```
      SET PROFILE(GROUP) DIV(OMVS)
      INSERT <ZWEADMIN> AUTOGID
      F ACF2,REBUILD(GRP),CLASS(P)
      ```
 
-</details>
+    </details>
 
- To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+ * To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
 
-<details>
+    <details>
 
-<summary>Click here for command details for RACF.</summary>
+    <summary>Click here for command details for RACF.</summary>
 
-  **RACF:**  
-   ```
-   ADDUSER  <ZWESVUSR> -
-   NOPASSWORD -
-   DFLTGRP(<ZWEADMIN>) -
-   OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-   NAME('ZOWE SERVER') -
-   DATA('ZOWE MAIN SERVER')
-   ```
-</details>  
+    **RACF:**  
+    ```
+    ADDUSER  <ZWESVUSR> -
+    NOPASSWORD -
+    DFLTGRP(<ZWEADMIN>) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE SERVER') -
+    DATA('ZOWE MAIN SERVER')
+    ```
+    </details>  
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
 
-  **TSS:**
-   ```
-   TSS CREATE(<ZWESVUSR>) TYPE(USER) PROTECTED +
-   NAME('ZOWE MAIN SERVER') +
-   DEPT(<STC_USER_DEPARTMENT>)
-   TSS ADD(<ZWESVUSR>) GROUP(<ZWEADMIN>) +
-   DFLTGRP(<ZWEADMIN>) +
-   HOME(/tmp) OMVSPGM(/bin/sh) UID(<ZOWE_USER_UID>)
-   ```
+    **TSS:**
+    ```
+    TSS CREATE(<ZWESVUSR>) TYPE(USER) PROTECTED +
+    NAME('ZOWE MAIN SERVER') +
+    DEPT(<STC_USER_DEPARTMENT>)
+    TSS ADD(<ZWESVUSR>) GROUP(<ZWEADMIN>) +
+    DFLTGRP(<ZWEADMIN>) +
+    HOME(/tmp) OMVSPGM(/bin/sh) UID(<ZOWE_USER_UID>)
+    ```
 
-</details> 
+    </details> 
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+    <details>
+    <summary>Click here for command details for ACF2.</summary>
 
-  **ACF2:**
-   ```
-   SET LID
-   INSERT <ZWESVUSR> STC GROUP(<ZWEADMIN>)
-   SET PROFILE(USER) DIV(OMVS)
-   INSERT <ZWESVUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
-   F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
-   ```
-</details>
+    **ACF2:**
+    ```
+    SET LID
+    INSERT <ZWESVUSR> STC GROUP(<ZWEADMIN>)
+    SET PROFILE(USER) DIV(OMVS)
+    INSERT <ZWESVUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
+    F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
+    ```
+    </details>
 
 - To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
 
-<details>
-<summary>Click here for command details for RACF.</summary>
+    <details>
+    <summary>Click here for command details for RACF.</summary>
 
-  **RACF:**  
-   ```
-   ADDUSER <ZWESIUSR> -
-   NOPASSWORD -
-   DFLTGRP(<ZWEADMIN>) -
-   OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
-   NAME('ZOWE XMEM SERVER') -
-   DATA('ZOWE XMEM CROSS MEMORY SERVER')
-   ```
+    **RACF:**  
+    ```
+    ADDUSER <ZWESIUSR> -
+    NOPASSWORD -
+    DFLTGRP(<ZWEADMIN>) -
+    OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) -
+    NAME('ZOWE XMEM SERVER') -
+    DATA('ZOWE XMEM CROSS MEMORY SERVER')
+    ```
 
-</details> 
+    </details> 
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
 
-  **TSS:**
-   ```
-   TSS CREATE(<ZWESIUSR>) TYPE(USER) PROTECTED +
+    **TSS:**
+    ```
+    TSS CREATE(<ZWESIUSR>) TYPE(USER) PROTECTED +
     NAME('ZOWE ZIS CROSS MEMORY SERVER') +
     DEPT(<STC_USER_DEPARTMENT>)
-   TSS ADD(<ZWESIUSR>) GROUP(<ZWEADMIN>) +
+    TSS ADD(<ZWESIUSR>) GROUP(<ZWEADMIN>) +
     DFLTGRP(<ZWEADMIN>) +
     HOME(/tmp) OMVSPGM(/bin/sh) UID(&ZISUID.)
-   ```
-</details>
+    ```
+    </details>
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+    <details>
+    <summary>Click here for command details for ACF2.</summary>
 
-  **ACF2:**
-   ```
-   SET LID
-   INSERT <ZWESIUSR> STC GROUP(<ZWEADMIN>)
-   SET PROFILE(USER) DIV(OMVS)
-   INSERT <ZWESIUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
-   F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
-   ``` 
+    **ACF2:**
+    ```
+    SET LID
+    INSERT <ZWESIUSR> STC GROUP(<ZWEADMIN>)
+    SET PROFILE(USER) DIV(OMVS)
+    INSERT <ZWESIUSR> AUTOUID HOME(/tmp) OMVSPGM(/bin/sh)
+    F ACF2,REBUILD(USR),CLASS(P),DIVISION(OMVS)
+    ``` 
 
-</details>  
+    </details>  
 
 ### Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID
 
@@ -860,85 +860,85 @@ A part of the Signed SAF Identity token configuration is a nontrivial step that 
 This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have READ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
+* To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
 
-<details>
-<summary>Click here for command details for RACF.</summary>
+    <details>
+    <summary>Click here for command details for RACF.</summary>
 
-If you use RACF, issue the following command:
-```
-RLIST FACILITY IRR.RAUDITX AUTHUSER
-```
-</details>
+    If you use RACF, issue the following command:
+    ```
+    RLIST FACILITY IRR.RAUDITX AUTHUSER
+    ```
+    </details>
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
 
-If you use Top Secret, issue the following command:
-```
-TSS WHOHAS IBMFAC(IRR.RAUDITX)
-```
+    If you use Top Secret, issue the following command:
+    ```
+    TSS WHOHAS IBMFAC(IRR.RAUDITX)
+    ```
 
-</details>
+    </details>
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+    <details>
+    <summary>Click here for command details for ACF2.</summary>
 
-If you use ACF2, issue the following commands:
-```
-SET RESOURCE(FAC)
-```
-```
-LIST LIKE(IRR-)
-```
+    If you use ACF2, issue the following commands:
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    LIST LIKE(IRR-)
+    ```
 
-</details>
+    </details>
 
-If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM:
+* If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM:
 
-<details>
-<summary>Click here for procedure details for RACF.</summary>
+    <details>
+    <summary>Click here for procedure details for RACF.</summary>
 
-If you use RACF, update permission in the `FACILITY` class.
+    If you use RACF, update permission in the `FACILITY` class.
 
-**Follow these steps:**
+    **Follow these steps:**
 
-1. Add user `ZWESVUSR` permission to `READ`.
-```
-PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
-```
-2. Activate changes.
-```
-SETROPTS RACLIST(FACILITY) REFRESH
-```
+    1. Add user `ZWESVUSR` permission to `READ`.
+    ```
+    PERMIT IRR.RAUDITX CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
+    ```
+    2. Activate changes.
+    ```
+    SETROPTS RACLIST(FACILITY) REFRESH
+    ```
 
-</details>
+    </details>
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
 
-If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
-```
-TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
-```
+    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
+    ```
+    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+    ```
 
-</details>
+    </details>
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+    <details>
+    <summary>Click here for command details for ACF2.</summary>
 
-If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
-```
-SET RESOURCE(FAC)
-```
-```
-RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
-```
-```
-F ACF2,REBUILD(FAC)
-```
+    If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
+    ```
+    SET RESOURCE(FAC)
+    ```
+    ```
+    RECKEY IRR ADD(RAUDITX ROLE(&STCGRP.) SERVICE(READ) ALLOW)
+    ```
+    ```
+    F ACF2,REBUILD(FAC)
+    ```
 
-</details>   
+    </details>   
 
 For more information about SMF records, see [SMF records](../user-guide/api-mediation/api-mediation-smf.md) in the Using Zowe API Mediation Layer documentation.
 
