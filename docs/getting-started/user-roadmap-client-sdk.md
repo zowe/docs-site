@@ -4,7 +4,7 @@ This roadmap outlines information resources that are applicable to the various u
 
 ## Troubleshooting and support
 
-- [**Sumit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose)
+- [**Submit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose)
 
    If you have an issue that is specific to Zowe SDKs, you can submit an issue against the `zowe-cli` repo.
 
