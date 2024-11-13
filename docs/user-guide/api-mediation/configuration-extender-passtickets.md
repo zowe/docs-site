@@ -14,7 +14,7 @@ The API Gateway uses the PassTicket to access that API service. The API Gateway 
 
 ## Configuring Zowe to use PassTickets
 
-Configuring Zowe to use PassTickets involves two processes:
+Configuring Zowe to use PassTickets involves two processes: 
 
 - Enabling the use of PassTickets in your External Security Manager (ESM)
 - Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
