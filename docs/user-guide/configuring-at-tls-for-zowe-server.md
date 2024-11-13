@@ -97,6 +97,12 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
   CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
   SecondaryMap Off
 }
+
+# Keyring, used for TLS, will be used also to load trusted certificates
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
 ```
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
@@ -412,7 +418,6 @@ TTLSEnvironmentAction ZoweServerEnvironmentAction
   EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
-  TTLSSignatureParmsRef TNESigParms
 }
 
 # Environment action for sample southbound service
@@ -422,7 +427,6 @@ TTLSEnvironmentAction ZoweDCServerEnvironmentAction
   EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
-  TTLSSignatureParmsRef TNESigParms
 }
 
 # Keyring, used for TLS, will be used also to load trusted certificates
@@ -451,7 +455,6 @@ TTLSConnectionAction ZoweServerConnectionAction
   HandshakeRole ServerWithClientAuth # API ML Core Services use Client Certificate authentication
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
-  TTLSSignatureParmsRef TNESigParms
 }
 
 # API ML Server connection action.
@@ -539,10 +542,9 @@ TTLSRule ApimlZLUXClientRule
 TTLSEnvironmentAction ApimlClientEnvironmentAction
 {
   HandshakeRole Client
-  TTLSKeyringParmsRef ApimlKeyring
+  TTLSKeyringParmsRef ZoweKeyring
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
   EnvironmentUserInstance 0
-  TTLSSignatureParmsRef TNESigParms
 }
 
 TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
@@ -600,11 +602,6 @@ TTLSConnectionAdvancedParms ZoweClientX509ConnAdvParms
   SecondaryMap Off
   TLSv1.2 On
   TLSv1.3 On
-}
-
-TTLSSignatureParms TNESigParms
-{
-  CLientECurves Any
 }
 
 # Example list of supported ciphers in handshake. Validate and filter this list based on local setup
