@@ -211,3 +211,32 @@ When the `zowe zos-files search data-sets` command is issued with the `--mainfra
 **Solution:**
 
 Issue the `zowe files search ds` command without the `--mainframe-search` option. This returns results that include data sets in binary format.
+
+## Error message with PowerShell scripts
+
+**Valid on Windows**
+
+**Symptom:**
+
+PowerShell users on Windows can encounter an error when they try to run Zowe CLI with certain execution policies in place.
+
+Example of an error message:
+
+```
+PS C:\> zowe
+zowe : File C:\Users\user\AppData\Roaming\npm\zowe.ps1 cannot be loaded because running scripts is disabled on this
+system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ zowe
++ ~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+**Solutions:**
+
+- Update developer settings in Windows to enable running local scripts without signing:
+
+![PowerShell setting](../../images/troubleshoot/cli/PowerShell_developer_setting.png)
+
+- Run PowerShell as an administrator and use the `Set-ExecutionPolicy` command to change the execution policy to a less-restrictive setting, for example: `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`.
