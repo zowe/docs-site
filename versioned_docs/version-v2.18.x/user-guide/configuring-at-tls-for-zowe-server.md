@@ -133,7 +133,7 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
-Careful consideration needs to be set especially regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID.
+Careful consideration needs to be made regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so results in unintentionally authenticating the server ACID.
 
 :::
 
@@ -231,7 +231,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 In this example, the rule covers all outbound connections originating from the API Gateway to an example southbound service listening on port 8080.
 This rule applies for Zowe services as well, such as the ZSS and app-server if they are enabled.
 
-This covers routing scenarios.
+This example covers routing scenarios.
 
 ```bash
 TTLSRule ApimlServiceClientRule
@@ -264,19 +264,19 @@ TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 
 :::caution Important
 
-Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, it is the server user who would be authenticated.
+Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, the server user is subsequently authenticated.
 
 :::
 
 #### Services that validate tokens against the API Mediation Layer
 
-In this scenario, the services will issue a request against the API Gateway to validate the received authentication token.
+In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
 This scenario includes services that set `zoweJwt` as authentication scheme, those that require an Open ID Connect (OIDC) token, or forwarded X.509 certificates.
 
 In this case it is necessary to have an Outbound rule from the service to the API Gateway.
 
-These service will also already have an outbound rule set for the onboarding process against the Discovery Service.
+These service also already have an outbound rule set for the onboarding process against the Discovery Service.
 
 Ensure these rules are followed:
 
