@@ -16,8 +16,8 @@ The API Gateway uses the PassTicket to access that API service. The API Gateway 
 
 Configuring Zowe to use PassTickets involves two processes: 
 
-- Enabling the use of PassTickets in your External Security Manager (ESM)
-- Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
+1. Enabling the use of PassTickets in your External Security Manager (ESM)
+2. Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
 
 ### Enabling the use of PassTickets in your External Security Manager (ESM)
 
@@ -31,93 +31,93 @@ This section applies to users who do not already have PassTickets enabled in the
 :::tip
 To validate if a PassTicket is already defined, list the APPL and PTKTDATA with a command corresponding to your ESM. Output indicates if a PassTicket is already defined. No results after issuing an ESM command indicates that a PassTicket is not defined. If a PassTicket is defined, the access of the ZWESVUSR can be determined.
 
-- **Validating an existing PassTicket for ACF2**
+**Validating an existing PassTicket for ACF2**
 
-    <details>
+<details>
 
-    <summary>Click here for procedure details about validating an existing PassTicket for ACF2.</summary>
+<summary>Click here for procedure details about validating an existing PassTicket for ACF2.</summary>
 
-    In your ESM command line interface or other security environment, perform the following steps:
+In your ESM command line interface or other security environment, perform the following steps:
 
-     1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
+1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
 
-        ```acf2
-        SET CONTROL(GSO)
-        INSERT CLASMAP.appl RESOURCE(APPL) RSRCTYPE(APL)
-        F ACF2,REFRESH(CLASMAP)
-        ```
+    ```acf2
+    SET CONTROL(GSO)
+    INSERT CLASMAP.appl RESOURCE(APPL) RSRCTYPE(APL)
+    F ACF2,REFRESH(CLASMAP)
+    ```
 
-    2. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
-        ```
-        SET RESOURCE(APL)
-        LIST LIKE(<applid>-)
-        ```
-    3. Verify if PTKTDATA is defined, by executing the following commands:
-        ```
-        SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
-        LIST LIKE(<applid>-)
-        SET RESOURCE(PTK)
-        LIST LIKE(IRRPTAUTH-)
-        ```
+2. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
+    ```
+    SET RESOURCE(APL)
+    LIST LIKE(<applid>-)
+    ```
+3. Verify if PTKTDATA is defined, by executing the following commands:
+    ```
+    SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
+    LIST LIKE(<applid>-)
+    SET RESOURCE(PTK)
+    LIST LIKE(IRRPTAUTH-)
+    ```
 
-    - **`-`**  
-        A wildcard symbol that lists all resources
+- **`-`**  
+    A wildcard symbol that lists all resources
 
-    - **`<applid>-`**  
-        Lists everything related to specified applid in a resource (in this case, SAF), or specified in a profile (in this case, PTKTDATA)
+- **`<applid>-`**  
+    Lists everything related to specified applid in a resource (in this case, SAF), or specified in a profile (in this case, PTKTDATA)
 
-    </details>
+</details>
 
-- **Validating an existing PassTicket for Top Secret**
+**Validating an existing PassTicket for Top Secret**
 
-    <details>
+<details>
 
-    <summary>Click here for command details about validating an existing PassTicket for Top Secret.</summary>
+<summary>Click here for command details about validating an existing PassTicket for Top Secret.</summary>
 
-    1. In your ESM command line interface or other security environment, execute the following commands:
+1. In your ESM command line interface or other security environment, execute the following commands:
 
     ```tss
-        TSS WHOHAS APPL(<applid>)
-        TSS WHOHAS PTKTDATA(<applid>)
-        TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
+    TSS WHOHAS APPL(<applid>)
+    TSS WHOHAS PTKTDATA(<applid>)
+    TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
-    2. If APPL and PTKTDATA are not yet defined, follow the steps to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
+2. If APPL and PTKTDATA are not yet defined, follow the steps to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
 
-    - **`.`**  
-        A wildcard symbol that lists all resources
+- **`.`**  
+    A wildcard symbol that lists all resources
 
-    - **`IRRPTAUTH.<applid>.`**  
-        Returns everything about the specified applid for IRRPTAUTH
+- **`IRRPTAUTH.<applid>.`**  
+    Returns everything about the specified applid for IRRPTAUTH
 
-    </details>
+</details>
 
-- **Validating an existing PassTicket for RACF**
+**Validating an existing PassTicket for RACF**
 
-    <details>
+<details>
 
-    <summary>Click here for command details about validating an existing PassTicket for RACF.</summary>
+<summary>Click here for command details about validating an existing PassTicket for RACF.</summary>
 
-    In your ESM command line interface or other security environment, execute the following commands:
+In your ESM command line interface or other security environment, execute the following commands:
 
     ```racf
-        RLIST APPL * ALL 
-        RLIST APPL <applid> ALL  
-        RLIST PTKTDATA <applid> SSIGNON ALL
-        RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
+    RLIST APPL * ALL 
+    RLIST APPL <applid> ALL  
+    RLIST PTKTDATA <applid> SSIGNON ALL
+    RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL
     ```
 
-    Ensure that you validate PTKTDATA access for APPL.
+Ensure that you validate PTKTDATA access for APPL.
 
-    - **`*`**  
-        A wildcard symbol that resturns all resources
+- **`*`**  
+    A wildcard symbol that resturns all resources
 
-    - **`RLIST PTKTDATA <applid> SSIGNON ALL`**  
-        Validates all applid for PTKDATA class
+- **`RLIST PTKTDATA <applid> SSIGNON ALL`**  
+    Validates all applid for PTKDATA class
 
-    - **`RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL`**  
-        Validates all applid permissions for PTKDATA class
+- **`RLIST PTKTDATA IRRPTAUTH.<applid>.* ALL`**  
+    Validates all applid permissions for PTKDATA class
 
-    </details>
+</details>
 
 :::
 
