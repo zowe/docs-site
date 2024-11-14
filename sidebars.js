@@ -41,6 +41,7 @@ module.exports = {
         "whats-new/release-notes/v2_0_0",
       ],
     },
+    "whats-new/zowe-compatibility-statement",
   ],
   "getting-started": [
     {
