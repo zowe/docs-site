@@ -1339,6 +1339,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate.
 
+### ZWESG429E
+
+  Request was denied access.
+
+  **Reason:**
+
+  Connections limit exceeded.
+
+  **Action:**
+
+  Wait for the number of active connections to decrease before retrying your request.
+
 ## API Catalog messages
 
 ### ZWEAC100W

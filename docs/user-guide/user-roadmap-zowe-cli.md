@@ -50,7 +50,7 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - **Discuss Zowe topics** in the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
 
-- If you have an issue that is specific to Zowe CLI, you can [**submit an issue**](https://github.com/zowe/zowe-cli/issues/new) in the `zowe-cli` repository on GitHub.
+- If you have an issue that is specific to Zowe CLI, you can [**submit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose) in the `zowe-cli` repository on GitHub.
 
 ## Zowe Conformance Program
 
