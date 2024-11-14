@@ -369,6 +369,8 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 In your ESM command line interface or other security environment, execute the commands that correspond to your ESM:
 
+#### Verifying PassTickets using RACF
+
 <details>
 <summary>Click here for command details for RACF</summary>
 
@@ -380,6 +382,8 @@ In your ESM command line interface or other security environment, execute the co
 
 </details>
 
+#### Verifying PassTickets using Top Secret
+
 <details>
 <summary>Click here for command details for Top Secret.</summary>
 
@@ -390,6 +394,8 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 ```
 
 </details>
+
+#### Verifying PassTickets using ACF2
 
 <details>
 <summary>Click here for command details for ACF2.</summary>
@@ -403,12 +409,13 @@ LIST LIKE(<applid>-)
 SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
 ```
-</details>
 
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server
 
 Successful execution of this validation command shows your application and the specific access of the application.
+
+</details>
 
 **Output example:**
 ```
