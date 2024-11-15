@@ -140,6 +140,7 @@ Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. 
 SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
 SZWEAUTH | Zowe APF Load Modules | ANY | U | PDSE | U | 0 | 15 | N/A
 SZWEEXEC | CLIST copy utilities | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWELOAD | Executable utilities library | ANY | U | PDSE | U | 0 | 15 | N/A
 
 The `SZWESAMP` data set contains the following members.
 
@@ -166,6 +167,8 @@ ZWESIS01 | Load module for the cross memory server
 ZWESAUX  | Load module for the cross memory server's auxiliary address space
 
 The `SZWEEXEC` data set contains few utilities used by Zowe.
+
+The `SZWELOAD` data set contains config manager for REXX.
 
 ### Procedure
 
