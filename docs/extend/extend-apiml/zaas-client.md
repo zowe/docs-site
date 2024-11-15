@@ -33,6 +33,7 @@ public interface ZaasClient {
     String login(String authorizationHeader) throws ZaasClientException;
     ZaasToken query(String token) throws ZaasClientException;
     ZaasToken query(HttpServletRequest request) throws ZaasClientException;
+    ZaasOidcValidationResult validateOidc(String token) throws ZaasClientException;
     String passTicket(String jwtToken, String applicationId) throws ZaasClientException, ZaasConfigurationException;
     void logout(String token) throws ZaasClientException, ZaasConfigurationException;
 }
@@ -87,6 +88,21 @@ cookie or in an Authorization header. You then receive the `ZaasToken` Object in
 ```java
 ZaasToken query(HttpServletRequest request) throws ZaasClientException;
 ```
+
+### Validate the OIDC token (`validateOidc`)
+
+Use the `validateOidc` method to get the validity information about the OIDC token.
+
+Call the `validateOidc` method from your API in the following format:
+
+```java
+ZaasOidcValidationResult validateOidc(String token) throws ZaasClientException;
+```
+
+In return, you receive the `ZaasOidcValidationResult` Object in JSON format.
+
+This method automatically uses the truststore file to add a security layer, which you configured in the `ConfigProperties` class.
+
 
 ### Invalidate a JWT token (`logout`)
 
