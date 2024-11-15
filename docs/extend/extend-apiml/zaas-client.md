@@ -140,65 +140,75 @@ To use this library, use the procedure described in this section.
 1. Add `zaas-client` as a dependency in your project.  
 You will need to specify the version of the `zaas-client` you want. `zaas-client` versioning following the semantic versioning format of `major.minor.patch`. For example, `1.22.0`.
 
+    <details>
+    <summary>Click here for procedural details using Gradle.</summary>
+
     **Gradle:**
 
-      1. Create a `gradle.properties` file in the root of your project if one does not already exist.
+    1. Create a `gradle.properties` file in the root of your project if one does not already exist.
 
-      2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
+    2. In the `gradle.properties` file, set the URL of the specific Artifactory containing the _SpringEnabler_ artifact.
 
-      ```
-      # Repository URL for getting the enabler-java artifact
-      artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
-      ```
+    ```
+    # Repository URL for getting the enabler-java artifact
+    artifactoryMavenRepo=https://zowe.jfrog.io/zowe/libs-release/
+    ```
 
-      3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
+    3. Add the following _Gradle_ code block to the `repositories` section of your `build.gradle` file:
 
-        ```gradle
-        repositories {
-            ...
+    ```gradle
+    repositories {
+        ...
 
-            maven {
+        maven {
                 url artifactoryMavenRepo
-            }
         }
-        ```
+    }
+    ```
 
-      4. Add the following _Gradle_ dependency:
+    4. Add the following _Gradle_ dependency:
 
-        ```groovy
-        dependencies {
-            compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
-        }
-        ```
+    ```groovy
+    dependencies {
+        compile 'org.zowe.apiml.sdk:zaas-client:{{version}}'
+    }
+    ```
+
+    </details>
+
+    <details>
+    <summary>Click here for procedural details using Maven.</summary>
 
     **Maven:**
 
-      1. Add the following _XML_ tags within the newly created `pom.xml` file:
+    1. Add the following _XML_ tags within the newly created `pom.xml` file:
 
-        ```xml
-        <repositories>
-            <repository>
-                <id>libs-release</id>
-                <name>libs-release</name>
-                <url>https://zowe.jfrog.io/zowe/libs-release/</url>
-                <snapshots>
-                    <enabled>false</enabled>
-                </snapshots>
-            </repository>
-        </repositories>
-        ```
+    ```xml
+    <repositories>
+        <repository>
+            <id>libs-release</id>
+            <name>libs-release</name>
+            <url>https://zowe.jfrog.io/zowe/libs-release/</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    ```
     
     **Tip:** If you want to use snapshot version, replace libs-release with libs-snapshot in the repository url and change snapshots->enabled to true.
       
-      2. Then add the following _Maven_ dependency:
+    2. Then add the following _Maven_ dependency:
     
-        ```xml
-        <dependency>
-                    <groupId>org.zowe.apiml.sdk</groupId>
-                    <artifactId>zaas-client</artifactId>
-                    <version>{{version}}</version>
-        </dependency>
-        ```
+    ```xml
+    <dependency>
+                <groupId>org.zowe.apiml.sdk</groupId>
+                <artifactId>zaas-client</artifactId>
+                <version>{{version}}</version>
+    </dependency>
+    ```
+
+    </details>
 
 2. In your application, create your Java class which will be used to create an instance of `ZaasClient`, which enables you to use its method to login, query, and to issue a PassTicket.
 
