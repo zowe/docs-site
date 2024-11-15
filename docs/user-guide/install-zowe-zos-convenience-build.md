@@ -197,6 +197,7 @@ A sample run of the command is shown below using default values.
 Create MVS data sets if they are not exist
 Creating Zowe sample library - IBMUSER.ZWEV2.SZWESAMP
 Creating Zowe authorized load library - IBMUSER.ZWEV2.SZWEAUTH
+Creating Zowe load library - IBMUSER.ZWEV2.SZWELOAD
 Creating Zowe executable utilities library - IBMUSER.ZWEV2.SZWEEXEC
 
 Copy files/SZWESAMP/ZWESIPRG to IBMUSER.ZWEV2.SZWESAMP
