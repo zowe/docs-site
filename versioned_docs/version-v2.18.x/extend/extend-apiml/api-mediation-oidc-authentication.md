@@ -242,7 +242,7 @@ Use the following curl command to make a REST request with the OIDC token to the
 curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
 ```
 
-An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
+An HTTP `204` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
 :::note Azure Entra ID OIDC notes:
