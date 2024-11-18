@@ -17,7 +17,7 @@ Complete the following steps to install the Zowe runtime.
 ## Step 1: Obtain the convenience build
 
 1. To download the PAX file, open your web browser on the [Zowe Download](https://www.zowe.org/download.html) website.
-2. Navigate to **Zowe V2 Preview** -> **Convenience build** section, and select the button to download the v2 convenience build.
+2. Navigate to **Zowe V3** -> **Zowe 3.v.p z/OS Convenience build** section, and select the button to download the v3 convenience build.
 
 ## Step 2: Transfer the convenience build to USS and expand it
 
@@ -59,6 +59,12 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
 
     **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.
 
+    :::tip
+    You can simplify `sftp` usage for existing directory:
+    ```
+    echo 'put <zowe-V.v.p>.pax' | sftp userID@ip.of.zos.box:/path/to/zowe/runtime
+    ```
+
     After the PAX file has sucessfully transferred, exit your `sftp` or `ftp` session.
 
 1. Open a USS shell to expand the PAX file. This can either be an ssh terminal, OMVS, iShell, or any other z/OS unix system services command environment. 
@@ -94,23 +100,27 @@ The `zwe` command is provided in the `<RUNTIME_DIR>/bin` directory. You can opti
 export PATH=${PATH}:<RUNTIME_DIR>/bin
 ```
 
-`<RUNTIME_DIR>` should be replaced with your real Zowe runtime directory path. This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bashProfile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
+`<RUNTIME_DIR>` should be replaced with your real Zowe runtime directory path. This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bashProfile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the `PATH` is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`.
 
-The `zwe` command has built in help that can be retrieved with the `-h` suffix. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands:  
+The `zwe` command has built in help that can be retrieved with the `-h` option. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands:
 
 ```
 zwe -h
  ...
 Available sub-command(s):
-  - certificate
-  - components
-  - init
-  - install
-  - internal
-  - sample
-  - start
-  - stop
-  - version
+    - certificate
+    - components
+    - config
+    - diagnose
+    - init
+    - install
+    - internal
+    - migrate
+    - sample
+    - start
+    - stop
+    - support
+    - version
 ```
 
 ## Step 4: Copy the zowe.yaml configuration file to preferred location
@@ -120,7 +130,7 @@ Copy the template file `<RUNTIME_DIR>/example-zowe.yaml` file to a new location,
 When you execute the `zwe` command, the `-c` argument is used to pass the location of a `zowe.yaml` file.  
 
 :::tip
-To avoid passing `--config` or `-c` to every `zwe` commands, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to location of zowe.yaml.
+To avoid passing `--config` or `-c` to every `zwe` commands, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable pointing to location of `zowe.yaml`.
 
 For example, after defining
 
@@ -137,7 +147,7 @@ After you extract the Zowe convenience build, you can run the [`zwe install` com
 
 ### About the MVS data sets
 
-Zowe includes a number of files that are stored in the following three data sets. See the following table for the storage requirements.
+Zowe includes a number of files that are stored in the following data sets. See the following table for the storage requirements.
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
@@ -218,7 +228,7 @@ zowe:
 ```
 
 To create and install the MVS data sets, use the command `zwe install`.
-1. In a USS shell, execute the command `zwe install -c /path/to/zowe.yaml`. This creates the three data sets and copy across their content.
+1. In a USS shell, execute the command `zwe install -c /path/to/zowe.yaml`. This creates the data sets and copy across their content.
 2. If the data sets already exist, specify `--allow-overwritten`.  
 3. To see the full list of parameters, execute the command `zwe install -h`. 
 
