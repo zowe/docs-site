@@ -40,5 +40,5 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
     
 - Applicable plug-in services are configured and running on the mainframe.
     - Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands.
-        * See [Zowe Explorer CICS Extension system requirements](../getting-started/install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
-        * See [Zowe Explorer FTP Extension system requirements](../getting-started/install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).
+        * See [Zowe Explorer CICS Extension system requirements](./install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
+        * See [Zowe Explorer FTP Extension system requirements](./install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).
