@@ -30,7 +30,7 @@ jobs:
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         run: |
           tar -xf build.tar.zst
-          echo "PR_NUMBER=$(tar --test-label -f build.tar.zst)" >> "$GITHUB_ENV"
+          printf "PR_NUMBER=%d\n" "$(tar --test-label -f build.tar.zst)" >> "$GITHUB_ENV"
           rm build.tar.zst
 
       - name: Deploy to Netlify
