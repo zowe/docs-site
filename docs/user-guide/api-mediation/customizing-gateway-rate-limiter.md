@@ -42,7 +42,7 @@ There are properties common for both methods:
 ### Customize the Gateway rate limiter for a particular service:
 
 
-1. In the application.yaml, define a property to allow the rate limiter in api/gateway:
+1. In the application.yaml of the service, define a property to allow the rate limiter in api/gateway:
     
     Set `applyRateLimiterFilter` to true to mark the filter to be applied.
 
