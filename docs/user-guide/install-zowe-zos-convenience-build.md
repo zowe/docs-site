@@ -108,19 +108,19 @@ The `zwe` command has built in help that can be retrieved with the `-h` option. 
 zwe -h
  ...
 Available sub-command(s):
-    - certificate
-    - components
-    - config
-    - diagnose
-    - init
-    - install
-    - internal
-    - migrate
-    - sample
-    - start
-    - stop
-    - support
-    - version
+  - certificate
+  - components
+  - config
+  - diagnose
+  - init
+  - install
+  - internal
+  - migrate
+  - sample
+  - start
+  - stop
+  - support
+  - version
 ```
 
 ## Step 4: Copy the zowe.yaml configuration file to preferred location
