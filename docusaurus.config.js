@@ -3,8 +3,7 @@ const versionsArray = require("./versions.json");
 
 module.exports = {
   title: "Zowe Docs",
-  tagline:
-    "Combining the past and the present to build the future of Mainframe",
+  tagline: "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -18,18 +17,12 @@ module.exports = {
       comments: true
     }
   },
-  webpack: {
-    jsLoader: (isServer) => ({
-      loader: require.resolve("esbuild-loader"),
-      options: {
-        loader: "tsx",
-        format: isServer ? "cjs" : undefined,
-        target: isServer ? "node12" : "es2017",
-      },
-    }),
+  future: {
+    // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
+    experimental_faster: process.env.NODE_ENV === "production",
   },
   themeConfig: {
-        docs: {
+    docs: {
       sidebar: {
         hideable: true
       }

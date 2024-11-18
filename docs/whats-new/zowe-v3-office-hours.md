@@ -6,7 +6,6 @@ Zowe squads go over their upcoming projects and answer your questions about Zowe
 
 Missed a session? Catch up here. Office hours are recorded and made available with videos posted to the [Open Mainframe Project](https://www.youtube.com/@OpenMainframeProject) YouTube channel.
 
-## Consumer focused Office Hours
 
 | Date                      | Topic                          | Link to the meeting                                                                                                                                                                        | Link to the recording                                                                                                    | Links to the materials                                                                                                                                                               |
 | ------------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |--------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
