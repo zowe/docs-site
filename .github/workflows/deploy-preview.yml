@@ -23,14 +23,16 @@ jobs:
         with:
           workflow: build-docs.yml
           run_id: ${{ github.event.workflow_run.id }}
-          name: preview-build
+          name: "preview-build-\\d+"
+          name_is_regexp: true
           if_no_artifact_found: warn
 
       - name: Extract Build Archive
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         run: |
-          tar -xf build.tar.zst && rm build.tar.zst
-          cat build/.env >> "$GITHUB_ENV" && rm build/.env
+          artifactName=$(echo '${{ steps.download-artifact.outputs.artifacts }}' | jq -r '.[0].name')
+          tar -xf $artifactName/build.tar.zst && rm $artifactName/build.tar.zst
+          echo "PR_NUMBER=$(echo $artifactName | awk -F'-' '{print $NF}')" >> "$GITHUB_ENV"
 
       - name: Deploy to Netlify
         id: deploy

@@ -74,14 +74,12 @@ jobs:
 
       - name: Compress Build Archive
         if: ${{ steps.deploy.conclusion == 'skipped' }}
-        run: |
-          echo "PR_NUMBER=${{ github.event.pull_request.number }}" > build/.env
-          tar --remove-files --zstd -cf build.tar.zst build
+        run: tar --remove-files --zstd -cf build.tar.zst build
 
       - name: Upload Build Artifact
         if: ${{ steps.deploy.conclusion == 'skipped' }}
         uses: actions/upload-artifact@v3
         with:
-          name: preview-build
+          name: preview-build-${{ github.event.pull_request.number }}
           path: build.tar.zst
           retention-days: 1
