@@ -13,4 +13,3 @@ Zowe Explorer FTP extension adds the FTP protocol to the [Zowe Explorer](https:/
 2. Close and reopen VS Code to check that the notification message "Zowe Explorer was modified for FTP support" displays.
 
    Once installed, the notification displays every time you open VS Code to confirm that the FTP extension is available.
-   
