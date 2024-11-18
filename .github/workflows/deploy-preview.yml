@@ -19,25 +19,24 @@ jobs:
     steps:
       - name: Download Build Artifact
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-docs.yml
           run_id: ${{ github.event.workflow_run.id }}
-          name: "preview-build-\\d+"
-          name_is_regexp: true
+          name: preview-build
           if_no_artifact_found: warn
 
       - name: Extract Build Archive
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         run: |
-          artifactName=$(echo '${{ steps.download-artifact.outputs.artifacts }}' | jq -r '.[0].name')
-          tar -xf $artifactName/build.tar.zst && rm $artifactName/build.tar.zst
-          echo "PR_NUMBER=$(echo $artifactName | awk -F'-' '{print $NF}')" >> "$GITHUB_ENV"
+          tar -xf build.tar.zst
+          echo "PR_NUMBER=$(tar --test-label -f build.tar.zst)" >> "$GITHUB_ENV"
+          rm build.tar.zst
 
       - name: Deploy to Netlify
         id: deploy
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
-        uses: nwtgck/actions-netlify@v2
+        uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: build
           production-deploy: false
