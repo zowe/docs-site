@@ -1,4 +1,4 @@
-# Security customization of your z/OS system
+# Customizing z/OS system security 
 
 As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and fuctionalities.
 
@@ -10,7 +10,7 @@ As a security administrator, configure your z/OS system according to the specifi
 Before performing configuration steps specific to your use case, ensure that you meet the z/OS system requirements presented in the section _Preparing for installation_. For detailed information, see [Addressing z/OS requirements](./systemrequirements-zos.md). 
 :::
 
-<!-- The following section is dulicated in the article Addressig z/OS requirements. The preceding note points to these prerequisites
+<!-- The following section is duplicated in the article Addressing z/OS requirements. The preceding note points to these prerequisites
 
 
 ## z/OS prerequisites
