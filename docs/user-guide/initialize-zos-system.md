@@ -35,13 +35,13 @@ Enter `zwe init --help` to learn more about the command or see the [`zwe init` c
 
 The following `zwe init` arguments can assist you with the initization process:
 
-- **--update-config**
+- **--update-config**  
  This argument allows the init process to update your configuration file based on automatic detection and your `zowe.setup` settings. For example, if `java.home` and `node.home` are not defined, they can be updated based on the information that is collected on the system. `zowe.certificate` section can also be updated automatically based on your `zowe.setup.certificate` settings.
-- **--allow-overwrite**
+- **--allow-overwrite**  
  This argument allows you to rerun the `zwe init` command repeatedly regardless of whether some data sets are already created.
-- **-v** or **--verbose**
+- **-v** or **--verbose**  
    This argument provides execution details of the `zwe` command. You can use it for troubleshooting purposes if the error message is not clear enough.
-- **-vv** or **--trace**
+- **-vv** or **--trace**  
  This argument provides you more execution details than the `--verbose` mode for troubleshooting purposes.
 
 ## Zowe initilization command

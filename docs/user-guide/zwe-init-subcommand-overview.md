@@ -6,15 +6,14 @@ Review this article to learn about the individual subcommands executed in `zwe i
 Some of the following `zwe init` subcommands require elevated permissions. See the required roles associated with each of these commands.
 :::
 
-- [zwe init subcommand overview](#zwe-init-subcommand-overview)
-  - [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
-    - [Procedure to initialize Zowe custom data sets](#procedure-to-initialize-zowe-custom-data-sets)
-  - [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
-  - [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
-  - [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
-  - [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
-  - [(Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)](#deprecated-creating-vsam-caching-service-datasets-zwe-init-vsam)
-  - [Next steps](#next-steps)
+- [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
+- [Procedure to initialize Zowe custom data sets](#procedure-to-initialize-zowe-custom-data-sets)
+- [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
+- [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
+- [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
+- [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
+- [(Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)](#deprecated-creating-vsam-caching-service-datasets-zwe-init-vsam)
+- [Next steps](#next-steps)
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
 
@@ -32,7 +31,7 @@ The contents of these data sets represent the original files that were provided 
 
 For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs).
 
-The `zowe.yaml` section that contains the parameters for the data set names is:
+The following `zowe.yaml` section contains the parameters for the data set names:
 
 ```yaml
 zowe:
@@ -87,7 +86,7 @@ Copy components/launcher/bin/zowe_launcher to USER.ZWEV2.SZWEAUTH(ZWELNCH)
 
 Successful execution of `zwe init mvs` has the following results:
 
-* In the `zowe.yaml` file, three custom data sets are created that have matching values with the follwoing libraries:
+* In the `zowe.yaml` file, three custom data sets are created that have matching values with the following libraries:
    * `zowe.setup.dataset.parmlib`
    * `zowe.setup.dataset.jcllib`
    * `zowe.setup.dataset.authPluginLib`. 
@@ -153,7 +152,7 @@ The command `zwe init apfauth` reads the PDS names for the following load librar
 
 * **zowe.setup.dataset.authLoadLib**  
 Specifies the user custom load library, containing the ZWELNCH, ZWESIS01 and ZWESAUX load modules. These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.
-* **zowe.setup.dataset.authPluginLib**
+* **zowe.setup.dataset.authPluginLib**  
 References the load library for ZIS plugins.
 
 For more information about `zwe init apfauth` see:
