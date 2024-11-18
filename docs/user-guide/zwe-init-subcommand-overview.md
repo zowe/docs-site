@@ -112,11 +112,14 @@ If Zowe has already been launched on a z/OS system from a previous release of Zo
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, customize this member to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB`.  This member contains the commands required to perform the security configuration. 
 
-For more information about `zwe init security`, see _Configure with `zwe init security` command_ in [Configuring security](./configuring-security.md).
+For more information about `zwe init security`, see:
+
+* _Configure with `zwe init security` command_ in [Configuring security](./configuring-security.md).
+* [`zwe init security`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-security.md) in the Reference section.
 
 :::tip
 
-To avoid having to run the `init security` command, you can specify the parameter `--security-dry-run`. This parameter enables you to construct a JCL member containing the security commmands without running the member. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
+To avoid having to run the `init security` command, you can specify the flag `--security-dry-run`. This flag enables you to construct a JCL member containing the security commmands without running the member. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
 
 **Example:**
 
@@ -153,7 +156,40 @@ Specifies the user custom load library, containing the ZWELNCH, ZWESIS01 and ZWE
 * **zowe.setup.dataset.authPluginLib**
 References the load library for ZIS plugins.
 
-For more information about `zwe init apfauth` see [Performing APF authorization of load libraries](./apf-authorize-load-library).
+For more information about `zwe init apfauth` see:
+* [Performing APF authorization of load libraries](./apf-authorize-load-library).
+* [`zwe init apfauth`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-apfauth.md) in the Reference section.
+
+:::tip
+
+To avoid having to run the `init apfauth` command, you can specify the flag `--security-dry-run` as in the following example. 
+
+**Example:**
+
+```
+zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
+-------------------------------------------------------------------------------
+>> APF authorize load libraries
+
+APF authorize IBMUSER.ZWEV2.SZWEAUTH
+- Dry-run mode, security setup is NOT performed on the system.
+  Please apply this operator command manually:
+
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
+
+APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
+- Dry-run mode, security setup is NOT performed on the system.
+  Please apply this operator command manually:
+
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.CUST.ZWESAPL,SMS
+
+
+>> Zowe load libraries are APF authorized successfully.
+
+```
+For production environments, inform your security administrator to re-submit the `init apfauth` command with proper authorization.
+
+:::
 
 ## Configuring Zowe to use TLS certificates (`zwe init certificate`)
 
@@ -164,7 +200,9 @@ Zowe uses digital certificates for secure, encrypted network communication over 
 
 Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores. You can use the `zwe init certificate` command to create keystores and truststores by either generating certificates or by allowing users to import their own compatible certificates.
 
-For more information, see [Configuring certificates](./configure-certificates).
+For more information about `init certificate`, see:
+* [Configuring certificates](./configure-certificates).
+* [`zwe init certificate`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the Reference section.
 
 ## Installing Zowe main started tasks (`zwe init stc`)
 

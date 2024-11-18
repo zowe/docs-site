@@ -2,7 +2,7 @@
 
 During the initial installation of Zowe server-side components, it is necessary for your organization's security administrator to perform a range of tasks that require elevated security permissions. As a security administrator, follow the procedures outlined in this article to configure Zowe and your z/OS system to run Zowe with z/OS.
 
-:::info Required roles: system programmer, security administrator
+:::info Required role: security administrator (elevated permissions required)
 :::
 
 :::note
@@ -88,8 +88,12 @@ The following video shows how to locate the `ZWESECUR` JCL member and execute it
 </details>
 
 <!-- Validate if the following section should be revised or removed -->
+:::tip
 
-### Undo security configurations
+If an error occured in performing security configuration, these configurations can be undone. 
+<details>
+<summary>Click here for details about undoing security configurations.</summary>
+
 
 To undo all of the z/OS security configuration steps performed by the JCL member `ZWESECUR`, use the reverse member `ZWENOSEC`. This member contains steps that reverse steps performed by `ZWESECUR`.  This is useful in the following situations: 
 
@@ -97,6 +101,10 @@ To undo all of the z/OS security configuration steps performed by the JCL member
 - You configured a z/OS system for Zowe that you no longer want to use, and you prefer to delete the Zowe user IDs and undo the security configuration settings rather than leave them enabled.  
 
 If you run `ZWENOSEC` on a z/OS system, it is necessary to rerun `ZWESECUR` to reinitialize the z/OS security configuration. Zowe cannot be run until `ZWESECUR` is rerun. 
+
+</details>
+
+:::
 
 ## Perform APF authorization of load libraries
 
