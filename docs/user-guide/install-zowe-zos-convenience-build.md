@@ -52,8 +52,10 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
     ```
     put <zowe-V.v.p>.pax
     ```
+    where:
 
-    `zowe-V.v.p` is a variable that indicates the name of the PAX file you downloaded.
+    * `zowe-V.v.p`  
+    is a variable that indicates the name of the PAX file you downloaded.
 
     **Note:** When your terminal is connected to z/OS through FTP or SFTP, you can prepend commands with `l` to have them issued against your desktop.  To list the contents of a directory on your desktop, type `lls` where `ls` lists contents of a directory on z/OS.
 
@@ -67,9 +69,11 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
    pax -ppx -rf <zowe-V.v.p>.pax
    ```
 
-   Where _zowe-V.v.p_ is a variable that indicates the name of the PAX file you downloaded.  When extracting the Zowe convenience build, you must always include the `-ppx` argument that preserves extended attributes.  
+   where:  
+   *  `zowe-V.v.p`  
+  is a variable that indicates the name of the PAX file you downloaded.  When extracting the Zowe convenience build, you must always include the `-ppx` argument that preserves extended attributes.  
 
-  This will expand to a file structure similar to the following one.
+  This command expands to a file structure similar to the following one:
 
    ```
       /bin
@@ -80,7 +84,7 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
    
    This is the Zowe runtime directory and is referred to as `<RUNTIME_DIR>` throughout this documentation.  
 
-   **Note:** Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe PAX file. Zowe v2 no longer has this step. **In Zowe v2, the contents of the expanded Zowe PAX file are the Zowe runtime directory.**
+   **Note:** Zowe version 1 had a script `zowe-install.sh` that created a separate Zowe runtime directory from the expanded contents of the Zowe PAX file. Zowe v2 no longer has this step. **In Zowe v2, and Zowe v3 the contents of the expanded Zowe PAX file are the Zowe runtime directory.**
 
 ## Step 3: (Optional) Add the `zwe` command to your PATH
 
@@ -92,7 +96,7 @@ export PATH=${PATH}:<RUNTIME_DIR>/bin
 
 `<RUNTIME_DIR>` should be replaced with your real Zowe runtime directory path. This will update the `PATH` for the current shell. To make this update persistent, you can add the line to your `~/.profile` file, or the `~/.bashProfile` file if you are using a bash shell. To make this update system wide, you can update the `/etc/.profile` file. Once the PATH is updated, you can execute the `zwe` command from any USS directory. For the remainder of the documentation when `zwe` command is referenced, it is assumed that it has been added to your `PATH`. 
 
-The `zwe` command has built in help that can be retrieved with the `-h` suffix. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands.  
+The `zwe` command has built in help that can be retrieved with the `-h` suffix. For example, type `zwe -h` to display all of the supported commands. These are broken down into a number of sub-commands:  
 
 ```
 zwe -h
@@ -216,4 +220,4 @@ Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
 
 ## Next steps
 
-You successfully installed Zowe from the convenience build! However, before you start Zowe, you must complete several required configurations. Next, go to [Initialize the z/OS system and permissions](initialize-zos-system.md) to initialize your z/OS system for Zowe first. 
+You successfully installed Zowe from the convenience build! However, before you start Zowe, you must complete several required configurations. The next step is to [Initialize the z/OS system and permissions](initialize-zos-system.md) for Zowe. 
