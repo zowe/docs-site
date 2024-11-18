@@ -640,9 +640,9 @@ If you have run `ZWESECUR` you do not need to perform the steps described in thi
 
 If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the cross memory server for SAF.
 
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the main Zowe started task runs under. 
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`. This is the user ID that the main Zowe started task runs under. 
     
-To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
+To perform these steps, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
 
 <details>
 <summary>Click here for command details for RACF.</summary>
@@ -719,7 +719,7 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 ### Configure main Zowe server to use client certificate identity mapping
 
 This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
-To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps.
+To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps according to your ESM:
 
 <details>
 <summary>Click here for procedure details for RACF.</summary>
@@ -790,8 +790,8 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 ### Configure main Zowe server to use distributed identity mapping
 
-This security configuration is necessary for API ML to be able to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have read access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
-To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps.
+This security configuration is necessary for API ML to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have READ access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
+To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps according to your ESM:
 
 <details>
 <summary>Click here for procedure details for RACF.</summary>
@@ -869,18 +869,24 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 ### Configure signed SAF Identity tokens (IDT)
 
-This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
+This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API ML. See [Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md).
 
 **Follow these steps:**
 
-1. Create PKCS#11 token 
-2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
-3. Define a SAF resource profile under the IDTDATA SAF resource class
+1. Create a PKCS#11 token. 
+2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset).
+3. Define a SAF resource profile under the IDTDATA SAF resource class.
 
 Details with examples can be found in documentation of external security products:
-* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ in the article [Activating and using the IDTA parameter in RACROUTE REQUEST=VERIFY](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
-* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, in the article [Maintain Identity Token (IDT) Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
-* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, in the article [IDTDATA Profile Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
+
+* **RACF**  
+See **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ in the article [Activating and using the IDTA parameter in RACROUTE REQUEST=VERIFY](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
+
+* **ACF2**  
+See **_IDTDATA Profile Records_** subsection in _Administrating_ chapter, in the article [IDTDATA Profile Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
+
+* **Top Secret**  
+See **_Maintain Identity Token (IDT) Records_** subsection in _Administrating_ chapter, in the article [Maintain Identity Token (IDT) Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
 
 A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
 
@@ -901,16 +907,6 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     </details>
 
     <details>
-    <summary>Click here for command details for Top Secret.</summary>
-
-    If you use Top Secret, issue the following command:
-    ```
-    TSS WHOHAS IBMFAC(IRR.RAUDITX)
-    ```
-
-    </details>
-
-    <details>
     <summary>Click here for command details for ACF2.</summary>
 
     If you use ACF2, issue the following commands:
@@ -919,6 +915,16 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     ```
     ```
     LIST LIKE(IRR-)
+    ```
+
+    </details>
+
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
+
+    If you use Top Secret, issue the following command:
+    ```
+    TSS WHOHAS IBMFAC(IRR.RAUDITX)
     ```
 
     </details>
@@ -944,16 +950,6 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     </details>
 
     <details>
-    <summary>Click here for command details for Top Secret.</summary>
-
-    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
-    ```
-    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
-    ```
-
-    </details>
-
-    <details>
     <summary>Click here for command details for ACF2.</summary>
 
     If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
@@ -967,7 +963,19 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     F ACF2,REBUILD(FAC)
     ```
 
-    </details>   
+    </details> 
+
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
+
+    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
+    ```
+    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+    ```
+
+    </details>
+
+  
 
 For more information about SMF records, see [SMF records](../user-guide/api-mediation/api-mediation-smf.md) in the Using Zowe API Mediation Layer documentation.
 
