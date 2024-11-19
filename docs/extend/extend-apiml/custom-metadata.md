@@ -113,6 +113,7 @@ When the property `customMetadata.apiml.lb.type` is set to `authentication`, the
   2. `customMetadata.apiml.gateway.rateLimiterTokens` -  Defines the number of requests that are added to the service’s allowance at regular intervals.
   3. `customMetadata.apiml.gateway.rateLimiterRefillDuration` -  Sets the time interval (in minutes) at which new requests (or tokens) are added.
 
+
 * **customMetadata.apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from this services using GZIP. API ML also adds the `Content-Encoding` header with value `gzip` to responses.
 
