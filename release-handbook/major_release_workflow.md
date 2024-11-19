@@ -162,6 +162,7 @@ For major Zowe releases, follow the process outlined here.
 10. Publish the staged doc to the live site:
     - Change the PR you opened in Step 6 to **Ready for review** mode to merge the new branch into the `docs-staging` branch.
         - All checks **must** pass before merging. If any checks fail, troubleshoot with Doc Squad members or developers well familiar with the `docs-site` repo to resolve.
+        - Any edits to the new major release doc now needs to be done in the `docs-staging` branch.
     - After the new branch is merged to `docs-staging`, create a PR to merge `docs-staging` into the `master` branch.
         - In your PR, do the following:
             - Add the Zowe release engineer to the reviewer list.
