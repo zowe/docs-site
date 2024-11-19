@@ -64,6 +64,7 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
     ```
     echo 'put <zowe-V.v.p>.pax' | sftp userID@ip.of.zos.box:/path/to/zowe/runtime
     ```
+    :::
 
     After the PAX file has sucessfully transferred, exit your `sftp` or `ftp` session.
 
@@ -147,7 +148,7 @@ After you extract the Zowe convenience build, you can run the [`zwe install` com
 
 ### About the MVS data sets
 
-Zowe includes a number of files that are stored in the following data sets. See the following table for the storage requirements.
+Zowe includes a number of files that are stored in the various data sets. See the following table for the storage requirements.
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
