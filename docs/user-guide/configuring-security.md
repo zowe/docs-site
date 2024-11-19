@@ -112,11 +112,11 @@ Zowe contains load modules that require access to make privileged z/OS security 
 
 ## Customize security of your z/OS system
 
-Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Security customization of your z/OS system](./configure-zos-system.md).
+Review and perform z/OS configuration steps based on your settings. For a detailed table of configuration procedures and associated purposes for performing these procedures, see [Customizing z/OS system security](./configure-zos-system.md).
 
 ## Assign security permissions to users
 
-Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users](./assign-security-permissions-to-users.md).
+Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assigning security permissions to users](./assign-security-permissions-to-users.md).
 
 ## Zowe Feature specific configuration tasks
 

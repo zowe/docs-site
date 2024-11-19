@@ -15,16 +15,16 @@ The following user IDs run Zowe:
 
 * **ZWESVUSR**  
   This is the started task ID of the Zowe runtime user who runs most of the Zowe core
-  components. <!-- It seems this information about working with USS should be in a table and not in this short description -->
-  To work with USS, this user ID must have a valid OMVS segment. For more information about OMVS segments, see the
-  article _The OMVS segment in user profiles_ in the IBM documentation. For detailed information about which permissions
-  are
-  required to run Zowe core services as well as specific individual components, see
-  the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
+  components. 
+  
 * **ZWESIUSR**  
   This user runs the cross memory server (ZIS). This is a started task ID used to run the PROCLIB `ZWESISTC` that
-  launches the [cross memory server (ZIS)](./configure-xmem-server.md). This started task ID must have a valid OMVS
-  segment.
+  launches the [cross memory server (ZIS)](./configure-xmem-server.md). 
+
+:::caution Important!
+To work with USS, the user ID must have a valid OMVS segment. For more information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. For detailed information about which permissions are required to run Zowe core services as well as specific individual components, see the [Security Permissions Reference Table](#security-permissions-reference-table) in this article.
+
+:::
 
 The security administrator also assigns permissions to the security group **ZWEADMIN**. `ZWEADMIN` is a group
 consisting of `ZWESVUSR` and `ZWESIUSR`. This group must have a valid OMVS segment.
@@ -92,11 +92,19 @@ You can skip this section if you use Zowe without z/OSMF.  Zowe can operate with
 
 To grant permissions to the user ID to access z/OSMF, issue the command(s) that corresponds to your ESM.
 
+<details>
+<summary>Click here for command details for RACF.</summary>
+
 - If you use RACF, issue the following command:
 
   ```
   CONNECT (userid) GROUP(IZUUSER)
   ```
+
+</details>
+
+<details>
+<summary>Click here for command details for ACF2.</summary>
 
 - If you use ACF2, issue the following commands:
 
@@ -105,12 +113,18 @@ To grant permissions to the user ID to access z/OSMF, issue the command(s) that 
   F ACF2,REBUILD(TGR)
   ```
 
+</details>
+
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+
 - If you use Top Secret, issue the following commands:
 
   ```
   TSS ADD(userid)  PROFILE(IZUUSER)
   TSS ADD(userid)  GROUP(IZUUSRGP) 
   ```
+</details>
 
 ## Next step
 

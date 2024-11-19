@@ -56,7 +56,7 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### Configure address space job naming
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
 :::note
 This procedure may require security administrator authorization. Consult with your security administrator.
@@ -386,7 +386,7 @@ F ACF2,REBUILD(APL)
 
 ### Configure address space job naming
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
 :::note
 This procedure may require security administrator authorization. Consult with your security administrator.
@@ -491,7 +491,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
 
     </details>
 
- * To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+ * To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command according to your ESM:
 
     <details>
 
@@ -536,7 +536,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
     ```
     </details>
 
-- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
+- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command according to your ESM:
 
     <details>
     <summary>Click here for command details for RACF.</summary>
@@ -591,7 +591,7 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 ...
 ```
 
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group. 
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group. Issue the following commands according to your ESM:
 
 <details>
 <summary>Click here for command details for RACF.</summary>
@@ -718,7 +718,7 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 
 ### Configure main Zowe server to use client certificate identity mapping
 
-This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
+This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have READ access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps according to your ESM:
 
 <details>
@@ -728,12 +728,12 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```
     RLIST FACILITY IRR.RUSERMAP AUTHUSER
     ```
 
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     PERMIT IRR.RUSERMAP CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
@@ -752,13 +752,13 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```      
     SET RESOURCE(FAC) 
     LIST LIKE(IRR-)
     ```
        
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     RECKEY IRR.RUSERMAP ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
     ```
@@ -777,11 +777,11 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```      
     TSS WHOHAS IBMFAC(IRR.RUSERMAP)
     ```    
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
     ```
@@ -800,7 +800,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has read access.
+1. Verify that user `ZWESVUSR` has READ access.
     ```
     RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
     ```
