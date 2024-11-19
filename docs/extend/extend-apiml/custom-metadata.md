@@ -107,11 +107,13 @@ When the property `customMetadata.apiml.lb.type` is set to `authentication`, the
 
 * **customMetadata.apiml.gateway.applyRateLimiterFilter** 
 
-  This parameter indicates that the rate limiter filter should be applied to the service. To configure this filter, you also have to define the following properties:
+  This parameter indicates that the rate limiter filter should be applied to the service. When enabling this filter, you can also define the following properties:
   
   1. `customMetadata.apiml.gateway.rateLimiterCapacity` - Defines the total number of requests that can be allowed at one time per user.
   2. `customMetadata.apiml.gateway.rateLimiterTokens` -  Defines the number of requests that are added to the service’s allowance at regular intervals.
   3. `customMetadata.apiml.gateway.rateLimiterRefillDuration` -  Sets the time interval (in minutes) at which new requests (or tokens) are added.
+
+  When no values are provided, global values defined in the Gateway will be applied. More about the default configuration in [Customizing gateway rate limiter filer](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
 
 
 * **customMetadata.apiml.response.compress**  
