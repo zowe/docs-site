@@ -105,6 +105,14 @@ Optionally, service can specify which origins will be accepted by Gateway during
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
 When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
 
+* **customMetadata.apiml.gateway.applyRateLimiterFilter** 
+
+  This parameter indicates that the rate limiter filter should be applied to the service. To configure this filter, you also have to define the following properties:
+  
+  1. `customMetadata.apiml.gateway.rateLimiterCapacity` - Defines the total number of requests that can be allowed at one time per user.
+  2. `customMetadata.apiml.gateway.rateLimiterTokens` -  Defines the number of requests that are added to the service’s allowance at regular intervals.
+  3. `customMetadata.apiml.gateway.rateLimiterRefillDuration` -  Sets the time interval (in minutes) at which new requests (or tokens) are added.
+
 * **customMetadata.apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from this services using GZIP. API ML also adds the `Content-Encoding` header with value `gzip` to responses.
 

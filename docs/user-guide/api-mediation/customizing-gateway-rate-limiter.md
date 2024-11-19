@@ -7,7 +7,7 @@ The API Gateway offers a way to customize the rate limit for each service via a 
 
 Use the following procedure to customize the Gateway rate limiter:
 
-1. In the zowe.yaml, set the following rate limiting properties in api/gateway/routing:
+1. In the zowe.yaml, set the following rate limiting properties in api/gateway:
 
    * **rateLimiterCapacity**  
   Defines the total number of requests that can be allowed at one time per user.
@@ -26,11 +26,10 @@ Use the following procedure to customize the Gateway rate limiter:
 ```
     apiml:
         gateway: 
-            routing: 
-                rateLimiterCapacity: 20
-                rateLimiterTokens: 20
-                rateLimiterRefillDuration: 1
-                servicesToLimitRequestRate: apicatalog
+            rateLimiterCapacity: 20
+            rateLimiterTokens: 20
+            rateLimiterRefillDuration: 1
+            servicesToLimitRequestRate: apicatalog
 ```
 You configured the properties of the rate limiter for the API Catalog, thereby improving user accessibility and overall system stability. 
 
