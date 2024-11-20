@@ -31,12 +31,14 @@ A precondition to provide for High Availability of all components within Zowe is
 REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
 Information from cached APIs is stored as a JSON in the following format:
+
 ```yml
 {
   “key”: “keyValue”, 
   “value”: “valueValue”
 }
 ```
+
 ## Storage methods
 
 The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
@@ -63,8 +65,8 @@ For more information about the Redis storage access method, see [Using Redis as 
 
 ### InMemory
 
-The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
-The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
+The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production.
+The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist.
 
 ## How to start the Service
 
@@ -122,11 +124,13 @@ This parameter specifies service behavior when the limit of records is reached. 
 ## Authentication
 
 ### Direct calls
+
 The Caching Service requires TLS mutual authentication. This verifies authenticity of the client. Calls without a valid client certificate generate a `403` response code: `Forbidden`. This requirement is disabled when `VERIFY_CERTIFICATES=false` in `zowe-certificates.env` configuration file.
 
-The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`. 
+The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`.
 
 ### Routed calls through API Gateway
+
 Caching service registers with the following authentication scheme to Discovery service:
 
 ```yaml

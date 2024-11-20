@@ -30,12 +30,14 @@ A precondition to provide for High Availability of all components within Zowe is
 REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
 Information from cached APIs is stored as a JSON in the following format:
-```yml
+
+```yaml
 {
   “key”: “keyValue”, 
   “value”: “valueValue”
 }
 ```
+
 ## Storage methods
 
 The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
