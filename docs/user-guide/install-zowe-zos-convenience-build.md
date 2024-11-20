@@ -1,10 +1,10 @@
 # Installing the z/OS Build via Convenience Build (PAX file)
 
-You install the Zowe&trade; convenience build by obtaining a PAX file and using this to create the Zowe runtime environment.
+You can install the Zowe&trade; convenience build by obtaining a PAX file which is used to create the Zowe runtime environment.
 
 ## Introduction
 
-The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. You must obtain the PAX file and transfer it to z/OS first. Then, to install, configure and start Zowe, you use the `zwe` command. This command defines help messages, logging options, and more. For details about how to use this command, see the [ZWE Server Command Reference](../appendix/zwe_server_command_reference/zwe/zwe.md).  
+The Zowe installation file for Zowe z/OS components is distributed as a PAX file that contains the runtimes and the scripts to install and launch the z/OS runtime. You must obtain the PAX file and transfer it to z/OS first. Then, to install, configure, and start Zowe, you use the `zwe` command. This command defines help messages, logging options, and more. For details about how to use this command, see the [ZWE Server Command Reference](../appendix/zwe_server_command_reference/zwe/zwe.md).  
 
 The configuration data that is read by the `zwe` command are stored in a YAML configuration file named `zowe.yaml`. You modify the `zowe.yaml` file based on your environment. 
 
@@ -262,4 +262,4 @@ Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
 
 ## Next steps
 
-You successfully installed Zowe from the convenience build! However, before you start Zowe, you must complete several required configurations. The next step is to [Initialize the z/OS system and permissions](initialize-zos-system.md) for Zowe. 
+You successfully installed Zowe from the convenience build! However, before you start Zowe, you must complete several required configurations. The next step is [Initializing Zowe z/OS runtime](./configure-zowe-runtime.md). 
