@@ -58,25 +58,6 @@ see [zwe init security](../appendix/zwe_server_command_reference/zwe/init/zwe-in
 | ZSS                                                        | CSFSERV        | `Multiple`                  | READ                    | Generate symmetric keys using ICSF that is used by [Zowe Desktop cookies](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment).                                                                                                                                                                                                        | The list of IDs to enable include `CSF1TRD` , `CSF1TRC` , `CSF1SKE` , `CSF1SKD`. The full list of IDs is described in the z/OS Cryptographic Services user guide for your z/OS release level: [2.2](https://www.ibm.com/docs/en/zos/2.2.0?topic=ssl-racf-csfserv-resource-requirements), [2.3](https://www.ibm.com/docs/en/zos/2.3.0?topic=ssl-racf-csfserv-resource-requirements), [2.4](https://www.ibm.com/docs/en/zos/2.4.0?topic=ssl-racf-csfserv-resource-requirements) and [2.5](https://www.ibm.com/docs/en/zos/2.5.0?topic=ssl-racf-csfserv-resource-requirements).                     |                |               |                         |                                                                                                                                                            |                                                                                                                                |
 | Cross memory server (ZIS)                                  | FACILITY       | `ZWES.IS`                   | READ                    | Allow Zowe ZWESLSTC processes to access the Zowe ZIS cross memory server.                                                                                                                                                                                                                                                                                         | This parameter permits the Zowe main server to use ZIS cross memory server. Run the command that applies to your ESM. <br/>• [RACF](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L329) <br/>• [ACF2](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L560) <br/>• [Top Secret](https://github.com/zowe/zowe-install-packaging/blob/79527166f34e28c205c5f60bf4b4bb7b630bc6a1/workflows/templates/ZWESECUR.vtl#L780)                |
 
-
-## Configuring address space job naming
-
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
-
-1. To display who is authorized to the profile, issue the following command:
-```
-RLIST FACILITY BPX.JOBNAME AUTHUSER
-```
-
-2. Activate the facility class, permit `BPX.JOBNAME`, and refresh facility class:
-```
-SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
-PERMIT BPX.JOBNAME CLASS(FACILITY) ID(ZWESVUSR) ACCESS(READ)
-SETROPTS RACLIST(FACILITY) REFRESH
-```
-
-For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
-
 ## Granting users permission to access z/OSMF
 
 Each TSO user ID that logs on to Zowe and uses Zowe services that use z/OSMF requires permission to access these z/OSMF services. It is necessary that every user ID be added to the group with the appropriate z/OSMF privileges, `IZUUSER` or `IZUADMIN` (default). 
