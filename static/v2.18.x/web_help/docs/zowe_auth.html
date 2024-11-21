@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>auth</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_auth.html">auth</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Connect to Zowe API Mediation Layer authentication service and obtain a token, or disconnect from the authentication service and revoke the token.</p>
+<p>The token provides authentication to services that support the API ML SSO (Single Sign-On) capability. When you log in, the token is stored in your default base profile until it expires. Base profiles store connection information shared by multiple services (e.g., z/OSMF), and are used if you do not supply connection information in a service profile. To take advantage of the API ML SSO capability, you should omit username and password in service profiles so that the token in the base profile is used.</p>
+<h4>Usage</h4>
+<p>zowe auth &lt;group&gt;</p>
+<p>Where &lt;group&gt; is one of the following:</p>
+<h4>Groups</h4>
+<ul>
+<li><a href="zowe_auth_login.html">login | li</a> - Log in to an authentication service</li>
+<li><a href="zowe_auth_logout.html">logout | lo</a> - Log out of an authentication service</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

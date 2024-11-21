@@ -2,7 +2,7 @@
 
 As part of the IBM Db2 Database Plug-in installation, the ODBC driver is automatically installed. The driver is required to connect to Db2, but installation can fail due to security restrictions.
 
-When the ODBC driver installation fails, Zowe CLI displays an error message. To resolve this, the user can manually download and install the driver.
+When the ODBC driver installation fails, Zowe CLI displays an error message. To resolve the error, the user can manually download and install the driver.
 
 **Symptom:**
 

@@ -30,20 +30,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          # Fetches all commit history for a single branch. We need commit
+          # history for accurate "last updated" dates on each page, but fetch
+          # depth of 0 would fetch all branches which is slow.
+          # https://github.com/actions/checkout/issues/520#issuecomment-1320838255
+          fetch-depth: 2147483647
 
-      - name: Use Node.js LTS
-        uses: actions/setup-node@v3
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Cache Webpack Build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           TAR_OPTIONS: "--remove-files"
         with:
-          path: node_modules/.cache/webpack
+          path: node_modules/.cache/rspack
           key: cache-webpack-${{ github.base_ref || github.ref_name }}
 
       - name: Install Dependencies
@@ -55,7 +59,7 @@ jobs:
       - name: Deploy to Netlify
         id: deploy
         if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
-        uses: nwtgck/actions-netlify@v2
+        uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: build
           production-branch: master
@@ -70,13 +74,11 @@ jobs:
 
       - name: Compress Build Archive
         if: ${{ steps.deploy.conclusion == 'skipped' }}
-        run: |
-          echo "PR_NUMBER=${{ github.event.pull_request.number }}" > build/.env
-          tar --remove-files --zstd -cf build.tar.zst build
+        run: tar --label=${{ github.event.pull_request.number }} --remove-files --zstd -cf build.tar.zst build
 
       - name: Upload Build Artifact
         if: ${{ steps.deploy.conclusion == 'skipped' }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: preview-build
           path: build.tar.zst

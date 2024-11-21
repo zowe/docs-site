@@ -29,14 +29,11 @@ Another option to initialize Zowe z/OS runtime is to configure Zowe with z/OSMF 
 
 * Configure the Zowe instance directory
 * Enable the API ML gateway
-* Enable the metrics service
 * Enable the API catalog
 * Enable automatic discovery
 * Enable a caching service
 * Enable an application server
 * Enable the ZSS component
-* Enable the jobs API
-* Enable the files API
 * Enable JES Explorer
 * Enable MVS Explorer
 * Enable USS Explorer

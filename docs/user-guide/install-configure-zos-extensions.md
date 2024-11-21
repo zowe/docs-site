@@ -1,4 +1,4 @@
-# Zowe server component and extension management
+# Server Component and Extension Management
 
 This page covers how to install and manage Zowe server components or extensions by using `zwe components` commands.
  
@@ -34,6 +34,15 @@ More information such as parameters and examples can be found on the [`zwe compo
 
 ## Enable and disable component
 
+Each component and extension of Zowe can be enabled or disabled by changing the value of the `enabled` property of their object in the Zowe configuration YAML.
+For example, to enable or disable the API Catalog, set this value to `true` or `false` in the YAML:
+
+```yaml
+components:
+  api-catalog:
+    enabled: true
+```
+
 Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and [`zwe components disable`](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md) commands to help you enable and disable Zowe server component (extension). In order to be compatible with these commands, components must follow [Zowe server component package format standard](../extend/packaging-zos-extensions.md#zowe-server-component-package-format).
 
 **Important** these commands will update your `zowe.yaml` configuration file.
@@ -41,6 +50,22 @@ Zowe ships [`zwe components enable`](../appendix/zwe_server_command_reference/zw
 **Note** `zwe components install` command will enable the component globally if `--skip-enable` is not passed to it.
 
 More information such as parameters and examples can be found on the [`zwe components enable` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-enable.md) and the [`zwe components disable` reference page](../appendix/zwe_server_command_reference/zwe/components/zwe-components-disable.md)
+
+### Limiting Zowe to specific service groups
+
+Zowe's server installation contains groups of components that are useful to run together, but often you do not need to enable all parts of Zowe.
+You can save system resources by disabling the parts of Zowe that you do not use.
+
+| Category | Component | Purpose |
+|------|------|------|
+| API Mediation Layer | api-catalog | Used to view API swagger / openAPI specifications for registered API services of the API Mediation Layer.
+| API Mediation Layer | discovery | This server is used to register API services and track the health of them for use in the API Mediation Layer.
+| API Mediation Layer | gateway | The gateway unifies all the services of Zowe under one proxied server for improved security, management, and high availability.
+| API Mediation Layer | caching-service | The caching service is used to share state between different Zowe instances in a high availability topology.
+| API Mediation Layer | zaas | ZAAS provides authentication services used by the API Mediation Layer.
+| App Framework | app-server | The App server powers the Zowe Desktop accessible via web browsers.
+| App Framework | zss | Z Secure Services (ZSS) provides REST API services for file, dataset, and other z/OS content. Its APIs are used by apps in the Desktop, such as the the File Editor.
+
 
 ## Upgrading a component
 
@@ -81,8 +106,6 @@ The Zowe runtime directory delivers its core components in the `<RUNTIME_DIR>/co
   /app-server
   /explorer-jes
   /explorer-mvs
-  /files-api
-  /jobs-api
   /...
 ```
 

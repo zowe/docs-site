@@ -10,8 +10,7 @@ To change the default logback configuration file, set `components.<component>.lo
     - `discovery`
     - `api-catalog`
     - `caching-service`
-    - `cloud-gateway`
-    - `metrics-service`
+    - `zaas`
 
 **Example with Gateway Service:**
 

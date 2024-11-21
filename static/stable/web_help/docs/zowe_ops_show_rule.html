@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="../css/docs.css">
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_ops.html">ops</a> › <a href="zowe_ops_show.html">show</a> › <a href="zowe_ops_show_rule.html">rule</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
-<p>Display data associated with the specified rule. Currently, only rule status is displayed.</p>
+<p>Display data associated with the specified rule.</p>
 <h4>Usage</h4>
 <p>zowe ops show rule &lt;ruleset&gt; &lt;rule&gt; [options]</p>
 <h4>Positional Arguments</h4>
@@ -15,7 +15,7 @@
 <li>
 <p><code>ruleset</code>		 <em>(string)</em></p>
 <ul>
-<li>The rule set containing the rule.</li>
+<li>The ruleset containing the rule.</li>
 </ul>
 </li>
 <li>
@@ -25,30 +25,43 @@
 </ul>
 </li>
 </ul>
-<h4>OPS WEB SERVICES CONNECTION OPTIONS</h4>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--format</code> | <code>-f</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Format of the displayed output.</p>
+<p>Default value: namevalue<br>
+Allowed values: namevalue, namevaluecolor, csv, json</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>OPS/MVS Web Services / REST API connection options</h4>
 <ul>
 <li>
 <p><code>--user</code> <em>(string)</em></p>
 <ul>
-<li>Your z/OS user name used to authenticate to OPS Web Services</li>
+<li>Your z/OS user name that is used to authenticate to OPS/MVS Web Services / REST API.</li>
 </ul>
 </li>
 <li>
 <p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
 <ul>
-<li>Your z/OS password used to authenticate to OPS Web Services</li>
+<li>Your z/OS password that is used to authenticate to OPS/MVS Web Services / REST API.</li>
 </ul>
 </li>
 <li>
 <p><code>--host</code> <em>(string)</em></p>
 <ul>
-<li>The hostname of the server where OPS Web Services is running.</li>
+<li>The hostname of the server where OPS/MVS Web Services / REST API is running.</li>
 </ul>
 </li>
 <li>
 <p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
 <ul>
-<li>The port number for OPS Web Services.</li>
+<li>The port number for OPS/MVS Web Services / REST API.</li>
 </ul>
 </li>
 <li>
@@ -64,7 +77,7 @@
 <p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>The protocol used for connecting to OPS Web Services</p>
+<p>The protocol that is used for connecting to OPS/MVS Web Services / REST API.</p>
 <p>Default value: https<br>
 Allowed values: http, https</p>
 </li>
@@ -73,7 +86,25 @@ Allowed values: http, https</p>
 <li>
 <p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
 <ul>
-<li>Specifies the subsystem id of the OPS/MVS instance to which commands will be directed.</li>
+<li>
+<p>Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored with the 'show status' and 'show subsystem' commands.</p>
+<p>Default value: OPSS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rest-api</code> | <code>--ra</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If set to true, the plug-in executes the command against the OPS/MVS REST API. If set to false, the plug-in executes against the OPS/MVS Web Services.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>NOTE: This can only be used with the REST API server. The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer.</li>
 </ul>
 </li>
 </ul>
@@ -125,9 +156,21 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Show the status of MYRULE on ruleset OPSRULES on subsystem OPSS:</p>
+<p>Show the data in csv format of the rule &quot;MYRULE&quot; in the ruleset &quot;OPSRULES&quot; for the &quot;OPSS&quot; subsystem:</p>
 <ul>
-<li><code>zowe ops show rule OPSRULES MYRULE --subsystem OPSS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops show rule OPSRULES MYRULE --subsystem OPSS">Copy</button></li>
+<li><code>zowe ops show rule &quot;OPSRULES&quot; &quot;MYRULE&quot; --subsystem &quot;OPSS&quot; -f csv</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops show rule &quot;OPSRULES&quot; &quot;MYRULE&quot; --subsystem &quot;OPSS&quot; -f csv">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Show the data of all rules in ruleset &quot;OPSRULES&quot; for the &quot;OPSS&quot; subsystem. This command is only available when connected to the OPS/MVS REST API server:</p>
+<ul>
+<li><code>zowe ops show rule &quot;OPSRULES&quot; &quot;*&quot; --subsystem &quot;OPSS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops show rule &quot;OPSRULES&quot; &quot;*&quot; --subsystem &quot;OPSS&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Show the data of all rules in all rulesets for the &quot;OPSS&quot; subsystem. This command is only available when connected to the OPS/MVS REST API server:</p>
+<ul>
+<li><code>zowe ops show rule &quot;*&quot; &quot;*&quot; --subsystem &quot;OPSS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops show rule &quot;*&quot; &quot;*&quot; --subsystem &quot;OPSS&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -4,11 +4,11 @@ Leverage the Zowe Client Software Development Kits (SDKs) to build client applic
 
 The SDKs include programmatic APIs, each of which performs a particular mainframe task. For example, one API package provides the ability to upload and download z/OS data sets. You can leverage that package to rapidly build a client application that interacts with data sets.
 
-The following SDKs are available: 
-  
-- Zowe Java Client SDK
-- Zowe Node.js Client SDK
-- Zowe Client Python SDK
+The following SDKs are available.
+- Zowe Client Java SDK
+- Zowe Client Kotlin SDK
+- Zowe Client Node.js SDK
+- Zowe Client Python SDK *technical preview*
 
 ## SDK documentation
 
@@ -20,7 +20,7 @@ For detailed SDK documentation, see the following:
 
 ### Java SDK
 
-Requires Java runtime version 11 and later versions. 
+Requires Java runtime version 11 and later versions.
 
 ### Node.js SDK
 
@@ -56,7 +56,7 @@ To install this library in your project, use a build tool such as Maven, Gradle 
 
 https://mvnrepository.com/artifact/org.zowe.client.java.sdk/zowe-client-java-sdk
 
-For a Maven project, add the SDK as a dependency by updating your `pom.xml`: 
+For a Maven project, add the SDK as a dependency by updating your `pom.xml`:
 ```
     <dependency>
         <groupId>org.zowe.client.java.sdk</groupId>
@@ -65,15 +65,15 @@ For a Maven project, add the SDK as a dependency by updating your `pom.xml`:
     </dependency>
 ```
 
-For a Gradle project, add the SDK as a dependency by updating your `build.gradle`: 
+For a Gradle project, add the SDK as a dependency by updating your `build.gradle`:
 
 ```
     implementation group: 'org.zowe.client.java.sdk', name: 'zowe-client-java-sdk', version: '2.2.0'
 ```
 
-The version 2.2.0 can change. Look at the artifact link to select the latest version. 
+The version 2.2.0 can change. Look at the artifact link to select the latest version.
 
-### Install Node.js from an online registry
+### Install Node.js SDK from an online registry
 
 Pull the packages from an online registry such as npm.
 
@@ -81,10 +81,10 @@ Pull the packages from an online registry such as npm.
 
    - To import a Node.js package: `npm install <PackageName>`
 
-     * `<packageName>`  
+     * `<packageName>`
      The name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
-     The packages are installed. Node packages are defined in `package.json` in your project. 
+     The packages are installed. Node packages are defined in `package.json` in your project.
 
 2. **(Optional)** You might want to automatically update the SDK version when updates become available, or you might want to prevent automatic updates.
 
@@ -96,10 +96,10 @@ Pull the packages from an online registry such as PyPi.
 
 1. In the command-line window, navigate to your project directory. Issue the following command to install a package from the registry:
 
-   - To import a Python package, use the following syntax:  
+   - To import a Python package, use the following syntax:
     `pip install <PackageName>`
 
-     * `<packageName>`  
+     * `<packageName>`
      The name of the SDK package that you want to install, such as `zos-files-for-zowe-sdk`.
 
      Python packages are installed by default to `$PYTHONPATH/Lib/site-packages` (Linux) or to the Python folder in your local `/AppData` folder (Windows).
@@ -122,13 +122,13 @@ Download and install the packages.
 
 4. In a command-line window, navigate to your project directory. Issue *one* of the following commands:
 
-   - To install a Node.js package, use the following syntax:  
+   - To install a Node.js package, use the following syntax:
     `npm install <packageName>.tgz`
 
-   - To install a Python package, use the following syntax:  
+   - To install a Python package, use the following syntax:
     `pip install <packageName>.whl`
 
-    * `<packageName>`  
+    * `<packageName>`
     The name of the package that you want to install, such as `zos-files-for-zowe-sdk`.
 
     Repeat the command for each package that you need. Packages are now installed.
@@ -141,15 +141,15 @@ After you install the SDK, you can make API calls to the mainframe from within y
 
 For Java SDK usage and syntax examples, refer to the following package READMEs:
 
-- [Team Config](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations. 
+- [Team Config](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/teamconfig/README.md) - Read only team configuration operations.
 - [z/OS Console](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosconsole/README.md) - Perform z/OS console operations.
 - [z/OS Files-dsn](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/dsn/README.md) - Work with data sets on z/OS.
 - [z/OS Files-uss](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosfiles/uss/README.md) - Work with UNIX system services (USS) files on z/OS.
 - [z/OS Jobs](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosjobs/README.md) - Work with batch jobs on z/OS.
-- [z/OS Log](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zoslogs/README.md) - Work with logs on z/OS. 
+- [z/OS Log](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zoslogs/README.md) - Work with logs on z/OS.
 - [z/OS Management Facility](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosmfinfo/README.md) - Return data about z/OSMF, such as connection status or a list of available systems.
 - [z/OS TSO](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zostso/README.md) - Interact with TSO/E address spaces on z/OS.
-- [z/OS USS](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosuss/README.md) - ssh unix command request operation.   
+- [z/OS USS](https://github.com/zowe/zowe-client-java-sdk/blob/main/src/main/java/zowe/client/sdk/zosuss/README.md) - ssh unix command request operation.
 
 SDK Javadoc:
 
@@ -173,10 +173,13 @@ For Node SDK usage and syntax examples, refer to the following package READMEs:
 - [z/OS USS](https://www.npmjs.com/package/@zowe/zos-uss-for-zowe-sdk) - Work with UNIX system services (USS) files on z/OS.
 - [z/OS Workflows](https://www.npmjs.com/package/@zowe/zos-workflows-for-zowe-sdk) - Create and manage z/OSMF workflows on z/OS.
 
-### Using - Python
+### Using Python
 
 For information about the Python SDK, including usage and syntax examples, see the [Python SDK ReadTheDocs](https://zowe-client-python-sdk.readthedocs.io/en/latest/).
 
-## Contributing
+### Using Kotlin
 
-For information about contributing to the open-source Zowe SDKs, see [Developing for Zowe SDKs](../extend/extend-sdks.md).
+For information about Zowe Client Kotlin SDK, including a setup guide and source code documentation, see the [Zowe Client Kotlin SDK docs](https://zowe.github.io/zowe-client-kotlin-sdk/).
+
+### Using Java
+For information about how to use Zowe Client Java SDK, see [this README.md section](https://github.com/zowe/zowe-client-java-sdk/?tab=readme-ov-file#examples).

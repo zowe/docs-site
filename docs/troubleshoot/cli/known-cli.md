@@ -12,7 +12,6 @@ After you install Zowe CLI, and the installation appears to complete successfull
 
 - `zowe config init`
 - `zowe config secure`
-- `zowe profiles create`
 - Most Zowe commands that access your mainframe environment
 
 This behavior occurs under the following conditions:
@@ -25,14 +24,14 @@ This behavior occurs under the following conditions:
 
 1. Define the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
 
-    - **Windows Command Prompt:** `set npm_config_global=true`
-    - **Windows PowerShell:** `$env:npm_config_global="true"`
-    - **macOS/Linux Bash:** `export npm_config_global=true`
+    - Windows Command Prompt: `set npm_config_global=true`
+    - Windows PowerShell: `$env:npm_config_global="true"`
+    - macOS/Linux Bash: `export npm_config_global=true`
 2. Install or reinstall Zowe CLI using your preferred installation method.
 3. After the Zowe CLI installation completes, reset the `npm_config_global` environment variable. Issue the command that corresponds with your operating system:
-    - **Windows Command Prompt:** `set npm_config_global=`
-    - **Windows PowerShell:** `$env:npm_config_global=""`
-    - **macOS/Linux Bash:** `export npm_config_global=`
+    - Windows Command Prompt: `set npm_config_global=`
+    - Windows PowerShell: `$env:npm_config_global=""`
+    - macOS/Linux Bash: `export npm_config_global=`
 4. Continue configuring Zowe CLI. Or, reissue a Zowe command that returned an error message. You should no longer get an error message.
 
 ## Chain commands fail in a batch script
@@ -81,9 +80,9 @@ To correct this behavior, verify the following:
 - Node.js and NPM are installed.
 - PATH contains the correct path to the NodeJS folder.
 
-**More Information:** [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md)
+For more information, see [System requirements for Zowe CLI](../../user-guide/systemrequirements-cli.md).
 
-## EACCESS error when issing `npm install` command
+## EACCESS error when issuing `npm install` command
 
 **Valid on Windows, Mac, or Linux**
 
@@ -137,28 +136,10 @@ report success using the following workarounds:
 
   - Issue the `npm cache clean` command.
 
-  - Uninstall and reinstall Zowe CLI. For more information,
-    see [Install Zowe CLI](../../user-guide/cli-installcli.md).
+  - Uninstall and reinstall Zowe CLI. For instructions,
+    see the [Zowe CLI installation checklist](../../user-guide/cli-install-cli-checklist.md).
 
-  - `Add the --no-optional` flag to the end of the `npm install` command.
-
-## `npm install -g` command fails due to `npm ERR! Cannot read property 'pause' of undefined` error
-
-**Valid on Windows or Linux**
-
-**Symptom:**
-
-You receive the error message `npm ERR! Cannot read property 'pause' of undefined` when you attempt to install the product.
-
-**Solution:**
-
-This behavior is due to a problem with Node Package Manager (npm). If
-you encounter this problem, revert to a previous version of npm that
-does not contain this defect. To revert to a previous version of npm,
-issue the following command:
-```
-npm install npm@5.3.0 -g
-```
+  - Add the `--no-optional` flag to the end of the `npm install` command.
 
 ## Paths converting in Git Bash
 
@@ -178,7 +159,11 @@ If a command includes a path similar to the following example:
   ```
   A:/ibmuser/my_dir
   ```
-  **Note:** Depending on the root directory, the Git Bash conversion can add other directories it assumes to be included in the path.
+  :::note
+  
+  Depending on the root directory, the Git Bash conversion can add other directories it assumes to be included in the path.
+
+  :::
 
 **Solutions:**
 
@@ -214,3 +199,44 @@ The installation fails on Linux or macOS.
 **Solution:**
 
 Depending on how you configured Node.js on Linux or macOS, you might need to add the prefix `sudo` before the `npm install -g` command or the `npm uninstall -g` command. This step gives Node.js write access to the installation directory.
+
+## Missing data set search results with `--mainframe-search` option
+
+**Valid on Windows, Mac, or Linux**
+
+**Symptom:**
+
+When the `zowe zos-files search data-sets` command is issued with the `--mainframe-search` option, results can omit data sets that are in binary format.
+
+**Solution:**
+
+Issue the `zowe files search ds` command without the `--mainframe-search` option. This returns results that include data sets in binary format.
+
+## Error message with PowerShell scripts
+
+**Valid on Windows**
+
+**Symptom:**
+
+PowerShell users on Windows can encounter an error when they try to run Zowe CLI with certain execution policies in place.
+
+Example of an error message:
+
+```
+PS C:\> zowe
+zowe : File C:\Users\user\AppData\Roaming\npm\zowe.ps1 cannot be loaded because running scripts is disabled on this
+system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ zowe
++ ~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+
+**Solutions:**
+
+- Update developer settings in Windows to enable running local scripts without signing:
+
+![PowerShell setting](../../images/troubleshoot/cli/PowerShell_developer_setting.png)
+
+- Run PowerShell as an administrator and use the `Set-ExecutionPolicy` command to change the execution policy to a less-restrictive setting, for example: `Set-ExecutionPolicy RemoteSigned -scope CurrentUser`.

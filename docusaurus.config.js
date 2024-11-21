@@ -1,10 +1,9 @@
-const LATEST_VERSION = "v2.18.x";
+const LATEST_VERSION = "v3.0.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
   title: "Zowe Docs",
-  tagline:
-    "Combining the past and the present to build the future of Mainframe",
+  tagline: "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -18,18 +17,12 @@ module.exports = {
       comments: true
     }
   },
-  webpack: {
-    jsLoader: (isServer) => ({
-      loader: require.resolve("esbuild-loader"),
-      options: {
-        loader: "tsx",
-        format: isServer ? "cjs" : undefined,
-        target: isServer ? "node12" : "es2017",
-      },
-    }),
+  future: {
+    // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
+    experimental_faster: process.env.NODE_ENV === "production",
   },
   themeConfig: {
-        docs: {
+    docs: {
       sidebar: {
         hideable: true
       }
@@ -163,7 +156,7 @@ module.exports = {
             },
             {
               label: "Community meetings",
-              href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
+              href: "https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe",
             },
             {
               label: "Zowe GitHub",
@@ -225,6 +218,9 @@ module.exports = {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v2.18.x": {
+              label: "v2.18.x LTS",
             },
             "v2.17.x": {
               label: "v2.17.x LTS",
