@@ -7,13 +7,12 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 :::
 
 - [Initializing Zowe custom data sets (`zwe init mvs`)](#initializing-zowe-custom-data-sets-zwe-init-mvs)
-- [Procedure to initialize Zowe custom data sets](#procedure-to-initialize-zowe-custom-data-sets)
+  - [Procedure to initialize Zowe custom data sets](#procedure-to-initialize-zowe-custom-data-sets)
 - [Initializing Zowe security configurations (`zwe init security`)](#initializing-zowe-security-configurations-zwe-init-security)
 - [Performing APF authorization of load libraries (`zwe init apfauth`)](#performing-apf-authorization-of-load-libraries-zwe-init-apfauth)
 - [Configuring Zowe to use TLS certificates (`zwe init certificate`)](#configuring-zowe-to-use-tls-certificates-zwe-init-certificate)
 - [Installing Zowe main started tasks (`zwe init stc`)](#installing-zowe-main-started-tasks-zwe-init-stc)
-- [(Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)](#deprecated-creating-vsam-caching-service-datasets-zwe-init-vsam)
-- [Next steps](#next-steps)
+
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
 
