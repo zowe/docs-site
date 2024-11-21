@@ -1,9 +1,17 @@
-# Addressing z/OS requirements for Zowe
+# Customizing z/OS system security 
 
-As a security administrator it is necessary to  configure the z/OS system for Zowe. Review the following article to learn about z/OS prerequisites, and z/OS configuration requirements for specific settings.
+As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and fuctionalities.
 
 :::info Required role: security administrator
 :::
+
+
+:::note
+Before performing configuration steps specific to your use case, ensure that you meet the z/OS system requirements presented in the section _Preparing for installation_. For detailed information, see [Addressing z/OS requirements](./systemrequirements-zos.md). 
+:::
+
+<!-- The following section is duplicated in the article Addressing z/OS requirements. The preceding note points to these prerequisites
+
 
 ## z/OS prerequisites
 
@@ -15,7 +23,7 @@ Be sure your z/OS system meets the following prerequisites:
     z/OS V2.2 reached end of support on 30 September, 2020. For more information, see the z/OS v2.2 lifecycle details [https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61](https://www.ibm.com/support/lifecycle/details?q45=Z497063S01245B61). 
     :::
 
-- zFS volume has at least 833 mb <!-- this should be reviewed --> of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 833 mb of free space for Zowe server components, their keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) z/OS OpenSSH V2.2.0 or later
   
@@ -25,27 +33,48 @@ Be sure your z/OS system meets the following prerequisites:
   
   To deploy Zowe for high availability, a Parallel Sysplex environment is recommended. For more information, see [Configuring Sysplex for high availability](configure-sysplex.md).
 
- ## Settings specific configuration requirements <!-- This title is a bit confusing -->
+-->
  
-Configuration of your z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. Review the following table to determine which configuration steps are required based on your Zowe use case.
+ Review the following table to determine which configuration steps are required based on your Zowe use case.
 
-| Purpose | Configuration step |
-| --- | --- |
-| Set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required. | [Configure address space job naming](#configure-address-space-job-naming) |
-| To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
-| To allow users to log on to the Zowe desktop through impersonation. | [Configure security environment switching](#configure-security-environment-switching) |
-| Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. | [Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |
-| Required if you have not run `ZWESECUR` and are manually creating the user ID and groups in your z/OS environment. | [Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) |
-| Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the started task ZWESLSTC to run under the correct user ID and group. | [Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id) |
-| Required if you have not run `ZWESECUR` and are configuring your z/OS environment manually. This step describes how to configure the cross memory server for SAF to guard against access by non-privileged clients. | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
-| Required for API Mediation Layer to map a client certificate to a z/OS identity. | [Configure main Zowe server to use client certificate identity mapping](#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
-| Required for API ML to map the association between a z/OS user ID and a distributed user identity. | [Configure main Zowe server to use distributed identity mapping](#configure-main-zowe-server-to-use-distributed-identity-mapping) |
-| To configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | [Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) |
-| Required for API Mediation Layer to issue SMF records. | [Configure the main Zowe server to issue SMF records](api-mediation/api-mediation-smf.md#configure-the-main-zowe-server-to-issue-smf-records) |
-| To use multi-factor authentication (MFA) | [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa) |
-| To use Single Sign-On (SSO) | [Single Sign-On (SSO)](#single-sign-on-sso) |
-| To use OIDC Authentication with API Mediation Layer | [API Mediation Layer OIDC Authentication](#api-mediation-layer-oidc-authentication) |
+| Purpose | Applicable Zowe Component(s) | Configuration step |
+| --- | --- | --- |
+| Set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required. | All components | [Configure address space job naming](#configure-address-space-job-naming) |
+| To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | Application Framework | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
+| To allow users to log on to the Zowe desktop through impersonation. | Application Framework | [Configure security environment switching](#configure-security-environment-switching) |
+| Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. | All components | [Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |
+| Required to manually create the user ID and groups in your z/OS environment. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md) | All components | [Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) |
+| Required to configure the started task ZWESLSTC to run under the correct user ID and group. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| All components | [Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id). |
+| Required to configure the cross memory server for SAF to guard against access by non-privileged clients. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| Application Framework | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
+| Required for API Mediation Layer to map a client certificate to a z/OS identity. | API ML | [Configure main Zowe server to use client certificate identity mapping](#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
+| Required for API ML to map the association between a z/OS user ID and a distributed user identity. | API ML | [Configure main Zowe server to use distributed identity mapping](#configure-main-zowe-server-to-use-distributed-identity-mapping) |
+| To configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation Layer. | Application Framework<br />API ML | [Configure signed SAF Identity tokens IDT](#configure-signed-saf-identity-tokens-idt) |
+| Required for API Mediation Layer to issue SMF records. | API ML | [Configure the main Zowe server to issue SMF records](api-mediation/api-mediation-smf.md#configure-the-main-zowe-server-to-issue-smf-records) |
+| To use multi-factor authentication (MFA) | All components | [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa) |
+| To use Single Sign-On (SSO) | All components | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| To use OIDC Authentication with API Mediation Layer | API ML | [API Mediation Layer OIDC Authentication](#api-mediation-layer-oidc-authentication) |
 
+### Configure address space job naming
+
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+
+:::note
+This procedure may require security administrator authorization. Consult with your security administrator.
+:::
+
+To display who is authorized to the profile, issue the following command:
+```
+RLIST FACILITY BPX.JOBNAME AUTHUSER
+```
+
+Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
+```
+SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
+PERMIT BPX.JOBNAME CLASS(FACILITY) ID(ZWESVUSR) ACCESS(READ)
+SETROPTS RACLIST(FACILITY) REFRESH
+```
+
+For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
 
 ### Configure an ICSF cryptographic services environment
 
@@ -357,7 +386,7 @@ F ACF2,REBUILD(APL)
 
 ### Configure address space job naming
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
 :::note
 This procedure may require security administrator authorization. Consult with your security administrator.
@@ -462,7 +491,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
 
     </details>
 
- * To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command:
+ * To create the `ZWESVUSR` user ID for the main Zowe started task, issue the following command according to your ESM:
 
     <details>
 
@@ -507,7 +536,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
     ```
     </details>
 
-- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command:
+- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command according to your ESM:
 
     <details>
     <summary>Click here for command details for RACF.</summary>
@@ -562,7 +591,7 @@ If you have run `ZWESECUR`, you do not need to perform the steps described in th
 ...
 ```
 
-If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group. 
+If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the started task `ZWESLSTC` to run under the correct user ID and group. Issue the following commands according to your ESM:
 
 <details>
 <summary>Click here for command details for RACF.</summary>
@@ -611,9 +640,9 @@ If you have run `ZWESECUR` you do not need to perform the steps described in thi
 
 If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the cross memory server for SAF.
 
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`.  This is the user ID that the main Zowe started task runs under. 
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`. This is the user ID that the main Zowe started task runs under. 
     
-To do this, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
+To perform these steps, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
 
 <details>
 <summary>Click here for command details for RACF.</summary>
@@ -689,8 +718,8 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 
 ### Configure main Zowe server to use client certificate identity mapping
 
-This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have read access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
-To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps.
+This security configuration is necessary for API ML to be able to map client certificate to a z/OS identity. A user running API Gateway must have READ access to the SAF resource `IRR.RUSERMAP` in the `FACILITY` class. 
+To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower use the following configuration steps according to your ESM:
 
 <details>
 <summary>Click here for procedure details for RACF.</summary>
@@ -699,12 +728,12 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```
     RLIST FACILITY IRR.RUSERMAP AUTHUSER
     ```
 
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     PERMIT IRR.RUSERMAP CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
@@ -723,13 +752,13 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```      
     SET RESOURCE(FAC) 
     LIST LIKE(IRR-)
     ```
        
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     RECKEY IRR.RUSERMAP ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
     ```
@@ -748,11 +777,11 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify user `ZWESVUSR` has read access.
+1. Verify user `ZWESVUSR` has READ access.
     ```      
     TSS WHOHAS IBMFAC(IRR.RUSERMAP)
     ```    
-2. Add user `ZWESVUSR` permission to read.
+2. Add user `ZWESVUSR` permission to READ.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.RUSERMAP) ACCESS(READ)
     ```
@@ -761,8 +790,8 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 ### Configure main Zowe server to use distributed identity mapping
 
-This security configuration is necessary for API ML to be able to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have read access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
-To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps.
+This security configuration is necessary for API ML to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have READ access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
+To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps according to your ESM:
 
 <details>
 <summary>Click here for procedure details for RACF.</summary>
@@ -771,7 +800,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has read access.
+1. Verify that user `ZWESVUSR` has READ access.
     ```
     RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
     ```
@@ -840,18 +869,24 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 ### Configure signed SAF Identity tokens (IDT)
 
-This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API Mediation layer ([Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md))
+This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API ML. See [Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md).
 
 **Follow these steps:**
 
-1. Create PKCS#11 token 
-2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset)
-3. Define a SAF resource profile under the IDTDATA SAF resource class
+1. Create a PKCS#11 token. 
+2. Generate a secret key for the PKCS#11 token (you can use the sample program ZWESECKG in the SZWESAMP dataset).
+3. Define a SAF resource profile under the IDTDATA SAF resource class.
 
 Details with examples can be found in documentation of external security products:
-* **RACF** - **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ in the article [Activating and using the IDTA parameter in RACROUTE REQUEST=VERIFY](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
-* **Top Secret** - _**Maintain Identity Token (IDT) Records**_ subsection in _Administrating_ chapter, in the article [Maintain Identity Token (IDT) Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
-* **ACF2** - _**IDTDATA Profile Records**_ subsection in _Administrating_ chapter, in the article [IDTDATA Profile Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
+
+* **RACF**  
+See **_Signed and Unsigned Identity Tokens_** and **_IDT Configuration_** subsections in _z/OS Security Server RACROUTE Macro Reference_ in the article [Activating and using the IDTA parameter in RACROUTE REQUEST=VERIFY](https://www.ibm.com/docs/en/zos/2.4.0?topic=reference-activating-using-idta-parameter-in-racroute-requestverify).
+
+* **ACF2**  
+See **_IDTDATA Profile Records_** subsection in _Administrating_ chapter, in the article [IDTDATA Profile Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-acf2-for-z-os/16-0/administrating/administer-records/profile-records/idtdata-profile-records.html).
+
+* **Top Secret**  
+See **_Maintain Identity Token (IDT) Records_** subsection in _Administrating_ chapter, in the article [Maintain Identity Token (IDT) Records](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/maintaining-special-security-records/maintain-identity-token-(idt)-records.html).
 
 A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
 
@@ -872,16 +907,6 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     </details>
 
     <details>
-    <summary>Click here for command details for Top Secret.</summary>
-
-    If you use Top Secret, issue the following command:
-    ```
-    TSS WHOHAS IBMFAC(IRR.RAUDITX)
-    ```
-
-    </details>
-
-    <details>
     <summary>Click here for command details for ACF2.</summary>
 
     If you use ACF2, issue the following commands:
@@ -890,6 +915,16 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     ```
     ```
     LIST LIKE(IRR-)
+    ```
+
+    </details>
+
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
+
+    If you use Top Secret, issue the following command:
+    ```
+    TSS WHOHAS IBMFAC(IRR.RAUDITX)
     ```
 
     </details>
@@ -915,16 +950,6 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     </details>
 
     <details>
-    <summary>Click here for command details for Top Secret.</summary>
-
-    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
-    ```
-    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
-    ```
-
-    </details>
-
-    <details>
     <summary>Click here for command details for ACF2.</summary>
 
     If you use ACF2, add user `ZWESVUSR` permission to `READ`. Issue the following commands:
@@ -938,7 +963,19 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     F ACF2,REBUILD(FAC)
     ```
 
-    </details>   
+    </details> 
+
+    <details>
+    <summary>Click here for command details for Top Secret.</summary>
+
+    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
+    ```
+    TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
+    ```
+
+    </details>
+
+  
 
 For more information about SMF records, see [SMF records](../user-guide/api-mediation/api-mediation-smf.md) in the Using Zowe API Mediation Layer documentation.
 
@@ -967,4 +1004,3 @@ Zowe has an SSO scheme with the goal that each time you use multiple Zowe compon
 ### API Mediation Layer OIDC Authentication
 
 Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manager.
-
