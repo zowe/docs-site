@@ -207,7 +207,6 @@ module.exports = {
               label: "Configuring security",
               link: { type: "doc", id: "user-guide/configuring-security" },
               items: [
-                "user-guide/initialize-security-configuration",
                 "user-guide/apf-authorize-load-library",
                 "user-guide/configure-zos-system",
                 "user-guide/assign-security-permissions-to-users",
