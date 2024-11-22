@@ -27,10 +27,8 @@ APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
 #>
 ```
 :::note
-If you do not have permissions to update your security configurations, use `security-dry-run`. We recommend you inform your security administrator to review your job content.
-:::
-
-Specify `--security-dry-run` to have the command echo the commands that need to be run without executing the command.  
+If you do not have permissions to update your security configurations, append the flag `--security-dry-run` to have the command echo the commands that need to be run without executing the command. We recommend you inform your security administrator to review your job content.
+::: 
 
 ```
   SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
