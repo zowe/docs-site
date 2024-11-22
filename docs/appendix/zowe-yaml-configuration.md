@@ -293,7 +293,7 @@ zowe:
 - `zowe.setup.security.groups.stc` is the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
 - `zowe.setup.security.groups.sysProg` is system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
 - `zowe.setup.security.users.zowe` is the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
-- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. Th default value is `ZWESIUSR`.
+- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. The default value is `ZWESIUSR`.
 - `zowe.setup.security.stcs.zowe` is Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
 - `zowe.setup.security.stcs.zis` is ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
 - `zowe.setup.security.stcs.aux` is ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
