@@ -50,7 +50,7 @@ More details can be found [in the configmgr documentation.](../user-guide/config
 
 There is a [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml) file, which defines values for global configuration and components. This file is always merged with current config(s) when `configmgr` is used.
 
-If you decide to remove `zowe.job` section by commenting out or deleting it, after the merging this section will be present and using the defaults values.
+For example, if you decide to remove `zowe.job` section by commenting or deleting, after the merging with the defaults the `zowe.job` section will be present again:
 
 **Example of user config:**
 
@@ -71,7 +71,6 @@ If you decide to remove `zowe.job` section by commenting out or deleting it, aft
       name: ZWE1SV
       prefix: ZWE1
   ```
-
 ### Configuration override - inside zowe.yaml
 
 Inside `zowe.yaml`, you can define default values and they may be overridden in more granular level configurations. This can happen in several ways:
