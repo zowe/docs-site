@@ -46,7 +46,33 @@ The Zowe YAML configuration file has template logic for relating one value to an
 It can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
 More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#configuration-templates)
 
-### Configuration override
+### Configuration override - defaults.yaml
+
+There is a [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml) file, which defines values for global configuration and components. This file is always merged with current config(s) when `configmgr` is used.
+
+If you decide to remove `zowe.job` section by commenting out or deleting it, after the merging this section will be present and using the defaults values.
+
+**Example of user config:**
+
+  ```yaml
+  zowe:
+    # job:
+    # Zowe JES job name
+    # name: ZW3SV1
+    # Prefix of component address space
+    # prefix: ZW31
+  ```
+
+**Example of merged result:**
+
+  ```yaml
+  zowe:
+    job:
+      name: ZWE1SV
+      prefix: ZWE1
+  ```
+
+### Configuration override - inside zowe.yaml
 
 Inside `zowe.yaml`, you can define default values and they may be overridden in more granular level configurations. This can happen in several ways:
 
