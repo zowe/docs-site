@@ -52,7 +52,17 @@ Values for global configuration and components are defined in the [`defaults.yam
 
 For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears  after the merging with the defaults. 
 
-**Example of user config:**
+**Example of initial user config:**
+
+  ```yaml
+  zowe:
+    job:
+    # Zowe JES job name
+      name: ZW3SV1
+    # Prefix of component address space
+      prefix: ZW31
+  ```
+**Example of modified user config - `zowe.job` commented out:**
 
   ```yaml
   zowe:
@@ -71,6 +81,10 @@ For example, if you decide to remove the `zowe.job` section by commenting or del
       name: ZWE1SV
       prefix: ZWE1
   ```
+:::note
+To disable component, which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml), you need to have a definition of that component in your config and change `enabled: true` to `enabled: false`. Deleting or commenting such component is not making it disabled.
+:::
+
 ### Configuration override - inside zowe.yaml
 
 In the `zowe.yaml`, you can define default values which can be overridden in more granular level configurations. This can happen in several ways:
