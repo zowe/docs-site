@@ -48,7 +48,7 @@ More details can be found [in the configmgr documentation.](../user-guide/config
 
 ### Configuration override - defaults.yaml
 
-Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml) file. This file is always merged with current config(s) when `configmgr` is used.
+Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml) file. This file is always merged with current config(s) when `configmgr` is used.
 
 For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears  after the merging with the defaults. 
 
