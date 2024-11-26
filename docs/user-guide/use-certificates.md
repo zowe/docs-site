@@ -1,6 +1,6 @@
-# Using certificates 
+# Adding certificates to Zowe configuration
 
-Once you have generated or imported your certificates, you can now use the certificates with Zowe. Use the procedure descibed in this article that corresponds to the type of certificates you generated or imported.
+Once you have generated or imported your certificates, you can now add your certificates in your Zowe configuration. Use the procedure descibed in this article that corresponds to the type of certificates you generated or imported.
 
 :::info Required roles: system programmer, security administrator
 :::
@@ -9,13 +9,13 @@ Choose from the following procedures:
 - [Use PKCS12 certificates](#use-pkcs12-certificates)
 - [Use JCERACFKS certificates](#use-jceracfks-certificates)
 
-## Use PKCS12 certificates
+## Add PKCS12 certificates
 
-To use PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
+To add PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
 
 Details about the PKCS12 certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
 
-The two most common scenarios for using a PKCS12 certificate are:
+The two most common scenarios for adding a PKCS12 certificate in your Zowe configuration are:
 
 * You have an existing certificate and wish to configure Zowe to use the certificate.
 * You do not have a certificate and wish to [generate a new certificate](./generate-certificates.md).  
@@ -28,7 +28,7 @@ To troubleshoot issues during Zowe startup, see [Troubleshooting startup of Zowe
 
 Details about the JCERACFKS certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and location, together with the truststore location.  
 
-The two most common scenarios for using a JCERACFKS certificate are:
+The two most common scenarios for adding a JCERACFKS certificate to your Zowe configuration are:
 
 * You have been given an existing certificate and wish to configure Zowe to use it.
 * You do not have a certificate and wish to generate a new one.
