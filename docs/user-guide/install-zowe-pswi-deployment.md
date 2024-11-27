@@ -18,7 +18,7 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
 ## Installing process
 
 1. Display the Deployments table in z/OSMF (**Software ManagementU**, **Deployments**).
-2. Define a new deployment by selecting **New** from the Actions menu. The deployment checklist displays, where you can also modify, view, copy, cancel, or remove existing deployments.
+2. Define a new deployment by selecting **New** from the Actions menu. The deployment checklist displays where you can also modify, view, copy, cancel, or remove existing deployments.
 3. Complete the deployment checklist items as described in _Defining new deployments_ in the IBM documentation. As you complete the deployment checklist, be sure to make the following selections:
     1. Specify the properties for this deployment (name, description, and optional category).
 
@@ -45,17 +45,18 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
 
         **Note:** If the target system for the deployment is in a JES Multi-Access Spool (MAS) and the mount point is only accessible from the target system, add a System Affinity (SYSAFF) to the job card to ensure execution on the system where the zFS resides.
 
-    7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF.  
+    7. Submit the deployment jobs in sequential order. Wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF. 
+
     :::tip Expected results:
-    You will receive a return code of 0 if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
+    You will receive a return code of `0` if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     :::
 
     8. Complete **Mount Workflow** to mount the Zowe zFS. Complete both steps in the workflow. Perform the following steps to execute each step individually:
        1. Click the title of the step.
-       2. Select the Perform tab.
+       2. Select the **Perform** tab.
        3. Review the step contents and update the JCL if needed.
-       4. Select Next.
-       5. Repeat the previous two steps to complete all items until the Finish option is available.
+       4. Select **Next**.
+       5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
     9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md).
 
@@ -70,7 +71,7 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 ### Cleanup
 
-If the job execution fails, the deployment process does not perform a full cleanup of the datasets, before attempting it again, make sure the following datasets are deleted:
+If the job execution fails, the deployment process does not perform a full cleanup of the datasets. Before attempting job execution again, make sure the following datasets are deleted:
 
 ```plaintext
 {TARGET_HLQ}.D.AZWEAUTH.#
