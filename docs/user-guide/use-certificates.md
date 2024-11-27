@@ -6,8 +6,8 @@ Once you have generated or imported your certificates, you can now add your cert
 :::
 Choose from the following procedures:
 
-- [Add PKCS12 certificates](#use-pkcs12-certificates)
-- [Add JCERACFKS certificates](#use-jceracfks-certificates)
+- [Add PKCS12 certificates](#add-pkcs12-certificates)
+- [Add JCERACFKS certificates](#add-jceracfks-certificates)
 
 ## Add PKCS12 certificates
 
