@@ -6,12 +6,12 @@ Once you have generated or imported your certificates, you can now add your cert
 :::
 Choose from the following procedures:
 
-- [Use PKCS12 certificates](#use-pkcs12-certificates)
-- [Use JCERACFKS certificates](#use-jceracfks-certificates)
+- [Add PKCS12 certificates](#use-pkcs12-certificates)
+- [Add JCERACFKS certificates](#use-jceracfks-certificates)
 
 ## Add PKCS12 certificates
 
-To add PKCS12 certificates, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
+To add PKCS12 certificates to your Zowe configuration, run the command `zwe start -c ./zowe.yaml` in the directory with the `zowe.yaml` file to start Zowe.
 
 Details about the PKCS12 certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and the location of the certificate, together with the truststore location.
 
@@ -24,7 +24,7 @@ The two most common scenarios for adding a PKCS12 certificate in your Zowe confi
 
 To troubleshoot issues during Zowe startup, see [Troubleshooting startup of Zowe z/OS components](https://docs.zowe.org/stable/troubleshoot/troubleshoot-zos-startup).
 
-## Use JCERACFKS certificates
+## Add JCERACFKS certificates
 
 Details about the JCERACFKS certificate used when Zowe is launched are specified in the `zowe.yaml` section `certificates`. This section contains information about the certificate name and location, together with the truststore location.  
 

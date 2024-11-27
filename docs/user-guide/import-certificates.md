@@ -221,5 +221,5 @@ zowe:
 The configuration of `zowe.setup.certificate` populates information to be used by the subcommand `zwe init certificate` of `zwe init`. 
 ## Next steps
 
-Once your certificate is successfully imported, review the documentation about how to [use certificates](./use-certificates.md) in a Zowe production environment.
+Once your certificate is successfully imported, review the documentation about how to [add certificates](./use-certificates.md) in a Zowe production environment.
 
