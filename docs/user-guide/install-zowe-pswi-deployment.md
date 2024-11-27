@@ -5,7 +5,7 @@
 
 After the portable software instance or software instance is registered in z/OSMF, you can use z/OSMF Deployments to install the product software and create the product data sets (global, CSI, target libraries, and distribution libraries) for the new software instance. The deployment jobs create a copy of the source product data sets to create the product target runtime environment. Creating a copy of the SMP/E target data sets keeps the SMP/E environment clean and separates the product runtime environment for maintenance activities. You can also perform z/OSMF workflows to customize the SMP/E data sets, mount UNIX System Services (USS) files if necessary, and configure the new software instance on the target system.
 
-To install Zowe PSWI using z/OSMF and make the product software available for use on a system by users and other programs, you need to define a new deployment. This step defines the SMP/E environment name and the prefix of the CSI data set in z/OSMF. Specify data set allocation parameters for all SMP/E data sets, target libraries, and distribution libraries. 
+To install Zowe PSWI using z/OSMF and make the product software available for use on a system by users and other programs, you need to define a new deployment. This step defines the SMP/E environment name and the prefix of the CSI data set in z/OSMF. Specify data set allocation parameters for all SMP/E data sets, target libraries, and distribution libraries.
 
 To define a new deployment, complete the deployment checklist (specify the USS path, DSN, VOLSERs), and submit the deployment jobs through the z/OSMF user interface. When the deployment is complete, you have a source and target copy of the software.
 
@@ -41,20 +41,21 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
         **Example:** `_targetpathname_**/staticpathextension**`.  
         **Note:** If your product does not include USS directories, ignore this instruction.
 
-    6. Define the job settings to generate the JCL to install the software and view the deployment summary. Update the JOB statement as needed.  
-    **Note:** If the target system for the deployment is in a JES Multi-Access Spool (MAS) and the mount point is only accessible from the target system, add a System Affinity (SYSAFF) to the job card to ensure execution on the system where the zFS resides.
+    6. Define the job settings to generate the JCL to install the software and view the deployment summary. Update the JOB statement as needed.
+
+        **Note:** If the target system for the deployment is in a JES Multi-Access Spool (MAS) and the mount point is only accessible from the target system, add a System Affinity (SYSAFF) to the job card to ensure execution on the system where the zFS resides.
 
     7. Submit the deployment jobs in sequential order, wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF.  
     :::tip Expected results:
     You will receive a return code of 0 if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
     :::
-    
+
     8. Complete **Mount Workflow** to mount the Zowe zFS. Complete both steps in the workflow. Perform the following steps to execute each step individually:
        1. Click the title of the step.
        2. Select the Perform tab.
        3. Review the step contents and update the JCL if needed.
        4. Select Next.
-       5. Repeat the previous two steps to complete all items until the Finish option is available. 
+       5. Repeat the previous two steps to complete all items until the Finish option is available.
 
     9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md).
 
@@ -64,3 +65,28 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
         **Note:** You do not have to execute all workflows during PSWI provisioning in z/OSMF immediately.
 
 The deployment process is complete. The new software instance is defined to z/OSMF. You are now ready to Import Product Information into z/OSMF before you install product maintenance.
+
+## Recommendations
+
+### Cleanup
+
+If the job execution fails, the deployment process does not perform a full cleanup of the datasets, before attempting it again, make sure the following datasets are deleted:
+
+```plaintext
+{TARGET_HLQ}.D.AZWEAUTH.#
+{TARGET_HLQ}.D.AZWEZFS.#
+{TARGET_HLQ}.SMPLOG.#
+{TARGET_HLQ}.SMPLOGA.#
+{TARGET_HLQ}.SMPLTS.#
+{TARGET_HLQ}.SMPMTS.#
+{TARGET_HLQ}.SMPSCDS.#
+{TARGET_HLQ}.T.SZWEAUTH.#
+{TARGET_HLQ}.T.SZWEEXEC.#
+{TARGET_HLQ}.T.SZWELOAD.#
+
+{TARGET_HLQ}.CSI.#
+```
+
+### Resources
+
+It is recommended to update the job card to run with `REGION=0M`, particularly for job `IZUD01DZ` which unpaxes the contents.

@@ -38,7 +38,7 @@ To acquire the portable software instance, you can download it from the Zowe Dow
     2. Update the USS directory (*yourUSSpaxdirectory*) with the path name where you want to copy the pax file.
     3. Update *yourpaxfilename* with the name of the pax file that you want to copy to the mainframe.  
 
-:::tip Expected results: 
+:::tip Expected results:
 USSBATCH can take several minutes to execute. You will receive a return code of 0 if this job runs correctly.
 :::
 
