@@ -1339,6 +1339,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate.
 
+### ZWESG101E
+
+  An internal exception occurred in ZAAS service %s.
+
+  **Reason:**
+
+  ZAAS cannot process authentication required to finish the request.
+
+  **Action:**
+
+  Make sure that the ZAAS is configured well and check all security requirements.
+
 ### ZWESG429E
 
   Request was denied access.
