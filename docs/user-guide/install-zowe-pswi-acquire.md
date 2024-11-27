@@ -21,7 +21,8 @@ To acquire the portable software instance, you can download it from the Zowe Dow
 2. Download the latest version of the package to your workstation.
 3. Use an file transfer utility such as an FTP client to transfer the single pax file to the mainframe.
 4. Execute the JCL to unpack the installation file and restore the individual pax files. Sample JCL follows:
-```
+
+```jcl
     //USSBATCH EXEC PGM=BPXBATCH
     //STDOUT DD SYSOUT=*
     //STDERR DD SYSOUT=*
@@ -30,7 +31,8 @@ To acquire the portable software instance, you can download it from the Zowe Dow
     pax -rvf yourpaxfilename.ZOSMF.pax.Z
     /*
 ```
-5. Customize the sample JCL as follows and then submit for execution:
+
+1. Customize the sample JCL as follows and then submit for execution:
 
     1. Add a JOB statement.
     2. Update the USS directory (*yourUSSpaxdirectory*) with the path name where you want to copy the pax file.
