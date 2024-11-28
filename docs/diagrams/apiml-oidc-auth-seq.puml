@@ -8,7 +8,7 @@ actor OIDC as OIDC
 actor "API ML GW" as GW
 
 User -> Agent: Do stuff
-Agent -> GW: Open Client App
+Agent -> GW: /gateway/oauth2/authorization/<provider-id>
 GW -> OIDC: Initiate OIDC flow [client_id, client_secret]
 loop [MFA]
 OIDC -> Agent: Request user credentials
@@ -27,6 +27,7 @@ GW -> GW: Cache access token validity
 GW -> SAF: Map distributed ID to mainframe ID
 GW -> GW: Create Zowe JWT
 GW -> Service: call API service with Zowe JWT
+Service -> Service: Validate JWT
 Service --> GW: return Response
 end
 GW --> Agent: Response

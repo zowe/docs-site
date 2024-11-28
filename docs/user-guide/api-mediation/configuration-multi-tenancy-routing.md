@@ -5,8 +5,8 @@ in isolated sysplex environments. Data from the Central Discovery Service can th
 
 Follow these steps to register with additional Discovery Services:
 
-1. Open the `zowe.yaml` configuration file.
-2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a list of Discovery service clusters to additional Disovery Services.
+1. Open the `zowe.yaml` configuration file.
+2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a list of Discovery service clusters to additional Disovery Services.
 
    **Example:**
    ```
@@ -18,4 +18,10 @@ Follow these steps to register with additional Discovery Services:
       <!-- APIML on System 3 -->
        - discoveryServiceUrls: https://sys3:10011/eureka/,https://sys3:10021/eureka/ 
     ```
-3. Restart Zowe.
+3. Add property `components.gateway.apimlId` and set the value to a unique string to identify gateway for routing.
+
+   **Example:**
+   ```
+   components.gateway.apimlId: apiml1
+    ```
+4. Restart Zowe.

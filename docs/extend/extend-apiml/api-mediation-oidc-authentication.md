@@ -31,7 +31,7 @@ After successful user login, the OIDC provider grants the client application a J
 The access token is then returned to the user agent in the "apimlAuthenticationToken" cookie.
 The user agent can pass this Access Token with subsequent requests to mainframe services routed through the API ML Gateway.
 The API ML Gateway then validates the OIDC Access Token. If the token is valid, the user identity from that token is mapped to the mainframe identity of the user.
-The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration.
+The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration or forward valid OIDC access token in case of missing user mapping.
 The request is routed to the target API services with correct mainframe user credentials.
 
 ## Authentication Flow
