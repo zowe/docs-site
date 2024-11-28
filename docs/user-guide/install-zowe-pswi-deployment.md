@@ -47,9 +47,9 @@ Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-re
 
     7. Submit the deployment jobs in sequential order. Wait for each job to complete, and then select **Refresh** to register job completion in z/OSMF. 
 
-    :::tip Expected results:
-    You will receive a return code of `0` if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
-    :::
+        :::tip Expected results:
+        You will receive a return code of `0` if this job runs correctly. When all deployment jobs are executed successfully, you have unzipped, renamed and copied the product data sets, updated the CSI data set, and specified the properties for the target software instance.
+        :::
 
     8. Complete **Mount Workflow** to mount the Zowe zFS. Complete both steps in the workflow. Perform the following steps to execute each step individually:
        1. Click the title of the step.
@@ -71,22 +71,30 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 ### Cleanup
 
-If the job execution fails, the deployment process does not perform a full cleanup of the datasets. Before attempting job execution again, make sure the following datasets are deleted:
+If there is a need to update the deployment settings such as the HLQ after a previour run, consider that the deployment process does not perform a full cleanup of the datasets.
+Before attempting it again, make sure the following datasets are deleted to avoid write conflicts:
 
 ```plaintext
-{TARGET_HLQ}.D.AZWEAUTH.#
-{TARGET_HLQ}.D.AZWEZFS.#
-{TARGET_HLQ}.SMPLOG.#
-{TARGET_HLQ}.SMPLOGA.#
-{TARGET_HLQ}.SMPLTS.#
-{TARGET_HLQ}.SMPMTS.#
-{TARGET_HLQ}.SMPSCDS.#
-{TARGET_HLQ}.T.SZWEAUTH.#
-{TARGET_HLQ}.T.SZWEEXEC.#
-{TARGET_HLQ}.T.SZWELOAD.#
-
-{TARGET_HLQ}.CSI.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.CSI
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWEZFS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLOG.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLOGA.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPMTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPPTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPSCDS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPSTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWEEXEC.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWELOAD.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.WORKFLOW.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.ZFS.#
 ```
+
+If deployment options must be modified and the JCL recreated, before doing so, check the original JCL for the temporary ZFS dataset name like `<user>.SWDEPL.<random_id>.ZFS` and delete it manually. The deployment job will be unable to clean it once it is recreated because the random id will change.
 
 ### Resources
 
