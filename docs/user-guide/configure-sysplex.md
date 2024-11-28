@@ -31,7 +31,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
 
 2. Define a DVIPA for both systems:
 
-   ```
+   ```plaintext
     VIPADYNAMIC                                                      
      VIPADEFINE  255.255.255.0 x.x.x.V
      VIPADISTRIBUTE DEFINE DISTM HOTSTANDBY x.x.x.V 
@@ -61,7 +61,7 @@ If SYSA fails, new work requests to Zowe are routed to the server on SYSB. When 
 
 If you do not want the distributor to switch back to the preferred target when it becomes available, you can specify the `NOAUTOSWITCHBACK` parameter for the `VIPADISTRIBUTE` statement.
 
-```
+```plaintext
 VIPADYNAMIC                                                      
   VIPADEFINE  255.255.255.0 x.x.x.V
   VIPADISTRIBUTE DEFINE DISTM HOTSTANDBY NOAUTOSWITCHBACK x.x.x.V 
@@ -70,4 +70,3 @@ VIPADYNAMIC
         x.x.x.B  BACKUP                                         
 ENDVIPADYNAMIC
 ```
-
