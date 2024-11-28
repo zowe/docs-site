@@ -13,10 +13,6 @@ This configuration is useful in advanced deployments of Zowe where client applic
 
 This article details the API ML OIDC authentication functionality, and how to configure the OIDC Authentication feature.
 
-:::note
-The OIDC feature is currently unavailable on ACF2 systems.
-:::
-
 - [Usage](#usage)
 - [Authentication flow](#authentication-flow)
 - [Prerequisites](#prerequisites)
@@ -31,7 +27,7 @@ After successful user login, the OIDC provider grants the client application a J
 Access token is then returned to the user agent in the "apimlAuthenticationToken" cookie.
 The user agent can pass this Access Token with subsequent requests to mainframe services routed through the API ML Gateway.
 The API ML Gateway then validates the OIDC Access Token. If the token is valid, the user identity from that token is mapped to the mainframe identity of the user.
-The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration.
+The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration or forward valid OIDC access token in case of missing user mapping.
 The request is routed to the target API services with correct mainframe user credentials.
 
 ## Authentication Flow
@@ -74,7 +70,7 @@ The following diagram illustrates the interactions between the participants of t
 - The URL to the specific authorization server's UserInfo endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`. If the access token is validated, the outcome is cached for a short time (20 sec by default).
 - The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
 - The API ML Gateway fetches the distributed user identity from the distributed access token and request mainframe identity using SAF. SAF replies with empty user ID message.
-- The API ML Gateway calls the requested mainframe service/s with the access token in the OIDC-token header.
+- The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header.
 
 ## Prerequisites
 
