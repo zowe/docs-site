@@ -25,8 +25,8 @@ end
 alt Validation success
 GW -> GW: Cache access token validity
 GW -> SAF: Map distributed ID to mainframe ID
-GW -> GW: Create Zowe JWT
-GW -> Service: call API service with Zowe JWT
+SAF -> GW: No mapping exists for distributed ID
+GW -> Service: call API service with OIDC-token
 Service --> GW: return Response
 end
 GW --> Agent: Response
