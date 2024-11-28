@@ -67,10 +67,7 @@ Use the following example as a template for how to set the value for this proper
 ```
 components.gateway.apiml.service.additionalRegistration:
     # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
-              - gatewayUrl: /
-                serviceUrl: /
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
 ```
@@ -117,12 +114,9 @@ Use the following example as a template for how to set the value of this propert
 
 **Example:**
 ```
-components.cloud-gateway.apiml.service.additionalRegistration:
-    # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls:      https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
- 	    routes:
-              - gatewayUrl: /
-                serviceUrl: /
+components.gateway.apiml.service.additionalRegistration:
+       # central API ML (in HA, for non-HA mode use only 1 hostname)
+       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
 #### Dynamic configuration: Environment variables
@@ -133,8 +127,6 @@ The previous example can be substituted with the following variables:
 
 ```
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
@@ -463,81 +455,7 @@ Should contain information about a specific service in a specific domain
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all Domain API MLs represented by `apimlId`, and information about onboarded services.
 
-## Gateway static definition example (deprecated)
 
-The Gateway static definition file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. 
-There is no naming restriction of the filename, but the file extension must be `yml`.
-
-**Example:**
-```
-#
-# Static definition of "discoverable-client" as "staticclient"
-#
-# This file provides static API service definition in YAML format.
-# It is loaded by the Discovery Service during its startup.
-#
-services:
-   - serviceId: GATEWAY  # unique lowercase ID of the service
-     catalogUiTileId: static  # ID of the API Catalog UI tile (visual grouping of the services)
-     title: Statically Defined API Service  # Title of the service in the API catalog
-     description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
-     instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys1:{gatewayPort}/  # scheme://hostname:port/contextPath
-     homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
-     statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
-     healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
-     routes:
-         - gatewayUrl: api/v1  # [api/ui/ws]/v{majorVersion}
-           serviceRelativeUrl: /api/v1 # relativePath that is added to baseUrl of an instance
-         - gatewayUrl: ui/v1
-           serviceRelativeUrl: /
-         - gatewayUrl: ws/v1
-           serviceRelativeUrl: /ws
-       # List of APIs provided by the service (currently only one is supported):
-     apiInfo:
-         - apiId: zowe.apiml.gateway
-           gatewayUrl: api/v1
-           swaggerUrl: https://sys1:{discoverableClientPort}/discoverableclient/v2/api-docs
-     customMetadata:
-         apiml:
-             service.apimlId: apiml1
-             okToRetryOnAllOperations: true
-
-
-   - serviceId: GATEWAY  # unique lowercase ID of the service
-     catalogUiTileId: static  # ID of the API Catalog UI tile (visual grouping of the services)
-     title: Statically Defined API Service  # Title of the service in the API catalog
-     description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
-     instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys2:{gatewayPort}/  # scheme://hostname:port/contextPath
-     homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
-     statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
-     healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
-     routes:
-         - gatewayUrl: api/v1  # [api/ui/ws]/v{majorVersion}
-           serviceRelativeUrl: /api/v1 # relativePath that is added to baseUrl of an instance
-         - gatewayUrl: ui/v1
-           serviceRelativeUrl: /
-         - gatewayUrl: ws/v1
-           serviceRelativeUrl: /ws
-         # List of APIs provided by the service (currently only one is supported):
-     apiInfo:
-         - apiId: zowe.apiml.gateway
-           gatewayUrl: api/v1
-           swaggerUrl: https://sys2:{discoverableClientPort}/discoverableclient/v2/api-docs
-     customMetadata:
-         apiml:
-             service.apimlId: apiml2
-             okToRetryOnAllOperations: true
-
-
-# List of tiles that can be used by services defined in the YAML file:
-catalogUiTiles:
-   static:
-       title: Static API Services
-       description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
-
-```
 ## Troubleshooting multitenancy configuration
 
 ### ZWESG100W
