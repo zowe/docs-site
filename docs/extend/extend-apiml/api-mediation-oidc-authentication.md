@@ -54,31 +54,12 @@ The following diagram illustrates the interactions between the participants of t
 
         **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
 
+**When user mapping exists**
+
 6. The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
 7. The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
 
-## Authentication Flow when no user mapping exists
-
-The following diagram illustrates the interactions between the participants of the OIDC based API ML authentication process when the distributed user is not mapped to the mainframe ID.
-
-![APIML OIDC Workflow](../../images/api-mediation/apiml-oidc-auth-no-mf-id-seq.png)
-
-### Workflow description when distributed user not mapped to mainframe ID
-
-1. When a user wants to access mainframe resources or services using the client application without valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
-2. The user is asked to provide valid credentials (authentication factors).
-3. After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
-4. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-5. The Gateway validates the access token in two ways:
-    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set(JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
-       
-       **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
-   
-       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
-   
-    2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
-   
-        **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
+**When user mapping does not exist**
 
 6. The API ML Gateway fetches the distributed user identity from the distributed access token and request mainframe identity using SAF. SAF replies with empty user ID message.
 7. The API ML Gateway calls the requested mainframe service/s with the access token in the OIDC-token header.

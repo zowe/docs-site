@@ -10,7 +10,7 @@ actor "API ML GW" as GW
 User -> Agent: Do stuff
 Agent -> GW: /gateway/oauth2/authorization/<provider-id>
 GW -> OIDC: Initiate OIDC flow [client_id, client_secret]
-loop [MFA]
+group MFA
 OIDC -> Agent: Request user credentials
 User <-> Agent: Provide credentials
 Agent -> OIDC: Validate credentials
@@ -18,16 +18,20 @@ end
 OIDC --> GW: Return Auth Code / JWTs[access,refresh,identity]
 GW -> Agent: set-cookie access token
 Agent -> GW: Request resources [access token]
-group validate
 GW -> GW: Validate access token
-GW -> OIDC: Validate access token
-end
-alt Validation success
 GW -> GW: Cache access token validity
+group map user
 GW -> SAF: Map distributed ID to mainframe ID
+end
+alt mapping success
 GW -> GW: Create Zowe JWT
 GW -> Service: call API service with Zowe JWT
 Service -> Service: Validate JWT
+Service --> GW: return Response
+end
+alt mapping failure
+GW -> Service: call API service with access token
+Service -> Service: Validate access token
 Service --> GW: return Response
 end
 GW --> Agent: Response
