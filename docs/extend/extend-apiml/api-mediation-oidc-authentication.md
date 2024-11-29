@@ -45,22 +45,17 @@ The following diagram illustrates the interactions between the participants of t
 4. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 5. The Gateway validates the access token in two ways:
     1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set(JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
-       - The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
-       - The JWKS obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
-     2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
-         - The URL to the specific authorization server's UserInfo endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
 
-    **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`. 
-7. The JWKS obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. 
+       **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
 
-    **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
-8. In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWKS, `UserInfo` endpoint queries, and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
+       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
 
-    **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`. 
-9. If the access token is validated, the outcome is cached for a short time (20 sec by default).  
-The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
-10. The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
-11. The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
+    2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
+
+        **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
+
+6. The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
+7. The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
 
 ## Authentication Flow when no user mapping exists
 
@@ -76,22 +71,17 @@ The following diagram illustrates the interactions between the participants of t
 4. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 5. The Gateway validates the access token in two ways:
     1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set(JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
-    2. By querying the UserInfo endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
+       
+       **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
+   
+       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
+   
+    2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
+   
+        **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
 
-    **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`. 
-    
-6. If the access token is validated, the outcome is cached for a short time (20 sec by default).
-7. The JWKS obtained from the authorization server's endpoint are cached for a while to prevent repeated calls to the endpoint. 
-
-    **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
-8. In subsequent calls with the same token, the Gateway reuses the cached validation outcome. As such, round trips to the OIDC authorization server for JWKS, UserInfo endpoint queries, and JWT Token validation are not required between short intervals when the client needs to access multiple resources in a row to complete a unit of work.
-
-    **Note:** The URL to the specific authorization server's UserInfo endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`. 
-9. If the access token is validated, the outcome is cached for a short time (20 sec by default).
-
-    The caching interval is configurable with a default value of 20 seconds, which is typically a sufficient amount of time to allow most client operations requiring multiple API requests to complete, while also providing adequate protection against unauthorized access.
-10. The API ML Gateway fetches the distributed user identity from the distributed access token and request mainframe identity using SAF. SAF replies with empty user ID message.
-11. The API ML Gateway calls the requested mainframe service/s with the access token in the OIDC-token header.
+6. The API ML Gateway fetches the distributed user identity from the distributed access token and request mainframe identity using SAF. SAF replies with empty user ID message.
+7. The API ML Gateway calls the requested mainframe service/s with the access token in the OIDC-token header.
 
 ## Prerequisites
 
