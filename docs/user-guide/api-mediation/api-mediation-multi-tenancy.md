@@ -4,24 +4,24 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 * [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
 * [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-* [Onboarding Domain Gateways to the central Cloud Gateway](#onboarding-domain-gateways-to-the-central-cloud-gateway)
+* [Onboarding Domain Gateways to the Central Gateway](#onboarding-domain-gateways-to-the-central-gateway)
   * [Dynamic Onboarding (recommended) for Domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
-  * [Static Onboarding for Domain Gateways (deprecated)](#static-onboarding-for-domain-gateways-deprecated)
-* [Onboarding a Domain Cloud-Gateway service to Central Discovery service](#onboarding-a-domain-cloud-gateway-service-to-the-central-discovery-service)
-    * [Dynamic Configurations to the Central Discovery Service](#dynamic-configurations-to-the-central-discovery-service)
-        * [Dynamic configuration: YML](#dynamic-configuration-yml)
-        * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
-    * [Validating successful configuration](#validating-successful-configuration)
+* [Onboarding a Domain Gateway service to the Central Discovery service](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
+  * [Dynamic Configurations to the Central Discovery service](#dynamic-configurations-to-the-central-discovery-service)
+    * [Dynamic configuration: YML](#dynamic-configuration-yml)
+    * [Dynamic configuration: Environment variables](#dynamic-configuration-environment-variables)
+  * [Validating successful configuration](#validating-successful-configuration)
 * [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
   * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
-* [Using the `/registry` endpoint in Cloud Gateway](#using-the-registry-endpoint-in-the-central-cloud-gateway)
+* [Using the `/registry` endpoint in the Central Gateway](#using-the-registry-endpoint-in-the-central-gateway)
   * [Configuration for `/registry`](#configuration-for-registry)
   * [Authentication for `/registry`](#authentication-for-registry)
-  * [Authorization for `/registry`](#authorization-with-registry)
+  * [Authorization with `/registry`](#authorization-with-registry)
   * [Requests with `/registry`](#requests-with-registry)
   * [Response with `/registry`](#response-with-registry)
-* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry) 
-* [Gateway static definition example](#gateway-static-definition-example-deprecated)
+  * [Response with `/registry{apimlId}`](#response-with-registryapimlid)
+  * [Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`](#response-with-get-gatewayapiv1registryapimlidapiidapiidserviceidserviceid)
+* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
 * [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
   * [ZWESG100W](#zwesg100w)
   * [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
@@ -39,21 +39,11 @@ Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running eith
 
 ## Multitenancy component enablement settings
 
-In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. As such, different setups are required for the V2 version of the API ML on the central domain and on the specific customer environments. 
+In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. 
 
-When using a multitenancy environment, ensure that the following Zowe components are either enabled or disabled:
+## Onboarding Domain Gateways to the Central Gateway
 
-- **Domain API ML**
-  - Gateway and Discovery Service: **enabled**
-  - Cloud Gateway: **disabled**
-
-- **Central API ML**
-  - Cloud Gateway and Discovery Service: **enabled**
-  - Gateway: **disabled**
-
-## Onboarding Domain Gateways to the Central Cloud Gateway
-
-The Central Cloud Gateway must onboard all Domain Gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of specific services (e.g. domain gateways).  
+The Central Gateway must onboard all Domain Gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of specific services (e.g. domain gateways).  
 
 ### Dynamic Onboarding (recommended) for Domain Gateways
 
@@ -70,10 +60,20 @@ components.gateway.apiml.service.additionalRegistration:
        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
+
 ```
 components.gateway.apiml.security.x509:
-    #  cloud gateway port 
-        certificatesUrl: https://sys1:{cloudGatewayPort}/gateway/certificates
+    # central gateway port 
+    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
 ```
 
 :::note
@@ -95,9 +95,9 @@ For static onboarding, make sure that the following parameters are correctly spe
 
 For static onboarding, use the [Gateway static definition example (deprecated)](#gateway-static-definition-example-deprecated) presented later in this article.
 
-## Onboarding a Domain Cloud Gateway service to the Central Discovery service
+## Onboarding a Domain Gateway service to the Central Discovery service
 
-The Central Cloud Gateway can onboard Cloud Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - Dynamic configuration via zowe.yaml
 - Dynamic configuration via Environment variables
@@ -106,9 +106,9 @@ The Central Cloud Gateway can onboard Cloud Gateways of all domains. This servic
 
 #### Dynamic configuration: YML
 
-Users must set the following property for the Domain Cloud Gateway to dynamically onboard to the Central Discovery service.
+Users must set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
 
-`components.cloud-gateway.apiml.service.additionalRegistration`
+`components.gateway.apiml.service.additionalRegistration`
 
 Use the following example as a template for how to set the value of this property in zowe.yml.
 
@@ -118,6 +118,16 @@ components.gateway.apiml.service.additionalRegistration:
        # central API ML (in HA, for non-HA mode use only 1 hostname)
        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
+
+:::note
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
 
 #### Dynamic configuration: Environment variables
 
@@ -129,13 +139,26 @@ The previous example can be substituted with the following variables:
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
+:::note
+  The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
+  defines ID of API ML instance.
+
+  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
+  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
+  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+
+  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+:::
+
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
 
 ### Validating successful configuration
 
-The corresponding Cloud Gateway service should appear in the Eureka console of the Central Discovery service. 
+The corresponding Gateway service should appear in the Eureka console of the Central Discovery service. 
 
-To see details of all instances of the ‘CLOUD-GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
+To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
 
 ```
 /eureka/apps
@@ -295,19 +318,18 @@ The following commands are examples of establishing a trust relationship between
 
 You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust the Central API ML and vice versa.
 
-## Using the `/registry` endpoint in the Central Cloud Gateway
+## Using the `/registry` endpoint in the Central Gateway
 
-The `/registry` endpoint provides information about services onboarded to all Domain Gateways and the Central Cloud Gateway. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
+The `/registry` endpoint provides information about services onboarded to all Domain Gateways (all domains and the central one). This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
 ### Configuration for `/registry`
 
-The `/registry` endpoint is disabled by default. Use the following environment variable to enable this feature:
-
-`APIML_CLOUDGATEWAY_REGISTRY_ENABLED=TRUE`
+The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
+environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
 
 ### Authentication for `/registry`
 
-The `/registry` endpoint is authenticated by the client certificate. The Central Cloud Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
+The `/registry` endpoint is authenticated by the client certificate. The Central Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
 
 Unsuccessful authentication returns a 401 error code.
 
@@ -325,13 +347,13 @@ Unsuccessful authorization returns a 403 error code.
 
 There are two endpoints that provide information about services registered to the API ML. One endpoint is for all domains, and the other endpoint is for the specific domain. Choose from the following **GET** calls:
 
-* `GET /cloud-gateway/api/v1/registry`  
+* `GET /gateway/api/v1/registry`  
 This request lists services in all domains.
 
-* `GET /cloud-gateway/api/v1/registry/{apimlId}`  
+* `GET /gateway/api/v1/registry/{apimlId}`  
 This request lists services in the apimlId domain.
 
-* `GET /cloud-gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`  
+* `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`  
   This request gets the specific service in the specific apimlId domain.
 
 ### Response with `/registry`
@@ -346,12 +368,12 @@ This request lists services in the apimlId domain.
             {
                 "status": "UP",
                 "customMetadata": {
-                  "zos.sysname": "sys1",
-		  "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys1",
+		            "zos.sysplex": "sysplex"
                 },
                 "apiId": [
-        "zowe.apiml.gateway"
-],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             }
         ]
@@ -361,26 +383,28 @@ This request lists services in the apimlId domain.
         "services": [
             {
                 "status": "UP",
-                    "customMetadata": {
-                 "zos.sysname": "sys2",
-		 "zos.sysplex": "sysplex"
-				        },
+                "customMetadata": {
+                    "zos.sysname": "sys2",
+		            "zos.sysplex": "sysplex"
+				},
                 "apiId": [
-        "zowe.apiml.gateway"
-],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             },
             {
-             "status": "UP",
+                "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
- 		 "zos.sysplex": "sysplex"},
+                    "zos.sysname": "sys2",
+ 		            "zos.sysplex": "sysplex"
+ 		        },
                 "apiId": [
-        "zowe.apiml.catalog"
-          ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
@@ -390,7 +414,7 @@ Should contain information about all services in a specific domain
 
 **Example:**
 
-* `GET /cloud-gateway/api/v1/registry/apiml2`
+* `GET /gateway/api/v1/registry/apiml2`
 
 ```
 [
@@ -400,36 +424,37 @@ Should contain information about all services in a specific domain
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
-	 	 "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+	 	            "zos.sysplex": "sysplex"
 				},
                 "apiId": [
-        "zowe.apiml.gateway"
-  ],
+                    "zowe.apiml.gateway"
+                ],
                 "serviceId": "gateway"
             },
             {
                 "status": "UP",
                 "customMetadata": {
-                 "zos.sysname": "sys2",
-		 "zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+		            "zos.sysplex": "sysplex"
 				},
                 "apiId": [
-        "zowe.apiml.catalog"
-  ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
-### Response with `GET /cloud-gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
+### Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
 
 Should contain information about a specific service in a specific domain 
 
 **Example:**
 
-* `GET /cloud-gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway&serviceId=catalog`
+* `GET /gateway/api/v1/registry/apiml2?apiId=zowe.apiml.gateway&serviceId=catalog`
 
 ```
  [
@@ -439,15 +464,16 @@ Should contain information about a specific service in a specific domain
             {
                 "status": "UP",
                 "customMetadata": {
-                "zos.sysname": "sys2",
-		"zos.sysplex": "sysplex"
+                    "zos.sysname": "sys2",
+		             "zos.sysplex": "sysplex"
                 },
                 "apiId": [
-        "zowe.apiml.catalog"
-    ],
+                    "zowe.apiml.catalog"
+                ],
                 "serviceId": "catalog"
             }
         ]
+    }
 ]
 ```
 
@@ -463,7 +489,7 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 Cannot receive information about services on API Gateway with apimlId 'apiml1' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
 
 **Reason**  
-The trust between the domain and the Cloud Gateway was not established. 
+The trust between the domain and the central Gateway was not established. 
 
 **Action**  
 Review your certificate configuration.
