@@ -156,7 +156,7 @@ module.exports = {
             },
             {
               label: "Community meetings",
-              href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
+              href: "https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe",
             },
             {
               label: "Zowe GitHub",
