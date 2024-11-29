@@ -93,8 +93,6 @@ For static onboarding, make sure that the following parameters are correctly spe
 - **services.customMetadata.apiml.service.apimlId**  
   Specifies the id of the API ML environment
 
-For static onboarding, use the [Gateway static definition example (deprecated)](#gateway-static-definition-example-deprecated) presented later in this article.
-
 ## Onboarding a Domain Gateway service to the Central Discovery service
 
 The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
