@@ -39,16 +39,16 @@ The following diagram illustrates the interactions between the participants of t
 
 ### Workflow description between OICD participants
 
-1. When a user wants to access mainframe resources or services using the client application without valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
+1. When a user wants to access mainframe resources or services using the client application without a valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
 2. The user is asked to provide valid credentials (authentication factors).
 3. After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
 4. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 5. The Gateway validates the access token in one of the two ways:
-    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set(JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
+    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
 
        **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
 
-       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (The default value is one hour).
+       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (the default value is one hour).
 
     2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
 
@@ -74,8 +74,6 @@ Ensure that the following prerequisites are met:
 - If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
   
 ### OIDC provider prerequisites
-
-- Client Application configuration in the OIDC provider
 
 The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain access token. Provide following configuration in your zowe.yaml file:
 
@@ -244,7 +242,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
     **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
 - **`apiml.security.oidc.identityMapperUrl`**  
-  (Optional) This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
+  (Optional) This property informs the Gateway about the location of the identity mapper REST API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). In case the internal mapper is configured, this parameter is ignored.
 
     The following URL is the default value for Zowe and ZSS:
 

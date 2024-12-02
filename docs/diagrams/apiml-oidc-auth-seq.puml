@@ -16,7 +16,7 @@ User <-> Agent: Provide credentials
 Agent -> OIDC: Validate credentials
 end
 OIDC --> GW: Return Auth Code / JWTs[access,refresh,identity]
-GW -> Agent: set-cookie access token
+GW -> Agent: Set-cookie access token
 Agent -> GW: Request resources [access token]
 GW -> GW: Validate access token
 GW -> GW: Cache access token validity
@@ -25,14 +25,13 @@ GW -> SAF: Map distributed ID to mainframe ID
 end
 alt mapping success
 GW -> GW: Create Zowe JWT
-GW -> Service: call API service with Zowe JWT
+GW -> Service: Call API service with Zowe JWT
 Service -> Service: Validate JWT
-Service --> GW: return Response
-end
-alt mapping failure
+Service --> GW: Return Response
+else mapping failure
 GW -> Service: call API service with access token
 Service -> Service: Validate access token
-Service --> GW: return Response
+Service --> GW: Return Response
 end
 GW --> Agent: Response
 
