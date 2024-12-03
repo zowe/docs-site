@@ -7,9 +7,14 @@ After the portable software instance or software instance is registered in z/OSM
 
 To install Zowe PSWI using z/OSMF and make the product software available for use on a system by users and other programs, you need to define a new deployment. This step defines the SMP/E environment name and the prefix of the CSI data set in z/OSMF. Specify data set allocation parameters for all SMP/E data sets, target libraries, and distribution libraries.
 
-To define a new deployment, complete the deployment checklist (specify the USS path, DSN, VOLSERs), and submit the deployment jobs through the z/OSMF user interface. When the deployment is complete, you have a source and target copy of the software.
+To define a new deployment, complete the deployment checklist as specified in [Deploying software](https://www.ibm.com/docs/en/zos/2.4.0?topic=task-deploying-software) in the IBM documentation.
+Specify the following configuration elements:
 
-For more information about these tasks, see [Deploying software](https://www.ibm.com/docs/en/zos/2.4.0?topic=task-deploying-software) in the IBM documentation.
+* UNIX System Services path (USS path) 
+* Data Set Name (DNS)
+* Volume Serial Numbers (VOLSERs)
+
+Then submit the deployment jobs through the z/OSMF user interface. When the deployment is complete, you have a source and target copy of the software.
 
 Subsequent product maintenance activities update the SMP/E environment without affecting your active product runtime environments. You can decide when to redeploy the maintenance-updated SMP/E target data sets to each of the product runtime environments.
 
@@ -71,7 +76,7 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 ### Cleanup
 
-If the job execution fails, the deployment process does not perform a full cleanup of the datasets, before attempting job execution again, make sure the following datasets are deleted:
+If the job execution fails, the deployment process does not perform a full cleanup of the datasets. Before attempting job execution again, make sure the following datasets are deleted:
 
 ```plaintext
 {TARGET_HLQ}.D.AZWEAUTH.#
