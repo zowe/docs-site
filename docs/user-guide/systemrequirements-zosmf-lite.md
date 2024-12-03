@@ -86,7 +86,7 @@ Otherwise, you might encounter errors later in the process. If you encounter err
 
 ### Web browser
 
-For the best results with z/OSMF, use one of the [web browsers supported by z/OSMF](https://www.ibm.com/docs/en/zos/3.1.0?topic=zosmf-software-prerequisites#SoftwarePrerequisites__title__4)
+For best results with z/OSMF, use one of the [web browsers supported by z/OSMF](https://www.ibm.com/docs/en/zos/3.1.0?topic=zosmf-software-prerequisites#SoftwarePrerequisites__title__4).
 
 To check your web browser's level, click **About** in the web browser.
 
