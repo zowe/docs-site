@@ -5,6 +5,8 @@
 
 After the portable software instance or software instance is registered in z/OSMF, you can use z/OSMF Deployments to install the product software and create the product data sets (global, CSI, target libraries, and distribution libraries) for the new software instance. The deployment jobs create a copy of the source product data sets to create the product target runtime environment. Creating a copy of the SMP/E target data sets keeps the SMP/E environment clean and separates the product runtime environment for maintenance activities. You can also perform z/OSMF workflows to customize the SMP/E data sets, mount UNIX System Services (USS) files if necessary, and configure the new software instance on the target system.
 
+## Prerequisite - Define a new deployment
+
 To install Zowe PSWI using z/OSMF and make the product software available for use on a system by users and other programs, you need to define a new deployment. This step defines the SMP/E environment name and the prefix of the CSI data set in z/OSMF. Specify data set allocation parameters for all SMP/E data sets, target libraries, and distribution libraries.
 
 To define a new deployment, complete the deployment checklist as specified in [Deploying software](https://www.ibm.com/docs/en/zos/2.4.0?topic=task-deploying-software) in the IBM documentation.
@@ -18,7 +20,8 @@ Then submit the deployment jobs through the z/OSMF user interface. When the depl
 
 Subsequent product maintenance activities update the SMP/E environment without affecting your active product runtime environments. You can decide when to redeploy the maintenance-updated SMP/E target data sets to each of the product runtime environments.
 
-Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-requirements#confirm-that-the-installer-has-read-create-update-and-execute-privileges-in-zos) are met.
+Before installing, ensure the [z/OSMF requirements](./install-zowe-pswi-address-requirements.md#confirm-that-the-installer-has-read-create-update-and-execute-privileges-in-zos)
+are met.
 
 ## Installing process
 

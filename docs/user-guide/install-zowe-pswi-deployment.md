@@ -20,7 +20,7 @@ Then submit the deployment jobs through the z/OSMF user interface. When the depl
 
 Subsequent product maintenance activities update the SMP/E environment without affecting your active product runtime environments. You can decide when to redeploy the maintenance-updated SMP/E target data sets to each of the product runtime environments.
 
-Before installing, ensure the [z/OSMF requirements](install-zowe-pswi-address-requirements#confirm-that-the-installer-has-read-create-update-and-execute-privileges-in-zos) are met.
+Before installing, ensure the [z/OSMF requirements](./install-zowe-pswi-address-requirements.md#confirm-that-the-installer-has-read-create-update-and-execute-privileges-in-zos) are met. 
 
 ## Installing process
 
@@ -80,8 +80,8 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 ### Cleanup
 
-If there is a need to update the deployment settings such as the HLQ after a previour run, consider that the deployment process does not perform a full cleanup of the datasets.
-Before attempting deployment again, make sure the following datasets are deleted to avoid write conflicts:
+If there is a need to update the deployment settings such as the HLQ after a previous run, note that the deployment process does not perform a full cleanup of the datasets.
+Before attempting job execution again, make sure the following datasets are deleted to avoid write conflicts:
 
 ```plaintext
 {TARGET_HLQ}.PRODUCT.ZOWE.V2.CSI
