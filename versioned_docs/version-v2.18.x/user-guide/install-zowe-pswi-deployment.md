@@ -111,8 +111,8 @@ If deployment options must be modified and the JCL recreated, first check the or
 
 Delete this name manually.
 
-:::note
-Note that the deployment job is unable to clean this data set name once this is recreated because the random id will change.
+:::note 
+Note that the deployment job is unable to clean this data set name once the data set is recreated because the value for `random_id` will change.
 :::
 
 ### Resources
