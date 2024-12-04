@@ -70,8 +70,10 @@ are met.
 
    10. Specify the name and description of the new target software instance.
 
-        - All workflows that are mentioned in the previous steps are part of the PSWI.  
-        **Note:** You do not have to execute all workflows during PSWI provisioning in z/OSMF immediately.
+:::note Notes
+        * All workflows that are mentioned in the previous steps are part of the PSWI.  
+        * You do not have to execute all workflows during PSWI provisioning in z/OSMF immediately.
+:::
 
 The deployment process is complete. The new software instance is defined to z/OSMF. You are now ready to Import Product Information into z/OSMF before you install product maintenance.
 
@@ -79,22 +81,39 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 ### Cleanup
 
-If the job execution fails, the deployment process does not perform a full cleanup of the datasets. Before attempting job execution again, make sure the following datasets are deleted:
+If there is a need to update the deployment settings such as the HLQ after a previous run, note that the deployment process does not perform a full cleanup of the datasets.
+Before attempting job execution again, make sure the following datasets are deleted to avoid write conflicts:
 
 ```plaintext
-{TARGET_HLQ}.D.AZWEAUTH.#
-{TARGET_HLQ}.D.AZWEZFS.#
-{TARGET_HLQ}.SMPLOG.#
-{TARGET_HLQ}.SMPLOGA.#
-{TARGET_HLQ}.SMPLTS.#
-{TARGET_HLQ}.SMPMTS.#
-{TARGET_HLQ}.SMPSCDS.#
-{TARGET_HLQ}.T.SZWEAUTH.#
-{TARGET_HLQ}.T.SZWEEXEC.#
-{TARGET_HLQ}.T.SZWELOAD.#
-
-{TARGET_HLQ}.CSI.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.CSI
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.D.AZWEZFS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLOG.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLOGA.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPLTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPMTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPPTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPSCDS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.SMPSTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWEEXEC.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWELOAD.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.T.SZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.WORKFLOW.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V2.ZFS.#
 ```
+
+If deployment options must be modified and the JCL recreated, first check the original JCL for the temporary ZFS dataset name.
+
+**Example:**
+`<user>.SWDEPL.<random_id>.ZFS`
+
+Delete this name manually.
+
+:::note
+Note that the deployment job is unable to clean this data set name once this is recreated because the random id will change.
+:::
 
 ### Resources
 
