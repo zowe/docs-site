@@ -207,7 +207,6 @@ module.exports = {
               label: "Configuring security",
               link: { type: "doc", id: "user-guide/configuring-security" },
               items: [
-                "user-guide/initialize-security-configuration",
                 "user-guide/apf-authorize-load-library",
                 "user-guide/configure-zos-system",
                 "user-guide/assign-security-permissions-to-users",
@@ -806,6 +805,7 @@ module.exports = {
           type: "category",
           label: "Developing for Zowe Application Framework",
           items: [
+            "extend/extend-desktop/mvd-server-config",
             "extend/extend-desktop/mvd-extendingzlux",
             "extend/extend-desktop/mvd-plugindefandstruct",
             "extend/extend-desktop/mvd-buildingplugins",

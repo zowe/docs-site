@@ -385,7 +385,7 @@ TTLSRule ZoweServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7554-7559 # Range covers all possible Zowe services
+  LocalPortRange 7551-7559 # Range covers all possible Zowe services
   Jobname ZWE1*
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
