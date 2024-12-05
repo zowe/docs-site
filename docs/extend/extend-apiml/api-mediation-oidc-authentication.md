@@ -113,22 +113,22 @@ components:
 ```
 - **provider-id**  
     The ID of the Identity provider. Currently supported options are `okta` and `entra`.
-- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.issuer**    
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.issuer**    
     The URL of the Token issuer.  
     Example: `https://dev-okta.com/oauth2`.
-- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientId**    
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientId**    
     The Client application ID.
-- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientSecret**    
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientSecret**    
     The Client application secret.
-- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.authorizationUri**  
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.authorizationUri**  
     The URL for the authorization request.
-- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.tokenUri**  
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.tokenUri**  
     The URL to obtain the token.
-- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userInfoUri**  
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userInfoUri**  
     The URL to retrieve user information.
-- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userNameAttribute**  
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userNameAttribute**  
     The JWT attribute to locate the user ID.
-- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.jwkSetUri**  
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.jwkSetUri**  
     The URL to retrieve the JSON Web Key Set.
     
     
