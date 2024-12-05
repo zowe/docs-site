@@ -83,11 +83,11 @@ Ensure that the following prerequisites are met:
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
 - Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	
-- If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
+- If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper).  Alternatively, enable ZSS in the Zowe installation. Note, however, that using the internal mapper is the recommended method. ZSS is enabled by default.
   
 ### OIDC provider prerequisites
 
-The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain access token. Provide following configuration in your zowe.yaml file:
+The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain an access token. Provide the following configuration in your zowe.yaml file:
 
 ```yaml
 components:
@@ -114,7 +114,8 @@ components:
 - **provider-id**  
     The ID of the Identity provider. Currently supported options are `okta` and `entra`.
 - **components.gateway.spring.security.oauth2.client.registration.<provider-id>.issuer**    
-    The URL of the Token issuer, example `https://dev-okta.com/oauth2`.
+    The URL of the Token issuer.  
+    Example: `https://dev-okta.com/oauth2`.
 - **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientId**    
     The Client application ID.
 - **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientSecret**    
@@ -126,9 +127,9 @@ components:
 - **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userInfoUri**  
     The URL to retrieve user information.
 - **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userNameAttribute**  
-    The JWT attribute to locate user ID.
+    The JWT attribute to locate the user ID.
 - **components.gateway.spring.security.oauth2.client.provider.<provider-id>.jwkSetUri**  
-    The URL to retrieve JSON Web Key Set.
+    The URL to retrieve the JSON Web Key Set.
     
     
   :::tip
@@ -143,7 +144,7 @@ A distributed identity consists of two parts:
 1. A distributed identity name
 2. A trusted registry which governs that identity
 
-Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters:
+Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters.
 
 Use the commands specific to your ESM to create a distributed identity mapping filter.
 
