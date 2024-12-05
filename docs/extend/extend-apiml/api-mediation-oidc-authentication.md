@@ -39,11 +39,16 @@ The following diagram illustrates the interactions between the participants of t
 
 ### Workflow description between OICD participants
 
-1. When a user wants to access mainframe resources or services using the client application without a valid authentication or an access token, the client redirects the user agent to the login end-point of the distributed OIDC provider.
-2. The user is asked to provide valid credentials (authentication factors).
-3. After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
-4. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-5. The Gateway validates the access token in one of the two ways:
+1. User access the agent
+2. User agent requests the client application without a valid authentication or an access token
+3. The client redirects the user agent to the login end-point of the distributed OIDC provider.
+4. The user is asked to provide valid credentials (authentication factors).
+5. User provides credentials
+6. Agent sends credentials to OIDC provider for validation.
+7. After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
+8. Client application replies with access token in the `set-cookie` header.
+9. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
+10. The Gateway validates the access token in one of the two ways:
     1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
 
        **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
@@ -53,16 +58,23 @@ The following diagram illustrates the interactions between the participants of t
     2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
 
         **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
+11. The Gateway caches valid access token.
+12. The Gateway maps distributed identity from the access token to the zOS identity.
 
 **When user mapping exists**
 
-6. The API ML Gateway fetches the distributed user identity from the distributed access token and maps this user identity to the user mainframe identity using SAF.
-7. The API ML Gateway calls the requested mainframe service/s with mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
+13. The API ML Gateway generates mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
+14. Calls the API with credentials.
+15. Services validates generated mainframe credentials.
+16. Return requested data.
 
 **When user mapping does not exist**
 
-6. The API ML Gateway fetches the distributed user identity from the distributed access token and request mainframe identity using SAF. SAF replies with empty user ID message.
-7. The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header.
+17. The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header.
+18. Service validates `OIDC-token`. 
+19. Return requested data.
+
+20. Return requested data to the user agent.
 
 ## Prerequisites
 
