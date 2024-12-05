@@ -68,13 +68,14 @@ The following diagram illustrates the interactions between the participants of t
 14. Calls the API with credentials.
 15. Services validates generated mainframe credentials.
 16. The requested data is returned.
+17. The requested data is returned to the user agent.
 
 **When user mapping does not exist**
 
-17. The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header.
-18. The service validates the `OIDC-token`. 
-19. The requested data is returned.
-20. The requested data is returned to the user agent.
+14. The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header. 
+15. The service validates the `OIDC-token`. 
+16. The requested data is returned.
+17. The requested data is returned to the user agent.
 
 ## Prerequisites
 
@@ -230,6 +231,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
  In the zowe.yaml file, configure the following properties:
 
+
 - **components.gateway.apiml.security.oidc.enabled**  
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
@@ -263,6 +265,21 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
     ```
 
+**Example for OKTA:**
+
+```yaml
+components:
+ gateway:
+   apiml:
+     security:
+       oidc:
+         enabled: true
+         registry: zowe.org
+         validationType: JWK
+         jwks:
+           uri: https://okta.com/oauth2/api/v1/keys
+
+```
 ## Troubleshooting
 
 ### API ML fails to validate the OIDC access token with the Distributed Identity Provider

@@ -28,11 +28,15 @@ GW -> GW: Create Zowe JWT
 GW -> Service: Call API service with Zowe JWT
 Service -> Service: Validate JWT
 Service --> GW: Return Response
+autonumber 14 1
 else mapping failure
+
 GW -> Service: call API service with access token
+note left: Step 13 Create Zowe JWT was skipped
 Service -> Service: Validate access token
 Service --> GW: Return Response
 end
+autonumber 17 1
 GW --> Agent: Response
 
 
