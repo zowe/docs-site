@@ -5,7 +5,7 @@
 
 The OpenID Connect ([OIDC](https://openid.net/specs/openid-connect-core-1_0.html)) protocol adds an identity layer on top of the [OAuth2](https://www.rfc-editor.org/rfc/rfc6749) Authorization protocol.
 
-OIDC authentication, together with the z/OS [Identity Propagation](https://www.redbooks.ibm.com/redbooks/pdfs/sg247850.pdf) mechanism, is the foundation of the API ML Identity Federation.
+OIDC authentication, together with the z/OS [Identity Propagation](https://www.redbooks.ibm.com/redbooks/pdfs/sg247850.pdf) mechanism, is the foundation of the API Mediation Layer (API ML) Identity Federation.
 In this article, OIDC is often referred to as the provider, while the token-related functionality is actually provided by the OAuth2 component of the OIDC implementation.
 
 You can configure Zowe API ML to authenticate users by accepting Access Tokens issued by an external OIDC provider.
@@ -28,7 +28,7 @@ After successful user login, the OIDC provider grants the client application a J
 The access token is then returned to the user agent in the "apimlAuthenticationToken" cookie.
 The user agent can pass this Access Token with subsequent requests to mainframe services routed through the API ML Gateway.
 The API ML Gateway then validates the OIDC Access Token. If the token is valid, the user identity from that token is mapped to the mainframe identity of the user.
-The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration or forward valid OIDC access token in case of missing user mapping.
+The API ML Gateway can then create mainframe user credentials (e.g. JWT, PassTicket) according to the service's authentication schema configuration or forward a valid OIDC access token if the user is not mapped. 
 The request is routed to the target API services with correct mainframe user credentials.
 
 ## Authentication Flow
@@ -39,42 +39,42 @@ The following diagram illustrates the interactions between the participants of t
 
 ### Workflow description between OICD participants
 
-1. User access the agent
-2. User agent requests the client application without a valid authentication or an access token
+1. The user accesses the agent.
+2. The user agent requests the client application without valid authentication or an access token.
 3. The client redirects the user agent to the login end-point of the distributed OIDC provider.
 4. The user is asked to provide valid credentials (authentication factors).
-5. User provides credentials
-6. Agent sends credentials to OIDC provider for validation.
+5. The user provides credentials.
+6. The agent sends these credentials to the OIDC provider for validation.
 7. After successful validation of all authentication factors, the OIDC provider grants the client an Access Token.
-8. Client application replies with access token in the `set-cookie` header.
+8. The client application replies with an access token in the `set-cookie` header.
 9. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
-10. The Gateway validates the access token in one of the two ways:
+10. The Gateway validates the access token in one of two ways:
     1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
 
-       **Note:** The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
+       **Notes:** 
+       * The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
 
-       **Note:** The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours` (the default value is one hour).
+       * The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours`. (The default value is one hour.)
 
     2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
 
         **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
-11. The Gateway caches valid access token.
-12. The Gateway maps distributed identity from the access token to the zOS identity.
+11. The Gateway caches the valid access token.
+12. The Gateway maps the distributed identity from the access token to the z/OS identity.
 
 **When user mapping exists**
 
 13. The API ML Gateway generates mainframe user credentials (Zowe JWT, SAF IDT, or PassTicket) which are expected by the target mainframe service.
 14. Calls the API with credentials.
 15. Services validates generated mainframe credentials.
-16. Return requested data.
+16. The requested data is returned.
 
 **When user mapping does not exist**
 
 17. The API ML Gateway calls the requested mainframe service/s with the access token in the `OIDC-token` header.
-18. Service validates `OIDC-token`. 
-19. Return requested data.
-
-20. Return requested data to the user agent.
+18. The service validates the `OIDC-token`. 
+19. The requested data is returned.
+20. The requested data is returned to the user agent.
 
 ## Prerequisites
 
@@ -111,24 +111,24 @@ components:
 
 
 ```
-- **`<provider-id>`**  
-    ID of the Identity provider. Currently supported options are `okta` and `entra`.
-- **`components.gateway.spring.security.oauth2.client.registration.<provider-id>.issuer`**    
-    URL of the Token issuer, example `https://dev-okta.com/oauth2`
-- **`components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientId`**    
-    Client application ID 
-- **`components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientSecret`**    
-    Client application secret
-- **`components.gateway.spring.security.oauth2.client.provider.<provider-id>.authorizationUri`**  
-    URL for the authorization request.
-- **`components.gateway.spring.security.oauth2.client.provider.<provider-id>.tokenUri`**  
-    URL to obtain the token.
-- **`components.gateway.spring.security.oauth2.client.provider.<provider-id>.userInfoUri`**  
-    URL to retrieve user information.
-- **`components.gateway.spring.security.oauth2.client.provider.<provider-id>.userNameAttribute`**  
-    JWT attribute to locate user ID.
-- **`components.gateway.spring.security.oauth2.client.provider.<provider-id>.jwkSetUri`**  
-    URL to retrieve JSON Web Key Set.
+- **provider-id**  
+    The ID of the Identity provider. Currently supported options are `okta` and `entra`.
+- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.issuer**    
+    The URL of the Token issuer, example `https://dev-okta.com/oauth2`.
+- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientId**    
+    The Client application ID.
+- **components.gateway.spring.security.oauth2.client.registration.<provider-id>.clientSecret**    
+    The Client application secret.
+- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.authorizationUri**  
+    The URL for the authorization request.
+- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.tokenUri**  
+    The URL to obtain the token.
+- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userInfoUri**  
+    The URL to retrieve user information.
+- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.userNameAttribute**  
+    The JWT attribute to locate user ID.
+- **components.gateway.spring.security.oauth2.client.provider.<provider-id>.jwkSetUri**  
+    The URL to retrieve JSON Web Key Set.
     
     
   :::tip
@@ -197,14 +197,14 @@ User specified parameters are presented in the section [Parameters in the ESM co
 
 #### Parameters in the ESM commands
 
-- **`userid`**  
-   Specifies the ESM user id
-- **`distributed-identity-user-name`**  
-   Specifies the user ID for distributed-identity-registry
-- **`distributed-identity-registry-name`**  
-   Specifies the URL value of the distributed-identity-registry where user is defined
-- **`label-name`**  
-   Specifies the name for the distributed-identity mapping filter
+- **userid**  
+   Specifies the ESM user id.
+- **distributed-identity-user-name**  
+   Specifies the user ID for distributed-identity-registry.
+- **distributed-identity-registry-name**  
+   Specifies the URL value of the distributed-identity-registry where user is defined.
+- **label-name**  
+   Specifies the name for the distributed-identity mapping filter.
 
    **Example for RACF:**
 
@@ -214,7 +214,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
 
 Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity mapping filter.
 
-For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation cli plug-in](../../user-guide/cli-idfplugin.md) documentation.
+For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation CLI plug-in](../../user-guide/cli-idfplugin.md) documentation.
 
 ## API ML OIDC configuration
 
@@ -229,31 +229,31 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
  In the zowe.yaml file, configure the following properties:
 
-- **`components.gateway.apiml.security.oidc.enabled`**  
+- **components.gateway.apiml.security.oidc.enabled**  
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
-- **`components.gateway.apiml.security.oidc.registry`**  
+- **components.gateway.apiml.security.oidc.registry**  
   Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
 
-- **`components.gateway.apiml.security.oidc.validationType`**  
+- **components.gateway.apiml.security.oidc.validationType**  
    Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
   
-- **`components.gateway.apiml.security.oidc.jwks.uri`**  
+- **components.gateway.apiml.security.oidc.jwks.uri**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
 
-- **`components.gateway.apiml.security.oidc.userInfo.uri`**  
+- **components.gateway.apiml.security.oidc.userInfo.uri**  
    Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation. 
     To enable this property, ensure that `oidc.enabled` is set to `true` and `oidc.validationType` is set to `endpoint`.
 
-- **`components.gateway.apiml.security.oidc.jwks.refreshInternalHours`**  
+- **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
    (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
 
-- **`components.gateway.apiml.security.oidc.identityMapperUser`**  
+- **components.gateway.apiml.security.oidc.identityMapperUser**  
     (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
 
     **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
 
-- **`apiml.security.oidc.identityMapperUrl`**  
+- **apiml.security.oidc.identityMapperUrl**  
   (Optional) This property informs the Gateway about the location of the identity mapper REST API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). In case the internal mapper is configured, this parameter is ignored.
 
     The following URL is the default value for Zowe and ZSS:
