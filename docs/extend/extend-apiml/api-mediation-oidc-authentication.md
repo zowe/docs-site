@@ -104,11 +104,11 @@ components:
                clientSecret: <secret>
            provider:
              <provider-id>:
-               authorizationUri: <issuer-URL/v1/authorize
-               tokenUri: <issuer-URL/v1/token
-               userInfoUri: <issuer-URL/v1/userinfo
+               authorizationUri: <issuer-URL>/v1/authorize
+               tokenUri: <issuer-URL>/v1/token
+               userInfoUri: <issuer-URL>/v1/userinfo
                userNameAttribute: sub
-               jwkSetUri: <issuer-URL/v1/keys
+               jwkSetUri: <issuer-URL>/v1/keys
 
 
 ```
