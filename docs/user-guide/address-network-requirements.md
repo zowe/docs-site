@@ -21,7 +21,7 @@ Each Jobname has a default prefix of ZWE1, but that can be customized via the `z
 | 7554 | API Mediation Layer | gateway | ZWE1**AG** | AGW | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
 | 7555 | API Mediation Layer | caching-service | ZWE1**CS** | ACS | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
 | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV | D | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
-| 7557 | App Framework | zss | ZWE1SZ | SZ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
+| 7557 | App Framework | zss | ZWE1**SZ** | SZ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
 | 7558 | API Mediation Layer | zaas | ZWE1**AZ** | AZ | 
 
 ## Application Server Jobname for Port
@@ -56,7 +56,8 @@ When `zowe.job.prefix` is "ZWE1", An example of port reservations with a fixed I
    7553 TCP ZWE1AD BIND 10.11.12.13 ; Zowe Discovery
    7554 TCP ZWE1AG BIND 10.11.12.13 ; Zowe Gateway
    7555 TCP ZWE1CS BIND 10.11.12.13 ; Zowe Caching Service
-   7556 TCP ZWE1DS BIND 10.11.12.13 ; Zowe App Server
+   7556 TCP ZWE1DS BIND 10.11.12.13 ; Zowe App Server without Cluster
+   7556 TCP ZWE1SV BIND 10.11.12.13 ; Zowe App Server with Cluster (Default)
    7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
