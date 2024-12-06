@@ -33,7 +33,7 @@ The following diagram illustrates communication between the "central" API Mediat
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
 
 Domain-Central is where the "central" API ML is running, and may be on z/OS, or off z/OS, for example in Kubernetes. This API ML is referred to as the Central API ML.
-The Central API ML serves as a single point of access to all API Mediation Layers registered in it, and by extension, to all services registered in those secondary API MLs.
+The Central API ML serves as a single point of access to all API Mediation Layers registered in this Central API ML and, by extension, to all services registered in those secondary API MLs.
 
 Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are referred to as Domain API MLs.
 
@@ -60,24 +60,21 @@ components.gateway.apiml.service.additionalRegistration:
        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
-:::note
-  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
-  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
-  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+:::note Notes:
 
-  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+* Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
-:::
+* Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
-```
-components.gateway.apiml.security.x509:
-    # central gateway port 
-    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
-```
+* Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 
-:::note
-It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
+  ```
+  components.gateway.apiml.security.x509:
+      # central gateway port 
+      certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
+  ```
+
+* It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
 :::
 
 ### Static Onboarding for Domain Gateways (deprecated)
@@ -137,17 +134,17 @@ The previous example can be substituted with the following variables:
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
-:::note
-  The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
+:::note Notes:
+  * The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
   defines ID of API ML instance.
 
-  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
+  * Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
   single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
   We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+  * Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
-  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+  * Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
 
 This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
@@ -194,83 +191,109 @@ The following commands are examples of establishing a trust relationship between
 
 1. Import the root and, if applicable, the intermediate public key certificate of Domain API MLs running on systems Y and Z into the truststore of the Central API ML running on system X.
 
-  - **PKCS12**
+    - **PKCS12**
   
-    For PKCS12 certificates, use the following example of keytool commands:
+      <details>
+      <summary>Click here for an example of keytool commands for PKCS12 certificates.</summary>
+
+      For PKCS12 certificates, use the following example of keytool commands:
   
-    `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
+      `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
   
-    `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
+      `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
 
-  - **Keyring**
-      
-    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the Central API ML:
-        
-    - **For RACF:**
-      
-      ```
-      RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
-      RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-      SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
-      ```
+      </details>
 
-      Verify:
-      ```
-      RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
-      ```
+    - **Keyring**
+      
+      For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the Central API ML:
 
-    - **For ACF2:**
-      
-      ```
-      ACF
-      SET PROFILE(USER) DIV(CERTDATA)
-      INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
-      INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
-      
-      SET PROFILE(USER) DIVISION(KEYRING)
-      CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-      CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
-      ```
-      
-      Verify:
-      ```
-      SET PROFILE(USER) DIVISION(KEYRING)
-      LIST LIKE(ZWESVUSR.-)
-      ```
+      <details>  
+      <summary>Click here for command details for RACF. </summary>
 
-    - **For TopSecret:**
+      - **For RACF:**
       
-      ```
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
-      ```
+        ```
+        RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
+        RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
+        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+        SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+        ```
 
-      Verify:
-      ```
-      TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
-      ```
+        Verify:
+        ```
+        RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+        ```
+
+      </details>
+
+      <details>
+      <summary>Click here for command details for ACF2.</summary>
+
+      - **For ACF2:**
+      
+        ```
+        ACF
+        SET PROFILE(USER) DIV(CERTDATA)
+        INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
+        INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
+        F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+      
+        SET PROFILE(USER) DIVISION(KEYRING)
+        CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+        CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+        F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+        ```
+      
+        Verify:
+        ```
+        SET PROFILE(USER) DIVISION(KEYRING)
+        LIST LIKE(ZWESVUSR.-)
+        ```
+      </details>
+
+      <details>
+      <summary>Click here for command details for Top Secret.</summary>
+
+      - **For TopSecret:**
+      
+        ```
+        TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
+        TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
+        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
+        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
+        ```
+
+        Verify:
+        ```
+        TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
+        ```
+      </details>
 
 2. Import root and, if applicable, intermediate public key certificates of the Central API ML running on system X into the truststore of the Domain API MLs running on systems Y and Z.
 
-  - **PKCS12**
+    - **PKCS12**
 
-    For PKCS12 certificates, use the following example of the keytool commands:
+      <details>
+      <summary>Click here for example keytool commands for PKCS12 certificates.</summary>
 
-    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+      For PKCS12 certificates, use the following example of the keytool commands:
 
-    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
+      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+
+      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
   
-  - **Keyring**
+      </details>
 
-     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by Domain API MLs:
+    - **Keyring**
+
+      For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by Domain API MLs:
+
+      <details>
+      <summary>Click here for command details for RACF.</summary>
   
-    - **For RACF:**
+      - **For RACF:**
   
       ```
       RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
@@ -283,7 +306,12 @@ The following commands are examples of establishing a trust relationship between
       RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
       ```
 
-    - **For ACF2:**
+      </details>
+
+      <details>
+      <summary>Click here for command details for ACF2</summary>
+
+      - **For ACF2:**
   
       ```
       ACF
@@ -302,7 +330,12 @@ The following commands are examples of establishing a trust relationship between
       LIST LIKE(ZWESVUSR.-)
       ```
 
-    - **For TopSecret:**
+      </details>
+
+      <details>
+      <summary>Click here for command details for Top Secret</summary>
+
+      - **For Top Secret:**
   
       ```
       TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.ROOTCA.CER)  DIGICERT(SYSXROOT) LABLCERT('Local CA') TRUST
@@ -313,6 +346,8 @@ The following commands are examples of establishing a trust relationship between
       ```
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
+
+      </details>
 
 You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust the Central API ML and vice versa.
 
