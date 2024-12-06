@@ -17,9 +17,10 @@ This article details the API ML OIDC authentication functionality, and describes
 - [Usage](#usage)
 - [Authentication flow](#authentication-flow)
 - [Prerequisites](#prerequisites)
-  - [OIDC provider](#oidc-provider-prerequisites)
   - [ESM configuration](#esm-configuration-prerequisites)
 - [API ML configuration](#api-ml-oidc-configuration)
+  - [OIDC client configuration](#oidc-client-configuration)
+  - [OIDC resource server configuration](#oidc-resource-server-configuration)
 - [Troubleshooting](#troubleshooting)
 
 ## Usage
