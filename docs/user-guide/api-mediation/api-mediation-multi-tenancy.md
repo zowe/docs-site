@@ -4,8 +4,6 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 * [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
 * [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-* [Onboarding Domain Gateways to the Central Gateway](#onboarding-domain-gateways-to-the-central-gateway)
-  * [Dynamic Onboarding (recommended) for Domain Gateways](#dynamic-onboarding-recommended-for-domain-gateways)
 * [Onboarding a Domain Gateway service to the Central Discovery service](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
   * [Dynamic Configurations to the Central Discovery service](#dynamic-configurations-to-the-central-discovery-service)
     * [Dynamic configuration: YML](#dynamic-configuration-yml)
