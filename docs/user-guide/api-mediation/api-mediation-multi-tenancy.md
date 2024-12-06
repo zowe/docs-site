@@ -309,7 +309,7 @@ The following commands are examples of establishing a trust relationship between
       </details>
 
       <details>
-      <summary>Click here for command details for ACF2</summary>
+      <summary>Click here for command details for ACF2.</summary>
 
       - **For ACF2:**
   
@@ -333,7 +333,7 @@ The following commands are examples of establishing a trust relationship between
       </details>
 
       <details>
-      <summary>Click here for command details for Top Secret</summary>
+      <summary>Click here for command details for Top Secret.</summary>
 
       - **For Top Secret:**
   
