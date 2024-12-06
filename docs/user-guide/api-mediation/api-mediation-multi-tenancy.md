@@ -50,7 +50,7 @@ The Central API ML can onboard Gateways of all domains. This service onboarding 
 
 #### Dynamic configuration: YML
 
-Users must set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
+Set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
 
 `components.gateway.apiml.service.additionalRegistration`
 
@@ -63,17 +63,17 @@ components.gateway.apiml.service.additionalRegistration:
        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
 ```
 
-:::note
-  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
-  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
-  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+:::note Notes:
+* Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
 
-  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+* We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+* Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+
+* Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
 
-The Gateway service can be configured to forward client certificates. The domain gateway can then use this client certificate for authentication. To make sure that only the Gateway-forwarded certificate are used for client certificate authentication, users must set `certificatesUrl` property. This URL returns certificate chain from the central gateway.
+The Gateway service can be configured to forward client certificates. The domain gateway can then use this client certificate for authentication. To make sure that only  Gateway-forwarded certificates are used for client certificate authentication, users must set the `certificatesUrl` property. This URL returns a certificate chain from the central gateway.
 
 ```
 components.gateway.apiml.security.x509:
