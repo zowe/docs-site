@@ -85,56 +85,6 @@ Ensure that the following prerequisites are met:
 - Client application users have their distributed identity managed by the OIDC provider. For details, see the section [OIDC provider](#oidc-provider-prerequisites) in this topic.
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	
  
-### OIDC provider prerequisites
-
-The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain an access token. Provide the following configuration in your zowe.yaml file:
-
-```yaml
-components:
- gateway:
-   spring:
-     security:
-       oauth2:
-         client:
-           registration:
-             <provider-id>:
-               issuer: <issuer-URL>
-               clientId: <client-id>
-               clientSecret: <secret>
-           provider:
-             <provider-id>:
-               authorizationUri: <issuer-URL>/v1/authorize
-               tokenUri: <issuer-URL>/v1/token
-               userInfoUri: <issuer-URL>/v1/userinfo
-               userNameAttribute: sub
-               jwkSetUri: <issuer-URL>/v1/keys
-
-
-```
-- **provider-id**  
-    The ID of the Identity provider. Currently supported options are `okta` and `entra`.
-- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.issuer**    
-    The URL of the Token issuer.  
-    Example: `https://dev-okta.com/oauth2`.
-- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientId**    
-    The Client application ID.
-- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientSecret**    
-    The Client application secret.
-- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.authorizationUri**  
-    The URL for the authorization request.
-- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.tokenUri**  
-    The URL to obtain the token.
-- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userInfoUri**  
-    The URL to retrieve user information.
-- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userNameAttribute**  
-    The JWT attribute to locate the user ID.
-- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.jwkSetUri**  
-    The URL to retrieve the JSON Web Key Set.
-    
-    
-  :::tip
-  Consult your OIDC provider documentation for options and requirements available for your type of client application.
-  :::
 
 ### ESM configuration prerequisites
 
@@ -218,6 +168,59 @@ Alternatively, API ML provides a Zowe CLI plug-in to help administrators generat
 For details about how to use the plug-in tool to set up mapping in the ESM of your z/OS system, see the [Identity Federation CLI plug-in](../../user-guide/cli-idfplugin.md) documentation.
 
 ## API ML OIDC configuration
+
+### OIDC client configuration
+
+The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain an access token. Provide the following configuration in your zowe.yaml file:
+
+```yaml
+components:
+ gateway:
+   spring:
+     security:
+       oauth2:
+         client:
+           registration:
+             <provider-id>:
+               issuer: <issuer-URL>
+               clientId: <client-id>
+               clientSecret: <secret>
+           provider:
+             <provider-id>:
+               authorizationUri: <issuer-URL>/v1/authorize
+               tokenUri: <issuer-URL>/v1/token
+               userInfoUri: <issuer-URL>/v1/userinfo
+               userNameAttribute: sub
+               jwkSetUri: <issuer-URL>/v1/keys
+
+
+```
+- **provider-id**  
+  The ID of the Identity provider. Currently supported options are `okta` and `entra`.
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.issuer**    
+  The URL of the Token issuer.  
+  Example: `https://dev-okta.com/oauth2`.
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientId**    
+  The Client application ID.
+- **components.gateway.spring.security.oauth2.client.registration.\<provider-id>.clientSecret**    
+  The Client application secret.
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.authorizationUri**  
+  The URL for the authorization request.
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.tokenUri**  
+  The URL to obtain the token.
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userInfoUri**  
+  The URL to retrieve user information.
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.userNameAttribute**  
+  The JWT attribute to locate the user ID.
+- **components.gateway.spring.security.oauth2.client.provider.\<provider-id>.jwkSetUri**  
+  The URL to retrieve the JSON Web Key Set.
+
+
+:::tip
+Consult your OIDC provider documentation for options and requirements available for your type of client application.
+:::
+
+### OIDC resource server configuration
 
 Use the following procedure to enable the feature to use an OIDC Access Token as the method of authentication for the API Mediation Layer Gateway.
 
