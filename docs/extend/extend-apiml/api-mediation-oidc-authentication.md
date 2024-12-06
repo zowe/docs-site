@@ -172,7 +172,7 @@ For details about how to use the plug-in tool to set up mapping in the ESM of yo
 
 ### OIDC client configuration
 
-The Gateway service can be configured to provide OIDC client functionality and initiate OIDC authentication flow to obtain an access token. Provide the following configuration in your zowe.yaml file:
+The Gateway service can be configured to provide OIDC client functionality and initiate the OIDC authentication flow to obtain an access token. Provide the following configuration in your zowe.yaml file:
 
 ```yaml
 components:
