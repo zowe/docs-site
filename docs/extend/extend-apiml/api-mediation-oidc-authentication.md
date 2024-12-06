@@ -233,9 +233,8 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 
  In the zowe.yaml file, configure the following properties:
 
-
 - **components.gateway.apiml.security.oidc.enabled**  
-   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
+   Set the value to `true` to enable OIDC resource server functionality for authentication.
 
 - **components.gateway.apiml.security.oidc.registry**  
   Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see **distributed-identity-registry-name** value used in the [ESM configuration](#esm-configuration-prerequisites).
