@@ -41,58 +41,6 @@ Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running eith
 
 In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. 
 
-## Onboarding Domain Gateways to the Central Gateway
-
-The Central Gateway must onboard all Domain Gateways. This can be done dynamically or by static definition. We strongly recommend using dynamic onboarding as this onboarding method adapts better to the potentially changing environments of the customer. Static onboarding does not provide the functionality to actively monitor the health of specific services (e.g. domain gateways).  
-
-### Dynamic Onboarding (recommended) for Domain Gateways
-
-To dynamically onboard to the Discovery service in the central cluster, set the following property for all Domain Gateways:
-
-`components.gateway.apiml.service.additionalRegistration`
-
-Use the following example as a template for how to set the value for this property in zowe.yml.
-
-**Example:**
-```
-components.gateway.apiml.service.additionalRegistration:
-    # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
-```
-
-:::note
-  Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a
-  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
-  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
-
-  Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
-
-  Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
-:::
-
-```
-components.gateway.apiml.security.x509:
-    # central gateway port 
-    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
-```
-
-:::note
-It is not necessary for the Gateway service to provide different routing patterns for the Central Discovery service. These metadata can be the same for every cluster.
-:::
-
-### Static Onboarding for Domain Gateways (deprecated)
-
-Alternatively, you can statically onboard all Domain Gateways on the Central Discovery service. Note that dynamic onboarding is the preferred method.
-
-For static onboarding, make sure that the following parameters are correctly specified in the static definition file:
-
-- **services.serviceId**  
-  Specify this parameter to GATEWAY
-- **services.instanceBaseUrls**  
-  Specifies the URL of the Domain Gateway
-- **services.customMetadata.apiml.service.apimlId**  
-  Specifies the id of the API ML environment
-
 ## Onboarding a Domain Gateway service to the Central Discovery service
 
 The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
@@ -126,6 +74,14 @@ components.gateway.apiml.service.additionalRegistration:
 
   Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
+
+The Gateway service can be configured to forward client certificates. The domain gateway can then use this client certificate for authentication. To make sure that only the Gateway-forwarded certificate are used for client certificate authentication, users must set `certificatesUrl` property. This URL returns certificate chain from the central gateway.
+
+```
+components.gateway.apiml.security.x509:
+    # central gateway port 
+    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
+```
 
 #### Dynamic configuration: Environment variables
 
