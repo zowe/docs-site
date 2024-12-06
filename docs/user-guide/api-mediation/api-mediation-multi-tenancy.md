@@ -118,7 +118,7 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 
 ## Establishing a trust relationship between Domain API ML and Central API ML
 
-For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for a successful registration into the Discovery Service component.
+For routing to work in a multitenancy configuration, the Central API Mediation Layer must trust the Domain API Mediation Layers for successful registration into the Discovery Service component.
 The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
 It is necessary that the root and, if applicable, intermediate public certificates be shared between the Central API Mediation Layer and Domain API Mediation Layers. 
 
