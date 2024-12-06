@@ -210,7 +210,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
    **Example for RACF:**
 
    ```markup
-   RACMAP ID(ab00001) MAP USERDIDFILTER(NAME('aaa.bbb@richradioham.com')) REGISTRY(NAME('ldaps://us.richradioham.com')) WITHLABEL('identity mapping for ab00001')
+   RACMAP ID(ab00001) MAP USERDIDFILTER(NAME('aaa.bbb@richradioham.com')) REGISTRY(NAME('zowe.org')) WITHLABEL('identity mapping for ab00001')
    ```
 
 Alternatively, API ML provides a Zowe CLI plug-in to help administrators generate a JCL for creating the mapping filter specific for the ESM installed on the target mainframe system. These JCLs can be submitted on the corresponding ESM to create a distributed identity mapping filter.
@@ -235,34 +235,19 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
    Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
 
 - **components.gateway.apiml.security.oidc.registry**  
-  Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the dustributed and mainframe user identities. For more information, see the [ESM configuration](#esm-configuration-prerequisites).
+  Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see **distributed-identity-registry-name** value used in the [ESM configuration](#esm-configuration-prerequisites).
 
 - **components.gateway.apiml.security.oidc.validationType**  
    Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
-  
-- **components.gateway.apiml.security.oidc.jwks.uri**  
-   Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
-
-- **components.gateway.apiml.security.oidc.userInfo.uri**  
-   Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation. 
-    To enable this property, ensure that `oidc.enabled` is set to `true` and `oidc.validationType` is set to `endpoint`.
-
-- **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
-   (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
-
-- **components.gateway.apiml.security.oidc.identityMapperUser**  
-    (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
-
-    **Note:** User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
-
-- **apiml.security.oidc.identityMapperUrl**  
-  (Optional) This property informs the Gateway about the location of the identity mapper REST API. ZSS is the default API provider in Zowe, but if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). In case the internal mapper is configured, this parameter is ignored.
-
-    The following URL is the default value for Zowe and ZSS:
-
-    ```
-    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
-    ```
+  - For `endpoint` validation type, configure following options
+    - **components.gateway.apiml.security.oidc.userInfo.uri**  
+       Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation. 
+    
+  - For `JWK` validation type, configure following options
+    - **components.gateway.apiml.security.oidc.jwks.uri**  
+      Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens. 
+    - **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
+     (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
 
 **Example for OKTA:**
 
