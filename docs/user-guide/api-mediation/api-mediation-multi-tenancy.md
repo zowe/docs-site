@@ -43,45 +43,45 @@ In the multitenancy environment, certain Zowe components may be enabled, while o
 
 The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
-- Dynamic configuration via zowe.yaml
-- Dynamic configuration via Environment variables
+- [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
+- [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
 
-### Dynamic Configurations to the Central Discovery service
+### Dynamic configuration via zowe.yaml 
 
-#### Dynamic configuration: YML
+1. Set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
 
-Set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
+    `components.gateway.apiml.service.additionalRegistration`
 
-`components.gateway.apiml.service.additionalRegistration`
+    Use the following example as a template for how to set the value of this property in zowe.yml.
 
-Use the following example as a template for how to set the value of this property in zowe.yml.
+    **Example:**
+    ```
+    components.gateway.apiml.service.additionalRegistration:
+        # central API ML (in HA, for non-HA mode use only 1 hostname)
+        - discoveryServiceUrls: https://sys1:   {discoveryServicePort}/eureka/,https://sys2:    {discoveryServicePort}/eureka/
+    ```
 
-**Example:**
-```
-components.gateway.apiml.service.additionalRegistration:
-       # central API ML (in HA, for non-HA mode use only 1 hostname)
-       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
-```
+    :::note Notes:
+    * Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
 
-:::note Notes:
-* Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
+    * We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-* We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+    * Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
 
-* Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+    * Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
+    :::
 
-* Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
-:::
+2. (Optional) Configure the Gateway to forward client certificates.   
+Use this step to enable the domain gateway to use this client certificate for authentication. .  
+Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the central gateway.
 
-The Gateway service can be configured to forward client certificates. The domain gateway can then use this client certificate for authentication. To make sure that only  Gateway-forwarded certificates are used for client certificate authentication, users must set the `certificatesUrl` property. This URL returns a certificate chain from the central gateway.
+    ```
+    components.gateway.apiml.security.x509:
+        # central gateway port 
+        certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
+    ```
 
-```
-components.gateway.apiml.security.x509:
-    # central gateway port 
-    certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
-```
-
-#### Dynamic configuration: Environment variables
+### Dynamic configuration via Environment variables
 
 The list of additional registrations is extracted from environment variables. You can define a list of objects by following YML -> Environment translation rules. 
 
@@ -122,11 +122,11 @@ For routing to work in a multitenancy configuration, the Central API Mediation L
 The Domain API Mediation Layers must trust the Central API Mediation Layer Gateway to accept routed requests.
 It is necessary that the root and, if applicable, intermediate public certificates be shared between the Central API Mediation Layer and Domain API Mediation Layers. 
 
-The following diagram is a visual description of the relationship between the Central API ML and Domain API MLs. 
+The following diagram shows the relationship between the Central API ML and Domain API MLs. 
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
-As shown in this example diagram, the Central API ML is installed on system X. Domain API MLs are installed on systems Y and Z.
+As presented in this example diagram, the Central API ML is installed on system X. Domain API MLs are installed on systems Y and Z.
 
 To establish secure communications, "Domain APIML 1" and "Domain APIML 2" are using different private keys signed with different public keys. These API MLs do not trust each other.
 
@@ -348,6 +348,9 @@ This request lists services in the apimlId domain.
 
 ### Response with `/registry`
 
+<details>
+<summary>Click here for an example response with `/registry`. </summary>
+
 **Example:**
 
 ```
@@ -398,9 +401,14 @@ This request lists services in the apimlId domain.
 ]
 ```
 
+</details>
+
 ### Response with `/registry{apimlId}`
 
-Should contain information about all services in a specific domain 
+This response should contain information about all services in a specific domain.
+
+<details>
+<summary>Click here for an example response with `/registry{apimlId}`.</summary>
 
 **Example:**
 
@@ -438,9 +446,14 @@ Should contain information about all services in a specific domain
 ]
 ```
 
+</details>
+
 ### Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
 
-Should contain information about a specific service in a specific domain 
+This response should contain information about a specific service in a specific domain.
+
+<details>
+<summary>Click here for an example of a response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`. </summary>
 
 **Example:**
 
@@ -466,6 +479,8 @@ Should contain information about a specific service in a specific domain
     }
 ]
 ```
+
+</details>
 
 ## Validating successful configuration with `/registry`
 
