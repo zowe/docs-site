@@ -153,7 +153,7 @@ User specified parameters are presented in the section [Parameters in the ESM co
 - **distributed-identity-user-name**  
    Specifies the user ID for distributed-identity-registry.
 - **distributed-identity-registry-name**  
-   Specifies the registry value for under which the user is defined in the ESM.
+   Specifies the registry value under which the user is defined in the ESM.
 - **label-name**  
    Specifies the name for the distributed-identity mapping filter.
 
