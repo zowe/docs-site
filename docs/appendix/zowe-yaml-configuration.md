@@ -682,7 +682,7 @@ For all high availability instances, these are the common definitions.
 - **`haInstances.<ha-instance>.sysname`**  
  Defines the system name of the LPAR where the instance is running. Zowe will use `ROUTE` command to send JES2 start or stop command to this HA instance.
 - **`haInstances.<ha-instance>.components.<component>`**  
- Optional settings you can override component configurations for this high availability instance. See [Configuration override](#configuration-override) for more details.
+ Optional settings you can override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 
 ### Auto-generated environment variables
 
