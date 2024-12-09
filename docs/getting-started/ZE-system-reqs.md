@@ -36,9 +36,9 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
 ## Server side requirements
 
 - IBM z/OSMF is configured and running.
-	- See [z/OSMF REST services for Zowe clients](/user-guide/systemrequirements-zosmf/#zosmf-rest-services-for-the-zowe-cli) for a list of services that need configuration.
+	- See [z/OSMF REST services for Zowe clients](../user-guide/systemrequirements-zosmf.md#zosmf-rest-services-for-zowe-clients) for a list of services that need configuration.
     
 - Applicable plug-in services are configured and running on the mainframe.
     - Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands.
-        * See [Zowe Explorer CICS Extension system requirements](../user-guide/ze-using-zowe-explorer-cics-ext#system-requirements).
-        * See [Zowe Explorer FTP Extension system requirements](../user-guide/ze-ftp-using-ze-ftp-ext#system-requirements).
+        * See [Zowe Explorer CICS Extension system requirements](./install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
+        * See [Zowe Explorer FTP Extension system requirements](./install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).
