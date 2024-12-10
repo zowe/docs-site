@@ -46,12 +46,51 @@ The Zowe YAML configuration file has template logic for relating one value to an
 It can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
 More details can be found [in the configmgr documentation.](../user-guide/configmgr-using.md#configuration-templates)
 
-### Configuration override
+### Configuration override - defaults.yaml
 
-Inside `zowe.yaml`, you can define default values and they may be overridden in more granular level configurations. This can happen in several ways:
+Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml) file. This file is always merged with current config(s) when `configmgr` is used.
 
-- The component can override the default certificate configuration. For the specific entry of certification configuration, if it's not overridden, it falls back to default configurations.  
+For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears  after the merging with the defaults. 
 
+**Example of initial user config:**
+
+  ```yaml
+  zowe:
+    job:
+    # Zowe JES job name
+      name: ZW3SV1
+    # Prefix of component address space
+      prefix: ZW31
+  ```
+**Example of modified user config - `zowe.job` commented out:**
+
+  ```yaml
+  zowe:
+    # job:
+    # Zowe JES job name
+    # name: ZW3SV1
+    # Prefix of component address space
+    # prefix: ZW31
+  ```
+
+**Example of merged result:**
+
+  ```yaml
+  zowe:
+    job:
+      name: ZWE1SV
+      prefix: ZWE1
+  ```
+:::note
+To disable a component which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml), ensure that you have a definition of that component in your config, and change `enabled: true` to `enabled: false`. Deleting or commenting out such a component does not disable it.
+:::
+
+### Configuration override - inside zowe.yaml
+
+In the `zowe.yaml`, you can define default values which can be overridden in more granular level configurations. This can happen in several ways:
+
+- The component can override the default certificate configuration. For the specific entry of certification configuration, if it is not overridden, the configuration falls back to default configurations.  
+<!-- Is the following example and example of the user modified configuration? -->
 **Example:**
 
   ```yaml
@@ -79,10 +118,11 @@ Inside `zowe.yaml`, you can define default values and they may be overridden in 
           key: /global/zowe/keystore/localhost/app-server.key
           certificate: /global/zowe/keystore/localhost/app-server.cer
   ```
-  
-  App Server will use the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. And it will use the exact same truststore defined in `zowe.certificate.truststore.file`.
+  In this example, the App Server will use the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. Note that the service will use the exact same truststore defined in `zowe.certificate.truststore.file`.
 
-- Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration you can find in `components.<component>` level can be overridden in `haInstances.<ha-instance>.components.<component>` level. For example, in this configuration:
+- Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration you can find in `components.<component>` level can be overridden in `haInstances.<ha-instance>.components.<component>` level. 
+
+**Example:**
 
   ```yaml
   components:
@@ -100,7 +140,7 @@ Inside `zowe.yaml`, you can define default values and they may be overridden in 
           port: 28544
   ```
   
-  App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
+  In this example configuration, the App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
 
 ### YAML configurations - certificate
 
@@ -282,43 +322,67 @@ zowe:
       storageClass:
 ```
 
-- `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.dataset.parmlib` is the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
-- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
-- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
-- `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
-
-- `zowe.setup.security.product` is the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
-- `zowe.setup.security.groups.admin` is the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
-- `zowe.setup.security.groups.stc` is the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
-- `zowe.setup.security.groups.sysProg` is system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
-- `zowe.setup.security.users.zowe` is the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
-- `zowe.setup.security.users.zis` is userid for ZIS started task. This configuration is optional. Th default value is `ZWESIUSR`.
-- `zowe.setup.security.stcs.zowe` is Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
-- `zowe.setup.security.stcs.zis` is ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
-- `zowe.setup.security.stcs.aux` is ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
-
-- `zowe.setup.certificate.type` is the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
-- `zowe.setup.certificate.dname` is the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
-- `zowe.setup.certificate.validity` is the validity days of the certificate. This is optional.
-- `zowe.setup.certificate.san` is the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
-- `zowe.setup.certificate.importCertificateAuthorities` is the list of certificate authorities will be imported to Zowe `PKCS12` keystore or `JCERACFKS` keyring. Please note, for JCERACFKS type, only maximum 2 CAs is supported. If you are using `PKCS12` certificate, this should be USS files in PEM format. If you are using `JCERACFKS` certificate, this should be certificate labels on the z/OS system.
+- **`zowe.setup.dataset.prefix`**  
+Specifies where the `SZWEAUTH` data set is installed.
+- **`zowe.setup.dataset.parmlib`**  
+Specifies the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
+- **`zowe.setup.dataset.jcllib`**  
+Specifies the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
+- **`zowe.setup.dataset.authLoadlib`**  
+Specifies the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` will be copied over to this data set and it will be APF authorized. If it is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` will be APF authorized.
+- **`zowe.setup.dataset.authPluginLib`**  
+Specifies the user custom APF PLUGINLIB. You can install Zowe ZIS plug-ins into this load library. This loadlib requires APF authorize.
+- **`zowe.setup.security.product`**  
+Speficies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+- **`zowe.setup.security.groups.admin`**  
+Specifies the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
+- **`zowe.setup.security.groups.stc`**  
+Specifies the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
+- **`zowe.setup.security.groups.sysProg`**  
+Speficies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+- **`zowe.setup.security.users.zowe`**  
+Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
+- **`zowe.setup.security.users.zis`**  
+Specifies the userid for ZIS started task. This configuration is optional. The default value is `ZWESIUSR`.
+- **`zowe.setup.security.stcs.zowe`** is Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
+- **`zowe.setup.security.stcs.zis`** is ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
+- **`zowe.setup.security.stcs.aux`** is ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
+- **`zowe.setup.certificate.type`**  
+Specifies the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
+- **`zowe.setup.certificate.dname`**  
+Specifies the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
+- **`zowe.setup.certificate.validity`**  
+Specifies the validity days of the certificate. This is optional.
+- **`zowe.setup.certificate.san`**  
+Specifies the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
+- **`zowe.setup.certificate.importCertificateAuthorities`**  
+Specifies the list of certificate authorities will be imported to Zowe `PKCS12` keystore or `JCERACFKS` keyring. Please note, for JCERACFKS type, only maximum 2 CAs is supported. If you are using `PKCS12` certificate, this should be USS files in PEM format. If you are using `JCERACFKS` certificate, this should be certificate labels on the z/OS system.
 
 **For `PKCS12` certificate users**
 
-- `zowe.setup.certificate.pkcs12.directory` is the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
-- `zowe.setup.certificate.pkcs12.lock` is a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. The default value is true.
-- You can also define `name`, `password`, `caAlias` and `caPassword` under `zowe.setup.certificate.pkcs12` to customized keystore and truststore. These configurations are optional, but it is recommended to update them from default values.
-- Define `zowe.setup.certificate.pkcs12.import.keystore` if you already acquired certificate from other CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
-- `zowe.setup.certificate.pkcs12.import.password` is the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
-- `zowe.setup.certificate.pkcs12.import.alias` is the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After imported, the certificate will be saved as alias specified in `zowe.setup.certificate.pkcs12.name`.
+- **`zowe.setup.certificate.pkcs12.directory`**  
+Specifies the directory where you plan to store the PKCS12 keystore and truststore. This is required if `zowe.setup.certificate.type` is `PKCS12`.
+- **`zowe.setup.certificate.pkcs12.lock`**  
+Specifies a boolean configuration to tell if we should lock the PKCS12 keystore directory only for Zowe runtime user and group. The default value is true.
+- **`name`**, **`password`**, **`caAlias`** and **`caPassword`**  
+Under `zowe.setup.certificate.pkcs12`, these parameters   
+customize the keystore and truststore. These configurations are optional, but it is recommended to update them from default values.
+- **`zowe.setup.certificate.pkcs12.import.keystore`**  
+ Specifiy this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
+- **`zowe.setup.certificate.pkcs12.import.password`**  
+Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
+- **`zowe.setup.certificate.pkcs12.import.alias`**  
+Specifies the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After imported, the certificate will be saved as alias specified in `zowe.setup.certificate.pkcs12.name`.
 
 **For `JCERACFKS` certificate (z/OS keyring) users**
 
-- `zowe.setup.certificate.keyring.owner` is the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
-- `zowe.setup.certificate.keyring.name` is the keyring name will be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
-- If you want to let Zowe to generate a new certificate:
-  * You can also customize `label` and `caLabel` under `zowe.setup.certificate.keyring` if you want to generate new certificate. The default value of `label` is `localhost` and default value of `caLabel` is `localca`.
+- **`zowe.setup.certificate.keyring.owner`**  
+Specifies the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
+- **`zowe.setup.certificate.keyring.name`**  
+Specifies the keyring name will be created on z/OS. This is required if `zowe.setup.certificate.type` is `JCERACFKS`.
+- `label` and `caLabel`  
+Specify these parameters under `zowe.setup.certificate.keyring` if you want to let Zowe generate a new certificate.  
+The default value of `label` is `localhost` and default value of `caLabel` is `localca`.
 - If you want to import a certificate stored in MVS data set into Zowe keyring:
   * `zowe.setup.certificate.keyring.connect.dsName` is required in this case. It tells Zowe the data set where the certificate stored.
   * `zowe.setup.certificate.keyring.connect.password` is the password when importing the certificate.
@@ -331,9 +395,12 @@ zowe:
     `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is `IZUSVR`. If the automatic detection failed, you will need to define `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of the z/OSMF root certificate authority.
   * If you are using `ACF2` or `TSS` (Top Secret) security manager, `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicates what is the label of the z/OSMF root certificate authority.
 
-- `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level Sharing (RLS) services or not. Valid values are `RLS` or `NONRLS`.
-- `zowe.setup.vsam.volume` indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
-- `zowe.setup.vsam.storageClass` indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
+- **`zowe.setup.vsam.mode`**  
+Indicates whether the VSAM will utilize Record Level Sharing (RLS) services or not. Valid values are `RLS` or `NONRLS`.
+- **`zowe.setup.vsam.volume`**  
+Indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
+- **`zowe.setup.vsam.storageClass`**  
+Indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
 
 ### YAML configurations - java
 
@@ -403,7 +470,7 @@ These configurations can be used under the `components.gateway` section:
  Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
 - **`apiml.security.x509.externalMapperUrl`**  
  Defines the URL where Gateway can query the mapping of client certificates.
-- **`apiml.security.auth.jwt.customAuthHeader`**
+- **`apiml.security.auth.jwt.customAuthHeader`**  
  Returns valid JWT header also in another header 
 - **`apiml.security.auth.passticket.customAuthHeader`**
  Provides passtickets for the southbound service in the custom header 
@@ -413,9 +480,9 @@ These configurations can be used under the `components.gateway` section:
  Defines the authentication provider used by the API Gateway.
 - **`apiml.security.authorization.endpoint.url`**  
   Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
-- **`apiml.security.personalAccessToken.enabled`**
+- **`apiml.security.personalAccessToken.enabled`**  
   Enable Personal Access Tokens  
-- **`apiml.security.useInternalMapper`**
+- **`apiml.security.useInternalMapper`**  
   This property is the global feature toggle. Set the value to true to enable Internal Mapper
 - **`apiml.security.oidc.enabled`**  
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
@@ -446,7 +513,8 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 
     ```
     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
-    ```- **`apiml.security.ssl.verifySslCertificatesOfServices`**  
+    ```
+- **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in non-strict mode. Setting the value to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in truststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
@@ -459,7 +527,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 - **`server.maxTotalConnections`**  
   Specifies the total connections for all services registered under API Mediation Layer.
 - **`server.ssl.enabled`**  
-  This handles whether TLS is used
+  Specifies if TLS is used
 - **`server.webSocket.maxIdleTimeout`**  
   This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour (3600000 milliseconds).
 - **`server.webSocket.connectTimeout`**  
@@ -479,7 +547,7 @@ These configurations can be used under the `components.discovery` section:
 - **`debug`**  
  Defines whether to enable debug mode for the Discovery Service.
 
-- **`apiml.health.protected`**
+- **`apiml.health.protected`**  
   This property defines whether the health check endpoint is accessible with or without authentication.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
@@ -492,8 +560,8 @@ These configurations can be used under the `components.discovery` section:
 - **`apiml.discovery.serviceIdPrefixReplacer`**  
  Modifies the service ID of a service instance before it registers to API Mediation Layer.
  Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
-- **`server.ssl.enabled`**
- This handles whether TLS is used
+- **`server.ssl.enabled`**  
+ Specifies if TLS is used
 
 #### Configure component api-catalog
 
@@ -503,26 +571,25 @@ These configurations can be used under the `components.api-catalog` section:
  Defines the port which API Catalog should be started on.
 - **`debug`**  
  Defines if we want to enable debug mode for the API Catalog. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
-
-- **`apiml.health.protected`**
+- **`apiml.health.protected`**  
   This property defines whether the health check endpoint is accessible with or without authentication.
-- **`apiml.security.authorization.provider`**
+- **`apiml.security.authorization.provider`**  
   Provider used for SAF resource check
-- **`apiml.security.authorization.endpoint.url`**
+- **`apiml.security.authorization.endpoint.url`**  
   Base path of endpoint's URL (`{base path}/{userId}/{class}/{entity}/{level}`) 
-- **`apiml.catalog.customStyle.logo`**
+- **`apiml.catalog.customStyle.logo`**  
   Specifies the location of the logo that will replace the default Zowe logo in the API Catalog header. The supported image formats are: `svg`, `png` and `jpg/jpeg`.
-- **`apiml.catalog.customStyle.fontFamily`**
+- **`apiml.catalog.customStyle.fontFamily`**  
   Specifies the font family to use across the API Catalog.
-- **`apiml.catalog.customStyle.backgroundColor`**
+- **`apiml.catalog.customStyle.backgroundColor`**  
   Specifies the HTML color of the main background across the API Catalog
-- **`apiml.catalog.customStyle.titlesColor`**
+- **`apiml.catalog.customStyle.titlesColor`**  
   Specifies the title color.
-- **`apiml.catalog.customStyle.headerColor`**
+- **`apiml.catalog.customStyle.headerColor`**  
   Specifies the HTML color of the header element in the API Catalog home page
-- **`apiml.catalog.customStyle.textColor`**
+- **`apiml.catalog.customStyle.textColor`**  
   Specifies the HTML color of the main text across the API Catalog
-- **`apiml.catalog.customStyle.docLink`**
+- **`apiml.catalog.customStyle.docLink`**  
   Specifies a custom link to be displayed in the header. Use this property to refer to applicable documentation. The format is `<link_name>|<link_url>`  
 
 #### Configure component caching-service
@@ -615,7 +682,7 @@ For all high availability instances, these are the common definitions.
 - **`haInstances.<ha-instance>.sysname`**  
  Defines the system name of the LPAR where the instance is running. Zowe will use `ROUTE` command to send JES2 start or stop command to this HA instance.
 - **`haInstances.<ha-instance>.components.<component>`**  
- Optional settings you can override component configurations for this high availability instance. See [Configuration override](#configuration-override) for more details.
+ Optional settings you can override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 
 ### Auto-generated environment variables
 
