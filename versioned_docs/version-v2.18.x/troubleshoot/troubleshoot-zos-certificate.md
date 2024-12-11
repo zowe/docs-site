@@ -13,7 +13,7 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 * [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
 * [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
 * [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
-* [Third-party certificate managemenrt tools may require additional steps for Zowe functionality](#third-party-certificate-managemenrt-tools-may-require-additional-steps-for-zowe-functionality)
+* [Third-party certificate management tools may require additional steps for Zowe functionality](#third-party-certificate-management-tools-may-require-additional-steps-for-zowe-functionality)
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -372,7 +372,7 @@ security.provider.14=SunPKCS11
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
 
 
-## Third-party certificate managemenrt tools may require additional steps for Zowe functionality
+## Third-party certificate management tools may require additional steps for Zowe functionality
 
 **Symptom:**
 
