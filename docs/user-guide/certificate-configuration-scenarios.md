@@ -290,8 +290,8 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
          country: "CZ"
        validity: 3650
        san:
-         - system.my-company.com
-         - 12.34.56.78
+         - nwplzweb.dev.rocketsoftware.com
+         - 10.17.224.13
    ```
 Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
 
