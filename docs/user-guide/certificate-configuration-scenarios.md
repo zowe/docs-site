@@ -7,7 +7,7 @@
 :::
 
 :::tip 
-To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through quetions that lead to a specific configuration scenario presented in this article.
+To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through questions that lead to a specific configuration scenario presented in this article.
 :::
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
@@ -275,8 +275,8 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
      type: JCERACFKS
      keyring:
        name: ZoweKeyring
-         label: localhost
-         caLabel: local_ca
+       label: localhost
+       caLabel: local_ca
        dname:
          caCommonName: "Zowe Instances CA"
          commonName: "Zowe Service"
