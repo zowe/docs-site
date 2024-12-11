@@ -272,11 +272,15 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
   
    ```
    certificate:
+   #Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
      type: JCERACFKS
+     createZosmfTrust: true
      keyring:
+     #**COMMONLY_CUSTOMIZED**
+     #Keystore directory
        name: ZoweKeyring
        label: localhost
-       caLabel: local_ca
+       caLabel: localca
        dname:
          caCommonName: "Zowe Instances CA"
          commonName: "Zowe Service"
