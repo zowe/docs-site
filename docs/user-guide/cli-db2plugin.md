@@ -168,7 +168,21 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 After you install the plug-in, create a Db2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed.
 
-Specify your plug-in profile and connection details in the `zowe.config.json` configuration file.
+Specify your plug-in profile and connection details in the `zowe.config.json` configuration file.  You will need to know the IP address and port number of the Db2 database, as well as the eight character database schema name.  These are available using `-DISPLAY DDF` as well as in the JES spool for the Db2 MSTR address space by searching for the message ID `DSNL004I`.
+
+#### Example of how to read the DSNL004I message
+
+In the example below,  the `DOMAIN` attribute specifies the value for the CLI `host:`, of `domain.host.acme.com` . The `TCPPORT` is the `port:` of `40100` , or if a TLS certificate is being used choose the `SECPORT` value of `30100` instead. The `LOCATION` value of `DSNV123E` is the property to use in the `database:` value.  On your Db2 MSTR address space the values will be different.  
+
+```
+DSNL004I  #DI2E DDF START COMPLETE  025        
+           LOCATION  DSNV123E                  
+           LU        GBIBMIYA.IYCYZDBE         
+           GENERICLU -NONE                     
+           DOMAIN    domain.host.acme.com  
+           TCPPORT   40100                     
+           SECPORT   30100
+```
 
 ### Creating plug-in profiles using a configuration file
 
