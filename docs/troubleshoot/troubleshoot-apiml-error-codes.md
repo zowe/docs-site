@@ -619,7 +619,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
+  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
@@ -627,11 +627,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
+  The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the central Gateway certificates endpoint.
 
   **Action:**
 
-  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
+  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured.
 
 ### ZWEAT503E
 
@@ -655,19 +655,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
-
-### ZWEAT505E
-
-  Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
-
-  **Reason:**
-
-  The Gateway performs additional check of request certificates when the central Gateway forwards incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to proper central Gateway certificates endpoint.
-
-  **Action:**
-
-  Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
+  Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
 
