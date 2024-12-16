@@ -531,7 +531,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT500E
 
-  Failed to parse the client certificate forwarded from the Gateway. Error message %s. The client certificate was %s
+  Failed to parse the client certificate forwarded from the Gateway. Hostname is %s. Error message is %s. The client certificate was %s
 
   **Reason:**
 
