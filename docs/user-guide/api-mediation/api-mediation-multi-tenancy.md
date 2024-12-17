@@ -4,13 +4,13 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 * [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
 * [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-* [Onboarding a Domain Gateway service to the Central Discovery service](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
+* [Onboarding a Domain Gateway service to Discovery service in the Central API ML](#onboarding-a-domain-gateway-service-to-the-central-discovery-service)
     * [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
     * [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
     * [Validating successful configuration](#validating-successful-configuration)
 * [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
   * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
-* [Using the `/registry` endpoint in the Central Gateway](#using-the-registry-endpoint-in-the-central-gateway)
+* [Using the `/registry` endpoint in Gateway in the Central API ML](#using-the-registry-endpoint-in-the-central-gateway)
   * [Configuration for `/registry`](#configuration-for-registry)
   * [Authentication for `/registry`](#authentication-for-registry)
   * [Authorization with `/registry`](#authorization-with-registry)
@@ -38,7 +38,7 @@ Domain-1 to Domain-N are z/OS systems with the standard Zowe API ML running eith
 
 In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one Central API ML that handles the discovery and registration as well as routing to the API ML installed in specific domains. 
 
-## Onboarding a Domain Gateway service to the Central Discovery service
+## Onboarding a Domain Gateway service to the Discovery service in Central API ML
 
 The Central API ML can onboard Gateways of all domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
@@ -47,7 +47,7 @@ The Central API ML can onboard Gateways of all domains. This service onboarding 
 
 ### Dynamic configuration via zowe.yaml 
 
-1. Set the following property for the Domain Gateway to dynamically onboard to the Central Discovery service.
+1. Set the following property for the Domain Gateway to dynamically onboard to the  Discovery service in Central API ML.
 
     `components.gateway.apiml.service.additionalRegistration`
 
@@ -72,12 +72,12 @@ The Central API ML can onboard Gateways of all domains. This service onboarding 
 
 2. (Optional) Configure the Gateway to forward client certificates.   
 Use this step to enable the domain gateway to use this client certificate for authentication. .  
-Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the central gateway.
+Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the gateway.
 
     ```
     components.gateway.apiml.security.x509:
-        # central gateway port 
-        certificatesUrl: https://{centralGatewayHost}:{centralGatewayPort}/gateway/certificates
+        # gateway port 
+        certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
     ```
 
 ### Dynamic configuration via Environment variables
@@ -107,9 +107,9 @@ This Zowe configuration transforms the zowe.yaml configuration file into the env
 
 ### Validating successful configuration
 
-The corresponding Gateway service should appear in the Eureka console of the Central Discovery service. 
+The corresponding Gateway service should appear in the Eureka console of the Discovery service in Central API ML. 
 
-To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Central Discovery service:
+To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Discovery service in central API ML:
 
 ```
 /eureka/apps
@@ -307,7 +307,7 @@ The following commands are examples of establishing a trust relationship between
 
 You completed certificates setup for multitenancy configuration, whereby Domain API MLs can trust the Central API ML and vice versa.
 
-## Using the `/registry` endpoint in the Central Gateway
+## Using the `/registry` endpoint in the Gateway
 
 The `/registry` endpoint provides information about services onboarded to all Domain Gateways (all domains and the central one). This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
@@ -318,7 +318,7 @@ environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this featur
 
 ### Authentication for `/registry`
 
-The `/registry` endpoint is authenticated by the client certificate. The Central Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
+The `/registry` endpoint is authenticated by the client certificate. The Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
 
 Unsuccessful authentication returns a 401 error code.
 
@@ -493,10 +493,10 @@ Use the `/registry` endpoint to validate successful configuration. The response 
 Cannot receive information about services on API Gateway with apimlId 'apiml1' because: Received fatal alert: certificate_unknown; nested exception is javax.net.ssl.SSLHandshakeException: Received fatal alert: certificate_unknown
 
 **Reason**  
-The trust between the domain and the central Gateway was not established. 
+Cannot connect to the Gateway service. 
 
 **Action**  
-Review your certificate configuration.
+Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate
 
 ### No debug messages similar to apiml1 completed with onComplete are produced
 
@@ -504,4 +504,4 @@ Review your certificate configuration.
  Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
  
  **Action**  
- Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
+ Review Gateway static definition. Check the  Discovery Service dashboard in Central API ML if the domain Gateway is displayed. 

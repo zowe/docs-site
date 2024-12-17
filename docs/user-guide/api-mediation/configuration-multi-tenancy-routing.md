@@ -1,7 +1,7 @@
 # Configuring routing in a multi-tenant environment
 
-In addition to the domain-specific Discovery Service, which is typically in the same LPAR, in a multi-sysplex environment, the API Gateway may also need to register with a Central Discovery Service which gathers information about all installed API Gateways
-in isolated sysplex environments. Data from the Central Discovery Service can then be used by the Central Gateway for routing to individual API Gateways.
+In addition to the domain-specific Discovery Service, which is typically in the same LPAR, in a multi-sysplex environment, the API Gateway may also need to register with the Discovery Service in central API ML which gathers information about all installed API Gateways
+in isolated sysplex environments. Data from the Discovery Service in the central API ML can then be used by the Gateway in the central API ML for routing to individual API Gateways.
 
 Follow these steps to register with additional Discovery Services:
 
@@ -11,7 +11,7 @@ Follow these steps to register with additional Discovery Services:
    **Example:**
    ```
    components.gateway.apiml.service.additionalRegistration: 
-       <!-- central APIML -->
+       <!-- APIML on System 1  -->
        - discoveryServiceUrls: https://sys1:10011/eureka/,https://sys1:10021/eureka/ 
      <!-- APIML on System 2 -->
        - discoveryServiceUrls: https://sys2:10011/eureka/,https://sys2:10021/eureka/
