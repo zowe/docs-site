@@ -3,14 +3,14 @@
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
 
 - [Multitenancy Configuration](#multitenancy-configuration)
-  - [Overview of API MLs in Multitenancy Configuration](#overview-of-api-mls-multitenancy-configuration)
+  - [Overview of API MLs](#overview-of-api-mls)
   - [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-  - [Onboarding a Gateway service to the Discovery service of another API ML in Multitenancy Configuration](#onboarding-a-gateway-service-to-the-discovery-of-another-api-ml-in-multitenancy-configuration)
+  - [Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain](#onboarding-a-gateway-service-in-one-domain-to-the-discovery-of-api-ml-in-another-domain)
     - [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
     - [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
     - [Validating successful configuration](#validating-successful-configuration)
-  - [Establishing a trust relationship between API MLs in Multitenancy Configuration](#establishing-a-trust-relationship-between-api-mls-in-multitenancy-configuration)
-    - [Commands to establish trust between API MLs in Multitenancy Configuration](#commands-to-establish-trust-between-api-mls-in-multitenancy-configuration)
+  - [Establishing a trust relationship between API MLs](#establishing-a-trust-relationship-between-api-mls)
+    - [Commands to establish trust between API MLs](#commands-to-establish-trust-between-api-mls)
   - [Using the `/registry` endpoint in the Gateway](#using-the-registry-endpoint-in-the-gateway)
     - [Configuration for `/registry`](#configuration-for-registry)
     - [Authentication for `/registry`](#authentication-for-registry)
@@ -24,31 +24,30 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
     - [ZWESG100W](#zwesg100w)
     - [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
 
-## Overview of API MLs in Multitenancy Configuration
+## Overview of API MLs 
 
-The following diagram illustrates communication between the API Mediation Layer and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
+The following diagram illustrates communication between the API Mediation Layers and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
 
-Domain-1 API ML is running may be on z/OS, or off z/OS, for example in Kubernetes. This API ML acts as the Central API ML in our example where all the other domain API MLs are registered.
-This API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those secondary API MLs.
+ As represented in the example diagram of Multitenacy environement where the APIMLs in Domain-2 to Domain-N are registered to APIML in Domain-1. The APIML in  Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
 
-Domain-2 to Domain-N are z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to  Domain-1 API ML.
+The APIMLs in Domain-2 to Domain-N are installled on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to APIML in Domain-1.
 
 ## Multitenancy component enablement settings
 
-In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (Domain-1 APIML in our example) that handles the discovery and registration as well as routing to the API ML installed in any other specific domains. 
+In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (APIML in Domain-1 in our example diagram) that handles the discovery and registration as well as routing to the other API MLs (APIMLs in Domain-2 to Domain-N in our example diagram) installed in any other specific domains. 
 
-## Onboarding a Gateway service to the Discovery service of another API ML in Multitenancy Configuration
+## Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain
 
-The Domain-1 API ML can onboard Gateways of all other domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+A Gateway from any domain can onboard Gateways of any domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
 - [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
 
 ### Dynamic configuration via zowe.yaml 
 
-1. Set the following property for the Domain(2-N) Gateway to dynamically onboard to the  Discovery service in Domain-1 API ML.
+1. Set the following property for the Gateway of APIMLs in Domain-2 to Domain-N to dynamically onboard to the Discovery service of API ML in Domain-1.
 
     `components.gateway.apiml.service.additionalRegistration`
 
@@ -57,7 +56,7 @@ The Domain-1 API ML can onboard Gateways of all other domains. This service onbo
     **Example:**
     ```
     components.gateway.apiml.service.additionalRegistration:
-        # central API ML (in HA, for non-HA mode use only 1 hostname)
+        # APIML in Domain-1 (in HA, for non-HA mode use only 1 hostname)
         - discoveryServiceUrls: https://sys1:   {discoveryServicePort}/eureka/,https://sys2:    {discoveryServicePort}/eureka/
     ```
 
@@ -116,11 +115,11 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 /eureka/apps
 ```
 
-## Establishing a trust relationship between the API MLs in Multitenancy Configuration
+## Establishing a trust relationship between the API MLs
 
-For routing to work in a multitenancy configuration, the API Mediation Layer which registers the other API Mediation Layers must trust them for successful registration into the Discovery Service component.
-The API Mediation Layers which are registered must trust the API Mediation Layer Gateway where they are registed to, to accept routed requests.
-It is necessary that the root and, if applicable, intermediate public certificates be shared between the these API Mediation Layers. 
+For routing to work in a multitenancy configuration, as given in the example daigram where "Domain APIML 2", "Domain APIML 3" are registered to "Domain APIML 1", the "Domain APIML 1" must trust the "Domain APIML 2", "Domain APIML 3" for successful registration into the it's Discovery Service component.
+The "Domain APIML 2", "Domain APIML 3" must trust the "Domain APIML 1" Gateway where they are registed to, to accept routed requests.
+It is necessary that the root and, if applicable, intermediate public certificates be shared between the these domain API Mediation Layers. 
 
 The following diagram shows the relationship between the API MLs. 
 
@@ -128,25 +127,25 @@ The following diagram shows the relationship between the API MLs.
 
 As presented in this example diagram, The API MLs are installed on systems X, Y and Z.
 
-To establish secure communications, "APIML 1" and "APIML 2" are using different private keys signed with different public keys. These API MLs do not trust each other.
+To establish secure communications, "Domain APIML 2" and "Domain APIML 3" are using different private keys signed with different public keys. These API MLs do not trust each other.
 
-In order for all API MLs to register with an API ML (domain-1) in multitenancy set up, it is necessary that the domain-1 API ML has all public keys from the certificate chains of all registered API MLs:
+In order for all API MLs to register with an "Domain APIML 1" in multitenancy set up, it is necessary that the "Domain APIML 1" has all public keys from the certificate chains of all registered API MLs:
 * DigiCert Root CA
 * DigiCert Root CA1
 * DigiCert CA
 
-These public keys are required for the domain-1 API ML to establish trust with "Domain APIML 2" and "Domain APIML 3". 
+These public keys are required for the "Domain APIML 1" to establish trust with "Domain APIML 2" and "Domain APIML 3". 
 
-The domain-1 API ML uses a private key which is signed by the Local CA public key for secure communication. 
+The "Domain APIML 1" uses a private key which is signed by the Local CA public key for secure communication. 
 
-"Domain APIML 2" and "Domain APIML 2" require a Local CA public key in order to accept the routing requests from the domain-1 API ML, otherwise the domain-1  API ML requests will not be trusted by the registered API MLs.
+"Domain APIML 2" and "Domain APIML 3" require a Local CA public key in order to accept the routing requests from the "Domain APIML 1", otherwise the "Domain APIML 1" requests will not be trusted by the registered API MLs.
 The diagram indicates all of the added certificates inside the red dashed lines.
 
-### Commands to establish trust between the API MLs in Multitenancy Configuration
+### Commands to establish trust between the API MLs
 
 The following commands are examples of establishing a trust relationship between a API MLs in Multitenancy Configuration for both PKCS12 certificates and when using keyrings.
 
-1. Import the root and, if applicable, the intermediate public key certificate of registered API MLs running on systems Y and Z into the truststore of the API ML running on system X.
+1. Import the root and, if applicable, the intermediate public key certificate of registered "Domain APIML 2" , "Domain APIML 3" API MLs running on systems Y and Z into the truststore of the "Domain APIML 1" running on system X.
 
     - **PKCS12**
   
