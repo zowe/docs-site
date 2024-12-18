@@ -30,13 +30,13 @@ The following diagram illustrates communication between the API Mediation Layers
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
 
- As represented in the example diagram of Multitenacy environement where the APIMLs in Domain-2 to Domain-N are registered to APIML in Domain-1. The APIML in  Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
+ As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in  Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
 
-The APIMLs in Domain-2 to Domain-N are installled on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to APIML in Domain-1.
+The APIMLs in Domain(2-N) are installled on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to APIML in Domain-1.
 
 ## Multitenancy component enablement settings
 
-In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (APIML in Domain-1 in our example diagram) that handles the discovery and registration as well as routing to the other API MLs (APIMLs in Domain-2 to Domain-N in our example diagram) installed in any other specific domains. 
+In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (APIML in Domain-1 in our example diagram) that handles the discovery and registration as well as routing to the other API MLs (APIMLs in Domain(2-N) in our example diagram) installed in any other specific domains. 
 
 ## Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain
 
@@ -47,7 +47,7 @@ A Gateway from any domain can onboard Gateways of any domains. This service onbo
 
 ### Dynamic configuration via zowe.yaml 
 
-1. Set the following property for the Gateway of APIMLs in Domain-2 to Domain-N to dynamically onboard to the Discovery service of API ML in Domain-1.
+1. Set the following property for the Gateway of APIMLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1.
 
     `components.gateway.apiml.service.additionalRegistration`
 
@@ -57,7 +57,7 @@ A Gateway from any domain can onboard Gateways of any domains. This service onbo
     ```
     components.gateway.apiml.service.additionalRegistration:
         # APIML in Domain-1 (in HA, for non-HA mode use only 1 hostname)
-        - discoveryServiceUrls: https://sys1:   {discoveryServicePort}/eureka/,https://sys2:    {discoveryServicePort}/eureka/
+        - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
     ```
 
     :::note Notes:
@@ -107,7 +107,7 @@ This Zowe configuration transforms the zowe.yaml configuration file into the env
 
 ### Validating successful configuration
 
-The corresponding Gateway service(domain 2-N) should appear in the Eureka console of the Discovery service in the domain-1 API ML. 
+The corresponding Gateway service in domain(2-N) should appear in the Eureka console of the Discovery service in the domain-1 API ML. 
 
 To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Discovery service in domain-1 API ML:
 
@@ -117,7 +117,7 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 
 ## Establishing a trust relationship between the API MLs
 
-For routing to work in a multitenancy configuration, as given in the example daigram where "Domain APIML 2", "Domain APIML 3" are registered to "Domain APIML 1", the "Domain APIML 1" must trust the "Domain APIML 2", "Domain APIML 3" for successful registration into the it's Discovery Service component.
+For routing to work in a multitenancy configuration, as represented in the example daigram above where "Domain APIML 2", "Domain APIML 3" are registered to "Domain APIML 1", the "Domain APIML 1" must trust the "Domain APIML 2", "Domain APIML 3" for successful registration into the it's Discovery Service component.
 The "Domain APIML 2", "Domain APIML 3" must trust the "Domain APIML 1" Gateway where they are registed to, to accept routed requests.
 It is necessary that the root and, if applicable, intermediate public certificates be shared between the these domain API Mediation Layers. 
 
