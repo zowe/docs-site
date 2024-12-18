@@ -30,7 +30,7 @@ The following diagram illustrates communication between the API Mediation Layers
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
 
- As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in  Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
+ As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
 
 The APIMLs in Domain(2-N) are installled on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to APIML in Domain-1.
 
@@ -76,7 +76,7 @@ Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certif
 
     ```
     components.gateway.apiml.security.x509:
-        # gateway port 
+        # gateway port in domain-1 
         certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
     ```
 
