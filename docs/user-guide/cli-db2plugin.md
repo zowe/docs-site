@@ -168,55 +168,77 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 After you install the plug-in, create a Db2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed.
 
-Specify your plug-in profile and connection details in the `zowe.config.json` configuration file.  You will need to know the IP address and port number of the Db2 database, as well as the eight character database schema name.  These are available using `-DISPLAY DDF` as well as in the JES spool for the Db2 MSTR address space by searching for the message ID `DSNL004I`.
+Add your plug-in profile and connection details to the `zowe.config.json` configuration file. In the profile, enter the IP address and port number of the Db2 database, as well as the eight-character database schema name.
 
-#### Example of how to read the DSNL004I message
+:::tip
+You can get your connection information by either:
 
-In the example below,  the `DOMAIN` attribute specifies the value for the CLI `host:`, of `domain.host.acme.com` . The `TCPPORT` is the `port:` of `40100` , or if a TLS certificate is being used choose the `SECPORT` value of `30100` instead. The `LOCATION` value of `DSNV123E` is the property to use in the `database:` value.  On your Db2 MSTR address space the values will be different.  
+- Issuing the `-DISPLAY DDF` command
+- Searching for the message ID `DSNL004I` in the JES spool for the Db2 MSTR address space
 
-```
-DSNL004I  #DI2E DDF START COMPLETE  025        
-           LOCATION  DSNV123E                  
-           LU        GBIBMIYA.IYCYZDBE         
-           GENERICLU -NONE                     
-           DOMAIN    domain.host.acme.com  
-           TCPPORT   40100                     
-           SECPORT   30100
-```
+    Example of how to read the `DSNL004I` message with example values:
+
+
+
+    ```
+    DSNL004I  #DI2E DDF START COMPLETE  025        
+            LOCATION  DSNV123E                  
+            LU        GBIBMIYA.IYCYZDBE         
+            GENERICLU -NONE                     
+            DOMAIN    domain.host.acme.com  
+            TCPPORT   40100                     
+            SECPORT   30100
+    ```
+        - `DOMAIN`<br/>
+            Specifies the value for the CLI host. 
+        - `TCPPORT`<br/>
+            Specifies the port number.
+        - `SECPORT`<br/>
+            If a TLS certificate is being used, specifies the secure port.
+        - `LOCATION`<br/>
+            Specifies the property to use in the `database` value.
+:::
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in and then issue a command, the command creates an entry for a `db2 profile` in your `zowe.config.json` file.
-
-Alternatively, you can create a Db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
+You can issue commands to create a Db2 profile, or you can manually edit your configuration file to add a profile.
 
 #### Creating a Db2 profile with a command
 
-1.  Install the IBM Db2 Database Plug-in for Zowe CLI.
-2.  Create a Db2 profile:
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in and then issue a command, the command creates an entry for a `db2 profile` in your `zowe.config.json` file.
+
+To create a Db2 profile with a command:
+
+1. Install the IBM Db2 Database Plug-in for Zowe CLI.
+
+2. Create a Db2 profile:
 
     ```
     zowe config init
     ```
-3.  Set the port number to the port configured for a Db2 connection on your mainframe.
+
+3. Set the port number to the port configured for a Db2 connection on your mainframe.
 
     ```
     zowe config set profiles.db2.properties.port <port number>
     ```
 
-    - `<port number>`
-
+    - `<port number>`<br/>
       Specifies the port number for the instance.
+
 4. If an SSL file is available, set the `sslFile` value to SSL file path:
 
     ```
     zowe config set profiles.db2.properties.sslFile <SSL file path>
     ```
+
     You can now use your profile when you issue commands in the Db2 command group.
 
 #### Creating a Db2 profile manually
 
-1.  Install the Db2 Plug-in for Zowe CLI.
+To create a Db2 profile manually by adding a section that contains the configuration details in your `zowe.config.json` configuration file:
+
+1. Install the Db2 Plug-in for Zowe CLI.
 
 2. Browse to the directory `C:\Users\<username>\.zowe`.
 
