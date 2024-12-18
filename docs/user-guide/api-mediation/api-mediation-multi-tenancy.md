@@ -2,26 +2,27 @@
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
 
-* [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
-* [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
-* [Onboarding a Domain Gateway service to Discovery service in the Central API ML](#onboarding-a-domain-gateway-service-to-the-discovery-service-in-central-api-ml)
-    * [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
-    * [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
-    * [Validating successful configuration](#validating-successful-configuration)
-* [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
-  * [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
-* [Using the `/registry` endpoint in Gateway in the Central API ML](#using-the-registry-endpoint-in-the-gateway)
-  * [Configuration for `/registry`](#configuration-for-registry)
-  * [Authentication for `/registry`](#authentication-for-registry)
-  * [Authorization with `/registry`](#authorization-with-registry)
-  * [Requests with `/registry`](#requests-with-registry)
-  * [Response with `/registry`](#response-with-registry)
-  * [Response with `/registry{apimlId}`](#response-with-registryapimlid)
-  * [Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`](#response-with-get-gatewayapiv1registryapimlidapiidapiidserviceidserviceid)
-* [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
-* [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
-  * [ZWESG100W](#zwesg100w)
-  * [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
+- [Multitenancy Configuration](#multitenancy-configuration)
+  - [Overview of Central and Domain API MLs](#overview-of-central-and-domain-api-mls)
+  - [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
+  - [Onboarding a Domain Gateway service to the Discovery service in Central API ML](#onboarding-a-domain-gateway-service-to-the-discovery-service-in-central-api-ml)
+    - [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
+    - [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
+    - [Validating successful configuration](#validating-successful-configuration)
+  - [Establishing a trust relationship between Domain API ML and Central API ML](#establishing-a-trust-relationship-between-domain-api-ml-and-central-api-ml)
+    - [Commands to establish trust between Domain and Central API MLs](#commands-to-establish-trust-between-domain-and-central-api-mls)
+  - [Using the `/registry` endpoint in the Gateway](#using-the-registry-endpoint-in-the-gateway)
+    - [Configuration for `/registry`](#configuration-for-registry)
+    - [Authentication for `/registry`](#authentication-for-registry)
+    - [Authorization with `/registry`](#authorization-with-registry)
+    - [Requests with `/registry`](#requests-with-registry)
+    - [Response with `/registry`](#response-with-registry)
+    - [Response with `/registry{apimlId}`](#response-with-registryapimlid)
+    - [Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`](#response-with-get-gatewayapiv1registryapimlidapiidapiidserviceidserviceid)
+  - [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
+  - [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
+    - [ZWESG100W](#zwesg100w)
+    - [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
 
 ## Overview of Central and Domain API MLs
 
@@ -496,7 +497,7 @@ Cannot receive information about services on API Gateway with apimlId 'apiml1' b
 Cannot connect to the Gateway service. 
 
 **Action**  
-Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate
+Make sure that the external Gateway service is running and the truststore of the both Gateways contains the corresponding certificate.
 
 ### No debug messages similar to apiml1 completed with onComplete are produced
 
