@@ -15,12 +15,6 @@ const data = [
       </>
     ),
   },
-  {
-    title: "Try Zowe",
-    link: "https://www.openmainframeproject.org/projects/zowe/ztrial",
-    icon: "img/try_zowe-icon.png",
-    description: <>Get your hands on a Zowe trial on demand at no charge.</>,
-  },
 ];
 
 function Resource({ title, link, icon, description }) {
