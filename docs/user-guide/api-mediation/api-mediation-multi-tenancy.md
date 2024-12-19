@@ -498,3 +498,9 @@ Cannot connect to the Gateway service.
 **Action**  
 Make sure that the external Gateway service is running and the truststore of the both Gateways contains the corresponding certificate.
 
+### No debug messages similar to apiml1 completed with onComplete are produced
+ **Reason**  
+ Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
+ 
+ **Action**  
+ Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
