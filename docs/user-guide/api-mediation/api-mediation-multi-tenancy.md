@@ -28,7 +28,7 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 The following diagram illustrates communication between the API Mediation Layers and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
 
-![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V2.svg)
+![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V3.svg)
 
  As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in Domain-1 is running may be on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
 
