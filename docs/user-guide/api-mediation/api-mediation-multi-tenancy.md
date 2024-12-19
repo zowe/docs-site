@@ -22,7 +22,7 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
   - [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
   - [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
     - [ZWESG100W](#zwesg100w)
-    - [No debug messages similar to apiml1 completed with onComplete are produced](#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
+   (#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
 
 ## Overview of API MLs 
 
@@ -30,7 +30,7 @@ The following diagram illustrates communication between the API Mediation Layers
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V3.svg)
 
- As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in Domain-1 may be running on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs .
+ As represented in the example diagram of Multitenacy environement where the APIMLs in Domain(2-N) are registered to APIML in Domain-1. The APIML in Domain-1 may be running on z/OS, or off z/OS, for example in Kubernetes, this API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs.
 
 The APIMLs in Domain(2-N) are installed on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to APIML in Domain-1.
 
@@ -117,9 +117,9 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 
 ## Establishing a trust relationship between the API MLs
 
-For routing to work in a multitenancy configuration, as represented in the example daigram above where "Domain APIML 2", "Domain APIML 3" are registered to "Domain APIML 1", the "Domain APIML 1" must trust the "Domain APIML 2", "Domain APIML 3" for successful registration into the it's Discovery Service component.
-The "Domain APIML 2", "Domain APIML 3" must trust the "Domain APIML 1" Gateway where they are registed to, to accept routed requests.
-It is necessary that the root and, if applicable, intermediate public certificates be shared between the these domain API Mediation Layers. 
+For routing to work in a multitenancy configuration, as represented in the example diagram above where "Domain APIML 2", "Domain APIML 3" are registered to "Domain APIML 1", the "Domain APIML 1" must trust the "Domain APIML 2", "Domain APIML 3" for successful registration into it's Discovery Service component.
+The "Domain APIML 2", "Domain APIML 3" must trust the "Domain APIML 1" Gateway where they are registered to, to accept routed requests.
+It is necessary that the root and, if applicable, intermediate public certificates be shared between these domain API Mediation Layers. 
 
 The following diagram shows the relationship between the API MLs. 
 
@@ -143,7 +143,7 @@ The diagram indicates all of the added certificates inside the red dashed lines.
 
 ### Commands to establish trust between the API MLs
 
-The following commands are examples of establishing a trust relationship between a API MLs in Multitenancy Configuration for both PKCS12 certificates and when using keyrings.
+The following commands are examples of establishing a trust relationship between API MLs in Multitenancy Configuration for both PKCS12 certificates and when using keyrings.
 
 1. Import the root and, if applicable, the intermediate public key certificate of registered "Domain APIML 2" , "Domain APIML 3" API MLs running on systems Y and Z into the truststore of the "Domain APIML 1" running on system X.
 
@@ -162,7 +162,7 @@ The following commands are examples of establishing a trust relationship between
 
     - **Keyring**
       
-      For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the domain-1 API ML:
+      For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
 
       <details>  
       <summary>Click here for command details for RACF. </summary>
@@ -498,9 +498,3 @@ Cannot connect to the Gateway service.
 **Action**  
 Make sure that the external Gateway service is running and the truststore of the both Gateways contains the corresponding certificate.
 
-### No debug messages similar to apiml1 completed with onComplete are produced
- **Reason**  
- Domain Gateway is not correctly onboarded to Discovery Service in Central API ML. 
- 
- **Action**  
- Review Gateway static definition. Check the Central Discovery Service dashboard if the domain Gateway is displayed. 
