@@ -61,14 +61,4 @@ The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59
 
 - [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/)
 
-  Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
-
-### Trials
-
-- [Zowe trial](https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1&mhsrc=ibmsearch_a&mhq=Zowe%20trial)
-
-   The Zowe trial hosted by IBM is a fully configured z/OS environment with Zowe preinstalled and set up along with a set of integrated easy-to-follow tutorials that walk you through the basics of Zowe and gives you hands-on experience of extending Zowe. This no-charge trial is available in two hours for three days.
-
-- [Get started with the Zowe Web UI](https://developer.ibm.com/components/ibmz/tutorials/zowe-step-by-step-tutorial/)
-
-   This online tutorial hosted by IBM guides you to add new apps to the Zowe Web UI. It provides a public hosted Zowe instance that allows you to perform the steps in a z/OS environment.
+  Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended.
