@@ -25,8 +25,7 @@ This is the lowest priority provider. This is the dummy implementation and is de
 Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the `native` provider. 
 :::
 
-You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. 
-If no value is assigned to Use the parameter value to
+You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
 strictly define a provider. If verification is disabled, select the `endpoint` option. 
 
 1. Open the file `zowe.yaml`.
@@ -37,7 +36,7 @@ strictly define a provider. If verification is disabled, select the `endpoint` o
 
 1. Native:
     `components.gateway.apiml.security.authorization.provider: native`
-    If you leave the property empty, this will be the default value.
+    If you leave the property empty, this will be the default value, even if you enable set `components.gateway.apiml.security.authorization.endpoint.enabled` to `true` (starting from version 3.1).
 2. Endpoint:
     `components.gateway.apiml.security.authorization.provider: endpoint`
 3. Dummy:
