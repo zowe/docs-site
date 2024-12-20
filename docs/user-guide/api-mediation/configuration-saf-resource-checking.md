@@ -10,20 +10,23 @@ API ML can check for the authorization of the user on certain endpoints. Access 
 
 Verification of the SAF resource is provided by the following three providers:
 
-- **`endpoint`**  
-This is the highest priority provider, such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS has the API to check for SAF   resource authorization.
-  
 - **`native`**  
-The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
-  
+  The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
+
+  **Note:** This provider cannot be used off-platform.
+
+- **`endpoint`**  
+The Endpoint provider relies on APIs such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS provides the API to check for SAF resource authorization.
+
 - **`dummy`**  
 This is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
 :::note
-Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the native provider. 
+Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the `native` provider. 
 :::
 
-You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
+You can select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. 
+If no value is assigned to Use the parameter value to
 strictly define a provider. If verification is disabled, select the `endpoint` option. 
 
 1. Open the file `zowe.yaml`.
@@ -31,23 +34,23 @@ strictly define a provider. If verification is disabled, select the `endpoint` o
 3. Restart Zowe.
 
 **Examples:**
-```
-components.gateway.apiml.security.authorization.endpoint.url: endpoint
-```
 
-To configure the `endpoint` provider, add the following additional property:
-`components.gateway.apiml.security.authorization.endpoint.enabled: true`
+1. Native:
+    `components.gateway.apiml.security.authorization.provider: native`
+    If you leave the property empty, this will be the default value.
+2. Endpoint:
+    `components.gateway.apiml.security.authorization.provider: endpoint`
+3. Dummy:
+    `components.gateway.apiml.security.authorization.provider: dummy`
 
-`components.gateway.apiml.security.authorization.provider: native`
-
-`components.gateway.apiml.security.authorization.provider: dummy`
-
-
-To use the endpoint provider, customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used. 
+To use the endpoint provider, you also need enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property `components.gateway.apiml.security.authorization.endpoint.url` and set desired value.
-   The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+2. Find or add the property:
+   - `components.gateway.apiml.security.authorization.provider: endpoint` 
+   - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
+   - `components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
+   In case you're using ZSS, the default value of the ZSS API to set to `components.gateway.apiml.security.authorization.endpoint.url` is https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
 3. Restart Zowe.
 
 ## REST endpoint call
