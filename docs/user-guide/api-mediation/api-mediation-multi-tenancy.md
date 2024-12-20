@@ -213,6 +213,7 @@ The following commands are examples of establishing a trust relationship between
       ```
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
+
       </details>
       
 2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
@@ -412,6 +413,7 @@ This response should contain information about all services in an APIML with the
     }
 ]
 ```
+
 </details>
 
 ### Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
@@ -445,6 +447,7 @@ This response should contain information about a specific service in an APIML wi
     }
 ]
 ```
+
 </details>
 
 ## Validating successful configuration with `/registry`
