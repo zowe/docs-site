@@ -161,9 +161,6 @@ The following commands are examples of establishing a trust relationship between
       
       For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
 
-      <details>  
-      <summary>Click here for command details for RACF. </summary>
-
       - **For RACF:**
       
       ```
@@ -213,8 +210,6 @@ The following commands are examples of establishing a trust relationship between
       ```
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
-
-      </details>
       
 2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
 
@@ -229,9 +224,6 @@ The following commands are examples of establishing a trust relationship between
   - **Keyring**
 
       For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
-
-      <details>
-      <summary>Click here for command details for RACF.</summary>
   
     - **For RACF:**
   
@@ -276,8 +268,6 @@ The following commands are examples of establishing a trust relationship between
       ```
       TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
       ```
-
-      </details>
 
 You completed certificates setup for multitenancy configuration, whereby registered API MLs can trust the API ML where they are registered and vice versa.
 
@@ -375,9 +365,6 @@ This request lists services in the APIML of the specific apimlId given.
 
 This response should contain information about all services in an APIML with the specific apimlId.
 
-<details>
-<summary>Click here for an example response with `/registry{apimlId}`.</summary>
-
 **Example:**
 
 * `GET /gateway/api/v1/registry/apiml2`
@@ -414,14 +401,9 @@ This response should contain information about all services in an APIML with the
 ]
 ```
 
-</details>
-
 ### Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`
 
 This response should contain information about a specific service in an APIML with the specific apimlId.
-
-<details>
-<summary>Click here for an example of a response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`. </summary>
 
 **Example:**
 
@@ -447,8 +429,6 @@ This response should contain information about a specific service in an APIML wi
     }
 ]
 ```
-
-</details>
 
 ## Validating successful configuration with `/registry`
 
