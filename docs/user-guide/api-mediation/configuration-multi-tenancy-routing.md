@@ -1,7 +1,8 @@
 # Configuring routing in a multi-tenant environment
 
-In addition to the domain-specific Discovery Service, which is typically in the same LPAR, in a multi-sysplex environment, where the API Gateway in APIML in one domain lets say "Domain APIML 2", may also need to register with the Discovery Service in API ML in domain any lets say "Domain APIML 1", which gathers information about all installed API Gateways
-in isolated sysplex environments. Data from the Discovery Service in the API ML "Domain APIML 1" can then be used by the Gateway in the APIML "Domain APIML 2" for routing to individual API Gateways.
+In a multi-sysplex environment, both the domain-specific Discovery Service as well as an additional Discovery service may require registration with the Discovery Service in the domain which gathers information about all installed API Gateways in isolated sysplex environments. 
+
+The domain-specific Discovery Service is typically in the same LPAR in a multi-sysplex environment. However, the API Gateway in API ML in one domain (for example in Domain API ML 2) may also need to register with the API ML Discovery Service in a separate domain (for example in Domain API ML 1), which gathers information about all installed API Gateways in isolated sysplex environments. After registration, data from the Discovery Service in Domain API ML 1 can be used by the Gateway in Domain API ML 2 for routing to individual API Gateways.
 
 Follow these steps to register with additional Discovery Services:
 
