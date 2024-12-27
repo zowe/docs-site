@@ -46,7 +46,7 @@ strictly define a provider. If verification is disabled, select the `endpoint` o
 To use the endpoint provider, you also need to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
-2. Find or add the folowing properties:
+2. Find or add the following properties:
    - `components.gateway.apiml.security.authorization.provider: endpoint` 
    - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
    - `components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
@@ -107,11 +107,12 @@ The following YAML presents the structure of the file:
 
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
-- The load method does not support formatting with periods `.`, such as shown in the following example:
+- The load method does not support formatting with periods (`.`), such as shown in the following example:  
+  
   **Example:** `{CLASS}.{RESOURCE}`
-  Ensure that each element is separated.
+- Ensure that each element is separated.
 - The field `safAccess` is not required to define an empty file without a definition.
 - Classes and resources cannot be defined without the user ID list.
-- When a user has multiple definitions of the same class and resource, only the most privileged access level loads.
+- When a user has multiple definitions of the same class and resource only the most privileged access level loads.
 
 
