@@ -23,7 +23,7 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
   - [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
     - [ZWESG100W](#zwesg100w)
    (#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
-   
+
 ## Overview of API MLs 
 
 The following diagram illustrates communication between the API Mediation Layers and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
@@ -389,7 +389,7 @@ This request lists services in the APIML of the specific apimlId given.
 This response should contain information about all services in an API ML with the specific apimlId.
 
 <details>
-<summary>Click here for an example of a response with /registry{apimlId}</summary>
+<summary>Click here for an example response </summary>
 
 **Example:**
 
@@ -434,7 +434,7 @@ This response should contain information about all services in an API ML with th
 This response should contain information about a specific service in an APIML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response with GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}</summary>
+<summary>Click here for an example response </summary>
 
 **Example:**
 
