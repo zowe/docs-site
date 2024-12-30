@@ -2,6 +2,28 @@
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
 
+- [Multitenancy Configuration](#multitenancy-configuration)
+  - [Overview of API MLs](#overview-of-api-mls)
+  - [Multitenancy component enablement settings](#multitenancy-component-enablement-settings)
+  - [Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain](#onboarding-a-gateway-service-in-one-domain-to-the-discovery-service-of-api-ml-in-another-domain)
+    - [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
+    - [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
+    - [Validating successful configuration](#validating-successful-configuration)
+  - [Establishing a trust relationship between the API MLs](#establishing-a-trust-relationship-between-the-api-mls)
+    - [Commands to establish trust between the API MLs](#commands-to-establish-trust-between-the-api-mls)
+  - [Using the `/registry` endpoint in the Gateway](#using-the-registry-endpoint-in-the-gateway)
+    - [Configuration for `/registry`](#configuration-for-registry)
+    - [Authentication for `/registry`](#authentication-for-registry)
+    - [Authorization with `/registry`](#authorization-with-registry)
+    - [Requests with `/registry`](#requests-with-registry)
+    - [Response with `/registry`](#response-with-registry)
+    - [Response with `/registry{apimlId}`](#response-with-registryapimlid)
+    - [Response with `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`](#response-with-get-gatewayapiv1registryapimlidapiidapiidserviceidserviceid)
+  - [Validating successful configuration with `/registry`](#validating-successful-configuration-with-registry)
+  - [Troubleshooting multitenancy configuration](#troubleshooting-multitenancy-configuration)
+    - [ZWESG100W](#zwesg100w)
+   (#no-debug-messages-similar-to-apiml1-completed-with-oncomplete-are-produced)
+   
 ## Overview of API MLs 
 
 The following diagram illustrates communication between the API Mediation Layers and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
