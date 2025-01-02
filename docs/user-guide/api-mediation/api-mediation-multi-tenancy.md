@@ -8,7 +8,7 @@ The following diagram illustrates communication between the API Mediation Layers
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V3.svg)
 
-As represented in the diagram of Multitenacy environement where the API MLs in Domain(2-N) are registered to API ML in Domain-1. The API ML in Domain-1 may be running on z/OS, or off z/OS, for example in Kubernetes. This API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs.
+The diagram illustrates a Multitenacy environment where the API MLs in Domain(2-N) are registered to API ML in Domain-1. The API ML in Domain-1 may be running on z/OS, or off z/OS, for example in Kubernetes. This API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs.
 
 The API MLs in Domain(2-N) are installed on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to API ML in Domain-1.
 
@@ -18,14 +18,14 @@ In the multitenancy environment, certain Zowe components may be enabled, while o
 
 ## Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain
 
-A Gateway from any domain can onboard Gateways of any other domains. This service onboarding can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+A Gateway from any domain can onboard Gateways of any other domains. Onboarding this service can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
 
 - [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
 - [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
 
 ### Dynamic configuration via zowe.yaml 
 
-1. In zowe.yml, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1.
+1. In zowe.yml, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1:
 
 `components.gateway.apiml.service.additionalRegistration`
 
@@ -43,14 +43,14 @@ components.gateway.apiml.service.additionalRegistration:
 
   * We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
-  * Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
+  * Always provide the direct address to the system. Do not use the DVIPA address. Using this DVIPA address could lead to unexpected behaviour.
 
   * Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
 
 2. (Optional) Configure the Gateway to forward client certificates.   
 Use this step to enable the domain(2-N) Gateway to use this client certificate for authentication.  
-Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the gateway.
+Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
 ```
 components.gateway.apiml.security.x509:
@@ -70,9 +70,10 @@ ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
 ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
 ```
 
+* **#**  
+`#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*` specifies the ID of API ML instance.
+
 :::note Notes:
-  * The number in the properties names (see position of `#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*`)
-  defines ID of API ML instance.
 
   * Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
   single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
@@ -98,6 +99,7 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 ## Establishing a trust relationship between the API MLs
 
 For routing to work in a multitenancy configuration, as represented in the previous diagram where "Domain API ML 2" and "Domain API ML 3" are registered to "Domain API ML 1", "Domain API ML 1" must trust  "Domain API ML 2" and "Domain API ML 3". This trust is required for successful registration into the Discovery Service component of Domain API ML 1.
+
 To accept routed requests, "Domain API ML 2" and "Domain API ML 3" must trust the "Domain API ML 1" Gateway where Domains API ML 2 and 3 are registered to.
 It is necessary that the root and, if applicable, intermediate public certificates are shared between these domain API Mediation Layers. 
 
@@ -105,7 +107,7 @@ The following diagram shows the relationship between the API MLs.
 
 ![Trust relation diagram](./diagrams/mt-trust-relations.png)
 
-As presented in this example diagram, The API MLs are installed on systems X, Y and Z.
+As illustrated in this example diagram, The API MLs are installed on systems X, Y, and Z.
 
 To establish secure communications, "Domain API ML 2" and "Domain API ML 3" use different private keys signed with different public keys. These API MLs do not trust each other.
 
@@ -114,9 +116,9 @@ In multitenancy set up, in order for all API MLs to register with "Domain API ML
 * DigiCert Root CA1
 * DigiCert CA
 
-These public keys are required for the "Domain API ML 1" to establish trust with "Domain API ML 2" and "Domain APIML 3". 
+These public keys are required for the "Domain API ML 1" to establish trust with "Domain API ML 2" and "Domain API ML 3". 
 
-"Domain APIML 1" uses a private key which is signed by the local CA public key for secure communication. 
+"Domain API ML 1" uses a private key which is signed by the local CA public key for secure communication. 
 
 "Domain API ML 2" and "Domain API ML 3" require a local CA public key to accept routing requests from "Domain API ML 1". Without these local CA public keys "Domain API ML 1" requests will not be trusted by the registered API MLs.
 All added certificates are indicated in the diagram inside the red dashed lines.
@@ -251,7 +253,7 @@ The following commands are examples of establishing a trust relationship between
     </details>
 
     <details>
-    <summary>Click here for command details for Top Secret</summary>
+    <summary>Click here for command details for Top Secret.</summary>
 
     - **For Top Secret:**
   
@@ -297,14 +299,14 @@ Unsuccessful authorization returns a 403 error code.
 
 There are two endpoints that provide information about services registered to the API ML. One endpoint is for all APIMLs, and the other endpoint is for the specific APIML. Choose from the following **GET** calls:
 
-* `GET /gateway/api/v1/registry`  
-This request lists services in all APIMLs.
+* **`GET /gateway/api/v1/registry`**  
+This request lists services in all API MLs.
 
-* `GET /gateway/api/v1/registry/{apimlId}`  
-This request lists services in the APIML of the specific apimlId given.
+* **`GET /gateway/api/v1/registry/{apimlId}`**  
+This request lists services in the API ML of the specific apimlId given.
 
-* `GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`  
-  This request gets the specific service from the APIML in the specific apimlId.
+* **`GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}`**  
+  This request gets the specific service from the API ML in the specific apimlId.
 
 ### Response with `/registry`
 
@@ -367,7 +369,7 @@ This request lists services in the APIML of the specific apimlId given.
 This response should contain information about all services in an API ML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response </summary>
+<summary>Click here for an example of a response with /registry{apimlId}</summary>
 
 **Example:**
 
@@ -412,7 +414,7 @@ This response should contain information about all services in an API ML with th
 This response should contain information about a specific service in an APIML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response </summary>
+<summary>Click here for an example response with GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}</summary>
 
 **Example:**
 
