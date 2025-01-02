@@ -38,7 +38,7 @@
 
 2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
+   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://drive.google.com/file/d/1wbxR-vuXT98XQ4mDb1DyDzQRcCDt5HlU/view?usp=sharing) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
 
 ### Zowe Application Framework, ZSS
 
@@ -84,7 +84,7 @@
 
 3. Can you speak about the migration from Zuul to Spring Cloud Gateway? Today there are two separate gateway services in API ML with separate configurations.
 
-   In Zowe V3, Spring Cloud Gateway has replaced Zuul as the technology to provide the API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the central gateway and move this configuration from `components.cloud-gateway` to `components.gateway`.
+   Spring Cloud Gateway is replacing Zuul as the technology to provide the API Gateway. The configuration for the API Gateway remains in the `components.gateway` namespace. If you were using Spring Cloud Gateway in V2 for the multi-tenancy scenario, you need to update the configuration for the Central Gateway (referred as Gateway from v3 onwards) and move this configuration from `components.cloud-gateway` to `components.gateway`.
 
 4. If I have a legacy gateway deployed, how will I migrate to the new gateway? Will the old gateway be removed?
 
