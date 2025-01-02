@@ -38,7 +38,7 @@
 
 2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
+   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://drive.google.com/file/d/1wbxR-vuXT98XQ4mDb1DyDzQRcCDt5HlU/view?usp=sharing) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
 
 ### Zowe Application Framework, ZSS
 
