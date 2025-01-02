@@ -369,7 +369,7 @@ This request lists services in the API ML of the specific apimlId given.
 This response should contain information about all services in an API ML with the specific apimlId.
 
 <details>
-<summary>Click here for an example of a response with /registry{apimlId}</summary>
+<summary>Click here for an example response</summary>
 
 **Example:**
 
@@ -414,7 +414,7 @@ This response should contain information about all services in an API ML with th
 This response should contain information about a specific service in an APIML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response with GET /gateway/api/v1/registry/{apimlId}?apiId={apiId}&serviceId={serviceId}</summary>
+<summary>Click here for an example response</summary>
 
 **Example:**
 
