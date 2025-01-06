@@ -25,49 +25,49 @@ See the following topics for detailed information about how to use the API Media
 
 Three authentication methods can be used with single sign on:
 
-* [Authenticating with a JWT token](../authenticating-with-jwt-token)
-* [Authenticating with client certificates](../authenticating-with-client-certificates)
-* [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token)
+* [Authenticating with a JWT token](../authenticating-with-jwt-token.md)
+* [Authenticating with client certificates](../authenticating-with-client-certificates.md)
+* [Authenticating with a Personal Access Token](./authenticating-with-personal-access-token.md)
 
 ### Using multi-factor authentication
 
-User identity verification can be performed by using multi-factor authentication. For more information, see [Using multi-factor authentication (MFA)](./using-multi-factor-authentication).
+User identity verification can be performed by using multi-factor authentication. For more information, see [Using multi-factor authentication (MFA)](./using-multi-factor-authentication.md).
 
 ### API Routing
 
 Various routing options can be used for APIs when using API Mediation Layer:
 
-* [Routing requests to REST APIs](./routing-requests-to-rest-apis)
-* [Routing with WebSickets](../routing-with-websockets)
-* [Using GraphQL APIs](use-graphql-api)
-* [MultiTenancy Configuration](./api-mediation-multi-tenancy)
+* [Routing requests to REST APIs](./routing-requests-to-rest-apis.md)
+* [Routing with WebSickets](../routing-with-websockets.md)
+* [Using GraphQL APIs](use-graphql-api.md)
+* [MultiTenancy Configuration](./api-mediation-multi-tenancy.md)
 
 ### Learning more about APIs 
 
 API Mediation Layer makes it possible to view API information is a variety of ways:
 
-* [Obtaining information about API Services](../obtaining-information-about-api-services)
-* [Using Swagger "Try it out" in the API Catalog](../api-mediation-swagger-try-it-out)
-* [Using Swagger Code Snippets in the API Catalog](../api-mediation-swagger-code-snippets)
+* [Obtaining information about API Services](../obtaining-information-about-api-services.md)
+* [Using Swagger "Try it out" in the API Catalog](../api-mediation-swagger-try-it-out.md)
+* [Using Swagger Code Snippets in the API Catalog](../api-mediation-swagger-code-snippets.md)
 
 ### Administrating APIs
 
-* [Using Static API services refresh in the API Catalog](../api-mediation-static-api-refresh)
-* [Onboarding a REST API service with the YAML Wizard](../onboard-wizard)
+* [Using Static API services refresh in the API Catalog](../api-mediation-static-api-refresh.md)
+* [Onboarding a REST API service with the YAML Wizard](../onboard-wizard.md)
 
 ### Using the Caching Service
 
-As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. For details, see [Using the Caching service](./api-mediation-caching-service).
+As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. For details, see [Using the Caching service](./api-mediation-caching-service.md).
 
 ### Using API Catalog
 
 There are various options for using the API Catalog:
 
-* [Viewing Service Information abd API Documentation in the API Catalog](../api-mediation-view-service-information-and-api-doc)
-* [Changing an expired password via API Catalog](../api-mediation-change-password-via-catalog)
+* [Viewing Service Information abd API Documentation in the API Catalog](../api-mediation-view-service-information-and-api-doc.md)
+* [Changing an expired password via API Catalog](../api-mediation-change-password-via-catalog.md)
 
 ### Additional use case when usig API Mediation Layer
 
-* [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service)
-* [SMF records](./api-mediation-smf)
+* [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service.md)
+* [SMF records](./api-mediation-smf.md)
 

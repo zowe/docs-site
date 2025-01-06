@@ -13,16 +13,19 @@ In the current implementation of the Caching Service, Infinispan is recommended 
 
 The Caching Service is available only for internal Zowe applications, and is not exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
 
-- [Architecture](#architecture)
-- [Storage methods](#storage-methods)
-  - [Infinispan](#infinispan-recommended)
-  - [VSAM](#vsam-deprecated)
-  - [Redis](#redis)
-  - [InMemory](#inmemory)
-- [How to start the service](#how-to-start-the-service)
-- [Methods to use the Caching service API](#methods-to-use-the-caching-service-api)
-- [Configuration properties](#configuration-properties)
-- [Authentication](#authentication)
+- [Using the Caching Service](#using-the-caching-service)
+  - [Architecture](#architecture)
+  - [Storage methods](#storage-methods)
+    - [Infinispan (recommended)](#infinispan-recommended)
+    - [VSAM (deprecated)](#vsam-deprecated)
+    - [Redis](#redis)
+    - [InMemory](#inmemory)
+  - [How to start the Service](#how-to-start-the-service)
+  - [Methods to use the Caching Service API](#methods-to-use-the-caching-service-api)
+  - [Configuration properties](#configuration-properties)
+  - [Authentication](#authentication)
+    - [Direct calls](#direct-calls)
+    - [Routed calls through API Gateway](#routed-calls-through-api-gateway)
 
 ## Architecture
 
@@ -117,8 +120,8 @@ This parameter specifies service behavior when the limit of records is reached. 
 
 :::note
 - For more information about how to configure the Caching Service in the `application.yml`, see
- [Add API Onboarding Configuration](../../extend/extend-apiml/onboard-spring-boot-enabler).
-- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam).
+ [Add API Onboarding Configuration](../../extend/extend-apiml/onboard-spring-boot-enabler.md).
+- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam.md).
 :::
 
 ## Authentication

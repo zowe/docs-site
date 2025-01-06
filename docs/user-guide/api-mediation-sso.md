@@ -11,9 +11,11 @@ This article provides an overview of the API ML single sign on feature, the prin
 Currently, API ML can provide SSO only in a single security domain.
 :::
 
-- [Zowe API ML client](#zowe-api-ml-client)
-- [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
-- [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
+- [Zowe API Mediation Layer Single Sign On Overview](#zowe-api-mediation-layer-single-sign-on-overview)
+    - [Zowe API ML client](#zowe-api-ml-client)
+    - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
+    - [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
+  - [Further resources](#further-resources)
 
 The following diagram describes the interactions between the general participants in the single sign on process. 
 
@@ -51,7 +53,7 @@ This section describes the requirements that an API service needs to satisfy to 
 * The alternative is to validate the signature of the JWT token using the public key of the token issuer (e.g. the API ML Gateway). The API service needs to have the API ML Gateway certificate along with the full CA certification chain in the API service truststore. 
 
 :::note
-The REST API of ZAAS can easily be called from a Java application using the [ZAAS Client](../extend/extend-apiml/zaas-client).
+The REST API of ZAAS can easily be called from a Java application using the [ZAAS Client](../extend/extend-apiml/zaas-client.md).
 :::
 
 ### Existing services that cannot be modified
@@ -62,7 +64,7 @@ For more information, see [Enabling single sign on for extending services via Pa
 
 ## Further resources
 
-* [User guide for SSO in Zowe CLI](./cli-using-integrating-apiml/#accessing-multiple-services-with-sso)
-* [System requirements for using web tokens for SSO in Zlux and ZSS](./systemrequirements)
+* [User guide for SSO in Zowe CLI](./cli-using-integrating-apiml.md#accessing-multiple-services-with-sso)
+* [System requirements for using web tokens for SSO in Zlux and ZSS](./systemrequirements.md)
 
 
