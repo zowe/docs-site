@@ -27,7 +27,7 @@ Verification of the SAF resource uses the first available provider based on the 
 :::
 
 Select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
-strictly define a provider. If verification is disabled, select the `endpoint` option. 
+strictly define a provider.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.security.authorization.provider` and set desired value.
@@ -49,10 +49,14 @@ To use the endpoint provider, you also need to enable the endpoint property and 
 2. Find or add the following properties:
    - `components.gateway.apiml.security.authorization.provider: endpoint` 
    - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
-   - `components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
+   - (Optional)`components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
   
    When using ZSS, the default value the property
-   `components.gateway.apiml.security.authorization.endpoint.url` is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+   `components.gateway.apiml.security.authorization.endpoint.url` is `https://<haInstance_hostname>:<gateway_port>/zss/api/v1/saf-auth`
+   - **haInstance_hostname**
+     Zowe instance hostname from the configuration.
+   - **gateway_port**
+     Gateway port from the configuration.
    
 3. Restart Zowe.
 
