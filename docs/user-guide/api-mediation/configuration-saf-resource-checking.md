@@ -47,7 +47,7 @@ Ensure that the version of Java on your system has the same version of classes a
 
 ### Setting the endpoint provider to perform SAF resouce check
 
-To use the endpoint provider it is also necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
+To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the following properties and their corresponding values:
@@ -58,10 +58,10 @@ To use the endpoint provider it is also necessary to enable the endpoint propert
    When using ZSS, the default value of the property
    `components.gateway.apiml.security.authorization.endpoint.url` is `https://<haInstance_hostname>:<gateway_port>/zss/api/v1/saf-auth`
 
-   - **haInstance_hostname**
-     Specifies the Zowe instance hostname from the configuration
-   - **gateway_port**
-     Specifies the Gateway port from the configuration
+   - **haInstance_hostname**  
+     Specifies the Zowe instance hostname from the configuration.
+   - **gateway_port**  
+     Specifies the Gateway port from the configuration.
    
 3. Restart Zowe.
 
@@ -89,6 +89,10 @@ The following YAML presents the structure of the file:
       {RESOURCE}:
         - {UserID}
 ```
+- **CLASS**  
+  Name of the SAF class.
+- **RESOURCE**  
+  Name of the SAF resource.
 
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
