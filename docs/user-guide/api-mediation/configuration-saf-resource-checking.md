@@ -25,6 +25,7 @@ dummy is the lowest priority provider. This is the dummy implementation and is d
 :::note
 Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the **native** provider. 
 :::
+### Setting your SAF resource checking provider 
 
 Select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
 strictly define a provider.
@@ -43,42 +44,7 @@ strictly define a provider.
 * **Dummy**
     `components.gateway.apiml.security.authorization.provider: dummy`
 
-To use the endpoint provider, you also need to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
-
-1. Open the file `zowe.yaml`.
-2. Find or add the following properties:
-   - `components.gateway.apiml.security.authorization.provider: endpoint` 
-   - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
-   - (Optional)`components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
-  
-   When using ZSS, the default value the property
-   `components.gateway.apiml.security.authorization.endpoint.url` is `https://<haInstance_hostname>:<gateway_port>/zss/api/v1/saf-auth`
-   - **haInstance_hostname**
-     Zowe instance hostname from the configuration.
-   - **gateway_port**
-     Gateway port from the configuration.
-   
-3. Restart Zowe.
-
-## REST endpoint call
-
-The REST provider calls the external API to retrieve information about access rights. To enable the feature outside of the mainframe, for example when running in Docker, you can use a REST endpoint call using the `GET` method:
-
-- Method: `GET`
-- URL: `{base path}/{userId}/{class}/{entity}/{level}`
-- Response:
-  ```json5
-      {
-          "authorized": "{true|false}",
-          "error": "{true|false}",
-          "message": "{message}"
-      }
-  ```
-:::note
-For more information about this REST endpoint call, see [ZSS implementation](https://github.com/zowe/zss/blob/master/c/authService.c).
-:::
-
-### Native
+### Setting the native provider to perform SAF resource check (Default setting) 
 
 The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
 
@@ -89,11 +55,31 @@ are available on the classpath. This approach uses the method described in [Clas
 Ensure that the version of Java on your system has the same version of classes and method signatures.
 :::
 
-### Dummy implementation
+### Setting the endpoint provider to perform SAF resouce check
+
+To use the endpoint provider, you also need to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
+
+1. Open the file `zowe.yaml`.
+2. Find or add the following properties:
+   - `components.gateway.apiml.security.authorization.provider: endpoint` 
+   - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
+   - (Optional)`components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
+  
+   When using ZSS, the default value the property
+   `components.gateway.apiml.security.authorization.endpoint.url` is `https://<haInstance_hostname>:<gateway_port>/zss/api/v1/saf-auth`
+
+   - **haInstance_hostname**
+     Zowe instance hostname from the configuration.
+   - **gateway_port**
+     Gateway port from the configuration.
+   
+3. Restart Zowe.
+
+###  Setting the dummy provider to perform SAF resource check
 
 Use the Dummy provider for testing purpose outside of the mainframe.
 
-1. In the folder where the application is running, create the file `saf.yml`. Alternatively, you can  create the file `mock-saf.yml` in the
+In the folder where the application is running, create the file `saf.yml`. Alternatively, you can  create the file `mock-saf.yml` in the
 test module (root folder). 
 
 :::caution Important:
