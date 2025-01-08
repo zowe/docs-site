@@ -33,7 +33,7 @@ Configure Zowe and your z/OS system to run Zowe with z/OS.
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 |[Review Configuring security](./configuring-security.md) | Knowledge about which tasks need to be performed by the security administrator. | 10 minutes|
-[Initialize Zowe security configurations](./initialize-security-configuration) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
+[Initialize Zowe security configurations](./configuring-security.md) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
 [Perform APF authorization of load libraries](./apf-authorize-load-library.md) | APF authorization is granted to load libraries.  | 10 minutes  | 
 [Address z/OS requirements for Zowe](./configure-zos-system.md) | Your z/OS and security product are configured.  | 2 hours  |
 [Assign security permissions to users](./assign-security-permissions-to-users.md) | Zowe user is created and is assigned all required permissions.  | 30 minutes |
@@ -82,7 +82,7 @@ You can configure your system to enable HA. This configuration is not required t
 | Verification Step | Task | Results | Time Estimate | 
 |----|-----------|----|-------------|
 | [Verify Zowe Application Framework installation](../user-guide/verify-zowe-runtime-install.md#verifying-zowe-application-framework-installation) | Open the Zowe Desktop from a supported browser | You should be able to open the Zowe Desktop from a supported browser. | 20 minutes| 
-| [Verify API Mediation installation](../user-guide/verify-zowe-runtime-install.md#verifying-api-mediation-installation) |Use a REST API client to review the value of the status variable of the API Catalog service routed through the API Gateway | See the example presented in Verify API Mediation installation | 15 minutes |
+| [Verify API Mediation installation](../user-guide/verify-zowe-runtime-install.md#verifying-api-mediation-layer-installation) |Use a REST API client to review the value of the status variable of the API Catalog service routed through the API Gateway | See the example presented in Verify API Mediation installation | 15 minutes |
 |[Verify z/OS Services installation](../user-guide/verify-zowe-runtime-install.md#verifying-zos-services-installation) |Zowe z/OS services usually are registered with Zowe APIML Discovery| You should see JSON format data of all jobs running on the system | 15 minutes |
 
 

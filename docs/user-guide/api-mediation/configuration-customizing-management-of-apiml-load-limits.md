@@ -13,7 +13,3 @@ As a system programmer, you can customize your configuration for how API ML mana
 
  * To customize the rate limit for each service, see [Customizing Gateway rate limiter](./customizing-gateway-rate-limiter.md).
 
- * Also see the following properties in API Gateway configuration parameters: 
-    * `server.maxTotalConnections`
-    * `server.maxConnectionsPerRoute`
-

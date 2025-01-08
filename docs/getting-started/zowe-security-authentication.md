@@ -4,7 +4,6 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 * [Authentication with JSON Web Tokens (JWT)](#authentication-with-json-web-tokensjwt)
 * [Authentication with client certificates](#authentication-with-client-certificates)
 * [Authentication with Personal Access Token (PAT)](#authentication-with-personal-access-token-pat)
-* [Authentication with SAF Identity Tokens](#authentication-with-saf-identity-tokens)
 * [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
 * [Advanced Authentication Mainframe (AAM)](#advanced-authentication-mainframe-aam)
 
@@ -32,11 +31,6 @@ A Personal Access Token (PAT) is a specific scoped JWT with a configurable valid
 
 For more information about PAT, see [Authenticating with a Personal Access Token documentation](../user-guide/api-mediation/authenticating-with-personal-access-token.md).
 
-## Authentication with SAF Identity Tokens
-The SAF Authentication Provider allows the API Gateway to authenticate the user directly with the z/OS SAF provider that is installed on the system.
-
-For more information about configuring the token, see [Configure signed SAF Identity tokens (IDT)](../user-guide/configure-zos-system.md#configure-signed-saf-identity-tokens-idt).
-
 ## Multi-factor authentication (MFA)
 
 Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work with Zowe:
@@ -45,8 +39,6 @@ Multi-factor authentication is provided by third-party products which Zowe is co
 
 Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
 It does not rely on the mainframe MFA technology, but is equally secure.
-
-For details about multi-factor authentication, see [the MFA documentation here](../user-guide/mvd-configuration.md#multi-factor-authentication-configuration).
 
 ## Advanced Authentication Mainframe (AAM)
 

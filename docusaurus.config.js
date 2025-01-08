@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v2.18.x";
+const LATEST_VERSION = "v3.0.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -117,10 +117,6 @@ module.exports = {
               href: "https://www.zowe.org/download.html",
             },
             {
-              label: "Try Zowe",
-              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
-            },
-            {
               label: "Features",
               href: "https://docs.zowe.org/stable/getting-started/overview.html",
             },
@@ -218,6 +214,9 @@ module.exports = {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v2.18.x": {
+              label: "v2.18.x LTS",
             },
             "v2.17.x": {
               label: "v2.17.x LTS",

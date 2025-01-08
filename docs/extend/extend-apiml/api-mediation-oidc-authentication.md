@@ -13,6 +13,9 @@ This configuration is useful in advanced deployments of Zowe where client applic
 
 This article details the API ML OIDC authentication functionality, and describes how to configure the OIDC Authentication feature.
 
+:::note
+There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper described in the [API ML OIDC configuration](#api-ml-oidc-configuration) section.
+:::
 
 - [Usage](#usage)
 - [Authentication flow](#authentication-flow)
@@ -84,7 +87,22 @@ Ensure that the following prerequisites are met:
 
 - Users who require access to mainframe resources using OIDC authentication have a mainframe identity managed by SAF/ESM.
 - SAF/ESM is configured with mapping between the mainframe and distributed user identities. For details, see the section [ESM configuration](#esm-configuration-prerequisites) in this topic.	
- 
+- If you are using Zowe release 2.14 or a later release, ensure that the API ML Gateway is configured to use the internal mapper functionality. For information about enabling the API ML mapper, see [Configure internal API ML mapper](../../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). Alternatively, enable ZSS in the Zowe installation, however using the internal mapper is the recommended method. ZSS is enabled by default.
+  
+### OIDC provider prerequisites
+
+- **Client Application configuration in the OIDC provider**
+
+  Depending on the OIDC provider and client application capabilities, configuration of the OIDC provider varies.
+For example, web applications with a secure server side component can use `code grant authorization flow` and can be granted a Refresh Token, whereas a Single Page Application running entirely in the User Agent (browser) is more limited regarding its security capabilities.  
+
+  :::tip
+  Consult your OIDC provider documentation for options and requirements available for your type of client application.
+  :::
+
+- **Users have been assigned to the Client Application**
+
+  To access mainframe resources, users with a distributed authentication must either be directly assigned by the OIDC provider to the client application, or must be part of group which is allowed to work with the client application.
 
 ### ESM configuration prerequisites
 
@@ -96,14 +114,19 @@ A distributed identity consists of two parts:
 
 Administrators can use the installed ESM functionality to create, delete, list, and query a distributed identity mapping filter or filters.
 
+Ensure that all the security configuration prerequisites are met by following the steps described in [configure the main Zowe server to use distributed identity mapping](../../user-guide/configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
+
 Use the commands specific to your ESM to create a distributed identity mapping filter.
 
 :::note
 User specified parameters are presented in the section [Parameters in the ESM commands](#parameters-in-the-esm-commands).
 :::
 
-<details>
-<summary>Click here for command details for RACF.</summary>
+**For RACF**
+
+<details> 
+<summary> Click here for RACF configuration details.</summary>
+
 
 ```markup
   RACMAP ID(userid) MAP USERDIDFILTER(NAME('distributed-identity-user-name')) REGISTRY(NAME('distributed-identity-registry-name' )) WITHLABEL('label-name')
@@ -115,8 +138,10 @@ User specified parameters are presented in the section [Parameters in the ESM co
 
 </details>
 
-<details>
-<summary>Click here for command details for Top Secret.</summary>
+**For Top Secret**
+
+<details> 
+<summary> Click here for Top Secret configuration details.</summary>
 
 ```markup
   TSS ADD(userid) IDMAP(ZWEDNMAP) IDMAPDN('distributed-identity-user-name') - <br>
@@ -125,12 +150,15 @@ User specified parameters are presented in the section [Parameters in the ESM co
   TSS REFRESH
 ```
 
-  For more details about mapping a distributed identity username and a distributed registry name to a Top Secret ACID, see [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
+For more details about mapping a distributed identity username and a distributed registry name to a Top Secret ACID, see [IDMAP Keyword - Implement z/OS Identity Propagation Mapping](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/administrating/issuing-commands-to-communicate-administrative-requirements/keywords/idmap-keyword-implement-z-os-identity-propagation-mapping.html).
 
 </details>
 
-<details>
-<summary>Click here for command details for ACF2.</summary>
+
+**For ACF2**
+
+<details> 
+<summary> Click here for ACF2 configuration details.</summary>
 
 ```markup
   ACF
@@ -306,7 +334,7 @@ Use the following curl command to make a REST request with the OIDC token to the
 curl --location 'https://"$HOSTNAME:$PORT"/gateway/api/v1/auth/oidc-token/validate --data '{"token": "$OIDC_TOKEN","serviceId": "$SERVICE_ID"}'
 ```
 
-An HTTP `200` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
+An HTTP `204` code is returned if the validation passes. Failure to validate returns an HTTP `40x` error.
 :::
 
 :::note Azure Entra ID OIDC notes:

@@ -1,13 +1,14 @@
 # Using the Caching Service
 
-As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching Service makes it possible to store, retrieve, and delete data associated with keys. The Caching Service is designed to make resource sharing possible for services that cannot be made stateless in two ways:
+As an API developer, you can use the Caching Service as a storage solution to enable resource sharing between service instances, thereby ensuring High Availability of services. The Caching Service makes it possible to store, retrieve, and delete data associated with keys. The Caching Service is designed to make resource sharing possible for services that cannot be made stateless by using following backends:
 
-- Using VSAM to store key/value pairs for production
-
-- Using InMemory
+- Using Infinispan that is part of Caching Service
+- Using Redis running off-platform
+- \{Deprecated\} Using VSAM
+- \{Development Use Only\} Using InMemory
 
 :::note
-In the current implementation of the Caching Service, VSAM is required for the storage of key/value pairs for production, as VSAM is a native z/OS solution for storing key/value pairs.
+In the current implementation of the Caching Service, Infinispan is recommended for the storage of key/value pairs for production, as it has the best performance characteristics without additional services.
 :::
 
 The Caching Service is available only for internal Zowe applications, and is not exposed to the internet. The Caching service supports a hot-reload scenario in which a client service requests all available service data. 
@@ -15,7 +16,7 @@ The Caching Service is available only for internal Zowe applications, and is not
 - [Architecture](#architecture)
 - [Storage methods](#storage-methods)
   - [Infinispan](#infinispan-recommended)
-  - [VSAM](#vsam)
+  - [VSAM](#vsam-deprecated)
   - [Redis](#redis)
   - [InMemory](#inmemory)
 - [How to start the service](#how-to-start-the-service)
@@ -30,12 +31,14 @@ A precondition to provide for High Availability of all components within Zowe is
 REST APIs make it possible to create, delete, and update key-value pairs in the cache. Other APIs read a specific key-value pair or all key-value pairs in the cache.
 
 Information from cached APIs is stored as a JSON in the following format:
+
 ```yml
 {
   “key”: “keyValue”, 
   “value”: “valueValue”
 }
 ```
+
 ## Storage methods
 
 The Caching Service supports the following storage solutions, which provide the option to add custom implementation.  
@@ -48,7 +51,7 @@ Infinispan is a storage solution that can also run on the z/OS platform. It can 
 
 For more information about the Infinispan storage access method, see [Using Infinispan as a storage solution through the Caching service](../../extend/extend-apiml/api-mediation-infinispan.md).
 
-### VSAM
+### VSAM (deprecated)
 
 VSAM can be used to organize records into four types of data sets: key-sequenced, entry-sequenced, linear, or relative record. Use VSAM as the storage solution for production. VSAM is used primarily for applications and is not used for source programs, JCL, or executable modules. ISPF cannot be used to display or edit VSAM files.
 
@@ -60,11 +63,10 @@ Redis is a common storage solution that runs outside of the z/OS platform. It ca
 
 For more information about the Redis storage access method, see [Using Redis as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-redis.md).
 
-
 ### InMemory
 
-The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production. 
-The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist. 
+The InMemory storage method is a method suitable for testing and integration verification. Be sure not to use InMemory storage in production.
+The key/value pairs are stored only in the memory of a single instance of the service. As such, the key/value pairs do not persist.
 
 ## How to start the Service
 
@@ -122,11 +124,13 @@ This parameter specifies service behavior when the limit of records is reached. 
 ## Authentication
 
 ### Direct calls
+
 The Caching Service requires TLS mutual authentication. This verifies authenticity of the client. Calls without a valid client certificate generate a `403` response code: `Forbidden`. This requirement is disabled when `VERIFY_CERTIFICATES=false` in `zowe-certificates.env` configuration file.
 
-The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`. 
+The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`.
 
 ### Routed calls through API Gateway
+
 Caching service registers with the following authentication scheme to Discovery service:
 
 ```yaml

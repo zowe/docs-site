@@ -25,18 +25,19 @@ Be sure your z/OS system meets the following prerequisites:
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
-- System Display and Search Facility (SDSF)
+- (Optional, recommended) System Display and Search Facility (SDSF)
 
-  During the installation of Zowe, SDSF is used to interface with JES and send MVS commands such as `zwe init certificate`, `zwe start`, and `zwe stop`. Ensure that you have SDSF installed on z/OS. 
+  SDSF is used for a few management tasks of Zowe, though there are alternative ways to accomplish the same tasks.
+
+  | Task | Command utilizing SDSF | Alternatives |
+  |-----------|-------------------------------|-------------|
+  | [Certificate setup](configure-certificates.md) | `zwe init certificate` | z/OSMF workflow "ZWEKRING", or the JCL samples "ZWEKRING" and those that begin with "ZWEIKR" can be used to create keyrings. |
+  | [Starting Zowe](start-zowe-zos.md) | `zwe start` | Products that can issue the MVS START command upon Zowe's STC such as Sysview or EJES can be used instead. |
+  | [Stopping Zowe](start-zowe-zos.md) | `zwe stop` | Products that can issue the MVS STOP command upon Zowe's STC such as Sysview or EJES can be used instead. |
   
   Not having SDSF installed may result in the following error message:
 
   `IRX0043I Error running /Zowe/bin/utils/opercmd.rex, line 130: Routine not found`
-
- :::note
- The `zwe init certificate` step is only required if users anticipate the installation process to generate a keyring for them. If this setup has been completed beforehand, or if Zowe utilizes an existing keyring, `zwe init certificate` is unnecessary.
-Alternative utilities such as Sysview can be used to perform similar functions to SDSF such as `zwe start` and `zwe stop` commands. These commands primarily manage the submission of the Zowe Started Task and its parameters, such as submitting  `haInstance=`, if applicable.
- :::
  
 For more information about SDSF, see the _Abstract for z/OS SDSF Operation and Customization_ in the IBM documentation.
 
@@ -98,7 +99,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
   z/OSMF is included with z/OS so does not need to be separately installed. If z/OSMF is present, Zowe  detects z/OSMF during configuration and uses z/OSMF for the following purposes:
 
-  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143). If z/OSMF is not available, Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
+  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143) and is enabled. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If z/OSMF is not available, Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
 
   - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
@@ -106,3 +107,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
   - For production use of Zowe, we recommend configuring z/OSMF to leverage Zowe functionalities that require z/OSMF. For more information, see [Configuring z/OSMF](systemrequirements-zosmf.md).
   - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create **_z/OS MF Lite_** to simplify your setup of z/OSMF. z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), resulting in considerable improvements in startup time as well as a reduction in steps to set up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
   :::
+
+:::note
+For specific z/OS security configuration options that apply to the specific Zowe server-side components in your configuration, see [Customizing z/OS system security](./configure-zos-system.md).
+:::

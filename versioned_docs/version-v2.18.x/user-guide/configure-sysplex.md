@@ -10,12 +10,13 @@ Zowe high availability instances require a Sysplex environment that consists of 
 - At least one coupling facility
 - At least one Sysplex timer
 - Connection to shared DASD
-- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
-- Sysplex Distributor with configured Dynamic VIPA TCP/IP address, see [Configuring Sysplex Distributor](#configuring-sysplex-distributor) for instructions
-- VSAM record-level sharing (RLS), see [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
-- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
+- Shared SAF database. See [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
+- Sysplex Distributor with configured Dynamic VIPA TCP/IP address. See [Configuring Sysplex Distributor](#configuring-sysplex-distributor) for instructions
+- VSAM record-level sharing (RLS). See [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
+  - Not required if using infinispan as Caching Service solution. VSAM storage for the Caching Service is deprecated and will be removed in a future release.
+- USS Shared file system. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
 - JESPlex/JES2 Multi-Access Spool (MAS) environment
-- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
+- z/OSMF high availability. See [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
 - Node.js v14.x (except v14.17.2), or v16.x
 
 :::note
@@ -32,7 +33,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
 
 2. Define a DVIPA for both systems:
 
-   ```
+   ```plaintext
     VIPADYNAMIC                                                      
      VIPADEFINE  255.255.255.0 x.x.x.V
      VIPADISTRIBUTE DEFINE DISTM HOTSTANDBY x.x.x.V 
@@ -41,8 +42,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
         x.x.x.B  BACKUP                                         
     ENDVIPADYNAMIC
    ```
-
-   where, 
+ 
    - **x.x.x.A**  
    Specifies the home address for SYSA.
 
@@ -62,7 +62,7 @@ If SYSA fails, new work requests to Zowe are routed to the server on SYSB. When 
 
 If you do not want the distributor to switch back to the preferred target when it becomes available, you can specify the `NOAUTOSWITCHBACK` parameter for the `VIPADISTRIBUTE` statement.
 
-```
+```plaintext
 VIPADYNAMIC                                                      
   VIPADEFINE  255.255.255.0 x.x.x.V
   VIPADISTRIBUTE DEFINE DISTM HOTSTANDBY NOAUTOSWITCHBACK x.x.x.V 
@@ -71,4 +71,3 @@ VIPADYNAMIC
         x.x.x.B  BACKUP                                         
 ENDVIPADYNAMIC
 ```
-
