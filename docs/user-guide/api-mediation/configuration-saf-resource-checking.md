@@ -9,7 +9,7 @@ You can use various SAF resource providers depending on your use case to handle 
 
 API ML can check for the authorization of the user on certain endpoints. Access to a SAF resource is checked with your External Security Manager (ESM).
 
-Verification of the SAF resource is provided by the following three providers:
+Verification of the SAF resource is possible by any of the following three providers:
 
 - **native**  
   The Native JZOS classes from Java are used to determine SAF resource access. This is the default provider.
@@ -17,10 +17,10 @@ Verification of the SAF resource is provided by the following three providers:
   **Note:** This provider cannot be used off-platform.
 
 - **endpoint**  
-The Endpoint provider relies on APIs such as a REST endpoint call (ZSS or similar one). This option is disabled by default. In Zowe, ZSS provides the API to check for SAF resource authorization.
+The Endpoint provider relies on APIs such as through a REST endpoint call (for example ZSS). This option is disabled by default. In Zowe, ZSS provides the API to check for SAF resource authorization.
 
 - **dummy**  
-dummy is the lowest priority provider. This is the dummy implementation and is defined in a file.
+The dummy provider is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
 :::note
 Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the **native** provider. 
@@ -31,8 +31,10 @@ Verification of the SAF resource uses the first available provider based on the 
 The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
 
 1. Open the file `zowe.yaml`.
-2. Find or add the following properties:
-    - `components.gateway.apiml.security.authorization.provider: native`
+2. Find or add the following property with the value set as `native`:
+  ```
+  components.gateway.apiml.security.authorization.provider: native
+  ```
 
 3. Restart Zowe.
 
@@ -45,21 +47,21 @@ Ensure that the version of Java on your system has the same version of classes a
 
 ### Setting the endpoint provider to perform SAF resouce check
 
-To use the endpoint provider, you also need to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
+To use the endpoint provider it is also necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
-2. Find or add the following properties:
+2. Find or add the following properties and their corresponding values:
    - `components.gateway.apiml.security.authorization.provider: endpoint` 
    - `components.gateway.apiml.security.authorization.endpoint.enabled: true`
    - (Optional)`components.gateway.apiml.security.authorization.endpoint.url: <endpoint_url>`
   
-   When using ZSS, the default value the property
+   When using ZSS, the default value of the property
    `components.gateway.apiml.security.authorization.endpoint.url` is `https://<haInstance_hostname>:<gateway_port>/zss/api/v1/saf-auth`
 
    - **haInstance_hostname**
-     Zowe instance hostname from the configuration.
+     Specifies the Zowe instance hostname from the configuration
    - **gateway_port**
-     Gateway port from the configuration.
+     Specifies the Gateway port from the configuration
    
 3. Restart Zowe.
 
@@ -68,13 +70,12 @@ To use the endpoint provider, you also need to enable the endpoint property and 
 Use the Dummy provider for testing purpose outside of the mainframe.
 
 1. Open the file `zowe.yaml`.
-2. Find or add the following properties:
+2. Find or add the following property with the value `dummy`:
     - `components.gateway.apiml.security.authorization.provider: dummy`
 
 3. Restart Zowe.
 
-In the folder where the application is running, create the file `saf.yml`. Alternatively, you can  create the file `mock-saf.yml` in the
-test module (root folder). 
+In the folder where the application is running, create the file `saf.yml`. Alternatively, you can create the file `mock-saf.yml` in the test module (root folder). 
 
 :::caution Important:
 It is necessary to read the file outside of the JAR. A file (inner or outside) has to exist.
@@ -88,11 +89,6 @@ The following YAML presents the structure of the file:
       {RESOURCE}:
         - {UserID}
 ```
-
-- **CLASS**
-  Name of the SAF class.
-- **RESOURCE**
-  Name of the SAF resource.
 
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
