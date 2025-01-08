@@ -52,8 +52,20 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - If you have an issue that is specific to Zowe CLI, you can [**submit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose) in the `zowe-cli` repository on GitHub.
 
-## Zowe Conformance Program
+## Community resources 
 
-Administered by the Open Mainframe Project, the [Zowe Conformance Program](../extend/zowe-conformance-program.md) aims to give users the confidence that when they use a product, app, or distribution that leverages Zowe, they can **expect a high level of common functionality**, **interoperability**, and **user experience**.
+- [**Slack channel**](https://openmainframeproject.slack.com/)
+   
+   Join the #zowe-cli Slack channel to ask questions about Zowe CLI, propose new ideas, and interact with the Zowe community. 
 
-Read the blog post [**Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) for more details about the Conformance Program, including useful references.
+- [**Zowe CLI squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
+
+   Join Zowe CLI squad meetings to get involved.
+
+- [**Zowe CLI Blogs on Medium**](https://medium.com/zowe/search?q=Zowe%20CLI) 
+
+   Read a series of blogs about Zowe CLI on Medium to explore use cases, best practices, and more. 
+
+- **Community Forums**
+
+   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
