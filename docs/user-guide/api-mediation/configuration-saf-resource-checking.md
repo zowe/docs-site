@@ -25,28 +25,16 @@ dummy is the lowest priority provider. This is the dummy implementation and is d
 :::note
 Verification of the SAF resource uses the first available provider based on the specified priority. The default configuration resolves to the **native** provider. 
 :::
-### Setting your SAF resource checking provider 
-
-Select a specific provider by specifying the `components.gateway.apiml.security.authorization.provider` key in the `zowe.yaml` file. Use the parameter value to
-strictly define a provider.
-
-1. Open the file `zowe.yaml`.
-2. Find or add the property `components.gateway.apiml.security.authorization.provider` and set desired value.
-3. Restart Zowe.
-
-**Examples:**
-
-* **Native**
-    `components.gateway.apiml.security.authorization.provider: native`
-    If you leave the property empty, this is used as the default value, even if you enable set `components.gateway.apiml.security.authorization.endpoint.enabled` to `true` (starting from version 3.1).
-* **Endpoint**
-    `components.gateway.apiml.security.authorization.provider: endpoint`
-* **Dummy**
-    `components.gateway.apiml.security.authorization.provider: dummy`
 
 ### Setting the native provider to perform SAF resource check (Default setting) 
 
 The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
+
+1. Open the file `zowe.yaml`.
+2. Find or add the following properties:
+    - `components.gateway.apiml.security.authorization.provider: native`
+
+3. Restart Zowe.
 
 Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
 are available on the classpath. This approach uses the method described in [Class PlatformAccessControl](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-) in the IBM documentation.
@@ -78,6 +66,12 @@ To use the endpoint provider, you also need to enable the endpoint property and 
 ###  Setting the dummy provider to perform SAF resource check
 
 Use the Dummy provider for testing purpose outside of the mainframe.
+
+1. Open the file `zowe.yaml`.
+2. Find or add the following properties:
+    - `components.gateway.apiml.security.authorization.provider: dummy`
+
+3. Restart Zowe.
 
 In the folder where the application is running, create the file `saf.yml`. Alternatively, you can  create the file `mock-saf.yml` in the
 test module (root folder). 
