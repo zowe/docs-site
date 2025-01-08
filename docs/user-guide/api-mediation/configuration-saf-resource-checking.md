@@ -89,6 +89,11 @@ The following YAML presents the structure of the file:
         - {UserID}
 ```
 
+- **CLASS**
+  Name of the SAF class.
+- **RESOURCE**
+  Name of the SAF resource.
+
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
 - The load method does not support formatting with periods (`.`), such as shown in the following example:  
