@@ -648,14 +648,7 @@ module.exports = {
               items: [
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
-                {
-                  type: "category",
-                  label: "IBM® Db2® Database Plug-in for Zowe CLI",
-                  link: { type: "doc", id: "user-guide/cli-db2plugin" },
-                  items: [
-                    "user-guide/cli-db2-install-m1",
-                  ],
-                },
+                "user-guide/cli-db2plugin",
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-mqplugin",
                 "user-guide/cli-idfplugin",
