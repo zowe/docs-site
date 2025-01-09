@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IProfOpts | Zowe Node.js SDK - v2.18.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.18.0">
+	<title>IProfOpts | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.18.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -92,7 +92,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#credmgroverride" class="tsd-kind-icon">cred<wbr>Mgr<wbr>Override</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#requirekeytar" class="tsd-kind-icon">require<wbr>Keytar</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,7 +105,7 @@
 					<div class="tsd-signature tsd-kind-icon">cred<wbr>Mgr<wbr>Override<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.icredentialmanagerinit.html" class="tsd-signature-type">ICredentialManagerInit</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L45">@zowe/imperative/src/config/src/doc/IProfOpts.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L37">@zowe/imperative/src/config/src/doc/IProfOpts.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -124,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">override<wbr>With<wbr>Env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L29">@zowe/imperative/src/config/src/doc/IProfOpts.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L29">@zowe/imperative/src/config/src/doc/IProfOpts.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,42 +132,6 @@
 								stored in Zowe configuration profiles on disk.
 							The default is false.</p>
 						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="requirekeytar" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> require<wbr>Keytar</h3>
-					<div class="tsd-signature tsd-kind-icon">require<wbr>Keytar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">NodeModule</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.29.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L37">@zowe/imperative/src/config/src/doc/IProfOpts.ts:37</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Implements a custom method to require Keytar module which manages
-								secure credentials. If undefined, the default implementation is to
-							<code>require(&quot;keytar&quot;)</code> from the caller app&#39;s node_modules folder.</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>deprecated</dt>
-							<dd></dd>
-						</dl>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NodeModule</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">NodeModule</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
 					</div>
 				</section>
 			</section>
@@ -232,9 +195,6 @@
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-interface">
-										<a href="_zowe_imperative.iprofopts.html#requirekeytar" class="tsd-kind-icon">require<wbr>Keytar</a>
 									</li>
 								</ul>
 							</li>

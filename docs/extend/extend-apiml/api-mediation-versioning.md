@@ -24,7 +24,6 @@
  Resource Identifier (URIs). The services are accessed via APIML gateway. Example of a URI:
  `https://host:10010/endevormfno/api/v1/ENWSQA01/packages/PACKAGETST
  (https://{gatewayHost}:{port}/{serviceName}/api/v{majorVersion}/{resource}`)
- See [Components of URL](../extend-apiml/api-mediation-components-of-URL.md) for more information about the URL components of REST APIs.
  
  ## Data Model
 

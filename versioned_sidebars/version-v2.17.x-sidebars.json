@@ -112,6 +112,7 @@
       "className": "ToCitemcolor",
       "id": "extend/migrate-extensions"
     },
+    "whats-new/zowe-compatibility-statement-v2",
     {
       "type": "doc",
       "label": "Zowe learning resources",
@@ -278,17 +279,7 @@
             }
           ]
         },
-        {
-          "type": "category",
-          "label": "Starting and stopping Zowe",
-          "link": {
-            "type": "doc",
-            "id": "user-guide/start-zowe-zos"
-          },
-          "items": [
-            "user-guide/api-mediation/configuration-api-mediation-standalone"
-          ]
-        },
+        "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
         {
           "type": "category",

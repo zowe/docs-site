@@ -62,9 +62,7 @@ During execution of Zowe, the runtime directory contents are not modified. Maint
   
   - To start the API Mediation Layer as a standalone component, see [API Mediation Layer as a standalone component](./api-mediation/configuration-api-mediation-standalone.md).
   
-  - If you plan to use API ML with basic authentication and JSON web token authentication, you need to run only `ZWESLSTC`. No need to run `ZWESISTC` and `ZWESASTC`.
-  
-  - If you plan to use API ML with x509 client-side certificate authentication, you need to run `ZWESISTC` and `ZWESLSTC`.
+  - If you plan to use only the API ML components and you will not be using x509 client-side certificate authentication, you do not need to run or set up ZWESISTC and ZWESASTC. Only ZWESLSTC will  be used.
 
 ## Topology of the Zowe z/OS launch process
 
