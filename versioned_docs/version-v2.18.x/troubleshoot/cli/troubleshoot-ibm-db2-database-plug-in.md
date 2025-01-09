@@ -86,7 +86,7 @@ Download the ODBC driver manually by following the instructions in [Downloading 
 
 If the driver downloads successfully, security settings can still prompt an unpacking error.
 
-In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set.
+In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set to the local path to the ODBC driver.
 
 ```
 Error: invalid distance too far back
