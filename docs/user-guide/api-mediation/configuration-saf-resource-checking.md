@@ -17,7 +17,7 @@ Verification of the SAF resource is possible by any of the following three provi
   **Note:** This provider cannot be used off-platform.
 
 - **endpoint**  
-The Endpoint provider relies on APIs such as through a REST endpoint call (for example ZSS). This option is disabled by default. In Zowe, ZSS provides the API to check for SAF resource authorization.
+The endpoint provider relies on APIs such as through a REST endpoint call (for example ZSS). This option is disabled by default. In Zowe, ZSS provides the API to check for SAF resource authorization.
 
 - **dummy**  
 The dummy provider is the lowest priority provider. This is the dummy implementation and is defined in a file.
@@ -38,8 +38,10 @@ The Native provider is the easiest approach to use the SAF resource checking fea
 
 3. Restart Zowe.
 
+:::tip
 Enable this provider when classes `com.ibm.os390.security.PlatformAccessControl` and `com.ibm.os390.security.PlatformReturned`
 are available on the classpath. This approach uses the method described in [Class PlatformAccessControl](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-) in the IBM documentation.
+:::
 
 :::note
 Ensure that the version of Java on your system has the same version of classes and method signatures.
@@ -71,7 +73,9 @@ Use the Dummy provider for testing purpose outside of the mainframe.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the following property with the value `dummy`:
-    - `components.gateway.apiml.security.authorization.provider: dummy`
+  ```
+  components.gateway.apiml.security.authorization.provider: dummy
+  ```
 
 3. Restart Zowe.
 
@@ -90,9 +94,9 @@ The following YAML presents the structure of the file:
         - {UserID}
 ```
 - **CLASS**  
-  Name of the SAF class.
+  Specifies the name of the SAF class.
 - **RESOURCE**  
-  Name of the SAF resource.
+  Specifies the name of the SAF resource.
 
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
