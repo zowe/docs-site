@@ -282,4 +282,4 @@ You completed the procedure to generate a JCERACFKS certificate.
 
 ### Next steps after JCERACFKS setup
 
-For more information about how to use your JCERACFKS certificate, see [Use JCERACFKS certificates](./use-certificates.md).
+For more information about how to use your JCERACFKS certificate, see [Add JCERACFKS certificates](./use-certificates.md).
