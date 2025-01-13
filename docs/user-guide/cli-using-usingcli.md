@@ -19,9 +19,6 @@ Text colors could be difficult to read in some terminals. If this is the case, w
 
 - x64
 - Apple Silicon (M1+)
-    :::note
-        The [IBM Db2 Database Plug-in for Zowe CLI](../user-guide/cli-db2plugin) has limited support on Apple Silicon. To use the Db2 plug-in, a complete re-install of Zowe CLI and CLI plug-ins is required. See [Apple Silicon processor installation](../user-guide/cli-db2-install-m1) for information.
-    :::
 
 ### Operating systems
 
