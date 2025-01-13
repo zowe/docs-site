@@ -1,0 +1,1897 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/provisioning-for-zowe-sdk | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-for-zowe-sdk</a>
+				</li>
+			</ul>
+			<h1>Module @zowe/provisioning-for-zowe-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<a href="#provisioning-package" id="provisioning-package" style="color: inherit; text-decoration: none;">
+						<h1>Provisioning Package</h1>
+					</a>
+					<p>Contains APIs to interact with the z/OS provisioning APIs</p>
+					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
+						<h2>API Examples</h2>
+					</a>
+					<p><strong>List z/OSMF Published Catalog Templates</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo, TextUtils } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { explainPublishedTemplatesFull, explainPublishedTemplatesSummary, ListCatalogTemplates,
+    ProvisioningConstants } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/provisioning-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> templates = <span class="hljs-keyword">await</span> ListCatalogTemplates.listCatalogCommon(session, ProvisioningConstants.ZOSMF_VERSION);
+    <span class="hljs-keyword">let</span> prettifiedTemplates: <span class="hljs-built_in">any</span> = {};
+    <span class="hljs-keyword">if</span> (process.argv.slice(<span class="hljs-number">2</span>).includes(<span class="hljs-string">&quot;--all&quot;</span>) || process.argv.slice(<span class="hljs-number">2</span>).includes(<span class="hljs-string">&quot;-a&quot;</span>)) {
+        prettifiedTemplates = TextUtils.explainObject(templates, explainPublishedTemplatesFull, <span class="hljs-literal">true</span>);
+    } <span class="hljs-keyword">else</span> {
+        prettifiedTemplates = TextUtils.explainObject(templates, explainPublishedTemplatesSummary, <span class="hljs-literal">false</span>);
+    }
+    <span class="hljs-keyword">const</span> response = <span class="hljs-string">&quot;z/OSMF Service Catalog templates\n&quot;</span> + TextUtils.prettyJson(prettifiedTemplates);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+					<p><strong>Provision a Published Software Service Template</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo, TextUtils } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { ProvisioningConstants, explainProvisionTemplateResponse,
+    ProvisionPublishedTemplate } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/provisioning-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> templateName = <span class="hljs-string">&quot;myTemplate&quot;</span>;
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> ProvisionPublishedTemplate.provisionTemplate(session,
+        ProvisioningConstants.ZOSMF_VERSION, templateName);
+    <span class="hljs-keyword">let</span> prettyResponse = TextUtils.explainObject(response, explainProvisionTemplateResponse, <span class="hljs-literal">false</span>);
+    prettyResponse = TextUtils.prettyJson(prettyResponse);
+    <span class="hljs-built_in">console</span>.log(prettyResponse);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+					<p><strong>List Provisioned Instances and Perform an Action to the Matching Instance</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo, TextUtils } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { explainActionResponse, IProvisionedInstance, ListRegistryInstances, PerformAction,
+    ProvisioningConstants } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/provisioning-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> instanceName = <span class="hljs-string">&quot;myInstance&quot;</span>;
+    <span class="hljs-keyword">const</span> actionName = <span class="hljs-string">&quot;myAction&quot;</span>;
+    <span class="hljs-keyword">const</span> registry = <span class="hljs-keyword">await</span> ListRegistryInstances.listFilteredRegistry(session,
+        ProvisioningConstants.ZOSMF_VERSION, <span class="hljs-literal">null</span>, instanceName);
+    <span class="hljs-keyword">const</span> instances: IProvisionedInstance[] = registry[<span class="hljs-string">&quot;scr-list&quot;</span>];
+    <span class="hljs-keyword">if</span> (instances == <span class="hljs-literal">null</span>) {
+        <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;No instance with name &quot;</span> + instanceName + <span class="hljs-string">&quot; was found&quot;</span>);
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (instances.length === <span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">const</span> id = instances.pop()[<span class="hljs-string">&quot;object-id&quot;</span>];
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> PerformAction.doProvisioningActionCommon(session,
+            ProvisioningConstants.ZOSMF_VERSION, id, actionName);
+        <span class="hljs-keyword">const</span> pretty = TextUtils.explainObject(response, explainActionResponse, <span class="hljs-literal">false</span>);
+        <span class="hljs-built_in">console</span>.log(TextUtils.prettyJson(pretty));
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (instances.length &gt; <span class="hljs-number">1</span>) {
+        <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;Multiple instances with name &quot;</span> + instanceName + <span class="hljs-string">&quot; were found&quot;</span>);
+    }
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.deleteinstance.html" class="tsd-kind-icon">Delete<wbr>Instance</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.listcatalogtemplates.html" class="tsd-kind-icon">List<wbr>Catalog<wbr>Templates</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.listinstanceinfo.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Info</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.listinstancevariables.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Variables</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.listregistryinstances.html" class="tsd-kind-icon">List<wbr>Registry<wbr>Instances</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.listtemplateinfo.html" class="tsd-kind-icon">List<wbr>Template<wbr>Info</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.performaction.html" class="tsd-kind-icon">Perform<wbr>Action</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.provisionpublishedtemplate.html" class="tsd-kind-icon">Provision<wbr>Published<wbr>Template</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningconstants.html" class="tsd-kind-icon">Provisioning<wbr>Constants</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningservice.html" class="tsd-kind-icon">Provisioning<wbr>Service</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningvalidator.html" class="tsd-kind-icon">Provisioning<wbr>Validator</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iperformactionresponse.html" class="tsd-kind-icon">IPerform<wbr>Action<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipromptvariable.html" class="tsd-kind-icon">IPrompt<wbr>Variable</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipropertiesinput.html" class="tsd-kind-icon">IProperties<wbr>Input</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionoptionals.html" class="tsd-kind-icon">IProvision<wbr>Optionals</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisiontemplateresponse.html" class="tsd-kind-icon">IProvision<wbr>Template<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstance.html" class="tsd-kind-icon">IProvisioned<wbr>Instance</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstanceactions.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Actions</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstancevariable.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variable</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstancevariables.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variables</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstances.html" class="tsd-kind-icon">IProvisioned<wbr>Instances</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplate.html" class="tsd-kind-icon">IPublished<wbr>Template</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplateinfo.html" class="tsd-kind-icon">IPublished<wbr>Template<wbr>Info</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplates.html" class="tsd-kind-icon">IPublished<wbr>Templates</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.itemplateregistryinfo.html" class="tsd-kind-icon">ITemplate<wbr>Registry<wbr>Info</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_provisioning_for_zowe_sdk.itemplateworkflowinfo.html" class="tsd-kind-icon">ITemplate<wbr>Workflow<wbr>Info</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainactionresponse" class="tsd-kind-icon">explain<wbr>Action<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainatcreatevariable" class="tsd-kind-icon">explain<wbr>AtCreate<wbr>Variable</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariable" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariablefull" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariablesummary" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisiontemplateresponse" class="tsd-kind-icon">explain<wbr>Provision<wbr>Template<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceactionsfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceactionssummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceextended" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Extended</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancefull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummarywithactions" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Actions</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummarywithvars" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Vars</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancevariable" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Variable</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancessummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatefull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplateinfofull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplateinfosummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatesummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatesfull" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Full</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatessummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Summary</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explaintemplateregistryinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Registry<wbr>Info<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#explaintemplateworkflowinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Workflow<wbr>Info<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#noaccountinfo" class="tsd-kind-icon">no<wbr>Account<wbr>Info</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#noactionname" class="tsd-kind-icon">no<wbr>Action<wbr>Name</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#noinstanceid" class="tsd-kind-icon">no<wbr>Instance<wbr>Id</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#nosessionprovisioning" class="tsd-kind-icon">no<wbr>Session<wbr>Provisioning</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_provisioning_for_zowe_sdk.html#notemplatename" class="tsd-kind-icon">no<wbr>Template<wbr>Name</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainactionresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Action<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Action<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPerformActionResponse.ts#L35">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPerformActionResponse.ts:35</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainactionresponse.action_id" class="tsd-anchor"></a>
+						<h3>action-<wbr>id</h3>
+						<div class="tsd-signature tsd-kind-icon">action-<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Action Id&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPerformActionResponse.ts#L36">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPerformActionResponse.ts:36</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainactionresponse.action_uri" class="tsd-anchor"></a>
+						<h3>action-<wbr>uri</h3>
+						<div class="tsd-signature tsd-kind-icon">action-<wbr>uri<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Action URI&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPerformActionResponse.ts#L37">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPerformActionResponse.ts:37</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainactionresponse.explainedparentkey" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Actions&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPerformActionResponse.ts#L38">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPerformActionResponse.ts:38</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainactionresponse.ignoredkeys" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPerformActionResponse.ts#L39">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPerformActionResponse.ts:39</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainatcreatevariable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>AtCreate<wbr>Variable</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>AtCreate<wbr>Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L89">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:89</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for create provisioned instance variables.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstanceVariable</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainatcreatevariable.explainedparentkey-1" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;At Create Variables&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L91">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:91</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainatcreatevariable.ignoredkeys-1" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L92">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:92</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpromptvariable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Prompt<wbr>Variable</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L78">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:78</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for provisioned instance prompt variables output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstanceVariable</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariable.explainedparentkey-2" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Prompt Variables&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L80">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:80</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariable.ignoredkeys-2" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L81">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:81</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpromptvariablefull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Prompt<wbr>Variable<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L173">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:173</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPromptVariable</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariablefull.explainedparentkey-3" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L176">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:176</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariablefull.ignoredkeys-3" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L175">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:175</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpromptvariablesummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Prompt<wbr>Variable<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L162">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:162</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPromptVariable</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariablesummary.explainedparentkey-4" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L165">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:165</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpromptvariablesummary.ignoredkeys-4" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;required, min, max, must-be-choice, choices&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPromptVariable.ts#L164">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPromptVariable.ts:164</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisiontemplateresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provision<wbr>Template<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provision<wbr>Template<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L49">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:49</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionTemplateResponse</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisiontemplateresponse.explainedparentkey-5" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L51">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:51</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisiontemplateresponse.ignoredkeys-5" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L52">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:52</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisiontemplateresponse.registry_info" class="tsd-anchor"></a>
+						<h3>registry-<wbr>info</h3>
+						<div class="tsd-signature tsd-kind-icon">registry-<wbr>info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainTemplateRegistryInfoResponse</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L53">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:53</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisiontemplateresponse.system_nickname" class="tsd-anchor"></a>
+						<h3>system-<wbr>nickname</h3>
+						<div class="tsd-signature tsd-kind-icon">system-<wbr>nickname<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;System Nickname&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L50">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:50</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisiontemplateresponse.workflow_info" class="tsd-anchor"></a>
+						<h3>workflow-<wbr>info</h3>
+						<div class="tsd-signature tsd-kind-icon">workflow-<wbr>info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainTemplateWorkflowInfoResponse</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionTemplateResponse.ts#L54">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionTemplateResponse.ts:54</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstanceactionsfull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L175">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:175</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstanceActions</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionsfull.at_create_variables" class="tsd-anchor"></a>
+						<h3>at-<wbr>create-<wbr>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">at-<wbr>create-<wbr>variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainAtCreateVariable</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L179">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:179</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionsfull.explainedparentkey-6" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Actions&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L180">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:180</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionsfull.ignoredkeys-6" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L181">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:181</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionsfull.prompt_variables" class="tsd-anchor"></a>
+						<h3>prompt-<wbr>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">prompt-<wbr>variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainPromptVariable</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L178">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:178</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionsfull.variables" class="tsd-anchor"></a>
+						<h3>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceVariable</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L177">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:177</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstanceactionssummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L189">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:189</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstanceActions</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionssummary.explainedparentkey-7" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Actions&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L191">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:191</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceactionssummary.ignoredkeys-7" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceActions.ts#L192">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceActions.ts:192</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstanceextended" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Extended</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Extended<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L421">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:421</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for extended provisioned instance output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstance</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceextended.actions" class="tsd-anchor"></a>
+						<h3>actions</h3>
+						<div class="tsd-signature tsd-kind-icon">actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceActionsSummary</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L424">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:424</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceextended.explainedparentkey-8" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L423">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:423</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstanceextended.ignoredkeys-8" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;variables&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L425">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:425</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancefull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L433">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:433</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full provisioned instance output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstance</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancefull.actions-1" class="tsd-anchor"></a>
+						<h3>actions</h3>
+						<div class="tsd-signature tsd-kind-icon">actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceActionsFull</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L438">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:438</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancefull.explainedparentkey-9" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L435">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:435</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancefull.ignoredkeys-9" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L436">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:436</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancefull.variables-1" class="tsd-anchor"></a>
+						<h3>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceVariable</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L437">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:437</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancesummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L386">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:386</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for provisioned instance summary output without variables and actions.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstance</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummary.explainedparentkey-10" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L389">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:389</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummary.ignoredkeys-10" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;variables,actions&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L388">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:388</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancesummarywithactions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Actions</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L409">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:409</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for provisioned instance summary output with actions.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstance</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithactions.actions-2" class="tsd-anchor"></a>
+						<h3>actions</h3>
+						<div class="tsd-signature tsd-kind-icon">actions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceActionsSummary</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L412">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:412</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithactions.explainedparentkey-11" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L411">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:411</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithactions.ignoredkeys-11" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;variables&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L413">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:413</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancesummarywithvars" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Vars</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Vars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L397">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:397</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for provisioned instance summary output with variables.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstance</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithvars.explainedparentkey-12" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L399">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:399</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithvars.ignoredkeys-12" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;actions&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L401">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:401</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesummarywithvars.variables-2" class="tsd-anchor"></a>
+						<h3>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceVariable</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstance.ts#L400">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstance.ts:400</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancevariable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instance<wbr>Variable</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Variable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L67">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:67</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for the output of provisioned instance variables.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstanceVariable</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancevariable.explainedparentkey-13" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Variables&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L69">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:69</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancevariable.ignoredkeys-13" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstanceVariable.ts#L70">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstanceVariable.ts:70</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancesfull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instances<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L46">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstances</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesfull.explainedparentkey-14" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L48">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:48</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesfull.ignoredkeys-14" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L49">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:49</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancesfull.scr_list" class="tsd-anchor"></a>
+						<h3>scr-<wbr>list</h3>
+						<div class="tsd-signature tsd-kind-icon">scr-<wbr>list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceFull</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L47">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:47</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainprovisionedinstancessummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Provisioned<wbr>Instances<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L35">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IProvisionedInstances</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancessummary.explainedparentkey-15" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L37">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:37</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancessummary.ignoredkeys-15" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L38">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:38</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainprovisionedinstancessummary.scr_list-1" class="tsd-anchor"></a>
+						<h3>scr-<wbr>list</h3>
+						<div class="tsd-signature tsd-kind-icon">scr-<wbr>list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainProvisionedInstanceSummary</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IProvisionedInstances.ts#L36">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IProvisionedInstances.ts:36</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplatefull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Template<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L129">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:129</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplate</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatefull.explainedparentkey-16" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Published Templates&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L131">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:131</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatefull.ignoredkeys-16" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L132">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:132</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplateinfofull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Template<wbr>Info<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L139">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:139</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplateInfo</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfofull.explainedparentkey-17" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L143">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:143</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfofull.ignoredkeys-17" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L142">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:142</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfofull.prompt_variables-1" class="tsd-anchor"></a>
+						<h3>prompt-<wbr>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">prompt-<wbr>variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainPromptVariableFull</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L141">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:141</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplateinfosummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Template<wbr>Info<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L127">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:127</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplateInfo</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfosummary.explainedparentkey-18" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L131">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:131</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfosummary.ignoredkeys-18" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L130">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:130</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplateinfosummary.prompt_variables-2" class="tsd-anchor"></a>
+						<h3>prompt-<wbr>variables</h3>
+						<div class="tsd-signature tsd-kind-icon">prompt-<wbr>variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainPromptVariableSummary</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplateInfo.ts#L129">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplateInfo.ts:129</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplatesummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Template<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L118">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:118</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplate</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatesummary.explainedparentkey-19" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Published Templates&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L120">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:120</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatesummary.ignoredkeys-19" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplate.ts#L121">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplate.ts:121</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplatesfull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Templates<wbr>Full</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Full<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L46">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:46</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for full output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplates</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatesfull.explainedparentkey-20" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L48">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:48</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatesfull.ignoredkeys-20" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L49">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:49</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatesfull.psc_list" class="tsd-anchor"></a>
+						<h3>psc-<wbr>list</h3>
+						<div class="tsd-signature tsd-kind-icon">psc-<wbr>list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainPublishedTemplateFull</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L47">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:47</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explainpublishedtemplatessummary" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Published<wbr>Templates<wbr>Summary</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Summary<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L35">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:35</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>IPublishedTemplates</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatessummary.explainedparentkey-21" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L37">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:37</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatessummary.ignoredkeys-21" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L38">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:38</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explainpublishedtemplatessummary.psc_list-1" class="tsd-anchor"></a>
+						<h3>psc-<wbr>list</h3>
+						<div class="tsd-signature tsd-kind-icon">psc-<wbr>list<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> = explainPublishedTemplateSummary</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/IPublishedTemplates.ts#L36">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/IPublishedTemplates.ts:36</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explaintemplateregistryinforesponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Template<wbr>Registry<wbr>Info<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Template<wbr>Registry<wbr>Info<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateRegistryInfo.ts#L63">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateRegistryInfo.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for summary output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ITemplateRegistryInfo</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateregistryinforesponse.explainedparentkey-22" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Registry Info&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateRegistryInfo.ts#L64">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateRegistryInfo.ts:64</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateregistryinforesponse.external_name" class="tsd-anchor"></a>
+						<h3>external-<wbr>name</h3>
+						<div class="tsd-signature tsd-kind-icon">external-<wbr>name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Name&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateRegistryInfo.ts#L66">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateRegistryInfo.ts:66</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateregistryinforesponse.ignoredkeys-22" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateRegistryInfo.ts#L65">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateRegistryInfo.ts:65</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateregistryinforesponse.object_id" class="tsd-anchor"></a>
+						<h3>object-<wbr>id</h3>
+						<div class="tsd-signature tsd-kind-icon">object-<wbr>id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Id&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateRegistryInfo.ts#L67">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateRegistryInfo.ts:67</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="explaintemplateworkflowinforesponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> explain<wbr>Template<wbr>Workflow<wbr>Info<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">explain<wbr>Template<wbr>Workflow<wbr>Info<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L61">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:61</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Main explanation map object for workflow-info response output.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>ITemplateRegistryInfo</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.explainedparentkey-23" class="tsd-anchor"></a>
+						<h3>explained<wbr>Parent<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">explained<wbr>Parent<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Workflow Info&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L62">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:62</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.ignoredkeys-23" class="tsd-anchor"></a>
+						<h3>ignored<wbr>Keys</h3>
+						<div class="tsd-signature tsd-kind-icon">ignored<wbr>Keys<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> = null</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L63">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:63</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.vendor" class="tsd-anchor"></a>
+						<h3>vendor</h3>
+						<div class="tsd-signature tsd-kind-icon">vendor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Vendor&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L68">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:68</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.workflowdescription" class="tsd-anchor"></a>
+						<h3>workflow<wbr>Description</h3>
+						<div class="tsd-signature tsd-kind-icon">workflow<wbr>Description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Description&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L65">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:65</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.workflowid" class="tsd-anchor"></a>
+						<h3>workflowID</h3>
+						<div class="tsd-signature tsd-kind-icon">workflowID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Id&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L66">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:66</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.workflowkey" class="tsd-anchor"></a>
+						<h3>workflow<wbr>Key</h3>
+						<div class="tsd-signature tsd-kind-icon">workflow<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Key&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L64">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:64</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="explaintemplateworkflowinforesponse.workflowversion" class="tsd-anchor"></a>
+						<h3>workflow<wbr>Version</h3>
+						<div class="tsd-signature tsd-kind-icon">workflow<wbr>Version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Version&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/doc/zosmf/ITemplateWorkflowInfo.ts#L67">@zowe/provisioning-for-zowe-sdk/src/doc/zosmf/ITemplateWorkflowInfo.ts:67</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="noaccountinfo" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Account<wbr>Info</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Account<wbr>Info<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L121">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:121</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>No account number was provided error message.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProvisioningConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="noaccountinfo.message" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No account number was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L122">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:122</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="noactionname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Action<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Action<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L141">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:141</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Error message that no template name parameter string was supplied.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProvisioningConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="noactionname.message-1" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No action name parameter was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L142">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:142</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="noinstanceid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Instance<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Instance<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L131">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:131</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Error message that no instance-id parameter string was supplied.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProvisioningConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="noinstanceid.message-2" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No instance-id parameter was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L132">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:132</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="nosessionprovisioning" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Session<wbr>Provisioning</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Session<wbr>Provisioning<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L101">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:101</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Error message that no session provided.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProvisioningConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="nosessionprovisioning.message-3" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No session was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L102">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:102</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="notemplatename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Template<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Template<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L111">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:111</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Error message that no template name parameter string was supplied.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>static</dt>
+							<dd></dd>
+							<dt>memberof</dt>
+							<dd><p>ProvisioningConstants</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="notemplatename.message-4" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No template name parameter was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/provisioning/src/ProvisioningConstants.ts#L112">@zowe/provisioning-for-zowe-sdk/src/ProvisioningConstants.ts:112</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.deleteinstance.html" class="tsd-kind-icon">Delete<wbr>Instance</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.listcatalogtemplates.html" class="tsd-kind-icon">List<wbr>Catalog<wbr>Templates</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.listinstanceinfo.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.listinstancevariables.html" class="tsd-kind-icon">List<wbr>Instance<wbr>Variables</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.listregistryinstances.html" class="tsd-kind-icon">List<wbr>Registry<wbr>Instances</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.listtemplateinfo.html" class="tsd-kind-icon">List<wbr>Template<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.performaction.html" class="tsd-kind-icon">Perform<wbr>Action</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.provisionpublishedtemplate.html" class="tsd-kind-icon">Provision<wbr>Published<wbr>Template</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningconstants.html" class="tsd-kind-icon">Provisioning<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningservice.html" class="tsd-kind-icon">Provisioning<wbr>Service</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_provisioning_for_zowe_sdk.provisioningvalidator.html" class="tsd-kind-icon">Provisioning<wbr>Validator</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iperformactionresponse.html" class="tsd-kind-icon">IPerform<wbr>Action<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipromptvariable.html" class="tsd-kind-icon">IPrompt<wbr>Variable</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipropertiesinput.html" class="tsd-kind-icon">IProperties<wbr>Input</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionoptionals.html" class="tsd-kind-icon">IProvision<wbr>Optionals</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisiontemplateresponse.html" class="tsd-kind-icon">IProvision<wbr>Template<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstance.html" class="tsd-kind-icon">IProvisioned<wbr>Instance</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstanceactions.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Actions</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstancevariable.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variable</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstancevariables.html" class="tsd-kind-icon">IProvisioned<wbr>Instance<wbr>Variables</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.iprovisionedinstances.html" class="tsd-kind-icon">IProvisioned<wbr>Instances</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplate.html" class="tsd-kind-icon">IPublished<wbr>Template</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplateinfo.html" class="tsd-kind-icon">IPublished<wbr>Template<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.ipublishedtemplates.html" class="tsd-kind-icon">IPublished<wbr>Templates</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.itemplateregistryinfo.html" class="tsd-kind-icon">ITemplate<wbr>Registry<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_provisioning_for_zowe_sdk.itemplateworkflowinfo.html" class="tsd-kind-icon">ITemplate<wbr>Workflow<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainactionresponse" class="tsd-kind-icon">explain<wbr>Action<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainatcreatevariable" class="tsd-kind-icon">explain<wbr>AtCreate<wbr>Variable</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariable" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariablefull" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpromptvariablesummary" class="tsd-kind-icon">explain<wbr>Prompt<wbr>Variable<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisiontemplateresponse" class="tsd-kind-icon">explain<wbr>Provision<wbr>Template<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceactionsfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceactionssummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Actions<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstanceextended" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Extended</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancefull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummarywithactions" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Actions</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesummarywithvars" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Summary<wbr>With<wbr>Vars</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancevariable" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instance<wbr>Variable</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancesfull" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainprovisionedinstancessummary" class="tsd-kind-icon">explain<wbr>Provisioned<wbr>Instances<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatefull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplateinfofull" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplateinfosummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Info<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatesummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Template<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatesfull" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Full</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explainpublishedtemplatessummary" class="tsd-kind-icon">explain<wbr>Published<wbr>Templates<wbr>Summary</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explaintemplateregistryinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Registry<wbr>Info<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#explaintemplateworkflowinforesponse" class="tsd-kind-icon">explain<wbr>Template<wbr>Workflow<wbr>Info<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#noaccountinfo" class="tsd-kind-icon">no<wbr>Account<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#noactionname" class="tsd-kind-icon">no<wbr>Action<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#noinstanceid" class="tsd-kind-icon">no<wbr>Instance<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#nosessionprovisioning" class="tsd-kind-icon">no<wbr>Session<wbr>Provisioning</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_provisioning_for_zowe_sdk.html#notemplatename" class="tsd-kind-icon">no<wbr>Template<wbr>Name</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
