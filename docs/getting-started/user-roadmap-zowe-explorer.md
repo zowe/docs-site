@@ -50,10 +50,20 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - If you have an issue that is specific to Zowe Explorer, you can [**submit an issue**](https://github.com/zowe/zowe-explorer-vscode/issues/new/choose) in the `zowe-explorer-vscode` repository on GitHub.
 
-## Zowe Conformance Program
+## Community resources
 
-Administered by the Open Mainframe Project, the [Zowe Conformance Program](../extend/zowe-conformance-program.md) aims to give users the confidence that when they use a product, app, or distribution that leverages Zowe, they can **expect a high level of common functionality**, **interoperability**, and **user experience**.
+* [**Slack channel**](https://openmainframeproject.slack.com/)
 
-As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe Explorer, you are encouraged to get certified today.
+   Join the `# zowe-explorer` Slack channel to ask questions, propose new ideas, and interact with the Zowe community.
 
-Read the blog post [**Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea) for more details about the Conformance Program, including useful references.
+* [**Zowe Explorer squad meetings**](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
+
+   You can join one of the Zowe Explorer squad meetings to get involved.
+
+* [**Zowe Blogs on Medium**](https://medium.com/zowe)
+
+   Read a series of blog articles about Zowe on Medium to explore use cases, best practices, and more.
+
+* **Community Forums**
+
+   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
