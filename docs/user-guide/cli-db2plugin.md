@@ -36,11 +36,9 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 ### Installing from an online registry
 
-Complete the following steps if you installed Zowe CLI from **online registry**:
+If you installed Zowe CLI from **online registry**:
 
-1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [Apple Silicon processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
-
-2. Open a command line window and issue the following command:
+1. Open a command line window and issue the following command:
 
     ```
     zowe plugins install @zowe/db2-for-zowe-cli@zowe-v3-lts
@@ -56,9 +54,7 @@ Follow these procedures if you downloaded the Zowe installation package:
 
 Download the ODBC driver before you install the Db2 plug-in:
 
-1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [Apple Silicon processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
-
-2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
 3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You need to provide the full path to this directory immediately before you install the Db2 plug-in.
 

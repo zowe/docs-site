@@ -84,7 +84,7 @@ The configuration entries of each LPAR in the `zowe.yaml` file control which com
 
 The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../configure-sysplex).
+To learn more about Zowe with high availability enablement, see [Configuring Sysplex for high availability](../configure-sysplex.md).
 
 ## API Versioning
 
