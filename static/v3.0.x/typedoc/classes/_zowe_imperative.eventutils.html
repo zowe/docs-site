@@ -1,0 +1,755 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>EventUtils | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.eventutils.html">EventUtils</a>
+				</li>
+			</ul>
+			<h1>Class EventUtils</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A collection of helper functions related to event processing, including:</p>
+						<ul>
+							<li>directory management</li>
+							<li>event type determination</li>
+							<li>subscription creation and setting callbacks</li>
+							<li>event writing</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">EventUtils</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#createevent" class="tsd-kind-icon">create<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#createsubscription" class="tsd-kind-icon">create<wbr>Subscription</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#ensureeventsdirexists" class="tsd-kind-icon">ensure<wbr>Events<wbr>Dir<wbr>Exists</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#ensurefileexists" class="tsd-kind-icon">ensure<wbr>File<wbr>Exists</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#geteventcontents" class="tsd-kind-icon">get<wbr>Event<wbr>Contents</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#geteventdir" class="tsd-kind-icon">get<wbr>Event<wbr>Dir</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#getlistofapps" class="tsd-kind-icon">get<wbr>List<wbr>OfApps</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#issharedevent" class="tsd-kind-icon">is<wbr>Shared<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#isuserevent" class="tsd-kind-icon">is<wbr>User<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#setupwatcher" class="tsd-kind-icon">setup<wbr>Watcher</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#validateappname" class="tsd-kind-icon">validate<wbr>App<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.eventutils.html#writeevent" class="tsd-kind-icon">write<wbr>Event</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="createevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Event<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, appName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.event.html" class="tsd-signature-type">Event</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L155">@zowe/imperative/src/events/src/EventUtils.ts:155</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create an event with minimal information</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><p>This is not intended for application developers</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the application name is not recognized.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the &#39;.events&#39; directory.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the event file required for event emission.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
+								</li>
+								<li>
+									<h5>appName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the application.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.event.html" class="tsd-signature-type">Event</a></h4>
+							<p>The created event</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="createsubscription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Subscription</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Subscription<span class="tsd-signature-symbol">(</span>eeInst<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.eventprocessor.html" class="tsd-signature-type">EventProcessor</a>, eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, eventType<span class="tsd-signature-symbol">: </span><a href="../enums/_zowe_imperative.eventtypes.html" class="tsd-signature-type">EventTypes</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ieventdisposable.html" class="tsd-signature-type">IEventDisposable</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L183">@zowe/imperative/src/events/src/EventUtils.ts:183</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates and registers a new event subscription for a specific event processor.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the application name is not recognized.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the &#39;.events&#39; directory.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the event file required for event emission.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eeInst: <a href="_zowe_imperative.eventprocessor.html" class="tsd-signature-type">EventProcessor</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event processor instance.</p>
+									</div>
+								</li>
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
+								</li>
+								<li>
+									<h5>eventType: <a href="../enums/_zowe_imperative.eventtypes.html" class="tsd-signature-type">EventTypes</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The type of event.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ieventdisposable.html" class="tsd-signature-type">IEventDisposable</a></h4>
+							<p>An interface for managing the subscription.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="ensureeventsdirexists" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> ensure<wbr>Events<wbr>Dir<wbr>Exists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">ensure<wbr>Events<wbr>Dir<wbr>Exists<span class="tsd-signature-symbol">(</span>directoryPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L116">@zowe/imperative/src/events/src/EventUtils.ts:116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ensures that the specified directory for storing event files exists, creating it if necessary.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the &#39;.events&#39; directory.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>directoryPath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The path to the directory.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="ensurefileexists" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> ensure<wbr>File<wbr>Exists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">ensure<wbr>File<wbr>Exists<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L132">@zowe/imperative/src/events/src/EventUtils.ts:132</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ensures that the specified file path for storing event data exists, creating it if necessary.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If we are unable to create the event file required for event emission.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The path to the file.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="geteventcontents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Event<wbr>Contents</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Event<wbr>Contents<span class="tsd-signature-symbol">(</span>eventFilePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ieventjson.html" class="tsd-signature-type">IEventJson</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L90">@zowe/imperative/src/events/src/EventUtils.ts:90</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieve the event contents form disk</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><p>This is not intended for application developers</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the contents of the event cannot be retrieved.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventFilePath: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The path to the event file</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ieventjson.html" class="tsd-signature-type">IEventJson</a></h4>
+							<p>The object representing the Event</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="geteventdir" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Event<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Event<wbr>Dir<span class="tsd-signature-symbol">(</span>appName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L105">@zowe/imperative/src/events/src/EventUtils.ts:105</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determines the directory path for storing event files based on the event type and application name.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the application name is not recognized.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>appName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the application.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The directory path.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getlistofapps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>List<wbr>OfApps</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>List<wbr>OfApps<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L39">@zowe/imperative/src/events/src/EventUtils.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves a list of supported applications from configuration.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>If the extenders.json file cannot be created when it does not exist.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>If the extenders.json file cannot be read.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>List of application names.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="issharedevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>Shared<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Shared<wbr>Event<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L78">@zowe/imperative/src/events/src/EventUtils.ts:78</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determines if the specified event name is associated with a shared event.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True if it is a shared event, otherwise false.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="isuserevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> is<wbr>User<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>User<wbr>Event<span class="tsd-signature-symbol">(</span>eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L68">@zowe/imperative/src/events/src/EventUtils.ts:68</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Determines if the specified event name is associated with a user event.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True if it is a user event, otherwise false.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="setupwatcher" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> setup<wbr>Watcher</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">setup<wbr>Watcher<span class="tsd-signature-symbol">(</span>eeInst<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.eventprocessor.html" class="tsd-signature-type">EventProcessor</a>, eventName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, callbacks<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#eventcallback" class="tsd-signature-type">EventCallback</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules/_zowe_imperative.html#eventcallback" class="tsd-signature-type">EventCallback</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FSWatcher</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L202">@zowe/imperative/src/events/src/EventUtils.ts:202</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sets up a file watcher for a specific event, triggering callbacks when the event file is updated.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the event to be watched does not have an existing file to watch.</p>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} Callbacks will fail if the contents of the event cannot be retrieved.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>eeInst: <a href="_zowe_imperative.eventprocessor.html" class="tsd-signature-type">EventProcessor</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event processor instance.</p>
+									</div>
+								</li>
+								<li>
+									<h5>eventName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the event.</p>
+									</div>
+								</li>
+								<li>
+									<h5>callbacks: <a href="../modules/_zowe_imperative.html#eventcallback" class="tsd-signature-type">EventCallback</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><a href="../modules/_zowe_imperative.html#eventcallback" class="tsd-signature-type">EventCallback</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A single callback or an array of callbacks to execute.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">FSWatcher</span></h4>
+							<p>A file system watcher.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="validateappname" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> validate<wbr>App<wbr>Name</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>App<wbr>Name<span class="tsd-signature-symbol">(</span>appName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L51">@zowe/imperative/src/events/src/EventUtils.ts:51</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Won&#39;t throw an error if user entered a valid appName</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If the application name is not recognized.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>appName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the application.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="writeevent" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> write<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">write<wbr>Event<span class="tsd-signature-symbol">(</span>event<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/events/src/EventUtils.ts#L227">@zowe/imperative/src/events/src/EventUtils.ts:227</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Writes event data to the corresponding event file in JSON format.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>event: <a href="_zowe_imperative.event.html" class="tsd-signature-type">Event</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event object.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.eventutils.html" class="tsd-kind-icon">Event<wbr>Utils</a>
+								<ul>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#createevent" class="tsd-kind-icon">create<wbr>Event</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#createsubscription" class="tsd-kind-icon">create<wbr>Subscription</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#ensureeventsdirexists" class="tsd-kind-icon">ensure<wbr>Events<wbr>Dir<wbr>Exists</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#ensurefileexists" class="tsd-kind-icon">ensure<wbr>File<wbr>Exists</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#geteventcontents" class="tsd-kind-icon">get<wbr>Event<wbr>Contents</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#geteventdir" class="tsd-kind-icon">get<wbr>Event<wbr>Dir</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#getlistofapps" class="tsd-kind-icon">get<wbr>List<wbr>OfApps</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#issharedevent" class="tsd-kind-icon">is<wbr>Shared<wbr>Event</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#isuserevent" class="tsd-kind-icon">is<wbr>User<wbr>Event</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#setupwatcher" class="tsd-kind-icon">setup<wbr>Watcher</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#validateappname" class="tsd-kind-icon">validate<wbr>App<wbr>Name</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.eventutils.html#writeevent" class="tsd-kind-icon">write<wbr>Event</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

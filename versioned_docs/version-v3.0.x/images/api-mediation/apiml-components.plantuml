@@ -1,0 +1,23 @@
+@startuml
+archimate #business "User" as user <<business-actor>>
+archimate #application "API Client" as apiClient <<application-component>>
+archimate #technology "Gateway Service" as GW <<service>>
+archimate #orange "Discovery Service" as DS <<service>>
+archimate #technology "API Catalog" as AC <<service>>
+archimate #application "API Service" as apiService <<application-service>>
+
+archimate #orange "Authentication Service" as AAS <<service>>
+
+apiClient --> GW: accesses API service\n via GW
+AC -up-> DS: registers
+GW --> DS: registers
+GW --> apiService: routes requests
+GW --> AC: routes requests
+apiService -up-> DS: registers
+apiService -up-> GW: accesses API service\nvia GW
+user --> GW: accesses API services\nand catalog via GW
+user --> apiClient: user services via API clients
+
+apiService -> AAS: user authentication\nand authorization
+AC -> AAS: user authentication\nand authorization
+@enduml
