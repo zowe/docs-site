@@ -1,13 +1,15 @@
 # Configuring AT-TLS for Zowe Server
 
-You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information abouthow to set AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips and security recommendations.
 
 :::info Role: security administrator
 :::
 
 ## AT-TLS configuration for Zowe
 
-Follow these steps to configure Zowe to support AT-TLS:
+In the network section in the Zowe.yaml file, set your inbound and outbound traffic rules to configure Zowe to support AT-TLS. Details about how to set these rules are described in the section [AT-TLS rules](#at-tls-configuration-for-zowe) later in this article.
+
+**Example yaml:**
 
 ```yaml
 zowe:
@@ -22,7 +24,13 @@ zowe:
             attls: true
 ```
 
-While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+When AT-TLS is enabled, the Zowe Server components themselves do not handle TLS. Instead, the API Mediation Layer (API ML) utilizes information about the server certificate that is defined in the AT-TLS rule. 
+
+Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+
+:::tip
+We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+:::
 
 :::note Notes
 
@@ -40,13 +48,13 @@ Outbound AT-TLS rules (i.e. to make a transparent https call through http) that 
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
-Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include the X.509 Client Certificate.
+Zowe v3 includes Zowe Authentication and Authorization Service (ZAAS). In AT-TLS-aware mode, calls to the ZAAS service are all internal between API ML components and must include the X.509 Client Certificate.
 :::
 
 ### Limitations
 
-If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
+If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, ensure that your Zowe configuration utilizes the z/OSMF authentication provider in JWT mode.
+A LTPA token and SAF provider cannot be used in this configuration as API ML cannot access the hardware key to sign its own tokens.
 Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
 
 ## AT-TLS rules
@@ -105,7 +113,7 @@ TTLSKeyringParms ZoweKeyring
 }
 ```
 
-The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
+Assign the `PortRange` of this inbound rule based on the list of API Mediation Layer components in the `zowe.yaml` file. Ensure that the `PortRange` covers the following components:
 
 | Component | Default Port |
 |----|-----------------------|
@@ -119,7 +127,10 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 
 **Follow this step:**
 
-Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
+Replace `ZoweKeyring` with the keyring configured for your installation. 
+
+To configure keyrings for your Zowe instance, see [SAF keyring](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_.
+<!--Is there a better link to show HOW to configure keyrings? This link gives a short paragraph about what SAF Keyring is with a link to [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) which only describes the elements of a SAF keyring. Should there instead be links to the ESM doc, or alternatively should there be a separate article where we describe how to define a keyring, add certificates to a keyring, and grant permissions?-->
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
@@ -146,7 +157,7 @@ TTLSConnectionAction ClientConnectionAction
 }
 ```
 
-#### For z/OSMF
+#### Outbound rule for z/OSMF
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -184,7 +195,7 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 `Jobname` is defined explicitly for the ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AZ` as the ZAAS identifier.
 :::
 
-#### For communication between API Gateway and other core services
+#### Outbound rule for communication between API Gateway and other core services
 
 Use the example in this section as a template for internal connections between API Mediation Layer core services.
 
@@ -223,7 +234,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 }
 ```
 
-#### For communication between API Gateway and southbound services
+#### Outbound rule for communication between API Gateway and southbound services
 
 In this example, the rule covers all outbound connections originating from the API Gateway to an example southbound service listening on port 8080.
 This rule applies for Zowe services as well, such as the ZSS and app-server if they are enabled.
@@ -265,7 +276,7 @@ Outbound connections from the Gateway to southbound services (onboarded services
 
 :::
 
-#### Services that validate tokens against the API Mediation Layer
+#### Outbound rule for services that validate tokens against the API Mediation Layer
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
