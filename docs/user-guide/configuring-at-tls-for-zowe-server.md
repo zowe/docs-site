@@ -129,12 +129,11 @@ Assign the `PortRange` of this inbound rule based on the list of API Mediation L
 
 Replace `ZoweKeyring` with the keyring configured for your installation. 
 
-To configure keyrings for your Zowe instance, see [SAF keyring](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_.
-<!--Is there a better link to show HOW to configure keyrings? This link gives a short paragraph about what SAF Keyring is with a link to [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) which only describes the elements of a SAF keyring. Should there instead be links to the ESM doc, or alternatively should there be a separate article where we describe how to define a keyring, add certificates to a keyring, and grant permissions?-->
+To configure keyrings for your Zowe instance, see [Use a z/OS keyring-based keystore with Zowe generated certificates](../user-guide/certificate-configuration-scenarios.md#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates).
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication(for example a rule covering API Gateway to an onboarded service).
+For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication, for example a rule that applies to communication between the API Gateway and an onboarded service.
 
 ### Outbound rules
 
@@ -159,9 +158,9 @@ TTLSConnectionAction ClientConnectionAction
 
 #### Outbound rule for z/OSMF
 
-This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
+The following example rule applies to the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
-If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
+THis rule is set when `zowe.network.client.tls.attls` is set to `true`. The requests to z/OSMF are issued using `http`.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -239,7 +238,9 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 In this example, the rule covers all outbound connections originating from the API Gateway to an example southbound service listening on port 8080.
 This rule applies for Zowe services as well, such as the ZSS and app-server if they are enabled.
 
-This example covers routing scenarios.
+The following example covers routing scenarios.
+
+**Example:**
 
 ```bash
 TTLSRule ApimlServiceClientRule
@@ -288,8 +289,8 @@ These service also already have an outbound rule set for the onboarding process 
 
 Ensure these rules are followed:
 
-- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding.
-- Outbound rule to API Gateway: __Do not__ set a Client Certificate.
+- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding
+- Outbound rule to API Gateway: __Do not__ set a Client Certificate
 
 ### Ciphers
 
