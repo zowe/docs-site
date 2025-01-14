@@ -1,6 +1,6 @@
 # Configuring AT-TLS for Zowe Server
 
-You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information abouthow to set AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips and security recommendations.
+You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about how to set AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips and security recommendations.
 
 :::info Role: security administrator
 :::
@@ -112,6 +112,7 @@ TTLSKeyringParms ZoweKeyring
   Keyring ZWEKRNG
 }
 ```
+<!--Can we provide a ilst of all parameters that need to be set in the previous example with the definitions of those parameters? -->
 
 Assign the `PortRange` of this inbound rule based on the list of API Mediation Layer components in the `zowe.yaml` file. Ensure that the `PortRange` covers the following components:
 
