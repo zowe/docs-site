@@ -132,9 +132,13 @@ Replace `ZoweKeyring` with the keyring configured for your installation.
 
 To configure keyrings for your Zowe instance, see [Use a z/OS keyring-based keystore with Zowe generated certificates](../user-guide/certificate-configuration-scenarios.md#scenario-3-use-a-zos-keyring-based-keystore-with-zowe-generated-certificates).
 
-Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
+:::note Notes:
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication, for example a rule that applies to communication between the API Gateway and an onboarded service.
+* The setting `HandshakeRole` applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
+
+* For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication, for example a rule that applies to communication between the API Gateway and an onboarded service.
+  
+:::
 
 ### Outbound rules
 
@@ -161,7 +165,7 @@ TTLSConnectionAction ClientConnectionAction
 
 The following example rule applies to the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
-THis rule is set when `zowe.network.client.tls.attls` is set to `true`. The requests to z/OSMF are issued using `http`.
+This rule is set when `zowe.network.client.tls.attls` is set to `true`. The requests to z/OSMF are issued using `http`.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -278,7 +282,7 @@ Outbound connections from the Gateway to southbound services (onboarded services
 
 :::
 
-#### Outbound rule for services that validate tokens against the API Mediation Layer
+#### Outbound rule for services that validate tokens against the API ML
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
