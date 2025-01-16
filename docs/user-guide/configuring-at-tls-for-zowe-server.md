@@ -112,7 +112,7 @@ TTLSKeyringParms ZoweKeyring
   Keyring ZWEKRNG
 }
 ```
-<!--Can we provide a ilst of all parameters that need to be set in the previous example with the definitions of those parameters? -->
+<!--Can we provide a list of all parameters that need to be set in the previous example with the definitions of those parameters? -->
 
 Assign the `PortRange` of this inbound rule based on the list of API Mediation Layer components in the `zowe.yaml` file. Ensure that the `PortRange` covers the following components:
 
