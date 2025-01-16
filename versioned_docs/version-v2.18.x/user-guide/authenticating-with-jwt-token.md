@@ -13,7 +13,7 @@ This article describes how services in the Zowe API ecosystem are expected to ac
 For more information about authenticating with JWT tokens, see the Medium blog post [Single-Sign-On to z/OS REST APIs with Zowe](https://medium.com/zowe/single-sign-on-to-z-os-rest-apis-with-zowe-6e35fd022a95).
 :::
 
-By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](./api-mediation/configuration-jwt/#using-saf-as-an-authentication-provider).
+By default, JWT tokens are produced by z/OSMF and the API Mediation Layer only serves as a proxy. For information about how to change who and how tokens are produced, see [Authentication Providers within Enable Single Sign On for Clients](./api-mediation/configuration-jwt.md#using-saf-as-an-authentication-provider).
 
 
 ## JWT Token-based Login Flow and Request/Response Format
@@ -161,7 +161,7 @@ https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
 The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token becomes invalidated and is no longer usable.
 
 :::note Notes:
-- The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](./api-mediation/configuration-jwt/#enabling-a-jwt-token-refresh-endpoint).
+- The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](./api-mediation/configuration-jwt.md#enabling-a-jwt-token-refresh-endpoint).
 - The endpoint is protected by a client certificate.
 - The refresh request requires the token in one of the following formats:
   - Cookie named `apimlAuthenticationToken`.

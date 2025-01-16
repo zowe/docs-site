@@ -18,6 +18,8 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [
+        "whats-new/release-notes/v3_1_0",
+        "whats-new/release-notes/v3_0_0",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -361,6 +363,7 @@ module.exports = {
               ],
             },
             "user-guide/cli-install-configure-install-online-registry-proxy",
+            "user-guide/cli-installcli",
             "user-guide/cli-updatingcli",
             {
               type: "category",
@@ -379,8 +382,8 @@ module.exports = {
                 },
               ],
             },
-            "user-guide/cli-uninstall",
             "user-guide/cli-install-verify-your-installation",
+            "user-guide/cli-uninstall",
           ],
         },
 
@@ -1085,7 +1088,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.0.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
     },
   ],
 }

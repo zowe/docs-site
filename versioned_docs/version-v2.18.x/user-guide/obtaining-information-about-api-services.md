@@ -9,18 +9,20 @@ As an API Mediation Layer user, information about API services can be obtained f
 
 This article provides further detail about each of these use cases.
 
-- [Using API ID in API ML to locate APIs in different instances](#using-api-id-in-api-ml-to-locate-apis-in-different-instances)
-- [Protecting Service Information](#protecting-service-information)
-- [Using API Endpoints](#using-api-endpoints)
-  - [Obtaining Information about a  Specific Service](#obtaining-information-about-a-specific-service)
-  - [Obtaining Information about All Services](#obtaining-information-about-all-services)
-  - [Obtaining Information about All Services with a Specific API ID](#obtaining-information-about-all-services-with-a-specific-api-id)
+- [Obtaining Information about API Services](#obtaining-information-about-api-services)
+  - [Using API ID in API ML to locate APIs in different instances](#using-api-id-in-api-ml-to-locate-apis-in-different-instances)
+  - [Protecting Service Information](#protecting-service-information)
+  - [Using API Endpoints](#using-api-endpoints)
+    - [Obtaining Information about a Specific Service](#obtaining-information-about-a-specific-service)
+    - [Obtaining Information about All Services](#obtaining-information-about-all-services)
+    - [Obtaining Information about All Services with a Specific API ID](#obtaining-information-about-all-services-with-a-specific-api-id)
+    - [Response Format](#response-format)
 
 ## Using API ID in API ML to locate APIs in different instances
 
 The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
-For more information about _baseUrl_ or _basePath_, see [Components of a URL](../extend/extend-apiml/api-mediation-components-of-URL).
+For more information about _baseUrl_ or _basePath_, see [Components of a URL](../extend/extend-apiml/api-mediation-components-of-URL.md).
 
 ## Protecting Service Information
 
@@ -50,7 +52,7 @@ RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
 
-The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking).
+The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking.md).
 
 ## Using API Endpoints
 
