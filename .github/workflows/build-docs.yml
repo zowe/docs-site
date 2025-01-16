@@ -58,7 +58,7 @@ jobs:
 
       - name: Deploy to Netlify
         id: deploy
-        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }}
+        if: ${{ github.event_name == 'push' || (github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.user.login != 'dependabot[bot]') }}
         uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: build

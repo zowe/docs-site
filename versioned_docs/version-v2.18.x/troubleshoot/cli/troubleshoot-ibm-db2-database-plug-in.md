@@ -1,14 +1,43 @@
 # IBM Db2 Database Plug-in troubleshooting
 
+## Incompatible glibc version
+
+The `ibm_db` dependency, which utilizes pre-built drivers to access DB2 and downloads those drivers at install time, pulls down drivers with a pre-requisite on the GNU C library (glibc) version 2.32.
+
+Due to potential incompatibility issues, users on some Linux distributions might encounter an error while attempting to install any version of the DB2 Plug-in. Known distributions affected include Ubuntu 20, Debian 11, CentOS 8, and Red Hat Enterprise Linux 8.
+
+If you are using any of these distributions of Linux, a workaround is required.
+
+**Symptom:**
+
+```
+_____ Validation results for plugin '@zowe/db2-for-zowe-cli' _____
+
+*** CmdError: Failed to combine command definitions. Reason = Encountered an error loading one of the files (cli/call/Call.definition.js) that matched the provided command module glob for the glob **/cli/*/*.definition!(.d).*s: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.32' not found (required by /home/<user>/.zowe/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/lib/libdb2.so.1)
+
+This plugin has command errors. No plugin commands will be available.
+
+```
+
+**Solution:**
+
+Use one of the following workarounds:
+
+For Zowe v2 LTS DB2 Plug-in versions prior to 6.1.0, run the following command before installing the DB2 Plug-in:
+
+```
+export IBM_DB_INSTALLER_URL=https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/v11.5.9 
+```
+
+## ODBC driver install failure
+
 As part of the IBM Db2 Database Plug-in installation, the ODBC driver is automatically installed. The driver is required to connect to Db2, but installation can fail due to security restrictions.
 
-When the ODBC driver installation fails, Zowe CLI displays an error message. To resolve this, the user can manually download and install the driver.
+When the ODBC driver installation fails, Zowe CLI displays an error message. To resolve the error, the user can manually download and install the driver.
 
 **Symptom:**
 
 The ODBC driver installation fails when installing the IBM Db2 Database Plug-in.
-
-**Sample:**
 
 The ODBC driver installation can fail due to several factors, displaying the following error when the `zowe plugins install` command is issued:
 
@@ -30,9 +59,9 @@ To identify the cause of the error and get more details to troubleshoot, run the
 npm install ibm_db --foreground-scripts true
 ```
 
-The response includes an error message, which could specify a timeout or unpacking error.
+The response includes an error message, which could specify a [timeout](#timeout-error) or [unpacking error](#unpacking-error).
 
-#### Timeout error
+### Timeout error
 
 Network restrictions can prevent the ODBC driver from downloading, resulting in a timeout error:
 
@@ -49,13 +78,15 @@ Error: Installation of ibm_db failed.
 =====================================
 ```
 
-To troubleshoot a timeout error, see [Downloading the ODBC driver manually](#downloading-the-odbc-driver-manually).
+**Solution:**
 
-#### Unpacking error
+Download the ODBC driver manually by following the instructions in [Downloading the ODBC driver](../../user-guide/cli-db2plugin.md#downloading-the-odbc-driver).
+
+### Unpacking error
 
 If the driver downloads successfully, security settings can still prompt an unpacking error.
 
-In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set.
+In the following example, the ODBC driver is downloaded manually and the environment variable `IBM_DB_INSTALLER_URL` is set to the local path to the ODBC driver.
 
 ```
 Error: invalid distance too far back
@@ -73,15 +104,9 @@ npm ERR! command failed
 npm ERR! command C:\WINDOWS\system32\cmd.exe /d /s /c node installer/driverInstall.js
 ```
 
-To troubleshoot a packaging error, see [Fixing a failed extraction](#fixing-a-failed-extraction).
-
 **Solution:**
 
-#### Downloading the ODBC driver manually
-
-To manually download the ODBC driver, see instructions in [Downloading the ODBC driver](../../user-guide/cli-db2plugin.md#downloading-the-odbc-driver).
-
-#### Fixing a failed extraction
+To fix a failed extraction:
 
 1. Manually extract the ODBC driver binaries from the `build.zip` file which is bundled with the [ibm_db](https://www.npmjs.com/package/ibm_db) package. The `build.zip` archive can also be downloaded from [GitHub](https://github.com/ibmdb/node-ibm_db/blob/master/build.zip).
 

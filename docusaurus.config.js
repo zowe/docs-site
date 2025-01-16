@@ -117,10 +117,6 @@ module.exports = {
               href: "https://www.zowe.org/download.html",
             },
             {
-              label: "Try Zowe",
-              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
-            },
-            {
               label: "Features",
               href: "https://docs.zowe.org/stable/getting-started/overview.html",
             },

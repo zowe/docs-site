@@ -9,12 +9,14 @@ As an API Mediation Layer user, information about API services can be obtained f
 
 This article provides further detail about each of these use cases.
 
-- [Using API ID in API ML to locate APIs in different instances](#using-api-id-in-api-ml-to-locate-apis-in-different-instances)
-- [Protecting Service Information](#protecting-service-information)
-- [Using API Endpoints](#using-api-endpoints)
-  - [Obtaining Information about a  Specific Service](#obtaining-information-about-a-specific-service)
-  - [Obtaining Information about All Services](#obtaining-information-about-all-services)
-  - [Obtaining Information about All Services with a Specific API ID](#obtaining-information-about-all-services-with-a-specific-api-id)
+- [Obtaining Information about API Services](#obtaining-information-about-api-services)
+  - [Using API ID in API ML to locate APIs in different instances](#using-api-id-in-api-ml-to-locate-apis-in-different-instances)
+  - [Protecting Service Information](#protecting-service-information)
+  - [Using API Endpoints](#using-api-endpoints)
+    - [Obtaining Information about a Specific Service](#obtaining-information-about-a-specific-service)
+    - [Obtaining Information about All Services](#obtaining-information-about-all-services)
+    - [Obtaining Information about All Services with a Specific API ID](#obtaining-information-about-all-services-with-a-specific-api-id)
+    - [Response Format](#response-format)
 
 ## Using API ID in API ML to locate APIs in different instances
 
@@ -24,7 +26,7 @@ The _API ID_ uniquely identifies the API in the API ML. The API ID can be used t
 
 Information about API services is considered sensitive as it contains partial information about the internal topology of the mainframe system. As such, this information should be made accessible only by authorized users and services.
 
-Access to this information requires authentication using mainframe credentials, as well as verification of access to resources through SAF. The resource class and resource is defined in the `ZWESECUR` job. Dor more information about `ZWESECUR` job, see [Addresing z/OS requrements for Zowe](./configure-zos-system).
+Access to this information requires authentication using mainframe credentials, as well as verification of access to resources through SAF. The resource class and resource is defined in the `ZWESECUR` job. Dor more information about `ZWESECUR` job, see [Addresing z/OS requrements for Zowe](./configure-zos-system.md).
 
 The security administrator needs to permit READ access to the `APIML.SERVICES` resource in the `ZOWE` resource class to access the information about API services.
 
@@ -48,7 +50,7 @@ RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
 F ACF2,REBUILD(ZWE)
 ```
 
-The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking).
+The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking.md).
 
 ## Using API Endpoints
 
