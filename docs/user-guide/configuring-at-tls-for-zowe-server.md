@@ -7,7 +7,12 @@ You can configure parameters in the Zowe server to enable Zowe to work with AT-T
 
 ## AT-TLS configuration for Zowe
 
-In the network section in the Zowe.yaml file, set your inbound and outbound traffic rules to configure Zowe to support AT-TLS. Details about how to set these rules are described in the section [AT-TLS rules](#at-tls-configuration-for-zowe) later in this article.
+In the network section in the Zowe.yaml file, set if inbound and outbound traffic rules apply to Zowe. Details about how to set these rules are described in the section [AT-TLS rules](#at-tls-configuration-for-zowe) later in this article.
+
+When AT-TLS is enabled, the Zowe Server components themselves do not handle TLS. Instead, the API Mediation Layer (API ML) utilizes information about the server certificate that is defined in the AT-TLS rule. 
+:::caution Important:
+Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+:::
 
 **Example yaml:**
 
@@ -23,10 +28,6 @@ zowe:
           tls:
             attls: true
 ```
-
-When AT-TLS is enabled, the Zowe Server components themselves do not handle TLS. Instead, the API Mediation Layer (API ML) utilizes information about the server certificate that is defined in the AT-TLS rule. 
-
-Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
 
 :::tip
 We strongly recommend that AT-TLS be configured with the same Zowe keyring.
