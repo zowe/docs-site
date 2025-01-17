@@ -360,6 +360,7 @@ module.exports = {
               ],
             },
             "user-guide/cli-install-configure-install-online-registry-proxy",
+            "user-guide/cli-installcli",
             "user-guide/cli-updatingcli",
             {
               type: "category",
@@ -378,8 +379,8 @@ module.exports = {
                 },
               ],
             },
-            "user-guide/cli-uninstall",
             "user-guide/cli-install-verify-your-installation",
+            "user-guide/cli-uninstall",
           ],
         },
 
