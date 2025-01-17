@@ -37,7 +37,7 @@
    The entered value displays next to the **Quick Pick** option.
 5. Select the **Submit this query** option in the **Quick Pick** to create the filter.
 
-   The filter is saved as a **Quick Pick** option that displays when the **Search** icon is selected. Remove the filter with Zowe Explorer's Edit History feature.
+   The filter is saved as a **Quick Pick** option that displays when the **Search** icon is clicked. Remove the filter with Zowe Explorer's Edit History feature.
 
 ## Downloading spool content
 
