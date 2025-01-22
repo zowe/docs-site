@@ -16,7 +16,6 @@ To integrate with API Mediation Layer and leverage Single Sign On, choose from t
 - [Accepting PassTickets](#accepting-passtickets)
 
 Three additional possibilities can potentially be leveraged to enable Single Sign On but are not properly integrated with the standard API ML:
-
 - [Single Sign On Integration for Extenders](#single-sign-on-integration-for-extenders)
   - [Accepting JWT](#accepting-jwt)
   - [Accepting SAF IDT](#accepting-saf-idt)
