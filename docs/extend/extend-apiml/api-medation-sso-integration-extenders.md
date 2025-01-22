@@ -21,6 +21,8 @@ Three additional possibilities can potentially be leveraged to enable Single Sig
 * Accepting client certificates via x509 scheme
 * Accepting z/OSMF LTPA token
 
+Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication.
+
 **Example:**
 
 ```yaml
