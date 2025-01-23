@@ -21,11 +21,7 @@ If you use z/OSMF as your authentication provider, ensure that you meet the foll
 When z/OSMF is used as a security provider, it is possible to reuse MFA tokens, whereby it is possible to receive a JWT token based on previously used MFA token. This presents a security risk.  
 
 This issue can be resolved by configuring z/OSMF to work properly with API ML.
-Update the z/OSMF configuration with the following parameter:
-`allowBasicAuthLookup="false"`
-
-After applying this change, each authentication call results in generating a new JWT.
-For more information, see [Configuring z/OSMF](../systemrequirements-zosmf.md) to properly work with API ML. 
+Follow the instructions in [Configuring z/OSMF to properly work with API ML](../systemrequirements-zosmf.md#disable-cache-in-zosmf) to make the changes to z/OSMF settings.
 
 ### No Notification when Additional Input is Required
 
@@ -46,5 +42,3 @@ We recommend you first try to access self-service facilities and resolve the iss
 When using the API Catalog, you have the option to use the "Try it out" functionality to test a protected endpoint. In this case, you are given the option to provide and store MFA credentials in the Authorization dialog. As the MFA token has a short lifetime, we do not recommend storing your MFA token when using this feature.
 
 You can, however, continue to use your credentials in the Authorization dialog when you set a fixed password, rather than using an MFA token. Alternatively, you can store your credentials in the Authorization dialog if your account is configured to bypass MFA mode. In this case, authentication is performed through the mainframe credentials of the user.
-
-

@@ -116,4 +116,20 @@ If your implementation uses an external security manager other than RACF (for ex
 
 There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as the endpoint `/zosmf/services/authenticate` issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
 To get the token unstuck, perform a logout with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
-Until this issue is properly fixed in z/OSMF, we propose a possible temporary workaround. Update z/OSMF configuration with `allowBasicAuthLookup="false"`. After applying this change, each authentication call results in generating a new JWT. 
+
+Until this issue is properly fixed in z/OSMF, we propose a possible temporary workaround:
+
+### Disable Cache in z/OSMF
+
+Update the `server_override.xml` file in the z/OSMF installation with:
+
+```xml
+<server>
+  ...
+  <authCache allowBasicAuthLookup="false" />
+  ...
+</server>
+
+```
+
+After applying this change, each authentication call results in generating a new JWT
