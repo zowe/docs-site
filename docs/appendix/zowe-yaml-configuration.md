@@ -421,9 +421,9 @@ Ensure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC us
 **Example:**
 ```
 node:
-  home: "/usrlppSysplex/nodejs/node-v12.16.1"
+  home: "/usrlppSysplex/nodejs/node-v18.18.2"
 ```
-The above value is valid only when the path `/usrlppSysplex/nodejs/node-v12.16.1/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, check to ensure that the value contains `bin/node`.
+The above value is valid only when the path `/usrlppSysplex/nodejs/node-v18.18.2/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, check to ensure that the value contains `bin/node`.
 :::
 
 ### YAML configurations - zOSMF
