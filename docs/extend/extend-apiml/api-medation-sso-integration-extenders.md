@@ -17,7 +17,7 @@ To integrate with API Mediation Layer and leverage Single Sign On, choose from t
 
 Three additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
-* Bypassing authentication for the service 
+* [Bypassing authentication for the service](#bypassing-authentication-for-the-service)   
     **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
 * [Accepting client certificates via x509 scheme](#accepting-client-certificates-via-x509-scheme)
 * [Accepting z/OSMF LTPA token](#accepting-zosmf-ltpa-token)
