@@ -35,7 +35,11 @@ IBM SDK for Node.js withdrew v16 from marketing on September 4, 2023. The v14 se
    - z/OS V2R4: PTFs UI80106, UI81096, UI78103, UI80155, UI83490
    - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
    - z/OS V3R1: No PTFs needed.
- 
+
+ - V22.x
+   - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
+   - z/OS V3R1: No PTFs needed.
+
 
 ## How to obtain IBM SDK for Node.js - z/OS
 
@@ -85,7 +89,7 @@ Follow these steps to install the PAX edition of Node.js - z/OS to run Zowe.
     ```
 
     If Node.js is installed correctly, the version of Node.js is displayed. If it is intalled correctly, you will see the version information on your device.
-1. After you install Node.js, set the `NODE_HOME` environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v6.14.4-os390-s390x`.
+1. After you install Node.js, set the `NODE_HOME` environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v18.18.2-os390-s390x`.
 
 ## Installing the SMP/E edition of Node.js - z/OS
 
