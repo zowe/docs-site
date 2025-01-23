@@ -66,7 +66,7 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
     ```
     :::
 
-    After the PAX file has sucessfully transferred, exit your `sftp` or `ftp` session.
+    After the PAX file has successfully transferred, exit your `sftp` or `ftp` session.
 
 1. Open a USS shell to expand the PAX file. This can either be an ssh terminal, OMVS, iShell, or any other z/OS unix system services command environment. 
 
