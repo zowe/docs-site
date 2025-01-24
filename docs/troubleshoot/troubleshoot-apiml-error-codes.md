@@ -603,11 +603,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
+  The string sent by the Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that forwarding of the client certificate is also enabled in the Gateway. Check for any error messages from the Gateway.
+  Ensure that the forwarding of client certificate is enabled also in the Gateway. Check for any error messages from the Gateway.
 
 ### ZWEAT501E
 
@@ -618,25 +618,25 @@ The following error message codes may appear on logs or API responses. Use the f
   The response status code is different from expected 200 OK.
 
   **Action:**
-  
+
   Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
   Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
-  
+
   **Reason:**
-  
+
   The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
-  
+
   **Action:**
 
-  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
+  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured.
 
 ### ZWEAT503E
 
   An error occurred during retrieval of trusted certificates from the Gateway. Certificate endpoint is %s. Error message: %s
-  
+
   **Reason:**
 
   The communication with the gateway got interrupted or an error occurred during processing the response.
@@ -648,13 +648,13 @@ The following error message codes may appear on logs or API responses. Use the f
 ### ZWEAT504E
 
   Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
-  
+
   **Reason:**
-  
+
   The string sent by the Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
-  
+
   **Action:**
-  
+
   Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
