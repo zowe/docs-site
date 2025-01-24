@@ -10,7 +10,7 @@ Manage existing profiles listed in the **Side Bar**. Right-click the profile and
 
 ### Deleting a profile
 
-Delete a profile displayed in the **Side Bar**. Right-click the profile and select **Manage Profile** in the context menu to see a list of options in the **Quick Pick**. Select **Delete Profile** to open the associated configuration file and manually delete the profile.
+Delete a profile displayed in the **Side Bar**. Right-click the profile and select **Manage Profile** in the context menu to see a list of options in the **Quick Pick**. Select **Edit Profile** to open the associated configuration file and manually delete the profile.
 
 ### Hiding a profile
 
