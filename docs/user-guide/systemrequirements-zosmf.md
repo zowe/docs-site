@@ -17,13 +17,14 @@ Follow these steps described in this article to configure z/OSMF.
     ```
     /D IPLINFO
     ```
-  **Expected results:** part of the output contains the release, for example, `RELEASE z/OS 02.02.00`.
+  **Expected results:**  
+  Part of the output contains the release, for example, `RELEASE z/OS 02.02.00`.
 
 2. Configure z/OSMF.
 
-    z/OSMF is a base element of z/OS V2.2 and V2.3, so it is already installed. But it might not be configured and running on every z/OS V2.2 and V2.3 system.
+    z/OSMF is a base element of z/OS V2.2 and V2.3, so it is already installed. However, z/OSMF might not be configured and running on every z/OS V2.2 and V2.3 system.
 
-    In short, to configure an instance of z/OSMF, run the IBM-supplied jobs `IZUSEC` and `IZUMKFS`, and then start the z/OSMF server.
+    To configure an instance of z/OSMF, run the IBM-supplied jobs `IZUSEC` and `IZUMKFS`, and then start the z/OSMF server.
     The z/OSMF configuration process occurs in three stages, and in the following order:
     - Stage 1 - Security setup
     - Stage 2 - Configuration
@@ -40,7 +41,7 @@ Follow these steps described in this article to configure z/OSMF.
   The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3.
   :::
 
-3. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
+1. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
 
     ```
     /D A,IZU*
@@ -51,7 +52,8 @@ Follow these steps described in this article to configure z/OSMF.
     ```
     /S IZUANG1
     ```
-  **Expected results:** you will see the message `CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL`.
+  **Expected results:**  
+  You will see the message `CWWKB0056I INITIALIZATION COMPLETE FOR ANGEL`.
   
   To start the server, issue the following command:
 
@@ -59,7 +61,8 @@ Follow these steps described in this article to configure z/OSMF.
     /S IZUSVR1
     ```
 
-  **Expected results:** it might take a few minutes to initialize. The z/OSMF server is available when the message `CWWKF0011I: The server zosmfServer is ready to run a smarter planet.` is displayed.
+  **Expected results:**  
+  It might take a few minutes to initialize. The z/OSMF server is available when the message `CWWKF0011I: The server zosmfServer is ready to run a smarter planet.` is displayed.
 
 4. To find the startup messages in the SDSF log of the z/OSMF server, issue the following command:
 
@@ -67,12 +70,13 @@ Follow these steps described in this article to configure z/OSMF.
     f IZUG349I
     ```
 
-    **Expected results:** you will see a message that indicates the port number, for example, `IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.` In this example, the port number is `443`. You will need this port number later.
+    **Expected results:**  
+    You will see a message that indicates the port number, for example, `IZUG349I: The z/OSMF STANDALONE Server home page can be accessed at  https://mvs.hursley.ibm.com:443/zosmf after the z/OSMF server is started on your system.` In this example, the port number is `443`. You will need this port number later.
 
-5. Point your browser at the nominated z/OSMF STANDALONE Server home page and you should see its Welcome Page where you can log in.
+5. Point your browser at the nominated z/OSMF STANDALONE Server home page. You should see its Welcome Page where you can log in.
 
 :::note
-If your implementation uses an external security manager other than RACF (for example, Top Secret for z/OS or ACF2 for z/OS), you provide equivalent commands for your environment. For more information, see the following product documentation:
+If your implementation uses an external security manager other than RACF (for example, Top Secret for z/OS or ACF2 for z/OS), provide equivalent commands for your environment. For more information, see the following product documentation:
 
 - [Configure z/OS Management Facility for Top Secret](https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/installing/configure-z-os-management-facility-for-ca-top-secret.html)
 
@@ -117,11 +121,11 @@ If your implementation uses an external security manager other than RACF (for ex
 There is an issue observed in z/OSMF which leads to a stuck JSON web token(JWT). It manifests as the endpoint `/zosmf/services/authenticate` issuing a JWT with success RC that is not valid for API calls, resulting in 401 response status code. This is a persistent condition.
 To get the token unstuck, perform a logout with the LTPA token from the login request. This causes logins to start serving unique JWTs again.
 
-Until this issue is properly fixed in z/OSMF, we propose a possible temporary workaround:
+Until this issue is properly fixed in z/OSMF, we propose the possible temporary workaround:
 
 ### Disable Cache in z/OSMF
 
-Update the `server_override.xml` file in the z/OSMF installation with:
+To disable the cache in z/OSMF, update the `server_override.xml` file in the z/OSMF installation with the following parameter with the value `false`:
 
 ```xml
 <server>
@@ -132,4 +136,6 @@ Update the `server_override.xml` file in the z/OSMF installation with:
 
 ```
 
-After applying this change, each authentication call results in generating a new JWT
+This parameter setting results in the generation of a new JWT from each authentication call.
+
+

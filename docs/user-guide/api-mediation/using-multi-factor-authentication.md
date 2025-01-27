@@ -21,7 +21,7 @@ If you use z/OSMF as your authentication provider, ensure that you meet the foll
 When z/OSMF is used as a security provider, it is possible to reuse MFA tokens, whereby it is possible to receive a JWT token based on previously used MFA token. This presents a security risk.  
 
 This issue can be resolved by configuring z/OSMF to work properly with API ML.
-Follow the instructions in [Configuring z/OSMF to properly work with API ML](../systemrequirements-zosmf.md#disable-cache-in-zosmf) to make the changes to z/OSMF settings.
+For details about how to make the changes to z/OSMF settings, see the section [Disable Chache in z/OSMF](../systemrequirements-zosmf.md#disable-cache-in-zosmf) in the article _Configuring z/OSMF_.
 
 ### No Notification when Additional Input is Required
 
