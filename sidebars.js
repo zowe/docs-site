@@ -668,6 +668,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: { type: "doc", id: "user-guide/ze-usage" },
           items: [
+            "user-guide/ze-managing-profiles",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
