@@ -39,7 +39,7 @@ zowe:
       prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWEV2.SZWEAUTH
+      authLoadlib: IBMUSER.ZWE.SZWEAUTH
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
@@ -69,15 +69,15 @@ The following output is an example of running `zwe init mvs`.
 >> Initialize Zowe custom data sets
 
 Create data sets if they are not exist
-Creating IBMUSER.ZWEV2.CUST.PARMLIB
-Creating IBMUSER.ZWEV2.CUST.JCLLIB
-Creating IBMUSER.ZWEV2.SZWEAUTH
-Creating IBMUSER.ZWEV2.CUST.ZWESAPL
+Creating IBMUSER.ZWE.CUST.PARMLIB
+Creating IBMUSER.ZWE.CUST.JCLLIB
+Creating IBMUSER.ZWE.SZWEAUTH
+Creating IBMUSER.ZWE.CUST.ZWESAPL
 
-Copy IBMUSER.ZWEV2.SZWESAMP(ZWESIP00) to USER.ZWEV2.CUST.PARMLIB(ZWESIP00)
-Copy components/zss/LOADLIB/ZWESIS01 to USER.ZWEV2.SZWEAUTH(ZWESIS01)
-Copy components/zss/LOADLIB/ZWESAUX to USER.ZWEV2.SZWEAUTH(ZWESAUX)
-Copy components/launcher/bin/zowe_launcher to USER.ZWEV2.SZWEAUTH(ZWELNCH)
+Copy IBMUSER.ZWE.SZWESAMP(ZWESIP00) to USER.ZWE.CUST.PARMLIB(ZWESIP00)
+Copy components/zss/LOADLIB/ZWESIS01 to USER.ZWE.SZWEAUTH(ZWESIS01)
+Copy components/zss/LOADLIB/ZWESAUX to USER.ZWE.SZWEAUTH(ZWESAUX)
+Copy components/launcher/bin/zowe_launcher to USER.ZWE.SZWEAUTH(ZWELNCH)
 
 >> Zowe custom data sets are initialized successfully.
 #>
@@ -94,7 +94,7 @@ Successful execution of `zwe init mvs` has the following results:
 
 * The PDS `SZWEAUTH` is created. If `SZWEAUTH` already exists, the following error is thrown:
    ```
-   Error ZWEL0158E: IBMUSER.ZWEV2.SZWEAUTH already exists
+   Error ZWEL0158E: IBMUSER.ZWE.SZWEAUTH already exists
    ```
    You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
 
@@ -127,10 +127,10 @@ To avoid having to run the `init security` command, you can specify the flag `--
 >> Run Zowe security configurations
 
 Modify ZWESECUR
-- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
+- IBMUSER.ZWE.CUST.JCLLIB(ZW134428) is prepared
 
 Dry-run mode, security setup is NOT performed on the system.
-Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
+Please submit IBMUSER.ZWE.CUST.JCLLIB(ZW134428) manually.
 >> Zowe security configurations are applied successfully.
 
 #>
@@ -169,17 +169,17 @@ zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
 -------------------------------------------------------------------------------
 >> APF authorize load libraries
 
-APF authorize IBMUSER.ZWEV2.SZWEAUTH
+APF authorize IBMUSER.ZWE.SZWEAUTH
 - Dry-run mode, security setup is NOT performed on the system.
   Please apply this operator command manually:
 
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWE.SZWEAUTH,SMS
 
-APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
+APF authorize IBMUSER.ZWE.CUST.ZWESAPL
 - Dry-run mode, security setup is NOT performed on the system.
   Please apply this operator command manually:
 
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.CUST.ZWESAPL,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWE.CUST.ZWESAPL,SMS
 
 
 >> Zowe load libraries are APF authorized successfully.
@@ -238,9 +238,9 @@ Modify ZWESLSTC
 Modify ZWESISTC
 Modify ZWESASTC
 
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
-Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
+Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
+Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
+Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 
 >> Zowe main started tasks are installed successfully.
 #>
