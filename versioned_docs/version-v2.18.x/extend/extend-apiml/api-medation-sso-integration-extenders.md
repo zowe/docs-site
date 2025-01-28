@@ -11,15 +11,17 @@ This article does not cover the client methods to call API ML and authenticate. 
 
 To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
 
-- Accepting JWT token (recommended)
-- Accepting SAF IDT token
-- Accepting PassTicket
+- [Accepting JWT](#accepting-jwt) (recommended)
+- [Accepting SAF IDT](#accepting-saf-idt)
+- [Accepting PassTickets](#accepting-passtickets)
 
-Two additional possibilities can potentially be leveraged to enable Single Sign On but are not properly integrated with the standard API ML:
+Three additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
-- Bypassing the authentication for the service
-- Asking for details about the x509 certificate used for authentication  
-**Note:** Asking for details about the x509 certificate does not properly participate in SSO as this method cannot accept all authentication methods that are supported upstream of API Mediation Layer. 
+* [Bypassing authentication for the service](#bypassing-authentication-for-the-service)   
+    **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
+* [Accepting client certificates via x509 scheme](#accepting-client-certificates-via-x509-scheme)
+* [Accepting z/OSMF LTPA token](#accepting-zosmf-ltpa-token)
+
 
 Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication. 
 
@@ -86,7 +88,7 @@ Specifies the `APPLID` value that is used by the API service for PassTicket supp
 
 For more information, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 
-## Bypassing authentication
+## Bypassing authentication for the service
 
 Using the scheme value `bypass` specifies that the token is passed unchanged to the service.
 
@@ -99,7 +101,7 @@ authentication:
     scheme: bypass
 ```
 
-## Custom way to accept client certificates
+## Accepting client certificates via x509 scheme
 
 While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommned that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
 
