@@ -246,7 +246,7 @@ This name is usually provided by the site security administrator.
 
 3. Define the profile for the application with the following command:
 ```
-RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>) APPLDATA('NO REPLAY PROTECTION')
+RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>)
 ```
 * **key-description**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
