@@ -126,7 +126,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
     ```acf2
         SET PROFILE(PTKTDATA) DIV(SSIGNON)
-        INSERT <applid> SSKEY(<key-description>)
+        INSERT <applid> SSKEY(<key-description>) MULT-USE
         F ACF2,REBUILD(PTK),CLASS(P)
     ```
 
