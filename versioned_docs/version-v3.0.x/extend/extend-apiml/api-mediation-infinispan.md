@@ -36,30 +36,30 @@ Configure Infinispan as a storage solution through the Caching service by settin
 * **`zowe.components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store. 
-  The default value is `data`. If you run the Caching Service in HA you have to configure in this way:
+  The default value is `data`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
 
-   - The value should be the same for each instance
-   - The location should point to non-shared filesystem, each instance requires a unique storage
+   - The value should be the same for each instance.
+   - The location should point to non-shared filesystem. Each instance requires unique storage.
    - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
 * **`zowe.components.caching-service.storage.infinispan.persistence.indexLocation`**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store. 
-  The default value is `index`. If you run the Caching Service in HA you have to configure in this way:
+  The default value is `index`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
 
-  - The value should be the same for each instance
-  - The location should point to non-shared filesystem, each instance requires a unique storage
+  - The value should be the same for each instance.
+  - The location should point to non-shared filesystem. Each instance requires unique storage.
   - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
 
-  (OPTIONAL)The default value is `7600`. The port number used by Infinispan to synchronise data among cahing-service instances.
+  (OPTIONAL) The default value is `7600`. The port number is used by Infinispan to synchronise data among Cahing Service instances.
 
 :::note
-We recommend you define this value to avoid potential problems (or errors) in future Zowe upgrades, especially 
-from version 2.x - 3.1 to 3.2 and newer.
+We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example 
+from version 2.x through v3.1 to v3.2 and newer versions.
 :::
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.host`**
@@ -68,11 +68,11 @@ from version 2.x - 3.1 to 3.2 and newer.
 
 * **`zowe.components.caching-service.storage.infinispan.keyExchange.port`**
 
-  (OPTIONAL)The default value is `7601`. The port number used by Infinispan to exchange encryption key among cahing-service instances.
+  (OPTIONAL) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Cahing Service instances.
 
 :::note
-We recommend you define this value to avoid potential problems (or errors) in future Zowe upgrades, especially
-from version 2.x - 3.1 to 3.2 and newer.
+We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
+from version 2.x through v3.1 to v3.2 and newer versions.
 :::
 
   **Example of Caching service HA configuration using Infinispan:**
