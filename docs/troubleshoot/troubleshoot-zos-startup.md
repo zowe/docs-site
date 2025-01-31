@@ -1,11 +1,11 @@
 # Troubleshooting startup of Zowe z/OS components
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESLSTC` started task.
+Review the following topics for information that can help you troubleshoot problems when installing Zowe z/OS components or starting Zowe's `ZWESLSTC` started task.
 
 
 ## How to check if `ZWESLSTC` startup is successful 
 
-The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There is no single message that **Zowe has launched and is ready to run** as the sequence of address spaces initialization is environment-dependent, although the message ID `ZWED0021I` is typically the last one that is logged.  More details on each subsystem and their startup messages are described in the following sections.
+The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There is no single message that **Zowe has launched and is ready to run** as the sequence of address spaces initialization is environment-dependent. Note that the message ID `ZWED0021I` is typically the last one that is logged.  More details on each subsystem and their startup messages are described in the following sections.
 
 - [Troubleshooting startup of Zowe z/OS components](#troubleshooting-startup-of-zowe-zos-components)
   - [How to check if `ZWESLSTC` startup is successful](#how-to-check-if-zweslstc-startup-is-successful)
@@ -21,7 +21,7 @@ To learn more about the Zowe components and their role, see [Zowe Architecture](
 
 The API Mediation Layer has four address spaces: API Catalog, API Gateway,  API Discovery and Caching Service.  
 
-To check whether the API mediation layer is fully initialized, look for the `ZWEAM000I` message. Each component writes a successful startup message `ZWEAM000I` to JES as shown is the following example. The message also indicates the CPU of seconds spent. In a normal startup of API ML components, each component writes a `ZWEAM00I` message as in the following example:
+To check whether the API Mediation Layer is fully initialized, look for the message `ZWEAM000I`. Each component writes a successful startup message `ZWEAM000I` to JES as shown in the following example. The message also indicates the CPU of seconds spent. In a normal startup of API ML components, each component writes a `ZWEAM00I` message as in the following example:
 
 **Example:**
 
@@ -47,7 +47,7 @@ When all services are fully initialized, three green ticks are displayed.
 
 ### Check the startup of Zowe Desktop 
 
-During startup, the Zowe desktop loads its plug-ins and writes the message `ZWED0031I` when completed.  
+During startup, Zowe Desktop loads its plug-ins and writes the message `ZWED0031I` when completed.  
 
 ```
 2023-02-21 12:10:12.824 <ZWED:33558118> ZWESVUSR INFO (_zsf.install,index.js:439) ZWED0031I - Server is ready at https://0.0.0.0:27556, Plugins successfully loaded: 100% (19/19)
@@ -55,7 +55,7 @@ During startup, the Zowe desktop loads its plug-ins and writes the message `ZWED
 
 The `ZWED0031I` message includes a count of the number of loaded plug-ins as well as the total number of plug-ins, for example `Plugins successfully loaded: 100% (19/19)`.  A failed plug-in load will not abort the launch of the desktop.
 
-If the Zowe desktop is started together with the API Gateway, the Zowe Desktop will register itself with the API Gateway. This step must be completed before a user is able to successfully log in to the Zowe Desktop. The message `ZWED0021I` indicates successful registration between the Zowe Desktop and the API Gateway. 
+If Zowe Desktop is started together with the API Gateway, the Zowe Desktop will register itself with the API Gateway. This step must be completed before a user is able to successfully log in to the Zowe Desktop. The message `ZWED0021I` indicates successful registration between the Zowe Desktop and the API Gateway. 
 
 **Example:**
 
@@ -63,13 +63,13 @@ If the Zowe desktop is started together with the API Gateway, the Zowe Desktop w
 2023-02-21 12:10:12.226 <ZWED:33558118> ZWESVUSR INFO (_zsf.apiml,apiml.js:309) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://tvt5003.svl.ibm.com:27553/zlux/ui/v1/
 ```
 
-If you try to log into the Zowe desktop too early before the Eureka client registration is complete, you may receive the message that **Authentication failed** on the login page. This is due to an incomplete API ML handshake. If this occurs, wait for the registration to complete as indiciated by the `ZWED0021I` message.
+If you try to log into the Zowe desktop too early before the Eureka client registration is complete, you may receive the message that **Authentication failed** on the login page. This is due to an incomplete API ML handshake. If authentication fails, wait for the registration to complete as indiciated by the `ZWED0021I` message.
 
 In addition to spooling to the JES `SYSPRINT` file for the Zowe `ZWESLSTC` task, the Zowe Desktop writes messages to `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.
 
 ### Check the startup of Zowe Secure Services
 
-The zssServer is used for secure services for the Zowe desktop.  
+The zssServer is used for secure services for the Zowe Desktop.  
 
 ```
 ZWES1013I ZSS Server has started. Version '2.5.0+20221130' 31-bit
