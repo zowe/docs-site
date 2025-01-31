@@ -33,7 +33,7 @@ ZWEAM000I API Catalog Service started in 53.75 seconds
 2023-02-21 17:21:06.368 <ZWEAGW1:main:50332206> IBMUSER INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Gateway Service started in 56.2 seconds
 ```
 
-As well as looking for `ZWEAM00I` in the JES log, you can also log in to the gateway homepage and check the service status indicator.  If there is a red or yellow tick beside one of its three services, the components are still starting.  
+As well as looking for `ZWEAM00I` in the JES log, you can also log in to the gateway homepage and check the service status indicator. The gateway home page will be accessible on the externalPort. The default value for this port is 7554. If there is a red or yellow tick beside one of its three services, the components are still starting.  
 
 <img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
 
