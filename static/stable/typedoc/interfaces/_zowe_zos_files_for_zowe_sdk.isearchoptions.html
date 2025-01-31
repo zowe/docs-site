@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISearchOptions | Zowe Node.js SDK - v3.0.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<title>ISearchOptions | Zowe Node.js SDK - v3.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -82,7 +82,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#abortsearch" class="tsd-kind-icon">abort<wbr>Search</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#casesensitive" class="tsd-kind-icon">case<wbr>Sensitive</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#continuesearch" class="tsd-kind-icon">continue<wbr>Search</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#listoptions" class="tsd-kind-icon">list<wbr>Options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#mainframesearch" class="tsd-kind-icon">mainframe<wbr>Search</a></li>
@@ -99,14 +101,70 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="abortsearch" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> abort<wbr>Search</h3>
+					<div class="tsd-signature tsd-kind-icon">abort<wbr>Search<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L52">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:52</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="casesensitive" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> case<wbr>Sensitive</h3>
 					<div class="tsd-signature tsd-kind-icon">case<wbr>Sensitive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L42">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L43">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:43</a></li>
 						</ul>
 					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="continuesearch" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> continue<wbr>Search</h3>
+					<div class="tsd-signature tsd-kind-icon">continue<wbr>Search<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>dataSets<span class="tsd-signature-symbol">: </span><a href="_zowe_zos_files_for_zowe_sdk.idataset.html" class="tsd-signature-type">IDataSet</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L47">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:47</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>dataSets<span class="tsd-signature-symbol">: </span><a href="_zowe_zos_files_for_zowe_sdk.idataset.html" class="tsd-signature-type">IDataSet</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>dataSets: <a href="_zowe_zos_files_for_zowe_sdk.idataset.html" class="tsd-signature-type">IDataSet</a><span class="tsd-signature-symbol">[]</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">boolean</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="getoptions" class="tsd-anchor"></a>
@@ -114,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">get<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_files_for_zowe_sdk.igetoptions.html" class="tsd-signature-type">IGetOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L24">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L25">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -124,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">list<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_files_for_zowe_sdk.ilistoptions.html" class="tsd-signature-type">IListOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L27">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L28">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:28</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -134,7 +192,7 @@
 					<div class="tsd-signature tsd-kind-icon">mainframe<wbr>Search<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L30">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L31">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -144,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">max<wbr>Concurrent<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L36">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L37">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -154,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">pattern<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L18">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L19">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,7 +222,7 @@
 					<div class="tsd-signature tsd-kind-icon">progress<wbr>Task<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L33">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L34">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -174,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">search<wbr>String<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L21">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L22">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,7 +242,7 @@
 					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L39">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/search/doc/ISearchOptions.ts#L40">@zowe/zos-files-for-zowe-sdk/src/methods/search/doc/ISearchOptions.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -254,7 +312,13 @@
 								<a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html" class="tsd-kind-icon">ISearch<wbr>Options</a>
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#abortsearch" class="tsd-kind-icon">abort<wbr>Search</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#casesensitive" class="tsd-kind-icon">case<wbr>Sensitive</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#continuesearch" class="tsd-kind-icon">continue<wbr>Search</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_zos_files_for_zowe_sdk.isearchoptions.html#getoptions" class="tsd-kind-icon">get<wbr>Options</a>

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IConfigOpts | Zowe Node.js SDK - v3.0.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<title>IConfigOpts | Zowe Node.js SDK - v3.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -83,6 +83,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigopts.html#homedir" class="tsd-kind-icon">home<wbr>Dir</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigopts.html#ignoreerrors" class="tsd-kind-icon">ignore<wbr>Errors</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigopts.html#noload" class="tsd-kind-icon">no<wbr>Load</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigopts.html#projectdir" class="tsd-kind-icon">project<wbr>Dir</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iconfigopts.html#vault" class="tsd-kind-icon">vault</a></li>
@@ -99,7 +100,7 @@
 					<div class="tsd-signature tsd-kind-icon">home<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L18">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L23">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -109,12 +110,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="ignoreerrors" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> ignore<wbr>Errors</h3>
+					<div class="tsd-signature tsd-kind-icon">ignore<wbr>Errors<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L18">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:18</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Continue command execution despite config errors because version or help flag present</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="noload" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> no<wbr>Load</h3>
 					<div class="tsd-signature tsd-kind-icon">no<wbr>Load<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L34">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L39">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -129,7 +145,7 @@
 					<div class="tsd-signature tsd-kind-icon">project<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L24">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L29">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -145,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">vault<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.iconfigvault.html" class="tsd-signature-type">IConfigVault</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L29">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IConfigOpts.ts#L34">@zowe/imperative/src/config/src/doc/IConfigOpts.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -212,6 +228,9 @@
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iconfigopts.html#homedir" class="tsd-kind-icon">home<wbr>Dir</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.iconfigopts.html#ignoreerrors" class="tsd-kind-icon">ignore<wbr>Errors</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iconfigopts.html#noload" class="tsd-kind-icon">no<wbr>Load</a>
