@@ -53,7 +53,7 @@ During startup, Zowe Desktop loads its plug-ins and writes the message `ZWED0031
 2023-02-21 12:10:12.824 <ZWED:33558118> ZWESVUSR INFO (_zsf.install,index.js:439) ZWED0031I - Server is ready at https://0.0.0.0:27556, Plugins successfully loaded: 100% (19/19)
 ```
 
-The `ZWED0031I` message includes a count of the number of loaded plug-ins as well as the total number of plug-ins, for example `Plugins successfully loaded: 100% (19/19)`.  A failed plug-in load will not abort the launch of the desktop.
+The `ZWED0031I` message includes a count of the number of loaded plug-ins as well as the total number of plug-ins, for example `Plugins successfully loaded: 100% (19/19)`.  A failed plug-in load will not abort the launch of the Desktop.
 
 If Zowe Desktop is started together with the API Gateway, the Zowe Desktop will register itself with the API Gateway. This step must be completed before a user is able to successfully log in to the Zowe Desktop. The message `ZWED0021I` indicates successful registration between the Zowe Desktop and the API Gateway. 
 
@@ -63,7 +63,7 @@ If Zowe Desktop is started together with the API Gateway, the Zowe Desktop will 
 2023-02-21 12:10:12.226 <ZWED:33558118> ZWESVUSR INFO (_zsf.apiml,apiml.js:309) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://tvt5003.svl.ibm.com:27553/zlux/ui/v1/
 ```
 
-If you try to log into the Zowe desktop too early before the Eureka client registration is complete, you may receive the message that **Authentication failed** on the login page. This is due to an incomplete API ML handshake. If authentication fails, wait for the registration to complete as indiciated by the `ZWED0021I` message.
+If you try to log into the Zowe Desktop too early before the Eureka client registration is complete, you may receive the message that **Authentication failed** on the login page. This is due to an incomplete API ML handshake. If authentication fails, wait for the registration to complete as indiciated by the `ZWED0021I` message.
 
 In addition to spooling to the JES `SYSPRINT` file for the Zowe `ZWESLSTC` task, the Zowe Desktop writes messages to `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.
 
