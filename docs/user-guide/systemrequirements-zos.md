@@ -23,7 +23,7 @@ Be sure your z/OS system meets the following prerequisites:
   * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
 
-- zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 1200 MB of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) System Display and Search Facility (SDSF)
 
@@ -81,7 +81,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v18.x, or v20.x is required during installation. After installation, it is only required when running the app-server component.
+- Node.js v18.x, v20.x, or v22.x is required during installation. After installation, it is only required when running the app-server component.
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
