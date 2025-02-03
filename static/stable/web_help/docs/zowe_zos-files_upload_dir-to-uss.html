@@ -92,6 +92,12 @@ The maximum number of TSO address spaces have been created. When you specify 0, 
 </ul>
 </li>
 <li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Data content in encoding mode, which means that data conversion is performed according to the encoding specified.</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -225,6 +231,12 @@ Allowed values: http, https</p>
 <p>Recursively upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory, specifying files to ignore and file encodings in the local file my_global_attributes:</p>
 <ul>
 <li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --recursive --attributes my_global_attributes">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Upload all files from the &quot;local_dir&quot; directory to the &quot;/a/ibmuser/my_dir&quot; USS directory using IBM-1047 encoding:</p>
+<ul>
+<li><code>zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --encoding &quot;IBM-1047&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files upload dir-to-uss &quot;local_dir&quot; &quot;/a/ibmuser/my_dir&quot; --encoding &quot;IBM-1047&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
