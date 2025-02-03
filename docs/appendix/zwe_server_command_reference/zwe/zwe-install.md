@@ -6,13 +6,10 @@
 
 ## Description
 
-After you extract Zowe convenience build, you can run this command to install
+After installation via SMP/E  Zowe convenience build, run this command to install
 MVS data sets.
 
-If you are using SMPE build, you can skip this command since MVS data sets are
-already prepared during SMPE install.
-
-These Zowe YAML configurations showing with sample values are used:
+The following Zowe YAML configuration example uses  sample values:
 
 ```yaml
 zowe:
@@ -21,13 +18,17 @@ zowe:
       prefix: IBMUSER.ZWE
 ```
 
-Expected outputs:
+**Expected outputs:**
 
-- Will create these data sets under `zowe.setup.dataset.prefix` definition:
-  * `SZWEAUTH` contains few Zowe load modules (++PROGRAM).
-  * `SZWESAMP` contains several sample configurations.
-  * `SZWEEXEC` contains few utilities used by Zowe.
-  * `SZWELOAD` contains config manager for REXX.
+The following data sets are created under `zowe.setup.dataset.prefix` definition:
+  * **SZWEAUTH**   
+    Contains a few Zowe load modules (++PROGRAM).
+  * **SZWESAMP**  
+   Contains several sample configurations.
+  * **SZWEEXEC**  
+   Contains a few utilities used by Zowe.
+  * **SZWELOAD**   
+   Contains config manager for REXX.
 
 ## Examples
 
