@@ -2,7 +2,7 @@
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
 
-## Overview of API MLs 
+## Overview of API MLs
 
 The following diagram illustrates communication between the API Mediation Layers and Zowe in multiple domains. Note that some API MLs may be running in a sysplex (HA), while others may be in a monoplex (non-HA).
 
@@ -27,9 +27,9 @@ A Gateway from any domain can onboard Gateways of any other domains. Onboarding 
 
 1. In zowe.yml, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1:
 
-`components.gateway.apiml.service.additionalRegistration`
+    `components.gateway.apiml.service.additionalRegistration`
 
-Use the following example as a template for how to set the value of this property in zowe.yml.
+Use the following example as a template for how to set the value of this property in zowe.yaml.
 
 **Example:**
 ```
@@ -88,7 +88,7 @@ This Zowe configuration transforms the zowe.yaml configuration file into the env
 
 ### Validating successful configuration
 
-The corresponding Gateway service in domain(2-N) should appear in the Eureka console of the Discovery service in the domain-1 API ML. 
+The corresponding Gateway service in domain(2-N) should appear in the Eureka console of the Discovery service in the domain-1 API ML.
 
 To see details of all instances of the ‘GATEWAY’ application, perform a **GET** call on the following endpoint of the Discovery service in domain-1 API ML:
 
@@ -129,15 +129,20 @@ The following commands are examples of establishing a trust relationship between
 
 1. Import the root and, if applicable, the intermediate public key certificate of registered "Domain API ML 2" and "Domain API ML 3" API MLs running on systems Y and Z into the truststore of the "Domain API ML 1" running on system X.
 
-  - **PKCS12**
+    - **PKCS12**
   
-    For PKCS12 certificates, use the following example of keytool commands:
-  
-    `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
-  
-    `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
+      <details>
+      <summary>Click here for an example of keytool commands for PKCS12 certificates.</summary>
 
-  - **Keyring**
+      For PKCS12 certificates, use the following example of keytool commands:
+  
+      `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
+  
+      `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
+
+      </details>
+
+    - **Keyring**
       
     For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
 
@@ -145,13 +150,13 @@ The following commands are examples of establishing a trust relationship between
     <summary>Click here for command details for RACF.</summary>
     - **For RACF:**
       
-      ```
-      RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
-      RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-      SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
-      ```
+        ```
+        RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
+        RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
+        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+        SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+        ```
 
       Verify:
       ```
@@ -163,18 +168,18 @@ The following commands are examples of establishing a trust relationship between
     <summary>Click here for command details for ACF2.</summary>
     - **For ACF2:**
       
-      ```
-      ACF
-      SET PROFILE(USER) DIV(CERTDATA)
-      INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
-      INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+        ```
+        ACF
+        SET PROFILE(USER) DIV(CERTDATA)
+        INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
+        INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
+        F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
       
-      SET PROFILE(USER) DIVISION(KEYRING)
-      CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-      CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
-      ```
+        SET PROFILE(USER) DIVISION(KEYRING)
+        CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+        CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+        F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+        ```
       
       Verify:
       ```
@@ -187,12 +192,12 @@ The following commands are examples of establishing a trust relationship between
     <summary>Click here for command details for Top Secret.</summary>
     - **For Top Secret:**
       
-      ```
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
-      ```
+        ```
+        TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
+        TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
+        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
+        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
+        ```
 
       Verify:
       ```
@@ -202,15 +207,20 @@ The following commands are examples of establishing a trust relationship between
       
 2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
 
-  - **PKCS12**
+    - **PKCS12**
 
-    For PKCS12 certificates, use the following example of the keytool commands:
+      <details>
+      <summary>Click here for example keytool commands for PKCS12 certificates.</summary>
 
-    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+      For PKCS12 certificates, use the following example of the keytool commands:
 
-    `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
+      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+
+      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
   
-  - **Keyring**
+      </details>
+
+    - **Keyring**
 
     For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
   
@@ -270,12 +280,15 @@ The following commands are examples of establishing a trust relationship between
 
 You completed certificates setup for multitenancy configuration, whereby registered API MLs can trust the API ML where they are registered and vice versa.
 
-## Using the `/registry` endpoint in the Gateway
+## Using the `/registry` endpoint in the Central Cloud Gateway
 
+The `/registry` endpoint provides information about services onboarded to all registered Gateways. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 The `/registry` endpoint provides information about services onboarded to all registered Gateways. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
 ### Configuration for `/registry`
 
+The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
+environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
 The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
 environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
 
@@ -429,7 +442,7 @@ This response should contain information about a specific service in an APIML wi
                 "status": "UP",
                 "customMetadata": {
                     "zos.sysname": "sys2",
-		             "zos.sysplex": "sysplex"
+		            "zos.sysplex": "sysplex"
                 },
                 "apiId": [
                     "zowe.apiml.catalog"
@@ -446,85 +459,6 @@ This response should contain information about a specific service in an APIML wi
 
 Use the `/registry` endpoint to validate successful configuration. The response should contain all the API MLs represented by `apimlId`, and information about onboarded services.
 
-## Gateway static definition example (deprecated)
-
-The Gateway static definition file should be stored together with other statically onboarded services. The default location is `/zowe/runtime/instance/workspace/api-mediation/api-defs/`. 
-There is no naming restriction of the filename, but the file extension must be `yml`.
-
-<details>
-<summary>Click here for a Gateway static definition example.</summary>
-
-**Example:**
-```
-#
-# Static definition of "discoverable-client" as "staticclient"
-#
-# This file provides static API service definition in YAML format.
-# It is loaded by the Discovery Service during its startup.
-#
-services:
-   - serviceId: GATEWAY  # unique lowercase ID of the service
-     catalogUiTileId: static  # ID of the API Catalog UI tile (visual grouping of the services)
-     title: Statically Defined API Service  # Title of the service in the API catalog
-     description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
-     instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys1:{gatewayPort}/  # scheme://hostname:port/contextPath
-     homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
-     statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
-     healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
-     routes:
-         - gatewayUrl: api/v1  # [api/ui/ws]/v{majorVersion}
-           serviceRelativeUrl: /api/v1 # relativePath that is added to baseUrl of an instance
-         - gatewayUrl: ui/v1
-           serviceRelativeUrl: /
-         - gatewayUrl: ws/v1
-           serviceRelativeUrl: /ws
-     # List of APIs provided by the service (currently only one is supported):
-     apiInfo:
-         - apiId: zowe.apiml.gateway
-           gatewayUrl: api/v1
-           swaggerUrl: https://sys1:{discoverableClientPort}/discoverableclient/v2/api-docs
-     customMetadata:
-         apiml:
-             service.apimlId: apiml1
-             okToRetryOnAllOperations: true
-
-
-   - serviceId: GATEWAY  # unique lowercase ID of the service
-     catalogUiTileId: static  # ID of the API Catalog UI tile (visual grouping of the services)
-     title: Statically Defined API Service  # Title of the service in the API catalog
-     description: Sample to demonstrate how to add an API service with Swagger to API Catalog using a static YAML definition  # Description of the service in the API catalog
-     instanceBaseUrls:  # list of base URLs for each instance
-         - https://sys2:{gatewayPort}/  # scheme://hostname:port/contextPath
-     homePageRelativeUrl: / # Normally used for informational purposes for other services to use it as a landing page
-     statusPageRelativeUrl: /application/info  # Appended to the instanceBaseUrl
-     healthCheckRelativeUrl: /application/health  # Appended to the instanceBaseUrl
-     routes:
-         - gatewayUrl: api/v1  # [api/ui/ws]/v{majorVersion}
-           serviceRelativeUrl: /api/v1 # relativePath that is added to baseUrl of an instance
-         - gatewayUrl: ui/v1
-           serviceRelativeUrl: /
-         - gatewayUrl: ws/v1
-           serviceRelativeUrl: /ws
-     # List of APIs provided by the service (currently only one is supported):
-     apiInfo:
-         - apiId: zowe.apiml.gateway
-           gatewayUrl: api/v1
-           swaggerUrl: https://sys2:{discoverableClientPort}/discoverableclient/v2/api-docs
-     customMetadata:
-         apiml:
-             service.apimlId: apiml2
-             okToRetryOnAllOperations: true
-
-
-# List of tiles that can be used by services defined in the YAML file:
-catalogUiTiles:
-   static:
-       title: Static API Services
-       description: Services which demonstrate how to make an API service discoverable in the APIML ecosystem using YAML definitions
-
-```
-</details>
 
 ## Troubleshooting multitenancy configuration
 

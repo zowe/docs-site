@@ -1,0 +1,653 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@zowe/zos-console-for-zowe-sdk | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-console-for-zowe-sdk</a>
+				</li>
+			</ul>
+			<h1>Module @zowe/zos-console-for-zowe-sdk</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<a href="#zos-console-package" id="zos-console-package" style="color: inherit; text-decoration: none;">
+						<h1>z/OS Console Package</h1>
+					</a>
+					<p>Contains APIs to interact with the z/OS console (using z/OSMF console REST endpoints).</p>
+					<a href="#api-examples" id="api-examples" style="color: inherit; text-decoration: none;">
+						<h2>API Examples</h2>
+					</a>
+					<p><strong>Submit a command to the z/OS console</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { IIssueParms, IssueCommand } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> parms: IIssueParms = {
+        <span class="hljs-attr">command</span>: <span class="hljs-string">&quot;D IPLINFO&quot;</span>,
+        <span class="hljs-attr">sysplexSystem</span>: <span class="hljs-literal">undefined</span>,
+        <span class="hljs-attr">solicitedKeyword</span>: <span class="hljs-literal">undefined</span>,
+        <span class="hljs-attr">async</span>: <span class="hljs-string">&quot;N&quot;</span>
+    };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> IssueCommand.issue(session, parms);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+					<a href="#" id="" style="color: inherit; text-decoration: none;">
+						<h1></h1>
+					</a>
+					<p><strong>Get the response from a command sent to the z/OS console</strong></p>
+					<pre><code class="language-typescript"><span class="hljs-keyword">import</span> { ProfileInfo } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/imperative&quot;</span>;
+<span class="hljs-keyword">import</span> { CollectCommand, ICollectParms } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@zowe/zos-console-for-zowe-sdk&quot;</span>;
+
+(<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-comment">// Load connection info from default z/OSMF profile</span>
+    <span class="hljs-keyword">const</span> profInfo = <span class="hljs-keyword">new</span> ProfileInfo(<span class="hljs-string">&quot;zowe&quot;</span>);
+    <span class="hljs-keyword">await</span> profInfo.readProfilesFromDisk();
+    <span class="hljs-keyword">const</span> zosmfProfAttrs = profInfo.getDefaultProfile(<span class="hljs-string">&quot;zosmf&quot;</span>);
+    <span class="hljs-keyword">const</span> zosmfMergedArgs = profInfo.mergeArgsForProfile(zosmfProfAttrs, { <span class="hljs-attr">getSecureVals</span>: <span class="hljs-literal">true</span> });
+    <span class="hljs-keyword">const</span> session = ProfileInfo.createSession(zosmfMergedArgs.knownArgs);
+
+    <span class="hljs-keyword">const</span> parms: ICollectParms = {
+        <span class="hljs-attr">commandResponseKey</span>: <span class="hljs-string">&quot;KEY&quot;</span>,
+        <span class="hljs-attr">waitToCollect</span>: <span class="hljs-literal">undefined</span>,
+        <span class="hljs-attr">followUpAttempts</span>: <span class="hljs-literal">undefined</span>
+    };
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> CollectCommand.collect(session, parms);
+    <span class="hljs-built_in">console</span>.log(response);
+})().catch(<span class="hljs-function">(<span class="hljs-params">err</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.error(err);
+    process.exit(<span class="hljs-number">1</span>);
+});
+</code></pre>
+				</div>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Classes</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_console_for_zowe_sdk.collectcommand.html" class="tsd-kind-icon">Collect<wbr>Command</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_console_for_zowe_sdk.consoleconstants.html" class="tsd-kind-icon">Console<wbr>Constants</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_console_for_zowe_sdk.consoleresponseservice.html" class="tsd-kind-icon">Console<wbr>Response<wbr>Service</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_console_for_zowe_sdk.consolevalidator.html" class="tsd-kind-icon">Console<wbr>Validator</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_console_for_zowe_sdk.issuecommand.html" class="tsd-kind-icon">Issue<wbr>Command</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.icollectparms.html" class="tsd-kind-icon">ICollect<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleparms.html" class="tsd-kind-icon">IConsole<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-kind-icon">IConsole<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iissueparms.html" class="tsd-kind-icon">IIssue<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfcollectresponse.html" class="tsd-kind-icon">IZosmf<wbr>Collect<wbr>Response</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfissueparms.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfissueresponse.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Response</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#consoleresponse" class="tsd-kind-icon">Console<wbr>Response</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#collectprocessingdetails" class="tsd-kind-icon">collect<wbr>Processing<wbr>Details</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#decreasecounter" class="tsd-kind-icon">decrease<wbr>Counter</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#displaycollecterror" class="tsd-kind-icon">display<wbr>Collect<wbr>Error</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#displaycollectresponse" class="tsd-kind-icon">display<wbr>Collect<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#displayerror" class="tsd-kind-icon">display<wbr>Error</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#displayresponse" class="tsd-kind-icon">display<wbr>Response</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#nocollectparameters" class="tsd-kind-icon">no<wbr>Collect<wbr>Parameters</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#nocommandkey" class="tsd-kind-icon">no<wbr>Command<wbr>Key</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#noconsoleinput" class="tsd-kind-icon">no<wbr>Console<wbr>Input</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#noconsolename" class="tsd-kind-icon">no<wbr>Console<wbr>Name</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#nozosmfinput" class="tsd-kind-icon">no<wbr>Zosmf<wbr>Input</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="_zowe_zos_console_for_zowe_sdk.html#resetcounter" class="tsd-kind-icon">reset<wbr>Counter</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-module">
+					<a name="consoleresponse" class="tsd-anchor"></a>
+					<h3>Console<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">Console<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-signature-type">IConsoleResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/types/ConsoleResponse.ts#L14">@zowe/zos-console-for-zowe-sdk/src/types/ConsoleResponse.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-signature">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>response<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-signature-type">IConsoleResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>response: <a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-signature-type">IConsoleResponse</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="collectprocessingdetails" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> collect<wbr>Processing<wbr>Details</h3>
+					<div class="tsd-signature tsd-kind-icon">collect<wbr>Processing<wbr>Details<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L57">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:57</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="collectprocessingdetails.message" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Collect processing - timeout: {{timer}}, followUpCounter: {{counter}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L58">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:58</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="decreasecounter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> decrease<wbr>Counter</h3>
+					<div class="tsd-signature tsd-kind-icon">decrease<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L36">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:36</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="decreasecounter.message-1" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Decreasing follow up counter&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L37">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:37</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="displaycollecterror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> display<wbr>Collect<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Collect<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L33">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:33</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="displaycollecterror.message-2" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; Collect error: {{data}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L34">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:34</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="displaycollectresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> display<wbr>Collect<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Collect<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L30">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:30</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="displaycollectresponse.message-3" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Collect response: {{data}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L31">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:31</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="displayerror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> display<wbr>Error</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L27">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:27</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="displayerror.message-4" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; Populating console error: {{data}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L28">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:28</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="displayresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> display<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">display<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L24">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:24</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="displayresponse.message-5" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Populating console response: {{data}}&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L25">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:25</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="nocollectparameters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Collect<wbr>Parameters</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Collect<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L54">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:54</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="nocollectparameters.message-6" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console collect parameters were supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L55">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:55</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="nocommandkey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Command<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Command<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L51">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:51</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="nocommandkey.message-7" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No command response key was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L52">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:52</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="noconsoleinput" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Console<wbr>Input</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Console<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L45">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:45</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="noconsoleinput.message-8" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console issue parameters were supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L46">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:46</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="noconsolename" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Console<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Console<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L48">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:48</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="noconsolename.message-9" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No console name was supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L49">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:49</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="nozosmfinput" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> no<wbr>Zosmf<wbr>Input</h3>
+					<div class="tsd-signature tsd-kind-icon">no<wbr>Zosmf<wbr>Input<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L42">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:42</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="nozosmfinput.message-10" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiErrorHeader.message + &#x60; No zosmf console input parameters were supplied.&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L43">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:43</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="resetcounter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> reset<wbr>Counter</h3>
+					<div class="tsd-signature tsd-kind-icon">reset<wbr>Counter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L39">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:39</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="resetcounter.message-11" class="tsd-anchor"></a>
+						<h3>message</h3>
+						<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &#x60;Reset follow up counter&#x60;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/zosconsole/src/ConsoleConstants.ts#L40">@zowe/zos-console-for-zowe-sdk/src/ConsoleConstants.ts:40</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+						<ul>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_console_for_zowe_sdk.collectcommand.html" class="tsd-kind-icon">Collect<wbr>Command</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_console_for_zowe_sdk.consoleconstants.html" class="tsd-kind-icon">Console<wbr>Constants</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_console_for_zowe_sdk.consoleresponseservice.html" class="tsd-kind-icon">Console<wbr>Response<wbr>Service</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_console_for_zowe_sdk.consolevalidator.html" class="tsd-kind-icon">Console<wbr>Validator</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_console_for_zowe_sdk.issuecommand.html" class="tsd-kind-icon">Issue<wbr>Command</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.icollectparms.html" class="tsd-kind-icon">ICollect<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleparms.html" class="tsd-kind-icon">IConsole<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iconsoleresponse.html" class="tsd-kind-icon">IConsole<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.iissueparms.html" class="tsd-kind-icon">IIssue<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfcollectresponse.html" class="tsd-kind-icon">IZosmf<wbr>Collect<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfissueparms.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_console_for_zowe_sdk.izosmfissueresponse.html" class="tsd-kind-icon">IZosmf<wbr>Issue<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-type-alias tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#consoleresponse" class="tsd-kind-icon">Console<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#collectprocessingdetails" class="tsd-kind-icon">collect<wbr>Processing<wbr>Details</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#decreasecounter" class="tsd-kind-icon">decrease<wbr>Counter</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#displaycollecterror" class="tsd-kind-icon">display<wbr>Collect<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#displaycollectresponse" class="tsd-kind-icon">display<wbr>Collect<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#displayerror" class="tsd-kind-icon">display<wbr>Error</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#displayresponse" class="tsd-kind-icon">display<wbr>Response</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#nocollectparameters" class="tsd-kind-icon">no<wbr>Collect<wbr>Parameters</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#nocommandkey" class="tsd-kind-icon">no<wbr>Command<wbr>Key</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#noconsoleinput" class="tsd-kind-icon">no<wbr>Console<wbr>Input</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#noconsolename" class="tsd-kind-icon">no<wbr>Console<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#nozosmfinput" class="tsd-kind-icon">no<wbr>Zosmf<wbr>Input</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+								<a href="_zowe_zos_console_for_zowe_sdk.html#resetcounter" class="tsd-kind-icon">reset<wbr>Counter</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

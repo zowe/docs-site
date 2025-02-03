@@ -18,6 +18,8 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [
+        "whats-new/release-notes/v3_1_0",
+        "whats-new/release-notes/v3_0_0",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -294,6 +296,7 @@ module.exports = {
                       "items": [
                         "user-guide/api-mediation/configuration-connection-limits",
                         "user-guide/api-mediation/configuration-gateway-timeouts",
+                        "user-guide/api-mediation/customizing-gateway-rate-limiter",
                         "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
                       ]
                     }
@@ -648,14 +651,7 @@ module.exports = {
               items: [
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
-                {
-                  type: "category",
-                  label: "IBM® Db2® Database Plug-in for Zowe CLI",
-                  link: { type: "doc", id: "user-guide/cli-db2plugin" },
-                  items: [
-                    "user-guide/cli-db2-install-m1",
-                  ],
-                },
+                "user-guide/cli-db2plugin",
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-mqplugin",
                 "user-guide/cli-idfplugin",
@@ -1093,7 +1089,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.0.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
     },
   ],
 }
