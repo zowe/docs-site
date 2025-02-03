@@ -4,6 +4,12 @@ One option to configure Zowe is by directly customizing JCLs. The Zowe Runtime D
 
 Edit and submit the job `SZWESAMP(ZWEGENER)` to validate the contents of your `zowe.yaml` before resolving the `JCL templates` and placing the resulting JCL into a separate data set created by the job ZWEGENER. The location is specified in `zowe.setup.dataset.jcllib`.
 
+:::note
+
+The `zowe.setup.dataset.jcllib` is deleted and created each time the job `SZWESAMP(ZWEGENER)` is submitted.
+
+:::
+
 When the JCL is prepared, the following jobs can be submitted to perform the following instance configuration actions.
 In addition to core JCL samples, you can also customize JCL samples for various keyring setup options according to your security manager. 
 
