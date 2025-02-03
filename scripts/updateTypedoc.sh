@@ -21,7 +21,7 @@ rm -f zowe-nodejs-sdk-typedoc.zip
 
 # Download and extract new files
 filename=$(curl https://zowe.jfrog.io/artifactory/libs-release-local/org/zowe/sdk/zowe-nodejs-sdk/$ZOWE_VERSION/ | grep -o 'zowe-nodejs-sdk-typedoc-[^"<]\+\.zip' | tail -1)
-echo $filename
+
 curl -L -o zowe-nodejs-sdk-typedoc.zip https://zowe.jfrog.io/artifactory/libs-release-local/org/zowe/sdk/zowe-nodejs-sdk/$ZOWE_VERSION/$filename
 unzip zowe-nodejs-sdk-typedoc.zip
 
