@@ -22,6 +22,12 @@
 <h4>Options</h4>
 <ul>
 <li>
+<p><code>--attributes</code> | <code>--attrs</code> <em>(local file path)</em></p>
+<ul>
+<li>Path of an attributes file to control how files are downloaded.</li>
+</ul>
+</li>
+<li>
 <p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
 <ul>
 <li>Download the file content in binary mode, which means that no data conversion is performed. The data transfer process returns each line as-is, without translation. No delimiters are added between records.</li>
@@ -155,6 +161,12 @@ Allowed values: http, https</p>
 <p>Download the file &quot;/a/ibmuser/MyJava.class&quot; to &quot;java/MyJava.class&quot; in binary mode:</p>
 <ul>
 <li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Download the file &quot;/a/ibmuser/MyJava.class&quot; to &quot;java/MyJava.class&quot; using a .zosattributes file:</p>
+<ul>
+<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes -f &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes -f &quot;java/MyJava.class&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>
