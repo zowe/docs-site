@@ -22,7 +22,7 @@ Follow these steps described in this article to configure z/OSMF.
 
 2. Configure z/OSMF.
 
-    z/OSMF is a base element of z/OS V2.2 and V2.3, so it is already installed. However, z/OSMF might not be configured and running on every z/OS V2.2 and V2.3 system.
+    z/OSMF is a base element of z/OS, so it is already installed. However, z/OSMF might not be configured and running on every z/OS system.
 
     To configure an instance of z/OSMF, run the IBM-supplied jobs `IZUSEC` and `IZUMKFS`, and then start the z/OSMF server.
     The z/OSMF configuration process occurs in three stages, and in the following order:
@@ -36,9 +36,9 @@ Follow these steps described in this article to configure z/OSMF.
   [56699d6d]: https://www.ibm.com/support/knowledgecenter/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/IZUHPINFO_ConfiguringMain.htm "Setting up z/OSMF for the first time"
 
   :::note
-  In z/OS V2.3, the base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
+  The base element z/OSMF is started by default at system initial program load (IPL). Therefore, z/OSMF is available for use as soon as you set up the system. If you prefer not to start z/OSMF automatically, disable the autostart function by checking for `START` commands for the z/OSMF started procedures in the _COMMNDxx parmlib_ member.
 
-  The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3.
+  The z/OS Operator Consoles task is new in Version 2.3. Applications that depend on access to the operator console such as Zowe&trade; CLI's RestConsoles API require Version 2.3 or newer.
   :::
 
 1. Verify that the z/OSMF server and angel processes are running. From the command line, issue the following command:
