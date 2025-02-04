@@ -6,10 +6,9 @@
 
 ## Description
 
-After installation via SMP/E  Zowe convenience build, run this command to install
-MVS data sets.
+After installation of Zowe via SMP/E, PSWI, or convenience build, run this command to install sample modules and some load modules into MVS data sets.
 
-The following Zowe YAML configuration example uses  sample values:
+The following Zowe YAML configuration example uses sample values:
 
 ```yaml
 zowe:
@@ -30,7 +29,7 @@ The following data sets are created under `zowe.setup.dataset.prefix` definition
   * **SZWELOAD**   
    Contains config manager for REXX.
 
-## Examples
+**Example:**
 
 ```
 zwe install -v -c /path/to/zowe.yaml
