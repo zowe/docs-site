@@ -113,6 +113,7 @@
       "className": "ToCitemcolor",
       "id": "extend/migrate-extensions"
     },
+    "whats-new/zowe-compatibility-statement-v2",
     {
       "type": "doc",
       "label": "Zowe learning resources",
@@ -232,7 +233,6 @@
                 "id": "user-guide/configuring-security"
               },
               "items": [
-                "user-guide/initialize-security-configuration",
                 "user-guide/apf-authorize-load-library",
                 "user-guide/configure-zos-system",
                 "user-guide/assign-security-permissions-to-users"

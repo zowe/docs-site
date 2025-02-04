@@ -1,10 +1,9 @@
-const LATEST_VERSION = "v3.0.x";
+const LATEST_VERSION = "v3.1.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
   title: "Zowe Docs",
-  tagline:
-    "Combining the past and the present to build the future of Mainframe",
+  tagline: "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -18,18 +17,12 @@ module.exports = {
       comments: true
     }
   },
-  webpack: {
-    jsLoader: (isServer) => ({
-      loader: require.resolve("esbuild-loader"),
-      options: {
-        loader: "tsx",
-        format: isServer ? "cjs" : undefined,
-        target: isServer ? "node12" : "es2017",
-      },
-    }),
+  future: {
+    // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
+    experimental_faster: process.env.NODE_ENV === "production",
   },
   themeConfig: {
-        docs: {
+    docs: {
       sidebar: {
         hideable: true
       }
@@ -122,10 +115,6 @@ module.exports = {
             {
               label: "Download",
               href: "https://www.zowe.org/download.html",
-            },
-            {
-              label: "Try Zowe",
-              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
             },
             {
               label: "Features",
@@ -225,6 +214,9 @@ module.exports = {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
+            },
+            "v3.0.x": {
+              label: "v3.0.x LTS",
             },
             "v2.18.x": {
               label: "v2.18.x LTS",

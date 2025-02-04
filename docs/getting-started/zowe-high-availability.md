@@ -4,7 +4,7 @@ In order to deploy Zowe in high availability (HA) mode, it is necessary to set u
 
 ## Sysplex architecture and configuration
 
-A Sysplex is required to make sure multiple Zowe instances can work together. For more configuration details, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex).
+A Sysplex is required to make sure multiple Zowe instances can work together. For more configuration details, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex.md).
 
 To enable high availability when Zowe runs in a Sysplex, it is necessary to meet the following requirements:
 
@@ -30,7 +30,7 @@ If you are running the Caching Service on z/OS, there are three storage methods 
     - Part of the Caching service
     - Does not need separate processes
     - Highly performant
-- [VSAM (*deprecated*)](../user-guide/configure-caching-service-ha.md#vsam)
+- [VSAM (*deprecated*)](../user-guide/configure-caching-service-ha.md#vsam-deprecated)
     - Familiar to z/OS engineers
     - Slow
 - [Redis](../extend/extend-apiml/api-mediation-redis.md#redis-configuration)

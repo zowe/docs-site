@@ -1,0 +1,789 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>LoggingConfigurer | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.loggingconfigurer.html">LoggingConfigurer</a>
+				</li>
+			</ul>
+			<h1>Class LoggingConfigurer</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Helper class to construct default config, log4js config, and define
+						log4js configuration document.</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">LoggingConfigurer</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#buildapploggingdefaults" class="tsd-kind-icon">build<wbr>App<wbr>Logging<wbr>Defaults</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#buildimperativeloggingdefaults" class="tsd-kind-icon">build<wbr>Imperative<wbr>Logging<wbr>Defaults</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#buildloggingdefaults" class="tsd-kind-icon">build<wbr>Logging<wbr>Defaults</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#buildloggingdefaultsbykey" class="tsd-kind-icon">build<wbr>Logging<wbr>Defaults<wbr>ByKey</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#configureapplogger" class="tsd-kind-icon">configure<wbr>App<wbr>Logger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#configureimperativelogger" class="tsd-kind-icon">configure<wbr>Imperative<wbr>Logger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#configurelogger" class="tsd-kind-icon">configure<wbr>Logger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#configureloggerbykey" class="tsd-kind-icon">configure<wbr>Logger<wbr>ByKey</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#configureloggerbykeyhelper" class="tsd-kind-icon">configure<wbr>Logger<wbr>ByKey<wbr>Helper</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.loggingconfigurer.html#normalizedir" class="tsd-kind-icon">normalize<wbr>Dir</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="buildapploggingdefaults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>App<wbr>Logging<wbr>Defaults</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>App<wbr>Logging<wbr>Defaults<span class="tsd-signature-symbol">(</span>imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L239">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:239</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build minimum app config for default app logger</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>log4js name</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h4>
+							<ul>
+								<li>populated config</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="buildimperativeloggingdefaults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Imperative<wbr>Logging<wbr>Defaults</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Imperative<wbr>Logging<wbr>Defaults<span class="tsd-signature-symbol">(</span>imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L226">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:226</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build minimum imperative config for default imperative logger</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>log4js name</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h4>
+							<ul>
+								<li>populated config</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="buildloggingdefaults" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Logging<wbr>Defaults</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Logging<wbr>Defaults<span class="tsd-signature-symbol">(</span>imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L205">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:205</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Build minimum imperative config for default supplied loggers</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h4>
+							<ul>
+								<li>populated config</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="buildloggingdefaultsbykey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> build<wbr>Logging<wbr>Defaults<wbr>ByKey</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Logging<wbr>Defaults<wbr>ByKey<span class="tsd-signature-symbol">(</span>imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, apiName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, category<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L267">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:267</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This method overrides any configuration of reserved loggers.
+									Build minimum console config for default console logger</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>apiName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> category: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = apiName</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h4>
+							<ul>
+								<li>populated config</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="configureapplogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> configure<wbr>App<wbr>Logger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<wbr>App<wbr>Logger<span class="tsd-signature-symbol">(</span>home<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, loggingConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L132">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:132</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Configures log4js app appender from imperative config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>home: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>home directory</p>
+									</div>
+								</li>
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>loggingConfig: <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>log4js config</p>
+									</div>
+								</li>
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>keys within log4js appenders (like the appenders &quot;imperative&quot; key or categories &quot;imperative&quot; key)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="configureimperativelogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> configure<wbr>Imperative<wbr>Logger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<wbr>Imperative<wbr>Logger<span class="tsd-signature-symbol">(</span>home<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, loggingConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L117">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Configures log4js imperative appender from imperative config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>home: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>home directory</p>
+									</div>
+								</li>
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>loggingConfig: <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>log4js config</p>
+									</div>
+								</li>
+								<li>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>keys within log4js appenders (like the appenders &quot;imperative&quot; key or categories &quot;imperative&quot; key)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="configurelogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> configure<wbr>Logger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<wbr>Logger<span class="tsd-signature-symbol">(</span>home<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L38">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:38</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Configure all log4js loggers based on imperative config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>home: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>home directory</p>
+									</div>
+								</li>
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
+							<ul>
+								<li>compiled logging config for Logger.init();</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="configureloggerbykey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> configure<wbr>Logger<wbr>ByKey</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<wbr>Logger<wbr>ByKey<span class="tsd-signature-symbol">(</span>home<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, imperativeConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a>, loggingConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a>, entryKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, configKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L160">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:160</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Configures log4js appenders from imperative config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>home: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>home directory</p>
+									</div>
+								</li>
+								<li>
+									<h5>imperativeConfig: <a href="../interfaces/_zowe_imperative.iimperativeconfig.html" class="tsd-signature-type">IImperativeConfig</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>loggingConfig: <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>log4js config</p>
+									</div>
+								</li>
+								<li>
+									<h5>entryKey: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>keys within log4js appenders (like the appenders &quot;imperative&quot; key or categories &quot;imperative&quot; key)</p>
+									</div>
+								</li>
+								<li>
+									<h5>configKey: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>keys within IImperativeLogsConfig (like imperativeLogging)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="configureloggerbykeyhelper" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> configure<wbr>Logger<wbr>ByKey<wbr>Helper</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">configure<wbr>Logger<wbr>ByKey<wbr>Helper<span class="tsd-signature-symbol">(</span>home<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, impLogConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeloggingconfig.html" class="tsd-signature-type">IImperativeLoggingConfig</a>, loggingConfig<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a>, entryKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, configKey<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L182">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:182</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Common method to configure log4js appenders via imperative config</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>home: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>home directory</p>
+									</div>
+								</li>
+								<li>
+									<h5>impLogConfig: <a href="../interfaces/_zowe_imperative.iimperativeloggingconfig.html" class="tsd-signature-type">IImperativeLoggingConfig</a></h5>
+								</li>
+								<li>
+									<h5>loggingConfig: <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative main config</p>
+									</div>
+								</li>
+								<li>
+									<h5>entryKey: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>imperative key</p>
+									</div>
+								</li>
+								<li>
+									<h5>configKey: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>-log4js key</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfiglogging.html" class="tsd-signature-type">IConfigLogging</a></h4>
+							<ul>
+								<li>populated config</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="normalizedir" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> normalize<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">normalize<wbr>Dir<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/imperative/src/LoggingConfigurer.ts#L292">@zowe/imperative/src/imperative/src/LoggingConfigurer.ts:292</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Normalize input file path for logs in the case that a user provides
+									redundant or missing file delimiters.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>LoggingConfigurer</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>file: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>normalized file</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>normalized dir</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.loggingconfigurer.html" class="tsd-kind-icon">Logging<wbr>Configurer</a>
+								<ul>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#buildapploggingdefaults" class="tsd-kind-icon">build<wbr>App<wbr>Logging<wbr>Defaults</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#buildimperativeloggingdefaults" class="tsd-kind-icon">build<wbr>Imperative<wbr>Logging<wbr>Defaults</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#buildloggingdefaults" class="tsd-kind-icon">build<wbr>Logging<wbr>Defaults</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#buildloggingdefaultsbykey" class="tsd-kind-icon">build<wbr>Logging<wbr>Defaults<wbr>ByKey</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#configureapplogger" class="tsd-kind-icon">configure<wbr>App<wbr>Logger</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#configureimperativelogger" class="tsd-kind-icon">configure<wbr>Imperative<wbr>Logger</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#configurelogger" class="tsd-kind-icon">configure<wbr>Logger</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#configureloggerbykey" class="tsd-kind-icon">configure<wbr>Logger<wbr>ByKey</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#configureloggerbykeyhelper" class="tsd-kind-icon">configure<wbr>Logger<wbr>ByKey<wbr>Helper</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.loggingconfigurer.html#normalizedir" class="tsd-kind-icon">normalize<wbr>Dir</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -483,7 +483,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    ```
 3. Copy the `allowedPlugins.json` file and paste it in the following location:
    ```
-   <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage
+   <zowe.workspaceDirectory>/app-server/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
 4. Open the copied `allowedPlugins.json` file and perform either of the following steps:
     - To make an app unavailable, delete it from the list of objects.
@@ -502,7 +502,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 3. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
    ```
-   <zpwe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/deploy/instance/ZLUX/pluginStorage
    ```
 6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
     ```json

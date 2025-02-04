@@ -36,11 +36,9 @@ Use one of the following methods to install the the Zowe CLI Plug-in for IBM Db2
 
 ### Installing from an online registry
 
-Complete the following steps if you installed Zowe CLI from **online registry**:
+If you installed Zowe CLI from **online registry**:
 
-1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [Apple Silicon processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
-
-2. Open a command line window and issue the following command:
+1. Open a command line window and issue the following command:
 
     ```
     zowe plugins install @zowe/db2-for-zowe-cli@zowe-v3-lts
@@ -56,9 +54,7 @@ Follow these procedures if you downloaded the Zowe installation package:
 
 Download the ODBC driver before you install the Db2 plug-in:
 
-1. If you are installing the plug-in on an Apple computer that contains an M1 (or later architecture) processor, complete the steps in [Apple Silicon processor installation](../user-guide/cli-db2-install-m1.md). If not, continue to Step 2.
-
-2. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
 3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
@@ -164,41 +160,77 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 After you install the plug-in, create a Db2 profile to avoid entering your connection details each time that you issue a command. You can create multiple profiles and switch between them as needed.
 
-Specify your plug-in profile and connection details in the `zowe.config.json` configuration file.
+Add your plug-in profile and connection details to the `zowe.config.json` configuration file. In the profile, enter the IP address and port number of the Db2 database, as well as the eight-character database schema name.
+
+:::tip
+You can get your connection information by either:
+
+- Issuing the `-DISPLAY DDF` command
+- Searching for the message ID `DSNL004I` in the JES spool for the Db2 MSTR address space
+
+    Example of how to read the `DSNL004I` message with example values:
+
+
+
+    ```
+    DSNL004I  #DI2E DDF START COMPLETE  025        
+            LOCATION  DSNV123E                  
+            LU        GBIBMIYA.IYCYZDBE         
+            GENERICLU -NONE                     
+            DOMAIN    domain.host.acme.com  
+            TCPPORT   40100                     
+            SECPORT   30100
+    ```
+        - `DOMAIN`<br/>
+            Specifies the value for the CLI host. 
+        - `TCPPORT`<br/>
+            Specifies the port number.
+        - `SECPORT`<br/>
+            If a TLS certificate is being used, specifies the secure port.
+        - `LOCATION`<br/>
+            Specifies the property to use in the `database` value.
+:::
 
 ### Creating plug-in profiles using a configuration file
 
-When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in and then issue a command, the command creates an entry for a `db2 profile` in your `zowe.config.json` file.
-
-Alternatively, you can create a Db2 profile manually by adding a section that contains the configuration details to your `zowe.config.json` configuration file:
+You can issue commands to create a Db2 profile, or you can manually edit your configuration file to add a profile.
 
 #### Creating a Db2 profile with a command
 
-1.  Install the IBM Db2 Database Plug-in for Zowe CLI.
-2.  Create a Db2 profile:
+When you issue various `zowe config` commands, such as `init`, `auto-init`, and `convert-profiles`, they create a `zowe.config.json` configuration file. When you install the Db2 plug-in and then issue a command, the command creates an entry for a `db2 profile` in your `zowe.config.json` file.
+
+To create a Db2 profile with a command:
+
+1. Install the IBM Db2 Database Plug-in for Zowe CLI.
+
+2. Create a Db2 profile:
 
     ```
     zowe config init
     ```
-3.  Set the port number to the port configured for a Db2 connection on your mainframe.
+
+3. Set the port number to the port configured for a Db2 connection on your mainframe.
 
     ```
     zowe config set profiles.db2.properties.port <port number>
     ```
 
-    - `<port number>`
-
+    - `<port number>`<br/>
       Specifies the port number for the instance.
+
 4. If an SSL file is available, set the `sslFile` value to SSL file path:
 
     ```
     zowe config set profiles.db2.properties.sslFile <SSL file path>
     ```
+
     You can now use your profile when you issue commands in the Db2 command group.
 
 #### Creating a Db2 profile manually
 
-1.  Install the Db2 Plug-in for Zowe CLI.
+To create a Db2 profile manually by adding a section that contains the configuration details in your `zowe.config.json` configuration file:
+
+1. Install the Db2 Plug-in for Zowe CLI.
 
 2. Browse to the directory `C:\Users\<username>\.zowe`.
 
