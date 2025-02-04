@@ -1,8 +1,8 @@
 # Advanced Application Framework Configuration
 
-The Zowe Application ("App") Framework is configured in the Zowe configuration file. Configuration can be used to change things such as verbosity of logs, the way in which the App server communicates with the Mediation Layer, how ZSS operates, whether to use HTTPS or AT-TLS, what language the logs should be set, and many more attributes.
+The Zowe Application ("App") Framework is configured in the Zowe configuration file. Configuration can be used to customize functionalities such as verbosity of logs, the way in which the App server communicates with the Mediation Layer, how ZSS operates, whether to use HTTPS or AT-TLS, what language the logs should be set, and many more attributes.
 
-When you install Zowe&trade;, the App Framework is configured as a Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
+When you install Zowe&trade;, the App Framework is configured as an API Mediation Layer client by default. This is simpler to administer because the App framework servers are accessible externally through a single port: API ML Gateway port. It is more secure because you can implement stricter browser security policies for accessing cross-origin content.
 
 You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
 
@@ -91,7 +91,7 @@ Both `app-server` and `zss` server components default to using HTTPS without the
 
 ### AT-TLS
 
-You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. This is for setting AT-TLS for all the Zowe servers. For more granular control, you can set the following:
+You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. This property is for setting AT-TLS for all Zowe servers. For more granular control, you can set the following section in the yaml file:
 
 ```yaml
 components:
@@ -106,7 +106,7 @@ components:
             attls: true
 ```
 
-Which would instruct only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
+This configuration instructs only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
 
 #### AT-TLS Rule Suggestions
 

@@ -2,24 +2,24 @@
 
 Zowe's servers have built-in TLS support to enable HTTPS connections.
 
-This is the default, and an alternative to using AT-TLS which is [documented here](./configuring-at-tls-for-zowe-server).
+This support is the default, and an alternative to using AT-TLS. For information about using AT-TLS, see  [Configuring AT-TLS for Zowe Server](./configuring-at-tls-for-zowe-server).
 
 :::info Required role: security administrator
 :::
 
 ## Server Parameters
 
-Each Zowe server can be customized either by defining attributes within the `zowe.network.server` object of the Zowe YAML configuration file. The same object can be put within an individual component's configuration, such as `components.zss.zowe.network.server` for ZSS, which will allow you to customize each component separate from others.
+Each Zowe server can be customized by defining attributes within the `zowe.network.server` object of the Zowe YAML configuration file. Alternatively, the same object can be put within an individual component's configuration, such as `components.zss.zowe.network.server` for ZSS. This option  allows you to customize each component separate from other components.
 
-Extensions are recommended to adhere to this configuration, but you must check with documentation for extensions to be sure.
+Extensions are recommended to adhere to the specific configuration. Ensure that you review the documentation for your extension. 
 
 ### IP Addresses
 
 Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
 
-If this default is not desired, you can either change it either within Zowe or by setting [TCPIP port assignment statements](./address-network-requirements#ip-addresses).
+If this default is not desired, you can either change the configuration either within Zowe or by setting TCPIP port assignment statements. For more information, see [IP Addresses](./address-network-requirements#ip-addresses) in the article _Addressing network requirements_.
 
-To customize this within Zowe, define the parameter `zowe.network.server.listenAddresses`. For example, to have all Zowe servers use IP `1.2.3.4`, except for App Server which will use IP `2.3.4.5`, set the following in your Zowe YAML:
+To customize IP addresses within Zowe, define the parameter `zowe.network.server.listenAddresses`. For example, to have all Zowe servers use IP `1.2.3.4`, except for App Server which will use IP `2.3.4.5`, set the following section in your Zowe YAML:
 
 ```yaml
 zowe:
@@ -41,7 +41,7 @@ components:
 
 By default, Zowe servers use TLSv1.3.
 
-To customize this, you can use the parameters `zowe.network.server.tls.minTls` and `zowe.network.server.tls.maxTls`. The following values are allowed:
+To customize the version, you use the parameters `zowe.network.server.tls.minTls` and `zowe.network.server.tls.maxTls`. The following values are allowed:
 
 * TLSv1.2
 * TLSv1.3
@@ -70,7 +70,9 @@ To customize which ciphers Zowe uses, you can define a list of IANA cipher names
 The properties within `zowe.network.server.tls` can also be specified within `zowe.network.client.tls`.
 
 ## Default and example
-The default TLS configuration changes regularly as needed for industry standards, however below is an example of the defaults:
+The default TLS configuration changes regularly as needed for industry standards, however the following yaml file section is an example of the defaults:
+
+**Example:**
 
 ```yaml
 zowe:
