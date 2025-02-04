@@ -130,6 +130,7 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
+
 Careful consideration needs to be made regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID.
 
 :::
@@ -273,7 +274,7 @@ This scenario includes services that set `zoweJwt` as the authentication scheme,
 
 In this case, it is necessary to have an Outbound rule from the service to the API Gateway.
 
-These service also already have an outbound rule set for the onboarding process against the Discovery Service.
+These services also already have an outbound rule set for the onboarding process against the Discovery Service.
 
 Ensure these rules are followed:
 

@@ -6,27 +6,18 @@ The domain-specific Discovery Service is typically in the same LPAR in a multi-s
 
 Follow these steps to register with additional Discovery Services:
 
-1. Open the `zowe.yaml` configuration file.
-2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a list of Discovery service clusters to additional Disovery Services.
+1. Open the `zowe.yaml` configuration file.
+2. Add the property `components.gateway.apiml.service.additionalRegistration` and set the value to a list of Discovery service clusters to additional Disovery Services.
 
    **Example:**
    ```
    components.gateway.apiml.service.additionalRegistration: 
        <!-- APIML on System 1  -->
        - discoveryServiceUrls: https://sys1:10011/eureka/,https://sys1:10021/eureka/ 
-         routes:
-              - gatewayUrl: /
-                serviceUrl: /
-       <!-- APIML on System 2 -->
+     <!-- APIML on System 2 -->
        - discoveryServiceUrls: https://sys2:10011/eureka/,https://sys2:10021/eureka/
-         routes:
-              - gatewayUrl: /
-                serviceUrl: /
-       <!-- APIML on System 3 -->
+      <!-- APIML on System 3 -->
        - discoveryServiceUrls: https://sys3:10011/eureka/,https://sys3:10021/eureka/ 
-         routes:
-              - gatewayUrl: /
-                serviceUrl: /
     ```
 
    :::note
@@ -36,7 +27,13 @@ Follow these steps to register with additional Discovery Services:
 
      Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
    :::
+3. Add property `components.gateway.apimlId` and set the value to a unique string to identify gateway for routing.
 
-3. Restart Zowe.
+   **Example:**
+   ```yaml
+   components.gateway.apimlId: apiml1
+   ```
+   
+4. Restart Zowe.
 
 You completed the procedure to register with additional Discovery Services.
