@@ -225,6 +225,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/tls-configuration",
                 "user-guide/configuring-at-tls-for-zowe-server",
               ],
             },
