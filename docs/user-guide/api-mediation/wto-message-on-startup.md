@@ -10,7 +10,7 @@ Startup of the API Mediation Layer can be configured to present a message in the
 
 This functionality requires the following changes to the zowe.yaml:
 
-1. Validate whether the `zowe.sysMessages` property contains ZWEAM001I, if it doesn't change the property `zowe.sysMessages` by adding the value `- "ZWEAM001I"`.
+1. Validate whether the `zowe.sysMessages` property contains ZWEAM001I. If this property does not contain ZWEAM001I, add the value `- "ZWEAM001I"` to this property.
     ```
     zowe:
       # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -25,7 +25,7 @@ This functionality requires the following changes to the zowe.yaml:
 
     `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
-3. Prepare custom logging configuration.
+2. Prepare custom logging configuration.
    The current default logging implementation starts with information about the current time. This message content is unlike the message id which is typical in z/OS. To change this message behavior, it is necessary to change the logback.xml configuration. The following example shows the custom logback.xml which prepends the message with the first 9 characters of the message. 
 
    **Example:**
@@ -93,7 +93,7 @@ This functionality requires the following changes to the zowe.yaml:
     For detailed information about how to provide this changed configuration, see [Customizing Zowe API Mediation Layer logging](./configuration-logging.md).
     :::
 
-4. Add the new configuration to the API Mediation Layer for the Gateway service, which issues the message that the API Mediation Layer started. 
+3. Add the new configuration to the API Mediation Layer for the Gateway service, which issues the message that the API Mediation Layer started. 
 
     ```
     components:
@@ -102,7 +102,7 @@ This functionality requires the following changes to the zowe.yaml:
           config: /path/to/logback.xml
     ```
 
-5. Validate the configuration was properly applied. You successfully changed the structure of the log message if you see the message `ZWEAM001I` in the SYSLOG when the API Mediation Layer fully starts and is ready to handle requests. 
+4. Validate the configuration was properly applied. You successfully changed the structure of the log message if you see the message `ZWEAM001I` in the SYSLOG when the API Mediation Layer fully starts and is ready to handle requests. 
 
 **Message example:**
 `ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
