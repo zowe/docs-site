@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>omview search index values</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_omview.html">omview</a> › <a href="zowe_omview_search.html">search</a> › <a href="zowe_omview_search_index.html">index</a> › <a href="zowe_omview_search_index_values.html">values</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Search cross-report index values in a repository.<br>
+Use the returned 'IndexValueHandle' in the 'search index reports' command to retrieve the list of reports containing that index value.</p>
+<h4>Usage</h4>
+<p>zowe omview search index values &lt;repositoryId&gt; &lt;indexNameHandle&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>repositoryId</code>		 <em>(number)</em></p>
+<ul>
+<li>Repository identifier.</li>
+</ul>
+</li>
+<li>
+<p><code>indexNameHandle</code>		 <em>(string)</em></p>
+<ul>
+<li>Index name handle.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--filter-reports</code> | <code>--reports</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Filter (include) based on report names (IDs). Use the asterisk (*) as a wildcard to represent any number of characters.</p>
+<p>Default value: *</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--filter-values</code> | <code>--values</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Filter (include) based on index values. Separate index values with commas. Use the asterisk (*) as a wildcard to represent any number of characters.</p>
+<p>Default value: *,*,*,*,*,*,*,*</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--latest-versions</code> | <code>--latest-version</code> | <code>--lv</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Number of latest versions (of reports) to include. If not specified, all versions of reports are included.</p>
+<p>Default value: 0</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--archival-since</code> | <code>--since</code> | <code>--archival-from</code> | <code>--from</code> <em>(string)</em></p>
+<ul>
+<li>Date of earliest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
+</ul>
+</li>
+<li>
+<p><code>--archival-until</code> | <code>--until</code> | <code>--archival-to</code> | <code>--to</code> <em>(string)</em></p>
+<ul>
+<li>Date of latest archived reports to include based on archival date. Specify a value in the ISO-8601 format.</li>
+</ul>
+</li>
+<li>
+<p><code>--online-only</code> | <code>--online</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Include only those reports that are available online.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-format</code> | <code>--output</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Output format. This option is ignored if '--response-format-json' is specified.</p>
+<p>Default value: tabular<br>
+Allowed values: tabular, csv, json, xml</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-header</code> | <code>--header</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Include header with field names in the output when you specify 'tabular' or 'csv' for the output format.<br>
+This option is ignored when you specify any other output format.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--output-field</code> | <code>-f</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Field to include in the output. Multiple fields can be specified. Fields appear in the order you specify.</p>
+<p>Default value: Value,SubValues,IndexValueHandle<br>
+Allowed values: Value, SubValues, IndexValueHandle</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>OM Web Viewer Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Hostname or ip address of the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Port of the target OM Web Viewer instance.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>User name used to authenticate against the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> <em>(string)</em></p>
+<ul>
+<li>Password used to authenticate against the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Context name of the target OM Web Viewer instance.</p>
+<p>Default value: web-viewer</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol of the target OM Web Viewer instance.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--omview-profile</code> | <code>--omview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (omview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--caview-profile</code> | <code>--caview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (caview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
