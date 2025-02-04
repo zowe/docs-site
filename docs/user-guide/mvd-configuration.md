@@ -91,7 +91,7 @@ Both `app-server` and `zss` server components default to using HTTPS without the
 
 ### AT-TLS
 
-You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. This property is for setting AT-TLS for all Zowe servers. For more granular control, you can set the following section in the yaml file:
+You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. Use this property is to set AT-TLS for all Zowe servers. For more granular control, you can set the following section in the yaml file:
 
 ```yaml
 components:
@@ -106,20 +106,18 @@ components:
             attls: true
 ```
 
-This configuration instructs only the `app-server` Component to expect AT-TLS for both inbound and outbound traffic. The same configuration can be done for `zss`, though `zowe.network.server.tls.attls: true` is a simplified way to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
+This configuration instructs only the `app-server` component to expect AT-TLS for both inbound and outbound traffic. Similarly, set the parameter `zowe.network.server.tls.attls` to `true` for the `zss` component. Use `zowe.network.server.tls.attls: true` to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
 
 #### AT-TLS Rule Suggestions
 
-The `app-server` and `zss` Components of Zowe are servers that may accept incoming connections from each other, other Zowe servers, and clients outside z/OS such as browsers either directly or indirectly such as when APIML is used.
+The `app-server` and `zss` components of Zowe are servers that may accept incoming connections from each other, other Zowe servers, and clients outside z/OS such as browsers either directly or indirectly such as when API ML is used.
 
-Due to this, both Inbound and Outbound direction AT-TLS rules are needed for these servers.
+As such, both Inbound and Outbound direction AT-TLS rules are needed for these servers.
 The Inbound rules can be filtered by the listening ports of the servers, but Outbound rules may need to be set by either jobnames or destination ports.
-
-
 
 The ports and jobnames can be found in the [Addressing network requirements](./address-network-requirements.md) documentation.
 
-The Outbound rules can have HandshakeRole of Client, but when APIML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#for-communication-between-api-gateway-and-other-core-services).
+The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#for-communication-between-api-gateway-and-other-core-services).
 
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
