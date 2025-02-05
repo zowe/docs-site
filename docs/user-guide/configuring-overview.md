@@ -34,6 +34,7 @@ You can configure Zowe by directly customizing JCLs. The Zowe Runtime Dataset `S
 You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
 
     For more information, see [Configuring Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md).
+    or for API ML[Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow.md).
 
 ## Configuring the z/OS system for Zowe
 
