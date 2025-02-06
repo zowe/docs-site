@@ -28,12 +28,12 @@ For more information on Infinispan replication and how to configure a replica in
 
 Configure Infinispan as a storage solution through the Caching service by setting the following configuration parameters in the `zowe.yaml`.
  
-* **`zowe.components.caching-service.storage.infinispan.initialHosts`**
+* **zowe.components.caching-service.storage.infinispan.initialHosts**
 
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
 
-* **`zowe.components.caching-service.storage.infinispan.persistence.dataLocation`**
+* **zowe.components.caching-service.storage.infinispan.persistence.dataLocation**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store. 
   The default value is `data`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
@@ -43,7 +43,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
    - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
-* **`zowe.components.caching-service.storage.infinispan.persistence.indexLocation`**
+* **zowe.components.caching-service.storage.infinispan.persistence.indexLocation**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store. 
   The default value is `index`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
@@ -53,27 +53,27 @@ Configure Infinispan as a storage solution through the Caching service by settin
   - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
-* **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
+* **zowe.components.caching-service.storage.infinispan.jgroups.port**
 
-  (OPTIONAL) The default value is `7600`. The port number is used by Infinispan to synchronise data among Caching Service instances.
+  (Optional) The default value is `7600`. The port number is used by Infinispan to synchronise data among Caching Service instances.
 
-:::note
-We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example 
-from version 2.x through v3.1 to v3.2 and newer versions.
-:::
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example 
+  from version 2.x through v3.1 to v3.2 and newer versions.
+  :::
 
-* **`zowe.components.caching-service.storage.infinispan.jgroups.host`**
+* **zowe.components.caching-service.storage.infinispan.jgroups.host**
 
-  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
+  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
 
-* **`zowe.components.caching-service.storage.infinispan.keyExchange.port`**
+* **zowe.components.caching-service.storage.infinispan.keyExchange.port**
 
-  (OPTIONAL) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Caching Service instances.
+  (Optional) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Caching Service instances.
 
-:::note
-We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
-from version 2.x through v3.1 to v3.2 and newer versions.
-:::
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
+  from version 2.x through v3.1 to v3.2 and newer versions.
+  :::
 
   **Example of Caching service HA configuration using Infinispan:**
 
