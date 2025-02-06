@@ -3,7 +3,7 @@ name: Troubleshooting tip
 about: Add a troubleshooting tip to the doc
 title: "[Troubleshooting tip]"
 labels: docs, troubleshoot
-assignees: samanthasusu
+assignees: ''
 
 ---
 
