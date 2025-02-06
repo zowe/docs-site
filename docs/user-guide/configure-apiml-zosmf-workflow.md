@@ -13,7 +13,7 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
 
-You can complete the following tasks with the **Configuration of API ML/Zowe 3.0** workflow:
+You can complete the following tasks with the **Stand-alone Zowe API ML Configuration** workflow:
 
 - Configure the Zowe instance with simplified and optimized setup of API ML
 
@@ -37,12 +37,12 @@ The following components are automatically disabled:
 These components can be enabled by performing manual changes in the yaml file, but making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
 :::
 
-You can execute the Zowe configuration workflow either from a PSWI during deployment or later from a created software
+You can execute the API ML/Zowe configuration workflow either from a PSWI during deployment or later from a created software
 instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
-## Execute Configuration of Zowe 3.0 workflow from PSWI
+## Execute Stand-alone Zowe API ML Configuration workflow from PSWI
 
 In the PSWI deployment phase, you are presented with a checklist that helps guide you during the deployment process.
 
