@@ -55,7 +55,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.port`**
 
-  (OPTIONAL) The default value is `7600`. The port number is used by Infinispan to synchronise data among Cahing Service instances.
+  (OPTIONAL) The default value is `7600`. The port number is used by Infinispan to synchronise data among Caching Service instances.
 
 :::note
 We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example 
@@ -64,11 +64,11 @@ from version 2.x through v3.1 to v3.2 and newer versions.
 
 * **`zowe.components.caching-service.storage.infinispan.jgroups.host`**
 
-  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among cahing-service instances. 
+  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
 
 * **`zowe.components.caching-service.storage.infinispan.keyExchange.port`**
 
-  (OPTIONAL) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Cahing Service instances.
+  (OPTIONAL) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Caching Service instances.
 
 :::note
 We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
