@@ -42,4 +42,4 @@ You can execute the Zowe configuration workflow either from a PSWI during deploy
 
 For more information about this z/OS runtime initialization method, see [Configuring Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow).
 
-For API ML optimized initialization method, see [Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow).
+For details about API ML optimized initialization, see [Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow).

@@ -65,9 +65,9 @@ Before installing, ensure the [z/OSMF requirements](./install-zowe-pswi-address-
        4. Select **Next**.
        5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
-    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md) or in [Configuring API ML with z/OSMF Workflows](configure-apiml-zosmf-workflow.md).
+    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md). To configure your Zowe instance specifically for API Mediation Layer, see [Configuring API ML with z/OSMF Workflows](configure-apiml-zosmf-workflow.md).
 
-   10. Specify the name and description of the new target software instance.
+   1.  Specify the name and description of the new target software instance.
 
 :::note Notes
 * All workflows that are mentioned in the previous steps are part of the PSWI.  
