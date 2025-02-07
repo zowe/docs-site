@@ -15,7 +15,6 @@ Ensure that you meet the following requirements before you start your Zowe confi
 The following components are automatically enabled after performing the **Stand-alone Zowe API ML Configuration** workflow:
 
 - API Gateway
-- X509
 - ZAAS
 - API Catalog
 - Discovery service
