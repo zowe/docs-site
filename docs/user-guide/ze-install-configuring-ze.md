@@ -91,8 +91,11 @@ To change the default sort order for data sets and jobs:
 ![Default Data Set Sort Settings](../images//ze/ZE-default-ds-sort-setting.png)
 ![Default Job Sort Settings](../images//ze/ZE-default-job-sort-setting.png)
 
-> [!TIP]
-> Alternately, on the VS Code Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`), enter **Preferences: Open User Settings (JSON)** to display the Settings editor.
+:::tip
+
+Alternately, on the VS Code Command Palette (`Ctrl`/`Cmd` + `Shift` + `P`), enter **Preferences: Open User Settings (JSON)** to display the Settings editor.
+
+:::
 
 The following allowed directions are available for sorting both data sets and jobs:
 

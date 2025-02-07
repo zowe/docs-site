@@ -259,8 +259,11 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 Sort partitioned data set members in the **DATA SETS** tree view by member **Name**, **Date Modified**, or **User ID**.
 
-> [!TIP]
-> To change the default sort order for data sets, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+:::note
+
+To change the default sort order for data sets, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+
+:::
 
 ### Sorting all partitioned data set members under a specific profile
 

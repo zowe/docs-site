@@ -70,8 +70,11 @@
    - **Job Name**
    - **Return Code**
 
-> [!TIP]
-> To change the default sort order for jobs, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+:::note
+
+To change the default sort order for jobs, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+
+:::
 
    ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
 
