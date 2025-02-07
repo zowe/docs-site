@@ -83,7 +83,7 @@ The deployment process is complete. The new software instance is defined to z/OS
 If there is a need to update the deployment settings such as the HLQ after a previous run, note that the deployment process does not perform a full cleanup of the datasets.
 Before attempting job execution again, make sure the following datasets are deleted to avoid write conflicts:
 
-For previous Zowe v2
+**For Zowe v2**
 
 ```plaintext
 {TARGET_HLQ}.PRODUCT.ZOWE.V2.CSI
@@ -105,7 +105,7 @@ For previous Zowe v2
 {TARGET_HLQ}.PRODUCT.ZOWE.V2.ZFS.#
 ```
 
-In Zowe v3
+**For Zowe v3**
 
 ```plaintext
 {TARGET_HLQ}.PRODUCT.ZOWE.V3.CSI
@@ -138,6 +138,6 @@ If deployment options must be modified and the JCL recreated, first check the or
  Note that the deployment job is unable to clean this data set name once the data set is recreated because the value for `random_id` will change.
  :::
 
-### Resources
+### Resources <!--Why is this titled Resources? Please suggest a better heading for this.>
 
 It is recommended to update the job card to run with `REGION=0M`, particularly for job `IZUD01DZ` which unpaxes the contents.
