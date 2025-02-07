@@ -19,7 +19,6 @@ You can complete the following tasks with the **Stand-alone Zowe API ML Configur
 
 The following components are automatically enabled:
 - API Gateway
-- X509
 - ZAAS
 - API Catalog
 - Discovery service
