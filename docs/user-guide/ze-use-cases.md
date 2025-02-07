@@ -200,6 +200,9 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 Sort partitioned data set members in the **DATA SETS** tree view by member **Name**, **Date Modified**, or **User ID**.
 
+> [!TIP]
+> To change the default sort order for data sets, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+
 #### Sorting all data set members under a specific profile
 
 1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile, or right-click on a profile and select the **Sort PDS members…** option.
