@@ -1,9 +1,8 @@
 # Configuring API ML with z/OSMF Workflows
 
 After you install Zowe, you can register and execute the z/OSMF workflows in the web interface to perform a range of
-API ML/Zowe configuration tasks. z/OSMF helps to simplify the API ML configuration tasks and does not require the level of
-expertise that is needed to perform manual API ML/Zowe configuration. This configuration method also runs the `zwe install` and `zwe init`
-command to initialize Zowe z/OS runtime.
+API ML/Zowe configuration tasks. The **Stand-alone Zowe API ML Configuration** workflow simplifies configuration of Zowe API Mediation Layer and does not require the level of
+expertise that is needed to perform manual API ML/Zowe configuration. The **Stand-alone Zowe API ML Configuration** workflow also runs the `zwe install` and `zwe init` command to initialize Zowe z/OS runtime.
 
 :::info Required role: system programmer
 :::
@@ -13,11 +12,8 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
 
-You can complete the following tasks with the **Stand-alone Zowe API ML Configuration** workflow:
+The following components are automatically enabled after performing the **Stand-alone Zowe API ML Configuration** workflow:
 
-- Configure the Zowe instance with simplified and optimized setup of API ML
-
-The following components are automatically enabled:
 - API Gateway
 - X509
 - ZAAS
