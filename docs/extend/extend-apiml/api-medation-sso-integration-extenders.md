@@ -11,9 +11,9 @@ This article does not cover the client methods to call API ML and authenticate. 
 
 To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
 
-- Accepting JWT token (recommended)
-- Accepting SAF IDT token
-- Accepting PassTicket
+- [Accepting JWT token (recommended)](#accepting-jwt)
+- [Accepting SAF IDT token](#accepting-saf-idt)
+- [Accepting PassTicket](#accepting-passtickets)
 
 Additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
@@ -142,16 +142,17 @@ For more information about z/OSMF Single Sign-on, see [Establishing a single sig
 ## Forwarding x509 client certificate
 When client uses a x509 client certificates for authentication, the certificate can be forwarded to a downstream service. This is an alternative to the [Bypassing authentication for the service](#bypassing-authentication-for-the-service) option for client certificates.
 
-The x509 client certificate forwarding flow:
+The following steps outline the x509 client certificate forwarding flow:
 
 1. A client sends a request to the API Gateway secured by a client certificate.
-2. The API Gateway extracts the client certificate form the request and puts it into the `Client-Cert` header.
+2. The API Gateway extracts the client certificate from the request and puts this certificate into the `Client-Cert` header.
 3. The API Gateway forwards the request to the downstream service. The request is secured by the Zowe server certificate.
-4. The downstream service must validate the Zowe server certificate in the request to verify its origin and extract the original client certificate from the header to perform the authentication by itself.
+4. The downstream service must validate the Zowe server certificate in the request to verify the certificate's origin and extract the original client certificate from the header. This validation makes it possible for the service to then perform the authentication.
 
-Both the APIML Gateway and the downstream service must conform to the following requirements to support x509 certificate forwarding.
+Both the API ML Gateway and the downstream service must conform to the following requirements to support x509 certificate forwarding:
 
-### APIML GW Requirements
+### API ML Gateway Requirements
+
 - Enable client cetificate forwarding in the `zowe.yaml`
     ```yaml
    components:
@@ -161,8 +162,10 @@ Both the APIML Gateway and the downstream service must conform to the following 
             x509:
               enabled: true
     ```
-- The API Gateway must trust the client certificate's issuer, hence the API Gateway truststore must contain the client issuer's certificate.
+- The API Gateway must trust the client certificate's issuer. As such, the API Gateway truststore must contain the client issuer's certificate.
 
 ### Downstream service requirements
-- The downstream service must advertise the support of forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
-- In order to validate the Zowe server certificate used by the API Gateway the service must be aware of the Zowe server certificate chain, which is available via the `/certificates` endpoint provided by every API gateway instance. 
+
+- The downstream service must indicate that it supports  forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
+  
+- To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
