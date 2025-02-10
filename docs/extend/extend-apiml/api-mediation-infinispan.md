@@ -84,8 +84,8 @@ Configure Infinispan as a storage solution through the Caching service by settin
           storage:
             mode: infinispan
             infinispan:
-              jgroups.port: 7098
-              initialHosts: lpar2[7098]
+              jgroups.port: 7600
+              initialHosts: lpar2[7600]
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data
                 indexLocation: /global/zowe/workspace/caching-service/index
@@ -95,8 +95,8 @@ Configure Infinispan as a storage solution through the Caching service by settin
           storage:
             mode: infinispan
             infinispan:
-              jgroups.port: 7098
-              initialHosts: lpar1[7098]
+              jgroups.port: 7600
+              initialHosts: lpar1[7600]
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data
                 indexLocation: /global/zowe/workspace/caching-service/index
