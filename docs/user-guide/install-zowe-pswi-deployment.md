@@ -138,6 +138,6 @@ If deployment options must be modified and the JCL recreated, first check the or
  Note that the deployment job is unable to clean this data set name once the data set is recreated because the value for `random_id` will change.
  :::
 
-### Resources <!--Why is this titled Resources? Please suggest a better heading for this.>
+### Resources <!--Why is this titled Resources? Please suggest a better heading for this. -->
 
 It is recommended to update the job card to run with `REGION=0M`, particularly for job `IZUD01DZ` which unpaxes the contents.
