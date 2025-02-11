@@ -4,7 +4,7 @@ Zowe includes a number of files that are stored in the various data sets. See th
 
 ## Runtime Datasets
 
-The following datasets comprise the runtime, read-only dataset content that can be used by multiple Zowe instances of the same version. These are either delivered by an [SMP/E install](../install-zowe-smpe.md), or by running `zwe install` when using [the z/OS convenience build of the Zowe servers](../user-guide/install-zowe-zos-convenience-build.md).
+The following datasets comprise the runtime, read-only dataset content that can be used by multiple Zowe instances of the same version. These are either delivered by an [SMP/E install](../user-guide/install-zowe-smpe.md), or by running `zwe install` when using [the z/OS convenience build of the Zowe servers](../user-guide/install-zowe-zos-convenience-build.md).
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
