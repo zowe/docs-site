@@ -1,19 +1,19 @@
-# Using Infinispan as a storage solution through the Caching service
+# Using Infinispan as a storage solution through the Caching Service
 
 :::info Required roles: system administrator, security administrator
 :::
 
-You can configure Infinispan as a storage solution through the Caching service, as well as configure Infinispan for high availability to replicate data to provide data durability and availability.
+You can configure Infinispan as a storage solution through the Caching Service, as well as configure Infinispan for high availability (HA) to replicate data to provide data durability and availability.
 
-- [Using Infinispan as a storage solution through the Caching service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
+- [Using Infinispan as a storage solution through the Caching Service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
   - [Understanding Infinispan](#understanding-infinispan)
     - [Infinispan replica instances](#infinispan-replica-instances)
   - [Infinispan configuration](#infinispan-configuration)
 
 ## Understanding Infinispan
 
-Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching service uses hash sets, where each
-service storing data via the Caching service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
+Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching Service uses hash sets, where each
+service storing data via the Caching Service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
 
 For more information on Infinispan, see the [official Infinispan documentation](https://infinispan.org/documentation/).
 
@@ -26,7 +26,7 @@ For more information on Infinispan replication and how to configure a replica in
 
 ## Infinispan configuration
 
-Configure Infinispan as a storage solution through the Caching service by setting the following configuration parameters in the `zowe.yaml`.
+Configure Infinispan as a storage solution through the Caching Service by setting the following configuration parameters in the `zowe.yaml`.
  
 * **zowe.components.caching-service.storage.infinispan.initialHosts**
 
@@ -39,7 +39,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The default value is `data`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
 
    - The value should be the same for each instance.
-   - The location should point to non-shared filesystem. Each instance requires unique storage.
+   - The location should point to a non-shared filesystem. Each instance requires unique storage.
    - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
@@ -49,7 +49,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The default value is `index`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
 
   - The value should be the same for each instance.
-  - The location should point to non-shared filesystem. Each instance requires unique storage.
+  - The location should point to a non-shared filesystem. Each instance requires unique storage.
   - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
@@ -75,7 +75,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
   from version 2.x through v3.1 to v3.2 and newer versions.
   :::
 
-  **Example of Caching service HA configuration using Infinispan:**
+  **Example of Caching Service HA configuration using Infinispan:**
 
   ```yaml
   haInstances:
