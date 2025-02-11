@@ -148,7 +148,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
     ```acf2
         SET RESOURCE(PTK) 
-        RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
+        RECKEY IRRPTAUTH ADD(<applid>.<userid> UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
     ```
 
    - `<userid>`  
@@ -204,7 +204,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
 
     ```tss
-        TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
+        TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.<applid>) ACCESS(UPDATE)
     ```
 
 - **stc-userid**  
@@ -262,7 +262,7 @@ PassTickets for the API service must have the replay protection switched off. Th
 4. Allow the application ID (_applid_) to use PassTickets:
 
     ```racf
-        PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
+        PERMIT IRRPTAUTH.<applid>.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
     ```
 
 - **userid**  
