@@ -13,7 +13,7 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
 
-You can complete the following tasks with the **Configuration of Zowe 2.0** workflow:
+You can complete the following tasks with the **Full Zowe server-side configuration for Zowe 2.0** workflow:
 
 - Configure the Zowe instance
 - Enable the Gateway service
@@ -36,7 +36,7 @@ process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
-## Execute Configuration of Zowe 2.0 workflow from PSWI
+## Execute Full Zowe server-side configuration for Zowe 2.0 workflow from PSWI
 
 In the PSWI deployment phase, you are presented with a checklist that helps guide you through the deployment process.
 
@@ -45,10 +45,10 @@ In the PSWI deployment phase, you are presented with a checklist that helps guid
 The **Perform Workflows** step enables you to run either all attached workflows or just the
 post-deployment workflow for mounting, which is required.
 
-After you successfully perform the Zowe Mount workflow, you can start the **Configuration of Zowe 2.0** workflow.
+After you successfully perform the Zowe Mount workflow, you can start the **Full Zowe server-side configuration for Zowe 2.0** workflow.
 When you select this workflow from the list of Workflow Definition Files, the following screen discplays:
 
-![Configuration of Zowe 2.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
+![Full Zowe server-side configuration for Zowe 2.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
 You can see the workflow details by expanding the Workflow details panel.
 This workflow has three main steps:
@@ -102,7 +102,7 @@ The **Create configuration** step is mandatory. A valid zowe.yaml is required to
 
 This step consumes the zowe.yaml configuration file you created in the previous step. It contains three sub-steps.
 
-1. **(Optional) Run the Zowe install (only for convenience build)** is needed only for convenience build. It runs the `zwe install` command.
+1. **Run the Zowe install** runs the `zwe install` command.
 2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
 3. **Run the Zowe init security** is optional if you have already previously preformed security setup for Zowe. This sub-step requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands. If security is not set up for Zowe, contact your Security Administrator to perform this setup. 
 
@@ -115,6 +115,6 @@ For more information about `zwe install` and `zwe init` commands, see the follow
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
 
-The **Configuration of Zowe 2.0** workflow strictly follows Zowe v2 install and configuration schema. This workflow generates the zowe.yaml file and runs Zowe's zwe CLI tool.
+The **Full Zowe server-side configuration for Zowe 2.0** workflow strictly follows Zowe v2 install and configuration schema. This workflow generates the zowe.yaml file and runs Zowe's zwe CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI.
 After you complete the steps in the checklist you are ready to start your Zowe instance.
