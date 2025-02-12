@@ -8,20 +8,20 @@ const cp = require("child_process");
   const allPlugins = {
     zowePlugins: [
       "@zowe/cics-for-zowe-cli",
-      // "@zowe/db2-for-zowe-cli",
-      // "@zowe/mq-for-zowe-cli",
-      // "@zowe/zos-ftp-for-zowe-cli"
+      "@zowe/db2-for-zowe-cli",
+      "@zowe/mq-for-zowe-cli",
+      "@zowe/zos-ftp-for-zowe-cli"
     ],
     v3Conformant: [
       "@broadcom/dbm-db2-for-zowe-cli",
-      // "@broadcom/endevor-for-zowe-cli",
-      // "@broadcom/jclcheck-for-zowe-cli",
-      // "@broadcom/ops-for-zowe-cli",
-      // "@broadcom/mat-analyze-for-zowe-cli",
-      // "@broadcom/mat-detect-for-zowe-cli",
-      // "@broadcom/sysview-for-zowe-cli",
-      // "@broadcom/om-spool-for-zowe-cli",
-      // "@broadcom/om-view-for-zowe-cli",
+      "@broadcom/endevor-for-zowe-cli",
+      "@broadcom/jclcheck-for-zowe-cli",
+      "@broadcom/ops-for-zowe-cli",
+      "@broadcom/mat-analyze-for-zowe-cli",
+      "@broadcom/mat-detect-for-zowe-cli",
+      "@broadcom/sysview-for-zowe-cli",
+      "@broadcom/om-spool-for-zowe-cli",
+      "@broadcom/om-view-for-zowe-cli",
       // "@ibm/rse-api-for-zowe-cli",
       // TODO: Make sure this list is accurate
     ],
@@ -83,11 +83,11 @@ const cp = require("child_process");
   // Generate markdown from profile map
   const hackyWordWrap = (value) => {
     const MAX_WIDTH = 80;
-      const words = value.split(" ");
+      const words = value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").split(" ");
       let line = "";
       let result = "";
       words.forEach((word) => {
-        if (line.length + word.length + 1 > MAX_WIDTH) {
+        if (line.length + word.length + 1 > MAX_WIDTH || line.indexOf("\n") !== -1) {
           result += line + "\n";
           line = word;
         } else {
@@ -111,7 +111,7 @@ const cp = require("child_process");
       return hackyWordWrap(JSON.stringify(value).replace(/,/g, ",<br/>"));
     }
     if (typeof value === "string") {
-      return hackyWordWrap(value).replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br/>");
+      return hackyWordWrap(value).replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br/>").replaceAll("<br/><br/>", "<br/>");
     }
     return value;
   };
