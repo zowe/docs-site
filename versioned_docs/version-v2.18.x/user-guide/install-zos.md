@@ -106,7 +106,8 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 
 Choose from the following methods to configure the Zowe runtime: 
 - [Use a combination of JCL and the zwe command `zwe init`](./initialize-zos-system.md)
-- [Use z/OSMF Workflows](./configure-zowe-zosmf-workflow.md)
+- [Use Zowe z/OSMF Workflows](./configure-zowe-zosmf-workflow.md)
+- [Use API ML optimized z/OSMF Workflows](./configure-apiml-zosmf-workflow.md)
 
 :::tip
 We recommend you open the links to this configuration procedure in new tabs.
