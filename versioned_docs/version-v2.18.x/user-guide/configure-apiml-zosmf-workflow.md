@@ -35,7 +35,7 @@ The following components are automatically disabled:
 - USS Explorer
   
 :::note
-These components can be enabled by performing manual changes in the yaml file, but making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
+These disabled components can be enabled by performing manual changes in the yaml file, but making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
 :::
 
 You can execute the API ML/Zowe configuration workflow either from a PSWI during deployment or later from a created software
@@ -45,29 +45,33 @@ The configuration workflow described in this article is executed directly from a
 
 ## Execute Stand-alone Zowe API ML Configuration workflow from PSWI
 
-In the PSWI deployment phase, you are presented with a checklist that helps guide you during the deployment process.
+In the PSWI deployment phase, you are presented with a checklist that helps guide you through the deployment process.
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
 The **Perform Workflows** step enables you to run either all attached workflows or just the
 post-deployment workflow for mounting, which is required.
 
-After you successfully performed the Zowe Mount workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
+After you successfully performed the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
 When you select this workflow from the list of Workflow Definition Files, the following screen displays: 
 
 ![Stand-alone Zowe API ML Configuration workflow](../images/zosmf/workflow-APIMLConfiguration.png)
 
-You can see the workflow details by expanding the Workflow details panel.
+You can see the workflow details by expanding the **Workflow Details** panel.
 This workflow has three main steps:
+
+[1. Define variables](#1-define-variables)  
+[2. Create configuration](#2-create-configuration)  
+[3. Perform Zowe installation](#3-perform-zowe-installation)
 
 ### 1. **Define variables**
 
 This workflow step includes the list of Zowe variables.
 When you expand this step, the following screen displays: 
 
-First, define the main variables for your configuration. 
-
 ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
+
+First, define the main variables for your configuration.
 
 After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.  
 
@@ -82,7 +86,7 @@ Perform the following steps to execute each sub-step individually:
 5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
 :::note
-A basic validation is supported in many fields. Validation includes proper path structure, dataset name conventions, or numeric size.
+Basic validation is supported in many fields. Validation includes proper path structure, dataset name conventions, or numeric size.
 The workflow, however, does not check, for example, whether a target dataset exists, or a directory has sufficient space.
 :::
 
@@ -90,7 +94,7 @@ After both sub-steps, **Define the main variables** and **Ports** are completed,
 
 ### 2. **Create configuration**
 
-Execute this step to create a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
+This step creates a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
 In this step you can review your configurations and, if necessary, make further changes directly in the JCL. 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
@@ -98,7 +102,7 @@ When you are done, click **Finish**. The zowe.yaml file is ready, and the step i
 The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
 
-### 3. **Zowe Installation**
+### 3. **Perform Zowe Installation**
 
 This step consumes the zowe.yaml configuration file you created in the previous step. It contains two sub-steps:
 
