@@ -39,7 +39,7 @@ In the PSWI deployment phase, you are presented with a checklist that helps guid
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
-The **Perform Workflows** step enables you to run either all attached workflows or just the
+The **Perform Workflows** step enables you to run either all attached workflows, or just the
 post-deployment workflow for mounting, which is required.
 
 After you successfully performed the **Zowe Mount** workflow, you can start the **Configuration of Zowe 3.0** workflow.
@@ -91,7 +91,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 ### 2. **Create configuration**
 
-Execute this step to create a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
+This step creates a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
 In this step you can review your configurations and, if necessary, make further changes directly in the JCL. 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
