@@ -226,7 +226,7 @@ After you configure the `zowe.yaml`, use the following procedure to generate a J
 
    `zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config`
 
-    When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS member `USER.ZWEV2.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
+    When the command is run, a customized JCL member name is created in the `CUST.JCLLIB` data set. The PDS name is defined in the `zowe.setup.dataset.jcllib` property. In the following example output, the PDS member `USER.ZWE3.CUST.JCLLIB(ZW101431)` is created that contains the security manager commands, and then submitted as a job ID: `ZWEKRING(JOB03054)`.
 
 The following command output shows the generation of a JCERACFKS certificate using the default values. Note that some detailed output messages have been omitted.
 
@@ -237,8 +237,8 @@ The following command output shows the generation of a JCERACFKS certificate usi
 >> Generate Zowe certificate in keyring
 
 >>>> Modify ZWEKRING
-    - IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431) is prepared
->>>> Submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW101431)
+    - IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431) is prepared
+>>>> Submit IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431)
     - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
 >> Certificate is generated in keyring successfully.
 

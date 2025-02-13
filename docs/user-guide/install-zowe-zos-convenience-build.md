@@ -225,7 +225,7 @@ zowe:
   setup:
     # MVS data set related configurations
     dataset:
-      prefix: IBMUSER.ZWEV2
+      prefix: IBMUSER.ZWEV3
 ```
 
 To create and install the MVS data sets, use the command `zwe install`.
@@ -241,19 +241,19 @@ A sample run of the command is shown below using default values.
 >> INSTALL ZOWE MVS DATA SETS
 
 Create MVS data sets if they are not exist
-Creating Zowe sample library - IBMUSER.ZWEV2.SZWESAMP
-Creating Zowe authorized load library - IBMUSER.ZWEV2.SZWEAUTH
-Creating Zowe load library - IBMUSER.ZWEV2.SZWELOAD
-Creating Zowe executable utilities library - IBMUSER.ZWEV2.SZWEEXEC
+Creating Zowe sample library - IBMUSER.ZWEV3.SZWESAMP
+Creating Zowe authorized load library - IBMUSER.ZWEV3.SZWEAUTH
+Creating Zowe load library - IBMUSER.ZWEV3.SZWELOAD
+Creating Zowe executable utilities library - IBMUSER.ZWEV3.SZWEEXEC
 
-Copy files/SZWESAMP/ZWESIPRG to IBMUSER.ZWEV2.SZWESAMP
+Copy files/SZWESAMP/ZWESIPRG to IBMUSER.ZWEV3.SZWESAMP
 ...
-Copy components/launcher/samplib/ZWESLSTC to IBMUSER.ZWEV2.SZWESAMP
-Copy components/launcher/bin/zowe_launcher to IBMUSER.ZWEV2.SZWEAUTH
+Copy components/launcher/samplib/ZWESLSTC to IBMUSER.ZWEV3.SZWESAMP
+Copy components/launcher/bin/zowe_launcher to IBMUSER.ZWEV3.SZWEAUTH
 ...
-Copy components/zss/SAMPLIB/ZWESISCH to IBMUSER.ZWEV2.SZWESAMP(ZWESISCH)
+Copy components/zss/SAMPLIB/ZWESISCH to IBMUSER.ZWEV3.SZWESAMP(ZWESISCH)
 ...
-Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV2.SZWEAUTH
+Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWEV3.SZWEAUTH
 
 -------------------------------------------------------------------------------
 >> Zowe MVS data sets are installed successfully.

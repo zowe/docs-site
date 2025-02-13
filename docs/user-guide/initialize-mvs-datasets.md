@@ -21,7 +21,7 @@ zowe:
       prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWEV2.SZWEAUTH
+      authLoadlib: IBMUSER.ZWEV3.SZWEAUTH
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
@@ -49,15 +49,15 @@ Here is an example of running `zwe init mvs`.
 >> Initialize Zowe custom data sets
 
 Create data sets if they are not exist
-Creating IBMUSER.ZWEV2.CUST.PARMLIB
-Creating IBMUSER.ZWEV2.CUST.JCLLIB
-Creating IBMUSER.ZWEV2.SZWEAUTH
-Creating IBMUSER.ZWEV2.CUST.ZWESAPL
+Creating IBMUSER.ZWEV3.CUST.PARMLIB
+Creating IBMUSER.ZWEV3.CUST.JCLLIB
+Creating IBMUSER.ZWEV3.SZWEAUTH
+Creating IBMUSER.ZWEV3.CUST.ZWESAPL
 
-Copy IBMUSER.ZWEV2.SZWESAMP(ZWESIP00) to USER.ZWEV2.CUST.PARMLIB(ZWESIP00)
-Copy components/zss/LOADLIB/ZWESIS01 to USER.ZWEV2.SZWEAUTH(ZWESIS01)
-Copy components/zss/LOADLIB/ZWESAUX to USER.ZWEV2.SZWEAUTH(ZWESAUX)
-Copy components/launcher/bin/zowe_launcher to USER.ZWEV2.SZWEAUTH(ZWELNCH)
+Copy IBMUSER.ZWEV3.SZWESAMP(ZWESIP00) to USER.ZWEV3.CUST.PARMLIB(ZWESIP00)
+Copy components/zss/LOADLIB/ZWESIS01 to USER.ZWEV3.SZWEAUTH(ZWESIS01)
+Copy components/zss/LOADLIB/ZWESAUX to USER.ZWEV3.SZWEAUTH(ZWESAUX)
+Copy components/launcher/bin/zowe_launcher to USER.ZWEV3.SZWEAUTH(ZWELNCH)
 
 >> Zowe custom data sets are initialized successfully.
 #>
@@ -67,5 +67,5 @@ Copy components/launcher/bin/zowe_launcher to USER.ZWEV2.SZWEAUTH(ZWELNCH)
 
 If this step is successful, there will be three custom data sets matching the values in `zowe.setup.dataset.parmlib`, `zowe.setup.dataset.jcllib` and `zowe.setup.dataset.authPluginLib` in the `zowe.yaml` file. The member `ZWESIP00` will exist in the `CUST.PARMLIB` and the `JCLLIB` and `ZWESAPL` will be empty.
 
-In addition to the three custom data sets, the PDS `SZWEAUTH` is created. This may already exist. In this case, you will receive the error message `Error ZWEL0158E: IBMUSER.ZWEV2.SZWEAUTH already exists`. You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
+In addition to the three custom data sets, the PDS `SZWEAUTH` is created. This member may already exist. In this case, you will receive the error message `Error ZWEL0158E: IBMUSER.ZWEV3.SZWEAUTH already exists`. You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
 
