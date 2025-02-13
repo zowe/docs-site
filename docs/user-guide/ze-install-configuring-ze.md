@@ -124,7 +124,7 @@ The following allowed methods are available for sorting jobs:
 | `ReturnCode` | Sorts by the return code of the job. |
 
 ### Examples
-
+ 
 For changing the default sort order for data sets to be sorted by `LastModified` in descending order, modify the following setting to the `settings.json` file:
 
 ```json
