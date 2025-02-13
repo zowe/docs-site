@@ -6,11 +6,14 @@ expertise that is needed to perform manual API ML/Zowe configuration. The **Stan
 
 :::info Required role: system programmer
 :::
+## Prerequisites
 
 Ensure that you meet the following requirements before you start your Zowe configuration:
 
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
+
+## Overview of Stand-alone Zowe API ML Configuration workflow
 
 The following components are automatically enabled after performing the **Stand-alone Zowe API ML Configuration** workflow:
 
@@ -35,17 +38,17 @@ The following components are automatically disabled:
 - USS Explorer
   
 :::note
-These disabled components can be enabled by performing manual changes in the yaml file, but making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
+These disabled components can be enabled by performing manual changes in the yaml file. Note that making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
 :::
 
-You can execute the API ML/Zowe configuration workflow either from a PSWI during deployment or later from a created software
-instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
+You can execute the **Stand-alone Zowe API ML Configuration** workflow either from a PSWI during deployment or later from a created software
+instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
 ## Execute Stand-alone Zowe API ML Configuration workflow from PSWI
 
-In the PSWI deployment phase, you are presented with a checklist that helps guide you through the deployment process.
+In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
@@ -57,7 +60,7 @@ When you select this workflow from the list of Workflow Definition Files, the fo
 
 ![Stand-alone Zowe API ML Configuration workflow](../images/zosmf/workflow-APIMLConfiguration.png)
 
-You can see the workflow details by expanding the **Workflow Details** panel.
+Expanding the **Workflow Details** panel to see the workflow details and the state of each step.
 This workflow has three main steps:
 
 [1. Define variables](#1-define-variables)  
