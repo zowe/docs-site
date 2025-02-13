@@ -67,9 +67,9 @@ This workflow has three main steps:
 ### 1. **Define variables**
 
 This workflow step includes the list of Zowe variables.
-When you expand this step, the following screen displays: 
+When you expand **Define variables**, the following screen displays: 
 
-![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
+![Step1.1: Define the main variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
 
 First, define the main variables for your configuration.
 
