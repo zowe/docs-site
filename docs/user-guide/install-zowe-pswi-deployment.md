@@ -65,9 +65,9 @@ Before installing, ensure the [z/OSMF requirements](./install-zowe-pswi-address-
        4. Select **Next**.
        5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
-    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md).
+    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md). To configure your Zowe instance specifically for API Mediation Layer, see [Configuring API ML with z/OSMF Workflows](configure-apiml-zosmf-workflow.md).
 
-   10. Specify the name and description of the new target software instance.
+   1.  Specify the name and description of the new target software instance.
 
 :::note Notes
 * All workflows that are mentioned in the previous steps are part of the PSWI.  
@@ -82,6 +82,8 @@ The deployment process is complete. The new software instance is defined to z/OS
 
 If there is a need to update the deployment settings such as the HLQ after a previous run, note that the deployment process does not perform a full cleanup of the datasets.
 Before attempting job execution again, make sure the following datasets are deleted to avoid write conflicts:
+
+**For Zowe v2**
 
 ```plaintext
 {TARGET_HLQ}.PRODUCT.ZOWE.V2.CSI
@@ -103,6 +105,28 @@ Before attempting job execution again, make sure the following datasets are dele
 {TARGET_HLQ}.PRODUCT.ZOWE.V2.ZFS.#
 ```
 
+**For Zowe v3**
+
+```plaintext
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.CSI
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.D.AZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.D.AZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.D.AZWEZFS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPLOG.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPLOGA.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPLTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPMTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPPTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPSCDS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.SMPSTS.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.T.SZWEAUTH.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.T.SZWEEXEC.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.T.SZWELOAD.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.T.SZWESAMP.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.WORKFLOW.#
+{TARGET_HLQ}.PRODUCT.ZOWE.V3.ZFS.#
+```
+
 If deployment options must be modified and the JCL recreated, first check the original JCL for the temporary ZFS dataset name.
 
 **Example:**
@@ -114,6 +138,6 @@ If deployment options must be modified and the JCL recreated, first check the or
  Note that the deployment job is unable to clean this data set name once the data set is recreated because the value for `random_id` will change.
  :::
 
-### Resources
+### Resources <!--Why is this titled Resources? Please suggest a better heading for this. -->
 
 It is recommended to update the job card to run with `REGION=0M`, particularly for job `IZUD01DZ` which unpaxes the contents.

@@ -36,10 +36,10 @@ Specify the parameter `--security-dry-run` to construct a JCL member containing 
 >> Run Zowe security configurations
 
 Modify ZWESECUR
-- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
+- IBMUSER.ZWEV3.CUST.JCLLIB(ZW134428) is prepared
 
 Dry-run mode, security setup is NOT performed on the system.
-Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
+Please submit IBMUSER.ZWEV3.CUST.JCLLIB(ZW134428) manually.
 >> Zowe security configurations are applied successfully.
 
 #>
