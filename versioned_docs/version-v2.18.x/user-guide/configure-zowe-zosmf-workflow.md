@@ -31,8 +31,7 @@ You can complete the following tasks with the **Full Zowe server-side configurat
 - Enable USS Explorer
 
 You can execute the Zowe configuration workflow either from a PSWI during deployment or later from a created software
-instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration
-process.
+instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
