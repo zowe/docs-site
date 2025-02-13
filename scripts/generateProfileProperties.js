@@ -36,20 +36,25 @@ const cp = require("child_process");
   // TODO: Skip already installed plugins
   // TODO: Decide on which version to use (latest v. zowe-vX-lts tag)
   // TODO: Show progress (and currently installed plug-ins)
-  for (const plugin of allPlugins.zowePlugins) {
-    console.log(`Installing ${plugin}...`);
-    cp.execSync(`zowe plugins install ${plugin}`);
-  }
+  const installPlugins = () => {
+    for (const plugin of allPlugins.zowePlugins) {
+      console.log(`Installing ${plugin}...`);
+      cp.execSync(`zowe plugins install ${plugin}`);
+    }
 
-  for (const plugin of allPlugins.v3Conformant) {
-    console.log(`Installing ${plugin}...`);
-    cp.execSync(`zowe plugins install ${plugin}`);
-  }
+    for (const plugin of allPlugins.v3Conformant) {
+      console.log(`Installing ${plugin}...`);
+      cp.execSync(`zowe plugins install ${plugin}`);
+    }
 
-  for (const plugin of allPlugins.v2Conformant) {
-    console.log(`Installing ${plugin}...`);
-    cp.execSync(`zowe plugins install ${plugin}`);
-  }
+    for (const plugin of allPlugins.v2Conformant) {
+      console.log(`Installing ${plugin}...`);
+      cp.execSync(`zowe plugins install ${plugin}`);
+    }
+  };
+
+  // Install all conformant plug-ins
+  installPlugins();
 
   // Read schema definitions
   const schemaFile = require(path.join(os.homedir(), ".zowe", "zowe.schema.json"));
@@ -79,27 +84,10 @@ const cp = require("child_process");
     }
   }
 
-
   // Generate markdown from profile map
-  const hackyWordWrap = (value) => {
-    const MAX_WIDTH = 80;
-      const words = value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").split(" ");
-      let line = "";
-      let result = "";
-      words.forEach((word) => {
-        if (line.length + word.length + 1 > MAX_WIDTH || line.indexOf("\n") !== -1) {
-          result += line + "\n";
-          line = word;
-        } else {
-          if (line !== "") {
-            line += " ";
-          }
-          line += word;
-        }
-      });
-      result += line;
-      return result;
-  }
+  const prepWords = (value) => {
+    return value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ");
+  };
   const customFormat = (value) => {
     if (value == null) {
       return "n/a";
@@ -108,10 +96,10 @@ const cp = require("child_process");
       return value.join("<br/>").replace(/\$/g, "\\\$");
     }
     if (typeof value === "object") {
-      return hackyWordWrap(JSON.stringify(value).replace(/,/g, ",<br/>"));
+      return prepWords(JSON.stringify(value).replace(/,/g, ",<br/>"));
     }
     if (typeof value === "string") {
-      return hackyWordWrap(value).replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br/>").replaceAll("<br/><br/>", "<br/>");
+      return prepWords(value).replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br/>").replaceAll("<br/><br/>", "<br/>");
     }
     return value;
   };
