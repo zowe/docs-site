@@ -115,7 +115,7 @@ This step consumes the zowe.yaml configuration file you created in the previous 
 2. **Run the Zowe init** to run `zwe init mvs` and `zwe init stc` commands.
 
 :::note
-If you did not set up security prior this installation, you can alternatively submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+If you did not set up security prior to this installation, you can  submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
 :::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
