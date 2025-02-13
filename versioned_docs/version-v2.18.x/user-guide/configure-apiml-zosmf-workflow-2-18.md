@@ -52,15 +52,17 @@ In the PSWI deployment phase, follow each step outlined in the **Deployment Chec
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
+:::note
 The **Perform Workflows** step enables you to run either all attached workflows or just the
 post-deployment workflow for mounting, which is required.
+:::
 
 After you successfully performed the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
 When you select this workflow from the list of Workflow Definition Files, the following screen displays: 
 
 ![Stand-alone Zowe API ML Configuration workflow](../images/zosmf/workflow-APIMLConfiguration.png)
 
-Expanding the **Workflow Details** panel to see the workflow details and the state of each step.
+Expand the **Workflow Details** panel to see the workflow details and the state of each step.
 This workflow has three main steps:
 
 [1. Define variables](#1-define-variables)  
@@ -74,9 +76,9 @@ When you expand **Define variables**, the following screen displays:
 
 ![Step1.1: Define the main variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
 
-First, define the main variables for your configuration.
+**1.1.** First, define the main variables for your configuration as presented in the list under **Input Variables**.
 
-After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.  
+**1.2.** After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.  
 
 ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePortsV2.png)
 
@@ -90,14 +92,14 @@ Perform the following steps to execute each sub-step individually:
 
 :::note
 Basic validation is supported in many fields. Validation includes proper path structure, dataset name conventions, or numeric size.
-The workflow, however, does not check, for example, whether a target dataset exists, or a directory has sufficient space.
+The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
 :::
 
 After both sub-steps, **Define the main variables** and **Ports** are completed, the step **Define variables** is marked as Complete.
 
 ### 2. **Create configuration**
 
-This step creates a configuration zowe.yaml file with the variable setup that was defined in the previous step. 
+This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1. 
 In this step you can review your configurations and, if necessary, make further changes directly in the JCL. 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 

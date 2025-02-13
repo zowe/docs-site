@@ -8,10 +8,14 @@ command to initialize Zowe z/OS runtime.
 :::info Required role: system programmer
 :::
 
+## Prerequisites
+
 Ensure that you meet the following requirements before you start your Zowe configuration:
 
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
+
+## Overview of Full Zowe server-side configuration for Zowe 2.0 workflow
 
 You can complete the following tasks with the **Full Zowe server-side configuration for Zowe 2.0** workflow:
 
@@ -30,26 +34,28 @@ You can complete the following tasks with the **Full Zowe server-side configurat
 - Enable MVS Explorer
 - Enable USS Explorer
 
-You can execute the Zowe configuration workflow either from a PSWI during deployment or later from a created software
+You can execute the Full Zowe server-side configuration for Zowe 2.0 workflow either from a PSWI during deployment or later from a created software
 instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
 ## Execute Full Zowe server-side configuration for Zowe 2.0 workflow from PSWI
 
-In the PSWI deployment phase, you are presented with a checklist that helps guide you through the deployment process.
+In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
+:::note
 The **Perform Workflows** step enables you to run either all attached workflows or just the
 post-deployment workflow for mounting, which is required.
+:::
 
 After you successfully perform the **Zowe Mount** workflow, you can start the **Full Zowe server-side configuration for Zowe 2.0** workflow.
-When you select this workflow from the list of Workflow Definition Files, the following screen discplays:
+When you select this workflow from the list of Workflow Definition Files, the following screen displays:
 
 ![Full Zowe server-side configuration for Zowe 2.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
-You can see the workflow details by expanding the Workflow Details panel.
+Expand the **Workflow Details** panel to see the workflow details and the state of each step.
 This workflow has three main steps:
 
 [1. Define variables](#1-define-variables)  
@@ -63,8 +69,8 @@ When you expand **Define variables**, the following screen displays:
 
 ![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
 
-First, define the main variables of your configuration. 
-The other sub-steps are optional depending on which components you choose to enable.
+First, define the main variables of your configuration as presented in the list under **Input Variables**. 
+Second, perform the applicable sub-steps that correspond to the components you choose to enable.
 
 Perform the following steps to execute each sub-step individually:
 
