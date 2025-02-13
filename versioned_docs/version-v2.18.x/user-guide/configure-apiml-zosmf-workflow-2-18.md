@@ -46,7 +46,7 @@ instance in z/OSMF. Alternatively, you can execute the configuration workflow in
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
-## Execute Stand-alone Zowe API ML Configuration workflow from PSWI
+## Executing Stand-alone Zowe API ML Configuration workflow from PSWI
 
 In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
 
@@ -100,7 +100,7 @@ After both sub-steps, **Define the main variables** and **Ports** are completed,
 ### 2. **Create configuration**
 
 This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1. 
-In this step you can review your configurations and, if necessary, make further changes directly in the JCL. 
+Review your configurations and, if necessary, make further changes directly in the JCL. 
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note

@@ -39,7 +39,7 @@ instance in z/OSMF. Alternatively, you can execute the configuration workflow in
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
-## Execute Full Zowe server-side configuration for Zowe 2.0 workflow from PSWI
+## Executing Full Zowe server-side configuration workflow for Zowe 2.0  from PSWI
 
 In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
 
@@ -69,14 +69,15 @@ When you expand **Define variables**, the following screen displays:
 
 ![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
 
-First, define the main variables of your configuration as presented in the list under **Input Variables**. 
-Second, perform the applicable sub-steps that correspond to the components you choose to enable.
+**1.1.** First, define the main variables of your configuration as presented in the list under **Input Variables**.
 
-Perform the following steps to execute each sub-step individually:
+**1.2.** Second, perform the applicable sub-steps that correspond to the components you choose to enable.
 
-1. Click the title of the sub-step.
-2. Select the **Perform** tab.
-3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
+   Perform the following steps to execute each sub-step individually:
+
+  1. Click the title of the sub-step.
+  2. Select the **Perform** tab.
+  3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
 
    On the components page of **Define the main variables** sub-step, select the components that you wish to enable.
 
@@ -87,20 +88,20 @@ Perform the following steps to execute each sub-step individually:
    The sub-steps for configuring components will be in the **Ready** state, and the remainder of components in the **Skipped** state.
    :::
 
-4. Select **Next**.
-5. Repeat the previous two steps to complete all items until the **Finish** option is available.
+  4. Select **Next**.
+  5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
-:::note
-Basic validation is supported in many of the fields including the proper path structure, dataset name conventions, or numeric size.
-The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
-:::
+   :::note
+   Basic validation is supported in many of the fields including the proper path structure, dataset name conventions, or numeric size.
+   The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
+   :::
 
 After all sub-steps are completed, the step **Define variables** is marked as Complete.
 
 ### 2. **Create configuration**
 
 This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1.
-In this step you can review your configurations and, if necessary, you can make further changes directly in the JCL.
+Review your configurations and, if necessary, make further changes directly in the JCL.
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note
@@ -113,11 +114,11 @@ This step consumes the zowe.yaml configuration file you created in the previous 
 
 1. **Run the Zowe install** runs the `zwe install` command.
 2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
-3. **Run the Zowe init security** is optional if you have already previously preformed security setup for Zowe. This sub-step requires Security Administrator permissions. It runs the `zwe init apfauth` and `zwe init security` commands. If security is not set up for Zowe, contact your Security Administrator to perform this setup. 
+3. **Run the Zowe init security**. This sub-step is optional if you have already previously preformed security setup for Zowe. This sub-step requires Security Administrator permissions, which are required to run the `zwe init apfauth` and `zwe init security` commands. If security is not set up for Zowe, contact your Security Administrator to perform this setup. 
 
-:::note
-An alternative to executing **Run the Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
-:::
+   :::note
+   An alternative to executing **Run the Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+   :::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
 
