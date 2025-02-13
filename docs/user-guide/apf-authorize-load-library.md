@@ -20,8 +20,8 @@ The following command presents an example of running `zwe init apfauth`:
 -------------------------------------------------------------------------------
 >> APF authorize load libraries
 
-APF authorize IBMUSER.ZWEV2.SZWEAUTH
-APF authorize IBMUSER.ZWEV2.CUST.ZWESAPL
+APF authorize IBMUSER.ZWEV3.SZWEAUTH
+APF authorize IBMUSER.ZWEV3.CUST.ZWESAPL
 
 >> Zowe load libraries are APF authorized successfully.
 #>
@@ -31,8 +31,8 @@ If you do not have permissions to update your security configurations, append th
 :::
 
 ```
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.SZWEAUTH,SMS
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV2.CUST.ZWESAPL,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV3.SZWEAUTH,SMS
+  SETPROG APF,ADD,DSNAME=IBMUSER.ZWEV3.CUST.ZWESAPL,SMS
 ```
 
 ### Making APF auth be part of the IPL
@@ -41,13 +41,13 @@ Add one of the following to your active `PROGxx` PARMLIB member, for example `SY
 
 - If the load library is not SMS-managed, add the following lines, where `${volume}` is the name of the volume that holds the data set:
   ```
-  APF ADD DSNAME(IBMUSER.ZWEV2.SZWEAUTH) VOLUME(${volume})
-  APF ADD DSNAME(IBMUSER.ZWEV2.CUST.ZWESAPL) VOLUME(${volume})
+  APF ADD DSNAME(IBMUSER.ZWEV3.SZWEAUTH) VOLUME(${volume})
+  APF ADD DSNAME(IBMUSER.ZWEV3.CUST.ZWESAPL) VOLUME(${volume})
   ```
 - If the load library is SMS-managed, add the following line:
   ```
-  APF ADD DSNAME(IBMUSER.ZWEV2.SZWEAUTH) SMS
-  APF ADD DSNAME(IBMUSER.ZWEV2.CUST.ZWESAPL) SMS
+  APF ADD DSNAME(IBMUSER.ZWEV3.SZWEAUTH) SMS
+  APF ADD DSNAME(IBMUSER.ZWEV3.CUST.ZWESAPL) SMS
   ```
 
 The PDS member `SZWESAMP(ZWESIPRG)` contains the SETPROG statement and PROGxx update for reference.

@@ -13,7 +13,7 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
 
-You can complete the following tasks with the **Configuration of Zowe 3.0** workflow:
+You can complete the following tasks with the **Full Zowe server-side configuration for Zowe 3.0** workflow:
 
 - Configure the Zowe instance
 - Enable the API Gateway
@@ -33,7 +33,7 @@ process.
 
 The configuration workflow described in this article is executed directly from a deployment of the Zowe PSWI.
 
-## Execute Configuration of Zowe 3.0 workflow from PSWI
+## Execute Full Zowe server-side configuration for Zowe 3.0 workflow from PSWI
 
 In the PSWI deployment phase, you are presented with a checklist that helps guide you during the deployment process.
 
@@ -42,10 +42,11 @@ In the PSWI deployment phase, you are presented with a checklist that helps guid
 The **Perform Workflows** step enables you to run either all attached workflows, or just the
 post-deployment workflow for mounting, which is required.
 
-After you successfully performed the **Zowe Mount** workflow, you can start the **Configuration of Zowe 3.0** workflow.
+After you successfully performed the **Zowe Mount** workflow, you can start the **Full Zowe server-side configuration for Zowe 3.0** workflow.
+
 When you select this workflow from the list of Workflow Definition Files, the following screen displays: 
 
-![Configuration of Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
+![Full Zowe server-side configuration for Zowe 3.0 workflow](../images/zosmf/workflow-zoweConfiguration.png)
 
 You can see the workflow details by expanding the Workflow details panel.
 This workflow has three main steps:
@@ -115,6 +116,6 @@ For more information about `zwe install` and `zwe init` commands, see the follow
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
 
-The **Configuration of Zowe 3.0** workflow strictly follows the Zowe v3 install and configuration schema. This workflow generates the zowe.yaml file and runs the Zowe zwe CLI tool.
+The **Full Zowe server-side configuration for Zowe 3.0** workflow strictly follows the Zowe v3 install and configuration schema. This workflow generates the zowe.yaml file and runs the Zowe zwe CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI. 
 After you complete the steps in the checklist you are ready to start your Zowe instance.
