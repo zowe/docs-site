@@ -112,9 +112,9 @@ The **Create configuration** step is mandatory. A valid zowe.yaml is required to
 
 This step consumes the zowe.yaml configuration file you created in step 2 and contains three sub-steps.
 
-1. **Run the Zowe install** runs the `zwe install` command.
-2. **Run the Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
-3. **Run the Zowe init security**.  
+1. **Run Zowe install** runs the `zwe install` command.
+2. **Run Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
+3. **Run Zowe init security**.  
    This sub-step is optional if you already preformed security setup for Zowe. This sub-step requires Security Administrator permissions, which are required to run the `zwe init apfauth` and `zwe init security` commands. If security is not set up for Zowe, contact your Security Administrator to perform this setup. 
 
    :::note
