@@ -200,8 +200,8 @@ module.exports = {
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
                 "user-guide/configuring-zowe-via-jcl",
-                "user-guide/configure-zowe-zosmf-workflow",
-                "user-guide/configure-apiml-zosmf-workflow"
+                "user-guide/configure-apiml-zosmf-workflow",
+                "user-guide/configure-zowe-zosmf-workflow"                
               ],
             },
             {

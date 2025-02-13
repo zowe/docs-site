@@ -31,7 +31,7 @@ You can execute the Zowe configuration workflow either from a PSWI during deploy
     For more information about configuring all Zowe server-side components, see [Configuring Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md). 
 
     To simplify configuration for Zowe API Mediation Layer, see 
-[Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow.md).
+[Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow-2-18.md).
 
 ## Configuring the z/OS system for Zowe
 

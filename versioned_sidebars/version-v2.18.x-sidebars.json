@@ -222,6 +222,7 @@
               "items": [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configure-apiml-zosmf-workflow-2-18",
                 "user-guide/configure-zowe-zosmf-workflow"
               ]
             },
