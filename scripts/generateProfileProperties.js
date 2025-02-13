@@ -86,7 +86,7 @@ const cp = require("child_process");
 
   // Generate markdown from profile map
   const prepWords = (value) => {
-    return value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ");
+    return value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").replace(/{/g, "\\{").replace(/}/g, "\\}");
   };
   const customFormat = (value) => {
     if (value == null) {

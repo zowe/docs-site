@@ -63,13 +63,13 @@
 | password | Specifies the mainframe password for the user name that is used to connect to the mainframe systems during execution of the CLI commands. This password can be the same as your TSO password. | n/a | n/a |
 | protocol | Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service. | https | http<br/>https |
 | rejectUnauthorized | Determines whether the dbm-db2 command is accepted or rejected when a self-signed certificate is returned by the DBM Data Service. | true | n/a |
-| environmentList | Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at https://techdocs.broadcom.com/db2mgmt | {"ssid1":"env1@host1:port1",<br/>"ssid2":"env2@host2:port2"} | n/a |
+| environmentList | Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at https://techdocs.broadcom.com/db2mgmt | \{"ssid1":"env1@host1:port1",<br/>"ssid2":"env2@host2:port2"\} | n/a |
 | jobCards | Specifies a string array of z/OS JCL JOB statements. | //DB2DVOPS JOB CLASS=A,<br/>//         MSGCLASS=X | n/a |
-| workDatasetPrefix | Specifies the prefix (high-level qualifier) in z/OS work data set names. | ${user}.dbmdb2 | n/a |
+| workDatasetPrefix | Specifies the prefix (high-level qualifier) in z/OS work data set names. | $\{user\}.dbmdb2 | n/a |
 | deleteWorkDatasets | Specifies whether to delete work data sets on a mainframe after the request is fulfilled. | true | n/a |
 | overwriteOutputFiles | Specifies whether to overwrite output files if they exist. | false | n/a |
-| authid | Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process. | ${user} | n/a |
-| sqlid | Specifies the authorization ID that is used in generated SET CURRENT SQLID statements. | ${user} | n/a |
+| authid | Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process. | $\{user\} | n/a |
+| sqlid | Specifies the authorization ID that is used in generated SET CURRENT SQLID statements. | $\{user\} | n/a |
 | terminationCharacter | Specifies the SQL termination character to use in DDL generation when the default termination character conflicts with the SQL statements that are used in triggers, XML indexes, and routines (external SQL functions and native SQL stored procedures). The default termination character is a semi-colon (;). You cannot specify a comma, double quote, single quote, left or right parentheses, or an underscore. | ; | n/a |
 | basePath | The base path for your API mediation layer instance. Specify this option to prepend the base path to all DBM DS resources when making REST requests. Do not specify this option if you are not using an API mediation layer. | n/a | n/a |
 
