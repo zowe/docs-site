@@ -120,12 +120,12 @@ The following allowed methods are available for sorting jobs:
 | `Id` | Sorts by the job ID. |
 | `DateSubmitted` | Sorts by the date the job was submitted. |
 | `DateCompleted` | Sorts by the date the job was completed. |
-| `Job Name` | Sorts by the name of the job. |
+| `JobName` | Sorts by the name of the job. |
 | `ReturnCode` | Sorts by the return code of the job. |
 
 ### Examples
  
-For changing the default sort order for data sets to be sorted by `LastModified` in descending order, modify the following setting to the `settings.json` file:
+To change the default data set sort order to `LastModified` in `Descending` order, change the following setting in the `settings.json` file:
 
 ```json
 "zowe.ds.default.sort": {
@@ -136,7 +136,7 @@ For changing the default sort order for data sets to be sorted by `LastModified`
 
 ![Example Default Data Set Quick Pick](../images/ze/ZE-default-ds-quick-pick.png)
 
-For changing the default sort order for jobs to be sorted by `DateCompleted` in ascending order, modify the following setting to the `settings.json` file:
+To change the default data set sort order to `DateCompleted` in `Ascending` order, change the following setting to the `settings.json` file:
 
 ```json
 "zowe.jobs.default.sort": {
