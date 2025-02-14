@@ -54,7 +54,7 @@ For more information about installing Zowe server-side components with z/OSMF, s
 4. Review the Deployment Jobs and click **Deployment Checklist**.
 5. Follow each step outlined in the **Deployment Checklist**.
 
-![Deployment Checklist](../images/zosmf/perform-workflows.png)
+    ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
 6. After you complete all of the preceding steps outlined in the Deployment checklist, click **Perform workflows** to leverage configuration of API ML with z/OSMF workflows.
 
@@ -97,11 +97,11 @@ This workflow step includes the list of Zowe variables for configuration and as 
 4. Customize workflow variables in the fields provided.  
    **Example:**
 
-![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
+    ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
 5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.   
 
-![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
+    ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
 
 #### Sequence to execute steps and sub-steps in the workflow
 
