@@ -149,7 +149,7 @@ This step consumes the zowe.yaml configuration file and contains three sub-steps
    This sub-step is optional if you already preformed security setup for Zowe. This sub-step requires Security Administrator permissions, which are required to run the `zwe init apfauth` and `zwe init security` commands. If security is not set up for Zowe, contact your Security Administrator to perform this setup. 
 
    :::note
-   An alternative to executing **Run the Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+   An alternative to executing **Run Zowe init security** is to submit `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
    :::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
