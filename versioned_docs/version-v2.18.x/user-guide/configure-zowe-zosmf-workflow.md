@@ -41,14 +41,27 @@ The configuration workflow described in this article is executed directly from a
 
 ## Executing Full Zowe server-side configuration workflow for Zowe 2.0  from PSWI
 
+In Software Management panel, click Actions and add from z/OSMF Sytem. Specify your system name and file lactation path (UNIX file)
+Click Retrieve. Review the Deployment Jobs and click click Deployment Checklist.
+
+
+
 In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
+For more information, see [Installing Product Software Using z/OSMF Deployments](./install-zowe-pswi-deployment.md)
+
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
+
+During your deployment, you have the option to perform workflows. To leverage the z/OSMF workflow configuration, click Perform workflows.
+
+Each workflow appears in the panel. 
 
 :::note
 The **Perform Workflows** step enables you to run either all attached workflows or just the
 post-deployment workflow for mounting, which is required.
 :::
+
+Ensure that you first perform the Zowe Mount workflow as described in the IBM documentation.
 
 After you successfully perform the **Zowe Mount** workflow, you can start the **Full Zowe server-side configuration for Zowe 2.0** workflow.
 When you select this workflow from the list of Workflow Definition Files, the following screen displays:
@@ -64,24 +77,26 @@ This workflow has three main steps:
 
 ### 1. **Define variables**
 
-This workflow step includes the list of Zowe variables and contains many sub-steps.
+This workflow step includes the list of Zowe variables for configuration and contains many sub-steps.
 When you expand **Define variables**, the following screen displays: 
 
 ![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
 
-**1.1.** First, define the main variables of your configuration as presented in the list under **Input Variables**.
+**1.1.** Click **Define the main variables** of your configuration as presented in the list under **Input Variables**. CLick the **Perform** tab. The input variables are displayed by category. Customize the workflow variables by in the presented fields. 
 
-**1.2.** Second, perform the applicable sub-steps that correspond to the components you choose to enable.
 
-   Perform the following steps to execute each sub-step individually:
+**Example:**
+ ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
+
+**1.2.** Perform the applicable sub-steps that correspond to the components you choose to enable.
+
+   Perform the following steps to execute each sub-step, when applicable, individually:
 
   1. Click the title of the sub-step.
   2. Select the **Perform** tab.
   3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
 
-   On the components page of **Define the main variables** sub-step, select the components that you wish to enable.
-
-   ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
+   
 
    :::note
    Ensure that all the components that you enabled are configured in the next sub-steps of the **Define variables** step.
@@ -90,17 +105,26 @@ When you expand **Define variables**, the following screen displays:
 
   4. Select **Next**.
   5. Repeat the previous two steps to complete all items until the **Finish** option is available.
-
-   :::note
-   Basic validation is supported in many of the fields including the proper path structure, dataset name conventions, or numeric size.
+   
+      :::note Notes
+      * You can click **Save**, to save your values and **Finish** to populate these values in subsequent steps.
+   
+      * Basic validation is supported in many of the fields including the proper path structure, dataset name conventions, or numeric size.
    The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
    :::
+
+Customize each item under Input Variables. When you complete this list of Input variables, click **Next** to view the components. Tick each component in this list that you want to enable. 
+
+CLick **Finish** to populate the values. This action customizes your workflow according to the components.
+You are then presented with enabled sub-steps according to the Zowe component you specified. Click each sub-step and customize compoent specific variables. Click **Next** until you complete your customization of the variables and click **Finish** to apply the values.
+  
 
 After all sub-steps are completed, the step **Define variables** is marked as Complete.
 
 ### 2. **Create configuration**
 
 This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1.
+
 Review your configurations and, if necessary, make further changes directly in the JCL.
 When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
 
