@@ -48,71 +48,109 @@ The configuration workflow described in this article is executed directly from a
 
 ## Executing Stand-alone Zowe API ML Configuration workflow from PSWI
 
-In the PSWI deployment phase, follow each step outlined in the **Deployment Checklist**.
+After Zowe installation, follow this procedure to perform Zowe API ML Configuration workflow from PSWI.
+
+:::tip
+For more information about installing Zowe server-side components with z/OSMF, see [Installing Product Software Using z/OSMF Deployments](./install-zowe-pswi-deployment.md).
+:::
+
+1. In the **Software Management** panel, click **Actions** and **Add from z/OSMF System**. 
+2. Specify your system name and file location path (UNIX file).
+3. Click **Retrieve**. 
+4. Review the Deployment Jobs and click **Deployment Checklist**.
+5. Follow each step outlined in the **Deployment Checklist**.
 
 ![Deployment Checklist](../images/zosmf/perform-workflows.png)
 
+6. After you complete all of the preceding steps outlined in the Deployment checklist, click **Perform workflows** to leverage configuration of API ML with z/OSMF workflows.
+
+    Each workflow appears in the panel. 
+
 :::note
 The **Perform Workflows** step enables you to run either all attached workflows or just the
-post-deployment workflow for mounting, which is required.
+    post-deployment workflow for mounting, which is required.
 :::
 
-After you successfully performed the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
-When you select this workflow from the list of Workflow Definition Files, the following screen displays: 
+:::caution Important
+Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow as described in the IBM documentation.
+:::
+
+After you successfully perform the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
+
+Select the **Stand-alone Zowe API ML Configuration** workflow from the list of Workflow Definition Files.  
+
+The following screen displays: 
 
 ![Stand-alone Zowe API ML Configuration workflow](../images/zosmf/workflow-APIMLConfiguration.png)
 
 Expand the **Workflow Details** panel to see the workflow details and the state of each step.
-This workflow has three main steps:
+This workflow is in three parts:
 
-[1. Define variables](#1-define-variables)  
-[2. Create configuration](#2-create-configuration)  
-[3. Perform Zowe installation](#3-perform-zowe-installation)
+[Define variables](#define-variables)  
+[Create configuration](#create-configuration)  
+[Perform Zowe installation](#perform-zowe-installation)
 
-### 1. **Define variables**
+### Define variables
 
-This workflow step includes the list of Zowe variables.
-When you expand **Define variables**, the following screen displays: 
+This workflow step includes the list of Zowe variables for configuration and as well as sub-steps.
 
-![Step1.1: Define the main variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
+1. Expand **Define variables**.
 
-**1.1.** First, define the main variables for your configuration as presented in the list under **Input Variables**.
+2. Under **Input Variables**, click **Define the main variables**.
 
-**1.2.** After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.  
+3. Click the **Perform** tab. The input variables are displayed by category.
 
-![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePortsV2.png)
+4. Customize workflow variables in the fields provided.  
+   **Example:**
 
-Perform the following steps to execute each sub-step individually:
+   ![Step1.1: Define the main variables](../images/zosmf/workflow-APIMLdefineMainVariablesV2.png)
 
-1. Click the title of the sub-step.
-2. Select the **Perform** tab.
-3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.
-4. Select **Next**. 
-5. Repeat the previous two steps to complete all items until the **Finish** option is available.
+5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.  
 
-:::note
-Basic validation is supported in many fields. Validation includes proper path structure, dataset name conventions, or numeric size.
-The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
-:::
+    ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePortsV2.png)
 
-After both sub-steps, **Define the main variables** and **Ports** are completed, the step **Define variables** is marked as Complete.
+#### Sequence to execute steps and sub-steps in the workflow
 
-### 2. **Create configuration**
+   Perform the following steps for each step and sub-step:
 
-This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1. 
-Review your configurations and, if necessary, make further changes directly in the JCL. 
-When you are done, click **Finish**. The zowe.yaml file is ready, and the step is marked as Complete.
+  1. Click the title of the step or sub-step.
+  2. Select the **Perform** tab.
+  3. Review the step contents and update the variables that are marked by a red asterisk based on your mainframe environment.  
+  4. Select **Next**.
+  5. Repeat the previous steps in this sequent to complete all items until the **Finish** option is available.  
+   :::note Notes
+      * You can click **Save**, to save your values and **Finish** to populate these values in subsequent steps.
+   
+      * Basic validation is supported in many of the fields including the proper path structure, dataset name conventions, or numeric size.
+   The workflow, however, does not check, for example, if a target dataset exists, or if a directory has sufficient space.
+   :::
+   6.  When you complete this list of Input variables, click **Next** to view the components. Tick each component in this list that you want to enable.
+   7. Click **Finish** to populate the values. This action customizes your workflow according to the components.  
+   You are then presented with enabled sub-steps according to the Zowe components you specified. 
+   8. Click each sub-step and customize component-specific variables. Click **Next** until you complete your customization of the variables.
+   9. Click **Finish** to apply the values.
+
+After all sub-steps are completed, the step **Define variables** is marked as Complete.
+
+### Create configuration
+
+This step creates a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
+
+1. Review your configurations.
+2. If necessary, customize the JCL according you your specifications and click **Finish**.  
+   The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note
 The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
 
-### 3. **Perform Zowe Installation**
 
-This step consumes the zowe.yaml configuration file you created in the previous step. It contains two sub-steps:
+### Perform Zowe Installation
 
-1. **Run the Zowe install** to run the `zwe install` command.
-2. **Run the Zowe init** to run `zwe init mvs` and `zwe init stc` commands.
+This step consumes the zowe.yaml configuration file and contains two sub-steps:
+
+1. **Run Zowe install** to run the `zwe install` command.
+2. **Run Zowe init** to run `zwe init mvs` and `zwe init stc` commands.
 
 :::note
 If you did not set up security prior to this installation, you can  submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
@@ -121,6 +159,8 @@ If you did not set up security prior to this installation, you can  submit the `
 For more information about `zwe install` and `zwe init` commands, see the following articles:
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
+
+### Schema information and next steps
 
 The **Stand-alone Zowe API ML Configuration** workflow strictly follows the Zowe v2 install and configuration schema. This workflow generates the zowe.yaml file and runs the Zowe `zwe` CLI tool.
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI. 

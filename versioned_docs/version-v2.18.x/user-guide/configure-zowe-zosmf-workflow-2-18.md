@@ -44,7 +44,7 @@ The configuration workflow described in this article is executed directly from a
 After Zowe installation, follow this procedure to perform Zowe server-side configuration.
 
 :::tip
-For more information, see [Installing Product Software Using z/OSMF Deployments](./install-zowe-pswi-deployment.md).
+For more information about installing Zowe server-side components with z/OSMF, see [Installing Product Software Using z/OSMF Deployments](./install-zowe-pswi-deployment.md).
 :::
 
 1. In the **Software Management** panel, click **Actions** and **Add from z/OSMF System**. 
@@ -67,7 +67,7 @@ The **Perform Workflows** step enables you to run either all attached workflows 
 :::
 
 :::caution Important
-Ensure that you first perform the **Zowe Mount** workflow as described in the IBM documentation.
+Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow as described in the IBM documentation.
 :::
 
 After you successfully perform the **Zowe Mount** workflow, you can start the **Full Zowe server-side configuration for Zowe 2.0** workflow.
@@ -122,8 +122,8 @@ This workflow step includes the list of Zowe variables for configuration and as 
    :::
    6.  When you complete this list of Input variables, click **Next** to view the components. Tick each component in this list that you want to enable.
    7. Click **Finish** to populate the values. This action customizes your workflow according to the components.  
-   You are then presented with enabled sub-steps according to the Zowe component you specified. 
-   8. Click each sub-step and customize component specific variables. Click **Next** until you complete your customization of the variables.
+   You are then presented with enabled sub-steps according to the Zowe components you specified. 
+   8. Click each sub-step and customize component-specific variables. Click **Next** until you complete your customization of the variables.
    9. Click **Finish** to apply the values.
   
 
@@ -131,10 +131,10 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 ### Create configuration
 
-This step creates a configuration zowe.yaml file with the variable setup that was defined in step 1.
+This step creates a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
 
-1. Review your configurations and, if necessary, make further changes directly in the JCL.
-2. Customize the JCL according you your specifications and click **Finish**.  
+1. Review your configurations.
+2. If necessary, customize the JCL according you your specifications and click **Finish**.  
    The zowe.yaml file is ready, and the step is marked as Complete.
 
 :::note
@@ -143,7 +143,7 @@ The **Create configuration** step is mandatory. A valid zowe.yaml is required to
 
 ### Perform Zowe installation
 
-This step consumes the zowe.yaml configuration file you created in step 2 and contains three sub-steps.
+This step consumes the zowe.yaml configuration file and contains three sub-steps.
 
 1. **Run Zowe install** runs the `zwe install` command.
 2. **Run Zowe init** runs `zwe init mvs` and `zwe init stc` commands.
@@ -159,8 +159,9 @@ For more information about `zwe install` and `zwe init` commands, see the follow
 * [zwe install command](../appendix/zwe_server_command_reference/zwe/zwe-install.md)
 * [Configuring Zowe with zwe init](initialize-zos-system.md)
 
-### Additional information
+### Schema information and next steps
 
 The **Full Zowe server-side configuration for Zowe 2.0** workflow strictly follows Zowe v2 install and configuration schema. This workflow generates the zowe.yaml file and runs Zowe's zwe CLI tool.
+
 After completing the workflow execution, you can return to the **Deployment Checklist** for the Zowe PSWI.
 After you complete the steps in the checklist you are ready to start your Zowe instance.
