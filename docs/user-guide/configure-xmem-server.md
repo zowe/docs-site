@@ -200,7 +200,7 @@ To diagnose problems that may occur with the Zowe `ZWESLSTC` not being able to a
 
 If the `crossMemoryServerName` is changed in `zowe.yaml` and the default name is not applied, manually update the `NAME` in the corresponding `PROCLIB`.
 
-For example, the ZIS server name is changed from its default of `ZWESIS_STC` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=00,RGN=0M`. 
+For example, the ZIS server name is changed from its default of `ZWESIS_STD` to be `ZWESIS_02`. The `PROCLIB` member line 1 is updated from `//ZWESIS01  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M` to `//ZWESIS_01  PROC NAME='ZWESIS_02',MEM=00,RGN=0M`. 
 And the `zowe.yaml` file is updated to use the `ZWESIS_02` instance:
 
 ```
