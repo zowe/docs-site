@@ -1103,6 +1103,7 @@
     "contribute/contributing"
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     {

@@ -979,6 +979,7 @@ module.exports = {
     "contribute/contributing",
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
     {
