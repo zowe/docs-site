@@ -54,7 +54,7 @@ const cp = require("child_process");
   };
 
   // Install all conformant plug-ins
-  // installPlugins();
+  installPlugins();
 
   // Read schema definitions
   const schemaFile = require(path.join(os.homedir(), ".zowe", "zowe.schema.json"));
@@ -108,17 +108,26 @@ const cp = require("child_process");
 
   const getAllowed = (value) => {
     if (value.type === "boolean") {
-      return `**${value.type}**:<br/> ${customFormat([true, false])}`;
+      return `**${value.type}**:<br/> ${customFormat(["```true```", "```false```"])}`;
     }
     if (value.allowed != null) {
-      return `**${value.type}**:<br/> ${customFormat(value.allowed)}`;
+      return `**${value.type}**:<br/> ${customFormat(Array.isArray(value.allowed) ? value.allowed.map(v => "```" + v + "```") : value.allowed)}`;
     }
     return value.type;
   }
 
   const getDescription = (value) => {
-    let description = customFormat(value.description.replace(/(\n\s*)+(\b\w+\b):\s*(\n\s*)*/gi, "$1$2:\n"));
-    description = description.replace(/(<br\s*\/>\s*)+(\b\w+\b):\s*(<br\s*\/>\s*)+/gi, "<br/><br/>$2:<br/>");
+
+    function normalizeDescription(description) {
+      return description.replace(
+        /(\n+\s*\n+)(\s*)((?:\b\w+(?:-\w+)*\b):)\s*(\n\s*)*/gi,
+        (_match, _newlines, spaces, label, _newline) => {
+          return `\n\n${spaces.length > 3 ? spaces : ""}${label}\n`;
+        }
+      );
+    }
+
+    let description = customFormat(normalizeDescription(value.description));
     const defaultRegex = /(?:<br\s*\/>\s*<br\s*\/>\s*)?default value: (.*)$/i;
     const defaultMatch = description.match(defaultRegex);
     if (defaultMatch != null) {
