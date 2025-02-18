@@ -54,7 +54,7 @@ const cp = require("child_process");
   };
 
   // Install all conformant plug-ins
-  installPlugins();
+  // installPlugins();
 
   // Read schema definitions
   const schemaFile = require(path.join(os.homedir(), ".zowe", "zowe.schema.json"));
@@ -73,6 +73,7 @@ const cp = require("child_process");
       for (const [property, value] of Object.entries(profileProperties)) {
         profileMap.get(profileType)[property] = {
           description: value.description,
+          type: value.type,
         };
         if (value.default != null) {
           profileMap.get(profileType)[property].default = value.default;
@@ -96,7 +97,7 @@ const cp = require("child_process");
       return prepWords(value.join("<br/>"));
     }
     if (typeof value === "object") {
-      return prepWords(JSON.stringify(value).replace(/,/g, ",<br/>"));
+      return prepWords(JSON.stringify(value, null, 8).replace(/\n/g, "<br/>"));
     }
     if (typeof value === "string") {
       return prepWords(value).replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br/>").replaceAll("<br/><br/>", "<br/>");
@@ -104,14 +105,37 @@ const cp = require("child_process");
     return value;
   };
 
+  const getAllowed = (value) => {
+    if (value.type === "boolean") {
+      return `**${value.type}**<br/> ${customFormat([true, false])}`;
+    }
+    if (value.allowed != null) {
+      return `**${value.type}**<br/> ${customFormat(value.allowed)}`;
+    }
+    return value.type;
+  }
+
+  const getDescription = (value) => {
+    let description = customFormat(value.description);
+    if (value.default != null) {
+      const newDefault = customFormat(value.default);
+      if (newDefault.length > 100 || value.type === "array" || value.type === "object") {
+        description += `<br/><details><summary>Default</summary><br/>${newDefault}</details>`;
+      } else {
+        description += `<br/>**Default:** \`\`\`${value.default}\`\`\``;
+      }
+    }
+    return description;
+  }
+
   let mdOutput = "## Profiles\n"
   const sortedProfileMap = new Map(
     [...profileMap.entries()].sort(([a], [b]) => a.localeCompare(b))
   );
   sortedProfileMap.forEach((profile, profileType) => {
-    mdOutput += `### ${profileType}\n\n| Property | Description | Default | Allowed |\n| --- | --- | --- | --- |\n`;
+    mdOutput += `### ${profileType}\n\n| Property | Description | Allowed |\n| --- | --- | --- |\n`;
     for (const [key, value] of Object.entries(profile)) {
-      mdOutput += `| ${key} | ${customFormat(value.description)} | ${customFormat(value.default)} | ${customFormat(value.allowed)} |\n`;
+      mdOutput += `| ${key} | ${getDescription(value)} | ${getAllowed(value)} |\n`;
     }
     mdOutput += "\n\n";
   });
