@@ -87,7 +87,8 @@ const cp = require("child_process");
 
   // Generate markdown from profile map
   const prepWords = (value) => {
-    return value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").replace(/{/g, "\\{").replace(/}/g, "\\}").replace(/\$/g, "\\\$");
+    return value.replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").replace(/{/g, "\\{").replace(/}/g, "\\}").replace(/\$/g, "\\\$");
+    // return value.replace(/\n\n/g, "\n").replaceAll("  ", "&nbsp;").replace(/\n/g, " \n ").replace(/{/g, "\\{").replace(/}/g, "\\}").replace(/\$/g, "\\\$");
   };
   const customFormat = (value) => {
     if (value == null) {
@@ -116,7 +117,8 @@ const cp = require("child_process");
   }
 
   const getDescription = (value) => {
-    let description = customFormat(value.description);
+    let description = customFormat(value.description.replace(/(\n\s*)+(\b\w+\b):\s*(\n\s*)*/gi, "$1$2:\n"));
+    description = description.replace(/(<br\s*\/>\s*)+(\b\w+\b):\s*(<br\s*\/>\s*)+/gi, "<br/><br/>$2:<br/>");
     const defaultRegex = /(?:<br\s*\/>\s*<br\s*\/>\s*)?default value: (.*)$/i;
     const defaultMatch = description.match(defaultRegex);
     if (defaultMatch != null) {
