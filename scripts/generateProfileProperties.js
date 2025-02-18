@@ -107,22 +107,28 @@ const cp = require("child_process");
 
   const getAllowed = (value) => {
     if (value.type === "boolean") {
-      return `**${value.type}**<br/> ${customFormat([true, false])}`;
+      return `**${value.type}**:<br/> ${customFormat([true, false])}`;
     }
     if (value.allowed != null) {
-      return `**${value.type}**<br/> ${customFormat(value.allowed)}`;
+      return `**${value.type}**:<br/> ${customFormat(value.allowed)}`;
     }
     return value.type;
   }
 
   const getDescription = (value) => {
     let description = customFormat(value.description);
-    if (value.default != null) {
+    const defaultRegex = /(?:<br\s*\/>\s*<br\s*\/>\s*)?default value: (.*)$/i;
+    const defaultMatch = description.match(defaultRegex);
+    if (defaultMatch != null) {
+      const defaultValue = defaultMatch[1].trim();
+      description = description.replace(defaultRegex, "");
+      description += `<br/><br/>**Default**: \`\`\`${defaultValue}\`\`\``;
+    } else if (value.default != null) {
       const newDefault = customFormat(value.default);
       if (newDefault.length > 100 || value.type === "array" || value.type === "object") {
-        description += `<br/><details><summary>Default</summary><br/>${newDefault}</details>`;
+        description += `<br/><br/><details><summary>**Default**:</summary><br/>${newDefault}</details>`;
       } else {
-        description += `<br/>**Default:** \`\`\`${value.default}\`\`\``;
+        description += `<br/><br/>**Default**: \`\`\`${value.default}\`\`\``;
       }
     }
     return description;
