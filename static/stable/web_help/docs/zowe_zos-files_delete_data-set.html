@@ -31,6 +31,12 @@
 <h4>Options</h4>
 <ul>
 <li>
+<p><code>--ignore-not-found</code> | <code>-i</code> | <code>--inf</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress errors if the data set does not exist.</li>
+</ul>
+</li>
+<li>
 <p><code>--volume</code> | <code>--vol</code> <em>(string)</em></p>
 <ul>
 <li>The volume serial (VOLSER) where the data set resides. The option is required only when the data set is not catalogued on the system.</li>
@@ -152,6 +158,12 @@ Allowed values: http, https</p>
 <p>Delete the data set member named 'ibmuser.cntl(mem)':</p>
 <ul>
 <li><code>zowe zos-files delete data-set &quot;ibmuser.cntl(mem)&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set &quot;ibmuser.cntl(mem)&quot; -f">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Quietly delete a data set, suppressing errors if it doesn't exist:</p>
+<ul>
+<li><code>zowe zos-files delete data-set &quot;ibmuser.cntl(mem)&quot; -fi</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set &quot;ibmuser.cntl(mem)&quot; -fi">Copy</button></li>
 </ul>
 </li>
 </ul>

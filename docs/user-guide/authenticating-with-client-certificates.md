@@ -163,3 +163,19 @@ Where:
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 
 Your Zowe instance is configured to accept x.509 client certificates authentication.
+
+**Java sample application**
+
+**Note:** This code sample requires JDK 17 or newer.
+
+You can find a [Java sample application](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/src/main/java/org/zowe/apiml/Main.java) in the Zowe API Layer repository. This sample can help you get started with client certificate authentication. 
+
+Replace the following placeholder values in the sample application with your actual configuration:
+
+```text
+  API_URL - URL that points to your API ML instance
+  CLIENT_CERT_PATH - PKCS12 keystore that contains your client certificate
+  CLIENT_CERT_PASSWORD - keystore password 
+  CLIENT_CERT_ALIAS - client certificate alias 
+  PRIVATE_KEY_ALIAS - client certificate private key alias - usualy is the same value
+```

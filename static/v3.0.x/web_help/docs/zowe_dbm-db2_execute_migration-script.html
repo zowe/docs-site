@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>dbm-db2 execute migration-script</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_execute.html">execute</a> › <a href="zowe_dbm-db2_execute_migration-script.html">migration-script</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Execute the migration script that was generated with the 'zowe dbm prepare migration' command to migrate Db2 objects (DDL) and table data from a source subsystem to a target subsystem. The source and target subsystem IDs are specified within the script.</p>
+<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm%5C-db2%5C-for%5C-zowe%5C-cli">https://github.com/BroadcomMFD/dbm\-db2\-for\-zowe\-cli</a></p>
+<h4>Usage</h4>
+<p>zowe dbm-db2 execute migration-script &lt;local-input-migrate-script-filename&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>local-input-migrate-script-filename</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the local input migration-script file that was generated with the 'zowe dbm prepare migration' command.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--restart</code> | <code>-r</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the location in the script where you want to restart execution. The effects of previous successful script statement executions remain.</p>
+<p>The following restart options are valid:</p>
+<p>new - Restart execution of the script at the first statement.</p>
+<p>name, token - Restart execution of the script at the location in the restart section that is recorded in the specified token and that was returned from a prior execution failure.</p>
+<p>A section is a '.SYSTEM &lt;name&gt;' statement, where &lt;name&gt; identifies a logical grouping of statements such as UNLOADS or SQLDDL. 'source' is an alias for UNLOADS. 'target' is an alias for SQLDDL.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--error-file</code> | <code>--ef</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the local output error file in YAML format. The file contains basic execution information, connection details, dbm-db2 profile parameters, used arguments, and errors that occurred during execution of the command.</p>
+<p>Default value: error.log</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--modification</code> | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values.</p>
+<p>For more information about using the modification option, see the DBM Data Service documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--dbm-db2-options-profile</code> | <code>--dbm-db2-options-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2-options) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--dbm-db2-profile</code> | <code>--dbm-db2-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (dbm-db2) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>DBM-Db2 Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
+<ul>
+<li>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
+</ul>
+</li>
+<li>
+<p><code>--job-cards</code> | <code>--jc</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a string array of z/OS JCL JOB statements.</li>
+</ul>
+</li>
+<li>
+<p><code>--work-dataset-prefix</code> | <code>--wdp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the prefix (high-level qualifier) in z/OS work data set names.</li>
+</ul>
+</li>
+<li>
+<p><code>--delete-work-datasets</code> | <code>--dwd</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to delete work data sets on a mainframe after the request is fulfilled.</li>
+</ul>
+</li>
+<li>
+<p><code>--overwrite-output-files</code> | <code>--oof</code> <em>(boolean)</em></p>
+<ul>
+<li>Specifies whether to overwrite output files if they exist.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all DBM DS resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Execute a migration script:</p>
+<ul>
+<li><code>zowe dbm-db2 execute migration-script migration.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute migration-script migration.txt">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Restart execution of a migration script at the first statement in the script:</p>
+<ul>
+<li><code>zowe dbm-db2 execute migration-script migration.txt --restart new</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute migration-script migration.txt --restart new">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Restart execution of a migration script at the location in the token. Execution begins at the last successful sync point that is recorded in the restart token up to the end of the restart token section:</p>
+<ul>
+<li><code>zowe dbm-db2 execute migration-script migration.txt --restart target,78A724GOBLEDYGOOK6FD140F6780D6FA</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe dbm-db2 execute migration-script migration.txt --restart target,78A724GOBLEDYGOOK6FD140F6780D6FA">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

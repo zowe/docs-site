@@ -111,13 +111,13 @@ For the cross memory server to be started, you must move the JCL PROCLIB `ZWESIS
 
 You need to update the `ZWESISTC` member in the JES concatenation path with the location of the load library that contains the load module `ZWESIS01` by editing the STEPLIB DD statement of `ZWESISTC`.  Edit the PARMLIB DD statement to point to the location of the PDS that contains the `ZWESIP00` member.  
 
-For example, the sample JCL below shows `ZWESISTC` where the APF-authorized PDSE containing `ZWESIS01` is `IBMUSER.ZWEV2.SZWEAUTH(ZWESIS01)` and the PDS PARMLIB containing `ZWESIP00` is `IBMUSER.ZWEV2.SZWESAMP(ZWESIP00)`.  
+For example, the sample JCL below shows `ZWESISTC` where the APF-authorized PDSE containing `ZWESIS01` is `IBMUSER.ZWEV3.SZWEAUTH(ZWESIS01)` and the PDS PARMLIB containing `ZWESIP00` is `IBMUSER.ZWEV3.SZWESAMP(ZWESIP00)`.  
 
 ```cobol
 //ZWESIS01 EXEC PGM=ZWESIS01,REGION=&RGN,
 //         PARM='NAME=&NAME,MEM=&MEM'
-//STEPLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWEAUTH,DISP=SHR
-//PARMLIB  DD   DSNAME=IBMUSER.ZWEV2.SZWESAMP,DISP=SHR
+//STEPLIB  DD   DSNAME=IBMUSER.ZWEV3.SZWEAUTH,DISP=SHR
+//PARMLIB  DD   DSNAME=IBMUSER.ZWEV3.SZWESAMP,DISP=SHR
 //SYSPRINT DD   SYSOUT=*
 ```
 
