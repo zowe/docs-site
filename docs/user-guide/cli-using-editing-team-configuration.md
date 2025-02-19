@@ -56,7 +56,7 @@ You can learn more about how service, base, and parent profiles work in [Zowe CL
 
 ### Core z/OS service profiles
 
-The three z/OS **[correct?]** services that Zowe CLI and Zowe Explorer profiles connect to:
+The three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
 
 - **z/OSMF** profiles connect with the IBM z/OS Management Facility service.
 - **TSO** profiles connect with the Time Sharing Option service.
@@ -70,7 +70,7 @@ To determine the types of plug-in service profiles that can be used in Zowe CLI 
 
 ## Profile properties
 
-Every profile in a configuration file includes specific information (properties and their values, that is) to communicate with its respective mainframe service. The values for properties are defined by your specific connection information.
+Every profile in a configuration file includes specific information, such as properties and their values, to communicate with its respective mainframe service. The values for properties are defined by your specific connection information.
 
 The available properties for z/OS services and Zowe-conformant plug-ins profiles are listed in the following tables:
 
