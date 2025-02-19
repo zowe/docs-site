@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config set</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_set.html">set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Create or update a configuration property.</p>
+<h4>Usage</h4>
+<p>zowe config set &lt;property&gt; [value] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>property</code>		 <em>(string)</em></p>
+<ul>
+<li>The property to set. You may specify a path using dot notation (e.g. profiles.host1.profiles.service1.properties.setting).</li>
+</ul>
+</li>
+<li>
+<p><code>value</code>		 <em>(string)</em></p>
+<ul>
+<li>The property value to set. The value may be JSON. Use '--json' to indicate.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--global-config</code> | <code>--gc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set the property in global config.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-config</code> | <code>--uc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Set the property in user config.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--json</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>The property value is JSON.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--secure</code> <em>(boolean)</em></p>
+<ul>
+<li>Store the property value securely. If omitted, any property named in the secure array of the config file will be saved securely.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Set the property in global config:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --global-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set the property in user config:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service2.properties.setting&quot; &quot;value&quot; --user-config">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set property value to JSON:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service3.properties.setting&quot; &quot;{&quot;property&quot;:&quot;value&quot;}&quot; --json">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Store the property value:</p>
+<ul>
+<li><code>zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;profiles.host1.profiles.service1.properties.setting&quot; &quot;value&quot; --secure">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set a default zosmf profile:</p>
+<ul>
+<li><code>zowe config set &quot;defaults.zosmf&quot; &quot;zosmfProfileName&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;defaults.zosmf&quot; &quot;zosmfProfileName&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set a default tso profile:</p>
+<ul>
+<li><code>zowe config set &quot;defaults.tso&quot; &quot;tsoProfileName&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config set &quot;defaults.tso&quot; &quot;tsoProfileName&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

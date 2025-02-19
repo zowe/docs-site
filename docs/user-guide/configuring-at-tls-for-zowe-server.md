@@ -1,4 +1,4 @@
-# Configuring AT-TLS for Zowe Server
+# Enabling AT-TLS
 
 You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
@@ -11,18 +11,18 @@ Follow these steps to configure Zowe to support AT-TLS:
 
 ```yaml
 zowe:
-    network:
-        # For inbound traffic rules:
-        server:
-            tls:
-                attls: true
-        # If outbound traffic rules will be configured:
-        client:
-          tls:
-            attls: true
+  network:
+    # For inbound traffic rules:
+    server:
+      tls:
+        attls: true
+    # If outbound traffic rules will be configured:
+    client:
+      tls:
+        attls: true
 ```
 
-While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
 
 :::note Notes
 
@@ -130,6 +130,7 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
+
 Careful consideration needs to be made regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID.
 
 :::
@@ -273,7 +274,7 @@ This scenario includes services that set `zoweJwt` as the authentication scheme,
 
 In this case, it is necessary to have an Outbound rule from the service to the API Gateway.
 
-These service also already have an outbound rule set for the onboarding process against the Discovery Service.
+These services also already have an outbound rule set for the onboarding process against the Discovery Service.
 
 Ensure these rules are followed:
 
@@ -668,7 +669,3 @@ TTLSCipherParms                   CipherParms
 ```
 
 </details>
-
-## Additional Zowe feature configuration with AT-TLS
-
-The Zowe Application Framework also leverages AT-TLS. For more information, see [Using AT-TLS in the App Framework](../user-guide/mvd-configuration#using-at-tls-in-the-app-framework).
