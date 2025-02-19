@@ -121,8 +121,9 @@ const cp = require("child_process");
     function normalizeDescription(description) {
       return description.replace(
         /(\n+\s*\n+)(\s*)((?:\b\w+(?:-\w+)*\b):)\s*(\n\s*)*/gi,
-        (_match, _newlines, spaces, label, _newline) => {
-          return `\n\n${spaces.length > 3 ? spaces : ""}${label}\n`;
+        (_match, _newlines, _spaces, label, _newline) => {
+          return `\n\n${label}\n`;
+          // return `\n\n${_spaces.length > 3 ? _spaces : ""}${label}\n`;
         }
       );
     }
