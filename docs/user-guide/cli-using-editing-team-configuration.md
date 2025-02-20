@@ -64,7 +64,7 @@ The three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
 
 ### Zowe CLI plug-in service profiles
 
-Different *service profiles* are used to connect to different Zowe CLI plug-ins **[is this phrased correctly? the profile is used to "connect" to the "plug-in"?]**. A *base profile*, on the other hand, contains connection data that can be shared across multiple service profiles.
+Other kinds of *service profiles* can be used to configure connections for Zowe CLI plug-ins. A *base profile*, on the other hand, contains connection data that can be shared across multiple service profiles.
 
 To determine the types of plug-in service profiles that can be used in Zowe CLI configuration, refer to the tables on this page or check the Zowe CLI plug-in command groups listed in the [Zowe web help](https://docs.zowe.org/stable/web_help/index.html). Most group names match the plug-in profile name.
 
