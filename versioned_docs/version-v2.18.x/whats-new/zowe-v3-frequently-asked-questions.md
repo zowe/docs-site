@@ -20,7 +20,7 @@
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
-   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (For example, `zowe.components.gateway`).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
+   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (For example, `components.gateway`).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
 
 3. How does client certificate authentication work in Zowe V3?
 
