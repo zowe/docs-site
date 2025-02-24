@@ -10,8 +10,8 @@ By default, the API Gateway accepts up to 100 concurrent connections per route, 
 Use the following procedure to change the number of concurrent connections:
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property `zowe.components.gateway.server.maxConnectionsPerRoute` and set the value to an appropriate positive integer.
-3. Find or add the property `zowe.components.gateway.server.maxTotalConnections` and set the value to an appropriate positive integer.
+2. Find or add the property `components.gateway.server.maxConnectionsPerRoute` and set the value to an appropriate positive integer.
+3. Find or add the property `components.gateway.server.maxTotalConnections` and set the value to an appropriate positive integer.
 
 ## Websocket Limits
 
@@ -32,7 +32,7 @@ zowe:
 Use the following procedure to change the limits:
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property `zowe.components.gateway.server.websocket.connectTimeout`, and set the value to an appropriate positive integer. This timeout limits how long the API Gateway waits until it drops connection if it cannot reach the target server. The default is 15 seconds.
-3. Find or add the property `zowe.components.gateway.server.websocket.stopTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the API Gateway waits before it fails on stop message for the Websocket connection. The default is 30 seconds.
-4. Find or add the property `zowe.components.gateway.server.websocket.asyncWriteTimeout`, and set the value to an appropriate positive integer. This timeout handles how long it takes before the server fails with unsuccessful response when trying to write message to the Websocket connection. The default is 60 seconds.
-5. Find or add the property `zowe.components.gateway.server.websocket.maxIdleTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour.
+2. Find or add the property `components.gateway.server.websocket.connectTimeout`, and set the value to an appropriate positive integer. This timeout limits how long the API Gateway waits until it drops connection if it cannot reach the target server. The default is 15 seconds.
+3. Find or add the property `components.gateway.server.websocket.stopTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the API Gateway waits before it fails on stop message for the Websocket connection. The default is 30 seconds.
+4. Find or add the property `components.gateway.server.websocket.asyncWriteTimeout`, and set the value to an appropriate positive integer. This timeout handles how long it takes before the server fails with unsuccessful response when trying to write message to the Websocket connection. The default is 60 seconds.
+5. Find or add the property `components.gateway.server.websocket.maxIdleTimeout`, and set the value to an appropriate positive integer. This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour.

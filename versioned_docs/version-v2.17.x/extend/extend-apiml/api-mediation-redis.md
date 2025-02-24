@@ -40,7 +40,7 @@ in separate Docker containers, the replica container's IP address needs to be ac
 
 ## Redis configuration
 
-Configure Redis as a storage solution through the Caching service by setting the following environment variables. Environment variables can be set by adding them to the `zowe.components.caching-service` section of the `zowe.yaml` configuration file.
+Configure Redis as a storage solution through the Caching service by setting the following environment variables. Environment variables can be set by adding them to the `components.caching-service` section of the `zowe.yaml` configuration file.
 
 * **`storage.redis.masterNodeUri`**
 

@@ -23,7 +23,7 @@ For more information about VSAM, see the [IBM documentation](https://www.ibm.com
 
 ### VSAM configuration
 
-Configure VSAM as a storage solution through the Caching service by modifying the following configuration parameters in `zowe.components.caching-service` in `zowe.yaml`.
+Configure VSAM as a storage solution through the Caching service by modifying the following configuration parameters in `components.caching-service` in `zowe.yaml`.
 
 * **`storage.vsam.name`**
 

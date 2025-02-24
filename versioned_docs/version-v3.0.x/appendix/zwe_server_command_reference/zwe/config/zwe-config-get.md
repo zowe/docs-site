@@ -15,9 +15,9 @@ This command requires zowe.useConfigmgr=true or --configmgr to be used.
 ```
 zwe config get -p path-of-configuration -c /path/to/zowe.yaml
 zwe config get -p .zowe.certificate -c /path/to/zowe.yaml
-zwe config get -p .zowe.components[] -c /path/to/zowe.yaml
-zwe config get -p .zowe.components.gateway -c /path/to/zowe.yaml
-zwe config get -p .zowe.components.gateway.enabled -c /path/to/zowe.yaml
+zwe config get -p components[] -c /path/to/zowe.yaml
+zwe config get -p components.gateway -c /path/to/zowe.yaml
+zwe config get -p components.gateway.enabled -c /path/to/zowe.yaml
 ```
 
 ## Parameters

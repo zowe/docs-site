@@ -15,7 +15,7 @@ The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There
     
 The most complete way to check that Zowe started successfully is to check that each component successfully completed its initialization. Each component writes messages to the JES `SYSPRINT` and writes severe errors to the `STDERR` job spool file.  
 
-To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `zowe.components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
+To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
 
 ### Check the startup of API Mediation Layer 
 
