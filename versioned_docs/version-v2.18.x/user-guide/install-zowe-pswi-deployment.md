@@ -66,7 +66,7 @@ are met.
        4. Select **Next**.
        5. Repeat the previous two steps to complete all items until the **Finish** option is available.
 
-    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md).
+    9. (Optional) To configure your Zowe instance, follow the procedure in [Configuring Zowe with z/OSMF Workflows](configure-zowe-zosmf-workflow.md). To configure your Zowe instance specifically for API Mediation Layer, see [Configuring API ML with z/OSMF Workflows](configure-apiml-zosmf-workflow-2-18.md).
 
    10. Specify the name and description of the new target software instance.
 
