@@ -154,19 +154,21 @@ curl -X POST \
 https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
 ```
 
-Where:
-
-* `cert`: Specifies the certificate location
-* `key`: Path to the private key
-* `7554`: Replace with the configured API Gateway port in the intance
+* **cert**  
+  Specifies the certificate location
+* **key**  
+  Path to the private key
+* **7554**  
+  This value is a place holder. Replace this value with the configured API Gateway port in the instance
 
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 
 Your Zowe instance is configured to accept x.509 client certificates authentication.
 
-**Java sample application**
+## Java sample application
 
-**Note:** This code sample requires JDK 17 or newer.
+**Note:** This code sample requires JDK 17 or a newer version.
 
 You can find a [Java sample application](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/src/main/java/org/zowe/apiml/Main.java) in the Zowe API Layer repository. This sample can help you get started with client certificate authentication. 
-Follow the [instructions](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/README.md) to run the application.
+
+To run the application, see [Run Client Certificate Authentication Sample](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/README.md) in the Zowe API Layer repository.
