@@ -69,11 +69,9 @@ To change the location that the daemon uses, set the environment variables that 
 
 See the secure credentials used by a command to help troubleshoot a configuration problem.
 
-Use the `--show-inputs-only` option in a Zowe CLI command to view the property values used by the command. When the `ZOWE_SHOW_SECURE_ARGS` is set to `true`, the response also includes the secure values used and defined in the user's client configuration.
-
 | Environment variable | Description | Values | Default |
 | ---------------------- | ----------- |------- | ------- |
-| `ZOWE_SHOW_SECURE_ARGS`        | Displays secure property values used by a Zowe CLI command            | `TRUE`, `FALSE` | `FALSE` |
+| `ZOWE_SHOW_SECURE_ARGS`        | Displays secure property values used by a Zowe CLI command <br/><br/> **Notes**: Use the `--show-inputs-only` option in a Zowe CLI command to view the property values used by the command. When the `ZOWE_SHOW_SECURE_ARGS` is set to `true`, the response also includes the secure values used and defined in the user's client configuration. <br/><br/> Use the `zowe config list` command in Zowe CLI to view your team configuration settings. When `ZOWE_SHOW_SECURE_ARGS` is set to `true`, the response includes the secure values in plain text.           | `TRUE`, `FALSE` | `FALSE` |
 
 ## Using Zowe CLI with a proxy
 
