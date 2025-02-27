@@ -247,11 +247,22 @@ In the following configuration, services are accessed through the API ML using c
 
 ## Accessing services through multiple API ML gateways
 
-In the following configuration, the profiles are structured to connect to services using multiple API ML gateways.
+There are different ways to access mainframe services through multiple API ML gateways, depending on how your organize the profiles in your configuration. Determine the method to use by the requirements of your client component. 
 
-To authenticate to a specific API ML gateway from this configuration, you can run `zowe auth login apiml --base-profile lpar1` or `zowe auth login apiml --base-profile lpar2`.
+In Zowe CLI, profiles do not need to be nested in order to use multiple API ML gateways. Nested profiles are required for Zowe Explorer for VS Code. 
 
-```
+Select one of the following tabs to see the configuration possible for the client components.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="zowe cli ze" label="Zowe CLI, Zowe Explorer for VS Code" default>
+In the following configuration, profiles are highlighted to show they are nested so their connection information can be used with multiple API ML gateways. 
+
+To authenticate to a specific API ML gateway from this configuration, issue the `zowe auth login apiml --base-profile lpar1` or `zowe auth login apiml --base-profile lpar2` commands.
+
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -262,6 +273,7 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                 "tokenType": "apimlAuthenticationToken"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
@@ -282,6 +294,7 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                         "port": 22
                     }
                 }
+                // highlight-end
             },
             "secure": [
                 "tokenValue"
@@ -295,12 +308,14 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                 "tokenType": "apimlAuthenticationToken"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
                         "basePath": "api/v1"
                     }
                 }
+                // highlight-end
             },
             "secure": [
                 "tokenValue"
@@ -315,3 +330,54 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
     "autoStore": true
 }
 ```
+  </TabItem>
+  <TabItem value="zowe cli 2" label="Zowe CLI alternative">
+
+In the following configuration, profiles are highlighted to show they are all at the same level.
+
+Use the `--base-profile` option on Zowe CLI commands to select a base profile that contains the API ML gateway information to use for a specific API ML gateway for that command.
+
+```json showLineNumbers
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        // highlight-start
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "basePath": "/ibmzosmf/api/v1"
+            }
+        },
+        "lpar1": {
+            "properties": {
+                "host": "apiml.host.1",
+                "port": 12345,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        },
+        "lpar2": {
+            "properties": {
+                "host": "apiml.host.2",
+                "port": 12345,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        }
+        // highlight-end
+    },
+    "defaults": {
+        "zosmf": "zosmf",
+        "base": "lpar2"
+    },
+    "autoStore": true
+}
+```
+  </TabItem>
+</Tabs>
+
+
