@@ -359,28 +359,6 @@ F ACF2,REBUILD(APL)
 
 </details>
 
-### Configure address space job naming
-
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
-
-:::note
-This procedure may require security administrator authorization. Consult with your security administrator.
-:::
-
-To display who is authorized to the profile, issue the following command:
-```
-RLIST FACILITY BPX.JOBNAME AUTHUSER
-```
-
-Additionally, you need to activate facility class, permit `BPX.JOBNAME`, and refresh facility class:
-```
-SETROPTS CLASSACT(FACILITY) RACLIST(FACILITY)
-PERMIT BPX.JOBNAME CLASS(FACILITY) ID(ZWESVUSR) ACCESS(READ)
-SETROPTS RACLIST(FACILITY) REFRESH
-```
-
-For more information, see [Setting up the UNIX-related FACILITY and SURROGAT class profiles](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.bpxb200/fclass.htm) in the "z/OS UNIX System Services" documentation.
-
 ### Configure multi-user address space (for TSS only)
 
 The Zowe server started task `ZWESLSTC` is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
