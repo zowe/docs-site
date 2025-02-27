@@ -292,8 +292,12 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
                     "type": "ssh",
                     "properties": {
                         "port": 22
-                    }
-                }
+                    },
+                    "secure": [
+                        "user", 
+                        "password"
+    ]
+}
                 // highlight-end
             },
             "secure": [
@@ -350,8 +354,8 @@ Use the `--base-profile` option on Zowe CLI commands to select a base profile th
         },
         "lpar1": {
             "properties": {
-                "host": "apiml.host.1",
-                "port": 12345,
+                "host": "example1.com",
+                "port": 7554,
                 "tokenType": "apimlAuthenticationToken"
             },
             "secure": [
@@ -360,8 +364,8 @@ Use the `--base-profile` option on Zowe CLI commands to select a base profile th
         },
         "lpar2": {
             "properties": {
-                "host": "apiml.host.2",
-                "port": 12345,
+                "host": "example2.com",
+                "port": 7554,
                 "tokenType": "apimlAuthenticationToken"
             },
             "secure": [
