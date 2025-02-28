@@ -259,7 +259,7 @@ In the following configuration, services are accessed through the API ML using c
 
 ## Accessing services through multiple API ML gateways
 
-There are different ways to access mainframe services through multiple API ML gateways, depending on how your organize the profiles in your configuration. Determine the method to use by the requirements of your client component. 
+There are different ways to access mainframe services through multiple API ML gateways, depending on how you organize the profiles in your configuration. Determine the method to use by the requirements of your client component. 
 
 In Zowe CLI, profiles do not need to be nested in order to use multiple API ML gateways. Nested profiles are required for Zowe Explorer for VS Code. 
 
