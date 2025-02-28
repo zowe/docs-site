@@ -2,10 +2,14 @@
 
 Review how services of the API Mediation Layer address authentication.
 
-- [Services of API Mediation Layer](#services-of-api-mediation-layer)
-- [Authentication endpoints](#authentication-endpoints)
-- [Supported authentication methods](#supported-authentication-methods)
-- [Discovery Service authentication](#discovery-service-authentication)
+- [Authentication for API ML services](#authentication-for-api-ml-services)
+  - [Services of API Mediation Layer](#services-of-api-mediation-layer)
+  - [Authentication endpoints](#authentication-endpoints)
+  - [Supported authentication methods](#supported-authentication-methods)
+    - [Authenticate with Username/Password](#authenticate-with-usernamepassword)
+  - [Authentication parameters](#authentication-parameters)
+  - [Discovery Service authentication](#discovery-service-authentication)
+  - [zOSMF Authentication](#zosmf-authentication)
  
 
 :::tip
@@ -18,7 +22,7 @@ For information about authentication providers that handle authentication for th
 
     - The API Gateway handles authentication
     - There are two authentication endpoints that allow authentication of the resource by providers
-    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication, Zowe JWT token, or a client certificate
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication, Zowe JWT, or a client certificate
 
 - **API Catalog**
 
@@ -30,7 +34,7 @@ For information about authentication providers that handle authentication for th
     - Discovery Service is accessed by API Services
     - This access (reading information and registration) requires protection by means of a client certificate
     - (Optional) Access can be granted to users (administrators)
-    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication, Zowe JWT token, or a client certificate
+    - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication, Zowe JWT, or a client certificate
 
 - **API Services**
 
@@ -80,11 +84,11 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
   The response is a JSON object, which contains information associated with the ticket.
 
 - **`auth/refresh`**  
- The `auth/refresh` endpoint generates a new token for the user based on valid jwt token. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is no longer usable.
+ The `auth/refresh` endpoint generates a new token for the user based on valid JWT. The full path of the `auth/refresh` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh`. The new token overwrites the old cookie with a `Set-Cookie` header. As part of the process, the old token gets invalidated and is no longer usable.
 
   **Notes:** 
   
-   - The endpoint is disabled by default. For more information, see [Enable JWT token endpoint](../../user-guide/api-mediation/configuration-jwt.md#enabling-a-jwt-token-refresh-endpoint).
+   - The endpoint is disabled by default. For more information, see [Enable JWT endpoint](../../user-guide/api-mediation/configuration-jwt.md#enabling-a-jwt-refresh-endpoint).
    - The endpoint is protected by a client certificate.
 
   The refresh request requires the token in one of the following formats:
@@ -101,7 +105,7 @@ of Zowe, all of the following methods are enabled and supported. All methods are
 
 Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
 
-* [Authenticating with a JWT token](../../user-guide/authenticating-with-jwt-token.md)
+* [Authenticating with a JWT](../../user-guide/authenticating-with-jwt-token.md)
 
 * [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
