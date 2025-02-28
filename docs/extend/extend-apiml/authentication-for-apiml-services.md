@@ -105,7 +105,7 @@ of Zowe, all of the following methods are enabled and supported. All methods are
 
 Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
 
-* [Authenticating with a JWT](../../user-guide/authenticating-with-a-json-web-token-jwt.md)
+* [Authenticating with a JWT](../../user-guide/authenticating-with-jwt-token.md)
 
 * [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
