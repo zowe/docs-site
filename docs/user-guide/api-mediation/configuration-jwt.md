@@ -50,14 +50,15 @@ We recommend you use the following workaround:
 
 1. Configure the following parameter in `environments`:
 
-```
-zowe:
-  environments:
-    APIML_SECURITY_ALLOWTOKENREFRESH: true 
-```
-:::
+  ```
+  zowe:
+    environments:
+      APIML_SECURITY_ALLOWTOKENREFRESH: true 
+  ```
 
 2. Restart Zowe.
+
+:::
 
 ## Authorization
 
