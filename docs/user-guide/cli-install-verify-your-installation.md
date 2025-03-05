@@ -59,7 +59,7 @@ Follow these steps when you have installed Zowe CLI but have not yet created a c
 
 ### Connecting to z/OSMF with a default profile
 
-Follow these steps when you have created a default profile in a configuration file (such as a [global team config](../user-guide/cli-using-initializing-team-configuration/)):
+Follow these steps when you have created a default profile in a configuration file (such as a [global team config](./cli-using-initializing-team-configuration.md):
 
 1. Verify the default profile can communicate with z/OSMF:
 
@@ -73,7 +73,7 @@ Follow these steps when you have created a default profile in a configuration fi
 
 ### Connecting to z/OSM with a specific profile
 
-Follow these steps when you have created a custom profile in a configuration (such as a [global team configuration file](../user-guide/cli-using-initializing-team-configuration/)).
+Follow these steps when you have created a custom profile in a configuration (such as a [global team configuration file](./cli-using-initializing-team-configuration.md)).
 
 1. Verify that you can use that specific profile to communicate with z/OSMF:
 
