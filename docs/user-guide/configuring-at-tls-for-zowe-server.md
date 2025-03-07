@@ -513,7 +513,7 @@ TTLSRule ApimlZosmfClientRule
 }
 
 # Configure the GW -> ZAAS rule
-TTLSRule ApimlZosmfClientRule
+TTLSRule ApimlZaasClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -569,7 +569,7 @@ TTLSConnectionAction ApimlX509ClientConnAction
 {
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
+  TTLSConnectionAdvancedParmsRef ZoweClientX509ConnAdvParms
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
