@@ -171,6 +171,8 @@ components:
 #### Keyrings
 
 If you are using keyrings, verify that Zowe YAML references to `safkeyring` use 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
+:::info After you edit the configuration parameters in your Zowe YAML file, reinstall and reinitialize Zowe.
+:::
 
 #### Gateway z/OSMF service configuration
 
