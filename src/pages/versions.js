@@ -30,7 +30,7 @@ function Version() {
           <div className="margin-bottom--lg">
             <h3 id="next">Current version (Stable)</h3>
             <p>
-              Here you can find the documentation for current released version.
+              Read the documentation for current released version of Zowe.
             </p>
             <table>
               <tbody>
@@ -48,7 +48,7 @@ function Version() {
                         `$1_$2${latestVersion.label.startsWith("v1.") ? "" : "_0"}`
                       )}`}
                     >
-                      Release Notes
+                      Release notes
                     </a>
                   </td>
                 </tr>
@@ -59,9 +59,9 @@ function Version() {
 
         {(pastVersions.length > 0 || VersionsArchived.length > 0) && (
           <div className="margin-bottom--lg">
-            <h3 id="archive">Past versions (Not maintained anymore)</h3>
+            <h3 id="archive">Past versions (No longer maintained)</h3>
             <p>
-              Here you can find documentation for previous versions of Zowe.
+              Read the documentation for previous versions of Zowe.
             </p>
             <table>
               <tbody>
