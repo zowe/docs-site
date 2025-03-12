@@ -30,7 +30,7 @@ function Version() {
           <div className="margin-bottom--lg">
             <h3 id="next">Current version (Stable)</h3>
             <p>
-              Read the documentation for current released version of Zowe.
+              Read the documentation for the current release version of Zowe.
             </p>
             <table>
               <tbody>
