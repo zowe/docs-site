@@ -10,7 +10,7 @@ This program directory is intended for system programmers who are responsible fo
 
 Zowe consists of the following FMIDs:
 
-  * AZWE002
+  * AZWE003
 
 ## Program materials
 
@@ -35,17 +35,15 @@ Publication Title | Form Number
 [IBM SMP/E for z/OS Reference](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3sa232276/$file/gim2000_v2r3.pdf) | SA23-2276
 [IBM SMP/E for z/OS Messages, Codes, and Diagnosis](https://www-01.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3ga320883/$file/gim0000_v2r3.pdf) | GA32-0883
 
-These and other publications can be obtained from [IBM Publications Center](https://www.ibm.com/resources/publications/?mhsrc=ibmsearch_a&mhq=publications).
+These and other publications can be obtained from [IBM Publications Center](https://www.ibm.com/docs/en/products).
 
 ## Program support
 
 This section describes the support available for Zowe.
 
-Because this is an alpha release of the Zowe FMID package for early testing and adoption, no formal support is offered.  Support is available through the Zowe community.  See [Community Engagement](https://github.com/zowe/community/blob/master/README.md#communication-channels) for details. Slack is the preferred interaction channel.
+Support is available through the Zowe community and Zowe Conformant Support Providers. See [Zowe Support Overview](https://medium.com/zowe/zowe-support-overview-9a3273ae902e) for details. Slack is the preferred interaction channel.
 
 Additional support may be available through other entities outside of the Open Mainframe Project and Linux Foundation which offers no warranty and provides the package under the terms of the EPL v2.0 license.
-
-<!--TODO - Needs more legalese here-->
 
 ### Statement of support procedures
 
@@ -57,11 +55,11 @@ This section identifies the program and relevant service levels of Zowe. The pro
 
 ### Program level information
 
-All issues of previous releases of Zowe that were resolved before August 2019 have been incorporated into this packaging of Zowe.
+All issues of previous releases of Zowe that were resolved before October 2024 have been incorporated into this packaging of Zowe.
 
 ### Service level information
 
-The Zowe SMP/E package is a distribution of Zowe version 2.0.0 with an FMID of AZWE002.
+The Zowe SMP/E package is a distribution of Zowe version 3.0.0 with an FMID of AZWE003.
 
 Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).
 <!-- packaged as two co-requisite PTFs, which are made available in a single .zip file.
@@ -96,15 +94,13 @@ The driving system can be run in any hardware environment that supports the requ
 
 Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy these APARs | Included in the shipped product?
 ---|---|---|---|---
-5650-ZOS | z/OS | V2.2.0 or later | N/A | No 
+5650-ZOS | z/OS | V2.5.0 or later | N/A | No 
 
 **Notes:**
 - SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
-- Installation might require migration to a new z/OS release to be service supported. See [https://www-01.ibm.com/software/support/lifecycle/index_z.html](https://www-01.ibm.com/software/support/lifecycle/index_z.html).
+- Installation might require migration to a new z/OS release to be service supported. See [https://www.ibm.com/support/pages/lifecycle/](https://www.ibm.com/support/pages/lifecycle/).
 
-Zowe is installed into a file system, either HFS or zFS. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
-
-If you plan to install Zowe in a zFS file system, this requires that zFS be active on the driving system. Information on activating and using zFS can be found in [z/OS Distributed File Service zSeries File System Administration](https://www.ibm.com/servers/resourcelink/svc00100.nsf/pages/zOSV2R3SC236887/$file/ioea700_v2r3.pdf) (SC24-5989).
+Zowe is installed into a zFS file system. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
 
 ### Target system requirements
 
@@ -138,9 +134,12 @@ Mandatory operational requisites identify products that are required for this pr
 
 Program Number |Product Name and Minimum VRM/Service Level
 ---|---
-5650-ZOS |  IBM z/OS Management Facility V2.2.0 or higher
-5655-SDK |	IBM SDK for Node.js - z/OS V12 or higher
-5655-DGH |	IBM 64-bit SDK for z/OS Java Technology Edition V8.0.0
+5650-ZOS | IBM z/OS Management Facility V2.5.0 or higher
+5655-NOS |	IBM Open Enterprise SDK for Node.js 20.0
+5655-UA1 |	IBM Semeru Runtime Certified Edition for z/OS 17.0.0
+
+- **note:** The minimum product version is either what is listed in the table, or the currently minimum supported version, whichever is the most recent.
+- **note:** The pre-requistes for Node.js itself are not required, nor is any configuration of Node.js required. The only requirement is the presence of the Node.js executable code.
 
 Conditional operational requisites identify products that are not required for Zowe to operate its basic functions but are required at run time for Zowe to operate specific functions. These products are specified as IF REQs. Zowe has no conditional operational requisites.
 
@@ -164,10 +163,10 @@ Zowe libraries can reside on all supported DASD types.
 
 Library Type | Total Space Required in 3390 Trks | Description
 ---|---|---
-Target |45 Tracks	| /
-Distribution | 12045 Tracks	| /
-File System(s) | 21000 Tracks | /
-Web Download | 38666 Tracks | These are temporary data sets, which can be removed after the SMP/E install.
+Target |300 Tracks	| /
+Distribution | 13165 Tracks	| /
+File System(s) | 27900 Tracks | /
+Web Download | 45810 Tracks | These are temporary data sets, which can be removed after the SMP/E install.
 
 **Notes:**
 
@@ -211,8 +210,8 @@ Web Download | 38666 Tracks | These are temporary data sets, which can be remove
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-SMPWRK6 |	S	| PDS |	FB |80 | (300,3000) |	50
-SYSUT1 |U	| SEQ	| -- | --	| (300,3000) | 0
+SMPWRK6 |	S	| PDS |	FB |80 | (5250,525) |	50
+SYSUT1 |U	| SEQ	| -- | --	| (5250,525) | 0
 
 In the table above, (20,200) specifies a primary allocation of 20 tracks, and a secondary allocation of 200 tracks.  
 
@@ -228,8 +227,6 @@ The following figures describe the target and distribution libraries and file sy
 
 **Storage requirements for Zowe target libraries**
 
-**Note:** These target libraries are not required for the initial FMID install of Zowe SMP/E but will be required for subsequent SYSMODS so are included here for future reference.
-
 Review the list of Zowe's runtime datasets in the [Server Dataset Appendix](../appendix/server-datasets.md#runtime-datasets).
 
 **Zowe file system paths**
@@ -240,24 +237,24 @@ SZWEZFS | X | /usr/lpp/zowe/SMPE
 
 **Storage requirements for Zowe distribution libraries**
 
-**Note:** These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
-
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-AZWEAUTH | U | PDSE | U | 0 | 15 | N/A
-AZWESAMP | U | PDSE | FB | 80 | 15 | 5
-AZWEZFS | U | PDSE | VB | 6995 | 12000 | 30
+AZWEAUTH | U | PDSE | U | 0 | 240 | N/A
+AZWESAMP | U | PDSE | FB | 80 | 25 | 5
+AZWEZFS | U | PDSE | VB | 6995 | 12900 | 30
+
+**Storage requirements for Zowe SMP/E input libraries**
 
 The following figures list data sets that are not used by Zowe, but are required as input for SMP/E.
 
 Data Set Name | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
-hlq.ZOWE.AZWE002.F1 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE002.F2 | U | PDSE | FB | 80 | 5 | N/A
-hlq.ZOWE.AZWE002.F3 | U | PDSE | U | 0 | 30 | N/A
-hlq.ZOWE.AZWE002.F4 | U | PDSE | VB | 6995 | 9900 | N/A
-hlq.ZOWE.AZWE002.SMPMCS | U | SEQ | FB | 80 | 1 | N/A
-z/OS UNIX file system | U | zFS | N/A | N/A | 28715 | N/A
+hlq.ZOWE.AZWE003.F1 | U | PDSE | FB | 80 | 9 | N/A
+hlq.ZOWE.AZWE003.F2 | U | PDSE | FB | 80 | 28 | N/A
+hlq.ZOWE.AZWE003.F3 | U | PDSE | U | 0 | 275 | N/A
+hlq.ZOWE.AZWE003.F4 | U | PDSE | VB | 6995 | 14100 | N/A
+hlq.ZOWE.AZWE003.SMPMCS | U | SEQ | FB | 80 | 3 | N/A
+z/OS UNIX file system | U | zFS | N/A | N/A | 31395 | N/A
 
 **Note:** These are temporary data sets, which can be removed after the SMP/E installation.
 
