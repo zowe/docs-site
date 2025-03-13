@@ -49,9 +49,9 @@ Follow these high-level steps to download and install Zowe Open Source Project (
 
 ### Download and unzip the Zowe SMP/E package
 
-To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the **Zowe SMP/E FMID AZWE003** button to save the file to a folder on your desktop.
+To download the Zowe SMP/E package, open your web browser and go to the [Zowe Download](https://www.zowe.org/download.html) website. Click the option **Zowe SMP/E FMID AZWE003** to save the file to a folder on your desktop.
 
-You will receive one ZIP package on your desktop. Extract the following files from the package. You may need to use the `unzip` command at a terminal rather than an unzip utility. For example, run `unzip zowe-smpe-package-3.0.0.zip` in your terminal. 
+A ZIP package is sent to your desktop. Extract the following files from the package. You may need to use the `unzip` command at a terminal rather than an unzip utility. For example, run `unzip zowe-smpe-package-3.0.0.zip` in your terminal. 
 
   - **AZWE003.pax.Z (binary)**
 
