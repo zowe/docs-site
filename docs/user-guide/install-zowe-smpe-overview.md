@@ -45,8 +45,6 @@ Support is available through the Zowe community and Zowe Conformant Support Prov
 
 Additional support may be available through other entities outside of the Open Mainframe Project and Linux Foundation which offers no warranty and provides the package under the terms of the EPL v2.0 license.
 
-<!--TODO - Needs more legalese here-->
-
 ### Statement of support procedures
 
 Report any problems which you feel might be an error in the product materials to the Zowe community via the Zowe GitHub community repo at [https://github.com/zowe/community/issues/new/choose](https://github.com/zowe/community/issues/new/choose). You may be asked to gather and submit additional diagnostics to assist the Zowe Community for analysis and resolution.
@@ -61,7 +59,7 @@ All issues of previous releases of Zowe that were resolved before October 2024 h
 
 ### Service level information
 
-The Zowe SMP/E package is a distribution of Zowe version 2.0.0 with an FMID of AZWE003.
+The Zowe SMP/E package is a distribution of Zowe version 3.0.0 with an FMID of AZWE003.
 
 Subsequent releases of the Zowe z/OS components are delivered as rollup PTFs on [zowe.org](https://www.zowe.org/download.html).
 <!-- packaged as two co-requisite PTFs, which are made available in a single .zip file.
@@ -142,7 +140,6 @@ Program Number |Product Name and Minimum VRM/Service Level
 5650-ZOS | IBM z/OS Management Facility V2.5.0 or higher
 5655-NOS |	IBM Open Enterprise SDK for Node.js 20.0
 5655-UA1 |	IBM Semeru Runtime Certified Edition for z/OS 17.0.0
-
 
 :::note Notes:
 - The minimum product version is either what is listed in the table, or the currently minimum supported version, whichever is the most recent.
@@ -246,10 +243,6 @@ DDNAME | TYPE | Path Name
 SZWEZFS | X | /usr/lpp/zowe/SMPE
 
 **Storage requirements for Zowe distribution libraries**
-
-:::note
-These target libraries are not required for the initial alpha drop of Zowe SMP/E but will be required for subsequent drops so are included here for future reference.
-:::
 
 Library DDNAME | TYPE | ORG | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---
