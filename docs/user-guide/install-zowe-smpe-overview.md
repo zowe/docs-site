@@ -96,9 +96,12 @@ Program Number| Product Name | Minimum VRM | Minimum Service Level will satisfy 
 ---|---|---|---|---
 5650-ZOS | z/OS | V2.5.0 or later | N/A | No 
 
-**Notes:**
+:::note Notes:
 - SMP/E is a requirement for Installation and is an element of z/OS but can also be ordered as a separate product, 5655-G44, minimally V03.06.00.
 - Installation might require migration to a new z/OS release to be service supported. See [https://www.ibm.com/support/pages/lifecycle/](https://www.ibm.com/support/pages/lifecycle/).
+:::
+
+Zowe is installed into a file system, either HFS or zFS. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
 
 Zowe is installed into a zFS file system. Before installing Zowe, you must ensure that the target system file system data sets are available for processing on the driving system. OMVS must be active on the driving system and the target system file data sets must be mounted on the driving system.
 
@@ -138,8 +141,10 @@ Program Number |Product Name and Minimum VRM/Service Level
 5655-NOS |	IBM Open Enterprise SDK for Node.js 20.0
 5655-UA1 |	IBM Semeru Runtime Certified Edition for z/OS 17.0.0
 
-- **note:** The minimum product version is either what is listed in the table, or the currently minimum supported version, whichever is the most recent.
-- **note:** The pre-requistes for Node.js itself are not required, nor is any configuration of Node.js required. The only requirement is the presence of the Node.js executable code.
+:::note Notes:
+- The minimum product version is either what is listed in the table, or the currently minimum supported version, whichever is the most recent.
+- The pre-requistes for Node.js itself are not required, nor is any configuration of Node.js required. The only requirement is the presence of the Node.js executable code.
+:::
 
 Conditional operational requisites identify products that are not required for Zowe to operate its basic functions but are required at run time for Zowe to operate specific functions. These products are specified as IF REQs. Zowe has no conditional operational requisites.
 
@@ -223,7 +228,9 @@ SMPPTS | S | PDSE | FB | 80 | (12000,3000) | 50
 
 The following figures describe the target and distribution libraries and file system paths required to install Zowe. The storage requirements of Zowe must be added to the storage required by other programs that have data in the same library or path.
 
-**Note:** Use the data in these tables to determine which libraries can be merged into common data sets. In addition, since some ALIAS names may not be unique, ensure that no naming conflicts will be introduced before merging libraries.
+:::note
+Use the data in these tables to determine which libraries can be merged into common data sets. In addition, since some ALIAS names may not be unique, ensure that no naming conflicts will be introduced before merging libraries.
+:::
 
 **Storage requirements for Zowe target libraries**
 
@@ -256,7 +263,9 @@ hlq.ZOWE.AZWE003.F4 | U | PDSE | VB | 6995 | 14100 | N/A
 hlq.ZOWE.AZWE003.SMPMCS | U | SEQ | FB | 80 | 3 | N/A
 z/OS UNIX file system | U | zFS | N/A | N/A | 31395 | N/A
 
-**Note:** These are temporary data sets, which can be removed after the SMP/E installation.
+:::note
+These are temporary data sets, which can be removed after the SMP/E installation.
+:::
 
 ### FMIDs deleted
 
@@ -264,7 +273,9 @@ Installing Zowe might result in the deletion of other FMIDs.
 
 To see which FMIDs will be deleted, examine the `++VER` statement in the SMPMCS of the product. If you do not want to delete these FMIDs now, install Zowe into separate SMP/E target and distribution zones.
 
-**Note:** These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
+:::note
+These FMIDs are not automatically deleted from the Global Zone. If you want to delete these FMIDs from the Global Zone, use the SMP/E REJECT NOFMID DELETEFMID command. See the SMP/E Commands book for details.
+:::
 
 **Special considerations**
 
