@@ -68,6 +68,10 @@ After you download the PAX file, you can transfer it to z/OS and expand its cont
 
     After the PAX file has successfully transferred, exit your `sftp` or `ftp` session.
 
+1. Use `cd` to move into the high level directory where you want the code to be installed. 
+
+   **Note:** It may be /usr/lpp/zowe
+
 1. Open a USS shell to expand the PAX file. This can either be an ssh terminal, OMVS, iShell, or any other z/OS unix system services command environment. 
 
 1. Expand the PAX file by issuing the following command in the USS shell. 
