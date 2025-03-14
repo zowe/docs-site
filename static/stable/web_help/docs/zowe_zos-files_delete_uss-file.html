@@ -37,6 +37,12 @@
 </ul>
 </li>
 <li>
+<p><code>--ignore-not-found</code> | <code>-i</code> | <code>--inf</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress errors if the file does not exist.</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -158,6 +164,12 @@ Allowed values: http, https</p>
 <p>Recursively delete the directory named '/u/ibmuser/testcases':</p>
 <ul>
 <li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -rf</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -rf">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Quietly delete a file, suppressing errors if the file doesn't exist:</p>
+<ul>
+<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -fi</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -fi">Copy</button></li>
 </ul>
 </li>
 </ul>

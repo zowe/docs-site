@@ -11,15 +11,17 @@ This article does not cover the client methods to call API ML and authenticate. 
 
 To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
 
-- Accepting JWT token (recommended)
-- Accepting SAF IDT token
-- Accepting PassTicket
+- [Accepting JWT token (recommended)](#accepting-jwt)
+- [Accepting SAF IDT token](#accepting-saf-idt)
+- [Accepting PassTicket](#accepting-passtickets)
 
-Two additional possibilities can potentially be leveraged to enable Single Sign On but are not properly integrated with the standard API ML:
+Additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
-- Bypassing the authentication for the service
-- Asking for details about the x509 certificate used for authentication  
-**Note:** Asking for details about the x509 certificate does not properly participate in SSO as this method cannot accept all authentication methods that are supported upstream of API Mediation Layer. 
+* [Bypassing authentication for the service](#bypassing-authentication-for-the-service)   
+    **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
+* [Accepting client certificates via x509 scheme](#accepting-client-certificates-via-x509-scheme)
+* [Accepting z/OSMF LTPA token](#accepting-zosmf-ltpa-token)
+* [Forwarding x509 client certificate](#forwarding-x509-client-certificate)
 
 Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication. 
 
@@ -78,7 +80,7 @@ It is necessary to provide a service APPLID in the `authentication.applid` param
 ```yaml
 authentication:
     scheme: httpBasicPassTicket
-    appliId: <applid>
+    applid: <applid>
 ```
 
 - `<applid>`  
@@ -86,7 +88,7 @@ Specifies the `APPLID` value that is used by the API service for PassTicket supp
 
 For more information, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 
-## Bypassing authentication
+## Bypassing authentication for the service
 
 Using the scheme value `bypass` specifies that the token is passed unchanged to the service.
 
@@ -99,9 +101,9 @@ authentication:
     scheme: bypass
 ```
 
-## Custom way to accept client certificates
+## Accepting client certificates via x509 scheme
 
-While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommned that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
+While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
 
 The `x509` scheme value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the downstream service, but rather the certificate that is forwarded in the header that authenticates the user.
 
@@ -136,3 +138,34 @@ authentication:
 :::tip
 For more information about z/OSMF Single Sign-on, see [Establishing a single sign-on environment](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zosmfcore.multisysplex.help.doc/izuG00hpManageSecurityCredentials.html).
 :::
+
+## Forwarding x509 client certificate
+When client uses a x509 client certificates for authentication, the certificate can be forwarded to a downstream service. This is an alternative to the [Bypassing authentication for the service](#bypassing-authentication-for-the-service) option for client certificates.
+
+The following steps outline the x509 client certificate forwarding flow:
+
+1. A client sends a request to the API Gateway secured by a client certificate.
+2. The API Gateway extracts the client certificate from the request and puts this certificate into the `Client-Cert` header.
+3. The API Gateway forwards the request to the downstream service. The request is secured by the Zowe server certificate.
+4. The downstream service must validate the Zowe server certificate in the request to verify the certificate's origin and extract the original client certificate from the header. This validation makes it possible for the service to then perform the authentication.
+
+Both the API ML Gateway and the downstream service must conform to the following requirements to support x509 certificate forwarding:
+
+### API ML Gateway Requirements
+
+- Enable client cetificate forwarding in the `zowe.yaml`
+    ```yaml
+   components:
+      gateway:    
+        apiml:
+          security:
+            x509:
+              enabled: true
+    ```
+- The API Gateway must trust the client certificate's issuer. As such, the API Gateway truststore must contain the client issuer's certificate.
+
+### Downstream service requirements
+
+- The downstream service must indicate that it supports  forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
+  
+- To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
