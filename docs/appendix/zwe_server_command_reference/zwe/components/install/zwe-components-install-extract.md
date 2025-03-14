@@ -50,7 +50,8 @@ ZWEL0154E|154|Temporary directory is empty.
 ZWEL0155E|155|Component %s already exists in %s. If you meant to upgrade this component, run the command 'zwe components upgrade' instead.
 ZWEL0167E|167|Cannot find component name from %s package manifest.
 ZWEL0204E|204|Symlink creation failure, error=%s
-ZWEL0313E|313|Cannot file component file %s.
+ZWEL0313E|313|Cannot find component file %s.
+ZWEL0318E|318|File extension invalid. Supported file extensions: .pax, .tar, .zip
 
 
 ### Inherited from parent command
@@ -97,3 +98,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
