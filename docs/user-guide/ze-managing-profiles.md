@@ -22,7 +22,7 @@ Hide a profile from the **Side Bar**. Right-click the profile, select the **Mana
 
 You can take advantage of Visual Studio Code multi-root workspaces to work on multiple projects. Multi-root workspaces are convenient when projects do not share the same parent folder, or when you want to work on different use cases for the same project.
 
-In scenarios like these, you can apply a [project configurations](../user-guide/cli-using-using-team-profiles.md#types-of-configuration-files) to a VS Code multi-root workspace.
+In scenarios like these, you can apply a [project configuration](../user-guide/cli-using-using-team-profiles.md#types-of-configuration-files) to a VS Code multi-root workspace.
 
 #### Using a single project configuration
 
