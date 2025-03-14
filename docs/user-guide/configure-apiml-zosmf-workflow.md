@@ -66,7 +66,7 @@ The **Perform Workflows** step enables you to run either all attached workflows 
 :::
 
 :::caution Important
-Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow. For more information, see [Configure - UNIX file system mount points](https://www.newera.com/INFO/061422_zOSMF_SM.pdf) in the IBM documentation. 
+Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow. For more information, see [Configure - UNIX file system mount points](./061422_zOSMF_SM.pdf) in the IBM documentation. 
 :::
 
 After you successfully perform the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
