@@ -215,10 +215,6 @@ The Zowe installation file for Zowe z/OS components that is distributed as a PAX
 
 The standard z/OS Unix directory where Zowe extensions, or additional components, plug-ins, etc., outside the default install are stored. It is specified in the Zowe configuration file via `zowe.extensionDirectory`.
 
-#### Instance.env (V1 only)
-
-The Zowe instance directory contains a `instance.env` file that stores Zowe configuration data. These data are read each time Zowe is started. You can modify `instance.env` to configure the [Zowe runtime](#zowe-runtime). For more information about updating this configuration data, see [Updating the instance.env configuration file](https://docs.Zowe.org/V1.28.x/user-guide/configure-instance-directory#updating-the-instanceenv-configuration-file).
-
 #### Log directory
 
 The standard z/OS Unix directory where Zowe logs are stored. It is specified in the Zowe configuration file via `zowe.logDirectory`.
