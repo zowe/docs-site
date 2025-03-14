@@ -1727,7 +1727,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Verify if this is intended configuration (edit/define zowe.components.app-server.node.https.ipAddresses or check Zowe documenation)
+  Verify if this is the intended configuration (edit/define components.app-server.node.https.ipAddresses) or check Zowe documentation.
 
 
 

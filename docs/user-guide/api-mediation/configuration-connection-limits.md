@@ -10,8 +10,8 @@ By default, the API Gateway accepts up to 100 concurrent connections per route, 
 Use the following procedure to change the number of concurrent connections:
 
 1. Open the file `zowe.yaml`.
-2. Find or add the property `zowe.components.gateway.server.maxConnectionsPerRoute` and set the value to an appropriate positive integer. Defaults to 100 max reusable connections per route.
-3. Find or add the property `zowe.components.gateway.server.maxTotalConnections` and set the value to an appropriate positive integer. Defaults to 1000 max total concurrent connections.
+2. Find or add the property `components.gateway.server.maxConnectionsPerRoute` and set the value to an appropriate positive integer. Defaults to 100 max reusable connections per route.
+3. Find or add the property `components.gateway.server.maxTotalConnections` and set the value to an appropriate positive integer. Defaults to 1000 max total concurrent connections.
 
 ## Websocket Limits
 
