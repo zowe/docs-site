@@ -240,31 +240,31 @@ Use the [admonitions syntax](https://docusaurus.io/docs/markdown-features/admoni
 
 :::note
 
-Some **content** with _Markdown_ `syntax`. Check [this link](#).
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
 
 :::
 
 :::tip
 
-Some **content** with _Markdown_ `syntax`. Check [this link](#).
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
 
 :::
 
 :::info
 
-Some **content** with _Markdown_ `syntax`. Check [this link](#).
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
 
 :::
 
 :::warning
 
-Some **content** with _Markdown_ `syntax`. Check [this link](#).
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
 
 :::
 
 :::danger
 
-Some **content** with _Markdown_ `syntax`. Check [this link](#).
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
 
 :::
 
