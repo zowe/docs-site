@@ -16,7 +16,7 @@ The Infinispan storage method is recommended for production usage.
    
    This storage method is designed for quick start of the service and should be used only for single instance scenario and development or test purpose. Do not use it in production or high availability scenario.
   
-   To use this method, set the `zowe.components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
+   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
 
    ```
    zowe
@@ -32,7 +32,7 @@ The Infinispan storage method is recommended for production usage.
 
 ## infinispan
 
-  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
+  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
   Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
 
@@ -70,7 +70,7 @@ The Infinispan storage method is recommended for production usage.
             name: IBMUSER.ZWE.CUST.CACHE
   ```
 
-  - `zowe.components.caching-service.storage.vsam.name`  
+  - `components.caching-service.storage.vsam.name`  
   This specifies the data set name that the `ZWECSVSM` JCL will create. This is used to replace all occurrences of `#dsname` in the `ZWECSVSM` data set.
 
     :::note
@@ -78,7 +78,7 @@ The Infinispan storage method is recommended for production usage.
     `zowe.environments.CACHING_STORAGE_VSAM_KEYLENGTH` and `zowe.environments.CACHING_STORAGE_VSAM_RECORDLENGTH` must be set to the new values.
     :::
 
-  - `zowe.components.caching-service.storage.mode`  
+  - `components.caching-service.storage.mode`  
   This specifies whether you would like to use [Record Level Sharing (RLS)](https://www.ibm.com/support/pages/vsam-record-level-sharing-rls-overview) for your VSAM data set. `RLS` is recommended for Sysplex deployment.  `NONRLS` is also an allowed value.  
 
 
@@ -107,7 +107,7 @@ The Infinispan storage method is recommended for production usage.
 
    Redis is not available if you are running the API Mediation Layer on z/OS under Unix System Services. Usage of redis is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
 
-   To enable this method, set the value of `zowe.components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
+   To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
    
    
    ```
