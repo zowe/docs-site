@@ -52,6 +52,6 @@ To change an existing username or password used by a team config profile, use th
 
 3. Respond to prompts as needed. Press `Enter` to leave the value unchanged.
 
-    New values are saved in the [secure credential store](../appendix/zowe-glossary#secure-credential-store). After the last secure value is submitted, the user returns to the system command prompt.
+    New values are saved in the [secure credential store](../appendix/zowe-glossary.md#secure-credential-store). After the last secure value is submitted, the user returns to the system command prompt.
 
-For more ways to secure credentials in config profiles, see [Managing credential security](../user-guide/cli-using-team-managing-credential-security).
+For more ways to secure credentials in config profiles, see [Managing credential security](../user-guide/cli-using-team-managing-credential-security.md).
