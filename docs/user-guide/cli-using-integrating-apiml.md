@@ -48,42 +48,13 @@ Provide your username and password to generate a token and log in to API ML:
     Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
     :::
 
-3. Provide a base profile and base path on commands to connect to API ML.
+3. If you do not have a profile for the service, respond to Zowe CLI prompts for connection information to create a profile for the service.
 
-     ```
-     zowe zos-files list data-set <IBMUSER.*>  --base-path <ibmzosmf/api/v1> 
-     ```
-
-    - `<IBMUSER.*>`
-
-        Specifies the data set search criteria **[correct?]**
-    - `<ibmzosmf/api/v1>`
-    
-        Specifies the base path location
-
-    :::tip tips
-
-    - Issue the `zowe auth login apiml` command to get the default base profile name. **[when should they issue this command? issue it after Step 2 or is Step 1 enough? Where is the default base profile name provided?]**
+    :::tip
     - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-v2-profiles) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
     :::
 
-     If you use the  `--show-token` option with the `login` command, you must manually supply the token on each command using the `--token-value` option. For example:
-
-     ```
-     zowe zos-files list data-set <IBMUSER.*> --base-path <ibmzosmf/api/v1> --token-value <123>
-     ```
-    - `<IBMUSER.*>`
-
-        Specifies the data set search criteria **[correct?]**
-    - `<ibmzosmf/api/v1>`
-    
-        Specifies the base path location
-
-    - `<123>`
-
-        Specifies the token value supplied in Step 2.
-
-4. If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the configuration file and replace the port number with a base path to enable the use of the API ML. **[is "to enable the use of the API ML" correct? I want to explain why this change is needed.]**
+    If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the applicable configuration file and replace the `port` property with a `basePath` property to enable the use of the API ML.
 
     A profile with a port number:
 
@@ -107,7 +78,19 @@ Provide your username and password to generate a token and log in to API ML:
         }
     ```
 
-If you do not have a profile for the service, Zowe CLI prompts for connection information to create a profile for the service.
+
+
+     If you use the  `--show-token` option with the `login` command, you must manually supply the token on each command using the `--token-value` option. For example:
+
+     ```
+     zowe zos-files list data-set <IBMUSER.*> --token-value <123>
+     ```
+    - `<IBMUSER.*>`
+
+        Specifies the data set search criteria
+    - `<123>`
+
+        Specifies the token value supplied in Step 2.
 
 :::note notes
 
@@ -156,11 +139,11 @@ zowe auth logout apiml
 
 This causes the token to expire. Log in again to obtain a new token.
 
-If you used the `--show token` option and never stored your token in profile, add the `--token-value` option to this command to invadlidate the token. **[if `--token-value` isn't used, does the command NOT invalidate the token (when `--show token` option was used)?]**
+If you used the `--show token` option and never stored your token in profile, add the `--token-value` option to this command to invadlidate the token. 
 
 ### Specifying a base profile
 
-Base profiles contain mainframe connection information that is used by the service profiles in your configuration. There can be multiple base profiles in the same configuration file, including a default base profile. **[we should include a use case for when someone would have a default base + other base profiles, can you please provide an example?]**
+Base profiles contain mainframe connection information that is used by the service profiles in your configuration. There can be multiple base profiles in the same configuration file, including a default base profile. This could be the case, for example, if you run different systems for development and testing and use a different base profiles for each.
 
 The `zowe auth login apiml` and `zowe auth logout apiml` commands use your configuration's default base profile when issued without additional options.
 
@@ -168,7 +151,7 @@ However, you might need to use a different base profile. To do so, add the `--ba
 
 - Use `--base-profile` to log in to API ML and save your token in a specific base profile that is not the default base profile:
 
-    Logging in with username, password:
+    Logging in with a username and password:
         
     ```
     zowe auth login apiml --base-profile <profile_name>
@@ -180,10 +163,10 @@ However, you might need to use a different base profile. To do so, add the `--ba
     zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path> --base-profile <profile_name>
     ```
 
-- Use `--base-profile` when issuing commands with API ML **[is "with" correct here?]**:
+- Use `--base-profile` when issuing commands with API ML:
 
     ```
-    zowe zos-files list data-set <IBMUSER.*>  --base-path <ibmzosmf/api/v1> --base-profile <profile_name>
+    zowe zos-files list data-set <IBMUSER.*> --base-profile <profile_name>
     ```
 
 - Use `--base-profile` to log out of API ML and invalidate your token:
