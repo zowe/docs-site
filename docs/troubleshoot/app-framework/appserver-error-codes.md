@@ -2535,7 +2535,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   The screen displays the following error message:
   
-  Loopback configuration not valid, _loobackConfiguration_
+  Loopback configuration not valid, _loopbackConfiguration_
   Loopback calls will fail!
 
   **Reason:**
@@ -2557,12 +2557,6 @@ The following error message codes may appear on the app-server log. Use the foll
   If the network administrator associates a loopback network address with the app servers, then do not mention the loopback network address in the YAML configuration file. Verify whether your network’s configuration in the YAML configuration file is correct. If the alarm still displays, contact your network administrator.
   
   :::
-
-  
-
-
-  Review the configuration of `components.app-server.node.port` to see if it has a value and set one to fix the issue.
-
 
 
 ### ZWED0004E
