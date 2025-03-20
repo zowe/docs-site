@@ -97,7 +97,7 @@ The `auth/ticket` endpoint generates a PassTicket for the user associated with a
 The API Mediation Layer provides multiple methods which clients can use to authenticate. When the API ML is run as part
 of Zowe, all of the following methods are enabled and supported. All methods are supported at least to some extent with each authentication provider.
 
-Zowe supports three authentication methods with single-sign-on. Use the following links to the documentation about using the following supported authentication methods:
+Zowe supports three authentication methods with single-sign-on. If you have username and password the expectation is that you exchange the username and password via login for JWT token or use them to generate the Personal Access Token. Use the following links to the documentation about using the following supported authentication methods:
 
 * [Authenticating with a JWT](../../user-guide/authenticating-with-jwt-token.md)
 
