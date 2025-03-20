@@ -6,16 +6,6 @@ When you install Zowe&trade;, the App Framework is configured as an API Mediatio
 
 You can modify the Zowe App Server and Zowe System Services (ZSS) configuration, as needed, or configure connections for the Terminal app plugins.
 
-## Accessing ZSS
-
-The `zss` server should be accessed  through the `gateway` when both are present. When both are ready, ZSS can be accessed from the API Mediation Layer Gateway, such as
-
-`https://<zowe.externalDomain>:<components.gateway.port>/zss/api/v1/`.
-
-Although you access the ZSS server via the Gateway port, the ZSS server still needs a port assigned to it which is the value of the *components.zss.port* variable in the Zowe configuration file.
-
-If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomain>:<components.zss.port>/`.
-
 ## Configuration file
 
 ### app-server configuration
@@ -122,31 +112,9 @@ The Outbound rules can have HandshakeRole of Client, but when API ML is enabled,
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
 
-
 ### Native TLS
 
-The configuration object `zowe.network.server.tls` and `zowe.network.client.tls` can be set to control all Zowe components, or just `app-server` or `zss` but nesting the object within them. This object can control ciphers by listing IANA cipher names, minimum and maximum TLS levels, and for some servers even curves can be customized via a list.
-
-An example for configuration is given below, but the specification for all options is found [within the Zowe YAML schema](https://github.com/zowe/zowe-install-packaging/blob/fdcdb2618080cf87031c070aed7e90503699ab5f/schemas/zowe-yaml-schema.json#L939)
-
-```yaml
-zowe:
-  network:
-    server:
-      tls: # This sets all servers to default only to use TLSv1.3, with only specific ciphers
-        minTls: "TLSv1.3"
-        maxTls: "TLSv1.3"
-        ciphers:
-        - "TLS_AES_128_GCM_SHA256"
-        - "TLS_AES_256_GCM_SHA384"
-components:
-  app-server:
-    zowe:
-      network:
-        client:
-          tls: # This customizes the app-server specifically to have a different minimum TLS for client requests
-            minTls: "TLSv1.2"
-```
+The `app-server` and `zss` components builtin HTTPS properties can be configured according to [Zowe's Native TLS configuration](./tls-configuration.md).
 
 
 ## Configuration Directories
