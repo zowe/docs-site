@@ -155,7 +155,7 @@ Once the path is defined, it is possible to enter `zwe install` as a substitute 
 
 ## Step 5: Install the MVS data sets
 
-After you extract the Zowe convenience build, you can install MVS data sets by running the [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md).
+After you extract the Zowe convenience build, run the [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md) to install MVS data sets.
 
 ### About the MVS data sets
 
