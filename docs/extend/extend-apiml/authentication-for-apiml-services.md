@@ -21,7 +21,6 @@ For information about authentication providers that handle authentication for th
 - **API Gateway**
 
     - The API Gateway handles authentication
-    - There are two authentication endpoints that allow authentication of the resource by providers
     - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in API Gateway are protected by basic authentication, Zowe JWT, or a client certificate
 
 - **API Catalog**
@@ -36,11 +35,6 @@ For information about authentication providers that handle authentication for th
     - (Optional) Access can be granted to users (administrators)
     - Diagnostic endpoints `https://{gatewayUrl}:{gatewayPort}/application/**` in Discovery Service are protected by basic authentication, Zowe JWT, or a client certificate
 
-- **API Services**
-
-    - Authentication is service-dependent
-    - It is recommended to use the Authentication and Authorization Service for authentication
-
 - **z/OSMF**
 
     - z/OSMF is not itself part of the API Mediation Layer but z/OSMF is the default authentication provider.   
@@ -48,7 +42,7 @@ For information about authentication providers that handle authentication for th
 
 ## Authentication endpoints
 
-The API Gateway contains the following REST API authentication endpoints:
+The API Gateway contains the following REST API authentication endpoints. The endpoints area also documented in the [Open API Documentation](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/gateway.json):
 
 - **`auth/login`**  
 The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
@@ -115,7 +109,7 @@ Zowe supports three authentication methods with single-sign-on. Use the followin
 ### Authenticate with Username/Password
 
 The client can authenticate via Username and password. There are multiple methods which can be used to deliver  
-credentials. For more details, see the ZAAS Client documentation. 
+credentials. For more details, see the [ZAAS Client documentation](./zaas-client.md). 
 
 ## Authentication parameters
 
