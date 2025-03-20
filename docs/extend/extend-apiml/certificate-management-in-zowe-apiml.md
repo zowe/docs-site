@@ -1,7 +1,8 @@
 # Managing certificates in Zowe API Mediation Layer
 
-Review details of certificate management in Zowe API Mediation Layer (API ML). This article decribes both how to manage certificates when running on localhost, as well as certificate management using Zowe runtime on z/OS. Additional information is provided about about the API ML truststore and keystore, and API ML SAF Keyring.
+Review details of certificate management in Zowe API Mediation Layer (API ML). This article decribes both how to manage certificates when running on localhost, as well as certificate management using Zowe runtime on z/OS. Additional information is provided about the API ML truststore and keystore, and API ML SAF keyring.
 
+- [Managing certificates in Zowe API Mediation Layer](#managing-certificates-in-zowe-api-mediation-layer)
   - [Running on localhost](#running-on-localhost)
     - [How to start API ML on localhost with full HTTPS](#how-to-start-api-ml-on-localhost-with-full-https)
     - [Certificate management guide](#certificate-management-guide)
@@ -21,7 +22,7 @@ Review details of certificate management in Zowe API Mediation Layer (API ML). T
 
 ### How to start API ML on localhost with full HTTPS
 
-The [api-layer repository](https://github.com/zowe/api-layer) contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning or generate your own certificates and add them to the truststore of your browser or system.
+The [api-layer repository](https://github.com/zowe/api-layer) contains pre-generated certificates that can be used to start API ML with HTTPS on your computer. The certificates are not trusted by your browser so you can either ignore the security warning, or generate your own certificates and add them to the truststore of your browser or system.
 
 For more information about certificates, see [TLS Certificates for localhost](https://github.com/zowe/api-layer/blob/master/keystore/README.md).
 
@@ -65,7 +66,7 @@ For detailed instructions about how to set up certificates during installation, 
 * [Use PKCS12 certificates](../../user-guide/use-certificates.md#use-pkcs12-certificates)
 * [Use JCERACFS certificates](../../user-guide/use-certificates.md#use-jceracfks-certificates) in a keyring 
 
-Follow the procedure in the applicable section described in this article during installation.
+Follow the procedure in the applicable section in this article during installation.
 
 ### Import the local CA certificate to your browser
 
@@ -231,10 +232,13 @@ by other technologies in Zowe (Node.js).
 As an alternative to using a keystore and truststore, API ML can read certificates from a _SAF keyring_. The user running the API ML must have rights to access the keyring. From the java perspective, the keyring behaves as the `JCERACFKS` keystore. The path to the keyring is specified as `safkeyring://user_id/key_ring_id`. The content of the SAF keyring is equivalent to the combined contents of the keystore and the truststore.
 
 :::note
-When using JCERACFKS as the keystore type, ensure that you have IRRRacf.jar in following location /usr/include/java_classes/IRRRacf.jar
+When using JCERACFKS as the keystore type, ensure that you have IRRRacf.jar in following location:
+```
+ /usr/include/java_classes/IRRRacf.jar
+```
 :::
 
-Review the characteristics of following elements of the API ML SAF Keyring:
+Review the characteristics of following elements of the API ML SAF keyring:
 
 **The API ML local certificate authority (CA)**
 
