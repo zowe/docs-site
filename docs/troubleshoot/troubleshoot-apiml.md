@@ -176,10 +176,19 @@ This message is expected behavior of the discovery service. If a service is inco
 Use one of the following options to exit self preservation mode:
 
    - **Restart the services that appear to be running**  
-   Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service.
+   Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting the services that aren't part of Zowe is specific to the services and is documented in their documentation. 
 
    - **Restart the discovery service**  
    Manually restart the discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
+   
+       **Note:** The Discovery Service can be stopped via F <instance-job-name>,APPL=STOP(component_name) and then started again via F <instance-job-name>,APPL=START(<component-name>)
+
+       **Example:**
+
+       ```
+       F ZWESLSTC,APPL=STOP(discovery-service)
+       F ZWESLSTC,APPL=START(discovery-service)
+       ```
 
    - **Adjust the threshold of services in eviction status**  
    Change the frequency of the discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
