@@ -471,31 +471,31 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.x509.externalMapperUrl`**  
  Defines the URL where Gateway can query the mapping of client certificates.
 - **`apiml.security.auth.jwt.customAuthHeader`**  
- Returns valid JWT header also in another header 
+ Provides valid JWT token for the southbound service in custom header. Valid value is anything that is valid as a name for HTTP header. 
 - **`apiml.security.auth.passticket.customAuthHeader`**
- Provides passtickets for the southbound service in the custom header 
+ Provides passtickets for the southbound service in the custom header. Valid value is anything that is valid as a name for HTTP header.
 - **`apiml.security.auth.passticket.customUserHeader`**
- Provides User Info when Passticket is provided in the custom header
+ Provides User Info when passticket is provided in the custom header. Valid value is anything that is valid as a name for HTTP header.
 - **`apiml.security.auth.provider`**  
- Defines the authentication provider used by the API Gateway.
+ Defines the authentication provider used by the API Gateway. The valid options are `saf` or `zosmf`.
+- **`apiml.security.auth.zosmf.serviceId`**
+ This property allows customization of the service id in case `zosmf` is specified as authentication provider. The default value is `ibmzosmf`
+- **`apiml.security.auth.zosmf.jwtAutoconfiguration`**
+ This property customizes the behavior of the Gateway with respect to how the JWT tokens are produced. The valid options are `jwt` and `ltpa`. The `jwt` is the default option, `ltpa` allows the API ML to produce the Json Web Tokens instead of the z/OSMF service. The `jwt` is default and recommended option. 
 - **`apiml.security.authorization.endpoint.url`**  
   Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
 - **`apiml.security.personalAccessToken.enabled`**  
-  Enable Personal Access Tokens  
+  Enable Personal Access Tokens. The default value is `false`  
 - **`apiml.security.useInternalMapper`**  
-  This property is the global feature toggle. Set the value to true to enable Internal Mapper
+  This property is the global feature toggle. Set the value to true to enable Internal Mapper. The default value is `true`.
 - **`apiml.security.oidc.enabled`**  
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
-
 - **`apiml.security.oidc.registry`**  
   Specifies the SAF registry used to group the identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see the [ESM configuration](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
-
 - **`apiml.security.oidc.jwks.uri`**  
-  Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens.
-
+  Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens. The valid option is valid URI.
 - **`apiml.security.oidc.jwks.refreshInternalHours`**  
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
-
 - **`apiml.security.oidc.identityMapperUser`**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
 
@@ -554,14 +554,14 @@ These configurations can be used under the `components.discovery` section:
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable the `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`alternativeStaticApiDefinitionsDirectories`**  
- Specifies the alternative directories of static definitions.
+ Specifies the alternative directories of static definitions. The valid value is list of directories separate by comma. 
 - **`apiml.server.maxTotalConnections`**  
- Specifies the total connections for all services registered under API Mediation Layer.
+ Specifies the total amount of connections for all services registered under API Mediation Layer.
 - **`apiml.discovery.serviceIdPrefixReplacer`**  
  Modifies the service ID of a service instance before it registers to API Mediation Layer.
  Using this parameter ensures compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
 - **`server.ssl.enabled`**  
- Specifies if TLS is used
+ Specifies if TLS is used. The default value is `true`. 
 
 #### Configure component api-catalog
 
@@ -572,7 +572,7 @@ These configurations can be used under the `components.api-catalog` section:
 - **`debug`**  
  Defines if we want to enable debug mode for the API Catalog. This is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with better granular level.
 - **`apiml.health.protected`**  
-  This property defines whether the health check endpoint is accessible with or without authentication.
+  This property defines whether the health check endpoint is accessible with or without authentication. The default value is `true`.
 - **`apiml.security.authorization.provider`**  
   Provider used for SAF resource check
 - **`apiml.security.authorization.endpoint.url`**  
@@ -601,36 +601,32 @@ These configurations can be used under the `components.caching-service` section:
 - **`debug`**  
  Defines if we want to enable debug mode for the Caching Service.
 - **`storage.mode`**  
- Sets the storage type used to persist data in the Caching Service.
+ Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, `redis` and `vsam`
 - **`storage.size`**  
  Specifies amount of records before eviction strategies start evicting.
 - **`storage.evictionStrategy`**  
- Specifies eviction strategy to be used when the storage size is achieved.
+ Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, `removeOldest`.
 - **`storage.vsam.name`**  
  Specifies the data set name of the caching service VSAM data set.
 - **`storage.infinispan.initialHosts`**
-
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
-
 - **`storage.infinispan.persistence.dataLocation`**
-
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-
 - **`storage.infinispan.jgroups.port`**
-
   The port number used by Infinispan to synchronise data among caching-service instances.
 - **`storage.redis.masterNodeUri`**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **`storage.redis.timeout`**  
  Specifies the timeout second to Redis. Defaults to 60 seconds.
-- `storage.redis.sentinel.masterInstance`: Specifies the Redis master instance ID used by the Redis Sentinel instances.
+- **`storage.redis.sentinel.masterInstance`**
+ Specifies the Redis master instance ID used by the Redis Sentinel instances.
 - **`storage.redis.sentinel.nodes`**  
  Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`.
 - **`storage.redis.ssl.enabled`**  
  Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
 - **`storage.redis.ssl.keystore`**  
- Specifies the keystore file used to store the private key.
+ Specifies the keystore file used to store the private key. 
 - **`storage.redis.ssl.keystorePassword`**  
  Specifies the password used to unlock the keystore.
 - **`storage.redis.ssl.truststore`**  
