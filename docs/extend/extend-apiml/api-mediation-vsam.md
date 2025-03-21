@@ -4,7 +4,7 @@
 :::
 
 :::caution Important
-VSAM as a storage solution is deprecated in Zowe V3, please use [Infinispan](./api-mediation-infinispan), which is packaged as part of the Caching Service. 
+VSAM as a storage solution is deprecated in Zowe V3, please use [Infinispan](./api-mediation-infinispan.md), which is packaged as part of the Caching Service. 
 :::
 
 In Zowe v2 or previous versions, it is possible to configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
@@ -68,7 +68,7 @@ Results:
 - With two Caching Services and a high load, `READ` performance significantly increased.
 - Response times of other operations are also acceptable, yet error rates increase with higher concurrency.
 - Two Caching Services produce higher load on shared resource (VSAM) and have higher error rate.
-- VSAM implemetation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementatin may not be sufficient. 
+- VSAM implementation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementation may not be sufficient. 
 - VSAM does not scale well beyond 1000 RPM on a node.
 
 
