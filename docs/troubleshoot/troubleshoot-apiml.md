@@ -196,7 +196,7 @@ Use one of the following options to exit self preservation mode:
    - **Restart the Discovery service**  
    Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
    
-       **Note:** The Discovery service can be stopped via F <instance-job-name>,APPL=STOP(component_name) and then started again via F <instance-job-name>,APPL=START(<component-name>)
+       **Note:** The Discovery service can be stopped via F <instance-job-name>,APPL=STOP(<component_name>) and then started again via F <instance-job-name>,APPL=START(<component-name>)
 
        **Example:**
 
