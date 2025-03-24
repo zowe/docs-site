@@ -190,33 +190,39 @@ This message is expected behavior of the Discovery service. If a service is inco
 
 Use one of the following options to exit self preservation mode:
 
-   - **Restart the services that appear to be running**  
-   Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation. 
+- **Restart the services that appear to be running**  
+Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation. 
 
-   - **Restart the Discovery service**  
-   Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
+- **Restart the Discovery service**  
+Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
    
-        **Note:** The Discovery service can be stopped via F <instance-job-name>,APPL=STOP(<component_name>) and then started again via F <instance-job-name>,APPL=START(<component_name>)
+    **Note:** 
+    
+    The Discovery service can be stopped with the following command:  
+    ```F <instance-job-name>,APPL=STOP(<component_name>)```
+    
+    The Discovery service can be started again with the following command:  
+    ```F <instance-job-name>,APPL=START(<component_name>)```
 
-        **Example:**
+    **Example:**
 
-        ```
-        F ZWESLSTC,APPL=STOP(discovery-service)
-        F ZWESLSTC,APPL=START(discovery-service)
-        ```
+    ```
+    F ZWESLSTC,APPL=STOP(discovery-service)
+    F ZWESLSTC,APPL=START(discovery-service)
+    ```
 
-   - **Adjust the threshold of services in eviction status**  
-   Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+- **Adjust the threshold of services in eviction status**  
+Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
 
-        **Note:** The default threshold is .85. This results in the Discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
+    **Note:** The default threshold is .85. This results in the Discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
        
-        **Example:**
+    **Example:**
    
-        ```
-        eureka.renewalPercentThreshold=0.3
-        ```
+    ```
+    eureka.renewalPercentThreshold=0.3
+    ```
    
-        This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
+    This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
    
 ### Debug and Fix Common Problems with SSL/TLS Setup
 
