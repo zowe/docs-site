@@ -330,26 +330,6 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
-- [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
-  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-  - [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
-  - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
-    - [Gather atypical debug information](#gather-atypical-debug-information)
-  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-  - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-  - [SDSF Job search fails](#sdsf-job-search-fails)
-  - [Known Issues](#known-issues)
-    - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
-    - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
-    - [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
-      - [Connection refused](#connection-refused)
-      - [Configure z/OSMF](#configure-zosmf)
-      - [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
-      - [Secure fix](#secure-fix)
-      - [Insecure fix](#insecure-fix)
-      - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
-      - [Request a new certificate](#request-a-new-certificate)
-      - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
    
 #### Connection refused
 
