@@ -4,14 +4,15 @@
 :::
 
 :::caution Important
-VSAM as a storage solution is deprecated in Zowe V3, please use [Infinispan](./api-mediation-infinispan.md), which is packaged as part of the Caching Service. 
+VSAM as a storage solution is deprecated in Zowe V3. Please use [Infinispan](./api-mediation-infinispan.md), which is packaged as part of the Caching Service. 
 :::
 
 In Zowe v2 or previous versions, it is possible to configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
 
-- [Understanding VSAM](#understanding-vsam)
-- [VSAM configuration](#vsam-configuration)
-- [VSAM performance](#vsam-performance)
+- [Using VSAM as a storage solution through the Caching service **Deprecated**](#using-vsam-as-a-storage-solution-through-the-caching-service-deprecated)
+  - [Understanding VSAM](#understanding-vsam)
+    - [VSAM configuration](#vsam-configuration)
+    - [VSAM performance](#vsam-performance)
 ## Understanding VSAM
 
 `Virtual Storage Access Method (VSAM)` is both a data set type, and a method for accessing various user data types.
