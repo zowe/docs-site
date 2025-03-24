@@ -196,14 +196,14 @@ Use one of the following options to exit self preservation mode:
    - **Restart the Discovery service**  
    Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
    
-       **Note:** The Discovery service can be stopped via F <instance-job-name>,APPL=STOP(<component_name>) and then started again via F <instance-job-name>,APPL=START(<component-name>)
+        **Note:** The Discovery service can be stopped via F <instance-job-name>,APPL=STOP(<component_name>) and then started again via F <instance-job-name>,APPL=START(<component_name>)
 
-       **Example:**
+        **Example:**
 
-       ```
-       F ZWESLSTC,APPL=STOP(discovery-service)
-       F ZWESLSTC,APPL=START(discovery-service)
-       ```
+        ```
+        F ZWESLSTC,APPL=STOP(discovery-service)
+        F ZWESLSTC,APPL=START(discovery-service)
+        ```
 
    - **Adjust the threshold of services in eviction status**  
    Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
