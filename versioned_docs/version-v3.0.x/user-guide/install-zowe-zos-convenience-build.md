@@ -144,7 +144,7 @@ export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml
 
 ## Step 5: Install the MVS data sets
 
-After you extract the Zowe convenience build, you can run the [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md) to install MVS data sets.
+After you extract the Zowe convenience build, run the [`zwe install` command](../appendix/zwe_server_command_reference/zwe/zwe-install.md) to install MVS data sets.
 
 ### About the MVS data sets
 
