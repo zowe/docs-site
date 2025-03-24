@@ -33,5 +33,5 @@ A common practice is to set a limit to the number of password changes permissibl
   Specifies the number of days before the password can be reset
 
 :::note
-The SAF authentication provider provides details about the expired password, and threfore enables the API Catalog to ask for password change. The z/OSMF authentication provider does not provide this functionality. It is only possible to change the password through the REST API. 
+The SAF authentication provider provides details about the expired password, and therefore enables the API Catalog to ask for password change. The z/OSMF authentication provider does not provide this functionality. Password changes are only possible through the REST API. 
 :::
