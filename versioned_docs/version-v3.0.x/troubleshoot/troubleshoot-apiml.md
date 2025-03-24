@@ -17,6 +17,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
     - [Solution:](#solution)
   - [Known Issues](#known-issues)
     - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
+    - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
     - [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
       - [Connection refused](#connection-refused)
       - [Configure z/OSMF](#configure-zosmf)
@@ -26,7 +27,6 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
       - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
       - [Request a new certificate](#request-a-new-certificate)
       - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
-    - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
     
 ## Install API ML without Certificate Setup
 
@@ -263,6 +263,47 @@ Restart API Mediation Layer.
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart the TCP/IP stack while API ML is running.
 
+### API ML throws I/O error on GET request and cannot connect to other services
+
+**Symptom:**
+
+The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
+
+**Sample message:**
+
+See the following message for full exceptions.
+
+```
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://system.lvn.broadcom.net:7553/eureka/apps/apicatalog": system.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
+
+.at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.queryDiscoveryForInstances(InstanceRetrievalService.java:276) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.getInstanceInfo(InstanceRetrievalService.java:158) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.retrieveAndRegisterAllInstancesWithCatalog(InstanceRetrievalService.java:90) Ýclas
+
+….
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRouteToHostException) caught when connecting to {s}->https://localhost:7553: EDC8130I Host cannot be reached. (Host unreachable)
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
+```
+
+**Solution:**
+
+The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
+
+The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping system.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed network access.
+
+You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
+
+
 ### SEC0002 error when logging in to API Catalog
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
@@ -277,27 +318,15 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
-- [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
-  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-  - [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
-  - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
-    - [Gather atypical debug information](#gather-atypical-debug-information)
-  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-  - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-  - [SDSF Job search fails](#sdsf-job-search-fails)
-    - [Solution:](#solution)
-  - [Known Issues](#known-issues)
-    - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
-    - [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
-      - [Connection refused](#connection-refused)
-      - [Configure z/OSMF](#configure-zosmf)
-      - [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
-      - [Secure fix](#secure-fix)
-      - [Insecure fix](#insecure-fix)
-      - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
-      - [Request a new certificate](#request-a-new-certificate)
-      - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
-    - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
+- [Connection refused](#connection-refused)
+- [Configure z/OSMF](#configure-zosmf)
+- [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
+- [Secure fix](#secure-fix)
+- [Insecure fix](#insecure-fix)
+- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
+- [Request a new certificate](#request-a-new-certificate)
+- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
+
 
 #### Connection refused
 
@@ -393,45 +422,6 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md/#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
-### API ML throws I/O error on GET request and cannot connect to other services
-
-**Symptom:**
-
-The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
-
-**Sample message:**
-
-See the following message for full exceptions.
-
-```
-org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://system.lvn.broadcom.net:7553/eureka/apps/apicatalog": system.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
-
-.at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.queryDiscoveryForInstances(InstanceRetrievalService.java:276) Ýclasses!/:na¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.getInstanceInfo(InstanceRetrievalService.java:158) Ýclasses!/:na¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.retrieveAndRegisterAllInstancesWithCatalog(InstanceRetrievalService.java:90) Ýclas
-
-….
-
-main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRouteToHostException) caught when connecting to {s}->https://localhost:7553: EDC8130I Host cannot be reached. (Host unreachable)
-
-main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
-```
-
-**Solution:**
-
-The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
-
-The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping system.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed network access.
-
-You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
 
 
 
