@@ -5,26 +5,18 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 :::note
 To troubleshoot errors or warnings that can occur when configuring certificates, see the article [Troubleshooting certificate configuration](./troubleshoot-zos-certificate.md).
 :::
-
-* [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-* [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
-* [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
-* [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-* [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-* [SDSF Job search fails](#sdsf-job-search-fails)
-* [Known Issues](#known-issues)
-    * [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
-    * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
-    * [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
-    
+  
 ## Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
 
-**Important:** For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
+:::caution Important:
+For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
 * z/OSMF
 * Zowe
 * The service that is onboarded to Zowe
+
+:::
 
 ## Enable API ML Debug Mode
 
@@ -36,9 +28,11 @@ Use debug mode to activate the following functions:
 
 When on z/OS, API ML log messages are written to the STC job log.
 
-**Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
+:::caution Important:
+We highly recommend that you enable debug mode only when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running in debug mode while operating API ML can adversely affect
 its performance and create large log files that consume a large volume of disk space.
+:::
 
 **Follow these steps:**
 
@@ -53,7 +47,7 @@ its performance and create large log files that consume a large volume of disk s
    
 3. Restart Zowe&trade;.
 
-   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery Service).
+   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery service).
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
@@ -64,7 +58,7 @@ You can change the log level of a particular code component of the API ML intern
 **Follow these steps:**
 
 1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
-This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery Service, and Catalog).
+This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
 2. List the available loggers of a service by issuing the **GET** request for the given service URL:
 
     ```
@@ -81,7 +75,7 @@ This activates the application/loggers endpoints in each API ML internal service
     - **port**
 
         Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
-    MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
+    MFS_DS_PORT for the Discovery service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
     (by default, set to gateway port + 2).
 
     **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
@@ -142,7 +136,7 @@ This activates the application/loggers endpoints in each API ML internal service
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
 
-### Gather atypical debug information
+## Gather atypical debug information
 
 * **ZWE_configs_debug**  
 This property can be used to unconditionally add active debug profiles.
@@ -163,36 +157,51 @@ This property can also be enabled for other API ML components.
 
 ## Services that are not running appear to be running
 
-Services that are not running appear to be running. The following message is displayed in the Discovery Service:
+Services that are not running appear to be running. The following message is displayed in the Discovery service:
 
    **EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE.**
     
 **Cause:**
 
-This message is expected behavior of the discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, it initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
+This message is expected behavior of the Discovery service. If a service is incorrectly terminated without properly unregistering from Eureka, the service initially enters _eviction status_ for a brief timeframe before the service is deregistered. Failure to properly terminate occurs when a service fails to respond to three consecutive heartbeat renewals. After the three heartbeat renewals are returned without a response, the Eureka Discovery service keeps the service in _eviction status_ for one additional minute. If the service does not respond within this minute, the Eureka service unregisters this unresponsive service. When more than 15 percent of currently registered services are in _eviction status_, _self preservation mode_ is enabled. In _self preservation mode_, no services in eviction status are deregistered. As a result, these services continue to appear to be running even though they are not running.
 
 **Solution:**
 
 Use one of the following options to exit self preservation mode:
 
-   - **Restart the services that appear to be running**  
-   Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service.
+- **Restart the services that appear to be running**  
+Relaunch the services that appear to be registered. After the message disappears, close each of the services one at a time. Allow for a 3-minute period between closing each service. The procedure for restarting services that are not part of Zowe is specific to the services and is documented in the service documentation. 
 
-   - **Restart the discovery service**  
-   Manually restart the discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
+- **Restart the Discovery service**  
+Manually restart the Discovery service. The new instance will not be in self preservation mode. In a few minutes, the running services re-register.
+   
+    **Note:** 
+    
+    The Discovery service can be stopped with the following command:  
+    ```F <instance-job-name>,APPL=STOP(<component_name>)```
+    
+    The Discovery service can be started again with the following command:  
+    ```F <instance-job-name>,APPL=START(<component_name>)```
 
-   - **Adjust the threshold of services in eviction status**  
-   Change the frequency of the discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+    **Example:**
 
-        **Note:** The default threshold is .85. This results in the discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
+    ```
+    F ZWESLSTC,APPL=STOP(discovery-service)
+    F ZWESLSTC,APPL=START(discovery-service)
+    ```
+
+- **Adjust the threshold of services in eviction status**  
+Change the frequency of the Discovery service from entering self preservation mode by adjusting the threshold of services in eviction status. 
+
+    **Note:** The default threshold is .85. This results in the Discovery service entering self preservation mode when 15 percent of currently registered services are in _eviction status_.
        
-        **Example:**
+    **Example:**
    
-        ```
-        eureka.renewalPercentThreshold=0.3
-        ```
+    ```
+    eureka.renewalPercentThreshold=0.3
+    ```
    
-        This threshold limit causes the discovery service to enter self preservation mode when less than 30 percent of services are not responding.
+    This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
    
 ## Debug and Fix Common Problems with SSL/TLS Setup
 
@@ -209,7 +218,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 
 Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
 
-### Solution:
+**Solution:**
 
 You must be authorized to use SDSF with REXX on your z/OS system. For authorization, activate the SDSF RACF class and add the following 3 profiles to your system:
 
@@ -223,14 +232,14 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
-## Known Issues
+## Known Issues with API ML
 
 ### API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
 When z/OS TCP/IP stack is restarted, it is possible that the internal services of API Mediation Layer
-(Gateway, Catalog, and Discovery Service) stop accepting all incoming connections, go into a continuous loop,
+(Gateway, Catalog, and Discovery service) stop accepting all incoming connections, go into a continuous loop,
 and write numerous error messages in the log.
 
 **Sample message:**
@@ -252,6 +261,46 @@ Restart API Mediation Layer.
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart the TCP/IP stack while API ML is running.
 
+### API ML throws I/O error on GET request and cannot connect to other services
+
+**Symptom:**
+
+The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
+
+**Sample message:**
+
+See the following message for full exceptions.
+
+```
+org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://system.lvn.broadcom.net:7553/eureka/apps/apicatalog": system.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
+
+.at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.queryDiscoveryForInstances(InstanceRetrievalService.java:276) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.getInstanceInfo(InstanceRetrievalService.java:158) Ýclasses!/:na¨
+
+.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.retrieveAndRegisterAllInstancesWithCatalog(InstanceRetrievalService.java:90) Ýclas
+
+….
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRouteToHostException) caught when connecting to {s}->https://localhost:7553: EDC8130I Host cannot be reached. (Host unreachable)
+
+main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
+```
+
+**Solution:**
+
+The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
+
+The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping system.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed network access.
+
+You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
+
 ### SEC0002 error when logging in to API Catalog
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
@@ -266,16 +315,7 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
-- [Connection refused](#connection-refused)
-- [Configure z/OSMF](#configure-zosmf)
-- [Missing z/OSMF host name in subject alternative names](#missing-zosmf-host-name-in-subject-alternative-names)
-- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
-- [Secure Fix](#secure-fix)
-- [Insecure Fix](#insecure-fix)
-- [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
-- [Request a new certificate](#request-a-new-certificate)
-- [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
-
+   
 #### Connection refused
 
 In the following message, failure to connect to API Catalog occurs when connection is refused:
@@ -370,45 +410,7 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md/#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
-### API ML throws I/O error on GET request and cannot connect to other services
 
-**Symptom:**
-
-The API ML services are running but they are in the DOWN state and not working properly. The following exceptions can be found in the log: `java.net.UnknownHostException` and `java.net.NoRouteToHostException`. 
-
-**Sample message:**
-
-See the following message for full exceptions.
-
-```
-org.springframework.web.client.ResourceAccessException: I/O error on GET request for "https://system.lvn.broadcom.net:7553/eureka/apps/apicatalog": system.lvn.broadcom.net; nested exception is java.net.UnknownHostException: USILCA32.lvn.broadcom.net
-
-.at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:732) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:680) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:600) ~Ýspring-web-5.0.8.RELEASE.jar!/:5.0.8.RELEASE¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.queryDiscoveryForInstances(InstanceRetrievalService.java:276) Ýclasses!/:na¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.getInstanceInfo(InstanceRetrievalService.java:158) Ýclasses!/:na¨
-
-.at com.ca.mfaas.apicatalog.services.initialisation.InstanceRetrievalService.retrieveAndRegisterAllInstancesWithCatalog(InstanceRetrievalService.java:90) Ýclas
-
-….
-
-main¨ o.a.http.impl.client.DefaultHttpClient   : I/O exception (java.net.NoRouteToHostException) caught when connecting to {s}->https://localhost:7553: EDC8130I Host cannot be reached. (Host unreachable)
-
-main¨ o.a.http.impl.client.DefaultHttpClient   : Retrying connect to {s}->https://localhost:7553 
-```
-
-**Solution:**
-
-The Zowe started task needs to run under a user with sufficient privileges. As a workaround, you can try to run the started task under the same user ID as z/OSMF (typically IZUSVR).
-
-The hostname that is displayed in the details of the exception is a valid hostname. You can validate that the hostname is valid by using `ping` command on the same mainframe system. For example, `ping system.lvn.broadcom.net`. If it is valid, then the problem can be caused by insufficient privileges of your started task that is not allowed network access.
-
-You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system#configure-security-environment-switching).
 
 
 
