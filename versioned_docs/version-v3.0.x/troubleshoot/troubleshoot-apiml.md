@@ -14,7 +14,6 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
   - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
   - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
   - [SDSF Job search fails](#sdsf-job-search-fails)
-    - [Solution:](#solution)
   - [Known Issues](#known-issues)
     - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
     - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
@@ -27,6 +26,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
       - [Invalid z/OSMF host name in subject alternative names](#invalid-zosmf-host-name-in-subject-alternative-names)
       - [Request a new certificate](#request-a-new-certificate)
       - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
+    
     
 ## Install API ML without Certificate Setup
 
@@ -220,7 +220,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 
 Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
 
-### Solution:
+**Solution:**
 
 You must be authorized to use SDSF with REXX on your z/OS system. For authorization, activate the SDSF RACF class and add the following 3 profiles to your system:
 
