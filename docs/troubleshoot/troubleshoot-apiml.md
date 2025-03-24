@@ -7,13 +7,13 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
 :::
 
 - [Troubleshooting Zowe API Mediation Layer](#troubleshooting-zowe-api-mediation-layer)
-  - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
-  - [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
-  - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
+    - [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+    - [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
+    - [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
     - [Gather atypical debug information](#gather-atypical-debug-information)
-  - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
-  - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
-  - [SDSF Job search fails](#sdsf-job-search-fails)
+    - [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
+    - [Debug and Fix Common Problems with SSL/TLS Setup](#debug-and-fix-common-problems-with-ssltls-setup)
+    - [SDSF Job search fails](#sdsf-job-search-fails)
   - [Known Issues](#known-issues)
     - [API ML stops accepting connections after z/OS TCP/IP stack is recycled](#api-ml-stops-accepting-connections-after-zos-tcpip-stack-is-recycled)
     - [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
@@ -27,7 +27,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
       - [Request a new certificate](#request-a-new-certificate)
       - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
   
-## Install API ML without Certificate Setup
+### Install API ML without Certificate Setup
 
 For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
 
@@ -39,7 +39,7 @@ For production environments, certificates are required. Ensure that certificates
 
 :::
 
-## Enable API ML Debug Mode
+### Enable API ML Debug Mode
 
 Use debug mode to activate the following functions:
 
@@ -72,7 +72,7 @@ its performance and create large log files that consume a large volume of disk s
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
-## Change the Log Level of Individual Code Components
+### Change the Log Level of Individual Code Components
 
 You can change the log level of a particular code component of the API ML internal service at run time.
 
@@ -176,7 +176,7 @@ This property can also be enabled for other API ML components.
 :::
 
 
-## Services that are not running appear to be running
+### Services that are not running appear to be running
 
 Services that are not running appear to be running. The following message is displayed in the Discovery service:
 
@@ -218,7 +218,7 @@ Use one of the following options to exit self preservation mode:
    
         This threshold limit causes the Discovery service to enter self preservation mode when less than 30 percent of services are not responding.
    
-## Debug and Fix Common Problems with SSL/TLS Setup
+### Debug and Fix Common Problems with SSL/TLS Setup
 
 Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe Certificate Analyzer](https://medium.com/zowe/troubleshooting-ssl-tls-setup-with-zowe-certificate-analyser-31aeec9e1144) to find out how you can use the Zowe Certificate Analyzer to address the following common issues with SSL/TLS setup:
 
@@ -229,7 +229,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 * How to enable mutual authentication using a client certificate
 * How to add a trusted certificate to a SAF Key ring
 
-## SDSF Job search fails
+### SDSF Job search fails
 
 Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
 
