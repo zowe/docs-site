@@ -248,7 +248,7 @@ Launcher is the program behind the `ZWESLSTC` started task.
  Specifies the minimum amount of time a Zowe component should be running in order to be declared as started successfully.
 - **zowe.launcher.shareAs**  
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
-- **zowe.launchScript.logLevel**
+- **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
 #### Setup
@@ -329,11 +329,11 @@ zowe:
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
 - **zowe.setup.dataset.parmlib**  
-Specifies the user custom parameter library. Zowe server command may generate sample PARMLIB members and stores here.
+Specifies the user custom parameter library. The Zowe server command may generate sample PARMLIB members and stores in this library.
 - **zowe.setup.dataset.jcllib**  
-Specifies the custom JCL library. Zowe server command may generate sample JCLs and put into this data set.
+Specifies the custom JCL library. The Zowe server command may generate sample JCLs and put into this data set.
 - **zowe.setup.dataset.authLoadlib**  
-Specifies the user custom APF LOADLIB. This field is optional. If this is defined, members of `SZWEAUTH` are copied over to this data set to be APF authorized. If this parameter is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` is APF authorized.
+Specifies the user custom APF LOADLIB. This field is optional. If this parameter is defined, members of `SZWEAUTH` are copied over to this data set to be APF authorized. If this parameter is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` is APF authorized.
 - **zowe.setup.dataset.authPluginLib**  
 Specifies the user custom APF PLUGINLIB. Zowe ZIS plug-ins can be installed into this load library. This loadlib requires APF authorize.
 - **zowe.setup.security.product**  
@@ -698,7 +698,7 @@ For all high availability instances, these are the common definitions.
 
 Each line of Zowe YAML configuration has a matching environment variable during runtime. This variable is converted based on a pre-defined pattern:
 
-- All configurations under `zowe`, `components`, `haInstances` are converted to a variable with the name with the following conditiona:
+- All configurations under `zowe`, `components`, `haInstances` are converted to a variable with the name with the following conditions:
   * prefixed with `ZWE_`
   * any non-alphabetic-numeric characters are converted to underscore (`_`)
   * no double underscores (`__`)
