@@ -455,7 +455,7 @@ The high-level configuration `zOSMF` supports the following definitions:
 
 All Zowe components and extensions can have a dedicated section under the `components` high-level configuration.
 
-In this section, _`<component>`_ represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
+In this section, _component_ represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
 
 - **components._component_.enabled**  
 Specifies if the component should be started in this Zowe instance, thereby providing control over each component instead of a group.
