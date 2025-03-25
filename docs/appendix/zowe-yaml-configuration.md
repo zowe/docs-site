@@ -245,11 +245,11 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launcher.restartIntervals**  
  An array of positive integers that defines how many times a component attempts to be restarted if it fails, and how much time to wait in seconds for that restart to succeed before retrying.
 - **zowe.launcher.minUptime**  
- The minimum amount of time a zowe component should be running in order to be declared as started successfully.
+ Specifies the minimum amount of time a Zowe component should be running in order to be declared as started successfully.
 - **zowe.launcher.shareAs**  
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 - **zowe.launchScript.logLevel**
- Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This may help to troubleshoot issues during Zowe start.
+ Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
 #### Setup
 
@@ -393,7 +393,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   * **zowe.setup.certificate.keyring.connect.passwor**  
   Specifies the password when importing the certificate.
   * **zowe.setup.certificate.keyring.label**  
-  This parameter defines the label of the certificate to be  imported.
+  Specifies the label of the certificate to be  imported.
 - To connect an existing certificate into a Zowe keyring apply the following parameters:
   * **zowe.setup.certificate.keyring.connect.user**  
   This parameter is required and specifies the owner of an existing certificate. This field can have the value of `SITE`.
@@ -403,7 +403,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   * **For RACF**  
   Zowe attempts to automatically detect the z/OSMF CA based on the certificate owner specified by
     `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority.
-  * **For `ACF2` or `TSS` (Top Secret)**  
+  * **For ACF2 or TSS (Top Secret)**  
   `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate the label of the z/OSMF root certificate authority.
 
 - **zowe.setup.vsam.mode**  
@@ -452,20 +452,20 @@ The high-level configuration `zOSMF` supports the following definitions:
 
 All Zowe components and extensions can have a dedicated section under the `components` high-level configuration.
 
-In this section, `<component>` represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
+In this section, _`<component>`_ represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
 
-- **components.<component>.enabled**  
+- **components.<_component_>.enabled**  
 Specifies if the component should be started in this Zowe instance, thereby providing control over each component instead of a group.
-- **components.<component>.certificate**  
+- **components.<_component_>.certificate**  
  Allows for customization for a component to use a different certificate from default values. This section follows the same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this parameter is not customized, the component uses certificates defined in `zowe.certificate`.
-- **components.<component>.launcher**  
+- **components.<_component_>.launcher**  
  Specifies if a specific component has a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 
 #### Configure component gateway
 
 These configurations can be used under the `components.gateway` section:
 
-- **por`**  
+- **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 - **debug**  
  Specifies the enablement of debug mode for the Gateway.
@@ -603,65 +603,65 @@ The following configurations can be used under the `components.api-catalog` sect
 - **apiml.catalog.customStyle.docLink**  
   Specifies a custom link to be displayed in the header. Use this property to refer to applicable documentation. The format is `<link_name>|<link_url>`.  
 
-#### Configure component caching-service
+#### Configure component Caching Service
 
 These configurations can be used under the `components.caching-service` section:
 
-- **`port`**  
- Defines the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
-- **`debug`**  
- Defines if we want to enable debug mode for the Caching Service.
-- **`storage.mode`**  
- Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, `redis` and `vsam`
-- **`storage.size`**  
- Specifies amount of records before eviction strategies start evicting.
-- **`storage.evictionStrategy`**  
- Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, `removeOldest`.
-- **`storage.vsam.name`**  
- Specifies the data set name of the caching service VSAM data set.
-- **`storage.infinispan.initialHosts`**
+- **port**  
+ Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+- **debug**  
+ Specifies if debug mode is enabled for the Caching Service.
+- **storage.mode**  
+ Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, and `redis`.
+- **storage.size**  
+ Specifies the number of records before eviction strategies start evicting.
+- **storage.evictionStrategy**  
+ Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
+- **storage.vsam.name**  
+ Specifies the data set name of the Caching service VSAM data set.
+- **storage.infinispan.initialHosts**
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
-- **`storage.infinispan.persistence.dataLocation`**
+- **storage.infinispan.persistence.dataLocation**
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-- **`storage.infinispan.jgroups.port`**
+- **storage.infinispan.jgroups.port**
   The port number used by Infinispan to synchronise data among caching-service instances.
-- **`storage.redis.masterNodeUri`**  
+- **storage.redis.masterNodeUri**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
-- **`storage.redis.timeout`**  
+- **storage.redis.timeout**  
  Specifies the timeout second to Redis. Defaults to 60 seconds.
-- **`storage.redis.sentinel.masterInstance`**
+- **storage.redis.sentinel.masterInstance**
  Specifies the Redis master instance ID used by the Redis Sentinel instances.
-- **`storage.redis.sentinel.nodes`**  
+- **storage.redis.sentinel.nodes**  
  Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`.
-- **`storage.redis.ssl.enabled`**  
+- **storage.redis.ssl.enabled**  
  Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
-- **`storage.redis.ssl.keystore`**  
+- **storage.redis.ssl.keystore**  
  Specifies the keystore file used to store the private key. 
-- **`storage.redis.ssl.keystorePassword`**  
+- **storage.redis.ssl.keystorePassword**  
  Specifies the password used to unlock the keystore.
-- **`storage.redis.ssl.truststore`**  
+- **storage.redis.ssl.truststore**  
  Specifies the truststore file used to keep other parties public keys and certificates.
-- **`storage.redis.ssl.truststorePassword`**  
+- **storage.redis.ssl.truststorePassword**  
  Specifies the password used to unlock the truststore.
-- **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
-- **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether APIML should verify certificates of services in non-strict mode. Setting to `true` will enable `non-strict` mode where APIML will validate if the certificate is trusted in turststore, but ignore the certificate Common Name or Subject Alternate Name (SAN) check. Zowe will ignore this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+- **apiml.security.ssl.verifySslCertificatesOfServices**  
+ Specifies if API ML is to verify certificates of services in strict mode. Set to `true` to enable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
+- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
+ Defines if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 #### Configure component app-server
 
-These configurations can be used under the `components.app-server` section:
+The following configurations can be used under the `components.app-server` section:
 
-- **`port`**  
- Defines the port which App Server should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+- **port**  
+Specifies the port which App Server is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure component zss
 
-These configurations can be used under the `components.zss` section:
+The following configurations can be used under the `components.zss` section:
 
-- **`port`**  
- Defines the port which ZSS should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+- **port**  
+Specifies the port which ZSS is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 
 #### Configure external extension
 
@@ -684,27 +684,27 @@ In this section, `<ha-instance>` represents any Zowe high availability instance 
 
 For all high availability instances, these are the common definitions.
 
-- **`haInstances.<ha-instance>.hostname`**  
- Defines the host name where you want to start this instance. This could be the host name of one LPAR in your Sysplex.
-- **`haInstances.<ha-instance>.sysname`**  
- Defines the system name of the LPAR where the instance is running. Zowe will use `ROUTE` command to send JES2 start or stop command to this HA instance.
-- **`haInstances.<ha-instance>.components.<component>`**  
- Optional settings you can override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
+- **haInstances.<ha-instance>.hostname**  
+ Specifies the host name where you want to start this instance. This value could be the host name of one LPAR in your Sysplex.
+- **haInstances.<ha-instance>.sysname**  
+ Specifies the system name of the LPAR where the instance is running. Zowe uses the `ROUTE` command to send JES2 start or stop command to this HA instance.
+- **haInstances.<ha-instance>.components.<component>**  
+ This optional settings allows you to override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 
 ### Auto-generated environment variables
 
-Each line of Zowe YAML configuration will have a matching environment variable during runtime. This is converted based on pre-defined pattern:
+Each line of Zowe YAML configuration has a matching environment variable during runtime. This variable is converted based on a pre-defined pattern:
 
-- All configurations under `zowe`, `components`, `haInstances` will be converted to a variable with name:
-  * prefixed with `ZWE_`,
-  * any non-alphabetic-numeric characters will be converted to underscore `_`,
-  * and no double underscores like `__`.
-- Calculated configurations of `haInstance`, which is portion of `haInstances.<current-ha-instance>` will be converted same way.
-- Calculated configurations of `configs`, which is portion of `haInstances.<current-ha-instance>.components.<current-component>` will be converted same way.
-- All other configuration entries will be converted to a variable with name:
-  * all upper cases,
-  * any non-alphabetic-numeric characters will be converted to underscore `_`,
-  * and no double underscores like `__`.
+- All configurations under `zowe`, `components`, `haInstances` are converted to a variable with the name with the following conditiona:
+  * prefixed with `ZWE_`
+  * any non-alphabetic-numeric characters are converted to underscore (`_`)
+  * no double underscores (`__`)
+- Calculated configurations of `haInstance`, which is a portion of `haInstances.<current-ha-instance>` are converted the same way.
+- Calculated configurations of `configs`, which is a portion of `haInstances.<current-ha-instance>.components.<current-component>` are converted the same way.
+- All other configuration entries are converted to a variable with a name with the following conditions:
+  * all upper cases
+  * any non-alphabetic-numeric characters are converted to underscore (`_`)
+  * no double underscores (`__`)
 
 **Examples:**
 
@@ -718,4 +718,4 @@ Each line of Zowe YAML configuration will have a matching environment variable d
 
 ### Troubleshooting your YAML with the Red Hat VS Code extension
 
-After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we would highly recommend leaving the data gathering option disabled. To customize your settings, click on the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, and click on the gear icon and select "Extension Settings".
+After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we highly recommend leaving the data gathering option disabled. To customize your settings, click the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, and click the gear icon, and select "Extension Settings".
