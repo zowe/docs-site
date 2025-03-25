@@ -457,11 +457,11 @@ All Zowe components and extensions can have a dedicated section under the `compo
 
 In this section, _`<component>`_ represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
 
-- **components.<_component_>.enabled**  
+- **components._component_.enabled**  
 Specifies if the component should be started in this Zowe instance, thereby providing control over each component instead of a group.
-- **components.<_component_>.certificate**  
+- **components._component_.certificate**  
  Allows for customization for a component to use a different certificate from default values. This section follows the same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this parameter is not customized, the component uses certificates defined in `zowe.certificate`.
-- **components.<_component_>.launcher**  
+- **components._component_.launcher**  
  Specifies if a specific component has a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 
 #### Configure component gateway
