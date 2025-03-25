@@ -687,11 +687,11 @@ In this section, _ha-instance_ represents any Zowe high availability instance ID
 
 For all high availability instances, these are the common definitions.
 
-- **haInstances.<i>ha-instance</i>.hostname**  
+- **haInstances.ha-instance.hostname**  
  Specifies the host name where you want to start this instance. This value could be the host name of one LPAR in your Sysplex.
-- **haInstances.<i>ha-instance</i>.sysname**  
+- **haInstances.ha-instance.sysname**  
  Specifies the system name of the LPAR where the instance is running. Zowe uses the `ROUTE` command to send JES2 start or stop command to this HA instance.
-- **haInstances.<i>ha-instance</i>.components.<i>component</i>**  
+- **haInstances.ha-instance.components.component**  
  This optional settings allows you to override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 
 ### Auto-generated environment variables
