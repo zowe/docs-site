@@ -147,25 +147,25 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
 
 - **keystore.type**  
- Defines the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **keystore.file**  
- Defines the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
+ Specifies the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
 - **keystore.password**  
- Defines the password of the keystore.
+ Specifies the password of the keystore.
 - **keystore.alias**  
  Represents the alias name of the certificate stored in keystore. If you are using keyring, this is the certificate label connected to the keyring.
 - **truststore.type**  
- Defines the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **truststore.file**  
- Defines the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, and usually will be the same value of `keystore.file`.
+ Specifies the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, and usually will be the same value of `keystore.file`.
 - **truststore.password**  
- Defines the password of the truststore.
+ Specifies the password of the truststore.
 - **pem.key**  
- Defines the private key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or z/OS keyring.
+ Specifies the private key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or z/OS keyring.
 - **pem.certificate**  
- Defines the public key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
+ Specifies the public key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
 - **pem.certificateAuthorities**  
- Defines certificate authorities in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
+ Specifies certificate authorities in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
 
 ### YAML configurations - zowe
 
@@ -174,25 +174,25 @@ The high-level configuration `zowe` supports these definitions:
 #### Directories
 
 - **zowe.runtimeDirectory**  
- Tells Zowe the runtime directory where Zowe is installed.
+ Specifies the runtime directory where Zowe is installed.
 - **zowe.logDirectory**  
- Some Zowe components write logs to file system. This tells Zowe which directory should be used to store log files.
-- **zowe.workspaceDirectory**
- Tells Zowe components where they can write temporary runtime files.
+ Some Zowe components write logs to file system. This parameter specifies which directory should be used to store log files.
+- **zowe.workspaceDirectory**  
+ Specifies components where they can write temporary runtime files.
 - **zowe.extensionDirectory**  
- Tells Zowe where the runtime of all your extensions is located.
+ Specifies the location of the runtime of all your extensions.
 
  #### Zowe Job
 
 - **zowe.job.name**  
- Defines the Zowe job name for the ZWESLSTC started task.
+ Specifies the Zowe job name for the ZWESLSTC started task.
 - **zowe.job.prefix**  
- Defines the Zowe address space prefix for Zowe components.
+ Specifies the Zowe address space prefix for Zowe components.
 
 #### Domain and port to access Zowe
 
 - **zowe.externalDomains**  
- Defines a list of external domains to be used by the Zowe instance. This configuration is an array of domain name strings.
+ Specifies a list of external domains to be used by the Zowe instance. This configuration is an array of domain name strings.
  In Sysplex deployment, this value is the DVIPA domain name defined in Sysplex Distributor. For example,
    
    ```yaml
@@ -203,7 +203,7 @@ The high-level configuration `zowe` supports these definitions:
    ```
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 - **zowe.externalPort**  
- Defines the port that will be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
+ Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
  In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. For more information, see [Configure Sysplex Distributor](../user-guide/configure-sysplex.md#configuring-sysplex-distributor). 
  In Kubernetes deployment, this value is the Gateway Service port to be exposed externally.
 
@@ -228,12 +228,12 @@ The high-level configuration `zowe` supports these definitions:
 #### Certificate
 
 - **zowe.certificate**  
- Defines the northbound certificate facing Zowe users.
+ Specifies the northbound certificate facing Zowe users.
 - **zowe.verifyCertificates**
-  Defines how Zowe should validate the certificates used by components or external service(s) like z/OSMF.  
+  Specifies how Zowe is to validate the certificates used by components or external service(s) like z/OSMF.  
    **Possible values:**
   * `STRICT`: This is the default value. Zowe validates if the certificate is trusted in Zowe's trust store and if the certificate Command Name and Subject Alternative Name (SAN) is validated. This is recommended for the best security.
-  * `NONSTRICT`: Zowe validates if the certificate is trusted in Zowe's trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the best security but allows you to try out Zowe when you do not have permission to fix the certificate used by external services like z/OSMF.
+  * `NONSTRICT`: Zowe validates if the certificate is trusted in Zowe's trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the highest security level but allows you to try out Zowe when you do not have permission to fix the certificate used by external services like z/OSMF.
   * `DISABLED`: This value disables certificate validation completely. This is **NOT** recommended for security purpose.
 
 #### Launcher and launch scripts
@@ -348,9 +348,12 @@ Speficies the system programmer user ID/group. This configuration is optional. T
 Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
 - **zowe.setup.security.users.zis**  
 Specifies the userid for ZIS started task. This configuration is optional. The default value is `ZWESIUSR`.
-- **zowe.setup.security.stcs.zowe** is Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
-- **zowe.setup.security.stcs.zis** is ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
-- **zowe.setup.security.stcs.aux** is ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
+- **zowe.setup.security.stcs.zowe**  
+ Specifies the Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
+- **zowe.setup.security.stcs.zis**  
+  Specifies the ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
+- **zowe.setup.security.stcs.aux**  
+  Specifies ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
 - **zowe.setup.certificate.type**  
 Specifies the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
 - **zowe.setup.certificate.dname**  
@@ -418,14 +421,14 @@ Indicates the name of RLS storage class. This field is required if VSAM mode is 
 The high-level configuration `java` supports these definitions:
 
 - **home**  
- Defines the path to the Java runtime directory.
+ Specifies the path to the Java runtime directory.
 
 ### YAML configurations - node
 
 The high-level configuration `node` supports these definitions:
 
 - **home**  
- Defines the path to the Node.js runtime directory.
+ Specifies the path to the Node.js runtime directory.
 
 :::tip
 Ensure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains `bin/node`.
@@ -442,11 +445,11 @@ This value is valid only when the path `/usrlppSysplex/nodejs/node-v18.18.2/bin/
 The high-level configuration `zOSMF` supports the following definitions:
 
 - **zOSMF.host**  
- Defines the hostname of your z/OSMF instance.
+ Specifies the hostname of your z/OSMF instance.
 - **zOSMF.port**  
- Defines the port of your z/OSMF instance.
+ Specifies the port of your z/OSMF instance.
 - **zOSMF.applId**  
- Defines the application ID of your z/OSMF instance.
+ Specifies the application ID of your z/OSMF instance.
 
 ### YAML configurations - components
 
@@ -471,9 +474,9 @@ These configurations can be used under the `components.gateway` section:
  Specifies the enablement of debug mode for the Gateway.
 - **apiml.connectionTimeout**
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
-- **apiml.connection.idleConnectionTimeoutSeconds**
+- **apiml.connection.idleConnectionTimeoutSeconds**  
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
-- **apiml.health.protected**
+- **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.  
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
@@ -483,15 +486,15 @@ These configurations can be used under the `components.gateway` section:
  Specifies the URL where the Gateway can query the mapping of client certificates.
 - **apiml.security.auth.jwt.customAuthHeader**  
  Provides a valid JWT for the southbound service in the custom header. A valid value is any valid name for an HTTP header. 
-- **apiml.security.auth.passticket.customAuthHeader**
+- **apiml.security.auth.passticket.customAuthHeader**  
  Provides PassTickets for the southbound service in the custom header. A valid value is any valid name for an HTTP header.
-- **apiml.security.auth.passticket.customUserHeader**
+- **apiml.security.auth.passticket.customUserHeader**  
  Provides User Info when a PassTicket is provided in the custom header. A valid value is any valid name for an HTTP header.
 - **apiml.security.auth.provider**  
  Specifies the authentication provider used by the API Gateway. Valid options are `saf` or `zosmf`.
-- **apiml.security.auth.zosmf.serviceId**
+- **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
-- **apiml.security.auth.zosmf.jwtAutoconfiguration**
+- **apiml.security.auth.zosmf.jwtAutoconfiguration**  
  Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows the API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
@@ -619,18 +622,18 @@ These configurations can be used under the `components.caching-service` section:
  Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
 - **storage.vsam.name**  
  Specifies the data set name of the Caching service VSAM data set.
-- **storage.infinispan.initialHosts**
+- **storage.infinispan.initialHosts**  
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
-- **storage.infinispan.persistence.dataLocation**
+- **storage.infinispan.persistence.dataLocation**  
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-- **storage.infinispan.jgroups.port**
-  The port number used by Infinispan to synchronise data among caching-service instances.
+- **storage.infinispan.jgroups.port**  
+  Specifies the port number used by Infinispan to synchronise data among caching-service instances.
 - **storage.redis.masterNodeUri**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **storage.redis.timeout**  
  Specifies the timeout second to Redis. Defaults to 60 seconds.
-- **storage.redis.sentinel.masterInstance**
+- **storage.redis.sentinel.masterInstance**  
  Specifies the Redis master instance ID used by the Redis Sentinel instances.
 - **storage.redis.sentinel.nodes**  
  Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`.
@@ -647,7 +650,7 @@ These configurations can be used under the `components.caching-service` section:
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in strict mode. Set to `true` to enable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
- Defines if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+ Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 #### Configure component app-server
 
