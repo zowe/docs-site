@@ -8,7 +8,7 @@ When you issue a command, the CLI *searches* for your command arguments in the f
 
 2. **Environment variables** that you define in the computer's operating system.
 
-    For more information, see [Using environment variables](../user-guide/cli-using-using-environment-variables).
+    For more information, see [Using environment variables](../user-guide/cli-using-using-environment-variables.md).
 3. **[Service profiles](../appendix/zowe-glossary.md#service-profile)** that you create (that is, a z/OSMF profile or another mainframe service).
 4. **[Base profiles](../appendix/zowe-glossary.md#base-profile)** that you create.
     These can contain credentials for use with multiple services and/or an API ML login token.
