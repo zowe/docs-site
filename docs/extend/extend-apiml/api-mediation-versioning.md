@@ -47,8 +47,6 @@ REST APIs are a way how to access and manipulate textual
  changes can be introduced only though changes of the major version. Any service can provide multiple
  versions of the API. For details about semantic versioning, see [Semantic Versioning 2.0.0](http://semver.org/).
 
-
-
  * **API Association**  
  Details about how a specific API version is provided by a specific
  service. Different services can use a different basePath. The full path to access endpoints is:
