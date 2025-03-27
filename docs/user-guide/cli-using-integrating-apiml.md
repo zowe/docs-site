@@ -34,7 +34,7 @@ Follow these steps to request a token and log in to API ML:
     - Host
     - Port for the API ML instance
 
-    <br/>A [base profile](../appendix/zowe-glossary#base-profile) is created or updated with your token, which is stored on your computer in place of a username and password. When you issue commands, you can omit your username, password, host, and port.
+    <br/>A [base profile](../appendix/zowe-glossary.md#base-profile) is created or updated with your token, which is stored on your computer in place of a username and password. When you issue commands, you can omit your username, password, host, and port.
 
     If you do not want to store the token on your PC, append the `--show-token` option to the `login` command.
 
@@ -130,7 +130,7 @@ Use the following steps to specify a base path with Zowe V1 profiles:
 
     The format of base path can vary based on how API ML is configured at your site.
 
-2. Access the API ML instance by creating a [service profile](../user-guide/cli-using-using-profiles-v1#zowe-cli-v1-profile-types) (or issuing a command) with the `--base-path` value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
+2. Access the API ML instance by creating a [service profile](../user-guide/cli-using-using-profiles-v1.md#zowe-cli-v1-profile-types) (or issuing a command) with the `--base-path` value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
 
     Using the preceding example, you would issue the following command with your profile name:
 
@@ -146,7 +146,7 @@ If multiple services are registered to the API Mediation Layer at your site, Zow
 
 When you are logged in, supply the `--base-path` option on commands for each service. Ensure that you do not provide username, password, host, or port directly on your service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service. You might need to remove those options from existing profiles to use SSO.
 
-For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview).
+For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview.md).
 
 ## Accessing services through SSO and a service not through API ML
 
