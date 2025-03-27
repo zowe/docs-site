@@ -19,6 +19,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [
+        "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
