@@ -11,7 +11,7 @@ As products and vendors adopt z/OSMF services, you can install and maintain all 
 
 To install Zowe using z/OSMF, ensure that you meet the following requirements:
 
-- z/OSMF 2.3 or higher
+- z/OSMF 2.5 or higher
 - 1.2GB of free space
 - READ access to data set names with the HLQ **ZWE** on the user ID you use to deploy the portable package
 

@@ -24,21 +24,7 @@ Configure the `file.associations` setting in Visual Studio Code to use a specifi
 
 In the example above, Zowe Explorer uses wild cards to find matches of the configured language (`COBOL`) in the file paths of sequential data sets (for example, `/lpar.zosmf/TEST.COBOL.PS`) and PDS members (for example, `/lpar.zosmf/TEST.COBOL.PDS/MEMBER`).
 
-## Manage a profile
-
-Manage existing profiles listed in the **Side Bar**. Right-click the profile and select **Manage Profile** in the context menu to see a list of options in the **Quick Pick**. Choose the option desired for managing the profile.
-
-## Delete a profile
-
-:::tip
-Alternatively, delete a profile by using the VS Code **Command Palette**. Press `F1` on your keyboard, then select the **Zowe Explorer: Delete a Profile Permanently** option. In Zowe Explorer V1, you select the profile to delete. In Zowe Explorer V2 and above, the configuration file opens for you to delete the profile manually.
-:::
-
-## Hide a profile
-
-Hide a profile from the **Side Bar** by right-clicking the profile and selecting the **Hide Profile** option. If necessary, add the profile back by clicking the **+** icon on the **DATA SETS**, **UNIX SYSTEM SERVICES (USS)**, or **JOBS** bar.
-
-## Open recent members
+## Multi-select functionality
 
 Zowe Explorer lets you open a list of members you have previously worked on. You can access the list by pressing `Ctrl`+`Alt`+`R` or `Command`+`Option`+`R`.
 

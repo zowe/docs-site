@@ -36,12 +36,12 @@ To enable or disable cluster mode, see the [Advanced Application Framework Confi
 
 ## Caching Service Infinispan ports
 
-The Caching Service will use these additional ports if enabled (`zowe.components.caching-service.enabled: true`) and set to use infinispan (the default, `zowe.components.caching-service.storage.mode: infinispan`).
+The Caching Service will use these additional ports if enabled (`components.caching-service.enabled: true`) and set to use infinispan (the default, `components.caching-service.storage.mode: infinispan`).
 
 | Port number | zowe.yaml variable name | Purpose |
-|-------------|------|------|
-| 7601        | zowe.components.caching-service.storage.infinispan.jgroups.keyExchange.port | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
-| 7600        | zowe.components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster.
+|------|------|------|
+| 7601 | components.caching-service.storage.infinispan.jgroups.keyExchange.port | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
+| 7600 | components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster.
 
 ## IP Addresses
 
