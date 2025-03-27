@@ -1,19 +1,19 @@
-# Using Infinispan as a storage solution through the Caching service
+# Using Infinispan as a storage solution through the Caching Service
 
 :::info Required roles: system administrator, security administrator
 :::
 
-You can configure Infinispan as a storage solution through the Caching service, as well as configure Infinispan for high availability to replicate data to provide data durability and availability.
+You can configure Infinispan as a storage solution through the Caching Service, as well as configure Infinispan for high availability (HA) to replicate data to provide data durability and availability.
 
-- [Using Infinispan as a storage solution through the Caching service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
+- [Using Infinispan as a storage solution through the Caching Service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
   - [Understanding Infinispan](#understanding-infinispan)
     - [Infinispan replica instances](#infinispan-replica-instances)
   - [Infinispan configuration](#infinispan-configuration)
 
 ## Understanding Infinispan
 
-Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching service uses hash sets, where each
-service storing data via the Caching service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
+Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching Service uses hash sets, where each
+service storing data via the Caching Service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
 
 For more information on Infinispan, see the [official Infinispan documentation](https://infinispan.org/documentation/).
 
@@ -26,40 +26,55 @@ For more information on Infinispan replication and how to configure a replica in
 
 ## Infinispan configuration
 
-Configure Infinispan as a storage solution through the Caching service by setting the following configuration parameters in the `zowe.yaml`.
+Configure Infinispan as a storage solution through the Caching Service by setting the following configuration parameters in the `zowe.yaml`.
  
-* **`components.caching-service.storage.infinispan.initialHosts`**
+* **zowe.components.caching-service.storage.infinispan.initialHosts**
 
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
-* **`components.caching-service.storage.infinispan.persistence.dataLocation`**
+* **zowe.components.caching-service.storage.infinispan.persistence.dataLocation**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store. 
-  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the data property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `data`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
 
+   - The value should be the same for each instance.
+   - The location should point to a non-shared filesystem. Each instance requires unique storage.
+   - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
-* **`components.caching-service.storage.infinispan.persistence.indexLocation`**
+* **zowe.components.caching-service.storage.infinispan.persistence.indexLocation**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store. 
-  The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `index`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
+
+  - The value should be the same for each instance.
+  - The location should point to a non-shared filesystem. Each instance requires unique storage.
+  - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 
-* **`components.caching-service.storage.infinispan.jgroups.port`**
+* **zowe.components.caching-service.storage.infinispan.jgroups.port**
 
-  (OPTIONAL)The default value is `7098`. The port number used by Infinispan to synchronise data among cahing-service instances.
+  (Optional) The default value is `7600`. The port number is used by Infinispan to synchronise data among Caching Service instances.
 
-* **`components.caching-service.storage.infinispan.jgroups.host`**
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example 
+  from version 2.x through v3.1 to v3.2 and newer versions.
+  :::
 
-  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among cahing-service instances. 
+* **zowe.components.caching-service.storage.infinispan.jgroups.host**
 
+  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
 
-* **`components.caching-service.storage.infinispan.keyExchange.port`**
+* **zowe.components.caching-service.storage.infinispan.keyExchange.port**
 
-  (OPTIONAL)The default value is `7118`. The port number used by Infinispan to exchange encryption key among cahing-service instances.
+  (Optional) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Caching Service instances.
 
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
+  from version 2.x through v3.1 to v3.2 and newer versions.
+  :::
 
-  **Example of Caching service HA configuration using Infinispan:**
+  **Example of Caching Service HA configuration using Infinispan:**
 
   ```yaml
   haInstances:
@@ -68,19 +83,21 @@ Configure Infinispan as a storage solution through the Caching service by settin
         caching-service:
           storage:
             mode: infinispan
-            infinispan: 
-              initialHosts: lpar2[7098]
+            infinispan:
+              jgroups.port: 7600
+              initialHosts: lpar2[7600]
               persistence:
-                dataLocation: /global/zowe/workspace/caching-service/data01
-                indexLocation: /global/zowe/workspace/caching-service/index01
+                dataLocation: /global/zowe/workspace/caching-service/data
+                indexLocation: /global/zowe/workspace/caching-service/index
     lpar2:
       components:
         caching-service:
           storage:
             mode: infinispan
-            infinispan: 
-              initialHosts: lpar1[7098]
+            infinispan:
+              jgroups.port: 7600
+              initialHosts: lpar1[7600]
               persistence:
-                dataLocation: /global/zowe/workspace/caching-service/data02
-                indexLocation: /global/zowe/workspace/caching-service/index02
+                dataLocation: /global/zowe/workspace/caching-service/data
+                indexLocation: /global/zowe/workspace/caching-service/index
   ```
