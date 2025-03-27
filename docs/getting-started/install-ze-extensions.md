@@ -7,7 +7,7 @@ To successfully install Zowe Explorer extensions, meet the following system requ
 ### Client side requirements
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [Zowe Explorer V3](../user-guide/ze-install#installing-zowe-explorer)
+- [Zowe Explorer V3](../user-guide/ze-install.md#installing-zowe-explorer)
 
 ### Server side requirements
 
@@ -21,7 +21,7 @@ The following services must be installed, configured, and running on the mainfra
 ### Client side requirements
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [Zowe Explorer V3](../user-guide/ze-install#installing-zowe-explorer)
+- [Zowe Explorer V3](../user-guide/ze-install.md#installing-zowe-explorer)
 
 ### Server side requirements
 

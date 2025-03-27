@@ -7,7 +7,7 @@ APF-authorized program. The same cross memory server can be used by multiple Zow
 :::
 
 :::tip Important
-This article describes how to configure the cross server manually. However, most of this configuration should already be performed during [Zowe configuration](./configuring-overview). 
+This article describes how to configure the cross server manually. However, most of this configuration should already be performed during [Zowe configuration](./configuring-overview.md). 
 If you have already successfully run the `zwe init` command, the load modules are already installed, and APF authorization and SAF configuration is complete.
 
 In this case, the final step is to configure the load modules to run in [key 4 non-swappable](#key-4-non-swappable).
@@ -78,7 +78,7 @@ Issue one of the following operator commands to dynamically add the load library
 
 #### Configuring using `zwe init apfauth` 
 
-If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library).
+If you are using the `zwe init` command to configure your z/OS system, the step `zwe init apfauth` can be used to generate the `SETPROG` commands and execute them directly. The generation of `SETPROG` commands and their execution takes the input parameters `zowe.setup.mvs.authLoadLib` for the `SZWEAUTH` PDS location, and `zowe.setup.mvs.authPluginLib` for the location of the PDS that is used to contain plugins for the cross memory server. For more information on `zwe init apfauth` see, [Performing APF Authorization of load libraries](apf-authorize-load-library.md).
 
 ### Key 4 non-swappable
 
@@ -211,4 +211,4 @@ components:
 
 ## Next step
 
-After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview), or proceed to [starting Zowe](./start-zowe-zos).
+After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview.md), or proceed to [starting Zowe](./start-zowe-zos.md).
