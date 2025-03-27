@@ -1,4 +1,4 @@
-# Configuring initial API Mediation Layer startup message for Syslog
+# Configuring initial API Mediation Layer startup message for SYSLOG
 
 :::info Role: system programmer
 :::
@@ -6,11 +6,11 @@
 :::note Functionality of this feature is available from Zowe 2.18. 
 :::
 
-Startup of the API Mediation Layer can be configured to present a message in the Syslog that the API Mediation Layer is started and ready. This setup is typically used in combination with Workload Automation tools to manage the lifecycle of Zowe. 
+Startup of the API Mediation Layer can be configured to present a message in the SYSLOG that the API Mediation Layer is started and ready. This setup is typically used in combination with Workload Automation tools to manage the lifecycle of Zowe. 
 
 This functionality requires the following changes to the zowe.yaml:
 
-1. Change the property `zowe.sysMessages` by adding the value `- "ZWEAM001I"`
+1. Validate whether the `zowe.sysMessages` property contains ZWEAM001I. If this property does not contain ZWEAM001I, add the value `- "ZWEAM001I"` to this property.
     ```
     zowe:
       # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -19,9 +19,9 @@ This functionality requires the following changes to the zowe.yaml:
       sysMessages:
         - "ZWEAM001I"
     ```
-   This property change ensures that the message containing `ZWEAM001I` is presented in the Syslog. 
+   This property change ensures that the message containing `ZWEAM001I` is presented in the SYSLOG. 
    
-   **Example of the Syslog:** 
+   **Example of the message in the SYSLOG:** 
 
     `2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`
     
@@ -93,7 +93,7 @@ This functionality requires the following changes to the zowe.yaml:
     For detailed information about how to provide this changed configuration, see [Customizing Zowe API Mediation Layer logging](./configuration-logging.md).
     :::
 
-3. Validate that API Mediation Layer properly uses this new configuration for the Gateway service, which issues the message that the API Mediation Layer started. 
+3. Add the new configuration to the API Mediation Layer for the Gateway service, which issues the message that the API Mediation Layer started. 
 
     ```
     components:
@@ -102,7 +102,7 @@ This functionality requires the following changes to the zowe.yaml:
           config: /path/to/logback.xml
     ```
 
-You successfully changed the structure of the log message if you see the message `ZWEAM001I` in the Syslog when the API Mediation Layer fully starts and is ready to handle requests. 
+4. Validate the configuration was properly applied. You successfully changed the structure of the log message if you see the message `ZWEAM001I` in the SYSLOG when the API Mediation Layer fully starts and is ready to handle requests. 
 
 **Message example:**
 `ZWEAM001I 2024-09-30 10:17:53.814 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-%d:3335> jb892003 INFO  ((o.z.a.g.c.GatewayHealthIndicator)) ZWEAM001I API Mediation Layer started`

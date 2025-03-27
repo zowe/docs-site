@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
       ],
     },
@@ -18,8 +19,6 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [
-        "whats-new/release-notes/v3_1_0",
-        "whats-new/release-notes/v3_0_0",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -201,6 +200,7 @@ module.exports = {
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
                 "user-guide/configuring-zowe-via-jcl",
+                "user-guide/configure-apiml-zosmf-workflow",
                 "user-guide/configure-zowe-zosmf-workflow",
               ],
             },
@@ -225,6 +225,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/tls-configuration",
                 "user-guide/configuring-at-tls-for-zowe-server",
               ],
             },
@@ -522,6 +523,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/mvd-using" },
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270"
           ],
         },
         {
@@ -664,6 +666,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: { type: "doc", id: "user-guide/ze-usage" },
           items: [
+            "user-guide/ze-managing-profiles",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
@@ -817,7 +820,6 @@ module.exports = {
             "extend/extend-desktop/mvd-apptoappcommunication",
             "extend/extend-desktop/mvd-iframecomm",
             "extend/extend-desktop/mvd-errorreportingui",
-            "extend/extend-desktop/mvd-server-config",
             "extend/extend-desktop/mvd-logutility",
           ],
         },
@@ -978,6 +980,7 @@ module.exports = {
     "contribute/contributing",
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
     {

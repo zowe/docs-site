@@ -34,11 +34,11 @@ Neither Zowe CLI nor API Catalog issue a notification when a user is required to
 We recommend you first try to access self-service facilities and resolve the issue there. If you are unable to access your self-service facilities, contact your system administrator.
 
 :::tip Tips:
-* For more information about how to manage multi-factor authentication credentials in AAM, see [Manage Multi-Factor Authentication Credentials (IBM RACF)](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/using-with-ibm-racf/manage-multi-factor-authentication-credentials-ibm-racf.html) in the Advanced Authentication Mainframe 2.0 Broadcom documentation.
+* For more information about how to manage multi-factor authentication credentials in AAM, see [Configure the Global Factor for Enterprise Multi-Factor Authentication with IBM RACF](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/installing/complete-configuration-tasks/configure-product-manually/configure-enterprise-multi-factor-authentication/configure-the-global-factor-for-enterprise-multi-factor-authentication-with-ibm-racf.html) in the Advanced Authentication Mainframe 2.0 Broadcom documentation.
 * For more information about how to manage multi-factor authentication credentials in IBM Z MFA, see
 [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 * Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system. This support alternative does not rely on the mainframe MFA technology, but is equally secure.
-* For more information about how to resolve the RADIUS Access Challenge, see the sub-topic _RADIUS Access Challenge Considerations_ in the article [Manage Multi-Factor Authentication Credentials (IBM RACF)](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/using-with-ibm-racf/manage-multi-factor-authentication-credentials-ibm-racf.html).
+* For more information about different ways to sign on with the RADIUS credentials, see [Sign On When Using RADIUS Credentials with IBM RACF](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0/using-radius-authentication/sign-on-when-using-radius-credentials-with-ibm-racf.html).
 :::
 
 ### Token Expiration when Stored in the Authorization Dialog in "Try it out"

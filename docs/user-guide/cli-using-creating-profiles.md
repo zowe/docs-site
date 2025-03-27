@@ -10,9 +10,9 @@ As a team leader, you can share the configuration you create with your team memb
 
 ## Accessing LPARs that contain services that share the same credentials
 
-In the following configuration, nested profiles use the credentials from the same base profile to access services directly on multiple LPARs:
+In the following configuration, nested profiles (highlighted in the example) use the credentials from the same base profile to access services directly on multiple LPARs:
 
-```
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -21,6 +21,7 @@ In the following configuration, nested profiles use the credentials from the sam
                 "host": "example1.com"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
@@ -41,6 +42,7 @@ In the following configuration, nested profiles use the credentials from the sam
                         "port": 22
                     }
                 }
+                // highlight-end
             }
         },
         "lpar2": {
@@ -48,12 +50,14 @@ In the following configuration, nested profiles use the credentials from the sam
                 "host": "example2.com"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
                         "port": 1443
                     }
                 }
+                // highlight-end
             }
         },
         "project_base": {
@@ -78,9 +82,9 @@ In the following configuration, nested profiles use the credentials from the sam
 ```
 ## Accessing LPARs that contain services that do not share the same credentials
 
-In the following configuration, profiles are nested to use the credentials from parent profiles for different LPARs to access services directly on multiple LPARs.
+In the following configuration, profiles are highlighted to show they are nested to use the credentials from parent profiles for different LPARs to access services directly on multiple LPARs.
 
-```
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -89,6 +93,7 @@ In the following configuration, profiles are nested to use the credentials from 
                 "host": "example1.com"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
@@ -109,6 +114,7 @@ In the following configuration, profiles are nested to use the credentials from 
                         "port": 22
                     }
                 }
+                // highlight-end
             },
             "secure": [
                 "user",
@@ -120,12 +126,14 @@ In the following configuration, profiles are nested to use the credentials from 
                 "host": "example2.com"
             },
             "profiles": {
+               // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
                         "port": 1443
                     }
                 }
+              // highlight-end
             },
             "secure": [
                 "user",
@@ -151,9 +159,9 @@ In the following configuration, profiles are nested to use the credentials from 
 
 ## Accessing LPARs that access services through one API Mediation Layer
 
-In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile.
+In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile (highlighted in the example).
 
-```
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -175,6 +183,7 @@ In the following configuration, services are accessed through the API ML (where 
                 "basePath": "ibmdb2/api/v1"
             }
         },
+        // highlight-start
         "project_base": {
             "type": "base",
             "properties": {
@@ -187,6 +196,7 @@ In the following configuration, services are accessed through the API ML (where 
                 "tokenValue"
             ]
         }
+        // highlight-end
     },
     "defaults": {
         "zosmf": "zosmf",
@@ -200,9 +210,9 @@ In the following configuration, services are accessed through the API ML (where 
 
 ## Accessing LPARs that access services through one API Mediation Layer using certificate authentication
 
-In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile.
+In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile (highlighted in the example).
 
-```
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -224,6 +234,7 @@ In the following configuration, services are accessed through the API ML using c
                 "basePath": "api/v1/db2"
             }
         },
+        // highlight-start
         "project_base": {
             "type": "base",
             "properties": {
@@ -234,6 +245,7 @@ In the following configuration, services are accessed through the API ML using c
                 "rejectUnauthorized": true
             }
         }
+        // highlight-end
     },
     "defaults": {
         "zosmf": "zosmf",
@@ -247,11 +259,22 @@ In the following configuration, services are accessed through the API ML using c
 
 ## Accessing services through multiple API ML gateways
 
-In the following configuration, the profiles are structured to connect to services using multiple API ML gateways.
+There are different ways to access mainframe services through multiple API ML gateways, depending on how you organize the profiles in your configuration. Determine the method to use by the requirements of your client component. 
 
-To authenticate to a specific API ML gateway from this configuration, you can run `zowe auth login apiml --base-profile lpar1` or `zowe auth login apiml --base-profile lpar2`.
+In Zowe CLI, profiles do not need to be nested in order to use multiple API ML gateways. Nested profiles are required for Zowe Explorer for VS Code. 
 
-```
+Select one of the following tabs to see the configuration possible for the client components.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="zowe cli ze" label="Zowe CLI, Zowe Explorer for VS Code" default>
+In the following configuration, profiles are highlighted to show they are nested so their connection information can be used with multiple API ML gateways. 
+
+To authenticate to a specific API ML gateway from this configuration, issue the `zowe auth login apiml --base-profile lpar1` or `zowe auth login apiml --base-profile lpar2` commands.
+
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -262,6 +285,7 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                 "tokenType": "apimlAuthenticationToken"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
@@ -280,8 +304,13 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                     "type": "ssh",
                     "properties": {
                         "port": 22
-                    }
-                }
+                    },
+                    "secure": [
+                        "user", 
+                        "password"
+    ]
+}
+                // highlight-end
             },
             "secure": [
                 "tokenValue"
@@ -295,12 +324,14 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
                 "tokenType": "apimlAuthenticationToken"
             },
             "profiles": {
+                // highlight-start
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
                         "basePath": "api/v1"
                     }
                 }
+                // highlight-end
             },
             "secure": [
                 "tokenValue"
@@ -315,3 +346,52 @@ To authenticate to a specific API ML gateway from this configuration, you can ru
     "autoStore": true
 }
 ```
+  </TabItem>
+  <TabItem value="zowe cli 2" label="Zowe CLI alternative">
+
+In the following configuration, profiles are highlighted to show they are all at the same level.
+
+Use the `--base-profile` option on Zowe CLI commands to select a base profile that contains the API ML gateway information to use for a specific API ML gateway for that command.
+
+```json showLineNumbers
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        // highlight-start
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "basePath": "/ibmzosmf/api/v1"
+            }
+        },
+        "lpar1": {
+            "properties": {
+                "host": "example1.com",
+                "port": 7554,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        },
+        "lpar2": {
+            "properties": {
+                "host": "example2.com",
+                "port": 7554,
+                "tokenType": "apimlAuthenticationToken"
+            },
+            "secure": [
+                "tokenValue"
+            ]
+        }
+        // highlight-end
+    },
+    "defaults": {
+        "zosmf": "zosmf",
+        "base": "lpar2"
+    },
+    "autoStore": true
+}
+```
+  </TabItem>
+</Tabs>

@@ -1,14 +1,15 @@
-# Enabling single sign on for clients via JWT token configuration 
+# Enabling single sign on for clients via JSON Web Token (JWT) configuration 
 
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-As a system programmer, you can customize how JWT authentication is performed, the service that provides the JWT authentication token, whether it's possible to refresh JWT token and other characteristics of JWT for consumption. 
+As a system programmer, you can customize how JSON Web Token (JWT) authentication is performed, the service that provides the JWT authentication token, whether it's possible to refresh JWT and other characteristics of JWT for consumption. 
 
-* [Using SAF as an authentication provider](#using-saf-as-an-authentication-provider)
-* [Enabling a JWT token refresh endpoint](#enabling-a-jwt-token-refresh-endpoint)
-* [Authorization](#authorization)
-* [Additional customizable properties when using JWT tokens](#additional-customizable-properties-when-using-jwt-tokens)
+- [Enabling single sign on for clients via JSON Web Token (JWT) configuration](#enabling-single-sign-on-for-clients-via-json-web-token-jwt-configuration)
+  - [Using SAF as an authentication provider](#using-saf-as-an-authentication-provider)
+  - [Enabling a JWT refresh endpoint](#enabling-a-jwt-refresh-endpoint)
+  - [Authorization](#authorization)
+  - [Additional customizable properties when using JWTs](#additional-customizable-properties-when-using-jwts)
 
 ## Using SAF as an authentication provider
 
@@ -26,9 +27,9 @@ components.gateway.apiml.security.auth.provider
 
 Authentication requests now utilize SAF as the authentication provider. API ML can run without z/OSMF present on the system. 
 
-## Enabling a JWT token refresh endpoint
+## Enabling a JWT refresh endpoint
 
-Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT token for a new token with a new expiration date. Call the endpoint with a valid JWT token and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
+Enable the `/gateway/api/v1/auth/refresh` endpoint to exchange a valid JWT for a new token with a new expiration date. Call the endpoint with a valid JWT and trusted client certificate. When using the z/OSMF authentication provider, enable API Mediation Layer for PassTicket generation and configure the z/OSMF APPLID. 
 
 For more information, see [Configure Passtickets](configuration-extender-passtickets.md).
 
@@ -49,14 +50,15 @@ We recommend you use the following workaround:
 
 1. Configure the following parameter in `environments`:
 
-```
-zowe:
-  environments:
-    APIML_SECURITY_ALLOWTOKENREFRESH: true 
-```
-:::
+  ```
+  zowe:
+    environments:
+      APIML_SECURITY_ALLOWTOKENREFRESH: true 
+  ```
 
 2. Restart Zowe.
+   
+:::
 
 ## Authorization
 
@@ -69,9 +71,9 @@ In the API ML, authorization is performed by any of the following z/OS security 
 
 An authentication token is used as proof of valid authentication. The authorization checks, however, are always performed by the z/OS security manager.
 
-## Additional customizable properties when using JWT tokens
+## Additional customizable properties when using JWTs
 
-You can also customize the following properties when authenticating with a JWT token:
+You can also customize the following properties when authenticating with a JWT:
 
 * **components.gateway.apiml.security.auth.zosmf.ServiceId**  
     This parameter specifies the z/OSMF service id used as authentication provider. The service id is defined in the static definition of z/OSMF. The default value is `zosmf`.
@@ -81,7 +83,7 @@ You can also customize the following properties when authenticating with a JWT t
 
     API ML generation of the JWT occurs in the following cases:
 
-    * z/OSMF is only available as an older version which does not support JWT tokens  
+    * z/OSMF is only available as an older version which does not support JWTs  
     * The SAF provider is used
 
     To use a custom configuration for z/OSMF which changes the expiration of the LTPA token, it is necessary to also set the expiration in this parameter.
