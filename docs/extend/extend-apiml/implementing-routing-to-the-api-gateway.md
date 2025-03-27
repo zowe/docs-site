@@ -11,7 +11,7 @@ Service instances provide information about routing to the API Gateway via Eurek
 
 ## Implement Basic Routing
 
-For basic routing, the gatewayUrl and sericeUrl is specified with the corresponding version:
+For basic routing, the gatewayUrl and sericeUrl are specified with the corresponding version:
 
 **Example:**
 
