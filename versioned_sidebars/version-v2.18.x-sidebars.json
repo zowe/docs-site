@@ -222,7 +222,7 @@
               "items": [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
-                "user-guide/configure-zowe-zosmf-workflow"
+                "user-guide/configure-zowe-zosmf-workflow-2-18"
               ]
             },
             {
@@ -1109,6 +1109,7 @@
     "contribute/contributing"
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-api-reference",
     {
@@ -1258,7 +1259,7 @@
     {
       "type": "link",
       "label": "Third Party Software Requirements",
-      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.x.md"
+      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.1.md"
     }
   ]
 }

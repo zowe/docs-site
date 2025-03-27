@@ -36,7 +36,7 @@ To enable or disable cluster mode, see the [Advanced Application Framework Confi
 
 ## Caching Service Infinispan ports
 
-The Caching Service will use these additional ports if enabled (`zowe.components.caching-service.enabled: true`) and set to use infinispan (the default, `zowe.components.caching-service.storage.mode: infinispan`).
+The Caching Service will use these additional ports if enabled (`components.caching-service.enabled: true`) and set to use infinispan (the default, `components.caching-service.storage.mode: infinispan`).
 
 | Port number | zowe.yaml variable name | Purpose |
 |-------------|------|------|

@@ -42,4 +42,4 @@ To download and unpack the pax file, you need free space that is approximately 3
 
 Configure SMP/E Internet Service Retrieval to receive and download maintenance on a regular cadence or build custom maintenance packages (order PTFs, APARs, critical, recommended, all, or just HOLDDATA). This step is our recommended best practice when installing maintenance and is required to use the z/OSMF Software Update. For configuration details, see the Mainframe Common Maintenance Procedures documentation.	
 
-After these requirements have been addressed, you are ready to [acquire a z/OSMF Portable Software Instance](./install-zowe-pswi-acquire/#download-the-portable-software-instance-from-zowe-downloads) or [Configure Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md).
+After these requirements have been addressed, you are ready to [acquire a z/OSMF Portable Software Instance](./install-zowe-pswi-acquire/#download-the-portable-software-instance-from-zowe-downloads) or [Configure Zowe with z/OSMF Workflows](./configure-zowe-zosmf-workflow.md) or [Configuring API ML with z/OSMF Workflows](./configure-apiml-zosmf-workflow.md).

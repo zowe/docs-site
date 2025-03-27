@@ -11,9 +11,9 @@ This article does not cover the client methods to call API ML and authenticate. 
 
 To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
 
-- [Accepting JWT token (recommended)](#accepting-jwt)
-- [Accepting SAF IDT token](#accepting-saf-idt)
-- [Accepting PassTicket](#accepting-passtickets)
+- [Accepting JWT](#accepting-jwt) (recommended)
+- [Accepting SAF IDT](#accepting-saf-idt)
+- [Accepting PassTickets](#accepting-passtickets)
 
 Additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
@@ -21,9 +21,8 @@ Additional possibilities can potentially be leveraged to enable Single Sign On b
     **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
 * [Accepting client certificates via x509 scheme](#accepting-client-certificates-via-x509-scheme)
 * [Accepting z/OSMF LTPA token](#accepting-zosmf-ltpa-token)
-* [Forwarding x509 client certificate](#forwarding-x509-client-certificate)
 
-Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication. 
+Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication.
 
 **Example:**
 
@@ -40,7 +39,7 @@ In the event that there is an issue with authentication, API Mediation Layer set
 
 ## Accepting JWT
 
-Accepting JWT is the recommended method for integrating. No configuration is needed on the user's side. 
+Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the user's side. 
 
 ```yaml
 authentication:
@@ -49,8 +48,8 @@ authentication:
 
 * When a Zowe JWT is provided, this scheme value specifies that the service accepts the Zowe JWT. No additional processing is done by the API Gateway.
 * When a client certificate is provided, the certificate is transformed into a Zowe JWT, and the downstream service performs the authentication.
-* If the downstream service needs to consume the JWT token from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
-* The HTTP header is then added to each request towards the downstream service and contains the Zowe JWT to be consumed by the service. For more information, see [Enabling single sign on for extending services via JWT token configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
+* If the downstream service needs to consume the JWT from a custom HTTP request header to participate in the Zowe SSO, it is possible to provide a header in the Gateway configuration.
+* The HTTP header is then added to each request towards the downstream service and contains the Zowe JWT to be consumed by the service. For more information, see [Enabling single sign on for extending services via JWT configuration](../../user-guide/api-mediation/configuration-extender-jwt.md).
 
 ## Accepting SAF IDT
 
@@ -75,7 +74,7 @@ It is necessary to provide a service APPLID in the `authentication.applid` param
 * When a JWT is provided, the service validates the Zowe JWT to use for PassTicket generation.
 * When a client certificate is provided, the service validates the certificate by mapping the certificate to a mainframe user to use for PassTicket generation.
 * If the downstream service needs to consume the user ID and the PassTicket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
-* The HTTP headers are then added to each request towards the downstream service. The headers contain the user ID and the PassTicket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT token](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt-token). 
+* The HTTP headers are then added to each request towards the downstream service. The headers contain the user ID and the PassTicket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt). 
 
 ```yaml
 authentication:
@@ -103,7 +102,7 @@ authentication:
 
 ## Accepting client certificates via x509 scheme
 
-While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
+While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML validates the certificate for you and ideally provide a Zowe JWT. 
 
 The `x509` scheme value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the downstream service, but rather the certificate that is forwarded in the header that authenticates the user.
 

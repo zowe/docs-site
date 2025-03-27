@@ -31,7 +31,7 @@ Configure Infinispan as a storage solution through the Caching Service by settin
 * **zowe.components.caching-service.storage.infinispan.initialHosts**
 
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
-  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`.
+  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
 * **zowe.components.caching-service.storage.infinispan.persistence.dataLocation**
 
@@ -41,7 +41,6 @@ Configure Infinispan as a storage solution through the Caching Service by settin
    - The value should be the same for each instance.
    - The location should point to a non-shared filesystem. Each instance requires unique storage.
    - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-
 
 * **zowe.components.caching-service.storage.infinispan.persistence.indexLocation**
 

@@ -230,11 +230,7 @@ The following figures describe the target and distribution libraries and file sy
 
 **Note:** These target libraries are not required for the initial FMID install of Zowe SMP/E but will be required for subsequent SYSMODS so are included here for future reference.
 
-Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
----|---|---|---|---|---|---|---|---
-SZWEAUTH | APF Load Modules	| ANY | U | PDSE | U | 0 | 15 | N/A
-SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
-SZWELOAD | Load Modules | ANY | U | PDSE | U | 0 | 30 | N/A
+Review the list of Zowe's runtime datasets in the [Server Dataset Appendix](../appendix/server-datasets.md#runtime-datasets).
 
 **Zowe file system paths**
 
