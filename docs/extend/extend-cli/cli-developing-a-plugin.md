@@ -8,7 +8,7 @@ The advantage of Zowe CLI and of the CLI approach in mainframe development is th
 
 This tutorial demonstrates how to create a brand new Zowe CLI plug-in that uses Node.js to create a client-side API.
 
-After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. This plug-in takes in any two data sets, or files, and returns a plain text output in the terminal showing how they differ. This tutorial also shows you how you can integrate your new plug-in with a third-party utility to make your output colorful and easier to read, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin#bringing-together-new-tools).
+After following all the steps, you will have created a data set diff utility plug-in called **Files Util Plug-in**. This plug-in takes in any two data sets, or files, and returns a plain text output in the terminal showing how they differ. This tutorial also shows you how you can integrate your new plug-in with a third-party utility to make your output colorful and easier to read, as shown in the image at the [bottom of this page](../extend-cli/cli-developing-a-plugin.md#bringing-together-new-tools).
 
 If you are ready to create your own unique Zowe CLI plug-in, refer to the notes at the end of each tutorial step for guidance.
 
@@ -307,11 +307,11 @@ Refer to file names specific to your project. Your code likely follows the same 
 
 Before you test your new command, confirm that you are able to connect to the mainframe.
 
-In order for the client-side API to reach the mainframe (to fetch data sets), Zowe CLI needs a z/OSMF profile for access. See [Team configurations](../../user-guide/cli-using-using-team-profiles/) for information. 
+In order for the client-side API to reach the mainframe (to fetch data sets), Zowe CLI needs a z/OSMF profile for access. See [Team configurations](../../user-guide/cli-using-using-team-profiles.md#team-configurations) for information. 
 
 Once the connection between Zowe CLI and z/OSMF is confirmed, build and install the plug-in before running it for the first time:
 
-1. Repeat the steps in [Building your plug-in source](../extend-cli/cli-developing-a-plugin#building-your-plug-in-source).
+1. Repeat the steps in [Building your plug-in source](../extend-cli/cli-developing-a-plugin.md#building-your-plug-in-source).
 
     As you make changes, repeat these steps to make sure the changes are reflected in the working plug-in.
 
