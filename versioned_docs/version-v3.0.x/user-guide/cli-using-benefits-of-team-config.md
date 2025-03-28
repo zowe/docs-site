@@ -1,6 +1,6 @@
 # Benefits of team configuration
 
-[Team configuration](../appendix/zowe-glossary#team-configuration) can make the initial setup of Zowe CLI more efficient by making service connection details easier to share and maintain within your organization.
+[Team configuration](../appendix/zowe-glossary.md#team-configuration) can make the initial setup of Zowe CLI more efficient by making service connection details easier to share and maintain within your organization.
 
 Consider the following benefits of using team configuration for roles across your dev team:
 
