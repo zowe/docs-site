@@ -1,6 +1,9 @@
 # Routing Websocket based APIs
 
-As an API developer, you can route WebSocket APIs through the API Mediation Layer. For details about Websocket routing from the client side, see [Routing with websockets](../../user-guide/routing-with-websockets.md).
+As an API developer using Zowe, you can route WebSocket APIs through the API Mediation Layer. For details about Websocket routing from the client side, see [Routing with websockets](../../user-guide/routing-with-websockets.md).
+
+:::info Required roles: Zowe extender, application developer
+:::
 
 To accept Websockets, it is necessary that the API Mediation Layer is aware that a Websocket connection is required. To inform the API Mediaiton Layer, the issuer of the call to the API needs to add the `(/ws/...)` prefix in the URL of the called API. 
 

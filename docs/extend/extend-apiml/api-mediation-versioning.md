@@ -2,6 +2,9 @@
 
 As a Zowe extender, review concepts relating to API versioning including key terminology, the data model between APIs and API services, and the recommended guidelines for API versioning.
 
+:::info Required roles: Zowe extender, application developer
+:::
+
 ## Terminology
 
 To understand API versioning, it is useful to be familiar with the following terms as they are applied within Zowe.

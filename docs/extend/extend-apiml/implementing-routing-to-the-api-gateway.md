@@ -1,6 +1,11 @@
 # Implementing routing to the API Gateway
 
-As an extender of API Mediation Layer, review how to implement basic routing to the API Gateway. Choose from the following routing methods:
+As an extender of API Mediation Layer, review how to implement basic routing to the API Gateway. 
+
+:::info Required roles: Zowe extender, application developer
+:::
+
+Choose from the following routing methods:
 
 - [Implementing routing to the API Gateway](#implementing-routing-to-the-api-gateway)
   - [Implement Basic Routing](#implement-basic-routing)
@@ -11,7 +16,7 @@ Service instances provide information about routing to the API Gateway via Eurek
 
 ## Implement Basic Routing
 
-For basic routing, the gatewayUrl and sericeUrl are specified with the corresponding version:
+For basic routing, the `gatewayUrl` and `sericeUrl` are specified with the corresponding version:
 
 **Example:**
 
@@ -32,7 +37,7 @@ In this example, the service has a service ID of `helloworldservice` that expose
 * **API major version 2**  
   `https://gateway/helloworldservice/api/v2` routed to `https://hwServiceHost:port/helloworld/v2`
 
-where:
+This type of routing has the following corresponding features:
 
 * The gatewayUrl is matched against the prefix of the URL path used at the Gateway `https://gateway/urlPath`, where `urlPath` is `serviceId/prefix/resourcePath`.
 * The service ID is used to find the service host and port.
@@ -53,8 +58,6 @@ One example that only uses a service ID is z/OSMF.
 z/OSMF URL through the Gateway has the following format:
 
  `https://gateway:10010/ibmzosmf/api/restjobs/jobs/...`
-
-where:
 
 * **ibmzosmf**  
 Specifies the service ID.
