@@ -46,17 +46,6 @@ The following steps outline the overall process to onboard a REST service with t
 7. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
 
-## Selecting a Spring Boot Enabler
-
-Add a dependency on the Spring Enabler version to your project build configuration that corresponds to the Spring Boot version that you use for the whole project:
-
-  * onboarding-enabler-spring-v1
-  * onboarding-enabler-spring-v2
-
-:::note
-The process of onboarding an API service is the same for both Spring Boot enabler versions.
-:::
-
 ## Configuring your project
 
 Use either _Gradle_ or _Maven_ as your build automation system to manage your project builds.
@@ -251,7 +240,7 @@ These parameters are not required. If a parameter is not specified, a default va
 ### API ML Onboarding Configuration Sample
 
 Some parameters which are specific for your service deployment
-are written in `${fill.your.parameterValue}` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
+are written in `<fill-your-parameterValue>` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
 
 ```yaml
 spring:
@@ -263,14 +252,14 @@ apiml:
     enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL
     service:                                # The root of API ML onboarding configuration
 
-        serviceId: ${fill.your.serviceId}      # The symbolic name of the service
-        title: ${fill.your.title} 
-        description: ${fill.your.description}  # API service description
+        serviceId: <fill-your-serviceId>      # The symbolic name of the service
+        title: <fill-your-title> 
+        description: <fill-your-description>  # API service description
 
         scheme: https
-        hostname: ${fill.your.hostname}                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
-        port: ${fill.your.port}                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
-        serviceIpAddress: ${fill.your.ipAddress}                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
+        hostname: <fill-your-hostname>                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
+        port: <fill-your-port>                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
+        serviceIpAddress: <fill-your-ipAddress>                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.serviceId}      # By default the contextPath is set to be the same as apiml.service.serviceId, but doesn't have to be the same
@@ -279,7 +268,7 @@ apiml:
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        discoveryServiceUrls: https://${fill.your.discoveryServiceHost1}:${fill.your.discoveryServicePort1}/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
+        discoveryServiceUrls: https://<fill-your-discoveryServiceHost1>:<fill-your-discoveryServicePort1>/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
 
         routes:
             -   gateway-url: "ui/v1"
@@ -318,22 +307,24 @@ apiml:
             verifySslCertificatesOfServices: true
             protocol: TLSv1.3
             enabled-protocols: TLSv1.3
-            keyStoreType: ${fill.your.keystoretype}
-            trustStoreType: ${fill.your.truststoretype}
+            keyStoreType: <fill-your-keystoretype>
+            trustStoreType: <fill-your-truststoretype>
 
             ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
-            keyAlias: ${fill.your.keyAlias}
-            keyPassword: ${fill.your.keyPassword}
-            keyStore: ${fill.your..keyStore}
-            keyStorePassword: ${fill.your.keyStorePassword}
-            trustStore: ${fill.your.trustStore}
-            trustStorePassword: ${fill.your.trustStorePassword}
-        
+            keyAlias: <fill-your-keyAlias>
+            keyPassword: <fill-your-keyPassword>
+            keyStore: <fill-your-.keyStore>
+            keyStorePassword: <fill-your-keyStorePassword>
+            trustStore: <fill-your-trustStore>
+            trustStorePassword: <fill-your-trustStorePassword>
+
+        connectTimeout: 10  # OPTIONAL: Discovery service registration timeout to establish connection
+        readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
         # Optional metadata section
         customMetadata:
-            yourqualifier:
-                key1: value1
-                key2: value2
+            <your-qualifier>:
+                <key1>: value1
+                <key2>: value2
 
 # rest of your configuration
 # server: ....
@@ -418,7 +409,7 @@ Use the following procedure to add Swagger API documentation to your project.
     * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
-        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.2'
+        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
         ```
 
       * For _Maven_, add the following dependency in `pom.xml`:
@@ -427,7 +418,7 @@ Use the following procedure to add Swagger API documentation to your project.
           <dependency>
              <groupId>org.springdoc</groupId>
              <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-             <version>2.8.2</version>
+             <version>2.8.6</version>
           </dependency>
           ```
 
