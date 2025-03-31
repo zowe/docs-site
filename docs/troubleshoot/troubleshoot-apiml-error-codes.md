@@ -1055,6 +1055,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure that both provided paths are resolved to valid trust store and valid key store
 
+### ZWEAS504E
+
+  Internal server error while generating PassTicket.
+
+  **Reason:**
+
+  Unable to generate PassTicket.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+  
+
 ## Discovery service messages
 
 ### ZWEAD400E
