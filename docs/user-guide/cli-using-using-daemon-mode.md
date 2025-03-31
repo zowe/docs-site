@@ -82,7 +82,7 @@ When you install another version of Zowe CLI, you should always run the `zowe da
    You may be running mismatched versions of Zowe executable and Zowe daemon.
    ```
 
-- You created or updated the `.zowe.env.json` file in your home directory or the path set in the `ZOWE_CLI_HOME` environment variable. See [Configuring an environment variables file](../user-guide/cli-configuringcli-evfile) for more information.
+- You created or updated the `.zowe.env.json` file in your home directory or the path set in the `ZOWE_CLI_HOME` environment variable. See [Configuring an environment variables file](../user-guide/cli-configuringcli-evfile.md) for more information.
 
 ## Disabling daemon mode
 
