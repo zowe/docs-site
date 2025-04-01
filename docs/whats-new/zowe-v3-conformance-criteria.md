@@ -6,20 +6,20 @@ See the link in each section for a PDF with the specific criteria for the corres
 
 ## Zowe API Mediation Layer
 
-Review the [API Mediation Layer related conformance criteria](https://ibm.box.com/s/qin12i90slsxzv2zdpiq4we6o6157gh5).
+Review the [API Mediation Layer related conformance criteria](https://drive.google.com/file/d/16y3A6MJ2qLSoxm6RVkATDmnoc1k9ng-V/view?usp=sharing).
 
 ## Zowe CLI
 
-Review the [CLI related conformance criteria](https://ibm.box.com/s/d8dgrx37k42wi2o92bk6vglfdazmkte9).
+Review the [CLI related conformance criteria](https://drive.google.com/file/d/1FPzZEzLmCogU6_21nr0E1qZNlv6AVItJ/view?usp=sharing).
 
 ## Zowe Explorer
 
-Review the [Explorer related conformance criteria](https://ibm.box.com/s/xmiwe01li8n0mgx4wpj68dqpsw2ybati).
+Review the [Explorer related conformance criteria](https://drive.google.com/file/d/1CHAgL3IjsRIztz4WeqMddSfMV6JWVTT0/view?usp=sharing).
 
 ## Zowe Application Framework
 
-Review the [Application Framework related conformance criteria](https://ibm.box.com/s/krk4cckl7mo1wgmjkghv1s82q8cu5rx1).
+Review the [Application Framework related conformance criteria](https://drive.google.com/file/d/12Vl1mR8o0MGElMbYKF_aZnMbnwTBpLt9/view?usp=sharing).
 
 ## Support providers
 
-Review the [support providers related conformance criteria](https://ibm.box.com/s/ok85oj6eflnpxsxvp1rntrebjbhebuk1).
+Review the [support providers related conformance criteria](https://drive.google.com/file/d/1Irh78mxkXM1ace30D-eoI5eZlDiFVzzC/view?usp=sharing).
