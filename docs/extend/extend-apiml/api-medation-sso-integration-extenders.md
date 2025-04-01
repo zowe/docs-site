@@ -36,7 +36,7 @@ authentication:
 * **authentication.scheme**  
 Specifies a service authentication scheme. The following schemes participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
 
-In the event that there is an issue with authentication, API Mediation Layer sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
+In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
 ## Accepting JWT
 
@@ -153,7 +153,7 @@ Both the API ML Gateway and the downstream service must conform to the following
 
 ### API ML Gateway Requirements
 
-- Enable client cetificate forwarding in the `zowe.yaml`
+- Enable client certificate forwarding in the `zowe.yaml`
     ```yaml
    components:
       gateway:    
