@@ -18,7 +18,8 @@ module.exports = {
       label: "Zowe V2 release notes",
       className: "ToCheadercolor",
       collapsed: true,
-      items: [
+      items: [      
+        "whats-new/release-notes/v2_18_2",  
         "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",

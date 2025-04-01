@@ -11,8 +11,7 @@ For more information about onboarding API services with the API ML, see the [Onb
 Zowe API ML is a lightweight API management system based on the following Netflix components:
 
 * Eureka - a discovery service used for services registration and discovery
-* Zuul - reverse proxy / API Gateway
-* Ribbon - load balancer
+* Spring CLoud Gateway - reverse proxy / API Gateway
 
 The API ML Discovery Service component uses Netflix/Eureka as a services` registry.
 Eureka endpoints are used to register a service with the API ML Discovery Service.
@@ -66,7 +65,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 :::noteNotes:
 
-* This documentation is valid for API ML version `ZoweApimlVersion 1.3.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
+* This documentation is valid for API ML version `ZoweApimlVersion 3.0.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
 
     * Following this guide enables REST or GraphQL services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
@@ -112,21 +111,6 @@ Use the following procedure to use _Gradle_ as your build automation system.
     implementation "org.zowe.apiml.sdk:onboarding-enabler-java:$zoweApimlVersion"
     implementation "org.zowe.apiml.sdk:common-service-core:$zoweApimlVersion"
     ```
-   The published artifact from the Zowe Artifactory also contains the enabler dependencies from other software packages. If you are using an artifactory other than Zowe, add also the following dependencies in your service `build.gradle` script:
-
-    ```gradle
-    implementation "com.netflix.eureka:eureka-client:1.10.15"
-    implementation "org.apache.httpcomponents:httpcore:4.4.14"
-    implementation "com.fasterxml.jackson.core:jackson-databind:2.11.4"
-    implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.9.10"
-
-    providedCompile "javax.servlet:javax.servlet-api:3.1.0"
-    compileOnly "org.projectlombok:lombok:1.18.20"
-    ```
-
-   **Notes:**
-    * You may need to add more dependencies as required by your service implementation.
-    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and higher.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -156,11 +140,6 @@ Use the following procedure if you use _Maven_ as your build automation system.
    <dependency>
        <groupId>org.zowe.apiml.sdk</groupId>
        <artifactId>onboarding-enabler-java</artifactId>
-       <version>$zoweApimlVersion</version>
-   </dependency>
-   <dependency>
-       <groupId>org.zowe.apiml.sdk</groupId>
-       <artifactId>common-service-core</artifactId>
        <version>$zoweApimlVersion</version>
    </dependency>
     ```
@@ -238,6 +217,8 @@ ssl:
     trustStore: keystore/localhost.truststore.p12
     trustStoreType: PKCS12
     trustStorePassword: password
+connectTimeout: 10 # OPTIONAL: Discovery service registration timeout to establish connection
+readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
  ```
 
 **GraphQL API**

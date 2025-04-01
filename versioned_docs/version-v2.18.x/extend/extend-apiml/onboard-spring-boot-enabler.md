@@ -19,43 +19,30 @@ For more information about how to utilize another onboarding method, see:
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article.
 
-1. [Selecting a Spring Boot Enabler](#selecting-a-spring-boot-enabler)
-
-2. [Configuring your project](#configuring-your-project)
+1. [Configuring your project](#configuring-your-project)
 
     * [Gradle build automation system](#gradle-build-automation-system)
     * [Maven build automation system](#maven-build-automation-system)
 
-3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
+2. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
 
     * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
     * [Authentication properties](#authentication-properties)
     * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
     * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Custom Metadata](#custom-metadata)
-    
-4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-    
+
+3. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
+
     * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
     * [Basic routing](#basic-routing)
-    
-5. [Adding API documentation](#adding-api-documentation)
 
-6. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+4. [Adding API documentation](#adding-api-documentation)
 
-7. (Optional) [Troubleshooting](#troubleshooting)
+5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+
+6. (Optional) [Troubleshooting](#troubleshooting)
     * [Log messages during registration problems](#log-messages-during-registration-problems)
-
-## Selecting a Spring Boot Enabler
-
-Add a dependency on the Spring Enabler version to your project build configuration that corresponds to the Spring Boot version that you use for the whole project:
-
-  * onboarding-enabler-spring-v1
-  * onboarding-enabler-spring-v2
-
-:::note
-The process of onboarding an API service is the same for both Spring Boot enabler versions.
-:::
 
 ## Configuring your project
 
@@ -405,8 +392,10 @@ apiml:
             keyStorePassword: ${fill.your.keyStorePassword}
             trustStore: ${fill.your.trustStore}
             trustStorePassword: ${fill.your.trustStorePassword}
-        
-        # Optional metadata section
+            
+        connectTimeout: 10  # OPTIONAL: Discovery service registration timeout to establish connection
+        readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
+      # Optional metadata section
         customMetadata:
             yourqualifier:
                 key1: value1
