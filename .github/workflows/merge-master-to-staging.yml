@@ -80,13 +80,12 @@ jobs:
 
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
-            echo "No actual file changes detected after merge conflict. Cannot create PR."
-            echo "conflict_branch_created=false" >> $GITHUB_OUTPUT
+            echo "No actual file changes detected after merge conflict."
           else
             echo "Staged changes detected."
             echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
-            echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
           fi
+          echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
         # Only run if:
