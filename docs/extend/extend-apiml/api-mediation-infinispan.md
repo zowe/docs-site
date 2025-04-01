@@ -33,6 +33,27 @@ Configure Infinispan as a storage solution through the Caching Service by settin
   This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
   either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
+
+* **`components.caching-service.storage.infinispan.jgroups.port`**
+
+  (Optional) The default value is `7600`. The port number used by Infinispan to synchronise data among Caching Service instances.
+
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
+  :::
+
+* **`components.caching-service.storage.infinispan.jgroups.host`**
+
+  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
+
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
+  :::
+
+* **`components.caching-service.storage.infinispan.keyExchange.port`**
+
+  (Optional) The default value is `7601`. The port number used by Infinispan to exchange encryption key among Caching Service instances.
+
 * **`components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store. 

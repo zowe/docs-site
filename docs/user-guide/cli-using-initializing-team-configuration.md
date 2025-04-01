@@ -130,7 +130,7 @@ To set up the `zowe.config.json` file to automatically access the services that 
 
     :::note
 
-    To use certificates instead of basic authentication (such as user ID and password), you can specify the options `--cert-file` and `--cert-key-file` on the base command (`zowe config auto-init`). For more information on how to log in with certificates, see [Integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml).
+    To use certificates instead of basic authentication (such as user ID and password), you can specify the options `--cert-file` and `--cert-key-file` on the base command (`zowe config auto-init`). For more information on how to log in with certificates, see [Integrating with API Mediation Layer](../user-guide/cli-using-integrating-apiml.md).
     
     :::
 

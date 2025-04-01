@@ -46,7 +46,7 @@ The `web` directory is where the server serves static content for an application
 Application Plugin files can be served to browsers as compressed files in brotli (.br) or gzip (.gz) format. The file must be below the application's `/web` directory, and the browser must support the compression method. If there are multiple compressed files in the `/web` directory, the Zowe Application Server and browser perform runtime negotiation to decide which file to use.
 
 ### Default user configuration
-[Configuration Dataservice](mvd-configdataservice) default settings for users can be packaged within a Plugin.  
+[Configuration Dataservice](mvd-configdataservice.md) default settings for users can be packaged within a Plugin.  
 This is done by putting content within the `/config/storageDefaults` folder, and more on that subject can be [found here](mvd-configdataservice.md#packaging-defaults)
 
 ### App-to-App Communication
