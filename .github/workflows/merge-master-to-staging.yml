@@ -54,7 +54,7 @@ jobs:
 
       # --- Failure Path (Create PR) ---
       - name: Create conflict branch and stage changes
-        if: steps.merge_attempt.outcome == 'failure' && steps.push_staging.outcome == 'failure'
+        if: steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure'
         id: setup_conflict_branch
         run: |
           echo "Merge failed, likely due to conflicts. Preparing PR branch."
@@ -92,7 +92,7 @@ jobs:
         # Only run if:
         # 1. The initial merge attempt failed ('failure')
         # 2. The conflict branch setup step actually staged changes ('true')
-        if: steps.merge_attempt.outcome == 'failure' && steps.setup_conflict_branch.outputs.conflict_branch_created == 'true'
+        if: (steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure') && steps.setup_conflict_branch.outputs.conflict_branch_created == 'true'
         uses: peter-evans/create-pull-request@v7 # Use the latest major version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
