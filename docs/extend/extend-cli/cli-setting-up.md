@@ -2,7 +2,7 @@
 Before you follow the development tutorials for creating a Zowe&trade; CLI plug-in, follow these steps to set up your environment.
 
 ## Prerequisites
-[Install Zowe CLI](../../user-guide/cli-installcli.md#methods-to-install-zowe-cli).
+[Install Zowe CLI](../../user-guide/cli-installcli.md).
 
 ## Initial setup
 
