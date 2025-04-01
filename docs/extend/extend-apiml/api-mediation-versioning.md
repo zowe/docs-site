@@ -38,7 +38,7 @@ REST APIs are a way how to access and manipulate textual
  In Zowe, a service instance refers to a specific deployment or configuration of a service. A service instance is a running copy of a service that can be interacted with or configured independently from other instances. For example, you might have multiple instances of the Zowe API ML, each with its own set of configuration parameters, APIs, and endpoints. An instance allows for flexibility in managing multiple environments, scaling, or offering different configurations of the same service to different users or use cases, and could apply to services or components that can be deployed multiple times. Instances are interchangeable whereby high availability can be provided.
 
 * **Swagger**  
- The Swagger specification instance is provided for a specific API version. For details about Swagger, see the [Swagger documentation](https://swagger.io/docs/specification/).
+ The Swagger specification instance is provided for a specific API version. For details about Swagger, see the Swagger documentation: swagger.io/docs/specification/ .
 
  * **Route**  
  Specifies how service URLs are mapped to the Gateway. The Gateway translates a URL based on the start of the base path on the Gateway, and is translated to a base path that is
@@ -48,7 +48,7 @@ REST APIs are a way how to access and manipulate textual
   * **Versioning**  
   APIs are versioned whereby the the major version (`v1`, `v2`) of the API is specified. Backward incompatible
  changes can be introduced only though changes of the major version. Any service can provide multiple
- versions of the API. For details about semantic versioning, see [Semantic Versioning 2.0.0](http://semver.org/).
+ versions of the API. For details about semantic versioning, see Semantic Versioning 2.0.0://semver.org/.
 
  * **API Association**  
  Details about how a specific API version is provided by a specific
@@ -62,9 +62,7 @@ REST APIs are a way how to access and manipulate textual
  provided by the service, and are determined by the service developer (API-related), system
  administrator (service-related), and can potentially be altered by the user.
 
- ![API Class Diagram](../../images/api-mediation/API-Class-Diagram.png)
 
- For a case example, see this [UML class diagram](https://en.wikipedia.org/wiki/Class_diagram).
 
  ## API Versioning
 
