@@ -1,0 +1,132 @@
+name: Merge Master into Docs Staging
+
+on:
+  # Schedule to run twice a week (e.g., Tuesday and Friday at 03:00 UTC)
+  # Adjust the cron schedule as needed: https://crontab.guru/
+  schedule:
+    - cron: '0 3 * * 2,5' # 3 AM UTC on Tuesday and Friday
+  pull_request:
+    branches: [ master ]
+  # Allow manual triggering from the Actions tab in GitHub
+  workflow_dispatch:
+
+# Set permissions for the GITHUB_TOKEN to allow pushing changes
+permissions:
+  contents: write # Required to push the merge commit
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs-staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs-staging       # Check out the target branch directly
+          token: ${{ secrets.GITHUB_TOKEN }} # Use the default token provided by Actions
+          fetch-depth: 0
+
+      - name: Set up Git user
+        run: |
+          git config user.name "Zowe Robot"
+          git config user.email "zowe-robot@users.noreply.github.com"
+
+      - name: Ensure docs-staging is up-to-date with remote
+        # This step is important in case the checkout wasn't perfectly fresh
+        # or if other actions modified the local branch before this job.
+        run: git pull origin docs-staging
+
+      - name: Attempt to merge master into docs-staging
+        id: merge_attempt # Give step an ID to check outcome later
+        run: |
+          echo "Attempting direct merge of origin/master into docs-staging..."
+          # Try to merge - exit code will be non-zero on conflict
+          git merge origin/master --no-ff --no-edit
+        # Allow this step to fail without stopping the job immediately
+        continue-on-error: true
+
+      - name: Push changes
+        run: |
+          echo "Pushing merged changes to docs-staging..."
+          git push origin docs-staging
+
+      # --- Failure Path (Create PR) ---
+      - name: Create conflict branch and stage changes
+        if: steps.merge_attempt.outcome == 'failure'
+        id: setup_conflict_branch
+        run: |
+          echo "Merge failed, likely due to conflicts. Preparing PR branch."
+          # Abort the failed merge attempt on docs-staging to clean the index
+          git merge --abort || echo "Merge abort failed (maybe not in merge state?)"
+
+          # Ensure we are on a clean docs-staging again
+          git checkout docs-staging
+          git reset --hard origin/docs-staging # Reset to remote state
+
+          # Create a unique branch name for the PR
+          CONFLICT_BRANCH="auto-merge/master-into-staging-$(date +%s)"
+          echo "Creating conflict branch: ${CONFLICT_BRANCH}"
+          git checkout -b "${CONFLICT_BRANCH}"
+
+          echo "Re-attempting merge on ${CONFLICT_BRANCH} to generate conflicts..."
+          # Re-run the merge, expecting it to fail and leave conflict markers
+          git merge origin/master --no-edit || echo "Merge conflict occurred as expected."
+
+          # Stage all changes, including conflict markers
+          echo "Staging conflicted files..."
+          git add .
+
+          # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
+          if git diff --cached --quiet; then
+            echo "No actual file changes detected after merge conflict. Cannot create PR."
+            echo "conflict_branch_created=false" >> $GITHUB_OUTPUT
+          else
+            echo "Staged changes detected."
+            echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
+            echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        # Only run if:
+        # 1. The initial merge attempt failed ('failure')
+        # 2. The conflict branch setup step actually staged changes ('true')
+        if: steps.merge_attempt.outcome == 'failure' && steps.setup_conflict_branch.outputs.conflict_branch_created == 'true'
+        uses: peter-evans/create-pull-request@v7 # Use the latest major version
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Commit message used by the action IF it needs to make an additional commit (usually not needed here as we pre-staged)
+          # commit-message: "chore: Stage conflicted merge of master into docs-staging"
+          committer: "Zowe Robot zowe-robot@users.noreply.github.com"
+          author: "Zowe Robot <zowe-robot@users.noreply.github.com>"
+          signoff: true
+          # The branch we created containing the conflicts
+          branch: ${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}
+          # The branch we want to merge *into* eventually
+          base: docs-staging
+          # Delete the conflict branch automatically when the PR is merged/closed
+          delete-branch: true
+          title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
+          body: |
+            Automated attempt to merge `master` into `docs-staging` resulted in conflicts.
+
+            Please resolve the conflicts in this pull request.
+
+            **Steps:**
+            1. Check out the branch `${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}` locally.
+            2. Resolve the merge conflicts in your editor.
+            3. Commit the resolved files (`git add .`, `git commit`).
+            4. Push the changes to the branch `${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}`.
+            5. Merge this Pull Request once conflicts are resolved and CI passes.
+
+            *Workflow run: [${{ github.workflow }}#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})*
+          labels: |
+            merge-conflict
+            automated-pr
+          # Optional: Assign users or teams
+          # assignees: your-github-username,another-username
+          # Optional: Request reviewers
+          # reviewers: your-team-name,username
+
+      - name: Notify failure if PR could not be created
+        if: steps.merge_attempt.outcome == 'failure' && steps.setup_conflict_branch.outputs.conflict_branch_created == 'false'
+        run: |
+          echo "::warning::Merge conflict detected, but no staged changes found after re-attempting merge. No PR created. Manual investigation may be needed."
