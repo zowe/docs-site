@@ -81,7 +81,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v16.x, v18.x, or v20.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
+- Node.js v18.x, v20.x, or v22.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
@@ -91,7 +91,10 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Java 
 
+One of the following Java versions:
+
 - IBM SDK for Java Technology Edition V8
+- IBM Semeru Runtime Certified Edition for z/OS V11.0.0
 
 ### z/OSMF (Optional) 
 

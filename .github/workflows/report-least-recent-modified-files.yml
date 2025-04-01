@@ -19,7 +19,7 @@ jobs:
           fetch-depth: '0'
       - name: Report and upload
         run: "cd docs; for file in $(find . -type f); do echo $(git log --pretty=format:%ai -n 1 --date=raw -w --follow -- $file) $file; done | sort > ../least-recent-files.txt"
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: least-recent-files.txt
           path: ./least-recent-files.txt

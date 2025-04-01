@@ -23,10 +23,6 @@ Configuring Zowe to use PassTickets involves two processes:
 
 ### Enabling the use of PassTickets in your External Security Manager (ESM)
 
-:::note
-Since Zowe 2.17 release it is no longer needed to disable the replay protection. If you are upgrading Zowe from a prior release, these protections can be activated again.
-:::
-
 This section applies to users who do not already have PassTickets enabled in the system, or users who need to define a PassTicket for a new APPLID. If you already have an APPLID that you intend to use to define your API service, skip to the section [Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service](#configuring-security-to-allow-zowe-api-gateway-to-generate-passtickets-for-an-api-service).
 
 :::tip
@@ -130,7 +126,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
     ```acf2
         SET PROFILE(PTKTDATA) DIV(SSIGNON)
-        INSERT <applid> SSKEY(<key-description>)
+        INSERT <applid> SSKEY(<key-description>) MULT-USE
         F ACF2,REBUILD(PTK),CLASS(P)
     ```
 
@@ -152,7 +148,7 @@ Follow these steps to enable PassTicket Support specific to your ESM. Consult wi
 
     ```acf2
         SET RESOURCE(PTK) 
-        RECKEY IRRPTAUTH ADD(applid.userid UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
+        RECKEY IRRPTAUTH ADD(<applid>.<userid> UID(<userid>) SERVICE(UPDATE,READ) ALLOW)
     ```
 
    - `<userid>`  
@@ -193,10 +189,10 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
         TSS ADDTO(department) PTKTDATA(IRRPTAUT) 
     ```
 
-3. Define PassTicket for application ID _applid_
+3. Define PassTicket for application ID _applid_ without replay protection:
 
     ```tss
-        TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>)
+        TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
     ```
 
 - **applid**  
@@ -208,7 +204,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 4. Permit access to the PassTicket resource defined in the previous step for the LDAP Server by executing the following command:
 
     ```tss
-        TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.applid) ACCESS(UPDATE)
+        TSS PERMIT(<stc-userid>) PTKTDATA(IRRPTAUTH.<applid>) ACCESS(UPDATE)
     ```
 
 - **stc-userid**  
@@ -251,7 +247,7 @@ This name is usually provided by the site security administrator.
 3. Define the profile for the application with the following command:
 
     ```racf
-        RDEFINE PTKTDATA <applid> UACC(NONE) SSIGNON(KEYMASKED(<key-description>))
+        RDEFINE PTKTDATA  <applid> UACC(NONE) APPLDATA('NO REPLAY PROTECTION') SSIGNON(KEYMASKED(<key-description>))
     ```
 
 - **key-description**  
@@ -259,10 +255,14 @@ This name is usually provided by the site security administrator.
 
 Replace `key-description` with the application name defined previously.
 
+:::caution Important
+PassTickets for the API service must have the replay protection switched off. This links a secured sign-on application key with the application.
+:::
+
 4. Allow the application ID (_applid_) to use PassTickets:
 
     ```racf
-        PERMIT IRRPTAUTH.applid.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
+        PERMIT IRRPTAUTH.<applid>.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
     ```
 
 - **userid**  

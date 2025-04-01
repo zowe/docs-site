@@ -27,6 +27,18 @@
 
    ![View JOB](../images/ze/ZE-jobs-get-jcl.gif)
 
+## Creating a job search filter
+
+1. Expand the **JOBS** tree in the **Side Bar**.
+2. Click on the **Search** icon next to a profile and enter search criteria.
+3. In the **Quick Pick**, select the **Create job search filter** option.
+4. Select a **Quick Pick** option to submit its respective value.
+
+   The entered value displays next to the **Quick Pick** option.
+5. Select the **Submit this query** option in the **Quick Pick** to create the filter.
+
+   The filter is saved as a **Quick Pick** option that displays when the **Search** icon is clicked. Remove the filter with Zowe Explorer's Edit History feature.
+
 ## Downloading spool content
 
 ### Downloading spool files from a job
@@ -69,6 +81,12 @@
    - **Date Completed**
    - **Job Name**
    - **Return Code**
+
+:::note
+
+To change the default sort order for jobs, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+
+:::
 
    ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
 

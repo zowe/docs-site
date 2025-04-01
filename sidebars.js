@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
       ],
     },
@@ -18,6 +19,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [
+        "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -199,6 +201,7 @@ module.exports = {
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
                 "user-guide/configuring-zowe-via-jcl",
+                "user-guide/configure-apiml-zosmf-workflow",
                 "user-guide/configure-zowe-zosmf-workflow",
               ],
             },
@@ -223,6 +226,7 @@ module.exports = {
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
+                "user-guide/tls-configuration",
                 "user-guide/configuring-at-tls-for-zowe-server",
               ],
             },
@@ -294,6 +298,7 @@ module.exports = {
                       "items": [
                         "user-guide/api-mediation/configuration-connection-limits",
                         "user-guide/api-mediation/configuration-gateway-timeouts",
+                        "user-guide/api-mediation/customizing-gateway-rate-limiter",
                         "user-guide/api-mediation/configuration-customizing-java-heap-sizes"
                       ]
                     }
@@ -360,6 +365,7 @@ module.exports = {
               ],
             },
             "user-guide/cli-install-configure-install-online-registry-proxy",
+            "user-guide/cli-installcli",
             "user-guide/cli-updatingcli",
             {
               type: "category",
@@ -378,8 +384,8 @@ module.exports = {
                 },
               ],
             },
-            "user-guide/cli-uninstall",
             "user-guide/cli-install-verify-your-installation",
+            "user-guide/cli-uninstall",
           ],
         },
 
@@ -518,6 +524,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/mvd-using" },
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270"
           ],
         },
         {
@@ -647,14 +654,7 @@ module.exports = {
               items: [
                 "user-guide/cli-installplugins",
                 "user-guide/cli-cicsplugin",
-                {
-                  type: "category",
-                  label: "IBM® Db2® Database Plug-in for Zowe CLI",
-                  link: { type: "doc", id: "user-guide/cli-db2plugin" },
-                  items: [
-                    "user-guide/cli-db2-install-m1",
-                  ],
-                },
+                "user-guide/cli-db2plugin",
                 "user-guide/cli-ftpplugin",
                 "user-guide/cli-mqplugin",
                 "user-guide/cli-idfplugin",
@@ -667,6 +667,7 @@ module.exports = {
           label: "Using Zowe Explorer",
           link: { type: "doc", id: "user-guide/ze-usage" },
           items: [
+            "user-guide/ze-managing-profiles",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
@@ -820,7 +821,6 @@ module.exports = {
             "extend/extend-desktop/mvd-apptoappcommunication",
             "extend/extend-desktop/mvd-iframecomm",
             "extend/extend-desktop/mvd-errorreportingui",
-            "extend/extend-desktop/mvd-server-config",
             "extend/extend-desktop/mvd-logutility",
           ],
         },
@@ -981,6 +981,7 @@ module.exports = {
     "contribute/contributing",
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
     {
@@ -1091,7 +1092,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.0.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
     },
   ],
 }

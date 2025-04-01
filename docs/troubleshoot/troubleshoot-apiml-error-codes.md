@@ -599,44 +599,44 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT500E
 
-  Failed to parse the client certificate forwarded from the central Gateway. Error message %s. The client certificate was %s
+  Failed to parse the client certificate forwarded from the Gateway. Hostname is %s. Error message is %s. The client certificate was %s
 
   **Reason:**
 
-  The string sent by the central Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
+  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that the forwarding of client certificate is enabled also in the central Gateway. Check for any error messages from the central Gateway.
+  Ensure that forwarding of the client certificate is also enabled in the Gateway. Check for any error messages from the Gateway.
 
 ### ZWEAT501E
 
-  Failed to get trusted certificates from the central Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
+  Failed to get trusted certificates from the Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
 
   **Reason:**
 
   The response status code is different from expected 200 OK.
 
   **Action:**
-
-  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
-  Invalid URL specified to get trusted certificates from the central Gateway. Error message: %s
-
+  Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
+  
   **Reason:**
-
-  The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
-
+  
+  The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
+  
   **Action:**
 
   Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the central Gateway. Error message: %s
-
+  An error occurred during retrieval of trusted certificates from the Gateway. Certificate endpoint is %s. Error message: %s
+  
   **Reason:**
 
   The communication with the gateway got interrupted or an error occurred during processing the response.
@@ -647,27 +647,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT504E
 
-  Failed to parse the trusted certificates provided by the central Gateway. Error message %s
-
+  Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
+  
   **Reason:**
-
-  The string sent by the central Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
-
+  
+  The string sent by the Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
+  
   **Action:**
-
-  Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
-
-### ZWEAT505E
-
-  Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
-
-  **Reason:**
-
-  The Gateway performs additional check of request certificates when the central Gateway forwards incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to proper central Gateway certificates endpoint.
-
-  **Action:**
-
-  Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
 
@@ -1066,6 +1054,19 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Ensure that both provided paths are resolved to valid trust store and valid key store
+
+### ZWEAS504E
+
+  Internal server error while generating PassTicket.
+
+  **Reason:**
+
+  Unable to generate PassTicket.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+  
 
 ## Discovery service messages
 
