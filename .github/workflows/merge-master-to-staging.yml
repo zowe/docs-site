@@ -100,8 +100,6 @@ jobs:
           committer: "Zowe Robot <zowe-robot@users.noreply.github.com>"
           author: "Zowe Robot <zowe-robot@users.noreply.github.com>"
           signoff: true
-          # The branch we created containing the conflicts
-          branch: ${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}
           # The branch we want to merge *into* eventually
           base: docs-staging
           # Delete the conflict branch automatically when the PR is merged/closed
