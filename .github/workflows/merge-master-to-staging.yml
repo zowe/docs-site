@@ -40,11 +40,12 @@ jobs:
         run: |
           echo "Attempting direct merge of origin/master into docs-staging..."
           # Try to merge - exit code will be non-zero on conflict
-          git merge -S --signoff origin/master --no-ff --no-edit
+          git merge --signoff origin/master --no-ff --no-edit
         # Allow this step to fail without stopping the job immediately
         continue-on-error: true
 
       - name: Push changes
+        if: steps.merge_attempt.outcome == 'success'
         run: |
           echo "Pushing merged changes to docs-staging..."
           git push origin docs-staging
