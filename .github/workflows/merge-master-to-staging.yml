@@ -83,8 +83,8 @@ jobs:
             echo "No actual file changes detected after merge conflict."
           else
             echo "Staged changes detected."
-            echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
           fi
+          echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
           echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
@@ -97,7 +97,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # Commit message used by the action IF it needs to make an additional commit (usually not needed here as we pre-staged)
           # commit-message: "chore: Stage conflicted merge of master into docs-staging"
-          committer: "Zowe Robot zowe-robot@users.noreply.github.com"
+          committer: "Zowe Robot <zowe-robot@users.noreply.github.com>"
           author: "Zowe Robot <zowe-robot@users.noreply.github.com>"
           signoff: true
           # The branch we created containing the conflicts
