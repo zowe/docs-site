@@ -11,9 +11,9 @@ This article does not cover the client methods to call API ML and authenticate. 
 
 To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
 
-- [Accepting JWT](#accepting-jwt) (recommended)
-- [Accepting SAF IDT](#accepting-saf-idt)
-- [Accepting PassTickets](#accepting-passtickets)
+- [Accepting JWT token (recommended)](#accepting-jwt)
+- [Accepting SAF IDT token](#accepting-saf-idt)
+- [Accepting PassTicket](#accepting-passtickets)
 
 Additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
 
@@ -21,6 +21,7 @@ Additional possibilities can potentially be leveraged to enable Single Sign On b
     **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
 * [Accepting client certificates via x509 scheme](#accepting-client-certificates-via-x509-scheme)
 * [Accepting z/OSMF LTPA token](#accepting-zosmf-ltpa-token)
+
 
 Service configuration is generally provided in the yaml file when using one of the enablers outlined in this section. Key to general configuration is the `authentication` object. The `scheme` property under the `authentication` object states what type of authentication the service expects and is shared across all types of authentication.
 
@@ -35,7 +36,7 @@ authentication:
 * **authentication.scheme**  
 Specifies a service authentication scheme. The following schemes participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
 
-In the event that there is an issue with authentication, API Mediation Layer sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
+In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
 ## Accepting JWT
 
@@ -102,7 +103,7 @@ authentication:
 
 ## Accepting client certificates via x509 scheme
 
-While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML validates the certificate for you and ideally provide a Zowe JWT. 
+While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
 
 The `x509` scheme value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the downstream service, but rather the certificate that is forwarded in the header that authenticates the user.
 
@@ -152,7 +153,7 @@ Both the API ML Gateway and the downstream service must conform to the following
 
 ### API ML Gateway Requirements
 
-- Enable client cetificate forwarding in the `zowe.yaml`
+- Enable client certificate forwarding in the `zowe.yaml`
     ```yaml
    components:
       gateway:    
