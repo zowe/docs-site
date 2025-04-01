@@ -54,7 +54,7 @@ jobs:
 
       # --- Failure Path (Create PR) ---
       - name: Create conflict branch and stage changes
-        if: steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure'
+        if: steps.merge_attempt.outcome == 'failure'
         id: setup_conflict_branch
         run: |
           echo "Merge failed, likely due to conflicts. Preparing PR branch."
