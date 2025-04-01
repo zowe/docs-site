@@ -71,7 +71,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   RACDCERT ID(<userid>) MAP 
   SDNFILTER('<subject's-distinguished-name-filter>')
   WITHLABEL('<label>')
-  SETROPTS RACLIST(DIGTMAP) REFRESH
+  SETROPTS RACLIST(DIGTNMAP) REFRESH
   ```
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
