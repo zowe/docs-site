@@ -50,6 +50,7 @@ jobs:
         run: |
           echo "Pushing merged changes to docs-staging..."
           git push origin docs-staging
+        continue-on-error: true
 
       # --- Failure Path (Create PR) ---
       - name: Create conflict branch and stage changes
