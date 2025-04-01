@@ -65,33 +65,11 @@ jobs:
           git checkout docs-staging
           git reset --hard origin/docs-staging # Reset to remote state
 
-          # Create a unique branch name for the PR
-          CONFLICT_BRANCH="auto-merge/master-into-staging-$(date +%s)"
-          echo "Creating conflict branch: ${CONFLICT_BRANCH}"
-          git checkout -b "${CONFLICT_BRANCH}"
-
-          echo "Re-attempting merge on ${CONFLICT_BRANCH} to generate conflicts..."
-          # Re-run the merge, expecting it to fail and leave conflict markers
-          git merge origin/master --no-edit || echo "Merge conflict occurred as expected."
-
-          # Stage all changes, including conflict markers
-          echo "Staging conflicted files..."
-          git add .
-
-          # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
-          if git diff --cached --quiet; then
-            echo "No actual file changes detected after merge conflict."
-          else
-            echo "Staged changes detected."
-          fi
-          echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
-          echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
-
       - name: Create Pull Request
         # Only run if:
         # 1. The initial merge attempt failed ('failure')
         # 2. The conflict branch setup step actually staged changes ('true')
-        if: (steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure') && steps.setup_conflict_branch.outputs.conflict_branch_created == 'true'
+        if: steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure'
         uses: peter-evans/create-pull-request@v7 # Use the latest major version
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -106,20 +84,9 @@ jobs:
           delete-branch: true
           title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
           body: |
-            Automated attempt to merge `master` into `docs-staging` resulted in conflicts.
+            Automated attempt to merge `master` into `docs-staging` failed.
 
-            Please resolve the conflicts in this pull request.
-
-            **Steps:**
-            1. Check out the branch `${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}` locally.
-            2. Resolve the merge conflicts in your editor.
-            3. Commit the resolved files (`git add .`, `git commit`).
-            4. Push the changes to the branch `${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}`.
-            5. Merge this Pull Request once conflicts are resolved and CI passes.
-
-            *Workflow run: [${{ github.workflow }}#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})*
           labels: |
-            merge-conflict
             automated-pr
           # Optional: Assign users or teams
           # assignees: your-github-username,another-username
