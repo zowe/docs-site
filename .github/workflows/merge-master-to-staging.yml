@@ -42,6 +42,7 @@ jobs:
           echo "Attempting direct merge of origin/master into docs-staging..."
           # Try to merge - exit code will be non-zero on conflict
           git merge --signoff origin/master --no-ff --no-edit
+
         # Allow this step to fail without stopping the job immediately
         continue-on-error: true
 
@@ -49,8 +50,16 @@ jobs:
         if: steps.merge_attempt.outcome == 'success'
         id: push_staging
         run: |
-          echo "Pushing merged changes to docs-staging..."
-          git push origin docs-staging
+          
+          commit_count=$(git rev-list origin/docs-staging..HEAD --count)
+          echo "Commits to push: ${commit_count}"
+          if [[ "${commit_count}" -gt 0 ]]; then
+            echo "Changes detected that need pushing."
+            echo "Pushing merged changes to docs-staging..."
+            git push origin docs-staging
+          else
+            echo "No new commits to push. Local branch is already up-to-date with remote after merge."
+          fi
         continue-on-error: true
 
       # --- Failure Path (Create PR) ---
