@@ -7,8 +7,8 @@ As an extender of API Mediation Layer, review how service routing thorough the G
 
 Choose from the following routing methods:
 
-- 
-  - [Routing with versioning](#routing-with-versioning))
+- [Understanding service routing through the Gateway](#understanding-service-routing-through-the-gateway)
+  - [Routing with versioning](#routing-with-versioning)
   - [Routing without versioning](#routing-without-versioning)
 
 
