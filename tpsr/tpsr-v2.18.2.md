@@ -2193,7 +2193,7 @@
 | readable-stream | 2.3.7 | MIT | [readable-stream](https://github.com/nodejs/readable-stream#readme) | 
 | safe-buffer | 5.1.2 | MIT | [safe-buffer](https://github.com/feross/safe-buffer) | 
 | string_decoder | 1.1.1 | MIT | [string_decoder](https://github.com/nodejs/string_decoder) | 
-| tar-fs | 1.16.3 | MIT | [tar-fs](https://github.com/mafintosh/tar-fs) | 
+| tar-fs | 1.16.4 | MIT | [tar-fs](https://github.com/mafintosh/tar-fs) | 
 | tar-stream | 1.6.2 | MIT | [tar-stream](https://github.com/mafintosh/tar-stream) | 
 | targz | 1.0.1 | MIT | [targz](https://github.com/miskun/targz#readme) | 
 | to-buffer | 1.1.1 | MIT | [to-buffer](https://github.com/mafintosh/to-buffer) | 
@@ -4448,7 +4448,7 @@
 | Third-party Software | Version | License | GitHub |
 | -------------------- | --------| ------- | ------ |
 | abbrev | 2.0.0 | ISC | [abbrev](https://github.com/npm/abbrev-js#readme) | 
-| agent-base | 7.1.0 | MIT | [agent-base](https://github.com/TooTallNate/proxy-agents#readme) | 
+| agent-base | 7.1.0 | MIT | [agent-base](https://github.com/TooTallNate/proxy-agents.git) | 
 | aggregate-error | 3.1.0 | MIT | [aggregate-error](https://github.com/sindresorhus/aggregate-error#readme) | 
 | ansi-regex | 5.0.1 | MIT | [ansi-regex](https://github.com/chalk/ansi-regex#readme) | 
 | ansi-regex | 6.0.1 | MIT | [ansi-regex](https://github.com/chalk/ansi-regex#readme) | 
@@ -4480,7 +4480,7 @@
 | color-name | 1.1.3 | MIT | [color-name](https://github.com/dfcreative/color-name) | 
 | color-name | 1.1.4 | MIT | [color-name](https://github.com/colorjs/color-name) | 
 | colors | 1.4.0 | MIT | [colors](https://github.com/Marak/colors.js) | 
-| commander | 5.1.0 | MIT | [commander](https://github.com/tj/commander.js.git) | 
+| commander | 5.1.0 | MIT | [commander](https://github.com/tj/commander.js#readme) | 
 | comment-json | 4.1.1 | MIT | [comment-json](https://github.com/kaelzhang/node-comment-json#readme) | 
 | concat-map | 0.0.1 | MIT | [concat-map](https://github.com/substack/node-concat-map) | 
 | core-util-is | 1.0.3 | MIT | [core-util-is](https://github.com/isaacs/core-util-is#readme) | 
@@ -4500,7 +4500,7 @@
 | emoji-regex | 8.0.0 | MIT | [emoji-regex](https://mths.be/emoji-regex) | 
 | emoji-regex | 9.2.2 | MIT | [emoji-regex](https://mths.be/emoji-regex) | 
 | encoding | 0.1.13 | MIT | [encoding](https://github.com/andris9/encoding#readme) | 
-| entities | 4.5.0 | BSD-2-Clause | [entities](https://github.com/fb55/entities.git) | 
+| entities | 4.5.0 | BSD-2-Clause | [entities](https://github.com/fb55/entities#readme) | 
 | env-paths | 2.2.1 | MIT | [env-paths](https://github.com/sindresorhus/env-paths#readme) | 
 | err-code | 2.0.3 | MIT | [err-code](https://github.com/IndigoUnited/js-err-code#readme) | 
 | escape-string-regexp | 1.0.5 | MIT | [escape-string-regexp](https://github.com/sindresorhus/escape-string-regexp) | 
@@ -4616,7 +4616,7 @@
 | once | 1.4.0 | ISC | [once](https://github.com/isaacs/once#readme) | 
 | opener | 1.5.2 | (WTFPL OR MIT) | [opener](https://github.com/domenic/opener#readme) | 
 | p-limit | 2.3.0 | MIT | [p-limit](https://github.com/sindresorhus/p-limit#readme) | 
-| p-locate | 4.1.0 | MIT | [p-locate](https://github.com/sindresorhus/p-locate.git) | 
+| p-locate | 4.1.0 | MIT | [p-locate](https://github.com/sindresorhus/p-locate#readme) | 
 | p-map | 4.0.0 | MIT | [p-map](https://github.com/sindresorhus/p-map#readme) | 
 | p-try | 2.2.0 | MIT | [p-try](https://github.com/sindresorhus/p-try#readme) | 
 | pacote | 17.0.6 | ISC | [pacote](https://github.com/npm/pacote#readme) | 
