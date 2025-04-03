@@ -72,8 +72,8 @@ jobs:
           
 
           # Ensure we are on a clean docs-staging again
-          git checkout docs-staging
-          git reset --hard origin/docs-staging # Reset to remote state
+          git checkout reboot/merge-automation
+          # git reset --hard origin/docs-staging # Reset to remote state
           
           # Create a unique branch name for the PR
           CONFLICT_BRANCH="auto-merge/master-into-staging-$(date +%s)"
