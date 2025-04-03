@@ -629,7 +629,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to create the file for stdin(`<file>`) - <error-text>.
+  Failed to create the file for stdin(`<file>`) - `<error-text>`.
 
   **Action:**
 
@@ -641,7 +641,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to open the file for stdin(`<file>`) - <error-text>.
+  Failed to open the file for stdin(`<file>`) - `<error-text>`.
 
   **Action:**
 
