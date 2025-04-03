@@ -60,7 +60,9 @@ jobs:
           else
             echo "No new commits to push. Local branch is already up-to-date with remote after merge."
           fi
+          git checkout reboot/merge-automation
         continue-on-error: true
+
 
       - name: Create Pull Request
         id: create_pr # Give this step an ID if you need its outputs later
