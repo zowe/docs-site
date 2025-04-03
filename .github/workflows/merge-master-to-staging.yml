@@ -69,7 +69,7 @@ jobs:
         run: |
           echo "Merge failed, likely due to conflicts. Preparing PR branch."
           # Abort the failed merge attempt on docs-staging to clean the index
-          git merge --abort || echo "Merge abort failed (maybe not in merge state?)"
+          
 
           # Ensure we are on a clean docs-staging again
           git checkout docs-staging
@@ -88,7 +88,7 @@ jobs:
           # Stage all changes, including conflict markers
           echo "Staging conflicted files..."
           git add .
-          git commit - "test"
+          git commit -m "test"
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
           echo "No actual file changes detected after merge conflict."
