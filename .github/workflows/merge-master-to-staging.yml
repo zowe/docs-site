@@ -92,6 +92,9 @@ jobs:
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
           echo "No actual file changes detected after merge conflict."
+          ls /home/runner/work/docs-site/docs-site/.github/scripts/open_pr
+          ls /home/runner/work/docs-site/docs-site/.github/
+          ls /home/runner/work/docs-site/docs-site/.github/scripts
           else
           echo "Staged changes detected."
           fi
