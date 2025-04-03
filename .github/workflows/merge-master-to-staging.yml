@@ -60,18 +60,18 @@ jobs:
           else
             echo "No new commits to push. Local branch is already up-to-date with remote after merge."
           fi
-          git checkout reboot/merge-automation
+
         continue-on-error: true
 
       - name: Install PR Script Dependencies
-        # Ensure these conditions are TRUE when the action needs to run
+        if: steps.merge_attempt.outcome == 'failure'
         run: npm install
         # Ensure this path is exactly where package.json/package-lock.json are
         working-directory: ./.github/scripts/open_pr
 
       - name: Create Pull Request
         id: create_pr # Give this step an ID if you need its outputs later
-
+        if: steps.merge_attempt.outcome == 'failure'
         uses: ./.github/scripts/open_pr
         with: # Pass inputs to the script via environment variables, prefixed with INPUT_
           github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
@@ -82,9 +82,3 @@ jobs:
             Automated attempt to merge `master` into `docs-staging` failed.
 
           pr-labels: 'automated-pr,merge-conflict'
-
-
-      - name: Notify failure if PR could not be created
-        if: steps.merge_attempt.outcome == 'failure' && steps.setup_conflict_branch.outputs.conflict_branch_created == 'false'
-        run: |
-          echo "::warning::Merge conflict detected, but no staged changes found after re-attempting merge. No PR created. Manual investigation may be needed."
