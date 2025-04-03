@@ -3,7 +3,7 @@
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-You can authenticate against API ML onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs. 
+In Zowe, you can authenticate against API ML onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs. 
 
 There are two methods to enable client certificate functionality: 
 * The original and default method via ZSS 
@@ -25,7 +25,7 @@ For information about the usage of the client certificate when this feature is e
 
 ## Configure Internal API ML Mapper
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
+Use the following procedure to enable the zowe.yaml file to use an x509 client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
