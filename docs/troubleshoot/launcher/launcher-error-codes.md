@@ -157,7 +157,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  The command `<commnad>` was received.
+  The command `<command>` was received.
 
   **Action:**
 
