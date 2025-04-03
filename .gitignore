@@ -1,6 +1,7 @@
 # Dependencies
 /node_modules
 
+.github/scripts/open_pr/node_modules
 # Production
 /build
 

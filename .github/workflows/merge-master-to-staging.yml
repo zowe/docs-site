@@ -105,12 +105,12 @@ jobs:
         id: create_pr # Give this step an ID if you need its outputs later
         run: node index.js
         working-directory: .github/scripts/open_pr # Execute in the script's directory
-        env: # Pass inputs to the script via environment variables, prefixed with INPUT_
-          INPUT_GITHUB-TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          INPUT_CONFLICT-BRANCH: ${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}
-          INPUT_BASE-BRANCH: 'docs-staging' # Or make dynamic if needed
-          INPUT_PR-TITLE: 'Merge Conflict: master into docs-staging (Automated Attempt)'
-          INPUT_PR-BODY: |
+        with: # Pass inputs to the script via environment variables, prefixed with INPUT_
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          conflict-branch: ${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}
+          base-branch: 'docs-staging' # Or make dynamic if needed
+          pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
+          pr-body: |
             Automated attempt to merge `master` into `docs-staging` resulted in conflicts.
             
             Please resolve the conflicts in this pull request.
@@ -121,9 +121,8 @@ jobs:
             3. Commit the resolved files (`git add .`, `git commit`).
             4. Push the changes to the branch `${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}`.
             5. Merge this Pull Request once conflicts are resolved and CI passes.
-            
-            *Workflow run: [${{ github.workflow }}#${{ github.run_id }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})*
-          INPUT_PR-LABELS: 'automated-pr,merge-conflict' # Comma-separated labels
+
+          pr-labels: 'automated-pr,merge-conflict' # Comma-separated labels
 
 
       - name: Notify failure if PR could not be created
