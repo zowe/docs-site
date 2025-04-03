@@ -64,7 +64,7 @@ jobs:
 
       # --- Failure Path (Create PR) ---
       - name: Create conflict branch and stage changes
-        if: steps.merge_attempt.outcome == 'failure'
+
         id: setup_conflict_branch
         run: |
           echo "Merge failed, likely due to conflicts. Preparing PR branch."
@@ -79,15 +79,16 @@ jobs:
           CONFLICT_BRANCH="auto-merge/master-into-staging-$(date +%s)"
           echo "Creating conflict branch: ${CONFLICT_BRANCH}"
           git checkout -b "${CONFLICT_BRANCH}"
-
+          touch text.txt
+          
           echo "Re-attempting merge on ${CONFLICT_BRANCH} to generate conflicts..."
           # Re-run the merge, expecting it to fail and leave conflict markers
-          git merge origin/master --no-edit || echo "Merge conflict occurred as expected."
+          
 
           # Stage all changes, including conflict markers
           echo "Staging conflicted files..."
           git add .
-
+          git commit - "test"
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
           echo "No actual file changes detected after merge conflict."
@@ -101,7 +102,6 @@ jobs:
         # Only run if:
         # 1. The initial merge attempt failed ('failure')
         # 2. The conflict branch setup step actually staged changes ('true')
-        if: steps.merge_attempt.outcome == 'failure' || steps.push_staging.outcome == 'failure'
         id: create_pr # Give this step an ID if you need its outputs later
         run: node index.js
         working-directory: .github/scripts/open_pr # Execute in the script's directory
