@@ -1,15 +1,11 @@
 
-# .github/scripts/create-merge-conflict-pr/action.yml
 name: 'Create Merge Conflict Pull Request'
 description: 'Creates a GitHub Pull Request when an automated merge results in conflicts, using details provided.'
-author: 'Zowe Robot' # Or your name/org
 
-# Define the inputs the action expects
 inputs:
   github-token:
     description: 'GitHub token for authenticating API requests.'
     required: true
-    # No default, must be provided (usually via secrets.GITHUB_TOKEN)
   pr-branch:
     description: 'The pull request branch name.'
     required: true
@@ -19,8 +15,6 @@ inputs:
   pr-title:
     description: 'The title for the pull request.'
     required: true
-    # You can provide a default here if desired, but often set in the workflow
-    # default: 'Merge Conflict: Automated Attempt Failed'
   pr-body:
     description: 'The body content for the pull request (can be multiline).'
     required: true

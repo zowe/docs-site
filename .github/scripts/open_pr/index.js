@@ -1,4 +1,3 @@
-// .github/scripts/create-merge-conflict-pr/index.js
 const core = require('@actions/core');
 const github = require('@actions/github');
 
@@ -31,8 +30,7 @@ async function run() {
             head: prBranch,
             base: baseBranch,
             body: prBody,
-            maintainer_can_modify: true, // Optional
-            // draft: false, // Optional
+            maintainer_can_modify: true
         });
 
         core.info(`Successfully created Pull Request #${pullRequest.number}: ${pullRequest.html_url}`);
