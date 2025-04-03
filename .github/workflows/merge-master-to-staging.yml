@@ -101,21 +101,24 @@ jobs:
           echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
           echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
 
-      - name: Install PR Script Dependencies
-          # Ensure these conditions are TRUE when the action needs to run
-        run: npm install
-        # Ensure this path is exactly where package.json/package-lock.json are
-        working-directory: ./.github/scripts/open_pr
-
       - name: Create Pull Request
         id: create_pr # Give this step an ID if you need its outputs later
-        uses: ./.github/scripts/open_pr
-        with: # Pass inputs to the script via environment variables, prefixed with INPUT_
-          github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
-          conflict-branch: ${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}
-          base-branch: 'docs-staging' # Or make dynamic if needed
-          pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
-          pr-body: |
+        uses: peter-evans/create-pull-request@v7 # Use the latest major version
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Commit message used by the action IF it needs to make an additional commit (usually not needed here as we pre-staged)
+          # commit-message: "chore: Stage conflicted merge of master into docs-staging"
+          committer: "Zowe Robot <zowe-robot@users.noreply.github.com>"
+          author: "Zowe Robot <zowe-robot@users.noreply.github.com>"
+          signoff: true
+          # The branch we want to merge *into* eventually
+          base: docs-staging
+          branch: ${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}
+          # Delete the conflict branch automatically when the PR is merged/closed
+          delete-branch: true
+          title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
+          body: |
+            
             Automated attempt to merge `master` into `docs-staging` resulted in conflicts.
             
             Please resolve the conflicts in this pull request.
@@ -126,15 +129,9 @@ jobs:
             3. Commit the resolved files (`git add .`, `git commit`).
             4. Push the changes to the branch `${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}`.
             5. Merge this Pull Request once conflicts are resolved and CI passes.
-
-          pr-labels: 'automated-pr,merge-conflict' # Comma-separated labels
-        # Only run if:
-        # 1. The initial merge attempt failed ('failure')
-        # 2. The conflict branch setup step actually staged changes ('true')
-
-
-
-
+          labels: |
+            merge-conflict
+            automated-pr  
 
       - name: Notify failure if PR could not be created
         if: steps.merge_attempt.outcome == 'failure' && steps.setup_conflict_branch.outputs.conflict_branch_created == 'false'
