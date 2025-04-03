@@ -1,10 +1,8 @@
-  
-  # Error Message Codes
-  
-  The following error message codes may appear on Zowe Launcher SYSPRINT. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
-  
-  ## Zowe Launcher informational messages
-  
+# Error Message Codes
+
+The following error message codes may appear on Zowe Launcher SYSPRINT. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues.
+
+## Zowe Launcher informational messages
 
 ### ZWEL0001I
 
@@ -321,9 +319,9 @@
   **Action:**
 
   No action required.
-  
-  ## Zowe Launcher error messages
-  
+
+
+## Zowe Launcher error messages
 
 ### ZWEL0026E
 
@@ -359,7 +357,7 @@
 
   **Action:**
 
-  Review the components defined in configuration (identified by message `ZWEL0023I`).
+  Review the components defined in the configuration (identified by message `ZWEL0023I`).
 
 ### ZWEL0029E
 
@@ -371,7 +369,7 @@
 
   **Action:**
 
-  Review the components defined in configuration (identified by message `ZWEL0023I`).
+  Review the components defined in the configuration (identified by message `ZWEL0023I`).
 
 ### ZWEL0030E
 
@@ -439,7 +437,7 @@
 
   **Reason:**
 
-  Invalid command line arguments, provide `<HA_INSTANCE_ID>` as a first argument
+  Invalid command line arguments, provide `<HA_INSTANCE_ID>` as a first argument.
 
   **Action:**
 
@@ -455,7 +453,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0037E
 
@@ -479,7 +477,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0039E
 
@@ -539,7 +537,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0044E
 
@@ -551,7 +549,55 @@
 
   **Action:**
 
-  :x:
+  Contact support.
+
+### ZWEL0045E
+
+  error converting zowe.yaml file - %s
+
+  **Reason:**
+
+  Error converting zowe.yaml file - `<path-to-zowe-yaml>`.
+
+  **Action:**
+
+  Contact support.
+
+### ZWEL0046E
+
+  error reading zowe.yaml file - %s
+
+  **Reason:**
+
+  There is an error while reading zowe.yaml file - `<path-to-zowe.yaml>`
+
+  **Action:**
+
+  Contact support.
+
+### ZWEL0047E
+
+  failed to parse zowe.yaml - %s
+
+  **Reason:**
+
+  Failed to parse the zowe.yaml - `<path-to-zowe-yaml>`.
+
+  **Action:**
+
+  Contact support.
+
+### ZWEL0048E
+
+  failed to open zowe.yaml - %s: %s
+
+  **Reason:**
+
+  Failed to open zowe.yaml - `<path-to-zowe-yaml>`:?
+
+  **Action:**
+
+  Contact support.
 
 ### ZWEL0049E
 
@@ -563,7 +609,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0050E
 
@@ -575,7 +621,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0055E
 
@@ -587,7 +633,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0056E
 
@@ -599,7 +645,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0057E
 
@@ -611,7 +657,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0059E
 
@@ -623,7 +669,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0060E
 
@@ -635,7 +681,19 @@
 
   **Action:**
 
-  :x:
+  Contact support.
+
+### ZWEL0061E
+
+  failed to find %s='%s', check if the file exists
+
+  **Reason:**
+
+  Failed to find ?=?, check if the file exists.
+
+  **Action:**
+
+  Contact support.
 
 ### ZWEL0062E
 
@@ -647,7 +705,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0064E
 
@@ -659,7 +717,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0065E
 
@@ -671,7 +729,7 @@
 
   **Action:**
 
-  :x:
+  Contact support.
 
 ### ZWEL0067E
 
@@ -743,7 +801,18 @@
 
   **Action:**
 
-  Review the runtime directory
+  For the `status=5`, locate the `zowe.runtimeDirectory` in the configuration.
+
+  Check the `zowe.runtimeDirectory/schemas` contains four `.json` files shown below:
+
+  ```
+  manifest-schema.json
+  server-common-json
+  trivial-component-schema.json
+  zowe-yaml-schema.json
+  ```
+
+  On occasion the error occurs because the `zowe.runtimeDirectory` is pointing to a valid directory, but one which doesn't contain a valid Zowe runtime environment is one of the first failures during a Zowe launch.
 
 ### ZWEL0074E
 
@@ -756,9 +825,20 @@
   **Action:**
 
   Contact support.
-  
-  ## Zowe Launcher warning messages
-  
+
+## Zowe Launcher warning messages
+
+### ZWEL0051W
+
+  failed to read zowe.yaml, launcher will use default settings
+
+  **Reason:**
+
+  Failed to read zowe.yaml, launcher will use default settings.
+
+  **Action:**
+
+  Contact support.
 
 ### ZWEL0052W
 
@@ -795,6 +875,11 @@
   **Action:**
 
   No action required.
+
+### ZWEL0063W
+
+  Component %s(%d) will be terminated using SIGKILL
+
   **Reason:**
 
   Component `<component-name>`(`<process-id>`) will be terminated using `SIGKILL`.
