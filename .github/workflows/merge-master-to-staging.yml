@@ -101,6 +101,12 @@ jobs:
           echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
           echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
 
+      - name: Install PR Script Dependencies
+          # Ensure these conditions are TRUE when the action needs to run
+        run: npm ci
+        # Ensure this path is exactly where package.json/package-lock.json are
+        working-directory: ./.github/scripts/open_pr
+
       - name: Create Pull Request
         id: create_pr # Give this step an ID if you need its outputs later
         uses: ./.github/scripts/open_pr
