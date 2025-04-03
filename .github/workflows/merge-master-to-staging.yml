@@ -92,9 +92,6 @@ jobs:
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
           echo "No actual file changes detected after merge conflict."
-          ls /home/runner/work/docs-site/docs-site/.github/scripts/open_pr
-          ls /home/runner/work/docs-site/docs-site/.github/
-          ls /home/runner/work/docs-site/docs-site/.github/scripts
           else
           echo "Staged changes detected."
           fi
@@ -105,7 +102,7 @@ jobs:
         id: create_pr # Give this step an ID if you need its outputs later
         uses: peter-evans/create-pull-request@v7 # Use the latest major version
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
           # Commit message used by the action IF it needs to make an additional commit (usually not needed here as we pre-staged)
           # commit-message: "chore: Stage conflicted merge of master into docs-staging"
           committer: "Zowe Robot <zowe-robot@users.noreply.github.com>"
@@ -113,7 +110,7 @@ jobs:
           signoff: true
           # The branch we want to merge *into* eventually
           base: docs-staging
-          branch: ${{ steps.setup_conflict_branch.outputs.conflict_branch_name }}
+          branch: reboot/merge-automation
           # Delete the conflict branch automatically when the PR is merged/closed
           delete-branch: true
           title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
