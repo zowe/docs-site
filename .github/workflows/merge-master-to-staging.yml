@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: docs-staging       # Check out the target branch directly
-          token: ${{ secrets.GITHUB_TOKEN }} # Use the default token provided by Actions
+          token: ${{ secrets.ZOWE_ROBOT_TOKEN }} # Use the default token provided by Actions
           fetch-depth: 0
 
       - name: Set up Git user
@@ -111,7 +111,7 @@ jobs:
         id: create_pr # Give this step an ID if you need its outputs later
         uses: ./.github/scripts/open_pr
         with: # Pass inputs to the script via environment variables, prefixed with INPUT_
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
           conflict-branch: ${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}
           base-branch: 'docs-staging' # Or make dynamic if needed
           pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
