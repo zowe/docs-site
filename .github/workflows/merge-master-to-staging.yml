@@ -89,6 +89,7 @@ jobs:
           echo "Staging conflicted files..."
           git add .
           git commit -m "test"
+          git push origin ${CONFLICT_BRANCH}
           # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
           if git diff --cached --quiet; then
           echo "No actual file changes detected after merge conflict."
