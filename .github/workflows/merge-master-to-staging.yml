@@ -75,7 +75,7 @@ jobs:
         uses: ./.github/scripts/open_pr
         with: # Pass inputs to the script via environment variables, prefixed with INPUT_
           github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
-          conflict-branch: 'master'
+          pr-branch: 'master'
           base-branch: 'docs-staging' # Or make dynamic if needed
           pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
           pr-body: |

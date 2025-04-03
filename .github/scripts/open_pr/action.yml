@@ -10,11 +10,11 @@ inputs:
     description: 'GitHub token for authenticating API requests.'
     required: true
     # No default, must be provided (usually via secrets.GITHUB_TOKEN)
-  conflict-branch:
-    description: 'The name of the branch containing the staged merge conflicts.'
+  pr-branch:
+    description: 'The pull request branch name.'
     required: true
   base-branch:
-    description: 'The name of the branch into which the conflict branch should be merged (target of the PR).'
+    description: 'The name of the branch into which the pull request branch should be merged (target of the PR).'
     required: true
   pr-title:
     description: 'The title for the pull request.'
