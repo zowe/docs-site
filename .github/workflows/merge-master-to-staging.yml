@@ -62,80 +62,19 @@ jobs:
           fi
         continue-on-error: true
 
-      # --- Failure Path (Create PR) ---
-      - name: Create conflict branch and stage changes
-
-        id: setup_conflict_branch
-        run: |
-          echo "Merge failed, likely due to conflicts. Preparing PR branch."
-          # Abort the failed merge attempt on docs-staging to clean the index
-          
-
-          # Ensure we are on a clean docs-staging again
-          git checkout reboot/merge-automation
-          # git reset --hard origin/docs-staging # Reset to remote state
-          
-          # Create a unique branch name for the PR
-          CONFLICT_BRANCH="auto-merge/master-into-staging-$(date +%s)"
-          echo "Creating conflict branch: ${CONFLICT_BRANCH}"
-          git checkout -b "${CONFLICT_BRANCH}"
-          touch text.txt
-          
-          echo "Re-attempting merge on ${CONFLICT_BRANCH} to generate conflicts..."
-          # Re-run the merge, expecting it to fail and leave conflict markers
-          
-
-          # Stage all changes, including conflict markers
-          echo "Staging conflicted files..."
-          git add .
-          git commit -m "test"
-          git push origin ${CONFLICT_BRANCH}
-          # Check if there are any staged changes (might be empty if only whitespace conflicts auto-resolved differently)
-          if git diff --cached --quiet; then
-          echo "No actual file changes detected after merge conflict."
-          ls /home/runner/work/docs-site/docs-site/.github/scripts/open_pr
-          ls /home/runner/work/docs-site/docs-site/.github/
-          ls /home/runner/work/docs-site/docs-site/.github/scripts
-          else
-          echo "Staged changes detected."
-          fi
-          echo "conflict_branch_name=${CONFLICT_BRANCH}" >> $GITHUB_OUTPUT
-          echo "conflict_branch_created=true" >> $GITHUB_OUTPUT
-
-      - name: Install PR Script Dependencies
-          # Ensure these conditions are TRUE when the action needs to run
-        run: npm install
-        # Ensure this path is exactly where package.json/package-lock.json are
-        working-directory: ./.github/scripts/open_pr
-
       - name: Create Pull Request
         id: create_pr # Give this step an ID if you need its outputs later
 
         uses: ./.github/scripts/open_pr
         with: # Pass inputs to the script via environment variables, prefixed with INPUT_
           github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
-          conflict-branch: ${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}
-          base-branch: 'reboot/merge-automation' # Or make dynamic if needed
+          conflict-branch: 'master'
+          base-branch: 'docs-staging' # Or make dynamic if needed
           pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
           pr-body: |
-            Automated attempt to merge `master` into `docs-staging` resulted in conflicts.
-            
-            Please resolve the conflicts in this pull request.
-            
-            **Steps:**
-            1. Check out the branch `${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}` locally.
-            2. Resolve the merge conflicts in your editor.
-            3. Commit the resolved files (`git add .`, `git commit`).
-            4. Push the changes to the branch `${{ steps.setup_conflict_branch.outputs.CONFLICT_BRANCH_NAME }}`.
-            5. Merge this Pull Request once conflicts are resolved and CI passes.
+            Automated attempt to merge `master` into `docs-staging` failed.
 
-          pr-labels: 'automated-pr,merge-conflict' # Comma-separated labels
-        # Only run if:
-        # 1. The initial merge attempt failed ('failure')
-        # 2. The conflict branch setup step actually staged changes ('true')
-
-
-
+          pr-labels: 'automated-pr,merge-conflict'
 
 
       - name: Notify failure if PR could not be created
