@@ -9,6 +9,8 @@
 Generate new set of certificate in Zowe keyring.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -42,9 +44,11 @@ Full name|Alias|Type|Required|Help message
 --validity||string|no|Validity days of certificate.
 --trust-cas||string|no|Labels of extra certificate authorities should be trusted, separated by comma (Maximum 2).
 --trust-zosmf||boolean|no|Whether to trust z/OSMF CA.
---zosmf-ca||string|no|Labels of z/OSMF root certificate authorities. Specify "_auto_" to let Zowe to detect automatically. This only works for RACF.
+--zosmf-ca||string|no|Labels of z/OSMF root certificate authorities. Specify `_auto_` to let Zowe to detect automatically. This works for RACF and TSS.
 --zosmf-user||string|no|z/OSMF user name. This is used to automatically detect z/OSMF root certificate authorities.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -63,6 +67,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0174E|174|Failed to generate certificate in Zowe keyring "%s".
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -102,3 +108,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>file-master-plus create physical-sequential</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_file-master-plus.html">file-master-plus</a> › <a href="zowe_file-master-plus_create.html">create</a> › <a href="zowe_file-master-plus_create_physical-sequential.html">physical-sequential</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Create a physical sequential data set.</p>
+<h4>Usage</h4>
+<p>zowe file-master-plus create physical-sequential &lt;name&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>name</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the data set to create.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--model</code> | <code>-m</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of a model physical sequential data set name for allocating parameters.<br>
+The parameters of the model data set override all defaults.<br>
+Example: -m fmmvs.model.dsname</li>
+</ul>
+</li>
+<li>
+<p><code>--logical-record-length</code> | <code>--lrecl</code> | <code>--lrl</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the length of the logical record.<br>
+Allowed values: 1-32760<br>
+Default value: 80<br>
+Example: --lrecl 80</li>
+</ul>
+</li>
+<li>
+<p><code>--block-size</code> | <code>--blksize</code> | <code>--bs</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the size of the block of records.<br>
+Allowed values: 1-32760<br>
+Default value: 6160<br>
+Example: --blksize 6160</li>
+</ul>
+</li>
+<li>
+<p><code>--record-format</code> | <code>--recfm</code> | <code>--rf</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the record format.<br>
+The allowed values which have the following meaning:<br>
+F - Fixed-length records<br>
+V - Variable-length records<br>
+U - Undefined-length records<br>
+B - Records are blocked<br>
+A - Records contain ASCII printer control characters<br>
+M - Records contain machine code control characters<br>
+S - For variable-length records, records may span blocks<br>
+T - Records may be written into overflow tracks<br>
+Default value: FB<br>
+Example: --recfm FB</p>
+<p>Allowed values: F, FA, FM, FB, FBA, FBM, FS, FSA, FSM, FT, FTA, FTM, FBS, FBT, U, UA, UM, UT, UTA, UTM, V, VA, VM, VB, VBA, VBM, VS, VSA, VSM, VT, VTA, VTM, VBS, VBT</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--space-units</code> | <code>--su</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the space allocation unit.<br>
+The allowed values which have the following meaning:<br>
+TRK - Tracks<br>
+CYL - Cylinders<br>
+BLK - Blocksize<br>
+Default value: CYL<br>
+Example: --su blk</p>
+<p>Allowed values: TRK, CYL, BLK</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--primary-space</code> | <code>--ps</code> <em>(number)</em></p>
+<ul>
+<li>Specifies primary space allocation unit.<br>
+Allowed values: 1-16777215<br>
+Default value: 1<br>
+Example: --ps 3</li>
+</ul>
+</li>
+<li>
+<p><code>--secondary-space</code> | <code>--ss</code> <em>(number)</em></p>
+<ul>
+<li>Specifies secondary space allocation unit.<br>
+Allowed values: 1-16777215<br>
+Default value: 1<br>
+Example: --ss 5</li>
+</ul>
+</li>
+<li>
+<p><code>--volume</code> | <code>-v</code> <em>(array)</em></p>
+<ul>
+<li>Specifies a disk volume or specific tapes.<br>
+Example: -v vol002</li>
+</ul>
+</li>
+<li>
+<p><code>--unit-type</code> | <code>--ut</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the DASD unit name.<br>
+Example: --ut sysda</li>
+</ul>
+</li>
+<li>
+<p><code>--expiration-date</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the expiration date after which the data set can be deleted.<br>
+Specify 'P' or 'p' to make the data set permanent, or an expiration date in YYYY-MM-DD format.<br>
+Example: --ed 2032-07-31</li>
+</ul>
+</li>
+<li>
+<p><code>--storage-class</code> | <code>--sc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the storage class.<br>
+Example: --sc scl002</li>
+</ul>
+</li>
+<li>
+<p><code>--management-class</code> | <code>--mc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the management class.<br>
+Example: --mc mcl002</li>
+</ul>
+</li>
+<li>
+<p><code>--data-class</code> | <code>--dc</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the data class.<br>
+Example: --dc dcl002</li>
+</ul>
+</li>
+</ul>
+<h4>FMP Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Specifies File Master Plus server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies File Master Plus server port.</p>
+<p>Default value: 51914</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Mainframe user name. May be the same as TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Mainframe password. May be the same as TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies File Master Plus REST API protocol.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all FMP resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--fmp-profile</code> | <code>--fmp-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (fmp) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Creating a physical sequential data set with default option values:</p>
+<ul>
+<li><code>zowe file-master-plus create physical-sequential fmmvs.test.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create physical-sequential fmmvs.test.dsname">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Creating a physical sequential data set with options:</p>
+<ul>
+<li><code>zowe file-master-plus create physical-sequential fmmvs.test.dsname --lrecl 180 --blksize 32720 --recfm vb --ps 5 --ss 5 -v vol005 --su trk --ed 2025-09-27</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create physical-sequential fmmvs.test.dsname --lrecl 180 --blksize 32720 --recfm vb --ps 5 --ss 5 -v vol005 --su trk --ed 2025-09-27">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Creating a physical sequential data set like a model physical sequential data set:</p>
+<ul>
+<li><code>zowe file-master-plus create physical-sequential fmmvs.test.dsname --model fmmvs.model.dsname</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create physical-sequential fmmvs.test.dsname --model fmmvs.model.dsname">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Creating a physical sequential data set like a model physical sequential data set and overriding the parameters with options:</p>
+<ul>
+<li><code>zowe file-master-plus create physical-sequential fmmvs.test.dsname --model fmmvs.model.dsname --lrecl 180 --recfm VB --ps 5 --ss 5 --ed p</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe file-master-plus create physical-sequential fmmvs.test.dsname --model fmmvs.model.dsname --lrecl 180 --recfm VB --ps 5 --ss 5 --ed p">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

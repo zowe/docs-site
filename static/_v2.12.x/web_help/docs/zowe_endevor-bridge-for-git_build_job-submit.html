@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor-bridge-for-git build job-submit</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor-bridge-for-git.html">endevor-bridge-for-git</a> › <a href="zowe_endevor-bridge-for-git_build.html">build</a> › <a href="zowe_endevor-bridge-for-git_build_job-submit.html">job-submit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Build changes from git local repository in Endevor by submitting a job. It supports autogen for building dependencies using with the option of selecting autogen span. After submitting, the command 'build job-report' must be issued to finalize processing.</p>
+<h4>Usage</h4>
+<p>zowe endevor-bridge-for-git build job-submit [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--endevor-instance</code> | <code>--endevori</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Web Services Endevor configuration name.</li>
+</ul>
+</li>
+<li>
+<p><code>--skeleton-jcl</code> | <code>--sjcl</code> <em>(string)</em></p>
+<ul>
+<li>The path of the file of skeleton JCL to submit endevor scl statements. Download it from: <a href="https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html">https://techdocs.broadcom.com/content/broadcom/techdocs/us/en/ca-mainframe-software/devops/ca-endevor-integrations-for-enterprise-devops/1-0/ca-endevor-bridge-for-git/set-up-and-run-the-ca-endevor-bridge-for-git/configuration-for-build-using-zowe-cli.html</a></li>
+</ul>
+</li>
+</ul>
+<h4>Endevor work area options</h4>
+<ul>
+<li>
+<p><code>--work-area-id</code> | <code>--waid</code> <em>(string)</em></p>
+<ul>
+<li>Endevor work area ID. Name-masking is not allowed.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-subsystem</code> | <code>--endevorsub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM build subsystem. Note: The build subsystem can be cleared without prior permission.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-environment</code> | <code>--endevorenv</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM environment where your build subsystem resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-system</code> | <code>--endevorsys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor SCM system where your build subsystem resides.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--work-dir</code> | <code>--wd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The local working directory of your Git-Endevor mapping that you are building.</p>
+<p>Default value: ./</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--force-cleanup</code> | <code>--fc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Starts the build process after cleaning the build subsystem.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--autogen-span</code> | <code>--ags</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the autogen action option to automatically generate using elements.<br>
+The allowed values which have the following meaning:<br>
+NONE - Generates all elements that use the component being acted upon.<br>
+ALL - Generates using elements that are found in any System and Subsystem combinations within the Environment and Stage of the component's logical map.<br>
+SYSTEMS - Generates using elements that are found in any System, provided the element's Subsystem name matches the name of the Subsystem of the target component.<br>
+SUBSYSTEMS - Generates using elements from all Subsystems with the same-named System of the component specified.</p>
+<p>Default value: NONE<br>
+Allowed values: NONE, ALL, SYSTEMS, SUBSYSTEMS</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Endevor options (alternatively use an 'endevor' profile)</h4>
+<ul>
+<li>
+<p><code>--endevor-protocol</code> | <code>--endevorprot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor SCM Rest API protocol.</p>
+<p>Default value: http</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-host</code> | <code>--endevorh</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor Rest API hostname.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-port</code> | <code>--endevorp</code> <em>(number)</em></p>
+<ul>
+<li>The Endevor Rest API port.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-user</code> | <code>--endevoru</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (Endevor) username, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-password</code> | <code>--endevorpass</code> | <code>--endevorpw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (Endevor) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-reject-unauthorized</code> | <code>--endevorru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-base-path</code> | <code>--endevorbp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor SCM Rest API base path.</p>
+<p>Default value: EndevorService/rest</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>z/OSMF connection options (alternatively use a 'zosmf' profile)</h4>
+<ul>
+<li>
+<p><code>--zosmf-host</code> | <code>--zosmfh</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-port</code> | <code>--zosmfp</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-user</code> | <code>--zosmfu</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) username, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-password</code> | <code>--zosmfpass</code> | <code>--zosmfpw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-reject-unauthorized</code> | <code>--zosmfru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-base-path</code> | <code>--zosmfbp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option toprepend the base path to all z/OSMF resources when making REST requests. Do notspecify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot; using work area with ID &quot;WORKAREA1&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and existing Endevor and z/OSMF profiles:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --work-area-id WORKAREA1 --work-dir /endevor/ebg/repository">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compile the changed elements at &quot;/endevor/ebg/repository&quot; using build subsystem &quot;SUBNAME&quot;, jcl skeleton at &quot;/endevor/jcl/jcl.txt&quot; and existing Endevor and z/OSMF profiles:</p>
+<ul>
+<li><code>zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor-bridge-for-git build job-submit --skeleton-jcl /endevor/jcl/jcl.txt --endevor-subsystem SUBNAME --endevor-environment ENVNAME --endevor-system SYSNAME --work-dir /endevor/ebg/repository">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

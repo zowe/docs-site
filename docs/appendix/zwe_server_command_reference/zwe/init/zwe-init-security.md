@@ -12,7 +12,7 @@ NOTE: You require proper permission to run security configuration.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -69,6 +69,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --security-dry-run||boolean|no|Whether to dry run security related setup.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -100,6 +102,8 @@ ZWEL0162E|162|Failed to find job %s result.
 ZWEL0162W||Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0163W||Job %s ends with code %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -139,3 +143,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

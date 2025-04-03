@@ -113,7 +113,7 @@ If present, this variable requests the application instance to initialize with s
 
 Presents hooks that can be subscribed to for event listening. Events include:
 
-- resized: Subject<{width: number, height: number}>
+- resized: Subject`<{width: number, height: number}>`
   - Starts when the viewport's size has changed.
 
 ## Window Events
@@ -134,11 +134,11 @@ Presents hooks that can be subscribed to for event listening. Events include the
 
   - Starts when the Window has been restored from a minimized state.
 
-- moved: Subject<{top: number, left: number}>
+- moved: Subject`<{top: number, left: number}>`
 
   - Starts when the Window has been been moved.
 
-- resized: Subject<{width: number, height: number}>
+- resized: Subject`<{width: number, height: number}>`
 
   - Starts when the Window has been resized.
 
@@ -167,15 +167,15 @@ An application can request actions to be performed on the Window through the fol
 
   - Restores the Window of the application instance from a minimized state.
 
-- setTitle(title: string):void
+- setTitle`(title: string)`: void
 
   - Sets the title of the Window.
 
-- setPosition(pos: {top: number, left: number, width: number, height: number}): void
+- setPosition`(pos: {top: number, left: number, width: number, height: number})`: void
 
   - Sets the position of the Window on the page and the size of the window.
 
-- spawnContextMenu(xPos: number, yPos: number, items: ContextMenuItem[]): void
+- spawnContextMenu`(xPos: number, yPos: number, items: ContextMenuItem[])`: void
 
   - Opens a context menu on the application instance.
 

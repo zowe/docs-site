@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Operations | Zowe Node.js SDK - v2.10.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.10.0">
+	<title>Operations | Zowe Node.js SDK - v3.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.10.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -69,16 +69,18 @@
 		<div class="col-8 col-content">
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>The Operations class extends Operation and is used to create a &#39;string&#39; of operations that must
-						be completed in serial order.</p>
-					</div>
-					<p>The implementing class is responsible (in defineOperations) for creating each operation (and
-						invoking addNextOperation) to add the operations to the list. You must also call &quot;defineOperations&quot;
-						from your constructor. This allows you to setup anything you need (in your constructor) before defining
-					the list of operations.</p>
-					<p>You can initiate the operation by invoking performOperation, which will iterate through each operation
-					defined and perform them in sequence. If a operation chooses to diverge, then</p>
+					<dl class="tsd-comment-tags">
+						<dt>deprecated</dt>
+						<dd><p>The Operations class extends Operation and is used to create a &#39;string&#39; of operations that must
+							be completed in serial order.</p>
+							<p>The implementing class is responsible (in defineOperations) for creating each operation (and
+								invoking addNextOperation) to add the operations to the list. You must also call &quot;defineOperations&quot;
+								from your constructor. This allows you to setup anything you need (in your constructor) before defining
+							the list of operations.</p>
+							<p>You can initiate the operation by invoking performOperation, which will iterate through each operation
+							defined and perform them in sequence. If a operation chooses to diverge, then</p>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
@@ -197,7 +199,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L71">@zowe/imperative/packages/operations/src/Operations.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L72">@zowe/imperative/src/operations/src/Operations.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +230,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#errormessages">errorMessages</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L102">@zowe/imperative/packages/operations/src/Operation.ts:102</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L105">@zowe/imperative/src/operations/src/Operation.ts:105</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -239,7 +241,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#infomessages">infoMessages</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L101">@zowe/imperative/packages/operations/src/Operation.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L104">@zowe/imperative/src/operations/src/Operation.ts:104</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -250,7 +252,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#log">log</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L127">@zowe/imperative/packages/operations/src/Operation.ts:127</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L130">@zowe/imperative/src/operations/src/Operation.ts:130</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -260,7 +262,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Current<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L48">@zowe/imperative/packages/operations/src/Operations.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L49">@zowe/imperative/src/operations/src/Operations.ts:49</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -275,7 +277,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Input<wbr>Parameters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L71">@zowe/imperative/packages/operations/src/Operations.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L72">@zowe/imperative/src/operations/src/Operations.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -290,7 +292,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L36">@zowe/imperative/packages/operations/src/Operations.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L37">@zowe/imperative/src/operations/src/Operations.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -306,7 +308,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#moperationresult">mOperationResult</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L136">@zowe/imperative/packages/operations/src/Operation.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L139">@zowe/imperative/src/operations/src/Operation.ts:139</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -322,7 +324,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#moperationresults">mOperationResults</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L131">@zowe/imperative/packages/operations/src/Operation.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L134">@zowe/imperative/src/operations/src/Operation.ts:134</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -337,7 +339,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L66">@zowe/imperative/packages/operations/src/Operations.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L67">@zowe/imperative/src/operations/src/Operations.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -352,7 +354,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Operation<wbr>Undo<wbr>List<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="_zowe_imperative.operation.html" class="tsd-signature-type">Operation</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L60">@zowe/imperative/packages/operations/src/Operations.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L61">@zowe/imperative/src/operations/src/Operations.ts:61</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -368,7 +370,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Operations<wbr>Complete<wbr>Callback<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#ioperationresultready" class="tsd-signature-type">IOperationResultReady</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L53">@zowe/imperative/packages/operations/src/Operations.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L54">@zowe/imperative/src/operations/src/Operations.ts:54</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -383,7 +385,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Overall<wbr>Status<wbr>Message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L42">@zowe/imperative/packages/operations/src/Operations.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L43">@zowe/imperative/src/operations/src/Operations.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -400,7 +402,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#no_output">NO_OUTPUT</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L35">@zowe/imperative/packages/operations/src/Operation.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L38">@zowe/imperative/src/operations/src/Operation.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -411,7 +413,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#no_parms">NO_PARMS</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L33">@zowe/imperative/packages/operations/src/Operation.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L36">@zowe/imperative/src/operations/src/Operation.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -429,7 +431,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#allfilescreated">allFilesCreated</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L278">@zowe/imperative/packages/operations/src/Operation.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L281">@zowe/imperative/src/operations/src/Operation.ts:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +454,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#filetoundo">fileToUndo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L286">@zowe/imperative/packages/operations/src/Operation.ts:286</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L289">@zowe/imperative/src/operations/src/Operation.ts:289</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -475,7 +477,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationname">operationName</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L294">@zowe/imperative/packages/operations/src/Operation.ts:294</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L297">@zowe/imperative/src/operations/src/Operation.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -498,7 +500,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationresult">operationResult</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L259">@zowe/imperative/packages/operations/src/Operation.ts:259</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L262">@zowe/imperative/src/operations/src/Operation.ts:262</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -522,7 +524,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationresultmessage">operationResultMessage</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L319">@zowe/imperative/packages/operations/src/Operation.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L322">@zowe/imperative/src/operations/src/Operation.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -551,7 +553,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#operationsucceeded">operationSucceeded</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L328">@zowe/imperative/packages/operations/src/Operation.ts:328</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L331">@zowe/imperative/src/operations/src/Operation.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -575,7 +577,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#percentcomplete">percentComplete</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L125">@zowe/imperative/packages/operations/src/Operations.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L126">@zowe/imperative/src/operations/src/Operations.ts:126</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -599,7 +601,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#stagename">stageName</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L270">@zowe/imperative/packages/operations/src/Operation.ts:270</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L273">@zowe/imperative/src/operations/src/Operation.ts:273</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -623,7 +625,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#statusmessage">statusMessage</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L111">@zowe/imperative/packages/operations/src/Operations.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L112">@zowe/imperative/src/operations/src/Operations.ts:112</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -641,7 +643,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#totaloperations">totalOperations</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L147">@zowe/imperative/packages/operations/src/Operations.ts:147</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L148">@zowe/imperative/src/operations/src/Operations.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -667,7 +669,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#addfilecreated">addFileCreated</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L448">@zowe/imperative/packages/operations/src/Operation.ts:448</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L451">@zowe/imperative/src/operations/src/Operation.ts:451</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -699,7 +701,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L160">@zowe/imperative/packages/operations/src/Operations.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L161">@zowe/imperative/src/operations/src/Operations.ts:161</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -728,7 +730,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#addresult">addResult</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L384">@zowe/imperative/packages/operations/src/Operation.ts:384</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L387">@zowe/imperative/src/operations/src/Operation.ts:387</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -757,7 +759,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#createfile">createFile</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L409">@zowe/imperative/packages/operations/src/Operation.ts:409</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L412">@zowe/imperative/src/operations/src/Operation.ts:412</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -795,7 +797,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L233">@zowe/imperative/packages/operations/src/Operations.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L234">@zowe/imperative/src/operations/src/Operations.ts:234</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -819,7 +821,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#execute">execute</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L167">@zowe/imperative/packages/operations/src/Operations.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L168">@zowe/imperative/src/operations/src/Operations.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -841,7 +843,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L239">@zowe/imperative/packages/operations/src/Operations.ts:239</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L240">@zowe/imperative/src/operations/src/Operations.ts:240</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -869,7 +871,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L296">@zowe/imperative/packages/operations/src/Operations.ts:296</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L297">@zowe/imperative/src/operations/src/Operations.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -893,7 +895,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#executeoperation">executeOperation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L86">@zowe/imperative/packages/operations/src/Operations.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L87">@zowe/imperative/src/operations/src/Operations.ts:87</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -926,7 +928,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#logoperationbeginmessages">logOperationBeginMessages</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L181">@zowe/imperative/packages/operations/src/Operations.ts:181</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L182">@zowe/imperative/src/operations/src/Operations.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -949,7 +951,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#logoperationresults">logOperationResults</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L139">@zowe/imperative/packages/operations/src/Operations.ts:139</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L140">@zowe/imperative/src/operations/src/Operations.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -971,7 +973,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L191">@zowe/imperative/packages/operations/src/Operations.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L192">@zowe/imperative/src/operations/src/Operations.ts:192</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1003,7 +1005,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#performundo">performUndo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L242">@zowe/imperative/packages/operations/src/Operation.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L245">@zowe/imperative/src/operations/src/Operation.ts:245</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1033,7 +1035,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L269">@zowe/imperative/packages/operations/src/Operations.ts:269</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L270">@zowe/imperative/src/operations/src/Operations.ts:270</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1058,7 +1060,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#printfilescreatedlist">printFilesCreatedList</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L433">@zowe/imperative/packages/operations/src/Operation.ts:433</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L436">@zowe/imperative/src/operations/src/Operation.ts:436</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1081,7 +1083,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationdiverge">setOperationDiverge</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L347">@zowe/imperative/packages/operations/src/Operation.ts:347</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L350">@zowe/imperative/src/operations/src/Operation.ts:350</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1114,7 +1116,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationfailed">setOperationFailed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L301">@zowe/imperative/packages/operations/src/Operation.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L304">@zowe/imperative/src/operations/src/Operation.ts:304</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1137,7 +1139,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundoattempted">setOperationUndoAttempted</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L356">@zowe/imperative/packages/operations/src/Operation.ts:356</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L359">@zowe/imperative/src/operations/src/Operation.ts:359</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1160,7 +1162,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundofailed">setOperationUndoFailed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L335">@zowe/imperative/packages/operations/src/Operation.ts:335</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L338">@zowe/imperative/src/operations/src/Operation.ts:338</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1183,7 +1185,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setoperationundoable">setOperationUndoable</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L311">@zowe/imperative/packages/operations/src/Operation.ts:311</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L314">@zowe/imperative/src/operations/src/Operation.ts:314</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1208,7 +1210,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#setstatusmessage">setStatusMessage</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L103">@zowe/imperative/packages/operations/src/Operations.ts:103</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L104">@zowe/imperative/src/operations/src/Operations.ts:104</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1248,7 +1250,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#undo">undo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L174">@zowe/imperative/packages/operations/src/Operations.ts:174</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L175">@zowe/imperative/src/operations/src/Operations.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1270,7 +1272,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operations.ts#L312">@zowe/imperative/packages/operations/src/Operations.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operations.ts#L313">@zowe/imperative/src/operations/src/Operations.ts:313</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1293,7 +1295,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_zowe_imperative.operation.html">Operation</a>.<a href="_zowe_imperative.operation.html#summarizeresults">summarizeResults</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/operations/src/Operation.ts#L37">@zowe/imperative/packages/operations/src/Operation.ts:37</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/operations/src/Operation.ts#L40">@zowe/imperative/src/operations/src/Operation.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

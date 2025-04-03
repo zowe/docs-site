@@ -1,0 +1,183 @@
+name: PR Checker
+
+on:
+  pull_request_target:
+    branches:
+      - docs-staging
+      - master
+      - anax-test-branch # TODO Delete this line before merging PR
+    types: [opened, reopened, edited, labeled]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  initial-comment:
+    name: PR Instructions
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login != 'zowe-robot'
+
+    steps:
+      # 1. Check out files needed by subsequent steps
+      - name: Checkout files
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github
+
+      # 2. Define outputs used by subsequent steps
+      - name: Check if author is writer
+        id: check-if-writer
+        if: contains(fromJson('["anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login)
+        run: echo "PR_AUTHOR_TYPE=writer" >> $GITHUB_ENV
+
+      - name: Check if author is labeller
+        id: check-if-labeller
+        if: ${{ steps.check-if-writer.outcome == 'skipped' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          response=$(curl -fs -H "Authorization: Token $GITHUB_TOKEN" \
+            "https://api.github.com/repos/${{ github.repository }}/collaborators/${{ github.event.pull_request.user.login }}/permission")
+          triage_permission=$(echo "$response" | jq -r '.user.permissions.triage')
+          if [ "$triage_permission" == "true" ]; then
+            echo "PR_AUTHOR_TYPE=labeller" >> $GITHUB_ENV
+          else
+            echo "PR_AUTHOR_TYPE=community" >> $GITHUB_ENV
+          fi
+
+      # 3. Add initial comment on PR
+      - name: Add initial comment
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Initial comment
+          path: .github/pr-comments/for-${{ env.PR_AUTHOR_TYPE }}.md
+          only_create: true
+
+      # 4. Validate PR description
+      - name: Description checker
+        id: description_checker
+        uses: jadrol/pr-description-checker-action@v1.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          template-path: "./.github/pull_request_template.md"
+          comment: false
+      - name: Template Not Filled Comment PR
+        if: failure() && steps.description_checker.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid PR description
+          message: |
+            :warning: Looks like something is wrong with the PR description. Remember to add a description and the file(s) included in this PR.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: File type checker
+        id: file_type_checker
+        uses: actions/github-script@v6
+        env:
+          PR_BODY_PATTERN: '\.md|\.jpg|\.gif|\.png|\.pdf'
+        with:
+          script: |
+            new RegExp(process.env.PR_BODY_PATTERN).test(context.payload.pull_request.body) || process.exit(1)
+      - name: Missing File Name Comment PR
+        if: failure() && steps.file_type_checker.outcome == 'failure'
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid PR description
+          message: |
+            :file_folder: The PR description is missing the file name(s) for the updated content. List all the files included in this PR so this information displays in our [Zowe Docs GitHub Slack channel](https://openmainframeproject.slack.com/archives/C05GH3LT59D).
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: Fixed Invalid Description Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Invalid PR description
+          delete: true
+
+  review-labels:
+    name: Check for missing review label
+    runs-on: ubuntu-latest
+    needs: [initial-comment]
+    if: ${{ always() && !contains(fromJson('["zowe-robot", "anaxceron", "jandacek", "nannanli", "samanthasusu", "nellietan", "lparadkar-rocket"]'), github.event.pull_request.user.login) }}
+
+    steps:
+      - name: Review Label Check
+        id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          any_of: "review:"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Review Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Review label missing
+          message: |
+            :mag: The **review** label is missing. Add a `review:` label so we can determine who needs to approve this PR.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: Fixed Review Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Review label missing
+          delete: true
+
+  release-labels:
+    name: Check for missing release label
+    runs-on: ubuntu-latest
+    needs: [initial-comment]
+    if: ${{ always() && github.event.pull_request.user.login != 'zowe-robot' }}
+
+    steps:
+      - id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          any_of: "release:"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Release Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Release label missing
+          message: |
+            :floppy_disk: The **release** label is missing. Add a `release:` label so your content is published with the correct major Zowe release.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: Fixed Release Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Release label missing
+          delete: true
+
+  area-labels:
+    name: Check for missing area label
+    runs-on: ubuntu-latest
+    needs: [initial-comment]
+    if: ${{ always() && github.event.pull_request.user.login != 'zowe-robot' }}
+
+    steps:
+      - id: prefix_label_check
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          prefix_mode: true
+          any_of: "area:"
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Missing Area Label Comment PR
+        if: failure()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Area label missing
+          message: |
+            :pushpin: The **subject area** label is missing. Add an `area:` label so we know what your content is about.
+
+            If you have addressed this issue already, refresh this page in your browser to remove this comment.
+      - name: Fixed Area Label Comment PR
+        if: success()
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          header: Area label missing
+          delete: true

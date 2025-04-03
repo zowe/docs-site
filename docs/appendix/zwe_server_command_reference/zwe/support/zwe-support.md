@@ -18,13 +18,15 @@ This command will collect these information:
   * z/OS version
   * Java version
   * Node.js version
+  * External Security Manager
+  * CEE Runtime Options
 - Zowe configurations
   * Zowe manifest.json
   * Zowe configuration file
   * Zowe installation logs
   * Zowe PKCS#12 keystore if used
-  * Zowe temporary configuration files under `<workspace>/.env`
-  * Zowe APIML static registration files under `<workspace>/api-mediation/api-defs`
+  * Zowe temporary configuration files under "`zowe.workspaceDirectory`/.env"
+  * Zowe APIML static registration files under "`zowe.workspaceDirectory`/api-mediation/api-defs"
 - Zowe runtime
   * Active running Zowe processes
   * Zowe job log
@@ -36,6 +38,8 @@ This command will collect these information:
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --target-dir||string|no|Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -50,6 +54,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
@@ -90,3 +96,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands resolv</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_resolv.html">resolv</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Work that is scheduled by a trigger or on-request work that is DEMANDed or RUN has no direct relationship to a base calendar and therefore does not require the use of this function.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands resolv [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: AJOB*</p>
+<p>Limits selection for resolution to the jobs specified. If omitted, all job schedules are candidates for resolution. Value can be a specific job name or a generic name that identifies multiple jobs beginning with the specified characters.<br>
+An asterisk (*) must be used to delimit the generic job name. The asterisk can appear in any of the eight positions but must immediately follow the last significant character of the job name requested.<br>
+For example:<br>
+AB* causes all jobs beginning with AB to be selected for resolution.<br>
+* causes all job schedules to be selected for resolution.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--duplicateDate</code> | <code>--ddate</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: NO</p>
+<p>Indicates whether to produce specific duplicate day messages (SRC1-137) each time that two or more schedule IDs for the same job schedule a given day.<br>
+The default is NO unless the extended resolve message option is set in the user profile by the /PROF command.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--oldYear</code> | <code>--oyr</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: 22</p>
+<p>Specifies the year that is defined in the schedule member data (the value that is supplied by YEAR in the previous resolution that updated the schedule member).<br>
+Only those candidate schedule members whose year data matches the OLDYR value are selected for resolution.<br>
+If used, use one of the following values:<br>
+empty: It is default, if omitted, only those schedule members that have not previously been resolved or whose schedules have expired are selected.<br>
+yy: Indicates a specific year.<br>
+*: Indicates all years and all schedules.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--print</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: YES</p>
+<p>Specifies whether to display a month-by-month schedule day calendar after resolution of the defined member is complete.<br>
+If used, value must be YES or NO (default).</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--scal</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: 22</p>
+<p>Value is the xx portion of the base calendar name, SCALyyxx.<br>
+The SCAL value must also match the base calendar identifier (SCAL) specified in any SCHID of the schedule definition for the individual jobs.<br>
+This value is used during the selection process of resolution to determine which schedule members to resolve.<br>
+Required: No (unless JOB is omitted)<br>
+*: Indicates all SCALs.<br>
+xx: Indicates a specific SCAL.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--test</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: NO</p>
+<p>Indicates whether schedule members are updated because of the resolution process. YES and NO are the only allowable values.<br>
+YES: Normal resolution occurs and all messages are printed, but no updating of the database occurs.This option can be used at a year-end or whenever a base calendar is changed to see the results of the resolution activity, without actually changing the schedule mask or affecting the current schedule process. YES is the default.<br>
+NO: Normal resolution occurs and all messages are printed, and updating of the database occurs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--year</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>example: 20</p>
+<p>Identifies the year of the base calendars against which the schedule is resolved. The value is the number that is the yy portion of the base calendar name, SCALyyxx.<br>
+When a schedule is successfully updated, the YEAR value becomes part of the schedule data (see OLDYR). If the YEAR parameter is not specified, the current year is assumed to be the year from the system internal date and time.<br>
+Also, if YEAR is not coded on the RESOLV, a determination is made to see whether the RESOLV is made within the period January 1 through June 30 as determined from system date and time.<br>
+If so, the schedule is resolved against January through December of the current year. If a RESOLV is done within the period July 1 through December 31, the schedule is resolved against July 1 through December 31 of the current year and January 1 through June 30 of the next year.<br>
+This behavior requires the existence of base calendars for calendar years involved. If a required base calendar is not available, an error message is issued. The schedule member is unresolved, unless a perpetual calendar is defined for this SCALyyXX. In that case, the calendar is generated from the PCALYYXX member in the perpetual calendar data set. YEAR is optional. If YEAR is specified, the resolution is made against January through December of the year specified.<br>
+Default: Current year<br>
+Limits: 2 numeric characters</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Creates or modifies processing schedules for jobs, AJOB from CA 7:</p>
+<ul>
+<li><code>zowe ca7 commands resolv --job AJOB</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands resolv --job AJOB">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

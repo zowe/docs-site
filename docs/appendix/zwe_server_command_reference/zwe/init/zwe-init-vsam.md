@@ -6,12 +6,12 @@
 
 ## Description
 
-This command will run ZWECSVSM jcl to create VSAM data set for Zowe APIML
+This command will run ZWECSVSM JCL to create VSAM data set for Zowe APIML
 Caching Service.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -29,9 +29,9 @@ components:
         name: IBMUSER.ZWE.CUST.CACHE2
 ```
 
-- `zowe.setup.dataset.prefix` shows where the `SZWESAMP` data set is installed,
-- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe will create customized
-  ZWESECUR JCL here before applying it.
+- `zowe.setup.dataset.prefix` shows where the `SZWESAMP` data set is installed.
+- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may
+  generate sample JCLs and put into this data set.
 - `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level
   Sharing (RLS) services or not. Valid value is `RLS` or `NONRLS`.
 - `zowe.setup.vsam.volume` indicates the name of volume.
@@ -56,6 +56,8 @@ zwe init vsam -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -88,6 +90,8 @@ ZWEL0161E|161|Failed to run JCL %s.
 ZWEL0162E|162|Failed to find job %s result.
 ZWEL0163E|163|Job %s ends with code %s.
 ZWEL0301W|0|Zowe Caching Service is not configured to use VSAM. Command skipped.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -127,3 +131,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

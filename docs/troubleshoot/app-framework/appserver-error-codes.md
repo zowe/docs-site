@@ -919,7 +919,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0159I
+### ZWED0159E
 
   *** rejects: 
 
@@ -1142,7 +1142,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   No action Required.
 
-
+## App-server warning messages
 
 ### ZWED0004W
 
@@ -1727,7 +1727,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Verify if this is intended configuration (edit/define zowe.components.app-server.node.https.ipAddresses or check Zowe documenation)
+  Verify if this is the intended configuration (edit/define components.app-server.node.https.ipAddresses) or check Zowe documentation.
 
 
 
@@ -2097,7 +2097,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
 
 
-### ZWED0085
+### ZWED0085W
 
   Tomcat PID=_pid_ Error when stopping, error=_errorMessage_
 
@@ -2501,7 +2501,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   Review the error to resolve it and contact support if needed. It's also possible as a workaround to explicitly state the CAs within the keyring that you would like to load, rather than relying upon the server's attempt to automatically find all CAs within the keyring.
 
-
+## App-server error messages
 
 ### ZWED0001E
 
@@ -2533,17 +2533,30 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0003E
 
-  Loopback configuration not valid, _loobackConfiguration_
+  The screen displays the following error message:
+  
+  Loopback configuration not valid, _loopbackConfiguration_
   Loopback calls will fail!
 
   **Reason:**
 
-  The loopback configuration that the server uses to contact itself over an internal network was missing a value for the network port, therefore no requests over the loopback address will be possible.
+  The administrative network configuration does not make a loopback network address available to the app-server. The app-server requires a loopback network address to communicate with itself, but the address is unavailable.
 
   **Action:**
 
-  Review the configuration of `components.app-server.node.port` to see if it has a value and set one to fix the issue.
+  There are two ways to solve this problem:
+  Option 1
+  Enable the administrative network configuration to make a loopback network address available to the app-server.
+  For example, enable the administrative network configuration to provide 127.x.x.x to the app-server, where 127.x.x.x is the IP that denotes the loopback network address.
+  The IP address must be 127.x.x.x
 
+  Option 2
+  In the YAML configuration file, set a value for the `components.app-server.node.loopbackAddress` property that denotes the IP that you want to use.
+  :::info Note
+  
+  If the network administrator associates a loopback network address with the app servers, then do not mention the loopback network address in the YAML configuration file. Verify whether your network’s configuration in the YAML configuration file is correct. If the alarm still displays, contact your network administrator.
+  
+  :::
 
 
 ### ZWED0004E

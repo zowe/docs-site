@@ -472,7 +472,7 @@ The following YAML presents the structure of the file:
 **Notes**:
 - Classes and resources are mapped into a map, user IDs into a list.
 - The load method does not support formatting with dots, such as shown in the following example:
-  **Example:** {CLASS}.{RESOURCE}
+  **Example:** `{CLASS}.{RESOURCE}`
   Ensure that each element is separated.
 - The field `safAccess` is not required to define an empty file without a definition.
 - Classes and resources cannot be defined without the user ID list.

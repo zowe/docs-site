@@ -1,4 +1,4 @@
-# Contribute to Zowe
+# Contributing to Zowe
 
 You are welcome to contribute to Zowe in many forms and help make this project better! We want to make it as easy as possible for you to become a Zowe contributor. This topic outlines the different ways that you can get involved and provides some of the resources that are available to help you get started. All feedback is welcome. 
 
@@ -50,10 +50,10 @@ Check out the contribution guidelines for different components and squads to lea
   - [Zowe CLI](https://github.com/zowe/zowe-cli/blob/master/CONTRIBUTING.md)
   - [Zowe API Mediation Layer](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
-  - [Zowe Explorer](https://github.com/zowe/vscode-extension-for-zowe/blob/master/CONTRIBUTING.md)
+  - [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe IntelliJ plug-in](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
-  - [Zowe Docs](./contributing)
+  - [Zowe Explorer plug-in for IntelliJ IDEA](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
+  - [Zowe Docs](./contributing.md)
   
 ## Promote Zowe
 
@@ -62,6 +62,6 @@ Check out the contribution guidelines for different components and squads to lea
 
 ## Helpful resources
 
-- [General code guidelines](./guidelines-code/categories)
-- [UI guidelines](./guidelines-ui/ui)
-- [Zowe learning resources](../getting-started/zowe-resources)
+- [General code guidelines](./guidelines-code/categories.md)
+- [UI guidelines](./guidelines-ui/ui.md)
+- [Zowe learning resources](../getting-started/zowe-resources.md)

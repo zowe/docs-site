@@ -10,7 +10,7 @@ This command will prepare Zowe custom data sets.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -54,6 +54,8 @@ zwe init mvs -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -80,6 +82,8 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. This data set member will be overwritten during configuration.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -119,3 +123,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

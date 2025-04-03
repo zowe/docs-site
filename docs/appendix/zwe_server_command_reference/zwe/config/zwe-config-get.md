@@ -15,9 +15,9 @@ This command requires zowe.useConfigmgr=true or --configmgr to be used.
 ```
 zwe config get -p path-of-configuration -c /path/to/zowe.yaml
 zwe config get -p .zowe.certificate -c /path/to/zowe.yaml
-zwe config get -p .zowe.components[] -c /path/to/zowe.yaml
-zwe config get -p .zowe.components.gateway -c /path/to/zowe.yaml
-zwe config get -p .zowe.components.gateway.enabled -c /path/to/zowe.yaml
+zwe config get -p .components[] -c /path/to/zowe.yaml
+zwe config get -p .components.gateway -c /path/to/zowe.yaml
+zwe config get -p .components.gateway.enabled -c /path/to/zowe.yaml
 ```
 
 ## Parameters
@@ -26,6 +26,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
 --path|-p|string|yes|Path of the configuration. For example, `components.gateway.port`.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -43,7 +45,9 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0303E|303|Invalid config path syntax for %s. Get only supports single period delimiters between values.### Inherited from parent command
+ZWEL0303E|303|Invalid config path syntax for %s. Get only supports single period delimiters between values.
+
+### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
@@ -82,3 +86,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

@@ -41,8 +41,6 @@ The following schedule takes release version 2.4 as an example:
 |Doc Freeze | 2022/10/16| 1 day before GA|
 |Doc Publish | 2022/10/17| GA day |
 
-
-
 ### Release communication
 
 The Zowe community communicates the release schedule in several ways. 
@@ -52,8 +50,7 @@ The Zowe community communicates the release schedule in several ways.
 
 Release contacts are as follows:  
 
-- Release engineer: OJ Celis (Slack @OJ Celis)
-
+- Release engineer: Mark Ackert (Slack @Mark Ackert)
 
 ## Preparing documentation for a new release
 
@@ -70,11 +67,13 @@ Once the Code Freeze for a new release takes place, the `docs-staging` branch mu
 - Creating placeholder files and folders for the vNext release
 
 The following steps takes v1.25 release preparation as an example. Preparation should start the day Code Freeze takes place.
+
 ### **Part 1: Sync the doc branches**
 
 Summary: Update the `docs-staging` branch so it includes all updates made to the `master` branch.
 
 **Procedure**
+
 1. Create and publish a new (temporary) branch based off the `master` branch.
 
 2. Create a PR to merge the temporary branch into the `docs-staging` branch.
@@ -140,11 +139,11 @@ Summary: Create new directories to archive content. Relocate content files for t
    
      ![Update CLI web help](images/update-cli-web-help.png)
 
-   * Search all instaces of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
+   * Search all instances of `<a href="/stable/CLIReference_Zowe.pdf" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/CLIReference_Zowe.pdf" target="_blank">`.
 
      ![Update CLI reference PDF](images/update-cli-reference.png)
 
-   * Search all instaces of `<a href="/stable/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
+   * Search all instances of `<a href="/stable/zowe_web_help.zip" target="_blank">` and replace `stable` with the previous version before adding the new version. Example: `<a href="/v1.24.x/zowe_web_help.zip" target="_blank">`. 
 
      ![Update CLI web help ZIP](images/update-cli-help-zip.png)
 
@@ -153,6 +152,8 @@ Summary: Create new directories to archive content. Relocate content files for t
     2. Run `npm start` to build the site locally and clear any errors.
 
         ![Verify the archived doc](images/verify-archive.png)
+
+        **NOTE:** When the local build displays in your web browser, expect to see the previous minor release version listed twice in the Zowe Docs version drop-down menu. You will fix this in Part 3.
 
 7. In GitHub, create a pull request to merge the content in your temporary branch into the `docs-staging` branch.
 
@@ -173,11 +174,10 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
 1. Create and publish a new (temporary) branch based off the `docs-staging` branch.
 2. Open your branch branch in Visual Studio Code.
 3. Navigate to the `/docusaurus.config.js` file.
-4. Change the `LATEST_VERSION` variable present in the `/docusaurus.config.js` file to a new version.
-
-    1. Locate the presets: `> @docusaurus/preset-classic" > docs > versions`.
+4. Change the `LATEST_VERSION` variable present in Line 1 of the `/docusaurus.config.js` file to a new version.
+5. Locate the presets: `> @docusaurus/preset-classic" > docs > versions` in the `/docusaurus.config.js` file to include the previous version in the list.
     
-    2. Create an entry label for the previous version.
+    1. Create an entry label for the previous version.
     
         Example: If version v1.24.x docs is getting updated to v1.25.x, then v1.24.x will be appended between `current` and `v1.23.x` in the following format:
 
@@ -207,7 +207,7 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
                     },
         ```
 
-5. Open the `versions.json` file. Add the previous release version number at the top of the list. For example:
+5. Open the `versions.json` file. Confirm that the previous release version number was added to the top of the list. (This is typically done automatically by the command issued in Part 2, Step 3.) If not, manually add the version number. For example:
 
     ```
       [
@@ -221,6 +221,7 @@ Summary: Using Visual Studio Code, update the necessary files to add the next re
       ```
 
 Next: Create placeholder files to prep for vNext release notes and TPSRs.
+
 ### **Part 4: Prepare new release files**
 
 Summary: Using Visual Studio Code, create placeholder files for the next release's release notes and TPSRs. Finish the staging process by merging your PR in GitHub.
@@ -228,8 +229,8 @@ Summary: Using Visual Studio Code, create placeholder files for the next release
 **Procedure**
 
 1. In Visual Studio Code, add the release notes placeholder file for the new version to the temporary branch you created in [Part 3](#part-3-bump-the-release-version).
-    1. Go to `/docs/getting-started/release-notes`.
-    2. Create a file for the new version and add the outline to the document. For example: `/docs/getting-started/release-notes/v1_25.md`
+    1. Go to `/docs/whats-new/release-notes`.
+    2. Create a file for the new version and add the outline to the document. For example: `/docs/whats-new/release-notes/v1_25.md`
 
        To insert the outline, copy and paste the template from the [Release Notes guide](release_notes_guide.md). Ensure that you update the release version number in the template.
 
@@ -239,10 +240,9 @@ Summary: Using Visual Studio Code, create placeholder files for the next release
           type: "category",
           label: "Release notes",
           items: [
-            "getting-started/release-notes/v1_25",
-            "getting-started/release-notes/v1_24",
-            "getting-started/release-notes/v1_23",
-            "getting-started/summaryofchanges",
+            "whats-new/release-notes/v1_25",
+            "whats-new/release-notes/v1_24",
+            "whats-new/release-notes/v1_23",
           ],
         },
         ```
@@ -424,7 +424,7 @@ Summary: Confirm that the Zowe Docs site works and announce the new doc to the Z
 |Doc validation                      | 1 hour within publish | Check that the doc site has been refreshed correctly. 
 |Build and upload new release PDF file | 1 hour within publish | See [PDF generation guide](https://github.com/zowe/docs-site/blob/master/release-handbook/pdf_generation_guide.md#steps-to-manually-generate-pdf-recommended) for how-to. It's recommended that you run the manual build and then create a PR against the `master` branch to upload the PDF file. 
 |Release promotion                   | GA day  | Announce release in Slack channels. TSC members will make announcements in LinkedIn, Twitter, etc.
-|System demo                         |  | See the [OMP Calendar](https://lists.openmainframeproject.org/g/zowe-dev/calendar) for details.  
+|System demo                         |  | See the [OMP Calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe) for details.  
 |~~Write release blog, upload release demo video~~                  |  | ~~Convert the system demo recording into a blog.~~ This is no longer done. Leaving this in case we can do this step again in the future.
 |~~Add release demo video and blog link back in the release notes~~ | ~~Once the video and blog is published~~ | ~~Go to the release notes and add the links. For example, `Release demo: Check out the Zowe demo video for v1.24.0 to see a demo of what's new in this release. Release blog: Read this blog Zowe 1.24 Release Highlights written by Joe Winchester for a deeper dive of the major enhancements and changes for this release.`~~ This is no longer done. Leaving this in case we can do this step again in the future.
 

@@ -204,6 +204,8 @@ Not all plugins support this action, so while the call may return successful, if
 GET /auth-refresh
 ```
 
+Response example:
+```
 {
   "success": true,
   "categories": {
@@ -219,7 +221,7 @@ GET /auth-refresh
     }
   }
 }
-
+```
 
 ### Logout
 When you have an active session, you can terminate it early with a logout. This should remove cookies and tell the server to clear any cache it had about a session.

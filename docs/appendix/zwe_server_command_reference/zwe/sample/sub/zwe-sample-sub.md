@@ -17,6 +17,8 @@ NOTE: This command is to demonstrate how `zwe` command works. There are no real
       meaningful functionalities defined in this command and sub-commands.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -34,6 +36,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --target-dir,--target|-d|string|yes|This parameter is required.
 --auto-encoding|-e|string|no|This parameter has default value.\nThis help message has multiple lines.\n  - another line
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -48,6 +52,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
@@ -88,3 +94,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

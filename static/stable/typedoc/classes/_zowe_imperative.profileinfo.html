@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ProfileInfo | Zowe Node.js SDK - v2.10.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.10.0">
+	<title>ProfileInfo | Zowe Node.js SDK - v3.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.10.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -136,9 +136,7 @@
        youRunSomeZosmfCommand(finalZosmfArgs);
    }
 
-   // So you want to write to a config file? You must use your own
-   // old-school techniques to write to old-school profiles.
-   // You then use alternate logic for a team config.
+   // So you want to write to a config file?
    // You must use the Config API to write to a team configuration.
    // See the Config class documentation for functions to set
    // and save team config arguments.
@@ -148,14 +146,11 @@
        youSetValuesToOverwrite(
            zosmfMergedArgs.knownArgs, zosmfMergedArgs.missingArgs
        );
-   if (profInfo.usingTeamConfig {
-       let configObj: Config = profInfo.getTeamConfig();
-       youWriteArgValuesUsingConfigObj(
-           configObj, yourZosmfArgsToWrite
-       );
-   } else {
-       youWriteOldSchoolProfiles(yourZosmfArgsToWrite);
-   }
+
+   let configObj: Config = profInfo.getTeamConfig();
+   youWriteArgValuesUsingConfigObj(
+       configObj, yourZosmfArgsToWrite
+   );
 </pre>
 				</div>
 			</section>
@@ -182,37 +177,41 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mappname" class="tsd-kind-icon">m<wbr>App<wbr>Name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mcredentials" class="tsd-kind-icon">m<wbr>Credentials</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mextendersjson" class="tsd-kind-icon">m<wbr>Extenders<wbr>Json</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mhasvalidschema" class="tsd-kind-icon">m<wbr>Has<wbr>Valid<wbr>Schema</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mimplogger" class="tsd-kind-icon">m<wbr>Imp<wbr>Logger</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mloadedconfig" class="tsd-kind-icon">m<wbr>Loaded<wbr>Config</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#moldschoolprofilecache" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#moldschoolprofiledefaults" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Defaults</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#moldschoolprofilerootdir" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Root<wbr>Dir</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#moldschoolprofiletypes" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Types</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#moverridewithenv" class="tsd-kind-icon">m<wbr>Override<wbr>With<wbr>Env</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#mprofileschemacache" class="tsd-kind-icon">m<wbr>Profile<wbr>Schema<wbr>Cache</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#musingteamconfig" class="tsd-kind-icon">m<wbr>Using<wbr>Team<wbr>Config</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#usingteamconfig" class="tsd-kind-icon">using<wbr>Team<wbr>Config</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#hasvalidschema" class="tsd-kind-icon">has<wbr>Valid<wbr>Schema</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#onlyv1profilesexist" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#onlyv1profilesexist-1" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#addprofiletoconfig" class="tsd-kind-icon">add<wbr>Profile<wbr>ToConfig</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#addprofiletypetoschema" class="tsd-kind-icon">add<wbr>Profile<wbr>Type<wbr>ToSchema</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#addtoglobalschema" class="tsd-kind-icon">add<wbr>ToGlobal<wbr>Schema</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#argdatatype" class="tsd-kind-icon">arg<wbr>Data<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#argoldprofileloc" class="tsd-kind-icon">arg<wbr>Old<wbr>Profile<wbr>Loc</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#argteamconfigloc" class="tsd-kind-icon">arg<wbr>Team<wbr>Config<wbr>Loc</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#buildschema" class="tsd-kind-icon">build<wbr>Schema</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#ensurereadfromdisk" class="tsd-kind-icon">ensure<wbr>Read<wbr>From<wbr>Disk</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#findteamoslocation" class="tsd-kind-icon">find<wbr>Team<wbr>OsLocation</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getallprofiles" class="tsd-kind-icon">get<wbr>All<wbr>Profiles</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getdefaultprofile" class="tsd-kind-icon">get<wbr>Default<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getoslocinfo" class="tsd-kind-icon">get<wbr>OsLoc<wbr>Info</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getprofiletypes" class="tsd-kind-icon">get<wbr>Profile<wbr>Types</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getschemafortype" class="tsd-kind-icon">get<wbr>Schema<wbr>For<wbr>Type</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#getteamconfig" class="tsd-kind-icon">get<wbr>Team<wbr>Config</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#getteamsubprofiles" class="tsd-kind-icon">get<wbr>Team<wbr>Sub<wbr>Profiles</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#initimputils" class="tsd-kind-icon">init<wbr>Imp<wbr>Utils</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#hastokenexpiredforprofile" class="tsd-kind-icon">has<wbr>Token<wbr>Expired<wbr>For<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#isdefaultteamprofile" class="tsd-kind-icon">is<wbr>Default<wbr>Team<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#issecured" class="tsd-kind-icon">is<wbr>Secured</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#loadallschemas" class="tsd-kind-icon">load<wbr>All<wbr>Schemas</a></li>
@@ -220,15 +219,21 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#loadsecurearg" class="tsd-kind-icon">load<wbr>Secure<wbr>Arg</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#mergeargsforprofile" class="tsd-kind-icon">merge<wbr>Args<wbr>For<wbr>Profile</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#mergeargsforprofiletype" class="tsd-kind-icon">merge<wbr>Args<wbr>For<wbr>Profile<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#oldprofilefilepath" class="tsd-kind-icon">old<wbr>Profile<wbr>File<wbr>Path</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#omitcmdpropsfromschema" class="tsd-kind-icon">omit<wbr>Cmd<wbr>Props<wbr>From<wbr>Schema</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#profilemanagerwillload" class="tsd-kind-icon">profile<wbr>Manager<wbr>Will<wbr>Load</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#readprofilesfromdisk" class="tsd-kind-icon">read<wbr>Profiles<wbr>From<wbr>Disk</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#removeknownproperty" class="tsd-kind-icon">remove<wbr>Known<wbr>Property</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#securefieldswithdetails" class="tsd-kind-icon">secure<wbr>Fields<wbr>With<wbr>Details</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#updateknownproperty" class="tsd-kind-icon">update<wbr>Known<wbr>Property</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_zowe_imperative.profileinfo.html#updateproperty" class="tsd-kind-icon">update<wbr>Property</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_zowe_imperative.profileinfo.html#updateschemaatlayer" class="tsd-kind-icon">update<wbr>Schema<wbr>AtLayer</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#createsession" class="tsd-kind-icon">create<wbr>Session</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#getzowedir" class="tsd-kind-icon">get<wbr>Zowe<wbr>Dir</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#initsesscfg" class="tsd-kind-icon">init<wbr>Sess<wbr>Cfg</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#profattrstoprofloaded" class="tsd-kind-icon">prof<wbr>Attrs<wbr>ToProf<wbr>Loaded</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#readextendersjsonfromdisk" class="tsd-kind-icon">read<wbr>Extenders<wbr>Json<wbr>From<wbr>Disk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.profileinfo.html#writeextendersjson" class="tsd-kind-icon">write<wbr>Extenders<wbr>Json</a></li>
 							</ul>
 						</section>
 					</div>
@@ -246,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L161">@zowe/imperative/packages/config/src/ProfileInfo.ts:161</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L155">@zowe/imperative/src/config/src/ProfileInfo.ts:155</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +294,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>App<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L147">@zowe/imperative/packages/config/src/ProfileInfo.ts:147</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L142">@zowe/imperative/src/config/src/ProfileInfo.ts:142</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -299,7 +304,27 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Credentials<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.profilecredentials.html" class="tsd-signature-type">ProfileCredentials</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L161">@zowe/imperative/packages/config/src/ProfileInfo.ts:161</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L153">@zowe/imperative/src/config/src/ProfileInfo.ts:153</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mextendersjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Extenders<wbr>Json</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Extenders<wbr>Json<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#iextendersjsonopts" class="tsd-signature-type">IExtendersJsonOpts</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L155">@zowe/imperative/src/config/src/ProfileInfo.ts:155</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="mhasvalidschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Has<wbr>Valid<wbr>Schema</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Has<wbr>Valid<wbr>Schema<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L146">@zowe/imperative/src/config/src/ProfileInfo.ts:146</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -309,7 +334,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Imp<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L148">@zowe/imperative/packages/config/src/ProfileInfo.ts:148</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L143">@zowe/imperative/src/config/src/ProfileInfo.ts:143</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -319,55 +344,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Loaded<wbr>Config<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.config.html" class="tsd-signature-type">Config</a><span class="tsd-signature-symbol"> = null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L145">@zowe/imperative/packages/config/src/ProfileInfo.ts:145</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="moldschoolprofilecache" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Old<wbr>School<wbr>Profile<wbr>Cache</h3>
-					<div class="tsd-signature tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Cache<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L149">@zowe/imperative/packages/config/src/ProfileInfo.ts:149</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="moldschoolprofiledefaults" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Old<wbr>School<wbr>Profile<wbr>Defaults</h3>
-					<div class="tsd-signature tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Defaults<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L151">@zowe/imperative/packages/config/src/ProfileInfo.ts:151</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="moldschoolprofilerootdir" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Old<wbr>School<wbr>Profile<wbr>Root<wbr>Dir</h3>
-					<div class="tsd-signature tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Root<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = null</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L150">@zowe/imperative/packages/config/src/ProfileInfo.ts:150</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="moldschoolprofiletypes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Old<wbr>School<wbr>Profile<wbr>Types</h3>
-					<div class="tsd-signature tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Types<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L152">@zowe/imperative/packages/config/src/ProfileInfo.ts:152</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L141">@zowe/imperative/src/config/src/ProfileInfo.ts:141</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -377,7 +354,7 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Override<wbr>With<wbr>Env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L153">@zowe/imperative/packages/config/src/ProfileInfo.ts:153</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L144">@zowe/imperative/src/config/src/ProfileInfo.ts:144</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -387,61 +364,209 @@
 					<div class="tsd-signature tsd-kind-icon">m<wbr>Profile<wbr>Schema<wbr>Cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L160">@zowe/imperative/packages/config/src/ProfileInfo.ts:160</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L152">@zowe/imperative/src/config/src/ProfileInfo.ts:152</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Cache of profile schema objects mapped by profile type and config path
-							if applicable. Examples of map keys:</p>
+							if applicable. Example of map keys:</p>
 							<ul>
 								<li>For team config: &quot;/root/.zowe/zowe.config.json:zosmf&quot;</li>
-								<li>For old profiles: &quot;zosmf&quot;</li>
 							</ul>
 						</div>
 					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="musingteamconfig" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Using<wbr>Team<wbr>Config</h3>
-					<div class="tsd-signature tsd-kind-icon">m<wbr>Using<wbr>Team<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L146">@zowe/imperative/packages/config/src/ProfileInfo.ts:146</a></li>
-						</ul>
-					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="usingteamconfig" class="tsd-anchor"></a>
-					<h3>using<wbr>Team<wbr>Config</h3>
+					<a name="hasvalidschema" class="tsd-anchor"></a>
+					<h3>has<wbr>Valid<wbr>Schema</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> usingTeamConfig<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> hasValidSchema<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L978">@zowe/imperative/packages/config/src/ProfileInfo.ts:978</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L918">@zowe/imperative/src/config/src/ProfileInfo.ts:918</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an indicator of whether we are using a team configuration or
-									old-school profiles.</p>
+									<p>Returns whether a valid schema was found (works for v1 and v2 configs)</p>
 								</div>
-								<p>You must call ProfileInfo.readProfilesFromDisk() before calling this function.</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>True when we are using a team config. False means old-school profiles.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="onlyv1profilesexist" class="tsd-anchor"></a>
+					<h3>only<wbr>V1Profiles<wbr>Exist</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onlyV1ProfilesExist<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L805">@zowe/imperative/src/config/src/ProfileInfo.ts:805</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an indicator that the user has no team configuration, but we
+										detected the existence of old-school V1 profiles. We will not work with the
+										V1 profiles. This function can let you tell a user that they are incorrectly
+									trying to use V1 profiles.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True - Means there is <em>NO</em> team config <em>AND</em> we detected that a V1 profile exists.
+							False otherwise.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+					<a name="onlyv1profilesexist-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> only<wbr>V1Profiles<wbr>Exist</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onlyV1ProfilesExist<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L792">@zowe/imperative/src/config/src/ProfileInfo.ts:792</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an indicator that the user has no team configuration, but we
+										detected the existence of old-school V1 profiles. We will not work with the
+										V1 profiles. This function can let you tell a user that they are incorrectly
+									trying to use V1 profiles.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>Use non-static method instead to detect V2 profiles</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if a V1 profile exists, and <code>false</code> otherwise.</p>
 						</li>
 					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addprofiletoconfig" class="tsd-anchor"></a>
+					<h3>add<wbr>Profile<wbr>ToConfig</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Profile<wbr>ToConfig<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, layerPath<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1116">@zowe/imperative/src/config/src/ProfileInfo.ts:1116</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a profile type to the loaded Zowe config.
+									The profile type must first be added to the schema using <code>addProfileTypeToSchema</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile type to add</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> layerPath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if added to the loaded config; <code>false</code> otherwise</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="addprofiletypetoschema" class="tsd-anchor"></a>
+					<h3>add<wbr>Profile<wbr>Type<wbr>ToSchema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Profile<wbr>Type<wbr>ToSchema<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, typeInfo<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iextendertypeinfo" class="tsd-signature-type">IExtenderTypeInfo</a>, updateProjectSchema<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iaddproftyperesult" class="tsd-signature-type">IAddProfTypeResult</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1294">@zowe/imperative/src/config/src/ProfileInfo.ts:1294</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Adds a profile type to the schema, and tracks its contribution in extenders.json.</p>
+								</div>
+								<p>NOTE: <code>readProfilesFromDisk</code> must be called at least once before adding new profile types.</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The new profile type to add to the schema</p>
+									</div>
+								</li>
+								<li>
+									<h5>typeInfo: <a href="../modules/_zowe_imperative.html#iextendertypeinfo" class="tsd-signature-type">IExtenderTypeInfo</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Type metadata for the profile type (schema, source app., optional version)</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> updateProjectSchema: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_zowe_imperative.html#iaddproftyperesult" class="tsd-signature-type">IAddProfTypeResult</a></h4>
+							<p>the result of adding the profile type to the schema</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="addtoglobalschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> add<wbr>ToGlobal<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>ToGlobal<wbr>Schema<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, typeInfo<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iextendertypeinfo" class="tsd-signature-type">IExtenderTypeInfo</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iaddproftyperesult" class="tsd-signature-type">IAddProfTypeResult</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1197">@zowe/imperative/src/config/src/ProfileInfo.ts:1197</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>typeInfo: <a href="../modules/_zowe_imperative.html#iextendertypeinfo" class="tsd-signature-type">IExtenderTypeInfo</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_zowe_imperative.html#iaddproftyperesult" class="tsd-signature-type">IAddProfTypeResult</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="argdatatype" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> arg<wbr>Data<wbr>Type</h3>
@@ -452,7 +577,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1315">@zowe/imperative/packages/config/src/ProfileInfo.ts:1315</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1612">@zowe/imperative/src/config/src/ProfileInfo.ts:1612</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -476,44 +601,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="argoldprofileloc" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> arg<wbr>Old<wbr>Profile<wbr>Loc</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">arg<wbr>Old<wbr>Profile<wbr>Loc<span class="tsd-signature-symbol">(</span>profileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofloc.html" class="tsd-signature-type">IProfLoc</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1385">@zowe/imperative/packages/config/src/ProfileInfo.ts:1385</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Given a profile name and type, compute the profile location object
-									containing OS location.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>profileName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Name of an old school profile (e.g., LPAR1)</p>
-									</div>
-								</li>
-								<li>
-									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Type of an old school profile (e.g., zosmf)</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofloc.html" class="tsd-signature-type">IProfLoc</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="argteamconfigloc" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> arg<wbr>Team<wbr>Config<wbr>Loc</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
@@ -523,7 +610,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1332">@zowe/imperative/packages/config/src/ProfileInfo.ts:1332</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1629">@zowe/imperative/src/config/src/ProfileInfo.ts:1629</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -545,6 +632,38 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="buildschema" class="tsd-anchor"></a>
+					<h3>build<wbr>Schema</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Schema<span class="tsd-signature-symbol">(</span>sources<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, layer<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfigschema.html" class="tsd-signature-type">IConfigSchema</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1348">@zowe/imperative/src/config/src/ProfileInfo.ts:1348</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Builds the entire schema based on the available profile types and application sources.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> sources: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> layer: <a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iconfigschema.html" class="tsd-signature-type">IConfigSchema</a></h4>
+							<p>A config schema containing all applicable profile types</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="ensurereadfromdisk" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> ensure<wbr>Read<wbr>From<wbr>Disk</h3>
@@ -555,7 +674,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1101">@zowe/imperative/packages/config/src/ProfileInfo.ts:1101</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1031">@zowe/imperative/src/config/src/ProfileInfo.ts:1031</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -578,7 +697,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1297">@zowe/imperative/packages/config/src/ProfileInfo.ts:1297</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1594">@zowe/imperative/src/config/src/ProfileInfo.ts:1594</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -613,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L358">@zowe/imperative/packages/config/src/ProfileInfo.ts:358</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L375">@zowe/imperative/src/config/src/ProfileInfo.ts:375</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -657,7 +776,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L425">@zowe/imperative/packages/config/src/ProfileInfo.ts:425</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L422">@zowe/imperative/src/config/src/ProfileInfo.ts:422</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -691,7 +810,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L987">@zowe/imperative/packages/config/src/ProfileInfo.ts:987</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L926">@zowe/imperative/src/config/src/ProfileInfo.ts:926</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -713,6 +832,64 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getprofiletypes" class="tsd-anchor"></a>
+					<h3>get<wbr>Profile<wbr>Types</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Profile<wbr>Types<span class="tsd-signature-symbol">(</span>sources<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1389">@zowe/imperative/src/config/src/ProfileInfo.ts:1389</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> sources: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>a list of all available profile types</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getschemafortype" class="tsd-anchor"></a>
+					<h3>get<wbr>Schema<wbr>For<wbr>Type</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Schema<wbr>For<wbr>Type<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1430">@zowe/imperative/src/config/src/ProfileInfo.ts:1430</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the schema object belonging to the specified profile type.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile type to retrieve the schema from</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></h4>
+							<p>The schema object provided by the specified profile type</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getteamconfig" class="tsd-anchor"></a>
 					<h3>get<wbr>Team<wbr>Config</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -722,7 +899,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L522">@zowe/imperative/packages/config/src/ProfileInfo.ts:522</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L478">@zowe/imperative/src/config/src/ProfileInfo.ts:478</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -753,7 +930,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1233">@zowe/imperative/packages/config/src/ProfileInfo.ts:1233</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1530">@zowe/imperative/src/config/src/ProfileInfo.ts:1530</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -811,26 +988,41 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="initimputils" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> init<wbr>Imp<wbr>Utils</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">init<wbr>Imp<wbr>Utils<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="hastokenexpiredforprofile" class="tsd-anchor"></a>
+					<h3>has<wbr>Token<wbr>Expired<wbr>For<wbr>Profile</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Token<wbr>Expired<wbr>For<wbr>Profile<span class="tsd-signature-symbol">(</span>profile<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1115">@zowe/imperative/packages/config/src/ProfileInfo.ts:1115</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L194">@zowe/imperative/src/config/src/ProfileInfo.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Perform a rudimentary initialization of some Imperative utilities.
-									We must do this because VSCode apps do not typically call imperative.init.</p>
+									<p>Checks if a JSON web token is used for authenticating the given profile
+										name. If so, it will decode the token to determine whether it has
+									expired.</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profile: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code>The name of the profile<span class="hljs-built_in"> or </span>the profile object to<span class="hljs-built_in"> check </span>the JSON web
+token for
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<pre><code>Whether <span class="hljs-keyword">the</span> <span class="hljs-keyword">token</span> has expired <span class="hljs-keyword">for</span> <span class="hljs-keyword">the</span> given profile. Returns `<span class="hljs-literal">false</span>`
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">a</span> <span class="hljs-keyword">token</span> <span class="hljs-built_in">value</span> is <span class="hljs-keyword">not</span> <span class="hljs-built_in">set</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">the</span> <span class="hljs-keyword">token</span> type is LTPA2.
+</code></pre>
 						</li>
 					</ul>
 				</section>
@@ -844,7 +1036,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1272">@zowe/imperative/packages/config/src/ProfileInfo.ts:1272</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1569">@zowe/imperative/src/config/src/ProfileInfo.ts:1569</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -882,7 +1074,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L532">@zowe/imperative/packages/config/src/ProfileInfo.ts:532</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L488">@zowe/imperative/src/config/src/ProfileInfo.ts:488</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,15 +1097,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1152">@zowe/imperative/packages/config/src/ProfileInfo.ts:1152</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1045">@zowe/imperative/src/config/src/ProfileInfo.ts:1045</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Load any profile schema objects found on disk and cache them. For team
 										config, we check each config layer and load its schema JSON if there is
-										one associated. For old school profiles, we load the meta YAML file for
-									each profile type if it exists in the profile root directory.</p>
+									one associated.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -930,7 +1121,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1407">@zowe/imperative/packages/config/src/ProfileInfo.ts:1407</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1677">@zowe/imperative/src/config/src/ProfileInfo.ts:1677</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -962,7 +1153,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1010">@zowe/imperative/packages/config/src/ProfileInfo.ts:1010</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L949">@zowe/imperative/src/config/src/ProfileInfo.ts:949</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -993,7 +1184,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L600">@zowe/imperative/packages/config/src/ProfileInfo.ts:600</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L560">@zowe/imperative/src/config/src/ProfileInfo.ts:560</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1053,7 +1244,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L832">@zowe/imperative/packages/config/src/ProfileInfo.ts:832</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L758">@zowe/imperative/src/config/src/ProfileInfo.ts:758</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1090,40 +1281,36 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="oldprofilefilepath" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> old<wbr>Profile<wbr>File<wbr>Path</h3>
+					<a name="omitcmdpropsfromschema" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> omit<wbr>Cmd<wbr>Props<wbr>From<wbr>Schema</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">old<wbr>Profile<wbr>File<wbr>Path<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, profileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">omit<wbr>Cmd<wbr>Props<wbr>From<wbr>Schema<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofileproperty.html" class="tsd-signature-type">IProfileProperty</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1398">@zowe/imperative/packages/config/src/ProfileInfo.ts:1398</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1186">@zowe/imperative/src/config/src/ProfileInfo.ts:1186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Given a profile name and type, return the OS location of the associated
-									YAML file.</p>
+									<p>This helper function removes all command-related properties from the given schema properties object and returns it.
+										This is so we can easily compare schemas from disk with those that are registered with type ICommandProfileSchema.
+									It&#39;s also been added to avoid a breaking change (as we currently allow ICommandProfileSchema objects to be registered).</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+									<h5>obj: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>Type of an old school profile (e.g., zosmf)</p>
-									</div>
-								</li>
-								<li>
-									<h5>profileName: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Name of an old school profile (e.g., LPAR1)</p>
+										<p>The properties object from the schema</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_zowe_imperative.iprofileproperty.html" class="tsd-signature-type">IProfileProperty</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The properties object, but with all of the command-related properties removed</p>
 						</li>
 					</ul>
 				</section>
@@ -1137,13 +1324,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1449">@zowe/imperative/packages/config/src/ProfileInfo.ts:1449</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1715">@zowe/imperative/src/config/src/ProfileInfo.ts:1715</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Override values in a merged argument object with values found in
-										environment variables. The choice to override enviroment variables is
+										environment variables. The choice to override environment variables is
 									controlled by an option on the ProfileInfo constructor.</p>
 								</div>
 							</div>
@@ -1170,6 +1357,31 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="profilemanagerwillload" class="tsd-anchor"></a>
+					<h3>profile<wbr>Manager<wbr>Will<wbr>Load</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">profile<wbr>Manager<wbr>Will<wbr>Load<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L901">@zowe/imperative/src/config/src/ProfileInfo.ts:901</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks whether the credential manager will load successfully.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<pre><code><span class="hljs-keyword">True</span> <span class="hljs-keyword">if</span> it loaded successfully, <span class="hljs-keyword">or</span> there <span class="hljs-keyword">is</span> <span class="hljs-keyword">no</span> credential manager
+configured <span class="hljs-keyword">in</span> Imperative settings.json
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="readprofilesfromdisk" class="tsd-anchor"></a>
 					<h3>read<wbr>Profiles<wbr>From<wbr>Disk</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1179,13 +1391,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L917">@zowe/imperative/packages/config/src/ProfileInfo.ts:917</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L875">@zowe/imperative/src/config/src/ProfileInfo.ts:875</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Read either the new team configuration files (if any exist) or
-									read the old-school profile files.</p>
+									<p>Read the team configuration files (if any exist).</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1193,9 +1404,7 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> teamCfgOpts: <a href="../interfaces/_zowe_imperative.iconfigopts.html" class="tsd-signature-type">IConfigOpts</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<pre><code>   The optional choices used <span class="hljs-keyword">when</span> reading a team <span class="hljs-keyword">configuration</span>.
-   This parameter <span class="hljs-keyword">is</span> ignored, <span class="hljs-keyword">if</span> the <span class="hljs-keyword">end</span>-<span class="hljs-keyword">user</span> <span class="hljs-keyword">is</span> <span class="hljs-keyword">using</span> <span class="hljs-built_in">old</span>-school
-   profiles.
+										<pre><code>   The optional choices related <span class="hljs-selector-tag">to</span> reading <span class="hljs-selector-tag">a</span> team configuration.
 </code></pre>
 									</div>
 								</li>
@@ -1214,7 +1423,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L329">@zowe/imperative/packages/config/src/ProfileInfo.ts:329</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L346">@zowe/imperative/src/config/src/ProfileInfo.ts:346</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1249,6 +1458,47 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="securefieldswithdetails" class="tsd-anchor"></a>
+					<h3>secure<wbr>Fields<wbr>With<wbr>Details</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">secure<wbr>Fields<wbr>With<wbr>Details<span class="tsd-signature-symbol">(</span>opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>global<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofargattrs.html" class="tsd-signature-type">IProfArgAttrs</a><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1455">@zowe/imperative/src/config/src/ProfileInfo.ts:1455</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>List of secure properties with more details, like value, location, and type</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opts: <span class="tsd-signature-symbol">{ </span>global<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> }</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The user and global flags that specify one of the four
+										config files (aka layers).</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>global<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>user<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofargattrs.html" class="tsd-signature-type">IProfArgAttrs</a><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Array of secure property details</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="updateknownproperty" class="tsd-anchor"></a>
 					<h3>update<wbr>Known<wbr>Property</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1258,15 +1508,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L252">@zowe/imperative/packages/config/src/ProfileInfo.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L281">@zowe/imperative/src/config/src/ProfileInfo.ts:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Update a given property with the value provided.
 										This function only works for properties that can be found in the config files (including secure arrays).
-										If the property cannot be found, this function will resolve to false
-									This function supports v1 profiles</p>
+									If the property cannot be found, this function will resolve to false</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1292,13 +1541,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L193">@zowe/imperative/packages/config/src/ProfileInfo.ts:193</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L219">@zowe/imperative/src/config/src/ProfileInfo.ts:219</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Update a given property regardless of whether it&#39;s found in the config file or not
-									This function supports v1 profiles</p>
+									<p>Update a given property in the config file.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1314,6 +1562,50 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="updateschemaatlayer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> update<wbr>Schema<wbr>AtLayer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Schema<wbr>AtLayer<span class="tsd-signature-symbol">(</span>profileType<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, schema<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a>, layer<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a>, versionChanged<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1147">@zowe/imperative/src/config/src/ProfileInfo.ts:1147</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Updates the schema of the provided config layer to contain the new profile type.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileType: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The profile type to add into the schema</p>
+									</div>
+								</li>
+								<li>
+									<h5>schema: <a href="../interfaces/_zowe_imperative.iprofileschema.html" class="tsd-signature-type">IProfileSchema</a></h5>
+								</li>
+								<li>
+									<h5>layer: <a href="../interfaces/_zowe_imperative.iconfiglayer.html" class="tsd-signature-type">IConfigLayer</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The config layer that matches the schema to update</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> versionChanged: <span class="tsd-signature-type">boolean</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if added to the schema; <code>false</code> otherwise</p>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="createsession" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Session</h3>
@@ -1324,7 +1616,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L554">@zowe/imperative/packages/config/src/ProfileInfo.ts:554</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L510">@zowe/imperative/src/config/src/ProfileInfo.ts:510</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1361,16 +1653,47 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="initsesscfg" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> init<wbr>Sess<wbr>Cfg</h3>
+					<a name="getzowedir" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Zowe<wbr>Dir</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">init<wbr>Sess<wbr>Cfg<span class="tsd-signature-symbol">(</span>profArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofargattrs.html" class="tsd-signature-type">IProfArgAttrs</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Zowe<wbr>Dir<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L1063">@zowe/imperative/packages/config/src/ProfileInfo.ts:1063</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L780">@zowe/imperative/src/config/src/ProfileInfo.ts:780</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieves the Zowe CLI home directory. In the situation Imperative has
+									not initialized it we use a default value.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>Use ConfigUtils.getZoweDir()</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>Returns the Zowe home directory</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="initsesscfg" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> init<wbr>Sess<wbr>Cfg</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">init<wbr>Sess<wbr>Cfg<span class="tsd-signature-symbol">(</span>profArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iprofargattrs.html" class="tsd-signature-type">IProfArgAttrs</a><span class="tsd-signature-symbol">[]</span>, argNames<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L993">@zowe/imperative/src/config/src/ProfileInfo.ts:993</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1385,6 +1708,14 @@
 									<h5>profArgs: <a href="../interfaces/_zowe_imperative.iprofargattrs.html" class="tsd-signature-type">IProfArgAttrs</a><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<pre><code> An<span class="hljs-built_in"> array </span>of profile argument attributes.
+</code></pre>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> argNames: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<pre><code> An<span class="hljs-built_in"> array </span>of argument names to load from the profile. Defaults to
+ all arguments that have an associated ISession property.
 </code></pre>
 									</div>
 								</li>
@@ -1405,7 +1736,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/imperative/blob/v5.15.1/packages/config/src/ProfileInfo.ts#L879">@zowe/imperative/packages/config/src/ProfileInfo.ts:879</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L840">@zowe/imperative/src/config/src/ProfileInfo.ts:840</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1451,6 +1782,72 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iprofileloaded.html" class="tsd-signature-type">IProfileLoaded</a></h4>
 							<p>An IProfileLoaded object;</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="readextendersjsonfromdisk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> read<wbr>Extenders<wbr>Json<wbr>From<wbr>Disk</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">read<wbr>Extenders<wbr>Json<wbr>From<wbr>Disk<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iextendersjsonopts" class="tsd-signature-type">IExtendersJsonOpts</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1092">@zowe/imperative/src/config/src/ProfileInfo.ts:1092</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reads the <code>extenders.json</code> file from the CLI home directory.
+									Called once in <code>readProfilesFromDisk</code> and cached to minimize I/O operations.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd></dd>
+									<dt>deprecated</dt>
+									<dd><p>Please use <code>ConfigUtils.readExtendersJson</code> instead</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_zowe_imperative.html#iextendersjsonopts" class="tsd-signature-type">IExtendersJsonOpts</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="writeextendersjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> write<wbr>Extenders<wbr>Json</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">write<wbr>Extenders<wbr>Json<span class="tsd-signature-symbol">(</span>obj<span class="tsd-signature-symbol">: </span><a href="../modules/_zowe_imperative.html#iextendersjsonopts" class="tsd-signature-type">IExtendersJsonOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/ProfileInfo.ts#L1102">@zowe/imperative/src/config/src/ProfileInfo.ts:1102</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Attempts to write to the <code>extenders.json</code> file in the CLI home directory.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd></dd>
+									<dt>deprecated</dt>
+									<dd><p>Please use <code>ConfigUtils.writeExtendersJson</code> instead</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>obj: <a href="../modules/_zowe_imperative.html#iextendersjsonopts" class="tsd-signature-type">IExtendersJsonOpts</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p><code>true</code> if written successfully; <code>false</code> otherwise</p>
 						</li>
 					</ul>
 				</section>
@@ -1520,22 +1917,16 @@
 										<a href="_zowe_imperative.profileinfo.html#mcredentials" class="tsd-kind-icon">m<wbr>Credentials</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.profileinfo.html#mextendersjson" class="tsd-kind-icon">m<wbr>Extenders<wbr>Json</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.profileinfo.html#mhasvalidschema" class="tsd-kind-icon">m<wbr>Has<wbr>Valid<wbr>Schema</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#mimplogger" class="tsd-kind-icon">m<wbr>Imp<wbr>Logger</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#mloadedconfig" class="tsd-kind-icon">m<wbr>Loaded<wbr>Config</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#moldschoolprofilecache" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Cache</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#moldschoolprofiledefaults" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Defaults</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#moldschoolprofilerootdir" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Root<wbr>Dir</a>
-									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#moldschoolprofiletypes" class="tsd-kind-icon">m<wbr>Old<wbr>School<wbr>Profile<wbr>Types</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#moverridewithenv" class="tsd-kind-icon">m<wbr>Override<wbr>With<wbr>Env</a>
@@ -1543,20 +1934,32 @@
 									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#mprofileschemacache" class="tsd-kind-icon">m<wbr>Profile<wbr>Schema<wbr>Cache</a>
 									</li>
-									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#musingteamconfig" class="tsd-kind-icon">m<wbr>Using<wbr>Team<wbr>Config</a>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#hasvalidschema" class="tsd-kind-icon">has<wbr>Valid<wbr>Schema</a>
 									</li>
 									<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-										<a href="_zowe_imperative.profileinfo.html#usingteamconfig" class="tsd-kind-icon">using<wbr>Team<wbr>Config</a>
+										<a href="_zowe_imperative.profileinfo.html#onlyv1profilesexist" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.profileinfo.html#onlyv1profilesexist-1" class="tsd-kind-icon">only<wbr>V1Profiles<wbr>Exist</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#addprofiletoconfig" class="tsd-kind-icon">add<wbr>Profile<wbr>ToConfig</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#addprofiletypetoschema" class="tsd-kind-icon">add<wbr>Profile<wbr>Type<wbr>ToSchema</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.profileinfo.html#addtoglobalschema" class="tsd-kind-icon">add<wbr>ToGlobal<wbr>Schema</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#argdatatype" class="tsd-kind-icon">arg<wbr>Data<wbr>Type</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#argoldprofileloc" class="tsd-kind-icon">arg<wbr>Old<wbr>Profile<wbr>Loc</a>
-									</li>
-									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#argteamconfigloc" class="tsd-kind-icon">arg<wbr>Team<wbr>Config<wbr>Loc</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#buildschema" class="tsd-kind-icon">build<wbr>Schema</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#ensurereadfromdisk" class="tsd-kind-icon">ensure<wbr>Read<wbr>From<wbr>Disk</a>
@@ -1574,13 +1977,19 @@
 										<a href="_zowe_imperative.profileinfo.html#getoslocinfo" class="tsd-kind-icon">get<wbr>OsLoc<wbr>Info</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#getprofiletypes" class="tsd-kind-icon">get<wbr>Profile<wbr>Types</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#getschemafortype" class="tsd-kind-icon">get<wbr>Schema<wbr>For<wbr>Type</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.profileinfo.html#getteamconfig" class="tsd-kind-icon">get<wbr>Team<wbr>Config</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#getteamsubprofiles" class="tsd-kind-icon">get<wbr>Team<wbr>Sub<wbr>Profiles</a>
 									</li>
-									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#initimputils" class="tsd-kind-icon">init<wbr>Imp<wbr>Utils</a>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#hastokenexpiredforprofile" class="tsd-kind-icon">has<wbr>Token<wbr>Expired<wbr>For<wbr>Profile</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#isdefaultteamprofile" class="tsd-kind-icon">is<wbr>Default<wbr>Team<wbr>Profile</a>
@@ -1604,10 +2013,13 @@
 										<a href="_zowe_imperative.profileinfo.html#mergeargsforprofiletype" class="tsd-kind-icon">merge<wbr>Args<wbr>For<wbr>Profile<wbr>Type</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-										<a href="_zowe_imperative.profileinfo.html#oldprofilefilepath" class="tsd-kind-icon">old<wbr>Profile<wbr>File<wbr>Path</a>
+										<a href="_zowe_imperative.profileinfo.html#omitcmdpropsfromschema" class="tsd-kind-icon">omit<wbr>Cmd<wbr>Props<wbr>From<wbr>Schema</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 										<a href="_zowe_imperative.profileinfo.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#profilemanagerwillload" class="tsd-kind-icon">profile<wbr>Manager<wbr>Will<wbr>Load</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.profileinfo.html#readprofilesfromdisk" class="tsd-kind-icon">read<wbr>Profiles<wbr>From<wbr>Disk</a>
@@ -1616,19 +2028,34 @@
 										<a href="_zowe_imperative.profileinfo.html#removeknownproperty" class="tsd-kind-icon">remove<wbr>Known<wbr>Property</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
+										<a href="_zowe_imperative.profileinfo.html#securefieldswithdetails" class="tsd-kind-icon">secure<wbr>Fields<wbr>With<wbr>Details</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.profileinfo.html#updateknownproperty" class="tsd-kind-icon">update<wbr>Known<wbr>Property</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class">
 										<a href="_zowe_imperative.profileinfo.html#updateproperty" class="tsd-kind-icon">update<wbr>Property</a>
 									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+										<a href="_zowe_imperative.profileinfo.html#updateschemaatlayer" class="tsd-kind-icon">update<wbr>Schema<wbr>AtLayer</a>
+									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.profileinfo.html#createsession" class="tsd-kind-icon">create<wbr>Session</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.profileinfo.html#getzowedir" class="tsd-kind-icon">get<wbr>Zowe<wbr>Dir</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.profileinfo.html#initsesscfg" class="tsd-kind-icon">init<wbr>Sess<wbr>Cfg</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.profileinfo.html#profattrstoprofloaded" class="tsd-kind-icon">prof<wbr>Attrs<wbr>ToProf<wbr>Loaded</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.profileinfo.html#readextendersjsonfromdisk" class="tsd-kind-icon">read<wbr>Extenders<wbr>Json<wbr>From<wbr>Disk</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.profileinfo.html#writeextendersjson" class="tsd-kind-icon">write<wbr>Extenders<wbr>Json</a>
 									</li>
 								</ul>
 							</li>

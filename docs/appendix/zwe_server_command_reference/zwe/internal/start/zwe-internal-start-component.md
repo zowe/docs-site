@@ -4,6 +4,8 @@
 
 	zwe internal start component [parameter [parameter]...]
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -21,6 +23,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component|-o|string|yes|Component to start.
 --run-in-background||boolean|no|Whether to start this component in background.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -36,6 +40,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
@@ -76,3 +82,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

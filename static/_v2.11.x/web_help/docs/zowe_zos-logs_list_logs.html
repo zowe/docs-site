@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-logs list logs</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-logs.html">zos-logs</a> › <a href="zowe_zos-logs_list.html">list</a> › <a href="zowe_zos-logs_list_logs.html">logs</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>List z/OS operlog within a time range.</p>
+<p>Use this operation to get the z/OS operations logs. It invokes z/OSMF REST API to retrieve logs.</p>
+<p>Executing 'zowe zos-logs list logs' will by default return logs from current time and backwards to 10 minutes before.</p>
+<p>Note: OPERLOG needs to be configured on z/OS server.</p>
+<h4>Usage</h4>
+<p>zowe zos-logs list logs [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--start-time</code> | <code>--st</code> <em>(string)</em></p>
+<ul>
+<li>Specify the time in ISO-8601 time format from when z/OSMF will start to retrieve the logs. For example, '2021-01-26T03:33:18.065Z', '2021-01-26T11:33:18.065+08:00'. Default is the current time.</li>
+</ul>
+</li>
+<li>
+<p><code>--direction</code> | <code>-d</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify the direction when retrieving the message log. Either 'forward' or 'backward' is valid, case insensitive.</p>
+<p>Default value: backward<br>
+Allowed values: forward, backward</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--range</code> | <code>-r</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify a time range in which the logs will be retrieved. The format is like nnnu, nnn is 1-999, u is one of 's', 'm', 'h', for example, '999s', '20m', '3h'.</p>
+<p>Default value: 10m</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List logs starting from '2021-07-26T03:38:37.098Z' and forwards to 5 minutes later:</p>
+<ul>
+<li><code>zowe zos-logs list logs --start-time 2021-07-26T03:38:37.098Z --range 5m --direction forward</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-logs list logs --start-time 2021-07-26T03:38:37.098Z --range 5m --direction forward">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List logs starting from '2021-07-26T03:38:37.098Z' and forwards to 5 minutes later. Alias version of the above command:</p>
+<ul>
+<li><code>zowe zos-logs list logs --st 2021-07-26T03:38:37.098Z -r 5m -d forward</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-logs list logs --st 2021-07-26T03:38:37.098Z -r 5m -d forward">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>List logs starting from '2021-07-26T03:38:37.098Z' and backwards to 5 minutes before:</p>
+<ul>
+<li><code>zowe zos-logs list logs --start-time 2021-07-26T03:38:37.098Z --range 5m</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-logs list logs --start-time 2021-07-26T03:38:37.098Z --range 5m">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

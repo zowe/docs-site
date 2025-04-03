@@ -75,43 +75,44 @@ Currently, the only build automation system for use with onboarding a Micronaut 
    The following example shows a sample `gradle.build` file:
 
     **Example:**
+    ```
+    plugins {
+        id "io.micronaut.application" version '1.0.5'
+        id 'com.github.johnrengelman.shadow' version '6.1.0'
+    }
+    mainClassName = 'org.zowe.apiml.Application'
 
-        plugins {
-            id "io.micronaut.application" version '1.0.5'
-            id 'com.github.johnrengelman.shadow' version '6.1.0'
-        }
-        mainClassName = 'org.zowe.apiml.Application'
+    shadowJar {
+        archiveBaseName.set('micronaut-enabler')
+        archiveClassifier.set('')
+        archiveVersion.set('1.0')
+    }
+    version "0.1"
+    group "org.zowe.apiml"
 
-        shadowJar {
-            archiveBaseName.set('micronaut-enabler')
-            archiveClassifier.set('')
-            archiveVersion.set('1.0')
-        }
-        version "0.1"
-        group "org.zowe.apiml"
+    repositories {
+        url artifactoryMavenRepo
+    }
 
-        repositories {
-            url artifactoryMavenRepo
+    micronaut {
+        version = "2.1.3"
+        runtime "netty"
+        testRuntime "junit5"
+        processing {
+            incremental true
+            annotations "org.zowe.apiml.*"
         }
+    }
 
-        micronaut {
-            version = "2.1.3"
-            runtime "netty"
-            testRuntime "junit5"
-            processing {
-                incremental true
-                annotations "org.zowe.apiml.*"
-            }
-        }
+    dependencies {
+        implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
+    }
 
-        dependencies {
-            implementation "org.zowe.apiml. sdk:onboarding-enabler-micronaut:$zoweApimlVersion"
-        }
-
-        java {
-            sourceCompatibility = JavaVersion.toVersion('1.8')
-            targetCompatibility = JavaVersion.toVersion('1.8')
-        }
+    java {
+        sourceCompatibility = JavaVersion.toVersion('1.8')
+        targetCompatibility = JavaVersion.toVersion('1.8')
+    }
+    ```
 
 8. (Optional) Create a shadow jar.
 

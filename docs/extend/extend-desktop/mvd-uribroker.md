@@ -15,7 +15,7 @@ The URI Broker is an object in the application plug-in web framework, which faci
     1. [Accessing static content](#accessing-static-content)
     1. [Accessing the application plug-in's root](#accessing-the-application-plug-ins-root)
     1. [Server queries](#server-queries)
-        1. [Accessing list of plugins](#accessing-list-of-plugins)
+        1. [Accessing a list of plug-ins](#accessing-a-list-of-plug-ins)
 
 ## Accessing the URI Broker
 
@@ -81,7 +81,7 @@ This can be accessed through:
 
 Returns: A URI for getting static content.
 
-For more information about the `web` directory, see [Application plug-in filesystem structure](mvd-plugindefandstruct#application-plug-in-filesystem-structure).
+For more information about the `web` directory, see [Application plug-in filesystem structure](mvd-plugindefandstruct.md#application-plugin-filesystem-structure).
 
 ### Accessing the application plug-in's root
 

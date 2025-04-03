@@ -1,4 +1,4 @@
-# Configuring
+# Configuring Zowe containers
 
 Zowe provides sample configurations that make it easy for you to run Zowe in Kubernetes. You can use them directly or as a reference.
 
@@ -34,6 +34,7 @@ kubectl apply -f common/zowe-sa.yaml
 
 Note that by default, `zowe-sa` service account has `automountServiceAccountToken` disabled for security purposes.
 
+### Verification
 To verify, check the following configurations.
 
 * `kubectl get namespaces` should show a Namespace `zowe`.
@@ -54,13 +55,16 @@ After you customize the `storageClassName` value, apply the result by issuing th
 kubectl apply -f samples/workspace-pvc.yaml
 ```
 
+### Verification
 To verify, run the following commands and check if the `STATUS` of line item `zowe-workspace-pvc` shows as `Bound`.
 
 ```
 kubectl get pvc --namespace zowe
 ```
 
-**IMPORTANT**, `zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany` to allow the workspace be shared by all Zowe components.
+:::danger Important: 
+`zowe-workspace-pvc` `PersistentVolumeClaim` must be declared in access mode `ReadWriteMany` to allow the workspace be shared by all Zowe components.
+:::
 
 In some Kubernetes environment, you may need to define `PeristentVolume` and define `volumeName` in `PersistentVolumeClaim` instead of defining `storageClassName`. Please consult your Kubernetes administrator to confirm the appropriate way for your environment. This is an example to configure `PersistentVolumeClaim` with pre-configured `zowe-workspace-pv` `PeristentVolume`.
 
@@ -132,7 +136,8 @@ c. Apply the file into Kubernetes:
 
 d. Remove the previously saved `configs.yaml` file from all systems for security.
 
-To verify:
+### Verification
+To verify, run the following commands and check the results.
 
 * `kubectl get configmaps --namespace zowe`
    
@@ -163,9 +168,9 @@ Review the following table for steps you may take depending on the Kubernetes pr
 | :------------------------ | :----------------------  | :--------------------------------------------------------- |
 | minikube                  | LoadBalancer or NodePort | Port Forward (on next section Starting, stopping, and monitoring)|
 | docker-desktop            | LoadBalancer             | none                                                       |
-| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4b-create-ingress-for-bare-metal-only)   |
+| bare-metal                | LoadBalancer or NodePort | [Create Ingress](#4b-create-ingress-bare-metal)            |
 | cloud-vendors             | LoadBalancer             | none                                                       |
-| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4c-create-route-for-openshift-only)        |
+| OpenShift                 | LoadBalancer or NodePort | [Create Route](#4c-create-route-openshift)                 |
 
 
 #### Defining api-catalog service
@@ -178,7 +183,7 @@ To define this service, run the command:
 kubectl apply -f samples/api-catalog-service.yaml
 ```
 
-Upon success, you should see the following output: 
+**To verify**, You should see the following output: 
 
 ```
 service/api-catalog-service created
@@ -200,7 +205,7 @@ Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this wil
 kubectl apply -f samples/gateway-service-np.yaml
 ```
 
-To verify either case, run the following command and check that the command displays the service `gateway-service`.
+**To verify either case**, run the following command and check that the command displays the service `gateway-service`.
 
 ```
 kubectl get services --namespace zowe
@@ -224,11 +229,11 @@ Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this wil
 kubectl apply -f samples/discovery-service-np.yaml
 ```
 
-To verify either case, run the following command and check that this command displays the service `discovery-service`:
+**To verify either case**, run the following command and check that this command displays the service `discovery-service`:
 
 ```kubectl get services --namespace zowe``` 
 
-Upon completion of all the preceding steps in this [a. Create service](#a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
+Upon completion of all the preceding steps in this [4a. Create service](#4a-create-service) section, you may need to run additional setups. Refer to "Additional setups required" in the table. If you don't need additional setups, you can skip 4b, 4c, 4d, and jump directly to Apply Zowe section.
 
 ### 4b. Create Ingress (Bare-metal)
 
@@ -245,13 +250,13 @@ kubectl apply -f samples/bare-metal/gateway-ingress.yaml
 kubectl apply -f samples/bare-metal/discovery-ingress.yaml
 ```
 
-To verify, run the following commands:
+**To verify**, run the following commands:
 
 ```kubectl get ingresses --namespace zowe```
 
 This command must display two Ingresses `gateway-ingress` and `discovery-ingress`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using.md).
 
 ### 4c. Create Route (OpenShift)
 
@@ -274,13 +279,13 @@ oc apply -f samples/openshift/gateway-route.yaml
 oc apply -f samples/openshift/discovery-route.yaml
 ```
 
-To verify, run the following commands:
+**To verify**, run the following commands:
 
 ```oc get routes --namespace zowe```
 
 This command must display the two Services `gateway` and `discovery`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using.md).
 
 ## Customizing or manually creating ConfigMaps and Secrets
 
@@ -329,8 +334,6 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
      * `components.discovery.port` is `7553`,
      * `components.gateway.port` is `7554`,
      * `components.caching-service.port` is `7555`,
-     * `components.jobs-api.port` is `7600`,
-     * `components.files-api.port` is `7559`,
      * `components.app-server.port` is `7556`.
    * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values into `zowe.environments` section:
@@ -358,7 +361,7 @@ Zowe provides optional `PodDisruptionBudget` which can provide high availability
 kubectl apply -f samples/pod-disruption-budget/
 ```
 
-To verify this step, run:
+**To verify this step**, run:
 
 ```bash
 kubectl get pdb --namespace zowe
@@ -375,9 +378,7 @@ discovery-pdb      1               N/A               0                     1d
 explorer-jes-pdb   1               N/A               0                     1d
 explorer-mvs-pdb   1               N/A               0                     1d
 explorer-uss-pdb   1               N/A               0                     1d
-files-api-pdb      1               N/A               0                     1d
 gateway-pdb        1               N/A               0                     1d
-jobs-api-pdb       1               N/A               0                     1d
 ```
 
 ## `HorizontalPodAutoscaler`
@@ -388,7 +389,7 @@ Zowe provides optional `HorizontalPodAutoscaler` which can automatically scale Z
 kubectl apply -f samples/horizontal-pod-autoscaler/
 ```
 
-To verify this step, run:
+**To verify this step**, run:
 
 ```bash
 kubectl get hpa --namespace zowe
@@ -405,9 +406,7 @@ discovery-hpa      StatefulSet/discovery     34%/70%   1         3         1    
 explorer-jes-hpa   Deployment/explorer-jes   10%/70%   1         3         1          9m59s
 explorer-mvs-hpa   Deployment/explorer-mvs   10%/70%   1         3         1          9m59s
 explorer-uss-hpa   Deployment/explorer-uss   10%/70%   1         3         1          9m59s
-files-api-hpa      Deployment/files-api      8%/70%    1         3         1          9m59s
 gateway-hpa        Deployment/gateway        20%/60%   1         5         1          9m59s
-jobs-api-hpa       Deployment/jobs-api       8%/70%    1         3         1          9m59s
 ```
 
 ## Kubernetes v1.21+

@@ -1,0 +1,2839 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RestClient | Zowe Node.js SDK - v3.0.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.0.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.0.0</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.restclient.html">RestClient</a>
+				</li>
+			</ul>
+			<h1>Class RestClient</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Class to handle http(s) requests, build headers, collect data, report status codes, and header responses
+						and passes control to session object for maintaining connection information (tokens, checking for timeout, etc...)</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>export</dt>
+						<dd></dd>
+					</dl>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<a href="_zowe_imperative.abstractrestclient.html" class="tsd-signature-type">AbstractRestClient</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">RestClient</span>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#lastbytereceived" class="tsd-kind-icon">last<wbr>Byte<wbr>Received</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mchunks" class="tsd-kind-icon">m<wbr>Chunks</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mcontentencoding" class="tsd-kind-icon">m<wbr>Content<wbr>Encoding</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mcontentlength" class="tsd-kind-icon">m<wbr>Content<wbr>Length</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mdata" class="tsd-kind-icon">m<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mdecode" class="tsd-kind-icon">m<wbr>Decode</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#misjson" class="tsd-kind-icon">m<wbr>IsJson</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mnormalizerequestnewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mnormalizeresponsenewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mreject" class="tsd-kind-icon">m<wbr>Reject</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mreqheaders" class="tsd-kind-icon">m<wbr>Req<wbr>Headers</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mrequest" class="tsd-kind-icon">m<wbr>Request</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mrequeststream" class="tsd-kind-icon">m<wbr>Request<wbr>Stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mresolve" class="tsd-kind-icon">m<wbr>Resolve</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mresource" class="tsd-kind-icon">m<wbr>Resource</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mresponse" class="tsd-kind-icon">m<wbr>Response</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mresponsestream" class="tsd-kind-icon">m<wbr>Response<wbr>Stream</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mtask" class="tsd-kind-icon">m<wbr>Task</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_zowe_imperative.restclient.html#mwritedata" class="tsd-kind-icon">m<wbr>Write<wbr>Data</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-inherited">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#datastring" class="tsd-kind-icon">data<wbr>String</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#requestfailure" class="tsd-kind-icon">request<wbr>Failure</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#requestsuccess" class="tsd-kind-icon">request<wbr>Success</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#response" class="tsd-kind-icon">response</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#session" class="tsd-kind-icon">session</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.restclient.html#appendheaders" class="tsd-kind-icon">append<wbr>Headers</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_zowe_imperative.restclient.html#processerror" class="tsd-kind-icon">process<wbr>Error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_zowe_imperative.restclient.html#request" class="tsd-kind-icon">request</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#deleteexpectbuffer" class="tsd-kind-icon">delete<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#deleteexpectfullresponse" class="tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.restclient.html#deleteexpectjson" class="tsd-kind-icon">delete<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#deleteexpectstring" class="tsd-kind-icon">delete<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#deletestreamed" class="tsd-kind-icon">delete<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.restclient.html#extractexpecteddata" class="tsd-kind-icon">extract<wbr>Expected<wbr>Data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#getexpectbuffer" class="tsd-kind-icon">get<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#getexpectfullresponse" class="tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.restclient.html#getexpectjson" class="tsd-kind-icon">get<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#getexpectstring" class="tsd-kind-icon">get<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#getstreamed" class="tsd-kind-icon">get<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#hasquerystring" class="tsd-kind-icon">has<wbr>Query<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#postexpectbuffer" class="tsd-kind-icon">post<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#postexpectfullresponse" class="tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.restclient.html#postexpectjson" class="tsd-kind-icon">post<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#postexpectstring" class="tsd-kind-icon">post<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#poststreamed" class="tsd-kind-icon">post<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#poststreamedrequestonly" class="tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#putexpectbuffer" class="tsd-kind-icon">put<wbr>Expect<wbr>Buffer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#putexpectfullresponse" class="tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.restclient.html#putexpectjson" class="tsd-kind-icon">put<wbr>ExpectJSON</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#putexpectstring" class="tsd-kind-icon">put<wbr>Expect<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#putstreamed" class="tsd-kind-icon">put<wbr>Streamed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.restclient.html#putstreamedrequestonly" class="tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Rest<wbr>Client<span class="tsd-signature-symbol">(</span>mSession<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.restclient.html" class="tsd-signature-type">RestClient</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#constructor">constructor</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L222">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:222</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates an instance of AbstractRestClient.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>mSession: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>representing connection to this api</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.restclient.html" class="tsd-signature-type">RestClient</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="lastbytereceived" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> last<wbr>Byte<wbr>Received</h3>
+					<div class="tsd-signature tsd-kind-icon">last<wbr>Byte<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#lastbytereceived">lastByteReceived</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L222">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:222</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Last byte received when response is being streamed</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mbytesreceived" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Bytes<wbr>Received</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Bytes<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mbytesreceived">mBytesReceived</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L206">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:206</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bytes received from the server response so far</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mchunks" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Chunks</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Chunks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mchunks">mChunks</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L55">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:55</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contains REST chucks</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mcontentencoding" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Content<wbr>Encoding</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Content<wbr>Encoding<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#contentencoding" class="tsd-signature-type">ContentEncoding</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mcontentencoding">mContentEncoding</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L114">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:114</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If we get a response containing a Content-Encoding header,
+								and it matches an encoding type that we recognize,
+							it is saved here</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mcontentlength" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Content<wbr>Length</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Content<wbr>Length<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mcontentlength">mContentLength</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L104">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:104</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If we get a response containing a Content-Length header,
+							it is saved here</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mdata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> = Buffer.from([])</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mdata">mData</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L63">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:63</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contains buffered data after all REST chucks are received</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mdecode" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Decode</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Decode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = true</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mdecode">mDecode</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L214">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:214</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether or not to try and decode any encoded response</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="misjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>IsJson</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>IsJson<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#misjson">mIsJson</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L122">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:122</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if payload data is JSON to be stringified before writing</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mlogger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Logger</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Logger<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mlogger">mLogger</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L71">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:71</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Instance of logger</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mnormalizerequestnewlines" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Normalize<wbr>Request<wbr>Newlines</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mnormalizerequestnewlines">mNormalizeRequestNewlines</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L131">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:131</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if request data should have its newlines normalized to /n before sending
+							each chunk to the server</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mnormalizeresponsenewlines" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Normalize<wbr>Response<wbr>Newlines</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mnormalizeresponsenewlines">mNormalizeResponseNewlines</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L140">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:140</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Indicates if response data should have its newlines normalized for the current platform
+							(\r\n for windows, otherwise \n)</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mreject" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Reject</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Reject<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#imperativereject" class="tsd-signature-type">ImperativeReject</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mreject">mReject</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L87">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:87</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Reject for errors when obtaining data</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mreqheaders" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Req<wbr>Headers</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Req<wbr>Headers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mreqheaders">mReqHeaders</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L164">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:164</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save req headers</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mrequest" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Request</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#http_verb" class="tsd-signature-type">HTTP_VERB</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mrequest">mRequest</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L156">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:156</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save request</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mrequeststream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Request<wbr>Stream</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Request<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readable</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mrequeststream">mRequestStream</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L189">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:189</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>stream for outgoing request data to the server</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresolve" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Resolve</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Resolve<span class="tsd-signature-symbol">:</span> <a href="../modules/_zowe_imperative.html#restclientresolve" class="tsd-signature-type">RestClientResolve</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mresolve">mResolve</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L79">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:79</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Resolved when all data has been obtained</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresource" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Resource</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Resource<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mresource">mResource</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L148">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:148</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save resource</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Response</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mresponse">mResponse</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L95">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:95</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Contain response from http(s) request</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mresponsestream" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Response<wbr>Stream</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Response<wbr>Stream<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Writable</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mresponsestream">mResponseStream</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L181">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:181</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Stream for incoming response data from the server.
+							If specified, response data will not be buffered</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mtask" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Task</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Task<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mtask">mTask</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L198">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:198</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Task used to display progress bars or other user feedback mechanisms
+							Automatically updated if task is specified and streams are provided for upload/download</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+					<a name="mwritedata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> m<wbr>Write<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">m<wbr>Write<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#mwritedata">mWriteData</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L172">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:172</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Save write data</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>memberof</dt>
+							<dd><p>AbstractRestClient</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#data">data</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L992">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:992</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response body as a buffer</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Buffer</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="datastring" class="tsd-anchor"></a>
+					<h3>data<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> dataString<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#datastring">dataString</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L1002">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:1002</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response body as a string</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="log" class="tsd-anchor"></a>
+					<h3>log</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> log<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#log">log</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L1035">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:1035</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return the logger object for ease of reference</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.logger.html" class="tsd-signature-type">Logger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="requestfailure" class="tsd-anchor"></a>
+					<h3>request<wbr>Failure</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> requestFailure<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#requestfailure">requestFailure</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L982">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:982</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return whether or not a REST request was successful by HTTP status code</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="requestsuccess" class="tsd-anchor"></a>
+					<h3>request<wbr>Success</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> requestSuccess<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#requestsuccess">requestSuccess</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L967">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:967</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return whether or not a REST request was successful by HTTP status code</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="response" class="tsd-anchor"></a>
+					<h3>response</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> response<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#response">response</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L1015">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:1015</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return http(s) response object</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="session" class="tsd-anchor"></a>
+					<h3>session</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> session<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.session.html" class="tsd-signature-type">Session</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#session">session</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L1025">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:1025</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Return this session object</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>readonly</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="_zowe_imperative.session.html" class="tsd-signature-type">Session</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="appendheaders" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> append<wbr>Headers</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">append<wbr>Headers<span class="tsd-signature-symbol">(</span>headers<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#appendheaders">appendHeaders</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L403">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:403</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Append specific headers for all requests by overriding this implementation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>headers: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of headers</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
+							<ul>
+								<li>completed list of headers</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+					<a name="processerror" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagProtected">Protected</span> process<wbr>Error</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+						<li class="tsd-signature tsd-kind-icon">process<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeerror.html" class="tsd-signature-type">IImperativeError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.iimperativeerror.html" class="tsd-signature-type">IImperativeError</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#processerror">processError</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L424">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:424</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Process and customize errors encountered in your client.
+										This is called any time an error is thrown from a failed Rest request using this client.
+										error before receiving any response body from the API.
+										You can use this, for example, to set the error tag for you client or add additional
+										details to the error message.
+										If you return null or undefined, Imperative will use the default error generated
+									for your failed request.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>error: <a href="../interfaces/_zowe_imperative.iimperativeerror.html" class="tsd-signature-type">IImperativeError</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the error encountered by the client</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.iimperativeerror.html" class="tsd-signature-type">IImperativeError</a></h4>
+							<p>processedError - the error with the fields set the way you want them</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a name="request" class="tsd-anchor"></a>
+					<h3>request</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">request<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.irestoptions.html" class="tsd-signature-type">IRestOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_zowe_imperative.abstractrestclient.html">AbstractRestClient</a>.<a href="_zowe_imperative.abstractrestclient.html#request">request</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/AbstractRestClient.ts#L264">@zowe/imperative/src/rest/src/client/AbstractRestClient.ts:264</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Perform the actual http REST call with appropriate user input</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>AbstractRestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_imperative.irestoptions.html" class="tsd-signature-type">IRestOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deleteexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L170">@zowe/imperative/src/rest/src/client/RestClient.ts:170</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deleteexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L448">@zowe/imperative/src/rest/src/client/RestClient.ts:448</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP delete operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="deleteexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L101">@zowe/imperative/src/rest/src/client/RestClient.ts:101</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap post for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>object type to return</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deleteexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L234">@zowe/imperative/src/rest/src/client/RestClient.ts:234</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="deletestreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> delete<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">delete<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L373">@zowe/imperative/src/rest/src/client/RestClient.ts:373</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP DELETE operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for streamed requests</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="extractexpecteddata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> extract<wbr>Expected<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Expected<wbr>Data<span class="tsd-signature-symbol">(</span>client<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractrestclient.html" class="tsd-signature-type">AbstractRestClient</a>, toReturn<span class="tsd-signature-symbol">?: </span><a href="../modules/_zowe_imperative.html#client_property" class="tsd-signature-type">CLIENT_PROPERTY</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L516">@zowe/imperative/src/rest/src/client/RestClient.ts:516</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper method to extract requested data from response object
+									If list is not passed, returns entire response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>client: <a href="_zowe_imperative.abstractrestclient.html" class="tsd-signature-type">AbstractRestClient</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>HTTP(S) response object</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> toReturn: <a href="../modules/_zowe_imperative.html#client_property" class="tsd-signature-type">CLIENT_PROPERTY</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = Object.values(CLIENT_PROPERTY)</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list with object properties to return</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a></h4>
+							<ul>
+								<li>trimmed or full response object based on the list provided</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L117">@zowe/imperative/src/rest/src/client/RestClient.ts:117</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L390">@zowe/imperative/src/rest/src/client/RestClient.ts:390</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>full response or filtered based on provided params</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="getexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L45">@zowe/imperative/src/rest/src/client/RestClient.ts:45</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap get for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>object type to return</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L187">@zowe/imperative/src/rest/src/client/RestClient.ts:187</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getstreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L253">@zowe/imperative/src/rest/src/client/RestClient.ts:253</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP GET operation - streaming the response to a writable stream</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for this request</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="hasquerystring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> has<wbr>Query<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Query<wbr>String<span class="tsd-signature-symbol">(</span>query<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L503">@zowe/imperative/src/rest/src/client/RestClient.ts:503</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Helper method to return an indicator for whether or not a URI contains a query string.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>query: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<ul>
+								<li>true if query is contained within URI</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="postexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L153">@zowe/imperative/src/rest/src/client/RestClient.ts:153</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="postexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L477">@zowe/imperative/src/rest/src/client/RestClient.ts:477</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP post operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="postexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, payload<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L83">@zowe/imperative/src/rest/src/client/RestClient.ts:83</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap post for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>object type to return</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> payload: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>data to write on the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="postexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L219">@zowe/imperative/src/rest/src/client/RestClient.ts:219</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="poststreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L328">@zowe/imperative/src/rest/src/client/RestClient.ts:328</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation streaming both the request and the response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for  this request</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="poststreamedrequestonly" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> post<wbr>Streamed<wbr>Request<wbr>Only</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L351">@zowe/imperative/src/rest/src/client/RestClient.ts:351</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP POST operation, streaming only the request and not the response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>string of the response</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putexpectbuffer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>Buffer</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>Buffer<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L135">@zowe/imperative/src/rest/src/client/RestClient.ts:135</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putexpectfullresponse" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>Full<wbr>Response</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L419">@zowe/imperative/src/rest/src/client/RestClient.ts:419</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation returning full HTTP(S) Response</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>options: <a href="../interfaces/_zowe_imperative.ioptionsfullresponse.html" class="tsd-signature-type">IOptionsFullResponse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>list of parameters</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_imperative.irestclientresponse.html" class="tsd-signature-type">IRestClientResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="putexpectjson" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>ExpectJSON</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>ExpectJSON&lt;T&gt;<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, payload<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L64">@zowe/imperative/src/rest/src/client/RestClient.ts:64</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Wrap put for common error handling and supporting generic JSON types</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></h4>
+									<div class="tsd-comment tsd-typography">
+										<p>object type to return</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the API URI that we are targeting</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers for the http(s) request</p>
+									</div>
+								</li>
+								<li>
+									<h5>payload: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>data to write on the http(s) request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>object on promise</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putexpectstring" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Expect<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Expect<wbr>String<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L203">@zowe/imperative/src/rest/src/client/RestClient.ts:203</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>payload data</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>response body content from http(s) call</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putstreamed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Streamed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Streamed<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, responseStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Writable</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeResponseNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L279">@zowe/imperative/src/rest/src/client/RestClient.ts:279</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation with streamed response and request</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>responseStream: <span class="tsd-signature-type">Writable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream to which the response data will be written</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeResponseNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want newlines to be \r\n on windows
+										when receiving data from the server to responseStream. Don&#39;t set this for binary responses</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>empty string - data is not buffered for streamed requests</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putstreamedrequestonly" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Streamed<wbr>Request<wbr>Only</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, resource<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, reqHeaders<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, requestStream<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readable</span>, normalizeRequestNewLines<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, task<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.0.0/packages/imperative/src/rest/src/client/RestClient.ts#L302">@zowe/imperative/src/rest/src/client/RestClient.ts:302</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>REST HTTP PUT operation with only streamed request, buffers response data and returns it</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>throws</dt>
+									<dd><p>if the request gets a status code outside of the 200 range
+										or other connection problems occur (e.g. connection refused)</p>
+									</dd>
+									<dt>memberof</dt>
+									<dd><p>RestClient</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>representing connection to this api</p>
+									</div>
+								</li>
+								<li>
+									<h5>resource: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI for which this request should go against</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> reqHeaders: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>headers to include in the REST request</p>
+									</div>
+								</li>
+								<li>
+									<h5>requestStream: <span class="tsd-signature-type">Readable</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>stream from which payload data will be read</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> normalizeRequestNewLines: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>streaming only - true if you want \r\n to be replaced with \n when sending
+										data to the server from requestStream. Don&#39;t set this for binary requests</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>task used to update the user on the progress of their request</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<ul>
+								<li>string of the response</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.restclient.html" class="tsd-kind-icon">Rest<wbr>Client</a>
+								<ul>
+									<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#constructor" class="tsd-kind-icon">constructor</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#lastbytereceived" class="tsd-kind-icon">last<wbr>Byte<wbr>Received</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mbytesreceived" class="tsd-kind-icon">m<wbr>Bytes<wbr>Received</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mchunks" class="tsd-kind-icon">m<wbr>Chunks</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mcontentencoding" class="tsd-kind-icon">m<wbr>Content<wbr>Encoding</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mcontentlength" class="tsd-kind-icon">m<wbr>Content<wbr>Length</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mdata" class="tsd-kind-icon">m<wbr>Data</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mdecode" class="tsd-kind-icon">m<wbr>Decode</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#misjson" class="tsd-kind-icon">m<wbr>IsJson</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mlogger" class="tsd-kind-icon">m<wbr>Logger</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mnormalizerequestnewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Request<wbr>Newlines</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mnormalizeresponsenewlines" class="tsd-kind-icon">m<wbr>Normalize<wbr>Response<wbr>Newlines</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mreject" class="tsd-kind-icon">m<wbr>Reject</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mreqheaders" class="tsd-kind-icon">m<wbr>Req<wbr>Headers</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mrequest" class="tsd-kind-icon">m<wbr>Request</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mrequeststream" class="tsd-kind-icon">m<wbr>Request<wbr>Stream</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mresolve" class="tsd-kind-icon">m<wbr>Resolve</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mresource" class="tsd-kind-icon">m<wbr>Resource</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mresponse" class="tsd-kind-icon">m<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mresponsestream" class="tsd-kind-icon">m<wbr>Response<wbr>Stream</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mtask" class="tsd-kind-icon">m<wbr>Task</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+										<a href="_zowe_imperative.restclient.html#mwritedata" class="tsd-kind-icon">m<wbr>Write<wbr>Data</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#data" class="tsd-kind-icon">data</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#datastring" class="tsd-kind-icon">data<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#log" class="tsd-kind-icon">log</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#requestfailure" class="tsd-kind-icon">request<wbr>Failure</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#requestsuccess" class="tsd-kind-icon">request<wbr>Success</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#response" class="tsd-kind-icon">response</a>
+									</li>
+									<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#session" class="tsd-kind-icon">session</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.restclient.html#appendheaders" class="tsd-kind-icon">append<wbr>Headers</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
+										<a href="_zowe_imperative.restclient.html#processerror" class="tsd-kind-icon">process<wbr>Error</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+										<a href="_zowe_imperative.restclient.html#request" class="tsd-kind-icon">request</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#deleteexpectbuffer" class="tsd-kind-icon">delete<wbr>Expect<wbr>Buffer</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#deleteexpectfullresponse" class="tsd-kind-icon">delete<wbr>Expect<wbr>Full<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#deleteexpectjson" class="tsd-kind-icon">delete<wbr>ExpectJSON</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#deleteexpectstring" class="tsd-kind-icon">delete<wbr>Expect<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#deletestreamed" class="tsd-kind-icon">delete<wbr>Streamed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#extractexpecteddata" class="tsd-kind-icon">extract<wbr>Expected<wbr>Data</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#getexpectbuffer" class="tsd-kind-icon">get<wbr>Expect<wbr>Buffer</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#getexpectfullresponse" class="tsd-kind-icon">get<wbr>Expect<wbr>Full<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#getexpectjson" class="tsd-kind-icon">get<wbr>ExpectJSON</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#getexpectstring" class="tsd-kind-icon">get<wbr>Expect<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#getstreamed" class="tsd-kind-icon">get<wbr>Streamed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#hasquerystring" class="tsd-kind-icon">has<wbr>Query<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#postexpectbuffer" class="tsd-kind-icon">post<wbr>Expect<wbr>Buffer</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#postexpectfullresponse" class="tsd-kind-icon">post<wbr>Expect<wbr>Full<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#postexpectjson" class="tsd-kind-icon">post<wbr>ExpectJSON</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#postexpectstring" class="tsd-kind-icon">post<wbr>Expect<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#poststreamed" class="tsd-kind-icon">post<wbr>Streamed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#poststreamedrequestonly" class="tsd-kind-icon">post<wbr>Streamed<wbr>Request<wbr>Only</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putexpectbuffer" class="tsd-kind-icon">put<wbr>Expect<wbr>Buffer</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putexpectfullresponse" class="tsd-kind-icon">put<wbr>Expect<wbr>Full<wbr>Response</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putexpectjson" class="tsd-kind-icon">put<wbr>ExpectJSON</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putexpectstring" class="tsd-kind-icon">put<wbr>Expect<wbr>String</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putstreamed" class="tsd-kind-icon">put<wbr>Streamed</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.restclient.html#putstreamedrequestonly" class="tsd-kind-icon">put<wbr>Streamed<wbr>Request<wbr>Only</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

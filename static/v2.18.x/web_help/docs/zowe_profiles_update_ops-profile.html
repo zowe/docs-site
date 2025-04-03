@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>profiles update ops-profile</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_profiles.html">profiles</a> › <a href="zowe_profiles_update.html">update</a> › <a href="zowe_profiles_update_ops-profile.html">ops-profile</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The OPS Web Services session profile schema, where you specify your session information and credentials</p>
+<p>Warning: This command has been deprecated.<br>
+Recommended replacement: The 'config set' command</p>
+<h4>Usage</h4>
+<p>zowe profiles update ops-profile &lt;profileName&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>profileName</code>		 <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the new ops profile. You can load this profile by using the name on commands that support the &quot;--ops-profile&quot; option.</li>
+</ul>
+</li>
+</ul>
+<h4>OPS WEB SERVICES CONNECTION OPTIONS</h4>
+<ul>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the server where OPS Web Services is running.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
+<ul>
+<li>The port number for OPS Web Services.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS user name used to authenticate to OPS Web Services</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password used to authenticate to OPS Web Services</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used for connecting to OPS Web Services</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the subsystem id of the OPS/MVS instance to which commands will be directed.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update an OPS profile called 'myLPAR' to connect to OPS Web Services at host lpar456:</p>
+<ul>
+<li><code>zowe profiles update ops-profile myLPAR --host lpar456</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update ops-profile myLPAR --host lpar456">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update an OPS profile called 'myLPAR' to have username user101 with password Km5sv78:</p>
+<ul>
+<li><code>zowe profiles update ops-profile myLPAR --user user101 --password Km5sv78</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe profiles update ops-profile myLPAR --user user101 --password Km5sv78">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

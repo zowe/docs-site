@@ -1,6 +1,6 @@
 # Raising a Zowe Explorer issue on GitHub
 
-You can raise GitHub issues against [the Zowe Explorer repository](https://github.com/zowe/vscode-extension-for-zowe/issues). It is suggested that you use either the bug or feature request.
+You can raise GitHub issues against [the Zowe Explorer repository](https://github.com/zowe/zowe-explorer-vscode/issues). It is suggested that you use either the bug or feature request.
 
 ## Raising a bug report
 

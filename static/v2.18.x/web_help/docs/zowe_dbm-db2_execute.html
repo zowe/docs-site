@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>dbm-db2 execute</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_execute.html">execute</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Execute a script to implement Db2 object changes.</p>
+<h4>Usage</h4>
+<p>zowe dbm-db2 execute &lt;command&gt;</p>
+<p>Where &lt;command&gt; is one of the following:</p>
+<h4>Commands</h4>
+<ul>
+<li><a href="zowe_dbm-db2_execute_compare-script.html">compare-script</a> - Execute the compare script that was generated with the 'zowe  dbm compare ddl' command to implement the Db2 object changes on the Db2 subsystem specified within the script. This command also generates a recovery script to undo compare script changes.  For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></li>
+<li><a href="zowe_dbm-db2_execute_migration-script.html">migration-script</a> - Execute the migration script that was generated with the      'zowe dbm prepare migration' command to migrate Db2 objects (DDL) and table data from a source subsystem to a target subsystem. The source and target subsystem IDs are specified within the script.  For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></li>
+<li><a href="zowe_dbm-db2_execute_script.html">script</a> - Execute a Batch Processor script on a target subsystem. For   example, use this command to execute a Batch Processor script or specifically to execute a recovery script to undo changes that were made by the 'zowe dbm execute compare-script' command. If execution of the script fails, you can execute it again using the 'script-section' or 'restart' options. You can edit the script and make changes before you execute or restart it.  For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

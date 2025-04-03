@@ -10,7 +10,7 @@ Stop Zowe main job.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     security:
@@ -18,7 +18,7 @@ zowe:
         zowe: ZWESLSTC
   jobname: ZWE1SV
 haInstances:
-  <ha-instance>:
+  [ha-instance]:
     sysname: ZLP1
 ```
 
@@ -27,7 +27,7 @@ haInstances:
 - `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the stop command will try to use value of
   `zowe.setup.security.stcs.zowe` as job name to stop.
-- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
+- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
 
@@ -44,6 +44,8 @@ zwe stop -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -62,6 +64,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0166E|166|Failed to stop job %s: %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -101,3 +105,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

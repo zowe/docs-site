@@ -18,8 +18,8 @@ An extension must have a container image to run in a Zowe container environment.
 
 The core components define component Dockerfiles and use GitHub Actions to build images. For example,
 
-- `explorer-jes` is a component which has built-in web service. To build the images, this component defines a Dockerfile at <https://github.com/zowe/explorer-jes/blob/master/container/Dockerfile> and defines a GitHub Actions workflow at <https://github.com/zowe/explorer-jes/blob/master/.github/workflows/build_test.yml>.
-- `explorer-ip` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/master/containers/conformance.md). It defines a Dockerfile at <https://github.com/zowe/explorer-ip/blob/master/container/Dockerfile>. Similar to `explorer-jes`, it also defines a GitHub Actions workflow at <https://github.com/zowe/explorer-ip/blob/master/.github/workflows/explorer-ip-images.yml> to build the images.
+- `explorer-jes` is a component which has built-in web service. To build the images, this component defines a Dockerfile at https://github.com/zowe/explorer-jes/blob/master/container/Dockerfile and defines a GitHub Actions workflow at https://github.com/zowe/explorer-jes/blob/master/.github/workflows/build_test.yml.
+- `explorer-ip` is a Zowe App Server Framework plug-in but does not have a built-in web service. It follows Zowe's [container conformance criteria](https://github.com/zowe/zowe-install-packaging/blob/master/containers/conformance.md). It defines a Dockerfile at https://github.com/zowe/explorer-ip/blob/master/container/Dockerfile. Similar to `explorer-jes`, it also defines a GitHub Actions workflow at https://github.com/zowe/explorer-ip/blob/master/.github/workflows/explorer-ip-images.yml to build the images.
 
 The following GitHub Actions are used by the core components to build conformant images. They might not be completely reusable for you, but are provided as an example.
 

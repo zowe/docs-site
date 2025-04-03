@@ -6,6 +6,8 @@
 
 ## Parameters
 
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -28,6 +30,8 @@ ZWEL0113E|113|Failed to find Zowe version. Please validate your Zowe directory.
 ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0181E|181|Failed to verify Zowe file fingerprints.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -67,3 +71,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

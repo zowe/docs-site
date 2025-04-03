@@ -217,11 +217,11 @@ For more information, see the [Workflow Template Reference](https://github.com/z
 
 <!-- 
 
-<tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
+<Tpsr /> is a React component which will create a dynamic link to latest versioned tpsr file
 tpsrLatestLink = "https://github.com/zowe/docs-site/tree/master/src/tpsr/tpsr-" + latestVersion + ".md";
 This returns <a href={tpsrLatestLink}>Third-Party Software Requirements (TPSR)</a>
 
 -->
 
-- <tpsr />
+- <Tpsr />
 - [Bill of Materials (BOM)](../appendix/bill-of-materials.md)

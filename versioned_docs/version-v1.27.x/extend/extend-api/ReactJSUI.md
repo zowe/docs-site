@@ -85,7 +85,7 @@ In order to build and prepare your app:
 
 2.  Create a folder for your project and a new `web` folder inside it.
 
-    - EX: /Desktop/<Your_Project_Name> and Desktop/<Your_Project_Name>/web
+    - EX: `/Desktop/<Your_Project_Name>` and `Desktop/<Your_Project_Name>/web`
 
 3.  Copy built project into `Desktop/<Your_Project_Name>/web`
     - If using the sample, copy `app.min.js` , `index.html` , `icon.png` and `css` into to `/Desktop/<Your_Project_Name>/web/`

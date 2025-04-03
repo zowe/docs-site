@@ -5,6 +5,11 @@ on:
     workflows: ["Build docs site"]
     types: [completed]
 
+permissions:
+  deployments: write
+  pull-requests: write
+  statuses: write
+
 jobs:
   deploy:
     if: ${{ github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success' }}
@@ -14,7 +19,7 @@ jobs:
     steps:
       - name: Download Build Artifact
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with:
           workflow: build-docs.yml
           run_id: ${{ github.event.workflow_run.id }}
@@ -24,13 +29,14 @@ jobs:
       - name: Extract Build Archive
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
         run: |
-          tar -xf build.tar.zst && rm build.tar.zst
-          cat build/.env >> "$GITHUB_ENV" && rm build/.env
+          tar -xf build.tar.zst
+          printf "PR_NUMBER=%d\n" "$(tar --test-label -f build.tar.zst)" >> "$GITHUB_ENV"
+          rm build.tar.zst
 
       - name: Deploy to Netlify
         id: deploy
         if: ${{ steps.download-artifact.outputs.found_artifact == 'true' }}
-        uses: nwtgck/actions-netlify@v2
+        uses: nwtgck/actions-netlify@v3
         with:
           publish-dir: build
           production-deploy: false

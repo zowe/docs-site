@@ -10,7 +10,7 @@ Before contributing a documentation change to the repository, you should be fami
 * Slack: The Zowe Documentation team communicates using the Slack application. To learn about Slack, refer to the [Slack Help Center](https://slack.com/help). The Zowe team is part of the [Open Mainframe Project](https://openmainframeproject.slack.com) channel.
 * Markdown Language: The Zowe documentation is written in Markdown language. To learn about Markdown, refer to  [The Markdown Guide](https://www.markdownguide.org/).
 
-In addition to being familiar with the Zowe community and how we work together, you will need to sign the CNCF Contributor License Agreement. The Contributor License Agreement defines the terms under which you contribute to Zowe documentation. Contributions to Zowe documentation are reviewed before being committed to the repository. Committing changes to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md. Also see Participating in Zowe Documentation for more details about roles and permissions.
+Contributions to Zowe documentation are reviewed before being committed to the repository. Commits needs to have Developer Certificate of Origin (DCO). Committing changes to the Zowe repository requires additional access rights. See https://github.com/zowe/community/blob/master/COMMITTERS.md. Also see Participating in Zowe Documentation for more details about roles and permissions.
 
 ## Getting started checklist
 
@@ -36,11 +36,11 @@ You can provide suggested edits to any documentation page by using the **Edit th
 Follow these steps:
 
 1. Click **Edit this page** on the page that you want to update.
-3. Make the changes to the file.
-4. Scroll to the end of the page and enter a brief description about your change.
-5. Optional: Enter an extended description.
-6. Select **Propose file change**.
-7. Select **Create pull request**.
+2. Make the changes to the file.
+3. Scroll to the end of the page and enter a brief description about your change.
+4. Optional: Enter an extended description.
+5. Select **Propose file change**.
+6. Select **Create pull request**.
 
 ## Opening an issue for Zowe documentation
 
@@ -49,8 +49,8 @@ You can request the documentation to be improved or clarified, report an error, 
 Follow these steps:
 
 1. Click the **Open doc issue** link at the top of the page. 
-1. Enter the details of the issue.
-1. Click **Submit new issue**.
+2. Enter the details of the issue.
+3. Click **Submit new issue**.
 
 ## Documentation style guide
 
@@ -230,16 +230,43 @@ Example:
 
 Release notes should be written in a consistent style that is easy to read and provides relevant information to users.
 
-To help ensure these best practices are followed, see [CHANGELOG and release notes formatting](../../release-handbook/release_notes_guide.md#changelog-and-release-notes-formatting) and [Writing style for release notes entries](../../release-handbook/release_notes_guide.md#writing-style-for-release-notes-entries).
+To help ensure these best practices are followed, see [CHANGELOG and release notes formatting](https://github.com/zowe/docs-site/blob/master/release-handbook/release_notes_guide.md#changelog-and-release-notes-formatting) and [Writing style for release notes entries](https://github.com/zowe/docs-site/blob/master/release-handbook/release_notes_guide.md#writing-style-for-release-notes-entries).
 
 ### Word usage and punctuation
 
-#### Note headings such as Note, Important, and Tip should be formatted using the lower case and bold format
+#### Admonitions
 
-Examples:
-- **Note:**
-- **Important!**
-- **Tip:**
+Use the [admonitions syntax](https://docusaurus.io/docs/markdown-features/admonitions) provided by Docusaurus.
+
+:::note
+
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
+
+:::
+
+:::tip
+
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
+
+:::
+
+:::info
+
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
+
+:::
+
+:::warning
+
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
+
+:::
+
+:::danger
+
+Some **content** with _Markdown_ `syntax`. Check [this link](https://docs.zowe.org/).
+
+:::
 
 #### Use of "following"
 
@@ -247,7 +274,7 @@ For whatever list or steps we are introducing, the word "following" should prece
 
 Examples:
 - Before a procedure, use "Follow these steps:"
-- The <component_name> supports the following use cases:
+- The `<component_name>` supports the following use cases:
 - Before you install Zowe, review the following prerequisite installation tasks:
 
 Avoid ending the sentence with "following".
@@ -363,7 +390,7 @@ Use punctuation (periods, commas) in bulleted and numbered lists when appropriat
 - Zowe API Mediation Layer.
 - Z Secure Services (ZSS).
 
-##### Do not use conjuctions (and, or) in bullet lists
+##### Do not use conjunctions (and, or) in bullet lists
 
 |Examples:|
 |:---|
@@ -425,6 +452,7 @@ The following table alphabetically lists the common used words and their usage g
 Do  | Don't
 ---|---
 application  | app
+data set | dataset (unless used in syntax)
 Capitalize "Server" when it's part of the product name |
 file name | filename (unless it's a property written as one word)
 Java  |  java

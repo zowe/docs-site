@@ -8,13 +8,15 @@
 
 After you extract Zowe convenience build, you can run this command to install
 MVS data sets.
+After installation of Zowe via SMP/E, PSWI, or convenience build, run this command to install sample modules and some load modules into MVS data sets.
 
 If you are using SMPE build, you can skip this command since MVS data sets are
 already prepared during SMPE install.
 
 These Zowe YAML configurations showing with sample values are used:
+The following Zowe YAML configuration example uses sample values:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -22,14 +24,25 @@ zowe:
 ```
 
 Expected outputs:
+**Expected outputs:**
 
 - Will create these data sets under `zowe.setup.dataset.prefix` definition:
   * `SZWEAUTH` contains few Zowe load modules (++PROGRAM).
   * `SZWESAMP` contains several sample configurations.
   * `SZWEEXEC` contains few utilities used by Zowe.
-
+  * `SZWELOAD` contains config manager for REXX.
+The following data sets are created under `zowe.setup.dataset.prefix` definition:
+  * **SZWEAUTH**   
+    Contains a few Zowe load modules (++PROGRAM).
+  * **SZWESAMP**  
+   Contains several sample configurations.
+  * **SZWEEXEC**  
+   Contains a few utilities used by Zowe.
+  * **SZWELOAD**   
+   Contains config manager for REXX.
 
 ## Examples
+**Example:**
 
 ```
 zwe install -v -c /path/to/zowe.yaml
@@ -42,6 +55,8 @@ Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
 --dataset-prefix,--ds-prefix||string|no|Install Zowe to this dataset prefix.\nIf you specify this value, --config is not required.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -63,6 +78,8 @@ ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
 ZWEL0300W||%s already exists. Members in this data set will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -102,3 +119,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

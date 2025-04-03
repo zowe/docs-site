@@ -47,9 +47,9 @@ For the Zowe Desktop to work, the node server that runs under the ZWESLSTC start
 
 There are three known problems that might cause this error.  The [Zowe architecture diagram](../../getting-started/zowe-architecture.md) shows the following connections. One of these three connections likely failed. 
 
-1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with ](#zss-server-unable-to-communicate-with-zis).  The architecture diagram below has been annotated with a (1) to show this connection.
-2. The Zowe Desktop Application Framework server connection to the zssServer across the default port 7557. If this fails, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
-3. The Zowe Desktop Application Framework server cannot connect to API Mediation Layer for authentication. If this fails, see [Application Framework unable to communicate with API Mediation Layer](#zlux-unable-to-communicate-with-api-mediation-layer).
+1. The zssServer connection to the `ZWESISTC` started task using cross memory communication. If this fails, see [zssServer unable to communicate with ZIS](#zss-server-unable-to-communicate-with-zis).  The architecture diagram below has been annotated with a (1) to show this connection.
+2. The Zowe Desktop Application Framework server connection to the zssServer across the default port 7557. If this fails, see [Application Framework unable to communicate with zssServer](#application-framework-unable-to-communicate-with-zssserver).  The architecture diagram below has been annotated with a (2) to show this connection.  
+3. The Zowe Desktop Application Framework server cannot connect to API Mediation Layer for authentication. If this fails, see [Application Framework unable to communicate with API Mediation Layer](#application-framework-unable-to-communicate-with-api-mediation-layer).
 
 <img src={require("../../images/common/zowe-desktop-unable-to-logon.png").default} alt="Zowe Desktop Unable to logon.png" width="700px"/> 
 
@@ -67,7 +67,7 @@ There are three known problems that might cause this error.  The [Zowe architect
      ZIS status - Ok (name='ZWESIS_STD      ', cmsRC=0, description='Ok'
      ```
    
-     If the communication works, the problem is likely that the Application Framework server is unable to communicate to the zssServer. For more information, see [Application Framework unable to communicate with zssServer](#zlux-unable-to-communicate-with-zssserver).
+     If the communication works, the problem is likely that the Application Framework server is unable to communicate to the zssServer. For more information, see [Application Framework unable to communicate with zssServer](#application-framework-unable-to-communicate-with-zssserver).
 
    - If the communication is not working, the message includes `Failure`. For example:
 
@@ -185,6 +185,31 @@ This message means that some other process is already listening on port 7542, ei
 
 One possibility is that a previously running ZSS server did not shut down correctly, and either the operating system has not released the socket after the ZSS server shut down, or the ZSS server is still running.
 
+## Server error EACCESS on z/os
+
+**Symptoms:**
+When you see messages like this in the server logs:
+```
+Error: listen EACCES: permission denied 0.0.0.0:8548
+     at Server.setupListenHandle [as _listen2] (net.js:1305:21)
+     at listenInCluster (net.js:1370:12)
+```
+```
+<ZWED:1234> ZWEUSER WARN (_zsf.network,webserver.js:233) ZWED0071W - Unexpected error on server 0.0.0.0:8544. E=bind EACCES 0.0.0.0:8544. Stack trace follows.
+ Error: bind EACCES 0.0.0.0:8544
+     at listenOnMasterHandle (net.js:1389:18)
+```
+It is a sign that a permission error is stopping Zowe servers from completing the action of binding to a TCP Port for listening for client connections. This can manifest in the servers being inaccessible.
+
+Network permissions control varies by OS, to resolve this we don't have a tip for users of containers, but for z/os, IBM has a guide on access control, for more details check
+[Port Statement](https://www.ibm.com/docs/en/zos/2.4.0?topic=control-controlling-access-particular-ports) 
+
+Also, there is a very important part troubleshooting step just for Zowe.
+When you are setting a PORT statement, you can assign rules by jobname.
+When FACILITY resource `BPX.JOBNAME` is granted for the zowe STC user (recommended!) then each server of zowe will have a different jobname. It will not be "ZWESLSTC" or "ZWESLSTC" as it would be when that resource is not granted. They'll instead be other names that start with "ZWE".
+
+**Note**: So, for a troubleshooting tip on the server error EACCESS on z/os, note that not only should an administrator check their PORT statements, they should probably set their jobname in the port statements to `ZWE` since it will catch all zowe components regardless of whether or not `BPX.JOBNAME` is granted.
+
 
 ## Application plug-in not in Zowe Desktop
 
@@ -227,7 +252,7 @@ Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variabl
   set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
-## Error: Exception thrown when reading SAF keyring {ZWED0148E}
+## Error: Exception thrown when reading SAF keyring \{ZWED0148E\}
 
 **Symptom:**
 The error message indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. ZWED0148E contains the following messages.
@@ -266,7 +291,7 @@ If you are using Zowe's local CA certificate but it still reports **ZWED0148E**,
 
 In this case, you must make sure that the label names exactly match the names in TSO when looking up the keyring you own. Any difference in spaces, capitalization, or other places will cause the error.
 
-## Warning: Problem making eureka request { Error: connect ECONNREFUSED }
+## Warning: Problem making eureka request \{ Error: connect ECONNREFUSED \}
 
 **Symptom:** 
 The Zowe started task `ZWESLSTC` log contains error messages reporting problems connecting 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config convert-profiles</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_convert-profiles.html">convert-profiles</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Convert v1 profiles to a global zowe.config.json file.</p>
+<h4>Usage</h4>
+<p>zowe config convert-profiles [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--prompt</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Prompt for confirmation. Use --no-prompt to disable prompting.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--delete</code> <em>(boolean)</em></p>
+<ul>
+<li>Delete the existing profiles on disk and any securely stored secrets.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Convert profiles to team config without prompting:</p>
+<ul>
+<li><code>zowe config convert-profiles --no-prompt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config convert-profiles --no-prompt">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Convert profiles to team config and delete the old profiles:</p>
+<ul>
+<li><code>zowe config convert-profiles --delete</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config convert-profiles --delete">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

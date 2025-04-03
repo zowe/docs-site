@@ -24,6 +24,8 @@ zwe components install process-hook -c /path/to/zowe.yaml -n component-name
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --component-name|-n|string|yes|Component name.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -38,6 +40,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
@@ -83,3 +87,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

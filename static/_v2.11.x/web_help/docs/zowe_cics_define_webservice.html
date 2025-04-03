@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>cics define webservice</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_cics.html">cics</a> › <a href="zowe_cics_define.html">define</a> › <a href="zowe_cics_define_webservice.html">webservice</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Define a new web service to CICS.</p>
+<h4>Usage</h4>
+<p>zowe cics define webservice &lt;webserviceName&gt; &lt;csdGroup&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>webserviceName</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the WEBSERVICE to create. The maximum length of the web service name is eight characters.</li>
+</ul>
+</li>
+<li>
+<p><code>csdGroup</code>		 <em>(string)</em></p>
+<ul>
+<li>The CICS system definition (CSD) Group for the new web service that you want to define. The maximum length of the group name is eight characters.</li>
+</ul>
+</li>
+</ul>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--pipeline-name</code> | <code>--pn</code> <em>(string)</em></p>
+<ul>
+<li>The name of the PIPELINE resource definition for the web service. The maximum length of the pipeline name is eight characters</li>
+</ul>
+</li>
+<li>
+<p><code>--wsbind</code> <em>(string)</em></p>
+<ul>
+<li>The file name of the web service binding file on HFS.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--description</code> | <code>--desc</code> <em>(string)</em></p>
+<ul>
+<li>Description of the web service resource being defined.</li>
+</ul>
+</li>
+<li>
+<p><code>--validation</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Specifies whether full validation of SOAP messages against the corresponding schema in the web service description should be performed at run time.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--wsdlfile</code> | <code>--wsdl</code> <em>(string)</em></p>
+<ul>
+<li>The file name of the web service description (WSDL) file on HFS.</li>
+</ul>
+</li>
+<li>
+<p><code>--region-name</code> <em>(string)</em></p>
+<ul>
+<li>The CICS region name to which to define the new web service.</li>
+</ul>
+</li>
+<li>
+<p><code>--cics-plex</code> <em>(string)</em></p>
+<ul>
+<li>The name of the CICSPlex to which to define the new web service.</li>
+</ul>
+</li>
+</ul>
+<h4>Cics Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The CICS server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The CICS server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (CICS) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (CICS) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies CMCI protocol (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--cics-profile</code> | <code>--cics-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (cics) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Define a webservice named WEBSVCA for the pipeline named PIPE123 to the region named MYREGION in the CSD group MYGRP where the binding file is /u/exampleapp/wsbind/example.log:</p>
+<ul>
+<li><code>zowe cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe cics define webservice WEBSVCA MYGRP --pipeline-name PIPELINE --wsbind /u/exampleapp/wsbind/example.log --region-name MYREGION">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

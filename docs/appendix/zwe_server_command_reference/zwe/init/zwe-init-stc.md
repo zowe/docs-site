@@ -13,7 +13,7 @@ NOTE: You require proper permission to write to target procedure library.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     dataset:
@@ -58,6 +58,8 @@ zwe init stc -v -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -87,6 +89,8 @@ ZWEL0143E|143|Cannot find data set member %s. You may need to re-run `zwe instal
 ZWEL0158E|158|%s already exists.
 ZWEL0159E|159|Failed to modify %s.
 ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -126,3 +130,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

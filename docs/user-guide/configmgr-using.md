@@ -1,14 +1,8 @@
-# Using the Configuration Manager
+# Zowe Configuration Manager
 
 When you install the Zowe&trade; server components on z/OS, a utility called `configmgr` or "Configuration Manager" is bundled within. It can be used directly in a few ways, or leveraged by the `zwe` command to empower it with several abilities and even performance enhancements.
 
-The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files, and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
-
-## Using zwe with Configuration Manager
-
-Starting in Zowe version 2.3, the `zwe` command can use `configmgr` to gain several abilities and even performance enhancements. This is designed to be non-disruptive, with no changes needed to Zowe Components that are v2 conformant. The biggest change is that enabling Configuration Manager mode enforces strict validation of Zowe configuration. This is helpful to ensure there's no configuration problems and even helps pinpoint issues, but if you previously had silent issues in your configuration, enabling this may reveal them.
-
-To enable Configuration Manager mode, you can either set `zowe.useConfigmgr=true` in your Zowe configuration file, or you can add the `--configmgr` flag to a `zwe` command you are using. Not all `zwe` operations support Configuration Manager yet, but many do and eventually all will.
+The purpose of Configuration Manager is to deliver unified, validated configuration data to programs without requiring the programs to know where the configuration is stored or prove that the configuration is valid. This reduces the burden on each Zowe component to support different data storage types such as both datasets AND files and also ensures that all Zowe components have sufficient configuration validation to avoid silent or hard-to-troubleshoot errors.
 
 ## Validation error reporting
 
@@ -53,7 +47,7 @@ With the schema file, you can see that there are listed choices for certificate 
             },
 ```
 
-The type can only one from the `enum` list. This allows you to not only detect this error but also see the options available.
+The type can only be one from the `enum` list. This allows you to not only detect this error but also see the options available.
 
 When `zwe` runs and fails schema validation due to the "PCKS12" typo, it will print out the following message:
 
@@ -71,22 +65,22 @@ This output shows that `type` has an issue. You can read the `enum` to see the c
 
 ## JSON-Schema validation
 
-Configuration Manager uses [JSON Schema](https://json-schema.org/) to validate a configuration. As a result, Zowe itself and all components and extensions must have schema files for Configuration Manager to perform validation. Developers should read [how to add schemas to components](../extend/server-schemas) as it is required in v2. 
+Configuration Manager uses [JSON Schema](https://json-schema.org/) to validate a configuration. As a result, Zowe itself and all components and extensions must have schema files for Configuration Manager to perform validation. Developers should read [how to add schemas to components](../extend/server-schemas.md) as it is required in v2. 
 
 Zowe now publishes these schema files so that you can see all the configuration properties that are possible in Zowe, see how they have changed between versions, and see what values are valid for them. Below is a list of some of these schemas:
 
 | Component | Name | Purpose | Github Link |
 |-----------|------|---------|-------------|
-| Base | server-base | Validates zowe.yaml except `components` section | [link](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/zowe-yaml-schema.json) |
-| Base | server-common | Common structures reusable by other schemas | [link](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/server-common.json) |
-| Base | server-component-manifest | Validates each components' manifest.yaml | [link](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/manifest-schema.json) |
-| Base | trivial-component-schema | For copying as a starting point for developers | [link](https://github.com/zowe/zowe-install-packaging/blob/v2.x/staging/schemas/trivial-component-schema.json) |
-| app-server | appfw-plugin-definition | Validates any components' pluginDefinition.json for `zwe components install` | [link](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/plugindefinition-schema.json) |
-| app-server | component | Validates `components.app-server` | [link](https://github.com/zowe/zlux-app-server/blob/v2.x/staging/schemas/app-server-config.json) |
-| discovery | component | Validates `components.discovery` | [link](https://github.com/zowe/api-layer/blob/v2.x.x/schemas/discovery-schema.json) |
-| gateway | component | Validates `components.gateway` | [link](https://github.com/zowe/api-layer/blob/v2.x.x/schemas/gateway-schema.json) |
-| zss | component | Validates `components.zss` | [link](https://github.com/zowe/zss/blob/v2.x/staging/schemas/zowe-schema.json) |
-| explorer-ip | component | Trivially validates `components.explorer-ip` | [link](https://github.com/zowe/explorer-ip/blob/v2.x/master/schemas/trivial-schema.json) |
+| Base | server-base | Validates zowe.yaml except `components` section | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/zowe-yaml-schema.json) |
+| Base | server-common | Common structures reusable by other schemas | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/server-common.json) |
+| Base | server-component-manifest | Validates each components' manifest.yaml | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/manifest-schema.json) |
+| Base | trivial-component-schema | For copying as a starting point for developers | [link](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/schemas/trivial-component-schema.json) |
+| app-server | appfw-plugin-definition | Validates any components' pluginDefinition.json for `zwe components install` | [link](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/plugindefinition-schema.json) |
+| app-server | component | Validates `components.app-server` | [link](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json) |
+| discovery | component | Validates `components.discovery` | [link](https://github.com/zowe/api-layer/blob/v3.x.x/schemas/discovery-schema.json) |
+| gateway | component | Validates `components.gateway` | [link](https://github.com/zowe/api-layer/blob/v3.x.x/schemas/gateway-schema.json) |
+| zss | component | Validates `components.zss` | [link](https://github.com/zowe/zss/blob/v3.x/staging/schemas/zowe-schema.json) |
+| explorer-ip | component | Trivially validates `components.explorer-ip` | [link](https://github.com/zowe/explorer-ip/blob/v3.x/master/schemas/trivial-schema.json) |
 
 From the GitHub links above, if you want to see changes between versions, you can compare by the GitHub tags.
 
@@ -129,6 +123,17 @@ When you use multiple storage types, Zowe constructs the unified configuration b
 
 ![multi yaml example](../images/configure/multiyaml.png)
 
+## Parmlib support
+
+Zowe YAML content can be stored in PARMLIB as well. The structure is the same as in the unix files, so be sure to have sufficient record length to fit the YAML content within the member. The syntax is `PARMLIB(datasetname(member))`, and although you can have multiple `PARMLIB` entries, each must have the same member name.
+In the previous section, there was an example of using multiple files to split configuration into parts. This ability can be done with PARMLIB, FILE, or any mix of the two. An example of using PARMLIB with Zowe configuration may look like this in your STC JCL:
+
+```
+CONFIG=PARMLIB(LPAR.PARMLIB(ZWECFG))\
+:PARMLIB(SYSPLEX.PARMLIB(ZWECFG))\
+:FILE(/global/zowe/example-zowe.yaml)
+```
+
 ## Configuration templates
 
 Each Zowe configuration provided to Zowe when using Configuration Manager can contain values which are templates. These templates are not the literal values of a parameter, but will be substituted for a real value by Configuration Manager. This allows you to simplify complex or tedious configuration such as:
@@ -145,13 +150,15 @@ Here are some examples of templates that you can use to simplify your configurat
 
 ![templating example](../images/configure/templating.png)
 
+### Template functions
+
 ## Configuration Manager Unix executable
 
 `configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
 
 The `configmgr` executable needs the following as input:
 
-- A list of configuration locations. Each location can be a different type such as a Unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. The rules and syntax are the same as seen in the `config` property of the [Using `zwe` with Configuration Manager section](#using-zwe-with-configuration-manager).
+- A list of configuration locations. Each location can be a different type such as a Unix file or parmlib from a dataset, but each must be YAML format. Every configuration object in the list must only contain data from the same schema because the list will be merged together into a single configuration object during processing. 
 - A list of json-schema Unix files separated by a colon `:`, with the top-level schema being the left-most in the list. The unified configuration will be validated against this top-level schema and any references in the other schema files in the list.
    
 The `configmgr` executable can do the following with the input:

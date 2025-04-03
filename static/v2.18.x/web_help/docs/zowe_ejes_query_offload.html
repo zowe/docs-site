@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ejes query offload</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_query.html">query</a> › <a href="zowe_ejes_query_offload.html">offload</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Select a table of the JES2 spool offload devices in your JESplex.</p>
+<p>Use General Use options like --select and --metafilter to modify which rows are included in your table.  Use --table to drill down to a child table and --report to output the contents of a spool data set, a MVS data set, or report instead of the table.  Use --command to issue commands against the rows included in the table.</p>
+<h4>Usage</h4>
+<p>zowe ejes query offload [options]</p>
+<h4>EJES Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol used to access (E)JES server.</p>
+<p>Default value: https<br>
+Allowed values: http, https, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The (E)JES server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The (E)JES server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--rejectunauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--basepath</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all (E)JES resources when making REST requests.</li>
+</ul>
+</li>
+<li>
+<p><code>--color-scheme</code> | <code>--scheme</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Accessibility option: Specify the name of a color scheme.  User scheme files may also be created and specified to provide better contrast or to favor easier to see colors.  For a how-to, use &quot;zowe ejes emulate batch --helpApp scheme-info&quot;.  Zowe ejes log stream ignores this option as it outputs plain text by default, only colorizing when ANSI color options are specified.</p>
+<p>Allowed values: dark, light, powershell, nono, none, user-scheme-file, list, help</p>
+<p>Default value: dark</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--no-color</code> | <code>--nocolor</code> | <code>--nc</code> <em>(string)</em></p>
+<ul>
+<li>Accessibility option: Specify to prevent colorization of the CLI.  Same effect as defining NO_COLOR or FORCE_COLOR=0.</li>
+</ul>
+</li>
+</ul>
+<h4>General Use Options</h4>
+<ul>
+<li>
+<p><code>--metafilter</code> | <code>-m</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specify row filtering in a table.  Use &quot;-m help&quot; for detailed information.   Use &quot;-m list&quot; to show available columns.</p>
+<p>Allowed value: off, metafilter_construct, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--report</code> | <code>-r</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specify a child report to output.  Only the first row of the table is selected for the report.  You may want to use --sort, --select, or --metafilter to position the desired report as the first row.  Use &quot;-r list&quot; to show available reports.</p>
+<p>Default value: &amp;nbspb<br>
+Allowed values: browse-linecommand, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--select</code> | <code>-s</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specify column selections (TSELECT).  Use &quot;-s help&quot; for detailed information.  Use &quot;-s list&quot; to show available arguments for the table.</p>
+<p>Allowed values: off, select_construct, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--showcols</code> | <code>-w</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify the only columns to show in a table being output, and their order.  It does not apply to the parent tables of the output table.  Use &quot;-w list&quot; to show available columns.</p>
+<p>Allowed values: column-key..., list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sort</code> | <code>-z</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specify column sorting.   Use &quot;-z list&quot; to show available columns.</p>
+<p>Allowed values: off, sort_construct, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--table</code> | <code>-t</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Specify a child table.  Use &quot;-t list&quot; to show available tables.</p>
+<p>Default value: &amp;nbsps<br>
+Allowed values: tabular-linecommand, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>General Primary Selection Options</h4>
+<ul>
+<li>
+<p><code>--dest</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 8 destination filters.  Filters these tables: hold, hold datasets, writer (output), writer datasets, job status, job status datasets, and job zero.</p>
+<p>Allowed values: off, destination-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jobclass</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 4 job class filter masks.  Filters these tables: activity, input, hold, writer (output), job status, mds, and nje.</p>
+<p>Allowed values: off, jobclass-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jobname</code> | <code>-j</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 8 job name filter masks.  Filters these tables: activity, input, hold, writer (output), nje, status, and mds.</p>
+<p>Allowed values: off, jobname-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--origin</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 4 job origin filters.  Filters these tables: activity, input, hold, writer (output), job status, mds, and nje.</p>
+<p>Allowed values: off, origin-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--owner</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify up to 8 owner masks.</p>
+<p>Allowed values: off, name-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Query options</h4>
+<ul>
+<li>
+<p><code>--header</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify whether to include headers for tables.</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish carriage control handling for downloaded reports.</p>
+<p>Allowed values: discard, interpret, keep, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--countOnly</code> | <code>--count</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>When a table or report is selected for output, only output the &quot;Rows available&quot; line.</p>
+<p>Allowed values: on, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--hidecols</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify columns to hide in a table.   Use &quot;--hidecols list&quot; to show available columns.</p>
+<p>Allowed values: column-key..., list, help]</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--lines</code> | <code>-y</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify lines in a table or report.</p>
+<p>Default value: &amp;nbspTable: Terminal rows - 6, Report: 1000<br>
+Allowed values: 1000, number, all, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--pdf</code> <em>(array)</em></p>
+<ul>
+<li>Output a report in PDF format to a host provided file name corresponding to the data set.  Optionally provide a file name or path.  The EJES_DOWNLOAD_PATH environment variable value is prepended if a path is not provided.</li>
+</ul>
+</li>
+<li>
+<p><code>--text</code> | <code>--txt</code> <em>(array)</em></p>
+<ul>
+<li>Output a report in text format to a host provided file name corresponding to the data set.  Optionally provide a file name or path.  The EJES_DOWNLOAD_PATH environment variable value is prepended if a path is not provided.</li>
+</ul>
+</li>
+<li>
+<p><code>--start</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify the beginning line number for a report.</p>
+<p>Allowed values: number, 1, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--width</code> | <code>-x</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify maximum characters per line or row.</p>
+<p>Default value: &amp;nbsptty default character width<br>
+Allowed values: number, all, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Command Processing Options</h4>
+<ul>
+<li>
+<p><code>--actpurge</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Enable cancel/purge commands for executing jobs on job-oriented tables.</p>
+<p>Allowed values: on, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--command</code> | <code>-c</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify a line command.   Use &quot;-c list&quot; to show available commands.</p>
+<p>Allowed values: command[ argument], list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--confirm</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Confirm previously queued commands.  Use &quot;--confirm help&quot; for detailed information.</p>
+<p>Allowed values: on, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--immediate</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Run line commands without confirmation.</p>
+<p>Allowed values: fast, slow, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Job Submission Options</h4>
+<ul>
+<li>
+<p><code>--submit</code> | <code>--submit</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Submit a local or host file to the host.  Searches the current working directory for the file or the path on the EJES_SUBMIT_PATH environment variable.</p>
+<p>Allowed values: local:path, MVS data set, z/OS UNIX path</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--recfm</code> <em>(array)</em></p>
+<ul>
+<li>Record format.</li>
+</ul>
+</li>
+<li>
+<p><code>--lrecl</code> <em>(array)</em></p>
+<ul>
+<li>Logical record length.</li>
+</ul>
+</li>
+<li>
+<p><code>--unit</code> <em>(array)</em></p>
+<ul>
+<li>Generic or esoteric unit name where an uncataloged MVS data set resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume</code> <em>(array)</em></p>
+<ul>
+<li>Volume serial where an uncataloged MVS data set resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsys</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Subsystem name where the job should be sent. If not speficied defaults to the subsystem under which the current (E)JES session is running.</p>
+<p>Allowed values: jes2, jes3, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Debug and Test Options</h4>
+<ul>
+<li>
+<p><code>--debug</code> | <code>--dbg</code> | <code>--debug-value</code> | <code>--dv</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify a numeric debugging mode.</p>
+<p>Allowed values: number, list, help</p>
+<p>Allowed values: \d+, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dry-run</code> | <code>-n</code> <em>(array)</em></p>
+<ul>
+<li>
+<p>Run under dry-run protocols.</p>
+<p>Allowed values: syntax, check, all, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Advanced Use Primary Selection Options</h4>
+<ul>
+<li>
+<p><code>--atx</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Disable selecting APPC/MVS transaction jobs for applicable tables by specifying &quot;no&quot;.</p>
+<p>Allowed values: yes, no, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--job</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Disable selecting batch jobs for applicable tables by specifying &quot;no&quot;.</p>
+<p>Allowed values: yes, no, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--stc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Disable selecting started tasks for applicable tables by specifying &quot;no&quot;.</p>
+<p>Allowed values: yes, no, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sysclass</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 8 1-character sysclasses without spaces.  Filters these tables: hold, hold datasets, writer (output), writer datasets, job status, job status datasets and job zero.</p>
+<p>Allowed values: off, sysclass(es), list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--tsu</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Disable selecting TSO user output for applicable tables by specifying &quot;no&quot;.</p>
+<p>Allowed values: yes, no, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--usr</code> | <code>--userid</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish up to 8 submitter user filters. Filters these tables: activity, input, hold, writer (output), job status, mds, and nje.</p>
+<p>Allowed values: off, user-mask(s), list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Advanced Use Options</h4>
+<ul>
+<li>
+<p><code>--acplex</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Set the data gathering scope for the Activity display.</p>
+<p>Allowed values: jes, sys, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--codepage</code> | <code>----cp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Change the code page set for your installation for output as UTF-8.</p>
+<p>Allowed values: list, help, 0, 273, 277, 280, 284, 297, 297, 424, 833, 870, 875, 1026, 1047, 1122, 1141, 1143, 1145, 1147, 1149, 1159, 37, 275, 278, 281, 285, 420, 500, 836, 871, 1025, 1027, 1112, 1140, 1140, 1142, 1144, 1146, 1148, 1153</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--curstep</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Enable extra columns on JES2 Input and Job Status.</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--datefmt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Customize date formatting.</p>
+<p>Allowed values: yyyyddd ., yyyyddd -, yyyyddd, YYYYMMDD /, YYYYMMDD -, YYYYMMDD, YYYYDDMM /, YYYYDDMM -, YYYYDDMM, MMDDYYYY /, MMDDYYYY -, MMDDYYYY, DDMMYYYY /, DDMMYYYY -, DDMMYYYY</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--deltxt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Possibly show canceled or printed data sets in the JES spool.</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--inptxt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Show in-stream SYSIN data sets.</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--jes2</code> | <code>-2</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES2 spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--jes3</code> | <code>-3</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES3 or JES3plus spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--max</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Change level of detail to show maximum number of columns.  Filters these tables: activity, djc, hold, input, job status, nje, and writer.</p>
+<p>Allowed values: on, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--numchar</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Establish the numeric magnitude and decimal separator character to be used when formatting numeric values.</p>
+<p>Allowed values: 'MD', 'M ' where M is a magnitude character, D is a decimal character, and either can be blank.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--setup</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>On Printer/Punch table, show required attributes of devices in setup status (on) or show current attributes of devices in setup status(off).</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--sysname</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Set the server system name filter. This filter limits the systems from which peer-to-peer remote server data is gathered.</p>
+<p>Allowed values: system-mask, '', *, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--systxt</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Show internal JES data sets.</p>
+<p>Allowed values: on, off, list, help</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--subsystem</code> <em>(string)</em></p>
+<ul>
+<li>Name of the spooler to use instead of the default spooler.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ejes-profile</code> | <code>--ejes-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ejes) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>List the available table types for the child table.</li>
+</ul>
+<p>The &quot;list&quot; argument may be used on any option.  A table for that option will be displayed and any other work will stop.  The table may display available tables, reports, columns, for positional input fields depending on the option.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query offload --table list`
+</code></pre>
+<ul>
+<li>Provide detailed help for the metafilter option.</li>
+</ul>
+<p>The &quot;help&quot; argument may be used on any option.    Help for the option will be displayed and any other work will stop.</p>
+<p>Example:</p>
+<pre><code>  * `$  zowe ejes query offload --metafilter help`
+</code></pre>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -165,12 +165,12 @@ Prior to Zowe release 1.8.0, the location of the configuration directories were 
 
 | Folder | New Location | Old Location | Note
 |--------|--------------|--------------|-----
-| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within <ROOT_DIR>/components/app-server/share
-| siteDir | <INSTANCE_DIR>/workspace/app-server/site | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
-| instanceDir | <INSTANCE_DIR>/workspace/app-server | zlux-app-server/deploy/instance |
-| groupsDir | <INSTANCE_DIR>/workspace/app-server/groups | zlux-app-server/deploy/instance/groups |
-| usersDir | <INSTANCE_DIR>/workspace/app-server/users | zlux-app-server/deploy/instance/users |
-| pluginsDir | <INSTANCE_DIR>/workspace/app-server/plugins | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
+| productDir | zlux-app-server/defaults | zlux-app-server/deploy/product | Official installs place zlux-app-server within `<ROOT_DIR>/components/app-server/share`
+| siteDir | `<INSTANCE_DIR>/workspace/app-server/site` | zlux-app-server/deploy/site | INSTANCE_DIR is ~/.zowe if not otherwise defined. Site is placed within instance due to lack of SITE_DIR as of 1.8
+| instanceDir | `<INSTANCE_DIR>/workspace/app-server` | zlux-app-server/deploy/instance |
+| groupsDir | `<INSTANCE_DIR>/workspace/app-server/groups` | zlux-app-server/deploy/instance/groups |
+| usersDir | `<INSTANCE_DIR>/workspace/app-server/users` | zlux-app-server/deploy/instance/users |
+| pluginsDir | `<INSTANCE_DIR>/workspace/app-server/plugins` | zlux-app-server/deploy/instance/ZLUX/plugins | Defaults located at zlux-app-server/defaults/plugins, previously at zlux-app-server/plugins
 
 
 ## App configuration

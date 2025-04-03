@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ejes issue syscmd</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ejes.html">ejes</a> › <a href="zowe_ejes_issue.html">issue</a> › <a href="zowe_ejes_issue_syscmd.html">syscmd</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Issue a system command and receive console output as a report in text format.</p>
+<h4>Usage</h4>
+<p>zowe ejes issue syscmd &lt;command&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>command</code>		 <em>(string)</em></p>
+<ul>
+<li>System console command enclosed in double-quotes.  If you wish to issue multiple commands, follow each command with a semicolon and a slash(;/)</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--debug</code> | <code>--dbg</code> <em>(number)</em></p>
+<ul>
+<li>Specify a numeric debugging mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--dry-run</code> | <code>-n</code> <em>(array)</em></p>
+<ul>
+<li>Run under dry-run protocols.</li>
+</ul>
+</li>
+<li>
+<p><code>--jes2</code> | <code>-2</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES2 spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--jes3</code> | <code>-3</code> <em>(boolean)</em></p>
+<ul>
+<li>Use the JES3 or JES3plus spooler instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--lines</code> | <code>-y</code> <em>(string)</em></p>
+<ul>
+<li>Maximum lines in a table or report.  [1000 | tty-default | number | all]</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> <em>(string)</em></p>
+<ul>
+<li>Name of the spooler to use instead of the default spooler.</li>
+</ul>
+</li>
+<li>
+<p><code>--width</code> | <code>-x</code> <em>(string)</em></p>
+<ul>
+<li>Maximum characters per line or row.  [tty-default | number | all]</li>
+</ul>
+</li>
+</ul>
+<h4>EJES Connection Options</h4>
+<ul>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol used to access (E)JES server.</p>
+<p>Default value: https<br>
+Allowed values: http, https, list, help</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The (E)JES server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The (E)JES server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (E)JES password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--rejectunauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--basepath</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all (E)JES resources when making REST requests.</li>
+</ul>
+</li>
+<li>
+<p><code>--color-scheme</code> | <code>--scheme</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Accessibility option: Specify the name of a color scheme.  User scheme files may also be created and specified to provide better contrast or to favor easier to see colors.  For a how-to, use &quot;zowe ejes emulate batch --helpApp scheme-info&quot;.  Zowe ejes log stream ignores this option as it outputs plain text by default, only colorizing when ANSI color options are specified.</p>
+<p>Allowed values: dark, light, powershell, nono, none, user-scheme-file, list, help</p>
+<p>Default value: dark</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--no-color</code> | <code>--nocolor</code> | <code>--nc</code> <em>(string)</em></p>
+<ul>
+<li>Accessibility option: Specify to prevent colorization of the CLI.  Same effect as defining NO_COLOR or FORCE_COLOR=0.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ejes-profile</code> | <code>--ejes-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ejes) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Display the time:</p>
+<ul>
+<li><code>zowe ejes issue syscmd &quot;d t&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ejes issue syscmd &quot;d t&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Display time and ppt:</p>
+<ul>
+<li><code>zowe ejes issue syscmd &quot;d t;/d ppt&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ejes issue syscmd &quot;d t;/d ppt&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

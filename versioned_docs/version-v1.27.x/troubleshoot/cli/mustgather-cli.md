@@ -61,7 +61,7 @@ You can set the location on your computer for the Zowe CLI home directory, which
 
 | Environment Variable | Description | Values | Default |
 | ---------------------- | ----------- | ------ | ------- |
-| `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | C:\Users\\<username\>\\.zowe
+| `ZOWE_CLI_HOME`  | Zowe CLI home directory location | Any valid path on your computer | `C:\Users\<username>\.zowe`
 
 The values for these variables can be **echo**ed.
 

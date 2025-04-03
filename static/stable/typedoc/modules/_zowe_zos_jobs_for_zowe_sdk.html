@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@zowe/zos-jobs-for-zowe-sdk | Zowe Node.js SDK - v2.10.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v2.10.0">
+	<title>@zowe/zos-jobs-for-zowe-sdk | Zowe Node.js SDK - v3.1.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v2.10.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -187,6 +187,7 @@
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_jobs_for_zowe_sdk.jobsconstants.html" class="tsd-kind-icon">Jobs<wbr>Constants</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_jobs_for_zowe_sdk.modifyjobs.html" class="tsd-kind-icon">Modify<wbr>Jobs</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_jobs_for_zowe_sdk.monitorjobs.html" class="tsd-kind-icon">Monitor<wbr>Jobs</a></li>
+								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_jobs_for_zowe_sdk.searchjobs.html" class="tsd-kind-icon">Search<wbr>Jobs</a></li>
 								<li class="tsd-kind-class tsd-parent-kind-module"><a href="../classes/_zowe_zos_jobs_for_zowe_sdk.submitjobs.html" class="tsd-kind-icon">Submit<wbr>Jobs</a></li>
 							</ul>
 						</section>
@@ -212,6 +213,7 @@
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.imodifyjoboptions.html" class="tsd-kind-icon">IModify<wbr>Job<wbr>Options</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.imodifyjobparms.html" class="tsd-kind-icon">IModify<wbr>Job<wbr>Parms</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.imonitorjobwaitforparms.html" class="tsd-kind-icon">IMonitor<wbr>Job<wbr>Wait<wbr>For<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isearchjobsparms.html" class="tsd-kind-icon">ISearch<wbr>Jobs<wbr>Parms</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.ispoolfile.html" class="tsd-kind-icon">ISpool<wbr>File</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitjclnotifyparm.html" class="tsd-kind-icon">ISubmit<wbr>Jcl<wbr>Notify<wbr>Parm</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitjclparms.html" class="tsd-kind-icon">ISubmit<wbr>Jcl<wbr>Parms</a></li>
@@ -220,6 +222,7 @@
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitjobussnotifyparm.html" class="tsd-kind-icon">ISubmit<wbr>JobUSSNotify<wbr>Parm</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitjobussparms.html" class="tsd-kind-icon">ISubmit<wbr>JobUSSParms</a></li>
 								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitparms.html" class="tsd-kind-icon">ISubmit<wbr>Parms</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitparmscommon.html" class="tsd-kind-icon">ISubmit<wbr>Parms<wbr>Common</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -253,7 +256,7 @@
 					<div class="tsd-signature tsd-kind-icon">JOB_<wbr>STATUS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"ACTIVE"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"OUTPUT"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"INPUT"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/types/JobStatus.ts#L17">@zowe/zos-jobs-for-zowe-sdk/src/types/JobStatus.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/types/JobStatus.ts#L17">@zowe/zos-jobs-for-zowe-sdk/src/types/JobStatus.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -269,7 +272,7 @@
 					<div class="tsd-signature tsd-kind-icon">Job<wbr>Data<wbr>Resolve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/types/JobDataResolve.ts#L12">@zowe/zos-jobs-for-zowe-sdk/src/types/JobDataResolve.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/types/JobDataResolve.ts#L12">@zowe/zos-jobs-for-zowe-sdk/src/types/JobDataResolve.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -300,7 +303,7 @@
 					<div class="tsd-signature tsd-kind-icon">Job<wbr>Resolve<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>job<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.ijob.html" class="tsd-signature-type">IJob</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/types/JobResolve.ts#L14">@zowe/zos-jobs-for-zowe-sdk/src/types/JobResolve.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/types/JobResolve.ts#L14">@zowe/zos-jobs-for-zowe-sdk/src/types/JobResolve.ts:14</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -334,7 +337,7 @@
 					<div class="tsd-signature tsd-kind-icon">JOB_<wbr>STATUS_<wbr>ORDER<span class="tsd-signature-symbol">:</span> <a href="_zowe_zos_jobs_for_zowe_sdk.html#job_status" class="tsd-signature-type">JOB_STATUS</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;INPUT&quot;, &quot;ACTIVE&quot;, &quot;OUTPUT&quot;]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/types/JobStatus.ts#L29">@zowe/zos-jobs-for-zowe-sdk/src/types/JobStatus.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/types/JobStatus.ts#L29">@zowe/zos-jobs-for-zowe-sdk/src/types/JobStatus.ts:29</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -347,7 +350,7 @@
 					<div class="tsd-signature tsd-kind-icon">Zos<wbr>Jobs<wbr>Messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L18">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L18">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -361,7 +364,7 @@
 						<div class="tsd-signature tsd-kind-icon">missing<wbr>Directory<wbr>Option<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L33">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L33">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:33</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -380,7 +383,7 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;If you specify --extension option, you must also specify --directory&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L34">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L34">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:34</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -391,7 +394,7 @@
 						<div class="tsd-signature tsd-kind-icon">missing<wbr>Jcl<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L42">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:42</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L42">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:42</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -410,7 +413,37 @@
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;No JCL provided&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L43">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L43">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:43</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosjobsmessages.missingsearchoption" class="tsd-anchor"></a>
+						<h3>missing<wbr>Search<wbr>Option</h3>
+						<div class="tsd-signature tsd-kind-icon">missing<wbr>Search<wbr>Option<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L51">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:51</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicating that no search option was passed or both were passed</p>
+							</div>
+							<dl class="tsd-comment-tags">
+								<dt>memberof</dt>
+								<dd><p>ZosJobsMessages</p>
+								</dd>
+							</dl>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosjobsmessages.missingsearchoption.message-2" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;You must specify either the &#x60;--search-string&#x60; or &#x60;--search-regex&#x60; option&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L52">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:52</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -421,7 +454,7 @@
 						<div class="tsd-signature tsd-kind-icon">missing<wbr>Uss<wbr>File<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L24">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L24">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:24</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -435,12 +468,37 @@
 							</dl>
 						</div>
 						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
-							<a name="zosjobsmessages.missingussfilepath.message-2" class="tsd-anchor"></a>
+							<a name="zosjobsmessages.missingussfilepath.message-3" class="tsd-anchor"></a>
 							<h3>message</h3>
 							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Specify the USS file path.&quot;</span></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v7.16.6/packages/zosjobs/src/JobsMessages.ts#L25">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L25">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:25</a></li>
+								</ul>
+							</aside>
+						</section>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-object-literal">
+						<a name="zosjobsmessages.nodejsfserror" class="tsd-anchor"></a>
+						<h3>node<wbr>JsFs<wbr>Error</h3>
+						<div class="tsd-signature tsd-kind-icon">node<wbr>JsFs<wbr>Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L58">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:58</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Message indicating that a failure has happened in the NodeJS File System API</p>
+							</div>
+						</div>
+						<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+							<a name="zosjobsmessages.nodejsfserror.message-4" class="tsd-anchor"></a>
+							<h3>message</h3>
+							<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;Node.js File System API error&quot;</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosjobs/src/JobsMessages.ts#L59">@zowe/zos-jobs-for-zowe-sdk/src/JobsMessages.ts:59</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -533,6 +591,9 @@
 								<a href="../classes/_zowe_zos_jobs_for_zowe_sdk.monitorjobs.html" class="tsd-kind-icon">Monitor<wbr>Jobs</a>
 							</li>
 							<li class=" tsd-kind-class tsd-parent-kind-module">
+								<a href="../classes/_zowe_zos_jobs_for_zowe_sdk.searchjobs.html" class="tsd-kind-icon">Search<wbr>Jobs</a>
+							</li>
+							<li class=" tsd-kind-class tsd-parent-kind-module">
 								<a href="../classes/_zowe_zos_jobs_for_zowe_sdk.submitjobs.html" class="tsd-kind-icon">Submit<wbr>Jobs</a>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
@@ -593,6 +654,9 @@
 								<a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.imonitorjobwaitforparms.html" class="tsd-kind-icon">IMonitor<wbr>Job<wbr>Wait<wbr>For<wbr>Parms</a>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isearchjobsparms.html" class="tsd-kind-icon">ISearch<wbr>Jobs<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.ispoolfile.html" class="tsd-kind-icon">ISpool<wbr>File</a>
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
@@ -615,6 +679,9 @@
 							</li>
 							<li class=" tsd-kind-interface tsd-parent-kind-module">
 								<a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitparms.html" class="tsd-kind-icon">ISubmit<wbr>Parms</a>
+							</li>
+							<li class=" tsd-kind-interface tsd-parent-kind-module">
+								<a href="../interfaces/_zowe_zos_jobs_for_zowe_sdk.isubmitparmscommon.html" class="tsd-kind-icon">ISubmit<wbr>Parms<wbr>Common</a>
 							</li>
 							<li class=" tsd-kind-type-alias tsd-parent-kind-module">
 								<a href="_zowe_zos_jobs_for_zowe_sdk.html#job_status" class="tsd-kind-icon">JOB_<wbr>STATUS</a>

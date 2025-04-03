@@ -1,0 +1,83 @@
+name: PR Comment Trigger
+
+on:
+  issue_comment:
+    types:
+      - created
+
+permissions:
+  issues: write
+
+jobs:
+  pr-comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue.pull_request && github.event.comment.user.login == github.event.issue.user.login }}
+
+    steps:
+      - name: Execute script if PR author commented
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+          script: |
+            console.log("PR URL:", context.payload.issue.pull_request.url);
+            console.log("PR author:", context.payload.issue.user.login);
+            console.log("Comment author:", context.payload.comment.user.login);
+            const body = context.payload.comment.body;
+            if (body.startsWith("/labels ")) {
+              console.log("Comment body:", body);
+              const repoLabels = (await github.rest.issues.listLabelsForRepo({ ...context.repo, per_page: 100 })).data.map((label) => label.name);
+              const labelMapping = {};
+              for (const label of repoLabels) {
+                if (label.includes(": ")) {
+                  console.log("Found repo label:", label);
+                  labelMapping[label.replace(" ", "")] = label;
+                  labelMapping[label.slice(label.indexOf(":") + 2)] = label;
+                }
+              }
+              const labelsCurrent = (await github.rest.issues.listLabelsOnIssue({ ...context.repo, issue_number: context.payload.issue.number })).data.map((label) => label.name);
+              console.log("PR labels:", labelsCurrent.join(", "));
+              const cmdArgs = body.split(" ").slice(1);
+              const labelsToAdd = cmdArgs.filter((arg) => !arg.startsWith("-")).map((arg) => arg.startsWith("+") ? arg.slice(1) : arg);
+              console.log("Labels to add:", labelsToAdd.join(", "));
+              const labelsToRemove = cmdArgs.filter((arg) => arg.startsWith("-")).map((arg) => arg.slice(1));
+              console.log("Labels to remove:", labelsToRemove.join(", "));
+              const labelsInvalid = [];
+              for (const label of labelsToAdd) {
+                if (labelMapping[label] == null) {
+                  console.log("Invalid label:", label);
+                  labelsInvalid.push(label);
+                } else if (labelsCurrent.includes(labelMapping[label])) {
+                  console.log("Skipping label:", labelMapping[label]);
+                } else {
+                  console.log("Adding label:", labelMapping[label]);
+                  try {
+                    await github.rest.issues.addLabels({ ...context.repo, issue_number: context.payload.issue.number, labels: [labelMapping[label]] });
+                  } catch (err) {
+                    console.log("Failed to add label:", err);
+                    labelsInvalid.push(label);
+                  }
+                }
+              }
+              for (const label of labelsToRemove) {
+                if (labelMapping[label] == null) {
+                  console.log("Invalid label:", label);
+                  labelsInvalid.push(label);
+                } else if (!labelsCurrent.includes(labelMapping[label])) {
+                  console.log("Skipping label:", labelMapping[label]);
+                } else {
+                  console.log("Removing label:", labelMapping[label]);
+                  try {
+                    await github.rest.issues.removeLabel({ ...context.repo, issue_number: context.payload.issue.number, name: labelMapping[label] });
+                  } catch (err) {
+                    console.log("Failed to remove label:", err);
+                    labelsInvalid.push(label);
+                  }
+                }
+              }
+              await github.rest.issues.deleteComment({ ...context.repo, comment_id: context.payload.comment.id });
+              if (labelsInvalid.length > 0) {
+                console.log("Invalid labels:", labelsInvalid.join(", "));
+                const bodyQuoted = body.split("\n").map((line) => "> " + line).join("\n");
+                await github.rest.issues.createComment({ ...context.repo, issue_number: context.payload.issue.number, body: bodyQuoted + "\n\nThe following labels are invalid: " + labelsInvalid.join(", ") });
+              }
+            }

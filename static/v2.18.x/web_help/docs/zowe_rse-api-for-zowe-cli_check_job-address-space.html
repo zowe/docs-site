@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>rse-api-for-zowe-cli check job-address-space</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_rse-api-for-zowe-cli.html">rse-api-for-zowe-cli</a> › <a href="zowe_rse-api-for-zowe-cli_check.html">check</a> › <a href="zowe_rse-api-for-zowe-cli_check_job-address-space.html">job-address-space</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Display all active job address space information.</p>
+<h4>Usage</h4>
+<p>zowe rse-api-for-zowe-cli check job-address-space [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--asid</code> <em>(boolean)</em></p>
+<ul>
+<li>Address space identifier.</li>
+</ul>
+</li>
+<li>
+<p><code>--asidx</code> <em>(boolean)</em></p>
+<ul>
+<li>Address space identifier in hexadecimal.</li>
+</ul>
+</li>
+<li>
+<p><code>--bytes</code> <em>(boolean)</em></p>
+<ul>
+<li>Current real storage usage in bytes.</li>
+</ul>
+</li>
+<li>
+<p><code>--cpu</code> <em>(boolean)</em></p>
+<ul>
+<li>Accumulated CPU time consumed by and on behalf of and within the A/S, for the current job step, in microseconds (local + remote + external).</li>
+</ul>
+</li>
+<li>
+<p><code>--cpu%</code> <em>(boolean)</em></p>
+<ul>
+<li>Percent of all CPU time consumed by and on behalf of the address space during the most recent interval measured.</li>
+</ul>
+</li>
+<li>
+<p><code>--description</code> <em>(boolean)</em></p>
+<ul>
+<li>Address space position description.</li>
+</ul>
+</li>
+<li>
+<p><code>--dp</code> <em>(boolean)</em></p>
+<ul>
+<li>Address space dispatching priority in hexadecimal.</li>
+</ul>
+</li>
+<li>
+<p><code>--elapsed</code> <em>(boolean)</em></p>
+<ul>
+<li>Elapsed time the transaction has been active.</li>
+</ul>
+</li>
+<li>
+<p><code>--frames</code> <em>(boolean)</em></p>
+<ul>
+<li>Current utilization of real storage in frames.</li>
+</ul>
+</li>
+<li>
+<p><code>--hvcomhwm</code> <em>(boolean)</em></p>
+<ul>
+<li>High virtual common memory high-water mark in MB.</li>
+</ul>
+</li>
+<li>
+<p><code>--hvcomused</code> <em>(boolean)</em></p>
+<ul>
+<li>High virtual common memory size in MB.</li>
+</ul>
+</li>
+<li>
+<p><code>--io</code> <em>(boolean)</em></p>
+<ul>
+<li>EXCP rate in EXCPs per second for address space.</li>
+</ul>
+</li>
+<li>
+<p><code>--name</code> <em>(boolean)</em></p>
+<ul>
+<li>Job name.</li>
+</ul>
+</li>
+<li>
+<p><code>--page</code> <em>(boolean)</em></p>
+<ul>
+<li>Demand paging rate for address space.</li>
+</ul>
+</li>
+<li>
+<p><code>--position</code> <em>(boolean)</em></p>
+<ul>
+<li>Address space position.</li>
+</ul>
+</li>
+<li>
+<p><code>--stepIO</code> <em>(boolean)</em></p>
+<ul>
+<li>A/S EXCP (I/O) count for the current job step.</li>
+</ul>
+</li>
+<li>
+<p><code>--subtype</code> <em>(boolean)</em></p>
+<ul>
+<li>Sub-type of 1.job/initiator: JES, z/OS UNIX, or APPC, 2.started task: JES, MSTR, SYS.</li>
+</ul>
+</li>
+<li>
+<p><code>--swapin</code> <em>(boolean)</em></p>
+<ul>
+<li>Swapped-in state.</li>
+</ul>
+</li>
+<li>
+<p><code>--sysName</code> <em>(boolean)</em></p>
+<ul>
+<li>System name where job is executing.</li>
+</ul>
+</li>
+<li>
+<p><code>--task</code> <em>(boolean)</em></p>
+<ul>
+<li>A/S CPU usage % of system total in interval - task (local + remote).</li>
+</ul>
+</li>
+<li>
+<p><code>--task%</code> <em>(boolean)</em></p>
+<ul>
+<li>Accumulated CPU time consumed by and on behalf of the A/S, for the current job step, in microseconds (local + remote).</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> <em>(boolean)</em></p>
+<ul>
+<li>Type of address space.</li>
+</ul>
+</li>
+<li>
+<p><code>--userId</code> <em>(boolean)</em></p>
+<ul>
+<li>User id of owner.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--rse-profile</code> | <code>--rse-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (rse) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port number of service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password to authenticate to service on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Display all active job address space information using filters for information to be shown:</p>
+<ul>
+<li><code>zowe rse-api-for-zowe-cli check job-address-space --asid --dp</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe rse-api-for-zowe-cli check job-address-space --asid --dp">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

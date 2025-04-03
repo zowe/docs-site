@@ -1,10 +1,9 @@
-const LATEST_VERSION = "v2.10.x";
+const LATEST_VERSION = "v3.1.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
   title: "Zowe Docs",
-  tagline:
-    "Combining the past and the present to build the future of Mainframe",
+  tagline: "Combining the past and the present to build the future of Mainframe",
   url: "https://docs.zowe.org/",
   baseUrl: "/",
   onBrokenLinks: "warn",
@@ -13,15 +12,14 @@ module.exports = {
   favicon: "img/zowe-icon.png",
   organizationName: "zowe",
   projectName: "docs-site",
-  webpack: {
-    jsLoader: (isServer) => ({
-      loader: require.resolve("esbuild-loader"),
-      options: {
-        loader: "tsx",
-        format: isServer ? "cjs" : undefined,
-        target: isServer ? "node12" : "es2017",
-      },
-    }),
+  markdown: {
+    mdx1Compat: {
+      comments: true
+    }
+  },
+  future: {
+    // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
+    experimental_faster: process.env.NODE_ENV === "production",
   },
   themeConfig: {
     docs: {
@@ -42,13 +40,19 @@ module.exports = {
       items: [
         {
           type: "doc",
-          label: "Get Started",
+          label: "What's new",
+          docId: "whats-new/zowe-announcements",
+          position: "left",
+        },
+        {
+          type: "doc",
+          label: "Overview",
           docId: "getting-started/overview",
           position: "left",
         },
         {
           type: "doc",
-          label: "Setup",
+          label: "Install",
           docId: "user-guide/install-overview",
           position: "left",
         },
@@ -83,17 +87,17 @@ module.exports = {
           docId: "appendix/zowe-cli-command-reference",
           position: "left",
         },
-         {
-           type: "docsVersionDropdown",
-           position: "right",
-           dropdownActiveClassDisabled: true,
-           dropdownItemsAfter: [
-             {
-               to: "/versions",
-               label: "All versions",
-             },
-           ],
-         },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownActiveClassDisabled: true,
+          dropdownItemsAfter: [
+            {
+              to: "/versions",
+              label: "All versions",
+            },
+          ],
+        },
         {
           href: "https://github.com/zowe/docs-site",
           position: "right",
@@ -111,10 +115,6 @@ module.exports = {
             {
               label: "Download",
               href: "https://www.zowe.org/download.html",
-            },
-            {
-              label: "Try Zowe",
-              href: "https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1",
             },
             {
               label: "Features",
@@ -152,7 +152,7 @@ module.exports = {
             },
             {
               label: "Community meetings",
-              href: "https://lists.openmainframeproject.org/g/zowe-dev/calendar",
+              href: "https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe",
             },
             {
               label: "Zowe GitHub",
@@ -172,6 +172,9 @@ module.exports = {
       apiKey: "de714331a88daaf9b541b4ad68c19d84",
       indexName: "zowe",
       contextualSearch: true,
+      searchParameters: {
+        facetFilters: ["keywords"]
+      }
     },
     colorMode: {
       defaultMode: "light",
@@ -196,37 +199,48 @@ module.exports = {
           showLastUpdateTime: true,
           routeBasePath: "/",
           lastVersion: "current",
+          remarkPlugins: [() => {
+            // https://github.com/facebook/docusaurus/issues/9789
+            return async (root) => {
+              const {visit} = await import('unist-util-visit');
+              visit(root, 'mdxJsxFlowElement', (node) => {
+                if (node.name === 'img') {
+                  node.name = 'Img';
+                }
+              });
+            };
+          }],
           versions: {
             current: {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
-            "v2.9.x": {
-              label: "v2.9.x LTS",
+            "v3.0.x": {
+              label: "v3.0.x LTS",
             },
-            "v2.8.x": {
-              label: "v2.8.x LTS",
+            "v2.18.x": {
+              label: "v2.18.x LTS",
             },
-            "v2.7.x": {
-              label: "v2.7.x LTS",
-           },
-            "v2.6.x": {
-              label: "v2.6.x LTS",
-           },
-            "v2.5.x": {
-              label: "v2.5.x LTS",
-           },
-            "v2.4.x": {
-              label: "v2.4.x LTS",
-           },
-            "v1.28.x": {
-              label: "v1.28.x LTS",
+            "v2.17.x": {
+              label: "v2.17.x LTS",
+            },
+            "v2.16.x": {
+              label: "v2.16.x LTS",
+            },
+            "v2.15.x": {
+              label: "v2.15.x LTS",
             },
           },
-        },    
+        },
         googleAnalytics: {
           trackingID: "UA-123892882-1",
           anonymizeIP: true,
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: versionsArray.map((x) => "/" + x + "/**"),
+          filename: "sitemap.xml",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -247,13 +261,22 @@ module.exports = {
         fromExtensions: ["html"],
         //Redirects Vuepress links like "v1-22-x" to "v1.22.x";
         createRedirects: function (existingPath) {
-          for (var i = 0; i < versionsArray.length; i++) {
-            var x = versionsArray[i];
-            if (existingPath.includes(x)) {
-              return [
-                existingPath.replace(x, x.replace(".", "-").replace(".", "-")),
-              ];
+          const redirects = {
+            "/whats-new/release-notes/": "/getting-started/release-notes/",
+            "/user-guide/obtaining-information-about-api-services": "/extend/extend-apiml/service-information",
+          };
+          for (const x of versionsArray) {
+            redirects[x] = x.replace(".", "-").replace(".", "-");
+          }
+          let redirected = false;
+          for (const [toVal, fromVal] of Object.entries(redirects)) {
+            if (existingPath.includes(toVal)) {
+              existingPath = existingPath.replace(toVal, fromVal);
+              redirected = true;
             }
+          }
+          if (redirected) {
+            return [existingPath];
           }
         },
       },
@@ -261,7 +284,7 @@ module.exports = {
     [
       "@docusaurus/plugin-pwa",
       {
-        debug: true, 
+        debug: true,
         offlineModeActivationStrategies: [
           "appInstalled",
           "standalone",

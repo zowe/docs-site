@@ -18,6 +18,7 @@ This command can optionally validate enabled components or all components, but o
 zwe config validate -c /path/to/zowe.yaml
 zwe config validate -c FILE(/customizations/zowe.yaml):FILE(/defaults/zowe.yaml) --all
 zwe config validate -c 'FILE(/path/to/zowe.yaml):PARMLIB(ZOWE.PARMLIB(YAML))'
+
 ```
 
 ## Parameters
@@ -25,7 +26,9 @@ zwe config validate -c 'FILE(/path/to/zowe.yaml):PARMLIB(ZOWE.PARMLIB(YAML))'
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --components||boolean|no|Turns on validation for enabled components.
---all||boolean|no|Turns on validation for all components, even disabled ones.### Inherited from parent command
+--all||boolean|no|Turns on validation for all components, even disabled ones.
+
+### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
@@ -39,6 +42,8 @@ Full name|Alias|Type|Required|Help message
 
 
 ## Errors
+
+
 
 ### Inherited from parent command
 
@@ -79,3 +84,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

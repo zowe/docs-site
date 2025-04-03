@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ims update transaction</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ims.html">ims</a> › <a href="zowe_ims_update.html">update</a> › <a href="zowe_ims_update_transaction.html">transaction</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update an IMS transaction.</p>
+<h4>Usage</h4>
+<p>zowe ims update transaction [name...] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>name...</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the transaction(s) to update. The maximum length of a transaction name is eight characters.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--aoi-cmd</code> | <code>--aocmd</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the AOI option that you want to change (N, CMD, TRAN, Y).</p>
+<p>Allowed values: N, CMD, TRAN, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--class</code> | <code>-c</code> <em>(array)</em></p>
+<ul>
+<li>Selects the transactions associated with the specified class or classes to be updated.</li>
+</ul>
+</li>
+<li>
+<p><code>--commit-mode</code> | <code>--cmtmode</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies when database updates and non-express output messages are committed (SNGL, MULT).</p>
+<p>Allowed values: SINGLE, MODE</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--conversation</code> | <code>--conv</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the conversation option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--current-priority</code> | <code>--cpri</code> <em>(number)</em></p>
+<ul>
+<li>Specifies a new value for the current priority of a transaction.</li>
+</ul>
+</li>
+<li>
+<p><code>--directed-routing</code> | <code>--dirroute</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the MSC directed routing option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--edit-routine</code> | <code>--editrtn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the 1- to 8-character name of your transaction input edit routine that edits messages before the program receives the message.</li>
+</ul>
+</li>
+<li>
+<p><code>--edit-uppercase</code> | <code>--edituc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the edit to uppercase option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--emh-buffer-size</code> | <code>--emhbsz</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the EMH buffer size required to run the Fast Path transaction.</li>
+</ul>
+</li>
+<li>
+<p><code>--expiration-time</code> | <code>--exprtime</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the elapsed time in seconds that IMS can use to cancel the input transaction.</li>
+</ul>
+</li>
+<li>
+<p><code>--fast-path</code> | <code>--fp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the Fast Path option (E, N, P).</p>
+<p>Allowed values: E, N, P</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--inquiry</code> | <code>--inq</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the inquiry option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--limit-count</code> | <code>--lct</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the limit count.</li>
+</ul>
+</li>
+<li>
+<p><code>--limit-priority</code> | <code>--lpri</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the limit priority.</li>
+</ul>
+</li>
+<li>
+<p><code>--lock</code> | <code>-l</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies that the LOCK status is to be set on or off. Cannot be specified with any other SET attribute(ON or OFF).</p>
+<p>Allowed values: ON, OFF</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--log-write-ahead</code> | <code>--dclwa</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the log write-ahead option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--maximum-regions</code> | <code>--maxrgn</code> <em>(number)</em></p>
+<ul>
+<li>Specifies a new value for the maximum number of regions that can be simultaneously scheduled for a given transaction.</li>
+</ul>
+</li>
+<li>
+<p><code>--message-type</code> | <code>--msgtype</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the message type (single segment or multiple segment) (MULTSEG or SNGLSEG).</p>
+<p>Allowed values: MULTSEG, SNGLSEG</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--msname</code> | <code>--mn</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the one- to eight-character name of the logical link path in a multiple IMS system configuration (MSC).</li>
+</ul>
+</li>
+<li>
+<p><code>--normal-scheduling-priority</code> | <code>--npri</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the normal scheduling priority.</li>
+</ul>
+</li>
+<li>
+<p><code>--option</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies functions to be performed along with the command (AFFIN or ALLRSP).</p>
+<p>Allowed values: ALLRSP</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--parallel-processing-limit</code> | <code>--parlim</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the parallel processing limit count.</li>
+</ul>
+</li>
+<li>
+<p><code>--program</code> | <code>--pgm</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the name of the application program associated with the transaction.</li>
+</ul>
+</li>
+<li>
+<p><code>--processing-limit-count</code> | <code>--plct</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the processing limit count.</li>
+</ul>
+</li>
+<li>
+<p><code>--processing-limit-count-time</code> | <code>--plcttime</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the processing limit count time.</li>
+</ul>
+</li>
+<li>
+<p><code>--recover</code> | <code>-r</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the recovery option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--remote</code> | <code>--re</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the remote option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-mode</code> | <code>--resp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the response mode option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--route</code> | <code>--rte</code> <em>(array)</em></p>
+<ul>
+<li>Specifies the region(s) to route the command.</li>
+</ul>
+</li>
+<li>
+<p><code>--segment-number</code> | <code>--segno</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the segment number.</li>
+</ul>
+</li>
+<li>
+<p><code>--segment-size</code> | <code>--segsz</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the segment size.</li>
+</ul>
+</li>
+<li>
+<p><code>--serial</code> | <code>--sr</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the serial option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--set-class</code> | <code>--sc</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the transaction class, which is an attribute used to select a transaction for scheduling.</li>
+</ul>
+</li>
+<li>
+<p><code>--system-identification-local</code> | <code>--sidl</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the system identification (SYSID) of the local system in a multiple-IMS system (MSC) configuration.</li>
+</ul>
+</li>
+<li>
+<p><code>--system-identification-remote</code> | <code>--sidr</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the system identification (SYSID) of the remote system in a multiple-IMS system (MSC) configuration.</li>
+</ul>
+</li>
+<li>
+<p><code>--scratchpad-area-size</code> | <code>--spasz</code> <em>(number)</em></p>
+<ul>
+<li>Specifies the scratchpad area (SPA) size, in bytes, for a conversational transaction. The value can be a number from 16 and 32767.</li>
+</ul>
+</li>
+<li>
+<p><code>--scratchpad-area-truncation</code> | <code>--spatrunc</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the scratchpad area (SPA) truncation option of a conversational transaction (S or R).</p>
+<p>Allowed values: S, R</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--transaction-level-stat</code> | <code>--transtat</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies whether transaction level statistics should be logged for message driven programs (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--wait-for-input</code> | <code>--wfi</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the wait-for input option (N or Y).</p>
+<p>Allowed values: N, Y</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>IMS Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The IMS Operations API server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The IMS Operations API server port.</li>
+</ul>
+</li>
+<li>
+<p><code>--ims-connect-host</code> | <code>--ich</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of your instance of IMS Connect. This is typically the hostname of the mainframe LPAR where IMS Connect is running.</li>
+</ul>
+</li>
+<li>
+<p><code>--ims-connect-port</code> | <code>--icp</code> <em>(number)</em></p>
+<ul>
+<li>The port of your instance of IMS Connect. This port can be found in your IMS Connect configuration file on the mainframe.</li>
+</ul>
+</li>
+<li>
+<p><code>--plex</code> | <code>-x</code> <em>(string)</em></p>
+<ul>
+<li>The name of the IMS plex.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>The web server user name where the IMS Operations API resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>The web server user password where the IMS Operations API resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol (http or https).</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ims-profile</code> | <code>--ims-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ims) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Response Format Options</h4>
+<ul>
+<li>
+<p><code>--response-format-filter</code> | <code>--rff</code> <em>(array)</em></p>
+<ul>
+<li>Filter (include) fields in the response. Accepts an array of field/property names to include in the output response. You can filter JSON objects properties OR table columns/fields. In addition, you can use this option in conjunction with '--response-format-type' to reduce the output of a command to a single field/property or a list of a single field/property.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-type</code> | <code>--rft</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The command response output format type. Must be one of the following:</p>
+<p>table: Formats output data as a table. Use this option when the output data is an array of homogeneous JSON objects. Each property of the object will become a column in the table.</p>
+<p>list: Formats output data as a list of strings. Can be used on any data type (JSON objects/arrays) are stringified and a new line is added after each entry in an array.</p>
+<p>object: Formats output data as a list of prettified objects (or single object). Can be used in place of &quot;table&quot; to change from tabular output to a list of prettified objects.</p>
+<p>string: Formats output data as a string. JSON objects/arrays are stringified.</p>
+<p>Allowed values: table, list, object, string</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--response-format-header</code> | <code>--rfh</code> <em>(boolean)</em></p>
+<ul>
+<li>If &quot;--response-format-type table&quot; is specified, include the column headers in the output.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update a transaction named TRN1 to process exclusively as Fast Path:</p>
+<ul>
+<li><code>zowe ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims update transaction &quot;TRN1&quot; --fp &quot;E&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Unlock to allow scheduling all transactions beginning with TRN* and associated with class CLASSA:</p>
+<ul>
+<li><code>zowe ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims update transaction &quot;TRN*&quot; --class &quot;CLASSA&quot; --lock &quot;OFF&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Set response mode on for transaction named TRN2 and associated with classes CLASS1 and CLASS2:</p>
+<ul>
+<li><code>zowe ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims update transaction &quot;TRN2&quot; --class &quot;CLASS1 CLASS2&quot; --resp &quot;Y&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update a transaction named TRN3 to process exclusively as Fast Path routing to control regions IMS1 and IMS2:</p>
+<ul>
+<li><code>zowe ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims update transaction &quot;TRN3&quot; -fp &quot;E&quot; --route &quot;IMS1 IMS2&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Associate PGM1 with transaction named TRN4 specifying optional connection parameters:</p>
+<ul>
+<li><code>zowe ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ims update transaction &quot;TRN4&quot; --pgm &quot;PGM1&quot; --user &quot;username&quot; --pass &quot;pass1234&quot; --host &quot;localhost&quot; --port 8080 --ich &quot;zos1&quot; --icp 9999 --plex &quot;PLEX1&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

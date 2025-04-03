@@ -10,6 +10,8 @@ This command will lock the keystore directory to only be accessible by specified
 user group.
 
 
+
+
 ### Inherited from parent command
 
 WARNING: This command is for experimental purposes and could be changed in the future releases.
@@ -29,6 +31,8 @@ Full name|Alias|Type|Required|Help message
 --user||string|yes|Owner of the keystore directory.
 --group||string|yes|Group of the keystore directory.
 --group-permission||string|no|Group permission. Can be `<empty>` for no permission, or `read`, `write`.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -47,6 +51,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0177E|177|Failed to lock keystore directory %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -86,3 +92,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

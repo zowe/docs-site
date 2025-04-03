@@ -10,7 +10,7 @@ Start Zowe with main started task.
 
 These Zowe YAML configurations showing with sample values are used:
 
-```
+```yaml
 zowe:
   setup:
     security:
@@ -19,7 +19,7 @@ zowe:
   job:
     name: ZWE1SV
 haInstances:
-  <ha-instance>:
+  [ha-instance]:
     sysname: ZLP1
 ```
 
@@ -27,9 +27,13 @@ haInstances:
   This configuration is optional. Default value is `ZWESLSTC`.
 - `zowe.job.name` is the optional customized job name to start Zowe. If it's
   empty, the start command will not pass `JOBNAME=` option to `S` command.
-- `haInstances.<ha-instance>.sysname` is the SYSNAME of the target HA instance.
+- `haInstances.[ha-instance].sysname` is the SYSNAME of the target HA instance.
   If you pass `--ha-instance` parameter, this is the SYSNAME the start command
   will be routed to.
+
+Note: `zwe start` is only identifying an already configured instance of Zowe.
+Any additional changes to the `zowe.yaml` config could possibly require
+either manual changes or running related `zwe` commands before issuing `zwe start`.
 
 
 ## Examples
@@ -44,6 +48,8 @@ zwe start -c /path/to/zowe.yaml
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --ha-instance|-i|string|no|Zowe high availability instance ID.
+
+
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
@@ -62,6 +68,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0165E|165|Failed to start job %s: %s.
+
+
 ### Inherited from parent command
 
 Error code|Exit code|Error message
@@ -101,3 +109,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
