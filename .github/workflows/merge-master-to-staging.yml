@@ -58,14 +58,14 @@ jobs:
         continue-on-error: true
 
       - name: Install PR Script Dependencies
-
+        if: steps.merge_attempt.outcome == 'failure'
         run: npm install
 
         working-directory: ./.github/scripts/open_pr
 
       - name: Create Pull Request
         id: create_pr
-
+        if: steps.merge_attempt.outcome == 'failure'
         uses: ./.github/scripts/open_pr
         with:
           github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
@@ -76,4 +76,4 @@ jobs:
             Automated attempt to merge `master` into `docs-staging` failed.
 
           pr-labels: 'automated-pr,merge-conflict'
-          pr-reviewers: 'achmelo'
+          pr-reviewers: 'janan07'
