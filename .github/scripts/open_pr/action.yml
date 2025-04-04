@@ -20,10 +20,13 @@ inputs:
     required: true
   pr-labels:
     description: 'Comma-separated list of labels to add to the pull request.'
-    required: false # Labels are optional
-    default: '' # Default to no labels
+    required: false
+    default: ''
+  pr-reviewers:
+    description: 'Optional: Comma-separated list of GitHub user logins to request reviews from.'
+    required: false
+    default: ''
 
-# Define the outputs the action produces (based on your index.js)
 outputs:
   pr-number:
     description: 'The number of the created pull request.'
@@ -32,6 +35,6 @@ outputs:
 
 # Define how the action runs
 runs:
-  using: 'node20' # Specify the Node.js version (match your setup-node step)
+  using: 'node20' # Specify the Node.js version
   main: 'index.js' # The entry point script relative to this action.yml
 

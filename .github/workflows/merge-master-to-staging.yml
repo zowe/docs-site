@@ -1,8 +1,6 @@
 name: Merge Master into Docs Staging
 
 on:
-  # Schedule to run twice a week (e.g., Tuesday and Friday at 03:00 UTC)
-  # Adjust the cron schedule as needed: https://crontab.guru/
   pull_request:
     branches: [ master ]
   push:
@@ -10,9 +8,8 @@ on:
   # Allow manual triggering from the Actions tab in GitHub
   workflow_dispatch:
 
-# Set permissions for the GITHUB_TOKEN to allow pushing changes
 permissions:
-  contents: write # Required to push the merge commit
+  contents: write
   pull-requests: write
 
 jobs:
@@ -22,8 +19,8 @@ jobs:
       - name: Checkout docs-staging branch
         uses: actions/checkout@v4
         with:
-          ref: docs-staging       # Check out the target branch directly
-          token: ${{ secrets.ZOWE_ROBOT_TOKEN }} # Use the default token provided by Actions
+          ref: docs-staging
+          token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
           fetch-depth: 0
 
       - name: Set up Git user
@@ -32,18 +29,15 @@ jobs:
           git config user.email "zowe-robot@users.noreply.github.com"
 
       - name: Ensure docs-staging is up-to-date with remote
-        # This step is important in case the checkout wasn't perfectly fresh
-        # or if other actions modified the local branch before this job.
         run: git pull origin docs-staging
 
       - name: Attempt to merge master into docs-staging
-        id: merge_attempt # Give step an ID to check outcome later
+        id: merge_attempt
         run: |
           echo "Attempting direct merge of origin/master into docs-staging..."
           # Try to merge - exit code will be non-zero on conflict
           git merge --signoff origin/master --no-ff --no-edit
 
-        # Allow this step to fail without stopping the job immediately
         continue-on-error: true
 
       - name: Push changes
@@ -66,19 +60,20 @@ jobs:
       - name: Install PR Script Dependencies
         if: steps.merge_attempt.outcome == 'failure'
         run: npm install
-        # Ensure this path is exactly where package.json/package-lock.json are
+
         working-directory: ./.github/scripts/open_pr
 
       - name: Create Pull Request
-        id: create_pr # Give this step an ID if you need its outputs later
+        id: create_pr
         if: steps.merge_attempt.outcome == 'failure'
         uses: ./.github/scripts/open_pr
-        with: # Pass inputs to the script via environment variables, prefixed with INPUT_
+        with:
           github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
           pr-branch: 'master'
-          base-branch: 'docs-staging' # Or make dynamic if needed
+          base-branch: 'docs-staging'
           pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
           pr-body: |
             Automated attempt to merge `master` into `docs-staging` failed.
 
           pr-labels: 'automated-pr,merge-conflict'
+          pr-reviewers: 'janan07'

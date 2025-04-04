@@ -9,6 +9,7 @@ async function run() {
         const baseBranch = core.getInput('base-branch', { required: true });
         const prTitle = core.getInput('pr-title', { required: true });
         const prBody = core.getInput('pr-body',{required: false})
+        const prReviewers = core.getInput('pr-reviewers', {required: false })
 
         const prLabels = core
             .getInput('pr-labels')
@@ -47,6 +48,15 @@ async function run() {
                 labels: prLabels,
             });
             core.info('Labels added successfully.');
+        }
+        if(prReviewers.length > 0){
+            await octokit.rest.pulls.requestReviewers({
+                owner,
+                repo,
+                pull_number: pullRequest.number, // Use pull_number for pulls API
+                reviewers: prReviewers, // Array of user logins
+            });
+            core.info('Reviewers requested successfully.');
         }
 
 
