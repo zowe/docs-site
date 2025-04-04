@@ -153,7 +153,7 @@ Both the API ML Gateway and the downstream service must conform to the following
 
 ### API ML Gateway Requirements
 
-- Enable client cetificate forwarding in the `zowe.yaml`
+- Enable client certificate forwarding in the `zowe.yaml`
     ```yaml
    components:
       gateway:    
