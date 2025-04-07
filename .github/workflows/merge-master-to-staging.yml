@@ -26,16 +26,16 @@ jobs:
         with:
           ref: docs-staging
           token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+          fetch-depth: 100
 
       - name: Set up Git user
         run: |
           git config user.name "Zowe Robot"
           git config user.email "zowe-robot@users.noreply.github.com"
 
-      - name: Ensure branches are up-to-date with remote
+      - name: Fetch master branch
         run: |
-          git pull origin docs-staging
-          git fetch origin master
+          git fetch --depth=100 origin master
 
       - name: Attempt to merge master into docs-staging
         id: merge_attempt
