@@ -32,8 +32,10 @@ jobs:
           git config user.name "Zowe Robot"
           git config user.email "zowe-robot@users.noreply.github.com"
 
-      - name: Ensure docs-staging is up-to-date with remote
-        run: git pull origin docs-staging
+      - name: Ensure branches are up-to-date with remote
+        run: |
+          git pull origin docs-staging
+          git pull origin master
 
       - name: Attempt to merge master into docs-staging
         id: merge_attempt
