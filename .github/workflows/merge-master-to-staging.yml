@@ -7,7 +7,12 @@ on:
     branches: [ master ]
   # Allow manual triggering from the Actions tab in GitHub
   workflow_dispatch:
-
+    inputs:
+      reviewers:
+        description: 'Optional: Comma-separated list of GitHub user logins to request reviews from (overrides default)'
+        required: false
+        type: string
+        default: 'janan07'
 permissions:
   contents: write
   pull-requests: write
@@ -21,7 +26,6 @@ jobs:
         with:
           ref: docs-staging
           token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
-          fetch-depth: 0
 
       - name: Set up Git user
         run: |
@@ -76,4 +80,4 @@ jobs:
             Automated attempt to merge `master` into `docs-staging` failed.
 
           pr-labels: 'automated-pr,merge-conflict'
-          pr-reviewers: 'janan07'
+          pr-reviewers: ${{ github.event.inputs.reviewers || 'janan07' }}
