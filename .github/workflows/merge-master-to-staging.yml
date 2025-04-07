@@ -35,7 +35,7 @@ jobs:
       - name: Ensure branches are up-to-date with remote
         run: |
           git pull origin docs-staging
-          git pull origin master
+          git fetch origin master
 
       - name: Attempt to merge master into docs-staging
         id: merge_attempt
