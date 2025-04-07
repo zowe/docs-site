@@ -5,7 +5,7 @@ As an API developer using Zowe, you can route WebSocket APIs through the API Med
 :::info Required roles: Zowe extender, application developer
 :::
 
-To accept Websockets, it is necessary that the API Mediation Layer is aware that a Websocket connection is required. To inform the API Mediaiton Layer, the issuer of the call to the API needs to add the `(/ws/...)` prefix in the URL of the called API. 
+To accept Websockets, it is necessary that the API Mediation Layer is aware that a Websocket connection is required. To inform the API Mediation Layer, the issuer of the call to the API needs to add the `(/ws/...)` prefix in the URL of the called API. 
 
 **Example of a valid URL for a Websocket API:**
 
