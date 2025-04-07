@@ -37,7 +37,8 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
   The component `<component-name>` was initialized.
   - `restart_cnt` - Number of attempts to restart the component in case of failure
   - `min_uptime` - Minimum uptime that the component can be considered as successfully started
-  - `share_as` - One of `<yes|no|must>` which indicates whether child processes of the component start in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+  - `share_as` - One of `<yes|no|must>` which indicates whether child processes of the component start in the same address space. See documentation for 
+[_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 
   **Action:**
 
@@ -473,11 +474,15 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to restart the component `<component-name>`, maximum number of retries reached.
+  but the maximum restart limit has been reached and so the component remains stopped.
 
   **Action:**
 
-  Contact support.
+  Review the logs to determine the cause of the component terminations.
+  When the problem has been corrected, restart the main Zowe task or 
+  restart the component manually, to continue using the component.
+  Information on restarting Zowe or individual components can be found at
+  https://docs.zowe.org/stable/user-guide/start-zowe-zos
 
 ### ZWEL0039E
 
@@ -585,7 +590,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Verify that the YAML has no syntax errors.
 
 ### ZWEL0048E
 
@@ -597,7 +602,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Verify if the YAML provided exists and the user running Zowe has permission to read it.
 
 ### ZWEL0049E
 
@@ -629,7 +634,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to create the file for stdin(`<file>`) - `<error-text>`.
+  Failed to create the file for stdin(`<file>`) - <error-text>.
 
   **Action:**
 
@@ -641,7 +646,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  Failed to open the file for stdin(`<file>`) - `<error-text>`.
+  Failed to open the file for stdin(`<file>`) - <error-text>.
 
   **Action:**
 
@@ -657,7 +662,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Verify that the directory is valid and the Zowe user has permission to create it.
 
 ### ZWEL0059E
 
@@ -681,7 +686,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Correct the Zowe YAML to define the `zowe.workspaceDirectory` value.
 
 ### ZWEL0061E
 
@@ -705,7 +710,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Review the error text to determine the action to take.
 
 ### ZWEL0064E
 
@@ -717,7 +722,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Review the error text to determine the action to take.
 
 ### ZWEL0065E
 
@@ -729,7 +734,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Contact support.
+  Review the error text to determine the action to take.
 
 ### ZWEL0067E
 
