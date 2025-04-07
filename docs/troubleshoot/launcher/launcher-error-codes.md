@@ -474,6 +474,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
+  The component `<component-name>` has been terminating and being restarted by the launcher,
   but the maximum restart limit has been reached and so the component remains stopped.
 
   **Action:**
