@@ -34,7 +34,7 @@ Create a configuration file and set its secure properties (such as usernames and
     ```
     A configuration file is created, if one does not already exist.
     
-    Additionally, the `user` and `password` fields are added to the generated base profile's `secure` array for that configuration file. Zowe CLI stores the username and password in the [secure credential store](../appendix/zowe-glossary#secure-credential-store).
+    Additionally, the `user` and `password` fields are added to the generated base profile's `secure` array for that configuration file. Zowe CLI stores the username and password in the [secure credential store](../appendix/zowe-glossary.md#secure-credential-store).
 
 3. If needed, add other fields to the secure array.
     - Use a text editor or an IDE (such as Visual Studio Code) to edit the configuration file.

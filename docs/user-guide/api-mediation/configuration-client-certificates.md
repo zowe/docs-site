@@ -1,13 +1,13 @@
-# Enabling single sign on for clients via client certificate configuration
+# Enabling single sign on for clients via X.509 client certificate configuration
 
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-You can authenticate against API ML onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs. 
+In Zowe you can authenticate against API ML onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs. 
 
-There are two methods to enable client certificate functionality: 
+There are two methods to enable X.509 client certificate functionality integrated with the SAF: 
 * The default and recommended method via the internal mapper component of API Mediation Layer  
-The internal API ML mapper is simpler to configure and provides more functionality than ZSS.
+  **Note:** The internal API ML mapper is simpler to configure and provides more functionality than ZSS.
 * The older and deprecated method via ZSS
 
 Review this article to learn about the required configuration to authenticate with either method. 
@@ -25,7 +25,7 @@ For information about the usage of the client certificate when this feature is e
 
 ## Configure Internal API ML Mapper
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
+Use the following procedure to enable the zowe.yaml file to use a X.509 client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the internal API ML mapper is the recommended method.
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
@@ -39,7 +39,7 @@ Use the following procedure to enable the zowe.yaml file to use a client certifi
 
 ## Configure ZSS
 
-For information about configuring ZSS, see [Configure components zss](../../appendix/zowe-yaml-configuration.md#configure-component-zss) in the References section of Zowe Docs.
+For information about configuring ZSS, see [Configure components zss](../../appendix/zowe-yaml-configuration.md#configure-component-zss) in _Zowe YAML server configuration file references_.
 
 ### Prerequisites for ZSS
 
@@ -67,7 +67,7 @@ Ensure that you have the Issuer certificate imported in the truststore or in the
 There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper.
 :::
 
-### Enabling zowe.yaml to use a client certificate
+### Enabling zowe.yaml to use an X.509 client certificate
 
 Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. 
 
@@ -117,4 +117,4 @@ The following steps are only required if the ZSS hostname or default Zowe user n
 
 5. Restart Zowe.
 
-You enabled zowe.yaml to use a client certificate.
+You enabled zowe.yaml to use an X.509 client certificate.

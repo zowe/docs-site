@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_1_1",
         "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
       ],
@@ -18,7 +19,9 @@ module.exports = {
       label: "Zowe V2 release notes",
       className: "ToCheadercolor",
       collapsed: true,
-      items: [
+      items: [      
+        "whats-new/release-notes/v2_18_2",  
+        "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -523,6 +526,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/mvd-using" },
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270"
           ],
         },
         {
@@ -778,7 +782,6 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
@@ -979,6 +982,7 @@ module.exports = {
     "contribute/contributing",
   ],
   "reference": [
+    "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
     {
@@ -1089,7 +1093,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.1.md",
     },
   ],
 }

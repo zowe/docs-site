@@ -82,6 +82,12 @@
    - **Job Name**
    - **Return Code**
 
+:::note
+
+To change the default sort order for jobs, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
+
+:::
+
    ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
 
 ## Polling a spool file

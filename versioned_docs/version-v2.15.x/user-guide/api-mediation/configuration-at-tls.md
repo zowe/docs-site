@@ -27,7 +27,7 @@ Support for AT-TLS was introduced in Zowe v1.24. In this early version, startup 
 Follow these steps to configure Zowe to support AT-TLS:
 
 1. Enable the AT-TLS profile and disable the TLS application in API ML.  
-Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `zowe.components` section.
+Update `zowe.yaml` with the following values under `gateway`, `discovery`, `api-catalog`, `caching-service` and `metrics-service` in the `components` section.
 
 **Example:**
 

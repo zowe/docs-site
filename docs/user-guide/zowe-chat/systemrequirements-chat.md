@@ -91,4 +91,4 @@ Mattermost requires both *outbound* and *inbound* network access. However, the s
 
 ## Chat Tool Requirements
 
-See [Configuring chat platforms](chat_configure_chat_platforms) for information.
+See [Configuring chat platforms](chat_configure_chat_platforms.md) for information.
