@@ -35,10 +35,9 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
   **Reason:**
 
   The component `<component-name>` was initialized.
-  - `restart_cnt` - Number of attempts to restart the component in case of failure
-  - `min_uptime` - Minimum uptime that the component can be considered as successfully started
-  - `share_as` - One of `<yes|no|must>` which indicates whether child processes of the component start in the same address space. See documentation for 
-[_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+  - `restart_cnt` - The number of attempts to restart the component in case of failure
+  - `min_uptime` - The minimum uptime that the component can be considered as successfully started
+  - `share_as` - One of the following values: `<yes|no|must>`. The value indicates whether child processes of the component start in the same address space. For details, see [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) in the IBM documentation. 
 
   **Action:**
 
@@ -474,16 +473,16 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Reason:**
 
-  The component `<component-name>` has been terminating and being restarted by the launcher,
-  but the maximum restart limit has been reached and so the component remains stopped.
+  The component `<component-name>` terminates, and the start limit of the launcher has been reached,
+  thereby preventing component restart. 
 
   **Action:**
 
-  Review the logs to determine the cause of the component terminations.
+  Review the logs to determine the cause of component terminations.
   When the problem has been corrected, restart the main Zowe task or 
   restart the component manually, to continue using the component.
-  Information on restarting Zowe or individual components can be found at
-  https://docs.zowe.org/stable/user-guide/start-zowe-zos
+  For more information on restarting Zowe or individual components, 
+  see [Starting and stopping Zowe](https://docs.zowe.org/stable/user-guide/start-zowe-zos).
 
 ### ZWEL0039E
 
