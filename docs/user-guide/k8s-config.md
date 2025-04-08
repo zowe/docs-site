@@ -256,7 +256,7 @@ kubectl apply -f samples/bare-metal/discovery-ingress.yaml
 
 This command must display two Ingresses `gateway-ingress` and `discovery-ingress`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using.md).
 
 ### 4c. Create Route (OpenShift)
 
@@ -285,7 +285,7 @@ oc apply -f samples/openshift/discovery-route.yaml
 
 This command must display the two Services `gateway` and `discovery`.
 
-Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using).
+Upon completion, you can finish the setup by [applying zowe and starting it](./k8s-using.md).
 
 ## Customizing or manually creating ConfigMaps and Secrets
 

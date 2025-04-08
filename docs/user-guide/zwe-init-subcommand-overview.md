@@ -28,7 +28,7 @@ During the installation of Zowe, the following three data sets are created and p
 
 The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified.
 
-For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs).
+For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
 The following `zowe.yaml` section contains the parameters for the data set names:
 
@@ -155,7 +155,7 @@ Specifies the user custom load library, containing the ZWELNCH, ZWESIS01 and ZWE
 References the load library for ZIS plugins.
 
 For more information about `zwe init apfauth` see:
-* [Performing APF authorization of load libraries](./apf-authorize-load-library).
+* [Performing APF authorization of load libraries](./apf-authorize-load-library.md).
 * [`zwe init apfauth`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-apfauth.md) in the Reference section.
 
 :::tip
@@ -199,7 +199,7 @@ Zowe uses digital certificates for secure, encrypted network communication over 
 Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores. You can use the `zwe init certificate` command to create keystores and truststores by either generating certificates or by allowing users to import their own compatible certificates.
 
 For more information about `init certificate`, see:
-* [Configuring certificates](./configure-certificates).
+* [Configuring certificates](./configure-certificates.md).
 * [`zwe init certificate`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the Reference section.
 
 ## Installing Zowe main started tasks (`zwe init stc`)
@@ -257,9 +257,9 @@ Zowe can work in a high availability (HA) configuration where multiple instances
 
 The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.
 
-For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha#vsam)
+For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha.md)
 
 
 ## Next steps
 
-After each of the `zwe init` subcommands run successfully, the next step is to complete [configuring security](./configuring-security).
+After each of the `zwe init` subcommands run successfully, the next step is to complete [configuring security](./configuring-security.md).
