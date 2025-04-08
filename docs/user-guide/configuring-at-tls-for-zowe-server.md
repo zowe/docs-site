@@ -142,8 +142,7 @@ TTLSConnectionAction ClientConnectionAction
 {  
   HandshakeRole Client  
   TTLSCipherParmsRef CipherParms  
-  TTLSConnectionAdvancedParmsRef ConnectionAdvancedParms  
-  CertificateLabel  
+  TTLSConnectionAdvancedParmsRef ConnectionAdvancedParms
 }
 ```
 
@@ -590,7 +589,7 @@ TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
   CertificateLabel # Keep the Label empty to ensure a default certificate will not be picked from the keyring
   SecondaryMap Off
   TLSv1.2 On
-  TLSv1.3 Off
+  TLSv1.3 On
 }
 
 # In case the connection requires a client certificate authentication, this is where the label is set for outbound connections.
