@@ -4,7 +4,9 @@
 :::
 
 Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through
-the API ML Gateway with client certificates. This method of authentication requires client certification to be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
+the API ML Gateway with client certificates. Client certificates in Zowe follow the X.509 standard which provide secure communication of networks and authenticates the identity of a user, device, or server. 
+
+X.509 client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
 
@@ -14,35 +16,8 @@ the API ML Gateway with client certificates. This method of authentication requi
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
-## How the Gateway resolves authentication
+For details about how authentication by means of client certificates is performed in the Gateway, see [How the Gateway resolves authentication](#how-the-gateway-resolves-authentication) later in this article.
 
-When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
-
-1. The client calls the service endpoint through the API ML Gateway with the client certificate.
-2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
-4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service.
-
-When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
-
-1. The client calls the API ML Gateway login endpoint with the client certificate.
-2. The client certificate is verified to ensure this is a valid TLS client certificate against the trusted CAs of the Gateway.
-3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
-4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
-
-:::note Notes:
-
-* As of Zowe release 3.0.0, the Internal API ML Mapper is the default API that provides this mapping between the public part of the client certificate and SAF user ID. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, with the noted exception when using ACF2, although we recommend using the internal API ML mapper.
-* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
-:::
-
-The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping.
-
-![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
-
-:::tip
-For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
-:::
 
 ## Configure your z/OS system to support client certificate authentication for specific users
 
@@ -172,3 +147,33 @@ Your Zowe instance is configured to accept x.509 client certificates authenticat
 You can find a [Java sample application](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/src/main/java/org/zowe/apiml/Main.java) in the Zowe API Layer repository. This sample can help you get started with client certificate authentication. 
 
 To run the application, see [Run Client Certificate Authentication Sample](https://github.com/zowe/api-layer/blob/v3.x.x/client-cert-auth-sample/README.md) in the Zowe API Layer repository.
+
+## How the Gateway resolves authentication
+
+When sending a request to a service with a client certificate, the Gateway performs the following process to resolve authentication:
+
+1. The client calls the service endpoint through the API ML Gateway with the client certificate.
+2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
+3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
+4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service.
+
+When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
+
+1. The client calls the API ML Gateway login endpoint with the client certificate.
+2. The client certificate is verified to ensure this is a valid TLS client certificate against the trusted CAs of the Gateway.
+3. The public part of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
+4. The Gateway then performs the login of the mapped user and returns a valid JWT token.
+
+:::note Notes:
+
+* As of Zowe release 3.0.0, the Internal API ML Mapper is the default API that provides this mapping between the public part of the client certificate and SAF user ID. Alternatively, you can use Z Secure Services (ZSS) to provide this API for API ML, with the noted exception when using ACF2, although we recommend using the internal API ML mapper.
+* For information about ZSS, see the section Zowe runtime in the [Zowe server-side installation overview](./install-zos.md).
+:::
+
+The following diagram shows how routing works with ZSS, in the case where the ZSS API is used for the identity mapping.
+
+![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
+
+:::tip
+For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
+:::
