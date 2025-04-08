@@ -215,32 +215,13 @@ Use the following steps to specify a base path with Zowe [team configuration](..
 
 #### Specifying a base path with Zowe V1 profiles
 
-Use the following steps to specify a base path with Zowe V1 profiles:
-
-1. Note the complete path for a z/OSMF instance registered to API ML.
-
-    For example:
-
-    ```
-    https://myapilayerhost:port/ibmzosmf/api/v1
-    ```
-
-    The format of base path can vary based on how API ML is configured at your site.
-
-2. Access the API ML instance by creating a [service profile](../user-guide/cli-using-using-profiles-v1#zowe-cli-v1-profile-types) (or issuing a command) with the `--base-path` value of `ibmzosmf/api/v1`. Your service profile uses the token and credentials stored in your default base profile.
-
-    Using the preceding example, you would issue the following command with your profile name:
-
-    ```
-    zowe profiles create zosmf myapimlprofile --base-path ibmzosmf/api/v1 --disable-defaults
-    ```
-    Commands issued with this profile are routed through the layer to access an appropriate z/OSMF instance.
+See [Integrating with API Mediation Layer](https://67c89aa5af702da5881fc564--zowe-docs-master.netlify.app/v1.28.x/user-guide/cli-usingcli#integrating-with-api-mediation-layer) Zowe V1 documentation.
 
 ### Accessing multiple services with SSO
 
 If multiple services are registered to the API Mediation Layer at your site, Zowe CLI lets you access the services with Single Sign-on (SSO). Log in once to conveniently access all available services.
 
-When you are logged in, supply the `--base-path` option on commands for each service. Ensure that you do not provide username, password, host, or port directly on your service commands or profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service. You might need to remove those options from existing profiles to use SSO.
+Edit your configuration file so that each service profile includes the `basePath` property and the corresponding value. Ensure that you do not provide username, password, host, or port in the service profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service.
 
 For information about registering an API service at your site, see [Developing for API Mediation Layer](../extend/extend-apiml/onboard-overview).
 
@@ -330,20 +311,13 @@ Use the configuration example to connect to z/OSMF directly:
 3. Issue commands.
     - If you have multiple base profiles in your configuration, use the `--base-profile` option to specify which base profile to use for the host.
 
-=======
-
-A scenario might exist where you log in to API ML with SSO, but you also want to access a different service *directly*.
-
-To access the SSO-enabled services, set the `basePath` property for these services, log in to the API ML and issue commands with the `--base-profile` option. The token from your base profile is used for authentication. Remember, your command or service profile must *not* contain username, password, host, or port. (set a default base profile in your config)
-
-To access the other service directly &mdash; and circumvent the API ML &mdash; supply all connection information (username, password, host, and port) on a command or service profile. When you explicitly supply the username and password in a command or service profile, the CLI always uses that connection information instead of the API ML token.
 
 ### Accessing services through SSO and a service through API ML but not SSO
 
 You might want to access multiple services with SSO, but also access a service through API ML that is not SSO-enabled.
 
-To perform SSO for the first set of services, log in to API ML and supply the `--base-path` and `--base-profile` on commands. For more information, see [Accessing multiple services with SSO](#accessing-multiple-services-with-sso).
+To perform SSO for the first set of services, edit your configuration file so that these service profiles include the `basePath` property and the corresponding value. Ensure that you do not provide username, password, host, or port in the service profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service.
 
-To access the service that is *not* SSO-enabled, explicitly provide your username and password when you issue commands. Using the `--base-path` option ensures that the request is routed to API ML, but the username and password that you provide overrides the credentials in your base profile. This lets you sign in to the individual service.
+To access the service that is *not* SSO-enabled, explicitly provide your username and password when you issue commands. Using the `--base-path` option ensures that the request is routed to API ML, but the username and password that you provide overrides the credentials in your base profile. This lets you sign in to the individual service. **[should a user still be issuing the --basepath option, or should they be updating their profiles w/ the basePath property?]**
 
 [def]: #specifying-a-base-path-with-zowe-v2-profiles
