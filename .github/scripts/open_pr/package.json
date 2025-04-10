@@ -1,0 +1,13 @@
+{
+  "name": "open_pr",
+  "version": "1.0.0",
+  "description": "Creates a PR when an automated merge results in conflicts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/github": "6.0.0"
+  }
+}
