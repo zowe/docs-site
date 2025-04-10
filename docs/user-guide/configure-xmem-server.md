@@ -15,16 +15,22 @@ In this case, the final step is to configure the load modules to run in [key 4 n
 
 To install and configure the cross memory server, it is necessary to define APF-authorized load libraries, program properties table (PPT) entries, and a parmlib. Performing these steps requires familiarity with z/OS.
 
-- [PDS sample library and PDSE load library](#pds-sample-library-and-pdse-load-library)
-- [Load module](#load-module)
+- [Configuring the Zowe cross memory server (ZIS)](#configuring-the-zowe-cross-memory-server-zis)
+  - [PDS sample library and PDSE load library](#pds-sample-library-and-pdse-load-library)
+  - [Load module](#load-module)
     - [APF authorize](#apf-authorize)
+      - [Configuring using `zwe init apfauth`](#configuring-using-zwe-init-apfauth)
     - [Key 4 non-swappable](#key-4-non-swappable)
-- [PARMLIB](#parmlib)
-- [PROCLIB](#proclib)
-- [SAF configuration](#saf-configuration)
-- [Zowe auxiliary service](#zowe-auxiliary-service)
-- [Summary of cross memory server installation](#summary-of-cross-memory-server-installation)
-- [Starting and stopping the cross memory server on z/OS](#starting-and-stopping-the-cross-memory-server-on-zos)
+  - [PARMLIB](#parmlib)
+  - [PROCLIB](#proclib)
+  - [SAF configuration](#saf-configuration)
+  - [Zowe auxiliary service](#zowe-auxiliary-service)
+    - [Installing the auxiliary service](#installing-the-auxiliary-service)
+      - [Zowe Auxiliary Address space](#zowe-auxiliary-address-space)
+  - [Summary of cross memory server installation](#summary-of-cross-memory-server-installation)
+  - [Starting and stopping the cross memory server on z/OS](#starting-and-stopping-the-cross-memory-server-on-zos)
+  - [Troubleshooting](#troubleshooting)
+  - [Next step](#next-step)
       
 ## PDS sample library and PDSE load library
 
@@ -210,5 +216,6 @@ components:
 ```
 
 ## Next step
+
 
 After you complete the configuration of the Zowe cross memory server, you may [configure Zowe for High Availability](./zowe-ha-overview.md), or proceed to [starting Zowe](./start-zowe-zos.md).
