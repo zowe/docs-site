@@ -4,12 +4,12 @@ const github = require('@actions/github');
 async function run() {
     try {
         // --- Get Inputs ---
-        const token = core.getInput('github-token', { required: true });
-        const prBranch = core.getInput('pr-branch', { required: true });
-        const baseBranch = core.getInput('base-branch', { required: true });
-        const prTitle = core.getInput('pr-title', { required: true });
-        const prBody = core.getInput('pr-body',{required: false})
-        const prReviewers = core.getInput('pr-reviewers', {required: false })
+        const token = core.getInput('github-token', {required: true});
+        const prBranch = core.getInput('pr-branch', {required: true});
+        const baseBranch = core.getInput('base-branch', {required: true});
+        const prTitle = core.getInput('pr-title', {required: true});
+        const prBody = core.getInput('pr-body', {required: true})
+        const prReviewers = core.getInput('pr-reviewers', {required: false})
 
         const prLabels = core
             .getInput('pr-labels')
@@ -19,12 +19,12 @@ async function run() {
 
         // --- Get Octokit and Context ---
         const octokit = github.getOctokit(token);
-        const { owner, repo } = github.context.repo; // Get repo context
+        const {owner, repo} = github.context.repo; // Get repo context
 
         core.info(`Attempting to create PR from ${prBranch} to ${baseBranch} in ${owner}/${repo}`);
 
         // --- Create Pull Request ---
-        const { data: pullRequest } = await octokit.rest.pulls.create({
+        const {data: pullRequest} = await octokit.rest.pulls.create({
             owner,
             repo,
             title: prTitle,
@@ -49,7 +49,7 @@ async function run() {
             });
             core.info('Labels added successfully.');
         }
-        if(prReviewers.length > 0){
+        if (prReviewers.length > 0) {
             await octokit.rest.pulls.requestReviewers({
                 owner,
                 repo,
