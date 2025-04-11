@@ -43,11 +43,6 @@ Provide your username and password to generate a token and log in to the API ML:
 
     If you already created a base profile, you might not be prompted for the host and port.
 
-    :::note
-
-    Where the token is saved depends on whether you have an existing base profile and where that profile is located. To learn about the precedence Zowe CLI follows with profile configurations, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together).
-    :::
-
 3. If you do not have a profile for the service, respond to Zowe CLI prompts for connection information to create a profile for the service.
 
     :::tip
