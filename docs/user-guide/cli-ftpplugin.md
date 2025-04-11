@@ -89,11 +89,11 @@ Alternatively, you can create an FTP profile manually by adding a section that c
     
     :::
 
-4. Add code to the "profiles" section as shown in the following example: **[is this code correct? should this code include a `secureFtp` value?]**
+4. Add code to the "profiles" section as shown in the following example:
 
     ```
     "Your_ftp_profile": {
-      "type": "ftp",
+      "type": "zftp",
       "properties": {
           "host": "Your_host_name",
           "port": Your_port_number,
