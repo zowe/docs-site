@@ -66,7 +66,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 
 :::noteNotes:
 
-* This documentation is valid for API ML version `ZoweApimlVersion 1.3.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
+* This documentation is valid for API ML version `ZoweApimlVersion 2.18.11` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
 
 * Following this guide enables REST services to be deployed on a z/OS environment. Deployment to a z/OS environment, however, is not required. As such, you can first develop on a local machine before you deploy on z/OS.
 
@@ -236,6 +236,8 @@ authentication:
     trustStore: keystore/localhost.truststore.p12
     trustStoreType: PKCS12
     trustStorePassword: password
+connectTimeout: 10 # OPTIONAL: Discovery service registration timeout to establish connection
+readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
  ```
 
 **Optional metadata section**

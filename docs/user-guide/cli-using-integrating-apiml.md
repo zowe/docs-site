@@ -37,7 +37,7 @@ Provide your username and password to generate a token and log in to the API ML:
     - Host
     - Port for the API ML instance
 
-    A [base profile](../appendix/zowe-glossary#base-profile) is created or updated in your configuration file with your token, which is stored on your computer in place of a username and password. When you issue commands, you are able to omit your username, password, host, and port.
+    <br/>A [base profile](../appendix/zowe-glossary.md#base-profile) is created or updated with your token, which is stored on your computer in place of a username and password. When you issue commands, you can omit your username, password, host, and port.
 
     If you do not want to store the token on your PC, append the `--show-token` option to the `login` command in Step 1. This returns the token value in your terminal for you to use on subsequent commands.
 

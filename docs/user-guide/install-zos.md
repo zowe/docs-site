@@ -20,8 +20,6 @@ ZSS serves as one of the primary, authenticated backends that communicates with 
 
 ## The Zowe Cross Memory Server (ZIS)  
 
-After the installation of Zowe runtime, install the Zowe Cross Memory Server (ZIS).
-
 The Zowe Cross Memory Server, also referred to as Zowe Interprocess Services (ZIS) is an APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, ZIS is not an HTTP server. Instead, this server has a trust relationship with ZSS.
 
 Other Zowe components can work through ZSS to handle z/OS data that would otherwise be unavailable or where access to these data could be vulnerable to security breaches.

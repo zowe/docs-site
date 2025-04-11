@@ -243,7 +243,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Supply a valid user and application name, and check that corresponding permissions have been set up.
+  Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 
 ### ZWEAM400E
 
@@ -603,7 +603,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
+  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in Base64 printable form.
 
   **Action:**
 
@@ -618,28 +618,28 @@ The following error message codes may appear on logs or API responses. Use the f
   The response status code is different from expected 200 OK.
 
   **Action:**
-  
+
   Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
   Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
-  
+
   **Reason:**
-  
+
   The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
-  
+
   **Action:**
 
-  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
+  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured.
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the Gateway. Certificate endpoint is %s. Error message: %s
-  
+  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
+
   **Reason:**
 
-  The communication with the gateway got interrupted or an error occurred during processing the response.
+  Communication with the Gateway was interrupted or an error occurred during processing of the response.
 
   **Action:**
 
@@ -648,13 +648,13 @@ The following error message codes may appear on logs or API responses. Use the f
 ### ZWEAT504E
 
   Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
-  
+
   **Reason:**
-  
-  The string sent by the Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
-  
+
+  The string sent by the Gateway was not recognized as a valid DER-encoded certificates in Base64 printable form.
+
   **Action:**
-  
+
   Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
@@ -1055,6 +1055,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Ensure that both provided paths are resolved to valid trust store and valid key store
 
+### ZWEAS504E
+
+  Internal server error while generating PassTicket: %s
+
+  **Reason:**
+
+  Unable to generate PassTicket.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
+
 ## Discovery service messages
 
 ### ZWEAD400E
@@ -1424,6 +1436,18 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Make sure the service documentation url or server transport encoding is configured correctly.
+
+### ZWEAC106E
+
+  Could not retrieve service. Status: %s
+
+  **Reason:**
+
+  Service could not be retrieved.
+
+  **Action:**
+
+  Check the status of the message for more information and the health of the Discovery Service.
 
 ### ZWEAC700E
 
