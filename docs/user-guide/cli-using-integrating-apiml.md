@@ -134,7 +134,7 @@ zowe auth logout apiml
 
 This causes the token to expire. Log in again to obtain a new token.
 
-If you used the `--show token` option and never stored your token in profile, add the `--token-value` option to this command to invadlidate the token. 
+If you used the `--show token` option and never stored your token in profile, add the `--token-value` option to this command to invalidate the token. 
 
 ### Specifying a base profile
 
@@ -257,7 +257,7 @@ In this case, your `zowe.config.json` file might look like the following client 
                 "port": 1234    // Override the APIML port with the direct z/OSMF port
             },
             "secure": [
-                "user",         // The user and password for the direct connection to APIML
+                "user",         // The user and password for the direct connection to z/OSMF
                 "password"
             ]
         },
@@ -276,7 +276,10 @@ In this case, your `zowe.config.json` file might look like the following client 
             "properties": {
                 "port": 5678
             },
-            "secure": []
+            "secure": [
+    "user",
+    "password"
+]
         }
     },
     "autoStore": true
@@ -290,7 +293,7 @@ Use the configuration example to connect with z/OSMF using the API ML's SSO feat
 1. Add a base profile that includes the information that the API ML needs to connect to z/OSMF, like the host and port.
     - Include the `port` property and value to avoid entering the port number manually when logging into the API ML.
 2. Add a service profile for z/OSMF that includes the `basePath` property.
-    - The base path indicates the starting point for the API ML connection.
+    - The base path indicates the starting point for the z/OSMF REST API.
     - Omit the host and port because these are supplied by the base profile.
 3. Log in to the API ML.
     - This creates an authentication token that is stored on your computer. The `tokenType` property is also added to your base profile.
