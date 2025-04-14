@@ -47,9 +47,9 @@ The Caching Service will use these additional ports if enabled (`components.cach
 
 Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
 
-If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.4.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
+If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.5.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
 
-When `zowe.job.prefix` is "ZWE1", An example of port reservations with a fixed IP of "10.11.12.13" could be:
+When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be:
 
 ```
    7552 TCP ZWE1AC BIND 10.11.12.13 ; Zowe API Catalog
@@ -61,4 +61,4 @@ When `zowe.job.prefix` is "ZWE1", An example of port reservations with a fixed I
    7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
-
+:::note This TCP IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. :::
