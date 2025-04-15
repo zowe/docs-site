@@ -112,6 +112,7 @@ to learn more about adding new APIs to the API Mediation Layer and using the API
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
 * [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
 * [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Onboard an existing Python REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-python-enabler.md)
 * [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).

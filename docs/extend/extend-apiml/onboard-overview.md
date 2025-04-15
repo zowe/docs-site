@@ -56,6 +56,10 @@ Services can be updated to support the API Mediation Layer natively by updating 
 
 - [Onboard a Node.js based REST API Service](onboard-nodejs-enabler.md)
 
+### Recommended guides for services using Python
+
+- [Onboard a Python based REST API Service](onboard-python-enabler.md)
+
 ### Guides for Static Onboarding and Direct Call Onboarding
 
 Use one of the following guides if your service is not built with Java, or you do not want to change your codebase or use the previously mentioned libraries:
