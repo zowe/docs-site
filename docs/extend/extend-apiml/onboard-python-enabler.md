@@ -8,7 +8,7 @@ For more information about onboarding API services with the API ML, see the [Onb
 
 ## Introduction
 
-The [API ML onboarding Python enabler](todo-python-url) is a Python package which helps to simplify the process of onboarding a REST service written in Python with the API ML. 
+The [API ML onboarding Python enabler](https://pypi.org/project/zowe-apiml-onboarding-enabler-python/) is a Python package which helps to simplify the process of onboarding a REST service written in Python with the API ML. 
 
 For more information about how to utilize another API ML enablers, see the [Onboarding Overview](onboard-overview.md).
 ## Onboarding your Python service with API ML
