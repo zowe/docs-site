@@ -34,6 +34,7 @@ To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks
 
 2) Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
 This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
+3) If you are using keyrings, verify that Zowe YAML references to `safkeyring` use 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
 
 </details>
 
