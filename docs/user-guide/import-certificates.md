@@ -194,7 +194,7 @@ You can now use your imported JCERACFKS certificate. See [next steps](#next-step
 
 ## Importing a certificate stored in an MVS data set into a Zowe key ring
 
-To import a certificate that is stored in a data set into a key ring, configure the zowe.yaml according to the example yaml in [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](certificate-configuration-scenarios.md#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
+To import a certificate that is stored in a data set into a key ring, configure the zowe.yaml according to the example yaml in [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](certificate-configuration-scenarios#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
 
  To use a JCERACFKS certificate, specify the following parameters in the `zowe.yaml` file.
 

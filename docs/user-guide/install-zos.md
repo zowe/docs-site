@@ -20,6 +20,8 @@ ZSS serves as one of the primary, authenticated backends that communicates with 
 
 ## The Zowe Cross Memory Server (ZIS)  
 
+After the installation of Zowe runtime, install the Zowe Cross Memory Server (ZIS).
+
 The Zowe Cross Memory Server, also referred to as Zowe Interprocess Services (ZIS) is an APF authorized server application that provides privileged services to Zowe in a secure manner. For security reasons, ZIS is not an HTTP server. Instead, this server has a trust relationship with ZSS.
 
 Other Zowe components can work through ZSS to handle z/OS data that would otherwise be unavailable or where access to these data could be vulnerable to security breaches.
@@ -44,7 +46,7 @@ Notify your organization's network administrator to assign port numbers, reserve
 
 In most cases, the system programmer performs the Zowe installation and configuration, and starts Zowe. Ensure that your system programmers have general knowledge about SMP/E, z/OSMF workflows, and regular maintanance procedures. In many cases, the system programmer also prepares jobs for other administrators.
 
-## End-to-end installation
+## End-to-end installation 
 
 The following diagram illustrates the full ecosystem for installing Zowe server-side components for z/OS.
 
@@ -105,7 +107,7 @@ The steps to prepare the z/OS environment to launch Zowe are the same for all in
 Choose from the following methods to configure the Zowe runtime: 
 - [Use a combination of JCL and the zwe command `zwe init`](./initialize-zos-system.md)
 - [Use Zowe z/OSMF Workflows](./configure-zowe-zosmf-workflow.md)
-- [Use API ML optimized z/OSMF Workflows](./configure-apiml-zosmf-workflow.md)
+- [Use API ML optimized z/OSMF Workflows](./configure-apiml-zosmf-workflow-2-18.md)
 
 :::tip
 We recommend you open the links to this configuration procedure in new tabs.
@@ -154,9 +156,10 @@ Now that you have the permissions, certificates, files, and datasets necessary t
 - Enabling or disabling components so you only run what you need
 - Changing the network ports Zowe runs on to suit your environment
 - Customizing the behavior of a component, such as turning on optional features or logging
-- Splitting, templating, and placing your configuration into PARMLIBs with the [Zowe Configuration Manager](./configmgr-using.md)
    
 :::tip
+We recommended that the first customization you perform is to [set `zwe` to use the Configuration Manager](./configmgr-using.md)
+
 See the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md) for other customization options.
 :::
 

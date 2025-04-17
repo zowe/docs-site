@@ -8,10 +8,10 @@ The following datasets comprise the runtime, read-only dataset content that can 
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
-SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 30 | 30
-SZWEAUTH | Zowe APF Load Modules | ANY | U | PDSE | U | 0 | 150 | N/A
-SZWEEXEC | CLIST copy utilities | ANY | U | PDSE | FB | 80 | 15 | 30
-SZWELOAD | Executable utilities library | ANY | U | PDSE | U | 0 | 105 | N/A
+SZWESAMP | Samples | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWEAUTH | Zowe APF Load Modules | ANY | U | PDSE | U | 0 | 15 | N/A
+SZWEEXEC | CLIST copy utilities | ANY | U | PDSE | FB | 80 | 15 | 5
+SZWELOAD | Executable utilities library | ANY | U | PDSE | U | 0 | 15 | N/A
 
 The `SZWESAMP` data set contains the following members.
 
@@ -58,25 +58,6 @@ ZWESIP00 | PARMLIB | Member for the cross memory server
 ZWESISCH | PPT | Defines entries required by Cross memory server and its Auxiliary address spaces to run in Key(4) 
 ZWESISTC | JCL | Starts the Zowe Cross memory server
 ZWESLSTC | JCL | Starts the Zowe
-
-The `SZWESAMP` data set contains additional members for SMP/E installation.
-Member name | Type | Purpose
----|---|---
-ZWE1SMPE | JCL | Allocates and primes a CSI, allocates data sets required by SMP/E and defines DDDEFs required by SMP/E
-ZWE2RCVE | JCL | SMP/E RECEIVE
-ZWE3ALOC | JCL | Allocates target and distribution libraries
-ZWE4ZFS | JCL | Creates a z/OS UNIX file system, creates a z/OS UNIX mount point and mounts the file system
-ZWE5MKD | JCL | Creates directories
-ZWE6DDEF | JCL | Creates DDDEF entries
-ZWE7APLY | JCL | SMP/E APPLY
-ZWE8ACPT | JCL | SMP/E ACCEPT
-ZWEMKDIR | REXX | Creates a mountpoint, optionally mounts a file system (read/write), and optionally creates subdirectories
-ZWES0LST | JCL | Lists all SYSMODs for a given zone
-ZWES1REJ | JCL | Removes a SYSMOD (PTF, APAR, USERMOD) from SMPPTS
-ZWES2RCV | JCL | RECEIVE a service SYSMOD (PTF, APAR, USERMOD)
-ZWES3APL | JCL | APPLY a service SYSMOD (PTF, APAR, USERMOD)
-ZWES4ACP | JCL | ACCEPT a service SYSMOD (PTF, APAR, USERMOD)
-ZWES5RST | JCL | RESTORE a service SYSMOD (PTF, APAR, USERMOD)
 
 The `SZWEAUTH` data set is a load library containing the following members.
 

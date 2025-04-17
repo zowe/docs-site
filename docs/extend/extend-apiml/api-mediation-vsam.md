@@ -1,18 +1,11 @@
-# Using VSAM as a storage solution through the Caching service **Deprecated**
+# Using VSAM as a storage solution through the Caching service
 
-:::info Required roles: system administrator, security administrator
-:::
+As an API developer, you can configure VSAM as a storage solution through the Caching service. The procedure in this article
+describes how to configure your storage solution for VSAM. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
 
-:::caution Important
-VSAM as a storage solution is deprecated in Zowe V3. Please use [Infinispan](./api-mediation-infinispan.md), which is packaged as part of the Caching Service. 
-:::
-
-In Zowe v2 or previous versions, it is possible to configure VSAM as a storage solution through the Caching service. Configuring VSAM ensures that you do not lose data if you need to restart. Configuring VSAM also makes it possible to leverage multiple caching services concurrently, whereby clients can retreive data through VSAM.
-
-- [Using VSAM as a storage solution through the Caching service **Deprecated**](#using-vsam-as-a-storage-solution-through-the-caching-service-deprecated)
-  - [Understanding VSAM](#understanding-vsam)
-    - [VSAM configuration](#vsam-configuration)
-    - [VSAM performance](#vsam-performance)
+- [Understanding VSAM](#understanding-vsam)
+- [VSAM configuration](#vsam-configuration)
+- [VSAM performance](#vsam-performance)
 ## Understanding VSAM
 
 `Virtual Storage Access Method (VSAM)` is both a data set type, and a method for accessing various user data types.
@@ -69,7 +62,7 @@ Results:
 - With two Caching Services and a high load, `READ` performance significantly increased.
 - Response times of other operations are also acceptable, yet error rates increase with higher concurrency.
 - Two Caching Services produce higher load on shared resource (VSAM) and have higher error rate.
-- VSAM implementation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementation may not be sufficient. 
+- VSAM implemetation appears to be sufficient for user-based workloads. For light automation workloads VSAM implementation appears to be acceptable as well. For heavy workloads this implementatin may not be sufficient. 
 - VSAM does not scale well beyond 1000 RPM on a node.
 
 

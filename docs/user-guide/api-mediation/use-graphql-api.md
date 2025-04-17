@@ -1,18 +1,15 @@
 # Using GraphQL APIs
 
-GraphQL is a query language for APIs that provides descriptions of the data in your APIs, and allows for specific queries to facilitate API development. Routing for such APIs is possible within the Zowe ecosystem, however at the present time, Zowe itself does not provide any GraphQL APIs.
+GraphQL is a query language for APIs that provides descriptions of the data in your APIs, and allows for specific queries to facilitate API development. Routing for such APIs is possible within the Zowe ecosystem, however at the present time, Zowe itself does not provide any GraphQL APIs. 
 
 For more information about configuring routing to API ML, see the following articles:
-
 * [Implementing routing to the Gateway](../../extend/extend-apiml/implementing-routing-to-the-api-gateway.md)
 * [Routing Requests to REST API](./routing-requests-to-rest-apis.md)
 
 :::tip
-
 * For information about how to use GraphQL, see [GraphQL Best Practices](https://graphql.org/learn/best-practices/) in the GraphQL product documentation. 
 
 * For information about how to use HTTP to deliver the GraphQL interface, see [Serving over HTTP](https://graphql.org/learn/serving-over-http/) in the GraphQL product documentation.
-
 :::
 
 ## Difference between GraphQL APIs and traditional REST APIs
@@ -70,9 +67,10 @@ GraphQL supports subscriptions, which allow clients to subscribe to real-time up
 - **Strongly Typed**  
 GraphQL APIs are strongly typed so that every operation is checked and validated against the schema, leading to more reliable and predictable APIs.
 
-## Displaying GraphQL in API Catalog
+## Limitations for the API Mediation Layer
 
-Since Zowe v3, it is possible to configure the service to display an interactive documentation UI inside the API Catalog services' detail page.
+The documentation for the GraphQL is not provided via the standard OpenAPI protocol, but rather, for the most part are living as a sandbox environment within the GraphQL applications. 
 
-This capability is enabled in the API Catalog by default.
-It requires the service to onboard to the Discovery Service with `apiml.apiInfo.api-<version>.graphqlUrl` set to the endpoint where the service exposes the GraphQL API.
+:::tip
+The API Catalog currently does not support visualization of GraphQL APIs. As such, we recommend that extenders provide a link to the GraphQL endpoint via the Open API for the API Catalog. 
+:::

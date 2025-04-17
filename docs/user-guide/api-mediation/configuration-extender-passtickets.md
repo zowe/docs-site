@@ -4,7 +4,7 @@ One option to enable single sign-on (SSO) to your extending REST API services is
 
 :::info Required Role: security administrator
 :::
- 
+
 ## Overview of PassTickets 
 API clients can use various supported methods to access an API service such as a Zowe JWT token or a client certificate even if the API service itself does not support the JWT token or a client certificate. An intermediary for support of JWT or a client certificate can be through the use of PassTickets.
 
@@ -14,7 +14,7 @@ The API Gateway uses the PassTicket to access that API service. The API Gateway 
 
 ## Configuring Zowe to use PassTickets
 
-Configuring Zowe to use PassTickets involves two processes: 
+Configuring Zowe to use PassTickets involves two processes:
 
 1. Enabling the use of PassTickets in your External Security Manager (ESM)
 2. Configuring security to allow the Zowe API Gateway to generate PassTickets for an API service
@@ -30,25 +30,24 @@ To validate if a PassTicket is already defined, list the APPL and PTKTDATA with 
 
 <details>
 
-<summary>Click here for procedure details about validating an existing PassTicket for ACF2.</summary>
+<summary>Click here for command details about validating an existing PassTicket for ACF2.</summary>
 
-In your ESM command line interface or other security environment, perform the following steps:
-
-1. Issue a `SHOW CLASMAP` command in TSO ACF to verify if the APPL resource is defined in the GSO. Note the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
-
+In your ESM command line interface or other security environment, execute the following commands:
+1. Issue a `SHOW CLASMAP` command in TSO ACF to verify whether the APPL resource is defined in the GSO. Take note of the 3 character type code associated with APPL. If APPL does not appear in the `SHOW CLASMAP` listing, run the following commands:
+  
     ```acf2
     SET CONTROL(GSO)
     INSERT CLASMAP.appl RESOURCE(APPL) RSRCTYPE(APL)
     F ACF2,REFRESH(CLASMAP)
     ```
-
+  
 2. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
-    ```
+    ```acf2
     SET RESOURCE(APL)
     LIST LIKE(<applid>-)
     ```
-3. Verify if PTKTDATA is defined, by executing the following commands:
-    ```
+3. Verify whether PTKTDATA is defined, by executing the following commands:
+    ```acf2
     SET PROFILE(PTKTDATA) DIVISION(SSIGNON)
     LIST LIKE(<applid>-)
     SET RESOURCE(PTK)
@@ -69,14 +68,14 @@ In your ESM command line interface or other security environment, perform the fo
 
 <summary>Click here for command details about validating an existing PassTicket for Top Secret.</summary>
 
-1. In your ESM command line interface or other security environment, execute the following commands:
+In your ESM command line interface or other security environment, execute the following commands:
 
     ```tss
     TSS WHOHAS APPL(<applid>)
     TSS WHOHAS PTKTDATA(<applid>)
     TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
-2. If APPL and PTKTDATA are not yet defined, follow the steps to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
+    If APPL and PTKTDATA are not defined yet, follow the instruction to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.
 
 - **`.`**  
     A wildcard symbol that lists all resources
@@ -124,15 +123,14 @@ Follow these steps to enable PassTicket Support specific to your ESM.
 
 <summary> Click here for command details about configuring Zowe to use PassTickets using ACF2. </summary>
 
-1. Issue the `SHOW CLASMAP` command in TSO ACF to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
+1. Issue a `SHOW CLASMAP` command in TSO ACF to to identity the 3 character type code associated with APPL. Replace 'APL' with the type code listed in the `SHOW CLASMAP` output:
+    ```acf2
+    SET RESOURCE(APL)
+    RECKEY <applid> ADD(UID(<user>) ALLOW)
+    F ACF2,REBUILD(APL)
+    ```
+2. In your ESM command line interface or other security environment, define the application session key by entering the following commands, if the session key is not already defined.
    
-   ```acf2
-   SET RESOURCE(APL)
-   RECKEY <applid> ADD(UID(<user>) ALLOW)
-   F ACF2,REBUILD(APL)
-   ```
-2. In your ESM command line interface or other security environment, define the application session key by entering the following commands if the session key is not already defined.
-
     ```acf2
     SET PROFILE(PTKTDATA) DIV(SSIGNON)
     INSERT <applid> SSKEY(<key-description>) MULT-USE
@@ -145,7 +143,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 * **`key-description`**  
  Specifies the secured sign-on hexadecimal application key of 16 hexadecimal digits (8-byte or 64-bit key). Each application key must be the same on all systems in the configuration and the values must be kept secret and secured.
 
-3. Complete the PassTicket setup by entering the following commands:
+2. Complete the PassTicket setup by entering the following commands:
 
     ```acf2
         F ACF2,REBUILD(PTK),CLASS(P)
@@ -153,7 +151,7 @@ Specifies the application ID used for PassTicket validation to authenticate conn
 
     The PassTicket record is now active in the system.
 
-4. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
+3. Enable the started task user ID to generate PassTickets for the application by entering commands similar to the following:
 
     ```
     SET RESOURCE(PTK) 
@@ -198,7 +196,7 @@ Before you begin this procedure, verify that the `PTKTDATA` class and ownership 
 - **`department`**  
   Specifies the department for `PTKTDATA(IRRPTAUTH)`. The default department is `TSODEPT1`.
 
-3. Define PassTicket for application ID _applid_ without replay protection:
+3. Define PassTicket for application ID _applid_without replay protection:
   
     ```tss
     TSS ADDTO(NDT) PSTKAPPL(<applid>) SESSKEY(<key-description>) SIGNMULTI
@@ -277,13 +275,13 @@ PassTickets for the API service must have the replay protection switched off. Th
 6. Allow the application ID (_applid_) to use PassTickets:
 
     ```racf
-    PERMIT IRRPTAUTH.<applid>.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(<userid>)
+    PERMIT IRRPTAUTH.<applid>.* CLASS(PTKTDATA) ACCESS(UPDATE) ID(userid)
     ```
 
 * **`userid`**  
 Specifies the value of the LDAP Server started task.
 
-7. Refresh the RACF PTKTDATA definition with the new profile:
+6. Refresh the RACF PTKTDATA definition with the new profile:
     ```
     SETROPTS RACLIST(PTKTDATA) REFRESH
     ```
@@ -368,7 +366,7 @@ Grant the Zowe started task user ID permission to generate PassTickets for users
 
 In your ESM command line interface or other security environment, execute the commands that correspond to your ESM:
 
-#### Verifying PassTickets using ACF2
+#### Verifyinging PassTickets using ACF2
 
 <details>
 <summary>Click here for command details for ACF2.</summary>
@@ -386,11 +384,9 @@ LIST LIKE(IRRPTAUTH-)
 * **`applid`**  
 Specifies the application ID used for PassTicket validation to authenticate connections to the server
 
-Successful execution of this validation command shows your application and the specific access of the application.
-
 </details>
 
-#### Verifying PassTickets using Top Secret
+#### Verifyinging PassTickets using Top Secret
 
 <details>
 <summary>Click here for command details for Top Secret.</summary>
@@ -403,10 +399,10 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 
 </details>
 
-#### Verifying PassTickets using RACF
+#### Verifyinging PassTickets using RACF
 
 <details>
-<summary>Click here for command details for RACF</summary>
+<summary>Click here for command details for RACF.</summary>
 
 **RACF:**
 ```racf
@@ -415,6 +411,8 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>)
 ```
 
 </details>
+
+Successful execution of this validation command shows your application and the specific access of the application.
 
 **Output example:**
 ```

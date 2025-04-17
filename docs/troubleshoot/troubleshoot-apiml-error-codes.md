@@ -79,18 +79,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Further connections will be queued until there is room in the connection pool. You may also increase the total connection limit via the gateway start-up script by setting the Gateway configuration for maxTotalConnections.
 
-### ZWEAO400E
-
-  The structure of the request is invalid: %s
-
-  **Reason:**
-
-  A value in the request is missing or contains an invalid value.
-
-  **Action:**
-
-  Fix the request and try again.
-
 ### ZWEAO401E
 
   Unknown error in HTTPS configuration: '%s'
@@ -102,62 +90,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Start the service again in debug mode to get a more descriptive message. This error indicates it is not a configuration issue.
-
-### ZWEAO402E
-
-  The request has not been applied because it lacks valid authentication credentials.
-
-  **Reason:**
-
-  The accessed resource requires authentication. The request is missing valid authentication credentials or the token expired.
-
-  **Action:**
-
-  Review the product documentation for more details about acceptable authentication. Verify that your credentials are valid and contact security administrator to obtain valid credentials.
-
-### ZWEAO404E
-
-  The service can not find the requested resource.
-
-  **Reason:**
-
-  **Action:**
-
-### ZWEAO405E
-
-  The request method has been disabled and cannot be used for the requested resource.
-
-  **Reason:**
-
-  **Action:**
-
-### ZWEAO415E
-
-  The media format of the requested data is not supported by the service, so the service has rejected the request.
-
-  **Reason:**
-
-  **Action:**
-
-### ZWEAO500E
-
-  The service has encountered a situation it doesn't know how to handle. Please contact support for further assistance. More details are available in the log under the provided message instance ID
-
-  **Reason:**
-
-  **Action:**
-
-### ZWEAO503E
-
-  The server is not ready to handle the request: %s
-
-  **Reason:**
-
-  The service is not ready to handle the request, it is being initialized or waiting for another service to start.
-
-  **Action:**
-
-  Repeat the request later. Please contact support for further assistance.
 
 ## Common service core messages
 
@@ -243,7 +175,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+  Supply a valid user and application name, and check that corresponding permissions have been set up.
 
 ### ZWEAM400E
 
@@ -599,63 +531,75 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT500E
 
-  Failed to parse the client certificate forwarded from the Gateway. Hostname is %s. Error message is %s. The client certificate was %s
+  Failed to parse the client certificate forwarded from the central Gateway. Error message %s. The client certificate was %s
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in Base64 printable form.
+  The string sent by the central Gateway was not recognized as a valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that forwarding of the client certificate is also enabled in the Gateway. Check for any error messages from the Gateway.
+  Ensure that forwarding of the client certificate is also enabled in the central Gateway. Check for any error messages from the central Gateway.
 
 ### ZWEAT501E
 
-  Failed to get trusted certificates from the Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
+  Failed to get trusted certificates from the central Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
 
   **Reason:**
-
-  The response status code is different from expected 200 OK.
-
+  
+  The response status code is different from the expected 200 OK.
+  
   **Action:**
-
-  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the Gateway certificates endpoint. Test the URL manually.
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured with the complete URL to the central Gateway certificates endpoint. Test the URL manually.
 
 ### ZWEAT502E
 
-  Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
-
+  Invalid URL specified to get trusted certificates from the central Gateway. Error message: %s
+  
   **Reason:**
-
-  The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
-
+  
+  The parameter apiml.security.x509.certificatesUrl is not correctly configured with the complete URL to the central Gateway certificates endpoint.
+  
   **Action:**
-
-  Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured.
+  
+  Ensure that the parameter apiml.security.x509.certificatesUrl is correctly configured.
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
-
+  An error occurred during retrieval of trusted certificates from the central Gateway. Error message: %s
+  
   **Reason:**
-
-  Communication with the Gateway was interrupted or an error occurred during processing of the response.
-
+  
+  The communication with the cloud gateway got interrupted or an error occurred while processing the response.
+  
   **Action:**
-
+  
   Check the provided error message. Contact the support.
 
 ### ZWEAT504E
 
-  Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
-
+  Failed to parse the trusted certificates provided by the central Gateway. Error message %s
+  
   **Reason:**
-
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificates in Base64 printable form.
-
+  
+  The string sent by the central Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
+  
   **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl responds with valid DER-encoded certificates in the Base64 printable form.
 
-  Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
+### ZWEAT505E
+
+  Incoming request certificate is not one of the trusted certificates provided by the central Gateway.
+  
+  **Reason:**
+  
+  The Gateway performs an additional check of request certificates when the central Gateway forwards the incoming client certificate to the domain Gateway. This check may fail when the certificatesUrl parameter does not point to the proper central Gateway certificates endpoint.
+  
+  **Action:**
+  
+  Check that the URL configured in apiml.security.x509.certificatesUrl points to the central Gateway and it responds with valid DER-encoded certificates in the Base64 printable form.
 
 ### ZWEAT601E
 
@@ -729,13 +673,25 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Provide a list of services for which this token will be valid
 
+### ZWEAT607E
+
+  Body in the revoke request is not valid.
+
+  **Reason:**
+
+  The request body is not valid
+
+  **Action:**
+
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
+
 ### ZWEAT608E
 
   Error mapping between distributed and mainframe identity. Reason: %s %s
 
   **Reason:**
 
-  Unexpected error occurred when mapping between distributed and mainframe identity
+  Unexpected error occurred when mapping between distributed and mainframe identity 
 
   **Action:**
 
@@ -750,18 +706,6 @@ The following error message codes may appear on logs or API responses. Use the f
   Mapping between distributed and mainframe identity failed.
 
   **Action:**
-
-### ZWEAT610E
-
-  Missing registry name configuration.
-
-  **Reason:**
-
-  The registry name configuration is required to correctly map distributed user name from the OIDC access token.
-
-  **Action:**
-
-  Make sure that 'components.gateway.apiml.security.oidc.registry' is correctly set in 'zowe.yaml'.
 
 ## Security client messages
 
@@ -897,7 +841,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  When this error occurs it is necessary to get a new JWT token.
+  When this error occurs it is necessary to get a new JWT token. 
 
 ### ZWEAS120E
 
@@ -945,7 +889,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Log the message from the exception and then handle the exception based on the information provided there.
+  Log the message from the exception and then handle the exception based on the information provided there. 
 
 ### ZWEAS400E
 
@@ -1057,7 +1001,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS504E
 
-  Internal server error while generating PassTicket: %s
+  Internal server error while generating PassTicket.
 
   **Reason:**
 
@@ -1066,7 +1010,7 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Supply a valid user and application name, and check that corresponding permissions have been set up.
-
+  
 ## Discovery service messages
 
 ### ZWEAD400E
@@ -1079,7 +1023,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
 
 ### ZWEAD401E
 
@@ -1091,7 +1035,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
+  Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support. 
 
 ### ZWEAD700W
 
@@ -1171,25 +1115,29 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## Gateway service messages
 
-### ZWEAG111E
+### ZWEAG500E
 
-  The service has encountered a situation it doesn't know how to handle. Please contact support for further assistance. More details are available in the log under the provided message instance ID
-
-  **Reason:**
-
-  **Action:**
-
-### ZWEAG501E
-
-  The connection is not secure.
+  Client certificate is missing in request.
 
   **Reason:**
 
-  AT-TLS is not properly configured.
+  No client certificate is present in the HTTPS request.
 
   **Action:**
 
-  Review AT-TLS documentation and make sure your configuration is correct for this service.
+  Properly configure client to send client certificate.
+
+### ZWEAG700E
+
+  No instance of the service '%s' found. Routing will not be available.
+
+  **Reason:**
+
+  The Gateway could not find an instance of the service from the Discovery Service.
+
+  **Action:**
+
+  Check that the service was successfully registered to the Discovery Service and wait for Spring Cloud to refresh the routes definitions.
 
 ### ZWEAG701E
 
@@ -1215,13 +1163,185 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Contact the system administrator and request enablement of encoded slashes in the Gateway.
 
+### ZWEAG704E
+
+  Configuration error '%s' when trying to read the public and private key for signing JWT: %s
+
+  **Reason:**
+
+  A problem occurred while trying to read the certificate-key pair from the keystore.
+
+  **Action:**
+
+  Review the mandatory fields used in the configuration such as the keystore location path, the keystore and key password, and the keystore type.
+
+### ZWEAG705E
+
+  Failed to load public or private key from key with alias '%s' in the keystore '%s'. Gateway is shutting down.
+
+  **Reason:**
+
+  Failed to load a public or private key from the keystore during JWT Token initialization.
+
+  **Action:**
+
+  Check that the key alias is specified and correct. Verify that the keys are present in the keystore.
+
+### ZWEAG706E
+
+  RequestContext is not prepared for load balancing.
+
+  **Reason:**
+
+  Custom Ribbon load balancing is not in place before calling Ribbon.
+
+  **Action:**
+
+  Contact Broadcom support.
+
+### ZWEAG707E
+
+  The request to the URL '%s' aborted without retrying on another instance. Caused by: %s
+
+  **Reason:**
+
+  The request to the server instance failed and will not be retried on another instance.
+
+  **Action:**
+
+  Refer to 'Caused by' details for troubleshooting.
+
+### ZWEAG708E
+
+  The request to the URL '%s' failed after retrying on all known service instances. Caused by: %s
+
+  **Reason:**
+
+  Request to the server instance could not be executed on any known service instance.
+
+  **Action:**
+
+  Verify the status of the requested instance.
+
+### ZWEAG709E
+
+  Service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The service is not available.
+
+  **Action:**
+
+  Make sure that the service is running and is accessible by the URL provided in the message.
+
+### ZWEAG710E
+
+  Load balancer does not have available server for client: %s
+
+  **Reason:**
+
+  The service is not available. It might be removed by the Circuit Breaker or by requesting specific instance that is not available.
+
+  **Action:**
+
+  Try the request later, or remove the request for the specific instance.
+
+### ZWEAG711E
+
+  The principal '%s' is missing queried authorization.
+
+  **Reason:**
+
+  The principal does not have the queried access to the resource name within the resource class.
+
+  **Action:**
+
+  No action is needed.
+
+### ZWEAG712E
+
+  The URI '%s' is an invalid format
+
+  **Reason:**
+
+  The URI does not follow the format `/{serviceId}/{type}/{version}/{endpoint}` or `/{type}/{version}/{serviceId}/{endpoint}`.
+
+  **Action:**
+
+  Use a properly formatted URI.
+
+### ZWEAG713E
+
+  Configuration error when trying to establish JWT producer. Events: %s
+
+  **Reason:**
+
+  A problem occurred while trying to make sure that there is a valid JWT producer available. A possible cause of the problem is that API ML does not recognize the authentication type used by z/OSMF.
+
+  **Action:**
+
+  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
+
+  Use the following configuration format:
+  ```
+  apiml: 
+    security: 
+       auth: 
+           zosmf: 
+               jwtAutoconfiguration:
+  ```
+  Apply one of the following values:
+
+  * **jwt**
+  Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+
+  * **ltpa**
+  Signifies that z/OSMF does not support JWT
+
+### ZWEAG714E
+
+  Unknown error occurred while retrieving the used public key
+
+  **Reason:**
+
+  An unknown problem occurred when retrieving the used public key. This should never occur.
+
+  **Action:**
+
+  Try again later.
+
+### ZWEAG715E
+
+  The wrong amount of keys retrieved. The amount of retrieved keys is: %s
+
+  **Reason:**
+
+  There are too many keys in the JWK set. As such, it is not possible to choose the correct one.
+
+  **Action:**
+
+  Verify the configuration of the z/OSMF to make sure that z/OSMF provides only one used key.
+
+### ZWEAG716E
+
+  The system does not know what key should be used.
+
+  **Reason:**
+
+  Typically z/OSMF is either unavailable or offline.
+
+  **Action:**
+
+  Verify that z/OSMF is available, accessible by the Gateway service, and online.
+
 ### ZWEAG717E
 
   The service id provided is invalid: '%s'
 
   **Reason:**
 
-  The provided id is not valid under conformance criteria.
+  The provided id is not valid under the conformance criteria.
 
   **Action:**
 
@@ -1233,15 +1353,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Metadata aren't accessible
+  Metadata are not accessible.
 
   **Action:**
 
-  Verify that the metadata are accessible and not empty
+  Verify that the metadata are accessible and not empty.
 
 ### ZWEAG719I
 
-  The service is not conformant: %s
+  The service id provided is invalid: '%s'
 
   **Reason:**
 
@@ -1249,7 +1369,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify the conformance criteria.
+  Verify the conformance criteria, provide valid service id.
+  
+### ZWEAG100E
+
+  Authentication exception: '%s' for URL '%s'
+
+  **Reason:**
+
+  A generic failure occurred during authentication.
+
+  **Action:**
+
+  Refer to the specific authentication exception details for troubleshooting.
 
 ### ZWEAG101E
 
@@ -1263,6 +1395,42 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Use the correct HTTP request method supported by the URL.
 
+### ZWEAG102E
+
+  Token is not valid
+
+  **Reason:**
+
+  The JWT token is not valid.
+
+  **Action:**
+
+  Provide a valid token.
+
+### ZWEAG103E
+
+  The token has expired
+
+  **Reason:**
+
+  The JWT token has expired.
+
+  **Action:**
+
+  Obtain a new token by performing an authentication request.
+
+### ZWEAG104E
+
+  Authentication service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The authentication service is not available.
+
+  **Action:**
+
+  Make sure that the authentication service is running and is accessible by the URL provided in the message.
+
 ### ZWEAG105E
 
   Authentication is required for URL '%s'
@@ -1274,6 +1442,234 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Provide valid authentication.
+
+### ZWEAG106W
+
+  Login endpoint is running in dummy mode. Use credentials '%s'/'%s' to log in. Do not use this option in the production environment.
+
+  **Reason:**
+
+  The authentication is running in dummy mode.
+
+  **Action:**
+
+  Ensure that this option is not being used in a production environment.
+
+### ZWEAG107W
+
+  Incorrect value: apiml.security.auth.provider = '%s'. The authentication provider is not set correctly. The default 'zosmf' authentication provider is being used.
+
+  **Reason:**
+
+  An incorrect value of the apiml.security.auth.provider parameter is set in the configuration.
+
+  **Action:**
+
+  Ensure that the value of apiml.security.auth.provider is set either to 'dummy' if you want to use dummy mode, or to 'zosmf' if you want to use the z/OSMF authentication provider.
+
+### ZWEAG108E
+
+  z/OSMF instance '%s' not found or incorrectly configured. Gateway is shutting down.
+
+  **Reason:**
+
+  The Gateway could not find the z/OSMF instance from the Discovery Service or it could not communicate with the provided z/OSMF instance.
+
+  **Action:**
+
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable components.gateway.apiml.security.jwtInitializerTimeout:... and the value in minutes into Zowe's configuration to override this value.
+
+### ZWEAG109E
+
+  z/OSMF response does not contain field '%s'.
+
+  **Reason:**
+
+  The z/OSMF domain cannot be read.
+
+  **Action:**
+
+  Review the z/OSMF domain value contained in the response received from the 'zosmf/info' REST endpoint.
+
+### ZWEAG110E
+
+  Error parsing z/OSMF response. Error returned: '%s
+
+  **Reason:**
+
+  An error occurred while parsing the z/OSMF JSON response.
+
+  **Action:**
+
+  Check the JSON response received from the 'zosmf/info' REST endpoint.
+
+### ZWEAG120E
+
+  Invalid username or password for URL '%s'
+
+  **Reason:**
+
+  The username and/or password are invalid.
+
+  **Action:**
+
+  Provide a valid username and password.
+
+### ZWEAG121E
+
+  Authorization header is missing, or the request body is missing or invalid for URL '%s'
+
+  **Reason:**
+
+  The authorization header is missing, or the request body is missing or invalid.
+
+  **Action:**
+
+  Provide valid authentication.
+
+### ZWEAS123E
+
+  Invalid token type in response from Authentication service.
+
+  **Reason:**
+
+  Could not retrieve the proper authentication token from the Authentication service response.
+
+  **Action:**
+
+  Review your APIML authentication provider configuration and ensure your Authentication service is working.
+
+### ZWEAG130E
+
+  Token is not valid for URL '%s'
+
+  **Reason:**
+
+  The token is not valid.
+
+  **Action:**
+
+  Provide a valid token.
+
+### ZWEAG131E
+
+  No authorization token provided for URL '%s'
+
+  **Reason:**
+
+  No authorization token is provided.
+
+  **Action:**
+
+  Provide a valid authorization token.
+
+### ZWEAG150E
+
+  SAF IDT generation failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred during SAF verification. Review the reason in the error message.
+
+  **Action:**
+
+  Verify the Identity Token configuration.
+
+### ZWEAG151E
+
+  SAF IDT is not generated because authentication or authorization failed. Reason: %s
+
+  **Reason:**
+
+  The user credentials were rejected during SAF verification. Review the reason in the error message.
+
+  **Action:**
+
+  Provide a valid username and password.
+
+### ZWEAG160E
+
+  No authentication provided in the request
+
+  **Reason:**
+
+  The JWT token or client certificate was not provided with the request
+
+  **Action:**
+
+  Configure your client to provide valid authentication.
+
+### ZWEAG161E
+
+  No user was found
+
+  **Reason:**
+
+  It was not possible to map provided token or certificate to the mainframe identity.
+
+  **Action:**
+
+  Ask your security administrator to connect your token or client certificate with your mainframe user.
+
+### ZWEAG162E
+
+  Gateway service failed to obtain token.
+
+  **Reason:**
+
+  Authentication request to get token failed.
+
+  **Action:**
+
+  Contact your administrator.
+
+### ZWEAG163E
+
+  Error occurred while parsing X509 certificate.
+
+  **Reason:**
+
+  %s
+
+  **Action:**
+
+  Configure your client to provide valid x509 certificate.
+
+### ZWEAG164E
+
+  Error occurred while validating X509 certificate. %s
+
+  **Reason:**
+
+  X509 certificate cannot be validated or the certificate cannot be used for client authentication.
+
+  **Action:**
+
+  Configure your client to provide valid x509 certificate.
+
+### ZWEAG165E
+
+  X509 certificate is missing the client certificate extended usage definition
+
+  **Reason:**
+
+  X509 certificate cannot be used for client authentication.
+
+  **Action:**
+
+  Configure your client to provide valid x509 certificate.
+
+### ZWEAG166E
+
+  ZOSMF authentication scheme is not supported for this API ML instance.
+
+  **Reason:**
+
+  z/OSMF is not used as security provider for API ML.
+
+  **Action:**
+
+  Contact your administrator.
 
 ### ZWEAG167E
 
@@ -1287,81 +1683,180 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Configure your client to provide valid certificate.
 
-### ZWEAM400E
+### ZWEAG168E
 
-  Error initializing SSL Context: '%s'
-
-  **Reason:**
-
-  An error occurred while initializing the SSL Context.
-
-  **Action:**
-
-  Refer to the specific message to identify the exact problem.
-  Possible causes include:
-  - Incorrect security algorithm
-  - The keystore is invalid or corrupted
-  - The certificate is invalid or corrupted
-
-### ZWEAT403E
-
-  The user is not authorized to the target resource: %s
+  Invalid authentication provided in request
 
   **Reason:**
 
-  The service has accepted the authentication of the user but the user does not have access rights to the resource.
+  The JWT token or client certificate is not valid
 
   **Action:**
 
-  Contact your security administrator to give you access.
+  Configure your client to provide valid authentication.
 
-### ZWEAG510E
+### ZWEAG169E
 
-  Request to the resource ended with unexpected status code.
+  Unexpected response from the external identity mapper. Status: %s body: %s
+  
+  **Reason:**
+  
+  The external identity mapper request failed with Internal Error
+  
+  **Action:**
+  
+  Verify that ZSS is responding.
+
+### ZWEAG170E
+
+  Error occurred while trying to parse the response from the external identity mapper. Reason: %s
+  
+  **Reason:**
+  
+  The external identity mapper failed when trying to parse the response
+  
+  **Action:**
+  
+  Verify that the response is valid.
+
+### ZWEAG171E
+
+  Configuration error. Failed to construct the external identity mapper URI. Reason: %s
+  
+  **Reason:**
+  
+  Failed to construct the external identity mapper URI
+  
+  **Action:**
+  
+  Verify that the external identity mapper URL specified in the configuration is valid.
+
+### ZWEAT607E
+
+  Body in the revoke request is not valid.
 
   **Reason:**
 
-  The service did not respond properly.
+  The request body is not valid
 
   **Action:**
 
-  Verify that the target service is healthy.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
-### ZWESG100W
+### ZWEAG180E
 
-  Cannot receive information about services on API Gateway with apimlId '%s' because: %s
+  There was an error while reading webfinger configuration
 
   **Reason:**
 
-  Cannot connect to the Gateway service.
+  Webfinger provider contains incorrect configuration.
 
   **Action:**
 
-  Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate.
+  Contact the administrator to validate webfinger configuration in gateway service.
 
-### ZWESG101E
+### ZWEAG181W
 
-  An internal exception occurred in ZAAS service %s.
+  z/OSMF service '%s' is either not registered or not online yet.
 
   **Reason:**
 
-  ZAAS cannot process authentication required to finish the request.
+  z/OSMF service may not be properly onboarded to API ML.
 
   **Action:**
 
-  Make sure that the ZAAS is configured well and check all security requirements.
+  Verify if z/OSMF is up and registered to Discovery Service.
 
-### ZWESG429E
+### ZWEAG182E
 
-  Request was denied access.
+  SSL Misconfiguration, z/OSMF is not accessible.
+  Message: %s
+  Please verify the following:
+    - CN (Common Name) and z/OSMF hostname match.
+    - The certificate is valid
+    - TLS version matches
+    - z/OSMF server certificate is trusted in Zowe's truststore
+  Enable debugging to see further details in stack trace.
 
   **Reason:**
 
-  Connections limit exceeded.
+  The z/OSMF connection is incorrectly configured.
 
   **Action:**
 
-  Wait for the number of active connections to decrease before retrying your request.
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
+
+### ZWEAG183E
+
+  z/OSMF internal error
+
+  **Reason:**
+
+  z/OSMF returned HTTP Status %s.
+
+  **Action:**
+
+  Review z/OSMF status and availability.
+
+### ZWEAG184E
+
+  Could not connect to z/OSMF: %s
+
+  **Reason:**
+
+  There was a connection issue between the API Mediation Layer instance and z/OSMF.
+
+  **Action:**
+
+  Verify z/OSMF is running. Verify connectivity to z/OSMF from this instance.
+
+### ZWEAG185W
+
+  The change password endpoint has failed with code %s
+
+  **Reason:**
+
+  The change password endpoint was not found.
+
+  **Action:**
+
+  Ensure PTF for APAR PH34912 is applied. (https://www.ibm.com/support/pages/apar/PH34912)
+
+### ZWEAG186E
+
+  z/OSMF internal error attempting password change: %s
+
+  **Reason:**
+
+  z/OSMF informed of an internal error.
+
+  **Action:**
+
+  Verify z/OSMF error log.
+
+### ZWEAG187W
+
+  The check of z/OSMF JWT authentication endpoint has failed. Using z/OSMF info endpoint as backup.
+
+  **Reason:**
+
+  z/OSMF JWT endpoint was not found.
+
+  **Action:**
+
+  Ensure APAR PH12143 (https://www.ibm.com/support/pages/apar/PH12143) fix has been applied.
+
+### ZWEAG188W
+
+  z/OSMF JWT builder endpoint call (%s) failed with %s
+
+  **Reason:**
+
+  z/OSMF returned an error code when calling JWT endpoint.
+
+  **Action:**
+
+  Review z/OSMF status. Contact your system administrator.
 
 ## API Catalog messages
 
@@ -1420,30 +1915,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Reason:**
 
   The status of one or more containers could not be retrieved.
-
-  **Action:**
-
-  Check the status of the message for more information and the health of the Discovery Service.
-
-### ZWEAC105W
-
-  API Documentation not retrieved for service '%s' due to communication error, %s
-
-  **Reason:**
-
-  Unable to fetch API documentation.
-
-  **Action:**
-
-  Make sure the service documentation url or server transport encoding is configured correctly.
-
-### ZWEAC106E
-
-  Could not retrieve service. Status: %s
-
-  **Reason:**
-
-  Service could not be retrieved.
 
   **Action:**
 

@@ -8,8 +8,14 @@ As a Zowe Explorer user, you may encounter problems when using Visual Studio Cod
 2. Review the current list of [Known issues](known-ze.md) in documentation. Also, try searching using the Zowe Docs search bar (keyboard shortcut `ctrl` + `k`).
 3. Collect the following information to help diagnose the issue:
     - The Zowe Explorer and Visual Studio Code versions installed
-        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version.md#zowe-explorer-for-visual-studio-code) for information.
+        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version/#zowe-explorer-for-visual-studio-code) for information.
     - Node.js and NPM versions installed
+    - Whether you have Zowe CLI and the Secure Credential Store (SCS) Zowe CLI plug-in installed
+
+      :::note
+      Zowe CLI V2 does not require the SCS plug-in to manage security.  Security is now managed by Zowe CLI core functionality.
+      :::
+
     - Your operating system
     - Zowe Logs, which usually can be found in `C:\Users\userID\.vscode\extensions\zowe.vscode-extension-for-zowe-X.Y.Z\logs`
     
@@ -21,7 +27,7 @@ Use [the Slack channel](https://app.slack.com/client/T1BAJVCTY/CUVE37Z5F) to rea
 
 ## Connection issues with Zowe Explorer
 
-If you are using Zowe Explorer at a site that uses an Internet proxy but cannot connect to a mainframe, ensure that the **Proxy Support** setting in Visual Studio Code is properly configured. Your system administrator can provide information on which option works best for your network environment.
+If you’re using Zowe Explorer at a site that uses an Internet proxy but cannot connect to a mainframe, ensure that the **Proxy Support** setting in Visual Studio Code is properly configured. Your system administrator can provide information on which option works best for your network environment.
 
 Note that Zowe Explorer cannot bypass this setting as it would circumvent the VS Code setting applied to all other extensions.
 
@@ -40,7 +46,10 @@ System administrators can also add IP addresses, IP ranges, or DNS hostnames for
 
 A problem with a configuration file can make Zowe Explorer unable to read your configurations.
 
-Zowe Explorer displays an error message advising it cannot read the configuration file when a Zowe V3 configuration file fails to load.
+Zowe Explorer displays an error message advising it cannot read the configuration file when either:
+
+- A Zowe v1 profile is invalid.
+- A Zowe v2 configuration file fails to load.
 
 Possible problems in the file could include a syntax error, or an invalid keyword or symbol.
 

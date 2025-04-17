@@ -19,5 +19,5 @@ Your bot user is added to your team successfully.
 
 ## Next steps
 
-Now you can [add it to your channels](./chat_prerequisite_mattermost_invite_channel.md).
+Now you can [add it to your channels](./chat_prerequisite_mattermost_invite_channel).
 

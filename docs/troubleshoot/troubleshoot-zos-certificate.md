@@ -13,6 +13,7 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 * [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
 * [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
 * [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
+* [Third-party certificate management tools may require additional steps for Zowe functionality](#third-party-certificate-management-tools-may-require-additional-steps-for-zowe-functionality)
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -369,3 +370,43 @@ security.provider.13=JdkSASL
 security.provider.14=SunPKCS11
 ```
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
+
+
+## Third-party certificate management tools may require additional steps for Zowe functionality
+
+**Symptom:**
+
+If using a third-party tool to generate a self-signed intermediate certificate for Zowe, it is possible that Zowe will not be functional. 
+
+**Solution:**
+
+You can try to troubleshoot this issue by taking the following addtional steps during configuration:
+
+1. Note the specific root certificate with which the generated intermediate certificate was self-signed.
+
+2. Ask your Security Administrator to perfrom the following tasks:
+
+  * Add the generated intermediate certificate to Zowe's Keyring.
+  * Add the root certificate to Zowe's Keyring.
+  * Once the keyring has been configured, add the root certificate in the Default Zowe certificate section under `pem.certificateAuthorities`. 
+  
+  **Note:** Since the Default Zowe certificate section can have at most two entries, ensure that the entires are listed in the following order:  
+
+  * The first entry should be your generated intermediate certificate authority.
+  * The second and final entry should be the root certificate authority.
+
+   Failure to add the root certificate in this sequence, prevents the user from setting `verifyCertificates` to `STRICT`.
+
+  **Example:**
+  ```
+  pem:                                                               
+    # key: /global/zowe/keystore/localhost/localhost.key                                      
+    # certificate: /global/zowe/keystore/localhost/localhost.cer                                  
+    # if keyrings, the format is "safkeyring:////stcusername/KeyName&ca name"                           
+    key:                                                              
+    certificate:                                                          
+    certificateAuthorities:
+      - "safkeyring:////ZWESVUSR/ZWEKEYRING.ZWEDFLT&CERTAUTH.AJMCA1"
+      - "safkeyring:////ZWESVUSR/ZWEKEYRING.ZWEDFLT&CERTAUTH.AJMROOT"
+  ```
+ 

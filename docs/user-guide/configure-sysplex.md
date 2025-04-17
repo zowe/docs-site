@@ -10,12 +10,14 @@ Zowe high availability instances require a Sysplex environment that consists of 
 - At least one coupling facility
 - At least one Sysplex timer
 - Connection to shared DASD
-- Shared SAF database, see [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
-- Sysplex Distributor with configured Dynamic VIPA TCP/IP address, see [Configuring Sysplex Distributor](#configuring-sysplex-distributor) for instructions
-- USS Shared file system, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
+- Shared SAF database. See [Sharing a database with sysplex communication in data sharing mode](https://www.ibm.com/docs/en/zos/2.1.0?topic=sd-sharing-database-sysplex-communication-in-data-sharing-mode)
+- Sysplex Distributor with configured Dynamic VIPA TCP/IP address. See [Configuring Sysplex Distributor](#configuring-sysplex-distributor) for instructions
+- VSAM record-level sharing (RLS). See [Preparing for VSAM record-level sharing](https://www.ibm.com/docs/en/zos/2.4.0?topic=sharing-preparing-vsam-record-level)
+  - Not required if using infinispan as Caching Service solution. VSAM storage for the Caching Service is deprecated and will be removed in a future release.
+- USS Shared file system. See [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex)
 - JESPlex/JES2 Multi-Access Spool (MAS) environment
-- z/OSMF high availability, see [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
-- Node.js v16.x or higher, required in case you enable Zowe Desktop
+- z/OSMF high availability. See [Configuring z/OSMF high availability in Sysplex](systemrequirements-zosmf-ha.md)
+- Node.js v14.x (except v14.17.2), or v16.x
 
 :::note
 It is highly recommended that Node.js is installed on a shared file system.
@@ -40,8 +42,7 @@ The following example DVIPA configuration ensures the availability of Zowe in Ho
         x.x.x.B  BACKUP                                         
     ENDVIPADYNAMIC
    ```
-
-   where, 
+ 
    - **x.x.x.A**  
    Specifies the home address for SYSA.
 

@@ -31,12 +31,12 @@ The following steps outline the overall process to onboard a REST service with t
     * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
     * [SAF Keyring configuration](#saf-keyring-configuration)
     * [Custom Metadata](#custom-metadata)
-    
+
 3. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-    
+
     * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
     * [Basic routing](#basic-routing)
-    
+
 4. [Adding API documentation](#adding-api-documentation)
 
 5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
@@ -82,15 +82,45 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
     Use the corresponding artifact according to the Zowe APIML version you are using.
 
-    - Use the latest version of the following artifact:
+    - For Zowe APIML versions greater than 1.23.5 use the following artifact:
 
         ```groovy
         implementation "org.zowe.apiml.sdk:onboarding-enabler-spring:$zoweApimlVersion"
         ```
 
+    - For Zowe APIML version 1.23.5 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.12.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions 1.22.3, 1.22.4, and 1.23.0 - 1.23.4 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.11.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions 1.21.6 - 1.21.13 and 1.22.0 - 1.22.2 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.3.9.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 2.1.1 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE:$zoweApimlVersion"
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 1.5.9 use the following artifact:
+
+        ```groovy
+        implementation "org.zowe.apiml.sdk:onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE:$zoweApimlVersion"
+        ```
+
     **Notes:**
     * You may need to add additional dependencies as required by your service implementation.
-    * Replace `zoweApimlVersion` with the latest update of the major version according to your Zowe installation.
+    * The information provided in this file is valid for `ZoweApimlVersion 1.3.0` and above.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
@@ -118,7 +148,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 2. Add the proper dependencies
 
-    - Use the latest version of the following artifact:
+    - For Zowe APIML versions greater than 1.23.5 use the following artifact:
 
         ```XML
         <dependency>
@@ -127,9 +157,56 @@ Use the following procedure if you use _Maven_ as your build automation system.
             <version>$zoweApimlVersion</version>
         </dependency>
         ```
-   **Notes:**
-    * Replace `zoweApimlVersion` with the latest update of the major version according to your Zowe installation.
 
+    - For Zowe APIML version 1.23.5 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.12.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions 1.22.3, 1.22.4, and 1.23.0 - 1.23.4 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.11.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions 1.21.6 - 1.21.13 and 1.22.0 - 1.22.2 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.3.9.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 2.1.1 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v2-springboot-2.1.1.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
+
+    - For Zowe APIML versions earlier than 1.21.6 that use Spring 1.5.9 use the following artifact:
+
+        ```XML
+        <dependency>
+            <groupId>org.zowe.apiml.sdk</groupId>
+            <artifactId>onboarding-enabler-spring-v1-springboot-1.5.9.RELEASE</artifactId>
+            <version>$zoweApimlVersion</version>
+        </dependency>
+        ```
 
 3. In the directory of your project, run the `mvn clean package` command to build the project.
 
@@ -238,7 +315,7 @@ These parameters are not required. If a parameter is not specified, a default va
 ### API ML Onboarding Configuration Sample
 
 Some parameters which are specific for your service deployment
-are written in `<fill-your-parameterValue>` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
+are written in `${fill.your.parameterValue}` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
 
 ```yaml
 spring:
@@ -250,14 +327,14 @@ apiml:
     enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL
     service:                                # The root of API ML onboarding configuration
 
-        serviceId: <fill-your-serviceId>      # The symbolic name of the service
-        title: <fill-your-title> 
-        description: <fill-your-description>  # API service description
+        serviceId: ${fill.your.serviceId}      # The symbolic name of the service
+        title: ${fill.your.title} 
+        description: ${fill.your.description}  # API service description
 
         scheme: https
-        hostname: <fill-your-hostname>                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
-        port: <fill-your-port>                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
-        serviceIpAddress: <fill-your-ipAddress>                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
+        hostname: ${fill.your.hostname}                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
+        port: ${fill.your.port}                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
+        serviceIpAddress: ${fill.your.ipAddress}                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.serviceId}      # By default the contextPath is set to be the same as apiml.service.serviceId, but doesn't have to be the same
@@ -266,7 +343,7 @@ apiml:
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        discoveryServiceUrls: https://<fill-your-discoveryServiceHost1>:<fill-your-discoveryServicePort1>/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
+        discoveryServiceUrls: https://${fill.your.discoveryServiceHost1}:${fill.your.discoveryServicePort1}/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
 
         routes:
             -   gateway-url: "ui/v1"
@@ -284,12 +361,12 @@ apiml:
             -   apiId: zowe.apiml.sampleservice
                 version: 1.0.0
                 gatewayUrl: api/v1
-                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/v3/api-docs/apiv1
+                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc
                 documentationUrl: https://www.zowe.org
             -   apiId: zowe.apiml.sampleservice
                 version: 2.0.0
                 gatewayUrl: api/v2
-                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/v3/api-docs/apiv2
+                swaggerUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}${apiml.service.contextPath}/api-doc?group=apiv2
                 documentationUrl: https://www.zowe.org
 
         catalog:
@@ -303,26 +380,26 @@ apiml:
             ## This part configures the http client that connects to Discovery Service. You might reuse your server.ssl.xxx properties that configure your application's servlet.
             enabled: true
             verifySslCertificatesOfServices: true
-            protocol: TLSv1.3
-            enabled-protocols: TLSv1.3
-            keyStoreType: <fill-your-keystoretype>
-            trustStoreType: <fill-your-truststoretype>
+            protocol: TLSv1.2
+            enabled-protocols: TLSv1.2
+            keyStoreType: ${fill.your.keystoretype}
+            trustStoreType: ${fill.your.truststoretype}
 
             ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
-            keyAlias: <fill-your-keyAlias>
-            keyPassword: <fill-your-keyPassword>
-            keyStore: <fill-your-.keyStore>
-            keyStorePassword: <fill-your-keyStorePassword>
-            trustStore: <fill-your-trustStore>
-            trustStorePassword: <fill-your-trustStorePassword>
-
+            keyAlias: ${fill.your.keyAlias}
+            keyPassword: ${fill.your.keyPassword}
+            keyStore: ${fill.your..keyStore}
+            keyStorePassword: ${fill.your.keyStorePassword}
+            trustStore: ${fill.your.trustStore}
+            trustStorePassword: ${fill.your.trustStorePassword}
+            
         connectTimeout: 10  # OPTIONAL: Discovery service registration timeout to establish connection
         readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
-        # Optional metadata section
+      # Optional metadata section
         customMetadata:
-            <your-qualifier>:
-                <key1>: value1
-                <key2>: value2
+            yourqualifier:
+                key1: value1
+                key2: value2
 
 # rest of your configuration
 # server: ....
@@ -407,89 +484,92 @@ Use the following procedure to add Swagger API documentation to your project.
     * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
-        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
+        compile "io.springfox:springfox-swagger2:2.9.2"
         ```
 
-      * For _Maven_, add the following dependency in `pom.xml`:
+    * For _Maven_, add the following dependency in `pom.xml`:
     
-          ```xml
-          <dependency>
-             <groupId>org.springdoc</groupId>
-             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-             <version>2.8.6</version>
-          </dependency>
-          ```
+        ```xml
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        ```
 
 2. Add a Spring configuration class to your project.
 
    **Example:**
 
     ```java
-
     package org.zowe.apiml.sampleservice.configuration;
-    
-    import io.swagger.v3.oas.models.Components;
-    import io.swagger.v3.oas.models.OpenAPI;
-    import io.swagger.v3.oas.models.info.Info;
-    import io.swagger.v3.oas.models.security.SecurityScheme;
-    import org.springdoc.core.models.GroupedOpenApi;
-    import org.springframework.beans.factory.annotation.Value;
+
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
-    
-    @Configuration
-    public class SwaggerConfiguration {
-    
-        @Value("${apiml.service.title}")
-        private String apiTitle;
-    
-        @Value("${apiml.service.apiInfo[0].version}")
-        private String apiVersionRest1;
-    
-        @Value("${apiml.service.apiInfo[1].version}")
-        private String graphqlVersion;
-    
-        @Value("${apiml.service.apiInfo[2].version}")
-        private String apiVersionRest2;
-    
-        @Value("${apiml.service.description}")
-        private String apiDescription;
-    
-        @Bean
-        public OpenAPI openAPI() {
-            return new OpenAPI()
-                .info(new Info()
-                    .title("Spring REST API")
-                    .description("Example of REST API"))
-                .components(new Components().addSecuritySchemes("ESM token",
-                    new SecurityScheme().type(SecurityScheme.Type.APIKEY).in(SecurityScheme.In.HEADER).name("esmToken"))
-                );
-        }
-    
-        @Bean
-        public GroupedOpenApi apiV1() {
-            return GroupedOpenApi.builder()
-                .group("apiv1")
-                .pathsToMatch("/api/v1/**")
-                .addOpenApiCustomizer(openApi -> openApi.setInfo(openApi.getInfo().version("1.0.0")))
-                .build();
-        }
-    
-        @Bean
-        public GroupedOpenApi apiV2() {
-            return GroupedOpenApi.builder()
-                .group("apiv2")
-                .pathsToMatch("/api/v2/**")
-                .addOpenApiCustomizer(openApi -> openApi.setInfo(openApi.getInfo().version("2.0.0")))
-                .build();
-        }
-        
-    }
+    import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+    import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+    import springfox.documentation.builders.PathSelectors;
+    import springfox.documentation.builders.RequestHandlerSelectors;
+    import springfox.documentation.service.ApiInfo;
+    import springfox.documentation.service.Contact;
+    import springfox.documentation.spi.DocumentationType;
+    import springfox.documentation.spring.web.plugins.Docket;
+    import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+    import java.util.ArrayList;
+
+    @Configuration
+    @EnableSwagger2
+    @EnableWebMvc
+    public class SwaggerConfiguration extends WebMvcConfigurerAdapter {
+        @Bean
+        public Docket api() {
+            return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/api/v1/**"))
+                .build()
+                .apiInfo(new ApiInfo(
+                    "Spring REST API",
+                    "Example of REST API",
+                    "1.0.0",
+                    null,
+                    null,
+                    null,
+                    null,
+                    new ArrayList<>()
+                ));
+        }
+
+        @Bean
+        public Docket apiv2() {
+            return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("apiv2")
+                .select()
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.ant("/api/v2/**"))
+                .build()
+                .apiInfo(new ApiInfo(
+                    "Spring REST API",
+                    "Example of REST API",
+                    "1.0.0",
+                    null,
+                    null,
+                    null,
+                    null,
+                    new ArrayList<>()
+                ));
+        }
+    }
     ```
    
 3. Customize this configuration according to your specifications. For more information about customization properties,
-see [Springdoc configuration](https://springdoc.org/#properties).
+see [Springfox documentation](https://springfox.github.io/springfox/docs/snapshot/#configuring-springfox).
+
+:::note
+The current SpringFox Version 2.9.2 does not support OpenAPI 3.0.
+For more information about the open feature request see this [issue](https://github.com/springfox/springfox/issues/2022).
+:::
 
 ## Validating the discoverability of your API service by the Discovery Service
 

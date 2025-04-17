@@ -125,7 +125,7 @@ A number of key ring scenarios are supported:
 
 Review the following options and choose which best applies to your use case:
 
-* Take our [Certificates Configuration Questionnaire](./certificates-configuration-questionnaire.md) to assist with determining which configuration scenario and associated zowe.yaml format best suits your use case.
+* Take our [Certificates Configuration Questionnaire](./certificates-configuration-questionnaire) to assist with determining which configuration scenario and associated zowe.yaml format best suits your use case.
 
 * To review the various zowe.yaml files to see which certificate configuration applies to your specific use case, see [Certificate configuration scenarios](./certificate-configuration-scenarios.md).
 

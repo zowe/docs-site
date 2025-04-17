@@ -55,7 +55,7 @@ When writing TypeScript code, comment objects and functions in compliance with [
 
 ### Java
 
-When writing Java code, comment objects and functions in the Javadoc format.
+When writing TypeScript code, comment objects and functions in the Javadoc format.
 
 ### C
 

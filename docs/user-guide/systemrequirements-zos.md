@@ -16,14 +16,14 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.5, and 3.1
+- z/OS version is in active support, such as Version 2.4, 2.5, and 3.1
 
   :::note Notes:
-  * z/OS V2.4 reached end of support on 30 September, 2024. 
+  * Zowe Version 2.11 or higher is required when using z/OS Version 3.1.
   * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
 
-- zFS volume has at least 1200 MB of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
+- zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
 
 - (Optional, recommended) System Display and Search Facility (SDSF)
 
@@ -81,7 +81,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v18.x, v20.x, or v22.x is required if using the app-server component.
+- Node.js v18.x, v20.x, or v22.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
@@ -91,15 +91,18 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Java 
 
-- IBM® Semeru Runtime Certified Edition for z/OS® version 17
+One of the following Java versions:
+
+- IBM SDK for Java Technology Edition V8
+- IBM Semeru Runtime Certified Edition for z/OS V11.0.0
 
 ### z/OSMF (Optional) 
 
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.5, or Version 3.1.
+- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.4, Version 2.5, or Version 3.1.
 
   z/OSMF is included with z/OS so does not need to be separately installed. If z/OSMF is present, Zowe  detects z/OSMF during configuration and uses z/OSMF for the following purposes:
 
-  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143) and that JWT generation is enabled. For more information see [Enabing JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
+  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143) and is enabled. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If z/OSMF is not available, Zowe is still able to provide SSO by generating its own JWT and making direct SAF calls.  
 
   - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
 
@@ -109,5 +112,5 @@ Zowe consumption reference data were measured with the default Zowe configuratio
   :::
 
 :::note
-For specific z/OS security configuration options that apply to the specific Zowe server-side components in your configuration, see [Security customization of your z/OS system](./configure-zos-system.md).
+For specific z/OS security configuration options that apply to the specific Zowe server-side components in your configuration, see [Customizing z/OS system security](./configure-zos-system.md).
 :::

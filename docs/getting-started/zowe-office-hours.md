@@ -1,4 +1,4 @@
-# Zowe V2 Office Hours
+# Zowe V2 office hours videos
 
 Watch the series of Zowe office hours videos to learn more about the new features and enhancements in Zowe Version 2 release.
 

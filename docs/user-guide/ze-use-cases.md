@@ -8,7 +8,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
 1. Expand **DATA SETS** in the **Side Bar**, and hover over the profile you want to filter.
 2. Click the **Search** icon.
-3. Use the **Quick Pick** field to select or enter the patterns you want to apply as filters.  
+3. Use the **picker** field to select or enter the patterns you want to apply as filters.  
    
    The data sets that match your pattern(s) display in the **Side Bar**.
 
@@ -20,7 +20,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
 1. Expand **DATA SETS** in the **Side Bar**, and hover over the profile you want to filter.
 2. Click the **Search** icon.
-3. In the **Quick Pick** field, enter or select a search pattern in the `HLQ.ZZZ.SSS(MEMBERNAME)` format to filter out and display the specified member in the **Side Bar**.
+3. In the **picker** field, enter or select a search pattern in the `HLQ.ZZZ.SSS(MEMBERNAME)` format to filter out and display the specified member in the **Side Bar**.
 
    ![View Data Set With Member Pattern](../images/ze/ZE-member-filter-search.gif)
 
@@ -33,7 +33,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
 1. Expand **DATA SETS** in the **Side Bar**, and select the data set you want to rename.
 2. Right-click the data set and select the **Rename Data Set** option.
-3. Enter the new name of the data set in the **input box**.
+3. Enter the new name of the data set in the **picker** field.
 
    ![Rename Data Set](../images/ze/ZE-rename.gif)
 
@@ -42,7 +42,7 @@ The following use cases demonstrate the various functionalities available in Zow
 1. Expand **DATA SETS** in the **Side Bar**, and select the member you want to copy.
 2. Right-click the member and select the **Copy Member** option.
 3. Right-click the data set where the member is to be contained and select the **Paste Member** option.
-4. In the **input box**, enter the name of the copied member.
+4. In the **picker** field, enter the name of the copied member.
 
    ![Copy Data Set Member](../images/ze/ZE-copy-member.gif)
 
@@ -73,9 +73,9 @@ The following use cases demonstrate the various functionalities available in Zow
 
 1. Expand **DATA SETS** in the **Side Bar**.
 2. Right-click the profile you want to create a data set with and select **Create New Data Set**.
-3. Enter a name for your data set in the **input box** and press `Enter`.
-4. From the **Quick Pick** menu, select the data set type that you want to create and press `Enter`.
-5. Select **Edit Attributes** in the **Quick Pick** menu and press `Enter`.
+3. Enter a name for your data set in the **picker** field and press `Enter`.
+4. From the **picker** drop-down menu, select the data set type that you want to create and press `Enter`.
+5. Select **Edit Attributes** in the **picker** drop-down menu and press `Enter`.
 
    The attributes list for the data set displays. You can edit the following attributes:
 
@@ -113,7 +113,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
    - Volume Serial
 
-6. Select the attribute you want to edit, provide the value in the **input box**, and press `Enter`.
+6. Select the attribute you want to edit, provide the value in the **picker** field, and press `Enter`.
 7. (Optional) Edit the parameters of your data set.
 8. Select the **+ Allocate Data Set** option to create the data set and list it in the **Side Bar**.
 
@@ -124,11 +124,11 @@ The following use cases demonstrate the various functionalities available in Zow
 1. Expand **DATA SETS** in the **Side Bar**.
 
 2. Right-click on the profile where you want to create a data set and select **Create New Data Set**.
-3. Enter a name for your data set in the **input box** and press `Enter`.
-4. From the **Quick Pick** menu, select the data set type that you want to create.
+3. Enter a name for your data set in the **picker** field and press `Enter`.
+4. From the **picker** drop-down menu, select the data set type that you want to create.
 5. Select **+Allocate Data Set** to create your data set.
 6. In the **Side Bar**, right-click your newly-created data set and select **Create New Member**.
-7. Enter a name for your new data set member in the **input box** and press **Enter**.
+7. Enter a name for your new data set member in the **picker** field and press **Enter**.
    The member is created and opened in an **Editor** tab.
 
 ### Deleting a data set member and a data set
@@ -136,7 +136,7 @@ The following use cases demonstrate the various functionalities available in Zow
 1. Expand **DATA SETS** in the **Side Bar**.
 2. Open the profile and data set containing the member you want to delete.
 3. Right-click the member and select **Delete Member**.
-4. Confirm the deletion by selecting **Delete** on the **Quick Pick** menu.
+4. Confirm the deletion by selecting **Delete** on the **picker** drop-down menu.
 5. To delete a data set, right-click the data set and select **Delete Data Set**, then confirm the deletion.
 
    **Note:** You can delete a data set before you delete its members.
@@ -147,7 +147,7 @@ The following use cases demonstrate the various functionalities available in Zow
 
 1. Expand **DATA SETS** in the **Side Bar**, and click the **+** icon.
 2. Select the **Search** icon.
-3. In the **Quick Pick** field, enter or select a search pattern to filter search results in the **Side Bar**.
+3. In the **picker** field, enter or select a search pattern to filter search results in the **Side Bar**.
 4. Right-click a data set or member and select the **Show Attributes** option.
 
    This displays the attributes in an **Editor** tab.
@@ -157,7 +157,7 @@ The following use cases demonstrate the various functionalities available in Zow
 ### Viewing and accessing multiple profiles simultaneously
 
 1. Expand **DATA SETS** in the **Side Bar**, and click the **+** icon.
-2. Select the profiles from the **Quick Pick** menu to add them to the **Side Bar**.
+2. Select the profiles from the **picker** drop-down to add them to the **Side Bar**.
 3. Click the **Search** icon for each profile to search and select associated data sets.
 
    ![Add Profile](../images/ze/ZE-mult-profiles.gif)
@@ -170,7 +170,7 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 1. In the **DATA SETS** tree, click on the **Filter** icon to the right of a profile, or right-click on a profile and select the **Filter PDS members…** option.
 
-   The filter selection menu appears in the **Quick Pick** field.
+   The filter selection menu appears in the **picker** field.
 2. Select a filter type from the list of available options:
    - **Date Modified**
    - **User ID**
@@ -185,7 +185,7 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 1. In the **DATA SETS** tree, right-click on a data set and select the **Filter PDS members…** option.
 
-   The filter selection menu appears in the **Quick Pick** field.
+   The filter selection menu appears in the **picker** field.
 2. Select a filter type from the list of available options:
    - **Date Modified**
    - **User ID**
@@ -200,18 +200,12 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
 Sort partitioned data set members in the **DATA SETS** tree view by member **Name**, **Date Modified**, or **User ID**.
 
-:::note
-
-To change the default sort order for data sets, see [Modifying the default sort order for data sets and jobs](ze-install-configuring-ze.md#modifying-the-default-sort-order-for-data-sets-and-jobs).
-
-:::
-
 #### Sorting all data set members under a specific profile
 
 1. In the **DATA SETS** tree, click on the **Sort** icon to the right of a profile, or right-click on a profile and select the **Sort PDS members…** option.
 
-   The sorting selection menu appears in the **Quick Pick** field.
-2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **Quick Pick** menu.
+   The sorting selection menu appears in the **picker** field.
+2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
 3. Select a sort type from the list of available options:
    - **Name**
    - **Date Modified**
@@ -226,8 +220,8 @@ To change the default sort order for data sets, see [Modifying the default sort 
 #### Sorting members for a single data set
 
 1. In the **DATA SETS** tree, right-click on a data set and select the **Sort PDS members…** option.
-   The sort selection menu appears in the **Quick Pick** field.
-2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **Quick Pick** menu.
+   The sort selection menu appears in the **picker** field.
+2. To change the sorting direction, select the **Sort Direction** option and select a direction type from the **picker** menu.
 3. Select a sort type from the list of available options:
    - **Name**
    - **Date Modified**
@@ -253,7 +247,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
 1. Expand **DATA SETS** in the **Side Bar**.
 2. Right-click a data set and select the **Allocate Like (New File with Same Attributes)** option.
-3. Enter the new data set name in the **input box** and press `Enter`.
+3. Enter the new data set name in the **picker** field and press `Enter`.
 
    ![Allocate Like](../images/ze/ZE-allocate.gif)
 
@@ -263,7 +257,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 2. Hover over the profile you want to search and click the **Search** icon.
-3. In the **Quick Pick** field, enter or select the path that you want as the root of your displayed tree and press `Enter`.
+3. In the **picker** field, enter or select the path that you want as the root of your displayed tree and press `Enter`.
    
    All child files and directories of that path display in the **Side Bar**.
 
@@ -284,7 +278,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
 2. Select a USS file you want to rename.
 3. Right-click the USS file and select the **Rename USS file** option.
-4. In the **input box**, change the name of the USS file and press `Enter`.
+4. In the **picker** field, change the name of the USS file and press `Enter`.
 
 ### Downloading, editing, and uploading existing USS files
 
@@ -307,7 +301,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 
 2. Right-click the directory where you want to add the new directory.
-3. Select the **Create Directory** option and enter the directory name in the **input box**.
+3. Select the **Create Directory** option and enter the directory name in the **picker** field.
 4. Press `Enter` to create the directory.
 
 #### Creating a file
@@ -315,7 +309,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**.
 
 2. Right-click the directory to which you want to add the new file.
-3. Select the **Create File** option and enter the file name in the **input box**.
+3. Select the **Create File** option and enter the file name in the **picker** field.
 4. Press `Enter` to create the file.
 
 #### Deleting a file
@@ -336,7 +330,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 ### Viewing and accessing multiple USS profiles simultaneously
 
 1. Expand **UNIX SYSTEM SERVICES (USS)** in the **Side Bar**, and click the **+** icon.
-2. Select or enter a profile in the **Quick Pick** drop-down menu to add it to the **Side Bar**.
+2. Select or enter a profile in the **picker** drop-down menu to add it to the **Side Bar**.
 
    ![View Profiles](../images/ze/ZE-profile2.gif)
 
@@ -366,7 +360,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
    Alternatively, press the `F1` key to open the **Command Pallette**, then select the **Zowe Expolorer: Issue MVS Command** option.
 
-3. In the **Quick Pick** field, enter a new command or select a saved command.
+3. In the **picker** field, enter a new command or select a saved command.
 4. Press `Enter` to execute the command.
 
    ![Issue a MVS command](../images/ze/ZE-Jobs-Issue-TSO-Command.gif)
@@ -378,7 +372,7 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
    Alternatively, press the `F1` key to open the **Command Pallette**, then select the **Zowe Explorer: Issue TSO Command** option.
 
-3. In the **Quick Pick** field, enter a new command or select a saved command.
+3. In the **picker** field, enter a new command or select a saved command.
 4. Press `Enter` to execute the command.
 
    The output displays in the **Output** panel.

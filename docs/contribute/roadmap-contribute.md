@@ -52,8 +52,8 @@ Check out the contribution guidelines for different components and squads to lea
   - [Zowe Application Framework](https://github.com/zowe/zlux)  
   - [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode/blob/master/CONTRIBUTING.md)
   - [Zowe Client SDKs](https://github.com/zowe/zowe-cli/blob/master/docs/SDKGuidelines.md)
-  - [Zowe Explorer plug-in for IntelliJ IDEA](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
-  - [Zowe Docs](./contributing.md)
+  - [Zowe IntelliJ plug-in](https://github.com/zowe/zowe-explorer-intellij/blob/main/CONTRIBUTING.md)
+  - [Zowe Docs](./contributing)
   
 ## Promote Zowe
 
@@ -62,6 +62,6 @@ Check out the contribution guidelines for different components and squads to lea
 
 ## Helpful resources
 
-- [General code guidelines](./guidelines-code/categories.md)
-- [UI guidelines](./guidelines-ui/ui.md)
-- [Zowe learning resources](../getting-started/zowe-resources.md)
+- [General code guidelines](./guidelines-code/categories)
+- [UI guidelines](./guidelines-ui/ui)
+- [Zowe learning resources](../getting-started/zowe-resources)

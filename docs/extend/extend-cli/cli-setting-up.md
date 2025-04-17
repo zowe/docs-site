@@ -2,39 +2,46 @@
 Before you follow the development tutorials for creating a Zowe&trade; CLI plug-in, follow these steps to set up your environment.
 
 ## Prerequisites
-[Install Zowe CLI](../../user-guide/cli-installcli.md).
+[Install Zowe CLI](../../user-guide/cli-installcli#methods-to-install-zowe-cli).
 
 ## Initial setup
+To create your development space, clone and build [zowe-cli-sample-plugin](https://github.com/zowe/zowe-cli-sample-plugin/#zowe-cli-sample-plug-in) from source.
 
-### Clone and build your project
+Before you clone the repository, create a local development folder named `zowe-tutorial`. You will clone and build all projects in this folder.
 
-1. Create a local development folder named `zowe-tutorial` to clone and build all projects in this folder.
+## Branches
 
-2. Clone [`zowe-cli-sample-plugin`](https://github.com/zowe/zowe-cli-sample-plugin/#zowe-cli-sample-plug-in) and build from source.
+There are two branches in the repository that correspond to different Zowe CLI versions. You can develop two branches of your plug-in so that users can install your plug-in into `@latest` or `@zowe-v2-lts` CLI. Developing for both versions will let you take advantage of new core features quickly and expose your plug-in to a wider range of users.
 
-    Clone the repository into your development folder to match the following structure:
-    ```
-    zowe-tutorial
-    └── zowe-cli-sample-plugin
-    ```
+The `master` branch of Sample Plug-in is compatible with the `@zowe-v2-lts` version of core CLI (Zowe LTS release).
 
-    1. Open a terminal and enter `cd zowe-tutorial` to change directory into your `zowe-tutorial` folder.
-    2. Enter `git clone https://github.com/zowe/zowe-cli-sample-plugin` to clone the `zowe-cli-sample-plugin` repository.
-    3. Enter `cd zowe-cli-sample-plugin` to change directory into your `zowe-cli-sample-plugin` folder.
-    4. Enter `npm install` to install all dependencies and modules for the project.
-    5. Enter `npm run build` to create a production build.
+The `master` branch of Sample Plug-in is also compatible with the `@latest` version of core CLI (Zowe Active Development release) at this time.
 
-### Optional step: Run automated tests
+For more information about the versioning scheme, see [Maintainer Versioning](https://github.com/zowe/zowe-cli/blob/master/docs/MaintainerVersioning.md) in the Zowe CLI repository.
 
-We recommend running automated tests on all code changes.
+### Clone zowe-cli-sample-plugin and build from source
+Clone the repository into your development folder to match the following structure:
+```
+zowe-tutorial
+└── zowe-cli-sample-plugin
+```
+**Follow these steps:**
 
-To run automated tests:
+1. `cd` to your `zowe-tutorial` folder.
+2. `git clone https://github.com/zowe/zowe-cli-sample-plugin`
+3. `cd` to your `zowe-cli-sample-plugin` folder.
+4. `git checkout master`
+5. `npm install`
+6. `npm run build`
 
-1. Use Visual Studio Code or your file explorer to copy the content in the `example_properties.yaml` file to the `custom_properties.yaml` file.
-2. Use a text editor to edit the properties within `custom_properties.yaml` to contain valid system information for your site.
-3. In a terminal, enter `cd zowe-cli-sample-plugin`  to change directory into your `zowe-cli-sample-plugin` folder.
-4. Enter `npm run test` to run the automated test.
+### (Optional) Run the automated tests
+We recommend running automated tests on all code changes. Follow these steps:
+
+1. `cd` to the `__tests__/__resources__/properties` folder.
+2. Copy `example_properties.yaml` to `custom_properties.yaml`.
+3. Edit the properties within `custom_properties.yaml` to contain valid system information for your site.
+4. `cd` to your `zowe-cli-sample-plugin` folder
+5. `npm run test`
 
 ## Next steps
-
 After you complete your setup, follow the [Installing the sample plug-in](cli-installing-sample-plugin.md) tutorial to install this sample plug-in to Zowe CLI.

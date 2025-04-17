@@ -1,8 +1,5 @@
 # Initializing Zowe security configurations
 
-
-<!-- The content from this article has been added to Configuring security. This file will be deprecated after this Pull Request is reviewed. -->
-
 This security configuration step is required for first time setup of Zowe. If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, and the `zwe init security` subcommand successfully ran when initializing the z/OS subsystem, you can skip this step unless told otherwise in the release documentation.
 
 :::info Required roles: system programmer, security administrator
@@ -36,10 +33,10 @@ Specify the parameter `--security-dry-run` to construct a JCL member containing 
 >> Run Zowe security configurations
 
 Modify ZWESECUR
-- IBMUSER.ZWEV3.CUST.JCLLIB(ZW134428) is prepared
+- IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
 
 Dry-run mode, security setup is NOT performed on the system.
-Please submit IBMUSER.ZWEV3.CUST.JCLLIB(ZW134428) manually.
+Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
 >> Zowe security configurations are applied successfully.
 
 #>

@@ -14,7 +14,7 @@ Not all components may have been started. Which components have been started dep
 * If you set `enabled` to be `true` for `app-server` and `zss`, the Zowe Application Framework (Zowe desktop) are started.
 * Configurations that use containerization may only have `ZSS` started.
 
-For more information, see [YAML configurations - components](../appendix/zowe-yaml-configuration.md#yaml-configurations---components).
+For more information, see [YAML configurations - components](../appendix/zowe-yaml-configuration#yaml-configurations---components).
 :::
 
 ## Verifying Zowe Application Framework installation
@@ -28,7 +28,7 @@ where:
 - **_myHost_**  
 is the host on which you installed the Zowe Application Server.
 - **_httpsPort_**  
-is the port number value `components.app-server.port` in `zowe.yaml`. For more information, see [Configure component app-server](../appendix/zowe-yaml-configuration.md#configure-component-app-server).
+is the port number value `components.app-server.port` in `zowe.yaml`. For more information, see [Configure component app-server](../appendix/zowe-yaml-configuration#configure-component-app-server).
 
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `components.app-server.port` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
 
@@ -48,7 +48,7 @@ where:
 - **_myHost_**  
 is the host on which you installed the Zowe API Mediation Layer.
 - **_httpsPort_**  
-is the port number value `zowe.externalPort` in `zowe.yaml`. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration.md#domain-and-port-to-access-zowe).
+is the port number value `zowe.externalPort` in `zowe.yaml`. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration#domain-and-port-to-access-zowe).
 
 **Example:**
 
@@ -71,15 +71,15 @@ The response `UP` confirms that API Mediation Layer is installed and is running 
 
 Zowe z/OS services usually are registered with Zowe API ML Discovery and exposed with a certain service url like `/<service>/api/v1`.
 
-To verify a service is necessary to call any available endpoint, for example:
+Here we give an example of verifying `jobs-api` shipped with Zowe. Please be aware that `jobs-api` is not enabled by default if you created your Zowe configuration file from `example-zowe.yaml`. To enable `jobs-api`, you need to set `components.jobs-api.enabled` to be `true` and restart Zowe. You can verify the installation of `jobs-api` service from an internet browser by entering the following case-sensitive URL:
 
 ```
-https://hostName:gatewayPort/serviceId/api/v1/version
+https://hostName:gatewayPort/jobs/api/v1/jobs?prefix=*
 ```
 
 where: 
 
 * **`gatewayPort`**  
-is the port number that is assigned to `zowe.externalPort` in the `zowe.yaml` file used to launch Zowe. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration.md#domain-and-port-to-access-zowe).
+is the port number that is assigned to `zowe.externalPort` in the `zowe.yaml` file used to launch Zowe. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration#domain-and-port-to-access-zowe).
 
-The path `serviceId/api/v1/version` depends on a specific service. You can also use API Catalog to verify a registered service.
+The above link should prompt you to login. After you input correct user name and password of your target z/OS system, you should see JSON format data of all jobs running on the system.

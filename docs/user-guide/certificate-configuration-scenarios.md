@@ -7,7 +7,7 @@
 :::
 
 :::tip 
-To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through questions that lead to a specific configuration scenario presented in this article.
+To assist you with determining the specific certificate configuration scenario that applies to your use case, see [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md). This questionnaire guides you through quetions that lead to a specific configuration scenario presented in this article.
 :::
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
@@ -272,26 +272,22 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
   
    ```
    certificate:
-   #Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
      type: JCERACFKS
-     createZosmfTrust: true
      keyring:
-     #**COMMONLY_CUSTOMIZED**
-     #Keystore directory
        name: ZoweKeyring
-       label: localhost
-       caLabel: localca
-     dname:
-       caCommonName: "Zowe Instances CA"
-       commonName: "Zowe Service"
-       org: "My Company"
-       locality: "Prague"
-       state: "Prague"
-       country: "CZ"
-     validity: 3650
-     san:
-       - system.my-company.com
-       - 12.34.56.78
+         label: localhost
+         caLabel: local_ca
+       dname:
+         caCommonName: "Zowe Instances CA"
+         commonName: "Zowe Service"
+         org: "My Company"
+         locality: "Prague"
+         state: "Prague"
+         country: "CZ"
+       validity: 3650
+       san:
+         - system.my-company.com
+         - 12.34.56.78
    ```
 Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
 

@@ -23,7 +23,7 @@ The value in milliseconds that specifies a period in which API ML should establi
   :::
 
 * **customMetadata.apiml.readTimeout**  
-The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API ML Gateway service configuration is used.
+The value in milliseconds that specifies the time of inactivity between two packets in response from this service to API ML. If omitted, the default value specified in the API MLGateway service configuration is used.
 
   :::note
   If you use the Spring enabler, use the following parameter name:  
@@ -31,7 +31,7 @@ The value in milliseconds that specifies the time of inactivity between two pack
   :::
 
 * **customMetadata.apiml.connectionManagerTimeout**  
-HttpClient employs the HTTP connection manager to manage access to HTTP connections. The purpose of an HTTP connection manager is to create new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, the HTTP connection manager works with managed connections which serve as proxies for real connections. `connectionManagerTimeout` specifies a period in which managed connections with API ML are to be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
+HttpClient employs a special entity to manage access to HTTP connections called by the HTTP connection manager. The purpose of an HTTP connection manager is to serve as a factory for new HTTP connections, to manage the life cycle of persistent connections, and to synchronize access to persistent connections. Internally, it works with managed connections which serve as proxies for real connections. `connectionManagerTimeout` specifies a period in which managed connections with API ML should be established. The value is in milliseconds. If omitted, the default value specified in the API ML Gateway service configuration is used.
 
   :::note
   If you use the Spring enabler, use the following parameter name:  
@@ -73,7 +73,7 @@ Specifies the Gateway port used by the ZAAS Client configuration. The default va
   :::
 
 * **customMetadata.apiml.corsAllowedOrigins**  
-Optionally, service can specify which origins are to be accepted by the Gateway during CORS handling. When this parameter is not set, the accepted origins are `*` by default. You can provide a comma-separated list of values to explicitly limit the accepted origins.
+Optionally, service can specify which origins will be accepted by Gateway during the CORS handling. When this parameter is not set, the accepted origins are `*` by default. You can provide a coma separated list of values to explicitly limit the accepted origins.
     
   :::note
   If you use the Spring enabler, use the following parameter name:
@@ -82,7 +82,7 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
 
   For more information, refer to enabling CORS with Custom Metadata on the Gateway: [Customizing Cross-Origin Resource Sharing (CORS)](../../user-guide/api-mediation/configuration-cors.md).
   
-   * **customMetadata.apiml.lb.type**  
+ * **customMetadata.apiml.lb.type**  
  This parameter is part of the load balancing configuration for the Deterministic Routing capability. Through this parameter, the service can specify which load balancing schema the service requires. If this parameter is not specified, the service is routed using the basic round robin schema. This parameter can be set to the following values:
    
   * **`headerRequest`**  
@@ -104,18 +104,6 @@ Optionally, service can specify which origins are to be accepted by the Gateway 
 
 * **customMetadata.apiml.lb.cacheRecordExpirationTimeInHours**  
 When the property `customMetadata.apiml.lb.type` is set to `authentication`, the user can also define the expiration time for the selected instance information that is cached. This property aims to prevent any discrepancy which might occur if the required target server is no longer available. The default value is 8 hours.   
-
-* **customMetadata.apiml.gateway.applyRateLimiterFilter**  
-  When this parameter is set to `true`, the rate limiter is applied to the request for this service. When enabling this filter, you can also define the following properties:
-  * `customMetadata.apiml.gateway.rateLimiterCapacity`  
-  Defines the total number of requests that can be allowed at one time per user
-  * `customMetadata.apiml.gateway.rateLimiterTokens`  
-  Defines the number of requests that are added to the service’s allowance at regular intervals
-  * `customMetadata.apiml.gateway.rateLimiterRefillDuration`  
-  Sets the time interval (in minutes) at which new requests (or tokens) are added.
-
-  When no values are provided, global values defined in the Gateway are applied. For more information about the default configuration, see [Customizing gateway rate limiter filer](../../user-guide/api-mediation/customizing-gateway-rate-limiter.md).
-
 
 * **customMetadata.apiml.response.compress**  
 When this parameter is set to `true`, API ML compresses content for all responses from this services using GZIP. API ML also adds the `Content-Encoding` header with value `gzip` to responses.

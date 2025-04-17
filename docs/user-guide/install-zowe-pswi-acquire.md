@@ -21,20 +21,20 @@ To acquire the portable software instance, you can download it from the Zowe Dow
 
 1. Go to [Zowe Downloads](https://www.zowe.org/download.html) and find **Zowe - Portable Software Instance**.
 2. Download the latest version of the package to your workstation.
-3. Use a file transfer utility such as an FTP client to transfer the single pax file to the mainframe.
-4. Execute the JCL to unpack the installation file and restore the individual pax files. 
+3. Use an file transfer utility such as an FTP client to transfer the single pax file to the mainframe.
+4. Execute the JCL to unpack the installation file and restore the individual pax files.
 
 **Sample JCL:**
 
-    ```jcl
-        //USSBATCH EXEC PGM=BPXBATCH
-        //STDOUT DD SYSOUT=*
-        //STDERR DD SYSOUT=*
-        //STDPARM DD *
-        sh cd /yourUSSpaxdirectory/;
-        pax -rvf yourpaxfilename.ZOSMF.pax.Z
-        /*
-    ```
+```jcl
+    //USSBATCH EXEC PGM=BPXBATCH
+    //STDOUT DD SYSOUT=*
+    //STDERR DD SYSOUT=*
+    //STDPARM DD *
+    sh cd /yourUSSpaxdirectory/;
+    pax -rvf yourpaxfilename.ZOSMF.pax.Z
+    /*
+```
 
 5. Customize the sample JCL as follows and then submit for execution:
 
@@ -62,4 +62,4 @@ After you have acquired and downloaded the portable software instance to a local
 6. Enter a name for the new portable software instance. You can also enter an optional description and assign one or more categories that display existing packages.
 7. Select **OK**.
 
-The new portable software instance is now defined to z/OSMF, and the portable software instance is registered in z/OSMF and ready to install (deploy).
+The new portable software instance is now defined to z/OSMF. The portable software instance is registered in z/OSMF and ready to install (deploy).

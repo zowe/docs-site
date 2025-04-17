@@ -1,4 +1,14 @@
-# Zowe V3 FAQs
+# Zowe V3 Frequently Asked Questions
+
+## General questions
+
+1. When will Zowe V3 be released?
+  
+   Zowe V3 is scheduled to be released on Sept. 28, 2024. Any changes to the plan will be communicated via all available channels.
+
+2. When will Zowe V3 be available for preview?
+  
+   Currently, Zowe V3 pre-release versions are available for the PAX, Zowe CLI, Zowe Client Node.js SDKs, Zowe Explorer for Visual Studio Code, and the Zowe IntelliJ Plug-in.
 
 ## Extender questions
 
@@ -6,11 +16,11 @@
 
 1. Do we need to move away from PassTickets as the method of authentication to the API Mediation Layer?
     
-   No, we will continue to support PassTickets. However, PassTickets are deprecated in Zowe V3, and are no longer recommended due to the inefficiency of configuration wherein users must configure a PassTicket for every service that uses them. 
+   No, we will continue to support PassTickets. However, PassTickets will be deprecated in Zowe V3, and are no longer recommended due to the inefficiency of configuration wherein users must configure a PassTicket for every service that uses them. 
 
 2. With the introduction of the new cloud gateway, how is the configuration going to change?
 
-   The cloud gateway configuration for V3 has moved to the currently used gateway configuration space (For example, `components.gateway`). The configuration that was Zuul specific has been removed and replaced with the Spring Cloud Gateway configuration.
+   The cloud gateway configuration for V3 will move to the currently used gateway configuration space (For example, `components.gateway`).The configuration that was Zuul specific will be removed and replaced with the Spring Cloud Gateway configuration.
 
 3. How does client certificate authentication work in Zowe V3?
 
@@ -18,7 +28,7 @@
 
 4. Will you identify deprecated functionality such as PassTickets?
 
-   PassTickets will be deprecated in V3, but PassTickets will still be supported, possibly even through to Zowe V4.
+   PassTickets will be deprecated in V3, but they will still be supported, possibly even through to Zowe V4.
 
    We plan to identify all deprecated functionality. We will announce how this functionality will be identified in the near future.
 
@@ -38,7 +48,7 @@
 
 2. Will the APIs that Zowe CLI provides for extenders remain the same?
 
-   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://drive.google.com/file/d/1wbxR-vuXT98XQ4mDb1DyDzQRcCDt5HlU/view?usp=sharing) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
+   In broad terms, yes. However, some of the functionality that was available in Zowe V2 has been changed (or removed). The changes are included in the [Zowe CLI](https://ibm.ent.box.com/s/vqu92d82b4wk0i6fupo8glbrxvufn4zw) and [Imperative](https://github.com/zowe/imperative/issues/970) lists of breaking changes.
 
 ### Zowe Application Framework, ZSS
 
@@ -46,35 +56,35 @@
 
    No. ZSS runs in either 31-bit or 64-bit mode, which means it can accommodate only one type of plug-in.
 
-2. Have the versions of libraries used in the Desktop changed?
+2. Are Angular and Webpack updated to the latest current versions?
 
-   In Zowe V3, the Application Framework uses Angular 18 with associated libraries such as webpack 5.
+   In Zowe V3, the Application Framework uses Angular 16 and Webpack 5, which are the latest current releases.
 
 3. What _React_ versions are supported by Zowe Desktop?
 
-   Zowe v3's React compatibility has not changed. It is possible for Desktop extensions to use different versions of _React_. While the Desktop is not built on _React_, it is still compatible with extensions that import _React_.
+   It is possible for Desktop extensions to use different versions of _React_. While the Desktop is not built on _React_, it is still compatible with extensions that import _React_.
+
+4. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
+
+   The Zowe Server Install Wizard runs on a laptop/desktop and connects to z/OS via standard methods.
+
+5. Is it possible to validate and change the `zowe.yaml` file and job definition within the Zowe Server Install Wizard?
+
+   Yes.
 
 ### Zowe System Installation and Configuration
 
 1. Does Zowe provide a Software Bill of Materials (SBOM)?
 
    SBOMs are available in the SPDX format from the [Bill of Materials](https://docs.zowe.org/stable/appendix/bill-of-materials/) page on Zowe Docs.
-  
-2. Is the Zowe Server Install Wizard application running on Zowe Desktop or on z/OS?
-
-   The Zowe Server Install Wizard runs on a laptop/desktop and connects to z/OS via standard methods.
-
-3. Is it possible to validate and change the `zowe.yaml` file and job definition within the Zowe Server Install Wizard?
-
-   Yes.
 
 ## User questions
 
 ### Zowe API Mediation Layer
 
-1. Does Zowe V3 API ML support clients with the V2 onboarding enabler?
+1. Will Zowe V3 API ML support clients with the V2 onboarding enabler?
 
-   The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 continue to work with Zowe V2 API ML.
+   The API ML in Zowe V3 supports clients with onboarding enablers from Zowe V2. It also works the other way around: The onboarding enablers from Zowe V3 will continue working with Zowe V2 API ML.
 
 2. The jump to Java 17 means that we have to maintain two separate versions of our application, one with apiml-enabler V2 and one with V3, to support customers who want to stay with Java 8. Do you have a recommendation or a workaround for supporting both Java versions?
 

@@ -23,13 +23,7 @@ This plugin has command errors. No plugin commands will be available.
 
 Use one of the following workarounds:
 
-For Zowe v3 LTS DB2 Plug-in versions 6.1.0 and above, run the following command before installing the DB2 Plug-in:
-
-```
-export npm_config_clidriver=v11.5.9
-```
-
-For Zowe v2 LTS, and Zowe v3 LTS DB2 Plug-in versions prior to 6.1.0, run the following command before installing the DB2 Plug-in:
+For Zowe v2 LTS DB2 Plug-in versions prior to 6.1.0, run the following command before installing the DB2 Plug-in:
 
 ```
 export IBM_DB_INSTALLER_URL=https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/v11.5.9 

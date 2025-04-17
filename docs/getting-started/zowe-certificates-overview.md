@@ -2,17 +2,12 @@
 
 In order to leverage certificates in Zowe, it is useful to review the key concepts of digital certificates-based security and how Zowe implements this technology.
 
-- [Zowe Certificates overview](#zowe-certificates-overview)
-  - [Digital certificates definition](#digital-certificates-definition)
-  - [Digital certificates usage](#digital-certificates-usage)
-  - [Public key infrastructure](#public-key-infrastructure)
-  - [Transport Layer Security](#transport-layer-security)
-  - [Digital certificates types](#digital-certificates-types)
-  - [Certificates storage](#certificates-storage)
-    - [Keystore and Truststore](#keystore-and-truststore)
-      - [Keystores](#keystores)
-      - [Truststores](#truststores)
-    - [SAF Keyring](#saf-keyring)
+- [Digital certificates definition](#digital-certificates-definition)
+- [Digital certificates usage](#digital-certificates-usage)
+- [PKI (Public Key Infrastructure)](#public-key-infrastructure)
+- [Transport Layer Security (TLS)](#transport-layer-security)
+- [Digital certificates types](#digital-certificates-types)
+- [Certificates storage](#certificates-storage)
 
 ## Digital certificates definition
 A Digital Certificate is an electronic file that is tied to a cryptographic (public and private) key pair and authenticates the identity of a website, individual, organization, user, device or server.
@@ -83,7 +78,7 @@ as well as between client applications and Zowe server components.
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 :::note
-When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation. For more information, see [Configuring AT-TLS for Zowe server](../user-guide/configuring-at-tls-for-zowe-server.md).
+When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation. For more information, see [Configuring AT-TLS for API Mediation Layer](../user-guide/api-mediation/configuration-at-tls.md).
 :::
 
 ## Digital certificates types

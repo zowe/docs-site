@@ -12,7 +12,7 @@ For initial tasks to be performed by the security administrator before Zowe serv
 
 ## Validate and re-run `zwe init` commands
 
-During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail without sufficient user authorization. 
+During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail. Consult with your security administrator to review your `ZWESECUR` job content so that your security adminstrator can re-submit this JCL.
 
 ## Initialize Zowe security configurations
 
@@ -41,14 +41,11 @@ To avoid having to run the `init security` command, you can specify the paramete
 #>zwe init security -c ./zowe.yaml --security-dry-run
 -------------------------------------------------------------------------------
 >> Run Zowe security configurations
-
 Modify ZWESECUR
 - IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) is prepared
-
 Dry-run mode, security setup is NOT performed on the system.
 Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
 >> Zowe security configurations are applied successfully.
-
 #>
 ```
 :::
@@ -59,7 +56,7 @@ Please submit IBMUSER.ZWEV2.CUST.JCLLIB(ZW134428) manually.
 
 <details>
 <summary>Click here to configure with `ZWESECUR` JCL.<!-- Validate if this method should be removed --> </summary>
- 
+
 
 **Configure with `ZWESECUR` JCL**
 
@@ -126,7 +123,7 @@ Depending on the specific Zowe server-side components that your organization is 
 |-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
 | If using Top Secret as your security manager <br/>**Note:** No specific configuration is necessary for security managers other than Top Secret. | [Configuring multi-user address space (for TSS only)](./configure-zos-system.md#configure-multi-user-address-space-for-tss-only)                                                                                                                                                                                                                               |                                   
 | High Availability                                                                                                                               | [Configuring ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](./configure-zos-system.md#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-acid)                                                                                                                                                             |
-| z/OSMF authentication or onboarding of z/OSMF service                                                                                           | [Granting users permission to access z/OSMF](./assign-security-permissions-to-users.md#granting-users-permission-to-access-zosmf)                                                                                                                                                                                                                                                                                 |
+| z/OSMF authentication or onboarding of z/OSMF service                                                                                           | [Granting users permission to access z/OSMF](./assign-security-permissions-to-users/#granting-users-permission-to-access-zosmf)                                                                                                                                                                                                                                                                                 |
 | ZSS component enabled (required for API ML certificate and identity mapping)                                                                    | [Configuring an ICSF cryptographic services environment](./configure-zos-system.md#configure-an-icsf-cryptographic-services-environment) <br />and<br /> [Configuring security environment switching](./configure-zos-system.md#configure-security-environment-switching)                                                                          |
 | API Mediation Layer certificate mapping                                                                                                         | [Configuring main Zowe server to use client certificate identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping)                                                                                                                                                                                     |
 | API Mediation Layer identity mapping                                                                                                            | [Configuring main Zowe server to use distributed identity mapping](./configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping)                                                                                                                                                                                                   |
@@ -134,6 +131,9 @@ Depending on the specific Zowe server-side components that your organization is 
 | Cross memory server (ZIS)                                                                                                                       | [Configuring the cross memory server for SAF](../user-guide/configure-zos-system.md#configure-the-cross-memory-server-for-saf)<br />and<br />[Configuring cross memory server load module](../user-guide/configure-xmem-server.md#load-module)<br />and<br />[Configuring cross-memory server SAF configuration](./configure-xmem-server.md#saf-configuration) |
 
 
-## Next steps
+## Next step
 
 After Zowe z/OS runtime is initialized, and you complete other procedures in the Configuring security section, the next step is [Configuring certificates](./configure-certificates.md).
+
+
+ 

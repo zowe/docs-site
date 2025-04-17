@@ -4,7 +4,7 @@ There are numerous ways you can use the API Mediation Layer. Review this topic a
 For information about the API versioning, see [API Catalog and Versioning](../../extend/extend-apiml/api-mediation-versioning.md).
 
 **Tip:** 
-For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `zowe.verifyCertificates: DISABLED`.  
+For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.  
 
 For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA.  
 
@@ -63,10 +63,11 @@ As an API developer, you can use the Caching Service as a storage solution to en
 
 There are various options for using the API Catalog:
 
-* [Viewing Service Information abd API Documentation in the API Catalog](../api-mediation-view-service-information-and-api-doc.md)
+* [Viewing Service Information abd API Documentation in the API Catalog](../api-mediation-view-service-information-and-api-doc)
 * [Changing an expired password via API Catalog](../api-mediation-change-password-via-catalog.md)
 
-### Additional use case when using API Mediation Layer
+### Additional use case when usig API Mediation Layer
 
+* [Using Metrics Service (Technical Preview)](../api-mediation-metrics-service.md)
 * [SMF records](./api-mediation-smf.md)
 

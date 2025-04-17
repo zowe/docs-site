@@ -7,8 +7,8 @@ Use this checklist to guide you through the installation and configuration of Zo
 | Task | Results | Time Estimate |  
 |----|-----------------------|---|
 | [Review the Zowe server-side installation overview](../user-guide/install-zos.md) | Knowledge about  the basic installation stages and the roles and responsibilities to perform the installation |    25 minutes   |                        
-| [Prepare for installation](./installandconfig.md)| Knowledge about the key-concepts in server-side installation |  25 minutes                    | 
-| Address pre-installation requirements | The following pre-installation requirements are addressed: <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OS](./systemrequirements-zos.md)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [Node.js](./install-nodejs-zos.md)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [security](./address-security-requirements.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [USS](./configure-uss.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [storage](./address-storage-requirements.md) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [network](./address-network-requirements.md)  <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF](../user-guide/systemrequirements-zos.md#zosmf-optional) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recommended for full functionality)<br />&nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF HA](../user-guide/zowe-ha-overview.md)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(required for production)            |  1 day                     | 
+| [Prepare for installation](./installandconfig)| Knowledge about the key-concepts in server-side installation |  25 minutes                    | 
+| Address pre-installation requirements | The following pre-installation requirements are addressed: <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OS](./systemrequirements-zos)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [Node.js](./install-nodejs-zos.md)   <br />&nbsp;&nbsp;&nbsp;&nbsp;* [security](./address-security-requirements) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [USS](./configure-uss) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [storage](./address-storage-requirements) <br />&nbsp;&nbsp;&nbsp;&nbsp;* [network](./address-network-requirements)  <br /> &nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF](../user-guide/systemrequirements-zos.md#zosmf-optional) <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(recommended for full functionality)<br />&nbsp;&nbsp;&nbsp;&nbsp;* [z/OSMF HA](../user-guide/zowe-ha-overview.md)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(required for production)            |  1 day                     | 
 
 ## Installing the Zowe z/OS runtime
 
@@ -16,7 +16,7 @@ Choose from the following installation options to install Zowe server-side compo
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe.md)** <br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))<br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi.md)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow.md)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**<br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
+|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
 
 ## Configuring Zowe z/OS Components 
 
@@ -24,7 +24,7 @@ Choose the following options to initialize  Zowe z/OS runtime:
 
 | Task | Results | Time Estimate |  
 |-----------------------|----|------|
-|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  <br /><br /> **Option 3: [Configure Zowe with JCL](../user-guide/configuring-zowe-via-jcl.md)** | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass.   | 1 hour 
+|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass. | 1 hour
 
 ## Configuring security
 
@@ -33,9 +33,9 @@ Configure Zowe and your z/OS system to run Zowe with z/OS.
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 |[Review Configuring security](./configuring-security.md) | Knowledge about which tasks need to be performed by the security administrator. | 10 minutes|
-[Initialize Zowe security configurations](./configuring-security.md#initialize-zowe-security-configurations) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
+[Initialize Zowe security configurations](./configuring-security.md) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
 [Perform APF authorization of load libraries](./apf-authorize-load-library.md) | APF authorization is granted to load libraries.  | 10 minutes  | 
-[Customize z/OS system security](./configure-zos-system.md) | Your z/OS and security product are configured.  | 2 hours  |
+[Address z/OS requirements for Zowe](./configure-zos-system.md) | Your z/OS and security product are configured.  | 2 hours  |
 [Assign security permissions to users](./assign-security-permissions-to-users.md) | Zowe user is created and is assigned all required permissions.  | 30 minutes |
 
 
@@ -68,7 +68,7 @@ You can configure your system to enable HA. This configuration is not required t
 | [Configure Sysplex for high availability](../user-guide/configure-sysplex.md) | The Parallel Sysplex environment is set up.  | 30 minutes | 
  [Configure z/OSMF for high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md)| The z/OSMF server is set up to provide continuous availability of REST services.  | 30 minutes | 
 [Configure the Caching Service for HA](../user-guide/configure-caching-service-ha.md)| State data persistent in HA mode is centralized.  | 30 minutes |
-[Define the `haInstances` section in your zowe.yaml](../appendix/zowe-yaml-configuration.md#yaml-configurations---hainstances)| A dedicated section for `haInstances` is created in your zowe.yaml file. | 30 minutes |
+[Define the `haInstances` section in your zowe.yaml](../appendix/zowe-yaml-configuration/#yaml-configurations---hainstances)| A dedicated section for `haInstances` is created in your zowe.yaml file. | 30 minutes |
 
 ## Starting and Stopping Zowe  
 

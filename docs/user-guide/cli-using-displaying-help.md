@@ -1,7 +1,6 @@
 # Displaying help
 
 Zowe CLI has a command-line help system that details the commands, actions, and options available in the product.
-
 ## Top-level help
 
 To view top-level help, open a command-line and issue the following command:
@@ -10,21 +9,15 @@ To view top-level help, open a command-line and issue the following command:
 zowe --help
 ```
 
-    - An example of the Zowe CLI response:
+![Issuing the help command](../images/guides/CLI/GetHelp.gif)
 
-        ![Issuing the help command](../images/guides/CLI/GetHelp.gif)
-
-Alternatively, to display a full list of all available commands:
+Alternatively, issue the following command to display a full list of all available commands:
 
 ```
 zowe --ac
 ```
 
-:::tip
-
-All Zowe CLI commands begin with `zowe`.
-
-:::
+**Tip:** All Zowe CLI commands begin with `zowe.`
 
 ## Group, action, and object help
 
@@ -36,9 +29,9 @@ For example, issue the following command to learn about the `create` action in t
 zowe zos-files create --help
 ```
 
-## Launching local web help
+## Launch local web help
 
-Launch an interactive form of help content in a web browser. When you issue the following command, web help is custom-generated to include commands for all of your currently installed plug-ins:
+Launch an interactive form of help in a web browser. When you issue the following command, web help is custom-generated to include commands for all of your *currently installed* plug-ins:
 
 ```
 zowe --help-web
@@ -49,16 +42,12 @@ Launching web help in browser...
 PS C:\Users\myName>
 ```
 
-:::tip
+**Tip:** Append `--help-web` to a specific command or action to launch directly into the appropriate web help page.
+## Viewing web help
 
-Append `--help-web` to a specific command or action to launch directly into the appropriate web help page.
+We provide you with several methods to view Zowe CLI web help. You can browse Zowe CLI web help online, download the web help in a ZIP file that contains the HTML, or download the web help in a PDF file.
 
-:::
-## Viewing web help in other ways
-
-There are several methods to view Zowe CLI web help:
-
-- <a href="/stable/web_help/index.html" target="_blank">Use a web browser</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Extract from a ZIP file</a>
-- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download a PDF file</a>
+- <a href="/v2.18.x/web_help/index.html" target="_blank">Browse Online</a>
+- <a href="/v2.18.x/zowe_web_help.zip" target="_blank">Download (ZIP)</a>
+- <a href="/v2.18.x/CLIReference_Zowe.pdf" target="_blank">Download (PDF)</a>
 

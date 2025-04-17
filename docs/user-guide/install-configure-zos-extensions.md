@@ -1,4 +1,4 @@
-# Server Component and Extension Management
+# Zowe server component and extension management
 
 This page covers how to install and manage Zowe server components or extensions by using `zwe components` commands.
  
@@ -34,8 +34,8 @@ More information such as parameters and examples can be found on the [`zwe compo
 
 ## Enable and disable component
 
-Each component and extension of Zowe can be enabled or disabled by changing the value of the `enabled` property of their object in the Zowe configuration YAML.
-For example, to enable or disable the API Catalog, set this value to `true` or `false` in the YAML:
+Each component and extension of Zowe can be enabled or disabled by changing the value of the "enabled" property of their object in the Zowe configuration YAML.
+For example, if you wish to enable or disable the API Catalog, it would be accomplished by setting this value in the YAML:
 
 ```yaml
 components:
@@ -62,7 +62,6 @@ You can save system resources by disabling the parts of Zowe that you do not use
 | API Mediation Layer | discovery | This server is used to register API services and track the health of them for use in the API Mediation Layer.
 | API Mediation Layer | gateway | The gateway unifies all the services of Zowe under one proxied server for improved security, management, and high availability.
 | API Mediation Layer | caching-service | The caching service is used to share state between different Zowe instances in a high availability topology.
-| API Mediation Layer | zaas | ZAAS provides authentication services used by the API Mediation Layer.
 | App Framework | app-server | The App server powers the Zowe Desktop accessible via web browsers.
 | App Framework | zss | Z Secure Services (ZSS) provides REST API services for file, dataset, and other z/OS content. Its APIs are used by apps in the Desktop, such as the the File Editor.
 
@@ -106,6 +105,8 @@ The Zowe runtime directory delivers its core components in the `<RUNTIME_DIR>/co
   /app-server
   /explorer-jes
   /explorer-mvs
+  /files-api
+  /jobs-api
   /...
 ```
 
