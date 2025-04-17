@@ -25,13 +25,26 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 
 Zowe consists of the following components:
 
-- [Zowe Launcher](#zowe-launcher)
-- [API Mediation Layer](#api-mediation-layer)
-- [Zowe Application Framework](#zowe-application-framework)
-- [Zowe CLI](#zowe-cli)
-- [Zowe Explorer](#zowe-explorer)
-- [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
-- [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
+- [Zowe overview](#zowe-overview)
+  - [Zowe demo video](#zowe-demo-video)
+  - [Component overview](#component-overview)
+    - [Zowe Launcher](#zowe-launcher)
+    - [API Mediation Layer](#api-mediation-layer)
+      - [Key features](#key-features)
+      - [API Mediation Layer structural architecture](#api-mediation-layer-structural-architecture)
+      - [Components](#components)
+      - [Onboarding APIs](#onboarding-apis)
+    - [Zowe Application Framework](#zowe-application-framework)
+    - [Zowe CLI](#zowe-cli)
+      - [Zowe CLI capabilities](#zowe-cli-capabilities)
+    - [Zowe Explorer](#zowe-explorer)
+    - [Zowe Client Software Development Kits (SDKs)](#zowe-client-software-development-kits-sdks)
+    - [Zowe Chat (Technical Preview)](#zowe-chat-technical-preview)
+      - [Zowe Chat key features](#zowe-chat-key-features)
+      - [Zowe Chat architecture](#zowe-chat-architecture)
+    - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
+    - [Zowe Explorer plug-in for IntelliJ IDEA](#zowe-explorer-plug-in-for-intellij-idea)
+  - [Zowe Bill of Materials](#zowe-bill-of-materials)
 
 ### Zowe Launcher
 
@@ -110,9 +123,11 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 to learn more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
-* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
-* [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
-* [Onboard an existing Python REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-python-enabler.md)
+* [Onboarding a Spring Boot based REST API service](../extend/extend-apiml/onboard-spring-boot-enabler.md)
+* [Onboarding a Micronaut based REST API service](../extend/extend-apiml/onboard-micronaut-enabler.md)
+* [Onboard an existing Node.js based REST API service](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Onboard an existing Python based REST API service](../extend/extend-apiml/onboard-python-enabler.md)
+* [Onboarding a REST of GraphQL API without code changes required](../extend/extend-apiml/onboard-static-definition.md)
 * [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).
