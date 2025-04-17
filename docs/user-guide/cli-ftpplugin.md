@@ -21,9 +21,9 @@ When transferring files, data sets, or data set members, use only ASCII characte
 
 For detailed documentation on commands, actions, and options available in this plug-in, see the Web Help. It is available for download in the following formats:
 
-- <a href="/stable/web_help/index.html" target="_blank">Browse the online Web Help</a>
-- <a href="/stable/zowe_web_help.zip" target="_blank">Download the ZIP file</a>
-- <a href="/stable/CLIReference_Zowe.pdf" target="_blank">Download the PDF document</a>
+- <a href="/v2.18.x/web_help/index.html" target="_blank">Browse the online Web Help</a>
+- <a href="/v2.18.x/zowe_web_help.zip" target="_blank">Download the ZIP file</a>
+- <a href="/v2.18.x/CLIReference_Zowe.pdf" target="_blank">Download the PDF document</a>
 
 ## Software requirements
 
