@@ -313,7 +313,7 @@ When mainframe services are routed through the API ML, users can log in to the A
 <summary></summary>
 
 - You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-using-understanding-core-command-groups).
+- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-using-understanding-core-command-groups.md).
 - If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
 
 </details>

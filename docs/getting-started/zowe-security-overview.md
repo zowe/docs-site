@@ -56,7 +56,7 @@ Zowe API ML implements a Single-Sign-On feature which allows users to authentica
 API ML uses multiple authentication methods - Basic Auth (username-password), OIDC/OAuth2, Client certificates and Personal Access Tokens with possibility of strengthening of the security by adding external Multi-Factor Authentication provider.
 
 **Next steps:**
-- For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication) article.    
+- For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication.md) article.    
 
 ## Access Authorization
 [Authorization](https://en.wikipedia.org/wiki/Authorization "Authorization refers to the mechanism of granting specific permissions to users for accessing particular resources or functions.") is the mechanism by which a security system grants or rejects access to protected resources.
@@ -65,14 +65,14 @@ Zowe fully relies on the SAF/ESM for control on the user access to mainframe res
 
 **Tip:**
 We recommend you review the core [Authorization](https://en.wikipedia.org/wiki/Authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
-related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
+related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary.md).
 
 ### SAF resource check
 In some cases Zowe API ML can check for the authorization of the user on certain endpoints even before the request is propagated to the target mainframe service.
 Access to a SAF resource is checked with the installed z/OS External Security Manager (ESM).
 
 **Next steps:**
-For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking).
+For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking.md).
 
 ## Additional resources
 For more information about getting started with certificates including determining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
