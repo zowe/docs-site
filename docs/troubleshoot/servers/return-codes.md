@@ -4,10 +4,10 @@ If one of the Zowe servers ends abnormally with a return code, then this return 
 
 Return codes that can arise from any of the servers due to the chain of events that start Zowe may be found in the following documentation:
 
-* [Zowe launcher error codes](../launcher/launcher-error-codes)
+* [Zowe launcher error codes](../launcher/launcher-error-codes.md)
 * The z/OS shell and programs called from the shell such as `cat`, `mkdir`, `node` or `java`:
     * Return codes ("errno"): https://www.ibm.com/docs/en/zos/2.5.0?topic=codes-return-errnos
     * Reason codes ("errnojr"): https://www.ibm.com/docs/en/zos/2.5.0?topic=codes-reason-errnojrs
-* `zwe` error codes are documented specific to each `zwe` subcommand visible within the `--help` option of `zwe` or [on the zwe reference page](../../appendix/zwe_server_command_reference/zwe/zwe). Searching for "ZWEL" plus your error code in the search bar of the documentation website will likely bring you to the appropriate page.
+* `zwe` error codes are documented specific to each `zwe` subcommand visible within the `--help` option of `zwe` or [on the zwe reference page](../../appendix/zwe_server_command_reference/zwe/zwe.md). Searching for "ZWEL" plus your error code in the search bar of the documentation website will likely bring you to the appropriate page.
 
 Error codes for the specific Zowe servers may be found in their own troubleshooting sections.

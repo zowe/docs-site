@@ -1,6 +1,6 @@
 # App-server Return Codes
 
-If the app-server abnormally ends with a return code, this may originate from the app-server itself or from the programs involved in starting the server. [Return codes from the startup process are documented here](../servers/return-codes), while the app-server specific codes are listed below.
+If the app-server abnormally ends with a return code, this may originate from the app-server itself or from the programs involved in starting the server. [Return codes from the startup process are documented here](../servers/return-codes.md), while the app-server specific codes are listed below.
 
 | Return code | Explanation |
 |-------------|-------------|

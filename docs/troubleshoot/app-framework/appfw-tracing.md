@@ -26,7 +26,7 @@ The Zowe YAML file section `components.app-server.logLevels` controls the verbos
 This includes core loggers, prefixed with `_zsf`, as well as plug-in loggers.
 
 A list of core loggers and their purpose is defined within [the App Server schema](https://github.com/zowe/zlux-app-server/blob/c22105381e129bd999c47e838b424679eba26aa6/schemas/app-server-config.json#L401)
-Loggers, plug-in loggers, and log levels (such as 5 for highest debugging, or 2 for default) are defined in detail in the [Logging document](../../extend/extend-desktop/mvd-logutility).
+Loggers, plug-in loggers, and log levels (such as 5 for highest debugging, or 2 for default) are defined in detail in the [Logging document](../../extend/extend-desktop/mvd-logutility.md).
 
 Attributes within `components.app-server.logLevels` can be exact names of loggers, or can be pattern matching of multiple loggers.
 

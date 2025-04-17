@@ -39,7 +39,7 @@ The Zowe desktop attempts to authenticate the credentials using the types that h
 
 **Solution:**
 
-This can be due to network disruption, a server not running, certificate issues, incorrect password, or a locked account. If the reason for failure isn't known, you should [gather information to contact support](../servers/must-gather)
+This can be due to network disruption, a server not running, certificate issues, incorrect password, or a locked account. If the reason for failure isn't known, you should [gather information to contact support](../servers/must-gather.md)
 
 Below are some additional, possible reasons for the failure:
 
@@ -120,7 +120,7 @@ There are three known problems that might cause this error.  The [Zowe architect
     ```
     ZIS status - Failure read failed ret code 1121 reason 0x76650446
     ```
-    If you are using AT/TLS, then the ```components.app-server.agent.http.attls=true``` statement might be missing from the server configuration file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration#configuring-zss-for-https).
+    If you are using AT/TLS, then the ```components.app-server.agent.http.attls=true``` statement might be missing from the server configuration file. For more information, see [Configuring Zowe App Server for HTTPS communication with ZSS](../../user-guide/mvd-configuration.md).
 
 
 ### Application Framework unable to communicate with zssServer
@@ -266,7 +266,7 @@ at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/shar
 
 Zowe's local CA certificate has its default name `ZoweCert`, and the Zowe Desktop hardcodes this certificate in the configuration scripts.
 
-If you are using your own trusted CA certificate in the keyring and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the Zowe configuration. For more information, see [Configuring certificates overview](../../user-guide/configure-certificates). 
+If you are using your own trusted CA certificate in the keyring and the name is different from the default one, this error will occur. To resolve the issue, you must match the names in the Zowe configuration. For more information, see [Configuring certificates overview](../../user-guide/configure-certificates.md). 
 
 If you are using Zowe's local CA certificate but it still reports **ZWED0148E**, you may find the following message in the same log.
 
