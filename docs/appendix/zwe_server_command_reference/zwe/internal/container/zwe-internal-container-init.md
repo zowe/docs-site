@@ -1,6 +1,6 @@
 # zwe internal container init
 
-[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [container](././zwe-internal-container) > [init](./zwe-internal-container-init)
+[zwe](./../.././zwe.md) > [internal](./.././zwe-internal.md) > [container](././zwe-internal-container.md) > [init](./zwe-internal-container-init.md)
 
 	zwe internal container init [parameter [parameter]...]
 

@@ -1,6 +1,6 @@
 # zwe init mvs
 
-[zwe](./.././zwe) > [init](././zwe-init) > [mvs](./zwe-init-mvs)
+[zwe](./.././zwe.md) > [init](././zwe-init.md) > [mvs](./zwe-init-mvs.md)
 
 	zwe init mvs [parameter [parameter]...]
 

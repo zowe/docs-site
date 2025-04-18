@@ -1,6 +1,6 @@
 # zos file list
 
-**[zos](../../zos-article) > [file](../file-article) > [list](list-article)**
+**[zos](../../zos-article.md) > [file](../file-article.md) > [list](list-article.md)**
 
 ## Usage
 
@@ -10,6 +10,6 @@
 
 ## Objects
 
-- [status](zos-file-list-status)
+- [status](zos-file-list-status.md)
 
-- [mounts](zos-file-list-mounts)
+- [mounts](zos-file-list-mounts.md)

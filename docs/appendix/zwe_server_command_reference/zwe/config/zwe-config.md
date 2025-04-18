@@ -1,6 +1,6 @@
 # zwe config
 
-[zwe](.././zwe) > [config](./zwe-config)
+[zwe](.././zwe.md) > [config](./zwe-config.md)
 
 	zwe config [sub-command [sub-command]...] [parameter [parameter]...]
 

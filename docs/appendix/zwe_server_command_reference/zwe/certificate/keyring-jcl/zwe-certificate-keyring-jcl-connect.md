@@ -1,6 +1,6 @@
 # zwe certificate keyring-jcl connect
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [keyring-jcl](././zwe-certificate-keyring-jcl) > [connect](./zwe-certificate-keyring-jcl-connect)
+[zwe](./../.././zwe.md) > [certificate](./.././zwe-certificate.md) > [keyring-jcl](././zwe-certificate-keyring-jcl.md) > [connect](./zwe-certificate-keyring-jcl-connect.md)
 
 	zwe certificate keyring-jcl connect [parameter [parameter]...]
 

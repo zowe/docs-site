@@ -1,6 +1,6 @@
 # zwe components install extract
 
-[zwe](./../.././zwe) > [components](./.././zwe-components) > [install](././zwe-components-install) > [extract](./zwe-components-install-extract)
+[zwe](./../.././zwe.md) > [components](./.././zwe-components.md) > [install](././zwe-components-install.md) > [extract](./zwe-components-install-extract.md)
 
 	zwe components install extract [parameter [parameter]...]
 

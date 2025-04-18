@@ -1,6 +1,6 @@
 # `zos command issue`
 
-**[zos](../../zos-article) > [command](../command-article)**
+**[zos](../../zos-article.md) > [command](../command-article.md)**
 
 Issue z/OS commands.
 
@@ -10,4 +10,4 @@ Issue z/OS commands.
 
 ## Object
 
-- [console](zos-command-issue-console)
+- [console](zos-command-issue-console.md)

@@ -1,6 +1,6 @@
 # zwe diagnose
 
-[zwe](././zwe) > [diagnose](./zwe-diagnose)
+[zwe](././zwe.md) > [diagnose](./zwe-diagnose.md)
 
 	zwe diagnose [parameter [parameter]...]
 

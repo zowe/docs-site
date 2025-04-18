@@ -1,6 +1,6 @@
 # zos help list command
 
-**[zos](../../zos-article) > [help](../help-article) > [list](./list-article) > [command](zos-help-list-command)**
+**[zos](../../zos-article.md) > [help](../help-article.md) > [list](./list-article.md) > [command](zos-help-list-command.md)**
 
 List help information of the command.
 

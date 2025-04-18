@@ -1,6 +1,6 @@
 # zwe internal start prepare
 
-[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [start](././zwe-internal-start) > [prepare](./zwe-internal-start-prepare)
+[zwe](./../.././zwe.md) > [internal](./.././zwe-internal.md) > [start](././zwe-internal-start.md) > [prepare](./zwe-internal-start-prepare.md)
 
 	zwe internal start prepare [parameter [parameter]...]
 

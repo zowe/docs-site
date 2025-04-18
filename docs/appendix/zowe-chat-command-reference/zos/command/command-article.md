@@ -1,6 +1,6 @@
 # zos command
 
-**[zos](../zos-article) > [command](command-article)**
+**[zos](../zos-article.md) > [command](command-article.md)**
 
 Interact with z/OS command related services, including z/OSMF Console services, etc.
 
@@ -10,17 +10,17 @@ Interact with z/OS command related services, including z/OSMF Console services, 
 
 ## Action
 
-- [`issue`](./issue/issue-article)
+- [`issue`](./issue/issue-article.md)
 
 ## Positional Arguments
 
-- [zos command issue console](./issue/zos-command-issue-console#positional-arguments)
+- [zos command issue console](./issue/zos-command-issue-console.md#positional-arguments)
 
     - `commandString`
 
 ## Options
 
-- [zos command issue console](./issue/zos-command-issue-console#options)
+- [zos command issue console](./issue/zos-command-issue-console.md#options)
 
     | Full name  | Alias| Type |
     | :---- | :---- | :---- |

@@ -1,6 +1,6 @@
 # zwe init vsam
 
-[zwe](./.././zwe) > [init](././zwe-init) > [vsam](./zwe-init-vsam)
+[zwe](./.././zwe.md) > [init](././zwe-init.md) > [vsam](./zwe-init-vsam.md)
 
 	zwe init vsam [parameter [parameter]...]
 

@@ -1,6 +1,6 @@
 # zwe certificate keyring-jcl
 
-[zwe](../.././zwe) > [certificate](.././zwe-certificate) > [keyring-jcl](./zwe-certificate-keyring-jcl)
+[zwe](../.././zwe.md) > [certificate](.././zwe-certificate.md) > [keyring-jcl](./zwe-certificate-keyring-jcl.md)
 
 	zwe certificate keyring-jcl [sub-command [sub-command]...] [parameter [parameter]...]
 
