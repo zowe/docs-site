@@ -451,6 +451,7 @@ The following table alphabetically lists the common used words and their usage g
 
 Do  | Don't
 ---|---
+API ML (where appropriate) | The API ML
 application  | app
 data set | dataset (unless used in syntax)
 Capitalize "Server" when it's part of the product name |
