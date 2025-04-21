@@ -286,7 +286,7 @@ A started task ID used to run the PROCLIB ZWESISTC that launches the cross memor
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
+A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 ## Plug-ins and extensions
 
@@ -346,19 +346,19 @@ Enables interaction with Db2 for z/OS to perform tasks through Zowe CLI and inte
 
 #### Micronaut Enabler
 
-A guide which helps to simplify the process of onboarding a REST service with the API ML, using [Micronaut](https://micronaut.io/) and [Gradle](https://gradle.org/).
+A guide which helps to simplify the process of onboarding a REST service with API ML, using [Micronaut](https://micronaut.io/) and [Gradle](https://gradle.org/).
 
 #### Node.js Enabler
 
-An NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML.
+An NPM package which helps to simplify the process of onboarding a REST service written in Node.js with API ML.
 
 #### Plain Java Enabler (PJE)
 
-A library which helps to simplify the process of onboarding a REST service with the API ML, serving the needs of Java developers who are not using either Spring Boot, Spring Framework, or Spring Cloud Netflix.
+A library which helps to simplify the process of onboarding a REST service with API ML, serving the needs of Java developers who are not using either Spring Boot, Spring Framework, or Spring Cloud Netflix.
 
 #### Sprint Boot Enablers
 
-A collection of enablers which help to simplify the process of onboarding a REST service with the API ML using various versions of Spring framework.
+A collection of enablers which help to simplify the process of onboarding a REST service with API ML using various versions of Spring framework.
 
 ### Zowe Application Framework
 
