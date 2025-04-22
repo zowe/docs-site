@@ -1,6 +1,6 @@
 # zwe components uninstall
 
-[zwe](./.././zwe) > [components](././zwe-components) > [uninstall](./zwe-components-uninstall)
+[zwe](./.././zwe.md) > [components](././zwe-components.md) > [uninstall](./zwe-components-uninstall.md)
 
 	zwe components uninstall [parameter [parameter]...]
 
