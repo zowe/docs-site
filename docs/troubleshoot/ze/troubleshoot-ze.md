@@ -83,7 +83,7 @@ To avoid this, change the `logs` and `temp` folder locations:
 
     ![Logs folder write access error](../../images/troubleshoot/ZE/new-logs-folder-path.png)
 
-    - Log files include information about Zowe Explorer and connections it makes to the mainframe. These files can be used for troubleshooting and to analyze errors.
+    - Log files include information about Zowe Explorer and the connections it makes to the mainframe. These files can be used for troubleshooting and to analyze errors.
 
     <br/>`temp` folder setting:
 
