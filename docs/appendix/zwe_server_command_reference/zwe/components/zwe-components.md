@@ -1,6 +1,6 @@
 # zwe components
 
-[zwe](.././zwe) > [components](./zwe-components)
+[zwe](.././zwe.md) > [components](./zwe-components.md)
 
 	zwe components [sub-command [sub-command]...] [parameter [parameter]...]
 

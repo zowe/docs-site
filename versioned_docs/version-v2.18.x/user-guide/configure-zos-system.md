@@ -17,7 +17,7 @@ Before performing configuration steps specific to your use case, ensure that you
 | Set the names for the different z/OS UNIX address spaces for the Zowe runtime components. <br/>**Important:** This configuration step is required. | All components | [Configure address space job naming](#configure-address-space-job-naming) |
 | Required for TSS only. A TSS FACILITY needs to be defined and assigned to the `ZWESLSTC` started task. | All components | [Configure multi-user address space for TSS only](#configure-multi-user-address-space-for-tss-only) |
 | Required to manually create the user ID and groups in your z/OS environment. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md) | All components | [Configure user IDs and groups for the Zowe started tasks](#configure-user-ids-and-groups-for-the-zowe-started-tasks) |
-| Required to configure the started task ZWESLSTC to run under the correct user ID and group. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| All components | [Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-id). |
+| Required to configure the started task ZWESLSTC to run under the correct user ID and group. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| All components | [Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ID](#configure-zweslstc-to-run-zowe-high-availability-instances-under-zwesvusr-user-acid). |
 | To use multi-factor authentication (MFA) | All components | [Multi-Factor Authentication (MFA)](#multi-factor-authentication-mfa) |
 | Required for API Mediation Layer to map a client certificate to a z/OS identity. | API ML | [Configure main Zowe server to use client certificate identity mapping](#configure-main-zowe-server-to-use-client-certificate-identity-mapping) |
 | Required for API ML to map the association between a z/OS user ID and a distributed user identity. | API ML | [Configure main Zowe server to use distributed identity mapping](#configure-main-zowe-server-to-use-distributed-identity-mapping) |
@@ -33,7 +33,7 @@ Before performing configuration steps specific to your use case, ensure that you
 ### Configure address space job naming
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
 The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
@@ -61,7 +61,7 @@ For more information, see [Setting up the UNIX-related FACILITY and SURROGAT cla
 ### Configure multi-user address space (for TSS only)
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
 The Zowe server started task `ZWESLSTC` is multi-user address space, and therefore a TSS FACILITY needs to be defined and assigned to the started task. Then, all acids signing on to the started task will need to be authorized to the FACILITY.
@@ -92,7 +92,7 @@ TSS ADD(user_acid) FAC(ZOWE)
 ### Configure user IDs and groups for the Zowe started tasks
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
 Zowe requires a user ID `ZWESVUSR` to execute its main z/OS runtime started task. This user ID must have a valid OMVS segment.
@@ -244,7 +244,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
 ### Configure ZWESLSTC to run Zowe high availability instances under ZWESVUSR user ACID
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
 You need Zowe started task `ZWESLSTC` for Zowe high availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
@@ -295,7 +295,7 @@ TSS ADDTO(STC) PROCNAME(ZWESLSTC) ACID(ZWESVUSR)
 ### Multi-Factor Authentication (MFA)
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
 Multi-factor authentication is supported for several components, such as the Desktop and API Mediation Layer.
@@ -573,7 +573,7 @@ Zowe requires ACF2 APAR LU01316 to be applied when using the ACF2 security manag
 ### Configure security environment switching
 
 :::info
-This configuration is required for stand-alone installation of API Mediation Layer.
+This configuration is required for stand-alone installation of API Mediation Layer and also applies to the Application Framework.
 :::
     
 Typically, the user `ZWESVUSR` that the Zowe server started task runs under needs to be able to change the security environment of its process to allow API requests to be issued on behalf of the logged on TSO user ID, rather than the server's user ID.  This capability provides the functionality that allows users to log on to the Zowe desktop and use apps such as the File Editor to list data sets or USS files that the logged on user is authorized to view and edit, rather than the user ID running the Zowe server. This technique is known as **impersonation**.  
@@ -786,6 +786,10 @@ F ACF2,REBUILD(APL)
 
 ### Single Sign-On (SSO)
 
+:::info
+This configuration applies to all Zowe components.
+:::
+
 Zowe has an SSO scheme with the goal that each time you use multiple Zowe components you should only be prompted to login once. 
 
 **Requirements:**
@@ -793,6 +797,10 @@ Zowe has an SSO scheme with the goal that each time you use multiple Zowe compon
 - IBM z/OS Management Facility (z/OSMF)
 
 ### Configure signed SAF Identity tokens (IDT)
+
+:::info
+This configuration applies to API Mediation Layer and Application Framework.
+:::
 
 This section provides a brief description of how to configure SAF Identity tokens on z/OS so that they can be used by Zowe components like zss or API ML. See [Implement a new SAF IDT provider](../extend/extend-apiml/implement-new-saf-provider.md).
 
@@ -816,6 +824,10 @@ See **_Maintain Identity Token (IDT) Records_** subsection in _Administrating_ c
 A part of the Signed SAF Identity token configuration is a nontrivial step that has to generate a secret key for the PKCS#11 token. The secret key is generated in ICSF by calling the PKCS#11 Generate Secret Key (CSFPGSK) or Token Record Create (CSFPTRC) callable services. An example of the CSFPGSK callable service can be found in the SZWESAMP dataset as the ZWESECKG job.
 
 ### Configure an ICSF cryptographic services environment
+
+:::info
+This configuration applies to the Application Framework.
+:::
 
 The zssServer uses cookies that require random number generation for security. To learn more about the zssServer, see the [Zowe architecture](../getting-started/zowe-architecture.md#zss). Integrated Cryptographic Service Facility (ICSF) is a secure way to generate random numbers. 
 
@@ -915,6 +927,10 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 :::
 
 ### Configure the cross memory server for SAF
+
+:::info
+This configuration applies to the Application Framework.
+:::
 
 Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
 
