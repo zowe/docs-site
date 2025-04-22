@@ -1,6 +1,6 @@
 # zwe internal container prestop
 
-[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [container](././zwe-internal-container) > [prestop](./zwe-internal-container-prestop)
+[zwe](./../.././zwe.md) > [internal](./.././zwe-internal.md) > [container](././zwe-internal-container.md) > [prestop](./zwe-internal-container-prestop.md)
 
 	zwe internal container prestop [parameter [parameter]...]
 

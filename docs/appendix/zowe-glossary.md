@@ -5,7 +5,7 @@ This glossary is part of a growing list of terms and concepts used throughout th
 If there is a term you are looking for that is not included in this glossary that you think should be included, please send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
 :::note
-Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary).
+Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary.md).
 
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
@@ -300,7 +300,7 @@ Displays API services that have been discovered by the [API Mediation Layer](#zo
 
 #### 3270 Terminal
 
-An applicationin the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
+An application in the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
 
 #### File Tree
 
@@ -371,7 +371,7 @@ https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 
 #### App2App
 
-A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication).
+A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication.md).
 
 #### Config Service
 
