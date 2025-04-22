@@ -159,7 +159,7 @@ In the following configuration, nested profiles use the credentials from differe
 
 ### Accessing LPARs that access services through one API Mediation Layer
 
-In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile.
+In the following configuration, services are accessed through API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile.
 
 ```
 {
@@ -208,7 +208,7 @@ In the following configuration, services are accessed through the API ML (where 
 
 ### Accessing LPARs that access services through one API Mediation Layer using certificate authentication
 
-In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile.
+In the following configuration, services are accessed through API ML using certificate authentication stored in a base profile.
 
 ```
 {

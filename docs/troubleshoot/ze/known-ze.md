@@ -14,7 +14,7 @@ As a result, VS Code extensions like Zowe Explorer, Zowe Explorer CICS Extension
 
 Some Zowe Explorer users prefer to use certificates to access the API Mediation Layer. This can be the case in sites that use credentials such as passwords and multifactor authentication, which might only be valid for a short period of time. On the other hand, certificates can be valid for much longer.
 
-Zowe Explorer does not support authenticating to the API ML using client certificates. However, it is possible to use Zowe CLI to authenticate to the API ML using client certificates and receive a token that Zowe Explorer can use for API ML access.
+Zowe Explorer does not support authenticating to API ML using client certificates. However, it is possible to use Zowe CLI to authenticate to API ML using client certificates and receive a token that Zowe Explorer can use for API ML access.
 
 To use a client certificate to generate an API ML token:
 
@@ -36,7 +36,7 @@ To use a client certificate to generate an API ML token:
     
         Specifies the path to the PEM private certificate.
 
-    Zowe CLI procures a security token from the API ML and adds that token to the base profile in the applicable configuration file.
+    Zowe CLI procures a security token from API ML and adds that token to the base profile in the applicable configuration file.
 
 2. Open Zowe Explorer, or reload it if already open.
 
