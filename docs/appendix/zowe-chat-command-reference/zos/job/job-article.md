@@ -1,6 +1,6 @@
 # zos job
 
-**[zos](../zos-article) > [job](job-article)**
+**[zos](../zos-article.md) > [job](job-article.md)**
 
 Manage z/OS jobs.  <!--job-description-->
 
@@ -10,11 +10,11 @@ Manage z/OS jobs.  <!--job-description-->
 
 ## Action
 
-- [`list`](./list/list-article)
+- [`list`](./list/list-article.md)
 
 ## Positional Arguments
 
--  [zos job list status](./list/zos-job-list-status#positional-arguments)
+-  [zos job list status](./list/zos-job-list-status.md#positional-arguments)
 
     - `jobID`
 

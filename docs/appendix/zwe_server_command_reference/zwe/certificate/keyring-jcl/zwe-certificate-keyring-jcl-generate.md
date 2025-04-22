@@ -1,6 +1,6 @@
 # zwe certificate keyring-jcl generate
 
-[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [keyring-jcl](././zwe-certificate-keyring-jcl) > [generate](./zwe-certificate-keyring-jcl-generate)
+[zwe](./../.././zwe.md) > [certificate](./.././zwe-certificate.md) > [keyring-jcl](././zwe-certificate-keyring-jcl.md) > [generate](./zwe-certificate-keyring-jcl-generate.md)
 
 	zwe certificate keyring-jcl generate [parameter [parameter]...]
 
