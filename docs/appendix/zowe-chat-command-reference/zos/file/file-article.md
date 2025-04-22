@@ -1,6 +1,6 @@
 # `zos file`
 
-**[zos](.././zos-article) > [file](file-article)**
+**[zos](.././zos-article.md) > [file](file-article.md)**
 
 Manage USS files in a z/OS system. <!--file-description-->
 
@@ -12,27 +12,27 @@ Manage USS files in a z/OS system. <!--file-description-->
 
 ## Action
 
-- [`list`](./list/list-article)
+- [`list`](./list/list-article.md)
 
 ## Positional Argument
 
-- [zos file list status](./list/zos-file-list-status#positional-arguments)
+- [zos file list status](./list/zos-file-list-status.md#positional-arguments)
 
     - `fileName*`
 
-- [zos file list mounts](./list/zos-file-list-mounts#positional-arguments)
+- [zos file list mounts](./list/zos-file-list-mounts.md#positional-arguments)
 
     - `fileSystemName*`
 ## Option
 
-- [zos file list status](./list/zos-file-list-status#options)
+- [zos file list status](./list/zos-file-list-status.md#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
     | --path | -p | string |
     | --limit |  | number |
 
-- [zos file list mounts](./list/zos-file-list-mounts#options)
+- [zos file list mounts](./list/zos-file-list-mounts.md#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |

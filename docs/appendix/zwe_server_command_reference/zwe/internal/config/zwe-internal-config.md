@@ -1,6 +1,6 @@
 # zwe internal config
 
-[zwe](../.././zwe) > [internal](.././zwe-internal) > [config](./zwe-internal-config)
+[zwe](../.././zwe.md) > [internal](.././zwe-internal.md) > [config](./zwe-internal-config.md)
 
 	zwe internal config [sub-command [sub-command]...] [parameter [parameter]...]
 
