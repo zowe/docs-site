@@ -46,7 +46,7 @@ Provide your username and password to generate a token and log in to API ML:
 3. If you do not have a profile for the service, respond to Zowe CLI prompts for connection information to create a profile for the service.
 
     :::tip
-    - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-v2-profiles) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
+    - To establish a base path, see instructions for [Zowe V2 profiles](#specifying-a-base-path-with-zowe-team-configuration) or [Zowe V1 profiles](#specifying-a-base-path-with-zowe-v1-profiles).
     :::
 
     If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the applicable configuration file and replace the `port` property with a `basePath` property to enable the use of API ML.
@@ -318,5 +318,3 @@ To perform SSO for the first set of services, edit your configuration file so th
 To access the service that is *not* SSO-enabled, add the `basePath` property and value to that service profile and also include a secure array containing `user` and `password`. (The credentials are stored in your computer's secure vault.)
 
 This ensures that the request is routed to API ML, but `user` and `password` that you provide in the non-SSO service profile overrides the credentials in your base profile. This lets you sign in to the individual service.
-
-[def]: #specifying-a-base-path-with-zowe-v2-profiles
