@@ -26,7 +26,7 @@ Collect the following information to help diagnose the issue:
     - Issue the [Node.js and npm](../../troubleshoot/cli/use-individual-troubleshoot-commands.md#nodejs-and-npm) commands to get the version numbers.
 - List of environment variables in use.
 
-For instructions on using commands to collect this information, see [Gathering information to troubleshoot Zowe CLI](mustgather-cli.md) or [Using individual commands for troubleshooting](use-individual-troubleshoot-commands).
+For instructions on using commands to collect this information, see [Gathering information to troubleshoot Zowe CLI](mustgather-cli.md) or [Using individual commands for troubleshooting](use-individual-troubleshoot-commands.md).
 
 The following information is also useful to collect:
 
