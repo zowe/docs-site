@@ -58,7 +58,7 @@ After the configuration file is in place (by using either the `zowe config init`
 
 ## Creating team plug-in profiles
 
-After the `zowe.config.json` team configuration file is created and new plug-ins are installed, run the `zowe config init` (or `zowe config auto-init`, if using the API ML) command again to add the plug-in profiles to the configuration file.
+After the `zowe.config.json` team configuration file is created and new plug-ins are installed, run the `zowe config init` (or `zowe config auto-init`, if using API ML) command again to add the plug-in profiles to the configuration file.
 
 To create a team plug-in profile:
 
@@ -106,7 +106,7 @@ To create a team plug-in profile:
 
 You can use profiles to connect to the API Mediation Layer. This more efficient way to connect to the mainframe allows you to specify a host and port only once on a base profile instead of multiple host-and-port combinations across several service profiles.
 
-To set up the `zowe.config.json` file to automatically access the services that are registered to the API ML and support Single Sign-On:
+To set up the `zowe.config.json` file to automatically access the services that are registered to API ML and support Single Sign-On:
 
 1. Open a command line window and issue the following command:
 

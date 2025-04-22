@@ -10,7 +10,7 @@ To learn the authentication methods used for different services and their order 
 
 Service | Order of precedence
 |:--- |:--- |
-API Mediation Layer<br/><br/> **Note**: To avoid errors, update profiles for services routed<br/> through the API ML to store base path instead of port number | 1. username, password<br/> 2. API ML token<br/> 3. PEM certificate |
+API Mediation Layer<br/><br/> **Note**: To avoid errors, update profiles for services routed<br/> through API ML to store base path instead of port number | 1. username, password<br/> 2. API ML token<br/> 3. PEM certificate |
 Db2, <br/> FTP,<br/> most other services | username, password
 SSH | 1. SSH key<br/> 2. username, password
  ZOSMF<br/> direct connection | 1. username, password<br/> 2. PEM certificate
