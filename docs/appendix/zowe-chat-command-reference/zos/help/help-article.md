@@ -1,6 +1,6 @@
 # `zos help`
 
-**[zos](.././zos-article) > [help](help-article)**
+**[zos](.././zos-article.md) > [help](help-article.md)**
 
 Show help information of commands.
 
@@ -12,11 +12,11 @@ Show help information of commands.
 
 ## Action
 
-- [`list`](./list/list-article)
+- [`list`](./list/list-article.md)
 
 ## Positional Arguments
 
-- [zos help list command](./list/zos-help-list-command#positional-arguments)
+- [zos help list command](./list/zos-help-list-command.md#positional-arguments)
 
     - `fileName`
 
