@@ -762,7 +762,7 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Plain Java Enabler",
+                  label: "Onboarding an API service with the Plain Java Enabler",
                   link: { type: "doc", id: "extend/extend-apiml/onboard-plain-java-enabler" },
                   items: [
                     "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",

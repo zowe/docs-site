@@ -1,9 +1,14 @@
-# Onboarding a REST or GraphQL API service with the Plain Java Enabler (PJE)
+# Onboarding an API service with the Plain Java Enabler (PJE)
 
-This article is part of a series of onboarding guides, which outline the process of onboarding REST or GraphQL API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a service with the API ML with the Zowe API Mediation Layer using our Plain Java Enabler (PJE). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
+This article is part of a series of onboarding guides, which outline the process of onboarding either REST or GraphQL API services to the Zowe API Mediation Layer (API ML). 
+
+:::info Role: API service developer
+:::
+
+REST or GraphQL API services can be onboarded to the API ML using the Plain Java Enabler (PJE). This enabler is built without a dependency on Spring Cloud, Spring Boot, or SpringFramework.
 
 :::tip
-For more information about onboarding API services with the API ML, see the [Onboarding Overview](onboard-overview.md).
+For more information about the range of option to onboard API services with API ML, see the [Onboarding Overview](onboard-overview.md).
 :::
 
 ## Introduction
@@ -31,30 +36,26 @@ the [Onboarding Overview](onboard-overview.md).
 
 The following steps outline the overall process to onboard a service with the API ML using the PJE. Each step is described in further detail in this article.
 
-1. [Prerequisites](#prerequisites)
-
-2. [Configuring your project](#configuring-your-project)
-
-    * [Gradle build automation system](#gradle-build-automation-system)
-    * [Maven build automation system](#maven-build-automation-system)
-
-3. [Configuring your service](#configuring-your-service)
-    * [Service identification](#service-identification)
-    * [Administrative endpoints](#administrative-endpoints)
-    * [API info](#api-info)
-    * [API routing information](#api-routing-information)
-    * [API Catalog information](#api-catalog-information)
-    * [Authentication parameters](#authentication-parameters)
-    * [API Security](#api-security)
-    * [SAF Keyring configuration](#saf-keyring-configuration)
-    * [Eureka Discovery Service](#eureka-discovery-service)
-
-4. [Registering your service with API ML](#registering-your-service-with-api-ml)
-
-5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-6. (Optional) [Troubleshooting](#troubleshooting)
-    * [Log messages during registration problems](#log-messages-during-registration-problems)
+- [Onboarding an API service with the Plain Java Enabler (PJE)](#onboarding-an-api-service-with-the-plain-java-enabler-pje)
+  - [Introduction](#introduction)
+  - [Onboarding your REST or GraphQL service with API ML](#onboarding-your-rest-or-graphql-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+    - [Service identification](#service-identification)
+    - [Administrative endpoints](#administrative-endpoints)
+    - [API info](#api-info)
+    - [API routing information](#api-routing-information)
+    - [Authentication parameters](#authentication-parameters)
+    - [API Security](#api-security)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Eureka Discovery Service](#eureka-discovery-service)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
 
@@ -81,7 +82,10 @@ You can use either the Zowe Artifactory or an artifactory of your choice. If you
 :::
 
 ### Gradle build automation system
-Use the following procedure to use _Gradle_ as your build automation system.
+
+<details>
+<summary>Click here for the procedure to use Gradle as your build automation system.</summary>
+
 
 **Follow these steps:**
 
@@ -114,9 +118,12 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
+</details>
+
 ### Maven build automation system
 
-Use the following procedure if you use _Maven_ as your build automation system.
+<details>
+<summary>Click here for the procedure to use Maven as your build automation system.</summary>
 
 **Follow these steps:**
 
@@ -146,6 +153,7 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 3. In the directory of your project, run the `mvn clean package` command to build the project.
 
+</details>
 
 ## Configuring your service
 
@@ -158,9 +166,13 @@ To externalize service onboarding configuration, see: [Externalizing onboarding 
 The following code snippet shows an example of `service-configuration.yml`. Some parameters which are specific for your service deployment
 are in `${parameterValue}` format. For your service configuration file, provide actual values or externalize your onboarding configuration.
 
-**Example:**
+**Examples:**
 
 **REST API**
+
+<details>
+<summary>Click here for an example of a REST API yaml file. </summary>
+
 
  ```yaml
  serviceId: sampleservice
@@ -220,8 +232,14 @@ ssl:
 connectTimeout: 10 # OPTIONAL: Discovery service registration timeout to establish connection
 readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
  ```
+</details>
+
+</br>
 
 **GraphQL API**
+
+<details>
+<summary>Click here for an example of a GraphQL API yaml file. </summary>
 
 ```yaml
  serviceId: sampleservice
@@ -278,6 +296,9 @@ ssl:
     trustStorePassword: password
  ```
 
+</details>
+
+</br>
 
 **Optional metadata section**
 
@@ -293,16 +314,28 @@ customMetadata:
 ```
 The onboarding configuration parameters are broken down into the following groups:
 
-- [Service identification](#service-identification)
-- [Administrative endpoints](#administrative-endpoints)
-- [API info](#api-info)
-- [API routing information](#api-routing-information)
-- [API catalog information](#api-catalog-information)
-- [Authentication parameters](#authentication-parameters)
-- [API security](#api-security)
-- [SAF Keyring configuration](#saf-keyring-configuration)
-- [Eureka Discovery Service](#eureka-discovery-service)
-- [Custom Metadata](#custom-metadata)
+The onboarding configuration parameters are broken down into the following groups:
+
+- [Onboarding an API service with the Plain Java Enabler (PJE)](#onboarding-an-api-service-with-the-plain-java-enabler-pje)
+  - [Introduction](#introduction)
+  - [Onboarding your REST or GraphQL service with API ML](#onboarding-your-rest-or-graphql-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+    - [Service identification](#service-identification)
+    - [Administrative endpoints](#administrative-endpoints)
+    - [API info](#api-info)
+    - [API routing information](#api-routing-information)
+    - [Authentication parameters](#authentication-parameters)
+    - [API Security](#api-security)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Eureka Discovery Service](#eureka-discovery-service)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ### Service identification
 
@@ -328,20 +361,20 @@ The onboarding configuration parameters are broken down into the following group
 
 * **title**
 
-  This parameter specifies the human readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected.
+  Specifies the human readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected.
   This parameter can be externalized and set by the customer system administrator.
 
   **Tip:** We recommend that service developer provides a default value of the `title`. Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
 
 * **description**
 
-  This parameter is a short description of the API service. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter can be externalized and set by the customer system administrator.
+  Specifies a short description of the API service. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter can be externalized and set by the customer system administrator.
 
   **Tip:** Describe the service so that the end user understands the function of the service.
 
 * **baseUrl**
 
-  This parameter specifies the base URL for the following administrative endpoints:
+  Specifies the base URL for the following administrative endpoints:
 
     * **homePageRelativeUrl**
     * **statusPageRelativeUrl**
@@ -355,7 +388,7 @@ The onboarding configuration parameters are broken down into the following group
 
 *  **serviceIpAddress** (Optional)
 
-   This parameter specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
+   Specifies the service IP address and can be provided by a system administrator in the externalized service configuration.
    If this parameter is not present in the configuration file or is not set as a service context parameter, it is resolved from the hostname part of the `baseUrl`.
 
 * **preferIpAddress** (Optional)
@@ -364,7 +397,7 @@ The onboarding configuration parameters are broken down into the following group
 
 ### Administrative endpoints
 
-The following snippet presents the format of the administrative endpoint properties:
+Administrative endpoint properties use the following format:
 
 ```yaml
 homePageRelativeUrl:
@@ -413,7 +446,7 @@ healthCheckRelativeUrl: /application/health
 
 Services can provide multiple APIs. Add API info parameters for each API that your service wants to expose on the API ML.
 
-The following snippet presents the information properties of a single API:
+Information properties of a single API are in the following format:
 
 **REST API**
 
@@ -460,7 +493,7 @@ apiInfo:
 
 * **apiInfo.gatewayUrl**
 
-  specifies the base path at the API Gateway where the API is available.
+  Specifies the base path at the API Gateway where the API is available.
   Ensure that this value is the same path as the `gatewayUrl` value in the `routes` sections that apply to this API.
 
 * **apiInfo.swaggerUrl** (Optional)
@@ -471,7 +504,7 @@ apiInfo:
 
   Specifies the Http or Https address where the GraphQL server is available.
 
-_Specific for REST API_
+**Parameters Specific for REST API**
 
 * **apiInfo.documentationUrl** (Optional)
 
@@ -500,7 +533,7 @@ The API routing group provides the required routing information used by the API 
 A single route can be used to direct calls to multiple resources or API endpoints. The route definition provides rules used by the API ML Gateway to rewrite the URL
 in the Gateway address space. Currently, the routing information consists of two parameters per route: The `gatewayUrl` and `serviceUrl`. These two parameters together specify a rule for how the API service endpoints are mapped to the API Gateway endpoints.
 
-The following snippet is an example of the API routing information properties.
+API routing information properties are in the following format:
 
 **Example:**
 
@@ -560,7 +593,7 @@ Information displayed in the Catalog is defined by the metadata provided by your
 
 The Catalog groups correlated services in the same tile if these services are configured with the same `catalog.tile.id` metadata parameter.
 
-The following code block is an example of configuration of a service tile in the Catalog:
+The following yaml presents an example of the configuration of a service tile in the Catalog:
 
 **Example:**
 
@@ -621,46 +654,46 @@ TLS/SSL configuration consists of the following parameters:
 
 * **protocol**
 
-  This parameter specifies the TLS protocol version currently used by Zowe API ML Discovery Service.
+  Specifies the TLS protocol version currently used by Zowe API ML Discovery Service.
 
   **Tip:** We recommend you use `TLSv1.2` as your security protocol
 
 * **keyAlias**
 
-  This parameter specifies the `alias` used to address the private key in the keystore.
+  Specifies the `alias` used to address the private key in the keystore.
 
 * **keyPassword**
 
-  This parameter specifies the password associated with the private key.
+  Specifies the password associated with the private key.
 
 * **keyStore**
 
-  This parameter specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
+  Specifies the keystore file used to store the private key. When using keyring, the value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
 
 If you have an issue with loading the keystore file in your environment, try to provide the absolute path to the keystore file. The sample keystore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
 * **keyStorePassword**
 
-  This parameter specifies the password used to unlock the keystore.
+  Specifies the password used to unlock the keystore.
 
 * **keyStoreType**
 
-  This parameter specifies the type of the keystore.
+  Specifies the type of the keystore.
 
 * **trustStore**
 
-  This parameter specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
+  Specifies the truststore file used to keep other parties public keys and certificates. When using keyring, this value should be set to the SAF keyring location. For information about required certificates, see [Zowe API ML TLS requirements](https://github.com/zowe/api-layer/blob/v3.x.x/docs/api-ml-security-overview.md#zowe-api-ml-tls-requirements).
 
   If you have an issue with loading the truststore file in your environment, try to provide the absolute path to the truststore file. The sample truststore file for local deployment is in [api-layer repository](https://github.com/zowe/api-layer/tree/master/keystore/localhost)
 
 * **trustStorePassword: password**
 
-  This parameter specifies the password used to unlock the truststore.
+  Specifies the password used to unlock the truststore.
 
 * **trustStoreType: PKCS12**
 
-  This parameter specifies the truststore type. The default for this parameter is PKCS12.
+  Specifies the truststore type. The default for this parameter is PKCS12.
 
 **Note:** Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
 
