@@ -31,10 +31,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## Infinispan
 
-  :::Note
-
+  :::note
   This is the recommended solution for on-prem z/OS production deployments
-
   :::
 
   Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
@@ -52,7 +50,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## VSAM (Deprecated)
 
-  :::Note
+  :::note
 
   VSAM support in Caching Service will be removed in a future release
 
