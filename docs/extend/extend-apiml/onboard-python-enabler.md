@@ -1,29 +1,21 @@
 # Onboarding a Python based REST API service
 
-This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on Python with Zowe API ML using our Python Enabler.
+This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to Zowe API Mediation Layer (API ML). 
+
+:::info Role: API service developer
+:::
+
+REST services based on Python can be onboarded with Zowe API ML using the  Python Enabler.
 
 :::note
-For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
+For more information about the range of options to onboard API services with  API ML, see the [Onboarding Overview](./onboard-overview.md).
 :::
 
 ## Introduction
 
 The [API ML onboarding Python enabler](https://pypi.org/project/zowe-apiml-onboarding-enabler-python/) is a Python package which helps to simplify the process of onboarding a REST service written in Python with API ML. 
 
-For more information about how to utilize other API ML enablers, see the [Onboarding Overview](onboard-overview.md).
-
-## Onboarding your Python service with API ML
-
-The following steps outline the overall process to onboard a REST service with API ML using the onboarding Python enabler. Each step is described in further detail in this article.
-
-- [Onboarding a Python based REST API service](#onboarding-a-python-based-rest-api-service)
-  - [Introduction](#introduction)
-  - [Onboarding your Python service with API ML](#onboarding-your-python-service-with-api-ml)
-  - [Prerequisites](#prerequisites)
-  - [Installing the Python dependency](#installing-the-python-dependency)
-  - [Configuring your service](#configuring-your-service)
-  - [Registering your service with API ML](#registering-your-service-with-api-ml)
-  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+Follow the steps described in this article to onboard a REST API service with API ML using the onboarding Python enabler. 
 
 ## Prerequisites
 Ensure that you meet the following prerequisites:
@@ -44,7 +36,7 @@ If you have a multi-module project, you have to run the pip command from the sub
 
 ## Configuring your service
 
-Create a yaml file named `service-configuration.yml` inside a `/config` directory at the same level of your `app.py`, and add the configuration properties as presented in the following configuration example. 
+Create a yaml file named `service-configuration.yml` inside the `/config` directory at the same level of your `app.py`. Add the configuration properties as presented in the following configuration example. 
  
  **Example:**
     
@@ -97,7 +89,7 @@ Create a yaml file named `service-configuration.yml` inside a `/config` director
 
 ## Registering your service with API ML
 
-To register your service with API ML, use the following procedure.
+To register your service with API ML, use the following procedure:
 
 1. Inside your Python service `app.py`, add the following script to register your service with Eureka:
 
