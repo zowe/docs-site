@@ -31,7 +31,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## Infinispan
 
-  :::Note
+  ::: Note
 
   This is the recommended solution for on-prem z/OS production deployments
 
@@ -52,7 +52,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## VSAM (Deprecated)
 
-  :::Note
+  ::: Note
 
   VSAM support in Caching Service will be removed in a future release
 
