@@ -20,31 +20,9 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 [Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
+## Zowe component overview
 
-## Component overview
-
-Zowe consists of the following components:
-
-- [Zowe overview](#zowe-overview)
-  - [Zowe demo video](#zowe-demo-video)
-  - [Component overview](#component-overview)
-    - [Zowe Launcher](#zowe-launcher)
-    - [API Mediation Layer](#api-mediation-layer)
-      - [Key features](#key-features)
-      - [API Mediation Layer structural architecture](#api-mediation-layer-structural-architecture)
-      - [Components](#components)
-      - [Onboarding APIs](#onboarding-apis)
-    - [Zowe Application Framework](#zowe-application-framework)
-    - [Zowe CLI](#zowe-cli)
-      - [Zowe CLI capabilities](#zowe-cli-capabilities)
-    - [Zowe Explorer](#zowe-explorer)
-    - [Zowe Client Software Development Kits (SDKs)](#zowe-client-software-development-kits-sdks)
-    - [Zowe Chat (Technical Preview)](#zowe-chat-technical-preview)
-      - [Zowe Chat key features](#zowe-chat-key-features)
-      - [Zowe Chat architecture](#zowe-chat-architecture)
-    - [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
-    - [Zowe Explorer plug-in for IntelliJ IDEA](#zowe-explorer-plug-in-for-intellij-idea)
-  - [Zowe Bill of Materials](#zowe-bill-of-materials)
+Zowe is comprised of the following server side and client side components:
 
 ### Zowe Launcher
 
