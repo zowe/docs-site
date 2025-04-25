@@ -1,6 +1,13 @@
 # Onboarding a Micronaut based REST API service
 
-As an API developer, you can onboard a REST service to the Zowe API Mediation Layer using the Micronaut framework. While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use the procedure described in this article to onboard a service using the Micronaut framework.
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+
+:::info Role: API service developer
+:::
+
+One option to onboard a REST service to the Zowe API Mediation Layer is by using the Micronaut framework. 
+
+While using the Spring framework to develop a JVM-based service to register to the API ML is the recommended method, you can use the procedure described in this article to onboard a service using the Micronaut framework.
 
 :::note
 For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
@@ -8,12 +15,13 @@ For more information about onboarding API services with the API ML, see the [Onb
 
 For Micronaut-related documentation, see the [Micronaut website](https://docs.micronaut.io/latest/guide/index#introduction).
 
-- [Set up your build automation system](#set-up-your-build-automation-system)
-- [Configure the Micronaut application](#configure-the-micronaut-application)
-  - [Add API ML configuration](#add-api-ml-configuration)
-  - [Add Micronaut configuration](#add-micronaut-configuration)
-  - [Set up logging configuration](#optional-set-up-logging-configuration)
-- [Validate successful registration](#validate-successful-registration)
+- [Onboarding a Micronaut based REST API service](#onboarding-a-micronaut-based-rest-api-service)
+  - [Set up your build automation system](#set-up-your-build-automation-system)
+  - [Configure the Micronaut application](#configure-the-micronaut-application)
+    - [Add API ML configuration](#add-api-ml-configuration)
+    - [Add Micronaut configuration](#add-micronaut-configuration)
+    - [(Optional) Set up logging configuration](#optional-set-up-logging-configuration)
+  - [Validate successful registration](#validate-successful-registration)
 
 ## Set up your build automation system
 
@@ -144,7 +152,7 @@ Use the following procedure to add API ML configuration to the application.yaml.
      #rest of the configuration
     ```
 
-    - **`fill.your.service`**  
+    - **fill.your.service**  
     Specifies the ID of your service
   
 2. Add SSL-resolving properties as shown in the following example. Ensure that you structure the nested objects within `apiml.service` as arrays. Be sure to include `-` (hyphen) before `enabled` thereby indicating the first element of the array.
@@ -207,37 +215,37 @@ Once you complete API ML configuration, add configuration to provide correct map
             protocol: ${apiml.service.ssl[0].protocol}
     ```
 
-    - **`apiml.service.serviceId`**  
+    - **apiml.service.serviceId**  
     Specifies the ID of your service
 
-    - **`apiml.service.port`**  
+    - **apiml.service.port**  
     Specifies the port on which the service listens
 
-    - **`apiml.service.ssl[0].keyPassword`**  
+    - **apiml.service.ssl[0].keyPassword**  
     Specifies the password that protects the key in keystore
 
-    - **`apiml.service.ssl[0].keyStoreType`**  
+    - **apiml.service.ssl[0].keyStoreType**  
     Specifies the type of the keystore, (Example: PKCS12)
 
-    - **`apiml.service.ssl[0].keyStore`**  
+    - **apiml.service.ssl[0].keyStore**  
     Specifies the location of the keystore 
 
-    - **`apiml.service.ssl[0].keyAlias`**  
+    - **apiml.service.ssl[0].keyAlias**  
     Specifies the alias under which the key is stored in the keystore
 
-    - **`apiml.service.ssl[0].trustStorePassword`**  
+    - **apiml.service.ssl[0].trustStorePassword**  
     Specifies the password that protects the certificates in the truststore
 
-    - **`apiml.service.ssl[0].trustStore`**  
+    - **apiml.service.ssl[0].trustStore**  
     Specifies the location of the truststore
 
-    - **`apiml.service.ssl[0].trustStoreType`**  
+    - **apiml.service.ssl[0].trustStoreType**  
     Specifies the type of the truststore, (Example: PKCS12)
 
-    - **`apiml.service.ssl[0].ciphers`**  
+    - **apiml.service.ssl[0].ciphers**  
     Specifies the list of ciphers that user wants to enable for TLS communication
 
-    - **`apiml.service.ssl[0].protocol`**  
+    - **apiml.service.ssl[0].protocol**  
     Specifies the type of SSL/TLS protocol (Example: TLSv1.2)
 
 ### (Optional) Set up logging configuration

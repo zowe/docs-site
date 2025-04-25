@@ -339,6 +339,8 @@ apiml:
 
 </details>
 
+</br>
+
 :::tip
 To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -367,7 +369,7 @@ logging:
 
     **Note:** For details about the configuration properties,
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
-    in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
+    in the article _Onboarding an API service with the Plain Java Enabler (PJE)_.
 
 ### SAF Keyring configuration
 
