@@ -758,7 +758,8 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Libraries for integration (Enablers)",
+              label: "Libraries for onboarding APIs to API ML",
+              link: { type: "doc", id: "extend/extend-apiml/libraries-for-onboarding-apis" },
               items: [
                 {
                   type: "category",
