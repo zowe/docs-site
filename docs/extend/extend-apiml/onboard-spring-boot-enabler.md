@@ -95,7 +95,7 @@ Click here for the procedure to use Gradle as your build automation system.
 
 </details>
 
-<p></p>
+<br>
 
 ### Maven build automation system
 
@@ -142,7 +142,7 @@ Click here for the procedure to use Maven as your build automation system.
 
 </details>
 
-<p></p>
+<br>
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
@@ -349,7 +349,7 @@ apiml:
 
 </details>
 
-<p></p>
+<br>
 
 :::tip
 To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
