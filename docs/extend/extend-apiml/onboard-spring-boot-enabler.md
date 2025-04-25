@@ -49,8 +49,10 @@ You can download the selected enabler artifact from the [Zowe Artifactory](https
 ### Gradle build automation system
 
 <details>
+
 <summary>
-Click here for the procedure to use Gradle as your build automation system.</summary>
+Click here for the procedure to use Gradle as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -93,10 +95,16 @@ Click here for the procedure to use Gradle as your build automation system.</sum
 
 </details>
 
+<br>
+</br>
+
 ### Maven build automation system
 
 <details>
-<summary>Click here for the procedure to use Maven as your build automation system.</summary>
+
+<summary>
+Click here for the procedure to use Maven as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -134,6 +142,9 @@ Click here for the procedure to use Gradle as your build automation system.</sum
 3. In the directory of your project, run the `mvn clean package` command to build the project.
 
 </details>
+
+<br>
+</br>
 
 ## Configuring your Spring Boot based service to onboard with API ML
 

@@ -168,7 +168,8 @@ This part contains a more complex example of the configuration and an explanatio
 
 <details>
 
-<summary>Click here for a sample yaml file for a REST API. 
+<summary>
+Click here for a sample yaml file for a REST API. 
 </summary>
 
 ```yaml
@@ -218,8 +219,11 @@ additionalServiceMetadata:
 </br>
 
 **GraphQL API**
+
 <details>
-<summary>Click here for a sample yaml file for a GraphQL API.
+
+<summary>
+Click here for a sample yaml file for a GraphQL API.
 </summary>
 
 ```yaml
