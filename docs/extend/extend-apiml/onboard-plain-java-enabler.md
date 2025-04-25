@@ -234,8 +234,7 @@ readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeo
  ```
 </details>
 
-<br>
-</br>
+<br/>
 
 **GraphQL API**
 
@@ -299,7 +298,7 @@ ssl:
 
 </details>
 
-</br>
+<br/>
 
 **Optional metadata section**
 

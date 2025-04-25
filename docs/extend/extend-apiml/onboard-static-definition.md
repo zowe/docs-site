@@ -215,8 +215,7 @@ additionalServiceMetadata:
 
 </details>
 
-<br>
-</br>
+<br/>
 
 **GraphQL API**
 
@@ -266,8 +265,7 @@ additionalServiceMetadata:
 
 </details>
 
-<br>
-</br>
+<br/>
 
 * **serviceId**
 
