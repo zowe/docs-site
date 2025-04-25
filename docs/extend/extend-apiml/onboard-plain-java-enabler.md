@@ -31,30 +31,26 @@ the [Onboarding Overview](onboard-overview.md).
 
 The following steps outline the overall process to onboard a service with the API ML using the PJE. Each step is described in further detail in this article.
 
-1. [Prerequisites](#prerequisites)
-
-2. [Configuring your project](#configuring-your-project)
-
-    * [Gradle build automation system](#gradle-build-automation-system)
-    * [Maven build automation system](#maven-build-automation-system)
-
-3. [Configuring your service](#configuring-your-service)
-    * [Service identification](#service-identification)
-    * [Administrative endpoints](#administrative-endpoints)
-    * [API info](#api-info)
-    * [API routing information](#api-routing-information)
-    * [API Catalog information](#api-catalog-information)
-    * [Authentication parameters](#authentication-parameters)
-    * [API Security](#api-security)
-    * [SAF Keyring configuration](#saf-keyring-configuration)
-    * [Eureka Discovery Service](#eureka-discovery-service)
-
-4. [Registering your service with API ML](#registering-your-service-with-api-ml)
-
-5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-6. (Optional) [Troubleshooting](#troubleshooting)
-    * [Log messages during registration problems](#log-messages-during-registration-problems)
+- [Onboarding a REST or GraphQL API service with the Plain Java Enabler (PJE)](#onboarding-a-rest-or-graphql-api-service-with-the-plain-java-enabler-pje)
+  - [Introduction](#introduction)
+  - [Onboarding your REST or GraphQL service with API ML](#onboarding-your-rest-or-graphql-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+    - [Service identification](#service-identification)
+    - [Administrative endpoints](#administrative-endpoints)
+    - [API info](#api-info)
+    - [API routing information](#api-routing-information)
+    - [Authentication parameters](#authentication-parameters)
+    - [API Security](#api-security)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Eureka Discovery Service](#eureka-discovery-service)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Prerequisites
 
@@ -293,16 +289,26 @@ customMetadata:
 ```
 The onboarding configuration parameters are broken down into the following groups:
 
-- [Service identification](#service-identification)
-- [Administrative endpoints](#administrative-endpoints)
-- [API info](#api-info)
-- [API routing information](#api-routing-information)
-- [API catalog information](#api-catalog-information)
-- [Authentication parameters](#authentication-parameters)
-- [API security](#api-security)
-- [SAF Keyring configuration](#saf-keyring-configuration)
-- [Eureka Discovery Service](#eureka-discovery-service)
-- [Custom Metadata](#custom-metadata)
+- [Onboarding a REST or GraphQL API service with the Plain Java Enabler (PJE)](#onboarding-a-rest-or-graphql-api-service-with-the-plain-java-enabler-pje)
+  - [Introduction](#introduction)
+  - [Onboarding your REST or GraphQL service with API ML](#onboarding-your-rest-or-graphql-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+    - [Service identification](#service-identification)
+    - [Administrative endpoints](#administrative-endpoints)
+    - [API info](#api-info)
+    - [API routing information](#api-routing-information)
+    - [Authentication parameters](#authentication-parameters)
+    - [API Security](#api-security)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Eureka Discovery Service](#eureka-discovery-service)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ### Service identification
 
@@ -877,7 +883,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
+1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml).
 
 2. Check that you can access your API service endpoints through the Gateway.
 

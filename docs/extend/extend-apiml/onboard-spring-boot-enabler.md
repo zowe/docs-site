@@ -19,30 +19,24 @@ For more information about how to utilize another onboarding method, see:
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article.
 
-1. [Configuring your project](#configuring-your-project)
-
-    * [Gradle build automation system](#gradle-build-automation-system)
-    * [Maven build automation system](#maven-build-automation-system)
-
-2. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
-
-    * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
-    * [Authentication properties](#authentication-properties)
-    * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
-    * [SAF Keyring configuration](#saf-keyring-configuration)
-    * [Custom Metadata](#custom-metadata)
-    
-3. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-    
-    * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
-    * [Basic routing](#basic-routing)
-    
-4. [Adding API documentation](#adding-api-documentation)
-
-5. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-6. (Optional) [Troubleshooting](#troubleshooting)
-    * [Log messages during registration problems](#log-messages-during-registration-problems)
+- [Onboarding a Spring Boot based REST API Service](#onboarding-a-spring-boot-based-rest-api-service)
+  - [Outline of onboarding a REST service using Spring Boot](#outline-of-onboarding-a-rest-service-using-spring-boot)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+  - [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
+    - [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
+    - [Authentication properties](#authentication-properties)
+    - [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
+    - [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
+    - [Basic routing](#basic-routing)
+  - [Adding API documentation](#adding-api-documentation)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Configuring your project
 
@@ -496,7 +490,7 @@ see [Springdoc configuration](https://springdoc.org/#properties).
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 

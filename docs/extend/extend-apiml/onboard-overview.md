@@ -13,7 +13,7 @@ This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
 - [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with API ML
-- [Verify successful onboarding to API ML](#verify-successful-onboarding-to-the-api-ml)
+- [Verify successful onboarding to API ML](#verify-successful-onboarding-to-api-ml)
 - Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to API ML 
 
 ## Prerequisites
