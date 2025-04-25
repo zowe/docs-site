@@ -5,10 +5,10 @@ This article is part of a series of onboarding articles, which outline the proce
 :::info Role: API service developer
 :::
 
-REST services based on Python can be onboarded with Zowe API ML using the  Python Enabler.
+REST services based on Python can be onboarded with Zowe API ML using the Python Enabler.
 
 :::note
-For more information about the range of options to onboard API services with  API ML, see the [Onboarding Overview](./onboard-overview.md).
+For more information about the range of options to onboard API services with API ML, see the [Onboarding Overview](./onboard-overview.md).
 :::
 
 ## Introduction
@@ -31,7 +31,7 @@ Install the onboarding Python enabler package as a dependency of your service. R
 pip install zowe-apiml-onboarding-enabler-python
 ```
 :::note
-If you have a multi-module project, you have to run the pip command from the submodule where your Python project is located.
+If you have a multi-module project, ensure that you run the pip command from the submodule where your Python project is located.
 :::
 
 ## Configuring your service

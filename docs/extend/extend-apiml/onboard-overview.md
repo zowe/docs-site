@@ -12,9 +12,9 @@ To streamline the process of onboarding new REST API services to the Zowe API ML
 This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
-- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with the API ML
-- [Verify successful onboarding to the API ML](#verify-successful-onboarding-to-the-api-ml)
-- Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to the API ML 
+- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with API ML
+- [Verify successful onboarding to API ML](#verify-successful-onboarding-to-the-api-ml)
+- Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to API ML 
 
 ## Prerequisites
 
@@ -48,7 +48,7 @@ Services can be updated to support API Mediation Layer natively by updating the 
 
 ### Recommended guides for services using Java
 
-- [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
+- [Onboard an API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
 - [Onboard a Micronaut based REST API service](onboard-micronaut-enabler.md)
 
@@ -75,9 +75,9 @@ Enabler version 1.2 and previous versions are no longer supported.
 We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Medaition Layer.
 :::
 
-## Verify successful onboarding to the API ML
+## Verify successful onboarding to API ML
 
-Verifying that your service was successfully onboraded to the API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
+Verifying that your service was successfully onboraded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
 
 ### Verifying service discovery through Discovery Service
 
