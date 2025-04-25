@@ -255,7 +255,8 @@ are written in `<fill-your-parameterValue>` format. For your service configurati
 
 <details>
 
-<summary>Click here for a full example of API service configuration.
+<summary>
+Click here for a full example of API service configuration.
 </summary> 
 
 ```yaml
@@ -350,6 +351,7 @@ apiml:
 
 </details>
 
+<br>
 </br>
 
 :::tip
