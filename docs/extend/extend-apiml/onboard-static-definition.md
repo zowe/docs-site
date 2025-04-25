@@ -167,6 +167,7 @@ This part contains a more complex example of the configuration and an explanatio
 **REST API**
 
 <details>
+
 <summary>Click here for a sample yaml file for a REST API. 
 </summary>
 
@@ -212,6 +213,8 @@ additionalServiceMetadata:
 ```
 
 </details>
+
+<br>
 </br>
 
 **GraphQL API**
@@ -258,6 +261,8 @@ additionalServiceMetadata:
 ```
 
 </details>
+
+<br>
 </br>
 
 * **serviceId**

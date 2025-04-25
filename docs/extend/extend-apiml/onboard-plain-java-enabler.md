@@ -1,6 +1,6 @@
 # Onboarding an API service with the Plain Java Enabler (PJE)
 
-This article is part of a series of onboarding guides, which outline the process of onboarding either REST or GraphQL API services to the Zowe API Mediation Layer (API ML). 
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML). 
 
 :::info Role: API service developer
 :::
@@ -234,6 +234,7 @@ readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeo
  ```
 </details>
 
+<br>
 </br>
 
 **GraphQL API**
@@ -825,7 +826,8 @@ The following steps outline the process of registering your service with API ML.
     }
     ```
 
-The following code block is a full example of a context listener class implementation.
+<details>
+<summary>Click here for a full example of a context listener class implementation.</summary>
 
 **Example:**
 ```
@@ -905,6 +907,8 @@ public class ApiDiscoveryListener implements ServletContextListener {
     }
 }
 ```
+
+</details>
 
 ## Validating the discoverability of your API service by the Discovery Service
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.

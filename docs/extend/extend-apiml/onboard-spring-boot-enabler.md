@@ -1,6 +1,6 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
 
 :::info Role: API service developer
 :::
@@ -50,7 +50,7 @@ You can download the selected enabler artifact from the [Zowe Artifactory](https
 
 <details>
 <summary>
-Click here for the procedure to use Gradle as your build automation system.<summary>
+Click here for the procedure to use Gradle as your build automation system.</summary>
 
 **Follow these steps:**
 
