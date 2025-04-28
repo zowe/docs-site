@@ -218,6 +218,13 @@ The JCL members for each of Zowe's started tasks need to be present on the JES p
 ```yaml
 zowe:
   setup:
+    dataset:
+      prefix: IBMUSER.ZWE
+      proclib: USER.PROCLIB
+      parmlib: IBMUSER.ZWE.CUST.PARMLIB
+      jcllib: IBMUSER.ZWE.CUST.JCLLIB
+      authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
+      authPluginLib: IBMUSER.ZWE.CUST.ZWESPLUG
     security:
       stcs:
         zowe: ZWESLSTC
