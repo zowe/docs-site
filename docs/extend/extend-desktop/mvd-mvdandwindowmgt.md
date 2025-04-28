@@ -2,7 +2,7 @@
 
 The Zowe&trade; Desktop (MVD) is a web component of Zowe, which is an implementation of **MVDWindowManagement**, the interface that is used to create a window manager.
 
-The code for this software is in the `lux-app-manager` repository.
+The code for this software is in the `zlux-app-manager` repository.
 
 The interface for building an alternative window manager is in the `zlux-platform` repository.
 
