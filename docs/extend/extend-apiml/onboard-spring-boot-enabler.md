@@ -531,8 +531,10 @@ for both `username` and `password`. If API ML was installed by system administra
 with actual addresses of API ML components and the respective user credentials.
 :::
 
-:::tip
-Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+:::tip Tips:
+* Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+
+* The Spring Boot Enabler supports the use of the API Mediation Layer Message Service. For more information about the Message Service, see [Using API Mediation Layer Message Service](./api-mediation-message-service.md).
 :::
 
 

@@ -28,8 +28,7 @@ The PJE library serves the needs of Java developers who are not using either [Sp
 Additionally, this enabler is not intended for use in projects that depend on [Spring Cloud Netflix](https://spring.io/projects/spring-cloud-netflix) components. Configuration settings in the PJE and Spring Cloud Netflix Eureka Client are different. Using the two configuration settings in combination makes the result state of the discovery registry unpredictable.
 
 :::tip
-For more information about how to utilize another API ML enablers, see the documentation in
-the [Onboarding Overview](onboard-overview.md).
+The Plain Java Enabler supports the use of the API Mediation Layer Message Service. For more information about the Message Service, see [Using API Mediation Layer Message Service](./api-mediation-message-service.md).
 :::
 
 ## Onboarding your REST or GraphQL service with API ML
