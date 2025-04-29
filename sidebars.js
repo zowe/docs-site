@@ -759,22 +759,30 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Libraries for integration (Enablers)",
+              label: "Libraries for onboarding APIs to API ML",
+              link: { type: "doc", id: "extend/extend-apiml/libraries-for-onboarding-apis" },
               items: [
                 {
                   type: "category",
-                  label: "Plain Java Enabler",
+                  label: "Onboarding an API service with the Plain Java Enabler",
                   link: { type: "doc", id: "extend/extend-apiml/onboard-plain-java-enabler" },
                   items: [
                     "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-                    "extend/extend-apiml/api-mediation-message-service",
                   ]
                 },
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
                 "extend/extend-apiml/onboard-static-definition",
-                "extend/extend-apiml/custom-metadata",
+                {
+                  type: "category",
+                  label: "Optional features to use with onboarded APIs",
+                  link: { type: "doc", id: "extend/extend-apiml/optional-features-to-use-with-onboarded-apis" },
+                  items: [
+                    "extend/extend-apiml/api-mediation-message-service",
+                    "extend/extend-apiml/custom-metadata",
+                  ]
+                },
               ]
             },
             {
