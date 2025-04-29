@@ -2,6 +2,7 @@
 
 Review this article to learn about topics which address security features in Zowe API Mediation Layer:
 
+- [Zowe API Mediation Layer Security Overview](#zowe-api-mediation-layer-security-overview)
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)
     - [Authentication](#authentication)
@@ -148,7 +149,7 @@ The API ML authentication token in the form of JWT is signed with an asymmetric 
 
 You can find this private key under the alias `localhost`, in the PKCS12 keystore that is stored in `${KEYSTORE_DIRECTORY}/localhost/localhost.keystore.p12`. The public key necessary to validate the JWT signature is read from the keystore.
 
-You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain a public key that can be used to verify the signature of the JWT in standard [JWK format](https://openid.net/specs/).
+You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain a public key that can be used to verify the signature of the JWT in standard [JWK format](https://datatracker.ietf.org/doc/html/rfc7517).
 
 ## z/OSMF JSON Web Tokens Support
 
