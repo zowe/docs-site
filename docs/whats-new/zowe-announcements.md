@@ -2,7 +2,7 @@
 
 ## Hello Zowe V3!
 
-**Zowe Version 3.0 is live**. Find out what is included in Zowe 3.0 with the new [Zowe V3 Office Hours](../whats-new/zowe-v3-office-hours.md).
+**Zowe Version 3.x is live**. Find out what is included in Zowe 3.x with the new [Zowe V3 Office Hours](../whats-new/zowe-v3-office-hours.md).
 
 For information about changes to Zowe components introduced in Zowe V3, see [Important updates in Zowe V3](breaking-changes-v3.md). For more details, review the [Zowe V3 release notes](release-notes/v3_0_0.md).
 

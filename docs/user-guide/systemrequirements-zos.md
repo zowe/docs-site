@@ -81,9 +81,12 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v18.x, v20.x, or v22.x is required if using the app-server component.
+- The app-server component requires one of the following Node.js versions:
+  * v18.x
+  * v20.x
+  * v22.x 
 
-  Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
+  Node is not included with z/OS so must be installed separately. To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
   
   :::tip
   If you are a software vendor building extensions for Zowe, we recommend you tag your plug-ins. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-zos).
