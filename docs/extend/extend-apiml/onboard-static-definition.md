@@ -1,9 +1,14 @@
 # Onboarding a REST or GraphQL API without code changes required
 
-As a user of Zowe&trade;, onboard an existing REST or GraphQL API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+
+:::info Role: API service developer
+:::
+
+Review this article to onboard an existing REST or GraphQL API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
 :::note
-When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md#service-onboarding-guides).
+When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
 :::
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
@@ -160,6 +165,13 @@ This method enables you to access the service through a stable URL, and move the
 This part contains a more complex example of the configuration and an explanation of all the possible parameters:
 
 **REST API**
+
+<details>
+
+<summary>
+Click here for a sample yaml file for a REST API. 
+</summary>
+
 ```yaml
 services:
     - serviceId: petstore
@@ -200,7 +212,18 @@ additionalServiceMetadata:
       authentication:
         scheme: bypass
 ```
+
+</details>
+
+<br/>
+
 **GraphQL API**
+
+<details>
+
+<summary>
+Click here for a sample yaml file for a GraphQL API.
+</summary>
 
 ```yaml
 services:
@@ -239,6 +262,10 @@ additionalServiceMetadata:
       authentication:
         scheme: bypass
 ```
+
+</details>
+
+<br/>
 
 * **serviceId**
 

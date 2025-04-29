@@ -1,16 +1,11 @@
 # API Mediation Layer onboarding configuration
 
-This article describes the process of configuring a REST service to onboard with the Zowe API Mediation Layer using the API ML Plain Java Enabler. As a service developer, you can provide basic configuration of a service to onboard to the API ML. You can also externalize configuration parameters for subsequent customization by a systems administrator.
+This article describes the process of configuring a REST service to onboard with the Zowe API Mediation Layer using the API ML Plain Java Enabler.
 
-- [API Mediation Layer onboarding configuration](#api-mediation-layer-onboarding-configuration)
-  - [Introduction](#introduction)
-  - [Configuring a REST service for API ML onboarding](#configuring-a-rest-service-for-api-ml-onboarding)
-  - [Plain Java Enabler service onboarding API](#plain-java-enabler-service-onboarding-api)
-    - [Automatic initialization of the onboarding configuration by a single method call](#automatic-initialization-of-the-onboarding-configuration-by-a-single-method-call)
-  - [Validating successful onboarding with API Mediation Layer](#validating-successful-onboarding-with-api-mediation-layer)
-  - [Loading YAML configuration files](#loading-yaml-configuration-files)
-    - [Loading a single YAML configuration file](#loading-a-single-yaml-configuration-file)
-    - [Loading and merging two YAML configuration files](#loading-and-merging-two-yaml-configuration-files)
+:::info Role: API service developer
+:::
+
+Review how to provide basic configuration of a service to onboard to the API ML. You can externalize configuration parameters for subsequent customization by a systems administrator.
 
 ## Introduction
 

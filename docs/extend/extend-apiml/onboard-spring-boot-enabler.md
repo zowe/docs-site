@@ -1,18 +1,18 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
-As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+
+:::info Role: API service developer
+:::
+
+Review how to onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
 :::note
 Before API ML version 1.2, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.3 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions. API ML core services (Discovery Service, Gateway, and API Catalog) support both the old and new enabler versions. 
 :::
 
 :::tip
-For more information about how to utilize another onboarding method, see:
-
-  * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
+For more information about how to utilize another onboarding method, see the [Onboarding overview](./onboard-overview.md).
 :::
 
 ## Outline of onboarding a REST service using Spring Boot
@@ -47,7 +47,12 @@ You can download the selected enabler artifact from the [Zowe Artifactory](https
 :::
 
 ### Gradle build automation system
-Use the following procedure to use _Gradle_ as your build automation system.
+
+<details>
+
+<summary>
+Click here for the procedure to use Gradle as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -88,9 +93,17 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
+</details>
+
+<br />
+
 ### Maven build automation system
 
-Use the following procedure if you use _Maven_ as your build automation system.
+<details>
+
+<summary>
+Click here for the procedure to use Maven as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -126,6 +139,10 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 
 3. In the directory of your project, run the `mvn clean package` command to build the project.
+
+</details>
+
+<br />
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
@@ -234,6 +251,12 @@ These parameters are not required. If a parameter is not specified, a default va
 Some parameters which are specific for your service deployment
 are written in `<fill-your-parameterValue>` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
 
+<details>
+
+<summary>
+Click here for a full example of API service configuration.
+</summary> 
+
 ```yaml
 spring:
     application:
@@ -324,6 +347,10 @@ apiml:
 # and other properties
 ```
 
+</details>
+
+<br />
+
 :::tip
 To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
 
@@ -352,7 +379,7 @@ logging:
 
     **Note:** For details about the configuration properties,
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
-    in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
+    in the article _Onboarding an API service with the Plain Java Enabler (PJE)_.
 
 ### SAF Keyring configuration
 
@@ -504,8 +531,10 @@ for both `username` and `password`. If API ML was installed by system administra
 with actual addresses of API ML components and the respective user credentials.
 :::
 
-:::tip
-Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+:::tip Tips:
+* Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+
+* The Spring Boot Enabler supports the use of the API Mediation Layer Message Service. For more information about the Message Service, see [Using API Mediation Layer Message Service](./api-mediation-message-service.md).
 :::
 
 

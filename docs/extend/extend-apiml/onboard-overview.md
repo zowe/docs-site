@@ -161,7 +161,7 @@ This sample API has only one single endpoint:
 This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer, an error is returned. These are conditions set in the sample service.
 
 :::tip
-Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
+Access `localhost:8080/v2/pets/1` to see what this REST API endpoint does. You should get the following response:
 
 ```json
 {

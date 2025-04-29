@@ -1,6 +1,11 @@
 # Onboarding a Node.js based REST API service
 
-This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
+This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). 
+
+:::info Role: API service developer
+:::
+
+Review this article to onboard a REST service based on NodeJS with the Zowe API Mediation Layer by using the Node.js Enabler.
 
 :::note
 For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
