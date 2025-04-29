@@ -4,7 +4,7 @@ Use a `.zosattributes` file to control how files are converted and tagged when y
 
 ## What is a `.zosattributes` file
 
-A `.zosattributes` file saved in your source directory provides uploading instructions to the mainframe. A line in the file can specify a code comment or instructions.
+A `.zosattributes` file saved in your source directory provides uploading and downloading instructions to the mainframe. A line in the file can specify a code comment or instructions.
 
 An example `.zosattributes` file:
 
@@ -36,9 +36,9 @@ node_modules -
         - Pattern-matching syntax follows the same rules as those that apply in `.gitignore` files. Negated patterns that begin with `!` are not supported.
         - For syntax, see [Pattern Format]( https://git-scm.com/docs/gitignore#_pattern_format).
     - A local-encoding to identify a file’s encoding on the local workstation.
-        - When `-` is specified for `local-encoding` **[should "local-encoding" be in back ticks?]**, files that match the pattern are not transferred.
+        - When `-` is specified for local-encoding, files that match the pattern are not transferred.
     - A remote-encoding to specify the file’s desired character set on USS.
-        - This attribute must either match the local encoding **[should "local encoding" be in back ticks?]** or be set to `EBCDIC`. If set to `EBCDIC`, files are transferred in text mode and converted, otherwise they are transferred in binary mode.
+        - This attribute must either match the local encoding or be set to `EBCDIC`. If set to `EBCDIC`, files are transferred in text mode and converted, otherwise they are transferred in binary mode.
         - Remote files are tagged either with the remote encoding or as binary.
 
 ## Using a `.zosattributes` file with Zowe CLI
