@@ -1,8 +1,6 @@
 name: Merge Master into Docs Staging
 
 on:
-  pull_request:
-    branches: [ master ]
   push:
     branches: [ master ]
   # Allow manual triggering from the Actions tab in GitHub

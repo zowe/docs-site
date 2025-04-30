@@ -1,6 +1,6 @@
 # zwe internal
 
-[zwe](.././zwe) > [internal](./zwe-internal)
+[zwe](.././zwe.md) > [internal](./zwe-internal.md)
 
 	zwe internal [sub-command [sub-command]...] [parameter [parameter]...]
 

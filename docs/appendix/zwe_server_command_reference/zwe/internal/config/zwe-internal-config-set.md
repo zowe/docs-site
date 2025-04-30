@@ -1,6 +1,6 @@
 # zwe internal config set
 
-[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [config](././zwe-internal-config) > [set](./zwe-internal-config-set)
+[zwe](./../.././zwe.md) > [internal](./.././zwe-internal.md) > [config](././zwe-internal-config.md) > [set](./zwe-internal-config-set.md)
 
 	zwe internal config set [parameter [parameter]...]
 

@@ -1,6 +1,6 @@
 # zwe support
 
-[zwe](.././zwe) > [support](./zwe-support)
+[zwe](.././zwe.md) > [support](./zwe-support.md)
 
 	zwe support [sub-command [sub-command]...] [parameter [parameter]...]
 
