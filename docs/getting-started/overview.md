@@ -20,18 +20,9 @@ Watch this [video](https://www.youtube.com/embed/NX20ZMRoTtk) to see a quick dem
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe overview demo" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/7XpOjREP8JU" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
 [Download the deck for this video](/Zowe_introduction_video_deck.pptx) | [Download the script](/Zowe_introduction_video_script.txt)
+## Zowe component overview
 
-## Component overview
-
-Zowe consists of the following components:
-
-- [Zowe Launcher](#zowe-launcher)
-- [API Mediation Layer](#api-mediation-layer)
-- [Zowe Application Framework](#zowe-application-framework)
-- [Zowe CLI](#zowe-cli)
-- [Zowe Explorer](#zowe-explorer)
-- [Zowe Client Software Development Kits SDKs](#zowe-client-software-development-kits-sdks)
-- [ZEBRA (Zowe Embedded Browser for RMF/SMF and APIs) - Incubator](#zebra-zowe-embedded-browser-for-rmfsmf-and-apis---incubator)
+Zowe is comprised of the following server side and client side components:
 
 ### Zowe Launcher
 
@@ -110,8 +101,11 @@ Essential to the API Mediation Layer ecosystem is the API services that expose t
 to learn more about adding new APIs to the API Mediation Layer and using the API Catalog:
 
 * [Onboarding Overview](../extend/extend-apiml/onboard-overview.md)
-* [Onboard an existing Spring Boot REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-spring-boot-enabler.md)
-* [Onboard an existing Node.js REST API service using Zowe API Mediation Layer](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Onboarding a Spring Boot based REST API service](../extend/extend-apiml/onboard-spring-boot-enabler.md)
+* [Onboarding a Micronaut based REST API service](../extend/extend-apiml/onboard-micronaut-enabler.md)
+* [Onboard an existing Node.js based REST API service](../extend/extend-apiml/onboard-nodejs-enabler.md)
+* [Onboard an existing Python based REST API service](../extend/extend-apiml/onboard-python-enabler.md)
+* [Onboarding a REST of GraphQL API without code changes required](../extend/extend-apiml/onboard-static-definition.md)
 * [Using API Mediation Layer](../user-guide/api-mediation/using-api-mediation-layer.md)
 
 To learn more about the architecture of Zowe, see [Zowe architecture](zowe-architecture.md).

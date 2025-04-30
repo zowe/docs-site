@@ -773,6 +773,7 @@ module.exports = {
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-python-enabler",
                 "extend/extend-apiml/onboard-static-definition",
                 {
                   type: "category",
