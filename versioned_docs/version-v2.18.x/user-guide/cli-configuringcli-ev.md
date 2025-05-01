@@ -26,7 +26,7 @@ A project administrator can pre-install, and update, a plug-in stored in the sha
 
 The plug-in directory must be defined before any Zowe CLI plug-ins are installed.
 
-:::infoIMPORTANT
+:::info IMPORTANT
 
 Any plug-in installed before specifying the environment variable cannot be managed with Zowe CLI. To resolve this, re-install the plug-in after the environment variable is set.
 
@@ -40,7 +40,7 @@ Any plug-in installed before specifying the environment variable cannot be manag
 
 You can set the log level to adjust the level of detail that is written to log files:
 
-:::infoIMPORTANT
+:::info IMPORTANT
 
 Setting the log level to `TRACE` or `ALL` might result in sensitive data being logged. For example, command line arguments are logged when `TRACE` is set.
 
