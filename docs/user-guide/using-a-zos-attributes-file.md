@@ -8,7 +8,7 @@ A `.zosattributes` file saved in your source directory provides uploading and do
 
 An example `.zosattributes` file:
 
-```shell
+```json
 // highlight-start
 # pattern local-encoding remote-encoding
 # Don't upload the node_modules directory
