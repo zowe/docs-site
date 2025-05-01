@@ -650,6 +650,7 @@ module.exports = {
             },
             "user-guide/cli-using-using-prompt-feature",
             "user-guide/cli-using-writing-scripts",
+            "user-guide/using-a-zos-attributes-file",
             {
               type: "category",
               label: "Zowe CLI plug-ins",
