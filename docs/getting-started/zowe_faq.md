@@ -300,9 +300,9 @@ You can install Zowe CLI using the following methods:
 
 <summary></summary>
 
-Yes, Zowe CLI supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+Yes, Zowe CLI supports MFA through the API Mediation Layer. Without API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
 
-When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
+When mainframe services are routed through API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
 
 </details>
 
@@ -313,7 +313,7 @@ When mainframe services are routed through the API ML, users can log in to the A
 <summary></summary>
 
 - You can get help for any command, action, or option in Zowe CLI by issuing the command 'zowe --help'.
-- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-using-understanding-core-command-groups).
+- For information about the available commands in Zowe CLI, see [Command Groups](../user-guide/cli-using-understanding-core-command-groups.md).
 - If you have questions, the [Zowe Slack space](https://openmainframeproject.slack.com/) is the place to ask our community!
 
 </details>
@@ -455,9 +455,9 @@ Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profil
 
 <summary></summary>
 
-Yes, Zowe Explorer supports MFA through the API Mediation Layer. Without the API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
+Yes, Zowe Explorer supports MFA through the API Mediation Layer. Without API ML, an MFA code can be used in place of a password for testing single requests, but storing the MFA code for future requests does not work because the code expires rapidly.
 
-When mainframe services are routed through the API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
+When mainframe services are routed through API ML, users can log in to the API ML gateway with an MFA code to obtain a long-lived API ML authentication token that can be stored for future requests.
 
 </details>
 

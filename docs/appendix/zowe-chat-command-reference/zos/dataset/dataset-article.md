@@ -1,6 +1,6 @@
 # zos dataset
 
-**[zos](.././zos-article) > [dataset](dataset-article)**
+**[zos](.././zos-article.md) > [dataset](dataset-article.md)**
 
 Manages z/OS data sets. <!--dataset-description-->
 
@@ -12,21 +12,21 @@ Manages z/OS data sets. <!--dataset-description-->
 
 ## Action
 
-- [`list`](./list/list-article)
+- [`list`](./list/list-article.md)
 
 ## Positional Arguments
 
-- [zos dataset list status](./list/zos-dataset-list-status#positional-arguments)
+- [zos dataset list status](./list/zos-dataset-list-status.md#positional-arguments)
 
     - `datasetName*`
 
-- [zos dataset list member](./list/zos-dataset-list-member#positional-arguments)
+- [zos dataset list member](./list/zos-dataset-list-member.md#positional-arguments)
 
     - `datasetMemberName*`
 
 ## Options
 
-- [zos dataset list status](./list/zos-dataset-list-status#options)
+- [zos dataset list status](./list/zos-dataset-list-status.md#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |
@@ -35,7 +35,7 @@ Manages z/OS data sets. <!--dataset-description-->
     | --start | -s | string |
     | --limit |  | number |
 
-- [zos dataset list member](./list/zos-dataset-list-member#options)
+- [zos dataset list member](./list/zos-dataset-list-member.md#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |

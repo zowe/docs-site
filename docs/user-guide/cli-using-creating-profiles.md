@@ -159,7 +159,7 @@ In the following configuration, profiles are highlighted to show they are nested
 
 ## Accessing LPARs that access services through one API Mediation Layer
 
-In the following configuration, services are accessed through the API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile (highlighted in the example).
+In the following configuration, services are accessed through API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile (highlighted in the example).
 
 ```json showLineNumbers
 {
@@ -210,7 +210,7 @@ In the following configuration, services are accessed through the API ML (where 
 
 ## Accessing LPARs that access services through one API Mediation Layer using certificate authentication
 
-In the following configuration, services are accessed through the API ML using certificate authentication stored in a base profile (highlighted in the example).
+In the following configuration, services are accessed through API ML using certificate authentication stored in a base profile (highlighted in the example).
 
 ```json showLineNumbers
 {
@@ -351,7 +351,7 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
 
 In the following configuration, profiles are highlighted to show they are all at the same level.
 
-Use the `--base-profile` option on Zowe CLI commands to select a base profile that contains the API ML gateway information to use for a specific API ML gateway for that command.
+Use the `--base-profile` option on Zowe CLI commands to select a base profile that contains API ML gateway information to use for a specific API ML gateway for that command.
 
 ```json showLineNumbers
 {

@@ -1,6 +1,6 @@
 # zos file list mounts
 
-**[zos](../../zos-article) > [file](../file-article) > [list](./list-article) > [mounts](zos-file-list-mounts)** 
+**[zos](../../zos-article.md) > [file](../file-article.md) > [list](./list-article.md) > [mounts](zos-file-list-mounts.md)** 
 
 Show status or details of mounted z/OS file systems. <!--file-list-mounts-description-->
 

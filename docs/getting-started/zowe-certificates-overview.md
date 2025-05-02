@@ -80,7 +80,7 @@ The following diagram illustrates the TLS handshake steps:
 The architecture of Zowe strictly relies on Transport Layer Security (TLS) to secure communication channels between Zowe components,
 as well as between client applications and Zowe server components.
 
-For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
+For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
 
 :::note
 When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation. For more information, see [Configuring AT-TLS for Zowe server](../user-guide/configuring-at-tls-for-zowe-server.md).
@@ -132,7 +132,7 @@ Truststores are essential to provide secure communication with external services
 
 In addition to utilizing the intra-address space of certificates, Zowe incorporates external services on z/OS to enhance the encryption of messages transmitted between its servers. These external services, such as z/OSMF or Zowe conformant extensions, have registered themselves with the API Mediation Layer.
 
-The API Mediation Layer, acting as an intermediary, validates these certificates. When the API ML receives a certificate from an external service, it examines each certificate in the certificate chain and compares it to the certificates in the truststore.
+API Mediation Layer, acting as an intermediary, validates these certificates. When API ML receives a certificate from an external service, it examines each certificate in the certificate chain and compares it to the certificates in the truststore.
 
 By leveraging the truststore, Zowe ensures that only trusted and authorized external services can establish communication with its servers.
 

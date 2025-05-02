@@ -138,15 +138,15 @@ Review [Accessing services for multiple API ML instances](../user-guide/cli-usin
 
 Connect your service profile with a base profile and token:
 
-1. Right-click on the profiles you want to connect through with the API ML.
+1. Right-click on the profiles you want to connect through with API ML.
 2. Select the **Manage Profile** option from the context menu
 3. In the **Quick Pick**, select **Log in to Authentication Service**.
-4. In the next **Quick Pick** menu, select the appropriate option for authenticating to the API ML
+4. In the next **Quick Pick** menu, select the appropriate option for authenticating to API ML
 5. Answer the proceeding prompts for information.
 
     Tokens are stored either in a base profile or, if using a nested profile structure, in a parent profile that has a secure array that contains `tokenValue`. If not using a nested profile structure, and if a base profile does not exist, a base profile is created that contains your token. For more information about API integration and using tokens, see [Token Management](../user-guide/cli-using-integrating-apiml.md#how-token-management-works).
 
-### Logging out of the API ML using SSO
+### Logging out of API ML using SSO
 
 If you do not want to store your token, request the server to revoke your token and delete it from your local profile. Use the **Log out from Authentication Service** feature to invalidate the token.
 

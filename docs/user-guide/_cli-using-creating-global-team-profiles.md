@@ -159,7 +159,7 @@ The following example: ***NEEDS WORK*** The settings are accessing multiple serv
 
 ### Access LPARs containing multiple services through API Mediation Layer with token authentication
 
-The following example illustrates that the settings access multiple services using the API ML where multi-factor authentication (MFA) or single sign-on (SSO) is achievable using token-based authorization.
+The following example illustrates that the settings access multiple services using API ML where multi-factor authentication (MFA) or single sign-on (SSO) is achievable using token-based authorization.
 
 ```
 {

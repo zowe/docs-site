@@ -106,7 +106,7 @@ This subcommand creates the user IDs and security manager settings.
 :::info Required role: security administrator
 :::
 
-If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
+If Zowe has already been launched on a z/OS system from a previous release of Zowe v2 or later, you can skip this security configuration step unless told otherwise in the release documentation.
 
 The JCL member `.SZWESAMP(ZWESECUR)` is provided to assist with the security configuration. Before submitting the `ZWESECUR` JCL member, customize this member to match site security rules. For script driven scenarios, you can run the command `zwe init security` which uses `ZWESECUR` as a template to create a customized member in `.CUST.JCLLIB`.  This member contains the commands required to perform the security configuration. 
 
@@ -218,6 +218,13 @@ The JCL members for each of Zowe's started tasks need to be present on the JES p
 ```yaml
 zowe:
   setup:
+    dataset:
+      prefix: IBMUSER.ZWE
+      proclib: USER.PROCLIB
+      parmlib: IBMUSER.ZWE.CUST.PARMLIB
+      jcllib: IBMUSER.ZWE.CUST.JCLLIB
+      authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
+      authPluginLib: IBMUSER.ZWE.CUST.ZWESPLUG
     security:
       stcs:
         zowe: ZWESLSTC
