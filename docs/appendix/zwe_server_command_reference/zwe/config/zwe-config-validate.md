@@ -1,6 +1,6 @@
 # zwe config validate
 
-[zwe](./.././zwe.md) > [config](././zwe-config.md) > [validate](./zwe-config-validate.md)
+[zwe](./.././zwe) > [config](././zwe-config) > [validate](./zwe-config-validate)
 
 	zwe config validate [parameter [parameter]...]
 

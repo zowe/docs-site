@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 lock
 
-[zwe](./../.././zwe.md) > [certificate](./.././zwe-certificate.md) > [pkcs12](././zwe-certificate-pkcs12.md) > [lock](./zwe-certificate-pkcs12-lock.md)
+[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [lock](./zwe-certificate-pkcs12-lock)
 
 	zwe certificate pkcs12 lock [parameter [parameter]...]
 

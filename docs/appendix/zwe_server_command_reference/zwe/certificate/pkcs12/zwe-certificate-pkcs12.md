@@ -1,6 +1,6 @@
 # zwe certificate pkcs12
 
-[zwe](../.././zwe.md) > [certificate](.././zwe-certificate.md) > [pkcs12](./zwe-certificate-pkcs12.md)
+[zwe](../.././zwe) > [certificate](.././zwe-certificate) > [pkcs12](./zwe-certificate-pkcs12)
 
 	zwe certificate pkcs12 [sub-command [sub-command]...] [parameter [parameter]...]
 

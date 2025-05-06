@@ -1,6 +1,6 @@
 # zwe components disable
 
-[zwe](./.././zwe.md) > [components](././zwe-components.md) > [disable](./zwe-components-disable.md)
+[zwe](./.././zwe) > [components](././zwe-components) > [disable](./zwe-components-disable)
 
 	zwe components disable [parameter [parameter]...]
 

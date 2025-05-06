@@ -1,6 +1,6 @@
 # zwe internal config output
 
-[zwe](./../.././zwe.md) > [internal](./.././zwe-internal.md) > [config](././zwe-internal-config.md) > [output](./zwe-internal-config-output.md)
+[zwe](./../.././zwe) > [internal](./.././zwe-internal) > [config](././zwe-internal-config) > [output](./zwe-internal-config-output)
 
 	zwe internal config output [parameter [parameter]...]
 

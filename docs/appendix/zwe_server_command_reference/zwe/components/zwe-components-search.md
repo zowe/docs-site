@@ -1,6 +1,6 @@
 # zwe components search
 
-[zwe](./.././zwe.md) > [components](././zwe-components.md) > [search](./zwe-components-search.md)
+[zwe](./.././zwe) > [components](././zwe-components) > [search](./zwe-components-search)
 
 	zwe components search [parameter [parameter]...]
 

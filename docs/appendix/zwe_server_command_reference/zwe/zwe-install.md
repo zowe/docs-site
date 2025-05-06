@@ -1,6 +1,6 @@
 # zwe install
 
-[zwe](././zwe.md) > [install](./zwe-install.md)
+[zwe](././zwe) > [install](./zwe-install)
 
 	zwe install [parameter [parameter]...]
 

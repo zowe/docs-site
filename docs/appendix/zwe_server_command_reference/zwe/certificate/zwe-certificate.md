@@ -1,6 +1,6 @@
 # zwe certificate
 
-[zwe](.././zwe.md) > [certificate](./zwe-certificate.md)
+[zwe](.././zwe) > [certificate](./zwe-certificate)
 
 	zwe certificate [sub-command [sub-command]...] [parameter [parameter]...]
 

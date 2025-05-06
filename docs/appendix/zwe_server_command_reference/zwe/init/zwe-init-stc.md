@@ -1,6 +1,6 @@
 # zwe init stc
 
-[zwe](./.././zwe.md) > [init](././zwe-init.md) > [stc](./zwe-init-stc.md)
+[zwe](./.././zwe) > [init](././zwe-init) > [stc](./zwe-init-stc)
 
 	zwe init stc [parameter [parameter]...]
 

@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 create cert
 
-[zwe](./../../.././zwe.md) > [certificate](./../.././zwe-certificate.md) > [pkcs12](./.././zwe-certificate-pkcs12.md) > [create](././zwe-certificate-pkcs12-create.md) > [cert](./zwe-certificate-pkcs12-create-cert.md)
+[zwe](./../../.././zwe) > [certificate](./../.././zwe-certificate) > [pkcs12](./.././zwe-certificate-pkcs12) > [create](././zwe-certificate-pkcs12-create) > [cert](./zwe-certificate-pkcs12-create-cert)
 
 	zwe certificate pkcs12 create cert [parameter [parameter]...]
 

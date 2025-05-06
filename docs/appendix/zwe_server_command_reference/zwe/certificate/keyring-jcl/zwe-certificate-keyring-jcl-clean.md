@@ -1,6 +1,6 @@
 # zwe certificate keyring-jcl clean
 
-[zwe](./../.././zwe.md) > [certificate](./.././zwe-certificate.md) > [keyring-jcl](././zwe-certificate-keyring-jcl.md) > [clean](./zwe-certificate-keyring-jcl-clean.md)
+[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [keyring-jcl](././zwe-certificate-keyring-jcl) > [clean](./zwe-certificate-keyring-jcl-clean)
 
 	zwe certificate keyring-jcl clean [parameter [parameter]...]
 
