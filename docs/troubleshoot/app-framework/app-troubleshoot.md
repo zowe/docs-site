@@ -335,7 +335,7 @@ PERMIT OMVSAPPL CLASS(APPL) ACCESS(READ) ID(userID)
 
 An error occurs when launching specific Zowe Desktop application plug-ins:
 * MVS Explorer throws the following error:  
-   `Fetch for Datasets failed`
+  `Fetch for Datasets failed`
 * USS Explorer throws the following error:  
   `Fetch children failed for <USS directory>`
 * JES Explorer fails to load and displays an infinite loop.
