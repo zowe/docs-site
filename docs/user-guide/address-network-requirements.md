@@ -19,7 +19,7 @@ Each Jobname has a default prefix of ZWE1, but that can be customized via the `z
 | 7552 | API Mediation Layer | api-catalog | ZWE1**AC** | AAC | Used to view API swagger / openAPI specifications for registered API services in the API Catalog. 
 | 7553 | API Mediation Layer | discovery | ZWE1**AD** | ADS | Discovery server port which dynamic API services can issue APIs to register or unregister themselves.
 | 7554 | API Mediation Layer | gateway | ZWE1**AG** | AGW | The northbound edge of the API Gateway used to accept client requests before routing them to registered API services.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the gateway.
-| 7555 | API Mediation Layer | caching-service | ZWE1**CS** | ACS | Port of the caching service that is used to share state between different Zowe instances in a high availability topology.
+| 7555 | API Mediation Layer | Caching Service | ZWE1**CS** | ACS | Port of the Caching Service that is used to share state between different Zowe instances in a high availability topology.
 | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV | D | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers.
 | 7557 | App Framework | zss | ZWE1**SZ** | SZ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop.
 | 7558 | API Mediation Layer | zaas | ZWE1**AZ** | AZ | 
@@ -36,20 +36,20 @@ To enable or disable cluster mode, see the [Advanced Application Framework Confi
 
 ## Caching Service Infinispan ports
 
-The Caching Service will use these additional ports if enabled (`zowe.components.caching-service.enabled: true`) and set to use infinispan (the default, `zowe.components.caching-service.storage.mode: infinispan`).
+The Caching Service will use these additional ports if enabled (`components.caching-service.enabled: true`) and set to use infinispan (the default, `components.caching-service.storage.mode: infinispan`).
 
 | Port number | zowe.yaml variable name | Purpose |
-|------|------|------|
-| 7601 | zowe.components.caching-service.storage.infinispan.jgroups.keyExchange.port | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
-| 7600 | zowe.components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster.
+|-------------|------|------|
+| 7601        | zowe.components.caching-service.storage.infinispan.jgroups.keyExchange.port | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server.
+| 7600        | zowe.components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster.
 
 ## IP Addresses
 
 Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
 
-If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.4.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
+If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.5.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
 
-When `zowe.job.prefix` is "ZWE1", An example of port reservations with a fixed IP of "10.11.12.13" could be:
+When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be:
 
 ```
    7552 TCP ZWE1AC BIND 10.11.12.13 ; Zowe API Catalog
@@ -61,4 +61,4 @@ When `zowe.job.prefix` is "ZWE1", An example of port reservations with a fixed I
    7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
-
+:::note This TCP IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. :::

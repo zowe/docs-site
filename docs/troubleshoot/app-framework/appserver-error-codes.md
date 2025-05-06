@@ -1727,7 +1727,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Verify if this is intended configuration (edit/define zowe.components.app-server.node.https.ipAddresses or check Zowe documenation)
+  Verify if this is the intended configuration (edit/define components.app-server.node.https.ipAddresses) or check Zowe documentation.
 
 
 
@@ -2533,17 +2533,30 @@ The following error message codes may appear on the app-server log. Use the foll
 
 ### ZWED0003E
 
-  Loopback configuration not valid, _loobackConfiguration_
+  The screen displays the following error message:
+  
+  Loopback configuration not valid, _loopbackConfiguration_
   Loopback calls will fail!
 
   **Reason:**
 
-  The loopback configuration that the server uses to contact itself over an internal network was missing a value for the network port, therefore no requests over the loopback address will be possible.
+  The administrative network configuration does not make a loopback network address available to the app-server. The app-server requires a loopback network address to communicate with itself, but the address is unavailable.
 
   **Action:**
 
-  Review the configuration of `components.app-server.node.port` to see if it has a value and set one to fix the issue.
+  There are two ways to solve this problem:
+  Option 1
+  Enable the administrative network configuration to make a loopback network address available to the app-server.
+  For example, enable the administrative network configuration to provide 127.x.x.x to the app-server, where 127.x.x.x is the IP that denotes the loopback network address.
+  The IP address must be 127.x.x.x
 
+  Option 2
+  In the YAML configuration file, set a value for the `components.app-server.node.loopbackAddress` property that denotes the IP that you want to use.
+  :::info Note
+  
+  If the network administrator associates a loopback network address with the app servers, then do not mention the loopback network address in the YAML configuration file. Verify whether your network’s configuration in the YAML configuration file is correct. If the alarm still displays, contact your network administrator.
+  
+  :::
 
 
 ### ZWED0004E
@@ -3203,7 +3216,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
+  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios.md#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
 
 
 
@@ -3245,7 +3258,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the `zowe.certificate` or `components.app-server.node.https` sections of Zowe configuration to see if there are entries that start with `safkeyring://` and verify that they are in the format of `safkeyring://USERNAME:RINGNAME&LABEL`. Older versions of zowe will require that there be 4 slashes, such as `safkeyring:////`. The `&LABEL` suffix is only needed for specifying certificate authorities and should be omitted in other sections, for example it is only needed within `zowe.certificate.pem.certificateAuthorities` or `components.app-server.node.https.certificateAuthorities`. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
+  Check the `zowe.certificate` or `components.app-server.node.https` sections of Zowe configuration to see if there are entries that start with `safkeyring://` and verify that they are in the format of `safkeyring://USERNAME:RINGNAME&LABEL`. Older versions of zowe will require that there be 4 slashes, such as `safkeyring:////`. The `&LABEL` suffix is only needed for specifying certificate authorities and should be omitted in other sections, for example it is only needed within `zowe.certificate.pem.certificateAuthorities` or `components.app-server.node.https.certificateAuthorities`. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios.md#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
 
 
 

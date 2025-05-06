@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_1_1",
         "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
       ],
@@ -18,7 +19,9 @@ module.exports = {
       label: "Zowe V2 release notes",
       className: "ToCheadercolor",
       collapsed: true,
-      items: [
+      items: [      
+        "whats-new/release-notes/v2_18_2",  
+        "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -523,6 +526,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/mvd-using" },
           items: [
             "user-guide/mvd-editor",
+            "user-guide/mvd-3270"
           ],
         },
         {
@@ -645,6 +649,7 @@ module.exports = {
             },
             "user-guide/cli-using-using-prompt-feature",
             "user-guide/cli-using-writing-scripts",
+            "user-guide/using-a-zos-attributes-file",
             {
               type: "category",
               label: "Zowe CLI plug-ins",
@@ -754,22 +759,30 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Libraries for integration (Enablers)",
+              label: "Libraries for onboarding APIs to API ML",
+              link: { type: "doc", id: "extend/extend-apiml/libraries-for-onboarding-apis" },
               items: [
                 {
                   type: "category",
-                  label: "Plain Java Enabler",
+                  label: "Onboarding an API service with the Plain Java Enabler",
                   link: { type: "doc", id: "extend/extend-apiml/onboard-plain-java-enabler" },
                   items: [
                     "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-                    "extend/extend-apiml/api-mediation-message-service",
                   ]
                 },
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
                 "extend/extend-apiml/onboard-static-definition",
-                "extend/extend-apiml/custom-metadata",
+                {
+                  type: "category",
+                  label: "Optional features to use with onboarded APIs",
+                  link: { type: "doc", id: "extend/extend-apiml/optional-features-to-use-with-onboarded-apis" },
+                  items: [
+                    "extend/extend-apiml/api-mediation-message-service",
+                    "extend/extend-apiml/custom-metadata",
+                  ]
+                },
               ]
             },
             {
@@ -778,7 +791,6 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
@@ -1090,7 +1102,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.1.md",
     },
   ],
 }

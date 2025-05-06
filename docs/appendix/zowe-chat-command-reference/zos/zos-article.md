@@ -4,12 +4,12 @@ Manages z/OS resources including jobs, data sets, USS files, and mounted filesys
 
 ## Resources
 
-- [job](./job/job-article) - Manage z/OS jobs
+- [job](./job/job-article.md) - Manage z/OS jobs
 
-- [dataset](./dataset/dataset-article) - Manage z/OS data sets
+- [dataset](./dataset/dataset-article.md) - Manage z/OS data sets
 
-- [file](./file/file-article) - Manage z/OS USS files
+- [file](./file/file-article.md) - Manage z/OS USS files
 
-- [command](./command/command-article) - Perform z/OS console commands
+- [command](./command/command-article.md) - Perform z/OS console commands
 
-- [help](./help/help-article) - Request help for z/OS commands
+- [help](./help/help-article.md) - Request help for z/OS commands

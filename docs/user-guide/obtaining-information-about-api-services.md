@@ -20,7 +20,7 @@ This article provides further detail about each of these use cases.
 
 ## Using API ID in API ML to locate APIs in different instances
 
-The _API ID_ uniquely identifies the API in the API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
+The _API ID_ uniquely identifies the API in API ML. The API ID can be used to locate the same APIs that are provided by different service instances. The API developer defines this ID.
 
 ## Protecting Service Information
 

@@ -1,6 +1,6 @@
 # zwe migrate for kubernetes
 
-[zwe](./../.././zwe) > [migrate](./.././zwe-migrate) > [for](././zwe-migrate-for) > [kubernetes](./zwe-migrate-for-kubernetes)
+[zwe](./../.././zwe.md) > [migrate](./.././zwe-migrate.md) > [for](././zwe-migrate-for.md) > [kubernetes](./zwe-migrate-for-kubernetes.md)
 
 	zwe migrate for kubernetes [parameter [parameter]...]
 
@@ -127,3 +127,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

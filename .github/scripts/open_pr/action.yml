@@ -1,0 +1,40 @@
+
+name: 'Create Merge Conflict Pull Request'
+description: 'Creates a GitHub Pull Request when an automated merge results in conflicts, using details provided.'
+
+inputs:
+  github-token:
+    description: 'GitHub token for authenticating API requests.'
+    required: true
+  pr-branch:
+    description: 'The pull request branch name.'
+    required: true
+  base-branch:
+    description: 'The name of the branch into which the pull request branch should be merged (target of the PR).'
+    required: true
+  pr-title:
+    description: 'The title for the pull request.'
+    required: true
+  pr-body:
+    description: 'The body content for the pull request (can be multiline).'
+    required: true
+  pr-labels:
+    description: 'Comma-separated list of labels to add to the pull request.'
+    required: false
+    default: ''
+  pr-reviewers:
+    description: 'Optional: Comma-separated list of GitHub user logins to request reviews from.'
+    required: false
+    default: ''
+
+outputs:
+  pr-number:
+    description: 'The number of the created pull request.'
+  pr-url:
+    description: 'The URL of the created pull request.'
+
+# Define how the action runs
+runs:
+  using: 'node20' # Specify the Node.js version
+  main: 'index.js' # The entry point script relative to this action.yml
+

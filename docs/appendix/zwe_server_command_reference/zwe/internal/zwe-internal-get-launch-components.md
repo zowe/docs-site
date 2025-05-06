@@ -1,6 +1,6 @@
 # zwe internal get-launch-components
 
-[zwe](./.././zwe) > [internal](././zwe-internal) > [get-launch-components](./zwe-internal-get-launch-components)
+[zwe](./.././zwe.md) > [internal](././zwe-internal.md) > [get-launch-components](./zwe-internal-get-launch-components.md)
 
 	zwe internal get-launch-components [parameter [parameter]...]
 
@@ -87,3 +87,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

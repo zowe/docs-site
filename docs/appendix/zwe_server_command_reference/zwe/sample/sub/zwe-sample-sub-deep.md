@@ -1,6 +1,6 @@
 # zwe sample sub deep
 
-[zwe](./../.././zwe) > [sample](./.././zwe-sample) > [sub](././zwe-sample-sub) > [deep](./zwe-sample-sub-deep)
+[zwe](./../.././zwe.md) > [sample](./.././zwe-sample.md) > [sub](././zwe-sample-sub.md) > [deep](./zwe-sample-sub-deep.md)
 
 	zwe sample sub deep [parameter [parameter]...]
 
@@ -92,3 +92,4 @@ ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
 ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.

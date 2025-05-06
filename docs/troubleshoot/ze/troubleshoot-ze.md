@@ -8,7 +8,7 @@ As a Zowe Explorer user, you may encounter problems when using Visual Studio Cod
 2. Review the current list of [Known issues](known-ze.md) in documentation. Also, try searching using the Zowe Docs search bar (keyboard shortcut `ctrl` + `k`).
 3. Collect the following information to help diagnose the issue:
     - The Zowe Explorer and Visual Studio Code versions installed
-        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version/#zowe-explorer-for-visual-studio-code) for information.
+        - See [Checking your Zowe version release number](../troubleshoot-check-your-zowe-version.md#zowe-explorer-for-visual-studio-code) for information.
     - Node.js and NPM versions installed
     - Your operating system
     - Zowe Logs, which usually can be found in `C:\Users\userID\.vscode\extensions\zowe.vscode-extension-for-zowe-X.Y.Z\logs`
@@ -83,7 +83,7 @@ To avoid this, change the `logs` and `temp` folder locations:
 
     ![Logs folder write access error](../../images/troubleshoot/ZE/new-logs-folder-path.png)
 
-    - Log files include information about Zowe Explorer and connections it makes to the mainframe. These files can be used for troubleshooting and to analyze errors.
+    - Log files include information about Zowe Explorer and the connections it makes to the mainframe. These files can be used for troubleshooting and to analyze errors.
 
     <br/>`temp` folder setting:
 

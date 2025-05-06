@@ -14,7 +14,7 @@ Not all components may have been started. Which components have been started dep
 * If you set `enabled` to be `true` for `app-server` and `zss`, the Zowe Application Framework (Zowe desktop) are started.
 * Configurations that use containerization may only have `ZSS` started.
 
-For more information, see [YAML configurations - components](../appendix/zowe-yaml-configuration#yaml-configurations---components).
+For more information, see [YAML configurations - components](../appendix/zowe-yaml-configuration.md#yaml-configurations---components).
 :::
 
 ## Verifying Zowe Application Framework installation
@@ -28,7 +28,7 @@ where:
 - **_myHost_**  
 is the host on which you installed the Zowe Application Server.
 - **_httpsPort_**  
-is the port number value `components.app-server.port` in `zowe.yaml`. For more information, see [Configure component app-server](../appendix/zowe-yaml-configuration#configure-component-app-server).
+is the port number value `components.app-server.port` in `zowe.yaml`. For more information, see [Configure component app-server](../appendix/zowe-yaml-configuration.md#configure-component-app-server).
 
   For example, if the Zowe Application Server runs on host _myhost_ and the port number that is assigned to `components.app-server.port` is 12345, you specify `https://myhost:12345`.  The web desktop uses page direct to the actual initial page which is `https://myhost:12345/ZLUX/plugins/org.zowe.zlux.bootstrap/web/index.html`. If the redirect fails, try the full URL.  
 
@@ -48,7 +48,7 @@ where:
 - **_myHost_**  
 is the host on which you installed the Zowe API Mediation Layer.
 - **_httpsPort_**  
-is the port number value `zowe.externalPort` in `zowe.yaml`. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration#domain-and-port-to-access-zowe).
+is the port number value `zowe.externalPort` in `zowe.yaml`. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration.md#domain-and-port-to-access-zowe).
 
 **Example:**
 
@@ -80,6 +80,6 @@ https://hostName:gatewayPort/serviceId/api/v1/version
 where: 
 
 * **`gatewayPort`**  
-is the port number that is assigned to `zowe.externalPort` in the `zowe.yaml` file used to launch Zowe. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration#domain-and-port-to-access-zowe).
+is the port number that is assigned to `zowe.externalPort` in the `zowe.yaml` file used to launch Zowe. For more information, see [Domain and port to access Zowe](../appendix/zowe-yaml-configuration.md#domain-and-port-to-access-zowe).
 
 The path `serviceId/api/v1/version` depends on a specific service. You can also use API Catalog to verify a registered service.
