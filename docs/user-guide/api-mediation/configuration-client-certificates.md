@@ -17,7 +17,7 @@ For information about the usage of the client certificate when this feature is e
 ## General prerequisites
 
 * Zowe has correct TLS setup 
-* The external CA used for issuing client certificates to specific users is imported to the truststore or keyring of the API Mediation Layer.
+* The trust store, which is configured in the config file, needs to contain the CA certificates of all incoming client certificates.
 
 :::caution Important:
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
@@ -56,7 +56,7 @@ For other security systems, refer to the documentation for an equivalent command
 2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
 :::note
-Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. Alternatively, you can generate these certificates in SAF.
+Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. If you define a certificate using openssl on Linux, import the CA. Certificates can also be generated in SAF.
 :::
 
 :::caution Important:

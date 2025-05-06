@@ -56,6 +56,9 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
 
+  :::tip
+  To disable the API ML mapper, ensure that you set the parameter `components.gateway.apiml.security.useInternalMapper` to `false`.
+  :::
 </details>
 
 **ACF2** 
@@ -73,7 +76,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   TRUST
   ```
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   ```acf2
   INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST
@@ -96,6 +99,10 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   ```
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
+
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  :::
 
   ```tss
   TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST
