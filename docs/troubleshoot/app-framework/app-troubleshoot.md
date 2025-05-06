@@ -340,12 +340,10 @@ An error occurs when launching specific Zowe Desktop application plug-ins:
   `Fetch children failed for <USS directory>`
 * JES Explorer fails to load and displays an infinite loop.
 
-These symptoms occur only when SAF is the authentication provider.  
-`components.gateway.apiml.security.auth.provider: saf`
-
 **Solution:**
 
-Use z/OSMF as the authentication provider:  
+One possible cause of these errors in when SAF is the authentication provider. Check to verify that
+z/OSMF is set as the authentication provider:  
 `components.gateway.apiml.security.auth.provider: zosmf`
 
 
