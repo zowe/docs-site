@@ -40,10 +40,32 @@ When upgrading from the convenience build, you can either upgrade to PSWI or SMP
 
 ### Upgrade to the same version
 
-If the target PSWI/SMP/E version matches the currently installed convenience build, use the following outline:
+If the target PSWI/SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
 1. Reuse the existing zowe.yaml file.
 2. Continue using the current runtime datasets or from target library SMP/E.
 3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML
+
+### Upgrade to a newer version
+
+If migrating to a newer version of Zowe for example from v3.0 to v3.1, you can either use PSWI workflows, or alternatively, by configuring the SMP/E SAMPLIB.
+
+* **Using PSWI Workflows**  
+  You can use z/OSMF workflows provided in the PSWI package to perform the following tasks:
+  * Generate a new zowe.yaml configuration
+  * Allocate new runtime datasets
+  * Configure system definitions (e.g. APF, PROCLIB)
+
+* **Using SMP/E SAMPLIB**
+  
+  Use members from ZOWE SAMPLIB to perform the following tasks:
+  * Allocate and define new runtime datasets
+  * Create or customize a new zowe.yaml
+  * Configure system definitions (e.g. APF, PROCLIB)
+
+:::tip
+Ensure all new configurations are validated for compatibility and correctness.
+:::
+
 
 
