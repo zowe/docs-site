@@ -154,6 +154,10 @@ With the Zowe Editor you can create, edit, and manage files, folders, and datase
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
 
+:::note
+z/OSMF is the required authentication provider for JES Explorer.
+:::
+
 ### IP Explorer
 With the IP Explorer you can monitor the TCP/IP stacks, view active connections and reserved ports.
 
@@ -170,6 +174,10 @@ Use this application to browse the MVS™ file system by using a high-level qual
   - Delete data sets and members.
   - Open data sets in full screen editor mode, which gives you a fully qualified link to that file. The link is then reusable for example in help tickets.
 
+:::note
+z/OSMF is the required authentication provider for MVS Explorer.
+:::
+
 ### USS Explorer
 Most features of the USS explorer are now incorporated into the "Editor" plug-in listed above, and the community focuses on future enhancements there, but you can still find the MVS Explorer in a Zowe install and use the features found below.
 
@@ -179,3 +187,7 @@ Use this application to browse the USS files by using a path. With the USS Explo
  - Create new files and folders.
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
+
+:::note
+z/OSMF is the required authentication provider for USS Explorer.
+:::
