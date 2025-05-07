@@ -51,6 +51,10 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  :::
+
   ```racf
   RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
@@ -78,6 +82,10 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  :::
+
   ```acf2
   INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST
   ```
@@ -101,7 +109,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
   :::
 
   ```tss
