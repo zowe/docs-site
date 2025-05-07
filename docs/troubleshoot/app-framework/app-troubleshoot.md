@@ -328,3 +328,23 @@ To fix this permit access, issue the following TSO command, where `userID` is th
 ```
 PERMIT OMVSAPPL CLASS(APPL) ACCESS(READ) ID(userID)
 ```
+
+## Fail when launching MVS, USS, and JES Explorers
+
+**Symptoms:**
+
+An error occurs when launching specific Zowe Desktop application plug-ins:
+* MVS Explorer throws the following error:  
+  `Fetch for Datasets failed`
+* USS Explorer throws the following error:  
+  `Fetch children failed for <USS directory>`
+* JES Explorer fails to load and displays an infinite loop.
+
+**Solution:**
+
+One possible cause of these errors in when SAF is the authentication provider. Check to verify that
+z/OSMF is set as the authentication provider:  
+`components.gateway.apiml.security.auth.provider: zosmf`
+
+
+
