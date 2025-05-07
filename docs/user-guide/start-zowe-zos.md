@@ -148,7 +148,7 @@ RO LPAR2,S ZWESLSTC,HAINST=myinst2,JOBNAME=ZWE1SV2
 To stop the Zowe main server, issue the `P <jobname>` command.
 
 :::cautionImportant
-With Zowe version 1, you can issue `C` command to stop Zowe main server. This command is no longer supported in version 2. The `P` command is now required to ensure that the Zowe components shut down properly.
+With Zowe version 1, you can issue `C` command to stop Zowe main server. This command is no longer supported in version 2 and later versions. The `P` command is now required to ensure that the Zowe components shut down properly.
 :::
 
 ## Stopping and starting a Zowe component without restarting Zowe main server
