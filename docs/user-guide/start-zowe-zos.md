@@ -83,7 +83,7 @@ zwe start --config /path/to/my/zowe.yaml --ha-instance hainst2
  
  The following information must be defined in the Zowe configuration file:
 
-```
+```yaml
 haInstances:
   hainst2:
     hostname: lpar2-domain.com
@@ -153,10 +153,18 @@ With Zowe version 1, you can issue `C` command to stop Zowe main server. This co
 
 ## Stopping and starting a Zowe component without restarting Zowe main server
 
-You can restart a Zowe component with the MVS system command  without restarting the whole Zowe main server. Before issuing the modify command consider the following points:
+You can restart a Zowe component with the MVS system command  without restarting the whole Zowe main server. Before issuing the `MODIFY` command consider the following points:
 
 - By default, your Zowe main server job name is configured as `ZWE1SV`. You can find your customized value by checking the `zowe.job.name` defined in the Zowe configuration file.
-- Determine the component name you want to stop or start. You can find a full list of installed components by listing the `<RUNTIME>/components` directory and the Zowe extension directory.  
+- Determine the component name you want to stop or start. You can find a full list of installed components by listing the `<RUNTIME>/components` directory and the Zowe extension directory.
+- Following components from the `<RUNTIME>/components` directory can be stopped or started:
+  - `app-server`
+  - `zss`
+  - `zaas`
+  - `gateway`
+  - `caching-service`
+  - `discovery`
+  - `api-catalog`
 
 To stop a running Zowe component, issue the following command:
 
