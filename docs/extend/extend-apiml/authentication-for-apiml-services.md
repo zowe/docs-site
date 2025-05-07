@@ -55,7 +55,7 @@ The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{g
   When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
 * **auth/query**  
-The full path of the `auth/query` endpoint appears as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
+The full path of the `auth/query` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query`.
 
    The `auth/query` endpoint validates the token and retrieves information associated with the token.
    The query request requires the token through one of the following methods:
