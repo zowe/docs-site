@@ -4,8 +4,9 @@
 :::
 
 Choose from the following providers to handle authentication for the API Gateway:  
-* [z/OSMF Authentication Provider](#zosmf-authentication-provider)
-* [SAF Authentication Provider](#saf-authentication-provider)
+- [Configuring an authentication provider for API Mediation Layer](#configuring-an-authentication-provider-for-api-mediation-layer)
+  - [z/OSMF Authentication Provider](#zosmf-authentication-provider)
+  - [SAF Authentication Provider](#saf-authentication-provider)
 
 :::note
 For development purposes, a dummy authentication provider is also available. This provider is not intend for production purposes. For more information, see [Dummy Authentication Provider](../extend/extend-apiml/api-mediation-layer-development-setup.md#dummy-authentication-provider) in _Deploy API Mediation Layer locally_.
@@ -26,6 +27,16 @@ Use the following properties of the API Gateway to enable the `z/OSMF Authentica
 components.gateway.apiml.security.auth.provider: zosmf
 components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
+
+:::note
+z/OSMF is the required authentication provider for the following Zowe Desktop application plugins:
+* JES Explorer
+* MVS Explorer
+* USS Explorer
+::: 
+
+components.gateway.apiml.security.auth.provider: zosmf
+
 ## SAF Authentication Provider
 
 The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. 
