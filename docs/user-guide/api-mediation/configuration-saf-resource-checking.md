@@ -44,7 +44,7 @@ are available on the classpath. This approach uses the method described in [Clas
 :::
 
 :::note
-Ensure that the version of Java on your system has the same version of classes and method signatures.
+Ensure that your system uses the same version of Java as the classes and method signatures.
 :::
 
 ### Setting the endpoint provider to perform SAF resouce check
