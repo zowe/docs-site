@@ -34,6 +34,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 <details>
 <summary>Click here for an example command in RACF. </summary>
 
+  Use the following example if you are using the internal API ML mapper:
+
   Activate the `DIGTNMAP` class:
   
   ```racf
@@ -54,6 +56,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   :::info
   ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
   :::
+  
+  Use the following example if you are using ZSS:
 
   ```racf
   RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
@@ -69,6 +73,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 
 <details>
 <summary>Click here for an example command in ACF2. </summary>  
+
+  Use the following example if you are using the internal API ML mapper:
 
   Create the mapping for the user and a distinguished name filter:
 
@@ -86,6 +92,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
   :::
 
+  Use the following example if you are using ZSS:
+
   ```acf2
   INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST
   ```
@@ -96,6 +104,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 
 <details>
 <summary>Click here for an example command in Top Secret. </summary>
+
+  Use the following example if you are using the internal API ML mapper:
 
   Create the mapping for the user and a distinguished name filter:
   
@@ -111,6 +121,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   :::info
   ACID refers to a security identifier used by z/OS to manage and authorize access to resources. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
   :::
+
+  Use the following example if you are using ZSS:
 
   ```tss
   TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST
