@@ -201,6 +201,4 @@ The following diagram shows how routing works with ZSS, in the case where the ZS
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
-:::tip
-For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
-:::
+
