@@ -32,7 +32,7 @@ To configure the number of data sets and PDS members to display per page:
 
 1. Navigate to Zowe Explorer settings.
 2. Scroll to **Zowe › Ds › Paginate: Data Sets Per Page**.
-3. Specify the number of items to list per page in the input box provided.
+3. Specify the number of items to list per page in the input box.
    Set the value to zero to disable pagination for data sets and PDS members.
 
 ## Modifying the `Secure Credentials Enabled` setting
