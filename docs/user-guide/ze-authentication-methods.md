@@ -18,7 +18,7 @@ To log into the API ML authentication service with an existing base profile:
 
    If the request is successful, the token is used for authentication until the logout action is taken or the token expires.
 
-For more information, see [Integrating with API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml).
+For more information, see [Using API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml).
 
 :::note
 For services not registered to your API ML instance, please consult the product or extender documentation for SSO support.
@@ -50,4 +50,4 @@ To use MFA authentication with Zowe Explorer, log into API ML:
 
    Zowe Explorer logs you in to the authentication service for your selected profile.
 
-For more information regarding MFA support in Zowe's documentation on [using API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml/).
+For more information regarding MFA support, see [Using API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml/).
