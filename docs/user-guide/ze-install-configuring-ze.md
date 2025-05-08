@@ -25,21 +25,15 @@ To access Zowe Explorer settings:
 
     ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
 
-## Modifying temporary file location settings
+## Modifying pagination options for data sets
 
-Change the default folder location where temporary files are stored:
+Zowe Explorer v3.2 and above have pagination enabled by default when listing data sets and PDS members, splitting the results into pages rather than showing all items at once.
+To configure the number of data sets and PDS members to display per page:
 
-   1. Navigate to Zowe Explorer settings.
-   2. Under the data set, USS, or jobs settings that you want to edit, click the **Edit in settings.json** link.
-   3. Modify the following definition in the file:
-
-      ```json
-        "zowe.files.temporaryDownloadsFolder.path": "/path/to/directory"
-      ```
-
-      Replace `/path/to/directory` with the new folder location.
-
-    4. Save the file to keep the change.
+1. Navigate to Zowe Explorer settings.
+2. Scroll to **Zowe › Ds › Paginate: Data Sets Per Page**.
+3. Specify the number of items to list per page in the input box provided.
+   Set the value to zero to disable pagination for data sets and PDS members.
 
 ## Modifying the `Secure Credentials Enabled` setting
 
