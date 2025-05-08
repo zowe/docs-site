@@ -193,15 +193,29 @@ The following error message codes may appear on ZSS log. Use the following messa
 
 ### ZWES1601I
 
-  Server is ready to accept JWT `with`(or `without`) fallback to legacy tokens
+ZSS server is ready to accept JWT with (or without) fallback to legacy tokens.
 
-  **Reason:**
+**Reason:**
 
-  Server is ready to accept JWT `with` or `without` fallback to legacy tokens.
+This message indicates that the ZSS (Zowe Security Server) has successfully started and is ready to accept JWT (JSON Web Token)-based authentication. Depending on your configuration, it may also accept legacy Zowe tokens as a fallback.
 
-  **Action:**
+**What does "with (or without) fallback to legacy tokens" mean?**
 
-  No action required.
+ZSS can support two types of authentication tokens:
+- **JWT (JSON Web Tokens)** – the default and more secure method.
+- **Legacy tokens** – used in older versions of Zowe.
+
+If fallback is enabled, users with legacy tokens can still authenticate. If fallback is disabled, only JWT tokens are accepted.
+
+**How to Configure Fallback:**
+
+You can enable or disable fallback in your `zowe.yaml` configuration file.  
+Refer to: [Zowe Authentication Configuration](https://docs.zowe.org/stable/user-guide/configure-zowe-runtime/#authentication-configuration)
+
+**Action:**
+
+No action required unless you want to modify the authentication method.
+
 
 ## ZSS error messages
 

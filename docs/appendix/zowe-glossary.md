@@ -120,8 +120,7 @@ Services are deployed using one or more service instances, which share the same 
 #### Team configuration
 
 A method of storing and managing Zowe CLI and Zowe Explorer *team* and *user* profiles introduced in Zowe Version 2.
-
-This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. The location of the configuration file determines whether these profiles are applied *globally* or *per project*.
+This method saves team-specific profiles in the *zowe.config.json* configuration file and user-specific profiles in the *zowe.config.user.json* configuration file. These profiles are stored locally on the user's client system (e.g., in Visual Studio Code) and determine whether they are applied *globally* (to all projects) or *per project*. This configuration is for managing Zowe CLI and Explorer settings on the local client and does not store or affect z/OS configurations.
 
 #### Web Explorers
 
