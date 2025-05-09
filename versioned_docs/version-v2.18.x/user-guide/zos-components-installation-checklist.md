@@ -16,7 +16,7 @@ Choose from the following installation options to install Zowe server-side compo
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
+|  **Option 1: [Install Zowe with SMP/E](./install-zowe-smpe)** <br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))<br /><br /> **Option 2: [Install Zowe with z/OSMF from a portable software instance](./install-zowe-pswi)** <br /><br /> **Option 3: [Install Zowe SMP/E build with z/OSMF workflow](./install-zowe-smpe-zosmf-workflow)** <br /><br /> **Option 4: [Install Zowe via a convenience build (PAX file)](../user-guide/install-zowe-zos-convenience-build.md)**<br />(Optionally install via [Server Install Wizard](./install-zowe-server-install-wizard.md))                     | Executables and binaries are unpaxed on the mainframe                |   1 hour                     |
 
 ## Configuring Zowe z/OS Components 
 
@@ -24,7 +24,7 @@ Choose the following options to initialize  Zowe z/OS runtime:
 
 | Task | Results | Time Estimate |  
 |-----------------------|----|------|
-|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass. | 1 hour
+|  **Option 1: [Configure Zowe with zwe init](../user-guide/initialize-zos-system.md)**  <br /><br /> **Option 2: [Configure Zowe with z/OSMF workflows](../user-guide/configure-zowe-zosmf-workflow.md)**  <br /><br /> **Option 3: [Configure Zowe with JCL](../user-guide/configuring-zowe-via-jcl.md)** | * All datasets are created and populated. <br /> * Started tasks are copied to system libraries.  <br /><br />**Important:** Security administrator permissions are required for some zwe init sub-commands to pass.   | 1 hour 
 
 ## Configuring security
 
@@ -33,7 +33,7 @@ Configure Zowe and your z/OS system to run Zowe with z/OS.
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
 |[Review Configuring security](./configuring-security.md) | Knowledge about which tasks need to be performed by the security administrator. | 10 minutes|
-[Initialize Zowe security configurations](./configuring-security.md) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
+[Initialize Zowe security configurations](./initialize-security-configuration) |  The JCL member to configure the z/OS system is created.   | 10 minutes | 
 [Perform APF authorization of load libraries](./apf-authorize-load-library.md) | APF authorization is granted to load libraries.  | 10 minutes  | 
 [Address z/OS requirements for Zowe](./configure-zos-system.md) | Your z/OS and security product are configured.  | 2 hours  |
 [Assign security permissions to users](./assign-security-permissions-to-users.md) | Zowe user is created and is assigned all required permissions.  | 30 minutes |
@@ -82,9 +82,8 @@ You can configure your system to enable HA. This configuration is not required t
 | Verification Step | Task | Results | Time Estimate | 
 |----|-----------|----|-------------|
 | [Verify Zowe Application Framework installation](../user-guide/verify-zowe-runtime-install.md#verifying-zowe-application-framework-installation) | Open the Zowe Desktop from a supported browser | You should be able to open the Zowe Desktop from a supported browser. | 20 minutes| 
-| [Verify API Mediation installation](../user-guide/verify-zowe-runtime-install.md#verifying-api-mediation-layer-installation) |Use a REST API client to review the value of the status variable of the API Catalog service routed through the API Gateway | See the example presented in Verify API Mediation installation | 15 minutes |
+| [Verify API Mediation installation](../user-guide/verify-zowe-runtime-install.md#verifying-api-mediation-installation) |Use a REST API client to review the value of the status variable of the API Catalog service routed through the API Gateway | See the example presented in Verify API Mediation installation | 15 minutes |
 |[Verify z/OS Services installation](../user-guide/verify-zowe-runtime-install.md#verifying-zos-services-installation) |Zowe z/OS services usually are registered with Zowe APIML Discovery| You should see JSON format data of all jobs running on the system | 15 minutes |
-
 
 
 
