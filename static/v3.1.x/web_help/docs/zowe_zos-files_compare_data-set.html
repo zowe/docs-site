@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-files compare data-set</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-files.html">zos-files</a> › <a href="zowe_zos-files_compare.html">compare</a> › <a href="zowe_zos-files_compare_data-set.html">data-set</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Compare the contents of two z/OS data sets in your terminal (stdout).</p>
+<h4>Usage</h4>
+<p>zowe zos-files compare data-set &lt;dataSetName1&gt; &lt;dataSetName2&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>dataSetName1</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the first data set you want to compare.</li>
+</ul>
+</li>
+<li>
+<p><code>dataSetName2</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the second data set you want to compare.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--binary</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the first data set in binary mode (no EBCDIC to ASCII conversion). If binary mode is set and the binary2 flag is not set then both data sets are transferred in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--binary2</code> | <code>--b2</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content of the second data set in binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding</code> | <code>--ec</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the first data set with encoding mode, which means that data conversion is performed using the file encoding specified. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--encoding2</code> | <code>--ec2</code> <em>(string)</em></p>
+<ul>
+<li>Transfer the content of the second data set with encoding mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--record</code> | <code>-r</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content for the first data set in record mode, which means that no data conversion is performed and the record length is prepended to the data. The data transfer process returns each line as-is, without translation. No delimiters are added between records. If encoding mode is set and the encoding2 flag is not set both data sets are transferred in encoding mode. This option conflicts with binary mode.</li>
+</ul>
+</li>
+<li>
+<p><code>--record2</code> | <code>--r2</code> <em>(boolean)</em></p>
+<ul>
+<li>Transfer the content for the second data set in record mode. Conflicts with binary2.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume-serial</code> | <code>--vs</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) where the first data set resides. You can use this option at any time. However, the VOLSER is required only when the data set is not cataloged on the system. A VOLSER is analogous to a drive name on a PC.</li>
+</ul>
+</li>
+<li>
+<p><code>--volume-serial2</code> | <code>--vs2</code> <em>(string)</em></p>
+<ul>
+<li>The volume serial (VOLSER) where the second data set resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--seqnum</code> | <code>--sn</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If you are comparing two files that contain sequence numbers, this option controls if the sequences numbers are removed from the end of each string. The default is to keep the sequence numbers. Use the --no-seqnum option to not include them.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--context-lines</code> | <code>--cl</code> <em>(number)</em></p>
+<ul>
+<li>The number of context lines that display before and after detected non-matching lines. By default all matching lines display. If you want to limit the amount of data returned to only lines with differences use the context lines option to reduce the matching lines to only those before and after non-matching lines. Using the value of 0 strips all matching lines.</li>
+</ul>
+</li>
+<li>
+<p><code>--browser-view</code> | <code>--bv</code> <em>(boolean)</em></p>
+<ul>
+<li>Opens the diffs between two given files in browser.</li>
+</ul>
+</li>
+<li>
+<p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
+<ul>
+<li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
+</ul>
+</li>
+</ul>
+<h4>Zosmf Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OSMF server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OSMF server port.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe (z/OSMF) password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol used (HTTP or HTTPS)</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--zosmf-profile</code> | <code>--zosmf-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (zosmf) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Compare the contents of the data set members &quot;sys1.samplib(antptso)&quot; and &quot;sys1.samplib(antxtso)&quot;:</p>
+<ul>
+<li><code>zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Compare the contents of the data set members &quot;sys1.samplib(antptso)&quot; and &quot;sys1.samplib(antxtso)&quot; without sequence numbers:</p>
+<ul>
+<li><code>zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files compare data-set &quot;sys1.samplib(antptso)&quot; &quot;sys1.samplib(antxtso)&quot; --no-seqnum">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

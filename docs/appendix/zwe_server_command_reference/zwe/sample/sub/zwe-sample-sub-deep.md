@@ -39,7 +39,7 @@ Full name|Alias|Type|Required|Help message
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --target-dir,--target|-d|string|yes|This parameter is required.
---auto-encoding|-e|string|no|This parameter has default value.\nThis help message has multiple lines.\n  - another line
+--auto-encoding|-e|string|no|This parameter has default value. This help message has multiple lines.   - another line
 --help|-h|boolean|no|Display this help.
 --debug,--verbose|-v|boolean|no|Enable verbose mode.
 --trace|-vv|boolean|no|Enable trace level debug mode.
@@ -86,10 +86,11 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
 ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
+ZWEL0322E|322|%s is not a valid directory.
