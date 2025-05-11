@@ -1,5 +1,24 @@
 # Known Zowe Explorer limitations
 
+## PDS member pagination with descending sort orders
+
+### Limitation: Server-Side Pagination and Descending Sort for PDS Members
+
+Zowe Explorer v3.2.0 and higher implements server-side pagination by default when displaying lists of data sets and Partitioned Data Set (PDS) members. This feature divides large lists into separate, more manageable pages.
+
+When sorting PDS members in descending order, be aware that the members are first paginated alphabetically. Your specified descending sort is then applied to the members *within* each page. Consequently, you might need to navigate through multiple pages (using "Next page" / "Previous page") to locate a specific member.
+
+**Note:** This behavior primarily affects profile types that support listing ranges of PDS members, such as z/OSMF and z/FTP.
+
+### Workarounds
+
+To mitigate this behavior, consider the following options:
+
+1.  **Disable Data Set List Pagination:**
+    Set the **Zowe > Ds > Pagination: Max Items Per Page** user setting to `0`. This disables the pagination feature for data set and PDS member lists, loading all items at once. Be cautious with this approach for very large PDSs, as it might impact performance.
+2.  **Refine Member Search Pattern:**
+    Use a more specific member pattern when searching. This can limit the number of members returned, potentially reducing the need to navigate across multiple pages.
+
 ## Mismatched credentials when using Zowe Explorer and Zowe CLI
 
 ### Limitation
