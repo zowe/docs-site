@@ -15,7 +15,7 @@ When sorting PDS members in descending order, be aware that the members are firs
 To mitigate this behavior, consider the following options:
 
 1.  **Disable Data Set List Pagination:**
-    Set the **Zowe > Ds > Pagination: Max Items Per Page** user setting to `0`. This disables the pagination feature for data set and PDS member lists, loading all items at once. Be cautious with this approach for very large PDSs, as it might impact performance.
+    Set the **Zowe > Ds > Paginate: Max Items Per Page** user setting to `0`. This disables the pagination feature for data set and PDS member lists, loading all items at once. Be cautious with this approach for very large PDSs, as it might impact performance.
 2.  **Refine Member Search Pattern:**
     Use a more specific member pattern when searching. This can limit the number of members returned, potentially reducing the need to navigate across multiple pages.
 
