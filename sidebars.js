@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_2_0",
         "whats-new/release-notes/v3_1_1",
         "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
@@ -774,6 +775,7 @@ module.exports = {
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-python-enabler",
                 "extend/extend-apiml/onboard-static-definition",
                 {
                   type: "category",
@@ -1103,7 +1105,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.1.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.2.x.md",
     },
   ],
 }

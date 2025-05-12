@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Copy | Zowe Node.js SDK - v3.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
+	<title>Copy | Zowe Node.js SDK - v3.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -94,7 +94,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#copypds" class="tsd-kind-icon">copyPDS</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#dataset" class="tsd-kind-icon">data<wbr>Set</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#datasetcrosslpar" class="tsd-kind-icon">data<wbr>Set<wbr>CrossLPAR</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#datasetexists" class="tsd-kind-icon">data<wbr>Set<wbr>Exists</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#generatedatasetoptions" class="tsd-kind-icon">generate<wbr>Dataset<wbr>Options</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#hasidenticalmembernames" class="tsd-kind-icon">has<wbr>Identical<wbr>Member<wbr>Names</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_zos_files_for_zowe_sdk.copy.html#ispds" class="tsd-kind-icon">isPDS</a></li>
 							</ul>
 						</section>
@@ -107,27 +109,33 @@
 					<a name="convertalctozosmf" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> convert<wbr>Alc<wbr>TozOSMF</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">convert<wbr>Alc<wbr>TozOSMF<span class="tsd-signature-symbol">(</span>zosmfValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>Alc<wbr>TozOSMF<span class="tsd-signature-symbol">(</span>getValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L395">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:395</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L547">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:547</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p> Private function to convert the ALC value from the format returned by the Get() call in to the format used by the Create() call</p>
+									<p>Converts the ALC value from the format returned by the Get() call to the format used by the Create() call.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>zosmfValue: <span class="tsd-signature-type">string</span></h5>
+									<h5>getValue: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The ALC value from the Get() call.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<ul>
+								<li>The ALC value in the format used by the Create() call.</li>
+							</ul>
 						</li>
 					</ul>
 				</section>
@@ -135,13 +143,13 @@
 					<a name="copypds" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> copyPDS</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">copyPDS<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, fromPds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, toPds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">copyPDS<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, fromPds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, toPds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, task<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a>, sourceMemberList<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L141">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L257">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:257</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,6 +182,12 @@
 								<li>
 									<h5>toPds: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5>task: <a href="../interfaces/_zowe_imperative.itaskwithstatus.html" class="tsd-signature-type">ITaskWithStatus</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> sourceMemberList: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_zowe_zos_files_for_zowe_sdk.izosfilesresponse.html" class="tsd-signature-type">IZosFilesResponse</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A response indicating the status of the copying</p>
@@ -190,7 +204,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L52">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L55">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -250,7 +264,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L194">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L344">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:344</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -308,6 +322,37 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="datasetexists" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> data<wbr>Set<wbr>Exists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">data<wbr>Set<wbr>Exists<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, dataSetName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L216">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:216</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Function that checks if the data set exists</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+								</li>
+								<li>
+									<h5>dataSetName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="generatedatasetoptions" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> generate<wbr>Dataset<wbr>Options</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
@@ -317,7 +362,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L375">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:375</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L525">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:525</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -338,6 +383,40 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="hasidenticalmembernames" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> has<wbr>Identical<wbr>Member<wbr>Names</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">has<wbr>Identical<wbr>Member<wbr>Names<span class="tsd-signature-symbol">(</span>session<span class="tsd-signature-symbol">: </span><a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a>, sourceMemberList<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, toPds<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L232">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:232</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Function that checks if source and target data sets have identical member names</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>session: <a href="_zowe_imperative.abstractsession.html" class="tsd-signature-type">AbstractSession</a></h5>
+								</li>
+								<li>
+									<h5>sourceMemberList: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>toPds: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="ispds" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> isPDS</h3>
@@ -348,12 +427,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/zosfiles/src/methods/copy/Copy.ts#L111">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/zosfiles/src/methods/copy/Copy.ts#L198">@zowe/zos-files-for-zowe-sdk/src/methods/copy/Copy.ts:198</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Private function that checks if a dataset is type PDS</p>
+									<p>Function that checks if a dataset is type PDS</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -447,7 +526,13 @@
 										<a href="_zowe_zos_files_for_zowe_sdk.copy.html#datasetcrosslpar" class="tsd-kind-icon">data<wbr>Set<wbr>CrossLPAR</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.copy.html#datasetexists" class="tsd-kind-icon">data<wbr>Set<wbr>Exists</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.copy.html#generatedatasetoptions" class="tsd-kind-icon">generate<wbr>Dataset<wbr>Options</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_zos_files_for_zowe_sdk.copy.html#hasidenticalmembernames" class="tsd-kind-icon">has<wbr>Identical<wbr>Member<wbr>Names</a>
 									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_zos_files_for_zowe_sdk.copy.html#ispds" class="tsd-kind-icon">isPDS</a>

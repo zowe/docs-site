@@ -11179,6 +11179,12 @@ Accepts up to 8 CCIDs separated by &quot;, &quot;. Enclose CCIDs that contain sp
 Accepts up to 8 Processor group names separated by &quot;, &quot;.</li>
 </ul>
 </li>
+<li>
+<p><code>--limit</code> | <code>--lim</code> <em>(number)</em></p>
+<ul>
+<li>Maximum number of results to return, where 0 is NOLIMIT.</li>
+</ul>
+</li>
 </ul>
 <h4>endevor search text options</h4>
 <ul>
@@ -11256,7 +11262,7 @@ cu - Components Summary.</p>
 <ul>
 <li>
 <p>Specifies the action for the SCL that has to be built.</p>
-<p>Allowed values: GENERATE, MOVE</p>
+<p>Allowed values: GENERATE, MOVE, DELETE</p>
 </li>
 </ul>
 </li>
@@ -12124,6 +12130,12 @@ It is possible to specify multiple status separated by &quot;,&quot; during list
 <p><code>--approver</code> | <code>--apr</code> <em>(string)</em></p>
 <ul>
 <li>Specifies a one to eight character approver ID. Only one approver ID can be specified and name masking is not supported.</li>
+</ul>
+</li>
+<li>
+<p><code>--limit</code> | <code>--lim</code> <em>(number)</em></p>
+<ul>
+<li>Maximum number of results to return, where 0 is NOLIMIT.</li>
 </ul>
 </li>
 </ul>
@@ -15497,6 +15509,12 @@ Allowed values: browse, changes, history, summary, master, listing</p>
 <p><code>--explode</code> | <code>--exp</code> | <code>--ex</code> <em>(boolean)</em></p>
 <ul>
 <li>Specify to print component info from ACMQ.</li>
+</ul>
+</li>
+<li>
+<p><code>--expand-includes</code> | <code>--expand</code> | <code>--ei</code> <em>(boolean)</em></p>
+<ul>
+<li>Indicates that INCLUDE statements should be expanded in the course of the action.</li>
 </ul>
 </li>
 <li>
@@ -34604,9 +34622,21 @@ Allowed values: http, https</p>
 <h4>Options</h4>
 <ul>
 <li>
+<p><code>--overwrite</code> | <code>-o</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option as true if you wish to replace the entire target data set with the source data set. All members, even those with no naming overlap, will be overwritten</li>
+</ul>
+</li>
+<li>
 <p><code>--replace</code> | <code>--rep</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option as true if you wish to replace like-named members in the target data set</li>
+<li>Specify this option as true if you wish to replace members with identical names in the target data set</li>
+</ul>
+</li>
+<li>
+<p><code>--safe-replace</code> | <code>--safe-rep</code> | <code>--sr</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option as true if you wish to replace members with identical names or the content of the target data set. This option will prompt to confirm.</li>
 </ul>
 </li>
 <li>
@@ -34740,9 +34770,21 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p>Copy the data set named 'USER.FROM.SET' to the data set named 'USER.TO.SET' and replace like-named members:</p>
+<p>Copy the data set named 'USER.FROM.SET' to the data set named 'USER.TO.SET' and replace members with identical names:</p>
 <ul>
 <li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --replace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --replace">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the partitioned data set named 'TEST.PDS1' to the partitioned data set named 'TEST.PDS2':</p>
+<ul>
+<li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --safe-replace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --safe-replace">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the partitioned data set named 'USER.FROM.SET' to the partitioned data set named 'USER.FROM.SET' and overwrite the original contents:</p>
+<ul>
+<li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --overwrite">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -36180,6 +36222,12 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
+<p><code>--data-set-type</code> | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
+<ul>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
+</ul>
+</li>
+<li>
 <p><code>--device-type</code> | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as 'unit'</li>
@@ -36358,6 +36406,12 @@ Allowed values: http, https</p>
 <p>Create an empty physical sequential data set with default parameters:</p>
 <ul>
 <li><code>zowe zos-files create data-set-sequential NEW.PS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-sequential NEW.PS.DATASET">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a LARGE format sequential data set with default parameters:</p>
+<ul>
+<li><code>zowe zos-files create data-set-sequential --data-set-type </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-sequential --data-set-type ">Copy</button>LARGE``</li>
 </ul>
 </li>
 </ul>
@@ -41162,6 +41216,15 @@ However, the pattern cannot begin with any of these sequences. You can specify m
 </ul>
 </li>
 <li>
+<p><code>--regex</code> | <code>--re</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Whether the search string is a regular expression.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -41268,27 +41331,33 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE':</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE':</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE'">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE' in uppercase only:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE' in uppercase only:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --case-sensitive</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --case-sensitive">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE', and time out in 1 minute:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE', and time out in 1 minute:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --timeout 60</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --timeout 60">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE', and perform 8 parallel tasks:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE', and perform 8 parallel tasks:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --max-concurrent-requests 8</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --max-concurrent-requests 8">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Search all of IBMUSER's data sets using a regular expression:</p>
+<ul>
+<li><code>zowe zos-files search data-sets 'IBMUSER.*' 'Z([A-Za-z]){3}' --regex</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'Z([A-Za-z]){3}' --regex">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -47284,6 +47353,12 @@ Allowed values: http, https</p>
 <li>Wait for the job to enter OUTPUT status before completing the command.</li>
 </ul>
 </li>
+<li>
+<p><code>--record-range</code> | <code>--rr</code> <em>(string)</em></p>
+<ul>
+<li>Zero indexed range of records to download from a spool file. (example: 0-100)</li>
+</ul>
+</li>
 </ul>
 <h4>Zosmf Connection Options</h4>
 <ul>
@@ -47388,6 +47463,12 @@ Allowed values: http, https</p>
 <p>Download all the output of the job with job ID JOB00234 to an automatically generated directory.:</p>
 <ul>
 <li><code>zowe zos-jobs download output JOB00234</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs download output JOB00234">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Download the records in the range of 0 to 100 from a job spool.:</p>
+<ul>
+<li><code>zowe zos-jobs download output --record-range '0-100'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs download output --record-range '0-100'">Copy</button></li>
 </ul>
 </li>
 </ul>
@@ -52866,13 +52947,13 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p>To start a workflow instance in z/OSMF with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; and wait forit to be finished:</p>
+<p>To start a workflow instance in z/OSMF with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; and wait for it to be finished:</p>
 <ul>
 <li><code>zowe zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --wait</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --wait">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>To start a workflow instance in z/OSMF with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot;and if there is a conflict in variable's value use the value that is in output file:</p>
+<p>To start a workflow instance in z/OSMF with workflow key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; and if there is a conflict in variable's value use the value that is in output file:</p>
 <ul>
 <li><code>zowe zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows start workflow-full --workflow-key &quot;d043b5f1-adab-48e7-b7c3-d41cd95fa4b0&quot; --resolve-conflict-by &quot;outputFileValue&quot;">Copy</button></li>
 </ul>

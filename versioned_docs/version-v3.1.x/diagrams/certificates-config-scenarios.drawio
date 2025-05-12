@@ -1,0 +1,189 @@
+<mxfile host="app.diagrams.net" modified="2023-08-21T14:06:00.198Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="fjvVwsdAWJe9mYLN6Izo" version="21.6.8" type="google">
+  <diagram name="Page-1" id="2D4Eud1RVsdPvKpwBga_">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-1" value="" style="group;fontStyle=1" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="380" y="7070" width="166" height="161" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-2" value="Do you need to use&lt;br&gt;certificate signed by company/external CA?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-1">
+          <mxGeometry width="166" height="161" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-9" value="2" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-1">
+          <mxGeometry x="73" y="20" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-3" value="Production" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-8" target="bi-3GEvjXEP-DX2mGwIE-14">
+          <mxGeometry x="-0.4899" y="16" relative="1" as="geometry">
+            <mxPoint x="866" y="7271" as="sourcePoint" />
+            <mxPoint x="671" y="6970" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="812" y="6976" />
+            </Array>
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-8" target="bi-3GEvjXEP-DX2mGwIE-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="7076" as="sourcePoint" />
+            <mxPoint x="510" y="7116" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-5" value="Dev/Test" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-4">
+          <mxGeometry x="-0.52" y="2" relative="1" as="geometry">
+            <mxPoint x="3" y="-18" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-6" value="Configure Zowe Certificates" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=2;align=left;gradientColor=#7ea6e0;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="21" y="6810" width="1159" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.525;entryY=0.961;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=none;endFill=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-8" target="bi-3GEvjXEP-DX2mGwIE-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-8" value="What is your target deployment environment?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="550" y="6901" width="160" height="149" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-2" target="bi-3GEvjXEP-DX2mGwIE-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="341" y="7310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="628" y="7151" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-12" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-11">
+          <mxGeometry x="-0.2037" y="-1" relative="1" as="geometry">
+            <mxPoint x="-47" y="-13" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-13" value="" style="group;fontStyle=1" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="733" y="7070" width="157" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-14" value="Do you need to use&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;certificate signed by company/external CA?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-13">
+          <mxGeometry width="157" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-15" value="2&#39;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-13">
+          <mxGeometry x="69.26470588235293" y="11.782945736434108" width="23.088235294117645" height="23.088235294117645" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-19" target="bi-3GEvjXEP-DX2mGwIE-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-17" value="NO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-16">
+          <mxGeometry x="-0.1587" relative="1" as="geometry">
+            <mxPoint x="20" y="-87" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-18" value="YES" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry x="-0.6213" y="13" relative="1" as="geometry">
+            <mxPoint x="710" y="7343" as="sourcePoint" />
+            <mxPoint as="offset" />
+            <mxPoint x="811.3928571428569" y="7400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="811" y="7343" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-19" value="&lt;br&gt;Do you plan to use&lt;br&gt;keyring?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="546" y="7280" width="164" height="126" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-24" target="bi-3GEvjXEP-DX2mGwIE-32">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-21" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-20">
+          <mxGeometry x="-0.1832" y="-3" relative="1" as="geometry">
+            <mxPoint x="-9" y="-78" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-24" target="bi-3GEvjXEP-DX2mGwIE-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-23" value="NO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-22">
+          <mxGeometry x="-0.1348" y="5" relative="1" as="geometry">
+            <mxPoint x="5" y="-85" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-24" value="&lt;br&gt;Do you plan to use&lt;br&gt;keyring?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="7282" width="161" height="134" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-2" target="bi-3GEvjXEP-DX2mGwIE-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-26" value="NO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-25">
+          <mxGeometry y="-3" relative="1" as="geometry">
+            <mxPoint x="136" y="-8" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-27" value="&lt;u&gt;Scenario 2&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a file based pkcs12 keystore and import a certificate generated by another ca&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="424" y="7571" width="166" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-28" value="" style="group" connectable="0" vertex="1" parent="1">
+          <mxGeometry x="737" y="7400" width="143" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-29" value="Where is the existing certificate stored?&amp;nbsp;" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;gradientColor=#ffd966;strokeColor=#d6b656;fontStyle=1" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-28">
+          <mxGeometry x="2.8928571428571432" width="143" height="136" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-30" value="4" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-28">
+          <mxGeometry x="63.92941176470588" y="15.997692307692308" width="20.923076923076923" height="20.923076923076923" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-31" value="&lt;u&gt;Scenario 1&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a file-based pkcs12 keystore with zowe-generated certificates&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="10" y="7571" width="160" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-32" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore with zowe-generated certificates&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="230" y="7571" width="164" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-33" value="&lt;u&gt;Scenario 4&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore and connect to an existing certificate&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="630" y="7571" width="160" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-34" value="Another keyring" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-29" target="bi-3GEvjXEP-DX2mGwIE-33">
+          <mxGeometry x="-0.4979" y="-18" relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="732.1428571428573" y="7465" as="sourcePoint" />
+            <mxPoint x="680" y="7615" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="697" y="7468" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-35" value="&lt;u&gt;Scenario 5&lt;/u&gt;&lt;br&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Use a zos keyring-based keystore and import a certificate-stored in a dataset&lt;/span&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="830" y="7570" width="158" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-29" target="bi-3GEvjXEP-DX2mGwIE-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-37" value="Dataset" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-36">
+          <mxGeometry x="-0.3344" relative="1" as="geometry">
+            <mxPoint x="-9" y="-35" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-38" value="&lt;u&gt;Scenario 3&lt;/u&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;div style=&quot;border-color: var(--border-color); text-align: left;&quot;&gt;Use a zos keyring-based keystore with zowe-generated certificates&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1020" y="7571" width="158" height="71" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-14" target="bi-3GEvjXEP-DX2mGwIE-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-40" value="NO" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-39">
+          <mxGeometry x="0.011" y="1" relative="1" as="geometry">
+            <mxPoint x="-160" y="-120" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="bi-3GEvjXEP-DX2mGwIE-14" target="bi-3GEvjXEP-DX2mGwIE-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-42" value="YES" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" connectable="0" vertex="1" parent="bi-3GEvjXEP-DX2mGwIE-41">
+          <mxGeometry x="-0.413" y="-1" relative="1" as="geometry">
+            <mxPoint x="-2" y="-20" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-43" value="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="1">
+          <mxGeometry x="622.1885714285714" y="6920" width="17.81352235550709" height="17.81352235550709" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-44" value="3" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="1">
+          <mxGeometry x="190" y="7296" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="bi-3GEvjXEP-DX2mGwIE-45" value="3&#39;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;strokeWidth=3;fontFamily=Tahoma;spacingBottom=4;spacingRight=2;strokeColor=#004C99;spacingLeft=2;" vertex="1" parent="1">
+          <mxGeometry x="618" y="7296" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

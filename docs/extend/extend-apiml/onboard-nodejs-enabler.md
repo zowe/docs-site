@@ -147,7 +147,7 @@ To register your service with API ML, use the following procedure.
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 
