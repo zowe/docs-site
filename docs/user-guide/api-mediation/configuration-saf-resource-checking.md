@@ -71,15 +71,21 @@ To use the endpoint provider it is necessary to enable the endpoint property and
 
 Use the Dummy provider for testing purpose outside of the mainframe.
 
-1. Open the file `zowe.yaml`.
+1. Open the file `zowe.yml`.
 2. Find or add the following property with the value `dummy`:
   ```
   components.gateway.apiml.security.authorization.provider: dummy
   ```
 
-3. Restart Zowe.
+3. Create the file `saf.yml` in the following folders where the application is running:
+ * `<zowe_installation_dir>/components/zaas/bin folder (V3)`  
+  The directory for the ZAAS application 
+ * `<zowe_installation_dir>/components/gateway/bin folder (V3)`  
+  The directory for the Gateway 
+  
+  Alternatively, you can create the file `mock-saf.yml` in the test module (root folder). 
 
-In the folder where the application is running, create the file `saf.yml`. Alternatively, you can create the file `mock-saf.yml` in the test module (root folder). 
+4. Restart Zowe.
 
 :::caution Important:
 It is necessary to read the file outside of the JAR. A file (inner or outside) has to exist.
