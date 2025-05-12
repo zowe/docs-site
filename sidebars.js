@@ -92,6 +92,7 @@ module.exports = {
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
         "whats-new/zowe-v3-migration",
+        "upgrade-from-convenience-build-to-pswi-smpe",
       ],
     },
     {
