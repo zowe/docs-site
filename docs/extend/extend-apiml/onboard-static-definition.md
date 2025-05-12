@@ -539,7 +539,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+4.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -573,7 +573,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.
 
-5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```

@@ -134,7 +134,7 @@ If you are starting a Zowe high availability instance for another LPAR in the Sy
 
 To stop the Zowe main server, issue the `P <jobname>` command.
 
-:::cautionImportant
+:::caution Important
 With Zowe version 1, you can issue `C` command to stop Zowe main server. This command is no longer supported in version 2. The `P` command is now required to ensure that the Zowe components shut down properly.
 :::
 

@@ -28,9 +28,21 @@
 <h4>Options</h4>
 <ul>
 <li>
+<p><code>--overwrite</code> | <code>-o</code> | <code>--ow</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option as true if you wish to replace the entire target data set with the source data set. All members, even those with no naming overlap, will be overwritten</li>
+</ul>
+</li>
+<li>
 <p><code>--replace</code> | <code>--rep</code> <em>(boolean)</em></p>
 <ul>
-<li>Specify this option as true if you wish to replace like-named members in the target data set</li>
+<li>Specify this option as true if you wish to replace members with identical names in the target data set</li>
+</ul>
+</li>
+<li>
+<p><code>--safe-replace</code> | <code>--safe-rep</code> | <code>--sr</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option as true if you wish to replace members with identical names or the content of the target data set. This option will prompt to confirm.</li>
 </ul>
 </li>
 <li>
@@ -164,9 +176,21 @@ Allowed values: http, https</p>
 </ul>
 </li>
 <li>
-<p>Copy the data set named 'USER.FROM.SET' to the data set named 'USER.TO.SET' and replace like-named members:</p>
+<p>Copy the data set named 'USER.FROM.SET' to the data set named 'USER.TO.SET' and replace members with identical names:</p>
 <ul>
 <li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --replace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --replace">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the partitioned data set named 'TEST.PDS1' to the partitioned data set named 'TEST.PDS2':</p>
+<ul>
+<li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --safe-replace</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --safe-replace">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Copy the partitioned data set named 'USER.FROM.SET' to the partitioned data set named 'USER.FROM.SET' and overwrite the original contents:</p>
+<ul>
+<li><code>zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --overwrite</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files copy data-set &quot;USER.FROM.SET&quot; &quot;USER.TO.SET&quot; --overwrite">Copy</button></li>
 </ul>
 </li>
 </ul>
