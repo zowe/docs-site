@@ -50,6 +50,14 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   WITHLABEL('<label>')
   SETROPTS RACLIST(DIGTNMAP) REFRESH
   ```
+  * `<userid>`  
+  Specifies the userid that the certificate maps to.
+  
+  * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
+
+  * `<label>`  
+  Specifies the name (label) to use for reference purposes.
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
@@ -86,6 +94,15 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   TRUST
   ```
 
+  * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
+
+  * `<label>`  
+  Specifies the name (label) to use for reference purposes.
+
+   * `<userid>`  
+  Specifies the userid that the certificate maps to.
+
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   :::info
@@ -115,6 +132,12 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   USERID(<userid>)
   TRUST
   ```
+
+   * `<userid>`  
+  Specifies the userid that the certificate maps to.
+
+   * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
