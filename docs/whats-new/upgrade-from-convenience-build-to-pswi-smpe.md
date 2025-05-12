@@ -36,15 +36,15 @@ For more information about SMP/E installation, see [Installing Zowe SMP/E overvi
 
 ## Configuring to the same or newer version
 
-When upgrading from the convenience build, you can either upgrade to PSWI or SMP/E to the same version or to a higher version.
+When upgrading from the convenience build, you can either use PSWI or SMP/E to upgrade to the same version or to a higher version.
 
 ### Upgrade to the same version
 
 If the target PSWI/SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
 1. Reuse the existing zowe.yaml file.
-2. Continue using the current runtime datasets or from target library SMP/E.
-3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML
+2. Continue using the current runtime datasets, or for SMP/E, from the target library.
+3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML.
 
 ### Upgrade to a newer version
 
@@ -67,5 +67,31 @@ If migrating to a newer version of Zowe for example from v3.0 to v3.1, you can e
 Ensure all new configurations are validated for compatibility and correctness.
 :::
 
+## Switch between Zowe versions
 
+Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3.1):
 
+1. Update STEPLIB in Zowe STC JCLs to reflect correct target libraries.
+2. Modify PARMLIB member references accordingly.
+3. Restart all affected Zowe STCs.
+
+## Validate after upgrade
+
+Follow these steps to validate that you successfully upgraded your Zowe installation.
+
+1. Start the following Zowe STCs:
+  * ZWESISTC
+  * ZWESLSTC
+2. Monitor logs for any anomalies or errors.
+3. Validate functionality by checking the following functionalities:
+  * Access Zowe Desktop
+  * Confirm API services <!-- where are these services confirmed? In the Desktop? -->
+4. Review system and application logs for configuration or version mismatches.
+   For more information, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
+
+:::tip
+Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe upgrade:
+* Retain previous runtime datasets
+* Keep backup copies of all JCLs and configuration members
+* Be prepared to reassign STEPLIB/PARMLIB back to convenience build settings
+:::
