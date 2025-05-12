@@ -93,6 +93,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   USERID(<userid>)
   TRUST
   ```
+  * `<recid>`  
+  Specifies the record ID that uniquely identifies a particular record.
 
   * `<subject's-distinguished-name-filter>`  
   Specifies the subject name from the user's certificate.
@@ -135,6 +137,9 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 
    * `<userid>`  
   Specifies the userid that the certificate maps to.
+
+  * `<recid>`  
+  Specifies the record ID that uniquely identifies a particular record.
 
    * `<subject's-distinguished-name-filter>`  
   Specifies the subject name from the user's certificate.
