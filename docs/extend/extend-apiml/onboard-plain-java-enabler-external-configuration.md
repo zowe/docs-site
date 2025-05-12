@@ -108,10 +108,10 @@ The following code block is an example of Java Servlet context configuration.
    
    The other context parameters with the _apiml_ prefix are used to rewrite values of properties in the configuration files. 
 
-## Validating successful onboarding with the API Mediation Layer
+## Validating successful onboarding with API Mediation Layer
 To ensure that you successfully onboarded a service with the API Mediation Layer, follow these steps: 
 
-  1. Validate successful onboarding. Follow the procedure described in [Verify successful onboarding to the API ML](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
+  1. Validate successful onboarding. Follow the procedure described in [Verify successful onboarding to API ML](./onboard-overview.md#verify-successful-onboarding-to-api-ml).
  
   2. Check that you can access your API service endpoints through the Gateway.
 
