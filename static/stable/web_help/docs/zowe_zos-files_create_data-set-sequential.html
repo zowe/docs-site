@@ -43,6 +43,12 @@
 </ul>
 </li>
 <li>
+<p><code>--data-set-type</code> | <code>--dst</code> | <code>--dsntype</code> <em>(string)</em></p>
+<ul>
+<li>The data set type (BASIC, EXTPREF, EXTREQ, HFS, LARGE, PDS, LIBRARY, PIPE)</li>
+</ul>
+</li>
+<li>
 <p><code>--device-type</code> | <code>--dt</code> | <code>--unit</code> <em>(string)</em></p>
 <ul>
 <li>The device type, also known as 'unit'</li>
@@ -221,6 +227,12 @@ Allowed values: http, https</p>
 <p>Create an empty physical sequential data set with default parameters:</p>
 <ul>
 <li><code>zowe zos-files create data-set-sequential NEW.PS.DATASET</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-sequential NEW.PS.DATASET">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Create a LARGE format sequential data set with default parameters:</p>
+<ul>
+<li><code>zowe zos-files create data-set-sequential --data-set-type </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create data-set-sequential --data-set-type ">Copy</button>LARGE``</li>
 </ul>
 </li>
 </ul>

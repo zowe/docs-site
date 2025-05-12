@@ -35,6 +35,7 @@ The Plain Java Enabler supports the use of the API Mediation Layer Message Servi
 
 The following steps outline the overall process to onboard a service with the API ML using the PJE. Each step is described in further detail in this article.
 
+
 - [Onboarding an API service with the Plain Java Enabler (PJE)](#onboarding-an-api-service-with-the-plain-java-enabler-pje)
   - [Introduction](#introduction)
   - [Onboarding your REST or GraphQL service with API ML](#onboarding-your-rest-or-graphql-service-with-api-ml)
@@ -311,7 +312,6 @@ customMetadata:
         key1: value1
         key2: value2
 ```
-The onboarding configuration parameters are broken down into the following groups:
 
 The onboarding configuration parameters are broken down into the following groups:
 
@@ -912,7 +912,7 @@ public class ApiDiscoveryListener implements ServletContextListener {
 Once you are able to build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml).
+1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml).
 
 2. Check that you can access your API service endpoints through the Gateway.
 
