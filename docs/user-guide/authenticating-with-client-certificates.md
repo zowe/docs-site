@@ -34,6 +34,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 <details>
 <summary>Click here for an example command in RACF. </summary>
 
+  Use the following example if you are using the internal API ML mapper:
+
   Activate the `DIGTNMAP` class:
   
   ```racf
@@ -48,20 +50,39 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   WITHLABEL('<label>')
   SETROPTS RACLIST(DIGTNMAP) REFRESH
   ```
+  * `<userid>`  
+  Specifies the userid that the certificate maps to.
+  
+  * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
+
+  * `<label>`  
+  Specifies the name (label) to use for reference purposes.
 
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
+
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  :::
+  
+  Use the following example if you are using ZSS:
 
   ```racf
   RACDCERT ADD(<dataset>) ID(<userid>) WITHLABEL('<label>') TRUST
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
 
+  :::tip
+  To disable the API ML mapper, ensure that you set the parameter `components.gateway.apiml.security.useInternalMapper` to `false`.
+  :::
 </details>
 
 **ACF2** 
 
 <details>
 <summary>Click here for an example command in ACF2. </summary>  
+
+  Use the following example if you are using the internal API ML mapper:
 
   Create the mapping for the user and a distinguished name filter:
 
@@ -72,8 +93,25 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   USERID(<userid>)
   TRUST
   ```
+  * `<recid>`  
+  Specifies the record ID that uniquely identifies a particular record.
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID
+  * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
+
+  * `<label>`  
+  Specifies the name (label) to use for reference purposes.
+
+   * `<userid>`  
+  Specifies the userid that the certificate maps to.
+
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
+
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
+  :::
+
+  Use the following example if you are using ZSS:
 
   ```acf2
   INSERT <userid>.<certname> DSNAME('<dataset>') LABEL(<label>) TRUST
@@ -86,6 +124,8 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
 <details>
 <summary>Click here for an example command in Top Secret. </summary>
 
+  Use the following example if you are using the internal API ML mapper:
+
   Create the mapping for the user and a distinguished name filter:
   
   ```tss
@@ -95,7 +135,22 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   TRUST
   ```
 
+   * `<userid>`  
+  Specifies the userid that the certificate maps to.
+
+  * `<recid>`  
+  Specifies the record ID that uniquely identifies a particular record.
+
+   * `<subject's-distinguished-name-filter>`  
+  Specifies the subject name from the user's certificate.
+
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
+
+  :::info
+  ACID refers to a security identifier used by z/OS to manage and authorize access to resources. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
+  :::
+
+  Use the following example if you are using ZSS:
 
   ```tss
   TSS ADDTO(<userid>) DIGICERT(<certname>) LABLCERT('<label>') DCDSN('<dataset>') TRUST
@@ -174,6 +229,4 @@ The following diagram shows how routing works with ZSS, in the case where the ZS
 
 ![Zowe client certificate authentication diagram](../images/api-mediation/zowe-client-cert-auth.png)
 
-:::tip
-For more information, see the Medium blog post [Zowe client certificate authentication](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579).
-:::
+
