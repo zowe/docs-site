@@ -10,13 +10,6 @@ Node.js is required when installing the Zowe servers on z/OS.
 Node.js is not required if using Docker instead of z/OS, or if running Zowe without the app-server enabled.
 :::
 
-- [Addressing Node.js requirements](#addressing-nodejs-requirements)
-  - [Supported Node.js versions](#supported-nodejs-versions)
-  - [How to obtain IBM SDK for Node.js - z/OS](#how-to-obtain-ibm-sdk-for-nodejs---zos)
-  - [Hardware and software prerequisites](#hardware-and-software-prerequisites)
-  - [Installing the PAX edition of Node.js - z/OS](#installing-the-pax-edition-of-nodejs---zos)
-  - [Installing the SMP/E edition of Node.js - z/OS](#installing-the-smpe-edition-of-nodejs---zos)
-
 ## Supported Node.js versions
 
 The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
