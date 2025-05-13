@@ -10,12 +10,6 @@ Node.js is required when installing the Zowe servers on z/OS.
 Node.js is not required if using Docker instead of z/OS, or if running Zowe without the app-server enabled.
 :::
 
-- [Supported Node.js versions](#supported-nodejs-versions)
-- [How to obtain IBM SDK for Node.js - z/OS](#how-to-obtain-ibm-sdk-for-nodejs---zos)
-- [Hardware and software prerequisites](#hardware-and-software-prerequisites)
-- [Installing the PAX edition of Node.js - z/OS](#installing-the-pax-edition-of-nodejs---zos)
-- [Installing the SMP/E edition of Node.js - z/OS](#installing-the-smpe-edition-of-nodejs---zos)
-
 ## Supported Node.js versions
 
 The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
@@ -67,7 +61,7 @@ IBM zEnterprise® 196 (z196) or newer
 - z/OS UNIX System Services enabled
 - Integrated Cryptographic Service Facility (ICSF) configured and started
 
-  ICSF is required for Node.js to operate successfully on z/OS.  If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.csfb200/abstract.htm).  To see whether ICSF has been started, check whether the started task `ICSF` or `CSF` is active.
+  ICSF is required for Node.js to operate successfully on z/OS. If you have not configured your z/OS environment for ICSF, see [Cryptographic Services ICSF: System Programmer's Guide](https://www.ibm.com/docs/en/zos/2.5.0?topic=services-zos-cryptographic-icsf-system-programmers-guide). To verify that ICSF started, check that the started task `ICSF` or `CSF` is active.
 
 ## Installing the PAX edition of Node.js - z/OS
 
