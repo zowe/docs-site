@@ -25,6 +25,16 @@ To access Zowe Explorer settings:
 
     ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
 
+## Modifying REST timeout settings
+
+1. Navigate to Zowe Explorer Settings.
+2. Scroll to **Zowe › Settings**
+3. Determine which REST timeout to change:
+
+    a. **Socket Connect Timeout** - Specify the maximum number of milliseconds to wait for the REST client to perform the initial connection and handshake with the server.
+
+    b. **Request Timeout** - Specify the maximum number of milliseconds to wait for a REST request to complete.
+
 ## Modifying pagination options for data sets
 
 Zowe Explorer v3.2 and above have pagination enabled by default when listing data sets and PDS members, splitting the results into pages rather than showing all items at once.
