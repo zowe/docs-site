@@ -28,12 +28,12 @@ To access Zowe Explorer settings:
 ## Modifying REST timeout settings
 
 1. Navigate to Zowe Explorer Settings.
-2. Scroll to **Zowe › Settings**
+2. Scroll to **Zowe › Settings**.
 3. Determine which REST timeout to change:
 
-    a. **Socket Connect Timeout** - Specify the maximum number of milliseconds to wait for the REST client to perform the initial connection and handshake with the server.
+    - **Socket Connect Timeout** - Specify the maximum number of milliseconds to wait for the REST client to perform the initial connection and handshake with the server.
 
-    b. **Request Timeout** - Specify the maximum number of milliseconds to wait for a REST request to complete.
+    - **Request Timeout** - Specify the maximum number of milliseconds to wait for a REST request to complete.
 
 ## Modifying pagination options for data sets
 
