@@ -1,12 +1,12 @@
 # Zowe Upgrade from Convenience Build to PSWI/SMP/E Installation
 
-Review the recommended procedure for upgrading an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps outline the best practices for upgrading and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
+Review the recommended procedure for upgrading an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices for upgrading, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
 ## Prerequisites before upgrade
 
 Ensure you meet the following conditions before you start the upgrade process:
 
-* Confirm the current installed version of Zowe (e.g., v3.0).
+* Determine the current installed version of Zowe (e.g., v3.0).
 * Determine if the upgrade target is the same version or a newer version (e.g., v3.1).
 * Backup the following elements:
     * The existing zowe.yaml configuration file
@@ -19,17 +19,17 @@ Choose your installation method, either PSWI or SMP/E, based on your preferences
 
 ### PSWI Installation (Portable Software Instance)
 
-1. Download the Zowe PSWI package.
-2. Install using z/OSMF workflows or standalone jobs provided.
-3. Ensure the runtime libraries are correctly installed.
+1. Download the Zowe PSWI package. <!--We should include a link here to teh PSWI package -->
+2. Install using z/OSMF workflows or standalone jobs provided. 
+3. Ensure the runtime libraries are correctly installed. <!--How does one do this? -->
 
 For more information about PSWI installation, see [Installing Zowe from a Portable Software Instance](../user-guide/install-zowe-pswi.md).
 
 ### SMP/E Installation
 
 1. Acquire the Zowe SMP/E package.
-2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs.
-3. Validate successful deployment of Zowe into target libraries.
+2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs. <!--We should include a sample command here. -->
+3. Validate successful deployment of Zowe into target libraries. 
 4. Utilize Zowe SAMPLIB for post-install configuration.
 
 For more information about SMP/E installation, see [Installing Zowe SMP/E overview](../user-guide/install-zowe-smpe-overview.md).
