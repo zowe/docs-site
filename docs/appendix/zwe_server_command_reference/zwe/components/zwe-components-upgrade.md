@@ -1,6 +1,6 @@
 # zwe components upgrade
 
-[zwe](./.././zwe.md) > [components](././zwe-components.md) > [upgrade](./zwe-components-upgrade.md)
+[zwe](./.././zwe) > [components](././zwe-components) > [upgrade](./zwe-components-upgrade)
 
 	zwe components upgrade [parameter [parameter]...]
 

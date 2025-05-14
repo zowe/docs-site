@@ -1,6 +1,6 @@
 # zwe certificate pkcs12 trust-service
 
-[zwe](./../.././zwe.md) > [certificate](./.././zwe-certificate.md) > [pkcs12](././zwe-certificate-pkcs12.md) > [trust-service](./zwe-certificate-pkcs12-trust-service.md)
+[zwe](./../.././zwe) > [certificate](./.././zwe-certificate) > [pkcs12](././zwe-certificate-pkcs12) > [trust-service](./zwe-certificate-pkcs12-trust-service)
 
 	zwe certificate pkcs12 trust-service [parameter [parameter]...]
 
