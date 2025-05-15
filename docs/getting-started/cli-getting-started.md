@@ -42,18 +42,18 @@ Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) t
 
 *Optionally*, you can view the Zowe CLI web help in a browser window. For more information, see [Displaying help](../user-guide/cli-using-displaying-help.md). 
 
-All Zowe CLI commands start with `zowe` followed by the name of the [core command group](../user-guide/cli-using-understanding-core-command-groups.md). For example, `zowe plugins -h`. To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
+All Zowe CLI commands start with `zowe` followed by the name of the [core command group](../user-guide/cli-using-understanding-core-command-groups.md). For example, `zowe plugins -help`. To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
-### Example: Listing all data sets under a high-level qualifier (HLQ)
+### Listing all data sets under a high-level qualifier (HLQ) example
 
 ```
 zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
 ```
 
-### Example: Downloading a partitioned data-set (PDS) member to local file
+### Downloading a partitioned data-set (PDS) member to local file example
 
 ```
-zowe zos-files download data-set "MY.DATA.SET(member)" -f "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --pass mypassword123
+zowe zos-files download data-set "MY.DATA.SET(member)" -file "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --password mypassword123
 ```
 
 See [Understanding core command groups](../user-guide/cli-using-understanding-core-command-groups.md) for a list of available functionality.
@@ -86,11 +86,14 @@ Create a global configuration file:
 zowe config init --global-config
 ```
 
+A series of prompts ask for connection information, such as host, username, and password.
+
 A `zowe.config.json` file is saved in your home `~/.zowe` directory that includes a z/OSMF profile. Use a text editor to add or modify connection information in the profile.
 
 :::note Notes 
 
 - Use the preceding command only when a configuration file does not already exist.
+- The z/OSMF profile includes port `443` as the default. If this is not the port you use, edit the configuration file.
 - If z/OSMF is configured for high availability in Sysplex, create the CLI z/OSMF profile with a DVIPA address/hostname to ensure availability of REST services. For more information, see [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md).
 
 :::
@@ -119,7 +122,7 @@ Use Zowe CLI to download the list, loop through the list, and delete each data s
 set -e
 
 # Obtain the list of temporary project data sets
-dslist=$(zowe zos-files list dataset "my.project.ds*")
+dslist=$(zowe zos-files delete data-set "$ds" --for-sure)
 
 # Delete each data set in the list
 IFS=$'\n'
