@@ -15,7 +15,7 @@ When a validation error occurs, the command you ran will end with output that sh
 
 Consider the following Zowe configuration section about certificates:
 
-```
+```yaml
 zowe:
   runtimeDirectory: /my/zowe/runtime
   certificates:
@@ -28,7 +28,7 @@ In the example, the certificate type `PCKS12` does not exist. It is a typo. With
 
 With the schema file, you can see that there are listed choices for certificate types:
 
-```
+```json
     "certificate": {
       "type": "object",
       "additionalProperties": false,
