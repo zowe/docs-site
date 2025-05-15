@@ -118,18 +118,16 @@ Use Zowe CLI to download the list, loop through the list, and delete each data s
 
 ```
 #!/bin/bash
-
 set -e
 
 # Obtain the list of temporary project data sets
-dslist=$(zowe zos-files delete data-set "$ds" --for-sure)
+dslist=$(zowe zos-files list data-set "my.project.ds*")
 
 # Delete each data set in the list
-IFS=$'\n'
 for ds in $dslist
 do
      echo "Deleting Temporary Project Dataset: $ds"
-     zowe files delete ds "$ds" -f
+     zowe zos-files delete data-set "$ds" --for-sure
 done
 ```
 
