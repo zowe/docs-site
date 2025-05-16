@@ -6,8 +6,8 @@ Review the recommended procedure for upgrading an existing Zowe installation fro
 
 Ensure you meet the following conditions before you start the upgrade process:
 
-* Determine the current installed version of Zowe (e.g., v3.0).
-* Determine if the upgrade target is the same version or a newer version (e.g., v3.1).
+* Determine the current installed version of Zowe (e.g. v3.0).
+* Determine if the upgrade target is the same version or a newer version (e.g. v3.1).
 * Backup the following elements:
     * The existing zowe.yaml configuration file
     * Zowe runtime datasets
@@ -40,11 +40,11 @@ When upgrading from the convenience build, you can either use PSWI or SMP/E to u
 
 ### Upgrade to the same version
 
-If the target PSWI/SMP/E version matches the currently installed convenience build, use the following outline of steps:
+If the target PSWI or SMP/E version matches the currently installed convenience build, use the following outline of steps:
 
 1. Reuse the existing zowe.yaml file.
 2. Continue using the current runtime datasets, or for SMP/E, from the target library.
-3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML.
+3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML. <!--Should STC be specific here? ZWESLSTC? -->
 
 ### Upgrade to a newer version
 
@@ -69,29 +69,29 @@ If migrating to a newer version of Zowe for example from v3.0 to v3.1, you can e
 Ensure all new configurations are validated for compatibility and correctness.
 :::
 
-## Switch between Zowe versions
+## Switching between Zowe versions
 
 Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3.1):
 
-1. Update STEPLIB in Zowe STC JCLs to reflect correct target libraries. <!--We should include a sample command here, or a link to where this is described. -->
+1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. <!--We should include a sample command here, or a link to where this is described. -->
 2. Modify PARMLIB member references accordingly. <!-- Can we describe more clearly what is meant by "accordingly"? -->
 3. Restart all affected Zowe STCs.
 <!--We should include a sample command here, or a link to where this is described. -->
 
-
-
-## Validate after upgrade
+## Validating after upgrade
 
 Follow these steps to validate that you successfully upgraded your Zowe installation.
 
-1. Start the following Zowe STCs:
-  * ZWESISTC
-  * ZWESLSTC
-2. Monitor logs for any anomalies or errors.
-3. Validate functionality by checking the following functionalities:
+1. Start the following Zowe Started Tasks (STCs):
+  * **ZWESISTC**  
+  The Zowe cross memory server that runs as a started task to enable cross-memory communication between Zowe components on z/OS
+  * **ZWESLSTC**   
+  The Zowe launcher started task that initializes and manages the lifecycle of Zowe's core runtime services on z/OS
+1. Monitor logs for any anomalies or errors.
+2. Validate functionality by checking the following functionalities:
   * Access Zowe Desktop
   * Confirm API services <!-- Where are these services confirmed? In the Desktop? -->
-4. Review system and application logs for configuration or version mismatches.
+3. Review system and application logs for configuration or version mismatches.
    For more information, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
