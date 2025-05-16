@@ -42,11 +42,11 @@ To install Zowe CLI from a local package:
    ```
    npm install -g zowe-cli.tgz
    ```
-
-   :::note
    
-   If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
-
+   If an `EACCESS` error displays and you are running MacOS or Linux systems, you can pre-pend the command with `sudo`.
+   
+   :::caution
+   This presents security risks because install scripts run with elevated privileges; and potential permissions issues, triggering future `EACCESS` errors when updating npm packages. For other solutions that don't present these risks, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
    :::
 
 9. To install all available Zowe CLI plug-ins, issue the following command to the working directory that was used in Step 7:
@@ -68,6 +68,13 @@ To install Zowe CLI from an npm registry:
    ```
 
    Zowe CLI is installed.
+
+   If an `EACCESS` error displays and you are running MacOS or Linux systems, you can pre-pend the command with `sudo`.
+   
+   :::caution
+   This presents security risks because install scripts run with elevated privileges; and potential permissions issues, triggering future `EACCESS` errors when updating npm packages. For other solutions that don't present these risks, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
+   :::
+
 
 2. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/cli-swreqplugins.md) to install Zowe CLI plug-ins.
 

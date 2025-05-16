@@ -24,6 +24,8 @@ To install the core Zowe CLI:
 npm install -g @zowe/cli@zowe-v3-lts
 ```
 
+If an `EACCESS` error displays and you are running MacOS or Linux systems, there are workarounds available. See **LINK** for information.
+
 ### Installing CLI plug-ins
 
 To install Zowe CLI plug-ins:
