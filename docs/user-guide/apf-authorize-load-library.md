@@ -41,7 +41,7 @@ If you do not have permissions to update your security configurations, append th
 
 ### Making APF auth be part of the IPL
 
-Add one of the following to your active `PROGxx` PARMLIB member according to the following example.
+Add one of the following APF statements to your active `PROGxx` PARMLIB member according to the following example.
 
 **Example:**  
 To ensure that the APF authorization is added automatically after next IPL, add `SYS1.PARMLIB(PROG00)`. 
@@ -52,13 +52,12 @@ To ensure that the APF authorization is added automatically after next IPL, add 
   APF ADD DSNAME(IBMUSER.ZWEV3.SZWEAUTH) VOLUME(${volume})
   APF ADD DSNAME(IBMUSER.ZWEV3.CUST.ZWESAPL) VOLUME(${volume})
   ```
-- If the load library is SMS-managed, add the following line:
+- If the load library is SMS-managed, add the following line, where `DSNAME` is the name of the `SZWEAUTH` and `CUST.ZWESAPL` data sets, as created during Zowe installation.
+  
   ```
   APF ADD DSNAME(IBMUSER.ZWEV3.SZWEAUTH) SMS
   APF ADD DSNAME(IBMUSER.ZWEV3.CUST.ZWESAPL) SMS
   ```
 
-* **`DSNAME`**  
-  The name of the `SZWEAUTH` and `CUST.ZWESAPL` data sets, as created during Zowe installation
 
 The PDS member `SZWESAMP(ZWESIPRG)` contains the SETPROG statement and PROGxx update for reference.
