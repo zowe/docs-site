@@ -168,7 +168,47 @@ zowe:
 ```
 
 ### Template functions
-
+Following examples demonstarates how to define the logging for `zss` component based on the `crossMemoryServerName`. When the default name of `ZWESIS_STD` is used, the general logging is set to `2`. For other names the `logLevels` is set to specific trace level(s) with the highest value of `5`.
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: ZWEDBG_FS
+    agent:
+      64bit: true
+    logLevels: 
+      "${{ 
+        () => {
+          const XMS = components.zss.crossMemoryServerName;
+          switch (XMS) {
+            case 'ZWESIS_STD': return { '_zss.traceLevel': 2 }; 
+            case 'ZWEDBG_ALL': return { '_zss.traceLevel': 5 }; 
+            case 'ZWEDBG_SOCKET': return { '_zss.socketTrace': 5 }; 
+            case 'ZWEDBG_FILE': return { '_zss.fileTrace': 5 }; 
+            case 'ZWEDBG_FS': return { '_zss.fileTrace': 5, '_zss.socketTrace': 5 }; 
+          }
+        } ();
+      }}"
+```
+Resolved template:
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: "ZWEDBG_FS"
+    agent:
+      jwt:
+        fallback: true
+      64bit: true
+    logLevels:
+      _zss.fileTrace: 5
+      _zss.socketTrace: 5
+```
+:::note
+The `components.zss.agent.jwt.fallback` was not defined in the template, but is is defined the [defaults.yaml](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml). That is the reason to be included in the resolved template.
+:::
 ## Configuration Manager Unix executable
 
 `configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
