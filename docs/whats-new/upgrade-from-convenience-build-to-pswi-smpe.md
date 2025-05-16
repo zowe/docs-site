@@ -87,11 +87,11 @@ Follow these steps to validate that you successfully upgraded your Zowe installa
   The Zowe cross memory server that runs as a started task to enable cross-memory communication between Zowe components on z/OS
   * **ZWESLSTC**   
   The Zowe launcher started task that initializes and manages the lifecycle of Zowe's core runtime services on z/OS
-1. Monitor logs for any anomalies or errors.
-2. Validate functionality by checking the following functionalities:
-  * Access Zowe Desktop
+2. Monitor logs for any anomalies or errors.
+3. Validate the following functionalities:
+  * Access to Zowe Desktop
   * Confirm API services <!-- Where are these services confirmed? In the Desktop? -->
-3. Review system and application logs for configuration or version mismatches.
+4. Review system and application logs for configuration or version mismatches.
    For more information, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
