@@ -60,16 +60,17 @@ The following error message codes may appear on ZSS log. Use the following messa
 
   **Reason:**
 
-  The message shows status of the connection to Privileged Server: ZIS status - `<OK or Failure>` (name=`<Privileged Server Name>`, cmsRC=`<RC>`, description=`<description`, clientVersion=`<version>`)
+  The message shows status of the connection to Privileged Server: ZIS status - `<OK or Failure>` (name=`<Privileged Server Name>`, cmsRC=`<RC>`, description=`<description>`, clientVersion=`<version>`)
 
   **Action:**
 
-  if Status is `OK` then no action required. If Status is `Failure` see check `<cmsRC>` and description.
+  if Status is `OK` then no action required. If Status is `Failure` check the `<description>` of reported `<RC>`.
   In the cases listed below check that the ZWESISTC started task is running. If not, start it with the TSO command `/S ZWESISTC`:
-  - `cmsRC=12`, description=`'Global area address is NULL'`
-  - `cmsRC=39`, description=`'Cross-memory server abended'`
-  - `cmsRC=47`, description=`'ZVT is NULL'`
-  - `cmsRC=64`, description=`'PC is unavailable'`
+  - cmsRC=`12`, description=`'Global area address is NULL'`
+  - cmsRC=`30`, description=`'Server is not running'`
+  - cmsRC=`39`, description=`'Cross-memory server abended'`
+  - cmsRC=`47`, description=`'ZVT is NULL'`
+  - cmsRC=`64`, description=`'PC is unavailable'`
 
 ### ZWES1035I
 
