@@ -144,7 +144,28 @@ Templates are resolved after merging files, but before schema validation occurs,
 To make a template, you use the syntax `${{ assignment }}` in which there must be a space after `${{` and before `}}`. The _assignment_ can be a ECMAScript 2020 statement, such as a JSON path or a conditional.
 Here are some examples of templates that you can use to simplify your configuration:
 
-![templating example](../images/configure/templating.png)
+Templated example using defined `zowe.setup.dataset.prefix` for other datasets:
+```yaml
+zowe:
+  setup:
+    dataset:
+      prefix: "MY.ZOWE"
+      parmlib: ${{ zowe.setup.dataset.prefix }}.PARMLIB
+      jcllib: ${{ zowe.setup.dataset.prefix }}.JCLLIB
+      authLoadlib: ${{ zowe.setup.dataset.prefix }}.ZWESALL
+      authPluginLib: ${{ zowe.setup.dataset.prefix }}.ZWESPLUG
+```
+Resolved output:
+```yaml
+zowe:
+  setup:
+    dataset:
+      prefix: "MY.ZOWE"
+      parmlib: "MY.ZOWE.PARMLIB"
+      jcllib: "MY.ZOWE.JCLLIB"
+      authLoadlib: "MY.ZOWE.ZWESALL"
+      authPluginLib: "MY.ZOWE.ZWESPLUG"
+```
 
 ### Template functions
 
