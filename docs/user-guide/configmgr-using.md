@@ -214,42 +214,21 @@ The `components.zss.agent.jwt.fallback` was not defined in the template, but is 
 "Global" objects and functions exist in configmgr templates that can be used base Zowe YAML values upon environmental properties.
 This allows the YAML to be more portable and usable on many systems without modification. The following is a list of useful functions organized by their global objects.
 
-### std
-* getenv(environment_variable_name: string)
-
-    * Input:
-      
-      environment_variable_name (string): The name of an environment variable you wish to read
-
-    * Output:
-      
-      (string or undefined) The value of the environment variable, or undefined if the variable is not set.
+### `std`
+* `getenv(environment_variable_name: string)`
+    * Input: `environment_variable_name` (string): The name of an environment variable you wish to read.
+    * Output: (string or undefined) The value of the environment variable, or undefined if the variable is not set.
 
 
-### zos
+### `zos`
 
-* getEsm()
-
-    * Output:
-      
-      (string) The string value "RACF", "TSS", or "ACF2" are returned corresponding to the ESM that is running on the system.
-
-* getZosVersion()
-
-    * Output:
-      
-      (string) A numerical representation of the z/OS version number of the system.
-
-* resolveSymbol(zos_symbol_name: string)
-
-    * Input:
-      
-      zos_symbol_name (string): The name of a z/OS system symbol to load. The value must begin with "&" and must not end with "."
-
-    * Output:
-      
-      (string or undefined) The value of the symbol, or undefined if the symbol is not set.
-
+* `getEsm()`
+    * Output: (string) The string value `RACF`, `TSS`, or `ACF2` are returned corresponding to the ESM that is running on the system.
+* `getZosVersion()`
+    * Output: (string) A numerical representation of the z/OS version number of the system.
+* `resolveSymbol(zos_symbol_name: string)`
+    * Input: `zos_symbol_name` (string): The name of a z/OS system symbol to load. The value must begin with `&` and must not end with `.`.
+    * Output: (string or undefined) The value of the symbol, or undefined if the symbol is not set.
 
 An example for how to use these functions to make a Zowe YAML file more portable is as follows:
 
