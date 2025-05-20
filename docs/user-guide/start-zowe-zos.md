@@ -115,7 +115,7 @@ zwe stop --config /path/to/my/zowe.yaml
 
 ## Starting and stopping Zowe main server `ZWESLSTC` on z/OS manually
 
-To start Zowe main server, you can issue the `S ZWESLSTC` command. Similar to the the MVS system command, you can customize the `JOBNAME`.
+To start Zowe main server, you can issue the `S ZWESLSTC` command. If required by internal policy, customize the `JOBNAME` parameter.
 
 **Example:**
 
