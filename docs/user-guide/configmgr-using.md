@@ -209,6 +209,41 @@ components:
 :::note
 The `components.zss.agent.jwt.fallback` was not defined in the template, but is is defined the [defaults.yaml](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml). That is the reason to be included in the resolved template.
 :::
+
+### Using System Properties in Templates
+"Global" objects and functions exist in configmgr templates that can be used base Zowe YAML values upon environmental properties.
+This allows the YAML to be more portable and usable on many systems without modification. The following is a list of useful functions organized by their global objects.
+
+### `std`
+* `getenv(environment_variable_name: string)`
+    * Input: `environment_variable_name` (string): The name of an environment variable you wish to read.
+    * Output: (string or undefined) The value of the environment variable, or undefined if the variable is not set.
+
+
+### `zos`
+
+* `getEsm()`
+    * Output: (string) The string value `RACF`, `TSS`, or `ACF2` are returned corresponding to the ESM that is running on the system.
+* `getZosVersion()`
+    * Output: (string) A numerical representation of the z/OS version number of the system.
+* `resolveSymbol(zos_symbol_name: string)`
+    * Input: `zos_symbol_name` (string): The name of a z/OS system symbol to load. The value must begin with `&` and must not end with `.`.
+    * Output: (string or undefined) The value of the symbol, or undefined if the symbol is not set.
+
+An example for how to use these functions to make a Zowe YAML file more portable is as follows:
+
+```yaml
+zowe:
+  setup:
+    security:
+      product: "${{ zos.getEsm() }}"
+  externalDomains:
+  - "${{ zos.resolveSymbol('&SYSNAME') }}"
+java:
+  home: "${{ std.getenv('JAVA_HOME') }}"
+```
+
+
 ## Configuration Manager Unix executable
 
 `configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
