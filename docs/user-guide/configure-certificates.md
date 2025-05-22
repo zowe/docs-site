@@ -89,6 +89,16 @@ Zowe server certificates must either not have the `Extended Key Usage` (EKU) att
 Some Zowe components act as a server, some as a client, and some as both - client and server. The component certificate usage for each of these cases is controlled by the Extended Key Usage (EKU) certificate attribute. The Zowe components use a single certificate (or the same certificate) for client and server authentication, so it is required that this certificate is valid for the intended usage/s of the component - client, server, or both. The EKU certificate extension attribute is not required, however, if it is specified, it must be defined with the intended usage/s. Otherwise, connection requests will be rejected by the other party
 
 
+### Supported algorithm
+
+The server certificate could be used to sign JWT tokens when one of these condition is valid:
+
+- The token provider is set as SAF (see `apiml.security.auth.provider=saf`)
+- The token provider is set as z/OSMF (see `apiml.security.auth.provider=zosmf`), but the z/OSMF is not [configured to support JWT tokens](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support)
+- [Personal access token (PAT)](../getting-started/zowe-security-authentication.md/#authentication-with-personal-access-token-pat) are enabled
+
+The supported algorithm is: RSASSA-PKCS1-v1_5 using SHA-256 signature algorithm as defined by RFC 7518, Section 3.3. This algorithm requires a 2048-bit key.
+
 ### Hostname validity
 The host communicating with a certificate should have its hostname match one of the values of the certificate's Common Name or Subject Alternate Name (SAN). If this condition is not true for at least one of the certificates that are seen by Zowe, then you may wish to set [NON-STRICT verification](#non-strict-verification) within Zowe's configuration.
 
