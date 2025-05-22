@@ -91,7 +91,7 @@ Some Zowe components act as a server, some as a client, and some as both - clien
 
 ### Supported algorithm
 
-The server certificate could be used to sign JWT tokens when one of these condition is valid:
+The server certificate could be used to sign JWT tokens when one of the following conditions is valid:
 
 - The token provider is set as SAF (see `apiml.security.auth.provider=saf`)
 - The token provider is set as z/OSMF (see `apiml.security.auth.provider=zosmf`), but the z/OSMF is not [configured to support JWT tokens](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support)
