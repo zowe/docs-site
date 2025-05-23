@@ -209,8 +209,8 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 1. The client calls the service endpoint through the API ML Gateway with the client certificate.
 2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
-4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service.
+3. The certificate is checked against the CA in the Zowe keyring. If the certificate is valid, the security service (eg RACF MAP) then checks to see if the certificate is mapped to a userid. .<!-- Original text: The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. -->
+4. If the id is authenticated and authorized, the downstream service can use the id for authentication to the downstream service. <!-- Original: The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. -->
 
 When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
 
