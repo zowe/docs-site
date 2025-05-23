@@ -19,9 +19,9 @@ Choose your installation method, either PSWI or SMP/E, based on your preferences
 
 ### PSWI Installation (Portable Software Instance)
 
-1. Download the Zowe PSWI package. <!--We should include a link here to the PSWI package. -->
+1. Download the Zowe PSWI package at [zowe.org](https://www.zowe.org/download).
 2. Install using z/OSMF workflows or standalone jobs provided. 
-3. Ensure the runtime libraries are correctly installed. <!--How does one do this? -->
+3. Ensure the runtime libraries are correctly installed without errors by submitting jobs and reviewing the return codes from the JCL output for PSWI.
 
 For more information about PSWI installation, see [Installing Zowe from a Portable Software Instance](../user-guide/install-zowe-pswi.md).
 
@@ -73,8 +73,8 @@ Ensure all new configurations are validated for compatibility and correctness.
 
 Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3.1):
 
-1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. <!--We should include a sample command here, or a link to where this is described. -->
-2. Modify PARMLIB member references accordingly. <!-- Can we describe more clearly what is meant by "accordingly"? -->
+1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. Ensure that versions or HLQ are updated.<!--We should include a sample command here, or a link to where this is described. -->
+2. Modify PARMLIB member references accordingly in the PROCLIB STC job. 
 3. Restart all affected Zowe STCs.
 <!--We should include a sample command here, or a link to where this is described. -->
 
