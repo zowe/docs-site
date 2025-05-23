@@ -59,11 +59,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   * `<label>`  
   Specifies the name (label) to use for reference purposes.
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
-
-  :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
-  :::
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to a userid:
   
   Use the following example if you are using ZSS:
 
@@ -105,11 +101,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
    * `<userid>`  
   Specifies the userid that the certificate maps to.
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
-
-  :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
-  :::
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to a userid:
 
   Use the following example if you are using ZSS:
 
@@ -147,7 +139,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
+  ACID refers to an Accessor ID which is used by Top Secret to manage users and their permissions. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
   :::
 
   Use the following example if you are using ZSS:
