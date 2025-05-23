@@ -629,8 +629,7 @@ The following yaml presents an example of the configuration of a service tile in
 
 ### Authentication parameters
 
-These parameters are not required. Default values are used when parameters are not specified. For more information, see [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters).
-
+These parameters are not required. Default values are used when parameters are not specified. 
 
 ### API Security
 
