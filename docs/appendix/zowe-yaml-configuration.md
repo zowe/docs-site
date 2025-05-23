@@ -404,8 +404,16 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   This parameter is required and specifies the label of an existing certificate.
 - If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
   * **For RACF**  
-  Zowe attempts to automatically detect the z/OSMF CA based on the certificate owner specified by
-    `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority.
+  If the CA of the z/OSMF is not in the Zowe truststore, you can define it using
+`zowe.setup.certificate.keyring.zOSMF.user` and label `zowe.setup.certificate.keyring.zOSMF.ca`  
+
+    **Example:**  
+    ```
+    zowe.setup.certificate.keyring.zOSMF.user: CERTAUTH  
+    zowe.setup.certificate.keyring.zOSMF.ca: ZOSMFCA
+    ```
+  <!-- Original text: Zowe attempts to automatically detect the z/OSMF CA based on the certificate owner specified by
+    `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority. -->
   * **For ACF2 or TSS (Top Secret)**  
   `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate the label of the z/OSMF root certificate authority.
 
