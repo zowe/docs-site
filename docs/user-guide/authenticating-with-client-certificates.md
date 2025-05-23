@@ -59,11 +59,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   * `<label>`  
   Specifies the name (label) to use for reference purposes.
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
-
-  :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
-  :::
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to a userid:
   
   Use the following example if you are using ZSS:
 
@@ -105,11 +101,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
    * `<userid>`  
   Specifies the userid that the certificate maps to.
 
-  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
-
-  :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources.
-  :::
+  Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to a userid:
 
   Use the following example if you are using ZSS:
 
@@ -147,7 +139,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   Alternatively, if you disabled the internal API ML mapper, use the following command to add the certificate to an ACID:
 
   :::info
-  ACID refers to a security identifier used by z/OS to manage and authorize access to resources. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
+  ACID refers to an Accessor ID which is used by Top Secret to manage users and their permissions. For more information, see [ACIDs](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-top-secret-for-z-os/16-0/getting-started/product-overview/acids.html) in the Top Secret documentation.
   :::
 
   Use the following example if you are using ZSS:
@@ -209,8 +201,8 @@ When sending a request to a service with a client certificate, the Gateway perfo
 
 1. The client calls the service endpoint through the API ML Gateway with the client certificate.
 2. The client certificate is verified as a valid TLS client certificate against the trusted certificate authorities (CAs) of the Gateway.
-3. The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate.
-4. The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service.
+3. The certificate is checked against the CA in the Zowe keyring. If the certificate is valid, the security service (eg RACF MAP) then checks to see if the certificate is mapped to a userid. .<!-- Original text: The public key of the provided client certificate is verified against SAF. SAF subsequently returns a user ID that owns this certificate. -->
+4. If the id is authenticated and authorized, the downstream service can use the id for authentication to the downstream service. <!-- Original: The Gateway then performs the login of the mapped user and provides valid authentication to the downstream service. -->
 
 When sending a request to the login endpoint with a client certificate, the Gateway performs the following process to exchange the client certificate for an authentication token:
 
