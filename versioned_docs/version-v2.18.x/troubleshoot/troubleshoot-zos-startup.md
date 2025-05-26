@@ -18,7 +18,7 @@ To check that Zowe has started successfully, the most complete way is to check t
 To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
 
 :::tip
-To determine the jobname for each component to determine the specific address space that may be causing an issue, see the "Default Jobname" column in the [Component Port table](../user-guide/address-network-requirements.md#component-ports) in the article _Addressing network requirements_.
+To determine the jobname for each component, see the "Default Jobname" column in the [Component Port table](../user-guide/address-network-requirements.md#component-ports) in the article _Addressing network requirements_.
 :::
 
 ### Check the startup of API Mediation Layer 
