@@ -163,6 +163,7 @@ Zowe has the following started tasks:
 :::info Important
 * In order for the above started tasks to run correctly, the security administrator permissions are required. For more information, see [Configuring the z/OS system for Zowe](./configure-zos-system.md).
 * Note that the sample JCL member `ZWESECUR` is shipped with Zowe and contains commands for RACF, TopSecret, and ACF2 security managers.
+* READ access is required to access Zowe started task resources.
 :::
 
 ### z/OS Data sets used by Zowe
