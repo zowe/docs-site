@@ -2,19 +2,42 @@
 
 Get started with Zowe&trade; CLI quickly and easily.
 
-This article presumes that your role is that of a systems administrator or you possess prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
+This article presumes that your role is that of a systems administrator who manages software installation for a dev team, or you possess prerequisite knowledge of command-line tools and writing scripts. If you prefer more detailed instructions, see [Installing Zowe CLI](../user-guide/cli-installcli.md).
 
 ## Installing
 
 The following topics describe the Zowe CLI system requirements and the various methods to use to install Zowe CLI.
 
-### Software Requirements
+### Supported platforms
 
-Before you install Zowe CLI, download and install Node.js and npm. Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
+Ensure your system is included in the list of [Support platforms](../user-guide/cli-using-usingcli.md#supported-platforms) for Zowe CLI.
+
+### Mainframe requirements
+
+To communicate with the mainframe, confirm that z/OSMF is active on your host:
+
+1. Open a web browser and navigate to `https://<zosmfHost>:<zosmfPort>`.
+2. Log in to the z/OSMF portal with your z/OSMF user ID and password.
+3. Confirm that you are logged into z/OSMF.
+
+### Software requirements
+
+To install Zowe CLI, you need Node.js and npm.
+
+Check whether Node.js and npm are already installed: 
+
+```
+node --version
+```
+
+```
+npm --version
+```
+To install Node.js and npm, download both from [Node.js](https://nodejs.org/en). Use an LTS version of Node.js that is compatible with your version of npm. For a list of compatible versions, see [Node.js Previous Releases](https://nodejs.org/en/download/releases/).
 
 #### Linux requirements
 
-On headless Linux, follow the procedure documented in the [SCS plug-in Readme](https://github.com/zowe/zowe-cli-scs-plugin/blob/master/README.md#software-requirements).
+See [Requirements for headless Linux operating systems](../user-guide/cli-configure-scs-on-headless-linux-os.md#headless-linux-operating-systems).
 
 ### Installing Zowe CLI core from public npm
 
@@ -24,9 +47,9 @@ To install the core Zowe CLI:
 npm install -g @zowe/cli@zowe-v3-lts
 ```
 
-If an `EACCESS` error displays and you are running MacOS or Linux systems, there are workarounds available. See **LINK** for information.
+If an `EACCESS` error displays and you are running MacOS or Linux systems, there are workarounds available. See the instructions for using the `sudo` command in [Installing Zowe CLI and Zowe CLI plug-ins](../user-guide/cli-installcli).
 
-### Installing CLI plug-ins
+### Installing Zowe CLI plug-ins
 
 To install Zowe CLI plug-ins:
 
@@ -34,9 +57,15 @@ To install Zowe CLI plug-ins:
 zowe plugins install @zowe/cics-for-zowe-cli@zowe-v3-lts @zowe/db2-for-zowe-cli@zowe-v3-lts @zowe/mq-for-zowe-cli@zowe-v3-lts @zowe/zos-ftp-for-zowe-cli@zowe-v3-lts
 ```
 
-The preceding command installs most open-source plug-ins, but the IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+The preceding command installs [IBM® CICS® Plug-in for Zowe CLI](../user-guide/cli-cicsplugin), [IBM® Db2® Plug-in for Zowe CLI](../user-guide/cli-db2plugin), [IBM z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-ftpplugin), and [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin). Remove a plug-in from the command to not install it.
 
 For more information, see [Installing Zowe CLI plug-ins](../user-guide/cli-installplugins.md).
+
+   :::note
+
+   The IBM Db2 plug-in requires [additional configuration to install](../user-guide/cli-db2plugin.md#installing).
+
+   :::
 
 ## Issuing your first commands
 
@@ -44,25 +73,59 @@ Issue `zowe --help` to display full command help. Append `--help` (alias `-h`) t
 
 *Optionally*, you can view the Zowe CLI web help in a browser window. For more information, see [Displaying help](../user-guide/cli-using-displaying-help.md). 
 
-All Zowe CLI commands start with `zowe` followed by the name of the [core command group](../user-guide/cli-using-understanding-core-command-groups.md). For example, `zowe plugins -help`. To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
+All Zowe CLI commands start with `zowe` followed by the name of the [core command group](../user-guide/cli-using-understanding-core-command-groups.md). For example, `zowe plugins --help`. 
+
+To interact with the mainframe, type `zowe` followed by a command group, action, and object. Use options to specify your connection details such as password and system name.
 
 ### Listing all data sets under a high-level qualifier (HLQ) example
 
 ```
-zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --pass mypassword123
+zowe zos-files list data-set "MY.DATASET.*" --host my.company.com --port 123 --user myusername123 --password mypassword123
 ```
+
+- `host`
+
+     Specifies the z/OSMF server host name.
+
+- `port`
+
+     Specifies the z/OSMF server port.
+
+- `user`
+
+     Specifies the user ID.
+
+- `password`
+
+     Specifies the user password.
 
 ### Downloading a partitioned data-set (PDS) member to local file example
 
 ```
-zowe zos-files download data-set "MY.DATA.SET(member)" -file "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --password mypassword123
+zowe zos-files download data-set "MY.DATA.SET(member)" --file "mylocalfile.txt" --host my.company.com --port 123 --user myusername123 --password mypassword123
 ```
+
+- `host`
+
+     Specifies the z/OSMF server host name.
+
+- `port`
+
+     Specifies the z/OSMF server port.
+
+- `user`
+
+     Specifies the user ID.
+
+- `password`
+
+     Specifies the user password.
 
 See [Understanding core command groups](../user-guide/cli-using-understanding-core-command-groups.md) for a list of available functionality.
 
-## Team profiles
+## Team configuration
 
-Zowe CLI V3-LTS supports **team** profiles. The process of setting up team profiles is simple and can be rolled out easily across your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Using team profiles](../user-guide/cli-using-using-team-profiles.md).
+Zowe CLI V3-LTS supports [**team configuration**](../appendix/zowe-glossary.md#team-configuration) with profiles. The process of setting up team configuration is simple and can be rolled out easily across your organization. We highly recommend that you configure team profiles to support your Zowe CLI implementation. For more information, see [Team configurations](../user-guide/cli-using-using-team-profiles.md).
 
 ## Using profiles
 
@@ -103,7 +166,7 @@ A `zowe.config.json` file is saved in your home `~/.zowe` directory that include
 ### Using z/OSMF profiles
 
 ```
-zowe zos-files download data-set "MY.DATA.SET(member)" -file "mylocalfile.txt" --zosmf-profile myprofile123
+zowe zos-files download data-set "MY.DATA.SET(member)" --file "mylocalfile.txt" --zosmf-profile myprofile123
 ```
 
 For detailed information about issuing commands, using profiles, and more, see [Using Zowe CLI](../user-guide/cli-using-usingcli.md).
