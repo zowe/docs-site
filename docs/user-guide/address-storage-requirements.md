@@ -29,11 +29,11 @@ Here you can see the expected heap memory requirements.
 
 Component name | Memory usage
 ---|---
-Gateway service | 256MB
-ZAAS | 256MB
-Discovery service | 256MB
-API Catalog | 512MB
-Caching service | 512MB
+Gateway service | 512MB
+ZAAS | 128MB
+Discovery service | 128MB
+API Catalog | 128MB
+Caching service | 256MB
 
 Different types of memories are used by a service, especially native, threads, buffers, and JIT (just-in-time 
 compilation). In general, there is an expectation that the total memory assumption should be 150% of the heap size. 
