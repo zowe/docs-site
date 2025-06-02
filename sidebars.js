@@ -368,7 +368,15 @@ module.exports = {
               ],
             },
             "user-guide/cli-install-configure-install-online-registry-proxy",
-            "user-guide/cli-installcli",
+            {
+              type: "category",
+              label: "Installing Zowe CLI and Zowe CLI plug-ins",
+              link: { type: "doc", id: "user-guide/cli-installcli" },
+              items: [
+                "user-guide/cli-configure-scs-on-headless-linux-os",
+                "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+              ],
+            },
             "user-guide/cli-updatingcli",
             {
               type: "category",
