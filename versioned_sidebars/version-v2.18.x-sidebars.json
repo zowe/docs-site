@@ -153,6 +153,17 @@
             "user-guide/address-browser-requirements"
           ]
         },
+                {
+          "type": "category",
+          "label": "Installing Zowe via Zowe Server Install Wizard",
+          "link": {
+            "type": "doc",
+            "id": "user-guide/install-zowe-server-install-wizard"
+          },
+          "items": [
+            "user-guide/troubleshooting-zowe-server-install-wizard"
+          ]
+        },
         "user-guide/install-zowe-server-install-wizard",
         {
           "type": "category",
@@ -224,6 +235,8 @@
               "items": [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configure-apiml-zosmf-workflow-2-18",
+                "user-guide/configuring-zowe-via-jcl",
                 "user-guide/configure-zowe-zosmf-workflow-2-18"
               ]
             },
@@ -253,8 +266,7 @@
                 "user-guide/import-certificates",
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
-                "user-guide/certificates-setup",
-                "user-guide/configuring-at-tls-for-zowe-server"
+                "user-guide/certificates-setup"
               ]
             },
             {

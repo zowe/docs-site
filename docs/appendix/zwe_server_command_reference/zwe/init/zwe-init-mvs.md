@@ -1,6 +1,6 @@
 # zwe init mvs
 
-[zwe](./.././zwe) > [init](././zwe-init) > [mvs](./zwe-init-mvs)
+[zwe](./.././zwe.md) > [init](././zwe-init.md) > [mvs](./zwe-init-mvs.md)
 
 	zwe init mvs [parameter [parameter]...]
 
@@ -79,7 +79,7 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
-ZWEL0300W||%s already exists. This data set member will be overwritten during configuration.
+ZWEL0300W||%s already exists. This %s will be overwritten.
 ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
 ZWEL0158E|158|%s already exists.
 
@@ -117,10 +117,11 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
 ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
+ZWEL0322E|322|%s is not a valid directory.

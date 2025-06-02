@@ -15,16 +15,18 @@ For more information about how to onboard a REST service, see the following link
 
 This article outlines a process to make an API service available in the API Mediation Layer by making a direct call to the Eureka Discovery Service.
 
-* [Introduction](#introduction)
-* [Registering with the Discovery Service](#registering-with-the-discovery-service)
-    * [API Mediation Layer Service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
-        * [Catalog parameters](#catalog-parameters)
-        * [Service parameters](#service-parameters)
-        * [Routing parameters](#routing-parameters)
-        * [API Info Parameters](#api-info-parameters)
-* [Sending a heartbeat to API Mediation Layer Discovery Service](#sending-a-heartbeat-to-api-mediation-layer-discovery-service)
-* [Validating successful onboarding with the API Mediation Layer](#validating-successful-onboarding-with-the-api-mediation-layer)
-* [External Resources](#external-resources)
+- [Onboarding a service with the Zowe API Mediation Layer without an onboarding enabler](#onboarding-a-service-with-the-zowe-api-mediation-layer-without-an-onboarding-enabler)
+  - [Introduction](#introduction)
+  - [Registering with the Discovery Service](#registering-with-the-discovery-service)
+    - [API Mediation Layer Service onboarding metadata](#api-mediation-layer-service-onboarding-metadata)
+      - [Catalog parameters](#catalog-parameters)
+      - [Service parameters](#service-parameters)
+      - [Routing parameters](#routing-parameters)
+      - [Authentication parameters](#authentication-parameters)
+      - [API Info parameters](#api-info-parameters)
+  - [Sending a heartbeat to API Mediation Layer Discovery Service](#sending-a-heartbeat-to-api-mediation-layer-discovery-service)
+  - [Validating successful onboarding with API Mediation Layer](#validating-successful-onboarding-with-api-mediation-layer)
+  - [External Resources](#external-resources)
 
 ## Introduction
 
@@ -356,11 +358,11 @@ If the server does not receive a renewal in 90 seconds, it removes the instance 
 
 ```https://{eureka_hostname}:{eureka_port}/eureka/apps/{serviceId}/{instanceId}```
 
-## Validating successful onboarding with the API Mediation Layer
+## Validating successful onboarding with API Mediation Layer
 Ensure that you successfully onboarded a service with the API Mediation Layer. 
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 

@@ -1,0 +1,12 @@
+I, ArooshLele, hereby sign-off-by all of my past commits to this repo subject to the Developer Certificate of Origin (DCO), Version 1.1. 
+In the past I have used email: alele@rocketsoftware.com
+
+b456d562d1f62e393dd5c273d7100f5911adfb00 Word change (#4275)
+aca0e67e4f5cfd9fff675667d14d8eb264b5c4ef Added syntax to prevent broken links (#4253)
+c915521cc2b5bed084f66e9821c8a1ec5189e1e8 Added syntax to prevent broken links (#4253)
+261c858a001503e191502c066eb5b0b124cd8cb5 Updated the description of error message code ZWED0003E (#4243)
+a2a8c0fe3ea6b0a15ef4585fc39eeeeaf9feaa59 Updated the description of error message code ZWED0003E (#4206)
+282cb5eed5686754798928c6f4cb0e9cac2f0603 Added syntax to prevent broken links (#4206)
+6efd81bcc1e8a01a713160942e59134c7d82c1c4 Added syntax to prevent broken links (#4241)
+c6b53bff9bdbc83902c568b7e3d96392dfcc7106 (#4223)
+4ac17deb29a52668636e94a4ee140a34fb130df5 Updated Release Notes of Zowe Application Framework (#4180)

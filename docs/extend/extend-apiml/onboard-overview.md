@@ -1,26 +1,26 @@
 # Onboarding Overview
 
-As an API developer, you can onboard a REST API service to the Zowe&trade; API Mediation Layer (API ML). Onboarding your REST service to the Zowe&trade; API Mediation Layer will make your service discoverable by the API ML Discovery Service, enable routing through the API Gateway, and make service information and API documentation available through the API Catalog.
+As an API developer, you can onboard a REST API service to Zowe&trade; API Mediation Layer (API ML). Onboarding your REST service to Zowe&trade; API Mediation Layer makes your service discoverable by the API ML Discovery Service, enables routing through the API Gateway, and makes service information and API documentation available through the API Catalog.
 
-The specific method you use to onboard a REST API to the API ML depends on the programming language or framework used to build your REST service.
+The specific method you use to onboard a REST API to Zowe API ML depends on the programming language or framework used to build your REST service.
 
 
 :::note
-To streamline the process of onboarding new REST API services to the Zowe API Mediation Layer, see [Onboarding a REST API service with the YAML Wizard](../../user-guide/onboard-wizard.md)
+To streamline the process of onboarding new REST API services to the Zowe API ML, see [Onboarding a REST API service with the YAML Wizard](../../user-guide/onboard-wizard.md)
 :::
 
 This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
-- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with the API ML
-- [Verify successful onboarding to the API ML](#verify-successful-onboarding-to-the-api-ml)
-- Using the [Sample REST API Service](#sample-rest-api-service)  to learn how to onboard a REST service to the API ML 
+- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with API ML
+- [Verify successful onboarding to API ML](#verify-successful-onboarding-to-api-ml)
+- Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to API ML 
 
 ## Prerequisites
 
-Meet the following prerequisites before you onboard your service:
+Ensure that you meet the following prerequisites before you onboard your service:
 
-- Running instance of Zowe
+- A running instance of Zowe
   
   **Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required to create the static service definition.
   
@@ -44,17 +44,21 @@ Meet the following prerequisites before you onboard your service:
   
 ## Service Onboarding Guides
 
-Services can be updated to support the API Mediation Layer natively by updating the service code. Use one of the following guides to onboard your REST service to the Zowe API Mediation Layer:
+Services can be updated to support API Mediation Layer natively by updating the service code. Use one of the following guides to onboard your REST service to Zowe API Mediation Layer:
 
 ### Recommended guides for services using Java
 
-- [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
+- [Onboard an API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
 - [Onboard a Spring Boot based REST API Service](onboard-spring-boot-enabler.md)
 - [Onboard a Micronaut based REST API service](onboard-micronaut-enabler.md)
 
 ### Recommended guides for services using Node.js
 
 - [Onboard a Node.js based REST API Service](onboard-nodejs-enabler.md)
+
+### Recommended guides for services using Python
+
+- [Onboard a Python based REST API Service](onboard-python-enabler.md)
 
 ### Guides for Static Onboarding and Direct Call Onboarding
 
@@ -68,12 +72,12 @@ Use one of the following guides if your service is not built with Java, or you d
 Enabler version 1.2 and previous versions are no longer supported.
 
 :::tip
-We recommend you use the enabler version 1.3 or higher to onboard your REST API service to the Zowe API Medaition Layer.
+We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Medaition Layer.
 :::
 
-## Verify successful onboarding to the API ML
+## Verify successful onboarding to API ML
 
-Verifying that your service was successfully onboraded to the API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
+Verifying that your service was successfully onboraded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
 
 ### Verifying service discovery through Discovery Service
 
@@ -138,7 +142,7 @@ Verify that your service is discovered by the Discovery Service with the followi
 
 ## Sample REST API Service
 
-To demonstrate the concepts that apply to REST API services, we use an  [example of a Spring Boot REST API service](https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot). This example is used in the REST API onboarding guide [REST APIs without code changes required](onboard-static-definition.md) (static onboarding).  
+To demonstrate the concepts that apply to REST API services, we use an [example of a Spring Boot REST API service](https://github.com/swagger-api/swagger-samples/tree/master/java/java-spring-boot). This example is used in the REST API onboarding guide [REST APIs without code changes required](onboard-static-definition.md) (static onboarding).  
 
 You can build this service using instructions in the source code of the [Spring Boot REST API service example](https://github.com/swagger-api/swagger-samples/blob/master/java/java-spring-boot/README.md).
 
@@ -157,7 +161,7 @@ This sample API has only one single endpoint:
 This endpoint in the sample service returns information about a pet when the `{id}` is between 0 and 10. If `{id}` is greater than 0 or a non-integer, an error is returned. These are conditions set in the sample service.
 
 :::tip
-Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. You should get the following response:
+Access `localhost:8080/v2/pets/1` to see what this REST API endpoint does. You should get the following response:
 
 ```json
 {
@@ -187,7 +191,7 @@ Access http://localhost:8080/v2/pets/1 to see what this REST API endpoint does. 
 :::
 
 :::note
-The onboarding guides demonstrate how to add the Sample REST API Service to the API Mediation Layer to make the service available through the `petstore` service ID.
+The onboarding guides demonstrate how to add the Sample REST API Service to Zowe API Mediation Layer to make the service available through the `petstore` service ID.
 :::
 
 The following diagram shows the relations between the Sample REST API Service and its corresponding API, REST API endpoint, and API Gateway:

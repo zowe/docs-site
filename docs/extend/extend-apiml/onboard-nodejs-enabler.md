@@ -1,6 +1,11 @@
 # Onboarding a Node.js based REST API service
 
-This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). As a service developer, you can onboard a REST service based on NodeJS with the API ML with the Zowe API Mediation Layer using our Node.js Enabler.
+This article is part of a series of onboarding articles, which outline the process of onboarding REST API services to the Zowe API Mediation Layer (API ML). 
+
+:::info Role: API service developer
+:::
+
+Review this article to onboard a REST service based on NodeJS with the Zowe API Mediation Layer by using the Node.js Enabler.
 
 :::note
 For more information about onboarding API services with the API ML, see the [Onboarding Overview](./onboard-overview.md).
@@ -15,15 +20,14 @@ For more information about how to utilize another API ML enablers, see the [Onbo
 
 The following steps outline the overall process to onboard a REST service with the API ML using the onboarding Node.js enabler. Each step is described in further detail in this article.
 
-1. [Prerequisites](#prerequisites)
-
-2. [Install the npm dependency](#installing-the-npm-dependency)
-
-3. [Configure your service](#configuring-your-service)
-   
-4. [Register your service with API ML](#registering-your-service-with-api-ml)
-
-5. (Optional) [Validate the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+- [Onboarding a Node.js based REST API service](#onboarding-a-nodejs-based-rest-api-service)
+  - [Introduction](#introduction)
+  - [Onboarding your Node.js service with API ML](#onboarding-your-nodejs-service-with-api-ml)
+  - [Prerequisites](#prerequisites)
+  - [Installing the npm dependency](#installing-the-npm-dependency)
+  - [Configuring your service](#configuring-your-service)
+  - [Registering your service with API ML](#registering-your-service-with-api-ml)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
 
 ## Prerequisites
 Ensure that you meet the following prerequisites:
@@ -143,7 +147,7 @@ To register your service with API ML, use the following procedure.
 
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 

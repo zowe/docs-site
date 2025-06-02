@@ -25,21 +25,25 @@ To access Zowe Explorer settings:
 
     ![Configure Zowe settings](../images/ze/ZE-Configuration2.gif)
 
-## Modifying temporary file location settings
+## Modifying REST timeout settings
 
-Change the default folder location where temporary files are stored:
+1. Navigate to Zowe Explorer Settings.
+2. Scroll to **Zowe › Settings**.
+3. Determine which REST timeout to change:
 
-   1. Navigate to Zowe Explorer settings.
-   2. Under the data set, USS, or jobs settings that you want to edit, click the **Edit in settings.json** link.
-   3. Modify the following definition in the file:
+    - **Socket Connect Timeout** - Specify the maximum number of milliseconds to wait for the REST client to perform the initial connection and handshake with the server.
 
-      ```json
-        "zowe.files.temporaryDownloadsFolder.path": "/path/to/directory"
-      ```
+    - **Request Timeout** - Specify the maximum number of milliseconds to wait for a REST request to complete.
 
-      Replace `/path/to/directory` with the new folder location.
+## Modifying pagination options for data sets
 
-    4. Save the file to keep the change.
+Zowe Explorer v3.2 and above have pagination enabled by default when listing data sets and PDS members, splitting the results into pages rather than showing all items at once.
+To configure the number of data sets and PDS members to display per page:
+
+1. Navigate to Zowe Explorer settings.
+2. Scroll to **Zowe › Ds › Paginate: Data Sets Per Page**.
+3. Specify the number of items to list per page in the input box.
+   Set the value to zero to disable pagination for data sets and PDS members.
 
 ## Modifying the `Secure Credentials Enabled` setting
 

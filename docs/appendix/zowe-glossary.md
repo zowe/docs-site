@@ -5,7 +5,7 @@ This glossary is part of a growing list of terms and concepts used throughout th
 If there is a term you are looking for that is not included in this glossary that you think should be included, please send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
 :::note
-Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary).
+Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary.md).
 
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
@@ -119,9 +119,7 @@ Services are deployed using one or more service instances, which share the same 
 
 #### Team configuration
 
-A method of storing and managing Zowe CLI and Zowe Explorer *team* and *user* profiles introduced in Zowe Version 2.
-
-This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. The location of the configuration file determines whether these profiles are applied *globally* or *per project*.
+This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. These profiles are stored locally in the user's client OS file system (for example, when using Zowe Explorer for Visual Studio Code or IntelliJ IDEA) and determine whether they are applied *globally* (to all projects) or *per project*. This configuration manages Zowe CLI and Explorer settings on the local client and does not store or affect z/OS configurations.
 
 #### Web Explorers
 
@@ -286,7 +284,7 @@ A started task ID used to run the PROCLIB ZWESISTC that launches the cross memor
 
 #### ZWESVUSR
 
-A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, the API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
+A started task ID used to run the PROCLIB ZWESLSTC. The task starts a USS environment using BPXBATSL that executes server components such as the Application Framework, API ML, and ZSS. To work with USS, the user ID ZWESVUSR must have a valid OMVS segment. For more information, see [ZWESVUSR requirements](../user-guide/assign-security-permissions-to-users.md).
 
 ## Plug-ins and extensions
 
@@ -300,7 +298,7 @@ Displays API services that have been discovered by the [API Mediation Layer](#zo
 
 #### 3270 Terminal
 
-An applicationin the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
+An application in the [Zowe Desktop](#zowe-desktop) that provides a user interface that emulates the basic functions of IBM 3270 family terminals.
 
 #### File Tree
 
@@ -346,19 +344,19 @@ Enables interaction with Db2 for z/OS to perform tasks through Zowe CLI and inte
 
 #### Micronaut Enabler
 
-A guide which helps to simplify the process of onboarding a REST service with the API ML, using [Micronaut](https://micronaut.io/) and [Gradle](https://gradle.org/).
+A guide which helps to simplify the process of onboarding a REST service with API ML, using [Micronaut](https://micronaut.io/) and [Gradle](https://gradle.org/).
 
 #### Node.js Enabler
 
-An NPM package which helps to simplify the process of onboarding a REST service written in Node.js with the API ML.
+An NPM package which helps to simplify the process of onboarding a REST service written in Node.js with API ML.
 
 #### Plain Java Enabler (PJE)
 
-A library which helps to simplify the process of onboarding a REST service with the API ML, serving the needs of Java developers who are not using either Spring Boot, Spring Framework, or Spring Cloud Netflix.
+A library which helps to simplify the process of onboarding a REST service with API ML, serving the needs of Java developers who are not using either Spring Boot, Spring Framework, or Spring Cloud Netflix.
 
 #### Sprint Boot Enablers
 
-A collection of enablers which help to simplify the process of onboarding a REST service with the API ML using various versions of Spring framework.
+A collection of enablers which help to simplify the process of onboarding a REST service with API ML using various versions of Spring framework.
 
 ### Zowe Application Framework
 
@@ -371,7 +369,7 @@ https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 
 #### App2App
 
-A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication).
+A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication.md).
 
 #### Config Service
 
