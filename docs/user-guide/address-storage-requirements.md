@@ -16,24 +16,21 @@ Additionally, when installing Zowe with SMP/E, review the [DASD storage requirem
 
 ## Memory requirements for API Mediation Layer
 
-Zowe API ML components as other Java application uses a various type of memories. Before you start limiting memory
-it is necessary to consider resource assumption. It depends also on your case and network traffic.
+Zowe API ML components, like any other Java applications, uses various types of memory. Before starting to limit the system memory available to the Zowe API ML, it is necessary to consider resource consumption. 
+The memory consumption depends on the use cases and network traffic.
 
-The main type of memory is heap memory. The heap memory is defined by the initial size of the memory and the maximum. 
-Each service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory it allocates 
-more by increasing the same size as the initial memory. When the system has limited resources it is a good practice to 
-set the minimum same as the maximum. The memory is then allocated during the startup which ensures the memory cannot 
-be exceeded by different kinds of memory.
+The main type of memory used by Java applications is heap memory. The heap memory is defined by an initial size and a maximum. 
+Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, it allocates more memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum, the memory is then allocated during startup, preventing the memory from exceeding the limit.
 
-Here you can see the expected heap memory requirements.
+The following table shows the expected heap memory requirements for the core Zowe API ML services:
 
 Component name | Memory usage
 ---|---
-Gateway service | 512MB
+Gateway Service | 512MB
 ZAAS | 128MB
-Discovery service | 128MB
+Discovery Service | 128MB
 API Catalog | 128MB
-Caching service | 256MB
+Caching Service | 256MB
 
 Different types of memories are used by a service, especially native, threads, buffers, and JIT (just-in-time 
 compilation). In general, there is an expectation that the total memory assumption should be 150% of the heap size. 
