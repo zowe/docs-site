@@ -16,13 +16,13 @@ Additionally, when installing Zowe with SMP/E, review the [DASD storage requirem
 
 ## Memory requirements for API Mediation Layer
 
-Zowe API ML components, like any other Java applications, uses various types of memory. Before starting to limit the system memory available to the Zowe API ML, it is necessary to consider resource consumption. 
-The memory consumption depends on the use cases and network traffic.
+Before placing limits on available system memory to Zowe API ML, it is necessary to consider resource consumption. 
+The memory consumption depends on specific use cases and network traffic.
 
-The main type of memory used by Java applications is heap memory. The heap memory is defined by an initial size and a maximum. 
-Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, it allocates more memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum, the memory is then allocated during startup, preventing the memory from exceeding the limit.
+The main type of memory used by Java applications including Zowe API ML components is heap memory. Heap memory is defined by the initial and maximum memory requirements in MB. 
+Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, the service allocates more memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum. The memory is then allocated during startup, preventing the memory from exceeding the limit.
 
-The following table shows the expected heap memory requirements for the core Zowe API ML services:
+The following table shows the expected heap memory requirements for core Zowe API ML services:
 
 Component name | Memory usage
 ---|---
@@ -34,36 +34,42 @@ Caching Service | 256MB
 
 ### JVM Memory
 
-Different types of memories are used by JVM services: native, threads, direct memory buffers, and JIT (just-in-time compilation). 
+Different memory types are used by JVM services: native, threads, direct memory buffers, and JIT (just-in-time compilation). 
 
-The direct memory buffers are limited to the same size as heap memory. By default, in case of large network traffic, the JVM can allocate up to the same amount of heap memory.
+Direct memory buffers are limited to the same size as heap memory. By default, in the case of large network traffic, the JVM can allocate up to the same amount of heap memory.
 
-Likewise, threads responsible for processing incoming requests are prepared during JVM start-up. By default, 20 threads are available to process incoming requests, with additional ones created on demand (up to 200 by default). When the system has a limited address space, it is recommended to use fixed-size thread pools, initialising all threads at the beginning.
+Similarly, threads responsible for processing incoming requests are prepared during JVM start-up. By default, 20 threads are available to process incoming requests, with additional threads created on demand (up to 200 threads by default). When the system has limited address space, it is recommended to use fixed-size thread pools, initialising all threads at the beginning.
 
-As a general rule, there is an expectation that the total memory consumption should be 150% of the heap size. 
+As a general rule, total memory consumption should be 150% of the heap size. 
 
 ### Customizing memory limits in Zowe API Mediation Layer
 
-Setting memory limits strictly depends on the use case (the kind and size of data that is typically transferred, how many users can be active simultaneously, how many and what kind of services are onboarded, etc.). 
+Setting memory limits strictly depends on the use case, such as the kind and size of data that is typically transferred, how many users can be active simultaneously, and how many and what kind of services are onboarded. 
 
-If limits need to be set, it is recommended to verify your environment, to do this perform the following procedure:
-1. Run the API ML without a memory limit
-2. warm up the system
-3. validate usage during a typical workload.
+If limits need to be set, it is recommended to verify your environment with the following procedure:
+1. Run the API ML without a memory limit.
+2. Warm up the system.
+3. Validate usage during a typical workload.
 
 To set a direct memory buffer limit, set the following property:
-* `zowe.environments.JAVA_OPTS`: `-XX:MaxDirectMemorySize=<value><k|K|m|M|g|G>`
+  `zowe.environments.JAVA_OPTS`: `-XX:MaxDirectMemorySize=<value><k|K|m|M|g|G>`
 
-Where `<value><k|K|m|M|g|G>` is the limit size and unit. i.e. `64M` is a 64 Megabyte limit.
+* **`<value><k|K|m|M|g|G>`**  
+Specifies the limit size and unit.  
+**Example:** `64M` is a 64 Megabyte limit.
 
-To establish a fixed thread pool set the following properties to the same value:
-* `zowe.environments.SERVER_TOMCAT_THREADS_MIN_SPARE`: initial amount of threads
-* `zowe.environments.SERVER_TOMCAT_THREADS_MAX`: maximum amount of threads
+To establish a fixed thread pool, set the following properties to the same value:
+* **`zowe.environments.SERVER_TOMCAT_THREADS_MIN_SPARE`**  
+The initial number of threads
+* **`zowe.environments.SERVER_TOMCAT_THREADS_MAX`**  
+The maximum number of threads
 
-**Note:** Updating these environment values will impact all java-based services running as part of the Zowe Server.
+**Note:** Updating these environment values impacts all java-based services running as part of the Zowe Server.
 
 
-The following example shows all the above-mentioned parameters:
+The following example shows the configuration of all of the applicable parameters:
+
+**Example:**
 
 ```yaml
 
@@ -98,6 +104,8 @@ components:
       max: 256
 ```
 
+:::tip
 It is recommended to set `REGION=0M` in the STC. (default) and not set a `MEMLIMIT`. This will prevent issues caused by insufficient memmory. 
 
 When setting a memory limit, consider all running Zowe services, the typical workload and a buffer to the memory requirement.
+:::
