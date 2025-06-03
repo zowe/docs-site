@@ -50,7 +50,7 @@ usage of memlimit in the STC) we suggest using a threads pool with initiated all
 could be done by configuring properties `server.tomcat.threads.min-spare` (initial amount of threads) and 
 `server.tomcat.threads.max` (the maximum amount of threads) to the same value.
 
-Example of how to define memory by the suggestions above:
+The following example shows all the above-mentioned parameters:
 
 ```yaml
 
@@ -85,6 +85,6 @@ components:
       max: 256
 ```
 
-Our suggestion is not to limit memory using MEMLIMIT and REGION argument in the STC. It would avoid any issue with 
-not having enough memory. If you want to set a limit please consider all running Zowe services, and summarize their 
-memory requirements with some buffer.
+It is recommended to set `REGION=0M` in the STC. (default) and not set a `MEMLIMIT`. This will prevent issues caused by insufficient memmory. 
+
+When setting a memory limit, consider all running Zowe services, the typical workload and a buffer to the memory requirement.
