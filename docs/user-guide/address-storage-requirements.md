@@ -32,23 +32,36 @@ Discovery Service | 128MB
 API Catalog | 128MB
 Caching Service | 256MB
 
-Different types of memories are used by a service, especially native, threads, buffers, and JIT (just-in-time 
-compilation). In general, there is an expectation that the total memory assumption should be 150% of the heap size. 
-Anyway as was mentioned above it strictly depends on your use case (what data are transferred, how many users, what 
-services are onboarded, etc.). Therefore it is reasonable to verify your environment. It means running the API ML 
-without limit, warming up the system, and validating usage during the typical load. We also suggest adding some buffer 
-to the maximum value.
+### JVM Memory
 
-The memory buffers are as default limited to the same size as heap memory. In the case of big network traffic, the JVM 
-could allocate up to the same amount of heap memory. Anyway, the memory limit could be configured by argument 
-`-XX:MaxDirectMemorySize=<value><k|K|m|M|g|G>`. Limit this memory could be set on the same value for all services. It 
-could be done by defining the system environment `JAVA_OPTS`.
+Different types of memories are used by JVM services: native, threads, direct memory buffers, and JIT (just-in-time compilation). 
 
-As default threads responsible for processing incoming requests are prepared particularly on start-up. As default, there
-are 20 threads and others are created on demand (as default up to 200). When the system has limited address space (see 
-usage of memlimit in the STC) we suggest using a threads pool with initiated all threads at the beginning. This behavior 
-could be done by configuring properties `server.tomcat.threads.min-spare` (initial amount of threads) and 
-`server.tomcat.threads.max` (the maximum amount of threads) to the same value.
+The direct memory buffers are limited to the same size as heap memory. By default, in case of large network traffic, the JVM can allocate up to the same amount of heap memory.
+
+Likewise, threads responsible for processing incoming requests are prepared during JVM start-up. By default, 20 threads are available to process incoming requests, with additional ones created on demand (up to 200 by default). When the system has a limited address space, it is recommended to use fixed-size thread pools, initialising all threads at the beginning.
+
+As a general rule, there is an expectation that the total memory consumption should be 150% of the heap size. 
+
+### Customizing memory limits in Zowe API Mediation Layer
+
+Setting memory limits strictly depends on the use case (the kind and size of data that is typically transferred, how many users can be active simultaneously, how many and what kind of services are onboarded, etc.). 
+
+If limits need to be set, it is recommended to verify your environment, to do this perform the following procedure:
+1. Run the API ML without a memory limit
+2. warm up the system
+3. validate usage during a typical workload.
+
+To set a direct memory buffer limit, set the following property:
+* `zowe.environments.JAVA_OPTS`: `-XX:MaxDirectMemorySize=<value><k|K|m|M|g|G>`
+
+Where `<value><k|K|m|M|g|G>` is the limit size and unit. i.e. `64M` is a 64 Megabyte limit.
+
+To establish a fixed thread pool set the following properties to the same value:
+* `zowe.environments.SERVER_TOMCAT_THREADS_MIN_SPARE`: initial amount of threads
+* `zowe.environments.SERVER_TOMCAT_THREADS_MAX`: maximum amount of threads
+
+**Note:** Updating these environment values will impact all java-based services running as part of the Zowe Server.
+
 
 The following example shows all the above-mentioned parameters:
 
