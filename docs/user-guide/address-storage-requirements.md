@@ -19,7 +19,7 @@ Additionally, when installing Zowe with SMP/E, review the [DASD storage requirem
 Before placing limits on available system memory to Zowe API ML, it is necessary to consider resource consumption. 
 The memory consumption depends on specific use cases and network traffic.
 
-The main type of memory used by Java applications including Zowe API ML components is heap memory. Heap memory is defined by the initial and maximum memory requirements in MB. 
+The main type of memory used by Java applications, including Zowe API ML components, is heap memory. Heap memory is defined by the initial and maximum memory requirements in MB. 
 Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, the service allocates more memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum. The memory is then allocated during startup, preventing the memory from exceeding the limit.
 
 The following table shows the expected heap memory requirements for core Zowe API ML services:
@@ -38,7 +38,7 @@ Different memory types are used by JVM services: native, threads, direct memory 
 
 Direct memory buffers are limited to the same size as heap memory. By default, in the case of large network traffic, the JVM can allocate up to the same amount of heap memory.
 
-Similarly, threads responsible for processing incoming requests are prepared during JVM start-up. By default, 20 threads are available to process incoming requests, with additional threads created on demand (up to 200 threads by default). When the system has limited address space, it is recommended to use fixed-size thread pools, initialising all threads at the beginning.
+Similarly, threads responsible for processing incoming requests are prepared during JVM start-up. By default, 20 threads are available to process incoming requests. Additional threads can be created on demand (up to 200 threads by default). When the system has limited address space, it is recommended to use fixed-size thread pools, initializing all threads at the beginning.
 
 As a general rule, total memory consumption should be 150% of the heap size. 
 
@@ -51,12 +51,16 @@ If limits need to be set, it is recommended to verify your environment with the 
 2. Warm up the system.
 3. Validate usage during a typical workload.
 
+#### Setting a direct memory buffer limit
+
 To set a direct memory buffer limit, set the following property:
   `zowe.environments.JAVA_OPTS`: `-XX:MaxDirectMemorySize=<value><k|K|m|M|g|G>`
 
 * **`<value><k|K|m|M|g|G>`**  
 Specifies the limit size and unit.  
 **Example:** `64M` is a 64 Megabyte limit.
+
+#### Establishing a fixed thread pool
 
 To establish a fixed thread pool, set the following properties to the same value:
 * **`zowe.environments.SERVER_TOMCAT_THREADS_MIN_SPARE`**  
@@ -105,7 +109,7 @@ components:
 ```
 
 :::tip
-It is recommended to set `REGION=0M` in the STC. (default) and not set a `MEMLIMIT`. This will prevent issues caused by insufficient memmory. 
+It is recommended to set `REGION=0M` in the STC. This is the default setting.  Setting a `MEMLIMIT` is not recommended as doing so prevents issues caused by insufficient memmory. 
 
-When setting a memory limit, consider all running Zowe services, the typical workload and a buffer to the memory requirement.
+When setting a memory limit, consider all running Zowe services, the typical workload, and a buffer to the memory requirement.
 :::
