@@ -48,8 +48,8 @@ Setting memory limits strictly depends on the use case, such as the kind and siz
 
 If limits need to be set, it is recommended to verify your environment with the following procedure:
 1. Run the API ML without a memory limit.
-2. Warm up the system.
-3. Validate usage during a typical workload.
+2. Start the services you wish to start and wait approximately an hour or until you have the expected level of traffic to the service.
+3. Assess the memory usage during a typical workload.
 
 #### Setting a direct memory buffer limit
 
@@ -64,14 +64,16 @@ Specifies the limit size and unit.
 
 To establish a fixed thread pool, set the following properties to the same value:
 * **`zowe.environments.SERVER_TOMCAT_THREADS_MIN_SPARE`**  
-The initial number of threads
+The initial number of threads  
+**Default:** 20 threads to process incoming requests. 
 * **`zowe.environments.SERVER_TOMCAT_THREADS_MAX`**  
-The maximum number of threads
+The maximum number of threads  
+**Default:** Up to 200 threads
 
-**Note:** Updating these environment values impacts all java-based services running as part of the Zowe Server.
+**Note:** Updating these environment values impacts all Java-based services running as part of the Zowe Server.
 
 
-The following example shows the configuration of all of the applicable parameters:
+The following example shows the configuration of all applicable parameters:
 
 **Example:**
 
