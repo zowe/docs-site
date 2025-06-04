@@ -10,3 +10,8 @@ a2a8c0fe3ea6b0a15ef4585fc39eeeeaf9feaa59 Updated the description of error messag
 6efd81bcc1e8a01a713160942e59134c7d82c1c4 Added syntax to prevent broken links (#4241)
 c6b53bff9bdbc83902c568b7e3d96392dfcc7106 (#4223)
 4ac17deb29a52668636e94a4ee140a34fb130df5 Updated Release Notes of Zowe Application Framework (#4180)
+57989cea60577a4738fb611e2aa7461805a7a4d1 Rewrote the lines to instruct the user to add forward slashes (#4277)
+9a6f820f2e8f36b27fb746babddf88b502f99d69 (#4277)
+b3d3716ae1f99d240d32d12424e47f7917523c40 (#4277)
+b78ebfa584d0945f46b2e0205589257acf1f8a8c (#4277)
+e2d6be9848ce4166dd2744c9631d4ba3bdb7a8ce (#4277)
