@@ -115,7 +115,7 @@ It is recommended to set `REGION=0M` in the STC, which is the default setting. S
 For more details about specifying the region size, see the following links:  
 * [Specifying Region Size](https://www.ibm.com/docs/en/zos/3.1.0?topic=limit-specifying-region-size) in the IBM documenation
 * [Address space region size](../user-guide/configure-uss.md#address-space-region-size) in Zowe Docs
-* [Resources](../user-guide/install-zowe-pswi-deployment.md#resources) in the article _Installing Product Software Using z/OSMF Deployments_ in Zowe Docs
+* [Resources](../user-guide/install-zowe-pswi-deployment.md#resources-) in the article _Installing Product Software Using z/OSMF Deployments_ in Zowe Docs
 
 When setting a memory limit, consider all running Zowe services, the typical workload, and a buffer to the memory requirement.
 :::
