@@ -47,7 +47,7 @@ To use the endpoint provider, customize the URL corresponding to the SAF resourc
 
 1. Open the file `zowe.yaml`.
 2. Find or add the property `components.gateway.apiml.security.authorization.endpoint.url` and set desired value.
-   The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf-auth`
+   The default value for ZSS API is `https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/saf-auth`
 3. Restart Zowe.
 
 ## REST endpoint call
