@@ -19,7 +19,7 @@ Additionally, when installing Zowe with SMP/E, review the [DASD storage requirem
 Before placing limits on available system memory to Zowe API ML, it is necessary to consider resource consumption. 
 The memory consumption depends on specific use cases and network traffic.
 
-The main type of memory used by Java applications, including Zowe API ML components, is heap memory. Heap memory is defined by the initial and maximum memory requirements in MB. 
+The main type of memory used by Java applications, including Zowe API ML components, is heap memory. Heap memory is defined by the initial and maximum memory size. 
 Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, the service allocates additional memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum memory size. Memory is then allocated during startup, preventing the memory from exceeding the specified limit.
 
 The following table shows the expected heap memory requirements for core Zowe API ML services:
