@@ -111,7 +111,12 @@ components:
 ```
 
 :::tip
-It is recommended to set `REGION=0M` in the STC. This is the default setting.  Setting a `MEMLIMIT` is not recommended as doing so prevents issues caused by insufficient memmory. 
+It is recommended to set `REGION=0M` in the STC. This is the default setting.  Setting a `MEMLIMIT` is not recommended as doing so prevents issues caused by insufficient memory. 
+
+For more details about specifying the region size, see the following links:  
+* [IBM documentation](https://www.ibm.com/docs/en/zos/3.1.0?topic=limit-specifying-region-size).
+* [Address space region size](../user-guide/configure-uss.md#address-space-region-size) in Zowe Docs
+* [Resources](../user-guide/install-zowe-pswi-deployment.md#resources) in the article _Installing Product Software Using z/OSMF Deployments_
 
 When setting a memory limit, consider all running Zowe services, the typical workload, and a buffer to the memory requirement.
 :::
