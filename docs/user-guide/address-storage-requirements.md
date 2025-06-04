@@ -20,7 +20,7 @@ Before placing limits on available system memory to Zowe API ML, it is necessary
 The memory consumption depends on specific use cases and network traffic.
 
 The main type of memory used by Java applications, including Zowe API ML components, is heap memory. Heap memory is defined by the initial and maximum memory requirements in MB. 
-Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, the service allocates additional memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum. The memory is then allocated during startup, preventing the memory from exceeding the limit.
+Each Zowe API ML service uses a default minimum of 32 MB and a maximum of 512 MB. When a service requires more memory, the service allocates additional memory in increments of the same size as the initial memory. When the system has limited resources, it is a good practice to set a fixed minimum and maximum memory size. Memory is then allocated during startup, preventing the memory from exceeding the specified limit.
 
 The following table shows the expected heap memory requirements for core Zowe API ML services:
 
@@ -44,7 +44,7 @@ As a general rule, total memory consumption should be 150% of the heap size.
 
 ### Customizing memory limits in Zowe API Mediation Layer
 
-Setting memory limits strictly depends on the use case, such as the kind and size of data that is typically transferred, how many users can be active simultaneously, and how many and what kind of services are onboarded. 
+Setting memory limits strictly depends on the use case, such as the kind and volume of data that is typically transferred, how many users can be active simultaneously, and the number and type of onboarded services. 
 
 If limits need to be set, it is recommended to verify your environment with the following procedure:
 1. Run the API ML without a memory limit.
@@ -110,7 +110,7 @@ components:
 ```
 
 :::tip
-It is recommended to set `REGION=0M` in the STC. This is the default setting. Setting a `MEMLIMIT` is not recommended as doing so prevents issues caused by insufficient memory. 
+It is recommended to set `REGION=0M` in the STC, which is the default setting. Setting a `MEMLIMIT` is not recommended as doing so prevents issues caused by insufficient memory. 
 
 For more details about specifying the region size, see the following links:  
 * [Specifying Region Size](https://www.ibm.com/docs/en/zos/3.1.0?topic=limit-specifying-region-size) in the IBM documenation
