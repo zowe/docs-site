@@ -20,7 +20,7 @@ Manage z/OS jobs.  <!--job-description-->
 
 ## Options
 
-- [zos job list status](./list/zos-job-list-status#options)
+- [zos job list status](./list/zos-job-list-status.md#options)
 
     | Full name  | Alias | Type |
     | :---- | :----  | :---- |

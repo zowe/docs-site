@@ -83,7 +83,7 @@ zwe start --config /path/to/my/zowe.yaml --ha-instance hainst2
  
  The following information must be defined in the Zowe configuration file:
 
-```
+```yaml
 haInstances:
   hainst2:
     hostname: lpar2-domain.com
@@ -115,7 +115,7 @@ zwe stop --config /path/to/my/zowe.yaml
 
 ## Starting and stopping Zowe main server `ZWESLSTC` on z/OS manually
 
-To start Zowe main server, you can issue the `S ZWESLSTC` command. Similar to the the MVS system command, you can customize the `JOBNAME`.
+To start Zowe main server, you can issue the `S ZWESLSTC` command. If required by internal policy, customize the `JOBNAME` parameter.
 
 **Example:**
 
@@ -148,15 +148,23 @@ RO LPAR2,S ZWESLSTC,HAINST=myinst2,JOBNAME=ZWE1SV2
 To stop the Zowe main server, issue the `P <jobname>` command.
 
 :::cautionImportant
-With Zowe version 1, you can issue `C` command to stop Zowe main server. This command is no longer supported in version 2. The `P` command is now required to ensure that the Zowe components shut down properly.
+With Zowe version 1, you can issue `C` command to stop Zowe main server. This command is no longer supported in version 2 and later versions. The `P` command is now required to ensure that the Zowe components shut down properly.
 :::
 
 ## Stopping and starting a Zowe component without restarting Zowe main server
 
-You can restart a Zowe component with the MVS system command  without restarting the whole Zowe main server. Before issuing the modify command consider the following points:
+You can restart a Zowe component with the MVS system command without restarting the whole Zowe main server. Before issuing the `MODIFY` command consider the following points:
 
 - By default, your Zowe main server job name is configured as `ZWE1SV`. You can find your customized value by checking the `zowe.job.name` defined in the Zowe configuration file.
-- Determine the component name you want to stop or start. You can find a full list of installed components by listing the `<RUNTIME>/components` directory and the Zowe extension directory.  
+- Determine the component name you want to stop or start. For a full list of installed components, list the `<RUNTIME>/components` directory and the Zowe extension directory.
+- The following components from the `<RUNTIME>/components` directory can be stopped or started:
+  - `api-catalog`
+  - `app-server`
+  - `caching-service`
+  - `discovery`
+  - `gateway`
+  - `zaas`
+  - `zss`
 
 To stop a running Zowe component, issue the following command:
 
