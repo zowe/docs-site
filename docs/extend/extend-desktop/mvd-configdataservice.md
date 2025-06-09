@@ -31,35 +31,17 @@ When a user requests a resource, the resource that is retrieved is an override o
 
 When a user stores a resource, the resource is stored within a *Scope* but only if the user has access privilege to update within that *Scope*.
 
-*Scope* is one of the following:
+*Scope* is one of the following, from broadest scope (Plugin) to narrowest scope (User):
 
-**Plugin**
+| Scope | YAML Configuration Parameter | Default Location | Description |
+|-------|------------------------------|------------------|-------------|
+| Plugin | N/A | `<zowe.extensionDirectory>/<plugin-name>/config/storageDefaults` | Configuration defaults that come with a plugin. Cannot be modified. |
+| Product | N/A | `<zowe.runtimeDirectory>` | Configuration defaults that come with the product. Cannot be modified. |
+| Site | components.app-server.siteDir | `<zowe.workspaceDirectory>/app-server/site` | Data that can be used between multiple Zowe instances. |
+| Instance | components.app-server.instanceDir | `<zowe.workspaceDirectory>/app-server` | Data within an individual Zowe instance. |
+| User | components.app-server.usersDir | `<zowe.workspaceDirectory>/app-server/users` | Data for individual users. |
 
-Configuration defaults that come with a plugin. Cannot be modified.
-
-**Product** 
-
-Configuration defaults that come with the product. Cannot be modified.
-
-**Site**
-
-Data that can be used between multiple instances of the Zowe Application Server.
-
-**Instance**
-
-Data within an individual Zowe Application Server.
-
-**Group**
-
-Data that is shared between multiple users in a group.(Pending)
-
-**User**
-
-Data for an individual user.(Pending)
-
-**Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* and *Group* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user. Because of this, *User* and *Group* scopes will not be functional until the Security Framework is merged into the mainline.
-
-Where *Plugin* is the broadest scope and *User* is the narrowest scope.
+**Note:** While Authorization tuning can allow for settings such as GET from Instance to work without login, *User* scope queries will be rejected if not logged in due to the requirement to pull resources from a specific user.
 
 When you specify *Scope* *User*, the service manages configuration for your particular username, using the authentication of the session. This way, the *User* scope is always mapped to your current username.
 
