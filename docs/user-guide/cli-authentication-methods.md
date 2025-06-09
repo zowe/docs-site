@@ -13,13 +13,13 @@ Configure the authentication method you want to use across multiple mainframe se
 
 ## Using basic authentication
 
-The advantage of basic authentication is the simplicity of set up: In most cases you can use Zowe CLI to connect to mainframe services without additional configuration on the server. Other authentication methods would likely require further configuration.
+The advantage of basic authentication is the simplicity of set up: In most cases you can use Zowe CLI (or Zowe Explorer) to connect to mainframe services without additional configuration on the server. Other authentication methods would likely require further configuration.
 
-Basic authentication is the default authentication method defined in the default base profile when you issue the `zowe config init` command to create your team configuration.
+Basic authentication is the default authentication method defined in the default base profile when you issue the `zowe config init` command in Zowe CLI to create your team configuration.
 
 If you change your authentication method and want to switch back to using basic authentication:
 
-1. Edit the `zowe.config.json` file to define the authentication as basic authentication (see the highlighted lines) in the base profile:
+1. Use a text editor to update the `zowe.config.json` file to define the authentication as basic authentication (see the highlighted lines) in the base profile:
    ```json
          "project_base": {
                "type": "base",
@@ -279,7 +279,7 @@ MFA adds an extra layer of security because it requires users to supply their pa
 
 In Zowe, MFA can apply to basic authentication and Single Sign-On set with username and password.
 
-It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code to that is typically concatenated or appended to the password. The system administrator must configure the application so it is set up for a Zowe user.
+It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code that is typically concatenated or appended to the password. The system administrator must configure the application so it is set up for a Zowe user.
 
 :::note
 

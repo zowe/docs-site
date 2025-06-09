@@ -1,12 +1,16 @@
 # Zowe Explorer authentication methods
 
-Zowe Explorer for VS Code supports multiple authentication methods including basic authentication, tokens, certificates, and multi-factor authentication.
+Zowe Explorer for VS Code supports multiple authentication methods including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication.
 
-## Using Single Sign-On (SSO)
+## Using basic authentication
 
-As a Zowe user, you can use a base profile stored in a team configuration file to access multiple services through SSO with a token.
+To use basic authentication with Zowe Explorer, see [Using basic authentication](../user-guide/cli-authentication-methods.md#using-basic-authentication) in the Zowe CLI documentation.
 
-In Zowe Explorer, a base profile enables you to authenticate your credentials with one method, the Zowe API Mediation Layer (API ML), to access multiple services. For more information about profiles, see [profile types](https://docs.zowe.org/stable/user-guide/cli-using-using-team-profiles#zowe-cli-profile-types).
+## Using a token for Single Sign-On (SSO)
+
+SSO lets you use a single token to access all your mainframe services through API Mediation Layer. Tokens provide more security because they have limited lifespans and can be immediately revoked when needed.
+
+SSO is configured with Zowe API ML, which generates an authentication token to access the mainframe. 
 
 To log into the API ML authentication service with an existing base profile:
 
@@ -24,37 +28,21 @@ For more information, see [Using API Mediation Layer](https://docs.zowe.org/stab
 For services not registered to your API ML instance, please consult the product or extender documentation for SSO support.
 :::
 
-If you are done working with Zowe Explorer and want to prevent further use of a token, you can request the server to invalidate your session token. Use the **Log out from Authentication Service** feature to invalidate the token:
+If you are done working with Zowe Explorer and want to prevent further use of a token, you can request the server to invalidate your session token.
+
+Use the **Log out from Authentication Service** feature to invalidate a token:
 
 1. Open Zowe Explorer.
 2. Right-click the profile you want to disconnect.
 3. Select the **Manage Profile** option.
 4. In the **Quick Pick**, select the **Log out from Authentication Service** option.
 
-   Your token has been successfully invalidated.
+   The token has been successfully invalidated.
 
-## Using certificates
+## Using client certificates
 
-1. Right-click on the profile you want to connect with a certificate.
-2. Select the **Manage Profile** option from the context menu.
-3. In the **Quick Pick**, select **Log in to Authentication Service**.
-4.
+To use client certificates with Zowe Explorer, see [Using client certificates](../user-guide/cli-authentication-methods.md#using-client-certificates) in the Zowe CLI documentation.
 
 ## Multi-factor authentication (MFA) support
 
-Zowe Explorer supports the use of MFA through token authentication using either Zowe API Mediation Layer (API ML) or z/OSMF.
-
-:::note
-For services not registered to your API ML instance, please consult the product or extender documentation for MFA support.
-:::
-
-To use MFA authentication with Zowe Explorer, log into API ML:
-
-1. Right click on a profile.
-2. Select the **Manage Profile** option.
-3. Select **Log in to Authentication Service** from the **Quick Pick**.
-4. When prompted, select the credential method you want to use.
-
-   Zowe Explorer logs you in to the authentication service for your selected profile.
-
-For more information regarding MFA support, see [Using API Mediation Layer](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml/).
+To use MFA with Zowe Explorer, see [Using multi-factor authentication](../user-guide/cli-authentication-methods.md#using-multi-factor-authentication-mfa) in the Zowe CLI documentation.
