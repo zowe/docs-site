@@ -1,4 +1,4 @@
-# Authentication methods
+# Zowe Explorer authentication methods
 
 Zowe Explorer for VS Code supports multiple authentication methods including basic authentication, tokens, certificates, and multi-factor authentication.
 
@@ -32,6 +32,13 @@ If you are done working with Zowe Explorer and want to prevent further use of a 
 4. In the **Quick Pick**, select the **Log out from Authentication Service** option.
 
    Your token has been successfully invalidated.
+
+## Using certificates
+
+1. Right-click on the profile you want to connect with a certificate.
+2. Select the **Manage Profile** option from the context menu.
+3. In the **Quick Pick**, select **Log in to Authentication Service**.
+4.
 
 ## Multi-factor authentication (MFA) support
 
