@@ -1,4 +1,4 @@
-# Zowe Upgrade from Convenience Build to PSWI/SMP/E Installation
+# Upgrade from Convenience Build to PSWI or SMP/E installation
 
 Review the recommended procedure for upgrading an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices for upgrading, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
@@ -27,10 +27,10 @@ For more information about PSWI installation, see [Installing Zowe from a Portab
 
 ### SMP/E Installation
 
-1. Acquire the Zowe SMP/E package from [zowe.org/download](https://www.zowe.org/download)
-2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs according to instructions in the documentation shipped with the PTF. For more information, see [Installing Zowe via SMP/E enstructions](../user-guide/install-zowe-smpe.md)
-3. Validate successful deployment of Zowe into target libraries. The following target libraries are created: `SZWEAUTH`, `SZWEEXEC`, `SZWESAMP`
-4. Utilize Zowe SAMPLIB for post-install configuration. <!--We should include instructions of how to perform this post-install config, or a link to where this is described. -->
+1. Acquire the Zowe SMP/E package at [zowe.org](https://www.zowe.org/download)
+2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs according to instructions in the documentation shipped with the PTF. For more information, see [Installing Zowe via SMP/E instructions](../user-guide/install-zowe-smpe.md)
+3. Validate successful deployment of Zowe into target libraries. The following target libraries are created: `SZWEAUTH`, `SZWEEXEC`, `SZWESAMP`.
+4. Utilize Zowe SAMPLIB for post-install configuration. 
 
 For more information about SMP/E installation, see [Installing Zowe SMP/E overview](../user-guide/install-zowe-smpe-overview.md).
 
@@ -44,11 +44,11 @@ If the target PSWI or SMP/E version matches the currently installed convenience 
 
 1. Reuse the existing zowe.yaml file.
 2. Continue using the current runtime datasets, or for SMP/E, from the target library.
-3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`)and YAML to point to new Zowe libraries from PROCLIB and YAML.
+3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`) and YAML to point to the new Zowe libraries from PROCLIB and YAML.
 
 ### Upgrade to a newer version
 
-If migrating to a newer version of Zowe for example from v3.0 to v3.1, you can either use PSWI workflows, or alternatively, by configuring the SMP/E SAMPLIB.
+To migrate to a newer version of Zowe, for example from v3.0 to v3.1, you can either use PSWI workflows, or alternatively, by configuring the SMP/E SAMPLIB.
 
 * **Using PSWI Workflows**  
   You can use z/OSMF workflows provided in the PSWI package to perform the following tasks:
@@ -93,7 +93,7 @@ Follow these steps to validate that you successfully upgraded your Zowe installa
   * Confirm API services. 
 4. Review system and application logs for configuration or version mismatches.
 
-   For more information, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
+   For more information about performing these steps, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
 Use the following guidelines to maintain rollback readiness in the event of unexpected issues during your Zowe upgrade:
