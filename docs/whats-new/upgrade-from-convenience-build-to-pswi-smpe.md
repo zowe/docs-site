@@ -77,7 +77,7 @@ Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3
 2. Modify PARMLIB member references accordingly in the PROCLIB STC job. 
 3. Restart all affected Zowe STCs. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
 
-
+ 
 ## Validating after upgrade
 
 Follow these steps to validate that you successfully upgraded your Zowe installation.
