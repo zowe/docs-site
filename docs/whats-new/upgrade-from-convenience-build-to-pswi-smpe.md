@@ -27,9 +27,9 @@ For more information about PSWI installation, see [Installing Zowe from a Portab
 
 ### SMP/E Installation
 
-1. Acquire the Zowe SMP/E package.
-2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs. <!--We should include a sample command here, or a link to where this is described. -->
-3. Validate successful deployment of Zowe into target libraries. <!--We should include a sample command here, or a link to where this is described. -->
+1. Acquire the Zowe SMP/E package from [zowe.org/download](https://www.zowe.org/download)
+2. Execute SMP/E RECEIVE, APPLY, and ACCEPT jobs according to instructions in the documentation shipped with the PTF. For more information, see [Installing Zowe via SMP/E enstructions](../user-guide/install-zowe-smpe.md)
+3. Validate successful deployment of Zowe into target libraries. The following target libraries are created: `SZWEAUTH`, `SZWEEXEC`, `SZWESAMP`
 4. Utilize Zowe SAMPLIB for post-install configuration. <!--We should include instructions of how to perform this post-install config, or a link to where this is described. -->
 
 For more information about SMP/E installation, see [Installing Zowe SMP/E overview](../user-guide/install-zowe-smpe-overview.md).
@@ -44,7 +44,7 @@ If the target PSWI or SMP/E version matches the currently installed convenience 
 
 1. Reuse the existing zowe.yaml file.
 2. Continue using the current runtime datasets, or for SMP/E, from the target library.
-3. Update ZOWE STC and YAML to point to new Zowe libraries from PROCLIB & YAML. <!--Should STC be specific here? ZWESLSTC? -->
+3. Update ZOWE STC (`ZWESISTC` and `ZWESLSTC`)and YAML to point to new Zowe libraries from PROCLIB and YAML.
 
 ### Upgrade to a newer version
 
@@ -56,7 +56,7 @@ If migrating to a newer version of Zowe for example from v3.0 to v3.1, you can e
   * Allocate new runtime datasets
   * Configure system definitions (e.g. APF, PROCLIB)
 
-<!--Is this info at [Installing Zowe from a Portable Software Instance](../user-guide/install-zowe-pswi.md) or is there a more applicable link? -->
+For more information, see [Installing Zowe SMP/E build with z/OSMF workflow](../user-guide/install-zowe-smpe-zosmf-workflow.md).
 
 * **Using SMP/E SAMPLIB**
   
@@ -73,10 +73,10 @@ Ensure all new configurations are validated for compatibility and correctness.
 
 Use the following step outline to switch between Zowe versions (e.g. v3.0 and v3.1):
 
-1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. Ensure that versions or HLQ are updated.<!--We should include a sample command here, or a link to where this is described. -->
+1. Update STEPLIB in Zowe Started Task (STC) JCLs to reflect correct target libraries. Ensure that versions or HLQ are updated.
 2. Modify PARMLIB member references accordingly in the PROCLIB STC job. 
-3. Restart all affected Zowe STCs.
-<!--We should include a sample command here, or a link to where this is described. -->
+3. Restart all affected Zowe STCs. For more information, see [Starting and stopping Zowe](../user-guide/start-zowe-zos.md).
+
 
 ## Validating after upgrade
 
@@ -90,8 +90,9 @@ Follow these steps to validate that you successfully upgraded your Zowe installa
 2. Monitor logs for any anomalies or errors.
 3. Validate the following functionalities:
   * Access to Zowe Desktop
-  * Confirm API services <!-- Where are these services confirmed? In the Desktop? -->
+  * Confirm API services. 
 4. Review system and application logs for configuration or version mismatches.
+
    For more information, see [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
 
 :::tip
