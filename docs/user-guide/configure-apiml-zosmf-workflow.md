@@ -86,7 +86,7 @@ This workflow is in three parts:
 
 ### Sequence to execute steps and sub-steps in a workflow
 
-Before you start performing the various workflows, first review these steps to perform any of the following workflows:
+Before you start performing the workflows, first review the following workflow procedural steps:
 
   1. Click the title of the step or sub-step.
   2. Select the **Perform** tab.
@@ -107,7 +107,7 @@ Before you start performing the various workflows, first review these steps to p
 
 ### Define variables
 
-The first workflow in API ML configuration is to define variables.
+The first workflow section in API ML configuration is to define variables.
 
 1. Expand **Define variables**.
 
@@ -129,7 +129,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 ### Create configuration
 
-The second workflow is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
+The second workflow section is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
 
 1. Review your configurations.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
