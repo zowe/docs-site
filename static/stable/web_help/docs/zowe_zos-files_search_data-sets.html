@@ -71,6 +71,15 @@ However, the pattern cannot begin with any of these sequences. You can specify m
 </ul>
 </li>
 <li>
+<p><code>--regex</code> | <code>--re</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Whether the search string is a regular expression.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -177,27 +186,33 @@ Allowed values: http, https</p>
 <h4>Examples</h4>
 <ul>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE':</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE':</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE'</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE'">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE' in uppercase only:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE' in uppercase only:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --case-sensitive</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --case-sensitive">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE', and time out in 1 minute:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE', and time out in 1 minute:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --timeout 60</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --timeout 60">Copy</button></li>
 </ul>
 </li>
 <li>
-<p>Search all of IBMUSER's, data sets for 'ZOWE', and perform 8 parallel tasks:</p>
+<p>Search all of IBMUSER's data sets for 'ZOWE', and perform 8 parallel tasks:</p>
 <ul>
 <li><code>zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --max-concurrent-requests 8</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'ZOWE' --max-concurrent-requests 8">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Search all of IBMUSER's data sets using a regular expression:</p>
+<ul>
+<li><code>zowe zos-files search data-sets 'IBMUSER.*' 'Z([A-Za-z]){3}' --regex</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files search data-sets 'IBMUSER.*' 'Z([A-Za-z]){3}' --regex">Copy</button></li>
 </ul>
 </li>
 </ul>
