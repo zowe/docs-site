@@ -244,7 +244,7 @@ in any of the YAML configuration files.
 :::
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters) for more details.
+These parameters are not required. If a parameter is not specified, a default value is used.
 
 ### API ML Onboarding Configuration Sample
 
