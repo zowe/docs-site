@@ -129,7 +129,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 ### Create configuration
 
-The second workflow section is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
+The second workflow section is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow section.
 
 1. Review your configurations.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
