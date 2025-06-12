@@ -84,9 +84,9 @@ This workflow is in three parts:
 [Create configuration](#create-configuration)  
 [Perform Zowe installation](#perform-zowe-installation)
 
-### Sequence to execute steps and sub-steps in a workflow
+### Sequence to execute each workflow step
 
-Before you start performing the workflows, first review the following workflow procedural steps:
+Before you start performing workflow steps, first review the following sequence within a workflow step:
 
   1. Click the title of the step or sub-step.
   2. Select the **Perform** tab.
@@ -107,7 +107,7 @@ Before you start performing the workflows, first review the following workflow p
 
 ### Define variables
 
-The first workflow section in API ML configuration is to define variables.
+The first workflow step in API ML configuration is to define variables.
 
 1. Expand **Define variables**.
 
@@ -129,7 +129,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 ### Create configuration
 
-The second workflow section is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow section.
+The second workflow step is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** step.
 
 1. Review your configurations.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
@@ -138,7 +138,6 @@ The second workflow section is to create a configuration zowe.yaml file with the
 :::note
 The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
-
 
 ### Perform Zowe Installation
 
