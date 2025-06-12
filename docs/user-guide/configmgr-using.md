@@ -125,7 +125,10 @@ When you use multiple storage types, Zowe constructs the unified configuration b
 
 ## Parmlib support
 
-Zowe YAML content can be stored in PARMLIB as well. The structure is the same as in the unix files, so be sure to have sufficient record length to fit the YAML content within the member. The syntax is `PARMLIB(datasetname(member))`, and although you can have multiple `PARMLIB` entries, each must have the same member name.
+You can store the content of the Zowe YAML file in PARMLIB. The structure of the content in the Zowe YAML file is the same as the structure of the content in the UNIX files. You can use the `PARMLIB(datasetname(member))` syntax to specify the location where you store the content.
+:::NOTE
+Ensure that each PARMLIB member has sufficient record length to accommodate the YAML content. You can specify multiple PARMLIB entries, but each entry must contain the same member’s name.
+:::
 In the previous section, there was an example of using multiple files to split configuration into parts. This ability can be done with PARMLIB, FILE, or any mix of the two. An example of using PARMLIB with Zowe configuration may look like this in your STC JCL:
 
 ```
