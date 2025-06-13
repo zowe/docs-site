@@ -134,16 +134,16 @@ Use the Languages setting in the Preferences panel to change the desktop languag
 
 Application plugins are applications that you can use to access the mainframe and to perform various tasks. Zowe's official server download contains some built-in plugins as described below. 
 
-Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](install-configure-zos-extensions).
+Additional plugins can be added to the Desktop, and are packaged and installed as Extensions to Zowe. [See here for how to install extensions](install-configure-zos-extensions.md).
 
-Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux).
+Developers can create application plug-ins to put into extensions, and developers should [read the extending guide for more information](../extend/extend-desktop/mvd-extendingzlux.md).
 
 ### VT Terminal 
 The VT Terminal plugin provides a user interface that emulates the basic functions of DEC VT family terminals. On the "back end," the plugin and the Zowe Application Server connect to VT compatible hosts, such as z/OS UNIX System Services (USS), using SSH or Telnet.
 
 This terminal display emulator operates as a "Three-Tier" program. Due to web browsers being unable to supply TCP networking that terminals require, this terminal display emulator does not connect directly to your SSH or Telnet server. Instead, the Zowe Application Server acts as a bridge, and uses websockets between it and the browser for terminal communication. As a result, terminal connections only work when the stack of network programs supports websockets and the TN3270 server destination is visible to the Zowe Application Server.
 
-The terminal connection can be customized per-user and saved for future sessions using the connection toolbar of the application. The preferences are stored within [the configuration dataservice storage](../extend/extend-desktop/mvd-configdataservice), which can also be used to set instance-wide defaults for multiple users.
+The terminal connection can be customized per-user and saved for future sessions using the connection toolbar of the application. The preferences are stored within [the configuration dataservice storage](../extend/extend-desktop/mvd-configdataservice.md), which can also be used to set instance-wide defaults for multiple users.
 
 ### API Catalog
 The API Catalog plugin lets you view API services that have been discovered by the API Mediation Layer. For more information about the API Mediation Layer, Discovery Service, and API Catalog, see [API Mediation Layer Overview](../getting-started/overview.md).
@@ -153,6 +153,10 @@ With the Zowe Editor you can create, edit, and manage files, folders, and datase
 
 ### JES Explorer
 Use this application to query JES jobs with filters, and view the related steps, files, and status. You can also purge jobs from this view.
+
+:::note
+z/OSMF is the required authentication provider for JES Explorer.
+:::
 
 ### IP Explorer
 With the IP Explorer you can monitor the TCP/IP stacks, view active connections and reserved ports.
@@ -170,6 +174,10 @@ Use this application to browse the MVS™ file system by using a high-level qual
   - Delete data sets and members.
   - Open data sets in full screen editor mode, which gives you a fully qualified link to that file. The link is then reusable for example in help tickets.
 
+:::note
+z/OSMF is the required authentication provider for MVS Explorer.
+:::
+
 ### USS Explorer
 Most features of the USS explorer are now incorporated into the "Editor" plug-in listed above, and the community focuses on future enhancements there, but you can still find the MVS Explorer in a Zowe install and use the features found below.
 
@@ -179,3 +187,7 @@ Use this application to browse the USS files by using a path. With the USS Explo
  - Create new files and folders.
  - Edit files with basic syntax highlighting and content assist for JCL and REXX.
  - Delete files and folders.
+
+:::note
+z/OSMF is the required authentication provider for USS Explorer.
+:::

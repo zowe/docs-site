@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IProfOpts | Zowe Node.js SDK - v3.1.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.1.0">
+	<title>IProfOpts | Zowe Node.js SDK - v3.2.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.2.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.1.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.2.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -91,6 +91,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#credmgroverride" class="tsd-kind-icon">cred<wbr>Mgr<wbr>Override</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#onlycheckactivelayer" class="tsd-kind-icon">only<wbr>Check<wbr>Active<wbr>Layer</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a></li>
 							</ul>
 						</section>
@@ -105,7 +106,7 @@
 					<div class="tsd-signature tsd-kind-icon">cred<wbr>Mgr<wbr>Override<span class="tsd-signature-symbol">:</span> <a href="_zowe_imperative.icredentialmanagerinit.html" class="tsd-signature-type">ICredentialManagerInit</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L37">@zowe/imperative/src/config/src/doc/IProfOpts.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/imperative/src/config/src/doc/IProfOpts.ts#L37">@zowe/imperative/src/config/src/doc/IProfOpts.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -118,12 +119,30 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="onlycheckactivelayer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> only<wbr>Check<wbr>Active<wbr>Layer</h3>
+					<div class="tsd-signature tsd-kind-icon">only<wbr>Check<wbr>Active<wbr>Layer<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/imperative/src/config/src/doc/IProfOpts.ts#L45">@zowe/imperative/src/config/src/doc/IProfOpts.ts:45</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This option allows the old behavior of only checking the active layer
+								in order to determine if credentials are to be stored securely.
+								When this option is true, the <code>isSecured</code> getter will return false if the active layer does not have secure properties
+							Default: false</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="overridewithenv" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> override<wbr>With<wbr>Env</h3>
 					<div class="tsd-signature tsd-kind-icon">override<wbr>With<wbr>Env<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.11.0/packages/imperative/src/config/src/doc/IProfOpts.ts#L29">@zowe/imperative/src/config/src/doc/IProfOpts.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/imperative/src/config/src/doc/IProfOpts.ts#L29">@zowe/imperative/src/config/src/doc/IProfOpts.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,6 +211,9 @@
 								<ul>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofopts.html#credmgroverride" class="tsd-kind-icon">cred<wbr>Mgr<wbr>Override</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-interface">
+										<a href="_zowe_imperative.iprofopts.html#onlycheckactivelayer" class="tsd-kind-icon">only<wbr>Check<wbr>Active<wbr>Layer</a>
 									</li>
 									<li class=" tsd-kind-property tsd-parent-kind-interface">
 										<a href="_zowe_imperative.iprofopts.html#overridewithenv" class="tsd-kind-icon">override<wbr>With<wbr>Env</a>

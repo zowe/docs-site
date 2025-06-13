@@ -2,6 +2,7 @@
 
 Review this article to learn about topics which address security features in Zowe API Mediation Layer:
 
+- [Zowe API Mediation Layer Security Overview](#zowe-api-mediation-layer-security-overview)
   - [How API ML transport security works](#how-api-ml-transport-security-works)
     - [Transport layer security](#transport-layer-security)
     - [Authentication](#authentication)
@@ -116,7 +117,9 @@ The API ML TLS requires servers to provide HTTPS ports. Each API ML service has 
 
 ## Setting ciphers for API ML services
 
-You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the Gateway, Discovery Service, and API Catalog.
+You can override ciphers that are used by the HTTPS servers in API ML services by configuring properties of the Gateway, Discovery Service, and API Catalog in the `server.xml` or equivalent configuration file.
+
+For more inforamation about API ML services, see [API Medaition Layer](../../getting-started/zowe-architecture.md#api-gateway) in the Zowe architecture article. 
 
 **Note:** You do not need to rebuild JAR files when you override the default values in shell scripts.
 

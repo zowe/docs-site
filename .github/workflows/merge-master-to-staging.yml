@@ -1,0 +1,83 @@
+name: Merge Master into Docs Staging
+
+on:
+  push:
+    branches: [ master ]
+  # Allow manual triggering from the Actions tab in GitHub
+  workflow_dispatch:
+    inputs:
+      reviewers:
+        description: 'Optional: Comma-separated list of GitHub user logins to request reviews from (overrides default)'
+        required: false
+        type: string
+        default: 'janan07'
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs-staging branch
+        uses: actions/checkout@v4
+        with:
+          ref: docs-staging
+          token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+          fetch-depth: 100
+
+      - name: Set up Git user
+        run: |
+          git config user.name "Zowe Robot"
+          git config user.email "zowe-robot@users.noreply.github.com"
+
+      - name: Fetch master branch
+        run: |
+          git fetch --depth=100 origin master
+
+      - name: Attempt to merge master into docs-staging
+        id: merge_attempt
+        run: |
+          echo "Attempting direct merge of origin/master into docs-staging..."
+          # Try to merge - exit code will be non-zero on conflict
+          git merge --signoff origin/master --no-ff --no-edit
+
+        continue-on-error: true
+
+      - name: Push changes
+        if: steps.merge_attempt.outcome == 'success'
+        id: push_staging
+        run: |
+          
+          commit_count=$(git rev-list origin/docs-staging..HEAD --count)
+          echo "Commits to push: ${commit_count}"
+          if [[ "${commit_count}" -gt 0 ]]; then
+            echo "Changes detected that need pushing."
+            echo "Pushing merged changes to docs-staging..."
+            git push origin docs-staging
+          else
+            echo "No new commits to push. Local branch is already up-to-date with remote after merge."
+          fi
+
+        continue-on-error: true
+
+      - name: Install PR Script Dependencies
+        if: steps.merge_attempt.outcome == 'failure'
+        run: npm install
+
+        working-directory: ./.github/scripts/open_pr
+
+      - name: Create Pull Request
+        id: create_pr
+        if: steps.merge_attempt.outcome == 'failure'
+        uses: ./.github/scripts/open_pr
+        with:
+          github-token: ${{ secrets.ZOWE_ROBOT_TOKEN }}
+          pr-branch: 'master'
+          base-branch: 'docs-staging'
+          pr-title: 'Merge Conflict: master into docs-staging (Automated Attempt)'
+          pr-body: |
+            Automated attempt to merge `master` into `docs-staging` failed.
+
+          pr-labels: 'automated-pr,merge-conflict'
+          pr-reviewers: ${{ github.event.inputs.reviewers || 'janan07' }}

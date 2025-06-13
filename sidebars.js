@@ -9,6 +9,8 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_2_0",
+        "whats-new/release-notes/v3_1_1",
         "whats-new/release-notes/v3_1_0",
         "whats-new/release-notes/v3_0_0",
       ],
@@ -91,6 +93,7 @@ module.exports = {
         "whats-new/zowe-v3-office-hours",
         "whats-new/zowe-v3-conformance-criteria",
         "whats-new/zowe-v3-migration",
+        "whats-new/upgrade-from-convenience-build-to-pswi-smpe",
       ],
     },
     {
@@ -366,7 +369,15 @@ module.exports = {
               ],
             },
             "user-guide/cli-install-configure-install-online-registry-proxy",
-            "user-guide/cli-installcli",
+            {
+              type: "category",
+              label: "Installing Zowe CLI and Zowe CLI plug-ins",
+              link: { type: "doc", id: "user-guide/cli-installcli" },
+              items: [
+                "user-guide/cli-configure-scs-on-headless-linux-os",
+                "user-guide/cli-configure-cli-on-os-where-scs-unavailable",
+              ],
+            },
             "user-guide/cli-updatingcli",
             {
               type: "category",
@@ -648,6 +659,7 @@ module.exports = {
             },
             "user-guide/cli-using-using-prompt-feature",
             "user-guide/cli-using-writing-scripts",
+            "user-guide/using-a-zos-attributes-file",
             {
               type: "category",
               label: "Zowe CLI plug-ins",
@@ -669,6 +681,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/ze-usage" },
           items: [
             "user-guide/ze-managing-profiles",
+            "user-guide/ze-authentication-methods",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-working-with-uss-files",
@@ -757,22 +770,31 @@ module.exports = {
             },
             {
               type: "category",
-              label: "Libraries for integration (Enablers)",
+              label: "Libraries for onboarding APIs to API ML",
+              link: { type: "doc", id: "extend/extend-apiml/libraries-for-onboarding-apis" },
               items: [
                 {
                   type: "category",
-                  label: "Plain Java Enabler",
+                  label: "Onboarding an API service with the Plain Java Enabler",
                   link: { type: "doc", id: "extend/extend-apiml/onboard-plain-java-enabler" },
                   items: [
                     "extend/extend-apiml/onboard-plain-java-enabler-external-configuration",
-                    "extend/extend-apiml/api-mediation-message-service",
                   ]
                 },
                 "extend/extend-apiml/onboard-spring-boot-enabler",
                 "extend/extend-apiml/onboard-micronaut-enabler",
                 "extend/extend-apiml/onboard-nodejs-enabler",
+                "extend/extend-apiml/onboard-python-enabler",
                 "extend/extend-apiml/onboard-static-definition",
-                "extend/extend-apiml/custom-metadata",
+                {
+                  type: "category",
+                  label: "Optional features to use with onboarded APIs",
+                  link: { type: "doc", id: "extend/extend-apiml/optional-features-to-use-with-onboarded-apis" },
+                  items: [
+                    "extend/extend-apiml/api-mediation-message-service",
+                    "extend/extend-apiml/custom-metadata",
+                  ]
+                },
               ]
             },
             {
@@ -781,7 +803,6 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-versioning",
                 "extend/extend-apiml/api-mediation-websockets"
               ]
             },
@@ -1093,7 +1114,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.1.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.2.x.md",
     },
   ],
 }

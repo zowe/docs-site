@@ -404,8 +404,16 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   This parameter is required and specifies the label of an existing certificate.
 - If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
   * **For RACF**  
-  Zowe attempts to automatically detect the z/OSMF CA based on the certificate owner specified by
-    `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority.
+  If the CA of the z/OSMF is not in the Zowe truststore, you can define it using
+`zowe.setup.certificate.keyring.zOSMF.user` and label `zowe.setup.certificate.keyring.zOSMF.ca`  
+
+    **Example:**  
+    ```
+    zowe.setup.certificate.keyring.zOSMF.user: CERTAUTH  
+    zowe.setup.certificate.keyring.zOSMF.ca: ZOSMFCA
+    ```
+  <!-- Original text: Zowe attempts to automatically detect the z/OSMF CA based on the certificate owner specified by
+    `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority. -->
   * **For ACF2 or TSS (Top Secret)**  
   `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate the label of the z/OSMF root certificate authority.
 
@@ -495,7 +503,7 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
 - **apiml.security.auth.zosmf.jwtAutoconfiguration**  
- Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows the API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
+ Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
@@ -526,7 +534,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
   The following URL is the default value for Zowe and ZSS:
 
     ```
-    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is used to verify certificates of services in strict mode. Setting to `true` enables `strict` mode where API ML validates if the certificate is trusted in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
