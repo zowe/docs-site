@@ -1,6 +1,6 @@
 # zwe
 
-[zwe](./zwe.md)
+[zwe](./zwe)
 
 	zwe [sub-command [sub-command]...] [parameter [parameter]...]
 

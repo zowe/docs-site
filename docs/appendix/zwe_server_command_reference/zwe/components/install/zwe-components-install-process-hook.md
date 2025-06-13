@@ -1,6 +1,6 @@
 # zwe components install process-hook
 
-[zwe](./../.././zwe.md) > [components](./.././zwe-components.md) > [install](././zwe-components-install.md) > [process-hook](./zwe-components-install-process-hook.md)
+[zwe](./../.././zwe) > [components](./.././zwe-components) > [install](././zwe-components-install) > [process-hook](./zwe-components-install-process-hook)
 
 	zwe components install process-hook [parameter [parameter]...]
 
