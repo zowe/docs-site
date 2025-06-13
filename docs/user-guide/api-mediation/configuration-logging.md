@@ -83,7 +83,7 @@ The following `logback.xml` is an example of logging configuration file which is
 ```
 
 :::note
-You can find the current default logging configuration file by following [this link](https://github.com/zowe/api-layer/blob/v2.x.x/apiml-common/src/main/resources/logback.xml).
+You can find the current default logging configuration file by following [this link](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml).
 :::
 
 ## Customization example
