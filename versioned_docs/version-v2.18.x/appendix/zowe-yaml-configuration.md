@@ -440,6 +440,8 @@ These configurations can be used under the `components.gateway` section:
  Defines the authentication provider used by the API Gateway.
 - **`apiml.security.authorization.endpoint.url`**  
  Defines the URL to the authorization endpoint. This endpoint tells Gateway if a user has a particular permission on SAF profile. For example, permission to the `APIML.SERVICES` profile of `ZOWE` class.
+- **`apiml.security.forwardHeader.trustedProxies`**
+  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. Applies to version 2.18.2 and later versions.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
