@@ -243,7 +243,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+  Supply a valid user and application name, and check that corresponding permissions have been set up. See the <a href="https://docs.zowe.org/stable/user-guide/api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets" title="Enabling single sign on for extending services via PassTicket configuration">docs</a> for reference.
 
 ### ZWEAM400E
 
@@ -603,11 +603,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in Base64 printable form.
+  The string sent by the Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that forwarding of the client certificate is also enabled in the Gateway. Check for any error messages from the Gateway.
+  Ensure that the forwarding of client certificate is enabled also in the Gateway. Check for any error messages from the Gateway.
 
 ### ZWEAT501E
 
@@ -635,11 +635,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
+  An error occurred during retrieval of trusted certificates from the Gateway. Certificate endpoint is %s. Error message: %s
 
   **Reason:**
 
-  Communication with the Gateway was interrupted or an error occurred during processing of the response.
+  The communication with the gateway got interrupted or an error occurred during processing the response.
 
   **Action:**
 
@@ -651,7 +651,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificates in Base64 printable form.
+  The string sent by the Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
 
   **Action:**
 
