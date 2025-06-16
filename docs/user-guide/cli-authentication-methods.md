@@ -36,13 +36,13 @@ If you change your authentication method and want to switch back to using basic 
 2. For Zowe CLI, issue commands to set the values for `user` and `password` in the end user's personal computer:
 
    ```
-   zowe config set profiles.base.properties.user
+   zowe config set profiles.project_base.properties.user
    ```
 
    ```
-   zowe config set profiles.base.properties.password
+   zowe config set profiles.project_base.properties.password
    ```
-   Zowe CLI prompts for these values and mask them as they're typed. By default, these values are stored in the PC's secure vault. 
+   Zowe CLI prompts for these values and masks them as they are typed. By default, these values are stored in the PC's secure vault. 
 
 ## Using a token for Single Sign-On (SSO)
 
@@ -87,7 +87,7 @@ Provide your username and password to generate a token and log in to API ML:
             ]
         }
    ```  
-   With token authentication set in your base profile, you can omit your username, password, host, and port when you issue commands.
+   With token authentication set in your base profile, you can omit your username and password when you issue commands.
 
     If you do not want to store the token on your PC, append the `--show-token` option to the `login` command in Step 1. This returns the token value in your terminal for you to use on subsequent commands.
 
@@ -138,7 +138,7 @@ Provide your username and password to generate a token and log in to API ML:
 :::note notes
 
 * Tokens expire after a period of time defined by your security administrator. When a token expires, you must log in to API ML again to get a new token.
-* If you omit connection details from a service profile, such as `zosmf` profile, the CLI uses the information from your base profile.
+* If you omit connection details from a service profile, such as a `zosmf` profile, the CLI uses the information from your base profile.
 * You can choose to specify all connection details on a service profile and connect directly to the service. Routing through API ML is not required.
 
 :::
@@ -148,7 +148,7 @@ Provide your username and password to generate a token and log in to API ML:
 Use a client certificate to generate a token and log in to API ML:
 
 ```
-zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path>
+zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Key File Path>
 ```
 
 - `--host <APIML Host>`
@@ -160,11 +160,11 @@ zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM P
 - `--cert-file <PEM Public Certificate Path>`
 
     Specifies the path for the PEM public certificate.
-- `--cert-key-file <PEM Private Certificate Path>`
+- `--cert-key-file <PEM Private Key File Path>`
 
     Specifies the path to the PEM private certificate.
 
-Zowe CLI procures a security token from API ML and adds that token to the base profile in the applicable configuration file.
+Zowe CLI obtains a security token from API ML and adds that token to the base profile in the applicable configuration file.
 
    ```json
          "project_base": {
@@ -191,13 +191,13 @@ If you have multiple types of configuration files and base profiles, see [How co
 
 ### Logging out
 
-Log out to prompt the API ML token to expire and remove it from your base profile:
+Log out to remove the token from your base profile and prompt the API ML to invalidate the token:
 
 ```
 zowe auth logout apiml
 ```
 
-This causes the token to expire. Log in again to obtain a new token.
+This command sends a request to the API ML to invalidate the token. Log in again to obtain a new token.
 
 If you used the `--show-token` option and never stored your token in profile, add `--token-value <123>` (where `<123>` is the value of the token) to this command to invalidate the token. 
 
@@ -246,11 +246,11 @@ See the [Integrating with API Mediation Layer](https://67c89aa5af702da5881fc564-
 
 ## Using client certificates
 
-Certificates are a long lasting type of authentication, rather than a password or token that can expires in hours, days, or months. A certificate is authenticated by matching a public and private key.
+Certificates are a long lasting type of authentication, rather than a password or token that can expire in hours, days, or months. A certificate is authenticated by matching a public and private key.
 
 To use a client certificate for authentication:
 
-1. Generate a file for the certificate that includes the public key:
+1. Configure the relevant profile with the paths to a public certificate file and private key file:
 
    ```
    zowe config set profiles.base.properties.certFile <certPath> 
@@ -277,7 +277,7 @@ Add the `--secure` option to the preceding commands to avoid saving certificate 
 
 MFA adds an extra layer of security because it requires users to supply their password and an additional verification method.
 
-In Zowe, MFA can apply to basic authentication and Single Sign-On set with username and password.
+In Zowe, MFA can apply to basic authentication and single sign-on set with username and password.
 
 It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code that is typically concatenated or appended to the password. The system administrator must configure the application so it is set up for a Zowe user.
 
