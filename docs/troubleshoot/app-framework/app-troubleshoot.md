@@ -91,11 +91,11 @@ There are three known problems that might cause this error.  The [Zowe architect
     
    - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the ZIS server is not running. To check whether the server is running, check the started task `ZWESISTC` log for any errors.  
 
-   - If the ZIS server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `zowe.yaml` file used to launch Zowe. 
+   - If the ZIS server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROCLIB member and the `zowe.yaml` file used to launch Zowe. 
     
      By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
 
-     The line in the `ZWESISTC` problib that defines the procedure name that ZIS will use is
+     The line in the `ZWESISTC` proclib that defines the server name that ZIS will use is
      ```
      //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
      ```
