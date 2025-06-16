@@ -10,7 +10,7 @@ The Zowe Application Framework manages issues in GitHub. When you troubleshoot a
 
 **Symptom:**
 
-When you open apps in the Zowe desktop, a page is displayed with the message "The plugin failed to load."
+When you open apps in the Zowe desktop, a page is displayed with the message `The plugin failed to load`.
 
 **Solution:**
 
@@ -35,7 +35,7 @@ When you attempt to log in to the Zowe Desktop, you receive the following error 
 ```
 Authentication failed for 3 types:  Types: ["saf","apiml","zss"]
 ```
-The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
+The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `components.app-sever.enabled=true` and `components.gateway.enabled=false`, then the message will just include the types `["saf","zss"]`.
 
 **Solution:**
 
