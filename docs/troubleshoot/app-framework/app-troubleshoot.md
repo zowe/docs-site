@@ -239,19 +239,19 @@ For more information on loading plug-ins to the Desktop, see [Adding Your App to
 
 **Symptom:** 
 
-A plug-in that is built in your local environment using `npm run start` or `npm run build` failed with an error message about a missing MVD_DESKTOP_DIR environment variable. 
+A plug-in that is built in your local environment using `npm run start` or `npm run build` failed with an error message about a missing `MVD_DESKTOP_DIR` environment variable. 
 
 **Solution:**   
 Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variable. To specify the path, run the following commands in your Windows console or Linux bash shell:
 
 - Windows
   ```
-  export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
 - Mac Os/Linux
   ```
-  set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
 ## Error: Exception thrown when reading SAF keyring \{ZWED0148E\}
