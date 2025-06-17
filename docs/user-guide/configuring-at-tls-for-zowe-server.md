@@ -1,6 +1,9 @@
 # Enabling AT-TLS
 
-You can configure parameters in the Zowe server to enable Zowe to work with AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
+The built-in TLS networking is enabled by default. To learn more, see [configuring the built-in TLS](./tls-configuration.md).
+
+You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 :::info Role: security administrator
 :::
@@ -26,7 +29,7 @@ While TLS is not handled by the Zowe Server components with AT-TLS enabled on th
 
 :::note Notes
 
-- As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
+- As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe App Server, also require AT-TLS configuration.
 
 - Do not set `attls: true` together with `minTls` or `maxTls`. Zowe does not handle TLS in AT-TLS aware mode.
 
@@ -152,7 +155,7 @@ TTLSConnectionAction ClientConnectionAction
 
 #### For z/OSMF
 
-This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
+This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
 If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
 
@@ -163,7 +166,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535 # Using any outbound port
   RemoteAddr All
   RemotePortRange 449 # Set to z/OSMF port
-  Jobname ZWE1AZ # Generate according to zowe.job.prefix in zowe.yaml + AZ for ZAAS outbound
+  Jobname ZWE1A* # Set according to zowe.job.prefix in zowe.yaml. Zowe components *AG and *AZ are needed in this rule.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
@@ -185,7 +188,7 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 ```
 
 :::note
-`Jobname` is defined explicitly for the ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AZ` as the ZAAS identifier.
+`Jobname` is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 :::
 
 #### For communication between API Gateway and other core services
@@ -507,14 +510,14 @@ TTLSRule ApimlServiceClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-# Optional. Can configure the outbound connection from ZAAS to work with AT-TLS while connecting to z/OSMF.
+# Optional. Can configure the outbound connection from API Gateway and ZAAS to work with AT-TLS while connecting to z/OSMF.
 TTLSRule ApimlZosmfClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 449 # z/OSMF Port
-  Jobname ZWE1AZ
+  Jobname ZWE1A*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
