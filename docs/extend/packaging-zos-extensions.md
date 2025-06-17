@@ -35,7 +35,7 @@ A typical component package consists of the following files and directories:
 
    For examples of manifests thoughout Zowe GitHub repositories, see the following links:
   
-     - [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v2.x.x/api-catalog-package/src/main/resources/manifest.yaml)
+     - [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v3.x.x/api-catalog-package/src/main/resources/manifest.yaml)
      - [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
      - [Sample Zowe App Framework extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
    
