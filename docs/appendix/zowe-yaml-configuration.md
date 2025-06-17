@@ -693,6 +693,12 @@ All Zowe high availability instances should have a dedicated section under the `
 
 In this section, _ha-instance_ represents any Zowe high availability instance ID.
 
+:::note
+
+Each _ha-instance_ must be unique: the identification of every _ha-instance_ is done based on the lowercased name.
+
+:::
+
 For all high availability instances, these are the common definitions.
 
 - **haInstances._ha-instance_.hostname**  
