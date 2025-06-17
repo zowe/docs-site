@@ -191,7 +191,7 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 `Jobname` is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 :::
 
-#### For communication between API Gateway and other core services
+#### For communication between Zowe core components
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
@@ -202,13 +202,13 @@ The outbound connection from the Gateway Service to the Discovery Service must b
 :::
 
 ```bash
-TTLSRule ApimlClientRule
+TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7552-7558 # Range covers API ML, app-server, and zss services
-  Jobname ZWE1A* # Set according to zowe.job.prefix in zowe.yaml. Zowe components *AG, *AD, and *AC are needed in this rule.
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlClientEnvironmentAction
