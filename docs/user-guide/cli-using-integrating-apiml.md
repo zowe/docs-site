@@ -1,4 +1,4 @@
-# Using API Mediation Layer
+# Using API Mediation Layer via Zowe CLI
 
 The Zowe API Mediation Layer (ML) provides a secure single point of access to a defined set of mainframe services. The mediation layer provides API management features such as high-availability, consistent security, and a single sign-on (SSO) and multi-factor authentication (MFA) experience.
 
