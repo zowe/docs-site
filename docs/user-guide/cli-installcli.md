@@ -42,18 +42,30 @@ To install Zowe CLI from a local package:
    ```
    npm install -g zowe-cli.tgz
    ```
-
-   :::note
    
-   If an `EACCESS` error displays, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
+   If an `EACCESS` error displays and you are running MacOS or Linux systems, you can pre-pend the command with `sudo`:
 
-   :::
+   ```
+   sudo npm install -g @zowe/cli@zowe-v3-lts
+   ```
+   
+      :::caution
+      Including `sudo` in commands can present security risks. Installation scripts run with elevated privileges, gaining access to important system files. Potential permissions issues can also arise, triggering future `EACCESS` errors when updating npm packages.
+      
+      For other solutions that avoid these risks, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
+      :::
 
 9. To install all available Zowe CLI plug-ins, issue the following command to the working directory that was used in Step 7:
 
    ```
    zowe plugins install cics-for-zowe-cli.tgz db2-for-zowe-cli.tgz zos-ftp-for-zowe-cli.tgz mq-for-zowe-cli.tgz
    ```
+
+   :::note
+
+   The preceding command installs [IBM® CICS® Plug-in for Zowe CLI](../user-guide/cli-cicsplugin), [IBM® Db2® Plug-in for Zowe CLI](../user-guide/cli-db2plugin), [IBM z/OS FTP Plug-in for Zowe CLI](../user-guide/cli-ftpplugin), and [IBM MQ Plug-in for Zowe CLI](../user-guide/cli-mqplugin). Remove a plug-in from the command to not install it.
+
+   :::
 
    Zowe CLI and the optional plug-ins are installed on your computer.
 
@@ -68,6 +80,19 @@ To install Zowe CLI from an npm registry:
    ```
 
    Zowe CLI is installed.
+
+   If an `EACCESS` error displays and you are running MacOS or Linux systems, you can pre-pend the command with `sudo`: 
+   
+   ```
+   sudo npm install -g @zowe/cli@zowe-v3-lts
+   ```
+   
+      :::caution
+      Including `sudo` in commands can present security risks. Installation scripts run with elevated privileges, gaining access to important system files. Potential permissions issues can also arise, triggering future `EACCESS` errors when updating npm packages.
+      
+      For other solutions that avoid these risks, see [Resolving EACCESS permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally) in npm Docs.
+      :::
+
 
 2. If installing Zowe CLI plug-ins, meet the [software requirements](../user-guide/cli-swreqplugins.md) to install Zowe CLI plug-ins.
 
