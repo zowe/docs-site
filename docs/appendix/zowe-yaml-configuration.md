@@ -695,7 +695,7 @@ In this section, _ha-instance_ represents any Zowe high availability instance ID
 
 :::note
 
-Each _ha-instance_ must be unique: the identification of every _ha-instance_ is done based on the lowercased name.
+Each _ha-instance_ must be unique. The identification of an _ha-instance_ is based on the name in lowercase format.
 
 :::
 
@@ -735,4 +735,4 @@ Each line of Zowe YAML configuration has a matching environment variable during 
 
 ### Troubleshooting your YAML with the Red Hat VS Code extension
 
-After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we highly recommend leaving the data gathering option disabled. To customize your settings, click the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, and click the gear icon, and select "Extension Settings".
+After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we highly recommend leaving the data gathering option disabled. To customize your settings, click the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, click the gear icon, and select "Extension Settings".
