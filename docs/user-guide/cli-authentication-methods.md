@@ -47,6 +47,8 @@ If you change your authentication method and want to switch back to using basic 
    zowe config set profiles.project_base.properties.password
    ```
    Zowe CLI prompts for these values and masks them as they are typed. By default, these values are stored in the PC's secure vault. 
+   
+   If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
 
 ## Using a token for Single Sign-On (SSO)
 
@@ -263,6 +265,8 @@ To use a client certificate for authentication:
    - `<certPath>`
    
       Specifies the location on your computer where the certificate is stored.
+      
+    If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
 
 2. Generate a file with the private key:
    ```
@@ -281,7 +285,7 @@ Add the `--secure` option to the preceding commands to avoid saving certificate 
 
 MFA adds an extra layer of security because it requires users to supply their password and an additional verification method.
 
-In Zowe, MFA can apply to basic authentication and single sign-on set with username and password.
+In Zowe, MFA can apply to basic authentication and single sign-on when logging in with username and password.
 
 It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code that is typically appended to, or replaces, the password. The system administrator must configure the application so it is set up for a Zowe user.
 
