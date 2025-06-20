@@ -951,6 +951,4 @@ Add the following code to your configuration file if you use XML configuration:
 </turboFilter>
 ```
 
-:::note
-For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub.
-:::
+
