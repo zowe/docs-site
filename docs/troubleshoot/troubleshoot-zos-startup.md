@@ -19,9 +19,9 @@ To learn more about the Zowe components and their role, see [Zowe Architecture](
 
 ### Check the startup of API Mediation Layer 
 
-The API Mediation Layer has four address spaces: API Catalog, API Gateway,  API Discovery and Caching Service.  
+The API Mediation Layer has four address spaces: API Catalog, API Gateway, API Discovery and Caching Service.  
 
-To check whether the API Mediation Layer is fully initialized, look for the message `ZWEAM000I`. Each component writes a successful startup message `ZWEAM000I` to JES as shown in the following example. The message also indicates the CPU of seconds spent. In a normal startup of API ML components, each component writes a `ZWEAM00I` message as in the following example:
+To check whether the API Mediation Layer is fully initialized, look for the message `ZWEAM000I`. Each component writes a successful startup message `ZWEAM000I` to JES as shown in the following example. The message also indicates the CPU of seconds spent. In a normal startup of API ML components, each component writes a `ZWEAM000I` message as in the following example:
 
 **Example:**
 
@@ -37,7 +37,7 @@ ZWEAM000I API Catalog Service started in 53.75 seconds
 2023-02-21 17:21:06.368 <ZWEAGW1:main:50332206> IBMUSER INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Gateway Service started in 56.2 seconds
 ```
 
-In addition to looking for `ZWEAM00I` in the JES log, you can also log in to the Gateway homepage and check the service status indicator. The Gateway home page is accessible on the externalPort. The default value for this port is `7554`. If there is a red or yellow tick beside one of its three services, the components are still starting.  
+In addition to looking for `ZWEAM000I` in the JES log, you can also log in to the Gateway homepage and check the service status indicator. The Gateway home page is accessible on the externalPort. The default value for this port is `7554`. If there is a red or yellow tick beside one of its three services, the components are still starting.  
 
 <img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
 
@@ -67,9 +67,9 @@ If you try to log into the Zowe Desktop too early before the Eureka client regis
 
 In addition to spooling to the JES `SYSPRINT` file for the Zowe `ZWESLSTC` task, the Zowe Desktop writes messages to `zowe.logDirectory/zssServer-yyyy-mm-dd-hh-ss.log`.
 
-### Check the startup of Zowe Secure Services
+### Check the startup of Zowe System Services
 
-The zssServer is used for secure services for the Zowe Desktop.  
+The zssServer is used for system services for the Zowe Desktop.  
 
 ```
 ZWES1013I ZSS Server has started. Version '2.5.0+20221130' 31-bit
