@@ -200,7 +200,7 @@ TTLSRule ApimlClientRule
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7551-7555 # Range covers API ML services (gateway, zaas, discovery, api catalog, caching service)
+  RemotePortRange 7551-7559 # Range covers API ML services (gateway, zaas, discovery, api catalog, caching service)
   Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
