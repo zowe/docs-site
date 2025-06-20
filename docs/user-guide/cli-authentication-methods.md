@@ -20,7 +20,7 @@ Basic authentication is the default authentication method defined in the default
 If you change your authentication method and want to switch back to using basic authentication:
 
 1. Use a text editor to update the `zowe.config.json` file to define the authentication as basic authentication (see the highlighted lines) in the base profile:
-   ```json
+   ```json showLineNumbers
          "project_base": {
                "type": "base",
                "properties": {...},
@@ -32,6 +32,10 @@ If you change your authentication method and want to switch back to using basic 
                ]
          }
    ```
+
+    :::note
+    The base profile name (see Line 1) can be different in your configuration file. The preceding example shows the default name for a project team config. The default for a global team config is `global_base`. To check your base profile name, issue the `zowe config list defaults` command in the command terminal.
+    :::
 
 2. For Zowe CLI, issue commands to set the values for `user` and `password` in the end user's personal computer:
 
@@ -185,7 +189,7 @@ Zowe CLI obtains a security token from API ML and adds that token to the base pr
 
 :::note
 
-If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token.
+If you have multiple types of configuration files and base profiles, see [How configuration files and profiles work together](../user-guide/cli-using-understand-profiles-configs.md#how-configuration-files-and-profiles-work-together) to learn which configuration and profile would be used to store the API ML token. To learn how to log in or out of a base profile, see [Specifying a base profile](../user-guide/cli-using-integrating-apiml.md#specifying-a-base-profile).
 
 :::
 
@@ -279,7 +283,7 @@ MFA adds an extra layer of security because it requires users to supply their pa
 
 In Zowe, MFA can apply to basic authentication and single sign-on set with username and password.
 
-It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code that is typically concatenated or appended to the password. The system administrator must configure the application so it is set up for a Zowe user.
+It is important to understand how MFA functions at your site in order to set it up. Typically, a user needs an authenticator app to obtain a temporary code that is typically appended to, or replaces, the password. The system administrator must configure the application so it is set up for a Zowe user.
 
 :::note
 
