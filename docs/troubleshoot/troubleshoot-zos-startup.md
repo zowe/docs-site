@@ -19,7 +19,7 @@ To learn more about the Zowe components and their role, see [Zowe Architecture](
 
 ### Check the startup of API Mediation Layer 
 
-The API Mediation Layer has four address spaces: API Catalog, API Gateway,  API Discovery and Caching Service.  
+The API Mediation Layer has four address spaces: API Catalog, API Gateway, API Discovery and Caching Service.  
 
 To check whether the API Mediation Layer is fully initialized, look for the message `ZWEAM000I`. Each component writes a successful startup message `ZWEAM000I` to JES as shown in the following example. The message also indicates the CPU of seconds spent. In a normal startup of API ML components, each component writes a `ZWEAM000I` message as in the following example:
 
