@@ -221,6 +221,18 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that the URL of the endpoint you are trying to reach is correct.
 
+### ZWEAG120E
+
+  Invalid username or password for URL '/gateway/api/v1/auth/login'
+
+  **Reason:**
+
+  The username or password is invalid.
+
+  **Action:**
+
+  Provide a valid username and password.
+
 ### ZWEAG140E
 
   The 'applicationName' parameter name is missing.
