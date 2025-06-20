@@ -244,7 +244,7 @@ in any of the YAML configuration files.
 :::
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters) for more details.
+These parameters are not required. If a parameter is not specified, a default value is used.
 
 ### API ML Onboarding Configuration Sample
 
@@ -562,6 +562,4 @@ Add the following code to your configuration file if you use XML configuration:
     </turboFilter>
 ```    
 
-:::note
-For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
-:::
+

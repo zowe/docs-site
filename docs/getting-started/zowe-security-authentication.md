@@ -18,8 +18,6 @@ To utilize [Single-Sign-On (SSO)](../user-guide/api-mediation-sso.md), the Zowe 
 
 If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use client certificates issued by this CA to authenticate to API ML.
 
-For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services.md)
-
 ## Authentication with Personal Access Token (PAT)
 
 A Personal Access Token (PAT) is a specific scoped JWT with a configurable validity duration. The PAT authentication method is an alternative to using a client certificate for authentication. It is disabled by default. To enable this functionality, see [Enabling single sign on for clients via personal access token configuration](../user-guide/api-mediation/configuration-personal-access-token.md).

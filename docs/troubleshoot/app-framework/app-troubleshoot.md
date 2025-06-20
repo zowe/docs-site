@@ -10,7 +10,7 @@ The Zowe Application Framework manages issues in GitHub. When you troubleshoot a
 
 **Symptom:**
 
-When you open apps in the Zowe desktop, a page is displayed with the message "The plugin failed to load."
+When you open apps in the Zowe desktop, a page is displayed with the message `The plugin failed to load`.
 
 **Solution:**
 
@@ -35,7 +35,7 @@ When you attempt to log in to the Zowe Desktop, you receive the following error 
 ```
 Authentication failed for 3 types:  Types: ["saf","apiml","zss"]
 ```
-The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `LAUNCH_COMPONENT_GROUPS=DESKTOP` where `GATEWAY` is not a launch group, then the message will just include the types `["saf","zss"]`.
+The Zowe desktop attempts to authenticate the credentials using the types that have been configured, by default the three above of `["saf","apiml","zss"]`. If Zowe has been configured with the `components.app-sever.enabled=true` and `components.gateway.enabled=false`, then the message will just include the types `["saf","zss"]`.
 
 **Solution:**
 
@@ -72,36 +72,38 @@ There are three known problems that might cause this error.  The [Zowe architect
    - If the communication is not working, the message includes `Failure`. For example:
 
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory call ABENDed')
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=39, description='Cross-memory server abended')
      ```
      or
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='N/A', clientVersion=`2`)
+     ZIS status - Failure (name='ZWESIS_STD      ', cmsRC=64, description='PC is unavailable', clientVersion=`2`)
      ```
      or
      ```
-     ZIS status - Failure (name='ZWESIS_STD      ',cmsRC=47, description='N/A', clientVersion='2')
+     ZIS status - Failure (name='ZWESIS_STD      ',cmsRC=47, description='ZVT is NULL', clientVersion='2')
      ```
      or
      ```
-     ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='N/A', clientVersion='2')
+     ZIS status - 'Failure' (name='ZWESI_STD     ', cmsRC='12', description='Global area address is NULL', clientVersion='2')
      ```
 
-     In this case, check that the ZWESISTC started task is running. If not, start it with the TSO command `/S ZWESISTC`
+     In this case, check that the ZWESISTC started task is running. If not, start it with the MVS command `/S ZWESISTC`
     
    - If the problem cannot be easily fixed (such as the ZWESISTC task not running), then it is likely that the ZIS server is not running. To check whether the server is running, check the started task `ZWESISTC` log for any errors.  
 
-   - If the ZIS server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROBLIB member and the `instance.env` file used to launch Zowe. 
+   - If the ZIS server `ZWESISTC` started task is running, check that the program name of the cross memory procedure matches between the `ZWESISTC` PROCLIB member and the `zowe.yaml` file used to launch Zowe. 
     
      By default the proc value is `ZWESIS_STD`, and if a new name is chosen then both files need to be updated for the handshake to be successful.
 
-     The line in the `ZWESISTC` problib that defines the procedure name that ZIS will use is
+     The line in the `ZWESISTC` proclib that defines the server name that ZIS will use is
      ```
      //ZWESISTC  PROC NAME='ZWESIS_STD',MEM=00,RGN=0M
      ```
-     The line in the `instance.env` that specifies the cross memory procedure that the zssServer will try to attach to is
-     ```
-     ZWES_XMEM_SERVER_NAME=ZWESIS_STD
+     This example in `zowe.yaml` specifies the cross memory server name that the zssServer will try to attach to
+     ```yaml
+     components:
+       zss:
+         crossMemoryServerName: ZWESIS_STD
      ```
    
    - If this is the first time you set up Zowe, it is possible that the ZIS server configuration did not complete successfully. To set up and configure the ZIS server, follow steps as described in the topic [Installing and configuring the Zowe ZIS server (ZWESISTC)](../../user-guide/configure-xmem-server.md).  Once `ZWESISTC` is started, if problems persist, check its log to ensure it has been able to correctly locate its load module ZWESIS01 as well as the parmlib ZWESIP00.  
@@ -237,19 +239,19 @@ For more information on loading plug-ins to the Desktop, see [Adding Your App to
 
 **Symptom:** 
 
-A plug-in that is built in your local environment using `npm run start` or `npm run build` failed with an error message about a missing MVD_DESKTOP_DIR environment variable. 
+A plug-in that is built in your local environment using `npm run start` or `npm run build` failed with an error message about a missing `MVD_DESKTOP_DIR` environment variable. 
 
 **Solution:**   
 Add the Zowe Desktop directory path to the `MVD_DESKTOP_DIR` environment variable. To specify the path, run the following commands in your Windows console or Linux bash shell:
 
 - Windows
   ```
-  export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
 - Mac Os/Linux
   ```
-  set MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
+  export MVD_DESKTOP_DIR=<zlux-root-dir>/zlux-app-manager/virtual-desktop
   ```
 
 ## Error: Exception thrown when reading SAF keyring \{ZWED0148E\}
