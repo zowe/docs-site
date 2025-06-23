@@ -718,8 +718,8 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe Explorer plug-in for IntelliJ IDEA",
+          link: { type: "doc", id: "user-guide/intellij-use-cases" },
           items: [
-            "user-guide/intellij-use-cases",
             "user-guide/intellij-settings",
             "user-guide/intellij-working-sets",
             "user-guide/intellij-zos-files",

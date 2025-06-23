@@ -32,13 +32,13 @@ For more information about PAT, see [Authenticating with a Personal Access Token
 
 ## Multi-factor authentication (MFA)
 
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work with Zowe:
+Multi-factor authentication is provided by third-party products with which Zowe is compatible. The following are known to work with Zowe:
 - [Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
 Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
-It does not rely on the mainframe MFA technology, but is equally secure.
+While mainframe MFA technology is not utilized in this case, an equal level of security is provided.
 
 ## Advanced Authentication Mainframe (AAM)
 
-To add a dynamic element to the authentication, you can configure the Advanced Authentication Mainframe to enable multi-factor authentication. For more information about AAM, see the [Advanced Authentication Mainframe documentation](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html).
+To add a dynamic element to the authentication, you can configure the Advanced Authentication Mainframe to enable multi-factor authentication. For more information about AAM, see the [Advanced Authentication Mainframe 2.0](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html) documentation in _Broadcom Tech Docs_.
