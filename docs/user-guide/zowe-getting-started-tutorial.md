@@ -6,7 +6,7 @@ Learn how to start using Zowe components, applications, and plug-ins.
 
 - [Using Zowe API Mediation Layer](api-mediation/using-api-mediation-layer.md)
 - [Using Zowe Desktop](mvd-using.md)
-- [Zowe cross memory server](../user-guide/configure-xmem-server.md)
+- [Configuring the Zowe cross memory server (ZIS)](../user-guide/configure-xmem-server.md)
 
 ## Zowe client-side components
 
