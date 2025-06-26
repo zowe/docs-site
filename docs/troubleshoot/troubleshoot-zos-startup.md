@@ -11,7 +11,7 @@ The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There
   - [How to check if `ZWESLSTC` startup is successful](#how-to-check-if-zweslstc-startup-is-successful)
     - [Check the startup of API Mediation Layer](#check-the-startup-of-api-mediation-layer)
     - [Check the startup of Zowe Desktop](#check-the-startup-of-zowe-desktop)
-    - [Check the startup of Zowe Secure Services](#check-the-startup-of-zowe-secure-services)
+    - [Check the startup of Zowe System Services](#check-the-startup-of-zowe-system-services)
     
 The most complete way to check that Zowe started successfully is to check that each component successfully completed its initialization. Each component writes messages to the JES `SYSPRINT` and writes severe errors to the `STDERR` job spool file.  
 

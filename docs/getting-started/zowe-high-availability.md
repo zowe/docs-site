@@ -18,7 +18,7 @@ To enable high availability when Zowe runs in a Sysplex, it is necessary to meet
 
 The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
 
-In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has an internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. For more information, see [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration.md#yaml-configurations---hainstances).
+In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has an internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. For more information, see [Zowe YAML server configuration reference](../appendix/zowe-yaml-configuration.md#yaml-configurations---hainstances).
 
 ## Caching service setup and configuration
 
