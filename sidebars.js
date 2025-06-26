@@ -621,6 +621,7 @@ module.exports = {
           label: "Using Zowe CLI",
           link: { type: "doc", id: "user-guide/cli-using-usingcli" },
           items: [
+            "user-guide/cli-authentication-methods",
             "user-guide/cli-using-displaying-help",
             "user-guide/cli-using-command-precedence",
             "user-guide/cli-using-understanding-core-command-groups",
