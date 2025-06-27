@@ -54,23 +54,6 @@ Configure Infinispan as a storage solution through the Caching Service by settin
 
   (Optional) The default value is `7601`. The port number used by Infinispan to exchange encryption key among Caching Service instances.
 
-* **`components.caching-service.storage.infinispan.persistence.dataLocation`**
-
-  The path where the service keeps its data files for the Infinispan Soft-Index Cache Store. 
-  The default value is `data`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
-
-  - The value should be the same for each instance.
-  - The location should point to a non-shared filesystem. Each instance requires unique storage.
-  - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
-
-* **`components.caching-service.storage.infinispan.persistence.indexLocation`**
-
-  The path where the service keeps its index data for the Infinispan Soft-Index Cache Store. 
-  The default value is `index`. To run the Caching Service in HA, ensure that you apply the following configuration conditions:
-
-  - The value should be the same for each instance.
-  - The location should point to a non-shared filesystem. Each instance requires unique storage.
-  - For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
 * **`components.caching-service.storage.infinispan.jgroups.port`**
   
@@ -111,9 +94,7 @@ Configure Infinispan as a storage solution through the Caching Service by settin
             infinispan:
               jgroups.port: 7600
               initialHosts: lpar2[7600]
-              persistence:
-                dataLocation: /global/zowe/workspace/caching-service/data
-                indexLocation: /global/zowe/workspace/caching-service/index
+              
     lpar2:
       components:
         caching-service:
@@ -122,7 +103,4 @@ Configure Infinispan as a storage solution through the Caching Service by settin
             infinispan:
               jgroups.port: 7600
               initialHosts: lpar1[7600]
-              persistence:
-                dataLocation: /global/zowe/workspace/caching-service/data
-                indexLocation: /global/zowe/workspace/caching-service/index
-  ```
+ ```
