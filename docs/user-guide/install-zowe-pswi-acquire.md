@@ -27,6 +27,7 @@ To acquire the portable software instance, you can download it from the Zowe Dow
 **Sample JCL:**
 
     ```jcl
+        //UNPAX JOB 
         //USSBATCH EXEC PGM=BPXBATCH
         //STDOUT DD SYSOUT=*
         //STDERR DD SYSOUT=*
@@ -38,9 +39,9 @@ To acquire the portable software instance, you can download it from the Zowe Dow
 
 5. Customize the sample JCL as follows and then submit for execution:
 
-    1. Add a JOB statement.
-    2. Update the USS directory (*yourUSSpaxdirectory*) with the path name where you want to copy the pax file.
-    3. Update *yourpaxfilename* with the name of the pax file that you want to copy to the mainframe.  
+    1. Update a [`JOB`](https://www.ibm.com/docs/en/zos/2.5.0?topic=reference-job-statement) statement if needed.
+    2. Update the USS directory `yourUSSpaxdirectory` with the path name where the pax file is stored.
+    3. Update `yourpaxfilename` with the name of the pax file that you want to restore.
 
 :::tip Expected results:
 USSBATCH can take several minutes to execute. You will receive a return code of `0` if this job runs correctly.
