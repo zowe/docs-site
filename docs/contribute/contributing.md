@@ -2,7 +2,7 @@
 
 You are welcome to contribute to the Zowe&trade; documentation repository. Anyone can open an issue about documentation, or contribute a change with a pull request (PR) to the [zowe/docs-site GitHub repository](https://github.com/zowe/docs-site/). 
 
-## Before You Get Started
+## Before You Get Started Today
 
 Before contributing a documentation change to the repository, you should be familiar with:
 
