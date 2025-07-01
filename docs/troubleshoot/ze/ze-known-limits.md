@@ -9,7 +9,7 @@ Zowe Explorer v3.2.0 and higher implements server-side pagination by default whe
 When sorting PDS members in descending order, members are first paginated alphabetically. Your specified descending sort is then applied to the members *within* each page. Consequently, you might need to navigate through multiple pages (using **Next page**/**Previous page**) to locate a specific member.
 
 :::note
-This behavior primarily affects profile types that support listing ranges of PDS members, such as z/OSMF and z/FTP.
+This behavior primarily affects profile types that support listing ranges of PDS members, such as z/OSMF and z/FTP. !!!
 :::
 
 ### Workarounds
