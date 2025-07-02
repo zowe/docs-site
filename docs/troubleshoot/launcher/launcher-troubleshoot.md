@@ -14,11 +14,11 @@ Disable debug mode when you are not troubleshooting. Running Zowe Launcher in de
 
 **Follow these steps:**
 
-1. Open the PROCLIB member `ZWESLSTC`
+1. Open the PROCLIB member `ZWESLSTC`.
 
-2. Find `STDENV DD` in-stream data
+2. Find `STDENV DD` in-stream data.
 
-3. Add a new line `ZLDEBUG=ON`
+3. Add a new line `ZLDEBUG=ON`.
   
   ```jcl
   //STDENV   DD  *
@@ -29,13 +29,13 @@ Disable debug mode when you are not troubleshooting. Running Zowe Launcher in de
   ZLDEBUG=ON
   /*
   ```
-  By default debug mode is disabled, so the `ZLDEBUG` is set to `OFF`. To disable debug mode remove the line or set `ZLDEBUG` to `OFF`.
+  By default, debug mode is disabled, in which `ZLDEBUG` is set to `OFF`. To disable debug mode, remove this line or set `ZLDEBUG` to `OFF`.
    
 4. Restart `ZWESLSTC` Started Task.
 
 :::tip
     
-The [`_CEE_ENVFILE_COMMENT`](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-cee-envfile-comment) sets the comment character. See the following example, the last two lines of in-stream data are commented (not in effect):
+[`_CEE_ENVFILE_COMMENT`](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-cee-envfile-comment) sets the comment character. See the following example, in which the last two lines of in-stream data are commented (not in effect):
 
 ```jcl
 //STDENV   DD  *
