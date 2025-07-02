@@ -18,7 +18,7 @@ Disable debug mode when you are not troubleshooting. Running Zowe Launcher in de
 
 2. Find `STDENV DD` in-stream data
 
-4. Add a new line `ZLDEBUG=ON`
+3. Add a new line `ZLDEBUG=ON`
   
   ```jcl
   //STDENV   DD  *
@@ -31,7 +31,7 @@ Disable debug mode when you are not troubleshooting. Running Zowe Launcher in de
   ```
   By default debug mode is disabled, so the `ZLDEBUG` is set to `OFF`. To disable debug mode remove the line or set `ZLDEBUG` to `OFF`.
    
-3. Restart `ZWESLSTC` Started Task.
+4. Restart `ZWESLSTC` Started Task.
 
 :::tip
     
