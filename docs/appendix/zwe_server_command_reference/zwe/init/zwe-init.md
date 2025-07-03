@@ -1,6 +1,6 @@
 # zwe init
 
-[zwe](.././zwe.md) > [init](./zwe-init.md)
+[zwe](.././zwe) > [init](./zwe-init)
 
 	zwe init [sub-command [sub-command]...] [parameter [parameter]...]
 

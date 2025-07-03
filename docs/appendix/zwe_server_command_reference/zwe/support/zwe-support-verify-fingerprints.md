@@ -1,6 +1,6 @@
 # zwe support verify-fingerprints
 
-[zwe](./.././zwe.md) > [support](././zwe-support.md) > [verify-fingerprints](./zwe-support-verify-fingerprints.md)
+[zwe](./.././zwe) > [support](././zwe-support) > [verify-fingerprints](./zwe-support-verify-fingerprints)
 
 	zwe support verify-fingerprints [parameter [parameter]...]
 
