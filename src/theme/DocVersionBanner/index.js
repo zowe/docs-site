@@ -63,6 +63,9 @@ function LatestVersionSuggestionLabel({siteTitle, versionLabel, versionMetadata,
         guideLink: (
           <a href="https://docs.zowe.org/stable/extend/migrate-extensions" target="_blank">the migration guide</a>
         ),
+         versionsLink: (
+          <a href="https://docs.zowe.org/versions" target="_blank">Zowe documentation versions</a>
+        ),
         latestVersionLink: (
           <b>
             <Link to={to} onClick={onClick}>
@@ -78,7 +81,7 @@ function LatestVersionSuggestionLabel({siteTitle, versionLabel, versionMetadata,
         siteTitle
       }}>
       {
-        `${versionMetadata.version[1] === "2" ? 'For up-to-date help content, see the {latestVersionLink} ({versionLabel}) of {siteTitle}.' : `Note: Support for Zowe Version 1 ended on Sept. 30, 2024. Follow {guideLink} to upgrade to Zowe Version 2. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 LTS release, please see the latest version of {siteTitle} for the maintained V1 LTS release (v1.28.x)." : "" }`}`
+        `${versionMetadata.version[1] === "2" ? 'For up-to-date help content, see the {latestVersionLink} ({versionLabel}) of {siteTitle}.' : `Note: Support for Zowe Version 1 ended on Sept. 30, 2024. Follow {guideLink} to upgrade to Zowe Version 2. ${versionMetadata.version !== "v1.28.x" ? " If you plan to remain on the V1 release, please see {versionsLink} for Zowe v1.28.x documentation." : "" }`}`
       }
     </Translate>
   );
