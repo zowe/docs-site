@@ -29,11 +29,9 @@ Secondly, the API client stores the JWT or cookie and sends the token with every
 To obtain a JWT, call the endpoint with the credentials for either basic authentication or the client certificate.
 
 
-- The full path for API ML is:```/gateway/auth/login```
+- The full path for API ML is:```/gateway/api/v1/auth/login```, the full URL could have the format: `https://hostname:port/gateway/api/v1/auth/login`.
 
-- The full URL is the base URL of the API service plus `/auth/login`. If the application has the base URL with `/api/v1`, the full URL could have the format: `https://hostname:port/api/v1/auth/login`.
-
-- Credentials are provided in the JSON request:
+- Credentials are provided in the JSON request or in Basic Authentication. The JSON request example looks like:
 
     ```json
     {
@@ -49,19 +47,19 @@ To obtain a JWT, call the endpoint with the credentials for either basic authent
 **Example:**
 
 ```bash
-curl -v -c - -X POST "https://localhost:10080/api/v1/auth/login" -d "{ \"username\": \"zowe\", \"password\": \"zowe\"}"
+curl -v -c - -X POST "https://zowe:7554/gateway/api/v1/auth/login" -d "{ \"username\": \"zowe\", \"password\": \"password\"}"
 ```
 The following output describes the status of the JWT:
 
 ```http
-POST /api/v1/auth/login HTTP/1.1
+POST /gateway/api/v1/auth/login HTTP/1.1
 Accept: application/json, */*
 Content-Length: 40
 Content-Type: application/json
 
 {
     "username": "zowe",
-    "password": "zowe"
+    "password": "password"
 }
 
 HTTP/1.1 204
@@ -127,13 +125,13 @@ These fields correspond to `iss`, `exp`, and `sub` JWT claims. The timestamps ar
 Execute the following curl command to validate the existing JWT, and to retrieve the contents of the token: 
 
 ```bash
-curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://localhost:10080/api/v1/auth/query"
+curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://zowe:7554/gateway/api/v1/auth/query"
 ```
 
 The following output describes the status of the JWT:  
 
 ```http
-GET /api/v1/auth/query HTTP/1.1
+GET /gateawy/api/v1/auth/query HTTP/1.1
 Connection: keep-alive
 Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...
 
@@ -156,7 +154,7 @@ Use the `auth/refresh` endpoint to prolong the validity period of the token.
 The `auth/refresh` endpoint generates a new token for the user based on the valid JWT. The full path of the `auth/refresh` endpoint appears as the following URL:
 
 ```
-https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/refresh
+https://zowe:7554/gateway/api/v1/auth/refresh
 ```
 The new token overwrites the old cookie with a Set-Cookie header. As part of the process, the old token becomes invalidated and is no longer usable.
 
@@ -173,13 +171,13 @@ For more information, see the OpenAPI documentation of the API Mediation Layer i
 The following request receives a valid JWT and returns the new valid JWT. As such, the expiration time is reset. 
 
 ```bash
-curl -v -X POST "https://localhost:10080/api/v1/auth/refresh" -d '{"username":"zowe","password":"zowe"}'
+curl -v -X POST "https://zowe:7554/gateway/api/v1/auth/refresh" -d '{"username":"zowe","password":"zowe"}'
 ```
 
 The following output describes the status of the JWT: 
 
 ```http
-POST /api/v1/auth/refresh HTTP/1.1
+POST /gateway/api/v1/auth/refresh HTTP/1.1
 Accept: application/json, */*
 Content-Length: 40
 Content-Type: application/json
