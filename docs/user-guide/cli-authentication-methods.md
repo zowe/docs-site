@@ -13,7 +13,7 @@ Configure the authentication method you want to use across multiple mainframe se
 
 ## Using basic authentication
 
-The advantage of basic authentication is the simplicity of set up: In most cases you can use Zowe CLI (or Zowe Explorer) to connect to mainframe services without additional configuration on the server. Other authentication methods would likely require further configuration.
+The advantage of basic authentication (using a username and password) is the simplicity of set up: In most cases you can use Zowe CLI (or Zowe Explorer) to connect to mainframe services without additional configuration on the server. Other authentication methods would likely require further configuration.
 
 Basic authentication is the default authentication method defined in the default base profile when you issue the `zowe config init` command in Zowe CLI to create your team configuration.
 
@@ -129,7 +129,7 @@ Provide your username and password to generate a token and log in to API ML:
         }
     ```
 
-     If you use the  `--show-token` option with the `login` command in Step 1, you must manually supply the token on each command using the `--token-value` option. For example:
+     If you use the `--show-token` option with the `login` command in Step 1, you must manually supply the token on each command using the `--token-value` option. For example:
 
      ```
      zowe zos-files list data-set <searchPattern> --token-value <123>
@@ -168,7 +168,7 @@ zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM P
     Specifies the path for the PEM public certificate.
 - `--cert-key-file <PEM Private Key File Path>`
 
-    Specifies the path to the PEM private certificate.
+    Specifies the path to the PEM private key.
 
 Zowe CLI obtains a security token from API ML and adds that token to the base profile in the applicable configuration file.
 
@@ -256,7 +256,7 @@ Certificates are a long lasting type of authentication, rather than a password o
 
 To use a client certificate for authentication:
 
-1. Configure the relevant profile with the paths to a public certificate file and private key file:
+1. Specify the path to the certificate file in the relevant profile :
 
    ```
    zowe config set profiles.base.properties.certFile <certPath> 
@@ -268,7 +268,7 @@ To use a client certificate for authentication:
       
     If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
 
-2. Generate a file with the private key:
+2. Configure the file path to the private key:
    ```
    zowe config set profiles.base.properties.certKeyFile <certKeyPath> 
    ```
