@@ -50,7 +50,7 @@ export const DocContent = ({ Content, contentRef, readingTimeInWords }) => {
   const versions = useVersions(pluginId);
 
   const showVersionBadge = versions.length > 1;
-  const metaTitle = useTitleFormatter(title);
+  const metaTitle = useTitleFormatter().format(title);
   const metaImageUrl = useBaseUrl(metaImage, {
     absolute: true,
   });
