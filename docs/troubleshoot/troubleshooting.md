@@ -2,7 +2,7 @@
 
 To isolate and resolve Zowe&trade; problems, you can use the troubleshooting and support information.
 
-## How to start troubleshooting
+## How to start troubleshooting today
 
 When you run into some issues and are looking for troubleshooting tips, the following steps may help you.
 
