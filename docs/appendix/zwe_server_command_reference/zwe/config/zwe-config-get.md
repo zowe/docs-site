@@ -1,6 +1,6 @@
 # zwe config get
 
-[zwe](./.././zwe.md) > [config](././zwe-config.md) > [get](./zwe-config-get.md)
+[zwe](./.././zwe) > [config](././zwe-config) > [get](./zwe-config-get)
 
 	zwe config get [parameter [parameter]...]
 

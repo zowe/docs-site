@@ -1,6 +1,6 @@
 # zwe sample
 
-[zwe](.././zwe.md) > [sample](./zwe-sample.md)
+[zwe](.././zwe) > [sample](./zwe-sample)
 
 	zwe sample [sub-command [sub-command]...] [parameter [parameter]...]
 
