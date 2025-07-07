@@ -1,4 +1,4 @@
-# Known Zowe Explorer limitations
+# Known Zowe Explorer limitations today
 
 ## Data set pagination and descending sort for PDS members
 
