@@ -32,6 +32,12 @@ A typical component package consists of the following files and directories:
 - `manifest.yaml`
 
    Refers to the Zowe component manifest file. You can find detailed definition of manifest in [Server Component Manifest File Reference](../appendix/server-component-manifest.md).
+
+   For examples of manifests thoughout Zowe GitHub repositories, see the following links:
+  
+     - [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v3.x.x/api-catalog-package/src/main/resources/manifest.yaml)
+     - [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
+     - [Sample Zowe App Framework extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
    
 - `schema.json`
 
@@ -70,14 +76,7 @@ If you decide to bundle and ship Zowe extensions within another product, you can
             |-- start.sh
 ```
 
-## Zowe component manifest
+## Packaging default YAML properties
 
-Zowe extensions, as well as core components, can use a manifest file to describe itself. Check [Server Component Manifest File Reference](../appendix/server-component-manifest.md) for details.
-
-## Sample manifests
-
-For examples of manifests thoughout Zowe GitHub repositories, see the following links:  
-
-- [API Catalog manifest.yaml](https://github.com/zowe/api-layer/blob/v2.x.x/api-catalog-package/src/main/resources/manifest.yaml)
-- [Sample Node API and API Catalog extension manifest.yaml](https://github.com/zowe/sample-node-api/blob/master/manifest.yaml)
-- [Sample Zowe App Framework extension manifest.yaml](https://github.com/zowe/sample-trial-app/blob/master/manifest.yaml)
+If you package a YAML file that follows the Zowe YAML file schema, you can have users include them in their configuration list to reduce setup actions.
+The Zowe STC job "[ZWESLSTC](https://github.com/zowe/launcher/blob/v3.x/master/samplib/ZWESLSTC)" contains instructions on how to add such files to the user's overall configuration list.
