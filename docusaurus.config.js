@@ -19,7 +19,10 @@ module.exports = {
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
-    experimental_faster: process.env.NODE_ENV === "production",
+    experimental_faster: true,
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true
+    }
   },
   themeConfig: {
     docs: {
