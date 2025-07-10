@@ -99,6 +99,7 @@ The following datasets are designed to be used by a single Zowe instance. These 
 
 Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
+CUST.PARMLIB | PARM Library Members | `zowe.setup.dataset.parmlib` | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.JCLLIB | JCL Members | `zowe.setup.dataset.jcllib` | ANY | U | PDSE | FB | 80 | 60 | 5
+CUST.ZWESALL | APF load modules | `zowe.setup.dataset.authLoadlib` | ANY | U | PDSE | U | 0 | 30 | N/A
+CUST.ZWESAPL | APF plugins load modules | `zowe.setup.dataset.authPluginLib` | ANY | U | PDSE | U | 0 | 30 | N/A
