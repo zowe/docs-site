@@ -33,7 +33,8 @@ ZWEIKRR3 | JCL | Defines RACF key ring and certificates
 ZWEIKRT1 | JCL | Defines TSS key ring and certificates
 ZWEIKRT2 | JCL | Defines TSS key ring and certificates
 ZWEIKRT3 | JCL | Defines TSS key ring and certificates
-ZWEIMVS | JCL | Creates datasets used by a Zowe instance
+ZWEIMVS | JCL | Creates PARMLIB dataset
+ZWEIMVS1 | JCL | Creates plugin dataset (expected to be APF)
 ZWEIMVS2 | JCL | Creates the load library (expected to be APF)
 ZWEINSTL | JCL | Creates and copies basic installation datasets and members
 ZWEIRAC  | JCL | Defines security permits for RACF
@@ -47,8 +48,9 @@ ZWENOKRR | JCL | Removes key ring and certificates for RACF
 ZWENOKRT | JCL | Removes key ring and certificates for TSS
 ZWENOKYR | JCL | Removes key ring and certificates
 ZWENOSEC | JCL | Defines security permits
-ZWERMVS | JCL | Removes datasets used by a Zowe instance
-ZWERMVS2 | JCL | Removes the APF load library
+ZWERMVS | JCL | Removes PARMLIB dataset
+ZWERNVS1 | JCL | Removes plugin dataset
+ZWERMVS2 | JCL | Removes load library
 ZWERSTC | JCL | Removes `PROCLIB` members
 ZWESASTC | JCL | Starts the Zowe Auxiliary server used by Cross memory server
 ZWESECKG | JCL | Sample program which generates a secret key for the PKCS#11 token
