@@ -422,7 +422,7 @@ In this section, `<component>` represents any Zowe components or extensions. For
 
 #### Configure component gateway
 
-These configurations can be used under the `components.gateway` section:
+The following configurations can be used under the `components.gateway` section:
 
 - **`port`**  
  Defines the port which the Gateway should be started on. The value must be a valid port number.
@@ -463,7 +463,7 @@ These configurations can be used under the `components.gateway` section:
 
 #### Configure component discovery
 
-These configurations can be used under the `components.discovery` section:
+The following configurations can be used under the `components.discovery` section:
 
 - **`port`**  
  Defines the port which discovery should be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
@@ -492,7 +492,7 @@ These configurations can be used under the `components.discovery` section:
 
 #### Configure component api-catalog
 
-These configurations can be used under the `components.api-catalog` section:
+The following configurations can be used under the `components.api-catalog` section:
 
 - **`port`**  
  Defines the port which API Catalog should be started on.
@@ -556,7 +556,7 @@ The following configurations can be used under the `components.caching-service` 
 
 #### Configure component app-server
 
-These configurations can be used under the `components.app-server` section:
+The following configurations can be used under the `components.app-server` section:
 
 - **`port`**  
  Defines the port which App Server is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
