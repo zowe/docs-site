@@ -35,7 +35,7 @@ jobs:
 
       - name: Restore Chrome Cache
         id: store-chrome-cache
-        uses: actions/cache/restore@4
+        uses: actions/cache/restore@v4
         with:
           path: ~/.cache
           key: ubuntu-chrome-cache
@@ -47,7 +47,7 @@ jobs:
       - name: Save Chrome Cache
         id: save-chrome-cache
         if: steps.store-chrome-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@4
+        uses: actions/cache/save@v4
         with:
           path: ~/.cache
           key: ubuntu-chrome-cache
