@@ -224,8 +224,8 @@ The high-level configuration `zowe` supports these definitions:
  Defines the northbound certificate facing Zowe users.
 - **`zowe.verifyCertificates`**
   Defines how Zowe should validate the certificates used by components or external service(s) like z/OSMF. It can be a value of:
-  * `STRICT`: This is the default value. Zowe will validate if the certificate is trusted in our trust store and if the certificate Command Name and Subject Alternative Name (SAN)is validated. This is recommended for the best security.
-  * `NONSTRICT`: Zowe will validate if the certificate is trusted in our trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the best security but allows you to try out Zowe when you don't have permission to fix certificate used by external services like z/OSMF.
+  * `STRICT`: This is the default value. Zowe will validate if the certificate is trusted in our truststore and if the certificate Command Name and Subject Alternative Name (SAN)is validated. This is recommended for the best security.
+  * `NONSTRICT`: Zowe will validate if the certificate is trusted in our truststore. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the best security but allows you to try out Zowe when you don't have permission to fix certificate used by external services like z/OSMF.
   * `DISABLED`: This will disable certificate validation completely. This is **NOT** recommended for security purpose.
 
 #### Launcher and launch scripts
@@ -453,9 +453,9 @@ These configurations can be used under the `components.gateway` section:
 - **`apiml.security.forwardHeader.trustedProxies`**
   Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 2.18.2 and later versions.
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Defines whether API ML should verify certificates of services in strict mode. Setting to `true` enables the `strict` mode where API ML validates if the certificate is trusted in the turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
+ Defines whether API ML should verify certificates of services in strict mode. Setting to `true` enables the `strict` mode where API ML validates if the certificate is trusted in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
- Defines whether API ML should verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the turststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+ Defines whether API ML should verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **`apiml.server.maxConnectionsPerRoute`**  
  Specifies the maximum number of connections for each service.
 - **`apiml.server.maxTotalConnections`**  
@@ -550,7 +550,7 @@ The following configurations can be used under the `components.caching-service` 
  :::
  
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
- Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
+ Specifies whether APIML should verify certificates of services in strict mode. Set to `true` will enable `strict` mode that APIML will validate both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **`apiml.security.ssl.nonStrictVerifySslCertificatesOfServices`**  
  Defines whether API ML is to verify certificates of services in non-strict mode. Setting to `true`  enables `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
