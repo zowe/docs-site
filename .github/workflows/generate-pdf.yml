@@ -33,9 +33,24 @@ jobs:
           cache: 'npm'
           cache-dependency-path: "package-lock.json"
 
+      - name: Restore Chrome Cache
+        id: store-chrome-cache
+        uses: actions/cache/restore@4
+        with:
+          path: ~/.cache
+          key: ubuntu-chrome-cache
+
       - name: Install Dependencies
         timeout-minutes: 15
         run: npm ci
+
+      - name: Save Chrome Cache
+        id: save-chrome-cache
+        if: steps.store-chrome-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@4
+        with:
+          path: ~/.cache
+          key: ubuntu-chrome-cache
 
       - name: Build with Docusaurus
         timeout-minutes: 15
