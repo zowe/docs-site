@@ -20,7 +20,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 90
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,7 +46,7 @@ jobs:
           key: ubuntu-chrome-cache
 
       - name: Install Dependencies
-        timeout-minutes: 15
+        timeout-minutes: 10
         run: npm ci
 
       - name: Save Chrome Cache
@@ -63,14 +63,14 @@ jobs:
         run: npm run build
 
       - name: Create Local PDF
-        timeout-minutes: 90
+        timeout-minutes: 50
         if: github.event.inputs.live != 'true'
         run: |
           npm run serve &
           npx docs-to-pdf --initialDocURLs="http://localhost:3000/${{ github.event.inputs.version }}/whats-new/zowe-announcements,http://localhost:3000/${{ github.event.inputs.version }}/getting-started/overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/install-overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/zowe-getting-started-tutorial,http://localhost:3000/${{ github.event.inputs.version }}/extend/extend-zowe-overview,http://localhost:3000/${{ github.event.inputs.version }}/troubleshoot/troubleshooting,http://localhost:3000/${{ github.event.inputs.version }}/contribute/roadmap-contribute,http://localhost:3000/${{ github.event.inputs.version }}/appendix/zowe-cli-command-reference" --cssStyle=":root{--ifm-font-size-base: 80%;}" --contentSelector="article" --paginationSelector=".pagination-nav__link--next" --excludeSelectors=".no-pdf,.announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar" --coverImage="http://localhost:3000/img/zowe-icon.png" --coverTitle="${{ github.event.inputs.title }}" --outputPDFFilename="zowe-docs.pdf" --protocolTimeout=1800000 --puppeteerArgs="--no-sandbox,--disable-setuid-sandbox"
 
       - name: Create Live PDF
-        timeout-minutes: 90
+        timeout-minutes: 50
         if: github.event.inputs.live == 'true'
         run: |
           npx docs-to-pdf --initialDocURLs="https://docs.zowe.org/${{ github.event.inputs.version }}/whats-new/zowe-announcements,https://docs.zowe.org/${{ github.event.inputs.version }}/getting-started/overview,https://docs.zowe.org/${{ github.event.inputs.version }}/user-guide/install-overview,https://docs.zowe.org/${{ github.event.inputs.version }}/user-guide/zowe-getting-started-tutorial,https://docs.zowe.org/${{ github.event.inputs.version }}/extend/extend-zowe-overview,https://docs.zowe.org/${{ github.event.inputs.version }}/troubleshoot/troubleshooting,https://docs.zowe.org/${{ github.event.inputs.version }}/contribute/roadmap-contribute,https://docs.zowe.org/${{ github.event.inputs.version }}/appendix/zowe-cli-command-reference" --cssStyle=":root{--ifm-font-size-base: 80%;}" --contentSelector="article" --paginationSelector=".pagination-nav__link--next" --excludeSelectors=".no-pdf,.announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar" --coverImage="https://docs.zowe.org/img/zowe-icon.png" --coverTitle="${{ github.event.inputs.title }}" --outputPDFFilename="zowe-docs.pdf" --protocolTimeout=1800000 --puppeteerArgs="--no-sandbox,--disable-setuid-sandbox"
