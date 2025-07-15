@@ -29,7 +29,7 @@ jobs:
           # history for accurate "last updated" dates on each page, but fetch
           # depth of 0 would fetch all branches which is slow.
           # https://github.com/actions/checkout/issues/520#issuecomment-1320838255
-          fetch-depth: ${{ github.event.inputs.live == 'true' && 0 || 2147483647 }}
+          fetch-depth: ${{ github.event.inputs.live == 'true' && 1 || 2147483647 }}
 
       - name: Use Node.js 20
         uses: actions/setup-node@v4
