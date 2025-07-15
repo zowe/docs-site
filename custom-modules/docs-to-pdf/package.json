@@ -1,0 +1,64 @@
+{
+  "name": "docs-to-pdf",
+  "version": "0.6.3",
+  "description": "Generate PDF from Docusaurus",
+  "main": "lib/cli.js",
+  "scripts": {
+    "dev": "tsc --watch",
+    "build": "tsc",
+    "lint": "eslint \"*/**/*.{js,ts}\"",
+    "lintfix": "eslint \"*/**/*.{js,ts}\" --fix",
+    "test": "jest --detectOpenHandles --forceExit"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "bin": {
+    "docs-to-pdf": "lib/cli.js"
+  },
+  "keywords": [
+    "pdf",
+    "docusaurus",
+    "gitbook"
+  ],
+  "homepage": "https://github.com/jean-humann/docs-to-pdf",
+  "author": "Jean Humann <jean.humann@gmail.com> (https://github.com/jean-humann)",
+  "license": "MIT",
+  "dependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "chalk": "^4.1.2",
+    "commander": "^14.0.0",
+    "console-stamp": "^3.1.1",
+    "puppeteer": "^24.13.0",
+    "puppeteer-autoscroll-down": "^1.1.2",
+    "puppeteer-core": "^24.13.0"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.0.0",
+    "@tsconfig/node18": "^18.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.4.4",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "core-js": "^3.30.2",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^30.0.0",
+    "jest-environment-jsdom": "^30.0.0",
+    "lint-staged": "^14.0.0",
+    "prettier": "^3.0.0",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "lib/**/*",
+    "bin/**/*"
+  ],
+  "lint-staged": {
+    "*.{js,ts}": [
+      "./node_modules/.bin/eslint --fix"
+    ]
+  }
+}

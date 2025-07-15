@@ -5,12 +5,17 @@ on:
     inputs:
       version:
         description: "The version of the docs site to generate a PDF from (i.e. v1.28.x, stable)"
-        required: false
+        required: true
         default: "stable"
       title:
         description: "The title for the PDF front page"
-        required: false
+        required: true
         default: "Zowe Documentation"
+      live:
+        description: "Use the live docs.zowe.org site"
+        required: true
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -54,13 +59,21 @@ jobs:
 
       - name: Build with Docusaurus
         timeout-minutes: 15
+        if: github.event.inputs.live != 'true'
         run: npm run build
 
-      - name: Create PDF
+      - name: Create Local PDF
         timeout-minutes: 90
+        if: github.event.inputs.live != 'true'
         run: |
           npm run serve &
-          npx docs-to-pdf --initialDocURLs="http://localhost:3000/${{ github.event.inputs.version }}/whats-new/zowe-announcements,http://localhost:3000/${{ github.event.inputs.version }}/getting-started/overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/install-overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/zowe-getting-started-tutorial,http://localhost:3000/${{ github.event.inputs.version }}/extend/extend-zowe-overview,http://localhost:3000/${{ github.event.inputs.version }}/troubleshoot/troubleshooting,http://localhost:3000/${{ github.event.inputs.version }}/contribute/roadmap-contribute,http://localhost:3000/${{ github.event.inputs.version }}/appendix/zowe-cli-command-reference" --cssStyle=":root{--ifm-font-size-base: 80%;}" --contentSelector="article" --paginationSelector=".pagination-nav__link--next" --excludeSelectors=".no-pdf,.announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar" --coverImage="http://localhost:3000/img/zowe-icon.png" --coverTitle="${{ github.event.inputs.title }}" --outputPDFFilename="zowe-docs.pdf" --protocolTimeout=1800000 --puppeteerArgs="--no-sandbox, --disable-setuid-sandbox"
+          npx docs-to-pdf --initialDocURLs="http://localhost:3000/${{ github.event.inputs.version }}/whats-new/zowe-announcements,http://localhost:3000/${{ github.event.inputs.version }}/getting-started/overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/install-overview,http://localhost:3000/${{ github.event.inputs.version }}/user-guide/zowe-getting-started-tutorial,http://localhost:3000/${{ github.event.inputs.version }}/extend/extend-zowe-overview,http://localhost:3000/${{ github.event.inputs.version }}/troubleshoot/troubleshooting,http://localhost:3000/${{ github.event.inputs.version }}/contribute/roadmap-contribute,http://localhost:3000/${{ github.event.inputs.version }}/appendix/zowe-cli-command-reference" --cssStyle=":root{--ifm-font-size-base: 80%;}" --contentSelector="article" --paginationSelector=".pagination-nav__link--next" --excludeSelectors=".no-pdf,.announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar" --coverImage="http://localhost:3000/img/zowe-icon.png" --coverTitle="${{ github.event.inputs.title }}" --outputPDFFilename="zowe-docs.pdf" --protocolTimeout=1800000 --puppeteerArgs="--no-sandbox,--disable-setuid-sandbox"
+
+      - name: Create Live PDF
+        timeout-minutes: 90
+        if: github.event.inputs.live == 'true'
+        run: |
+          npx docs-to-pdf --initialDocURLs="https://docs.zowe.org/${{ github.event.inputs.version }}/whats-new/zowe-announcements,https://docs.zowe.org/${{ github.event.inputs.version }}/getting-started/overview,https://docs.zowe.org/${{ github.event.inputs.version }}/user-guide/install-overview,https://docs.zowe.org/${{ github.event.inputs.version }}/user-guide/zowe-getting-started-tutorial,https://docs.zowe.org/${{ github.event.inputs.version }}/extend/extend-zowe-overview,https://docs.zowe.org/${{ github.event.inputs.version }}/troubleshoot/troubleshooting,https://docs.zowe.org/${{ github.event.inputs.version }}/contribute/roadmap-contribute,https://docs.zowe.org/${{ github.event.inputs.version }}/appendix/zowe-cli-command-reference" --cssStyle=":root{--ifm-font-size-base: 80%;}" --contentSelector="article" --paginationSelector=".pagination-nav__link--next" --excludeSelectors=".no-pdf,.announcementBar_UUUQ,nav.navbar,.docSidebarContainer_3pwe,.docMainContainer_2pgU .col.col--3,footer.footer,.docItemContainer_2szM > .margin-vert--xl > .row > .col:first-child,.pagination-nav,.docsRating,.navbar__inner,.thin-scrollbar" --coverImage="https://docs.zowe.org/img/zowe-icon.png" --coverTitle="${{ github.event.inputs.title }}" --outputPDFFilename="zowe-docs.pdf" --protocolTimeout=1800000 --puppeteerArgs="--no-sandbox,--disable-setuid-sandbox"
 
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
