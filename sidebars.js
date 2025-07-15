@@ -621,6 +621,7 @@ module.exports = {
           label: "Using Zowe CLI",
           link: { type: "doc", id: "user-guide/cli-using-usingcli" },
           items: [
+            "user-guide/cli-authentication-methods",
             "user-guide/cli-using-displaying-help",
             "user-guide/cli-using-command-precedence",
             "user-guide/cli-using-understanding-core-command-groups",
@@ -717,8 +718,8 @@ module.exports = {
         {
           type: "category",
           label: "Using Zowe Explorer plug-in for IntelliJ IDEA",
+          link: { type: "doc", id: "user-guide/intellij-use-cases" },
           items: [
-            "user-guide/intellij-use-cases",
             "user-guide/intellij-settings",
             "user-guide/intellij-working-sets",
             "user-guide/intellij-zos-files",
