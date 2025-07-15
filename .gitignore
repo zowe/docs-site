@@ -22,8 +22,6 @@ yarn-error.log*
 
 # ignore yarn lock because we have package-lock.json and npmjs is more stable
 yarn.lock
-# except in our custom docs-to-pdf build, because we need that
-!custom-modules/docs-to-pdf/yarn.lock
 .vscode/last.sql
 .history/
 
