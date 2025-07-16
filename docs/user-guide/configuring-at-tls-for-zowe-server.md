@@ -130,7 +130,7 @@ Replace `ZoweKeyring` with the keyring configured for your installation. Follow 
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication(for example a rule covering API Gateway to an onboarded service).
+For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support Client Certificate authentication (for example a rule covering API Gateway to an onboarded service).
 
 ### Outbound rules
 
@@ -153,7 +153,7 @@ TTLSConnectionAction ClientConnectionAction
 }
 ```
 
-#### For z/OSMF
+#### Outbound rule for z/OSMF
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -191,7 +191,7 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 `Jobname` is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 :::
 
-#### For communication between Zowe core components
+#### Outbound rule for communication between Zowe core components
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
@@ -230,10 +230,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 }
 ```
 
-#### For communication between API Gateway and extensions' servers
+#### Outbound rule for communication between API Gateway and extensions' servers
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
-Such a rule can apply to any remote destination, as seen in the ApimlClientRule for Zowe core servers in the section [For communication between API Gateway and other core services](./configuring-at-tls-for-zowe-server.md#for-communication-between-api-gateway-and-other-core-services)
+Such a rule can apply to any remote destination, as seen in the ApimlClientRule for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 <details>
 <summary>Click here for the example of a rule covering API Gateway to extension servers</summary>
@@ -278,7 +278,7 @@ Outbound connections from the Gateway to southbound services (onboarded services
 </details>
 
 
-#### Services that validate tokens against the API Mediation Layer
+#### Outbound rule for services that validate tokens against the API Mediation Layer
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
