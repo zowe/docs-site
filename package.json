@@ -30,7 +30,7 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "docs-to-pdf": "file://./custom-modules/docs-to-pdf/docs-to-pdf-v0.6.3.tgz"
+    "docs-to-pdf": "file://./custom-modules/docs-to-pdf/docs-to-pdf-v0.6.4.tgz"
   },
   "browserslist": {
     "production": [
