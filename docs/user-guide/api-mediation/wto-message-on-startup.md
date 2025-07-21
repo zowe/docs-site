@@ -33,59 +33,58 @@ This functionality requires the following changes to the zowe.yaml:
     ```
     <?xml version="1.0" encoding="UTF-8"?>
     <configuration>
-        <property resource="application.yml" />
-        <property name="MAX_INDEX" value="${rollingPolicy.maxIndex:-12}"/>
-        <property name="MIN_INDEX" value="${rollingPolicy.minIndex:-1}"/>
-        <property name="MAX_FILE_SIZE" value="${rollingPolicy.file.maxSize:-50MB}"/>
-        <property name="STORAGE_LOCATION" value="${apiml.logs.location}" />
-        <property name="apimlLogPattern" value="%.-9msg %d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr(&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt;){magenta} %X{userid:-} %clr(%-5level) %clr(\\(%logger{15}\\)){cyan} %msg%n"/>
-    
-        <turboFilter class="org.zowe.apiml.product.logging.UseridFilter"/>
-        <if condition='property("spring.profiles.include").contains("debug")||property("spring.profiles.include").contains("diag")||property("spring.profiles.include").contains("dev")'>
-            <then>
-            </then>
-            <else>
-                <turboFilter class="org.zowe.apiml.product.logging.ApimlDependencyLogHider"/>
-                <turboFilter class="org.zowe.apiml.product.logging.LogLevelInfoFilter"/>
-                <turboFilter class="ch.qos.logback.classic.turbo.DuplicateMessageFilter">
-                    <AllowedRepetitions>0</AllowedRepetitions>
-                </turboFilter>
-            </else>
-        </if>
-        <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
-        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-                <layout class="org.zowe.apiml.product.logging.MaskingLogPatternLayout">
-                    <pattern>${apimlLogPattern}</pattern>
-                </layout>
-            </encoder>
-        </appender>
-    
-        <appender name="FILE" class="org.zowe.apiml.product.logging.ApimlRollingFileAppender">
-            <file>${STORAGE_LOCATION}/${logbackServiceName}.log</file>
-    
-            <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-                <fileNamePattern>${STORAGE_LOCATION}/${logbackServiceName}.%i.log</fileNamePattern>
-                <minIndex>${MIN_INDEX}</minIndex>
-                <maxIndex>${MAX_INDEX}</maxIndex>
-            </rollingPolicy>
-    
-            <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-                <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
-            </triggeringPolicy>
-    
-            <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-                <layout class="org.zowe.apiml.product.logging.MaskingLogPatternLayout">
-                    <pattern>${apimlLogPattern}</pattern>
-                </layout>
-            </encoder>
-        </appender>
-    
-        <root level="INFO">
-            <appender-ref ref="STDOUT" />
-            <appender-ref ref="FILE" />
-        </root>
-    </configuration>
+       <property resource="application.yml"/>
+       <property name="MAX_INDEX" value="${rollingPolicy.maxIndex:-12}"/>
+       <property name="MIN_INDEX" value="${rollingPolicy.minIndex:-1}"/>
+       <property name="MAX_FILE_SIZE" value="${rollingPolicy.file.maxSize:-50MB}"/>
+       <property name="STORAGE_LOCATION" value="${apiml.logs.location}"/>
+       <property name="apimlLogPattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS,UTC} %clr&lt;${logbackService:-${logbackServiceName}}:%thread:${PID:- }&gt; %magenta(%X{userid:-}) %cyan(%-5level) %clr\(\(%logger{15}\)\) %msg%n"/>
+   
+       <turboFilter class="org.zowe.apiml.product.logging.UseridFilter"/>
+     
+       <springProfile name="!debug &amp; !diag &amp; !dev">
+         <turboFilter class="org.zowe.apiml.product.logging.ApimlDependencyLogHider"/>
+         <turboFilter class="org.zowe.apiml.product.logging.LogLevelInfoFilter"/>
+         <turboFilter class="org.zowe.apiml.product.logging.ApimlDuplicateMessagesFilter">
+           <AllowedRepetitions>0</AllowedRepetitions>
+         </turboFilter>
+       </springProfile>
+     
+       <conversionRule conversionWord="clr" class="org.springframework.boot.logging.logback.ColorConverter"/>
+       <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+           <charset>${CONSOLE_LOG_CHARSET:-${logging.charset.console:-${file.encoding:-UTF-8}}}</charset>
+           <layout class="org.zowe.apiml.product.logging.MaskingLogPatternLayout">
+             <pattern>${apimlLogPattern}</pattern>
+           </layout>
+         </encoder>
+       </appender>
+   
+       <appender name="FILE" class="org.zowe.apiml.product.logging.ApimlRollingFileAppender">
+         <file>${STORAGE_LOCATION}/${logbackService:-${logbackServiceName}}.log</file>
+     
+         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+           <fileNamePattern>${STORAGE_LOCATION}/${logbackService:-${logbackServiceName}}.%i.log</fileNamePattern>
+           <minIndex>${MIN_INDEX}</minIndex>
+           <maxIndex>${MAX_INDEX}</maxIndex>
+         </rollingPolicy>
+     
+         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+           <maxFileSize>${MAX_FILE_SIZE}</maxFileSize>
+         </triggeringPolicy>
+     
+         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+           <layout class="org.zowe.apiml.product.logging.MaskingLogPatternLayout">
+             <pattern>${apimlLogPattern}</pattern>
+           </layout>
+         </encoder>
+       </appender>
+     
+       <root level="INFO">
+         <appender-ref ref="STDOUT"/>
+         <appender-ref ref="FILE"/>
+       </root>
+   </configuration>
     ```
    Custom configuration that changes the structure of the message to prepend 9 characters to the beginning is prepared.
 

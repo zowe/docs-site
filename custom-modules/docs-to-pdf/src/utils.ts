@@ -1,9 +1,9 @@
 import chalk from 'chalk';
 import console_stamp from 'console-stamp';
 import * as puppeteer from 'puppeteer-core';
-import { scrollPageToBottom } from 'puppeteer-autoscroll-down';
 import * as fs from 'fs-extra';
 import { chromeExecPath } from './browser';
+import { setTimeout as timerSetTimeout } from 'timers/promises';
 
 console_stamp(console);
 
@@ -122,7 +122,12 @@ export async function generatePDF({
           await openDetails(page);
         }
         // Get the HTML string of the content section.
-        contentHTML += await getHtmlContent(page, contentSelector);
+        contentHTML += await getHtmlContent(
+          page,
+          contentSelector,
+          excludeSelectors,
+          paginationSelector,
+        );
         console.log(chalk.green('Success'));
       }
 
@@ -178,7 +183,25 @@ export async function generatePDF({
   // Scroll to the bottom of the page with puppeteer-autoscroll-down
   // This forces lazy-loading images to load
   console.log(chalk.cyan('Scroll to the bottom of the page...'));
-  await scrollPageToBottom(page, {}); //cast to puppeteer-core type
+
+  const scrollPageToBottom = async () => {
+    await page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+    await timerSetTimeout(2000);
+  };
+
+  // Scrolling in a loop until a certain condition is met
+  let previousHeight = 0;
+  while (true) {
+    await scrollPageToBottom();
+    const newHeight = await page.evaluate(() => document.body.scrollHeight);
+    // Breaking the loop if no new content is loaded
+    if (newHeight === previousHeight) {
+      break;
+    }
+    previousHeight = newHeight;
+  }
 
   // Generate PDF
   console.log(chalk.cyan('Generate PDF...'));
@@ -240,8 +263,18 @@ export async function matchKeyword(page: puppeteer.Page, keyword: string) {
  * @param selector - The CSS selector of the element.
  * @returns The HTML content of the element.
  */
-export async function getHtmlContent(page: puppeteer.Page, selector: string) {
-  const html = await page.evaluate(getHtmlFromSelector, selector);
+export async function getHtmlContent(
+  page: puppeteer.Page,
+  selector: string,
+  excludeSelectors?: string[],
+  paginationSelector?: string,
+) {
+  const html = await page.evaluate(
+    getHtmlFromSelector,
+    selector,
+    excludeSelectors,
+    paginationSelector,
+  );
   return html;
 }
 
@@ -252,12 +285,30 @@ export async function getHtmlContent(page: puppeteer.Page, selector: string) {
  * @param selector - The CSS selector of the element to retrieve.
  * @returns The HTML content of the matched element, or an empty string if no element is found.
  */
-export function getHtmlFromSelector(selector: string): string {
+export function getHtmlFromSelector(
+  selector: string,
+  excludeSelectors?: string[],
+  paginationSelector?: string,
+): string {
   const element: HTMLElement | null = document.querySelector(selector);
   if (element) {
     // Add pageBreak for PDF
     element.style.pageBreakAfter = 'always';
-
+    if (excludeSelectors) {
+      for (const excludeSelector of excludeSelectors) {
+        if (
+          paginationSelector &&
+          (excludeSelector.includes(paginationSelector) ||
+            paginationSelector.includes(excludeSelector))
+        ) {
+          continue;
+        }
+        const matches = document.querySelectorAll(excludeSelector);
+        for (const match of matches) {
+          match.remove();
+        }
+      }
+    }
     return element.outerHTML;
   } else {
     return '';
@@ -481,6 +532,7 @@ export function generateToc(contentHtml: string, maxLevel = 4) {
  * @param headers - An array of header objects containing level, id, and header properties.
  * @returns The HTML code for the table of contents.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function generateTocHtml(headers: any[]) {
   // Map the headers array to create a list item for each header with the appropriate indentation
   const toc = headers
@@ -506,6 +558,7 @@ export function generateTocHtml(headers: any[]) {
  * @param matchedStr - The matched string containing the header information.
  * @returns An object containing the header text, header ID, and level.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function generateHeader(headers: any[], matchedStr: string) {
   // Remove anchor tags inserted by Docusaurus for direct links to the header
   const headerText = matchedStr
