@@ -258,10 +258,6 @@ Zowe YAML configuration uses the `zowe.setup` section to instruct how Zowe shoul
 ```yaml
 zowe:
   setup:
-    jcl:
-      header:
-        - "ABC-123456-XYZ,"
-        - "//  NOTIFY=&SYSUID"
     dataset:
       prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
@@ -329,24 +325,6 @@ zowe:
       volume: VOL123
       storageClass:
 ```
-- **zowe.setup.jcl.header**  
-Specifies the JCL parameters after the `JOB` keyword. The default value is empty string. Following syntax is valid:
-  - One line
-    ```yaml
-    zowe:
-      setup:
-        jcl:
-          header: "ABC-123456-XYZ   Accounting information"
-    ```
-  - Multiple lines
-    ```yaml
-    zowe:
-      setup:
-        jcl:
-          header:
-            - "ABC-123456-XYZ,"
-            - "//  NOTIFY=&SYSUID"
-    ```
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
 - **zowe.setup.dataset.parmlib**  
