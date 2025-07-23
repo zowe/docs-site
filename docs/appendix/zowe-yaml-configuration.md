@@ -325,7 +325,6 @@ zowe:
       volume: VOL123
       storageClass:
 ```
-
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
 - **zowe.setup.dataset.parmlib**  
@@ -534,7 +533,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
   The following URL is the default value for Zowe and ZSS:
 
     ```
-    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is used to verify certificates of services in strict mode. Setting to `true` enables `strict` mode where API ML validates if the certificate is trusted in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.

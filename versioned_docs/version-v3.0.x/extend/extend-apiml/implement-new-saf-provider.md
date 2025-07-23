@@ -99,8 +99,8 @@ You can generate and verify an existing SAF token by using an implementation of 
 To use `SafRestAuthenticationService` ensure that `ZWE_configs_apiml_security_saf_provider` is set to `rest`. (This is the default value)
 Set the following environment parameters in `zowe.yaml`:
 
-* `ZWE_configs_apiml_security_saf_urls_authenticate=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/authenticate`
-* `ZWE_configs_apiml_security_saf_urls_verify=https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/saf/verify`
+* `ZWE_configs_apiml_security_saf_urls_authenticate=https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/saf/authenticate`
+* `ZWE_configs_apiml_security_saf_urls_verify=https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/saf/verify`
 
 These ZSS endpoints are used by the `SafRestAuthenticationService` to generate and validate the SAF token.
 

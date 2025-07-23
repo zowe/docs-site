@@ -95,7 +95,7 @@ The following steps are only required if the ZSS hostname or default Zowe user n
    The following URL is the default value for Zowe and ZSS:
 
      ```
-     https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/x509/map
+     https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
      ```
 
 4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
