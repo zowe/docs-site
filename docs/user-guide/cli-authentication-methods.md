@@ -6,11 +6,10 @@ Configure the authentication method you want to use across multiple mainframe se
 
 If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`.
 
-:::note Notes
+:::note
++
+- To authenticate to a service, configure credentials to the associated service profile. If you have multiple credentials in your configuration, add an `authOrder` property to that profile to specify which type of authentication (and credentials) should be used for that service.
 
-- To apply your authentication method to a specific service, define the authentication type in the [service profile](../appendix/zowe-glossary.md#service-profile) of your choice.
-
-- If you switch to a different authentication type, remove the previous authentication method from the profile it was stored in before.
 :::
 
 ## Order of precedence
@@ -49,7 +48,7 @@ If an authentication method is found and fails, the  `authOrder` property does n
 
 In the preceding example, Zowe CLI is configured to look for the first *available* authentication method in the order outlined in the `authOrder` property.
 
-This means that if basic authentication is set up, Zowe CLI uses the user ID and password for authentication. If only a token is available, Zowe CLI still checks for basic authentication, does not find it, and returns a failure message.
+This means that if basic authentication is set up, Zowe CLI uses the user ID and password for authentication. If only a token is available, Zowe CLI still checks for basic authentication, does not find it, and checks the configuration for token information. If the token information is not found, Zowe CLI then checks for the third authentication type, a certificate.
 
 ## Using basic authentication
 
