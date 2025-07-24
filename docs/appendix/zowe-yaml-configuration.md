@@ -507,6 +507,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
+- **`apiml.security.forwardHeader.trustedProxies`**
+  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
 - **apiml.security.oidc.enabled**  
