@@ -221,18 +221,6 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Verify that the URL of the endpoint you are trying to reach is correct.
 
-### ZWEAG120E
-
-  Invalid username or password for URL '/gateway/api/v1/auth/login'
-
-  **Reason:**
-
-  The username or password is invalid.
-
-  **Action:**
-
-  Provide a valid username and password.
-
 ### ZWEAG140E
 
   The 'applicationName' parameter name is missing.
@@ -255,7 +243,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+  Supply a valid user and application name, and check that corresponding permissions have been set up. See the <a href="https://docs.zowe.org/stable/user-guide/api-mediation/configuration-extender-passtickets/#configuring-zowe-to-use-passtickets" title="Enabling single sign on for extending services via PassTicket configuration">docs</a> for reference.
 
 ### ZWEAM400E
 
@@ -615,11 +603,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificate in Base64 printable form.
+  The string sent by the Gateway was not recognized as valid DER-encoded certificate in the Base64 printable form.
 
   **Action:**
 
-  Ensure that forwarding of the client certificate is also enabled in the Gateway. Check for any error messages from the Gateway.
+  Ensure that the forwarding of client certificate is enabled also in the Gateway. Check for any error messages from the Gateway.
 
 ### ZWEAT501E
 
@@ -647,11 +635,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
+  An error occurred during retrieval of trusted certificates from the Gateway. Certificate endpoint is %s. Error message: %s
 
   **Reason:**
 
-  Communication with the Gateway was interrupted or an error occurred during processing of the response.
+  The communication with the gateway got interrupted or an error occurred during processing the response.
 
   **Action:**
 
@@ -663,11 +651,23 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The string sent by the Gateway was not recognized as a valid DER-encoded certificates in Base64 printable form.
+  The string sent by the Gateway was not recognized as valid DER-encoded certificates in the Base64 printable form.
 
   **Action:**
 
   Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
+
+### ZWEAT505E
+
+  The connection is not secure.
+
+  **Reason:**
+
+  AT-TLS is not properly configured.
+
+  **Action:**
+
+  Review AT-TLS documentation and make sure your configuration is correct for this service.
 
 ### ZWEAT601E
 
@@ -788,18 +788,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Refer to the specific message to troubleshoot.
-
-### ZWEAS101E
-
-  Authentication method '%s' is not supported for URL '%s'
-
-  **Reason:**
-
-  The HTTP request method is not supported for the URL.
-
-  **Action:**
-
-  Use the correct HTTP request method that is supported for the URL.
 
 ### ZWEAS103E
 
@@ -1262,18 +1250,6 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Verify the conformance criteria.
-
-### ZWEAG101E
-
-  Authentication method '%s' is not supported for URL '%s'
-
-  **Reason:**
-
-  The HTTP request method is not supported by the URL.
-
-  **Action:**
-
-  Use the correct HTTP request method supported by the URL.
 
 ### ZWEAG105E
 
