@@ -1,6 +1,6 @@
 # Zowe CLI authentication methods
 
-Zowe CLI supports multiple methods of authenticating to your z/OS REST services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
+Zowe CLI supports multiple methods of authenticating to mainframe services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
 
 Configure the authentication method you want to use across multiple mainframe services in a [base profile](../appendix/zowe-glossary.md#base-profile) stored in your configuration file. 
 
