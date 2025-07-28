@@ -24,7 +24,7 @@ Use the example from the current architecture diagram?
 The following instructions assume a default address space prefix `ZWE1`. Update as needed.
 :::
 
-The API Mediation Layer running single-service mode introduces a series of changes that require user attention. The identified changes are: <!-- Instead of "user" here can we say something more like "requires the system administrator to customize configurations in the following areas:">
+To run API Mediation Layer in single-service mode, the system programmer is required to make configuration changes in the following areas:
 
 * Port usage is shared in a single address space. <!-- I think we should remove "is shared in a single address spece" as this information should be detailed in the corresponding section below.-->
 * Log prefix is unified for all components. <!--Similarly, "is unified for all components" should be explained in the corresponding section. -->
@@ -32,7 +32,7 @@ The API Mediation Layer running single-service mode introduces a series of chang
 
 ### Port usage
 
-The new deployment mode <!--The Modulth single-service mode --> runs all API Mediation Layer components in a single JVM process. For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
+The new deployment mode <!--The Modulth single-service mode --> runs all API Mediation Layer components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
 
 The single-service API Mediation Layer address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
 
@@ -48,7 +48,7 @@ Logs from internal API Mediation Layer components such as the Discovery Service,
 If the installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
 
 * Update job name filters to use `ZWE1AG`.
-* Remove unneeded rules that were handling 
+* Remove unneeded rules that were performing the handling. 
 
 <!--We need to include an example of these PAGENT rules configuration -->
 
