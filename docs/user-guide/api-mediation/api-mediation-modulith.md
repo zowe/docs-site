@@ -114,7 +114,7 @@ To switch the API Mediation Layer into modularized mode, perform the following c
                 enabled: false
         ```
 
-    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service, as it is enabled by default in the modularized deployment of API Mediation Layer.
+    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the modularized deployment of API Mediation Layer.
 
 3. Start the Zowe task.
 
