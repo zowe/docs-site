@@ -12,6 +12,7 @@ This switch brings performance benefits and configuration simplification for new
 
 This section contains an overview of the architecture of the All-In-One deployment.
 
+![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
 <!-- TODO
 Diagram
 Data flows
