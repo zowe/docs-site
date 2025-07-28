@@ -1,4 +1,4 @@
-# Zowe API Mediation Layer Single Sign On Overview
+# Using Zowe API ML Single Sign On 
 
 You can extend Zowe and utilize Zowe Single Sign On (SSO) provided by Zowe API Mediation Layer (API ML) to enhance system security and improve the user experience. 
 
@@ -11,13 +11,7 @@ This article provides an overview of the API ML single sign on feature, the prin
 Currently, API ML can provide SSO only in a single security domain.
 :::
 
-- [Zowe API Mediation Layer Single Sign On Overview](#zowe-api-mediation-layer-single-sign-on-overview)
-    - [Zowe API ML client](#zowe-api-ml-client)
-    - [API service accessed via Zowe API ML](#api-service-accessed-via-zowe-api-ml)
-    - [Existing services that cannot be modified](#existing-services-that-cannot-be-modified)
-  - [Further resources](#further-resources)
-
-The following diagram describes the interactions between the general participants in the single sign on process. 
+The following diagram illustrates the interactions between the general participants in the single sign on process. 
 
 <img src={require("../images/api-mediation/sso-diagram.jpeg").default} alt="Zowe SSO Explanation" width="700"/>
 
@@ -26,7 +20,7 @@ There are two main types of components that participate in Zowe SSO through API 
 * Zowe API ML client
 
    - This type of component is user-facing and can obtain user credentials through a user interface (web, CLI, desktop).
-   - A Zowe API ML client calls API services through the API ML.
+   - A Zowe API ML client calls API services through API ML.
    - An example of such clients are Zowe CLI or Zowe Desktop. 
 
 * API service accessed via Zowe API ML
@@ -64,7 +58,7 @@ For more information, see [Enabling single sign on for extending services via Pa
 
 ## Further resources
 
-* [User guide for SSO in Zowe CLI](./cli-using-integrating-apiml.md#accessing-multiple-services-with-sso)
-* [System requirements for using web tokens for SSO in Zlux and ZSS](./systemrequirements.md)
+* [Accessing multiple services with SSO](./cli-using-integrating-apiml.md#accessing-multiple-services-with-sso)
+* [Enabling single sign on for clients via JSON Web Token (JWT) configuration](./api-mediation/configuration-jwt.md)
 
 

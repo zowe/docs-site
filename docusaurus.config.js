@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v3.1.x";
+const LATEST_VERSION = "v3.2.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -19,7 +19,10 @@ module.exports = {
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
-    experimental_faster: process.env.NODE_ENV === "production",
+    experimental_faster: true,
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true
+    }
   },
   themeConfig: {
     docs: {
@@ -215,6 +218,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v3.1.x": {
+              label: "v3.1.x LTS",
+            },
             "v3.0.x": {
               label: "v3.0.x LTS",
             },
@@ -309,6 +315,11 @@ module.exports = {
           {
             tagName: "meta",
             name: "apple-mobile-web-app-capable",
+            content: "yes",
+          },
+          {
+            tagName: "meta",
+            name: "mobile-web-app-capable",
             content: "yes",
           },
           {

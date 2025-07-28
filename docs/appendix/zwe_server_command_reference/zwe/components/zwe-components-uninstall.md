@@ -1,6 +1,6 @@
 # zwe components uninstall
 
-[zwe](./.././zwe) > [components](././zwe-components) > [uninstall](./zwe-components-uninstall)
+[zwe](./.././zwe.md) > [components](././zwe-components.md) > [uninstall](./zwe-components-uninstall.md)
 
 	zwe components uninstall [parameter [parameter]...]
 
@@ -49,7 +49,7 @@ ZWEL0307E|307|Component %s cannot be uninstalled, because it is a core component
 ZWEL0308W|308|Component directory %s could not be removed, rc=%s.
 ZWEL0309W|309|Skipping removal of component %s because it is a core component.
 ZWEL0312W|312|Component %s marked for removal but is not installed.
-ZWEL????E|???|Command requires zowe.useConfigmgr=true to use.
+
 
 ### Inherited from parent command
 
@@ -84,9 +84,11 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
+ZWEL0322E|322|%s is not a valid directory.

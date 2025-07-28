@@ -10,15 +10,13 @@ The API Mediation Layer provides multiple methods which clients can use to authe
 
 ## Authentication with JSON Web Tokens (JWT)
 
-When the user successfully authenticates with the API ML, the client receives a JWT in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT is signed with the private key that is configured in the Zowe Identity Provider's certificate store, regardless of whether the token is in a keystore or keyring.
+When the user successfully authenticates with API ML, the client receives a JWT in exchange. This token can be used by the client to access REST services behind the API ML Gateway and also for subsequent user authentication. The access JWT is signed with the private key that is configured in the Zowe Identity Provider's certificate store, regardless of whether the token is in a keystore or keyring.
 
 To utilize [Single-Sign-On (SSO)](../user-guide/api-mediation-sso.md), the Zowe API ML client needs to provide an access token to API services in the form of the cookie `apimlAuthenticationToken`, or in the `Authorization: Bearer` HTTP header as described in [this authenticated request example](https://github.com/zowe/sample-spring-boot-api-service/blob/master/zowe-rest-api-sample-spring/docs/api-client-authentication.md#authenticated-request).
 
 ## Authentication with client certificates
 
-If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of the API ML, it is possible to use client certificates issued by this CA to authenticate to the API ML.
-
-For more information, see the [Authentication for API ML services documentation](../extend/extend-apiml/authentication-for-apiml-services.md)
+If the keyring or a truststore contains at least one valid certificate authority (CA) other than the CA of API ML, it is possible to use client certificates issued by this CA to authenticate to API ML.
 
 ## Authentication with Personal Access Token (PAT)
 
@@ -34,13 +32,13 @@ For more information about PAT, see [Authenticating with a Personal Access Token
 
 ## Multi-factor authentication (MFA)
 
-Multi-factor authentication is provided by third-party products which Zowe is compatible with. The following are known to work with Zowe:
+Multi-factor authentication is provided by third-party products with which Zowe is compatible. The following are known to work with Zowe:
 - [Advanced Authentication Mainframe](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html)
 - [IBM Z Multi-Factor Authentication](https://www.ibm.com/products/ibm-multifactor-authentication-for-zos).
 
 Additionally, Zowe API ML can be configured to accept OIDC/OAuth2 user authentication tokens. In this particular case, MFA support is built into the OIDC provider system.
-It does not rely on the mainframe MFA technology, but is equally secure.
+While mainframe MFA technology is not utilized in this case, an equal level of security is provided.
 
 ## Advanced Authentication Mainframe (AAM)
 
-To add a dynamic element to the authentication, you can configure the Advanced Authentication Mainframe to enable multi-factor authentication. For more information about AAM, see the [Advanced Authentication Mainframe documentation](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html).
+To add a dynamic element to the authentication, you can configure the Advanced Authentication Mainframe to enable multi-factor authentication. For more information about AAM, see the [Advanced Authentication Mainframe 2.0](https://techdocs.broadcom.com/us/en/ca-mainframe-software/security/ca-advanced-authentication-mainframe/2-0.html) documentation in _Broadcom Tech Docs_.

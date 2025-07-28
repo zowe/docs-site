@@ -10,6 +10,8 @@
         "id": "whats-new/release-notes/release-notes-overview"
       },
       "items": [
+        "whats-new/release-notes/v2_18_2",
+        "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
         "whats-new/release-notes/v2_17_0",
         "whats-new/release-notes/v2_16_0",
@@ -151,7 +153,17 @@
             "user-guide/address-browser-requirements"
           ]
         },
-        "user-guide/install-zowe-server-install-wizard",
+                {
+          "type": "category",
+          "label": "Installing Zowe via Zowe Server Install Wizard",
+          "link": {
+            "type": "doc",
+            "id": "user-guide/install-zowe-server-install-wizard"
+          },
+          "items": [
+            "user-guide/troubleshooting-zowe-server-install-wizard"
+          ]
+        },
         {
           "type": "category",
           "label": "Installing Zowe via SMP/E",
@@ -222,6 +234,8 @@
               "items": [
                 "user-guide/initialize-zos-system",
                 "user-guide/zwe-init-subcommand-overview",
+                "user-guide/configure-apiml-zosmf-workflow-2-18",
+                "user-guide/configuring-zowe-via-jcl",
                 "user-guide/configure-zowe-zosmf-workflow-2-18"
               ]
             },
@@ -251,8 +265,7 @@
                 "user-guide/import-certificates",
                 "user-guide/generate-certificates",
                 "user-guide/use-certificates",
-                "user-guide/certificates-setup",
-                "user-guide/configuring-at-tls-for-zowe-server"
+                "user-guide/certificates-setup"
               ]
             },
             {
@@ -1259,7 +1272,7 @@
     {
       "type": "link",
       "label": "Third Party Software Requirements",
-      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.x.md"
+      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.2.md"
     }
   ]
 }

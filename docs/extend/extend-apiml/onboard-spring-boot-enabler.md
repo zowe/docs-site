@@ -1,61 +1,42 @@
 # Onboarding a Spring Boot based REST API Service
 
-This guide is part of a series of guides to onboard a REST API service with the Zowe API Mediation Layer.
-As an API developer, you can onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+
+:::info Role: API service developer
+:::
+
+Review how to onboard your REST API service built with the Spring Boot framework with the Zowe API Mediation Layer.
 
 :::note
 Before API ML version 1.2, the API ML provided an integration enabler based on Spring Cloud Netflix components. From version 1.3 and later, the API ML uses a new implementation based on the Plain Java Enabler (PJE) that is not backwards compatible with the previous enabler versions. API ML core services (Discovery Service, Gateway, and API Catalog) support both the old and new enabler versions. 
 :::
 
 :::tip
-For more information about how to utilize another onboarding method, see:
-
-  * [Onboard a REST API service with the Plain Java Enabler (PJE)](onboard-plain-java-enabler.md)
-  * [Onboard a REST service directly calling eureka with xml configuration](onboard-direct-eureka-call.md)
-  * [Onboard an existing REST API service without code changes](onboard-static-definition.md)
+For more information about how to utilize another onboarding method, see the [Onboarding overview](./onboard-overview.md).
 :::
 
 ## Outline of onboarding a REST service using Spring Boot
 
 The following steps outline the overall process to onboard a REST service with the API ML using a Spring Boot enabler. Each step is described in further detail in this article.
 
-1. [Selecting a Spring Boot Enabler](#selecting-a-spring-boot-enabler)
-
-2. [Configuring your project](#configuring-your-project)
-
-    * [Gradle build automation system](#gradle-build-automation-system)
-    * [Maven build automation system](#maven-build-automation-system)
-
-3. [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
-
-    * [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
-    * [Authentication properties](#authentication-properties)
-    * [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
-    * [SAF Keyring configuration](#saf-keyring-configuration)
-    * [Custom Metadata](#custom-metadata)
-    
-4. [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
-    
-    * [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
-    * [Basic routing](#basic-routing)
-    
-5. [Adding API documentation](#adding-api-documentation)
-
-6. (Optional) [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
-
-7. (Optional) [Troubleshooting](#troubleshooting)
-    * [Log messages during registration problems](#log-messages-during-registration-problems)
-
-## Selecting a Spring Boot Enabler
-
-Add a dependency on the Spring Enabler version to your project build configuration that corresponds to the Spring Boot version that you use for the whole project:
-
-  * onboarding-enabler-spring-v1
-  * onboarding-enabler-spring-v2
-
-:::note
-The process of onboarding an API service is the same for both Spring Boot enabler versions.
-:::
+- [Onboarding a Spring Boot based REST API Service](#onboarding-a-spring-boot-based-rest-api-service)
+  - [Outline of onboarding a REST service using Spring Boot](#outline-of-onboarding-a-rest-service-using-spring-boot)
+  - [Configuring your project](#configuring-your-project)
+    - [Gradle build automation system](#gradle-build-automation-system)
+    - [Maven build automation system](#maven-build-automation-system)
+  - [Configuring your Spring Boot based service to onboard with API ML](#configuring-your-spring-boot-based-service-to-onboard-with-api-ml)
+    - [Sample API ML Onboarding Configuration](#sample-api-ml-onboarding-configuration)
+    - [Authentication properties](#authentication-properties)
+    - [API ML Onboarding Configuration Sample](#api-ml-onboarding-configuration-sample)
+    - [SAF Keyring configuration](#saf-keyring-configuration)
+    - [Custom Metadata](#custom-metadata)
+  - [Registering and unregistering your service with API ML](#registering-and-unregistering-your-service-with-api-ml)
+    - [Unregistering your service with API ML](#unregistering-your-service-with-api-ml)
+    - [Basic routing](#basic-routing)
+  - [Adding API documentation](#adding-api-documentation)
+  - [Validating the discoverability of your API service by the Discovery Service](#validating-the-discoverability-of-your-api-service-by-the-discovery-service)
+  - [Troubleshooting](#troubleshooting)
+      - [Log messages during registration problems](#log-messages-during-registration-problems)
 
 ## Configuring your project
 
@@ -66,7 +47,12 @@ You can download the selected enabler artifact from the [Zowe Artifactory](https
 :::
 
 ### Gradle build automation system
-Use the following procedure to use _Gradle_ as your build automation system.
+
+<details>
+
+<summary>
+Click here for the procedure to use Gradle as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -107,9 +93,17 @@ Use the following procedure to use _Gradle_ as your build automation system.
 
 5. In your project home directory, run the `gradle clean build` command to build your project. Alternatively, you can run `gradlew` to use the specific gradle version that is working with your project.
 
+</details>
+
+<br />
+
 ### Maven build automation system
 
-Use the following procedure if you use _Maven_ as your build automation system.
+<details>
+
+<summary>
+Click here for the procedure to use Maven as your build automation system.
+</summary>
 
 **Follow these steps:**
 
@@ -145,6 +139,10 @@ Use the following procedure if you use _Maven_ as your build automation system.
 
 
 3. In the directory of your project, run the `mvn clean package` command to build the project.
+
+</details>
+
+<br />
 
 ## Configuring your Spring Boot based service to onboard with API ML
 
@@ -246,12 +244,18 @@ in any of the YAML configuration files.
 :::
 
 ### Authentication properties
-These parameters are not required. If a parameter is not specified, a default value is used. See [Authentication Parameters for Onboarding REST API Services](./authentication-for-apiml-services.md#authentication-parameters) for more details.
+These parameters are not required. If a parameter is not specified, a default value is used.
 
 ### API ML Onboarding Configuration Sample
 
 Some parameters which are specific for your service deployment
-are written in `${fill.your.parameterValue}` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
+are written in `<fill-your-parameterValue>` format. For your service configuration file, provide actual values or externalize your configuration using `-D` java commandline parameters.
+
+<details>
+
+<summary>
+Click here for a full example of API service configuration.
+</summary> 
 
 ```yaml
 spring:
@@ -263,14 +267,14 @@ apiml:
     enableUrlEncodedCharacters: true        # Decision if the service requests the API ML GW to receive encoded characters in the URL
     service:                                # The root of API ML onboarding configuration
 
-        serviceId: ${fill.your.serviceId}      # The symbolic name of the service
-        title: ${fill.your.title} 
-        description: ${fill.your.description}  # API service description
+        serviceId: <fill-your-serviceId>      # The symbolic name of the service
+        title: <fill-your-title> 
+        description: <fill-your-description>  # API service description
 
         scheme: https
-        hostname: ${fill.your.hostname}                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
-        port: ${fill.your.port}                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
-        serviceIpAddress: ${fill.your.ipAddress}                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
+        hostname: <fill-your-hostname>                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
+        port: <fill-your-port>                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
+        serviceIpAddress: <fill-your-ipAddress>                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.serviceId}      # By default the contextPath is set to be the same as apiml.service.serviceId, but doesn't have to be the same
@@ -279,7 +283,7 @@ apiml:
         statusPageRelativeUrl: ${apiml.service.contextPath}/application/info
         healthCheckRelativeUrl: ${apiml.service.contextPath}/application/health
 
-        discoveryServiceUrls: https://${fill.your.discoveryServiceHost1}:${fill.your.discoveryServicePort1}/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
+        discoveryServiceUrls: https://<fill-your-discoveryServiceHost1>:<fill-your-discoveryServicePort1>/eureka # discoveryServiceUrlscan be externalized by specifying -Dapiml.service.discoveryServiceUrls command line parameter
 
         routes:
             -   gateway-url: "ui/v1"
@@ -318,28 +322,34 @@ apiml:
             verifySslCertificatesOfServices: true
             protocol: TLSv1.3
             enabled-protocols: TLSv1.3
-            keyStoreType: ${fill.your.keystoretype}
-            trustStoreType: ${fill.your.truststoretype}
+            keyStoreType: <fill-your-keystoretype>
+            trustStoreType: <fill-your-truststoretype>
 
             ### DEFINE FOLLOWING PROPERTIES IN EXTERNAL CONFIGURATION
-            keyAlias: ${fill.your.keyAlias}
-            keyPassword: ${fill.your.keyPassword}
-            keyStore: ${fill.your..keyStore}
-            keyStorePassword: ${fill.your.keyStorePassword}
-            trustStore: ${fill.your.trustStore}
-            trustStorePassword: ${fill.your.trustStorePassword}
-        
+            keyAlias: <fill-your-keyAlias>
+            keyPassword: <fill-your-keyPassword>
+            keyStore: <fill-your-.keyStore>
+            keyStorePassword: <fill-your-keyStorePassword>
+            trustStore: <fill-your-trustStore>
+            trustStorePassword: <fill-your-trustStorePassword>
+
+        connectTimeout: 10  # OPTIONAL: Discovery service registration timeout to establish connection
+        readTimeout: 10 # OPTIONAL: Discovery service registration connection read timeout
         # Optional metadata section
         customMetadata:
-            yourqualifier:
-                key1: value1
-                key2: value2
+            <your-qualifier>:
+                <key1>: value1
+                <key2>: value2
 
 # rest of your configuration
 # server: ....
 # yourApplicationConfiguration: ....
 # and other properties
 ```
+
+</details>
+
+<br />
 
 :::tip
 To determine if your configuration is complete, set the logging level to `debug` and run your application. Setting the logging level to 'debug' enables you to troubleshoot issues with certificates for HTTPS and connections with other services.
@@ -369,7 +379,7 @@ logging:
 
     **Note:** For details about the configuration properties,
     see [Configuring your service](onboard-plain-java-enabler.md#configuring-your-service)
-    in the article _Onboarding a REST API service with the Plain Java Enabler (PJE)_.
+    in the article _Onboarding an API service with the Plain Java Enabler (PJE)_.
 
 ### SAF Keyring configuration
 
@@ -418,7 +428,7 @@ Use the following procedure to add Swagger API documentation to your project.
     * For _Gradle_, add the following dependency in `build.gradle`:
 
         ```groovy
-        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.2'
+        implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6'
         ```
 
       * For _Maven_, add the following dependency in `pom.xml`:
@@ -427,7 +437,7 @@ Use the following procedure to add Swagger API documentation to your project.
           <dependency>
              <groupId>org.springdoc</groupId>
              <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-             <version>2.8.2</version>
+             <version>2.8.6</version>
           </dependency>
           ```
 
@@ -507,7 +517,7 @@ see [Springdoc configuration](https://springdoc.org/#properties).
 Once you build and start your service successfully, you can use the option of validating that your service is registered correctly with the API ML Discovery Service.
 
 **Follow these steps:**
-  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+  1. [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
  
   2. Check that you can access your API service endpoints through the Gateway.
 
@@ -521,8 +531,10 @@ for both `username` and `password`. If API ML was installed by system administra
 with actual addresses of API ML components and the respective user credentials.
 :::
 
-:::tip
-Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+:::tip Tips:
+* Wait for the Discovery Service to fully register your service. This process may take a few minutes after your service was successfully started.
+
+* The Spring Boot Enabler supports the use of the API Mediation Layer Message Service. For more information about the Message Service, see [Using API Mediation Layer Message Service](./api-mediation-message-service.md).
 :::
 
 
@@ -550,6 +562,4 @@ Add the following code to your configuration file if you use XML configuration:
     </turboFilter>
 ```    
 
-:::note
-For more information, see the [full configuration used in the Core Services](https://github.com/zowe/api-layer/blob/master/apiml-common/src/main/resources/logback.xml) in GitHub. 
-:::
+

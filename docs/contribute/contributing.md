@@ -18,7 +18,7 @@ If you are ready to get started contributing to the Zowe Documentation repositor
 
 * Verify that you are familiar with the concepts in [Before You Get Started<a name="start"></a>](#before-you-get-started).
 * Familiarize yourself with the [Zowe documentation repository](#the-zowe-documentation-repository).
-* Verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
+* Contact the Doc Squad in [Slack](https://openmainframeproject.slack.com/archives/CC961JYMQ) to verify that you can open a [pull request and review changes](#sending-a-github-pull-request).
 * [Open an issue for Zowe documentation](#opening-an-issue-for-zowe-documentation) if you find a problem.
 * Read the [documentation style guide](#documentation-style-guide).
 
@@ -451,6 +451,7 @@ The following table alphabetically lists the common used words and their usage g
 
 Do  | Don't
 ---|---
+API ML (where appropriate) | The API ML
 application  | app
 data set | dataset (unless used in syntax)
 Capitalize "Server" when it's part of the product name |

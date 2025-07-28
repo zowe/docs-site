@@ -66,7 +66,7 @@ The **Perform Workflows** step enables you to run either all attached workflows 
 :::
 
 :::caution Important
-Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow. For more information, see [Configure - UNIX file system mount points](https://www.newera.com/INFO/061422_zOSMF_SM.pdf) in the IBM documentation. 
+Before you start your configuration, ensure that you first perform the **Zowe Mount** workflow. For more information, see [Configure - UNIX file system mount points](./061422_zOSMF_SM.pdf) in the IBM documentation. 
 :::
 
 After you successfully perform the **Zowe Mount** workflow, you can start the **Stand-alone Zowe API ML Configuration** workflow.
@@ -84,28 +84,9 @@ This workflow is in three parts:
 [Create configuration](#create-configuration)  
 [Perform Zowe installation](#perform-zowe-installation)
 
-### Define variables
+### Sequence to execute each workflow step
 
-This workflow step includes the list of Zowe variables for configuration and as well as sub-steps.
-
-1. Expand **Define variables**.
-
-2. Under **Input Variables**, click **Define the main variables**.
-
-3. Click the **Perform** tab. The input variables are displayed by category.
-
-4. Customize workflow variables in the fields provided.  
-   **Example:**
-
-    ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
-
-5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.   
-
-    ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
-
-#### Sequence to execute steps and sub-steps in the workflow
-
-   Perform the following steps for each step and sub-step:
+Before you start performing workflow steps, first review the following sequence within a workflow step:
 
   1. Click the title of the step or sub-step.
   2. Select the **Perform** tab.
@@ -124,11 +105,31 @@ This workflow step includes the list of Zowe variables for configuration and as 
    8. Click each sub-step and customize component-specific variables. Click **Next** until you complete your customization of the variables.
    9. Click **Finish** to apply the values.
 
+### Define variables
+
+The first workflow step in API ML configuration is to define variables.
+
+1. Expand **Define variables**.
+
+2. Under **Input Variables**, click **Define the main variables**.
+
+3. Click the **Perform** tab. The input variables are displayed by category.
+
+4. Customize workflow variables in the fields provided.  
+   **Example:**
+
+    ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
+
+5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.   
+
+    ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
+
+
 After all sub-steps are completed, the step **Define variables** is marked as Complete.
 
 ### Create configuration
 
-This step creates a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** workflow.
+The second workflow step is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** step.
 
 1. Review your configurations.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
@@ -137,7 +138,6 @@ This step creates a configuration zowe.yaml file with the variable setup that wa
 :::note
 The **Create configuration** step is mandatory. A valid zowe.yaml is required to execute the **Zowe installation** step.
 :::
-
 
 ### Perform Zowe Installation
 

@@ -7,13 +7,19 @@ The following topics contain information that can help you troubleshoot problems
 
 The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There is no single **Zowe has launched and is ready to run** message as the sequence of address spaces initialization is environment-dependent, although the message ID `ZWED0021I` is typically the last one that is logged.  More details on each subsystem and their startup messages are described in the following sections.
 
-- [Check the startup of API Mediation Layer](#check-the-startup-of-api-mediation-layer)
-- [Check the startup of Zowe Desktop](#check-the-startup-of-zowe-desktop)
-- [Check the startup of Zowe Secure Services](#check-the-startup-of-zowe-secure-services)
+- [Troubleshooting startup of Zowe z/OS components](#troubleshooting-startup-of-zowe-zos-components)
+  - [How to check if `ZWESLSTC` startup is successful](#how-to-check-if-zweslstc-startup-is-successful)
+    - [Check the startup of API Mediation Layer](#check-the-startup-of-api-mediation-layer)
+    - [Check the startup of Zowe Desktop](#check-the-startup-of-zowe-desktop)
+    - [Check the startup of Zowe Secure Services](#check-the-startup-of-zowe-secure-services)
     
 To check that Zowe has started successfully, the most complete way is to check that each component successfully completed its initialization. Each component writes messages to the JES `SYSPRINT` and writes severe errors to the `STDERR` job spool file.  
 
-To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `zowe.components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
+To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
+
+:::tip
+To determine the jobname for each component, see the "Default Jobname" column in the [Component Port table](../user-guide/address-network-requirements.md#component-ports) in the article _Addressing network requirements_.
+:::
 
 ### Check the startup of API Mediation Layer 
 

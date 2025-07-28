@@ -86,7 +86,7 @@ The Zowe YAML property `zowe.network.server.tls.listenAddresses` can be used to 
 
 ### Native TLS
 
-Both `app-server` and `zss` server components default to using HTTPS without the need for AT-TLS. AT-TLS is also possible. When using the native TLS, attributes such as TLS version and ciphers can be customized within the `zowe.network.server.tls` and `zowe.network.client.tls` objects of the Zowe configuration. These objects can also be placed within the `components.zss` and `components.app-server` objects, such as `components.zss.zowe.network.server.tls` in order to individually customize each server TLS configuration. For more information, read [TLS configuration](./tls-configuration).
+Both `app-server` and `zss` server components default to using HTTPS without the need for AT-TLS. AT-TLS is also possible. When using the native TLS, attributes such as TLS version and ciphers can be customized within the `zowe.network.server.tls` and `zowe.network.client.tls` objects of the Zowe configuration. These objects can also be placed within the `components.zss` and `components.app-server` objects, such as `components.zss.zowe.network.server.tls` in order to individually customize each server TLS configuration. For more information, read [TLS configuration](./tls-configuration.md).
 
 
 ### AT-TLS
@@ -117,7 +117,7 @@ The Inbound rules can be filtered by the listening ports of the servers, but Out
 
 The ports and jobnames can be found in the [Addressing network requirements](./address-network-requirements.md) documentation.
 
-The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#for-communication-between-api-gateway-and-other-core-services).
+The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-api-gateway-and-extensions-servers).
 
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
@@ -299,7 +299,7 @@ The following steps can be followed to point a Zowe instance at a particular ZIS
 
 5. Locate the zowe configuration file for the Zowe instance, and edit the parameter `components.zss.privilegedServerName` to match the name of the ZIS STC name chosen, such as `ZWESIS_MYSRV`
 
-6. [Restart the Zowe instance](../user-guide/start-zowe-zos/#starting-and-stopping-zowe-main-server-zweslstc-on-zos-with-zwe-server-command)
+6. [Restart the Zowe instance](../user-guide/start-zowe-zos.md#starting-and-stopping-zowe-main-server-zweslstc-on-zos-with-zwe-server-command)
 
 7.  Verify that the new ZIS server is being used by checking for the following messages in the `ZWESLSTC` server job log:
 
@@ -437,7 +437,7 @@ By default, the `app-server` handles security questions by utilizing either the 
 This behavior is performed by an `app-server` security plugin named `sso-auth`.
 Security plugins can be installed as part of Zowe extensions, and `app-server` can be customized to prefer them via the Zowe YAML.
 Different security plugins could be used to operate in different environments, with different security systems, or with different session characteristics.
-For more information, [read the extender's guide on security plugins](../extend/extend-desktop/mvd-authentication-api)
+For more information, [read the extender's guide on security plugins](../extend/extend-desktop/mvd-authentication-api.md)
 
 ### Session duration and expiration
 

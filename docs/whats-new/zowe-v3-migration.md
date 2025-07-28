@@ -34,6 +34,7 @@ To migrate from Zowe **v2.16.0** or a lower version, perform the following tasks
 
 2) Update your PROCLIB entries for Zowe, as enhancements and default parameters have changed throughout Zowe v2.
 This can be performed with the unix command `zwe init stc`, by running the job ZWEISTC, or by copying the SZWESAMP members ZWESLSTC, ZWESISTC, and ZWESASTC into your desired PROCLIB.
+3) If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 </details>
 
@@ -123,7 +124,7 @@ zowe:
 Before starting the migration, ensure the following system requirements are met:
 
 - **z/OSMF**  
-Version V2R5 with APAR PH12143 or V3R1 is required. JWT support for z/OSMF must be enabled. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
+Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.
 - **Java**  
 Java 17 is required. The Zowe YAML parameter `java.home` value should be a **Java 17** home location. If an administrator uses `zwe init` to set up Zowe, ensure the `java` for that user is v17 by including it in the `PATH` environment variable.
 - **Node.js**  
@@ -170,7 +171,7 @@ components:
 
 #### Keyrings
 
-If you are using keyrings, verify that Zowe YAML references to `safkeyring` use 2 slashes, not 4, such as `safkeyring://` instead of `safkeyring:////`.
+If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
 #### Gateway z/OSMF service configuration
 

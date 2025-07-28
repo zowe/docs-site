@@ -119,7 +119,7 @@ Use the following procedure to enable the feature to use an OIDC Access Token as
     The following URL is the default value for Zowe and ZSS:
 
     ```
-    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
 
 ## Troubleshooting

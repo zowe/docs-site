@@ -1,8 +1,23 @@
 # zwe support verify-fingerprints
 
-[zwe](./.././zwe) > [support](././zwe-support) > [verify-fingerprints](./zwe-support-verify-fingerprints)
+[zwe](./.././zwe.md) > [support](././zwe-support.md) > [verify-fingerprints](./zwe-support-verify-fingerprints.md)
 
 	zwe support verify-fingerprints [parameter [parameter]...]
+
+## Description
+
+This command will gather the hash (fingerprint) of every file in the `zowe.runtimeDirectory`.
+The result is then compared with existing hashes.
+
+Java is required to run the hash utility. Make sure the environment variable `JAVA_HOME`
+is set to the directory containing `bin/java`.
+
+For example, if java is at '/usr/lpp/java/current/bin/java', then set `JAVA_HOME` to '/usr/lpp/java/current'.
+
+NOTE: For best results, it is recommended to set all directories in the `zowe.yaml` configuration file
+which reside outside the `zowe.runtimeDirectory`. These are typically `zowe.workspaceDirectory`,
+`zowe.logDirectory` and certificates directories.
+
 
 ## Parameters
 
@@ -12,7 +27,7 @@
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---target-dir||string|no|Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
+--target-dir||string|no|Target directory where the support package will be created. If it is not specified, system temporary directory will be used.
 --help|-h|boolean|no|Display this help.
 --debug,--verbose|-v|boolean|no|Enable verbose mode.
 --trace|-vv|boolean|no|Enable trace level debug mode.
@@ -27,15 +42,20 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ZWEL0113E|113|Failed to find Zowe version. Please validate your Zowe directory.
+ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
 ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
 ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0181E|181|Failed to verify Zowe file fingerprints.
+ZWEL0320E|320|Failed to compare hashes of %s and current.
 
 
 ### Inherited from parent command
 
 Error code|Exit code|Error message
 |---|---|---
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
+ZWEL0322E|322|%s is not a valid directory.
 ||100|If the user pass `--help` or `-h` parameter, the zwe command always exits with `100` code.
 ZWEL0101E|101|ZWE_zowe_runtimeDirectory is not defined.
 ZWEL0102E|102|Invalid parameter %s.
@@ -65,9 +85,11 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
+ZWEL0322E|322|%s is not a valid directory.

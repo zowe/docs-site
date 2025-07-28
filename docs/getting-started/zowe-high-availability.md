@@ -11,14 +11,14 @@ To enable high availability when Zowe runs in a Sysplex, it is necessary to meet
 - The Zowe instance is installed on every LPAR.
 - The API services are registered to each Zowe instance.
 - A shared file system is created between LPARs in the Sysplex. For details, see [How to share file systems in a Sysplex](https://www.ibm.com/docs/en/zos/2.4.0?topic=planning-sharing-file-systems-in-sysplex).
-- z/OSMF High Availability mode is configured. For details, see [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha).
+- z/OSMF High Availability mode is configured. For details, see [Configuring z/OSMF high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md).
 - The instance on every LPAR is started.
 
 **Configuration with high availability**
 
 The configuration for the specific instance is composed of the defaults in the main section and the overrides in the `haInstances` section of the `zowe.yaml` configuration file.
 
-In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has an internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. For more information, see [Zowe YAML configuration reference](../appendix/zowe-yaml-configuration#yaml-configurations---hainstances).
+In this section, `ha-instance` represents any Zowe high availability instance ID. Every instance has an internal id and a section with overrides compared to the main configuration in the beginning of the `zowe.yaml` file. For more information, see [Zowe YAML server configuration reference](../appendix/zowe-yaml-configuration.md#yaml-configurations---hainstances).
 
 ## Caching service setup and configuration
 

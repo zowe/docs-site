@@ -79,8 +79,8 @@ The API Mediation Layer is a collection of services for management and administr
 
 * API Gateway
 * API Catalog
-* API Discovery
-* Caching service
+* API Discovery Service
+* Caching Service
 * ZAAS
 
 ### API Gateway
@@ -102,18 +102,18 @@ When the API Gateway is running, this server is accessible at `https://<ZOWE_HOS
 When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
 When running on z/OS, the server uses the jobname suffix of AC.
 
-### API Discovery
+### API Discovery Service
 
-The API Discovery server acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
+The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
 
 ![Zowe API Discovery](../images/api-mediation/api-discovery.png)
 
 When running on z/OS, the server uses the jobname suffix of AD.
 
-### Caching service
+### Caching Service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The Caching service URL is `https://<ZOWE_HOST_IP>:7555`.
-For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service).
+For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
 When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.

@@ -512,7 +512,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
   The following URL is the default value for Zowe and ZSS:
 
     ```
-    https://${ZWE_haInstance_hostname}:${GATEWAY_PORT}/zss/api/v1/certificate/dn
+    https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
 - **`apiml.security.ssl.verifySslCertificatesOfServices`**  
  Defines whether APIML should verify certificates of services in strict mode. Setting to `true` will enable the `strict` mode where APIML will validate if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
@@ -610,7 +610,7 @@ These configurations can be used under the `components.caching-service` section:
  Specifies the data set name of the caching service VSAM data set.
 - **`storage.infinispan.initialHosts`**
 
-  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${zowe.components.caching-service.storage.infinispan.jgroups.port}]`. 
+  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
 
 - **`storage.infinispan.persistence.dataLocation`**
 

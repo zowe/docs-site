@@ -1,21 +1,27 @@
 # Onboarding a REST or GraphQL API without code changes required
 
-As a user of Zowe&trade;, onboard an existing REST or GraphQL API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+
+:::info Role: API service developer
+:::
+
+Review this article to onboard an existing REST or GraphQL API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
 :::note
-When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Onboarding Overview](onboard-overview.md#service-onboarding-guides).
+When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
 :::
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
 
-* [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
-* [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
-* [Route your API](#route-your-api)
-* [Customize configuration parameters](#customize-configuration-parameters)
-* [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-* [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-* [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-* [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+- [Onboarding a REST or GraphQL API without code changes required](#onboarding-a-rest-or-graphql-api-without-code-changes-required)
+  - [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
+  - [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
+  - [Route your API](#route-your-api)
+  - [Customize configuration parameters](#customize-configuration-parameters)
+  - [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
+  - [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
+  - [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
+  - [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 :::tip
 For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
@@ -159,6 +165,13 @@ This method enables you to access the service through a stable URL, and move the
 This part contains a more complex example of the configuration and an explanation of all the possible parameters:
 
 **REST API**
+
+<details>
+
+<summary>
+Click here for a sample yaml file for a REST API. 
+</summary>
+
 ```yaml
 services:
     - serviceId: petstore
@@ -199,7 +212,18 @@ additionalServiceMetadata:
       authentication:
         scheme: bypass
 ```
+
+</details>
+
+<br/>
+
 **GraphQL API**
+
+<details>
+
+<summary>
+Click here for a sample yaml file for a GraphQL API.
+</summary>
 
 ```yaml
 services:
@@ -238,6 +262,10 @@ additionalServiceMetadata:
       authentication:
         scheme: bypass
 ```
+
+</details>
+
+<br/>
 
 * **serviceId**
 
@@ -511,7 +539,7 @@ The following procedure describes how to add your service to the API Mediation L
 
     **Tip:** Wait for the services to be ready. This process may take a few minutes.
 
-4.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+4.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
     You successfully defined your Java application if your service is running and you can access the service endpoints. The following example is the service endpoint for the sample application:
 
@@ -545,7 +573,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
 
 4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.
 
-5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-the-api-ml)
+5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
 You successfully defined your Java application if your service is running and you can access its endpoints. The endpoint displayed for the sample application is:
 ```

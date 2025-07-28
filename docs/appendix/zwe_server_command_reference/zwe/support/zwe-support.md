@@ -1,6 +1,6 @@
 # zwe support
 
-[zwe](.././zwe) > [support](./zwe-support)
+[zwe](.././zwe.md) > [support](./zwe-support.md)
 
 	zwe support [sub-command [sub-command]...] [parameter [parameter]...]
 
@@ -17,9 +17,13 @@ This command will collect these information:
 - Environment
   * z/OS version
   * Java version
+    * Java keytool TLS information
   * Node.js version
+  * zOSMF status
   * External Security Manager
   * CEE Runtime Options
+  * Filesystem flags
+  * ZSS Program Controlled extended attribute
 - Zowe configurations
   * Zowe manifest.json
   * Zowe configuration file
@@ -29,15 +33,25 @@ This command will collect these information:
   * Zowe APIML static registration files under "`zowe.workspaceDirectory`/api-mediation/api-defs"
 - Zowe runtime
   * Active running Zowe processes
-  * Zowe job log
 - Zowe fingerprints and validation result
 
+
+## Examples
+
+```
+zwe support -c /path/to/zowe.yaml
+
+zwe support -c /path/to/zowe.yaml --target-dir /path/to/save/support/results
+
+zwe support --config 'FILE(/path/to/zowe.yaml):PARMLIB(ZOWE.PARMLIB(ZWEYAML))'
+
+```
 
 ## Parameters
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---target-dir||string|no|Target directory where the support package will be created.\nIf it is not specified, system temporary directory will be used.
+--target-dir||string|no|Target directory where the support package will be created. If it is not specified, system temporary directory will be used.
 
 
 ### Inherited from parent command
@@ -55,6 +69,11 @@ Full name|Alias|Type|Required|Help message
 
 ## Errors
 
+Error code|Exit code|Error message
+|---|---|---
+ZWEL0150E|150|Failed to find file %s. Zowe runtimeDirectory is invalid.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
+ZWEL0322E|322|%s is not a valid directory.
 
 
 ### Inherited from parent command
@@ -90,9 +109,11 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
+ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
 ZWEL0172E||Component %s has %s defined but the file is missing.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
+ZWEL0322E|322|%s is not a valid directory.

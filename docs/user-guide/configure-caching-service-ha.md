@@ -6,7 +6,7 @@ In an HA setup the different Zowe API Mediation Gateway servers share the same n
 
 Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`. If you are running the caching service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
 
-To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service).
+To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 :::note
 To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution. Infinispan is the recommended storage method to use in production.
@@ -31,10 +31,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## Infinispan
 
-  :::Note
-
+  :::note
   This is the recommended solution for on-prem z/OS production deployments
-
   :::
 
   Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
@@ -52,7 +50,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## VSAM (Deprecated)
 
-  :::Note
+  :::note
 
   VSAM support in Caching Service will be removed in a future release
 

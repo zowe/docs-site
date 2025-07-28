@@ -15,9 +15,13 @@ you may prefer to skip the introductory sections, and see the [Additional resour
 to jump directly to the security related technical guidance provided on how to Set up Zowe, Use Zowe or Extend Zowe.
 
 Review the following sections to learn about how Zowe leverages modern security concepts and technologies:
+- [Zowe Security Overview](#zowe-security-overview)
   - [Digital certificates](#digital-certificates)
+    - [Digital certificates usage](#digital-certificates-usage)
   - [User Authentication](#user-authentication)
   - [Access Authorization](#access-authorization)
+    - [SAF resource check](#saf-resource-check)
+  - [Additional resources](#additional-resources)
   
 ## Digital certificates
 
@@ -42,43 +46,44 @@ Review digital certificates terminology in the [Zowe security glossary](../appen
 :::
 
 ### Digital certificates usage
-Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that a client-user (the service user) identity is known to the mainframe security facility.   
+Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that the identity of a client-user (the service user) is known to the mainframe security facility.   
 
 **Next Steps:**
-- Read more about digital certificates mechanics in the [Use certificates](../user-guide/use-certificates.md) in the Zowe documentation.
-- Read the [Zowe certificate configuration overview](../user-guide/configure-certificates.md) article in the Zowe User Guide documentation to understand the various options for Zowe certificate configuration.
+- For more information about the mechanics of digital certificate, see [Using certificates](../user-guide/use-certificates.md).
+- To learn more about the various options for Zowe certificate configuration, see [Zowe certificate configuration overview](../user-guide/configure-certificates.md) under the _Use_ tab.
 
 ## User Authentication
 Zowe always authenticates the users accessing its interfaces and services. 
 
 Zowe API ML implements a Single-Sign-On feature which allows users to authenticate once, whereby users can access all mainframe resources that they are granted access rights to for the period in which the Zowe credentials remain valid.
 
-API ML uses multiple authentication methods - Basic Auth (username-password), OIDC/OAuth2, Client certificates and Personal Access Tokens with possibility of strengthening of the security by adding external Multi-Factor Authentication provider.
+API ML uses multiple authentication methods - Basic Auth (username-password), OIDC/OAuth2, Client certificates and Personal Access Tokens, with possibility of strengthening of the security by adding external Multi-Factor Authentication provider.
 
 **Next steps:**
-- For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication) article.    
+- For details about authentication methods used by Zowe, see [Zowe User Authentication](./zowe-security-authentication.md).    
 
 ## Access Authorization
 [Authorization](https://en.wikipedia.org/wiki/Authorization "Authorization refers to the mechanism of granting specific permissions to users for accessing particular resources or functions.") is the mechanism by which a security system grants or rejects access to protected resources.
 
 Zowe fully relies on the SAF/ESM for control on the user access to mainframe resources. Authorization is processed by SAF when a mainframe service attempts to access these services under the identity of the user authenticated by Zowe.
 
-**Tip:**
+:::tip
 We recommend you review the core [Authorization](https://en.wikipedia.org/wiki/Authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
-related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
+related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary.md).
+:::
 
 ### SAF resource check
 In some cases Zowe API ML can check for the authorization of the user on certain endpoints even before the request is propagated to the target mainframe service.
 Access to a SAF resource is checked with the installed z/OS External Security Manager (ESM).
 
 **Next steps:**
-For detailed information, see the [SAF resource checking documentation](../user-guide/api-mediation/configuration-saf-resource-checking).
+For more information about the SAF resource check, see [Configuring SAF resource checking](../user-guide/api-mediation/configuration-saf-resource-checking.md).
 
 ## Additional resources
 For more information about getting started with certificates including determining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
 
-- [Use-case based certificates configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
-- [Generate certificates for Zowe servers](../user-guide/generate-certificates.md)
-- [Import certificates](../user-guide/import-certificates.md)
-- [Configure Zowe to use certificates](../user-guide/configure-certificates.md)
+- [Certificate configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
+- [Generating a certificate](../user-guide/generate-certificates.md)
+- [Importing and configuring a certificate](../user-guide/import-certificates.md)
+- [Configuring certificates](../user-guide/configure-certificates.md)
 

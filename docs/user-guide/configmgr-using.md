@@ -15,7 +15,7 @@ When a validation error occurs, the command you ran will end with output that sh
 
 Consider the following Zowe configuration section about certificates:
 
-```
+```yaml
 zowe:
   runtimeDirectory: /my/zowe/runtime
   certificates:
@@ -28,7 +28,7 @@ In the example, the certificate type `PCKS12` does not exist. It is a typo. With
 
 With the schema file, you can see that there are listed choices for certificate types:
 
-```
+```json
     "certificate": {
       "type": "object",
       "additionalProperties": false,
@@ -65,7 +65,7 @@ This output shows that `type` has an issue. You can read the `enum` to see the c
 
 ## JSON-Schema validation
 
-Configuration Manager uses [JSON Schema](https://json-schema.org/) to validate a configuration. As a result, Zowe itself and all components and extensions must have schema files for Configuration Manager to perform validation. Developers should read [how to add schemas to components](../extend/server-schemas) as it is required in v2. 
+Configuration Manager uses [JSON Schema](https://json-schema.org/) to validate a configuration. As a result, Zowe itself and all components and extensions must have schema files for Configuration Manager to perform validation. Developers should read [how to add schemas to components](../extend/server-schemas.md) as it is required in v2. 
 
 Zowe now publishes these schema files so that you can see all the configuration properties that are possible in Zowe, see how they have changed between versions, and see what values are valid for them. Below is a list of some of these schemas:
 
@@ -95,10 +95,6 @@ When using a single Unix file, the syntax is just the path to the file, such as 
 CONFIG=FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml):PARMLIB(MYORG.ZOWE.PARMLIB(YAML))
 ```
 
-**Note:** All `PARMLIB()` entries must have the same member name:
-```
-CONFIG=PARMLIB(MYORG.ZOWE.PARM1(YAML)):PARMLIB(MYORG.ZOWE.PARM2(YAML))
-```
 **Note:** Characters `=`, `:`, `(` and `)` are considered as reserved. It is highly recommended to avoid using of these characters in the name of zowe.yaml file.
 
 Each storage type in the list you provide must adhere to the same Zowe configuration schema, but the contents can be any subset you want per storage types. Zowe will merge together the contents of all the storage types into one unified configuration, so the collection of storage types must result in a configuration which is valid against the Zowe schema.
@@ -125,7 +121,7 @@ When you use multiple storage types, Zowe constructs the unified configuration b
 
 ## Parmlib support
 
-Zowe YAML content can be stored in PARMLIB as well. The structure is the same as in the unix files, so be sure to have sufficient record length to fit the YAML content within the member. The syntax is `PARMLIB(datasetname(member))`, and although you can have multiple `PARMLIB` entries, each must have the same member name.
+Zowe YAML content can be stored in PARMLIB as well. The structure is the same as in the unix files, so be sure to have sufficient record length to fit the YAML content within the member. The syntax is `PARMLIB(datasetname(member))`.
 In the previous section, there was an example of using multiple files to split configuration into parts. This ability can be done with PARMLIB, FILE, or any mix of the two. An example of using PARMLIB with Zowe configuration may look like this in your STC JCL:
 
 ```
@@ -148,9 +144,105 @@ Templates are resolved after merging files, but before schema validation occurs,
 To make a template, you use the syntax `${{ assignment }}` in which there must be a space after `${{` and before `}}`. The _assignment_ can be a ECMAScript 2020 statement, such as a JSON path or a conditional.
 Here are some examples of templates that you can use to simplify your configuration:
 
-![templating example](../images/configure/templating.png)
+Templated example using defined `zowe.setup.dataset.prefix` for other datasets:
+```yaml
+zowe:
+  setup:
+    dataset:
+      prefix: "MY.ZOWE"
+      parmlib: ${{ zowe.setup.dataset.prefix }}.PARMLIB
+      jcllib: ${{ zowe.setup.dataset.prefix }}.JCLLIB
+      authLoadlib: ${{ zowe.setup.dataset.prefix }}.ZWESALL
+      authPluginLib: ${{ zowe.setup.dataset.prefix }}.ZWESPLUG
+```
+Resolved output:
+```yaml
+zowe:
+  setup:
+    dataset:
+      prefix: "MY.ZOWE"
+      parmlib: "MY.ZOWE.PARMLIB"
+      jcllib: "MY.ZOWE.JCLLIB"
+      authLoadlib: "MY.ZOWE.ZWESALL"
+      authPluginLib: "MY.ZOWE.ZWESPLUG"
+```
 
 ### Template functions
+Following examples demonstarates how to define the logging for `zss` component based on the `crossMemoryServerName`. When the default name of `ZWESIS_STD` is used, the general logging is set to `2`. For other names the `logLevels` is set to specific trace level(s) with the highest value of `5`.
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: ZWEDBG_FS
+    agent:
+      64bit: true
+    logLevels: 
+      "${{ 
+        () => {
+          const XMS = components.zss.crossMemoryServerName;
+          switch (XMS) {
+            case 'ZWESIS_STD': return { '_zss.traceLevel': 2 }; 
+            case 'ZWEDBG_ALL': return { '_zss.traceLevel': 5 }; 
+            case 'ZWEDBG_SOCKET': return { '_zss.socketTrace': 5 }; 
+            case 'ZWEDBG_FILE': return { '_zss.fileTrace': 5 }; 
+            case 'ZWEDBG_FS': return { '_zss.fileTrace': 5, '_zss.socketTrace': 5 }; 
+          }
+        } ();
+      }}"
+```
+Resolved template:
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: "ZWEDBG_FS"
+    agent:
+      jwt:
+        fallback: true
+      64bit: true
+    logLevels:
+      _zss.fileTrace: 5
+      _zss.socketTrace: 5
+```
+:::note
+The `components.zss.agent.jwt.fallback` was not defined in the template, but is is defined the [defaults.yaml](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/defaults.yaml). That is the reason to be included in the resolved template.
+:::
+
+### Using System Properties in Templates
+"Global" objects and functions exist in configmgr templates that can be used base Zowe YAML values upon environmental properties.
+This allows the YAML to be more portable and usable on many systems without modification. The following is a list of useful functions organized by their global objects.
+
+### `std`
+* `getenv(environment_variable_name: string)`
+    * Input: `environment_variable_name` (string): The name of an environment variable you wish to read.
+    * Output: (string or undefined) The value of the environment variable, or undefined if the variable is not set.
+
+
+### `zos`
+
+* `getEsm()`
+    * Output: (string) The string value `RACF`, `TSS`, or `ACF2` are returned corresponding to the ESM that is running on the system.
+* `getZosVersion()`
+    * Output: (string) A numerical representation of the z/OS version number of the system.
+* `resolveSymbol(zos_symbol_name: string)`
+    * Input: `zos_symbol_name` (string): The name of a z/OS system symbol to load. The value must begin with `&` and must not end with `.`.
+    * Output: (string or undefined) The value of the symbol, or undefined if the symbol is not set.
+
+An example for how to use these functions to make a Zowe YAML file more portable is as follows:
+
+```yaml
+zowe:
+  setup:
+    security:
+      product: "${{ zos.getEsm() }}"
+  externalDomains:
+  - "${{ zos.resolveSymbol('&SYSNAME') }}"
+java:
+  home: "${{ std.getenv('JAVA_HOME') }}"
+```
+
 
 ## Configuration Manager Unix executable
 
