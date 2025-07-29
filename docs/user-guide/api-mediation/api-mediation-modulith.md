@@ -3,9 +3,8 @@
 Zowe version 3.3.0 introduces as a technical preview the option to switch execution mode from the current modularized scheme to a single-service option.
 This switch <!--"Execution of xyz though the Monulith method ..."-->brings performance benefits and configuration simplification for new installations:
 
-* Unified memory footprint. <!--Please add the benefit of this. -->
-* Minimize JVM processes.
-* Minimize networking operations.
+* Performance Improvements: Enhanced performance, faster startup times, and reduced CPU and memory consumption.
+* Operational Efficiency: Simplified deployment processes, single JVM process, and decreased network traffic.
 * Unified configuration options.
 
 ## Architecture
@@ -22,7 +21,7 @@ Use the example from the current architecture diagram?
 ## Breaking Changes
 
 :::note
-The following instructions assume a default address space prefix `ZWE1`. Update as needed.
+The following instructions assume a default address space prefix `ZWE1`. Update according to the `zowe.job.prefix` parameter from your `zowe.yaml` file.
 :::
 
 To run API Mediation Layer in single-service mode, the system programmer is required to make configuration changes in the following areas:
@@ -62,11 +61,48 @@ The following features are not supported in the technical preview release of the
 * Multi tenancy deployment is not supported.
 * Docker container deployments.
 
+### App-server requirements
+
+The App-server which provides the Zowe Desktop functionality requires some manual updates to work with the technical preview version of the API Mediation Layer in single-service mode.
+Perform the following update to the `zowe.yaml` to try out the Zowe Desktop in integration with the new deployment mode:
+
+1. Make sure the following properties are filled in under `components.app-server`:
+
+  ```yaml
+  components:
+    app-server:
+      agent:
+        mediationLayer:
+          enabled: true
+          serviceName: ZLUX
+      node:
+        mediationLayer:
+          enabled: true
+          server:
+            enabled: true
+            gatewayHostname: %HOSTNAME%
+            discoveryUrls: 
+              - https://%HOSTNAME%:%DISCOVERY_PORT%/eureka/
+            hostname: %HOSTNAME%
+            gatewayPort: %GATEWAY_PORT%
+            port: %DISCOVERY_PORT%
+            cachingService:
+              enabled: true
+  ```
+
+Where:
+
+* `HOSTNAME`: Set to the hostname where the Gateway Service and Discovery Service are running, this is typically the same as `zowe.externalHosts`.
+* `DISCOVERY_PORT`: Set to the port where Discovery Service is listening. Set to the same value as `components.discovery.port`.
+* `GATEWAY_PORT`: Set to the port where Gateway Service is listening. Set to the same value as `components.gateway.port`.
+
+2. Start the Zowe task.
+
 ## Enable the Single-service API Mediation Layer
 
 To switch the API Mediation Layer into modularized mode, perform the following changes to the installation's `zowe.yaml` file:
 
-1. Add component `apiml` and enable it: <!-- Please add where specifically in the yaml. -->
+1. Add component `apiml` and enable it:
 
     ```yaml
     components:
@@ -76,7 +112,7 @@ To switch the API Mediation Layer into modularized mode, perform the following c
 
 2. Disable remaining API Mediation Layer components:
 
-    * Disable Gateway Service:
+    * Disable Gateway Service: set `components.gateway.enabled` to `false`
 
         ```yaml
             components:
@@ -84,7 +120,7 @@ To switch the API Mediation Layer into modularized mode, perform the following c
                 enabled: false
         ```
 
-    * Disable Discovery Service:
+    * Disable Discovery Service: set `components.discovery.enabled` to `false`
 
         ```yaml
             components:
