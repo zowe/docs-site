@@ -41,7 +41,14 @@ Update the network permissions to reflect this change. Both ports will be under 
 ### Log Prefix
 
 Logs from internal API Mediation Layer components such as the Discovery Service, API Catalog, Caching Service will appear under the `ZWE1AG` prefix.
-<!-- Can we please include a log example? -->
+
+For example, the following message was being printed under `ZWE1AC`:
+
+```plaintext
+2025-07-29 08:13:44.560 <ZWEAGW1:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
+```
+
+**Note:** This change affects only logs printed to spool or USS files, WTOs remain unchanged.
 
 ### AT-TLS
 
