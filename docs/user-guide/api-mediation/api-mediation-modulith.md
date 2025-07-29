@@ -1,16 +1,16 @@
 # API Mediation Layer Single-Service deployment
 
-Zowe version 3.3.0 introduces as a technical preview the option to switch execution mode from the current modularized scheme to an All-In-One option.
+Zowe version 3.3.0 introduces as a technical preview the option to switch execution mode from the current modularized scheme to a single-service option.
 This switch <!--"Execution of xyz though the Monulith method ..."-->brings performance benefits and configuration simplification for new installations:
 
 * Unified memory footprint. <!--Please add the benefit of this. -->
-* Minimize JVM processes. 
+* Minimize JVM processes.
 * Minimize networking operations.
 * Unified configuration options.
 
 ## Architecture
 
-This section contains an overview of the architecture of the All-In-One deployment.
+This section contains an overview of the architecture of the API Mediation Layer single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
 <!-- TODO
@@ -33,7 +33,7 @@ To run API Mediation Layer in single-service mode, the system programmer is requ
 
 ### Port usage
 
-The new deployment mode <!--The Modulth single-service mode --> runs all API Mediation Layer components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
+The new single-service deployment mode runs all API Mediation Layer components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
 
 The single-service API Mediation Layer address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
 
@@ -49,7 +49,7 @@ Logs from internal API Mediation Layer components such as the Discovery Service,
 If the installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
 
 * Update job name filters to use `ZWE1AG`.
-* Remove unneeded rules that were performing the handling. 
+* Remove unneeded rules that were performing the handling.
 
 <!--We need to include an example of these PAGENT rules configuration -->
 
@@ -59,7 +59,8 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 
 The following features are not supported in the technical preview release of the single service API Mediation Layer:
 
-* Multi tenancy deployment is not supported. <!-- is this the full list of non-supported fuctions? If so, we'll change the way this is described to a single sentence. -->
+* Multi tenancy deployment is not supported.
+* Docker container deployments.
 
 ## Enable the Single-service API Mediation Layer
 
