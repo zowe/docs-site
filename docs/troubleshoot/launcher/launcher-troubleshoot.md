@@ -66,7 +66,7 @@ EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provid
 
 Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
 
-```
+```yaml
 zowe: 
   network:
     server:
