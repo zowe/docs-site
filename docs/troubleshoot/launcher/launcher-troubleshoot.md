@@ -62,7 +62,7 @@ Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, 
 EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
 ```
 
-**Follow these steps to resolve port validation failures on Zowe startup:**
+**Follow these steps to resolve port validation failures:**
 
 Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
 
