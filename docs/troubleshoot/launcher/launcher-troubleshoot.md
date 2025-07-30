@@ -72,7 +72,3 @@ zowe:
     server:
       validatePortFree: false
 ```
-If in the `ZWESLSTC` started task you are using `PARMLIB` members for [configuration data](https://docs.zowe.org/stable/user-guide/configmgr-using/#parmlib-support), add the line
-```
-ZWE_NETWORK_VALIDATE_PORT_FREE=false
-```
