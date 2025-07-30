@@ -54,7 +54,7 @@ CONFIG=/path/to/zowe.yaml
 
 On start up, Zowe uses the `netstat` command to check whether the ports required by its enabled components are available.
 
-Under configuration of dual stack networking this may fail, with messages similar to the following:
+Under configuration of dual stack networking, this can fail, with messages similar to the following:
 
 ```
 Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, using default of 'INET'
@@ -62,7 +62,7 @@ Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, 
 EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
 ```
 
-**Follow these steps:**
+**Follow these steps to resolve port validation failures on Zowe startup:**
 
 Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
 
@@ -72,7 +72,7 @@ zowe:
     server:
       validatePortFree: false
 ```
-If you are using PARMLIB configurations
+If in the `ZWESLSTC` started task you are using `PARMLIB` members for [configuration data](https://docs.zowe.org/stable/user-guide/configmgr-using/#parmlib-support) add the line
 ```
 ZWE_NETWORK_VALIDATE_PORT_FREE=false
 ```
