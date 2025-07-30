@@ -68,43 +68,6 @@ The following features are not supported in the technical preview release of the
 * Multi tenancy deployment is not supported.
 * Docker container deployments.
 
-### App-server requirements
-
-The App-server which provides the Zowe Desktop functionality requires some manual updates to work with the technical preview version of the API Mediation Layer in single-service mode.
-Perform the following update to the `zowe.yaml` to try out the Zowe Desktop in integration with the new deployment mode:
-
-1. Make sure the following properties are filled in under `components.app-server`:
-
-  ```yaml
-  components:
-    app-server:
-      agent:
-        mediationLayer:
-          enabled: true
-          serviceName: ZLUX
-      node:
-        mediationLayer:
-          enabled: true
-          server:
-            enabled: true
-            gatewayHostname: %HOSTNAME%
-            discoveryUrls: 
-              - https://%HOSTNAME%:%DISCOVERY_PORT%/eureka/
-            hostname: %HOSTNAME%
-            gatewayPort: %GATEWAY_PORT%
-            port: %DISCOVERY_PORT%
-            cachingService:
-              enabled: true
-  ```
-
-Where:
-
-* `HOSTNAME`: Set to the hostname where the Gateway Service and Discovery Service are running, this is typically the same as `zowe.externalHosts`.
-* `DISCOVERY_PORT`: Set to the port where Discovery Service is listening. Set to the same value as `components.discovery.port`.
-* `GATEWAY_PORT`: Set to the port where Gateway Service is listening. Set to the same value as `components.gateway.port`.
-
-2. Start the Zowe task.
-
 ## Enable the Single-service API Mediation Layer
 
 To switch the API Mediation Layer into modularized mode, perform the following changes to the installation's `zowe.yaml` file:
@@ -117,51 +80,9 @@ To switch the API Mediation Layer into modularized mode, perform the following c
         enabled: true
     ```
 
-2. Disable remaining API Mediation Layer components:
-
-    * Disable Gateway Service: set `components.gateway.enabled` to `false`
-
-        ```yaml
-            components:
-              gateway:
-                enabled: false
-        ```
-
-    * Disable Discovery Service: set `components.discovery.enabled` to `false`
-
-        ```yaml
-            components:
-              discovery:
-                enabled: false
-        ```
-
-    * Disable API Catalog: set `components.api-catalog.enabled` to `false`
-
-        ```yaml
-            components:
-              api-catalog:
-                enabled: false
-        ```
-
-    * Disable ZAAS: set `components.zaas.enabled` to `false`
-
-        ```yaml
-            components:
-              zaas:
-                enabled: false
-        ```
-
-    * Disable Caching Service: set `components.caching-service.enabled` to `false`
-
-        ```yaml
-            components:
-              caching-service:
-                enabled: false
-        ```
-
     **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the modularized deployment of API Mediation Layer.
 
-3. Start the Zowe task.
+2. Start the Zowe task.
 
 ### Rolling back changes
 
@@ -170,15 +91,7 @@ It is possible to revert to the original deployment mode by switching back the c
 1. Disable the `apiml` component:
     Set `components.apiml.enabled` to `false`.
 
-2. Re-enable the original components:
-
-   * Set `components.gateway.enabled` to `true`.
-   * Set `components.discovery.enabled` to `true`.
-   * Set `components.zaas.enabled` to `true`.
-   * Set `components.api-catalog.enabled` to `true` (if required)
-   * Set `components.caching-service.enabled` to `true` (if required)
-
-3. Start the Zowe task.
+2. Start the Zowe task.
 
 ## Future plans
 
