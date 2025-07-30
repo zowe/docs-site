@@ -5,14 +5,14 @@ The following topics contain information that can help you troubleshoot problems
 Issues and development of the Zowe Launcher is managed in GitHub. When you troubleshoot a problem, you can check whether a GitHub issue (open or closed) that covers the problem already exists. For a list of issues, see the [launcher repo](https://github.com/zowe/launcher).
 
 [**Error Message Codes**](launcher-error-codes.md)
-## Enable Zowe Launcher Debug Mode
+## Enabling Zowe Launcher Debug Mode
+
+:::warning[Important] 
+You should enable debug mode **only** when you want to troubleshoot issues.
+Disable debug mode when you are not troubleshooting. Running Zowe Launcher in debug mode can adversely affect its performance and consume a large amount of spool space.
+:::
 
 Use debug mode to display additional debug messages for Zowe Launcher.
-
-**Important:** We highly recommend that you enable debug mode only when you want to troubleshoot issues.
-Disable debug mode when you are not troubleshooting. Running Zowe Launcher in debug mode can adversely affect its performance and consume a large amount of spool space.
-
-**Follow these steps:**
 
 1. Open the PROCLIB member `ZWESLSTC`.
 
@@ -62,7 +62,7 @@ Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, 
 EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
 ```
 
-**Follow these steps to resolve port validation failures:**
+### Resolving port validation failures
 
 Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
 
@@ -72,7 +72,7 @@ zowe:
     server:
       validatePortFree: false
 ```
-If in the `ZWESLSTC` started task you are using `PARMLIB` members for [configuration data](https://docs.zowe.org/stable/user-guide/configmgr-using/#parmlib-support) add the line
+If in the `ZWESLSTC` started task you are using `PARMLIB` members for [configuration data](https://docs.zowe.org/stable/user-guide/configmgr-using/#parmlib-support), add the line
 ```
 ZWE_NETWORK_VALIDATE_PORT_FREE=false
 ```
