@@ -52,7 +52,7 @@ CONFIG=/path/to/zowe.yaml
 
 ## Troubleshooting Port Validation
 
-On startup Zowe will use `netstat` to check whether the ports required by its enabled components are available.
+On start up, Zowe uses the `netstat` command to check whether the ports required by its enabled components are available.
 
 Under configuration of dual stack networking this may fail, with messages similar to the following:
 
