@@ -1,15 +1,22 @@
 # API Mediation Layer Single-Service deployment
 
-Zowe version 3.3.0 introduces as a technical preview the option to switch execution mode from the current modularized scheme to a single-service option.
-This switch <!--"Execution of xyz though the Monulith method ..."-->brings performance benefits and configuration simplification for new installations:
+Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current modularized scheme to a single-service option.
 
-* Performance Improvements: Enhanced performance, faster startup times, and reduced CPU and memory consumption.
-* Operational Efficiency: Simplified deployment processes, single JVM process, and decreased network traffic.
-* Unified configuration options.
+:::info
+Required roles: System Programmer, Network Administrator
+:::
+
+This **single-service deployment mode** alternative to the modularized scheme brings the following performance benefits and simplification in configuration for new installations:
+
+* **Performance Improvements**  
+Enhanced performance, faster startup times, and reduced CPU and memory consumption
+* **Operational Efficiency**  
+Simplified deployment processes, a single JVM process, and decreased network traffic
+* **Unified configuration options**
 
 ## Architecture
 
-This section contains an overview of the architecture of the API Mediation Layer single-service deployment mode.
+This section contains an overview of the architecture of the API ML single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
 <!-- TODO
@@ -21,26 +28,29 @@ Use the example from the current architecture diagram?
 ## Breaking Changes
 
 :::note
-The following instructions assume a default address space prefix `ZWE1`. Update according to the `zowe.job.prefix` parameter from your `zowe.yaml` file.
+The following instructions assume the default address space prefix `ZWE1`. Update this prefix according to the `zowe.job.prefix` parameter from your `zowe.yaml` file.
 :::
 
-To run API Mediation Layer in single-service mode, the system programmer is required to make configuration changes in the following areas:
+To run API ML as a single-service deployment, the system programmer is required to make configuration changes in the following areas:
 
-* Port usage is shared in a single address space. <!-- I think we should remove "is shared in a single address spece" as this information should be detailed in the corresponding section below.-->
-* Log prefix is unified for all components. <!--Similarly, "is unified for all components" should be explained in the corresponding section. -->
-* AT-TLS rule adaptations.
+* **Update ports to use a single port**  
+In single-service deployment, all API ML components run in a single address space. <!-- I think we should remove "is shared in a single address spece" as this information should be detailed in the corresponding section below.-->
+* **Update log prefixes to a unified prefix**  
+In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. <!--Similarly, "is unified for all components" should be explained in the corresponding section. -->
+* **Update AT-TLS rules**  
 
-### Port usage
 
-The new single-service deployment mode runs all API Mediation Layer components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
+### Update port to use a single port
+
+Single-service deployment mode runs all API ML components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
 
 The single-service API Mediation Layer address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
 
 Update the network permissions to reflect this change. Both ports will be under z/OS address space `ZWE1AG`. <!-- Can we please include a codeblock example of this configuration? -->
 
-### Log Prefix
+### Update Log Prefix
 
-Logs from internal API Mediation Layer components such as the Discovery Service, API Catalog, Caching Service will appear under the `ZWE1AG` prefix.
+In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, Caching Service appear under the prefix `ZWE1AG`.
 
 For example, the following message was being printed under `ZWE1AC`:
 
@@ -50,12 +60,12 @@ For example, the following message was being printed under `ZWE1AC`:
 
 **Note:** This change affects only logs printed to spool or USS files, WTOs remain unchanged.
 
-### AT-TLS
+### Update AT-TLS rules
 
 If the installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
 
-* Update job name filters to use `ZWE1AG`.
-* Remove unneeded rules that were performing the handling.
+1. Update job name filters to use `ZWE1AG`.
+2. Remove unneeded rules that were performing the handling.
 
 <!--We need to include an example of these PAGENT rules configuration -->
 
@@ -63,16 +73,16 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 
 ## Limitations
 
-The following features are not supported in the technical preview release of the single service API Mediation Layer:
+The following features are not supported in the technical preview release of the API ML single-service deployment:
 
-* Multi tenancy deployment is not supported.
-* Docker container deployments.
+* Multi-tenancy deployment
+* Docker container deployments
 
 ## Enable the Single-service API Mediation Layer
 
-To switch the API Mediation Layer into modularized mode, perform the following changes to the installation's `zowe.yaml` file:
+To switch the API ML into single-service deployment (modularized mode), perform the following changes to the installation's `zowe.yaml` file:
 
-1. Add component `apiml` and enable it:
+1. Add the component `apiml` and enable it:
 
     ```yaml
     components:
@@ -82,7 +92,7 @@ To switch the API Mediation Layer into modularized mode, perform the following c
 
     **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the modularized deployment of API Mediation Layer.
 
-2. Start the Zowe task.
+2. Start the Zowe started task.
 
 ### Rolling back changes
 
@@ -93,7 +103,7 @@ It is possible to revert to the original deployment mode by switching back the c
 
 2. Start the Zowe task.
 
-## Future plans
+## Planned updates to single-service deployment
 
 * The modularized deployment is planned to be the default mode in Zowe v3.4.0
 * The option to rollback to the modularized deployment will remain for the duration of the Zowe v3 lifecycle.
