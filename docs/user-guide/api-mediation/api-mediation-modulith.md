@@ -34,12 +34,11 @@ The following instructions assume the default address space prefix `ZWE1`. Updat
 To run API ML as a single-service deployment, the system programmer is required to make configuration changes in the following areas:
 
 * **Update ports to use a single port**  
-In single-service deployment, all API ML components run in a single address space. 
+In single-service deployment, all API ML components run in a single address space.
 * **Update log prefixes to a unified prefix**  
-In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. 
-* **Update AT-TLS rules**   
-In single-service deployment, Job name filters require updating, and rules applying to handling require deletion. 
-
+In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix.
+* **Update AT-TLS rules**
+In single-service deployment, Job name filters require updating, and rules applying to handling require deletion.
 
 ### Update port to use a single port
 
@@ -51,9 +50,15 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 
 ### Update Log Prefix
 
-In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
+In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, ZAAS and Caching Service appear under the prefix `ZWE1AG`.
 
-For example, the following message was being printed under `ZWE1AC`:
+For example, the following message printed under `ZWE1AC`:
+
+```plaintext
+2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
+```
+
+Will appear under `ZWE1AG` with the single-service mode enabled:
 
 ```plaintext
 2025-07-29 08:13:44.560 <ZWEAGW1:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds

@@ -263,6 +263,7 @@ module.exports = {
               "label": "Advanced API Mediation Layer Configuration",
               "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
               "items": [
+                "user-guide/api-mediation/api-mediation-modulith",
                 {
                   "type": "category",
                   "label": "Enabling single sign on for clients",
