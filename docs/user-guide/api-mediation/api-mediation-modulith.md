@@ -37,7 +37,8 @@ To run API ML as a single-service deployment, the system programmer is required 
 In single-service deployment, all API ML components run in a single address space. <!-- I think we should remove "is shared in a single address spece" as this information should be detailed in the corresponding section below.-->
 * **Update log prefixes to a unified prefix**  
 In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. <!--Similarly, "is unified for all components" should be explained in the corresponding section. -->
-* **Update AT-TLS rules**  
+* **Update AT-TLS rules**   
+In single-service deployment, Job name filters require updating, and rules applying to handling require deletion. 
 
 
 ### Update port to use a single port
@@ -101,7 +102,7 @@ It is possible to revert to the original deployment mode by switching back the c
 1. Disable the `apiml` component:
     Set `components.apiml.enabled` to `false`.
 
-2. Start the Zowe task.
+2. Start the Zowe started task.
 
 ## Planned updates to single-service deployment
 
