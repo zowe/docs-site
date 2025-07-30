@@ -34,24 +34,24 @@ The following instructions assume the default address space prefix `ZWE1`. Updat
 To run API ML as a single-service deployment, the system programmer is required to make configuration changes in the following areas:
 
 * **Update ports to use a single port**  
-In single-service deployment, all API ML components run in a single address space. <!-- I think we should remove "is shared in a single address spece" as this information should be detailed in the corresponding section below.-->
+In single-service deployment, all API ML components run in a single address space. 
 * **Update log prefixes to a unified prefix**  
-In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. <!--Similarly, "is unified for all components" should be explained in the corresponding section. -->
+In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. 
 * **Update AT-TLS rules**   
 In single-service deployment, Job name filters require updating, and rules applying to handling require deletion. 
 
 
 ### Update port to use a single port
 
-Single-service deployment mode runs all API ML components in a single JVM process. <!-- Please add a single sentence about the benefit of using a single JVM process.-->For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
+Single-service deployment runs all API ML components in a single JVM process. For backward compatibility reasons, this single process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
 
-The single-service API Mediation Layer address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
+The single-service API ML address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
 
-Update the network permissions to reflect this change. Both ports will be under z/OS address space `ZWE1AG`. <!-- Can we please include a codeblock example of this configuration? -->
+Update the network permissions to reflect this change. Ensure that both ports are under z/OS address space `ZWE1AG`. 
 
 ### Update Log Prefix
 
-In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, Caching Service appear under the prefix `ZWE1AG`.
+In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
 
 For example, the following message was being printed under `ZWE1AC`:
 
@@ -59,7 +59,7 @@ For example, the following message was being printed under `ZWE1AC`:
 2025-07-29 08:13:44.560 <ZWEAGW1:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
 ```
 
-**Note:** This change affects only logs printed to spool or USS files, WTOs remain unchanged.
+**Note:** This change affects only logs printed to spool or USS files. WTOs remain unchanged.
 
 ### Update AT-TLS rules
 
@@ -67,8 +67,6 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 
 1. Update job name filters to use `ZWE1AG`.
 2. Remove unneeded rules that were performing the handling.
-
-<!--We need to include an example of these PAGENT rules configuration -->
 
 **Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 
