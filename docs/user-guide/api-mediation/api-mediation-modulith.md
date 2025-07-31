@@ -33,20 +33,22 @@ The following single-service deployment procedure assumes the default address sp
 
 To run API ML as a single-service deployment, the system programmer is required to make configuration changes in the following areas:
 
-* **Update ports to use a single port**  
-In single-service deployment, all API ML components run in a single address space. 
+* **Update network configuration**  
+In single-service deployment, all API ML components run in a single address space.
 * **Update log prefixes to a unified prefix**  
-In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix. 
-* **Update AT-TLS rules**   
-In single-service deployment, Job name filters require updating, and rules applying to handling require deletion. 
+In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix.
+* **Update AT-TLS rules**
+In single-service deployment, Job name filters require updating, and rules applying to handling require deletion.
 
-### Update port to use a single port
+### Update network configuration
 
-Single-service deployment runs all API ML components in a single JVM process. For backward compatibility reasons, this single JVM process handles connections to both the Gateway Service and the Discovery Service ports (defaults 7554 and 7553).
+Single-service deployment runs all API ML components in a single JVM process. For backward compatibility reasons, this single JVM process handles connections to both the Gateway Service and the Discovery Service ports.
 
-The single-service API ML address space uses ports defined in `components.gateway.port` and `components.discovery.port`.
+The single-service API ML address space uses ports defined in `components.gateway.port` and `components.discovery.port` (defaults 7554 and 7553).
 
-Update the network permissions to reflect this change. Ensure that both ports are under z/OS address space `ZWE1AG`. 
+Update the network permissions to reflect this change. Ensure that both ports are under z/OS address space `ZWE1AG`.
+
+The remaining ports described under `API Mediation Layer` category in the [Address Network Requirements](../address-network-requirements.md#component-ports) article (defaults 7552, 7555 and 7558) are no longer used in the single-service deployment mode.
 
 ### Update Log Prefix
 
@@ -55,8 +57,16 @@ In the single-service deployment, logs from internal API ML components such as t
 For example, in the modularize scheme, the following message is printed under `ZWE1AC`:
 
 ```plaintext
-2025-07-29 08:13:44.560 <ZWEAGW1:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
+2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
 ```
+
+In the single-service deployment mode, it will be printed under `ZWE1AG`:
+
+```plaintext
+2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
+```
+
+Note the message code `ZWEAM000I` remains unchanged.
 
 **Note:** This change affects only logs printed to spool or USS files. WTOs remain unchanged.
 
