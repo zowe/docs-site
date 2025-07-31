@@ -66,7 +66,7 @@ You can find the values for `protocol`, `hostName`, `port`, and `basePath` in th
     token_rotation_enabled: false
     ```
    
-    :::note: 
+    :::note
    
     You should delete the default manifest, and then fill in the manifest above.
 

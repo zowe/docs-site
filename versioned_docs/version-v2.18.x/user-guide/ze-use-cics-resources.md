@@ -18,7 +18,9 @@ The list of resources is pre-filtered to exclude many of the IBM supplied ones t
 
 ![Zowe CICS Explorer Filter](../images/ze-cics/region-filter.gif)
 
-**Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
+:::tip
+To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
+:::
 
 ## Showing and filtering resources in a plex
 
@@ -30,7 +32,10 @@ Similar to filtering resources in a region, you can apply a filter on a all regi
 
    ![Zowe CICS Explorer Plex Filter](../images/ze-cics/plex-filter.gif)
 
-**Tip:** To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
+:::tip
+
+To apply multiple filters, separate entries with a comma. You can append any filter with an __*__, which indicates wildcard searching.
+:::
 
 ## Showing and filtering resources in an 'All' resource tree
 

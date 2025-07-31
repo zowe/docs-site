@@ -63,7 +63,7 @@ Ensure that the prerequisites from the [Onboarding Overview](onboard-overview.md
 * The REST or GraphQL API service to onboard is written in Java
 * The service is enabled to communicate with API ML Discovery Service over a TLS v1.2 secured connection
 
-:::noteNotes:
+:::note[Notes]
 
 * This documentation is valid for API ML version `ZoweApimlVersion 3.0.0` and higher. We recommend that you check the [Zowe Artifactory](https://zowe.jfrog.io/zowe/libs-release/org/zowe/apiml/sdk/onboarding-enabler-java/) for the latest stable versions.
 
@@ -133,7 +133,9 @@ Use the following procedure if you use _Maven_ as your build automation system.
         </repository>
     </repositories>
     ```
-   **Tip:** If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
+   :::tip
+   If you want to use snapshot version, replace `libs-release` with `libs-snapshot` in the repository url and change snapshots->enabled to `true`.
+   :::
 
 2. Add the proper dependencies:
    ```xml
@@ -313,11 +315,13 @@ The onboarding configuration parameters are broken down into the following group
   When two API services use the same `serviceId`, the API Gateway considers the services as clones of each other.
   An incoming API request can be routed to either of them through utilized load balancing mechanism.
 
-  **Important!**  Ensure that the `serviceId` is set properly with the following considerations:
+  :::info[Important]
+  Ensure that the `serviceId` is set properly with the following considerations:
 
     * The same `servicedId` should only be set for multiple API service instances for API scalability.
     * The `servicedId` value must only contain lowercase alphanumeric characters.
     * The `servicedId` cannot contain more than 40 characters.
+    :::
 
   **Example:**
     * If the `serviceId` is `sampleservice`, the service URL in the API ML Gateway address space appears as the following path:
@@ -331,13 +335,17 @@ The onboarding configuration parameters are broken down into the following group
   This parameter specifies the human readable name of the API service instance. This value is displayed in the API Catalog when a specific API service instance is selected.
   This parameter can be externalized and set by the customer system administrator.
 
-  **Tip:** We recommend that service developer provides a default value of the `title`. Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+  :::tip
+  We recommend that service developer provides a default value of the `title`. Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+  :::
 
 * **description**
 
   This parameter is a short description of the API service. This value is displayed in the API Catalog when a specific API service instance is selected. This parameter can be externalized and set by the customer system administrator.
 
-  **Tip:** Describe the service so that the end user understands the function of the service.
+  :::tip
+  Describe the service so that the end user understands the function of the service.
+  :::
 
 * **baseUrl**
 
@@ -351,7 +359,9 @@ The onboarding configuration parameters are broken down into the following group
 
   `protocol://host:port/servicename`
 
-  **Note:** Ensure that the `baseUrl` does not end with a trailing `/`. Inclusion of `/` causes a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
+  :::note
+  Ensure that the `baseUrl` does not end with a trailing `/`. Inclusion of `/` causes a malformed URL if any of the above administrative endpoints begin with a `/`. It is expected that each administrative endpoint begins with a `/`. Warnings will be logged if this recommendation is not followed.
+  :::
 
 *  **serviceIpAddress** (Optional)
 
@@ -579,7 +589,9 @@ The following code block is an example of configuration of a service tile in the
   This is a value used by the API ML to group multiple API services into a single tile.
   Each unique identifier represents a single API dashboard tile in the Catalog.
 
-  **Tip:**  Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
+  :::tip
+  Specify a value that does not interfere with API services from other products. We recommend that you use your company and product name as part of the ID.
+  :::
 
 * **catalog.tile.title**
 
@@ -593,7 +605,9 @@ The following code block is an example of configuration of a service tile in the
 
   specifies the semantic version of this API Catalog tile.
 
-  **Note:** Ensure that you increase the version number when you introduce changes to the API service product family details.
+  :::note
+  Ensure that you increase the version number when you introduce changes to the API service product family details.
+  :::
 
 ### Authentication parameters
 
@@ -617,13 +631,17 @@ TLS/SSL configuration consists of the following parameters:
 
   This parameter makes it possible to prevent server certificate validation.
 
-  **Important!** Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
+  :::info[Important]
+  Ensure that this parameter is set to `true` in production environments. Setting this parameter to `false` in production environments significantly degrades the overall security of the system.
+  :::
 
 * **protocol**
 
   This parameter specifies the TLS protocol version currently used by Zowe API ML Discovery Service.
 
-  **Tip:** We recommend you use `TLSv1.2` as your security protocol
+  :::tip
+  We recommend you use `TLSv1.2` as your security protocol.
+  :::
 
 * **keyAlias**
 
@@ -662,7 +680,9 @@ If you have an issue with loading the keystore file in your environment, try to 
 
   This parameter specifies the truststore type. The default for this parameter is PKCS12.
 
-**Note:** Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
+:::note
+Ensure that you define both the keystore and the truststore even if your server is not using an Https port.
+:::
 
 ### SAF Keyring configuration
 
@@ -758,7 +778,9 @@ The following steps outline the process of registering your service with API ML.
         ...
     ```
 
-   **Note:** The `ApiMediationServiceConfigReader` class also provides other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
+   :::note
+   The `ApiMediationServiceConfigReader` class also provides other methods for loading the configuration from two files, `java.util.Map` instances, or directly from a string. Check the `ApiMediationServiceConfigReader` class JavaDoc for details.
+   :::
 
 4. Register with Eureka Discovery Service.
 

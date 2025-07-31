@@ -24,7 +24,7 @@ If you do not have an existing Zowe CICS CLI profile, refer to the following ins
 
    ![Zowe CICS Explorer profiles from config](../images/ze-cics/create-profile-from-config.gif)
 
-::: Note
+:::note
 
 The CICS profile must specify a CICS region's CICS Management Client Interface (CMCI) TCP/IP host name and port number. The region can be a WUI server in a CICSPlex or a stand-alone CICS System Management Single Server (SMSS) region.  
 
