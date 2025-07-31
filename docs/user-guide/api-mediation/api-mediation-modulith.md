@@ -19,11 +19,6 @@ Simplified deployment processes, a single JVM process, decreased network traffic
 Review the following overview of the architecture of API ML single-service deployment.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
-<!-- TODO
-Diagram
-Data flows
-Use the example from the current architecture diagram?
- -->
 
 ## Breaking Changes
 
@@ -76,6 +71,10 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 
 1. Update job name filters to use `ZWE1AG`.
 2. Remove unneeded rules that were performing the handling.
+
+If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service mode. Update the rule to apply for jobname `ZWE1AG` instead.
+
+**Note:** In general, the rules for AT-TLS are now simplified, having the API Mediation Layer use a single z/OS address space prefix and using only two ports. Update the rules to remove the ports no longer used.
 
 **Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 
