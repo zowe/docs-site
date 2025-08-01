@@ -78,7 +78,7 @@ If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-gu
 
 **Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 
-Once you complete updates to your ports, log prefixes and At-TLS rules (if applicable), you have enabled single-service deployment mode.
+Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you have enabled single-service deployment mode.
 
 ## Limitations
 
