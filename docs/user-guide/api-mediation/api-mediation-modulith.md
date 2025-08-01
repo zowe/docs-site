@@ -55,13 +55,13 @@ For example, in the modularize scheme, the following message is printed under `Z
 2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
 ```
 
-In the single-service deployment mode, it will be printed under `ZWE1AG`:
+In the single-service deployment mode, the message is printed under `ZWE1AG`:
 
 ```plaintext
 2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
 ```
 
-Note the message code `ZWEAM000I` remains unchanged.
+Note that the message code `ZWEAM000I` remains unchanged.
 
 **Note:** This change affects only logs printed to spool or USS files. WTOs remain unchanged.
 
@@ -72,9 +72,9 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 1. Update job name filters to use `ZWE1AG`.
 2. Remove unneeded rules that were performing the handling.
 
-If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service mode. Update the rule to apply for jobname `ZWE1AG` instead.
+If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service mode. Update the rule to apply to jobname `ZWE1AG` instead.
 
-**Note:** In general, the rules for AT-TLS are now simplified, having the API Mediation Layer use a single z/OS address space prefix and using only two ports. Update the rules to remove the ports no longer used.
+**Note:** In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
 
 **Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 
@@ -87,7 +87,7 @@ The following features are not supported in the technical preview release of the
 
 ## Enable the Single-service API Mediation Layer
 
-To switch the API ML into single-service deployment (modularized mode), perform the following changes to the installation's `zowe.yaml` file:
+To switch API ML into single-service deployment (modularized mode), perform the following changes to the installation's `zowe.yaml` file:
 
 1. Add the component `apiml` and enable it:
 
