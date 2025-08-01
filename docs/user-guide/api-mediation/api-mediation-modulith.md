@@ -72,7 +72,7 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 1. Update job name filters to use `ZWE1AG`.
 2. Remove unneeded rules that were performing the handling.
 
-If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service mode. Update the rule to apply to jobname `ZWE1AG` instead.
+If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service deployment mode. Update the rule to apply to jobname `ZWE1AG` instead.
 
 **Note:** In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
 
