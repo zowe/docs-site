@@ -1,4 +1,4 @@
-# API Mediation Layer Single-Service deployment
+# Enabling Single-Service deployment of API Mediation Layer
 
 Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current modularized scheme to a single-service option.
 
