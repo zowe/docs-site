@@ -78,6 +78,8 @@ If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-gu
 
 **Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 
+Once you complete updates to your ports, log prefixes and At-TLS rules (if applicable), you have enabled single-service deployment mode.
+
 ## Limitations
 
 The following features are not supported in the technical preview release of the API ML single-service deployment:
