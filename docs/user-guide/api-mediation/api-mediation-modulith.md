@@ -1,18 +1,20 @@
 # Enabling Single-Service deployment of API Mediation Layer
 
-Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current modularized scheme to a single-service option.
+Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option.
 
 :::info
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** alternative to the modularized scheme brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** alternative to the multiple services scheme brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
 * **Operational Efficiency**  
 Simplified deployment processes, a single JVM process, decreased network traffic
 * **Unified configuration options**
+* **Simplified debugging**
+There is no need to track the communication between the API ML services to know where and how is the issue happening.
 
 ## Architecture
 
@@ -45,6 +47,8 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 
 The remaining ports described under `API Mediation Layer` category in the [Address Network Requirements](../address-network-requirements.md#component-ports) article (defaults 7552, 7555 and 7558) are no longer used in the single-service deployment mode.
 
+**Note:** Caching Service is enabled in the single-service deployment mode and the default is infinispan, it requires additional ports. Refer to the [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+
 ### Update Log Prefix
 
 In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
@@ -58,7 +62,7 @@ For example, in the modularize scheme, the following message is printed under `Z
 In the single-service deployment mode, the message is printed under `ZWE1AG`:
 
 ```plaintext
-2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
+2025-07-29 08:13:44.560 <ZWE1AG:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
 ```
 
 Note that the message code `ZWEAM000I` remains unchanged.
