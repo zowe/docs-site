@@ -219,19 +219,19 @@ In the following configuration, services are accessed through API ML using certi
         "zosmf": {
             "type": "zosmf",
             "properties": {
-                "basePath": "api/v1"
+                "basePath": "ibmzosmf/api/v1"
             }
         },
         "cics": {
             "type": "cics",
             "properties": {
-                "basePath": "api/v1/cics"
+                "basePath": "ibmcics/api/v1"
             }
         },
         "db2": {
             "type": "db2",
             "properties": {
-                "basePath": "api/v1/db2"
+                "basePath": "ibmdb2/api/v1"
             }
         },
         // highlight-start
@@ -289,7 +289,7 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
-                        "basePath": "api/v1"
+                        "basePath": "ibmzosmf/api/v1"
                     }
                 },
                 "tso": {
@@ -328,7 +328,7 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
-                        "basePath": "api/v1"
+                        "basePath": "ibmzosmf/api/v1"
                     }
                 }
                 // highlight-end
