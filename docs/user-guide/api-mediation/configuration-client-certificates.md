@@ -9,6 +9,7 @@ There are two methods to enable X.509 client certificate functionality integrate
 * The default and recommended method via the Internal Mapper component of API Mediation Layer  
   **Note:** The Internal API ML Mapper is simpler to configure and provides more functionality than ZSS.
 * The older and deprecated method via ZSS
+  **Note:** The ZSS service needs to be set and the communication and authentication between API ML and ZSS must be established for this method to work. The API Mediation Layer uses Rest API call towards ZSS to map the certificate to user id. 
 
 Review this article to learn about the required configuration to authenticate with either method. 
 
@@ -25,7 +26,7 @@ For information about the usage of the client certificate when this feature is e
 
 ## Configure Internal API ML Mapper
 
-Use the following procedure to enable the zowe.yaml file to use a X.509 client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the Internal API ML Mapper is the recommended method.
+Use the following procedure to enable the zowe.yaml file to use a X.509 client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the Internal API ML Mapper is the recommended method. The Internal API ML mapper is provided by JNI wrapper for IRRSIM00 macro 
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties, or add these properties if not present in your configuration yaml file:
@@ -33,7 +34,7 @@ Use the following procedure to enable the zowe.yaml file to use a X.509 client c
    * **components.gateway.apiml.security.x509.enabled**  
      This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
    * **components.gateway.apiml.security.useInternalMapper**  
-     This property is the global feature toggle. Set the value to `true` to enable the Internal API ML Mapper.
+     This property is the global feature toggle. Set the value to `true` to enable the Internal API ML Mapper. If the *components.gateway.apiml.security.x509.enabled* value is `false` this property is ignored. 
 
 3. Restart Zowe.
 
