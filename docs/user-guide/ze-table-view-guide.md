@@ -68,6 +68,8 @@ The table view provides actions for managing your data sets and PDS members dire
 Right-click a row to open the context menu. It contains the following options:
 
 - **Display in Tree**: Locates and highlights the selected item in the **Data Sets** tree view.
+- **Pin/Unpin:** Pins or unpins the selected row. When pinned, the row remains visible at the top of the table view while scrolling to other rows.
+- **Copy cell & Copy row**: Generic options for copying selected cell or row data.
 - Additional actions provided by installed Zowe Explorer extensions.
 
 ### Opening data sets and members
