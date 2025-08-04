@@ -3,7 +3,7 @@
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-You can use various SAF resource providers depending on your use case to handle the SAF authorization check. Follow the procedure in this article that applies to your specific configuration use case. 
+You can use various SAF resource providers depending on your use case to handle the SAF authorization check. Follow the procedure in this article that applies to your specific configuration use case.  The default and recommended option is **native**. Use **endpoint** only in cases where you run API Mediation Layer off-platform. 
 
 ## SAF Resource Checking Providers 
 
