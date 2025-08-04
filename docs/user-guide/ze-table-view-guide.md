@@ -79,7 +79,7 @@ Open sequential data sets and PDS members in the editor:
 
     :::note
 
-    This action is available for sequential (PS) data sets and PDS members.
+    This action is only available for sequential (PS) data sets and PDS members.
     :::
 
 ### Pinning and unpinning rows
