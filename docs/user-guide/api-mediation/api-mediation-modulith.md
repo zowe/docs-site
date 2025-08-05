@@ -6,7 +6,7 @@ Zowe version 3.3.0 introduces, as a technical preview, the option to switch the 
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** alternative to the multiple services scheme brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** alternative to the multi- service scheme brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -55,7 +55,7 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 The remaining ports described under the `API Mediation Layer` category in the article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555 and 7558) are no longer used in single-service deployment mode.
 
 :::note
-The Caching Service is enabled in the single-service deployment mode and the default is `infinispan` requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+The Caching Service is enabled in single-service deployment mode and the default is `infinispan`. Note thatthe  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
 ### Update Log Prefix
@@ -63,7 +63,7 @@ The Caching Service is enabled in the single-service deployment mode and the def
 In single-service deployment mode, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
 
 **Example:**  
-In the modularize scheme, the following message is printed under `ZWE1AC`:
+In multi-service deployment, the following message is printed under `ZWE1AC`:
 
 ```plaintext
 2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
@@ -83,7 +83,7 @@ This change affects only logs printed to spool or USS files. WTOs remain unchang
 
 ### Update AT-TLS rules
 
-If the installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
+If your installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
 
 1. Update job name filters to use `ZWE1AG`.
    
@@ -96,7 +96,7 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
     **Note:** In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
 
 ::note Notes:
-* In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
+* In general, the rules for AT-TLS in single-service deployment are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
 
 * TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
 :::
@@ -115,13 +115,13 @@ To switch API ML into single-service deployment mode, perform the following chan
         enabled: true
     ```
 
-    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the modularized deployment of API Mediation Layer.
+    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
 
 2. Start the Zowe started task.
 
 ### Roll back changes from single to multi-service deployment
 
-It is possible to revert to the original deployment mode by switching back the changes in `zowe.yaml`:
+It is possible to revert to the original multi-service deployment by switching back the changes in `zowe.yaml`:
 
 1. Disable the `apiml` component:
     Set `components.apiml.enabled` to `false`.
@@ -130,5 +130,5 @@ It is possible to revert to the original deployment mode by switching back the c
 
 ## Planned updates to single-service deployment mode
 
-* The modularized deployment is planned to be the default mode in Zowe v3.4.0
-* The option to rollback to the modularized deployment will remain for the duration of the Zowe v3 lifecycle.
+* Single-service deployment is planned to be the default mode in Zowe v3.4.0
+* The option to roll back to multi-service deployment will remain for the duration of the Zowe v3 lifecycle.
