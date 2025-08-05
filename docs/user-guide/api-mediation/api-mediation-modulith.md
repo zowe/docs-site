@@ -6,7 +6,7 @@ Zowe version 3.3.0 introduces, as a technical preview, the option to switch the 
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** alternative to the multi- service scheme brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** alternative to the multi-service scheme brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -55,10 +55,10 @@ Update the network permissions to reflect this change. Ensure that both ports ar
 The remaining ports described under the `API Mediation Layer` category in the article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555 and 7558) are no longer used in single-service deployment mode.
 
 :::note
-The Caching Service is enabled by default in single-service deployment mode and the default mode is `infinispan`. Note that the  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+The Caching Service is enabled in single-service deployment mode and the default is `infinispan`. Note thatthe  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
 :::
 
-### Update Log Prefix
+### Update log prefix
 
 In single-service deployment mode, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
 
