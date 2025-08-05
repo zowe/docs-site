@@ -13,12 +13,12 @@ Enhanced performance, faster startup times, reduced CPU and memory consumption
 * **Operational Efficiency**  
 Simplified deployment processes, a single JVM process, decreased network traffic
 * **Unified configuration options**
-* **Simplified debugging**
-There is no need to track the communication between the API ML services to know where and how is the issue happening.
+* **Simplified debugging**  
+Tracking communication between the API ML services to determine the cause and source of issues in not required. 
 
 ## Architecture
 
-Review the following overview of the architecture of API ML single-service deployment.
+Review the following architecture of API ML single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
 
@@ -28,32 +28,35 @@ Review the following overview of the architecture of API ML single-service deplo
 The following single-service deployment procedure assumes the default address space prefix `ZWE1`. Update this prefix according to the `zowe.job.prefix` parameter from your `zowe.yaml` file.
 :::
 
-To run API ML as a single-service deployment, the system programmer is required to make configuration changes in the following areas:
+To run API ML as a single-service deployment, a system programmer is required to make configuration changes in the following areas:
 
 * **Update network configuration**  
-In single-service deployment, all API ML components run in a single address space.
+In single-service deployment mode, all API ML components run in a single address space.
 * **Update log prefixes to a unified prefix**  
-In single-service deployment, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix.
-* **Update AT-TLS rules**
-In single-service deployment, Job name filters require updating, and rules applying to handling require deletion.
+In single-service deployment mode, a single log prefix applies to all API ML components. Prefixes for individual components require manual updates to unify prefixes under a single prefix.
+* **Update AT-TLS rules**  
+In single-service deployment mode, Job name filters require updating, and rules applying to handling require deletion.
 
 ### Update network configuration
 
-Single-service deployment runs all API ML components in a single JVM process. For backward compatibility reasons, this single JVM process handles connections to both the Gateway Service and the Discovery Service ports.
+Single-service deployment mode runs all API ML components in a single JVM process. For backward compatibility reasons, this single JVM process handles connections to both the Gateway Service and the Discovery Service ports.
 
 The single-service API ML address space uses ports defined in `components.gateway.port` and `components.discovery.port` (defaults 7554 and 7553).
 
 Update the network permissions to reflect this change. Ensure that both ports are under z/OS address space `ZWE1AG`.
 
-The remaining ports described under `API Mediation Layer` category in the [Address Network Requirements](../address-network-requirements.md#component-ports) article (defaults 7552, 7555 and 7558) are no longer used in the single-service deployment mode.
+The remaining ports described under the `API Mediation Layer` category in the article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555 and 7558) are no longer used in single-service deployment mode.
 
-**Note:** Caching Service is enabled in the single-service deployment mode and the default is infinispan, it requires additional ports. Refer to the [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+:::note
+The Caching Service is enabled in the single-service deployment mode and the default is `infinispan` requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
+:::
 
 ### Update Log Prefix
 
-In the single-service deployment, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
+In single-service deployment mode, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
 
-For example, in the modularize scheme, the following message is printed under `ZWE1AC`:
+**Example:**  
+In the modularize scheme, the following message is printed under `ZWE1AC`:
 
 ```plaintext
 2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
@@ -67,7 +70,9 @@ In the single-service deployment mode, the message is printed under `ZWE1AG`:
 
 Note that the message code `ZWEAM000I` remains unchanged.
 
-**Note:** This change affects only logs printed to spool or USS files. WTOs remain unchanged.
+:::note
+This change affects only logs printed to spool or USS files. WTOs remain unchanged.
+:::
 
 ### Update AT-TLS rules
 
@@ -78,22 +83,24 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 
 If the following [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system, authentication may not work by default in single-service deployment mode. Update the rule to apply to jobname `ZWE1AG` instead.
 
-**Note:** In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
+::note Notes:
+* In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
 
-**Note:** TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
+* TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
+:::
 
 Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you have enabled single-service deployment mode.
 
 ## Limitations
 
-The following features are not supported in the technical preview release of the API ML single-service deployment:
+The following features are not supported in the technical preview release of the API ML single-service deployment mode:
 
 * Multi-tenancy deployment
 * Docker container deployments
 
 ## Enable the Single-service API Mediation Layer
 
-To switch API ML into single-service deployment (modularized mode), perform the following changes to the installation's `zowe.yaml` file:
+To switch API ML into single-service deployment mode, perform the following changes to the installation's `zowe.yaml` file:
 
 1. Add the component `apiml` and enable it:
 
@@ -116,7 +123,7 @@ It is possible to revert to the original deployment mode by switching back the c
 
 2. Start the Zowe started task.
 
-## Planned updates to single-service deployment
+## Planned updates to single-service deployment mode
 
 * The modularized deployment is planned to be the default mode in Zowe v3.4.0
 * The option to rollback to the modularized deployment will remain for the duration of the Zowe v3 lifecycle.
