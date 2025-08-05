@@ -92,3 +92,23 @@ To avoid this, change the `logs` and `temp` folder locations:
     - Temporary files are local copies of data sets or USS files downloaded from the mainframe to edit in VS Code. These files last until VS Code closes and all changes have been uploaded to the mainframe.
 
     <br/>After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
+
+## Common issues with Zowe Explorer table view
+
+To troubleshoot the table view for data sets and jobs, review the following common issues:
+
+#### Table does not load
+  - Verify that your z/OSMF profile is active and connected.
+  - Check that your search criteria is valid.
+  - Ensure you have the proper permissions to access the data sets or jobs on the mainframe.
+#### Slow performance with large number of results
+  - Use a more specific search to reduce the number of results.
+  - Lower the number of results per page.
+#### Data set table view: members view shows no data
+  - Verify that the PDS exists, is accessible, and contains members.
+  - Ensure that the PDS is not migrated.
+#### Jobs table view: action buttons are disabled
+- Ensure you have selected at least one job row.
+- For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
+
+

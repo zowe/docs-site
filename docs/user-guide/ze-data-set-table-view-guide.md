@@ -27,7 +27,7 @@ Open the table view from the **Command Palette**:
 3.  Select a profile from the dropdown list.
 4.  Enter a data set pattern (for example, `USER.*` or `PUBLIC.DATA.*`).
 
-The table view opens with the data sets that match your search pattern.
+    The table view opens with the data sets that match your search pattern.
 
 ## Table view layouts
 
@@ -90,12 +90,16 @@ Pin important data sets or members to keep them visible at the top of the table 
 
 #### Pinning a row
 
-  1.  Select one or more rows.
-  2.  Click the **Pin** button in the action bar. The pinned rows move to the top of the table.
+  1.  Select one or more unpinned rows.
+  2.  Click the **Pin** button in the action bar.
+  
+      The pinned rows move to the top of the table.
 
 #### Unpinning a row
   1.  Select one or more pinned rows.
-  2.  Click the **Unpin** button. The rows return to their normal position in the table.
+  2.  Click the **Unpin** button.
+  
+      The rows return to their normal position in the table.
 
 ### Navigating PDS members
 
@@ -105,11 +109,14 @@ You can "focus" on a PDS to view its members, and then navigate back to the list
 
   1.  In the data sets layout, locate and select a PDS row (its **Data Set Organization** is `PO`).
   2.  Click the **Focus** button in the action bar.
-  3.  The table switches to the members layout and displays all members of the selected PDS.
+  
+      The table switches to the members layout and displays all members of the selected PDS.
 
 #### Returning to the parent view
-  1.  While in the members layout, click the **Back** button in the action bar.
-  2.  The table returns to the previous data sets view and preserving its state (filters, sorting, and pinned rows).
+1. Navigate to the members layout.
+2. Click the **Back** button in the action bar.
+
+    The table returns to the previous data sets view and preserving its state (filters, sorting, and pinned rows).
 
 ### Using tree mode (hierarchical view)
 
@@ -141,24 +148,7 @@ Perform actions on multiple items at once:
 1.  Select multiple rows using the checkboxes.
 2.  Choose an action from the action bar (for example, **Open** or **Pin**) to apply the operation to all selected items.
 
-## Troubleshooting
-
-Refer to this section for solutions to common issues.
-
-### Common issues
-
-#### Table does not load data sets
-  - Verify that your z/OSMF profile is active and connected.
-  - Check that your search pattern is valid.
-  - Ensure you have the proper permissions to access the data sets on the mainframe.
-#### Slow performance with large data sets
-  - Use a more specific search pattern to reduce the number of results.
-  - Lower the number of results per page.
-#### Members view shows no data
-  - Verify that the PDS exists, is accessible, and contains members.
-  - Ensure that the PDS is not migrated.
-
 ## Keyboard shortcuts
 
-- **Ctrl**/**Cmd** + **Click**: Multi-select rows.
-- **Shift** + **Click**: Select a range of rows.
+- Standard table navigation and selection keyboard shortcuts are supported.
+- Use the table's built-in keyboard navigation to move between rows and columns.
