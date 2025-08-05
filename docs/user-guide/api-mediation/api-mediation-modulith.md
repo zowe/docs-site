@@ -14,7 +14,7 @@ Enhanced performance, faster startup times, reduced CPU and memory consumption
 Simplified deployment processes, a single JVM process, decreased network traffic
 * **Unified configuration options**
 * **Simplified debugging**  
-Tracking communication between the API ML services to determine the cause and source of issues in not required. 
+Tracking communication between the API ML services to determine the cause and source of issues is not required. 
 
 ## Architecture
 
