@@ -22,6 +22,13 @@ Review the following architecture of API ML single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
 
+## Limitations
+
+The following features are not supported in the technical preview release of the API ML single-service deployment mode:
+
+* Multi-tenancy deployment
+* Docker container deployments
+
 ## Breaking Changes
 
 :::note
@@ -79,8 +86,13 @@ This change affects only logs printed to spool or USS files. WTOs remain unchang
 If the installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
 
 1. Update job name filters to use `ZWE1AG`.
-2. Remove unneeded rules that were performing the handling.
-3. Verify if the [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system. Update the rule to apply to jobname `ZWE1AG` instead as authentication may not work by default in single-service deployment mode. 
+   1. Verify if the [outbound rule for z/OSMF](https://docs.zowe.org/stable/user-guide/configuring-at-tls-for-zowe-server/#outbound-rule-for-zosmf) is set in your system. Update the rule to apply to jobname `ZWE1AG` instead of `ZWE1AZ` as authentication may not work by default in single-service deployment mode.
+2. Remove unneeded rules that were handling the communication between core components.
+
+    * This includes any communication between Gateway, Discovery Service, API Catalog and Caching Service.
+    * Remove any rule applying to the core components except for the Gateway Service ones (`ZWE1AG`).
+
+    **Note:** In High Availability scenarios, a TCP communication still exists between LPARs for Discovery Service port.
 
 ::note Notes:
 * In general, the rules for AT-TLS are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update the rules to remove the ports no longer used.
@@ -89,13 +101,6 @@ If the installation is configured with AT-TLS, rules need to be updated. Perform
 :::
 
 Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you have enabled single-service deployment mode.
-
-## Limitations
-
-The following features are not supported in the technical preview release of the API ML single-service deployment mode:
-
-* Multi-tenancy deployment
-* Docker container deployments
 
 ## Enable the Single-service API Mediation Layer
 
