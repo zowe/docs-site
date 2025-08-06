@@ -228,7 +228,7 @@ Zowe can work in a high availability (HA) configuration where multiple instances
 :::info Required roles: system programmer
 :::
 
-The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)` to copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.
+The command `zwe init vsam` uses the template JCL in `zowe.setup.dataset.prefix` + `.SZWESAMP(ZWECSVSM)`, processes it with values extracted from the `zowe.yaml` file and creates a target JCL member in `zowe.setup.dataset.prefix.jcllib` + `(ZWECVSCM)`.
 
 For more information about `zwe init vsam`, see [Creating VSAM caching service datasets](./configure-caching-service-ha.md)
 
