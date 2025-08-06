@@ -6,8 +6,8 @@ Once you complete the installation of the Zowe runtime, begin configuration by i
 :::
 
 ## About the `zwe init` command
-
-The `zwe init` command is a combination of the following subcommands. Each subcommand defines a configuration.
+ Each subcommand defines a configuration.
+The `zwe init` command is a combination of the following subcommands. Except the generate, each subcommand defines a configuration.
 - **generate**
 Generates ready to execute JCL samples from YAML configuration values.
 - **mvs**
