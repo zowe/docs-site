@@ -263,6 +263,7 @@ module.exports = {
               "label": "Advanced API Mediation Layer Configuration",
               "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
               "items": [
+                "user-guide/api-mediation/api-mediation-modulith",
                 {
                   "type": "category",
                   "label": "Enabling single sign on for clients",
@@ -688,6 +689,7 @@ module.exports = {
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
             "user-guide/ze-working-with-commands",
+            "user-guide/ze-table-view-guide",
             {
               type: "category",
               label: "Zowe Explorer extensions",
