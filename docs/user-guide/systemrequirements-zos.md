@@ -32,8 +32,9 @@ Be sure your z/OS system meets the following prerequisites:
   | Task | Command utilizing SDSF | Alternatives |
   |-----------|-------------------------------|-------------|
   | [Certificate setup](configure-certificates.md) | `zwe init certificate` | z/OSMF workflow "ZWEKRING", or the JCL samples "ZWEKRING" and those that begin with "ZWEIKR" can be used to create keyrings. |
-  | [Starting Zowe](start-zowe-zos.md) | `zwe start` | Products that can issue the MVS START command upon Zowe's STC such as Sysview or EJES can be used instead. |
-  | [Stopping Zowe](start-zowe-zos.md) | `zwe stop` | Products that can issue the MVS STOP command upon Zowe's STC such as Sysview or EJES can be used instead. |
+  | [Authorize library](../appendix/zwe_server_command_reference/zwe/init/zwe-init-apfauth.md) | `zwe init apfauth` | Products that can issue the MVS `SETPROG APF` command or update `SYS1.PARMLIB(PROGxx)`. See examples in [`SZWESAMP(ZWESIPRG)`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/SZWESAMP/ZWESIPRG). |
+  | [Starting Zowe](start-zowe-zos.md) | `zwe start` | Products that can issue the MVS `START` command upon Zowe's STC such as Sysview or EJES can be used instead. |
+  | [Stopping Zowe](start-zowe-zos.md) | `zwe stop` | Products that can issue the MVS `STOP` command upon Zowe's STC such as Sysview or EJES can be used instead. |
   
   Not having SDSF installed may result in the following error message:
 
