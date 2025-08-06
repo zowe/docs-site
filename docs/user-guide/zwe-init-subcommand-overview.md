@@ -21,10 +21,11 @@ Use the `zwe init mvs` command to intialize Zowe custom MVS data sets.
 :::info Required role: system programmer
 :::
 
-During the installation of Zowe, the following three data sets are created and populated with members copied across from the Zowe installation files:
+During the installation of Zowe, the following data sets are created and populated with members copied across from the Zowe installation files:
 * `SZWEAUTH`
+* `SZWEEXEC`
+* `SZWELOAD`
 * `SZWESAMP`
-* `SZWEEXEC` 
 
 The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified.
 
@@ -68,36 +69,30 @@ The following output is an example of running `zwe init mvs`.
 -------------------------------------------------------------------------------
 >> Initialize Zowe custom data sets
 
-Create data sets if they are not exist
+Create data sets if they do not exist
 Creating IBMUSER.ZWE.CUST.PARMLIB
 Creating IBMUSER.ZWE.CUST.JCLLIB
-Creating IBMUSER.ZWE.SZWEAUTH
+Creating IBMUSER.ZWE.CUST.ZWESALL
 Creating IBMUSER.ZWE.CUST.ZWESAPL
 
-Copy IBMUSER.ZWE.SZWESAMP(ZWESIP00) to USER.ZWE.CUST.PARMLIB(ZWESIP00)
-Copy components/zss/LOADLIB/ZWESIS01 to USER.ZWE.SZWEAUTH(ZWESIS01)
-Copy components/zss/LOADLIB/ZWESAUX to USER.ZWE.SZWEAUTH(ZWESAUX)
-Copy components/launcher/bin/zowe_launcher to USER.ZWE.SZWEAUTH(ZWELNCH)
+Copy IBMUSER.ZWE.CUST.SZWESAMP(ZWESIP00) to IBMUSER.ZWE.CUST.PARMLIB(ZWESIP00)
+Copy components/zss/LOADLIB/ZWESIS01 to IBMUSER.ZWE.CUST.ZWESALL(ZWESIS01)
+Copy components/zss/LOADLIB/ZWESAUX to IBMUSER.ZWE.CUST.ZWESALL(ZWESAUX)
+Copy components/zss/LOADLIB/ZWESISDL to IBMUSER.ZWE.CUST.ZWESALL(ZWESISDL)
+Copy components/launcher/bin/zowe_launcher to IBMUSER.ZWE.CUST.ZWESALL(ZWELNCH)
 
 >> Zowe custom data sets are initialized successfully.
-#>
 ```
 
 Successful execution of `zwe init mvs` has the following results:
 
-* In the `zowe.yaml` file, three custom data sets are created that have matching values with the following libraries:
+* In the `zowe.yaml` file, custom data sets are created that have matching values with the following libraries:
    * `zowe.setup.dataset.parmlib`
    * `zowe.setup.dataset.jcllib`
+   * `zowe.setup.dataset.authLoadlib`
    * `zowe.setup.dataset.authPluginLib`. 
 
 * The member `ZWESIP00` is contained in `CUST.PARMLIB`. `JCLLIB` and `ZWESAPL` are empty.
-
-* The PDS `SZWEAUTH` is created. If `SZWEAUTH` already exists, the following error is thrown:
-   ```
-   Error ZWEL0158E: IBMUSER.ZWE.SZWEAUTH already exists
-   ```
-   You can ignore this message, or you can use the `--allow-overwritten` option on the command. For example, `zwe init mvs -c zowe.yaml --allow-overwritten`.
-
 
 ## Initializing Zowe security configurations (`zwe init security`)
 
@@ -150,7 +145,7 @@ Zowe contains load modules that require access to make privileged z/OS security 
 The command `zwe init apfauth` reads the PDS names for the following load libraries from zowe.yaml and performs the APF authority commands.
 
 * **zowe.setup.dataset.authLoadLib**  
-Specifies the user custom load library, containing the ZWELNCH, ZWESIS01 and ZWESAUX load modules. These are the Zowe launcher, the ZIS cross memory server and the auxiliary server.
+Specifies the user custom load library containing the load modules.
 * **zowe.setup.dataset.authPluginLib**  
 References the load library for ZIS plugins.
 
@@ -158,36 +153,6 @@ For more information about `zwe init apfauth` see:
 * [Performing APF authorization of load libraries](./apf-authorize-load-library.md).
 * [`zwe init apfauth`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-apfauth.md) in the Reference section.
 
-:::tip
-
-To avoid having to run the `init apfauth` command, you can specify the flag `--security-dry-run` as in the following example. 
-
-**Example:**
-
-```
-zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
--------------------------------------------------------------------------------
->> APF authorize load libraries
-
-APF authorize IBMUSER.ZWE.SZWEAUTH
-- Dry-run mode, security setup is NOT performed on the system.
-  Please apply this operator command manually:
-
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWE.SZWEAUTH,SMS
-
-APF authorize IBMUSER.ZWE.CUST.ZWESAPL
-- Dry-run mode, security setup is NOT performed on the system.
-  Please apply this operator command manually:
-
-  SETPROG APF,ADD,DSNAME=IBMUSER.ZWE.CUST.ZWESAPL,SMS
-
-
->> Zowe load libraries are APF authorized successfully.
-
-```
-For production environments, inform your security administrator to re-submit the `init apfauth` command with proper authorization.
-
-:::
 
 ## Configuring Zowe to use TLS certificates (`zwe init certificate`)
 
@@ -241,16 +206,17 @@ The `zwe init stc` command uses the `CUST.JCL` LIB data sets as a staging area t
 -------------------------------------------------------------------------------
 >> Install Zowe main started task
 
-Modify ZWESLSTC
-Modify ZWESISTC
-Modify ZWESASTC
+Modify ZWESLSTC and save as IBMUSER.ZWE.CUST.JCLLIB(ZWESLSTC)
+CONFIG path defined in ZWESLSTC is converted into absolute path and may contain SYSNAME.
+Please manually verify if this path works for your environment, especially when you are working in Sysplex environment.
+Modify ZWESISTC and save as IBMUSER.ZWE.CUST.JCLLIB(ZWESISTC)
+Modify ZWESASTC and save as IBMUSER.ZWE.CUST.JCLLIB(ZWESASTC)
 
 Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESLSTC) to USER.PROCLIB(ZWESLSTC)
 Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESISTC) to USER.PROCLIB(ZWESISTC)
 Copy IBMUSER.ZWE.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 
 >> Zowe main started tasks are installed successfully.
-#>
 ```
 
 ## (Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)
