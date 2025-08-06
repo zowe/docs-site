@@ -21,11 +21,7 @@ Use the `zwe init mvs` command to intialize Zowe custom MVS data sets.
 :::info Required role: system programmer
 :::
 
-During the installation of Zowe, the following data sets are created and populated with members copied across from the Zowe installation files:
-* `SZWEAUTH`
-* `SZWEEXEC`
-* `SZWELOAD`
-* `SZWESAMP`
+During the installation of Zowe, the following [runtime datasets](../appendix/server-datasets.md#runtime-datasets) are created.
 
 The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified.
 
@@ -44,13 +40,7 @@ zowe:
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Review the following table for storage requirements for the three data sets:
-
-Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
----|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
+Review the [storage requirements](../appendix/server-datasets.md#custom-datasets) for the datasets.
 
 ### Procedure to initialize Zowe custom data sets
 
