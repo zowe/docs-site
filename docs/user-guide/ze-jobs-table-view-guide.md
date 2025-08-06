@@ -119,7 +119,6 @@ The table title updates dynamically based on the job node context:
 The jobs table view maintains seamless integration with the traditional tree view in the **Side Bar**:
 
 - **Display in Tree**: Right-click any job row and select **Display in Tree** to locate the job in the tree view with automatic expansion.
-- **Synchronized Updates**: Actions performed in the table view automatically update the corresponding tree view.
 - **Profile Context**: The table view respects the profile context from which it was opened.
 
 ## Keyboard shortcuts
