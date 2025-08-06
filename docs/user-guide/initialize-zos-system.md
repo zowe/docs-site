@@ -34,7 +34,7 @@ Enter `zwe init --help` to learn more about the command or see the [`zwe init` c
 
 ## Zowe initilization command
 
-The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file preparted and have security administrator privileges, or security and certificates setup was already completed on the system, you can run the following command:
+The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file prepared and have security administrator privileges, or security and certificates setup was already completed on the system, you can run the following command:
 
 ```
 zwe init --config /path/to/zowe.yaml
