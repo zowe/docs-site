@@ -108,7 +108,7 @@ To troubleshoot the table view for data sets and jobs, review the following comm
   - Verify that the PDS exists, is accessible, and contains members.
   - Ensure that the PDS is not migrated.
 #### Jobs table view: action buttons are disabled
-- Ensure you have selected at least one job row.
-- For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
+  - Ensure you have selected at least one job row.
+  - For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
 
 
