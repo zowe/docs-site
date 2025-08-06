@@ -49,7 +49,7 @@ ZWENOKRT | JCL | Removes key ring and certificates for TSS
 ZWENOKYR | JCL | Removes key ring and certificates
 ZWENOSEC | JCL | Defines security permits
 ZWERMVS | JCL | Removes PARMLIB dataset
-ZWERNVS1 | JCL | Removes plugin dataset
+ZWERMVS1 | JCL | Removes plugin dataset
 ZWERMVS2 | JCL | Removes load library
 ZWERSTC | JCL | Removes `PROCLIB` members
 ZWESASTC | JCL | Starts the Zowe Auxiliary server used by Cross memory server
