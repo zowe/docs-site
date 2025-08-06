@@ -93,7 +93,7 @@ Pin important data sets or members to keep them visible at the top of the table 
   1.  Select one or more unpinned rows.
   2.  Click the **Pin** button in the action bar.
   
-      The pinned rows move to the top of the table.
+      The pinned rows are added to the top of the table.
 
 #### Unpinning a row
   1.  Select one or more pinned rows.
