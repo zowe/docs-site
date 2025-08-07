@@ -13,12 +13,13 @@ Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allo
 The resulting request to the service is not a CORS request. No additional specification of the service is required. The list can be overridden by specifying a different comma-separated list in the property `components.gateway.apiml.service.ignoredHeadersWhenCorsEnabled` in `zowe.yaml`.
 
 Additionally, the Gateway handles the preflight requests on behalf of the service when CORS is enabled in Custom Metadata, replying with CORS headers:
-- `Access-Control-Allow-Methods: GET,HEAD,POST,DELETE,PUT,OPTIONS`
+- `Access-Control-Allow-Methods: GET,HEAD,POST,PATCH,DELETE,PUT,OPTIONS`
 - `Access-Control-Allow-Headers: origin, x-requested-with`
 - `Access-Control-Allow-Credentials: true`
 - `Access-Control-Allow-Origin: *` 
 
 Alternatively, list the origins as configured by the service, associated with the value **customMetadata.apiml.corsAllowedOrigins** in Custom Metadata.
+You can configure the list of allowed HTTP methods by adding the property `components.gateway.apiml.service.corsAllowedMethods` in `zowe.yaml` and setting the value to a comma-separated list of allowed HTTP methods.
 
 If CORS is enabled for Gateway routes but not in Custom Metadata, the Gateway does not set any of the previously listed CORS headers. As such, the Gateway rejects any CORS requests with an origin header for the Gateway routes.
 
