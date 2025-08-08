@@ -686,10 +686,11 @@ module.exports = {
             "user-guide/ze-authentication-methods",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
+            "user-guide/ze-data-set-table-view-guide",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
+            "user-guide/ze-jobs-table-view-guide",
             "user-guide/ze-working-with-commands",
-            "user-guide/ze-table-view-guide",
             {
               type: "category",
               label: "Zowe Explorer extensions",
