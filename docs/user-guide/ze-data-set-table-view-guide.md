@@ -150,5 +150,5 @@ Perform actions on multiple items at once:
 
 ## Keyboard shortcuts
 
-- Standard table navigation and selection keyboard shortcuts are supported.
-- Use the table's built-in keyboard navigation to move between rows and columns.
+- **Ctrl**/**Cmd** + **Click**: Multi-select rows.
+- **Shift** + **Click**: Select a range of rows.
