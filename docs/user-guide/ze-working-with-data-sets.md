@@ -360,6 +360,6 @@ To change the default sort order for data sets, see [Modifying the default sort 
 
    If the selection is a valid data set, it opens as your active editor.
 
-   If the selection is a valid partitioned data set, it will be displayed in the **DATA SETS** tree under your **profile** or **favorites**.
+   If the selection is a valid partitioned data set, it displays in the **DATA SETS** tree under your **profile** or **favorites**.
 
    This option is similar in functionality to **ZOOM** on **ISPF**.
