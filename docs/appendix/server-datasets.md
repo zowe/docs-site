@@ -1,10 +1,10 @@
-# Server Datasets Reference
+# Server data sets reference
 
 Zowe includes a number of files that are stored in the various data sets. See the following tables for the storage requirements and purposes.
 
-## Runtime Datasets
+## Runtime data sets
 
-The following datasets comprise the runtime, read-only dataset content that can be used by multiple Zowe instances of the same version. These are either delivered by an [SMP/E install](../user-guide/install-zowe-smpe.md), or by running `zwe install` when using [the z/OS convenience build of the Zowe servers](../user-guide/install-zowe-zos-convenience-build.md).
+The following data sets comprise the runtime, read-only data set content that can be used by multiple Zowe instances of the same version. These are either delivered by an [SMP/E install](../user-guide/install-zowe-smpe.md), or by running `zwe install` when using [the z/OS convenience build of the Zowe servers](../user-guide/install-zowe-zos-convenience-build.md).
 
 Library DDNAME | Member Type | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---
@@ -22,8 +22,8 @@ ZWECSVSM | JCL | Creates the VSAM data set for the Caching Service
 ZWEGENER | JCL | Generates JCL templates to configure Zowe
 ZWEIACF | JCL | Defines security permits for ACF2
 ZWEIACFZ | JCL | Creates the ACF2 Zowe resource class
-ZWEIAPF | JCL | Set APF for the required datasets
-ZWEIAPF2| JCL | Set APF for the required datasets
+ZWEIAPF | JCL | Set APF for the required data sets
+ZWEIAPF2| JCL | Set APF for the required data sets
 ZWEIKRA1 | JCL | Defines ACF2 key ring and certificates
 ZWEIKRA2 | JCL | Defines ACF2 key ring and certificates
 ZWEIKRA3 | JCL | Defines ACF2 key ring and certificates
@@ -33,9 +33,10 @@ ZWEIKRR3 | JCL | Defines RACF key ring and certificates
 ZWEIKRT1 | JCL | Defines TSS key ring and certificates
 ZWEIKRT2 | JCL | Defines TSS key ring and certificates
 ZWEIKRT3 | JCL | Defines TSS key ring and certificates
-ZWEIMVS | JCL | Creates datasets used by a Zowe instance
+ZWEIMVS | JCL | Creates PARMLIB data set
+ZWEIMVS1 | JCL | Creates plug-in data set (expected to be APF)
 ZWEIMVS2 | JCL | Creates the load library (expected to be APF)
-ZWEINSTL | JCL | Creates and copies basic installation datasets and members
+ZWEINSTL | JCL | Creates and copies basic installation data sets and members
 ZWEIRAC  | JCL | Defines security permits for RACF
 ZWEIRACZ | JCL | Creates the RACF Zowe resource class
 ZWEISTC | JCL | Adds `PROCLIB` members
@@ -47,8 +48,9 @@ ZWENOKRR | JCL | Removes key ring and certificates for RACF
 ZWENOKRT | JCL | Removes key ring and certificates for TSS
 ZWENOKYR | JCL | Removes key ring and certificates
 ZWENOSEC | JCL | Defines security permits
-ZWERMVS | JCL | Removes datasets used by a Zowe instance
-ZWERMVS2 | JCL | Removes the APF load library
+ZWERMVS | JCL | Removes PARMLIB data set
+ZWERMVS1 | JCL | Removes plug-in data set
+ZWERMVS2 | JCL | Removes load library
 ZWERSTC | JCL | Removes `PROCLIB` members
 ZWESASTC | JCL | Starts the Zowe Auxiliary server used by Cross memory server
 ZWESECKG | JCL | Sample program which generates a secret key for the PKCS#11 token
@@ -91,12 +93,13 @@ The `SZWEEXEC` data set contains few utilities used by Zowe.
 
 The `SZWELOAD` data set contains config manager for REXX.
 
-## Custom Datasets
+## Custom data sets
 
-The following datasets are designed to be used by a single Zowe instance. These are created during post-install setup, and include temporary content as well as datasets used for extensions of Zowe.
+The following data sets are designed to be used by a single Zowe instance. These are created during post-install setup, and include temporary content as well as data sets used for extensions of Zowe.
 
 Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
+CUST.PARMLIB | PARM Library Members | `zowe.setup.dataset.parmlib` | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.JCLLIB | JCL Members | `zowe.setup.dataset.jcllib` | ANY | U | PDSE | FB | 80 | 60 | 5
+CUST.ZWESALL | APF load modules | `zowe.setup.dataset.authLoadlib` | ANY | U | PDSE | U | 0 | 30 | N/A
+CUST.ZWESAPL | APF plug-ins load modules | `zowe.setup.dataset.authPluginLib` | ANY | U | PDSE | U | 0 | 30 | N/A
