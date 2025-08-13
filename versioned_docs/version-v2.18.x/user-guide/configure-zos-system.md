@@ -196,7 +196,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
     ```
     </details>
 
-- To create the `ZWESIUSR` group for the Zowe cross memory server started task, issue the following command according to your ESM:
+- To create a `ZWESIUSR` for the Zowe cross memory server started task, issue the following command according to your ESM:
 
     <details>
     <summary>Click here for command details for RACF.</summary>

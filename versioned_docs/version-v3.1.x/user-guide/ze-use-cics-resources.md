@@ -23,7 +23,7 @@ Expand a CICS profile to see the region name, and expand the region to view its 
 
    ![Zowe CICS Explorer Filter](../images/ze-cics/region-filter.gif)
 
-   ::: Tip
+   :::tip
 
    To apply multiple filters, separate entries with a comma. Append a filter with an `*` to indicate wildcard searching.
 

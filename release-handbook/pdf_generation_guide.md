@@ -20,7 +20,25 @@ We generate PDFs when either a:
 
 Instructions for each case are listed in the sections below.
 
-### Generating the PDF for the latest release
+### Generating the PDF for the latest release with GitHub Actions
+
+1. In the docs-site repo, select the [**Actions** tab](https://github.com/zowe/docs-site/actions).
+2. Select the **Generate PDF** workflow.
+3. Open the **Run workflow** drop-down menu.
+    - Leave the **Use workflow from** drop-down menu set to `Branch: master`.
+    - Configure the release version for the PDF:
+        - For the latest release, leave the second field as `stable`. 
+        - For a previous release, enter the release version in the second field. For example, `v2.18.x`.
+    - Update the PDF title to reflect the release version. For example, `Zowe Version 3.3 Documentation`.
+4. Check the **Use the live docs.zowe.org site** option.
+5. Select the **Run workflow** button.
+6. Refresh the browser window to see the workflow in the Actions page.
+7. Once the PDF is generated, select the **Generate PDF** link to open the build status page. Select the artifact file to download the ZIP file.
+8. Extract the PDF. Rename the file, if necessary.
+9. Open a pull request to upload the PDF to the docs-site repo and publish it to the Zowe Docs site.
+
+
+### Generating the PDF for the latest release with a script
 
 1. Create a temporary branch based off the `master` branch.
 

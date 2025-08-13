@@ -164,7 +164,6 @@
             "user-guide/troubleshooting-zowe-server-install-wizard"
           ]
         },
-        "user-guide/install-zowe-server-install-wizard",
         {
           "type": "category",
           "label": "Installing Zowe via SMP/E",
