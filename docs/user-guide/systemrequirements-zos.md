@@ -31,6 +31,7 @@ Be sure your z/OS system meets the following prerequisites:
 
   | Task | Command utilizing SDSF | Alternatives |
   |-----------|-------------------------------|-------------|
+  | [Security setup](configuring-security.md) | `zwe init security` | Submit `ZWESECUR` or `ZWENOSEC` manually or use `zwe init security --jcl` |
   | [Certificate setup](configure-certificates.md) | `zwe init certificate` | z/OSMF workflow "ZWEKRING", or the JCL samples "ZWEKRING" and those that begin with "ZWEIKR" can be used to create keyrings. |
   | [Authorize library](../appendix/zwe_server_command_reference/zwe/init/zwe-init-apfauth.md) | `zwe init apfauth` | Products that can issue the MVS `SETPROG APF` command or update `SYS1.PARMLIB(PROGxx)`. See examples in [`SZWESAMP(ZWESIPRG)`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/staging/files/SZWESAMP/ZWESIPRG). |
   | [Starting Zowe](start-zowe-zos.md) | `zwe start` | Products that can issue the MVS `START` command upon Zowe's STC such as Sysview or EJES can be used instead. |
