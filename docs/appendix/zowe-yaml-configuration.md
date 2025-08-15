@@ -487,6 +487,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies if the health check endpoint is accessible with or without authentication.  
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
+- **apiml.gateway.servicesToDisableRetry**  
+ Specifies a comma-separated list of service IDs for which automatic retries are disabled. Disabling retry for services where retries are not required helps prevent potential memory issues when handling requests with large payloads to the service. This parameter applies to Zowe version 3.3.0 and later versions. 
 - **apiml.security.x509.enabled**  
  Specifies if client certificate authentication functionality through ZSS is enabled. Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
 - **apiml.security.x509.externalMapperUrl**  
