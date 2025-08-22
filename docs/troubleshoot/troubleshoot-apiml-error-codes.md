@@ -29,6 +29,19 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required.
 
+### ZWED0303I
+
+  Plugin `org.zowe.zlux.auth.trivial` will not be loaded because no dataservices requested it.
+
+  **Reason:**
+
+  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices that are currently deployed within Zowe request the authentication plugin named `org.zowe.zlux.auth.trivial` to authenticate users.
+
+  **Action:**
+
+  This is an informational message. No action is required.
+  
+
 ## API mediation common messages
 
 ### ZWEAO102E
