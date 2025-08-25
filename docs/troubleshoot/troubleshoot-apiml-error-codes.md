@@ -39,7 +39,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  This is an informational message. No action is required.
+  No action is required. This is an informational message. 
   
 
 ## API mediation common messages
