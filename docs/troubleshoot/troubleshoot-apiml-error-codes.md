@@ -31,7 +31,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWED0303I
 
-  Plugin `org.zowe.zlux.auth.trivial` will not be loaded because no dataservices requested it.
+  Plug-in `org.zowe.zlux.auth.trivial` will not be loaded because no dataservices requested it.
 
   **Reason:**
 
