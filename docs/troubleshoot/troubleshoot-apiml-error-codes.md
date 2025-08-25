@@ -35,7 +35,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices that are currently deployed within Zowe request the authentication plugin named `org.zowe.zlux.auth.trivial` to authenticate users.
+  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices that are currently deployed within Zowe request the authentication plug-in named `org.zowe.zlux.auth.trivial` to authenticate users.
 
   **Action:**
 
