@@ -46,11 +46,13 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include the X.509 Client Certificate.
 :::
 
-### Limitations
+### AT-TLS with ICSF Hardware keyring
 
 If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
-Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
+An LTPA token, SAF provider and Personal Access Tokens (PAT) cannot be used in this configuration because API ML cannot access the hardware key to sign the tokens.
+Also, ensure you set the `APIML_ATTLS_LOAD_KEYRING` environment variable to `true` to prevent API ML from trying to read the keyring.
+
+If you want to use LTPA, SAF provider, or Personal Access Tokens you can configure zowe.yaml to use a keyring that is different from the one in AT-TLS, one that is not backed by an ICSF hardware module.
 
 ## AT-TLS rules
 
