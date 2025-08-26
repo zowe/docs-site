@@ -48,9 +48,8 @@ ZWENOKRR | JCL | Removes key ring and certificates for RACF
 ZWENOKRT | JCL | Removes key ring and certificates for TSS
 ZWENOKYR | JCL | Removes key ring and certificates
 ZWENOSEC | JCL | Defines security permits
-ZWERMVS | JCL | Removes PARMLIB data set
-ZWERMVS1 | JCL | Removes plug-in data set
-ZWERMVS2 | JCL | Removes load library
+ZWERMVS | JCL | Removes datasets used by a Zowe instance
+ZWERMVS2 | JCL | Removes the APF load library
 ZWERSTC | JCL | Removes `PROCLIB` members
 ZWESASTC | JCL | Starts the Zowe Auxiliary server used by Cross memory server
 ZWESECKG | JCL | Sample program which generates a secret key for the PKCS#11 token
@@ -99,7 +98,6 @@ The following data sets are designed to be used by a single Zowe instance. These
 
 Library DDNAME | Member Type | zowe.yaml | Target Volume | Type | Org | RECFM | LRECL | No. of 3390 Trks | No. of DIR Blks
 ---|---|---|---|---|---|---|---|---|--
-CUST.PARMLIB | PARM Library Members | `zowe.setup.dataset.parmlib` | ANY | U | PDSE | FB | 80 | 15 | 5
-CUST.JCLLIB | JCL Members | `zowe.setup.dataset.jcllib` | ANY | U | PDSE | FB | 80 | 60 | 5
-CUST.ZWESALL | APF load modules | `zowe.setup.dataset.authLoadlib` | ANY | U | PDSE | U | 0 | 30 | N/A
-CUST.ZWESAPL | APF plug-ins load modules | `zowe.setup.dataset.authPluginLib` | ANY | U | PDSE | U | 0 | 30 | N/A
+CUST.PARMLIB | PARM Library Members | zowe.setup.dataset.parmlib | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.JCLLIB | JCL Members | zowe.setup.dataset.jcllib | ANY | U | PDSE | FB | 80 | 15 | 5
+CUST.ZWESAPL | CLIST copy utilities | zowe.setup.dataset.authPluginLib | ANY | U | PDSE | U | 0 | 15 | N/A
