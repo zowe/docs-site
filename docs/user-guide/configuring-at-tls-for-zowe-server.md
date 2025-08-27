@@ -48,19 +48,25 @@ Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorizati
 
 ### Limitations when using AT-TLS with ICSF Hardware keyring
 
-API Mediation Layer cannot currently read private keys if they are backed in a hardware module. When using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, use one of the following options:
+API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring that resides by an ICSF hardware module, use one of the following options:
 
-#### 1. Prevent API Mediation Layer from reading the private key
+* [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
+* [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
 
-Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API Mediation Layer from loading the keyring.
-The only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-This mode requires both server and client AT-TLS enabled in zowe.yaml with full coverage of Inbound and Outbound rules.
+#### Prevent API ML from reading the private key
 
-**Note:** z/OSMF LTPA token, SAF native authentication provider and Personal Access Tokens (PAT) cannot be used in this configuration due to lack of a private key.
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API ML from loading the keyring.
+The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
+This mode requires both server and client AT-TLS enabled in the zowe.yaml with full coverage of Inbound and Outbound rules.
 
-#### 2. Use an alternative non-hardware keyring
+:::note  
+The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
 
-Since handshakes are handled by AT-TLS, API Mediation Layer only requires a private key access to sign its own tokens when the configuration requires it:
+:::
+
+#### Use an alternative non-hardware keyring
+
+Since handshakes are handled by AT-TLS, API ML only requires private key access to sign API ML's own tokens when the configuration requires it:
 - Personal Access Tokens
 - SAF native provider (API ML signs its own JWT token in this scenario)
 - z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT token, so API ML signs a JWT that contains the LTPA token.
