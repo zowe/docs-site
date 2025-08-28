@@ -48,7 +48,7 @@ Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorizati
 
 ### Limitations when using AT-TLS with ICSF Hardware keyring
 
-API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring that resides by an ICSF hardware module, use one of the following options:
+ API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
 
 * [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
 * [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
@@ -66,10 +66,10 @@ The z/OSMF LTPA token, SAF native authentication provider, and Personal Access T
 
 #### Use an alternative non-hardware keyring
 
-Since handshakes are handled by AT-TLS, API ML only requires private key access to sign API ML's own tokens when the configuration requires it:
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign these types of tokens:
 - Personal Access Tokens
-- SAF native provider (API ML signs its own JWT token in this scenario)
-- z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT token, so API ML signs a JWT that contains the LTPA token.
+- SAF native provider (API ML signs its own JWT  in this scenario)
+- z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
 
