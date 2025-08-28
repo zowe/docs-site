@@ -66,9 +66,9 @@ The z/OSMF LTPA token, SAF native authentication provider, and Personal Access T
 
 #### Use an alternative non-hardware keyring
 
-Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign these types of tokens:
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
 - Personal Access Tokens
-- SAF native provider (API ML signs its own JWT  in this scenario)
+- SAF native provider (API ML signs its own JWT in this scenario)
 - z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
