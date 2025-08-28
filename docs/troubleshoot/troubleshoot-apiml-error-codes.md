@@ -462,6 +462,8 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Verify that the URL you are trying to reach is correct and all services are running.
+  To reset the duration of the allowed time, configure the properties in the `zowe.yaml` file.
+  For more information about the properties to configure, see the [Customizing Gateway timeouts](../user-guide/api-mediation/configuration-gateway-timeouts.md) page.
 
 ### ZWEAM701E
 
