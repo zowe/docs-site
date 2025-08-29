@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.event.pull_request.head || github.base_ref || github.ref_name }}
+          key: cache-lychee-${{ github.event.pull_request.head.ref || github.base_ref || github.ref_name }}
           restore-keys: cache-lychee-
 
       - name: Run lychee
