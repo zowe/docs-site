@@ -213,8 +213,6 @@ When you execute the `zwe` command, the `--config` or `-c` argument is used to p
 * To avoid passing `--config` or `-c` to every `zwe` command, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to the location of zowe.yaml.
 
   For example, after defining `export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml`, you can simply type `zwe start` instead of the full command `zwe start -c /path/to/my/zowe.yaml`.
-
-* If you are new to the `example-zowe.yaml` configuration file, you can start with entries that are marked with `COMMONLY_CUSTOMIZED`. It highlights most of the common configurations, such as directories, host and domain name, service ports, certificate setup, and z/OSMF, which are critical for standing a new Zowe instance.
 :::
 
 ### Workspace directory
@@ -237,7 +235,7 @@ Multiple Zowe instances can define different log directories. It is not necessar
 
 The log directory should be defined in your Zowe configuration file as `zowe.logDirectory`.
 
-### Keystore directory
+### (Optional) Keystore directory
 
 Zowe uses certificates to enable transport layer security. The system administrator can choose to use z/OS Keyring or PKCS#12 keystore for certificate storage. A keystore directory is created and used if PKCS#12 keystore is chosen.
 
@@ -255,7 +253,7 @@ Zowe uses certificates to enable transport layer security. The system administra
     └── localhost.truststore.p12          - Zowe trusted certificate authorities in PKCS#12 format
 ```
 
-To generate a keystore directory, you need proper `zowe.setup.certificate` configuration defined in the Zowe configuration file. Execute the server command `zwe init certificate`. To learn more about this command, see the [Reference of zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the appendix.
+To generate a keystore directory tree, you need to define `zowe.setup.certificate` configuration in the Zowe configuration file. The keystore directory provided to the Zowe configuration must first be created by an administrator. Sub-directories will be created when you run `zwe init certificate` during [certificate configuration steps](https://docs.zowe.org/stable/user-guide/configure-certificates). To learn more about this command, see the [Reference of zwe init certificate](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the appendix.
 
 ### Extension directory
 
