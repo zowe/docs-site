@@ -248,7 +248,7 @@ Use the following steps to specify a base path with Zowe [team configuration](..
 
 #### Specifying a base path with Zowe V1 profiles
 
-See the [Integrating with API Mediation Layer](https://67c89aa5af702da5881fc564--zowe-docs-master.netlify.app/v1.28.x/user-guide/cli-usingcli#integrating-with-api-mediation-layer) Zowe V1 documentation.
+See the [Integrating with API Mediation Layer](https://docs.zowe.org/zowe-docs-v1.28.x.pdf) in the Zowe V1 documentation.
 
 ## Using client certificates
 
