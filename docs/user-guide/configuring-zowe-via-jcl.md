@@ -30,7 +30,7 @@ zowe:
       enable: true
 ```
 
-Example commands:
+Example commands: `--jcl` overrides `zowe.setup.jcl.enable`
 ```shell
 zwe install -c /path/to/your/zowe.yaml --jcl
 zwe init mvs -c /path/to/your/zowe.yaml --jcl
@@ -38,13 +38,13 @@ zwe init mvs -c /path/to/your/zowe.yaml --jcl
 
 ### Generating JCL
 
-`zwe init` commands using JCL require you to first generate the JCL using values present in your `zowe.yaml` file. To do this, run:
+Running `zwe init` commands with JCL require that you to first generate JCL using values present in your `zowe.yaml` file. To do this, run:
 
 ```shell
-zwe init generate -c /path/to/your/zowe.yaml`
-``` 
+zwe init generate -c /path/to/your/zowe.yaml
+```
 
-This takes the configuration values present in your `zowe.yaml` file, uses them to populate JCL templates in `SZWESAMP`, and creates a `JCLLIB` dataset with the final generated JCL. The `JCLLIB` will be created using the prefix `zowe.setup.dataset.jcllib`. 
+This takes the configuration values present in your `zowe.yaml` file, uses them to populate JCL templates in `SZWESAMP`, and creates a `JCLLIB` dataset with the final generated JCL. The `JCLLIB` will be created using the value of `zowe.setup.dataset.jcllib`. 
 
 For example, `zwe init generate` with the below zowe.yaml creates the dataset `MY.DS.PREFIX.JCLLIB`. If this dataset already exists, you must add `--allow-overwrite` to the `init generate` command.
 ```yaml
@@ -56,24 +56,14 @@ zowe:
 ```
 
 :::important
-If you make any changes to values starting with `zowe.setup` in your zowe.yaml file, you must re-run `zwe init generate` to create fresh JCL. Optionally, `zwe init` commands provide a `--generate` flag which will run `init generate` on-the-fly as well. For example, `zwe init mvs --generate` will run `init generate` before the `init mvs`.
+If you make any changes to values which begin with `zowe.setup` in your zowe.yaml file, you must re-run `zwe init generate` to create fresh JCL. Optionally, `zwe init` commands provide a `--generate` flag which will run `init generate` on-the-fly as well. For example, `zwe init mvs --generate` will run `init generate` before the `init mvs`.
 :::
 
 ### Adding Job Parameters to generated JCL
 
-If you require specific job parameters to run JCL on your system, you can add them via the `zowe.setup.jcl.header` field in your zowe.yaml file. The `zwe` _will not_ validate the syntax of the supplied parameters, you should always review the generated JCL to ensure the headers are correct.
+If you require specific job parameters to run JCL on your system, you can add them via the `zowe.setup.jcl.header` field in your zowe.yaml file. The `zwe` commands _will not_ validate the syntax of the supplied parameters, so you should always review the generated JCL to ensure the headers are correct.
 
-This header field can be supplied as either a single or multi-line string. Line 1 requires no formatting, while lines 2 onward require you to supply `//  ` before the job parameters. If using a single line for the header field, use `\n` to indicate new lines. If using multi-line strings, ensure your indentation remains aligned with each new line.
-
-Example zowe.yaml, with header as a single line. Double quotes are required around the entire string:
-```yaml
-zowe:
-  setup:
-    jcl: 
-      enable: true
-      header: "'ZWECFJOB'\n//   REGION=0M\n//* atestcomment"
-    dataset: # ...the rest of your zowe.yaml
-```
+This header field can be supplied as either a single or multi-line string. Line 1 requires no formatting, while lines 2 and onward require you to supply `//  ` before the job parameters. If using a single line for the header field, use `\n` to indicate new lines. If using multi-line strings, ensure your indentation remains aligned with each new line.
 
 Example zowe.yaml, with header as a single line:
 ```yaml
@@ -81,6 +71,18 @@ zowe:
   setup:
     jcl: 
       enable: true
+      # Double quotes are required around the entire string:
+      header: "'ZWECFJOB'\n//   REGION=0M\n//* atestcomment"
+    dataset: # ...the rest of your zowe.yaml
+```
+
+Example zowe.yaml, with header as  line:
+```yaml
+zowe:
+  setup:
+    jcl: 
+      enable: true
+      # Ensure spacing is aligned here, column 1 is under the 'a' of 'header'
       header: |
         'ZWECFJOB',
         //   REGION=0M
@@ -90,19 +92,18 @@ zowe:
 
 Both zowe.yaml files create the below job card:
 ```
-//ZWEGENER JOB 'SOMEJOB',
+//ZWEGENER JOB 'ZWECFJOB',
 //   REGION=0M
 //* atestcomment
-//* secondtestcomment 
 ```
 
 ### Reviewing JCL before submission
 
-One advantage to JCL is the ability to review all the actions it will take on your system before submitting it. There are a few ways to review JCL used by `zwe` before submission. All `zwe init` and `zwe install` commands support the `--dry-run` command line parameter, which will print the command's final JCL to the console and won't submit it. When running `zwe init generate` specifically, this is the only way to review the final JCL prior to submission. For other `zwe init` commands and the `zwe install` command, you can choose to run them with `--dry-run` and review the console outputs, or you can review them in the `JCLLIB` dataset created by `init generate`. 
+One advantage to JCL is the ability to review all the actions it will take on your system before submitting it. There are a few ways to review JCL used by `zwe` before submission. All `zwe init` and `zwe install` commands support the `--dry-run` command line parameter, which will print the command's final JCL to the console and exit. When running `zwe init generate` or `zwe install` specifically, this is the only way to review the final JCL prior to submission. For other `zwe init` commands, you can choose to run them with `--dry-run` and review the console outputs, or you can review their JCL in the `JCLLIB` dataset created by `init generate`.  We recommend reviewing using `--dry-run`.
 
 ### Following existing `zwe` command documentation
 
-To configure Zowe successfully with JCL, you can follow the existing documentation for `zwe install` and `zwe init` with minor modifications:
+To configure Zowe successfully with JCL, you can follow all existing documentation for `zwe install` and `zwe init` with minor modifications:
 
 1. Setup JCL enablement and JCL job parameters as described in this guide first. 
 2. Run `zwe init generate` before any other init command, and after any change to a `zowe.setup` field in the zowe.yaml file.
@@ -111,13 +112,14 @@ That's it!
 
 ### Following existing z/OSMF workflow documentation
 
-Both the [Zowe Configuration Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) and the [Stand-alone APIML Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) support JCL enablement. When you start your configuration, you will see the option to enable JCL and a `Job statement positionial parameters...` text field where you can fill out job statement information. **Note:** unlike when editing the zowe.yaml file directly, do not enter a start-of-line `// ` for lines 2 or more in the workflow text field. This field can be left blank if you do not need to add any job statement parameters. Once you have reviewed and set these fields, follow the workflow instructions normally.
+Both the [Zowe Configuration Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) and the [Stand-alone APIML Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) support JCL enablement. When you start your configuration, you will see the option to enable JCL and a field labeled with `Job statement positionial parameters...` where you can fill in job statement information. 
+**Note:** Unlike when editing the zowe.yaml file directly, do not enter a start-of-line `// ` for lines 2 or more in the workflow text field. This field can be left blank if you do not need to add any job statement parameters. Once you have reviewed and set these fields, follow the workflow instructions normally.
 
 ![Workflow](../images/zosmf/inputvars-jcl-enable.png)
 
 ## Getting started with manual JCL submission
 
-If you do not wish to use the `zwe` command-line interface, you can submit the same set of JCL yourself directly through MVS datasets. Do note that you will still need a zowe.yaml file.
+If you do not wish to use the `zwe` command-line tool to configure Zowe, you can submit the same set of JCL yourself directly through MVS datasets. Do note that you will still need a zowe.yaml file.
 
 ### Preparing the JCL
 
