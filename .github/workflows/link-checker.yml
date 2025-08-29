@@ -26,12 +26,12 @@ jobs:
           done
 
       - name: Restore lychee cache
-        uses: actions/cache@v4
+        id: lychee-cache-restore
+        uses: actions/cache/restore@v4
         with:
           path: .lycheecache
-          key: cache-lychee-${{ github.base_ref || github.ref_name }}
+          key: cache-lychee-${{ github.event.pull_request.head || github.base_ref || github.ref_name }}
           restore-keys: cache-lychee-
-          save-always: true
 
       - name: Run lychee
         uses: lycheeverse/lychee-action@v1
@@ -39,3 +39,11 @@ jobs:
           args: "--accept 403,406,429 --cache --include-fragments --max-cache-age 1d --max-concurrency 2 --no-progress --timeout 60 --verbose 'docs/**/*.md'"
           fail: true
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Always save lychee cache
+        id: save-lychee-cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+            key: ${{ steps.lychee-cache-restore.outputs.cache-primary-key }}
+            path: .lycheecache
