@@ -1,15 +1,54 @@
 # Zowe CLI authentication methods
 
-Zowe CLI supports multiple authentication methods including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
+Zowe CLI supports multiple methods of authenticating to mainframe services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
 
 Configure the authentication method you want to use across multiple mainframe services in a [base profile](../appendix/zowe-glossary.md#base-profile) stored in your configuration file. 
 
-:::note Notes
+If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`.
 
-- To apply your authentication method to a specific service, define the authentication type in the [service profile](../appendix/zowe-glossary.md#service-profile) of your choice.
+:::note
++
+- To authenticate to a service, configure credentials to the associated service profile. If you have multiple credentials in your configuration, add an `authOrder` property to that profile to specify which type of authentication (and credentials) should be used for that service.
 
-- If you switch to a different authentication type, remove the previous authentication method from the profile it was stored in before.
 :::
+
+## Order of precedence
+
+You can configure the order that Zowe CLI follows to search for an available authentication method, or you can leave the [default order of precedence](../extend/extend-cli/cli-authentication-mechanisms.md#default-order-of-precendence) used by the service you are connecting to.
+
+To configure a different order of precedence, add the `authOrder` property to the profile for the service to which you want to connect.:
+
+```json
+"properties": {
+    "host": ... ,
+    "port": ... ,
+    "rejectUnauthorized": ... ,
+//highlight-start
+    "authOrder": "basic, token, cert-pem"
+//highlight-end
+}
+```
+
+`authOrder` possible values:
+- `basic` to use [basic authentication](#using-basic-authentication)
+- `bearer` to use a token **not** being sent to API ML
+- `cert-pem` to use a [client certificate](#using-client-certificates)
+- `token` to use a [token](#using-a-token-for-single-sign-on-sso)
+- `none` to not require authentication
+
+The sequence of the values for the `authOrder` property represent the order of precedence. 
+
+### Checking availability of authentication
+
+The `authOrder` property defines the order used to find the **first available** authentication type. 
+
+:::info Important
+If an authentication method is found and fails, the  `authOrder` property does not prompt the system to use the next authentication type listed in the property values.
+:::
+
+In the preceding example, Zowe CLI is configured to look for the first *available* authentication method in the order outlined in the `authOrder` property.
+
+This means that if basic authentication is set up, Zowe CLI uses the user ID and password for authentication. If only a token is available, Zowe CLI still checks for basic authentication, does not find it, and checks the configuration for token information. If the token information is not found, Zowe CLI then checks for the third authentication type, a certificate.
 
 ## Using basic authentication
 
@@ -248,7 +287,7 @@ Use the following steps to specify a base path with Zowe [team configuration](..
 
 #### Specifying a base path with Zowe V1 profiles
 
-See the [Integrating with API Mediation Layer](../../versioned_docs/version-v1.28.x/user-guide/cli-usingcli#integrating-with-api-mediation-layer) Zowe V1 documentation.
+See the [Integrating with API Mediation Layer](https://docs.zowe.org/zowe-docs-v1.28.x.pdf) in the Zowe V1 documentation.
 
 ## Using client certificates
 

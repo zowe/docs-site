@@ -48,8 +48,9 @@ ZWENOKRR | JCL | Removes key ring and certificates for RACF
 ZWENOKRT | JCL | Removes key ring and certificates for TSS
 ZWENOKYR | JCL | Removes key ring and certificates
 ZWENOSEC | JCL | Defines security permits
-ZWERMVS | JCL | Removes datasets used by a Zowe instance
-ZWERMVS2 | JCL | Removes the APF load library
+ZWERMVS | JCL | Removes PARMLIB data set
+ZWERMVS1 | JCL | Removes plug-in data set
+ZWERMVS2 | JCL | Removes load library
 ZWERSTC | JCL | Removes `PROCLIB` members
 ZWESASTC | JCL | Starts the Zowe Auxiliary server used by Cross memory server
 ZWESECKG | JCL | Sample program which generates a secret key for the PKCS#11 token
