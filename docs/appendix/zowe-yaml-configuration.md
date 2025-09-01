@@ -521,6 +521,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+- **apiml.security.oidc.userIdField**
+  Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot separated list. Used to specify e.g. a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.TBD.0 and later versions.
 
 :::note
 
