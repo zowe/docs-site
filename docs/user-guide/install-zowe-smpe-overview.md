@@ -234,7 +234,7 @@ Use the data in these tables to determine which libraries can be merged into com
 
 **Storage requirements for Zowe target libraries**
 
-Review the list of Zowe's runtime datasets in the [Server Dataset Appendix](../appendix/server-datasets.md#runtime-datasets).
+Review the list of Zowe's runtime datasets in the [Server Dataset Appendix](../appendix/server-datasets.md#runtime-data-sets).
 
 **Zowe file system paths**
 
