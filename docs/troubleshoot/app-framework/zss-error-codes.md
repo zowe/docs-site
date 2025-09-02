@@ -753,15 +753,3 @@ zowe:
       tls:
         maxTls: "TLSv1.2"
 ```
-
-### ZWES0054E
-
-  ZIS AUX Server started in wrong key 8
-
-  **Reasons:**
-
-  authPluginLib was missing in the `ZWESASTC` JCL and the `ZWESISTC` JCL.
-
-  **Action:**
- 
-  When the Zowe STC userid has read access to the profile SAF `OMVSAPPL`, the `ZWESASTC` task will be able to successfully be started on an as-needed basis from `ZWESISTC`.
