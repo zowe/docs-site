@@ -8,7 +8,7 @@ Review this article to learn about how to intialize Zowe custom MVS data sets by
 
 ## Introduction
 
-During the installation of Zowe, runtime datasets are created. The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified. [The list of these datasets can be reviewed in the dataset appendix](../appendix/server-data-sets.md).
+During the installation of Zowe, runtime datasets are created. The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified. [The list of these datasets can be reviewed in the dataset appendix](../appendix/server-datasets.md).
 
 For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
