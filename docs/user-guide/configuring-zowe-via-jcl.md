@@ -108,12 +108,14 @@ To configure Zowe successfully with JCL, you can follow all existing documentati
 1. Setup JCL enablement and JCL job parameters as described in this guide first. 
 2. Run `zwe init generate` before any other `init` command, and after any change to a `zowe.setup` field in the `zowe.yaml` file.
 
-That's it!
+Differences to note:
+
+1. `zwe init security` no longer submits `ZWESECUR`, and instead uses `ZWEI***`, where `***` is your configured ESM.
 
 ### Following existing z/OSMF workflow documentation
 
-Both the [Zowe Configuration Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) and the [Stand-alone APIML Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) support JCL enablement. When you start your configuration, you will see the option to enable JCL and a field labeled with `Job statement positionial parameters...` where you can fill in job statement information. 
-**Note:** Unlike when editing the `zowe.yaml` file directly, do not enter a start-of-line `// ` for lines 2 or more in the workflow text field. This field can be left blank if you do not need to add any job statement parameters. Once you have reviewed and set these fields, follow the workflow instructions normally.
+Both the [Zowe Configuration Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) and the [Stand-alone APIML Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow) support configuration with JCL. When you start your configuration, you will see the option to enable JCL and a field labeled with `Job statement positional parameters...` where you can fill in job statement information. 
+**Note:** Do _not_ enter a start-of-line `// ` for lines 2 or later in the workflow text field; it will be added automatically for you. This entire text field can be left blank if you do not need to add any job statement parameters. Once you have reviewed and set these fields, follow the workflow instructions normally.
 
 ![Workflow](../images/zosmf/inputvars-jcl-enable.png)
 

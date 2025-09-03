@@ -7,7 +7,7 @@ Begin configuration of your installation of Zowe z/OS components by initializing
 
 Use one of the following options to initialize Zowe z/OS runtime:
 
-* Initialize Zowe maunually using zwe init command group
+* Initialize Zowe manually using zwe init command group
 * Configure Zowe with z/OSMF workflows
 
 ## Initialize Zowe manually using zwe init command group
