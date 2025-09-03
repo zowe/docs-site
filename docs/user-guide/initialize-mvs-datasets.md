@@ -21,7 +21,7 @@ zowe:
       prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWEV3.SZWEAUTHntication-mechanisms.md#default
+      authLoadlib: IBMUSER.ZWEV3.SZWEAUTH
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
