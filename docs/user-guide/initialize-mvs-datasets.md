@@ -21,11 +21,11 @@ zowe:
       prefix: IBMUSER.ZWE
       parmlib: IBMUSER.ZWE.CUST.PARMLIB
       jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWEV3.SZWEAUTH
+      authLoadlib: IBMUSER.ZWEV3.SZWEAUTHntication-mechanisms.md#default
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-datasets) that will be created in this step.
+Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-data-sets) that will be created in this step.
 
 ## Procedure to initialize Zowe custom data sets
 

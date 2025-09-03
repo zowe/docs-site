@@ -21,7 +21,7 @@ Use the `zwe init mvs` command to intialize Zowe custom MVS data sets.
 :::info Required role: system programmer
 :::
 
-During the installation of Zowe, the following [runtime datasets](../appendix/server-datasets.md#runtime-datasets) are created.
+During the installation of Zowe, the following [runtime datasets](../appendix/server-datasets.md#runtime-data-sets) are created.
 
 The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified.
 
@@ -40,7 +40,7 @@ zowe:
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Review the [storage requirements](../appendix/server-datasets.md#custom-datasets) for the datasets.
+Review the [storage requirements](../appendix/server-datasets.md#custom-data-sets) for the datasets.
 
 ### Procedure to initialize Zowe custom data sets
 

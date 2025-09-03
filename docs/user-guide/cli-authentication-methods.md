@@ -14,7 +14,7 @@ If you configure multiple authentication methods for a specific service, set the
 
 ## Order of precedence
 
-You can configure the order that Zowe CLI follows to search for an available authentication method, or you can leave the [default order of precedence](../extend/extend-cli/cli-authentication-mechanisms.md#default-order-of-precendence) used by the service you are connecting to.
+You can configure the order that Zowe CLI follows to search for an available authentication method, or you can leave the [default order of precedence](../extend/extend-cli/cli-authentication-mechanisms.md#default-order-of-precedence) used by the service you are connecting to.
 
 To configure a different order of precedence, add the `authOrder` property to the profile for the service to which you want to connect.:
 
