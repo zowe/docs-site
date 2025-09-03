@@ -4,7 +4,7 @@
 Configuring Zowe with JCL is currently in *technical preview*. In a later release, this will become the default method of configuration.
 :::
 
-Zowe can be configured on your system with JCL using the `zwe` commands, or by customizing and running JCL entirely manually. Both of these configuration methods require a [`zowe.yaml` configuration file](./installandconfig.md#zowe-configuration-file-zoweyaml). Between these two options, we recommend sticking with `zwe` commands rather than manually submitting JCL from scratch, as there's additional validation we can perform on your configuration prior to creating and submitting JCL.
+Zowe can be configured on your system with JCL using the `zwe` commands, or by customizing and running JCL entirely manually. Both of these configuration methods require a [`zowe.yaml` configuration file](./installandconfig.md#zowe-configuration-file-zoweyaml). Between these two options, we recommend sticking with `zwe` commands rather than manually submitting JCL, as there's additional validation `zwe` can perform on your configuration prior to creating and submitting JCL.
 
 - [Getting started with `zwe` and JCL](#getting-started-with-zwe-and-jcl)
   - [Generating JCL](#generating-jcl)
@@ -32,8 +32,8 @@ zowe:
 
 Example commands: `--jcl` overrides `zowe.setup.jcl.enable`
 ```shell
-zwe install -c /path/to/your/zowe.yaml --jcl
-zwe init mvs -c /path/to/your/zowe.yaml --jcl
+zwe install -c /path/to/my/zowe.yaml --jcl
+zwe init mvs -c /path/to/my/zowe.yaml --jcl
 ```
 
 ### Generating JCL
@@ -41,7 +41,7 @@ zwe init mvs -c /path/to/your/zowe.yaml --jcl
 Running `zwe init` commands with JCL require that you to first generate JCL using values present in your `zowe.yaml` file. To do this, run:
 
 ```shell
-zwe init generate -c /path/to/your/zowe.yaml
+zwe init generate -c /path/to/my/zowe.yaml
 ```
 
 This takes the configuration values present in your `zowe.yaml` file, uses them to populate JCL templates in `SZWESAMP`, and creates a `JCLLIB` data set with the final generated JCL. The `JCLLIB` will be created using the value of `zowe.setup.dataset.jcllib`. 
@@ -76,7 +76,7 @@ zowe:
     dataset: # ...the rest of your zowe.yaml
 ```
 
-Example `zowe.yaml`, with header as line:
+Example `zowe.yaml`, with header as multi-line field:
 ```yaml
 zowe:
   setup:
@@ -99,7 +99,7 @@ Both `zowe.yaml` files create the below job card:
 
 ### Reviewing JCL before submission
 
-One advantage to JCL is the ability to review all the actions it will take on your system before submitting it. There are a few ways to review JCL used by `zwe` before submission. All `zwe init` and `zwe install` commands support the `--dry-run` command line parameter, which will print the command's final JCL to the console and exit. When running `zwe init generate` or `zwe install` specifically, this is the only way to review the final JCL prior to submission. For other `zwe init` commands, you can choose to run them with `--dry-run` and review the console outputs, or you can review their JCL in the `JCLLIB` dataset created by `init generate`.  We recommend reviewing using `--dry-run`.
+One advantage to JCL is the ability to review all the actions it will take on your system before submitting it. There are a few ways to review JCL used by `zwe` before submission. All `zwe init` and `zwe install` commands support the `--dry-run` command line parameter, which will print the command's final JCL to the console and exit. When running `zwe init generate` or `zwe install` specifically, this is the only way to review the final JCL prior to submission. For other `zwe init` commands, you can choose to run them with `--dry-run` and review the console output, or you can review their JCL in the `JCLLIB` dataset created by `init generate`.  We recommend reviewing using `--dry-run`, and inspecting the `JCLLIB` only if `--dry-run` is insufficient.
 
 ### Following existing `zwe` command documentation
 

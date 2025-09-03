@@ -191,30 +191,6 @@ This data set defined in Zowe configuration contains extra load libraries used b
 - **`zowe.setup.datasets.loadlib`**  
 This data set defined in Zowe configuration contains load libraries that do not need authorization, such as a version of the configuration manager that can be used within REXX.
 
-### Zowe configuration file (`zowe.yaml`)
-
-Zowe uses a YAML format configuration. If you store the configuration on USS, this file is usually referred as `zowe.yaml`.
-
-This configuration file has the following  requirements:
-
-- The Zowe runtime user, usually referred as `ZWESVUSR`, must have read permission to this file.
-- If you plan to run Zowe in Sysplex, all Zowe high availability instances must share the same configuration file. As such, this configuration file should be placed in a shared file system (zFS directory) where all LPARs in a Sysplex can access.
-- The Zowe configuration file may contain sensitive configuration information so it should be protected against malicious access.
-
-To create this configuration, you can copy from `example-zowe.yaml` located in Zowe runtime directory. Note that the `zowe.runtimeDirectory` definition in the configuration file should match the Zowe runtime directory mentioned previously.
-
-To learn more about this Zowe configuration file, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
-
-
-:::tip zowe.yaml configuration tips:  
-
-When you execute the `zwe` command, the `--config` or `-c` argument is used to pass the location of a `zowe.yaml` file.
-
-* To avoid passing `--config` or `-c` to every `zwe` command, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to the location of zowe.yaml.
-
-  For example, after defining `export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml`, you can simply type `zwe start` instead of the full command `zwe start -c /path/to/my/zowe.yaml`.
-:::
-
 ### Workspace directory
 
 The workspace directory is required to launch Zowe. It is automatically created when you start Zowe. More than one workspace directory can be created and used to launch multiple instances of Zowe sharing the same runtime directory. It is not recommended to create workspace directory manually in order to avoid permission conflicts.
@@ -264,6 +240,30 @@ Similar to Zowe runtime directory, this extension directory should be created by
 The extension directory should be created by system administrator and defined in your Zowe configuration file as `zowe.extensionDirectory`.
 
 Zowe uses [`zwe components install` command](../appendix/zwe_server_command_reference/zwe/components/install/zwe-components-install.md) to install Zowe server extensions. This command creates sub-directories or symbolic links under the extension directory.
+
+### Zowe configuration file (`zowe.yaml`)
+
+Zowe uses a YAML format configuration. You can choose to store this file in either USS or a data set, and in both cases this will be referred to as `zowe.yaml` throughout the documentation. Our recommendation is to store the `zowe.yaml` file in USS within your workspace directory [as defined above.](#workspace-directory)
+
+This configuration file has the following requirements:
+
+- The Zowe runtime user, usually referred as `ZWESVUSR`, must have read permission to this file.
+- If you plan to run Zowe in Sysplex, all Zowe high availability instances must share the same configuration file. As such, this configuration file should be placed in a shared file system (zFS directory) where all LPARs in a Sysplex can access.
+- The Zowe configuration file may contain sensitive configuration information so it should be protected against malicious access.
+
+To create this configuration, you can copy from `example-zowe.yaml` located in Zowe runtime directory. Note that the `zowe.runtimeDirectory` definition in the configuration file should match the Zowe runtime directory mentioned previously.
+
+To learn more about this Zowe configuration file, see the [Zowe YAML configuration file reference](../appendix/zowe-yaml-configuration.md).
+
+
+:::tip zowe.yaml configuration tips:  
+
+When you execute the `zwe` command, the `--config` or `-c` argument is used to pass the location of a `zowe.yaml` file.
+
+* To avoid passing `--config` or `-c` to every `zwe` command, you can define `ZWE_CLI_PARAMETER_CONFIG` environment variable points to the location of zowe.yaml.
+
+  For example, after defining `export ZWE_CLI_PARAMETER_CONFIG=/path/to/my/zowe.yaml`, you can simply type `zwe start` instead of the full command `zwe start -c /path/to/my/zowe.yaml`.
+:::
 
 ## Next step
 
