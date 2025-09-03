@@ -25,7 +25,7 @@ zowe:
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-datasets) that will be created in this step.
+Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-data-sets) that will be created in this step.
 
 ## Procedure to initialize Zowe custom data sets
 

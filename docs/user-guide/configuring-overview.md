@@ -18,17 +18,21 @@ Successful completion of steps 2, 3, and 4 may require elevated security permiss
 
 ## Configuring Zowe runtime
 
-To cofigure Zowe runtime, choose from the following options:
+To configure Zowe runtime, choose from the following options:
 
-* **Option 1: Configure Zowe manually using the `zwe init` command group**  
-To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Runtime directory](./installandconfig.md#runtime-directory) which details all of the started tasks in the article _Preparing for installation_.
+* **Option 1: Configure Zowe using the `zwe init` command group**  
+To run the `zwe init` command, it is necessary to create a Zowe configuration file. For more information about this file, see the [Zowe configuration file](./installandconfig.md#zowe-configuration-file-zoweyaml).
 
     Once your configuration file is prepared, see [Configuring Zowe with zwe init](./initialize-zos-system.md), for more information about using the `zwe init` command group.
 
-* **Option 2: Configure Zowe via JCL**
+:::note
+From Zowe 3.3.0 forward, the `zwe init` command supports JCL-driven actions. This will become the default method of `zwe init` configuration in a future release. Read [this guide](./configuring-zowe-via-jcl.md) to get started.
+:::
+
+* **Option 2: Configure Zowe via manual JCL**
 You can configure Zowe by directly customizing JCLs. The Zowe Runtime Dataset `SZWESAMP` contains JCL samples that have templates referencing `zowe.yaml` parameters. These samples should not be submitted without modification.
 
-    For more information, see [Configuring Zowe via JCL](./configuring-zowe-via-jcl.md)
+    For more information, see [Configuring Zowe via JCL](./configuring-zowe-via-jcl.md#getting-started-with-manual-jcl-submission)
 
 * **Option 3: Configure Zowe with z/OSMF workflows**  
 You can execute the Zowe configuration workflow either from a PSWI during deployment, or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow z/OSMF during the workflow registration process.
