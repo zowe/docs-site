@@ -232,31 +232,6 @@ This is quite a complex area and you should ask your systems programmer for advi
 
 class profile SDSF ISF.CONNECT.\*\* (G)
 
-## Error messages from TCP/IP
-
-On starting Zowe, you may see the following messages in `DDNAME SYSPRINT`:
-```
-2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) - Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, using default of 'INET'
-2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) - EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
-```
-
-or the following message:
-
-```
-2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) Netstat test fail with exit code 255 (EZZ2385I Access to Netstat -c denied - SAF RC is 00000008)
-```
-
-In both cases, more detail should be available on the SYSLOG. 
-
-In the first case, it is likely that the SYSTCPD dataset from the TCP/IP job may not be accessible to the user running Zowe. A message such as the following may be seen on the SYSLOG at the same time as the error is seen in the Zowe output:
-
-```
-TSS7220E 101 J=stc A=user VOL=volume ACC=READ DSN=systcpd.dataset.name TSS7221E Dataset Not Accessible - systcpd.dataset.name
-IEC150I 913-38,IFG0194E,stc,*OMVSEX,SYS00003,24A4,volume, 692 systcpd.dataset.name(member) *EZZ9297E UNABLE TO ACCESS FILE systcpd.dataset.name(member) - RC 00080008
-```
-
-The user running ZOWE requires READ access to the SYSTCPD dataset mentioned on the SYSLOG.
-
 ## Known Issues with API ML
 
 ### Error messages from TCP/IP
