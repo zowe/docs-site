@@ -351,3 +351,15 @@ To change the default sort order for data sets, see [Modifying the default sort 
    The new data set displays under the selected profile.
 
    ![Allocate Like](../images/ze/ZE-allocate.gif)
+
+## Open selected text as data set
+
+1. In the active **Editor** in VS Code, highlight the name of a data set you would like to open.
+2. Right-click and select the option **Open Selected Data Set**.
+3. If you have multiple profiles, a **Quick Pick** opens. Select the profile you would like to open the data set from.
+
+   If the selection is a valid data set, it opens as your active editor.
+
+   If the selection is a valid partitioned data set, it displays in the **DATA SETS** tree under your **profile** or **favorites**.
+
+   This option is similar in functionality to **ZOOM** on **ISPF**.

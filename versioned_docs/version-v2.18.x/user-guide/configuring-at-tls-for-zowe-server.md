@@ -128,7 +128,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 
 **Follow this step:**
 
-Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
+Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
 Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 

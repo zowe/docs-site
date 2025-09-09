@@ -46,11 +46,30 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include the X.509 Client Certificate.
 :::
 
-### Limitations
+### Limitations when using AT-TLS with ICSF Hardware keyring
 
-If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
-Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
+ API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
+
+* [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
+* [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
+
+#### Prevent API ML from reading the private key
+
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API ML from loading the keyring.
+The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
+This mode requires both server and client AT-TLS enabled in the zowe.yaml with full coverage of Inbound and Outbound rules.
+
+:::note  
+The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
+
+:::
+
+#### Use an alternative non-hardware keyring
+
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
+- Personal Access Tokens
+- SAF native provider (API ML signs its own JWT in this scenario)
+- z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
 
