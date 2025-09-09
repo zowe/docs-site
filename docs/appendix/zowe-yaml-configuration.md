@@ -527,7 +527,7 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.oidc.registry**  
   Specifies the SAF registry used to group identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between distributed and mainframe user identities. For more information, see [ESM configuration prerequisites](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
 - **apiml.security.oidc.jwks.uri**  
-  Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI.
+  Specifies one or more URIs (comma-separated) obtained from the authorization server’s metadata where the Gateway queries for the JWKs used to sign and verify the access tokens. This allows the Gateway to support multiple OIDC providers at the same time. A valid value is any valid URI.
 - **apiml.security.oidc.jwks.refreshInternalHours**  
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
 - **apiml.security.oidc.identityMapperUser**  
