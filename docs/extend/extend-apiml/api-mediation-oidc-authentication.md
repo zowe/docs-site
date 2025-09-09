@@ -279,7 +279,7 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
     - **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
       (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
     - **components.gateway.apiml.security.oidc.userIdField**  
-      Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.TBD.0 and later versions.
+      Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.TBD.0 and later versions.
 
 **Example for OKTA:**
 
