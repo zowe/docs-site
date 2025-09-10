@@ -46,8 +46,6 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - Read informative [**blog posts about Zowe**](https://medium.com/zowe) on Medium to explore use cases, best practices, and more.
 
-- **Discuss Zowe topics** in the [Open Mainframe Project community forums](https://community.openmainframeproject.org/c/zowe).
-
 - If you have an issue that is specific to Zowe Explorer, you can [**submit an issue**](https://github.com/zowe/zowe-explorer-vscode/issues/new/choose) in the `zowe-explorer-vscode` repository on GitHub.
 
 ## Community resources
