@@ -32,7 +32,7 @@ We recommend you to run these sub commands one by one to clearly see the output 
 Enter `zwe init --help` to learn more about the command or see the [`zwe init` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-vsam.md) for detailed explanation, examples, and parameters.
 :::
 
-## Zowe initilization command
+## Zowe initialization command
 
 The `zwe init` command runs the subcommands in sequence automatically. If you have the Zowe configuration file prepared and have security administrator privileges, or security and certificates setup was already completed on the system, you can run the following command:
 
