@@ -66,6 +66,3 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
    Read a series of blogs about Zowe CLI on Medium to explore use cases, best practices, and more. 
 
-- **Community Forums**
-
-   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
