@@ -48,8 +48,6 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - You can join **Zowe CLI squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
-- **Discuss Zowe topics** in the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
-
 - If you have an issue that is specific to Zowe CLI, you can [**submit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose) in the `zowe-cli` repository on GitHub.
 
 ## Community resources 
