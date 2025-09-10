@@ -47,7 +47,7 @@ You can execute the Zowe configuration workflow either from a PSWI during deploy
 Configuration of the z/OS system is dependent on the specific Zowe features and functionalities you would like to employ with your Zowe installation. 
 
 :::tip
-Note that configuring the z/OS system requires elevated permissions. We recommend you consult with your security administrator to perform the reqired steps to configure the z/OS system.
+Note that configuring the z/OS system requires elevated permissions. We recommend you consult with your security administrator to perform the required steps to configure the z/OS system.
 :::
 
 For more information, see [Configuring the z/OS system for Zowe](./configure-zos-system.md).
