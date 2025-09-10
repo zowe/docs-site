@@ -1,18 +1,27 @@
 # Zowe YAML server configuration file reference
+
 Zowe v3 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
+
 Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
 For details on the schema technology and where to find the schema files within our source code, see [Using the Configuration Manager](../user-guide/configmgr-using.md#json-schema-validation).
+
 :::note
+
 In the following sections, we refer to configuration keys by using the concatenation of key names and dots. For example, if you want to update the configuration key `zowe.certificate.keystore.type` with the value `PKCS12`, you should set the value for this entry in the `zowe.yaml`:
+
 ```yaml
 zowe:
   certificate:
     keystore:
       type: PKCS12
 ```
+
 :::
+
 ### High-level overview of YAML configuration file
+
 The YAML configuration file has few high-level sections:
+
 - **zowe**  
  Defines global configurations specific to Zowe, including default values.
 - **java**  
@@ -25,17 +34,26 @@ The YAML configuration file has few high-level sections:
  Defines detailed configurations for each Zowe component or extension. Each component or extension may have a key entry under this section. For example, `components.gateway` is the configuration for the API Mediation Layer Gateway service.
 - **haInstances**  
  Defines customized configurations for each High Availability (HA) instance. You should predefine all Zowe HA instances you want to start within your Sysplex.
+
 ### Extract sharable configuration out of zowe.yaml
+
 The Zowe YAML configuration file supports splitting into several files or PARMLIB members. This can help simplify grouping configuration changes by type or owner.
 For details, see [Splitting configuration into multiple storage types](../user-guide/configmgr-using.md#splitting-configuration-into-multiple-storage-types).
+
 ### Creating portable references
+
 The Zowe YAML configuration file has template logic for relating one value to another, a system environment variable or symbol, and the possibility to add conditional behavior.
 This template logic can help to make your configuration portable between systems that need slightly different behavior while retaining the same configuration file.
 For details, see [Configuration templates](../user-guide/configmgr-using.md#configuration-templates) in the article _Zowe Configuration Manager_.
+
 ### Configuration override - defaults.yaml
+
 Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/defaults.yaml) file. This file is always merged with current `configs` when `configmgr` is used.
-For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears after merging with the defaults. 
+
+For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears  after merging with the defaults. 
+
 **Example of initial user config:**
+
   ```yaml
   zowe:
     job:
@@ -45,6 +63,7 @@ For example, if you decide to remove the `zowe.job` section by commenting or del
       prefix: ZW31
   ```
 **Example of modified user config - `zowe.job` commented out:**
+
   ```yaml
   zowe:
     # job:
@@ -53,7 +72,9 @@ For example, if you decide to remove the `zowe.job` section by commenting or del
     # Prefix of component address space
     # prefix: ZW31
   ```
+
 **Example of merged result:**
+
   ```yaml
   zowe:
     job:
@@ -61,13 +82,17 @@ For example, if you decide to remove the `zowe.job` section by commenting or del
       prefix: ZWE1
   ```
 :::note
-To disable a component which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml), ensure that you have a definition of that component in your config, and change `enabled: true` to `enabled: false`. Deleting or commenting out a component does not disable the component.
+To disable a component which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/defaults.yaml), ensure that you have a definition of that component in your config, and change `enabled: true` to `enabled: false`. Deleting or commenting out a component does not disable the component.
 :::
+
 ### Configuration override - inside zowe.yaml
+
 In the `zowe.yaml`, you can define default values which can be overridden in more granular level configurations. This can happen in several ways:
+
 - The component can override the default certificate configuration. For the specific entry of certification configuration that is not overridden, the configuration falls back to default configurations.  
 <!-- Is the following example and example of the user modified configuration? -->
 **Example:**
+
   ```yaml
   zowe:
     certificate:
@@ -94,8 +119,11 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
           certificate: /global/zowe/keystore/localhost/app-server.cer
   ```
   In this example, the App Server uses the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. Note that the service uses the same truststore defined in `zowe.certificate.truststore.file`.
+
 - Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration  in the `components.<component>` level can be overridden in the `haInstances.<ha-instance>.components.<component>` level. 
+
 **Example:**
+
   ```yaml
   components:
     app-server:
@@ -113,8 +141,11 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
   ```
   
   In this example configuration, the App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
+
 ### YAML configurations - certificate
+
 In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
+
 - **keystore.type**  
  Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
 - **keystore.file**  
@@ -135,9 +166,13 @@ In Zowe YAML configuration, the certificate definition shares the same format wh
  Specifies the public key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
 - **pem.certificateAuthorities**  
  Specifies certificate authorities in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
+
 ### YAML configurations - zowe
+
 The high-level configuration `zowe` supports these definitions:
+
 #### Directories
+
 - **zowe.runtimeDirectory**  
  Specifies the runtime directory where Zowe is installed.
 - **zowe.logDirectory**  
@@ -146,12 +181,16 @@ The high-level configuration `zowe` supports these definitions:
  Specifies components where they can write temporary runtime files.
 - **zowe.extensionDirectory**  
  Specifies the location of the runtime of all your extensions.
+
  #### Zowe Job
+
 - **zowe.job.name**  
  Specifies the Zowe job name for the ZWESLSTC started task.
 - **zowe.job.prefix**  
  Specifies the Zowe address space prefix for Zowe components.
+
 #### Domain and port to access Zowe
+
 - **zowe.externalDomains**  
  Specifies a list of external domains to be used by the Zowe instance. This configuration is an array of domain name strings.
  In Sysplex deployment, this value is the DVIPA domain name defined in Sysplex Distributor. For example,
@@ -167,10 +206,13 @@ The high-level configuration `zowe` supports these definitions:
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
  In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. For more information, see [Configure Sysplex Distributor](../user-guide/configure-sysplex.md#configuring-sysplex-distributor). 
  In Kubernetes deployment, this value is the Gateway Service port to be exposed externally.
+
 #### Extra environment variables
+
 - **zowe.environments**  
  Defines extra environment variables to customize the Zowe runtime. This configuration is a list of key / value pairs.
  **Example:**
+
    ```yaml
    zowe:
     environments:
@@ -179,9 +221,12 @@ The high-level configuration `zowe` supports these definitions:
  
  :::note
  Variables defined here are global to all Zowe components, on all HA instances.
+
  An example use case is to override system-wide environment variables for the Zowe runtime, such as the directory to use for temporary files.
  :::
+
 #### Certificate
+
 - **zowe.certificate**  
  Specifies the northbound certificate facing Zowe users.
 - **zowe.verifyCertificates**
@@ -190,8 +235,11 @@ The high-level configuration `zowe` supports these definitions:
   * `STRICT`: This is the default value. Zowe validates if the certificate is trusted in Zowe's trust store and if the certificate Command Name and Subject Alternative Name (SAN) is validated. This is recommended for the best security.
   * `NONSTRICT`: Zowe validates if the certificate is trusted in Zowe's trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the highest security level but allows you to try out Zowe when you do not have permission to fix the certificate used by external services like z/OSMF.
   * `DISABLED`: This value disables certificate validation completely. This is **NOT** recommended for security purpose.
+
 #### Launcher and launch scripts
+
 Launcher is the program behind the `ZWESLSTC` started task.
+
 - **zowe.launcher**  
  The launcher section defines defaults about how the Zowe launcher acts on components.
 - **zowe.launcher.restartIntervals**  
@@ -202,8 +250,11 @@ Launcher is the program behind the `ZWESLSTC` started task.
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
 - **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
+
 #### Setup
+
 Zowe YAML configuration uses the `zowe.setup` section to instruct how Zowe should be installed and configured. This section is optional for Zowe runtime and only applies to `zwe install` and `zwe init` commands.
+
 ```yaml
 zowe:
   setup:
@@ -312,7 +363,9 @@ Specifies the validity days of the certificate. This is optional.
 Specifies the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
 - **zowe.setup.certificate.importCertificateAuthorities**  
 Specifies the list of certificate authorities to be imported to the Zowe `PKCS12` keystore or `JCERACFKS` keyring. Note that for JCERACFKS, only a maximum 2 CAs are supported. For `PKCS12` certificates, ensure this value is the USS files in PEM format. For `JCERACFKS` certificates, ensure this value represents certificate labels on the z/OS system.
+
 **For `PKCS12` certificate users**
+
 - **zowe.setup.certificate.pkcs12.directory**  
 Specifies the directory where the PKCS12 keystore and truststore are stored. This value is required if `zowe.setup.certificate.type` is `PKCS12`.
 - **zowe.setup.certificate.pkcs12.lock**  
@@ -321,12 +374,14 @@ Specifies a boolean configuration to indicate if the PKCS12 keystore directory i
 Under `zowe.setup.certificate.pkcs12`, these parameters   
 customize the keystore and truststore. These configurations are optional, but it is recommended to update the values from default values.
 - **zowe.setup.certificate.pkcs12.import.keystore**  
- Specifiy this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
+ Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  
 Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
 - **zowe.setup.certificate.pkcs12.import.alias**  
 Specifies the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After import, the certificate is saved as an alias specified in `zowe.setup.certificate.pkcs12.name`.
+
 **For `JCERACFKS` certificate (z/OS keyring) users**
+
 - **zowe.setup.certificate.keyring.owner**  
 Specifies the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
 - **zowe.setup.certificate.keyring.name**  
@@ -350,6 +405,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   * **For RACF**  
   If the CA of the z/OSMF is not in the Zowe truststore, you can define it using
 `zowe.setup.certificate.keyring.zOSMF.user` and label `zowe.setup.certificate.keyring.zOSMF.ca`  
+
     **Example:**  
     ```
     zowe.setup.certificate.keyring.zOSMF.user: CERTAUTH  
@@ -359,20 +415,28 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
     `zowe.setup.certificate.keyring.zOSMF.user`. The default value of this field is `IZUSVR`. If the automatic detection fails, define `zowe.setup.certificate.keyring.zOSMF.ca` to indicate the label of the z/OSMF root certificate authority. -->
   * **For ACF2 or TSS (Top Secret)**  
   `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate the label of the z/OSMF root certificate authority.
+
 - **zowe.setup.vsam.mode**  
 Indicates if VSAM utilizes Record Level Sharing (RLS) services. Valid values are `RLS` or `NONRLS`.
 - **zowe.setup.vsam.volume**  
 Indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
 - **zowe.setup.vsam.storageClass**  
 Indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
+
 ### YAML configurations - java
+
 The high-level configuration `java` supports these definitions:
+
 - **home**  
  Specifies the path to the Java runtime directory.
+
 ### YAML configurations - node
+
 The high-level configuration `node` supports these definitions:
+
 - **home**  
  Specifies the path to the Node.js runtime directory.
+
 :::tip
 Ensure the value of `node.home` in the `zowe.yaml` is visible to the Zowe STC users, and contains `bin/node`.
 **Example:**
@@ -382,25 +446,35 @@ node:
 ```
 This value is valid only when the path `/usrlppSysplex/nodejs/node-v18.18.2/bin/node` exists. If you observe output of `node:...FSUM7351 not found`, check that the value contains `bin/node`.
 :::
+
 ### YAML configurations - zOSMF
+
 The high-level configuration `zOSMF` supports the following definitions:
+
 - **zOSMF.host**  
  Specifies the hostname of your z/OSMF instance.
 - **zOSMF.port**  
  Specifies the port of your z/OSMF instance.
 - **zOSMF.applId**  
  Specifies the application ID of your z/OSMF instance.
+
 ### YAML configurations - components
+
 All Zowe components and extensions can have a dedicated section under the `components` high-level configuration.
+
 In this section, _component_ represents any Zowe components or extension. For all components and extensions, the following parameters are the common definitions:
+
 - **components._component_.enabled**  
 Specifies if the component should be started in this Zowe instance, thereby providing control over each component instead of a group.
 - **components._component_.certificate**  
  Allows for customization for a component to use a different certificate from default values. This section follows the same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this parameter is not customized, the component uses certificates defined in `zowe.certificate`.
 - **components._component_.launcher**  
  Specifies if a specific component has a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
+
 #### Configure component gateway
+
 These configurations can be used under the `components.gateway` section:
+
 - **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 - **debug**  
@@ -449,13 +523,19 @@ These configurations can be used under the `components.gateway` section:
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+
 :::note
+
 User authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow. To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property.
+
 :::
+
 - **apiml.security.oidc.identityMapperUrl**  
  Specifies the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
   This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. Note that if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). To provide your own API to perform the mapping, it is necessary to customize this value.
+
   The following URL is the default value for Zowe and ZSS:
+
     ```
     https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
@@ -482,12 +562,16 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 - **server.webSocket.requestBufferSize**  
   This property handles the maximum request size allowed in the WebSocket handshake requests. The default is 8K.
 
+
 #### Configure component discovery
+
 These configurations can be applied to the `components.discovery` section:
+
 - **port**  
  Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug**  
  Specifies the enablement of debug mode for the Discovery Service.
+
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
@@ -503,8 +587,11 @@ These configurations can be applied to the `components.discovery` section:
  Use this parameter to ensure compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
 - **server.ssl.enabled**  
  Specifies if TLS is used. The default value is `true`. 
+
 #### Configure component api-catalog
+
 The following configurations can be used under the `components.api-catalog` section:
+
 - **port**  
  Specifies the port which API Catalog is to be started on.
 - **debug**  
@@ -529,8 +616,11 @@ The following configurations can be used under the `components.api-catalog` sect
   Specifies the HTML color of the main text across the API Catalog
 - **apiml.catalog.customStyle.docLink**  
   Specifies a custom link to be displayed in the header. Use this property to refer to applicable documentation. The format is `<link_name>|<link_url>`.  
+
 #### Configure component Caching Service
+
 These configurations can be used under the `components.caching-service` section:
+
 - **port**  
  Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug**  
@@ -572,38 +662,59 @@ These configurations can be used under the `components.caching-service` section:
  Specifies if API ML is to verify certificates of services in strict mode. Set to `true` to enable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+
 #### Configure component app-server
+
 The following configurations can be used under the `components.app-server` section:
+
 - **port**  
 Specifies the port which App Server is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+
 #### Configure component zss
+
 The following configurations can be used under the `components.zss` section:
+
 - **port**  
 Specifies the port which ZSS is to be started on. This value may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+
 #### Configure external extension
+
 You can define a `components.<extension-id>` section and use common component configuration entries.
+
 For example, enable `my-extension`:
+
 ```yaml
 components:
   # for extensions, you can add your definition like this
   my-extension:
     enabled: true
 ```
+
 ### YAML configurations - haInstances
+
 All Zowe high availability instances should have a dedicated section under the `haInstances` high-level configuration.
+
 In this section, _ha-instance_ represents any Zowe high availability instance ID.
+
 :::note
+
 Each _ha-instance_ must be unique. The identification of an _ha-instance_ is based on the name in lowercase format.
+
 :::
+
 For all high availability instances, these are the common definitions.
+
 - **haInstances._ha-instance_.hostname**  
  Specifies the host name where you want to start this instance. This value could be the host name of one LPAR in your Sysplex.
 - **haInstances._ha-instance_.sysname**  
  Specifies the system name of the LPAR where the instance is running. Zowe uses the `ROUTE` command to send JES2 start or stop command to this HA instance.
 - **haInstances._ha-instance_.components._component_**  
  This optional settings allows you to override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
+
 ### Auto-generated environment variables
+
 Each line of Zowe YAML configuration has a matching environment variable during runtime. This variable is converted based on a pre-defined pattern:
+
 - All configurations under `zowe`, `components`, `haInstances` are converted to a variable with the name with the following conditions:
   * prefixed with `ZWE_`
   * any non-alphabetic-numeric characters are converted to underscore (`_`)
@@ -614,7 +725,9 @@ Each line of Zowe YAML configuration has a matching environment variable during 
   * all upper cases
   * any non-alphabetic-numeric characters are converted to underscore (`_`)
   * no double underscores (`__`)
+
 **Examples:**
+
 - `ZWE_zowe_runtimeDirectory` is parent directory where `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of the user customized workspace directory.
 - `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
@@ -622,5 +735,7 @@ Each line of Zowe YAML configuration has a matching environment variable during 
 - `ZWE_zowe_setup_dataset_authPluginLib` is the data set configured to store APF authorized ZIS plug-ins load library.
 - `ZWE_zowe_setup_security_users_zowe` is the name of Zowe runtime user.
 - `ZWE_configs_port` is your component port number you can use in your start script. It points to the value of `haInstances.<current-ha-instance>.components.<your-component>.port`, or fall back to `components.<my-component>.port`, or fall back to `configs.port` defined in your component manifest.
+
 ### Troubleshooting your YAML with the Red Hat VS Code extension
+
 After you download the Red Hat VSCode extension for YAML, YAML validation for your files is turned on by default. Syntax mistakes are highlighted in red. To parse sensitive information, we highly recommend leaving the data gathering option disabled. To customize your settings, click the "Extensions" category in VS Code left-hand side workspace, scroll down to YAML Language Support by Red Hat, click the gear icon, and select "Extension Settings".
