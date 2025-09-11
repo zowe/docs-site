@@ -366,6 +366,9 @@ Specifies the list of certificate authorities to be imported to the Zowe `PKCS12
 
 **For `PKCS12` certificate users**
 
+<details>
+<summary>Click here to review the following parameters for PKCS12 certificate users. </summary>
+
 - **zowe.setup.certificate.pkcs12.directory**  
 Specifies the directory where the PKCS12 keystore and truststore are stored. This value is required if `zowe.setup.certificate.type` is `PKCS12`.
 - **zowe.setup.certificate.pkcs12.lock**  
@@ -380,7 +383,12 @@ Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.im
 - **zowe.setup.certificate.pkcs12.import.alias**  
 Specifies the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After import, the certificate is saved as an alias specified in `zowe.setup.certificate.pkcs12.name`.
 
+</details>
+
 **For `JCERACFKS` certificate (z/OS keyring) users**
+
+<details>
+<summary>Click here to review the following parameters for JCERACFKS certificate users.</summary>
 
 - **zowe.setup.certificate.keyring.owner**  
 Specifies the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
@@ -422,6 +430,9 @@ Indicates if VSAM utilizes Record Level Sharing (RLS) services. Valid values are
 Indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
 - **zowe.setup.vsam.storageClass**  
 Indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
+
+</details>
+
 
 ### YAML configurations - java
 
@@ -479,7 +490,7 @@ These configurations can be used under the `components.gateway` section:
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 - **debug**  
  Specifies the enablement of debug mode for the Gateway.
-- **apiml.connectionTimeout**
+- **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 - **apiml.connection.idleConnectionTimeoutSeconds**  
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
@@ -509,7 +520,7 @@ These configurations can be used under the `components.gateway` section:
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
-- **apiml.security.forwardHeader.trustedProxies** 
+- **apiml.security.forwardHeader.trustedProxies**  
   Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
@@ -518,11 +529,14 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.oidc.registry**  
   Specifies the SAF registry used to group identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between distributed and mainframe user identities. For more information, see [ESM configuration prerequisites](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
 - **apiml.security.oidc.jwks.uri**  
-  Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI.
+  Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
 - **apiml.security.oidc.jwks.refreshInternalHours**  
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+- **apiml.security.oidc.userIdField**  
+  Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. This parameter applies to Zowe version 3.4.0 and later versions.  
+  **Default:** `sub`
 
 :::note
 
