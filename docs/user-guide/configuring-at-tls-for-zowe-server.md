@@ -419,7 +419,7 @@ components:
 
 ### Zowe Desktop TN3270 or VT-Terminal Websocket 1006 Errors
 
-If the Zowe Desktop TN3270 Application or VT Terminal Application are returning websocket error=1006, there is an issue with CORS configuration. This will be fixed in Zowe 3.4.0, and can be fixed manually in earlier releases.
+If the Zowe Desktop TN3270 Application or VT Terminal Application are displaying a websocket error 1006, there is an issue with CORS configuration. This will be fixed in Zowe 3.4.0, and can be fixed manually in earlier releases.
 
 **Solution:**
 
