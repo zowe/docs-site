@@ -397,6 +397,38 @@ An error can occur if the [list of ciphers](#ciphers) or the TLS protocol does n
 **Solution:**
 Review the supported TLS versions and ciphers used in both the client and the server.
 
+### Zowe Desktop IP Explorer or Editor does not work
+
+If the Zowe Desktop IP Explorer or Editor are not working correctly, either by failing to load or showing no data, it means there is a problem accessing the ZSS server. 
+
+**Solution:**
+
+Upgrade to Zowe 3.4.0 if available, OR ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. Sample configuration:
+
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: ZWESIS_STD
+    agent:
+      64bit: true
+    http:
+      ipAddresses: [ "0.0.0.0" ]
+```
+
+### Zowe Desktop TN3270 or VT-Terminal Websocket 1006 Errors
+
+If the Zowe Desktop TN3270 Application or VT Terminal Application are returning websocket error=1006, there is an issue with CORS configuration. This will be fixed in Zowe 3.4.0, and can be fixed manually in earlier releases.
+
+**Solution:**
+
+Upgrade to Zowe 3.4.0 if available, OR add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. Contact your conformant support provider for assistance.
+
+The metadata that should be added to the ZLUX eureka app:
+- `apiml.corsEnabled`: `true`
+- `apiml.corsAllowedOrigins` : `https://<your_zowe_host>:<catalog_port>,https://<your_zowe_host>:<gateway_port>`
+
 ### Additional troubleshooting
 
 When asking for support make sure to follow IBM guides for troubleshooting AT-TLS problems. This is covered in the "Diagnosing Application Transparent Transport Layer Security (AT-TLS)" article on IBM documentation.
