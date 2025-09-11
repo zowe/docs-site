@@ -1,6 +1,8 @@
 # Zowe Explorer authentication methods
 
-Zowe Explorer for VS Code supports multiple authentication methods including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication.
+Zowe Explorer supports multiple methods of authenticating to your z/OS REST services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
+
+If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`. To specify an [order of precedence](../user-guide/cli-authentication-methods.md#order-of-precedence) in your client configuration, refer to the Zowe CLI documenation.
 
 ## Using basic authentication
 

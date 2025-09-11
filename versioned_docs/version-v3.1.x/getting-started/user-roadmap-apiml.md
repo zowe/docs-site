@@ -145,9 +145,6 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    Read a series of blogs about Zowe on Medium to explore use cases, best practices, and more. 
 
-- **Community Forums**
-
-   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
 
 
 

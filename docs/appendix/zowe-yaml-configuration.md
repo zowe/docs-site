@@ -48,7 +48,7 @@ For details, see [Configuration templates](../user-guide/configmgr-using.md#conf
 
 ### Configuration override - defaults.yaml
 
-Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml) file. This file is always merged with current `configs` when `configmgr` is used.
+Values for global configuration and components are defined in the [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/defaults.yaml) file. This file is always merged with current `configs` when `configmgr` is used.
 
 For example, if you decide to remove the `zowe.job` section by commenting or deleting, the `zowe.job` section reappears  after merging with the defaults. 
 
@@ -82,7 +82,7 @@ For example, if you decide to remove the `zowe.job` section by commenting or del
       prefix: ZWE1
   ```
 :::note
-To disable a component which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blame/v3.x/master/files/defaults.yaml), ensure that you have a definition of that component in your config, and change `enabled: true` to `enabled: false`. Deleting or commenting out a component does not disable the component.
+To disable a component which is defined enabled in [`defaults.yaml`](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/defaults.yaml), ensure that you have a definition of that component in your config, and change `enabled: true` to `enabled: false`. Deleting or commenting out a component does not disable the component.
 :::
 
 ### Configuration override - inside zowe.yaml
@@ -118,7 +118,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
           key: /global/zowe/keystore/localhost/app-server.key
           certificate: /global/zowe/keystore/localhost/app-server.cer
   ```
-  In this example, the App Server usees the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. Note that the service uses the same truststore defined in `zowe.certificate.truststore.file`.
+  In this example, the App Server uses the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. Note that the service uses the same truststore defined in `zowe.certificate.truststore.file`.
 
 - Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration  in the `components.<component>` level can be overridden in the `haInstances.<ha-instance>.components.<component>` level. 
 
@@ -354,7 +354,7 @@ Specifies the userid for ZIS started task. This configuration is optional. The d
 - **zowe.setup.security.stcs.aux**  
   Specifies ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
 - **zowe.setup.certificate.type**  
-Specifies the type of certificate. Valid values are `PKCS1` (USS keystore) or `JCERACFKS` (z/OS keyring).
+Specifies the type of certificate. Valid values are `PKCS12` (USS keystore) or `JCE*` (z/OS keyring: `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS` and `JCEHYBRIDRACFKS`).
 - **zowe.setup.certificate.dname**  
 Specifies the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
 - **zowe.setup.certificate.validity**  
@@ -374,7 +374,7 @@ Specifies a boolean configuration to indicate if the PKCS12 keystore directory i
 Under `zowe.setup.certificate.pkcs12`, these parameters   
 customize the keystore and truststore. These configurations are optional, but it is recommended to update the values from default values.
 - **zowe.setup.certificate.pkcs12.import.keystore**  
- Specifiy this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
+ Specify this parameter if you already acquired certificates from another CA, stored them in PKCS12 format, and want to import into Zowe PKCS12 keystore.
 - **zowe.setup.certificate.pkcs12.import.password**  
 Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.import.keystore`.
 - **zowe.setup.certificate.pkcs12.import.alias**  
@@ -487,6 +487,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies if the health check endpoint is accessible with or without authentication.  
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
+- **apiml.gateway.servicesToDisableRetry**  
+ Specifies a comma-separated list of service IDs for which automatic retries are disabled. Disabling retry for services where retries are not required helps prevent potential memory issues when handling requests with large payloads to the service. This parameter applies to Zowe version 3.3.0 and later versions. 
 - **apiml.security.x509.enabled**  
  Specifies if client certificate authentication functionality through ZSS is enabled. Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
 - **apiml.security.x509.externalMapperUrl**  
@@ -507,6 +509,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
+- **apiml.security.forwardHeader.trustedProxies** 
+  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
 - **apiml.security.oidc.enabled**  
@@ -571,7 +575,7 @@ These configurations can be applied to the `components.discovery` section:
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
- Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the turststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
+ Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in `non-strict` mode. Set to `true` to enable the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **alternativeStaticApiDefinitionsDirectories**  
@@ -635,7 +639,7 @@ These configurations can be used under the `components.caching-service` section:
   The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 - **storage.infinispan.jgroups.port**  
-  Specifies the port number used by Infinispan to synchronise data among caching-service instances.
+  Specifies the port number used by Infinispan to synchronize data among caching-service instances.
 - **storage.redis.masterNodeUri**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **storage.redis.timeout**  

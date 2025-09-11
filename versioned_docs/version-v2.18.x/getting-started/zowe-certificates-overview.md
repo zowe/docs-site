@@ -78,7 +78,7 @@ as well as between client applications and Zowe server components.
 For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
 
 :::note
-When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation. For more information, see [Configuring AT-TLS for API Mediation Layer](../user-guide/api-mediation/configuration-at-tls.md).
+When installed on a mainframe system, Zowe is able to utilize AT-TLS implementation if supported by the corresponding z/OS version/installation.
 :::
 
 ## Digital certificates types

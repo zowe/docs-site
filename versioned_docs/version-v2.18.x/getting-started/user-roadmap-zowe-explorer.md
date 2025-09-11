@@ -116,6 +116,4 @@ To identify the resources most relevant for you, use the following definitions o
 
    Read a series of blog articles about Zowe on Medium to explore use cases, best practices, and more.
 
-* **Community Forums**
 
-   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ExecUtils | Zowe Node.js SDK - v3.2.0</title>
-	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.2.0">
+	<title>ExecUtils | Zowe Node.js SDK - v3.3.0</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.3.0">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Zowe Node.js SDK - v3.2.0</a>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.3.0</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -93,7 +93,9 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.executils.html#handlespawnresult" class="tsd-kind-icon">handle<wbr>Spawn<wbr>Result</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.executils.html#spawnandgetoutput" class="tsd-kind-icon">spawn<wbr>And<wbr>Get<wbr>Output</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.executils.html#spawnwithinheritedstdio" class="tsd-kind-icon">spawn<wbr>With<wbr>Inherited<wbr>Stdio</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,6 +103,38 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="handlespawnresult" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> handle<wbr>Spawn<wbr>Result</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Spawn<wbr>Result&lt;T&gt;<span class="tsd-signature-symbol">(</span>result<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SpawnSyncReturns</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, argv<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.26.2/packages/imperative/src/utilities/src/ExecUtils.ts#L45">@zowe/imperative/src/utilities/src/ExecUtils.ts:45</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T = <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>result: <span class="tsd-signature-type">SpawnSyncReturns</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+								<li>
+									<h5>argv: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="spawnandgetoutput" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> spawn<wbr>And<wbr>Get<wbr>Output</h3>
@@ -111,7 +145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.18.2/packages/imperative/src/utilities/src/ExecUtils.ts#L28">@zowe/imperative/src/utilities/src/ExecUtils.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.26.2/packages/imperative/src/utilities/src/ExecUtils.ts#L28">@zowe/imperative/src/utilities/src/ExecUtils.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -136,6 +170,44 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h4>
 							<p>Contents of stdout as buffer or string</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="spawnwithinheritedstdio" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> spawn<wbr>With<wbr>Inherited<wbr>Stdio</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">spawn<wbr>With<wbr>Inherited<wbr>Stdio<span class="tsd-signature-symbol">(</span>command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, args<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">SpawnSyncOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.26.2/packages/imperative/src/utilities/src/ExecUtils.ts#L40">@zowe/imperative/src/utilities/src/ExecUtils.ts:40</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Spawn a process with arguments and throw an error if the process fails.
+										Parameters are same as <code>child_process.spawnSync</code> (see Node.js docs).
+										Output is inherited by the parent process instead of being returned.
+										Use this method if you want the safe argument parsing of <code>spawnSync</code>
+									combined with the smart output handling of <code>execSync</code>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>command: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> args: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">SpawnSyncOptions</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -195,8 +267,14 @@
 							<li class="current tsd-kind-class tsd-parent-kind-module">
 								<a href="_zowe_imperative.executils.html" class="tsd-kind-icon">Exec<wbr>Utils</a>
 								<ul>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.executils.html#handlespawnresult" class="tsd-kind-icon">handle<wbr>Spawn<wbr>Result</a>
+									</li>
 									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 										<a href="_zowe_imperative.executils.html#spawnandgetoutput" class="tsd-kind-icon">spawn<wbr>And<wbr>Get<wbr>Output</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.executils.html#spawnwithinheritedstdio" class="tsd-kind-icon">spawn<wbr>With<wbr>Inherited<wbr>Stdio</a>
 									</li>
 								</ul>
 							</li>
