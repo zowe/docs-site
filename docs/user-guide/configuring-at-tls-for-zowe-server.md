@@ -403,7 +403,7 @@ If the Zowe Desktop IP Explorer or Editor are not working correctly, either by f
 
 **Solution:**
 
-Upgrade to Zowe 3.4.0 if available, OR ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. Sample configuration:
+Ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. Sample configuration:
 
 ```yaml
 components:
@@ -423,7 +423,7 @@ If the Zowe Desktop TN3270 Application or VT Terminal Application are displaying
 
 **Solution:**
 
-Upgrade to Zowe 3.4.0 if available, OR add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. Contact your conformant support provider for assistance.
+Add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. Contact your conformant support provider for assistance.
 
 The metadata that should be added to the ZLUX eureka app:
 - `apiml.corsEnabled`: `true`
