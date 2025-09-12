@@ -248,7 +248,7 @@ A type of runnable/running program on z/OS and the primary way to run Zowe. For 
 Zowe has following started tasks:
 - ZWESLSTC: The primary Zowe STC.
 - ZWESISTC: The STC for the Zowe cross memory server (referred to as ZIS, formally XMEM)
-- ZWESASTC: The STC used by ZIS to create auxiliary address space. ZIS controls starting and stopping of this STC as needed, no action required from user.
+- ZWESASTC: The STC used by ZIS to create an auxiliary address space. ZIS controls the starting and stopping of this STC as needed. No action is required from the user.
 
 #### Workspace directory
 
@@ -373,4 +373,4 @@ A feature of the Zowe environment where one application plug-in can communicate 
 
 #### Config Service
 
-A part of the Application Framework which allows plug-ins and the Framework itself to store user configuration as JSON or binary formats. The configuration is stored in a hierarchy in which company-wide and system-wide defaults can exist for all users. Users may override the defaults if policy allows it. What can be stored and what can be overridden depends on plug-in definition and administrative configuration.
+A part of the Application Framework which allows plug-ins and the Framework itself to store user configuration as JSON or binary formats. The configuration is stored in a hierarchy in which company-wide and system-wide defaults can exist for all users. Users may override the defaults if policy allows it. What can be stored and what can be overridden depends on the plug-in definition and administrative configuration.
