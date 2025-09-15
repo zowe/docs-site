@@ -123,15 +123,18 @@ components:
   app-server:
     enabled: true
     port: 1234
-
+```
+```yaml
 # /global/zowe/example-zowe.yaml
 components:
   app-server:
     enabled: true
     port: 4321
 ```
-
-The result of unified configuration for `FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)` is `components.app-server.port=1234`. For the order of `FILE(/global/zowe/example-zowe.yaml):FILE(/home/me/zowe-customizations.yaml)` the result is `components.app-server.port=4321`.
+| Configuration | Result |
+| ------------- | ------ |
+| `FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)` | `components.app-server.port=1234` |
+| `FILE(/global/zowe/example-zowe.yaml):FILE(/home/me/zowe-customizations.yaml)` | `components.app-server.port=4321` |
 
 ## Parmlib support
 
