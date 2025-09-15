@@ -1,7 +1,7 @@
 # Enabling AT-TLS
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
-The built-in TLS networking is enabled by default. To learn more, see [configuring the built-in TLS](./tls-configuration.md).
+The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
 
 You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
@@ -10,7 +10,7 @@ You can configure parameters in Zowe servers to switch to AT-TLS. Review this ar
 
 ## AT-TLS configuration for Zowe
 
-Follow these steps to configure Zowe to support AT-TLS:
+Configuration to support AT-TLS is set in the following section of the `zowe.yaml` file: 
 
 ```yaml
 zowe:
@@ -25,7 +25,11 @@ zowe:
         attls: true
 ```
 
-While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+
+:::tip
+We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+:::
 
 :::note Notes
 
@@ -55,9 +59,9 @@ Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorizati
 
 #### Prevent API ML from reading the private key
 
-Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API ML from loading the keyring.
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in `zowe.yaml` to prevent API ML from loading the keyring.
 The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
-This mode requires both server and client AT-TLS enabled in the zowe.yaml with full coverage of Inbound and Outbound rules.
+This mode requires both server and client AT-TLS enabled in the `zowe.yaml` with full coverage of Inbound and Outbound rules.
 
 :::note  
 The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
@@ -252,10 +256,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 #### Outbound rule for communication between API Gateway and extensions' servers
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
-Such a rule can apply to any remote destination, as seen in the ApimlClientRule for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
+Such a rule can apply to any remote destination, as seen in the `ApimlClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 <details>
-<summary>Click here for the example of a rule covering API Gateway to extension servers</summary>
+<summary>Click here for the example of a rule covering API Gateway to extension servers.</summary>
 
 This example covers routing scenarios.
 
@@ -301,13 +305,17 @@ Outbound connections from the Gateway to southbound services (onboarded services
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
-This scenario includes services that set `zoweJwt` as the authentication scheme, those that require an Open ID Connect (OIDC) token, or forwarded X.509 certificates.
+This scenario includes the following services:
+
+* Services that set `zoweJwt` as the authentication scheme
+* Services that require an Open ID Connect (OIDC) token
+* Forwarded X.509 certificates
 
 In this case, it is necessary to have an Outbound rule from the service to the API Gateway.
 
-These services also already have an outbound rule set for the onboarding process against the Discovery Service.
+These services also already have an Outbound rule set for the onboarding process against the Discovery Service.
 
-Ensure these rules are followed:
+Ensure that these rules are followed:
 
 - Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding.
 - Outbound rule to API Gateway: __Do not__ set a Client Certificate.
@@ -403,7 +411,9 @@ If the Zowe Desktop IP Explorer or Editor are not working correctly, either by f
 
 **Solution:**
 
-Ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. Sample configuration:
+Ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. 
+
+**Sample configuration:**
 
 ```yaml
 components:
