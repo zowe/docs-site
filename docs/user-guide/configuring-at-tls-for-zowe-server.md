@@ -473,7 +473,7 @@ You should get an HTTP 200 response with a JSON response body containing service
 
 To update the ZLUX service metadata, run the below request once for each metadata field. These requests require an additional URL-encoded field `<your_host>:zlux:<your_port>`, and `metadata_value` should also be URL-encoded.  
 
-`PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_port>/metadata?<metadata_key>=<metadata_value>
+`PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_port>/metadata?<metadata_key>=<metadata_value>`
 
 
 <details>
