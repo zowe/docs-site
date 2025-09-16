@@ -424,7 +424,8 @@ components:
     agent:
       64bit: true
     http:
-      ipAddresses: [ "0.0.0.0" ]
+      ipAddresses: 
+        - "0.0.0.0"
 ```
 
 ### Zowe Desktop TN3270 or VT-Terminal Websocket 1006 Errors
@@ -433,11 +434,83 @@ If the Zowe Desktop TN3270 Application or VT Terminal Application are displaying
 
 **Solution:**
 
-Add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. Contact your conformant support provider for assistance.
+We recommend contacting your conformant support provider for assistance applying this fix. 
+
+Add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. 
 
 The metadata that should be added to the ZLUX eureka app:
 - `apiml.corsEnabled`: `true`
 - `apiml.corsAllowedOrigins` : `https://<your_zowe_host>:<catalog_port>,https://<your_zowe_host>:<gateway_port>`
+
+<details>
+
+<summary>Click here for complete instructions applying the above fix</summary>
+
+To apply the required metadata to the discovery service, you must have:
+
+1. A client certificate for authentication. Other forms of authentication are _not supported_.
+2. Network access to the host where the APIML Discovery Service is running.
+3. The APIML Gateway port value. This can be found in the zowe.yaml property `components.gateway.port`.
+4. The Discovery Service port value. This can be found in the zowe.yaml property `components.discovery.port`.
+5. The App Server port value. This can be found in the zowe.yaml property `comopnents.app-server.port`.
+6. The API Catalog port value. This can be found in the zowe.yaml property `components.api-catalog.port`.
+7. A REST client or command line tool.
+
+To see the current list of metadata for the ZLUX service, run:
+
+`GET https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX`
+
+You should get an HTTP 200 response with a JSON response body containing service metadata. You can check this to verify `apiml.corsEnabled` and `apiml.corsAllowedOrigins` are set correctly.
+```json
+// ... other fields before
+     ,
+     "metadata": {
+          "apiml.service.description": "This list includes core APIs for management of plugins, management of the server itself, and APIs brought by plugins and the app server agent, ZSS. Plugins that do not bring their own API documentation are shown here as stubs.",
+          "apiml.catalog.tile.version": "3.3.0",    
+      // ...more metadata fields
+ }
+```
+
+To update the ZLUX service metadata, run the below request once for each metadata field. These requests require an additional URL-encoded field `<your_host>:zlux:<your_port>`, and `metadata_value` should also be URL-encoded.  
+
+`PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_port>/metadata?<metadata_key>=<metadata_value>
+
+
+<details>
+<summary>Sample requests using curl</summary>
+
+Given:
+* host `localhost`
+* APIML Catalog port `7552`
+* APIML Discovery Service port `7553`
+* APIML Gateway port `7554`
+* App Server port `7556`
+
+To see the current metadata:
+
+```curl
+curl --request GET \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url https://localost:7553/eureka/v2/apps/ZLUX
+```
+
+To update the metadata in 2 requests:
+
+```curl
+curl --request PUT \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsEnabled=true'
+```
+
+```curl
+curl --request PUT \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsAllowedOrigins=https%3A%2F%2Flocalhost%3A7552%2Chttps%3A%2F%2Flocalhost%3A7554'
+```
+</details>
 
 ### Additional troubleshooting
 
