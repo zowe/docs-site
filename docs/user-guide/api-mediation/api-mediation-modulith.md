@@ -1,12 +1,12 @@
 # Enabling Single-Service deployment of API Mediation Layer
 
-Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option.
+Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture.
 
 :::info
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** alternative to the multi-service scheme brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (also refered to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
