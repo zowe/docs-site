@@ -31,9 +31,9 @@ There are three key ways that Zowe Explorer uses a default profile:
 - Loads the default profile in its service's tree view.
 - In TSO profiles, used to issue commands when you have the **TSO: Default Profile** setting enabled.
     - To enable the setting, select the **TSO: Default Profile** checkbox.
-- Can replace the need for a default base profile for API ML authentication when configured correctly.
+- Replaces the need for a default base profile for API ML authentication when configured correctly.
     - Correct configuration includes proper nesting of the profiles stored in the configuration file, and storing the necessary properties in the right locations.
-    - An example of a configuration file with nested profiles (Lines 11-34, 48-53) that can be used for API ML authentication:
+    - See the following example of a configuration file with nested profiles (Lines 11-34, 48-53) that can be used for API ML authentication:
 
         ```json showLineNumbers
         {
