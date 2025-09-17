@@ -12,7 +12,36 @@ All Zowe server components can be installed on a z/OS environment, while some ca
 
 ## z/OS system requirements
 
-Be sure your z/OS system meets the following prerequisites:
+Be sure your z/OS system meets the following prerequisites for the current version of Zowe:
+
+### Technological pre-requisites
+
+| Name of the technology  | State         | 
+|-------------------------|---------------|
+| **zOS**                 |               |
+| 2.5                     | Contributors  |
+| 3.1                     | CICD          | 
+| 3.2                     | Contributors  |
+| **Java**                |               |
+| 8                       | Not Supported | 
+| 11                      | Not Supported |
+| 17                      | CICD          |
+| 21                      | Contributors  |
+| **Node.js**             |               |
+| 20                      | Contributors  |
+| 22                      | Contributors  |
+
+### Technological Features
+
+| Name of the technology  | State         |
+|-------------------------|---------------|
+| **TLS**                 |               |
+| AT-TLS                  | CICD          |
+| 1.2                     | CICD          |
+| 1.3                     | Not Supported |
+| **IP**                  |               | 
+| V4                      | CICD          | 
+| V6                      | Not Supported | 
 
 ### z/OS
 
