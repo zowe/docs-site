@@ -77,7 +77,7 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-The following diagram illustrates Inbound rules:
+The following diagram illustrates inbound rules:
 
 ![AT-TLS_Inbound_Rules](../images/install/AT-TLS_Inbound_Rules.png)
 
@@ -157,7 +157,7 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 
 ### Outbound rules
 
-The following diagram illustrates Onbound rules:
+The following diagram illustrates outbound rules:
 
 ![AT-TLS_Outbound_Rules](../images/install/AT-TLS_Outbound_Rules.png)
 
@@ -182,7 +182,7 @@ TTLSConnectionAction ClientConnectionAction
 
 #### Outbound rule for z/OSMF
 
-The following diagram illustrates Outbound rule for z/OSMF:
+The following diagram illustrates outbound rules for z/OSMF:
 
 ![AT-TLS_Outbound_Rules_for_zOSMF](../images/install/AT-TLS_Outbound_Rules_for_zOSMF.png)
 
@@ -264,7 +264,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 #### Outbound rule for communication between API Gateway and extensions' servers
 
 <details>
-<summary>Click here to see a diagram that illustrates a rule for API Gateway to extension servers to integrate the Db2 DevOps systems</summary>
+<summary>Click here to see a diagram that illustrates the rules for API Gateway to extension servers to integrate the Db2 DevOps systems</summary>
 
 ![AT-TLS_int_DevOpsSystem](../images/install/AT-TLS_int_DevOpsSystem.png)
 
