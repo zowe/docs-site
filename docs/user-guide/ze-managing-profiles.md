@@ -74,7 +74,6 @@ There are three key ways that Zowe Explorer uses a default profile:
             },
             "autoStore": true
         }
-            }
         ```
 
 ### Profile actions
