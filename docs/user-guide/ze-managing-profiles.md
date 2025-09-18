@@ -12,7 +12,7 @@ There are multiple types of profiles that can be used differently in your config
 
 A mainframe service can have more than one profile in your configuration file. Multiple profiles for a specific service can be helpful when you want to connect to different systems or LPARs.
 
-If you use one profile more than others for a service, it is possible assign it as the default profile for that service.
+If you use one profile more than others for a service, it is possible to assign it as the default profile for that service.
 
 Designate a default profile for a service by manually editing the configuration file to add the profile to the `defaults` section, located toward the end of the configuration file:
 
@@ -39,18 +39,39 @@ There are three key ways that Zowe Explorer uses a default profile:
         {
             "$schema": "./zowe.schema.json",
             "profiles": {
-                // highlight-start
-                "zosmf": {
-                    "type": "zosmf",
-                    "properties": {
-                        "basePath": "/ibmzosmf/api/v1"
-                    }
-                },
                 "lpar1": {
                     "properties": {
                         "host": "example1.com",
                         "port": 7554,
                         "tokenType": "apimlAuthenticationToken"
+                    },
+                    "profiles": {
+                        // highlight-start
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "basePath": "ibmzosmf/api/v1"
+                            }
+                        },
+                        "tso": {
+                            "type": "tso",
+                            "properties": {
+                                "account": "ACCT#",
+                                "codePage": "1047",
+                                "logonProcedure": "IZUFPROC"
+                            }
+                        },
+                        "ssh": {
+                            "type": "ssh",
+                            "properties": {
+                                "port": 22
+                            },
+                            "secure": [
+                                "user", 
+                                "password"
+            ]
+        }
+                        // highlight-end
                     },
                     "secure": [
                         "tokenValue"
@@ -60,21 +81,34 @@ There are three key ways that Zowe Explorer uses a default profile:
                     "properties": {
                         "host": "example2.com",
                         "port": 7554,
+                        "rejectUnauthorized": false,
                         "tokenType": "apimlAuthenticationToken"
+                    },
+                    "profiles": {
+                        // highlight-start
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "basePath": "ibmzosmf/api/v1"
+                            }
+                        }
+                        // highlight-end
                     },
                     "secure": [
                         "tokenValue"
                     ]
                 }
-                // highlight-end
             },
             "defaults": {
-                "zosmf": "zosmf",
-                "base": "lpar2"
+                "zosmf": "lpar2.zosmf",
+                "tso": "lpar1.tso",
+                "ssh": "lpar1.ssh"
             },
             "autoStore": true
         }
-        ```
+        ```        
+
+
 
 ### Profile actions
 
