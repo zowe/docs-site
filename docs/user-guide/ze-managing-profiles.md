@@ -2,7 +2,7 @@
 
 Use profiles and configuration files to apply specific settings when you work with the mainframe.
 
-Profiles are saved in your configuration file and store connection information for communicating with the mainframe.
+Profiles are saved in your configuration file to store connection information and settings for communicating with the mainframe.
 
 There are multiple types of profiles that can be used differently in your configuration. For example, a [service profile](../appendix/zowe-glossary#service-profile) stores connection details for a particular mainframe service, and a [base profile](../appendix/zowe-glossary#base-profile) contains information that can be used by other profiles.
 
