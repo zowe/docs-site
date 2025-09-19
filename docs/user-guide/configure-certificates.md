@@ -42,7 +42,7 @@ The truststore is used by Zowe to verify the authenticity of the certificates th
 When using a key ring, a single key ring can be both a keystore and a truststore if desired.
 
 ### PKCS12
-PKCS12 is a file format that allows a Zowe user to hold many crytopgrahic objects in one encrypted, passworded file. This file format is well supported across platforms but because it is just a file, you can prefer to use z/OS key rings instead of PKCS12 certificates for ease of administration and maintenance.
+PKCS12 is a file format that allows a Zowe user to hold many cryptographic objects in one encrypted, passworded file. This file format is well supported across platforms but because it is just a file, you can prefer to use z/OS key rings instead of PKCS12 certificates for ease of administration and maintenance.
 
 ### z/OS key ring
 z/OS provides an interface to manage cryptographic objects in "key rings". As opposed to PKCS12 files, using z/OS key rings allows the crypto objects of many different products to be managed in a uniform manner. z/OS key rings are still encrypted, but do not use passwords for access. Instead, SAF privileges are used to manage access. Java's key ring API requires that the password field for key ring access to be set to "password", so despite not needing a password, you can see this keyword.
@@ -146,4 +146,3 @@ Review the following options and choose which best applies to your use case:
 * When your certificate is already in the keystore, it is ready for use. For more information about how to use it, see [Use certificates](./use-certificates.md).
 
 * If you run into any error when configuring certificates, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md).
-
