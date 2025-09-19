@@ -15,7 +15,7 @@ Before you begin the installation process, it is useful to understand the follow
 
 zFS is a UNIX file system where Zowe runtime files and folders are installed. Zowe uses a zFS directory to contain its northbound certificate keys as well as a truststore for its southbound keys if the administrator chooses to use PKCS#12 keystore for certificate storage. 
 
-For more information about USS, see [Addressing UNIX System Servies (USS) Requirements](./configure-uss.md).
+For more information about USS, see [Addressing UNIX System Services (USS) Requirements](./configure-uss.md).
 
 :::tip
 Zowe runs in USS and makes heavy use of shell scripts and TCP/IP sockets, which creates temporary files and ENQUEUES within the /tmp directory. It is not likely that the increased volume of temporary files and ENQUEUES will impact your system, as this volume is on the scale of a few thousand temporary files and ENQUEUES, which are subsequently freed after configuration and startup. 
@@ -72,7 +72,7 @@ The runtime directory contains the binaries and executable files. You can create
 
 - Create a directory and extract Zowe convenience build into it.
 - Installing the Zowe SMP/E FMID AZWE002 using the JCL members in the REL4 member.
-- Executing the z/OSMF worklow script `ZWERF01` contained in the SMP/E FMID AZWE002.
+- Executing the z/OSMF workflow script `ZWERF01` contained in the SMP/E FMID AZWE002.
 
 During execution of Zowe, the runtime directory contents are not modified.  Maintenance or APAR release for Zowe replaces the contents of the runtime directory and are rollup PTFs.
 
