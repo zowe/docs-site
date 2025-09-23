@@ -1142,6 +1142,18 @@ The following error message codes may appear on the app-server log. Use the foll
 
   No action Required.
 
+### ZWED0303I
+
+  `org.zowe.zlux.auth.trivial` or any other plugin will not be loaded because no dataservices requested it.
+
+  **Reason:**
+
+  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices that are currently deployed within Zowe requested the authentication plugin named `org.zowe.zlux.auth.trivial` or any other plugin to authenticate users.
+
+  **Action:**
+
+  No action is required. This is an informational message.
+
 ## App-server warning messages
 
 ### ZWED0004W
