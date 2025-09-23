@@ -113,7 +113,6 @@ module.exports = {
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
-    "getting-started/cli-getting-started",
   ],
   "setup": [
     "user-guide/install-overview",

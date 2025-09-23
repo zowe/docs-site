@@ -81,6 +81,10 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
+The following diagram illustrates inbound rules:
+
+![AT-TLS_Inbound_Rules](../images/install/AT-TLS_Inbound_Rules.png)
+
 A generic inbound rule can be set for all Zowe services:
 
 ```bash
@@ -157,6 +161,10 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 
 ### Outbound rules
 
+The following diagram illustrates outbound rules:
+
+![AT-TLS_Outbound_Rules](../images/install/AT-TLS_Outbound_Rules.png)
+
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
@@ -177,6 +185,10 @@ TTLSConnectionAction ClientConnectionAction
 ```
 
 #### Outbound rule for z/OSMF
+
+The following diagram illustrates outbound rules for z/OSMF:
+
+![AT-TLS_Outbound_Rules_for_zOSMF](../images/install/AT-TLS_Outbound_Rules_for_zOSMF.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -254,6 +266,13 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 ```
 
 #### Outbound rule for communication between API Gateway and extensions' servers
+
+<details>
+<summary>Click here to see a diagram that illustrates the rules for API Gateway to extension servers to integrate the Db2 DevOps systems</summary>
+
+![AT-TLS_int_DevOpsSystem](../images/install/AT-TLS_int_DevOpsSystem.png)
+
+</details>
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
 Such a rule can apply to any remote destination, as seen in the `ApimlClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
