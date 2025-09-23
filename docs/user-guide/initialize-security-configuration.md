@@ -80,6 +80,6 @@ If you run `ZWENOSEC` on a z/OS system, it is necessary to rerun `ZWESECUR` to r
 
 ## Next step
 
-After you successfully initalize Zowe security configurations, the next step is to [perform APF authorization of load libraries](./apf-authorize-load-library.md).
+After you successfully initialize Zowe security configurations, the next step is to [perform APF authorization of load libraries](./apf-authorize-load-library.md).
 
 
