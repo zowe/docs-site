@@ -115,6 +115,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -151,25 +163,25 @@ Allowed values: http, https</p>
 <li>
 <p>Delete the empty directory '/u/ibmuser/testcases':</p>
 <ul>
-<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Delete the file named '/a/ibmuser/my_text.txt':</p>
 <ul>
-<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases/my_text.txt&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases/my_text.txt&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases/my_text.txt&quot; --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases/my_text.txt&quot; --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Recursively delete the directory named '/u/ibmuser/testcases':</p>
 <ul>
-<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -rf</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -rf">Copy</button></li>
+<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --recursive --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --recursive --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Quietly delete a file, suppressing errors if the file doesn't exist:</p>
 <ul>
-<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -fi</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; -fi">Copy</button></li>
+<li><code>zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --for-sure --ignore-not-found</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete uss-file &quot;/a/ibmuser/testcases&quot; --for-sure --ignore-not-found">Copy</button></li>
 </ul>
 </li>
 </ul>

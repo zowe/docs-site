@@ -120,6 +120,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -184,19 +196,19 @@ Allowed values: http, https</p>
 <li>
 <p>List the workflow with name &quot;testworkflow&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows list active-workflows --wn &quot;testworkflow&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --wn &quot;testworkflow&quot;">Copy</button></li>
+<li><code>zowe zos-workflows list active-workflows --workflow-name &quot;testworkflow&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --workflow-name &quot;testworkflow&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List multiple active workflows on the entire syspex with names containing&quot;workflow&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows list active-workflows --wn &quot;.*workflow.*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --wn &quot;.*workflow.*&quot;">Copy</button></li>
+<li><code>zowe zos-workflows list active-workflows --workflow-name &quot;.*workflow.*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --workflow-name &quot;.*workflow.*&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List multiple active workflows on system &quot;IBMSYS&quot; with names beginnig with &quot;testW&quot; that are in status &quot;complete&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows list active-workflows --wn &quot;test.*&quot; --sys &quot;IBMSYS&quot; --sn &quot;complete&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --wn &quot;test.*&quot; --sys &quot;IBMSYS&quot; --sn &quot;complete&quot;">Copy</button></li>
+<li><code>zowe zos-workflows list active-workflows --workflow-name &quot;test.*&quot; --system &quot;IBMSYS&quot; --status-name &quot;complete&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows list active-workflows --workflow-name &quot;test.*&quot; --system &quot;IBMSYS&quot; --status-name &quot;complete&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -127,6 +127,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -163,31 +175,31 @@ Allowed values: http, https</p>
 <li>
 <p>Delete the VSAM data set named 'ibmuser.cntl.vsam':</p>
 <ul>
-<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Quietly delete all VSAM data sets that match 'ibmuser.AAA.**.FFF' ignoring not-found errors:</p>
 <ul>
-<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; -f">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; --for-sure</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.AAA.**.FFF&quot; --for-sure">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Delete a non-expired VSAM data set named 'ibmuser.cntl.vsam':</p>
 <ul>
-<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --purge">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --purge</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --purge">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Delete an expired VSAM data set named 'ibmuser.cntl.vsam' by overwriting the components with zeros:</p>
 <ul>
-<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -f --erase">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --erase</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --erase">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Quietly delete all VSAM data sets that match 'ibmuser.AAA.**.FFF' ignoring not-found errors:</p>
 <ul>
-<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -fi</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; -fi">Copy</button></li>
+<li><code>zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --ignore-not-found</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files delete data-set-vsam &quot;ibmuser.cntl.vsam&quot; --for-sure --ignore-not-found">Copy</button></li>
 </ul>
 </li>
 </ul>

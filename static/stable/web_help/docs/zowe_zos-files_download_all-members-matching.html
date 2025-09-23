@@ -173,6 +173,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -209,14 +221,14 @@ Allowed values: http, https</p>
 <li>
 <p>Download the members of the data set &quot;ibmuser.loadlib&quot; that begin with &quot;Test&quot; to the directory &quot;loadlib/&quot;:</p>
 <ul>
-<li><code>zowe zos-files download all-members-matching &quot;ibmuser.loadlib&quot; &quot;Test*&quot; -d loadlib</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members-matching &quot;ibmuser.loadlib&quot; &quot;Test*&quot; -d loadlib">Copy</button></li>
+<li><code>zowe zos-files download all-members-matching &quot;ibmuser.loadlib&quot; &quot;Test*&quot; --directory loadlib</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members-matching &quot;ibmuser.loadlib&quot; &quot;Test*&quot; --directory loadlib">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download the members of the data set &quot;ibmuser.cntl&quot; that begin with &quot;Test&quot; &amp; &quot;M&quot; to the directory &quot;output&quot;,<br>
 and exclude members that begin with &quot;M2&quot;.:</p>
 <ul>
-<li><code>zowe zos-files download all-members-matching &quot;ibmuser.cntl&quot; &quot;test*,M*&quot; --exclude-patterns &quot;M2*&quot; -d output</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members-matching &quot;ibmuser.cntl&quot; &quot;test*,M*&quot; --exclude-patterns &quot;M2*&quot; -d output">Copy</button></li>
+<li><code>zowe zos-files download all-members-matching &quot;ibmuser.cntl&quot; &quot;test*,M*&quot; --exclude-patterns &quot;M2*&quot; --directory output</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members-matching &quot;ibmuser.cntl&quot; &quot;test*,M*&quot; --exclude-patterns &quot;M2*&quot; --directory output">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -118,6 +118,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -154,19 +166,19 @@ Allowed values: http, https</p>
 <li>
 <p>Download the file &quot;/a/ibmuser/my_text.txt&quot; to ./my_text.txt:</p>
 <ul>
-<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; -f ./my_text.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; -f ./my_text.txt">Copy</button></li>
+<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; --file ./my_text.txt</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/my_text.txt&quot; --file ./my_text.txt">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download the file &quot;/a/ibmuser/MyJava.class&quot; to &quot;java/MyJava.class&quot; in binary mode:</p>
 <ul>
-<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; -b -f &quot;java/MyJava.class&quot;">Copy</button></li>
+<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --binary --file &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --binary --file &quot;java/MyJava.class&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download the file &quot;/a/ibmuser/MyJava.class&quot; to &quot;java/MyJava.class&quot; using a .zosattributes file:</p>
 <ul>
-<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes -f &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes -f &quot;java/MyJava.class&quot;">Copy</button></li>
+<li><code>zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes --file &quot;java/MyJava.class&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download uss-file &quot;/a/ibmuser/MyJava.class&quot; --attributes /path/to/.zosattributes --file &quot;java/MyJava.class&quot;">Copy</button></li>
 </ul>
 </li>
 </ul>

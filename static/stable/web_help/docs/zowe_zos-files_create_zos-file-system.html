@@ -166,6 +166,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -208,13 +220,13 @@ Allowed values: http, https</p>
 <li>
 <p>Create a ZFS with 100 primary and 10 secondary cylinders allocated:</p>
 <ul>
-<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cp 100 --cs 10">Copy</button></li>
+<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cyls-pri 100 --cyls-sec 10</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --cyls-pri 100 --cyls-sec 10">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Create a ZFS specifying the volumes that should be used:</p>
 <ul>
-<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS -v ZFS001 ZFS002">Copy</button></li>
+<li><code>zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --volumes ZFS001 ZFS002</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files create zos-file-system HLQ.MYNEW.ZFS --volumes ZFS001 ZFS002">Copy</button></li>
 </ul>
 </li>
 </ul>

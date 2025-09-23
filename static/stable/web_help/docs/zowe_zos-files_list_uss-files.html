@@ -100,6 +100,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -170,13 +182,13 @@ Allowed values: http, https</p>
 <li>
 <p>Show the files and directories in path '/u/ibmuser displaying only the file or directory name:</p>
 <ul>
-<li><code>zowe zos-files list uss-files &quot;/u/ibmuser&quot; --rff name</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list uss-files &quot;/u/ibmuser&quot; --rff name">Copy</button></li>
+<li><code>zowe zos-files list uss-files &quot;/u/ibmuser&quot; --response-format-filter name</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list uss-files &quot;/u/ibmuser&quot; --response-format-filter name">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Show the files and directories in path '/u/ibmuser' displaying the headers associated with the file detail:</p>
 <ul>
-<li><code>zowe zos-files list uss-files &quot;/u/ibmuser&quot; --rfh</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list uss-files &quot;/u/ibmuser&quot; --rfh">Copy</button></li>
+<li><code>zowe zos-files list uss-files &quot;/u/ibmuser&quot; --response-format-header</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list uss-files &quot;/u/ibmuser&quot; --response-format-header">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -46,17 +46,40 @@ The Discovery Service endpoints are not reachable by standard API Gateway routin
 Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode, calls to this service are all internal between API ML components. These must include the X.509 Client Certificate.
 :::
 
-### Limitations
+### Limitations when using AT-TLS with ICSF Hardware keyring
 
-If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
-Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
+ API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
+
+* [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
+* [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
+
+#### Prevent API ML from reading the private key
+
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API ML from loading the keyring.
+The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
+This mode requires both server and client AT-TLS enabled in the zowe.yaml with full coverage of Inbound and Outbound rules.
+
+:::note  
+The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
+
+:::
+
+#### Use an alternative non-hardware keyring
+
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
+- Personal Access Tokens
+- SAF native provider (API ML signs its own JWT in this scenario)
+- z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
 
 This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
 
 ### Inbound rules
+
+The following diagram illustrates inbound rules:
+
+![AT-TLS_Inbound_Rules](../images/install/AT-TLS_Inbound_Rules.png)
 
 A generic inbound rule can be set for all Zowe services:
 
@@ -134,6 +157,10 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 
 ### Outbound rules
 
+The following diagram illustrates outbound rules:
+
+![AT-TLS_Outbound_Rules](../images/install/AT-TLS_Outbound_Rules.png)
+
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
@@ -154,6 +181,10 @@ TTLSConnectionAction ClientConnectionAction
 ```
 
 #### Outbound rule for z/OSMF
+
+The following diagram illustrates outbound rules for z/OSMF:
+
+![AT-TLS_Outbound_Rules_for_zOSMF](../images/install/AT-TLS_Outbound_Rules_for_zOSMF.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -231,6 +262,13 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 ```
 
 #### Outbound rule for communication between API Gateway and extensions' servers
+
+<details>
+<summary>Click here to see a diagram that illustrates the rules for API Gateway to extension servers to integrate the Db2 DevOps systems</summary>
+
+![AT-TLS_int_DevOpsSystem](../images/install/AT-TLS_int_DevOpsSystem.png)
+
+</details>
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
 Such a rule can apply to any remote destination, as seen in the ApimlClientRule for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).

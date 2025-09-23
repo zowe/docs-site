@@ -91,6 +91,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -155,19 +167,19 @@ Allowed values: http, https</p>
 <li>
 <p>Archive a workflow with workflow name &quot;testworkflow&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows archive active-workflow --wn &quot;testworkflow&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --wn &quot;testworkflow&quot; ">Copy</button></li>
+<li><code>zowe zos-workflows archive active-workflow --workflow-name &quot;testworkflow&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --workflow-name &quot;testworkflow&quot; ">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Archive multiple workflows with workflow names starting with &quot;test&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows archive active-workflow --wn &quot;test.*&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --wn &quot;test.*&quot; ">Copy</button></li>
+<li><code>zowe zos-workflows archive active-workflow --workflow-name &quot;test.*&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --workflow-name &quot;test.*&quot; ">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Archive a workflow with workflow key &quot;123-456-abv-xyz&quot;:</p>
 <ul>
-<li><code>zowe zos-workflows archive active-workflow --wk &quot;123-456-abv-xyz&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --wk &quot;123-456-abv-xyz&quot; ">Copy</button></li>
+<li><code>zowe zos-workflows archive active-workflow --workflow-key &quot;123-456-abv-xyz&quot; </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-workflows archive active-workflow --workflow-key &quot;123-456-abv-xyz&quot; ">Copy</button></li>
 </ul>
 </li>
 </ul>

@@ -148,6 +148,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -196,13 +208,13 @@ Allowed values: http, https</p>
 <li>
 <p>Start TSO/E address space, and receive response in JSON format:</p>
 <ul>
-<li><code>zowe zos-tso start address-space --rfj</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --rfj">Copy</button></li>
+<li><code>zowe zos-tso start address-space --response-format-json</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --response-format-json">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Start TSO/E address space, and print only the servlet key:</p>
 <ul>
-<li><code>zowe zos-tso start address-space --sko</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --sko">Copy</button></li>
+<li><code>zowe zos-tso start address-space --servlet-key-only</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-tso start address-space --servlet-key-only">Copy</button></li>
 </ul>
 </li>
 </ul>

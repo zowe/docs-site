@@ -158,6 +158,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -194,13 +206,13 @@ Allowed values: http, https</p>
 <li>
 <p>Download the members of the data set &quot;ibmuser.loadlib&quot; in binary mode to the directory &quot;loadlib/&quot;:</p>
 <ul>
-<li><code>zowe zos-files download all-members &quot;ibmuser.loadlib&quot; -b -d loadlib</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.loadlib&quot; -b -d loadlib">Copy</button></li>
+<li><code>zowe zos-files download all-members &quot;ibmuser.loadlib&quot; --binary --directory loadlib</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.loadlib&quot; --binary --directory loadlib">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>Download the members of the data set &quot;ibmuser.cntl&quot; in text mode to the directory &quot;jcl/&quot;:</p>
 <ul>
-<li><code>zowe zos-files download all-members &quot;ibmuser.cntl&quot; -d jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.cntl&quot; -d jcl">Copy</button></li>
+<li><code>zowe zos-files download all-members &quot;ibmuser.cntl&quot; --directory jcl</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files download all-members &quot;ibmuser.cntl&quot; --directory jcl">Copy</button></li>
 </ul>
 </li>
 </ul>

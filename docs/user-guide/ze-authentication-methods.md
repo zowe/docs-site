@@ -1,6 +1,8 @@
 # Zowe Explorer authentication methods
 
-Zowe Explorer for VS Code supports multiple authentication methods including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication.
+Zowe Explorer supports multiple methods of authenticating to your z/OS REST services, including basic authentication, tokens for single sign-on, client certificates, and multi-factor authentication. 
+
+If you configure multiple authentication methods for a specific service, set the *order of precedence* with the profile property `authOrder`. To specify an [order of precedence](../user-guide/cli-authentication-methods.md#order-of-precedence) in your client configuration, refer to the Zowe CLI documenation.
 
 ## Using basic authentication
 
@@ -24,7 +26,7 @@ To log into the API ML authentication service with an existing base profile:
 
    If the request is successful, the token is used for authentication until the logout action is taken or the token expires.
 
-For more information, see [Integrating API ML with Zowe CLI](https://docs.zowe.org/stable/user-guide/cli-using-integrating-apiml.md).
+For more information, see [Integrating API ML with Zowe CLI](./cli-using-integrating-apiml.md).
 
 :::note
 For services not registered to your API ML instance, please consult the product or extender documentation for SSO support.

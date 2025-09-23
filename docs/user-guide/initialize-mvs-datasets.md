@@ -10,7 +10,7 @@ Review this article to learn about how to intialize Zowe custom MVS data sets by
 
 During the installation of Zowe, runtime datasets are created. The contents of these data sets represent the original files that were provided as part of the Zowe installation and are not meant to be modified. [The list of these datasets can be reviewed in the dataset appendix](../appendix/server-datasets.md).
 
-For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs).
+For modification and execution, it is necessary to create custom data sets by using the `zwe init mvs` command. For detailed information about this command, see the [`zwe init mvs` command reference](../appendix/zwe_server_command_reference/zwe/init/zwe-init-mvs.md).
 
 The `zowe.yaml` section that contains the parameters for the data set names is:
 
@@ -25,7 +25,7 @@ zowe:
       authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
 ```
 
-Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-datasets) that will be created in this step.
+Refer to the appendix for the [list of datasets](../appendix/server-datasets.md#custom-data-sets) that will be created in this step.
 
 ## Procedure to initialize Zowe custom data sets
 

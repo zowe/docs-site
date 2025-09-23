@@ -80,6 +80,15 @@ However, the pattern cannot begin with any of these sequences. You can specify m
 </ul>
 </li>
 <li>
+<p><code>--search-exact-name</code> | <code>--sen</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>The search pattern must exactly match the data set name.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
 <p><code>--response-timeout</code> | <code>--rto</code> <em>(number)</em></p>
 <ul>
 <li>The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600</li>
@@ -150,6 +159,18 @@ Allowed values: http, https</p>
 <p><code>--cert-key-file</code> <em>(local file path)</em></p>
 <ul>
 <li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
 </ul>
 </li>
 </ul>

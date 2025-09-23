@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_3_0",
         "whats-new/release-notes/v3_2_0",
         "whats-new/release-notes/v3_1_1",
         "whats-new/release-notes/v3_1_0",
@@ -112,7 +113,6 @@ module.exports = {
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
-    "getting-started/cli-getting-started",
   ],
   "setup": [
     "user-guide/install-overview",
@@ -263,6 +263,7 @@ module.exports = {
               "label": "Advanced API Mediation Layer Configuration",
               "link": { "type": "doc", "id": "user-guide/advanced-apiml-configuration" },
               "items": [
+                "user-guide/api-mediation/api-mediation-modulith",
                 {
                   "type": "category",
                   "label": "Enabling single sign on for clients",
@@ -685,8 +686,10 @@ module.exports = {
             "user-guide/ze-authentication-methods",
             "user-guide/ze-usage-tips",
             "user-guide/ze-working-with-data-sets",
+            "user-guide/ze-data-set-table-view-guide",
             "user-guide/ze-working-with-uss-files",
             "user-guide/ze-working-with-jobs",
+            "user-guide/ze-jobs-table-view-guide",
             "user-guide/ze-working-with-commands",
             {
               type: "category",
@@ -1115,7 +1118,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.2.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.3.x.md",
     },
   ],
 }

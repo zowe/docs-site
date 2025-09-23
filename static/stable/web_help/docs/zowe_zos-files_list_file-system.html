@@ -103,6 +103,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -173,13 +185,13 @@ Allowed values: http, https</p>
 <li>
 <p>To list filesystems mounted to a specific path:</p>
 <ul>
-<li><code>zowe zos-files list file-system -p /a/ibmuser</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system -p /a/ibmuser">Copy</button></li>
+<li><code>zowe zos-files list file-system --path /a/ibmuser</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system --path /a/ibmuser">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>To list filesystems mounted with a specific name:</p>
 <ul>
-<li><code>zowe zos-files list file-system -f MY.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system -f MY.ZFS">Copy</button></li>
+<li><code>zowe zos-files list file-system --fsname MY.ZFS</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-files list file-system --fsname MY.ZFS">Copy</button></li>
 </ul>
 </li>
 </ul>

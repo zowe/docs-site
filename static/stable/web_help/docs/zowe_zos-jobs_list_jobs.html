@@ -97,6 +97,18 @@ Allowed values: http, https</p>
 <li>The file path to a certificate key file to use for authentication</li>
 </ul>
 </li>
+<li>
+<p><code>--completion-timeout</code> | <code>--cto</code> <em>(number)</em></p>
+<ul>
+<li>The amount in time, in seconds, a REST operation should wait to complete before timing out</li>
+</ul>
+</li>
+<li>
+<p><code>--establish-connection-timeout</code> | <code>--ecto</code> <em>(number)</em></p>
+<ul>
+<li>The amount of time, in seconds, a REST operation should wait while connecting to the server before timing out</li>
+</ul>
+</li>
 </ul>
 <h4>Profile Options</h4>
 <ul>
@@ -167,13 +179,13 @@ Allowed values: http, https</p>
 <li>
 <p>List all jobs owned by user IDs starting with 'ibmu' and job names starting with 'myjo':</p>
 <ul>
-<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot;">Copy</button></li>
+<li><code>zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --prefix &quot;myjo*&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --prefix &quot;myjo*&quot;">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all jobs with default owner and prefix settings, displaying only the job ID of each job:</p>
 <ul>
-<li><code>zowe zos-jobs list jobs --rff jobid --rft table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --rff jobid --rft table">Copy</button></li>
+<li><code>zowe zos-jobs list jobs --response-format-filter jobid --response-format-type table</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --response-format-filter jobid --response-format-type table">Copy</button></li>
 </ul>
 </li>
 <li>
@@ -185,13 +197,13 @@ Allowed values: http, https</p>
 <li>
 <p>List all jobs owned by user IDs starting with 'ibmu' and return job execution data along with the default information:</p>
 <ul>
-<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; --exec-data">Copy</button></li>
+<li><code>zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --exec-data">Copy</button></li>
 </ul>
 </li>
 <li>
 <p>List all jobs owned by user IDs starting with 'ibmu' and job names starting with 'myjo' and return job execution data along with the default information:</p>
 <ul>
-<li><code>zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs -o &quot;ibmu*&quot; -p &quot;myjo*&quot; --exec-data">Copy</button></li>
+<li><code>zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --prefix &quot;myjo*&quot; --exec-data</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-jobs list jobs --owner &quot;ibmu*&quot; --prefix &quot;myjo*&quot; --exec-data">Copy</button></li>
 </ul>
 </li>
 </ul>
