@@ -26,7 +26,7 @@ If you do not have permissions to update your security configurations, use the `
 
 ### Using `security-dry-run`
 
-Specify the parameter `--security-dry-run` to construct a JCL member containing the security commmands without running it.  This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
+Specify the parameter `--security-dry-run` to construct a JCL member containing the security commands without running it. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
 
 **Example:**
 
@@ -80,6 +80,6 @@ If you run `ZWENOSEC` on a z/OS system, it is necessary to rerun `ZWESECUR` to r
 
 ## Next step
 
-After you successfully initalize Zowe security configurations, the next step is to [perform APF authorization of load libraries](./apf-authorize-load-library.md).
+After you successfully initialize Zowe security configurations, the next step is to [perform APF authorization of load libraries](./apf-authorize-load-library.md).
 
 
