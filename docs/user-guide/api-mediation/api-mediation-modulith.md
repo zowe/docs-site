@@ -6,7 +6,7 @@ Zowe version 3.3.0 introduces, as a technical preview, the option to switch the 
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** (also refered to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -96,7 +96,7 @@ If your installation is configured with AT-TLS, rules need to be updated. Perfor
 :::note Notes:
 * In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
 
-* TCP HTTP calls are still in use for High Availability scenarios to maintain synchronization between instances accross LPARs.
+* TCP HTTP calls are still in use for High Availability scenarios to maintain synchronization between instances across LPARs.
   
 * In general, rules for AT-TLS in single-service deployment are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update rules to remove ports are no longer used.
 :::
