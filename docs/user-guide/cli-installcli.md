@@ -5,7 +5,7 @@ Follow these guidelines to install Zowe&trade; CLI on your computer.
 :::info Required role: systems administrator
 :::
 
-If you want to get started using Zowe CLI quickly, see [Zowe CLI quick start](../getting-started/cli-getting-started.md). You can learn about new CLI features in the [release notes](../whats-new/release-notes/release-notes-overview.md).
+You can learn about new CLI features in the [release notes](../whats-new/release-notes/release-notes-overview.md).
 
 :::note notes
 

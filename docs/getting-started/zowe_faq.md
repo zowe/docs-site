@@ -86,8 +86,6 @@ Zowe provides a convenience build that includes the components released-to-date,
 
 To install the complete Zowe solution, see [Installing Zowe](../user-guide/installandconfig.md).
 
-To get up and running with the Zowe CLI component quickly, see [Zowe CLI quick start](cli-getting-started.md).
-
 </details>
 
 
