@@ -64,17 +64,17 @@ zowe:
           ca:
           user: IZUSVR
       san:
-        - zos.my-company.com
-        - internal-lpar1.zos.my-company.com
-        - internal-lpar2.zos.my-company.com
-        - internal-lpar3.zos.my-company.com
+        - zos.example.com
+        - internal-lpar1.zos.example.com
+        - internal-lpar2.zos.example.com
+        - internal-lpar3.zos.example.com
       importCertificateAuthorities:
         - 
   externalDomains:
-   - zos.my-company.com
+   - zos.example.com
   verifyCertificates: STRICT
 zOSMF:
-  host: zosmf.my-company.com
+  host: zosmf.example.com
   port: 443
 ```
 

@@ -18,7 +18,7 @@ In the following configuration, nested profiles (highlighted in the example) use
     "profiles": {
         "lpar1": {
             "properties": {
-                "host": "example1.com"
+                "host": "lpar1.example.com"
             },
             "profiles": {
                 // highlight-start
@@ -47,7 +47,7 @@ In the following configuration, nested profiles (highlighted in the example) use
         },
         "lpar2": {
             "properties": {
-                "host": "example2.com"
+                "host": "lpar2.example.com"
             },
             "profiles": {
                 // highlight-start
@@ -90,7 +90,7 @@ In the following configuration, profiles are highlighted to show they are nested
     "profiles": {
         "lpar1": {
             "properties": {
-                "host": "example1.com"
+                "host": "lpar1.example.com"
             },
             "profiles": {
                 // highlight-start
@@ -123,7 +123,7 @@ In the following configuration, profiles are highlighted to show they are nested
         },
         "lpar2": {
             "properties": {
-                "host": "example2.com"
+                "host": "lpar2.example.com"
             },
             "profiles": {
                // highlight-start
@@ -280,7 +280,7 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
     "profiles": {
         "lpar1": {
             "properties": {
-                "host": "example1.com",
+                "host": "lpar1.example.com",
                 "port": 7554,
                 "tokenType": "apimlAuthenticationToken"
             },
@@ -318,7 +318,7 @@ To authenticate to a specific API ML gateway from this configuration, issue the 
         },
         "lpar2": {
             "properties": {
-                "host": "example2.com",
+                "host": "lpar2.example.com",
                 "port": 7554,
                 "rejectUnauthorized": false,
                 "tokenType": "apimlAuthenticationToken"
@@ -366,7 +366,7 @@ Use the `--base-profile` option on Zowe CLI commands to select a base profile th
         },
         "lpar1": {
             "properties": {
-                "host": "example1.com",
+                "host": "lpar1.example.com",
                 "port": 7554,
                 "tokenType": "apimlAuthenticationToken"
             },
@@ -376,7 +376,7 @@ Use the `--base-profile` option on Zowe CLI commands to select a base profile th
         },
         "lpar2": {
             "properties": {
-                "host": "example2.com",
+                "host": "lpar2.example.com",
                 "port": 7554,
                 "tokenType": "apimlAuthenticationToken"
             },

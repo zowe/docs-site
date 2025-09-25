@@ -70,7 +70,7 @@ Open the `~/.zowe/zowe.config.json` file in a text editor or IDE on your compute
         "global_base": {
             "type": "base",
             "properties": {
-                "host": "example1.com"
+                "host": "example.com"
             },
             "secure": [
                 "user",
