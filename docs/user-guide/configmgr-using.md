@@ -117,7 +117,24 @@ CONFIG=FILE(/home/me/zowe-customizations.yaml)\
 
 When you use multiple storage types, Zowe constructs the unified configuration by having the storage types listed on the left override the values of storage types to their right in the list. This means the left-most storage type's values take priority, and the right-most storage type should be treated as a set of defaults. Here is an example of splitting configuration into multiple files:
 
-![multi yaml example](../images/configure/multiyaml.png)
+```yaml
+# /home/me/zowe-customizations.yaml
+components:
+  app-server:
+    enabled: true
+    port: 1234
+```
+```yaml
+# /global/zowe/example-zowe.yaml
+components:
+  app-server:
+    enabled: true
+    port: 4321
+```
+| Configuration | Result |
+| ------------- | ------ |
+| `FILE(/home/me/zowe-customizations.yaml):FILE(/global/zowe/example-zowe.yaml)` | `components.app-server.port=1234` |
+| `FILE(/global/zowe/example-zowe.yaml):FILE(/home/me/zowe-customizations.yaml)` | `components.app-server.port=4321` |
 
 ## Parmlib support
 
@@ -168,7 +185,7 @@ zowe:
 ```
 
 ### Template functions
-Following examples demonstarates how to define the logging for `zss` component based on the `crossMemoryServerName`. When the default name of `ZWESIS_STD` is used, the general logging is set to `2`. For other names the `logLevels` is set to specific trace level(s) with the highest value of `5`.
+Following examples demonstrates how to define the logging for `zss` component based on the `crossMemoryServerName`. When the default name of `ZWESIS_STD` is used, the general logging is set to `2`. For other names the `logLevels` is set to specific trace level(s) with the highest value of `5`.
 ```yaml
 components:
   zss:
@@ -246,7 +263,7 @@ java:
 
 ## Configuration Manager Unix executable
 
-`configmgr` is a file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
+`configmgr` is an executable file located within `<zowe.runtimeDirectory>/bin/utils` in the Zowe server component runtime for z/OS. If you run it with no arguments, it prints a help command that details what you can do with it. `configmgr` commands focus on providing input files and schemas, and then providing output such as validation success or printing the configuration.
 
 The `configmgr` executable needs the following as input:
 
@@ -260,7 +277,3 @@ The `configmgr` executable can do the following with the input:
 - Validate and then output a specific property of the configuration when given a JSON path to the property desired.
    
 The `configmgr` binary does not need to be used for Zowe configuration and Zowe schemas alone. It can validate any YAML against any json-schema. However, its environment variable output list is in the Zowe format.
-
-
-
-
