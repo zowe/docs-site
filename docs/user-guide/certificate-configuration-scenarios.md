@@ -101,7 +101,7 @@ Use this procedure to configure the `zowe.setup.certificate` section in your yam
     ```
     san:
         sample domain name
-        - dvipa.my-company.com
+        - dvipa.example.com
         sample IP address
         - 12.34.56.78
      ```
@@ -135,7 +135,7 @@ For more information, see this article in [IBM Support](https://www.ibm.com/supp
          country: "CZ"
        validity: 3650
        san:
-         - system.my-company.com
+         - system.example.com
          - 12.34.56.78
 ```
 Your yaml file is now configured to enable Zowe to use generated PKCS12 certificates.
@@ -261,7 +261,7 @@ Use this procedure to configure the `zowe.setup.certificate` section in your yam
 this field is not defined, the `zwe init` command uses the value `zowe.externalDomains`.  
     ```
     san:
-      - dvipa.my-company.com
+      - dvipa.example.com
       - 12.34.56.78
     ```
 :::note
@@ -290,7 +290,7 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
        country: "CZ"
      validity: 3650
      san:
-       - system.my-company.com
+       - system.example.com
        - 12.34.56.78
    ```
 Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.

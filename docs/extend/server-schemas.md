@@ -25,7 +25,7 @@ Below is an example manifest and schema for a Component named "component1". The 
 
 ```
 name: component1
-id: com.abcdef.component1
+id: com.example.abcdef.component1
 title: component1
 description: An example component with a simple configuration.
 license: ABCDEF Company License
@@ -41,7 +41,7 @@ Below is an example of the "schema.json" file referenced above. In it, we have 1
 ```
 {
   "$schema": "https://json-schema.org/draft/2019-09/schema",
-  "$id": "https://abcdef.com/schemas/v2/component1",
+  "$id": "https://abcdef.example.com/schemas/v2/component1",
   "allOf": [
     { "$ref": "https://zowe.org/schemas/v2/server-base" },
     { "type": "object",

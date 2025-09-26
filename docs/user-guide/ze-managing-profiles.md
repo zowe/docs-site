@@ -41,7 +41,7 @@ There are three key ways that Zowe Explorer uses a default profile:
             "profiles": {
                 "lpar1": {
                     "properties": {
-                        "host": "example1.com",
+                        "host": "host1.example.com",
                         "port": 7554,
                         "tokenType": "apimlAuthenticationToken"
                     },
@@ -79,7 +79,7 @@ There are three key ways that Zowe Explorer uses a default profile:
                 },
                 "lpar2": {
                     "properties": {
-                        "host": "example2.com",
+                        "host": "host2.example.com",
                         "port": 7554,
                         "rejectUnauthorized": false,
                         "tokenType": "apimlAuthenticationToken"

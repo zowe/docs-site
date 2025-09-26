@@ -29,7 +29,7 @@ It is possible to customize the logotype and selected style options directly in 
    Specifies the HTML color of the main text across the API Catalog
    - **docLink**  
    Specifies a custom link to be displayed in the header. Use this property to refer to applicable documentation. The format is `<link_name>|<link_url>`  
-       **Example:** `docLink: Custom Documentation|https://somedoc.com`
+       **Example:** `docLink: Custom Documentation|https://somedoc.example.com`
 
      Follow this example to define this parameter globally.
 
@@ -46,7 +46,7 @@ It is possible to customize the logotype and selected style options directly in 
                        headerColor: grey
                        backgroundColor: #FFFFFF
                        textColor: blue
-                       docLink: Custom Documentation|https://somedoc.com
+                       docLink: Custom Documentation|https://somedoc.example.com
        ```
   
       Properties in the example that are not set default to Zowe API Catalog css values.

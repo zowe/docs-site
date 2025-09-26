@@ -32,7 +32,7 @@ If the package is found in the registry, that extension and all of its dependenc
 
 The above example omits the registry configuration information, so the values default to what is containted within the zowe.yaml
 If they were explicitly provided instead, the command may look like
-`zwe components install -o my-zowe-extension --config zowe.yaml --handler npm --registry https://my-on-prem-registry.company.com/npm`
+`zwe components install -o my-zowe-extension --config zowe.yaml --handler npm --registry https://my-on-prem-registry.example.com/npm`
 
 ### Upgrading an extension
 
