@@ -1,7 +1,7 @@
 # Enabling AT-TLS
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
-The built-in TLS networking is enabled by default. To learn more, see [configuring the built-in TLS](./tls-configuration.md).
+The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
 
 You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
@@ -10,7 +10,7 @@ You can configure parameters in Zowe servers to switch to AT-TLS. Review this ar
 
 ## AT-TLS configuration for Zowe
 
-Follow these steps to configure Zowe to support AT-TLS:
+Configuration to support AT-TLS is set in the following section of the `zowe.yaml` file: 
 
 ```yaml
 zowe:
@@ -25,7 +25,11 @@ zowe:
         attls: true
 ```
 
-While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+
+:::tip
+We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+:::
 
 :::note Notes
 
@@ -55,9 +59,9 @@ Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorizati
 
 #### Prevent API ML from reading the private key
 
-Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in zowe.yaml to prevent API ML from loading the keyring.
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in `zowe.yaml` to prevent API ML from loading the keyring.
 The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
-This mode requires both server and client AT-TLS enabled in the zowe.yaml with full coverage of Inbound and Outbound rules.
+This mode requires both server and client AT-TLS enabled in the `zowe.yaml` with full coverage of Inbound and Outbound rules.
 
 :::note  
 The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
@@ -271,10 +275,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 </details>
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
-Such a rule can apply to any remote destination, as seen in the ApimlClientRule for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
+Such a rule can apply to any remote destination, as seen in the `ApimlClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 <details>
-<summary>Click here for the example of a rule covering API Gateway to extension servers</summary>
+<summary>Click here for the example of a rule covering API Gateway to extension servers.</summary>
 
 This example covers routing scenarios.
 
@@ -320,13 +324,17 @@ Outbound connections from the Gateway to southbound services (onboarded services
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
-This scenario includes services that set `zoweJwt` as the authentication scheme, those that require an Open ID Connect (OIDC) token, or forwarded X.509 certificates.
+This scenario includes the following services:
+
+* Services that set `zoweJwt` as the authentication scheme
+* Services that require an Open ID Connect (OIDC) token
+* Forwarded X.509 certificates
 
 In this case, it is necessary to have an Outbound rule from the service to the API Gateway.
 
-These services also already have an outbound rule set for the onboarding process against the Discovery Service.
+These services also already have an Outbound rule set for the onboarding process against the Discovery Service.
 
-Ensure these rules are followed:
+Ensure that these rules are followed:
 
 - Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding.
 - Outbound rule to API Gateway: __Do not__ set a Client Certificate.
@@ -394,7 +402,7 @@ zowe:
 
 This section describes some common issues when using AT-TLS with Zowe and how to resolve these issues.
 
-### The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser
+### The message `This combination of port requires SSL` is thrown when accessing an API ML service through a Browser
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on a application-controlled secured port.
 
@@ -415,6 +423,114 @@ An error can occur if the [list of ciphers](#ciphers) or the TLS protocol does n
 
 **Solution:**
 Review the supported TLS versions and ciphers used in both the client and the server.
+
+### Zowe Desktop IP Explorer or Editor does not work
+
+If the Zowe Desktop IP Explorer or Editor are not working correctly, either by failing to load or showing no data, it means there is a problem accessing the ZSS server. 
+
+**Solution:**
+
+Ensure the `components.zss.agent.http.ipAddresses` includes a reachable address. If this field unset, it defaults to `127.0.0.1`, while other Zowe servers default to `0.0.0.0`. 
+
+**Sample configuration:**
+
+```yaml
+components:
+  zss:
+    enabled: true
+    port: 7557
+    crossMemoryServerName: ZWESIS_STD
+    agent:
+      64bit: true
+    http:
+      ipAddresses: 
+        - "0.0.0.0"
+```
+
+### Zowe Desktop TN3270 or VT-Terminal Websocket 1006 Errors
+
+If the Zowe Desktop TN3270 Application or VT Terminal Application are displaying a websocket error 1006, there is an issue with CORS configuration. This will be fixed in Zowe 3.4.0, and can be fixed manually in earlier releases.
+
+**Solution:**
+
+We recommend contacting your conformant support provider for assistance applying this fix. 
+
+Add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe. 
+
+The metadata that should be added to the ZLUX eureka app:
+- `apiml.corsEnabled`: `true`
+- `apiml.corsAllowedOrigins` : `https://<your_zowe_host>:<catalog_port>,https://<your_zowe_host>:<gateway_port>`
+
+<details>
+
+<summary>Click here for complete instructions applying the above fix</summary>
+
+To apply the required metadata to the discovery service, you must have:
+
+1. A client certificate for authentication. Other forms of authentication are _not supported_.
+2. Network access to the host where the APIML Discovery Service is running.
+3. The APIML Gateway port value. This can be found in the zowe.yaml property `components.gateway.port`.
+4. The Discovery Service port value. This can be found in the zowe.yaml property `components.discovery.port`.
+5. The App Server port value. This can be found in the zowe.yaml property `comopnents.app-server.port`.
+6. The API Catalog port value. This can be found in the zowe.yaml property `components.api-catalog.port`.
+7. A REST client or command line tool.
+
+To see the current list of metadata for the ZLUX service, run:
+
+`GET https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX`
+
+You should get an HTTP 200 response with a JSON response body containing service metadata. You can check this to verify `apiml.corsEnabled` and `apiml.corsAllowedOrigins` are set correctly.
+```json
+// ... other fields before
+     ,
+     "metadata": {
+          "apiml.service.description": "This list includes core APIs for management of plugins, management of the server itself, and APIs brought by plugins and the app server agent, ZSS. Plugins that do not bring their own API documentation are shown here as stubs.",
+          "apiml.catalog.tile.version": "3.3.0",    
+      // ...more metadata fields
+ }
+```
+
+To update the ZLUX service metadata, run the below request once for each metadata field as described in the solution above. This request requires an additional URL-encoded field `<your_host>:zlux:<your_app_server_port>`, and `metadata_value` should also be URL-encoded.  
+
+`PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_app_server_port>/metadata?<metadata_key>=<metadata_value>`
+</details>
+
+
+<details>
+<summary>Sample requests using curl</summary>
+
+Given:
+* host `localhost`
+* APIML Catalog port `7552`
+* APIML Discovery Service port `7553`
+* APIML Gateway port `7554`
+* App Server port `7556`
+
+To see the current metadata:
+
+```curl
+curl --request GET \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url https://localost:7553/eureka/v2/apps/ZLUX
+```
+
+To update the metadata in 2 requests:
+
+```curl
+curl --request PUT \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsEnabled=true'
+```
+
+```curl
+curl --request PUT \
+  --cert <path_to_your_client_cert> \
+  --key <path_to_your_client_cert_key> \
+  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsAllowedOrigins=https%3A%2F%2Flocalhost%3A7552%2Chttps%3A%2F%2Flocalhost%3A7554'
+```
+</details>
 
 ### Additional troubleshooting
 
