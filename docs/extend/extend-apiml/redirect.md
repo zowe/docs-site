@@ -19,7 +19,7 @@ If no registered service can be matched by either of these methods, the original
 
 Additionally, relative URLs (e.g., Location: new/resource) in the Location header are not changed and are passed through to the client as-is.
 
-The following steps illustrates the workflow of a redirected request:
+The following steps illustrates redirect request workflow performed by the API Gateway:
 
 1. A client makes a request to a service through the API Gateway.
 
