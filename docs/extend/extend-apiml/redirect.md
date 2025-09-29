@@ -3,7 +3,7 @@
 When a service routed through the API Gateway responds with a redirect status code (3xx) and a URL in the Location header, the API Gateway modifies the header to ensure that the client can properly access the new URL.
 
 :::note
-No steps are required from the API service developer as the redirect is performed auomatically by the API Gateway.
+No steps are required from the API service developer as Location header is automatically handled by the API Gateway.
 :::
 
 ## How Location Header is handled by the API Gateway
