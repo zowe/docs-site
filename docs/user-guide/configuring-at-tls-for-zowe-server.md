@@ -1,5 +1,11 @@
 # Enabling AT-TLS
 
+:::caution
+Do not use AT-TLS in high availability until you install Zowe on z/OS. First, ensure that the components of Zowe are functional and run as expected.
+For more information about how to install Zowe, refer to [Installing Zowe](../user-guide/install-overview.md)
+For more information about how to verify whether Zowe components are functional, refer to [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md)
+:::
+
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
 The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
 
