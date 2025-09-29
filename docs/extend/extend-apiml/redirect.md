@@ -1,0 +1,32 @@
+# Handling redirect by the API Gateway
+:::info Role: API service developer
+:::
+
+When a service routed through the API Gateway responds with a redirect status code (3xx) and a URL in the Location header, the API Gateway modifies the header to ensure that the client can properly access the new URL.
+
+## How Location Header is handled by the API Gateway
+The API Gateway is designed to proxy requests from a client to a backend service. A service may respond with a 3xx status code to redirect the client to a different URL. The URL provided in the Location header of the service response, however, is often an internal address that is not accessible to the client.
+
+To solve this issue, the API Gateway intercepts the 3xx response from the service and applies the following logic to determine how to handle the Location header:
+
+First, the Gateway attempts to match the base of the absolute URL in the Location header with the registered URL of the service that sent the response. If they match, the Gateway rewrites the header by replacing the internal service URL with the public-facing Gateway route for that service.
+
+If the URL in the Location header does not match the current service's registered URL, the Gateway then attempts to find a service in its registry that matches the host and port from the Location header. If another service is found, the Location header is rewritten to point to the correct public Gateway route for that second service.
+
+If no registered service can be matched by either of these methods, the original Location header is returned to the client without modification.
+
+Additionally, relative URLs (e.g., Location: new/resource) in the Location header are not changed and are passed through to the client as-is.
+
+The following steps illustrates the workflow of a redirected request:
+
+1. A client makes a request to a service through the API Gateway.
+
+2. The backend service responds with a 302 redirect to an internal URL. For example: Location: http://internal-service:8080/new/endpoint.
+
+3. The API Gateway intercepts the 302 response.
+
+4. The Gateway rewrites the URL in the Location header to absolute path following routing rules so client can access service through API Gateway. For example: Location: /myservice/api/v1/new/endpoint.
+
+5. The client receives the response with the rewritten Location header and can successfully follow the redirect.
+
+This rewriting of the Location header is enabled by default and requires no additional configuration in the API Gateway.
