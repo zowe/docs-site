@@ -8,13 +8,13 @@ On starting Zowe, you may see the following messages in `DDNAME SYSPRINT`:
 2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) - EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
 ```
 
-Alternatively, you may see the following message: 
+Alternatively, you may see the following message:
 
 ```
 2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) Netstat test fail with exit code 255 (EZZ2385I Access to Netstat -c denied - SAF RC is 00000008)
 ```
 
-In both cases, more detail should be available on the SYSLOG. 
+In both cases, more details should be available on the SYSLOG. 
 
 In the first case, it is likely that the SYSTCPD dataset from the TCP/IP job may not be accessible to the user running Zowe. A message such as the following may be seen on the SYSLOG at the same time as the error is generated in the Zowe output:
 
