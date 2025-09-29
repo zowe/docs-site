@@ -1148,7 +1148,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices currently deployed within Zowe requested `org.zowe.zlux.auth.trivial` or any other authentication _plug-in_ to authenticate users.
+  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices currently deployed within Zowe requested `org.zowe.zlux.auth.trivial` or any other _plugin_ to authenticate users.
 
   **Action:**
 
