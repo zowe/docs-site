@@ -909,7 +909,7 @@ module.exports = {
         {
           type: "category",
           label: "Troubleshooting Zowe API Mediation Layer",
-          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
+          link: { type: "doc", id: "troubleshoot/troubleshoot-apiml" },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
             "troubleshoot/known-issue-with-apiml",
