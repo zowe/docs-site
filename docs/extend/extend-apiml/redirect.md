@@ -32,3 +32,48 @@ The following steps illustrates redirect request workflow performed by the API G
 5. The client receives the response with the rewritten Location header and can successfully follow the redirect.
 
 This rewriting of the Location header is enabled by default and requires no additional configuration in the API Gateway.
+
+### Redirect Examples
+To illustrate how the Location header is rewritten, let's use a consistent scenario.
+
+#### Scenario Setup:
+
+API Gateway public URL: https://zowe.external.host:7554
+
+A service is registered with the following details:
+
+serviceId: myservice
+
+serviceUrl (internal base URL): http://internal-host:8080/my-app
+
+The API Gateway exposes this service at the following public path: https://zowe.external.host:7554/myservice/api/v1/
+
+Example 1: Absolute URL Redirect
+The service provides the full, absolute internal URL in the Location header. The Gateway matches this URL to the registered service and rewrites it.
+
+Service Response Header:
+
+HTTP
+
+Location: http://internal-host:8080/my-app/new/endpoint?user=1
+Gateway's Rewritten Header:
+
+HTTP
+
+Location: /myservice/api/v1/new/endpoint?user=1
+Explanation: The Gateway recognized that http://internal-host:8080/my-app corresponds to the serviceUrl for myservice and replaced it with the correct absolute Gateway URL, keeping the path and query parameters.
+
+Example 2: Relative URL Redirect (Passed Through)
+If your service returns a relative URL, the API Gateway does not rewrite it. The browser or client is responsible for resolving this path relative to the URL it originally requested.
+
+Service Response Header:
+
+HTTP
+
+Location: another/endpoint
+Gateway's Rewritten Header:
+
+HTTP
+
+Location: another/endpoint
+Explanation: The Gateway does not change relative URLs.
