@@ -1,4 +1,4 @@
-# Handling redirect by the API Gateway
+# Redirect handling by the API Gateway
 
 When a service routed through the API Gateway responds with a redirect status code (3xx) and a URL in the Location header, the API Gateway modifies the header to ensure that the client can properly access the new URL.
 
@@ -38,46 +38,34 @@ http://internal-service:8080/new/endpoint.
 This rewriting of the Location header is enabled by default and requires no additional configuration in the API Gateway.
 
 ### Redirect Examples
-To illustrate how the Location header is rewritten, let's use a consistent scenario.
+The following scenario illustrates how the Location header is rewritten.
 
-#### Scenario Setup:
+**Scenario Setup:**
 
-API Gateway public URL: https://zowe.external.host:7554
+* **API Gateway public URL**: `https://zowe.external.host:7554`
 
-A service is registered with the following details:
+    The example service is registered with the following details:
 
-serviceId: myservice
+* **serviceId**: _myservice_
 
-serviceUrl (internal base URL): http://internal-host:8080/my-app
+* **serviceUrl (internal base URL)**: `http://internal-host:8080/my-app`
 
-The API Gateway exposes this service at the following public path: https://zowe.external.host:7554/myservice/api/v1/
+The API Gateway exposes this service at the following public path: `https://zowe.external.host:7554/myservice/api/v1/`
 
-Example 1: Absolute URL Redirect
-The service provides the full, absolute internal URL in the Location header. The Gateway matches this URL to the registered service and rewrites it.
+**Example 1: Absolute URL Redirect**  
 
-Service Response Header:
+In this example, the service provides the _full, absolute internal URL_ in the Location header. The Gateway matches this URL to the registered service and rewrites the URL.
 
-HTTP
+For a Service Response Header (HTTP) at the location `http://internal-host:8080/my-app/new/endpoint?user=1`, the Gateway's rewritten header would appear as: `/myservice/api/v1/new/endpoint?user=1`.
 
-Location: http://internal-host:8080/my-app/new/endpoint?user=1
-Gateway's Rewritten Header:
+**Explanation:**  
+The Gateway recognized that `http://internal-host:8080/my-app` corresponds to the serviceUrl for _myservice_ and replaces the URL with the correct absolute Gateway URL, keeping the path and query parameters.
 
-HTTP
+**Example 2: Relative URL Redirect (Passed Through)**  
 
-Location: /myservice/api/v1/new/endpoint?user=1
-Explanation: The Gateway recognized that http://internal-host:8080/my-app corresponds to the serviceUrl for myservice and replaced it with the correct absolute Gateway URL, keeping the path and query parameters.
+For a service that returns a _relative URL_, the API Gateway does not rewrite the URL. The browser or client is responsible for resolving this path relative to the originally requested URL.
 
-Example 2: Relative URL Redirect (Passed Through)
-If your service returns a relative URL, the API Gateway does not rewrite it. The browser or client is responsible for resolving this path relative to the URL it originally requested.
+For a Service Response Header (HTTP) at the location `another/endpoint`, the Gateway's Rewritten Header would remain as `another/endpoint`.
 
-Service Response Header:
-
-HTTP
-
-Location: another/endpoint
-Gateway's Rewritten Header:
-
-HTTP
-
-Location: another/endpoint
-Explanation: The Gateway does not change relative URLs.
+**Explanation:**  
+The Gateway does not change relative URLs.
