@@ -912,6 +912,7 @@ module.exports = {
           link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
+            "troubleshoot/known-issues-with-apiml",
           ],
         },
         {
