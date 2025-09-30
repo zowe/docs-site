@@ -912,7 +912,7 @@ module.exports = {
           link: { type: "doc", id: "troubleshoot/troubleshoot-apiml" },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
-            "troubleshoot/known-issue-with-apiml",
+            "troubleshoot/known-issues-with-apiml",
           ],
         },
         {
@@ -934,7 +934,7 @@ module.exports = {
           label: "Troubleshooting Zowe Launcher",
           link: { type: "doc", id: "troubleshoot/launcher/launcher-troubleshoot" },
           items: [
-            "troubleshoot/launcher/launcher-error-codes"
+            "troubleshoot/launcher/launcher-error-codes",
           ],
         },
       ],
