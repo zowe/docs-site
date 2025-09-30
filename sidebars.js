@@ -912,7 +912,7 @@ module.exports = {
           link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
-            "troubleshoot/troubleshoot-known-issues-with-API-ML",
+            "troubleshoot/known-issues-with-api-ml",
           ],
         },
         {
