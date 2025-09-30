@@ -1,6 +1,6 @@
 # Known Issues with API ML
 
-### Error messages from TCP/IP
+## Error messages from TCP/IP
 
 On starting Zowe, you may see the following messages in `DDNAME SYSPRINT`:
 ```
@@ -28,7 +28,7 @@ The security administrator should grant READ access to the SYSTCPD dataset menti
 
 
 
-### API ML stops accepting connections after z/OS TCP/IP stack is recycled
+## API ML stops accepting connections after z/OS TCP/IP stack is recycled
 
 **Symptom:**
 
@@ -55,7 +55,7 @@ Restart API Mediation Layer.
 
 **Tip:**  To prevent this issue from occurring, it is strongly recommended not to restart the TCP/IP stack while API ML is running.
 
-### API ML throws I/O error on GET request and cannot connect to other services
+## API ML throws I/O error on GET request and cannot connect to other services
 
 **Symptom:**
 
@@ -95,7 +95,7 @@ The hostname that is displayed in the details of the exception is a valid hostna
 
 You can fix it by setting up the security environment as described in the [Zowe documentation](../user-guide/configure-zos-system.md#configure-security-environment-switching).
 
-### SEC0002 error when logging in to API Catalog
+## SEC0002 error when logging in to API Catalog
 
 SEC0002 error typically appears when users fail to log in to API Catalog. The following image shows the API Catalog login page with the SEC0002 error.
 
@@ -110,7 +110,7 @@ The error is caused by failed z/OSMF authentication. To determine the reason aut
 Check the rest of the message, and identify the cause of the problem. The following list provides the possible reasons and solutions for the z/OSMF authentication issue:
 
    
-#### Connection refused
+### Connection refused
 
 In the following message, failure to connect to API Catalog occurs when connection is refused:
 
@@ -121,7 +121,7 @@ The reason for the refused connection message is either invalid z/OSMF configura
 
 **Solution:**
 
-#### Configure z/OSMF
+### Configure z/OSMF
 
 Make sure that z/OSMF is running and is on 127.0.0.1:1443 interface, and try to log in to API Catalog again. If you get the same error message, change z/OSMF configuration.
 
@@ -147,7 +147,7 @@ If changing the z/OSMF configuration does not fix the issue, reconfigure Zowe.
 3. Reinstall Zowe.
 
 
-#### Missing z/OSMF host name in subject alternative names
+### Missing z/OSMF host name in subject alternative names
 
 In following message, failure to connect to API Catalog is caused by a missing z/OSMF host name in the subject alternative names:
 
@@ -164,14 +164,14 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 - [Secure fix](#secure-fix)
 - [Insecure fix](#insecure-fix)
 
-#### Secure fix
+### Secure fix
 
 **Follow these steps:**
 
 1. Obtain a valid certificate for z/OSMF and place it in the z/OSMF keyring. For more information, see [Configure the z/OSMF Keyring and Certificate](https://www.ibm.com/support/knowledgecenter/en/SSLTBW_2.3.0/com.ibm.zos.v2r3.izua300/izuconfig_KeyringAndCertificate.htm).
 2. Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Zowe certificate configuration overview](../user-guide/configure-certificates.md) and the corresponding sub-articles in this section. The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
-#### Insecure fix
+### Insecure fix
 
 **Follow these steps:**
 
@@ -180,7 +180,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 
 **Important!** Disabling `zowe.verifyCertificates` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
 
-#### Invalid z/OSMF host name in subject alternative names
+### Invalid z/OSMF host name in subject alternative names
 
 In the following message, failure to connect to API Catalog is caused by an invalid z/OSMF host name in the subject alternative names:
 
@@ -196,11 +196,11 @@ Fix the invalid z/OSMF host name in the subject alternative names using the foll
 - [Request a new certificate](#request-a-new-certificate)
 - [Re-create the Zowe keystore](#re-create-the-zowe-keystore)
 
-#### Request a new certificate
+### Request a new certificate
 
 Request a new certificate that contains a valid z/OSMF host name in the subject alternative names.
 
-#### Re-create the Zowe keystore
+### Re-create the Zowe keystore
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
