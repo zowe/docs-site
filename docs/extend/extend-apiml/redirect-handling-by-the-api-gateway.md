@@ -25,7 +25,7 @@ The following steps illustrate the redirect request workflow performed by the AP
 
 2. The backend service responds with a 302 redirect to an internal URL.   
 **Example location:**  
-http://internal-service:8080/new/endpoint.
+`http://internal-service:8080/new/endpoint`.
 
 3. The API Gateway intercepts the 302 response.
 
