@@ -572,6 +572,7 @@ module.exports = {
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
+                "extend/extend-apiml/redirect-handling-by-the-api-gateway",
               ],
             },
             {
@@ -807,7 +808,7 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-websockets"
+                "extend/extend-apiml/api-mediation-websockets",
               ]
             },
             {
