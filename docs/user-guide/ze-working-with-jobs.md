@@ -90,13 +90,13 @@ To change the default sort order for jobs, see [Modifying the default sort order
 
    ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
 
-## Polling jobs
+## Polling active jobs
 
-Users can periodically refresh the currently set jobs filter to get latest job statuses. Jobs that complete during polling will also show a notification and return code for poll completetion. This avoids having to manually refresh the jobs tree until the filtered jobs complete.
+Users can periodically refresh the currently filtered jobs profile to get latest job statuses. Jobs that complete during polling will also show a notification and return code for poll completetion. This avoids having to manually refresh the **JOBS** tree until the filtered jobs complete.
 
-This can be combined with polling spool files without conflicts.
+**This option does not poll the spool files**, however it can be combined with [polling individual spool files](#polling-a-spool-file) within the filtered jobs.
 
-### Polling jobs at a set interval
+### Polling active jobs at a set interval
 
 1. Expand the **JOBS** tree in the **Side Bar**.
 2. Click on the **Search** icon next to a profile and enter search criteria.
@@ -111,9 +111,11 @@ The **Poll interval (in ms) for: &lt;profile name&gt;** field displays the curre
 
    The poll request is added to the poller and will show how many active jobs there are in the current filter.
 
-   Any new jobs matching the filter during polling will automatically appear in the **JOBS** tree.
+Any new jobs matching the filter during polling will automatically appear in the **JOBS** tree.
 
-### Stopping jobs polling
+Jobs that complete during polling will show a notification and return code for poll completetion.
+
+### Stopping active jobs polling
 
 In the **Side Bar**, right click on the profile and select the **Stop Polling Active Jobs** option.
 
