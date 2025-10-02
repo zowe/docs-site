@@ -17,7 +17,7 @@ Designate a default profile for a service with multiple profiles by manually edi
         "zosmf": "default_zosmf_profile_name",
         "tso": "default_tso_profile_name",
         "ssh": "default_ssh_profile_name",
-        "profile_type": "add_default_profile_name_here"
+        "profile_type": "add_default_profile_name_here",
         "base": "global_base"
       }
     ```
@@ -50,7 +50,7 @@ The preceding command adds the `your_default_mq_profile_name` as the default pro
     "zosmf": "default_zosmf_profile_name",
     "tso": "default_tso_profile_name",
     "ssh": "default_ssh_profile_name",
-    "mq": "your_default_mq_profile_name"
+    "mq": "your_default_mq_profile_name",
     "base": "global_base"
   }
 ```
