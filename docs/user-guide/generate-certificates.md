@@ -66,19 +66,19 @@ zowe:
         country: ""
       validity: 3650
       san:
-        - dvipa.my-company.com
+        - dvipa.example.com
         - 12.34.56.78
 ```
 
 :::tip
-To get the san IP address, run `ping dvipa.my-company.com` in your terminal. 
+To get the san IP address, run `ping dvipa.example.com` in your terminal. 
 :::
 
 ### Run the command to generate a PKCS12 keystore
 
 After you configure the `zowe.yaml`, use the following procedure to generate the PKCS12 certificate.
 
-1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password. 
+1. Log in to your system. In this example, run `ssh dvipa.example.com` with your password. 
 
 2. Run the following command in the directory with this `zowe.yaml` in the terminal to generate the certificate and update the configuration values in the `zowe.yaml` file.
 
@@ -205,7 +205,7 @@ zowe:
         country: ""
       validity: 3650
       san:
-        - dvipa.my-company.com
+        - dvipa.example.com
         - 12.34.56.78
 ```
 
@@ -220,7 +220,7 @@ zowe:
 
 After you configure the `zowe.yaml`, use the following procedure to generate a JCERACFKS certificate.
 
-1. Log in to your system. In this example, run `ssh dvipa.my-company.com` with your password.
+1. Log in to your system. In this example, run `ssh dvipa.example.com` with your password.
 
 2. Run the following command in the directory with this `zowe.yaml` in terminal to generate the certificate and update the configuration values in `zowe.yaml`.
 

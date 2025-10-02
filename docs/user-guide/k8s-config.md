@@ -119,7 +119,7 @@ Next, on z/OS, run the following command:
 
 ```
 cd <runtime-dir> 
-./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.company.com"
+./bin/zwe migrate for kubernetes --config /path/to/my/zowe.yaml --domains "my-k8s-cluster.example.com"
 ``` 
 
 For more detailed explaination of zwe migrate command parameters, see [zwe migrate for kubernetes](../appendix/zwe_server_command_reference/zwe/migrate/for/zwe-migrate-for-kubernetes.md).

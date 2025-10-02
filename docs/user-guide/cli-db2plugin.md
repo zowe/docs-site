@@ -177,7 +177,7 @@ You can get your connection information by either:
             LOCATION  DSNV123E                  
             LU        GBIBMIYA.IYCYZDBE         
             GENERICLU -NONE                     
-            DOMAIN    domain.host.acme.com  
+            DOMAIN    domain.host.example.com  
             TCPPORT   40100                     
             SECPORT   30100
     ```

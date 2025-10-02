@@ -28,7 +28,7 @@ For more information about contributing to the Zowe documentation, see:
 
 Zowe requires the use of the Developer’s Certificate of Origin 1.1 (DCO). Every commit to this repo and other Zowe repos should be signed off using DCO. Otherwise, the PR could not be merged.
 
-To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@hisdomain.com`.
+To sign off a commit, add a Signed-off-by line to your commit message. For example, `Signed-off-by: John Doe john.doe@example.com`.
 
 #### Tools for automatic DCO signoff
 

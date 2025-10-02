@@ -221,7 +221,7 @@ An application plug-in is not appearing in the Zowe Desktop.
 **Solution:**   
 To check whether the plug-in loaded successfully, enter the following URL in a browser to display all successfully loaded Zowe plug-ins:
 
-`https://my.mainframe.com:7556/plugins?type=application`
+`https://mymainframe.example.com:7556/plugins?type=application`
 
 You can also search the [node server logs](app-mustgather.md) for the plug-in identifier, for example `org.zowe.sample.app`. If the plug-in loaded successfully, you will find the following message:
 ```

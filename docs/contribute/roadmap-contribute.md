@@ -36,7 +36,7 @@ Before submitting a Pull Request, review the general Zowe [Pull Request Guidelin
 
 All Zowe commits need to be signed by using the [Developer’s Certificate of Origin 1.1 (DCO)](https://developercertificate.org/), which is the same mechanism that the Linux® Kernel and many other communities use to manage code contributions. You need to add a `Signed-off-by` line as a part of the commit message. Here is an example `Signed-off-by` line, which indicates that the submitter accepts the DCO:
 
-```Signed-off-by: John Doe <john.doe@hisdomain.com>```
+```Signed-off-by: John Doe <john.doe@example.com>```
 
 You can find more information about DCO signoff in the [zac repo](https://github.com/zowe/zac/blob/master/CONTRIBUTING.md). 
 

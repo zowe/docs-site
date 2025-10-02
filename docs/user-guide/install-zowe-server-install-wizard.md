@@ -96,7 +96,7 @@ This option allows you to follow the installation steps without running the inst
 
   Field name| Description                
   ---|---
-  Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
+  Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.example.com`
   FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
   User Name |Your z/OS username.
   Password  |Your z/OS password.

@@ -27,7 +27,7 @@ To define additional mainframe services and other profiles in an existing global
             "global_base": {
                 "type": "base",
                 "properties": {
-                    "host": "example1.com"
+                    "host": "example.com"
                 },
                 "secure": [
                     "user",
