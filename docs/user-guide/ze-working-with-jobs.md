@@ -113,7 +113,7 @@ The **Poll interval (in ms) for: &lt;profile name&gt;** field displays the curre
 
 Any new jobs matching the filter during polling automatically appear in the **JOBS** tree.
 
-Jobs that complete during polling will show a notification and return code for poll completetion.
+Jobs that complete during polling show a notification and return code for poll completion.
 
 ### Stopping active jobs polling
 
