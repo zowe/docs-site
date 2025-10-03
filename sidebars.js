@@ -640,6 +640,8 @@ module.exports = {
                   items: [
                     "user-guide/cli-using-editing-team-configuration",
                     "user-guide/cli-using-creating-profiles",
+                    "user-guide/cli-using-adding-default-profile",
+                    
                     "user-guide/cli-using-sharing-team-config-files",
                     "user-guide/cli-using-initializing-user-configuration",
                   ],
