@@ -111,7 +111,7 @@ The **Poll interval (in ms) for: &lt;profile name&gt;** field displays the curre
 
    The poll request is added to the poller and will show how many active jobs there are in the current filter.
 
-Any new jobs matching the filter during polling will automatically appear in the **JOBS** tree.
+Any new jobs matching the filter during polling automatically appear in the **JOBS** tree.
 
 Jobs that complete during polling will show a notification and return code for poll completetion.
 
