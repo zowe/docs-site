@@ -92,7 +92,7 @@ To change the default sort order for jobs, see [Modifying the default sort order
 
 ## Polling active jobs
 
-Users can periodically refresh the currently filtered jobs profile to get latest job statuses. Jobs that complete during polling will also show a notification and return code for poll completetion. This avoids having to manually refresh the **JOBS** tree until the filtered jobs complete.
+Users can periodically refresh the currently filtered jobs profile to get latest job statuses. Jobs that complete during polling also show a notification and return code for poll completion. This avoids having to manually refresh the **JOBS** tree until the filtered jobs complete.
 
 **This option does not poll the spool files**, however it can be combined with [polling individual spool files](#polling-a-spool-file) within the filtered jobs.
 
