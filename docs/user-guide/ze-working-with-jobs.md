@@ -105,7 +105,7 @@ Users can periodically refresh the currently filtered jobs profile to get latest
 3. Right click on the profile and select the **Start Polling Active Jobs** option.
 The **Poll interval (in ms) for: &lt;profile name&gt;** field displays the current interval value.
     - The default value is set to 5000 ms.
-    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value
+    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value.
     - Change the value by entering a different number (must be greater than or equal to 1000 ms).
 5. Press the `Enter` key to confirm the interval time and start the polling action.
 
