@@ -119,7 +119,7 @@ Jobs that complete during polling show a notification and return code for poll c
 
 In the **Side Bar**, right click on the profile and select the **Stop Polling Active Jobs** option.
 
-Alternatively, if all the jobs in the current filter have completed, polling will automatically be stopped.
+Alternatively, if all the jobs in the current filter have completed, polling automatically stops.
 
 ## Polling a spool file
 
@@ -140,7 +140,7 @@ There are two ways to poll a spool file: automatically at set intervals or manua
     - Repeat this step with additional spool files to poll multiple files simultaneously.
 4. The **Poll interval (in ms) for: &lt;spoolfilename&gt;** field displays the current interval value.
     - The default value is set to 5000 ms.
-    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value
+    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value.
     - Change the value by entering a different number (must be greater than or equal to 1000 ms).
 5. Press the `Enter` key to confirm the interval time and start the polling action.
 
