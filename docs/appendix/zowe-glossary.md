@@ -5,7 +5,7 @@ This glossary is part of a growing list of terms and concepts used throughout th
 If there is a term you are looking for that is not included in this glossary that you think should be included, please send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
 :::note
-Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary.md).
+Security is central to a wide range of functionalities in Zowe and includes numerous terms and concepts specific to security. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security terminology**](./zowe-security-glossary.md).
 
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
@@ -243,12 +243,12 @@ A similar process as [SMP/E](zowe-glossary.md#smpe), except this installation me
 
 #### Started task (STC)
 
-A type of runnable/running program on z/OS and the primary way to run Zowe. For more information about when to use started tasks, see [Determining whether to use a started task](https://www.ibm.com/docs/en/zos/2.1.0?topic=tasks-determining-whether-use-started-task).
+A type of runnable/running program on z/OS and the primary way to run Zowe. For more information about when to use started tasks, see [Determining whether to use a started task](https://www.ibm.com/docs/en/zos/2.5.0?topic=tasks-determining-whether-use-started-task).
 
-Zowe V2 has two started tasks:
-- ZWESLSTC: The primary Zowe STC. In Zowe V1, it was just the HA/FT primary STC.
+Zowe has following started tasks:
+- ZWESLSTC: The primary Zowe STC.
 - ZWESISTC: The STC for the Zowe cross memory server (referred to as ZIS, formally XMEM)
-- ZWESVSTC (outdated): V1 only
+- ZWESASTC: The STC used by ZIS to create an auxiliary address space. ZIS controls the starting and stopping of this STC as needed. No action is required from the user.
 
 #### Workspace directory
 
@@ -373,4 +373,4 @@ A feature of the Zowe environment where one application plug-in can communicate 
 
 #### Config Service
 
-A part of the Application Framework which allows plug-ins and the Framework itself to store user configuration as JSON or binary formats. The configuration is stored in a hierarchy in which company-wide and system-wide defaults can exist for all users. Users may override the defaults if policy allows it. What can be stored and what can be overridden depends on plug-in definition and administrative configuration.
+A part of the Application Framework which allows plug-ins and the Framework itself to store user configuration as JSON or binary formats. The configuration is stored in a hierarchy in which company-wide and system-wide defaults can exist for all users. Users may override the defaults if policy allows it. What can be stored and what can be overridden depends on the plug-in definition and administrative configuration.

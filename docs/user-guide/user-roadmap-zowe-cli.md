@@ -2,7 +2,7 @@
 
 For a better understanding of Zowe CLI, review the various reference materials that document the application.
 
-Get to know what's new in the Zowe ecosystem, review the quick start guide, and find ways to get the most out of Zowe CLI.
+Get to know what's new in the Zowe ecosystem and find ways to get the most out of Zowe CLI.
 
 ## About Zowe CLI
 
@@ -11,10 +11,6 @@ Get to know what's new in the Zowe ecosystem, review the quick start guide, and 
 - Watch **Office Hours** videos that outline major features in [Zowe CLI V2](../getting-started/zowe-office-hours.md) and [Zowe CLI V3](../whats-new/zowe-v3-office-hours.md).
 
 - New to Zowe? Pick up terms and basic concepts with the [**Zowe Glossary**](../appendix/zowe-glossary.md).
-
-## Zowe CLI quick start
-
-Ready to start using Zowe CLI *right now*? Speed up the installation process with the [**Zowe CLI quick start**](../getting-started/cli-getting-started.md) to get Zowe CLI up and running in your environment sooner.
 
 ## Getting the most from Zowe CLI
 
@@ -48,8 +44,6 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
 - You can join **Zowe CLI squad meetings** to get involved. The meeting schedule is posted in the [Zowe calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
-- **Discuss Zowe topics** in the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).
-
 - If you have an issue that is specific to Zowe CLI, you can [**submit an issue**](https://github.com/zowe/zowe-cli/issues/new/choose) in the `zowe-cli` repository on GitHub.
 
 ## Community resources 
@@ -66,6 +60,4 @@ The Zowe ecosystem is more than a collection of applications and extensions. An 
 
    Read a series of blogs about Zowe CLI on Medium to explore use cases, best practices, and more. 
 
-- **Community Forums**
 
-   Look for discussion on Zowe topics on the [Open Mainframe Project Community Forums](https://community.openmainframeproject.org/c/zowe).

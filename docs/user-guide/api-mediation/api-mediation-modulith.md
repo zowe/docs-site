@@ -1,12 +1,12 @@
 # Enabling Single-Service deployment of API Mediation Layer
 
-Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option.
+Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture.
 
 :::info
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** alternative to the multi-service scheme brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -93,15 +93,15 @@ If your installation is configured with AT-TLS, rules need to be updated. Perfor
     * Remove rules that apply to communication between Gateway, Discovery Service, API Catalog, and Caching Service.
     * Remove all rules that apply to the core components except for rules that apply to the Gateway Service (`ZWE1AG`).
 
-    **Note:** In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
+:::note Notes:
+* In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
 
-::note Notes:
-* In general, rules for AT-TLS in single-service deployment are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update rules to remove ports no longer used.
-
-* TCP HTTP calls are still in use for high availability scenarios to maintain synchronization between instances accross LPARs.
+* TCP HTTP calls are still in use for High Availability scenarios to maintain synchronization between instances across LPARs.
+  
+* In general, rules for AT-TLS in single-service deployment are now simplified, wherein API ML uses a single z/OS address space prefix and uses only two ports. Update rules to remove ports are no longer used.
 :::
 
-Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you have enabled single-service deployment mode.
+Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you are ready to enable single-service deployment mode.
 
 ## Enable single-service deployment of API Mediation Layer
 
