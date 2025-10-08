@@ -53,14 +53,14 @@ The following diagram illustrates the interactions between the participants of t
 8. The client application replies with an access token in the `set-cookie` header.
 9. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 10. The Gateway validates the access token in one of two ways:
-    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided. (`components.gateway.apiml.security.oidc.validationType: JWK`).
+    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided.
 
        **Notes:** 
        * The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
 
        * The interval can be set using the property `components.gateway.apiml.security.oidc.jwks.refreshInternalHours`. (The default value is one hour.)
 
-    2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information (`components.gateway.apiml.security.oidc.validationType: endpoint`).
+    2.  By querying the `UserInfo` endpoint to verify the token's validity and retrieve user information.
 
         **Note:** The URL to the specific authorization server's `UserInfo` endpoint should be set using the property `components.gateway.apiml.security.oidc.userInfo.uri`.
 11. The Gateway caches the valid access token.
@@ -267,19 +267,14 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
 - **components.gateway.apiml.security.oidc.registry**  
   Specifies the SAF registry used to group the identities recognized as having OIDC identity mapping. The registry name is the string used during the creation of the mapping between the distributed and mainframe user identities. For more information, see **distributed-identity-registry-name** value used in the [ESM configuration](#esm-configuration-prerequisites).
 
-- **components.gateway.apiml.security.oidc.validationType**  
-   Specifies the validation type for OIDC authentication functionality, which is set to `JWK` by default. To enable access token validation using a remote endpoint, set this property to `endpoint`. When set to `endpoint`, the Gateway uses the URI sepecified in the property `userInfo` to validate access tokens.
-  - For `endpoint` validation type, configure following options
-    - **components.gateway.apiml.security.oidc.userInfo.uri**  
-       Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation. 
-    
-  - For `JWK` validation type, configure following options
-    - **components.gateway.apiml.security.oidc.jwks.uri**  
-      Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
-    - **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
-      (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
-    - **components.gateway.apiml.security.oidc.userIdField**  
-      Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.4.0 and later versions.
+- **components.gateway.apiml.security.oidc.userInfo.uri**  
+This parameter is required only for Entra OIDC provider. Specifies the URI obtained from the authorization server's metadata where the Gateway queries the userInfo endpoint for access token validation.
+- **components.gateway.apiml.security.oidc.jwks.uri**  
+Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
+- **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
+(Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
+- **components.gateway.apiml.security.oidc.userIdField**  
+Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.4.0 and later versions.
 
 **Example for OKTA:**
 
@@ -291,7 +286,6 @@ components:
        oidc:
          enabled: true
          registry: zowe.org
-         validationType: JWK
          jwks:
            uri: https://okta.com/oauth2/api/v1/keys
 
@@ -307,7 +301,6 @@ components:
        oidc:
          enabled: true
          registry: zowe.org
-         validationType: JWK
          userIdField: customField.userId
          jwks:
            uri: https://okta.com/oauth2/api/v1/keys,https://keycloak.com/realms/apiml/protocol/openid-connect/certs
@@ -343,7 +336,7 @@ The OIDC provider returns an HTTP 40x error code.
 The client application is not properly configured in the API ML Gateway.
 
 **Solution**  
-Check that the URL `components.gateway.apiml.security.oidc.jwks.uri` contains the key for OIDC token validation. If `oidc.validationType` is set to `endpoint`, ensure that the `components.gateway.apiml.security.oidc.userInfo.uri` is properly configured and valid.
+Check that the URL `components.gateway.apiml.security.oidc.jwks.uri` contains the key for OIDC token validation. If the OIDC token requires remote validation, make sure the  `components.gateway.apiml.security.oidc.userInfo.uri` is valid and correctly configured.
 
 :::tip
 API ML Gateway exposes a validate token operation which is suitable during the OIDC setup. The call to the endpoint `/gateway/api/v1/auth/oidc-token/validate` verifies if the OIDC token is trusted by API ML. Note that the Gateway service does not perform the mapping request to the ESM when the `/gateway/api/v1/auth/oidc-token/validate` endpoint is called.
