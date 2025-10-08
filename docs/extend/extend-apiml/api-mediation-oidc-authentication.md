@@ -53,8 +53,7 @@ The following diagram illustrates the interactions between the participants of t
 8. The client application replies with an access token in the `set-cookie` header.
 9. The user agent can then request from API ML Gateway the needed mainframe resources presenting the access token in the request.
 10. The Gateway validates the access token in one of two ways:
-    1. By cryptographically validating the token using the public key retrieved from the authorization server's JSON Web Key Set (JWKS) endpoint, matching the token's key ID with the key IDs provided.
-
+    1. First, the API ML finds the correct public key by matching the key ID (kid) inside the token with the corresponding key available at the authorization server's public JSON Web Key Set (JWKS) endpoint. Once the matching public key is retrieved, it's used to cryptographically verify the token's signature, which proves the token is authentic and was issued by a trusted source.
        **Notes:** 
        * The URL to the specific authorization server's JWKS endpoint should be set using the property `components.gateway.apiml.security.oidc.jwks.uri`.
 
