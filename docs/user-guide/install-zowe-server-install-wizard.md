@@ -183,7 +183,7 @@ This option makes it possible to skip an installation step that you cannot perfo
 
 The following table presents the steps in the installation, detailed descriptions of the steps, and corresponding sample JCLs:
 
-|Install Wizard Initalization Step|Description|Sample JCL|
+|Install Wizard Initialization Step|Description|Sample JCL|
 |---|---|---|
 |Installation|**Purpose:**<br /> Create data sets for Zowe's PARMLIB content and non-ZFS extension content for a given Zowe Instance<br /><br />**Action:**<br />1.  Allocate the PDSE FB80 data set with at least 15 tracks named from Zowe parameter `zowe.setup.dataset.parmlib`<br />2. Allocate the PDSE FB80 data set with at least 30 tracks named from Zowe parameter `zowe.setup.dataset.authPluginLib`<br />3. Copy the ZWESIP00 member from `zowe.setup.dataset.prefix`.SZWESAMP into `zowe.setup.dataset.parmlib`|[ZWEIMVS](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/SZWESAMP/ZWEIMVS)|
 |APF Auth|**Purpose:**<br /> Zowe contains one privileged component, ZIS, which enables the security model. The majority of Zowe is unprivileged and in key 8. The load library for the ZIS component and its extension library must be set as APF authorized and run in key 4. This enables ZIS and components that depend on ZIS.<br /><br />**Action:**<br />1. APF authorize the data sets defined at `zowe.setup.dataset.authLoadlib` and `zowe.setup.dataset.authPluginLib`.<br />2. <!-- This should be validated --> Define PPT entries for the members ZWESIS01 and ZWESAUX as Key 4, NOSWAP in the SCHEDxx member of the system PARMLIB.|[ZWEIAPF2](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/SZWESAMP/ZWEIAPF2)|
