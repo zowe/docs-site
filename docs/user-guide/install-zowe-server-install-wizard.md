@@ -94,19 +94,19 @@ Once the Wizard is installed, use the procedure as presented in the Wizard. The 
 
 2. Set the following fields according to your environment:
 
-  Field name| Description                
-  ---|---
-  Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
-  FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
-  User Name |Your z/OS username.
-  Password  |Your z/OS password.
+   Field name| Description                
+   ---|---
+   Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
+   FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
+   User Name |Your z/OS username.
+   Password  |Your z/OS password.
 
 3. Select **Use FTP with TLS**. This is the recommended option. Provide details as described in the following table:
         
-  Field name | Description
-  ---|---
-  Min TLS    |Select the minimum TLS version to accept the certificate from the server.
-  Max TLS    |Select the maximum TLS version to accept the certificate from the server.
+   Field name | Description
+   ---|---
+   Min TLS    |Select the minimum TLS version to accept the certificate from the server.
+   Max TLS    |Select the maximum TLS version to accept the certificate from the server.
 
 4. (Optional) You can select **Accept all certificates**. Note that selecting all certificates disables certificate verification. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
