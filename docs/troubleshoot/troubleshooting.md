@@ -21,7 +21,6 @@ When you run into some issues and are looking for troubleshooting tips, the foll
     * Bring up your questions to the corresponding channels as shown below:
 
         - [Zowe API ML Slack channel](https://openmainframeproject.slack.com/archives/CC5UUL005)
-        - [Zowe Chat Slack channel](https://openmainframeproject.slack.com/archives/C03NNABMN0J)
         - [Zowe CLI Slack channel](https://openmainframeproject.slack.com/archives/CC8AALGN6)
         - [Zowe Documentation Slack channel](https://openmainframeproject.slack.com/archives/CC961JYMQ)
         - [Zowe Explorer for VS Code channel](https://openmainframeproject.slack.com/archives/CUVE37Z5F)
@@ -45,7 +44,6 @@ You can also find error messages and codes, must-gathers, and information about 
 
 - [Troubleshooting Zowe CLI](./cli/troubleshoot-cli.md)
 - [Troubleshooting Zowe Explorer](./ze/troubleshoot-ze.md)
-- [Troubleshooting Zowe Chat](./zowe-chat-troubleshoot/troubleshooting.md)
 - [Troubleshooting Zowe Explorer plug-in for IntelliJ IDEA](troubleshoot-intellij.md)
 
 ## Verifying a Zowe release's integrity
