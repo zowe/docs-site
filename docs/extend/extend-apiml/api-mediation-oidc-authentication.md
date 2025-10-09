@@ -275,9 +275,11 @@ For more information about the Zowe CLI Identity Federation Plug-in, see the [RE
     
   - For `JWK` validation type, configure following options
     - **components.gateway.apiml.security.oidc.jwks.uri**  
-      Specifies the URI obtained from the authorization server's metadata where the Gateway will query for the JWK used to sign and verify the access tokens. 
+      Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
     - **components.gateway.apiml.security.oidc.jwks.refreshInternalHours**  
-     (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
+      (Optional) Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.  
+    - **components.gateway.apiml.security.oidc.userIdField**  
+      Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. Defaults to `sub`. This parameter applies to Zowe version 3.4.0 and later versions.
 
 **Example for OKTA:**
 
@@ -294,6 +296,24 @@ components:
            uri: https://okta.com/oauth2/api/v1/keys
 
 ```
+
+**Example of using multiple JWKs and a custom mapping field:**
+
+```yaml
+components:
+ gateway:
+   apiml:
+     security:
+       oidc:
+         enabled: true
+         registry: zowe.org
+         validationType: JWK
+         userIdField: customField.userId
+         jwks:
+           uri: https://okta.com/oauth2/api/v1/keys,https://keycloak.com/realms/apiml/protocol/openid-connect/certs
+
+```
+
 ## Troubleshooting
 
 ### API ML fails to validate the OIDC access token with the Distributed Identity Provider

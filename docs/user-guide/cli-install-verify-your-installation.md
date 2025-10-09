@@ -27,7 +27,7 @@ Determine the potential security risks. For the most secure environment, system 
 
 :::
 
-### Connecting to z/OSM without a profile
+### Connecting to z/OSMF without a profile
 
 Follow these steps when you have installed Zowe CLI but have not yet created a configuration file, or the configuration file has an incomplete profile for z/OSMF.
 
@@ -71,7 +71,7 @@ Follow these steps when you have created a default profile in a configuration fi
 
     You have confirmed that Zowe CLI is connected to z/OSMF.
 
-### Connecting to z/OSM with a specific profile
+### Connecting to z/OSMF with a specific profile
 
 Follow these steps when you have created a custom profile in a configuration (such as a [global team configuration file](./cli-using-initializing-team-configuration.md)).
 
