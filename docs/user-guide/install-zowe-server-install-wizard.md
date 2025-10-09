@@ -85,10 +85,10 @@ Once the Wizard is installed, use the procedure as presented in the Wizard. The 
 
 1. On the landing page of the Zowe Server Installation Wizard, select from the two presented options:
 
-  * **New Zowe Installation**
-This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
-  * **Zowe Installation Preview mode**
-This option does not run the installation. You can use this option to preview or simulate the installation.
+   Option                         | Description
+   ---|---
+   New Zowe Installation          |This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
+   Zowe Installation Preview mode |This option does not run the installation. You can use this option to preview or simulate the installation.
 
   ### Connecting the Wizard to z/OS
 
