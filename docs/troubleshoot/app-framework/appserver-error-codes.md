@@ -1148,7 +1148,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  Zowe displays this message in the Zowe log file after Zowe detects that no dataservices currently deployed within Zowe requested any security _plugin_ to authenticate users.
+  No dataservices within Zowe request any security _plugin_ to authenticate users.
 
   **Action:**
 
