@@ -52,11 +52,11 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  An existing app-server worker process has exited with a status code that indicates it should be restarted rather than permenantly stopped.
+  An existing app-server worker process has exited with a status code that indicates it should be restarted rather than permanently stopped.
 
   **Action:**
 
-  Review the preceeding log messages as worker restart may be due to a caught error.
+  Review the preceding log messages as worker restart may be due to a caught error.
 
 
 
@@ -334,7 +334,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A child process from _path_ has received data of _data_ - usually done interally by ProcessManager.
+  A child process from _path_ has received data of _data_ - usually done internally by ProcessManager.
 
   **Action:**
 
