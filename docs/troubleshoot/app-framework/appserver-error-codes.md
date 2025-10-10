@@ -490,7 +490,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  For _pluginIdentifier_, the server is instaling import from _sourcePlugin_ with _name_ at _url_.
+  For _pluginIdentifier_, the server is installing import from _sourcePlugin_ with _name_ at _url_.
 
   **Action:**
 
@@ -518,7 +518,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  For _pluginIdentifier_, the server is serving libary files at _url_.
+  For _pluginIdentifier_, the server is serving library files at _url_.
 
   **Action:**
 
@@ -560,7 +560,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A running tomcat process with PID _tomcatPID_ was cloesd.
+  A running tomcat process with PID _tomcatPID_ was closed.
 
   **Action:**
 
@@ -588,7 +588,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  A running tomcat process with PID _tomcatPID_ was cloesd.
+  A running tomcat process with PID _tomcatPID_ was closed.
 
   **Action:**
 
@@ -1141,6 +1141,18 @@ The following error message codes may appear on the app-server log. Use the foll
   **Action:**
 
   No action Required.
+
+### ZWED0303I
+
+  Plugin _plug-in_ will not be loaded because no dataservices requested it
+
+  **Reason:**
+
+  No dataservices within Zowe request any security _plugin_ to authenticate users.
+
+  **Action:**
+
+  No action is required.
 
 ## App-server warning messages
 
@@ -1949,7 +1961,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The default grouping behaviour in the config for this War is not of type 'microservice' or 'appserver'
+  The default grouping behavior in the config for this War is not of type 'microservice' or 'appserver'
 
   **Action:**
 
@@ -2163,7 +2175,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Go through the _errorMessage_ and undestand what to debug.
+  Go through the _errorMessage_ and understand what to debug.
 
 
 
@@ -2401,7 +2413,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Double check the address. A possible reason for a 403 error is a misstyped _originalUrl_ or _ip_ or because loopback routing is not configured in the App server.
+  Double check the address. A possible reason for a 403 error is a mistyped _originalUrl_ or _ip_ or because loopback routing is not configured in the App server.
 
 
 
@@ -2481,7 +2493,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server is setup for running in high availability (HA) mode which requires that plugins that have state, in particular authentication plugins, must be HA-compatible or else errors will occur. Therefore, the server skips over loading of this plugin nbecause its pluginDefinition.json did not state it was HA compatible.
+  The server is setup for running in high availability (HA) mode which requires that plugins that have state, in particular authentication plugins, must be HA-compatible or else errors will occur. Therefore, the server skips over loading of this plugin because its pluginDefinition.json did not state it was HA compatible.
 
   **Action:**
 
@@ -2565,7 +2577,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  The server tried to start using the ip and port values shown which were from the zowe configuration. When trying to connect to this address, the server recieved an error telling it that the address was already in use.
+  The server tried to start using the ip and port values shown which were from the zowe configuration. When trying to connect to this address, the server received an error telling it that the address was already in use.
 
   **Action:**
 
@@ -2579,7 +2591,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When the app-server was binding to the address shown, it recieved the error EADDRNOTAVAIL or ENOTFOUND. In either case, the app-server was not able to bind to the address and so it will not run until the problem is solved.
+  When the app-server was binding to the address shown, it received the error EADDRNOTAVAIL or ENOTFOUND. In either case, the app-server was not able to bind to the address and so it will not run until the problem is solved.
 
   **Action:**
 
@@ -2593,7 +2605,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  This message appearas when you attempt app installation but have not provided enough of the mandatory arguments for the program to run. It is printing out what options are valid so that you can retry with different options.
+  This message appear as when you attempt app installation but have not provided enough of the mandatory arguments for the program to run. It is printing out what options are valid so that you can retry with different options.
 
   **Action:**
 
@@ -2649,7 +2661,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Reason:**
 
-  When the server was trying to load a service for a plugn, it couldn't identify the filename where the service is located within the plugin, so the service and therefore plugin have been skipped during loading.
+  When the server was trying to load a service for a plug-in, it couldn't identify the filename where the service is located within the plugin, so the service and therefore plugin have been skipped during loading.
 
   **Action:**
 
@@ -2863,7 +2875,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Contact the plugin developer if plugin is essential for authenticaiton.
+  Contact the plugin developer if plugin is essential for authentication.
 
 
 
