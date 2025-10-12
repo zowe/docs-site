@@ -794,7 +794,7 @@ The following error message codes may appear on Zowe Launcher SYSPRINT. Use the 
 
   **Action:**
 
-  Review the configuration entries.
+  Review the configuration entries. A possible fix is to re-run the Zowe install and init steps due to unintented Zowe dataset content.
 
 ### ZWEL0073E
 
