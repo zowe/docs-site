@@ -336,13 +336,13 @@ Specifies the user custom APF LOADLIB. This field is optional. If this parameter
 - **zowe.setup.dataset.authPluginLib**  
 Specifies the user custom APF PLUGINLIB. Zowe ZIS plug-ins can be installed into this load library. This loadlib requires APF authorize.
 - **zowe.setup.security.product**  
-Speficies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+Specifies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
 - **zowe.setup.security.groups.admin**  
 Specifies the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.stc**  
 Specifies the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.sysProg**  
-Speficies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+Specifies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.users.zowe**  
 Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
 - **zowe.setup.security.users.zis**  
@@ -400,7 +400,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
 - To import a certificate stored in an MVS data set into Zowe keyring, use the following parameters:
   * **zowe.setup.certificate.keyring.connect.dsName**  
   This value is required to inform Zowe about the data set where the certificate stored.
-  * **zowe.setup.certificate.keyring.connect.passwor**  
+  * **zowe.setup.certificate.keyring.connect.password**  
   Specifies the password when importing the certificate.
   * **zowe.setup.certificate.keyring.label**  
   Specifies the label of the certificate to be  imported.
