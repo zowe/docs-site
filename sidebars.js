@@ -572,6 +572,7 @@ module.exports = {
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
+                "extend/extend-apiml/redirect-handling-by-the-api-gateway",
               ],
             },
             {
@@ -639,6 +640,8 @@ module.exports = {
                   items: [
                     "user-guide/cli-using-editing-team-configuration",
                     "user-guide/cli-using-creating-profiles",
+                    "user-guide/cli-using-adding-default-profile",
+                    
                     "user-guide/cli-using-sharing-team-config-files",
                     "user-guide/cli-using-initializing-user-configuration",
                   ],
@@ -807,7 +810,7 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-websockets"
+                "extend/extend-apiml/api-mediation-websockets",
               ]
             },
             {
@@ -912,6 +915,7 @@ module.exports = {
           link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
+            "troubleshoot/known-issues-with-apiml",
           ],
         },
         {

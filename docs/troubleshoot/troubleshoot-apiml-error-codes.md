@@ -27,7 +27,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  No action required.
+  No action required.  
 
 ## API mediation common messages
 

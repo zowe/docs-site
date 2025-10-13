@@ -90,21 +90,46 @@ To change the default sort order for jobs, see [Modifying the default sort order
 
    ![Sorting jobs by date completed](../images/ze/ZE-sorting-jobs-by-date-completed.gif)
 
+## Polling active jobs
+
+Users can periodically refresh the currently filtered jobs profile to get latest job statuses. Jobs that complete during polling also show a notification and return code for poll completion. This avoids having to manually refresh the **JOBS** tree until the filtered jobs complete.
+
+:::warning
+This option does not poll the spool files, however it can be combined with [polling individual spool files](#polling-a-spool-file) within the filtered jobs.
+:::
+
+### Polling active jobs at a set interval
+
+1. Expand the **JOBS** tree in the **Side Bar**.
+2. Click on the **Search** icon next to a profile and enter search criteria.
+
+   Search results display under the profile in the **Side Bar**.
+3. Right click on the profile and select the **Start Polling Active Jobs** option.
+The **Poll interval (in ms) for: &lt;profile name&gt;** field displays the current interval value.
+    - The default value is set to 5000 ms.
+    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value.
+    - Change the value by entering a different number (must be greater than or equal to 1000 ms).
+5. Press the `Enter` key to confirm the interval time and start the polling action.
+
+   The poll request is added to the poller and will show how many active jobs there are in the current filter.
+
+Any new jobs matching the filter during polling automatically appear in the **JOBS** tree.
+
+Jobs that complete during polling show a notification and return code for poll completion.
+
+### Stopping active jobs polling
+
+In the **Side Bar**, right click on the profile and select the **Stop Polling Active Jobs** option.
+
+Alternatively, if all the jobs in the current filter have completed, polling automatically stops.
+
 ## Polling a spool file
 
 Users can periodically refresh a spool file during long-running jobs to get the latest job outputs. This avoids having to close and reopen a spool file to get the latest job outputs.
 
+This can be combined with polling jobs without conflicts.
+
 There are two ways to poll a spool file: automatically at set intervals or manually on demand.
-
-### Defining a default interval for polling spool files
-<br/>
-
-1. Click on the **Manage** icon on the **Activity Bar** and select **Settings**.
-2. In either the **User** or **Workspace** tab, click on the **Extensions** option to open the menu.
-3. Select **Zowe Explorer**.
-4. In the **Jobs: Poll Interval** field, enter a valid time interval, in milliseconds.
- 	- Value must be greater than or equal to 1000 ms (or 1 second).
-5. Press the `Enter` key to start the polling action.
 
 ### Polling a spool file at set intervals
 <br/>
@@ -117,6 +142,7 @@ There are two ways to poll a spool file: automatically at set intervals or manua
     - Repeat this step with additional spool files to poll multiple files simultaneously.
 4. The **Poll interval (in ms) for: &lt;spoolfilename&gt;** field displays the current interval value.
     - The default value is set to 5000 ms.
+    - See [Defining a default interval for polling jobs and spool files](#defining-a-default-interval-for-polling-jobs-and-spool-files) to change the default value.
     - Change the value by entering a different number (must be greater than or equal to 1000 ms).
 5. Press the `Enter` key to confirm the interval time and start the polling action.
 
@@ -162,3 +188,13 @@ To manually poll a spool file:
     <br/>
 
     The entered key(s) can be used to activate polling.
+
+## Defining a default interval for polling jobs and spool files
+<br/>
+
+1. Click on the **Manage** icon on the **Activity Bar** and select **Settings**.
+2. In either the **User** or **Workspace** tab, click on the **Extensions** option to open the menu.
+3. Select **Zowe Explorer**.
+4. In the **Jobs: Poll Interval** field, enter a valid time interval, in milliseconds.
+ 	- Value must be greater than or equal to 1000 ms (or 1 second).
+5. Press the `Enter` key to start the polling action.
