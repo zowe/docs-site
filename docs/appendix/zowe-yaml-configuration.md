@@ -521,7 +521,7 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
 - **apiml.security.forwardHeader.trustedProxies**  
-  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
+  Specifies the IP address regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. For example: to trust all proxies from range 10.10.10.0-10.10.10.255, use `10\.10\.10\..*`. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
 - **apiml.security.oidc.enabled**  
