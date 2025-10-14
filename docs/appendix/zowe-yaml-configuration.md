@@ -336,13 +336,13 @@ Specifies the user custom APF LOADLIB. This field is optional. If this parameter
 - **zowe.setup.dataset.authPluginLib**  
 Specifies the user custom APF PLUGINLIB. Zowe ZIS plug-ins can be installed into this load library. This loadlib requires APF authorize.
 - **zowe.setup.security.product**  
-Speficies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+Specifies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
 - **zowe.setup.security.groups.admin**  
 Specifies the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.stc**  
 Specifies the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.sysProg**  
-Speficies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+Specifies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.users.zowe**  
 Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
 - **zowe.setup.security.users.zis**  
@@ -400,7 +400,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
 - To import a certificate stored in an MVS data set into Zowe keyring, use the following parameters:
   * **zowe.setup.certificate.keyring.connect.dsName**  
   This value is required to inform Zowe about the data set where the certificate stored.
-  * **zowe.setup.certificate.keyring.connect.passwor**  
+  * **zowe.setup.certificate.keyring.connect.password**  
   Specifies the password when importing the certificate.
   * **zowe.setup.certificate.keyring.label**  
   Specifies the label of the certificate to be  imported.
@@ -521,7 +521,7 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
 - **apiml.security.forwardHeader.trustedProxies**  
-  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
+  Specifies the IP address regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. For example: to trust all proxies from range 10.10.10.0-10.10.10.255, use `10\.10\.10\..*`. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
 - **apiml.security.oidc.enabled**  
