@@ -16,11 +16,11 @@ Go to the [Zowe CLI issue list](https://github.com/zowe/zowe-cli/issues) to file
 
 ### Chatting with the Zowe Explorer community
 
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating whether the message about Zowe Explorer, Zowe Explorer for IBM CICS extension, or the Zowe Explorer FTP Extension.
+Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/CUVE37Z5F) by indicating whether the message about Zowe Explorer, Zowe® Explorer for IBM® CICS® Transaction Server, or Zowe® Explorer for IBM® z/OS® FTP.
 
 ### Filing an issue for Zowe Explorer and Zowe Explorer extensions
 
-Before filing an issue, check if the error stems from either Zowe Explorer, the Zowe Explorer for IBM CICS extension or the Zowe Explorer FTP Extension.
+Before filing an issue, check if the error stems from either Zowe Explorer, Zowe Explorer for IBM CICS Transaction Server or Zowe Explorer for IBM z/OS FTP.
 
 To file an issue:
 
@@ -28,13 +28,13 @@ To file an issue:
 
     ![Image that shows how to check the error source](../images/ze/ZE-ftp-find-source.gif)
     - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
-    - Errors arising from the Zowe Explorer CICS extension identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
-    - Errors arising from the Zowe Explorer FTP extension identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
+    - Errors arising from the Zowe Explorer for IBM CICS Transaction Server identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
+    - Errors arising from Zowe Explorer for IBM z/OS FTP identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
 
 2. Go to the extension repository to file an issue. Include all relevant information.
     - [Zowe Explorer issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
-    - [Zowe Explorer for IBM CICS issue list](https://github.com/zowe/cics-for-zowe-client/issues)
-    - [Zowe Explorer FTP Extension issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
+    - [Zowe Explorer for IBM CICS Transaction Server issue list](https://github.com/zowe/cics-for-zowe-client/issues)
+    - [Zowe Explorer for IBM z/OS FTP issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
         - Add the label `zFTP` to indicate the extension.
 
 ## Zowe Explorer plug-in for IntelliJ IDEA

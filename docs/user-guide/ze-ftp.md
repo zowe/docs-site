@@ -1,6 +1,6 @@
-# Using Zowe Explorer FTP Extension
+# Using Zowe Explorer for IBM z/OS FTP
 
-Zowe Explorer FTP extension adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode) VS Code extension, allowing you to use [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) profiles to connect and interact with z/OS USS.
+Zowe® Explorer for IBM® z/OS® FTP adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode) VS Code extension, allowing you to use [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) profiles to connect and interact with z/OS USS.
 
 This VS Code extension also serves as a [source code example](https://github.com/zowe/zowe-explorer-vscode/tree/main/packages/zowe-explorer-ftp-extension) demonstrating how to use the [Zowe Explorer Extensibility API](https://github.com/zowe/zowe-explorer-vscode/tree/main/packages/zowe-explorer-api) to create VS Code extensions that extend the Zowe Explorer VS Code extensions with new capabilities.
 
@@ -46,7 +46,7 @@ If you do not have an existing Zowe FTP profile, you can create one graphically 
 
 When using this extension, we also recommend that you are familiar with the [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) that this extension is based on. Not all capabilities that this plug-in provides have yet been implemented for Zowe Explorer so it would greatly augment your user experience.
 
-The following steps are not required, as the Zowe Explorer FTP extension includes the capability of creating such a profile in the Zowe Explorer UI as described above. However, to enable FTP for Zowe CLI and reuse the profile created for Zowe CLI also in Zowe Explorer, install the plugin and create the profile via command line:
+The following steps are not required, as Zowe Explorer for IBM z/OS FTP includes the capability of creating such a profile in the Zowe Explorer UI as described above. However, to enable FTP for Zowe CLI and reuse the profile created for Zowe CLI also in Zowe Explorer, install the plugin and create the profile via command line:
 
 1. Go to the [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) GitHub repository and review the installation instructions for installing it into Zowe CLI. In short, after [meeting the prerequisites](https://github.com/zowe/zowe-cli-ftp-plugin#software-requirements), the command is:
 
@@ -60,7 +60,7 @@ The following steps are not required, as the Zowe Explorer FTP extension include
    zowe profiles create zftp <profile name> -H <host> -u <user> -p <password> -P <port>
    ```
 
-Now you can run `zowe zos-ftp` commands as documented in the plug-in documentation. This profile can then be selected in Zowe Explorer's Add Profile dialogs after this Zowe Explorer FTP VS Code extension is installed.
+Now you can run `zowe zos-ftp` commands as documented in the plug-in documentation. This profile can then be selected in Zowe Explorer's Add Profile dialogs after Zowe Explorer for IBM z/OS FTP is installed.
 
 ## List of Supported Data Set Functionalities
 
