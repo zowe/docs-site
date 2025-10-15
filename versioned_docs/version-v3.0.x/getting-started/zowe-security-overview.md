@@ -65,7 +65,7 @@ Zowe fully relies on the SAF/ESM for control on the user access to mainframe res
 
 **Tip:**
 We recommend you review the core [Authorization](https://en.wikipedia.org/wiki/Authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
-related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
+related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary.md).
 
 ### SAF resource check
 In some cases Zowe API ML can check for the authorization of the user on certain endpoints even before the request is propagated to the target mainframe service.
