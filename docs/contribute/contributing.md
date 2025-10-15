@@ -469,3 +469,15 @@ plug-in| plugin
 REXX  | Rexx
 UNIX System Services <br/> z/OS UNIX System Services  | USS
 zLUX  | ZLUX <br/> zLux
+
+### Trademarks
+
+Follow the [Linux Foundations's guidelines when using trademarks](https://www.linuxfoundation.org/legal/trademark-usage).
+
+Include the relevant symbol immediately after the first usage of each trademark in normal text.
+
+Do not use trademark symbols in titles or anywhere that would cause technical issues. For example, in code blocks.
+
+### Example domains
+
+To avoid potential conflicts with real domain registrations, only use [domain names that have been reserved for use in examples](https://www.iana.org/domains/reserved). For example, `example.com`. Even if other fictitious domain names are not already in use, they may be registered later.
