@@ -41,7 +41,7 @@ If you are a software vendor building extensions for Zowe, we recommend you tag 
 <details>
 <summary> Click here for details about the node.js versions supported by Zowe. </summary>
 
-The following Node.js versions are supported to run Zowe. See the [Hardware and software prerequisites](#hardware-and-software-prerequisites) section for the prerequisites that are required by Zowe.
+The following Node.js versions are supported to run Zowe. See the [Node.js hardware and software prerequisites for Zowe](#nodejs-hardware-and-software-prerequisites-for-zowe) section for the prerequisites that are required by Zowe.
 
 The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com/docs/en/sdk-nodejs-zos) lists all the prerequisites for Node.js. Some software packages, which might be listed as prerequisites there, are **NOT** required by Zowe. Specifically, you do **NOT** need to install Python, Make, Perl, or C/C++ runtime or compiler.  If you can run `node --version` successfully, you have installed the prerequisites required by Zowe.
 
