@@ -4,7 +4,7 @@ Zowe V2 is now in maintenance state. Only [patch releases](https://github.com/zo
 
 Review enhancements introduced in previous releases:
 
-- [Zowe v2.18.0 (August 2024)](../whats-new/release-notes/v2_18_0)
+- [Zowe v2.18.0 (August 2024)](../whats-new/release-notes/v2_18_0.md)
 - [Zowe v2.17.0 (July 2024)](../whats-new/release-notes/v2_17_0)
 - [Zowe v2.16.0 (May 2024)](../whats-new/release-notes/v2_16_0)
 - [Zowe v2.15.0 (March 2024)](../whats-new/release-notes/v2_15_0)
