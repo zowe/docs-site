@@ -7,7 +7,7 @@ This reference includes both technical as well as organizational terms that are 
 Not finding something you are looking for? Send a message to the Zowe Docs squad in the [#zowe-doc](https://openmainframeproject.slack.com/archives/CC961JYMQ) Slack channel to discuss updating this glossary.
 
 :::note
-Security is central to a wide range of functionalities in Zowe. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary).
+Security is central to a wide range of functionalities in Zowe. As such, a separate glossary of Zowe Security terminology is available in the _Overview_ section under _Zowe security_. For more information, see the [**Glossary of Zowe Security teminology**](./zowe-security-glossary.md).
 
 For an overview of security in Zowe, see [the Zowe Security policy](https://www.zowe.org/security) on zowe.org.
 :::
