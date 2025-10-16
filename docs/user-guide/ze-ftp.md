@@ -46,7 +46,7 @@ If you do not have an existing Zowe FTP profile, you can create one graphically 
 
 When using this extension, we also recommend that you are familiar with the [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) that this extension is based on. Not all capabilities that this plug-in provides have yet been implemented for Zowe Explorer so it would greatly augment your user experience.
 
-The following steps are not required, as Zowe Explorer for IBM z/OS FTP includes the capability of creating such a profile in the Zowe Explorer UI as described above. However, to enable FTP for Zowe CLI and reuse the profile created for Zowe CLI also in Zowe Explorer, install the plugin and create the profile via command line:
+The following steps are not required, as Zowe Explorer for IBM z/OS FTP includes the capability of creating such a profile in the Zowe Explorer UI as described above. However, to enable FTP for Zowe CLI and reuse the profile created for Zowe CLI also in Zowe Explorer, install the plug-in and create the profile in the command line:
 
 1. Go to the [z/OS FTP Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-ftp-plugin) GitHub repository and review the installation instructions for installing it into Zowe CLI. In short, after [meeting the prerequisites](https://github.com/zowe/zowe-cli-ftp-plugin#software-requirements), the command is:
 
