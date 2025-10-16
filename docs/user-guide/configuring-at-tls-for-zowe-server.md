@@ -109,6 +109,12 @@ TTLSGroupAction ServerGroupAction
   TTLSEnabled On
 }
 
+# Keyring, used for TLS, will be used also to load trusted certificates
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth
@@ -144,12 +150,6 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
   CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
   SecondaryMap Off
 }
-
-# Keyring, used for TLS, will be used also to load trusted certificates
-TTLSKeyringParms ZoweKeyring
-{
-  Keyring ZWEKRNG
-}
 ```
 
 The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
@@ -165,7 +165,6 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 | 7558 | API Mediation Layer | zaas | ZWE1**AZ** | 
 
 More information on each component's networking requirements can be found at [Addressing network requirements](./address-network-requirements.md).
-
 
 
 **Follow this step:**
@@ -225,6 +224,12 @@ TTLSGroupAction ClientGroupAction
   TTLSEnabled On
 }
 
+# Keyring has no default certificate, used to load trusted certificates keyring 
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
+}
+
 TTLSEnvironmentAction ApimlNoX509ClientEnvAction
 {
   HandshakeRole Client
@@ -237,6 +242,30 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ZoweClientNoX509ConnAdvParms
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
+}
+
+TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
+{
+# No CertificateLabel to ensure a certificate will not be picked from the keyring
+  ApplicationControlled Off
+  SecondaryMap Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 Off
 }
 ```
 
@@ -270,6 +299,17 @@ TTLSRule ZoweClientRule
   TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Authentication is required in cross-service API ML communication
 }
 
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+# Keyring, used for TLS, will be used also to load trusted certificates
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
 TTLSEnvironmentAction ApimlX509ClientEnvAction
 {
   HandshakeRole Client
@@ -282,6 +322,18 @@ TTLSConnectionAction ApimlX509ClientConnAction
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
 }
 
 TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
@@ -324,6 +376,17 @@ TTLSRule ApimlServiceClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction # Do not send X.509 Client Certificates
 }
 
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+# Keyring has no default certificate, used to load trusted certificates keyring 
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
+}
+
 TTLSEnvironmentAction ApimlNoX509ClientEnvAction
 {
   HandshakeRole Client
@@ -336,6 +399,18 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
   TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
 }
 
 TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
@@ -639,9 +714,9 @@ TTLSKeyringParms ZoweKeyring
 }
 
 # Keyring without public certificate with private key, will be used to load trusted certificates
-TTLSKeyringParms NoKeyKeyring
+TTLSKeyringParms ZoweNoX509Keyring
 {
-  Keyring AttlsKeyring
+  Keyring ZoweAttlsKeyring
 }
 
 # Advanced TLS settings, choose TLS versions supported.
@@ -750,9 +825,23 @@ TTLSRule ApimlZosmfClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
+# Example outbound rule from API Gateway to app server and zss.
+TTLSRule ApimlZLUXClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557
+  Jobname ZWE1AG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
 TTLSGroupAction ClientGroupAction
 {
-  TTLSEnabled ON
+  TTLSEnabled On
 }
 
 TTLSEnvironmentAction ApimlX509ClientEnvAction
