@@ -4,7 +4,7 @@ Zowe can work in a high availability (HA) configuration where multiple instances
 
 In an HA setup the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`), and client traffic to this port is distributed between separate gateways that in turn dispatch their work to different services. When any of the services individually become unavailable the work can be routed to available services, which means that the initial northbound request will be fulfilled.  
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`. If you are running the caching service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are running the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`. If you are running the caching service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
 
 To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
@@ -56,7 +56,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
   :::
 
-  This storage method allows you tu use VSAM dataset as a storage for Caching service. You can use `zwe init vsam` command to generate proper dataset.
+  This storage method allows you to use VSAM dataset as a storage for Caching service. You can use `zwe init vsam` command to generate proper dataset.
 
   The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)`.  You can edit and submit this yourself, or else if use `zwe init vsam` which will copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and create a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.  
   
