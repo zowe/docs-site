@@ -83,38 +83,7 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 * Zowe Desktop 
 :::
 
-### Node.js
 
-- The app-server component requires one of the following Node.js versions:
-  * v18.x
-  * v20.x
-  * v22.x 
 
-  Node is not included with z/OS so must be installed separately. To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
-  
-  :::tip
-  If you are a software vendor building extensions for Zowe, we recommend you tag your plug-ins. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-zos).
-  :::
 
-### Java 
 
-- IBM® Semeru Runtime Certified Edition for z/OS® version 17
-
-### z/OSMF (Optional) 
-
-- (Optional, recommended) IBM z/OS Management Facility (z/OSMF) Version 2.5, or Version 3.1.
-
-  z/OSMF is included with z/OS so does not need to be separately installed. If z/OSMF is present, Zowe  detects z/OSMF during configuration and uses z/OSMF for the following purposes:
-
-  - Authenticating TSO users and generating a single sign-on JSON Web Token (JWT). Ensure that the [z/OSMF JWT Support is available via APAR and associated PTFs](https://www.ibm.com/support/pages/apar/PH12143) and that JWT generation is enabled. For more information see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation.
-
-  - REST API services for Files (Data Sets and USS), JES, and z/OSMF workflows.  These are used by some Zowe applications such as the Zowe Explorers in the Zowe Desktop. If z/OSMF REST APIs are not present, other Zowe desktop application, such as the File Editor that provides access to USS directories and files as well as MVS data sets and members, will work through the Zowe Z Secure Services (ZSS) component to access z/OS resources.   
-
-  :::info Recommendations
-  - For production use of Zowe, we recommend configuring z/OSMF to leverage Zowe functionalities that require z/OSMF. For more information, see [Configuring z/OSMF](systemrequirements-zosmf.md).
-  - For non-production use of Zowe (such as development, proof-of-concept, demo), you can customize the configuration of z/OSMF to create **_z/OS MF Lite_** to simplify your setup of z/OSMF. z/OS MF Lite only supports selected REST services (JES, DataSet/File, TSO and Workflow), resulting in considerable improvements in startup time as well as a reduction in steps to set up z/OSMF. For information about how to set up z/OSMF Lite, see [Configuring z/OSMF Lite (non-production environment)](systemrequirements-zosmf-lite.md).
-  :::
-
-:::note
-For specific z/OS security configuration options that apply to the specific Zowe server-side components in your configuration, see [Security customization of your z/OS system](./configure-zos-system.md).
-:::
