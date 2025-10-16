@@ -20,17 +20,16 @@ Chat with the community on [Slack](https://openmainframeproject.slack.com/archiv
 
 ### Filing an issue for Zowe Explorer and Zowe Explorer extensions
 
-Before filing an issue, check if the error stems from either Zowe Explorer, Zowe Explorer for IBM CICS Transaction Server or Zowe Explorer for IBM z/OS FTP.
+Before filing an issue, check if the error stems from either Zowe Explorer, Zowe Explorer for IBM CICS Transaction Server, or Zowe Explorer for IBM z/OS FTP.
 
 To file an issue:
 
-1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
+1. To find the error source, first look for an extension name in the error message that displays in VS Code. If there is none, refer to what is listed in the **Source** field.
 
-    ![Image that shows how to check the error source](../images/ze/ZE-ftp-find-source.gif)
-    - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
-    - Errors arising from the Zowe Explorer for IBM CICS Transaction Server identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
-    - Errors arising from Zowe Explorer for IBM z/OS FTP identify the **Source** as *Zowe Explorer Extension for FTP (Extension)*.
+    ![Image that shows example of an error source](../images/ze/ZE-ftp-error.png)
 
+    In the preceding example, the error source is Zowe Explorer for IBM z/OS FTP.
+ 
 2. Go to the extension repository to file an issue. Include all relevant information.
     - [Zowe Explorer issue list](https://github.com/zowe/zowe-explorer-vscode/issues)
     - [Zowe Explorer for IBM CICS Transaction Server issue list](https://github.com/zowe/cics-for-zowe-client/issues)

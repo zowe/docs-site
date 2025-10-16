@@ -6,11 +6,13 @@ To help make Zowe® Explorer for IBM® CICS® Transaction Server better, you are
 
 Before filing an issue, check if the error stems from either Zowe Explorer for IBM CICS Transaction Server or Zowe Explorer.
 
-1. To check the error source, expand the error message that displays in VS Code and review the **Source** description:
+1. To find the error source, first look for an extension name in the error message that displays in VS Code. If there is none, refer to what is listed in the **Source** field.
 
-    ![Image that shows how to check the error source](../images/ze-cics/expand-error-cics.gif)
-    - Errors arising from the Zowe Explorer for IBM CICS Transaction Server identify the **Source** as *Zowe Explorer for IBM CICS (Extension)*.
-    - Errors arising from Zowe Explorer identify the **Source** as *Zowe Explorer (Extension)*.
+    If needed, expand the message to find the error source:
+
+    ![Image that shows to click chevron to expand error message](../images/ze-cics/cics-error.gif)
+
+    In the preceding example, the error source is Zowe Explorer for IBM CICS Transaction Server.
 
 2. File issues with Zowe Explorer for IBM CICS Transaction Server to the [Zowe Explorer for IBM CICS Transaction Server issue list](https://github.com/zowe/cics-for-zowe-client/issues) and include all relevant information.
 
