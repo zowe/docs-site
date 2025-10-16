@@ -1,6 +1,6 @@
 # Supported functionality
 
-Review the following list for the functionality available in Zowe Explorer FTP Extension.
+Review the following list for the functionality available in Zowe® Explorer for IBM® z/OS® FTP.
 
 ## Supported data set functionalities
 

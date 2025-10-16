@@ -32,4 +32,4 @@ There are two ways to override a rejected TLS certificate.
 
 4. Save the configuration file.
 
-5. Refresh the Zowe Explorer for IBM CICS extension. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS: Refresh` option in the **Command Palette**.
+5. Refresh Zowe Explorer for IBM CICS Transaction Server. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS TS: Refresh` option in the **Command Palette**.

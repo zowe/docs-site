@@ -28,7 +28,7 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
 
     :::note
 
-    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyring is not unlocked by default. However, you can use the [Kubernetes Secrets plug-in for Zowe CLI and Zowe Explorer](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an alternative, or you can create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
+    Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyring is not unlocked by default. However, you can use the [Kubernetes Secrets plug-in for Zowe CLI or Zowe® Explorer for Kubernetes® Secrets](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an alternative, or you can create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
 
     :::
 - [VS Code](https://code.visualstudio.com/) 1.79.0+
@@ -40,5 +40,5 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
     
 - Applicable plug-in services are configured and running on the mainframe.
     - Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands.
-        * See [Zowe Explorer CICS Extension system requirements](./install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
-        * See [Zowe Explorer FTP Extension system requirements](./install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).
+        * See [Zowe® Explorer for IBM® CICS® Transaction Server system requirements](./install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
+        * See [Zowe® Explorer for IBM® z/OS® FTP system requirements](./install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).

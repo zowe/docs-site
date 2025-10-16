@@ -22,7 +22,7 @@ For a better understanding of Zowe Explorer, review the various reference materi
 
 * Learn how to [**extend Zowe Explorer**](https://github.com/zowe/vscode-extension-for-zowe/wiki/Extending-Zowe-Explorer) to introduce new functionalities.
 
-- Add CICS functionality and the FTP protocol to the Zowe Explorer VS Code extension with the [**Zowe Explorer CICS Extension**](../user-guide/ze-using-zowe-explorer-cics-ext.md) and the [**Zowe Explorer FTP Extension**](../user-guide/ze-ftp-install-ze-ftp-ext.md).
+- Add CICS functionality and the FTP protocol to the Zowe Explorer VS Code extension with the [**Zowe® Explorer for IBM® CICS® Transaction Server**](../user-guide/ze-using-zowe-explorer-cics-ext.md) and the [**Zowe® Explorer for IBM® z/OS® FTP**](../user-guide/ze-ftp-install-ze-ftp-ext.md).
 
 - Check out the [**Zowe Explorer GitHub repository**](https://github.com/zowe/vscode-extension-for-zowe#readme) to view the source code for Zowe Explorer and other Zowe Explorer-related extensions.
 

@@ -1,6 +1,6 @@
-# Managing Zowe Explorer CICS Extension profiles
+# Managing Zowe Explorer for IBM CICS Transaction Server profiles
 
-To use all functions of the Zowe Explorer CICS extension, you need to have a Zowe Explorer profile.
+To use all functions of the Zowe® Explorer for IBM® CICS® Transaction Server, you need to have a Zowe Explorer profile.
 
 If you already have a Zowe CICS CLI profile, the CICS tree in the VS Code **Side Bar** loads the default profile on startup.  
 
@@ -18,7 +18,7 @@ If you do not have an existing Zowe CICS CLI profile, refer to the following ins
 
 4. Save the configuration file.
 
-5. Refresh the Zowe Explorer for IBM CICS extension. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS: Refresh` option in the **Command Palette**.
+5. Refresh Zowe Explorer for IBM CICS Transaction Server. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS TS: Refresh` option in the **Command Palette**.
 
 6. In the **CICS** tree, select the **+** icon and select the newly created profile from the **Quick Pick** menu to display it in the **CICS** tree.
 
@@ -46,7 +46,7 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 4. Save the configuration file.
 
-5. Refresh the Zowe Explorer for IBM CICS extension. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS: Refresh` option in the **Command Palette**.
+5. Refresh Zowe Explorer for IBM CICS Transaction Server. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS TS: Refresh` option in the **Command Palette**.
 
 ![Zowe CICS Explorer update profiles from config](../images/ze-cics/update-profile-from-config.gif)
 
@@ -72,6 +72,6 @@ To show more than one CICS profiles in the tree, select the **+** button and cho
 
 4. Save the configuration file.
 
-5. Refresh the Zowe Explorer for IBM CICS extension. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS: Refresh` option in the **Command Palette**.
+5. Refresh Zowe Explorer for IBM CICS Transaction Server. Either click the **Refresh** icon at the top of the **CICS** tree in the **Side Bar**, or select the `Zowe Explorer for IBM CICS TS: Refresh` option in the **Command Palette**.
 
 ![Zowe CICS Explorer delete profiles from config](../images/ze-cics/delete-profile-from-config.gif)

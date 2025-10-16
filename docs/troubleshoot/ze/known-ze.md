@@ -8,7 +8,7 @@ Files written in languages primarily read from right to left (Arabic, Hebrew, ma
 
 These bidirectional (BiDi) languages are not currently supported in Visual Studio Code. See [Issue #86667](https://github.com/microsoft/vscode/issues/86667) for more information.
 
-As a result, VS Code extensions like Zowe Explorer, Zowe Explorer CICS Extension, and Zowe Explorer FTP Extension are not able to support BiDi languages in files.
+As a result, VS Code extensions like Zowe Explorer, Zowe® Explorer for IBM® CICS® Transaction Server, and Zowe® Explorer for IBM® z/OS® FTP are not able to support BiDi languages in files.
 
 ## Client certificate support
 

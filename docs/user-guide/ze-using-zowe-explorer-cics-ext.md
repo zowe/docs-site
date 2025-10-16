@@ -1,10 +1,10 @@
-# Using Zowe Explorer CICS Extension
+# Using Zowe Explorer for IBM CICS Transaction Server
 
-The CICS Extension for Zowe Explorer adds additional functionality to the popular Visual Studio Code extension [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode). This extension allows you to interact with CICS regions and programs, and run commands against them.
+Zowe® Explorer for IBM® CICS® Transaction Server adds additional functionality to the popular Visual Studio Code extension [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode). This extension allows you to interact with CICS regions and programs, and run commands against them.
 
 ## Features
 
-- Create new Zowe CICS profiles and connect to them.
+- Create new Zowe Explorer for IBM CICS Transaction Server profiles and connect to them.
 - **Work with multiple regions** that contain programs, local transactions, and local files within a plex in a comprehensible tree-like format.
 - Perform actions such as **Enable**, **Disable**, **New Copy**, and **Phase In** directly from the UI.
 - Perform additional actions on local files including **Open** and **Close** directly from the UI.
