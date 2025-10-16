@@ -26,7 +26,7 @@ To file an issue:
 
 1. To find the error source, first look for an extension name in the error message that displays in VS Code. If there is none, refer to what is listed in the **Source** field.
 
-    ![Image that shows example of an error source](../images/ze/ZE-ftp-error.png)
+    ![Image that shows example of an error source](../images/ze/ze-ftp-error.png)
 
     In the preceding example, the error source is Zowe Explorer for IBM z/OS FTP.
  
