@@ -64,7 +64,7 @@ To comply with security settings, Zowe AT-TLS setup requires two keyrings:
 * [Keyring without a private key](#keyring-without-a-private-key)
 
 #### Keyring with a private key
-This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and Zowe server certificate with its corresponding Private Key.
+This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and Zowe server certificate with its corresponding private key.
 We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
 
 #### Keyring without a private key
