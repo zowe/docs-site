@@ -68,7 +68,7 @@ We recommend to create a new keyring, similar to the [above-mentioned keyring](.
 <!-- TODO Once we implement the support for reading key from a hardware ICSF keyring, this block can be removed. --> 
 ### Limitations when using AT-TLS with ICSF Hardware keyring
 
- API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
+API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
 
 * [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
 * [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
