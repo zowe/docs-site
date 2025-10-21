@@ -1,6 +1,6 @@
 # Usage tips
 
-Make the best use of the Zowe Explorer CICS Extension with the following tips.
+Make the best use of Zowe® Explorer for IBM® CICS® Transaction Server with the following tips.
 
 ## Multi-select functionality
 
