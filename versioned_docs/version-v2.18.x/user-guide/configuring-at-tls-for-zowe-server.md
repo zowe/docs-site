@@ -278,7 +278,7 @@ Use the example in this section as a template for internal connections between Z
 
 :::caution Important
 
-Routing to Discovery Service is disabled by default. Ensure it remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from Gateway to Discovery Service.
+Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from the Gateway to the Discovery Service.
 
 :::
 
@@ -430,11 +430,11 @@ For a full AT-TLS setup we strongly recommend:
 
 Ensure that these rules are followed:
 
-- Outbound rule to API Gateway: __Do not__ set X.509 Client Certificate.
-- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authenticate during onboarding.
+- Outbound rule to the API Gateway: __Do not__ set X.509 Client Certificate.
+- Outbound rule to the Discovery Service: Sends X.509 Client Certificate to authenticate during onboarding.
 
 :::note
-Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http, hence there are no Outbound rules from such services to API Gateway and Discovery Service.
+Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http, hence there are no Outbound rules from such services to the API Gateway and the Discovery Service.
 :::
 
 ### Ciphers
@@ -479,7 +479,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 - Discovery Service to Discovery Service. This is the replica request.
 - Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
-- Southbound services to Discovery Service. This applies during onboarding.
+- Southbound services to the Discovery Service. This applies during onboarding.
 - All outbound connections need to account for all LPARs including the same where the rules are applied.
 
 ## Multi-tenancy deployment
