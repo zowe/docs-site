@@ -28,17 +28,13 @@ zowe:
 While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
 
 :::tip
-We strongly recommend that AT-TLS for inbound connections and outbound connections with X.509 Client Certificate authentication be configured with the same Zowe keyring as in `zowe.yaml`. 
-
-For outbound connections without an X.509 Client Certificate authentication, make sure you use a keyring that contains only the trusted public CA certificates, but does not contain a private key.
+* We strongly recommend that AT-TLS for inbound connections and outbound connections with X.509 Client Certificate authentication be configured with the same Zowe keyring as in `zowe.yaml`. 
+* For outbound connections without an X.509 Client Certificate authentication, make sure you use a keyring that contains only the trusted public CA certificates, but does not contain a private key.
 :::
 
 :::note Notes
-
 - As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe App Server, also require AT-TLS configuration.
-
 - Do not set `attls: true` together with `minTls` or `maxTls`. Zowe does not handle TLS in AT-TLS aware mode.
-
 :::
 
 :::caution Important security consideration
@@ -62,13 +58,13 @@ This keyring is used for inbound connections and outbound connections that requi
 We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
 
 #### Keyring without a private key
-This keyring is used for outbound connections that don't require or prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
+This keyring is used for outbound connections that do not require or prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
 We recommend to create a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
 
 <!-- TODO Once we implement the support for reading key from a hardware ICSF keyring, this block can be removed. --> 
 ### Limitations when using AT-TLS with ICSF Hardware keyring
 
-API ML cannot currently read private keys if they reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
+API ML cannot currently read private keys if these keys reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
 
 * [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
 * [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
@@ -86,7 +82,7 @@ The z/OSMF LTPA token, SAF native authentication provider, and Personal Access T
 
 #### Use an alternative non-hardware keyring
 
-Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when the configuration requires it. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when required by the configuration. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
 - Personal Access Tokens
 - SAF native provider (API ML signs its own JWT in this scenario)
 - z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
