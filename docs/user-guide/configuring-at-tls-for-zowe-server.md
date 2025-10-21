@@ -194,7 +194,7 @@ The following diagram illustrates outbound rules:
 
 <!-- TODO update this image; Replace User to default ZWESVUSR it's description is wrong (Outbound traffic from jobs starting with "ZWE1" to ports 7552-7558) -->
 
-![AT-TLS_Outbound_Rules](../images/install/AT-TLS_Outbound_Rules.png)
+![Outbound rules](../images/install/outbound-rules.png)
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
@@ -209,7 +209,7 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 The following diagram illustrates outbound rules for z/OSMF:
 <!-- TODO update image; replace User with default ZWESVUSR; update default zOSMF port to 443; update description "Outbound traffic from APIML jobs starting with "ZWE1A" to z/OSMF port" -->
-![AT-TLS_Outbound_Rules_for_zOSMF](../images/install/AT-TLS_Outbound_Rules_for_zOSMF.png)
+![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -357,13 +357,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 #### Outbound rule for communication between API Gateway and extensions' servers
 
-<details>
-<summary>Click here to see a diagram that illustrates the rules for API Gateway to extension servers to integrate the Db2 DevOps systems</summary>
+The following diagram illustrates the rule for the API ML to a southbound service.
 
 <!-- TODO update image; replace default user ZWESVUSR; update 449 z/OSMF to 8080 Service, update description "Outbound traffic from APIML jobs starting with "ZWE1A" to Service on 8080 port. -->
-![AT-TLS_int_DevOpsSystem](../images/install/AT-TLS_int_DevOpsSystem.png)
-
-</details>
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
