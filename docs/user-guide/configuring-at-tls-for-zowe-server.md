@@ -95,7 +95,6 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 The following diagram illustrates inbound rules:
 
-<!-- TODO update image: replace User with default ZWESVUSR -->
 ![AT-TLS_Inbound_Rules](../images/install/AT-TLS_Inbound_Rules.png)
 
 A generic inbound rule can be set for all Zowe services:
@@ -188,8 +187,6 @@ For more granularity in the AT-TLS rules, separate the rules that need to suppor
 
 The following diagram illustrates outbound rules:
 
-<!-- TODO update this image; Replace User to default ZWESVUSR it's description is wrong (Outbound traffic from jobs starting with "ZWE1" to ports 7552-7558) -->
-
 ![Outbound rules](../images/install/outbound-rules.png)
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
@@ -204,7 +201,7 @@ Careful consideration needs to be made regarding which rules are to be configure
 #### Outbound rule for z/OSMF
 
 The following diagram illustrates outbound rules for z/OSMF:
-<!-- TODO update image; replace User with default ZWESVUSR; update default zOSMF port to 443; update description "Outbound traffic from APIML jobs starting with "ZWE1A" to z/OSMF port" -->
+
 ![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
@@ -288,7 +285,7 @@ Use the example in this section as a template for internal connections between Z
 
 :::caution Important
 
-Routing to Discovery Service is disabled by default. Ensure it remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from Gateway to Discovery Service.
+Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from the Gateway to the Discovery Service.
 
 :::
 
@@ -351,11 +348,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 }
 ```
 
-#### Outbound rule for communication between API Gateway and extensions' servers
+#### Outbound rule for communication between API Gateway and southbound services
 
 The following diagram illustrates the rule for the API ML to a southbound service.
 
-<!-- TODO update image; replace default user ZWESVUSR; update 449 z/OSMF to 8080 Service, update description "Outbound traffic from APIML jobs starting with "ZWE1A" to Service on 8080 port. -->
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
@@ -451,11 +447,11 @@ For a full AT-TLS setup we strongly recommend:
 
 Ensure that these rules are followed:
 
-- Outbound rule to API Gateway: __Do not__ set X.509 Client Certificate.
-- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authenticate during onboarding.
+- Outbound rule to the API Gateway: __Do not__ set X.509 Client Certificate.
+- Outbound rule to the Discovery Service: Sends X.509 Client Certificate to authenticate during onboarding.
 
 :::note
-Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http, hence there are no Outbound rules from such services to API Gateway and Discovery Service.
+Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http, hence there are no Outbound rules from such services to the API Gateway and the Discovery Service.
 :::
 
 ### Ciphers
@@ -501,7 +497,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 - Discovery Service to Discovery Service. This is the replica request.
 - Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
 - Gateway Service to ZAAS running in another LPAR.
-- Southbound services to Discovery Service. This applies during onboarding.
+- Southbound services to the Discovery Service. This applies during onboarding.
 - All outbound connections need to account for all LPARs including the same where the rules are applied.
 
 ## Multi-tenancy deployment
