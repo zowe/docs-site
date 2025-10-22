@@ -194,7 +194,7 @@ TTLSKeyringParms ZoweKeyring
 
 3. (Optional) Separate rules by certificate requirement.
    For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.  
-   For services that do not require X.509 client certificates (e.g., internal API Gateway-to-service calls), create separate TTLS rules with a simpler handshake role.
+   For services that do not require X.509 client certificates (e.g., API Catalog), create separate TTLS rules with a simpler handshake role.
 
 For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
 
