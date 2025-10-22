@@ -201,10 +201,14 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
   For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_. 
   :::
 
-4. Refresh PAGENT and verify.
+4. Refresh PAGENT and verify the contents.
   * Refresh the policy configuration by issuing the MVS command `F PAGENT,REFRESH`.
   * Test connectivity for all inbound services.
   * Ensure services that require client certificate authentication are successfully receiving X.509 Client Certificates.
+
+:::tip
+We recommend you restart Zowe services after refreshing PAGENT to avoid issues with open connections.
+::: 
 
 ### Outbound rules
 
