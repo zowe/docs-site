@@ -175,7 +175,7 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
 
-### Applying your keyring and configuring handshake role
+#### Applying your keyring and configuring handshake role
 
 1. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
 
