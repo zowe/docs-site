@@ -96,7 +96,7 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 The following diagram illustrates inbound rules:
 
 <!-- TODO update image: replace User with default ZWESVUSR -->
-![AT-TLS_Inbound_Rules](../images/install/AT-TLS_Inbound_Rules.png)
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules.png)
 
 A generic inbound rule can be set for all Zowe services:
 
