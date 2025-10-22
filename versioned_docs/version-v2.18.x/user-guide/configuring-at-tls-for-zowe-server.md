@@ -60,11 +60,11 @@ To comply with security settings, Zowe AT-TLS setup requires two keyrings:
 * [Keyring without a private key](#keyring-without-a-private-key)
 
 #### Keyring with a private key
-This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and Zowe server certificate with its corresponding private key.
+This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with its corresponding private key.
 We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
 
 #### Keyring without a private key
-This keyring is used for outbound connections that do not require or prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
+This keyring is used for outbound connections that do not require nor prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
 We recommend to create a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
 
 ### Limitations when using AT-TLS with ICSF Hardware keyring
@@ -90,7 +90,7 @@ The z/OSMF LTPA token, SAF native authentication provider, and Personal Access T
 Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when required by the configuration. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
 - Personal Access Tokens
 - SAF native provider (API ML signs its own JWT in this scenario)
-- z/OSMF in LTPA mode: in this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
+- z/OSMF in LTPA mode. In this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
 
@@ -173,20 +173,38 @@ The `PortRange` of this inbound rule is taken from the list of API Mediation Lay
 | Zowe System Services (ZSS) | 7557 |
 | Zowe Application Server | 7556 |
 
-**Follow this step:**
+For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
-Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
 
-Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 Client Certificates from API Clients.
+#### Applying your keyring and configuring handshake role
 
-For more granularity in the AT-TLS rules, separate the rules that need to support X.509 Client Certificate authentication (Discovery Service, Gateway Service) from the rules that do not need to support X.509 Client Certificate authentication (for example a rule covering API Gateway to an onboarded service).
+1. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
+
+**Example:**
+
+```
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring YOUR_KEYRING_NAME
+}
+
+```
+2. Verify the `HandshakeRole` setting.  
+   Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
+
+3. (Optional) Separate rules by certificate requirement.
+   For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.  
+   For services that do not require X.509 client certificates (e.g., internal API Gateway-to-service calls), create separate TTLS rules with a simpler handshake role.
+
+For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
+
 
 ### Outbound rules
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
-Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID. Make sure to use __[Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key)__ in such rules.
+Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID. Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
 
