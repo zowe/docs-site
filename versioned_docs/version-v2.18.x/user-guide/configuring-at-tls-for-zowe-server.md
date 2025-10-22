@@ -98,7 +98,7 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-A generic inbound rule can be set for all Zowe services:
+1. Define a generic inbound rule that can be set for all Zowe services:
 
 ```bash
 TTLSRule ZoweServerRule
@@ -161,43 +161,51 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 }
 ```
 
-The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
+2. Verify port ranges.
 
-| Component | Default Port |
-|----|-----------------------|
-| Gateway | 7554 |
-| Discovery | 7553 |
-| Caching Service | 7555 |
-| API Catalog | 7552 |
-| Metrics Service | 7551 |
-| Zowe System Services (ZSS) | 7557 |
-| Zowe Application Server | 7556 |
+    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
+    | Component | Default Port |
+    |----|-----------------------|
+    | Gateway | 7554 |
+    | Discovery | 7553 |
+    | Caching Service | 7555 |
+    | API Catalog | 7552 |
+    | Metrics Service | 7551 |
+    | Zowe System Services (ZSS) | 7557 |
+    | Zowe Application Server | 7556 |
+
+    For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
 
-#### Applying your keyring and configuring handshake role
+3. Apply your keyring and configure handshake role.
 
-1. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
+    i. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
 
-**Example:**
+   **Example:**
 
-```
-TTLSKeyringParms ZoweKeyring
-{
-  Keyring YOUR_KEYRING_NAME
-}
+    ```
+    TTLSKeyringParms ZoweKeyring
+    {
+    Keyring YOUR_KEYRING_NAME
+    }
 
-```
-2. Verify the `HandshakeRole` setting.  
+    ```
+    ii. Verify the `HandshakeRole` setting.  
    Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
 
-3. (Optional) Separate rules by certificate requirement.
+   iii.  (Optional) Separate rules by certificate requirement.  
    For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.  
-   For services that do not require X.509 client certificates (e.g., API Catalog), create separate TTLS rules with a simpler handshake role.
+   For services that do not require X.509 client certificates (e.g., API Catalog), create separate TTLS rules with `HandshakeRole` as `Server`.
 
-For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
+  :::note
+  For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
+  :::
 
+4. Refresh PAGENT and verify.
+  * Refresh the policy configuration by issuing the MVS command `F PAGENT,REFRESH`.
+  * Test connectivity for all inbound services.
+  * Ensure services that require client certificate authentication are successfully receiving X.509 Client Certificates.
 
 ### Outbound rules
 
@@ -279,10 +287,10 @@ TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
 }
 ```
 
-:::note
-`Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
+:::tip Tips:
+* `Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
 
-Note that the `ZoweNoX509Keyring`, used for outbound rules that don't require or prohibit X.509 Client Certificate authentication, is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided below.
+* Note that the `ZoweNoX509Keyring`, used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
 :::
 
 #### Outbound rule for communication between Zowe core components
@@ -436,7 +444,7 @@ This scenario includes the following services:
 * Services that require an Open ID Connect (OIDC) token
 * Forwarded X.509 certificates
 
-For a full AT-TLS setup we strongly recommend:
+For a full AT-TLS setup we strongly recommend the following conditions:
 
 * To have an Outbound rule from the service to the API Gateway.
 * To have an Outbound rule set for the onboarding process against the Discovery Service.
