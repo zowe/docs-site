@@ -179,19 +179,19 @@ For more information on each component's networking requirements, see [Addressin
 
 1. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
 
-**Example:**
+    **Example:**
 
-```
-TTLSKeyringParms ZoweKeyring
-{
-  Keyring YOUR_KEYRING_NAME
-}
+    ```
+    TTLSKeyringParms ZoweKeyring
+    {
+    Keyring YOUR_KEYRING_NAME
+    }
 
-```
+    ```
 2. Verify the `HandshakeRole` setting.  
   Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
 
-3. Separate rules by certificate requirement (optional)  
+3. (Optional) Separate rules by certificate requirement.  
   For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.  
   For services that do not require X.509 client certificates (e.g., internal API Gateway-to-service calls), create separate TTLS rules with a simpler handshake role.
 
