@@ -13,6 +13,13 @@ To access Zowe Explorer settings:
 4. Select **Zowe Explorer** to access its settings.
 5. Scroll the list to find the setting that needs modification.
 
+## Enabling environment variables for configuration properties
+
+1. In Zowe Explorer settings, scroll to the **Override With Environment Variables** option.
+2. Select the checkbox to activate the setting.
+
+    Once enabled, environment variables stored in your local drive **[is "local drive" correct here?]** provide values for profile properties in a configuration file. See [Using environment variables](../user-guide/ze-using-using-environment-variables.md) for instructions on how environment variables work in team configuration.
+
 ## Modifying creation settings for data sets, USS files, and jobs
 
 1. In Zowe Explorer settings, scroll to a data set, USS file, or job setting type.
