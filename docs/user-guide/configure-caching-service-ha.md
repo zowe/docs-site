@@ -1,22 +1,27 @@
 # Configuring the Caching Service for high availability
 
-Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.  
+Use Zowe in a high availability (HA) configuration where multiple instances of the Zowe launcher are started. These instances can be either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR, you do not need to create a Caching Service.   
 
-In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate gateways that in turn dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
+In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate gateways that, in turn, dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are running the Caching Service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`. If you are running the Caching Service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. Three storage methods are supported if you are running the Caching Service on z/OS:
+* **inMemory**
+* **infinispan**
+* **VSAM** 
+
+If you are running the Caching Service off platform, such as a Linux or Windows container image, it is also possible to specify `redis`.  
 
 To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 :::note
-To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution. Infinispan is the recommended storage method to use in production.
+To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. _Infinispan_ is part of Zowe installation. No additional software or installation is required when using this storage solution. _Infinispan_ is the recommended storage method to use in production.
 :::
 
 ## inMemory
 
-   _inMemory_ is the storage method designed for quick start of a service and should be used only in a single instance scenario, during development, or test purpose. Do not use _inMemory__ in production or high availability scenario.
+   _inMemory_ is the storage method designed for quick start of a service and should be used only in a single instance scenario, during development, or test purpose. Do not use _inMemory_ in production or high availability scenario.
   
-   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Servicedoes not persist any data.  
+   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service does not persist any data.  
 
    ``` yaml
     components:
@@ -36,7 +41,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
   :::
 
   _Infinispan_ is designed to be run mainly on z/OS as this storage method offers high performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
-  _Infinispan_ environment variables are not currently following the v2 naming convention, so tthese variables must be defined into `zowe.environments` section.  For more information about these properties and their values, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
+
+  _Infinispan_ environment variables are not currently following the v2 naming convention, so these variables must be defined in the `zowe.environments` section. For more information about these properties and their values, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
   ``` yaml
   components:
@@ -51,9 +57,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 ## VSAM (Deprecated)
 
   :::note
-
   _VSAM_ support in the Caching Service will be removed in a future release.
-
   :::
 
   The _VSAM_ storage method allows you to use the VSAM dataset as storage for the Caching service. You can use `zwe init vsam` command to generate a proper dataset.
@@ -96,7 +100,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
   - `zowe.setup.vsam.volume`  
   If you set to use the `NONRLS` mode, a storage volume is required.
 
-  To preview the member before submitting it, use the value `--security-dry-run`.  Otherwise, the command automatically submits the JCL and waits for its completion.
+  To preview the member before submitting it, use the value `--security-dry-run`.  Otherwise, the command automatically submits the JCL and waits for completion.
 
   ```plaintext
   >zwe init vsam -c ./zowe.yaml
@@ -112,7 +116,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## Redis
 
-   _Redis_ is not available if you are running the API Mediation Layer on z/OS under Unix System Services. Usage of _redis_ is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
+   _Redis_ is not available if you are running the API Mediation Layer on z/OS under Unix System Services. The use of _redis_ is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
 
    To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values, see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
 
