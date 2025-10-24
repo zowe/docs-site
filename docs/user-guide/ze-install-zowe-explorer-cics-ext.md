@@ -1,13 +1,13 @@
-# Installing Zowe Explorer CICS Extension
+# Installing Zowe Explorer for IBM CICS Transaction Server
 ## Installation methods
 
-Install or update the Zowe Explorer CICS Extension from Visual Studio Code Extensions or from a `VSIX` file.
+Install or update Zowe® Explorer for IBM® CICS® Transaction Server from Visual Studio Code Extensions or from a `VSIX` file.
 
 ### Installing from Visual Studio Code Extensions
 
 1. Select the **Extensions** tab on the **Side Bar** of the VS Code application.
 
-2. Search for `Zowe Explorer for IBM CICS` and select the matching search result.
+2. Search for `Zowe Explorer for IBM CICS Transaction Server` and select the matching search result.
 
 3. Click the **Install** button at the top of the **Editor** page.
 
@@ -15,13 +15,13 @@ Install or update the Zowe Explorer CICS Extension from Visual Studio Code Exten
 
 ### Installing from a `VSIX` file
 
-Before you install Zowe Explorer CICS Extension from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. See [Installing Zowe Explorer](../user-guide/ze-install.md#installing-zowe-explorer) for instructions..
+Before you install Zowe Explorer for IBM CICS Transaction Server from a `VSIX` file, ensure that Zowe Explorer is installed. Zowe Explorer is a required dependency. See [Installing Zowe Explorer](../user-guide/ze-install.md#installing-zowe-explorer) for instructions..
 
-If Zowe Explorer is installed, you can install Zowe Explorer CICS Extension from a `VSIX` file.
+If Zowe Explorer is installed, you can install Zowe Explorer for IBM CICS Transaction Server from a `VSIX` file.
 
-1. Go to the [Zowe Explorer for IBM CICS Extension download](https://github.com/zowe/cics-for-zowe-client) site. Select the **Latest** button, which directs to a page that includes the latest version of the `.vsix` file. Download it to your PC.
+1. Go to the [Zowe Explorer for IBM CICS Transaction Server download](https://github.com/zowe/cics-for-zowe-client) site. Select the **Latest** button, which directs to a page that includes the latest version of the `.vsix` file. Download it to your PC.
 
-   ![Download Zowe CICS Explorer](../images/ze-cics/cics-latest-vsix.png)
+   ![Download Zowe Explorer for IBM CICS Transaction Server](../images/ze-cics/cics-latest-vsix.png)
 
 2. Open the Extensions icon in the **Side Bar**, navigate to the **...** menu, select **Install from VSIX ...** and select the downloaded `Zowe.cics-extension-for-zowe-3.x.x.vsix` file.
 

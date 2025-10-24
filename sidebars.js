@@ -701,7 +701,7 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Using Zowe Explorer CICS Extension",
+                  label: "Using Zowe Explorer for IBM CICS Transaction Server",
                   link: { type: "doc", id: "user-guide/ze-using-zowe-explorer-cics-ext" },
                   items: [
                     "user-guide/ze-cics-usage-tips",
@@ -712,7 +712,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Using Zowe Explorer FTP Extension",
+                  label: "Using Zowe Explorer for IBM z/OS FTP",
                   link: { type: "doc", id: "user-guide/ze-ftp-using-ze-ftp-ext" },
                   items: [
                     "user-guide/ze-ftp-supported-functions",

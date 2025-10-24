@@ -1,6 +1,6 @@
-# Zowe Explorer FTP Extension
+# Zowe Explorer for IBM z/OS FTP
 
-Zowe Explorer FTP extension adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode) VS Code extension, allowing you to use z/OS FTP profiles to connect and interact with z/OS USS.
+Zowe® Explorer for IBM® z/OS® FTP adds the FTP protocol to the [Zowe Explorer](https://github.com/zowe/zowe-explorer-vscode) VS Code extension, allowing you to use z/OS FTP profiles to connect and interact with z/OS USS.
 
 ## Installing
 
