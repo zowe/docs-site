@@ -369,3 +369,51 @@ security.provider.13=JdkSASL
 security.provider.14=SunPKCS11
 ```
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
+
+## Failed to load JCECCARACFKS keyring when using ICSF under ACF2
+
+The issue below may occur only under ACF2, due to differences in how ACF2 handles digital certificate
+and key resource access compared to TSS and RACF.
+
+**Symptom**
+
+The Zowe log contains the following ERROR message:  
+`com.ibm.crypto.ibmjcehybrid.provider.IBMJCEHybridException: Failover exhausted, all registered providers attempted and failed.`
+
+**Explanation**
+
+This error occurs when the `Java Cryptography Extension` (JCE) provider cannot access the `RSA` key dataset defined for Zowe.
+In ACF2, access to RSA key resources is controlled through the CSK resource class,
+which governs permissions to use or read private keys stored in the security database.
+If the Zowe started task ID lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
+fail to initialize, resulting in this failover error.
+
+**Solution**
+
+Grant the Zowe started task user ID `READ` access to the `ZOWERSAKEY` resource and rebuild the CSK class:
+
+`SET RESOURCE(CSK)
+RECKEY ZOWERSAKEY ADD(USER(ZWESVUSR) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(CSK)`
+
+**Symptom**
+
+The Zowe log contains the following error message:  
+`IBMJCEHybridException: Errors encountered loading keyring. Keyring could not be loaded as a JCECCARACFKS or JCERACFKS keystore.
+Exception#0 java.io.IOException: R_datalib (IRRSDL00) error: not RACF authorized to use the requested service (8, 8, 8)`
+
+**Explanation**
+
+This error indicates that the Zowe started task user ID (`ZWESVUSR`) does not have the required authorization to
+access the R_datalib callable service (`IRRSDL00`).
+In ACF2, this corresponds to the FACILITY class resource `DIGTCERT.LISTRING`.
+Without this access, Zowe cannot load the required certificates or keyrings for establishing secure TLS connections.
+
+**Solution**
+
+Grant the started task user the necessary read access to the `DIGTCERT.LISTRING` resource and rebuild the `FACILITY` class:
+
+`SET RESOURCE(FAC)
+RECKEY IRR ADD(DIGTCERT.LISTRING USER(ZWESVUSR) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(FAC)`
+
