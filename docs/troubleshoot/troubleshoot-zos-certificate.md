@@ -19,10 +19,11 @@ As an API Mediation Layer user, you may encounter problems when configuring cert
 **Symptoms**
 
 Some Zowe Desktop applications do not work when Zowe creates a PKCS12 keystore. A message may appear in the log such as the following:
+
 * ZWES1060W Failed to init TLS environment, rc=1(Handle is not valid)
 * ZWES1065E Failed to configure https server. Check agent https setting.
 
-These messages indicate that ZSS cannot read the generated keystore. As such, parts of Zowe are not functional. 
+These messages indicate that ZSS cannot read the generated keystore. As such, parts of Zowe are not functional.
 
 **Solutions**
 
@@ -68,7 +69,8 @@ The certificate appears to be correct, but the Gateway and the Discovery Service
 The password is only used for USS PKCS12 certificate files. The keyring is protected by SAF permissions. Note that in some configurations, Zowe does not work if the password value is empty in the keyring configuration. We recommended that you assign a value to `password` as shown in the following example:
 
 **Example:**
-```
+
+```yaml
 certificate:
     keystore:
       type: JCERACFKS
@@ -106,9 +108,9 @@ You used an external certificate and Single Sign-On to deploy Zowe. When you log
 **Solution:**
 
 This issue might occur when you use a Zowe version of 1.12.0 or later. To resolve the issue, you can download your external root certificate and intermediate certificates in PEM format. Then, add the following parameter in the `zowe.yaml` file.
- 
+
 ```environments.ZWED_node_https_certificateAuthorities: "/path/to/zowe/keystore/local_ca/localca.cer-ebcdic","/path/to/carootcert.pem","/path/to/caintermediatecert.pem"```
- 
+
 Recycle your Zowe server. You should be able to log in to the Zowe Desktop successfully now.
 
 ## Browser unable to connect due to a CIPHER error
@@ -334,6 +336,7 @@ API ML components do not start properly because they fail to load the JCERACFKS 
 The keyring, however, is configured correctly and the STC user can access it. 
 
 **Examples:**
+
 ```
 2023-06-27 13:07:45.138 ..35m<ZWEACS1:main:67502789>..0;39m APIMTST ..31mERROR..0;39m ..36m(o.a.t.u.n.SSLUtilBase)..0;39m Failed to load keystore type .JCERACFKS. with path .safkeyring://ZWESVUSR/ZOWERING. due to .JCERACFKS not found.
 java.security.KeyStoreException: JCERACFKS not found                                                                                                            
@@ -352,7 +355,8 @@ JCERACFKS KeyStore not available
 
 In Java 11 releases before 11.0.17.0, the `IBMZSecurity` security provider is not enabled by default. Locate the `java.security` configuration file in the `$JAVA_HOME/conf/security` USS directory 
 and open the file for editing. Modify the list of security providers and insert `IBMZSecurity` on second position. The list of enabled security providers should resemble the following series:
-```
+
+```properties
 security.provider.1=OpenJCEPlus
 security.provider.2=IBMZSecurity
 security.provider.3=SUN
@@ -368,6 +372,7 @@ security.provider.12=JdkLDAP
 security.provider.13=JdkSASL
 security.provider.14=SunPKCS11
 ```
+
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
 
 ## Failed to load JCECCARACFKS keyring when using ICSF under ACF2
