@@ -49,7 +49,7 @@ Zowe API ML implements a Singls-Sign-On feature which allows users to authentica
 API ML uses multiple authentication methods - from Basic Auth (username-password), to external Multi-Factor Authentication providers, and modern authentication protocols, such as OIDC/OAuth2.    
 
 **Next steps:**
-- For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication) article.    
+- For more details on the authentication methods used by Zowe, see the dedicated [API ML User Authentication](./zowe-security-authentication.md) article.    
 
 ## Access Authorization
 [Authorization](https://en.wikipedia.org/wiki/Authorization "Authorization refers to the mechanism of granting specific permissions to users for accessing particular resources or functions.") is the mechanism by which a security system grants or rejects access to protected resources.
@@ -58,7 +58,7 @@ Zowe fully relies on the SAF/ESM for control on the user access to mainframe res
 
 **Tip:**
 We recommend you review the core [Authorization](https://en.wikipedia.org/wiki/Authorization "Is any mechanism by which a system grants or revokes the right to access some data or perform some action.") concepts by reading the 
-related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary).
+related topics in the [Zowe Security Glossary](../appendix/zowe-security-glossary.md).
 
 ### SAF resource check
 In some cases Zowe API ML can check for the authorization of the user on certain endpoints even before the request is propagated to the target mainframe service.
