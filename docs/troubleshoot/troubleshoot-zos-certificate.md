@@ -387,18 +387,26 @@ The Zowe log contains the following ERROR message:
 **Explanation**
 
 This error occurs when the `Java Cryptography Extension` (JCE) provider cannot access the `RSA` key dataset defined for Zowe.
-In ACF2, access to RSA key resources is controlled through the CSK resource class,
+In ACF2, access to RSA key resources is controlled through the `CSFKEYS` resource class,
 which governs permissions to use or read private keys stored in the security database.
-If the Zowe started task ID lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
+If the Zowe started task ID (`ZWESVUSR`) lacks the appropriate `READ` access to the RSA key resource, all configured JCE providers
 fail to initialize, resulting in this failover error.
 
 **Solution**
 
-Grant the Zowe started task user ID `READ` access to the `ZOWERSAKEY` resource and rebuild the CSK class:
+Grant the Zowe started task user ID `READ` access to the RSA key stored in PKDS dataset and rebuild the `CSFKEYS` class:
 
-`SET RESOURCE(CSK)
+**Example:**
+
+```
+SET RESOURCE(CSK)
 RECKEY ZOWERSAKEY ADD(USER(ZWESVUSR) SERVICE(READ) ALLOW)
-F ACF2,REBUILD(CSK)`
+F ACF2,REBUILD(CSK)
+```
+
+Where:
+* `ZOWERSAKEY` - is the PKDS label for the RSA key linked to the certificate in the Zowe keyring.
+* `ZWESVUSR` - is the Zowe started task user ID.
 
 **Symptom**
 
@@ -410,14 +418,22 @@ Exception#0 java.io.IOException: R_datalib (IRRSDL00) error: not RACF authorized
 
 This error indicates that the Zowe started task user ID (`ZWESVUSR`) does not have the required authorization to
 access the R_datalib callable service (`IRRSDL00`).
-In ACF2, this corresponds to the FACILITY class resource `DIGTCERT.LISTRING`.
-Without this access, Zowe cannot load the required certificates or keyrings for establishing secure TLS connections.
+In ACF2, this corresponds to the `FACILITY` class resource `DIGTCERT.LISTRING`.
+Without this access, Zowe cannot load the required keyring for establishing secure TLS connections.
 
 **Solution**
 
-Grant the started task user the necessary read access to the `DIGTCERT.LISTRING` resource and rebuild the `FACILITY` class:
+Grant the Zowe started task user ID the necessary `READ` access to the `IRR.DIGTCERT.LISTRING` resource and rebuild the `FACILITY` class:
 
-`SET RESOURCE(FAC)
+ **Important:** It should be USER/UID, but not ROLE to whom access is given.
+
+**Example:**
+
+```
+SET RESOURCE(FAC)
 RECKEY IRR ADD(DIGTCERT.LISTRING USER(ZWESVUSR) SERVICE(READ) ALLOW)
-F ACF2,REBUILD(FAC)`
+F ACF2,REBUILD(FAC)
+```
 
+Where:
+* `ZWESVUSR` - is the Zowe started task user ID.
