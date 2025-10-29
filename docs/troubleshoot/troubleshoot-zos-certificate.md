@@ -147,7 +147,7 @@ To do this, first locate the `$JAVA_HOME/lib/security/java.security` file. You c
 
 - Method 2: By inspecting the `STDOUT` JES spool file for the `ZWESLSTC` started task that launches the API Mediation Layer.
 
-   
+
 In the `java.security` file, there is a parameter value for `jdk.tls.disabledAlgorithms`.
 
 **Example:**
@@ -179,21 +179,21 @@ however they are unable to communicate with each other.
 
 Externally, the status of the API Gateway homepage displays **!** icons against the API Catalog, Discovery Service and Authentication Service (shown on the left side image below)
  which do not progress to green tick icons as normally occurs during successful startup (shown on the right side image below).
- 
+
 <img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
 
 The Zowe desktop is able to start but logon fails.
- 
+
 The log contains messages to indicate that connections are being reset. For example, the following message shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
 
-``` 
+```log
 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
 2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
 java.net.SocketException: Connection reset
 ```
 
 The Zowe desktop is able to be displayed in a browser but fails to logon.
- 
+
 **Solution:**
 
 Check that the Zowe certificate has been configured as a client certificate, and not just as a server certificate. For more informtion, see More detail can be found in [Configuring certificates overview](../user-guide/configure-certificates).
@@ -205,7 +205,8 @@ Check that the Zowe certificate has been configured as a client certificate, and
 Java z/OS components of Zowe are unable to read certificates from a keyring. This problem may appear as an error as in the following example where Java treats the SAF keyring as a file.
 
 **Example:**
-```
+
+```log
 Caused by: java.io.FileNotFoundException: safkeyring:/ZWESVUSR/ZoweKeyring
 at java.io.FileInputStream.open(FileInputStream.java:212)
 at java.io.FileInputStream.<init>(FileInputStream.java:152)
@@ -247,9 +248,7 @@ Make sure that the private key stored in the keyring is not encrypted by a passw
 
 If you see one or more of the following messages in the logs, the cause is keyring configuration.
 
-
 - ZWED0148E - Exception thrown when reading SAF keyring, e= Error: R_datalib call failed: function code: 01, SAF rc: `number`, RACF rc: `number`, RACF rsn: `number`
-
 
 * java.io.IOException: R_datalib (IRRSDL00) error: profile for ring not found (`number`, `number`, `number`)
 
@@ -267,7 +266,7 @@ You may also see the following log message:
 **Example:** 
  If ZWED0148E contains the following message, it indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. 
 
-```
+```log
 2021-01-18 10:16:33.601 <ZWED:16847011> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= TypeError: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
 at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/share/zlux-server-framework/node_modules/keyring_js/index.js:21:26)
 ```
@@ -278,7 +277,7 @@ If you are using your own trusted CA certificate in the keyring, and the name is
 
 If you are using Zowe's local CA certificate and you still receive **ZWED0148E**, you may find the following message in the same log.
 
-```
+```json
   "https": {
     "ipAddresses": [
       "0.0.0.0"

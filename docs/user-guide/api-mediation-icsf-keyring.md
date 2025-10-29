@@ -13,7 +13,7 @@ The Zowe server user must be granted access to specific `CSFSERV` class resource
 Ensure that the user has `READ` access to the following resources in the `CSFSERV` class:
 
 Resource|Description
-|---|---
+---|---
 CSFIQF|ICSF Query Facility callable service
 CSFOWH|one-way hash generate callable service
 CSFRNG|random number generate callable service
@@ -67,4 +67,4 @@ Make sure `zowe.certificate.trustore.file` and `zowe.certificate.keystore.file` 
 
 ## Troubleshooting
 
-For more information about troubleshooting, check [troubleshooting](../../troubleshoot/troubleshoot-zos-certificate.md).
+For more information about troubleshooting, check [troubleshooting](../../docs/troubleshoot/troubleshoot-zos-certificate.md).
