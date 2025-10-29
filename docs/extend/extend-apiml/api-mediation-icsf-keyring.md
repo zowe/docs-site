@@ -12,20 +12,18 @@ Enabling Zowe API Mediation Layer to use ICSF keyrings requires changes to the s
 The Zowe server user must be granted access to specific `CSFSERV` class resources in order to interact with ICSF.
 Ensure that the user has `READ` access to the following resources in the `CSFSERV` class:
 
-|Resource|Description|
-
-```plaintext
-|CSFIQF|ICSF Query Facility callable service|
-|CSFOWH|one-way hash generate callable service|
-|CSFRNG|random number generate callable service|
-|CSFRNGL|random number generate long callable service|
-|CSFPKG|PKA key generate callable service|
-|CSFDSG|digital signature generate service|
-|CSFDSV|digital signature verify callable service|
-|CSFPKX|PKA Public Key Extract callable service|
-|CSFPKI|PKA key import callable service|
-|CSFEDH|ECC Diffie-Hellman callable service|
-```
+Resource|Description
+|---|---
+CSFIQF|ICSF Query Facility callable service
+CSFOWH|one-way hash generate callable service
+CSFRNG|random number generate callable service
+CSFRNGL|random number generate long callable service
+CSFPKG|PKA key generate callable service
+CSFDSG|digital signature generate service
+CSFDSV|digital signature verify callable service
+CSFPKX|PKA Public Key Extract callable service
+CSFPKI|PKA key import callable service
+CSFEDH|ECC Diffie-Hellman callable service
 
 These permissions are necessary for key generation, encryption/decryption, signing of JWT tokens and other cryptographic operations performed via ICSF.
 
