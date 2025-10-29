@@ -233,6 +233,7 @@ module.exports = {
                 "user-guide/certificates-setup",
                 "user-guide/tls-configuration",
                 "user-guide/configuring-at-tls-for-zowe-server",
+                "user-guide/api-mediation-icsf-keyring",
               ],
             },
             {
