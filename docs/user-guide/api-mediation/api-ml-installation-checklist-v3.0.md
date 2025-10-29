@@ -3,7 +3,7 @@
 ## Preparing for Installation
 | Step | Task                                                         | Notes / References                                                                   |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| 1    | Verify Java 17 + and z/OS 2.4 + prerequisites.               | [Zowe v3 Prerequisites](https://docs.zowe.org/v3.0.x/user-guide/install-nodejs-zos) |
+| 1    | Verify Java 17 + and z/OS 2.4 + prerequisites.               | See [Zowe v3 Prerequisites](https://docs.zowe.org/v3.0.x/user-guide/install-nodejs-zos) |
 | 2    | Allocate workspace for the new modular API ML runtime.       | Gateway now uses Spring Cloud Gateway.                                               |
 | 3    | Reserve updated ports for Gateway, Discovery, and Catalog.   | Port defaults changed in v3.                                                         |
 | 4    | Confirm SAF keyring access for new format (`safkeyring://`). | Updated URI syntax required.                                                         |
@@ -11,7 +11,7 @@
 ## Installing the Zowe z/OS Runtime
 | Step | Task                                                    | Notes / References                                                     |
 | ---- | ------------------------------------------------------- | ---------------------------------------------------------------------- |
-| 1    | Install Zowe v3.0 using Zowe Server Install Wizard, Convenience Build, SMP/E build, or Portable Software Instance.           | See [Zowe V3](https://www.zowe.org/download#download-v3) in Download Zowe on the zowe.org website|
+| 1    | Install Zowe v3.0 using Zowe Server Install Wizard, Convenience Build, SMP/E build, or Portable Software Instance.           | See **Zowe 3.0.0** in [All Zowe V3.x Releases](https://www.zowe.org/download#all-v3-releases) in Download Zowe on the zowe.org website|
 | 2    | Use `zwe install` to deploy the runtime.                | Installs API ML (Spring Gateway) components.                           |
 | 3    | Update `zowe.yaml` for new service layout and defaults. | Gateway, Discovery, Catalog parameters changed.                        |
 
