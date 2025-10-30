@@ -2,17 +2,19 @@
 
 As an API Mediation Layer user, you may encounter problems when configuring certificates. Review the following article to troubleshoot errors or warnings that can occur when configuring certificates.
 
-* [PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20](#pkcs12-server-keystore-generation-fails-in-java-8-sr7fp15-sr7-fp16-and-sr7-fp20)
-* [Eureka request failed when using entrusted signed z/OSMF certificate](#eureka-request-failed-when-using-entrusted-signed-zosmf-certificate)
-* [Zowe startup fails with empty password field in the keyring setup](#zowe-startup-fails-with-empty-password-field-in-the-keyring-setup)
-* [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
-* [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
-* [API Components unable to handshake](#api-components-unable-to-handshake)
-* [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
-* [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
-* [Exception thrown when reading SAF keyring \{ZWED0148E\}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
-* [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
-* [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
+- [Troubleshooting certificate configuration](#troubleshooting-certificate-configuration)
+  - [PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20](#pkcs12-server-keystore-generation-fails-in-java-8-sr7fp15-sr7-fp16-and-sr7-fp20)
+  - [Eureka request failed when using entrusted signed z/OSMF certificate](#eureka-request-failed-when-using-entrusted-signed-zosmf-certificate)
+  - [Zowe startup fails with empty password field in the keyring setup](#zowe-startup-fails-with-empty-password-field-in-the-keyring-setup)
+  - [Certificate error when using both an external certificate and Single Sign-On to deploy Zowe](#certificate-error-when-using-both-an-external-certificate-and-single-sign-on-to-deploy-zowe)
+  - [Browser unable to connect due to a CIPHER error](#browser-unable-to-connect-due-to-a-cipher-error)
+  - [API Components unable to handshake](#api-components-unable-to-handshake)
+  - [Java z/OS components of Zowe unable to read certificates from keyring](#java-zos-components-of-zowe-unable-to-read-certificates-from-keyring)
+  - [Java z/OS components of Zowe cannot load the certificate private key pair from the keyring](#java-zos-components-of-zowe-cannot-load-the-certificate-private-key-pair-from-the-keyring)
+  - [Exception thrown when reading SAF keyring {ZWED0148E}](#exception-thrown-when-reading-saf-keyring-zwed0148e)
+  - [ZWEAM400E Error initializing SSL Context when using Java 11](#zweam400e-error-initializing-ssl-context-when-using-java-11)
+  - [Failed to load JCERACFKS keyring when using Java 11](#failed-to-load-jceracfks-keyring-when-using-java-11)
+  - [Failed to load JCECCARACFKS keyring when using ICSF under ACF2](#failed-to-load-jceccaracfks-keyring-when-using-icsf-under-acf2)
 
 ## PKCS12 server keystore generation fails in Java 8 SR7FP15, SR7 FP16, and SR7 FP20
 
@@ -376,8 +378,7 @@ For more information see the steps in [Enabling the IBMZSecurity provider](https
 
 ## Failed to load JCECCARACFKS keyring when using ICSF under ACF2
 
-The issue below may occur only under ACF2, due to differences in how ACF2 handles digital certificate
-and key resource access compared to TSS and RACF.
+The following issue may occur owith ACF2 due to how ACF2 handles digital certificate and key resource access. TSS and RACF are not affected by this issue as these security managers handle digital certificates and key resource access differently.  
 
 **Symptom**
 
@@ -394,7 +395,7 @@ fail to initialize, resulting in this failover error.
 
 **Solution**
 
-Grant the Zowe started task user ID `READ` access to the RSA key stored in PKDS dataset and rebuild the `CSFKEYS` class:
+Grant the Zowe started task user ID `READ` access to the RSA key stored in PKDS dataset, and rebuild the `CSFKEYS` class:
 
 **Example:**
 
@@ -404,15 +405,19 @@ RECKEY ZOWERSAKEY ADD(USER(ZWESVUSR) SERVICE(READ) ALLOW)
 F ACF2,REBUILD(CSK)
 ```
 
-Where:
-* `ZOWERSAKEY` - is the PKDS label for the RSA key linked to the certificate in the Zowe keyring.
-* `ZWESVUSR` - is the Zowe started task user ID.
+* **`ZOWERSAKEY`**  
+Specifies the PKDS label for the RSA key linked to the certificate in the Zowe keyring.
+* **`ZWESVUSR`**  
+Specifies the Zowe started task user ID.
+
 
 **Symptom**
 
-The Zowe log contains the following error message:  
-`IBMJCEHybridException: Errors encountered loading keyring. Keyring could not be loaded as a JCECCARACFKS or JCERACFKS keystore.
-Exception#0 java.io.IOException: R_datalib (IRRSDL00) error: not RACF authorized to use the requested service (8, 8, 8)`
+The Zowe log contains the following error message: 
+``` 
+IBMJCEHybridException: Errors encountered loading keyring. Keyring could not be loaded as a JCECCARACFKS or JCERACFKS keystore.
+Exception#0 java.io.IOException: R_datalib (IRRSDL00) error: not RACF authorized to use the requested service (8, 8, 8)
+```
 
 **Explanation**
 
@@ -425,7 +430,7 @@ Without this access, Zowe cannot load the required keyring for establishing secu
 
 Grant the Zowe started task user ID the necessary `READ` access to the `IRR.DIGTCERT.LISTRING` resource and rebuild the `FACILITY` class:
 
- **Important:** It should be USER/UID, but not ROLE to whom access is given.
+ **Important:** Ensure that access is granted to USER/UID. Access should not be granted to ROLE.
 
 **Example:**
 
@@ -435,5 +440,5 @@ RECKEY IRR ADD(DIGTCERT.LISTRING USER(ZWESVUSR) SERVICE(READ) ALLOW)
 F ACF2,REBUILD(FAC)
 ```
 
-Where:
-* `ZWESVUSR` - is the Zowe started task user ID.
+* **`ZWESVUSR`**  
+Specifies the Zowe started task user ID.
