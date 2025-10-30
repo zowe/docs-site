@@ -32,7 +32,7 @@ These permissions are necessary for key generation, encryption/decryption, signi
 
 :::tip
 
-Zowe bundles an updated version of the Java security policy file. This can be enabled with the following setting in the zowe.yaml:
+Zowe bundles an updated version of the Java security policy file. Enable this security policy file with the following setting in the zowe.yaml:
 
 ```yaml
 zowe:
@@ -45,24 +45,28 @@ Note that this configuration overrides the JVM-defined cryptography provider lis
 :::
 
 Using ICSF hardware keys in API ML requires changes to the Java security configuration.
+
 Perform the following changes in the `java.security` file, typically located in `$JAVA_HOME/conf/security` directory:
 
-1. Ensure the following cryptography providers are installed at the top of the list:
+Ensure the following cryptography providers are installed at the top of the list:
 
 ```plaintext
 security.provider.1=IBMJCEHYBRID
 security.provider.2=IBMJCECCA
 ```
 
-For more information, refer to the `IBM Semeru Runtime Certified Edition for z/OS` IBM product documentation, articles `Installing security providers`, `IBMJCECCA` and `IBMJCEHYBRID`.
+For more information, refer to the `IBM Semeru Runtime Certified Edition for z/OS` IBM product documentation:
+* Installing security providers
+* IBMJCECCA
+* IBMJCEHYBRID
 
 ## Configuring Zowe to Use ICSF Keyrings
 
-Update the `zowe.certificate` section in your `zowe.yaml` configuration file as follows:
+To use ICSF Keyrings, update the `zowe.certificate` section in your `zowe.yaml` configuration file with the following settings:
 
-* Set `zowe.certificate.keystore.type` to `JCEHYBRIDRACFKS`
+1. Set `zowe.certificate.keystore.type` to `JCEHYBRIDRACFKS`
 
-* Set `zowe.certificate.truststore.type` to `JCEHYBRIDRACFKS`
+2. Set `zowe.certificate.truststore.type` to `JCEHYBRIDRACFKS`
 
 Make sure `zowe.certificate.trustore.file` and `zowe.certificate.keystore.file` has protocol `safkeyring://` or `safkeyringhybridjce://`
 
