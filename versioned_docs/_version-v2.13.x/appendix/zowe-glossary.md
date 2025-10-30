@@ -342,7 +342,7 @@ https://${zowe.externalDomains[0]}:{zowe.externalPort}/zlux/ui/v1
 
 #### App2App
 
-A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication).
+A feature of the Zowe environment where one application plug-in can communicate with another. The [Zowe Application Framework](#zowe-application-framework) provides constructs that facilitate this ability. For more information, see [Application-to-application communication](../extend/extend-desktop/mvd-apptoappcommunication.md).
 
 #### Config Service
 
