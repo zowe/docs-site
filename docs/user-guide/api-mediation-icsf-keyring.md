@@ -55,7 +55,7 @@ security.provider.1=IBMJCEHYBRID
 security.provider.2=IBMJCECCA
 ```
 
-For more information, refer to the `IBM Semeru Runtime Certified Edition for z/OS` IBM product documentation:
+For more information, refer to the _IBM Semeru Runtime Certified Edition for z/OS_ IBM product documentation:
 * Installing security providers
 * IBMJCECCA
 * IBMJCEHYBRID
@@ -72,4 +72,4 @@ Make sure `zowe.certificate.trustore.file` and `zowe.certificate.keystore.file` 
 
 ## Troubleshooting
 
-For more information about troubleshooting, check [troubleshooting](../../docs/troubleshoot/troubleshoot-zos-certificate.md).
+For information about troubleshooting ICSF keyring configuration, see [Troubleshooting certificate configuration](../../docs/troubleshoot/troubleshoot-zos-certificate.md).
