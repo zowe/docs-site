@@ -2,7 +2,7 @@
 
 To successfully install Zowe Explorer extensions, meet the following system requirements.
 
-## Zowe Explorer CICS Extension system requirements
+## Zowe Explorer for IBM CICS Transaction Server system requirements
 
 ### Client side requirements
 
@@ -16,7 +16,7 @@ The following services must be installed, configured, and running on the mainfra
 - CICS Management Client Interface (CMCI) APIs
 - z/OSMF (optional but recommended)
 
-## Zowe Explorer FTP Extension system requirements
+## Zowe Explorer for IBM z/OS FTP system requirements
 
 ### Client side requirements
 
