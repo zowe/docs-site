@@ -376,9 +376,9 @@ security.provider.14=SunPKCS11
 
 For more information see the steps in [Enabling the IBMZSecurity provider](https://www.ibm.com/docs/en/semeru-runtime-ce-z/11?topic=guide-ibmzsecurity#ibmzsecurity__enabling_z_provider__title__1).
 
-## Failed to load JCECCARACFKS keyring when using ICSF under ACF2
+## Failed to read the private key when using ICSF under ACF2
 
-The following issue may occur owith ACF2 due to how ACF2 handles digital certificate and key resource access. TSS and RACF are not affected by this issue as these security managers handle digital certificates and key resource access differently.  
+The following issue may occur with ACF2 due to how ACF2 handles key resource access. TSS and RACF are not affected by this issue as these security managers handle key resource access differently.  
 
 **Symptom**
 
@@ -410,6 +410,9 @@ Specifies the PKDS label for the RSA key linked to the certificate in the Zowe k
 * **`ZWESVUSR`**  
 Specifies the Zowe started task user ID.
 
+## Failed to load JCECCARACFKS keyring when using ICSF under ACF2
+
+The following issue may occur with ACF2 due to how ACF2 handles digital certificate and keyring access. TSS and RACF are not affected by this issue as these security managers handle digital certificates and keyring access differently.
 
 **Symptom**
 
