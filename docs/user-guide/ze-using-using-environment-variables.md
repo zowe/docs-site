@@ -2,44 +2,69 @@
 
 Configure environment variables to supply values for properties in your team configuration file.
 
-Environment variables in client configuration can be used to store credentials, or other sensitive connection data, such as host and port information.
+Environment variables in client configuration can be used to store credentials or other sensitive connection data, such as host and port information.
 
 ## Example use cases
 
 - Working in **virtual environments** that do not store credentials locally.
   - Create an environment variable for Zowe Explorer to use for authentication instead of looking in a local vault.
 - Storing an **authentication token** for APIML.
-  - Store personal access tokens (PATs), which have longer durations than the default JSON web tokens.
+  - Store personal access tokens (PATs), which have longer durations, and can have narrower scope, than the default JSON web tokens.
 
-## Configuring environment variables
+## Configuring environment variables for credentials
 
-To configure an environment variable:
+### One set of credentials
 
-1. Enable the **Override With Environment Variables** option in Zowe Explorer settings.
-2. Add your environment variable and its value to your local system **[correct?]**. In Windows, go to System Properties. In MacOS, go to the system keychain **[correct?]**.
+To use only one set of credentials:
+      
+  1. Use the `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD` environment variables.
+  
+      These environment variables can also be [formatted for use in Zowe CLI](../user-guide/cli-using-formatting-environment-variables.md).
+      
+  2. Check the **Override With Environment Variables** setting in Zowe Explorer.
 
-    Start the name with a `$` for Zowe to recognize it as an environment variable. For example, `$Environment_Variable`.
+  3. Open your `zowe.config.json` file and add the environment variable with the `$` prefix to the corresponding property. For example, `$ZOWE_OPT_USER` or `$ZOWE_OPT_PASSWORD`.
 
-    :::warning
-    Follow these naming guidelines to prevent unexpected behavior.
-    
-    - Do not use the prefix `ZOWE_OPT` for these environment variable names. `ZOWE_OPT` is used to [format environment variables in Zowe CLI](./cli-using-formatting-environment-variables.md) and the prefix does not work in Zowe Explorer.
-    - Avoid names already in use on the by Zowe clients **[is "Zowe clients" correct here?]**. See [Configuring Zowe CLI environment variables](../user-guide/cli-configuringcli-ev.md) for a complete list. **[is "complete" correct here?]** 
-    :::
-3. Open your `zowe.config.json` file and add the environment variable to the desired property.
+  4. Confirm that the environment variables work by executing a search for data sets, USS files, or jobs.
 
-4. Search for data sets, USS files, or jobs to confirm that the environment variable works.
+### Multiple sets of credentials
+
+To use multiple sets of credentials:
+  
+  1. If checked, uncheck the **Override With Environment Variables** setting in Zowe Explorer.
+  2. Create your own non-`ZOWE_OPT_` environment variables. For example, `OTHER_USER` and `OTHER_PASSWORD`.
+
+      Add your environment variables and values to your local system. In Windows, go to System Properties. In cloud development environments, secret environment variables can be defined when configuring the cloud IDE.
+
+      :::warning
+
+      To prevent conflicts, avoid names already in use by Zowe clients. See [Configuring Zowe CLI environment variables](../user-guide/cli-configuringcli-ev.md) for a complete list. 
+
+      :::
+  3. Open your `zowe.config.json` file and add the environment variable with the `$` prefix to the corresponding property. For example, `$OTHER_USER` or `$OTHER_PASSWORD`.
+
+  4. Confirm that the environment variables work by executing a search for data sets, USS files, or jobs.
 
 ## A configuration file with environment variables
 
-The following examples include environment variables in a configuration file with profiles organized in a nested structure (Lines 14-15, 24) and a configuration file with profiles in a flat structure (Lines 10-11, 23).
+The following examples include environment variables in a configuration file.
+
+**In the nested structure**, the `zosmf` and `apiml` service profiles are nested within the `lpar` profile.
+- This avoids repeating the `host` and `rejectUnauthorized` properties in both service profiles.
+- Environment variables are used for [multiple credentials](#multiple-sets-of-credentials) in Lines 14-15 and Line 24.
+
+**In the flat structure**, the `zosmf` and `apiml` service profiles are organized sequentially.
+- This includes the `host` and `rejectUnauthorized` properties in both service profiles.
+- Environment variables are used for [multiple credentials](#multiple-sets-of-credentials) in Lines 10-11 and Line 23.
+
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="nested" label="Nested profiles" default>
-    ```json showLineNumbers
+```json showLineNumbers
 {
     "$schema": "./zowe.schema.json",
     "profiles": {
@@ -53,10 +78,10 @@ import TabItem from '@theme/TabItem';
                 "zosmf": {
                     "type": "zosmf",
                     "properties": {
-                          // highlight-start
+                        // highlight-start
                         "user": "$ZOWE_USER",
                         "password": "$ZOWE_PASS",
-                          // highlight-end
+                        // highlight-end
                         "authOrder": "basic"
                     },
                     "apiml": {
@@ -65,9 +90,9 @@ import TabItem from '@theme/TabItem';
                             "port": 7554,
                             "basePath": "ibmzosmf/api/v1",
                             "tokenType": "apimlAuthenticationToken",
-                              // highlight-start
+                            // highlight-start
                             "tokenValue": "$ZOWE_APIML_PAT",
-                              // highlight-end
+                            // highlight-end
                             "authOrder": "token, bearer"
                         }
                     }
@@ -80,11 +105,11 @@ import TabItem from '@theme/TabItem';
     },
     "autoStore": false
 }
-    ```
+```
   </TabItem>
   <TabItem value="flat" label="Flat profiles">
-    ```json showLineNumbers
-    {
+```json showLineNumbers
+{
     "$schema": "./zowe.schema.json",
     "profiles": {
         "zosmf": {
@@ -93,10 +118,10 @@ import TabItem from '@theme/TabItem';
                 "host": "my.company.com",
                 "port": 1234,
                 "rejectUnauthorized": false,
-                  // highlight-start
+                // highlight-start
                 "user": "$ZOWE_USER",
                 "password": "$ZOWE_PASS",
-                  // highlight-end
+                // highlight-end
                 "authOrder": "basic"
             }
         },
@@ -108,9 +133,9 @@ import TabItem from '@theme/TabItem';
                 "rejectUnauthorized": false,
                 "basePath": "ibmzosmf/api/v1",
                 "tokenType": "apimlAuthenticationToken",
-                  // highlight-start
+                // highlight-start
                 "tokenValue": "$ZOWE_APIML_TOKEN",
-                  // highlight-end
+                // highlight-end
                 "authOrder": "token, bearer"
             }
         }
@@ -120,6 +145,6 @@ import TabItem from '@theme/TabItem';
     },
     "autoStore": false
 }
-    ```
+```
   </TabItem>
 </Tabs>

@@ -9,16 +9,20 @@ To access Zowe Explorer settings:
 
 1. Click the **Manage** icon at the bottom of the **Activity Bar**.
 2. Select the **Settings** option.
-3. Open the **Extension** option listed in the **Commonly Used** menu.
+3. Open the **Extensions** option listed in the **Commonly Used** menu.
 4. Select **Zowe Explorer** to access its settings.
 5. Scroll the list to find the setting that needs modification.
 
-## Enabling environment variables for configuration properties
+## Enabling environment variables `ZOWE_OPT_USER`, `ZOWE_OPT_PASSWORD`
+
+You can create environment variables for Zowe CLI command options `--user` and `--password`. See [Formatting environment variables](../user-guide/cli-using-formatting-environment-variables.md) for more information.
+
+To use the environment variables `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD` in your configuration:
 
 1. In Zowe Explorer settings, scroll to the **Override With Environment Variables** option.
 2. Select the checkbox to activate the setting.
 
-    Once enabled, environment variables stored in your local drive **[is "local drive" correct here?]** provide values for profile properties in a configuration file. See [Using environment variables](../user-guide/ze-using-using-environment-variables.md) for instructions on how environment variables work in team configuration.
+    Once enabled, `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD` provide values to be used in your configuration. See [Using environment variables](../user-guide/ze-using-using-environment-variables.md) for instructions on how environment variables work in team configuration.
 
 ## Modifying creation settings for data sets, USS files, and jobs
 
