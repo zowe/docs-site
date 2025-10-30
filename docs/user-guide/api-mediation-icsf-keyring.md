@@ -1,15 +1,16 @@
-# Zowe API Mediation Layer - Using ICSF Hardware Private Key
+# Using ICSF Hardware Private Key with API ML
 
-Zowe version 3.5.0 introduces support in the API Mediation Layer for ICSF-backed private keys.
-Previously this was supported only via [AT-TLS](../../user-guide/configuring-at-tls-for-zowe-server.md) with limitations whereas z/OSMF was required as the selected authentication provider and Personal Access Tokens could not be used.
+Zowe version 3.5.0 introduces API Mediation Layer (API ML) support for ICSF-backed private keys.
+Previously, ICSF-backed private keys was supported only via [AT-TLS](../../user-guide/configuring-at-tls-for-zowe-server.md) with limitations, wherein z/OSMF was required as the selected authentication provider and Personal Access Tokens could not be used.
 
 ## Configuring the z/OS system
 
-Enabling Zowe API Mediation Layer to use ICSF keyrings requires changes to the server user authorization and Java security policy.
+Enabling API ML to use ICSF keyrings requires changes to the server user authorization and Java security policy.
 
 ### Server user permissions
 
-The Zowe server user must be granted access to specific `CSFSERV` class resources in order to interact with ICSF.
+In order to interact with ICSF, the Zowe server user must be granted access to specific `CSFSERV` class resources.
+
 Ensure that the user has `READ` access to the following resources in the `CSFSERV` class:
 
 Resource|Description
@@ -31,7 +32,7 @@ These permissions are necessary for key generation, encryption/decryption, signi
 
 :::tip
 
-Zowe bundles an updated version of the java security policy file. This can be enabled by setting:
+Zowe bundles an updated version of the Java security policy file. This can be enabled with the following setting in the zowe.yaml:
 
 ```yaml
 zowe:
@@ -39,7 +40,7 @@ zowe:
     JVM_SECURITY_PROPERTIES_OVERRIDE: true
 ```
 
-Note this will override the JVM-defined cryptography provider list.
+Note that this configuration overrides the JVM-defined cryptography provider list.
 
 :::
 
