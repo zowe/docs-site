@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_3_1",
         "whats-new/release-notes/v3_3_0",
         "whats-new/release-notes/v3_2_0",
         "whats-new/release-notes/v3_1_1",
@@ -572,6 +573,7 @@ module.exports = {
                 "user-guide/routing-with-websockets",
                 "user-guide/api-mediation/use-graphql-api",
                 "user-guide/api-mediation/api-mediation-multi-tenancy",
+                "extend/extend-apiml/redirect-handling-by-the-api-gateway",
               ],
             },
             {
@@ -639,6 +641,8 @@ module.exports = {
                   items: [
                     "user-guide/cli-using-editing-team-configuration",
                     "user-guide/cli-using-creating-profiles",
+                    "user-guide/cli-using-adding-default-profile",
+                    
                     "user-guide/cli-using-sharing-team-config-files",
                     "user-guide/cli-using-initializing-user-configuration",
                   ],
@@ -697,7 +701,7 @@ module.exports = {
               items: [
                 {
                   type: "category",
-                  label: "Using Zowe Explorer CICS Extension",
+                  label: "Using Zowe Explorer for IBM CICS Transaction Server",
                   link: { type: "doc", id: "user-guide/ze-using-zowe-explorer-cics-ext" },
                   items: [
                     "user-guide/ze-cics-usage-tips",
@@ -708,7 +712,7 @@ module.exports = {
                 },
                 {
                   type: "category",
-                  label: "Using Zowe Explorer FTP Extension",
+                  label: "Using Zowe Explorer for IBM z/OS FTP",
                   link: { type: "doc", id: "user-guide/ze-ftp-using-ze-ftp-ext" },
                   items: [
                     "user-guide/ze-ftp-supported-functions",
@@ -807,7 +811,7 @@ module.exports = {
               link: { type: "doc", id: "extend/extend-apiml/api-mediation-routing" },
               items: [
                 "extend/extend-apiml/implementing-routing-to-the-api-gateway",
-                "extend/extend-apiml/api-mediation-websockets"
+                "extend/extend-apiml/api-mediation-websockets",
               ]
             },
             {
@@ -912,6 +916,7 @@ module.exports = {
           link: { type: "doc", id: "troubleshoot/troubleshoot-apiml", },
           items: [
             "troubleshoot/troubleshoot-apiml-error-codes",
+            "troubleshoot/known-issues-with-apiml",
           ],
         },
         {

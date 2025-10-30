@@ -1,4 +1,4 @@
-# Using Zowe Explorer FTP Extension
+# Using Zowe Explorer for IBM z/OS FTP
 
 ## Using
 
@@ -8,7 +8,7 @@ When transferring files, data sets, or data set members, use only ASCII characte
 
 :::
 
-To use the FTP Extension with Zowe Explorer:
+To use Zowe® Explorer for IBM® z/OS® FTP:
 
 1. Select the **Zowe Explorer** icon on the **Activity Bar** in Visual Studio Code.
 
