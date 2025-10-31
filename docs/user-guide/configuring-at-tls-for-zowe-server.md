@@ -624,7 +624,7 @@ To update the ZLUX service metadata, make the following `PUT` request once for e
 </details>
 
 <details>
-<summary>Click here for to review sample requests using cURL.</summary>
+<summary>Click here to review sample requests using cURL.</summary>
 
 Component ports use the following values:
 
