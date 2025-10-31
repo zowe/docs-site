@@ -1,7 +1,7 @@
 # Using ICSF Hardware Private Keys
 
 Zowe version 3.4.0 introduces API Mediation Layer (API ML) native support for ICSF-backed private keys.
-Previously, ICSF-backed private keys were supported only via [AT-TLS](../../user-guide/configuring-at-tls-for-zowe-server.md) with limitations to API ML functionality, wherein z/OSMF was required as the selected authentication provider and Personal Access Tokens could not be used.
+Previously, ICSF-backed private keys were supported only via [AT-TLS](../user-guide/configuring-at-tls-for-zowe-server.md) with limitations to API ML functionality, wherein z/OSMF was required as the selected authentication provider and Personal Access Tokens could not be used.
 
 :::note
 
