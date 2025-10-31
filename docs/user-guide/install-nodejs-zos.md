@@ -1,6 +1,6 @@
 # Addressing Zowe server prerequisites
 
-To ensure a successful Zowe server-side installation on z/OS, certain components must be pre-installed and meet specific version requirements. The following table details these core prerequisites, including Node.js, Java, and z/OSMF, outlining their applicability across different Zowe versions.
+To ensure a successful Zowe server-side installation on z/OS, certain components must be pre-installed and meet specific version requirements. The following table details these core prerequisites, including Node.js, Java, and z/OSMF, outlining their applicability across different Zowe versions.  
 
 :::info Required role: system programmer
 :::
