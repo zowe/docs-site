@@ -1,12 +1,12 @@
 # Enabling AT-TLS
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
-The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
-
-You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
 
 :::info Role: security administrator
 :::
+
+As a security administrator, you can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 ## AT-TLS configuration for Zowe
 
@@ -203,7 +203,7 @@ Outbound rules in this section allow Zowe services to communicate with each othe
 
 :::caution Important:
 
-Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID. Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
+Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID (server user ID). Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
 
@@ -213,10 +213,12 @@ The following diagram illustrates outbound rules for z/OSMF:
 
 ![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
-This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
+This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.  
 
-If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
-If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then you need to specify `zOSMF.scheme: https` in your `zowe.yaml`.
+Note the following conditions:
+
+* If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.  
+* If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then you need to specify `zOSMF.scheme: https` in your `zowe.yaml`.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -365,11 +367,11 @@ The following diagram illustrates the rule for the API ML to a southbound servic
 
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
 
-In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
+In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 <details>
-<summary>Click here for the example of a rule covering API Gateway to extension servers.</summary>
+<summary>Click here for an example of a rule covering API Gateway to extension servers.</summary>
 
 This example covers routing scenarios.
 
@@ -622,7 +624,7 @@ To update the ZLUX service metadata, make the following `PUT` request once for e
 </details>
 
 <details>
-<summary>Click here for to review sample requests using _cURL_.</summary>
+<summary>Click here for to review sample requests using cURL.</summary>
 
 Component ports use the following values:
 
