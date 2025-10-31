@@ -11,7 +11,7 @@ We recommend enabling AT-TLS when relying on ICSF Hardware Private Keys since AT
 
 ## Configuring the z/OS system
 
-Enabling API ML to use ICSF hardware private keys for signing tokens and native TLS support requires changes to server user authorization and the Java security policy. Note that enabling API ML to use ICSF hardware private keys for signing tokens and native TLS support is optional with AT-TLS.
+Enabling API ML to use ICSF hardware private keys for signing tokens and native TLS support requires changes to server user authorization and the Java security policy. 
 
 ### Server user permissions
 
