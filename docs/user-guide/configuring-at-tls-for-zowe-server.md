@@ -1,12 +1,12 @@
 # Enabling AT-TLS
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
-The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
-
-You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
 
 :::info Role: security administrator
 :::
+
+As a security administrator, you can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 ## AT-TLS configuration for Zowe
 
@@ -203,7 +203,7 @@ Outbound rules in this section allow Zowe services to communicate with each othe
 
 :::caution Important:
 
-Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID. Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
+Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID (server user ID). Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
 
@@ -213,10 +213,12 @@ The following diagram illustrates outbound rules for z/OSMF:
 
 ![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
-This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
+This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.  
 
-If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
-If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then you need to specify `zOSMF.scheme: https` in your `zowe.yaml`.
+Note the following conditions:
+
+* If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.  
+* If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then you need to specify `zOSMF.scheme: https` in your `zowe.yaml`.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -365,11 +367,11 @@ The following diagram illustrates the rule for the API ML to a southbound servic
 
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
 
-In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
+In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 <details>
-<summary>Click here for the example of a rule covering API Gateway to extension servers.</summary>
+<summary>Click here for an example of a rule covering API Gateway to extension servers.</summary>
 
 This example covers routing scenarios.
 
@@ -580,31 +582,31 @@ __Solution:__
 
 We recommend contacting your conformant support provider for assistance applying this fix.
 
-Add required metadata manually to the ZLUX app in the APIML Discovery service. The metadata will need to be added after any restart of Zowe.
+Add required metadata manually to the ZLUX app in the API ML Discovery service. The metadata will need to be added after any restart of Zowe.
 
-The metadata that should be added to the ZLUX eureka app:
+Add the following metadata to the ZLUX eureka app:
 * `apiml.corsEnabled`: `true`
 * `apiml.corsAllowedOrigins` : `https://<your_zowe_host>:<catalog_port>,https://<your_zowe_host>:<gateway_port>`
 
 <details>
 
-<summary>Click here for complete instructions applying the above fix</summary>
+<summary>Click here for complete instructions to apply the above fix.</summary>
 
-To apply the required metadata to the discovery service, you must have:
+To apply the required metadata to the Discovery service, ensure that you satisfy the following conditions: 
 
-1. X.509 Client Certificate for authentication. Other forms of authentication are _not supported_.
-2. Network access to the host where the APIML Discovery Service is running.
-3. The APIML Gateway port value. This can be found in the zowe.yaml property `components.gateway.port`.
-4. The Discovery Service port value. This can be found in the zowe.yaml property `components.discovery.port`.
-5. The App Server port value. This can be found in the zowe.yaml property `components.app-server.port`.
-6. The API Catalog port value. This can be found in the zowe.yaml property `components.api-catalog.port`.
-7. A REST client or command line tool.
+* X.509 Client Certificate for authentication. Other forms of authentication are _not supported_.
+* Network access to the host where the API ML Discovery Service is running.
+* The API ML Gateway port value. This can be found in the zowe.yaml property `components.gateway.port`.
+* The Discovery Service port value. This can be found in the zowe.yaml property `components.discovery.port`.
+* The App Server port value. This can be found in the zowe.yaml property `components.app-server.port`.
+* The API Catalog port value. This can be found in the zowe.yaml property `components.api-catalog.port`.
+6. A REST client or command line tool.
 
-To see the current list of metadata for the ZLUX service, run:
+To see the current list of metadata for the ZLUX service, make the following `GET` request to the Zowe API Deiscovery service endpoint: 
 
 `GET https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX`
 
-You should get an HTTP 200 response with a JSON response body containing service metadata. You can check this to verify `apiml.corsEnabled` and `apiml.corsAllowedOrigins` are set correctly.
+You should get an HTTP 200 response with a JSON response body containing the service metadata. Verify that `apiml.corsEnabled` and `apiml.corsAllowedOrigins` are set correctly.
 
 ```json
 // ... other fields before
@@ -616,15 +618,15 @@ You should get an HTTP 200 response with a JSON response body containing service
  }
 ```
 
-To update the ZLUX service metadata, run the below request once for each metadata field as described in the solution above. This request requires an additional URL-encoded field `<your_host>:zlux:<your_app_server_port>`, and `metadata_value` should also be URL-encoded.  
+To update the ZLUX service metadata, make the following `PUT` request once for each metadata field as described in the solution above. This request requires an additional URL-encoded field `<your_host>:zlux:<your_app_server_port>`, and `metadata_value` should also be URL-encoded.  
 
 `PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_app_server_port>/metadata?<metadata_key>=<metadata_value>`
 </details>
 
 <details>
-<summary>Sample requests using curl</summary>
+<summary>Click here to review sample requests using cURL.</summary>
 
-Given:
+Component ports use the following values:
 
 * host `localhost`
 * APIML Catalog port `7552`
@@ -632,7 +634,7 @@ Given:
 * APIML Gateway port `7554`
 * App Server port `7556`
 
-To see the current metadata:
+Use the following command to see the current metadata:
 
 ```curl
 curl --request GET \
@@ -641,7 +643,7 @@ curl --request GET \
   --url https://localost:7553/eureka/v2/apps/ZLUX
 ```
 
-To update the metadata in 2 requests:
+Use the following commands to update the metadata in 2 requests:
 
 ```curl
 curl --request PUT \
@@ -661,7 +663,7 @@ curl --request PUT \
 
 ### Additional troubleshooting
 
-When asking for support make sure to follow IBM guides for troubleshooting AT-TLS problems. This is covered in the "Diagnosing Application Transparent Transport Layer Security (AT-TLS)" article on IBM documentation.
+When asking for support, make sure to follow IBM guides for troubleshooting AT-TLS problems. Dor details, see _Diagnosing Application Transparent Transport Layer Security (AT-TLS)_ in the IBM documentation.
 
 Ensure you collect the logs and current configurations when contacting support.
 
@@ -671,7 +673,7 @@ Review a full working example of an AT-TLS configuration file on z/OS, specifica
 The example is commented for convenience.
 <details>
 
-<summary>Click here to display the full AT-TLS configuration file.</summary>
+<summary>Click here to review the full AT-TLS configuration file.</summary>
 
 ```bash
 # Main inbound rule, all Zowe services have it defined.
