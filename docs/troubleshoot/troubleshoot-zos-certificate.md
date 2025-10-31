@@ -189,7 +189,7 @@ The Zowe desktop is able to start but logon fails.
 
 The log contains messages to indicate that connections are being reset. For example, the following message shows that the API Gateway `ZWEAG` is unable to connect to the API Discovery service, by default 7553.
 
-```log
+```
 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR INFO  (o.a.h.i.c.DefaultHttpClient) I/O exception (java.net.SocketException) caught when connecting to {s}->https://<host>:<disovery_server_port>: Connection reset
 2021-01-26 15:21:43.302 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:16843005> ZWESVUSR DEBUG (o.a.h.i.c.DefaultHttpClient) Connection reset
 java.net.SocketException: Connection reset
@@ -209,7 +209,7 @@ Java z/OS components of Zowe are unable to read certificates from a keyring. Thi
 
 **Example:**
 
-```log
+```
 Caused by: java.io.FileNotFoundException: safkeyring:/ZWESVUSR/ZoweKeyring
 at java.io.FileInputStream.open(FileInputStream.java:212)
 at java.io.FileInputStream.<init>(FileInputStream.java:152)
@@ -269,7 +269,7 @@ You may also see the following log message:
 **Example:** 
  If ZWED0148E contains the following message, it indicates that Zowe's local certificate authority (local CA) `ZoweCert`, the certificate `jwtsecret`, or the Zowe certificate `localhost` does not exist in the Zowe keyring. 
 
-```log
+```
 2021-01-18 10:16:33.601 <ZWED:16847011> ZWESVUSR WARN (_zsf.bootstrap,webserver.js:156) ZWED0148E - Exception thrown when reading SAF keyring, e= TypeError: R_datalib call failed: function code: 01, SAF rc: 8, RACF rc: 8, RACF rsn: 44
 at Object.getPemEncodedData (/software/zowev15/1.15.0/components/app-server/share/zlux-server-framework/node_modules/keyring_js/index.js:21:26)
 ```
