@@ -55,9 +55,9 @@ System demos are typically held the week after a minor release becomes available
 
 - See the [Zowe Explorer API](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-#### Zowe Explorer FTP Extension
+#### Zowe Explorer for IBM z/OS FTP
 
-- See the [Zowe Explorer FTP Extension](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+- See the [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
 #### Zowe Explorer ESLint Plug-in
 
@@ -97,9 +97,9 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 
 - See the [Zowe Explorer API](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-####  Zowe Explorer FTP Extension
+#### Zowe Explorer for IBM z/OS FTP
 
-- See the [Zowe Explorer FTP Extension](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+- See the [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
 #### Zowe Explorer ESLint Plug-in
 
