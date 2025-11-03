@@ -7,7 +7,7 @@
 | **Gateway architecture**               | **Zuul Gateway** with Discovery and Catalog JVMs. | Migrated to **Spring Cloud Gateway**.     | Uses **Spring Gateway Modulith** (optional single JVM). |
 | **Port planning**                      | Separate ports for Gateway, Discovery, Catalog.   | Modular services with distinct ports.     | **Single port** possible in modulith mode.              |
 | **Keyring syntax**                     | `safkeyring:////<keyring_name>`.                  | Updated to `safkeyring://<keyring_name>`. | Same as v3.0.                                           |
-| **Deployment planning**                | Multi-JVM only.                                   | Modular runtime deployment.               | Choice of **modular** or **modulith** deployment.       |
+| **Deployment planning**                | Multi-JVM only.                                   | Modular runtime deployment: same microservice-based API ML (Gateway, Discovery, Catalog)               | Choice of  **modulith** (_recomended_) or microservice-based deployment.       |
 
 ## Installing the Zowe z/OS Runtime
 | Task                     | Zowe v2.18                                              | Zowe v3.0                                         | Zowe v3.3                                           |
