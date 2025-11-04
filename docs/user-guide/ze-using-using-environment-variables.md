@@ -45,18 +45,50 @@ To use multiple sets of credentials:
 
   4. Confirm that the environment variables work by executing a search for data sets, USS files, or jobs.
 
-## A configuration file with environment variables
+## Configuration with environment variables
 
-The following examples include environment variables in a configuration file.
+### Using one set of credentials
 
-**In the nested structure**, the `zosmf` and `apiml` service profiles are nested within the `lpar` profile.
+In the following example, the configuration uses the `ZOWE_OPT_USER` and `ZOWE_OPT_PASSWORD` environment variables for one set of credentials.
+
+```
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar": {
+            "properties": {
+                "host": "my.company.com",
+                "rejectUnauthorized": false,
+                "port": 7554
+            },
+            "profiles": {
+                "zosmf_via_apiml": {
+                    "type": "zosmf",
+                    "properties": {
+                        "basePath": "ibmzosmf/api/v1"
+                    }
+                }
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar.zosmf_via_apiml"
+    },
+    "autoStore": false
+}
+```
+
+### Using multiple sets of credentials
+
+The following examples of configurations use environment variables for multiple credentials.
+
+**In the nested structure**, the `zosmf` and `zosmf_via_apiml` profiles are nested within the `lpar` profile.
 - This avoids repeating the `host` and `rejectUnauthorized` properties in both service profiles.
 - Environment variables are used for [multiple credentials](#multiple-sets-of-credentials) in Lines 14-15 and Line 24.
 
 **In the flat structure**, the `zosmf` and `apiml` service profiles are organized sequentially.
 - This includes the `host` and `rejectUnauthorized` properties in both service profiles.
 - Environment variables are used for [multiple credentials](#multiple-sets-of-credentials) in Lines 10-11 and Line 23.
-
 
 
 import Tabs from '@theme/Tabs';
@@ -71,7 +103,7 @@ import TabItem from '@theme/TabItem';
         "lpar": {
             "properties": {
                 "host": "my.company.com",
-                "port": 1234,
+                "port": 7554,
                 "rejectUnauthorized": false
             },
             "profiles": {
@@ -82,12 +114,12 @@ import TabItem from '@theme/TabItem';
                         "user": "$ZOWE_USER",
                         "password": "$ZOWE_PASS",
                         // highlight-end
-                        "authOrder": "basic"
+                        "authOrder": "basic",
+                        "port": 443
                     },
-                    "apiml": {
+                    "zosmf_via_apiml": {
                         "type": "zosmf",
                         "properties": {
-                            "port": 7554,
                             "basePath": "ibmzosmf/api/v1",
                             "tokenType": "apimlAuthenticationToken",
                             // highlight-start
@@ -101,7 +133,7 @@ import TabItem from '@theme/TabItem';
         }
     },
     "defaults": {
-        "zosmf": "lpar.zosmf"
+        "zosmf": "lpar.zosmf_via_apiml"
     },
     "autoStore": false
 }
@@ -148,3 +180,5 @@ import TabItem from '@theme/TabItem';
 ```
   </TabItem>
 </Tabs>
+
+
