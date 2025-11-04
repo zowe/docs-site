@@ -3,7 +3,7 @@
 Zowe version 3.4.0 introduces API Mediation Layer (API ML) native support for ICSF-backed private keys.
 Previously, ICSF-backed private keys were supported only via [AT-TLS](../user-guide/configuring-at-tls-for-zowe-server.md) with limitations to API ML functionality, wherein z/OSMF was required as the selected authentication provider and Personal Access Tokens could not be used. Now, the use of ICSF-backed private keys no longer requires z/OSMF for authentication.
 
-:::note
+:::tip
 
 We recommend enabling AT-TLS when relying on ICSF Hardware Private Keys since AT-TLS enablement provides TLS support for all Zowe components.
 
@@ -61,7 +61,7 @@ security.provider.1=IBMJCEHYBRID
 security.provider.2=IBMJCECCA
 ```
 
-For more information, refer to the _IBM Semeru Runtime Certified Edition for z/OS_ IBM product documentation:
+For more information, refer to the following sections in the _IBM Semeru Runtime Certified Edition for z/OS_ IBM product documentation:
 
 * Installing security providers
 * IBMJCECCA
@@ -75,7 +75,9 @@ To use ICSF Keyrings, update the `zowe.certificate` section in your `zowe.yaml` 
 
 2. Set `zowe.certificate.truststore.type` to `JCEHYBRIDRACFKS`
 
-Make sure `zowe.certificate.trustore.file` and `zowe.certificate.keystore.file` has protocol `safkeyring://` or `safkeyringhybridjce://`
+3. Verify that the protocols `safkeyring://` or `safkeyringhybridjce://` are used for the following files:  
+* `zowe.certificate.trustore.file`
+* `zowe.certificate.keystore.file` 
 
 ## Troubleshooting
 
