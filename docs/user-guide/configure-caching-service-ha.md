@@ -1,22 +1,27 @@
 # Configuring the Caching Service for high availability
 
-Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.  
+Use Zowe in a high availability (HA) configuration where multiple instances of the Zowe launcher are started. These instances can be either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR, you do not need to create a Caching Service.   
 
-In an HA setup the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`), and client traffic to this port is distributed between separate gateways that in turn dispatch their work to different services. When any of the services individually become unavailable the work can be routed to available services, which means that the initial northbound request will be fulfilled.  
+In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate gateways that, in turn, dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
 
-Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. If you are runnning the caching service on z/OS there are three storage methods: `inMemory`, `infinispan` or `VSAM`. If you are running the caching service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` or `infinispan`.  
+Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. Three storage methods are supported if you are running the Caching Service on z/OS:
+* **inMemory**
+* **infinispan**
+* **VSAM** 
+
+If you are running the Caching Service off platform, such as a Linux or Windows container image, it is also possible to specify `redis`.  
 
 To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 :::note
-To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. Infinispan is part of Zowe installation. No additional software or installation is required when using this storage solution. Infinispan is the recommended storage method to use in production.
+To enable Personal Access Token support when using the Caching Service, **Infinispan** is the required storage solution. _Infinispan_ is part of Zowe installation. No additional software or installation is required when using this storage solution. _Infinispan_ is the recommended storage method to use in production.
 :::
 
 ## inMemory
 
-   This storage method is designed for quick start of the service and should be used only for single instance scenario and development or test purpose. Do not use it in production or high availability scenario.
+   _inMemory_ is the storage method designed for quick start of a service and should be used only in a single instance scenario, during development, or test purpose. Do not use _inMemory_ in production or high availability scenario.
   
-   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service will not persist any data.  
+   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service does not persist any data.  
 
    ``` yaml
     components:
@@ -32,11 +37,12 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 ## Infinispan
 
   :::note
-  This is the recommended solution for on-prem z/OS production deployments
+  _Infinispan_ is the recommended solution for on-prem z/OS production deployments.
   :::
 
-  Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
-  Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
+  _Infinispan_ is designed to be run mainly on z/OS as this storage method offers high performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
+
+  _Infinispan_ environment variables are not currently following the v2 naming convention, so these variables must be defined in the `zowe.environments` section. For more information about these properties and their values, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
   ``` yaml
   components:
@@ -51,14 +57,12 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 ## VSAM (Deprecated)
 
   :::note
-
-  VSAM support in Caching Service will be removed in a future release
-
+  _VSAM_ support in the Caching Service will be removed in a future release.
   :::
 
-  This storage method allows you tu use VSAM dataset as a storage for Caching service. You can use `zwe init vsam` command to generate proper dataset.
+  The _VSAM_ storage method allows you to use the VSAM dataset as storage for the Caching service. You can use `zwe init vsam` command to generate a proper dataset.
 
-  The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)`.  You can edit and submit this yourself, or else if use `zwe init vsam` which will copy the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and create a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.  
+  The command `zwe init vsam` uses the template JCL in `SZWESAMP(ZWECSVSM)`.  One option is to edit and submit the JCL job that defines and allocates the VSAM dataset yourself. Alternatively, you can apply `zwe init vsam` which copies the source template member from `zowe.setup.mvs.hlq.SZWESAMP(ZWECVCSM)` and creates a target JCL member in `zowe.setup.mvs.jcllib(ZWECVSCM)` with values extracted from the `zowe.yaml` file.  
   
   ```yaml
   zowe:
@@ -79,7 +83,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
   ```
 
   - `components.caching-service.storage.vsam.name`  
-  This specifies the data set name that the `ZWECSVSM` JCL will create. This is used to replace all occurrences of `#dsname` in the `ZWECSVSM` data set.
+  Specifies the data set name that the `ZWECSVSM` JCL creates, and is used to replace all occurrences of `#dsname` in the `ZWECSVSM` data set.
 
     :::note
     The `ZWECSVSM` JCL defines the key length and record length of the VSAM instance. If the key length and record length of this JCL is changed,
@@ -87,15 +91,16 @@ To enable Personal Access Token support when using the Caching Service, **Infini
     :::
 
   - `components.caching-service.storage.mode`  
-  This specifies whether you would like to use [Record Level Sharing (RLS)](https://www.ibm.com/support/pages/vsam-record-level-sharing-rls-overview) for your VSAM data set. `RLS` is recommended for Sysplex deployment.  `NONRLS` is also an allowed value.  
+  Specifies the access mode for the VSAM data set — either [`Record Level Sharing (RLS)`](https://www.ibm.com/support/pages/vsam-record-level-sharing-rls-overview)
+ or `NONRLS`. Use `RLS` for Sysplex environments where concurrent access is required; otherwise, NONRLS is also supported.
 
-  - `zowe.setup.vsam.storageClass`
+  - `zowe.setup.vsam.storageClass`  
   If you use the `RLS` mode, a storage class is required.
 
   - `zowe.setup.vsam.volume`  
   If you set to use the `NONRLS` mode, a storage volume is required.
 
-  To preview the member before submitting it, use the value `--security-dry-run`.  Otherwise, the command automatically submits the JCL and waits for its completion.
+  To preview the member before submitting it, use the value `--security-dry-run`.  Otherwise, the command automatically submits the JCL and waits for completion.
 
   ```plaintext
   >zwe init vsam -c ./zowe.yaml
@@ -111,9 +116,9 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ## Redis
 
-   Redis is not available if you are running the API Mediation Layer on z/OS under Unix System Services. Usage of redis is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
+   _Redis_ is not available if you are running the API Mediation Layer on z/OS under Unix System Services. The use of _redis_ is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
 
-   To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
+   To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values, see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
 
    ```yaml
     components:
