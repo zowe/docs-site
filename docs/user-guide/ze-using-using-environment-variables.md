@@ -116,17 +116,17 @@ import TabItem from '@theme/TabItem';
                         // highlight-end
                         "authOrder": "basic",
                         "port": 443
-                    },
-                    "zosmf_via_apiml": {
-                        "type": "zosmf",
-                        "properties": {
-                            "basePath": "ibmzosmf/api/v1",
-                            "tokenType": "apimlAuthenticationToken",
-                            // highlight-start
-                            "tokenValue": "$ZOWE_APIML_PAT",
-                            // highlight-end
-                            "authOrder": "token, bearer"
-                        }
+                    }
+                },
+                "zosmf_via_apiml": {
+                    "type": "zosmf",
+                    "properties": {
+                        "basePath": "ibmzosmf/api/v1",
+                        "tokenType": "apimlAuthenticationToken",
+                        // highlight-start
+                        "tokenValue": "$ZOWE_APIML_PAT",
+                        // highlight-end
+                        "authOrder": "token, bearer"
                     }
                 }
             }
