@@ -234,6 +234,7 @@ module.exports = {
                 "user-guide/certificates-setup",
                 "user-guide/tls-configuration",
                 "user-guide/configuring-at-tls-for-zowe-server",
+                "user-guide/using-icsf-hardware-private-keys",
               ],
             },
             {
