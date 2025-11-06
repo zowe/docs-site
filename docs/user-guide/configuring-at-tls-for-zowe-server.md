@@ -77,9 +77,7 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 The following diagram illustrates inbound rules for single-service deployment mode:
 
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)  
-
-TODO - minor update to diagram.
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
 
 1. Define a generic inbound rule that can be set for all Zowe services. This is done slightly differently between single-service deployment mode and multi-service deployment mode. The following example is for single-service deployment mode. The omission of port 7555 is deliberate for compatibility with multi-service deployment mode, and means that there is a need for two separate rules below.
 
@@ -238,82 +236,6 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
     | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV |
     | 7557 | App Framework | zss | ZWE1**SZ** |
 
-    For multi-service deployment, the following ports need to be included:
-  ```bash
-  TTLSRule ZoweServerRule
-  {
-    LocalAddr All
-    RemoteAddr All
-    LocalPortRange 7552-7558 # Range covers all Zowe services
-    Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
-    Direction Inbound
-    TTLSGroupActionRef ServerGroupAction
-    TTLSEnvironmentActionRef ZoweServerEnvironmentAction
-    TTLSConnectionActionRef ZoweServerConnectionAction
-  }
-
-  TTLSGroupAction ServerGroupAction
-  {
-    TTLSEnabled On
-  }
-
-  # Keyring with trusted CA certificates and Zowe server certificate with its private key
-  TTLSKeyringParms ZoweKeyring
-  {
-    Keyring ZWEKRNG
-  }
-
-  TTLSEnvironmentAction ZoweServerEnvironmentAction
-  {
-    HandshakeRole ServerWithClientAuth
-    EnvironmentUserInstance 0
-    TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
-    TTLSKeyringParmsRef ZoweKeyring
-  }
-
-  TTLSConnectionAction ZoweServerConnectionAction
-  {
-    HandshakeRole ServerWithClientAuth
-    TTLSCipherParmsRef CipherParms
-    TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
-  }
-
-  TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
-  {
-    ClientAuthType Full # Support optional X.509 Client Certificate authentication
-    ApplicationControlled Off
-    Renegotiation Disabled
-    SSLv2 Off
-    SSLv3 Off
-    TLSv1 Off
-    TLSv1.1 Off
-    TLSv1.2 On
-    TLSv1.3 On
-  }
-
-  TTLSConnectionAdvancedParms ZoweConnectionAdvParms
-  {
-    ApplicationControlled Off
-    ServerCertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
-    CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
-    SecondaryMap Off
-  }
-  ```
-
-2. Verify port ranges.
-
-    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
-
-    | Port number | Category | Component | Default Jobname |
-    |------|------|------|------|
-    | 7552 | API Mediation Layer | api-catalog | ZWE1**AC** |
-    | 7553 | API Mediation Layer | discovery | ZWE1**AD** |
-    | 7554 | API Mediation Layer | gateway | ZWE1**AG** |
-    | 7555 | API Mediation Layer | Caching Service | ZWE1**CS** |
-    | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV |
-    | 7557 | App Framework | zss | ZWE1**SZ** |
-    | 7558 | API Mediation Layer | zaas | ZWE1**AZ** |
-
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
 3. Apply your keyring and configuring handshake role.
@@ -372,7 +294,8 @@ Routing to the Discovery Service is disabled by default. Ensure this routing rem
 
 The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
 
-TODO: Andrew's diagram goes here.
+![AT-TLS_Outbound_Rules](../images/install/outbound-rules-single-service.png)
+
 
 The rules are slightly different between single-service deployment mode and multi-service deployment mode. The following example is for single-service deployment mode.
 
@@ -456,7 +379,6 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 }
 ```
 
-<details>
 :::tip Tips:
 
 * `Jobname` is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
@@ -467,9 +389,10 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 #### Outbound rule for communication between Zowe core components
 
+<details>
 <summary>Click here to see the diagram and example for multi-service deployment mode.</summary>
 
-The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
+The following diagram illustrates outbound rules between Zowe core components for multi-service deployment mode:
 
 ![Outbound rules](../images/install/outbound-rules.png)
 
@@ -644,7 +567,7 @@ Services running outside of z/OS cannot use AT-TLS to make transparent https cal
 
 The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:
 
-TODO: Andrew's diagram goes here.
+![Outbound rules](../images/install/outbound-rules-single-service-zosmf.png)
 
 <details>
 

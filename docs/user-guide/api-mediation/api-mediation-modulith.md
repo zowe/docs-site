@@ -6,7 +6,7 @@ Zowe version 3.3.0 introduced the option to switch the execution mode for API Me
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** (which is recommended by Broadcom, and also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (which we recommend, and is also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption

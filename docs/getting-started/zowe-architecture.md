@@ -2,7 +2,7 @@
 
 Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
-The following diagram illustrates the high-level Zowe architecture using the Broadcom-recommended Single Service Architecture.
+The following diagram illustrates the high-level Zowe architecture using the recommended Single Service Architecture.
 
 ![Zowe API ML Single-service Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
     
