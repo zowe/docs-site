@@ -28,13 +28,6 @@ components.gateway.apiml.security.auth.provider: zosmf
 components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
 
-:::note
-z/OSMF is the required authentication provider for the following Zowe Desktop application plugins:
-* JES Explorer
-* MVS Explorer
-* USS Explorer
-::: 
-
 components.gateway.apiml.security.auth.provider: zosmf
 
 ## SAF Authentication Provider
@@ -46,4 +39,8 @@ Use the following property of the API Gateway to enable the `SAF Authentication 
 components.gateway.apiml.security.auth.provider: saf
 ```
 
+:::note
 
+In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs used by Zowe Explorer  log in using PassTickets instead of passwords. As such, ensure that PassTickets are configured and enabled for z/OSMF.
+
+:::
