@@ -60,3 +60,46 @@ Error: error:1E08010C:DECODER routines::unsupported
 **Solution:**
 
 Create a new PEM certificate file with no password requirement to log in to API ML.
+
+### Secrets SDK persistence level for Windows
+
+**Symptom:**
+
+A Windows user encounters the error message "An OS error has occurred" when saving secure credentials. **[should we specify where these creds are being saved?]**
+
+**Solution:**
+
+Customize the credential manager persistence level to configure the scope of application for credentials.
+
+Zowe CLI and Zowe Explorer allow customizing the credential manager persistence level for Windows.
+
+Supported persistence levels:
+- `enterprise`: Default value. Saves credential changes to the local machine and ensures these are propagated to all log-on sessions for this account across the network.
+- `local_machine`: Saves credential changes to the local machine and does not propagate these across networked accounts.
+- `session`: Saves credential changes to the local machine for the duration of the user's log-on session. These credentials are deleted when the user logs off.
+
+To customize the persistence level on Windows:
+
+1. Locate the `imperative.json` file in your `ZOWE_CLI_HOME` directory (`ZOWE_CLI_HOME/settings/imperative.json`).
+2. Add the following object (highlighted in the following code block) to the `imperative.json` file to specify the persistence level:
+    ```
+    {
+        "overrides": {
+            "CredentialManager": "@zowe/cli"
+        },
+        //highlight-start
+        "credentialManagerOptions": {
+            "persist": "session"
+        //highlight-end
+        }
+    }
+    ```
+3. Save the file to apply the changes.
+4. Run a Zowe CLI command, such as `zowe config secure`, to update your secure credentials.
+
+    Updated secured credentials are stored with the configured persistence level.
+
+
+
+
+
