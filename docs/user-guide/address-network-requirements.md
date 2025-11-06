@@ -12,7 +12,18 @@ For more information about variable names in the following table, see the [Zowe 
 
 Most Components of Zowe are HTTPS servers. The ports of each and their default jobnames are listed below.
 The ports can be customized for each component by editing the value of `components.<component-name>.port` within the Zowe YAML file.
-Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file.
+Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file. The ports used are different between single-service deployment and multi-service deployment.
+
+### Single-service deployment
+
+| Port number | Category | Component(s) | Default Jobname | Log Suffix | Purpose |
+|------|------|------|------|------|------|
+| 7553 | API Mediation Layer | discovery | ZWE1**AD** | ADS | Discovery server port which dynamic API services can issue APIs to register or unregister themselves. |
+| 7554 | API Mediation Layer | API ML Single Service | ZWE1**AG** | AGW AAC ACS AZ | The northbound edge of the API ML Single Service used to accept client requests.  This port must be exposed outside the z/OS network so clients (web browsers, VS Code, processes running the Zowe CLI) can reach the single service. |
+| 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV | D | The Zowe Desktop (also known as ZLUX) port used to log in through web browsers. |
+| 7557 | App Framework | zss | ZWE1**SZ** | SZ | Z Secure Services (ZSS) provides REST API services to ZLUX, used by the File Editor application and other ZLUX applications in the Zowe Desktop. |
+
+### Multi-service deployment
 
 | Port number | Category | Component | Default Jobname | Log Suffix | Purpose |
 |------|------|------|------|------|------|
@@ -50,7 +61,18 @@ Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the ser
 
 If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.5.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
 
-When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be:
+When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service deployment:
+
+```plaintext
+   7553 TCP ZWE1AD BIND 10.11.12.13 ; Zowe Discovery
+   7554 TCP ZWE1AG BIND 10.11.12.13 ; Zowe Single Service
+   7556 TCP ZWE1DS BIND 10.11.12.13 ; Zowe App Server without Cluster
+   7556 TCP ZWE1SV BIND 10.11.12.13 ; Zowe App Server with Cluster (Default)
+   7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
+```
+
+
+With multi-service deployment, it could be as follows:
 
 ```plaintext
    7552 TCP ZWE1AC BIND 10.11.12.13 ; Zowe API Catalog

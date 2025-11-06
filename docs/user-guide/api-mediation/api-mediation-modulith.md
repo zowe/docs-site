@@ -1,12 +1,12 @@
 # Enabling Single-Service deployment of API Mediation Layer
 
-Zowe version 3.3.0 introduces, as a technical preview, the option to switch the execution mode for API Mediation Layer (API ML) configuration from the current multiple services scheme to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture.
+Zowe version 3.3.0 introduced the option to switch the execution mode for API Mediation Layer (API ML) configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture. From Zowe version 3.4.0 onwards, we recommend the single-service option. 
 
 :::info
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** (also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (which is recommended by Broadcom, and also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -21,13 +21,6 @@ Tracking communication between the API ML services to determine the cause and so
 Review the following architecture of API ML single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
-
-## Limitations
-
-The following features are not supported in the technical preview release of API ML single-service deployment mode:
-
-* Multi-tenancy deployment
-* Docker container deployments
 
 ## Breaking Changes
 
@@ -52,7 +45,7 @@ The single-service API ML address space uses ports defined in `components.gatewa
 
 Update the network permissions to reflect this change. Ensure that both ports are under z/OS address space `ZWE1AG`.
 
-The remaining ports described under the `API Mediation Layer` category in the article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555, and 7558) are no longer used in single-service deployment mode.
+The remaining ports described under the `API Mediation Layer` category in the multi-service deployment section of article [Address Network Requirements](../address-network-requirements.md#component-ports) (defaults 7552, 7555, and 7558) are no longer used in single-service deployment mode. 
 
 :::note
 The Caching Service is enabled in single-service deployment mode and the default is `infinispan`. Note that the  `infinispan` storage solution requires additional ports. For more information, see [Caching Service Infinispan ports](../address-network-requirements.md#caching-service-infinispan-ports).
@@ -92,6 +85,7 @@ If your installation is configured with AT-TLS, rules need to be updated. Perfor
 
     * Remove rules that apply to communication between Gateway, Discovery Service, API Catalog, and Caching Service.
     * Remove all rules that apply to the core components except for rules that apply to the Gateway Service (`ZWE1AG`).
+    * Remove ports which are no longer used from the server rules. See [Enabling AT-TLS rules](../../user-guide/configuring-at-tls-for-zowe-server#inbound-rules). 
 
 :::note Notes:
 * In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
@@ -130,5 +124,5 @@ It is possible to revert to the original multi-service deployment by reverting c
 
 ## Planned updates to single-service deployment mode
 
-* Single-service deployment is planned to be the default mode in Zowe v3.4.0
+* Single-service deployment is the recommended mode in Zowe v3.4.0, and is planned to be the default mode in Zowe v3.5.0.
 * The option to roll back to multi-service deployment will remain for the duration of the Zowe v3 lifecycle.
