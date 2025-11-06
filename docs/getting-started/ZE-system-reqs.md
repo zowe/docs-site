@@ -40,5 +40,5 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
     
 - Applicable plug-in services are configured and running on the mainframe.
     - Plug-ins communicate with various mainframe services. The services must be configured and running on the mainframe before issuing plug-in commands.
-        * See [Zowe® Explorer for IBM® CICS® Transaction Server system requirements](./install-ze-extensions.md#zowe-explorer-cics-extension-system-requirements).
-        * See [Zowe® Explorer for IBM® z/OS® FTP system requirements](./install-ze-extensions.md#zowe-explorer-ftp-extension-system-requirements).
+        * See [Zowe® Explorer for IBM® CICS® Transaction Server system requirements](./install-ze-extensions.md#zowe-explorer-for-ibm-cics-transaction-server-system-requirements). 
+        * See [Zowe® Explorer for IBM® z/OS® FTP system requirements](./install-ze-extensions.md#zowe-explorer-for-ibm-zos-ftp-system-requirements).

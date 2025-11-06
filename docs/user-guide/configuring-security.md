@@ -90,7 +90,7 @@ The following video shows how to locate the `ZWESECUR` JCL member and execute it
 <!-- Validate if the following section should be revised or removed -->
 :::tip
 
-If an error occured in performing security configuration, these configurations can be undone. 
+If an error occurred in performing security configuration, these configurations can be undone. 
 <details>
 <summary>Click here for details about undoing security configurations.</summary>
 
