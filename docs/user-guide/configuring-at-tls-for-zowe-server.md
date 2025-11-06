@@ -460,9 +460,15 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 #### Outbound rule for communication between API Gateway and southbound services
 
-The following diagram illustrates the rule for the API ML to a southbound service.
+The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
+
+TODO: Andrew's diagram goes here.
+
+<details>
+<summary>Click here to see the diagram for multi-service deployment mode.</summary>
 
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
+</details>
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
@@ -857,11 +863,357 @@ Ensure you collect the logs and current configurations when contacting support.
 
 ## Full example of AT-TLS configuration
 
-Review a full working example of an AT-TLS configuration file on z/OS, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
-The example is commented for convenience.
+Review full working example of an AT-TLS configuration file on z/OS bor both single-service and multi-service deployment mode, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
+The examples are commented for convenience.
 <details>
 
-<summary>Click here to review the full AT-TLS configuration file.</summary>
+<summary>Click here to review the full AT-TLS configuration file for single-service deployment mode.</summary>
+
+```bash
+# Main inbound rules, all Zowe services have them defined.
+TTLSRule ZoweServerRule1
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7553-7554 # Discovery and single service
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+}
+
+TTLSRule ZoweServerRule2
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+}
+# Example southbound service inbound rule
+TTLSRule ApimlDCServerRule
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 8080-8090 # Example service ports
+  Jobname ZWE1DC* # Jobname prefix (optional)
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
+  TTLSConnectionActionRef ZoweDCServerConnectionAction
+}
+
+TTLSGroupAction ServerGroupAction
+{
+  TTLSEnabled On
+}
+
+# Environment action for all Zowe service
+TTLSEnvironmentAction ZoweServerEnvironmentAction
+{
+  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ZoweKeyring
+}
+
+# Environment action for sample southbound service
+TTLSEnvironmentAction ZoweDCServerEnvironmentAction
+{
+  HandshakeRole Server
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ZoweDCServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ZoweKeyring
+}
+
+# Keyring with trusted CA certificates and personal certificate with its private key
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
+# Keyring without a default personal certificate and its private key; contains only trusted CA certificates
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+TTLSEnvironmentAdvancedParms ZoweServerEnvironmentAdvParms
+{
+  ClientAuthType Full # Support optional X.509 Client Certificate authentication
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+TTLSEnvironmentAdvancedParms ZoweDCServerEnvironmentAdvParms
+{
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Server Connection Action for API ML core services.
+TTLSConnectionAction ZoweServerConnectionAction
+{
+  HandshakeRole ServerWithClientAuth # API ML Core Services use X.509 Client Certificate authentication
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweServerConnectionAdvParms
+}
+
+# Server Connection Action for DC Service.
+TTLSConnectionAction ZoweDCServerConnectionAction
+{
+  HandshakeRole Server 
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweDCServerConnectionAdvParms
+}
+
+# API ML Server connection action.
+# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLs connections.
+TTLSConnectionAdvancedParms ZoweServerConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  SecondaryMap Off
+}
+
+# Service advanced server connection action.
+TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  SecondaryMap Off
+}
+
+# Example outbound TTLS rules for a Zowe client calling a Zowe server
+# In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
+TLSRule ZoweClientRule1
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7553-7554 # Discovery and single service
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSRule ZoweClientRule2
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+# Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
+# Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
+# Note ConnectionAction doesn't configure X.509 Client Certificate.
+TTLSRule ApimlServiceClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 40030 # Service ports
+  Jobname ZWE1A*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Optional. Can configure the outbound connection from API Gateway and ZAAS to work with AT-TLS while connecting to z/OSMF.
+TTLSRule ApimlZosmfClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 443 # z/OSMF Port
+  Jobname ZWE1A*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Example outbound rule from API Gateway to app server and zss.
+TTLSRule ApimlZLUXClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557 
+  Jobname ZWE1AG*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+TTLSEnvironmentAction ApimlX509ClientEnvAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef ZoweKeyring # Keyring contains personal X.509 certificate and its private key
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
+  EnvironmentUserInstance 0
+}
+
+TTLSEnvironmentAction ApimlNoX509ClientEnvAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef NoKeyKeyring # Keyring does not contain personal X.509 certificate and its private key
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
+  EnvironmentUserInstance 0
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
+}
+
+TTLSConnectionAction ApimlX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweClientX509ConnAdvParms
+}
+
+TTLSConnectionAction ApimlNoX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweClientNoX509ConnAdvParms
+}
+
+# In case the connection needs/requires X.509 Client Certificate authentication, this is where the label is set for outbound connections.
+TTLSConnectionAdvancedParms ZoweClientX509ConnAdvParms
+{
+  CertificateLabel apimlcert
+  SecondaryMap Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# ConnectionAdvanced parameters for connections not requiring X.509 Client Certificate authentication
+# Note: If the set Keyring has a default certificate this will not prevent sending it
+TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
+{
+# No CertificateLabel; Keyring contains no X.509 Client Certificate
+  ApplicationControlled Off
+  SecondaryMap Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Example list of supported ciphers in handshake. Validate and filter this list based on local setup
+TTLSCipherParms                   CipherParms
+{
+  V3CipherSuites                  TLS_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_CHACHA20_POLY1305_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA384
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_GCM_SHA384
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_CBC_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_256_CBC_SHA
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_GCM_SHA256
+  V3CipherSuites                  TLS_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA256
+  V3CipherSuites                  TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_ECDSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_ECDH_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_CBC_SHA
+  V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA
+}
+```
+
+</details>
+<details>
+
+<summary>Click here to review the full AT-TLS configuration file for multi-service deployment mode.</summary>
 
 ```bash
 # Main inbound rule, all Zowe services have it defined.
