@@ -857,7 +857,7 @@ curl --request PUT \
 
 ### Additional troubleshooting
 
-When asking for support, make sure to follow IBM guides for troubleshooting AT-TLS problems. Dor details, see _Diagnosing Application Transparent Transport Layer Security (AT-TLS)_ in the IBM documentation.
+When asking for support, make sure to follow IBM guides for troubleshooting AT-TLS problems. For details, see _Diagnosing Application Transparent Transport Layer Security (AT-TLS)_ in the IBM documentation.
 
 Ensure you collect the logs and current configurations when contacting support.
 
