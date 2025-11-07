@@ -222,7 +222,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
   SecondaryMap Off
 }
 ```  
-
+ 
 </details>
 
 2. Verify port ranges.
