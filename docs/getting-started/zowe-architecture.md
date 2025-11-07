@@ -43,7 +43,7 @@ The configuration entries of each LPAR in the `zowe.yaml` file control which com
 
 The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
-## Zowe architecture when running in a Kubernetes cluster
+## Zowe architecture when running in Kubernetes cluster
 
 The following diagram for single-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
 
@@ -61,7 +61,7 @@ The following diagram for multi-service deployment illustrates the difference in
 
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
-- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in same Kubernetes cluster.
+- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in the same Kubernetes cluster.
 - Zowe has its own `ServiceAccount` to help with managing permissions.
 - Server components use similar `zowe.yaml` on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
 - Server components can be configured by using the same certificates used on z/OS components.
