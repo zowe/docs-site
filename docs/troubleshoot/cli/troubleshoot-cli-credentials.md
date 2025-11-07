@@ -65,7 +65,7 @@ Create a new PEM certificate file with no password requirement to log in to API 
 
 **Symptom:**
 
-A Windows user encounters the error message "An OS error has occurred" when saving secure credentials. **[should we specify where these creds are being saved?]**
+A Windows user encounters the error message "An OS error has occurred" when saving secure credentials.
 
 **Solution:**
 
