@@ -139,7 +139,7 @@ For more information about the Caching service, see [Using the Caching Service](
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.
 When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
-When running on z/OS in single-service deployment mode, the caching service is part of the single service, which uses the jobname suffix of GW.
+When running on z/OS in single-service deployment mode, the caching service is part of the gateway, which uses the jobname suffix of GW.
 When running on z/OS in multi-service deployment mode, the caching service uses the jobname suffix of CS.
 
 ## Desktop Apps

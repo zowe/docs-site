@@ -1,12 +1,16 @@
 # Enabling Single-Service deployment of API Mediation Layer
 
-Zowe version 3.3.0 introduced the option to switch the execution mode for API Mediation Layer (API ML) configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture. From Zowe version 3.4.0 onwards, we recommend the single-service option. 
+Zowe version 3.3.0 introduced the option to switch the execution mode for API Mediation Layer (API ML) 
+configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture. 
+
+From Zowe version 3.4.0 onwards, we recommend the single-service option. The workflow for new installations 
+will set the single-service deployment option in `zowe.yaml`. 
 
 :::info
 Required roles: System Programmer, Network Administrator
 :::
 
-This **single-service deployment mode** (which we recommend, and is also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
+This **single-service deployment mode** (which is also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
 
 * **Performance Improvements**  
 Enhanced performance, faster startup times, reduced CPU and memory consumption
@@ -16,11 +20,18 @@ Simplified deployment processes, a single JVM process, decreased network traffic
 * **Simplified debugging**  
 Tracking communication between the API ML services to determine the cause and source of issues not required 
 
+To enable the single-service option in an existing installation, see [Enable single-service deployment mode for API Mediation Layer](#enable-single-service-deployment-mode-for-api-mediation-layer).
+
+
 ## Architecture
 
 Review the following architecture of API ML single-service deployment mode.
 
 ![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
+
+## Limitations
+
+Kubernetes is not supported in Zowe 3.4 single-service deployment mode.
 
 ## Breaking Changes
 
@@ -56,7 +67,7 @@ The Caching Service is enabled in single-service deployment mode and the default
 In single-service deployment mode, logs from internal API ML components such as the Discovery Service, API Catalog, and Caching Service appear under the prefix `ZWE1AG`.
 
 **Example:**  
-In multi-service deployment, the following message is printed under `ZWE1AC`:
+In multi-service deployment mode, the following message is printed under `ZWE1AC`:
 
 ```plaintext
 2025-07-29 08:13:44.560 <ZWE1AC:main:17171209> [35mZWESVUSR[0;39m [36mINFO [0;39m ((o.z.a.p.s.ServiceStartupEventHandler)) ZWEAM000I API Catalog Service started in 71.757 seconds
@@ -76,7 +87,7 @@ This change affects only logs printed to spool or USS files. WTOs remain unchang
 
 ### Update AT-TLS rules
 
-If your installation is configured with AT-TLS, rules need to be updated. Perform the following updates to the PAGENT rules:
+If your installation is configured with AT-TLS, you will need to update the rules. Perform the following updates to the PAGENT rules:
 
 1. Update job name filters to use `ZWE1AG`.
    
@@ -97,7 +108,7 @@ If your installation is configured with AT-TLS, rules need to be updated. Perfor
 
 Once you complete updates to your ports, log prefixes, and AT-TLS rules (if applicable), you are ready to enable single-service deployment mode.
 
-## Enable single-service deployment of API Mediation Layer
+## Enable single-service deployment mode for API Mediation Layer
 
 To enable single-service deployment mode for API ML, perform the following changes to the installation's `zowe.yaml` file:
 
@@ -113,16 +124,15 @@ To enable single-service deployment mode for API ML, perform the following chang
 
 2. Start the Zowe started task.
 
-### Roll back changes from single to multi-service deployment
+### Roll back changes from single to multi-service deployment mode
 
-It is possible to revert to the original multi-service deployment by reverting changes in the `zowe.yaml` file:
+It is possible to revert to the original multi-service deployment mode by reverting changes in the `zowe.yaml` file:
 
 1. Disable the `apiml` component:
     Set `components.apiml.enabled` to `false`.
 
 2. Start the Zowe started task.
 
-## Planned updates to single-service deployment mode
+## Future support for multi-service deployment mode
 
-* Single-service deployment is the recommended mode in Zowe v3.4.0, and is planned to be the default mode in Zowe v3.5.0.
-* The option to roll back to multi-service deployment will remain for the duration of the Zowe v3 lifecycle.
+The option to roll back to multi-service deployment mode will remain for the duration of the Zowe v3 lifecycle.

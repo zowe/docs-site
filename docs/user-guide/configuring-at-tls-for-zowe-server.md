@@ -86,7 +86,7 @@ TTLSRule ZoweServerRule1
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7553-7554 # Discovery and single service
+  LocalPortRange 7553-7554 # Discovery and gateway services
   Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -229,12 +229,12 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
    
     The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, the following ports need to be included:
     
-    | Port number | Category | Component | Default Jobname |
-    |------|------|------|------|
-    | 7553 | API Mediation Layer | discovery | ZWE1**AD** |
-    | 7554 | API Mediation Layer | Single Service | ZWE1**AG** |
+    | Port number | Category | Component  | Default Jobname     |
+    |------|------|------------|---------------------|
+    | 7553 | API Mediation Layer | discovery  | ZWE1**AG**         |
+    | 7554 | API Mediation Layer | gateway    | ZWE1**AG**          |
     | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV |
-    | 7557 | App Framework | zss | ZWE1**SZ** |
+    | 7557 | App Framework | zss        | ZWE1**SZ**          |
 
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
@@ -313,7 +313,7 @@ TTLSRule ZoweClientRule1
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7554 # Discovery and single service
+  RemotePortRange 7553-7554 # Discovery and gateway services
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -828,31 +828,6 @@ Component ports use the following values:
 * APIML Gateway port `7554`
 * App Server port `7556`
 
-Use the following command to see the current metadata:
-
-```curl
-curl --request GET \
-  --cert <path_to_your_client_cert> \
-  --key <path_to_your_client_cert_key> \
-  --url https://localost:7553/eureka/v2/apps/ZLUX
-```
-
-Use the following commands to update the metadata in 2 requests:
-
-```curl
-curl --request PUT \
-  --cert <path_to_your_client_cert> \
-  --key <path_to_your_client_cert_key> \
-  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsEnabled=true'
-```
-
-```curl
-curl --request PUT \
-  --cert <path_to_your_client_cert> \
-  --key <path_to_your_client_cert_key> \
-  --url 'https://localhost:7553/eureka/v2/apps/ZLUX/localhost%3Azlux%3A7556/metadata?apiml.corsAllowedOrigins=https%3A%2F%2Flocalhost%3A7552%2Chttps%3A%2F%2Flocalhost%3A7554'
-```
-
 </details>
 
 ### Additional troubleshooting
@@ -875,7 +850,7 @@ TTLSRule ZoweServerRule1
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7553-7554 # Discovery and single service
+  LocalPortRange 7553-7554 # Discovery and gateway services
   Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -1009,7 +984,7 @@ TLSRule ZoweClientRule1
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7554 # Discovery and single service
+  RemotePortRange 7553-7554 # Discovery and gateway services
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction

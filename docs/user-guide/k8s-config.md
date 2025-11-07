@@ -2,6 +2,10 @@
 
 Zowe provides sample configurations that make it easy for you to run Zowe in Kubernetes. You can use them directly or as a reference.
 
+:::note
+Kubernetes is not supported in Zowe 3.4 single-service deployment mode.
+:::
+
 You can customize the configuration or make your own. If you do so, note the following objects that are expected by the container deployments:
 
 |    Kind   | Name | Note |
@@ -330,12 +334,12 @@ To create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/con
      * if you choose `NodePort` `gateway-service` and access the service through port forwarding, the value should be the forwarded port you set.
    * `components.discovery.replicas` should be set to same value of `spec.replicas` defined in `workloads/discovery-statefulset.yaml`.
    * All components running in Kubernetes should use default ports:
-     * `components.api-catalog.port` is `7552`, (in single-service deployment mode, this port will be ignored, and the single-service port `7554` used instead)
+     * `components.api-catalog.port` is `7552`, 
      * `components.discovery.port` is `7553`,
      * `components.gateway.port` is `7554`,
-     * `components.caching-service.port` is `7555`, (in single-service deployment mode, this port will be ignored, and the single-service port `7554` used instead)
+     * `components.caching-service.port` is `7555`, 
      * `components.app-server.port` is `7556`.
-     * `components.zaas.port` is `7558`, (in single-service deployment mode, this port will be ignored, and the single-service port `7554` used instead)
+     * `components.zaas.port` is `7558`, 
    * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values into `zowe.environments` section:
      * `ZWED_agent_host=<ZOWE_ZOS_HOST>`
