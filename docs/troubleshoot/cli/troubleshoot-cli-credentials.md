@@ -90,8 +90,8 @@ To customize the persistence level on Windows:
         //highlight-start
         "credentialManagerOptions": {
             "persist": "session"
-        //highlight-end
         }
+        //highlight-end
     }
     ```
 3. Save the file to apply the changes.
