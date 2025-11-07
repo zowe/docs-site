@@ -101,7 +101,7 @@ Once you complete updates to your ports, log prefixes, and AT-TLS rules (if appl
 
 To enable single-service deployment mode for API ML, perform the following changes to the installation's `zowe.yaml` file:
 
-1. Add the component `apiml` and enable it:
+1. Add the component `apiml` and enable it: 
 
     ```yaml
     components:
