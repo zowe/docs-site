@@ -49,7 +49,7 @@ The following diagram for single-service deployment illustrates the difference i
 
 ![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s-single-service.png)
 
-<details>
+<details> 
 
 <summary>Click here to see the architecture used in multi-service deployment under Kubernetes.</summary>
 
