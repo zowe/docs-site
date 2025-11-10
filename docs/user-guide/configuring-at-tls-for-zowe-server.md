@@ -461,7 +461,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 #### Outbound rule for communication between API Gateway and southbound services
 
 The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
-
+ 
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service.png)
 
 <details>
