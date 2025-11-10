@@ -22,7 +22,8 @@ module.exports = {
       label: "Zowe V2 release notes",
       className: "ToCheadercolor",
       collapsed: true,
-      items: [      
+      items: [   
+        "whats-new/release-notes/v2_18_3",   
         "whats-new/release-notes/v2_18_2",  
         "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
@@ -689,6 +690,7 @@ module.exports = {
             "user-guide/ze-managing-profiles",
             "user-guide/ze-authentication-methods",
             "user-guide/ze-usage-tips",
+            "user-guide/ze-using-using-environment-variables",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-data-set-table-view-guide",
             "user-guide/ze-working-with-uss-files",
