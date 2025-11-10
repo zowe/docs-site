@@ -24,7 +24,7 @@ API ML uses a customizable infrastructure to format both REST API error messages
     - Log messages: `ERROR`, `WARNING`, `INFO`, `DEBUG`, or `TRACE`
 
 - Message `text` - a description of the issue
-- Message `reason` - A reason for why this issue occured
+- Message `reason` - A reason for why this issue occurred
 - Message `action` - What should I as a user do to correct the problem
 
 The following example shows the message definition.

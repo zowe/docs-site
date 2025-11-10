@@ -690,6 +690,7 @@ module.exports = {
             "user-guide/ze-managing-profiles",
             "user-guide/ze-authentication-methods",
             "user-guide/ze-usage-tips",
+            "user-guide/ze-using-using-environment-variables",
             "user-guide/ze-working-with-data-sets",
             "user-guide/ze-data-set-table-view-guide",
             "user-guide/ze-working-with-uss-files",
