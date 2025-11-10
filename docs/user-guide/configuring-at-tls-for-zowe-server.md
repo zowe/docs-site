@@ -75,11 +75,11 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-The following diagram illustrates inbound rules for single-service deployment mode:
+The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
 
 ![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
 
-1. Define a generic inbound rule that can be set for all Zowe services. This is done slightly differently between single-service deployment mode and multi-service deployment mode. The following example is for single-service deployment mode. The omission of port 7555 is deliberate for compatibility with multi-service deployment mode, and means that there is a need for two separate rules below.
+1. Define a generic inbound rule that can be set for all Zowe services. The configuration differs slightly between single-service and multi-service deployment modes. The following example applies to single-service deployment. Note that port 7555 is intentionally excluded in order to allow for compatibility with multi-service deployment mode. As such, it is neccessary to split the configuration into two inbound rules are presented in the following rules section:
 
 ```bash
 TTLSRule ZoweServerRule1
@@ -154,6 +154,8 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 }
 ```
 
+
+
 <details>
 
 <summary>Click here to see the diagram and example for multi-service deployment mode.</summary>
@@ -226,8 +228,11 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 </details>
 
 2. Verify port ranges.
-   
-    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, the following ports need to be included:
+   :::note
+   The required port ranges depend on your deployment mode.
+   :::
+
+    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
     
     | Port number | Category | Component  | Default Jobname     |
     |------|------|------------|---------------------|
@@ -240,9 +245,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 3. Apply your keyring and configuring handshake role.
 
-    i. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
-
-    __Example:__
+    i. Replace `ZoweKeyring` in the TTLS configuration to reference your environment's keyring (for example, a SAF keyring on z/OS or a file-based keystore).
 
     ```
     TTLSKeyringParms ZoweKeyring
@@ -265,7 +268,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 4. Refresh PAGENT and verify the contents.
 
-* Refresh the policy configuration by issuing the MVS command `F PAGENT,REFRESH`.
+* Refresh the policy configuration by issuing the MVS command: `F PAGENT,REFRESH`.
 * Test connectivity for all inbound services.
 * Ensure services that require client certificate authentication are successfully receiving X.509 Client Certificates.
 
@@ -283,7 +286,7 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 :::
 
-#### Outbound rules for communication between Zowe core components
+### Outbound rules for communication between Zowe core components
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
@@ -297,10 +300,10 @@ The following diagram illustrates outbound rules between Zowe core components fo
 ![AT-TLS_Outbound_Rules](../images/install/outbound-rules-single-service.png)
 
 
-The rules are slightly different between single-service deployment mode and multi-service deployment mode. The following example is for single-service deployment mode.
+Outbound rules differ slightly between single-service and multi-service deployments. The following example is for single-service deployment mode.
 
 :::
-This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.  
+This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems.  
 
 Note the following conditions:
 
