@@ -14,7 +14,7 @@ When working in remote or virtualized environments &mdash; such as Eclipse Che, 
 
 :::note
 
-Consider other options. Use the [Kubernetes Secrets plug-in for Zowe CLI and Zowe Explorer](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an option for storing credentials in a Kubernetes containerized environment, or create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
+Consider other options. Use the [Kubernetes Secrets plug-in for Zowe CLI or Zowe® Explorer for Kubernetes® Secrets](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an option for storing credentials in a Kubernetes containerized environment, or create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
 
 :::
 

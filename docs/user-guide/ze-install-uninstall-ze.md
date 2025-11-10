@@ -1,6 +1,6 @@
 # Uninstalling Zowe Explorer
 
-You can uninstall Zowe™ Explorer from Visual Studio Code (VS Code) if you no longer need to use it.
+You can uninstall Zowe Explorer from Visual Studio Code (VS Code) if you no longer need to use it.
 
 :::info Required roles: systems administrator
 :::
@@ -11,7 +11,7 @@ The uninstall process does not delete the profiles and credentials that you crea
 
 ## Uninstalling the Zowe Explorer VS Code extension
 
-Uninstall Zowe Explorer once any installed Zowe Explorer extensions have already been removed. See [Uninstalling Zowe Explorer CICS Extension](#uninstalling-zowe-explorer-cics-extension) and [Uninstalling Zowe Explorer FTP Extension](#uninstalling-zowe-explorer-ftp-extension) for instructions.
+Uninstall Zowe Explorer after any installed Zowe Explorer extensions have already been removed. See [Zowe Explorer for IBM CICS Transaction Server](#uninstalling-zowe-explorer-for-ibm-cics-transaction-server) and [Uninstalling Zowe® Explorer for IBM® z/OS® FTP](#uninstalling-zowe-explorer-for-ibm-zos-ftp) for instructions.
 
 1. Navigate to the **Extensions**  icon on the **Activity Bar** in VS Code to display a list of installed extensions.
 2. Find `Zowe Explorer` and click it.
@@ -23,28 +23,28 @@ Uninstall Zowe Explorer once any installed Zowe Explorer extensions have already
 
     Zowe Explorer is no longer installed.
 
-## Uninstalling Zowe Explorer CICS Extension
+## Uninstalling Zowe Explorer for IBM CICS Transaction Server
 
-To uninstall the Zowe Explorer CICS Extension:
+To uninstall the Zowe Explorer for IBM CICS Transaction Server:
 
 1. Navigate to the **Extensions** icon on the **Activity Bar** in VS Code to display a list of installed extensions.
-2. Find `Zowe Explorer for IBM CICS` and click it.
+2. Find `Zowe Explorer for IBM CICS Transaction Server` and click it.
 
-    An Editor tab opens with the marketplace page for Zowe Explorer CICS Extension.
+    An Editor tab opens with the marketplace page for Zowe Explorer for IBM CICS Transaction Server.
 3. Click **Uninstall** at the top of the Editor tab.
 4. A reload may be required. If a button appears for reload, click it.
 
-    Zowe Explorer CICS Extension is no longer installed.
+    Zowe Explorer for IBM CICS Transaction Server is no longer installed.
 
-## Uninstalling Zowe Explorer FTP Extension
+## Uninstalling Zowe Explorer for IBM z/OS FTP
 
-To uninstall the Zowe Explorer FTP Extension:
+To uninstall Zowe Explorer for IBM z/OS FTP:
 
 1. Click the **Extension** icon on the **Activity Bar** in VS Code to display a list of installed extensions.
-2. Find `Zowe Explorer FTP Extension` and click it.
+2. Find `Zowe Explorer for IBM z/OS FTP` and click it.
 
-    An Editor tab opens with the marketplace page for Zowe Explorer FTP Extension.
+    An Editor tab opens with the marketplace page for Zowe Explorer for IBM z/OS FTP.
 3. Click **Uninstall** at the top of the Editor tab.
 4. A reload may be required. If a button appears for reload, click it.
 
-    Zowe Explorer FTP Extension is no longer installed.
+    Zowe Explorer for IBM z/OS FTP is no longer installed.

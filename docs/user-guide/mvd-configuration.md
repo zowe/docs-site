@@ -117,7 +117,7 @@ The Inbound rules can be filtered by the listening ports of the servers, but Out
 
 The ports and jobnames can be found in the [Addressing network requirements](./address-network-requirements.md) documentation.
 
-The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-api-gateway-and-extensions-servers).
+The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-api-gateway-and-southbound-services).
 
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 

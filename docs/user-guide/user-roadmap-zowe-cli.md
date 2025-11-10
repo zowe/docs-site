@@ -2,7 +2,7 @@
 
 For a better understanding of Zowe CLI, review the various reference materials that document the application.
 
-Get to know what's new in the Zowe ecosystem, review the quick start guide, and find ways to get the most out of Zowe CLI.
+Get to know what's new in the Zowe ecosystem and find ways to get the most out of Zowe CLI.
 
 ## About Zowe CLI
 
@@ -11,10 +11,6 @@ Get to know what's new in the Zowe ecosystem, review the quick start guide, and 
 - Watch **Office Hours** videos that outline major features in [Zowe CLI V2](../getting-started/zowe-office-hours.md) and [Zowe CLI V3](../whats-new/zowe-v3-office-hours.md).
 
 - New to Zowe? Pick up terms and basic concepts with the [**Zowe Glossary**](../appendix/zowe-glossary.md).
-
-## Zowe CLI quick start
-
-Ready to start using Zowe CLI *right now*? Speed up the installation process with the [**Zowe CLI quick start**](../getting-started/cli-getting-started.md) to get Zowe CLI up and running in your environment sooner.
 
 ## Getting the most from Zowe CLI
 

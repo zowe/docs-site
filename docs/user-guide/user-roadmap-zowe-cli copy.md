@@ -30,12 +30,6 @@ To identify the resources most relevant for you, use the following definitions o
 
 ## Quick start
 
-> Zowe skill level: Beginner
-
-- [**Zowe CLI quick start**](../getting-started/cli-getting-started.md)
-
-   Get started with Zowe CLI quickly and easily.
-
 - [**Blog: Getting Started with Zowe CLI**](https://medium.com/zowe/getting-started-with-zowe-cli-7a29420c6be7)
 
    This blog explains how to get started with Zowe CLI quickly.

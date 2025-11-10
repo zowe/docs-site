@@ -85,28 +85,28 @@ Once the Wizard is installed, use the procedure as presented in the Wizard. The 
 
 1. On the landing page of the Zowe Server Installation Wizard, select from the two presented options:
 
-  * **New Zowe Installation**  
-This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
-  * **Zowe Installation Dry Run**  
-This option allows you to follow the installation steps without running the installation.
+   Option| Description
+   ---|---
+   New Zowe Installation|This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
+   Zowe Installation Preview mode|This option does not run the installation. You can use this option to preview or simulate the installation.
 
   ### Connecting the Wizard to z/OS
 
 2. Set the following fields according to your environment:
 
-  Field name| Description                
-  ---|---
-  Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
-  FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
-  User Name |Your z/OS username.
-  Password  |Your z/OS password.
+   Field name| Description                
+   ---|---
+   Host      |Value for the target z/OS system for Zowe Installation. For example, `mainframe.yourcompany.com`
+   FTP Port  |The FTP Port number for internal use. The default port is 21. If not specified, the Wizard uses the default port.
+   User Name |Your z/OS username.
+   Password  |Your z/OS password.
 
 3. Select **Use FTP with TLS**. This is the recommended option. Provide details as described in the following table:
         
-  Field name | Description
-  ---|---
-  Min TLS    |Select the minimum TLS version to accept the certificate from the server.
-  Max TLS    |Select the maximum TLS version to accept the certificate from the server.
+   Field name | Description
+   ---|---
+   Min TLS    |Select the minimum TLS version to accept the certificate from the server.
+   Max TLS    |Select the maximum TLS version to accept the certificate from the server.
 
 4. (Optional) You can select **Accept all certificates**. Note that selecting all certificates disables certificate verification. Checking this option is not recommended.
 5. Click **VALIDATE CREDENTIALS**.
@@ -183,7 +183,7 @@ This option makes it possible to skip an installation step that you cannot perfo
 
 The following table presents the steps in the installation, detailed descriptions of the steps, and corresponding sample JCLs:
 
-|Install Wizard Initalization Step|Description|Sample JCL|
+|Install Wizard Initialization Step|Description|Sample JCL|
 |---|---|---|
 |Installation|**Purpose:**<br /> Create data sets for Zowe's PARMLIB content and non-ZFS extension content for a given Zowe Instance<br /><br />**Action:**<br />1.  Allocate the PDSE FB80 data set with at least 15 tracks named from Zowe parameter `zowe.setup.dataset.parmlib`<br />2. Allocate the PDSE FB80 data set with at least 30 tracks named from Zowe parameter `zowe.setup.dataset.authPluginLib`<br />3. Copy the ZWESIP00 member from `zowe.setup.dataset.prefix`.SZWESAMP into `zowe.setup.dataset.parmlib`|[ZWEIMVS](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/SZWESAMP/ZWEIMVS)|
 |APF Auth|**Purpose:**<br /> Zowe contains one privileged component, ZIS, which enables the security model. The majority of Zowe is unprivileged and in key 8. The load library for the ZIS component and its extension library must be set as APF authorized and run in key 4. This enables ZIS and components that depend on ZIS.<br /><br />**Action:**<br />1. APF authorize the data sets defined at `zowe.setup.dataset.authLoadlib` and `zowe.setup.dataset.authPluginLib`.<br />2. <!-- This should be validated --> Define PPT entries for the members ZWESIS01 and ZWESAUX as Key 4, NOSWAP in the SCHEDxx member of the system PARMLIB.|[ZWEIAPF2](https://github.com/zowe/zowe-install-packaging/blob/v3.x/master/files/SZWESAMP/ZWEIAPF2)|
