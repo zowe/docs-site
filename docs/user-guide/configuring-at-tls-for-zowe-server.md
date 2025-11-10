@@ -462,7 +462,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 
 The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
 
-TODO: Andrew's diagram goes here.
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service.png)
 
 <details>
 <summary>Click here to see the diagram for multi-service deployment mode.</summary>
@@ -544,6 +544,7 @@ Outbound connections from the Gateway to southbound services (onboarded services
 :::
 
 </details>
+
 
 #### Outbound rule for services that validate tokens against the API Mediation Layer
 
@@ -767,68 +768,6 @@ components:
       ipAddresses: 
         - "0.0.0.0"
 ```
-
-### Zowe Desktop TN3270 or VT-Terminal Websocket 1006 Errors
-
-If the Zowe Desktop TN3270 Application or VT Terminal Application are displaying a websocket error 1006, there is an issue with CORS configuration. This will be fixed in Zowe 3.4.0, and can be fixed manually in earlier releases.
-
-__Solution:__
-
-We recommend contacting your conformant support provider for assistance applying this fix.
-
-Add required metadata manually to the ZLUX app in the API ML Discovery service. The metadata will need to be added after any restart of Zowe.
-
-Add the following metadata to the ZLUX eureka app:
-* `apiml.corsEnabled`: `true`
-* `apiml.corsAllowedOrigins` : `https://<your_zowe_host>:<catalog_port>,https://<your_zowe_host>:<gateway_port>`
-
-<details>
-
-<summary>Click here for complete instructions to apply the above fix.</summary>
-
-To apply the required metadata to the Discovery service, ensure that you satisfy the following conditions: 
-
-* X.509 Client Certificate for authentication. Other forms of authentication are _not supported_.
-* Network access to the host where the API ML Discovery Service is running.
-* The API ML Gateway port value. This can be found in the zowe.yaml property `components.gateway.port`.
-* The Discovery Service port value. This can be found in the zowe.yaml property `components.discovery.port`.
-* The App Server port value. This can be found in the zowe.yaml property `components.app-server.port`.
-* The API Catalog port value. This can be found in the zowe.yaml property `components.api-catalog.port`.
-6. A REST client or command line tool.
-
-To see the current list of metadata for the ZLUX service, make the following `GET` request to the Zowe API Deiscovery service endpoint: 
-
-`GET https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX`
-
-You should get an HTTP 200 response with a JSON response body containing the service metadata. Verify that `apiml.corsEnabled` and `apiml.corsAllowedOrigins` are set correctly.
-
-```json
-// ... other fields before
-     ,
-     "metadata": {
-          "apiml.service.description": "This list includes core APIs for management of plugins, management of the server itself, and APIs brought by plugins and the app server agent, ZSS. Plugins that do not bring their own API documentation are shown here as stubs.",
-          "apiml.catalog.tile.version": "3.3.0",    
-      // ...more metadata fields
- }
-```
-
-To update the ZLUX service metadata, make the following `PUT` request once for each metadata field as described in the solution above. This request requires an additional URL-encoded field `<your_host>:zlux:<your_app_server_port>`, and `metadata_value` should also be URL-encoded.  
-
-`PUT https://<your_zowe_host>:<your_discovery_port>/eureka/v2/apps/ZLUX/<your_host>%3Azlux%3A<your_app_server_port>/metadata?<metadata_key>=<metadata_value>`
-</details>
-
-<details>
-<summary>Click here to review sample requests using cURL.</summary>
-
-Component ports use the following values:
-
-* host `localhost`
-* APIML Catalog port `7552`
-* APIML Discovery Service port `7553`
-* APIML Gateway port `7554`
-* App Server port `7556`
-
-</details>
 
 ### Additional troubleshooting
 
