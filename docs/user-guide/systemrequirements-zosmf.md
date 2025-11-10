@@ -10,6 +10,11 @@ meta:
 
 Follow these steps described in this article to configure z/OSMF.
 
+:::note
+Although, from Zowe v3.4.0 onwards, the SAF provider is the default for the API Gateway rather than the z/OSMF provider, the tasks
+on this page are still necessary to support Zowe CLI and Zowe Explorer.
+:::
+
 :::info Required roles: system programmer, security administrator, domain administrator
 :::
 
@@ -86,14 +91,14 @@ If your implementation uses an external security manager other than RACF (for ex
 ## z/OSMF REST services for Zowe clients
 [Zowe clients](../appendix/zowe-glossary.md#zowe-client-projects) use z/OSMF Representational State Transfer (REST) APIs to work with system resources and extract system data. Ensure that the following REST services are configured and available.
 
-  z/OSMF REST services  | Requirements  | Resources in IBM knowledge Center
-  ---|---|---
-  Cloud provisioning services | Cloud provisioning services are required for the Zowe CLI CICS and Db2 command groups. Endpoints begin with `/zosmf/provisioning/`  | [Cloud provisioning services][aab6df02]
-  TSO/E address space services  | TSO/E address space services are required to issue TSO commands in the Zowe CLI. Endpoints begin with `/zosmf/tsoApp`  |  [TSO/E address space services][a5ec5a22]
-  z/OS console services  | z/OS console services are required to issue console commands in the Zowe CLI. Endpoints begin with `/zosmf/restconsoles/`  | [z/OS console services][cec53ca4]
-  z/OS data set and file REST interface  | z/OS data set and file REST interface is required to work with mainframe data sets and UNIX System Services files in the Zowe CLI. Endpoints begin with `/zosmf/restfiles/`  |  [z/OS data set and file REST interface][6bbf5bfd]
-  z/OS jobs REST interface  |z/OS jobs REST interface is required to use the zos-jobs command group in the Zowe CLI. Endpoints begin with `/zosmf/restjobs/`   |  [z/OS jobs REST interface][9d372fb1]
-  z/OSMF workflow services  | z/OSMF workflow services is required to create and manage z/OSMF workflows on a z/OS system. Endpoints begin with `/zosmf/workflow/`  | [z/OSMF workflow services][4e443fd6]
+  | z/OSMF REST services                  | Requirements                                                                                                                                                                | Resources in IBM knowledge Center |
+  |---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
+  | Cloud provisioning services           | Cloud provisioning services are required for the Zowe CLI CICS and Db2 command groups. Endpoints begin with `/zosmf/provisioning/`                                          | [Cloud provisioning services][aab6df02] |
+  | TSO/E address space services          | TSO/E address space services are required to issue TSO commands in the Zowe CLI. Endpoints begin with `/zosmf/tsoApp`                                                       |  [TSO/E address space services][a5ec5a22] |
+  | z/OS console services                 | z/OS console services are required to issue console commands in the Zowe CLI. Endpoints begin with `/zosmf/restconsoles/`                                                   | [z/OS console services][cec53ca4] |
+  | z/OS data set and file REST interface | z/OS data set and file REST interface is required to work with mainframe data sets and UNIX System Services files in the Zowe CLI. Endpoints begin with `/zosmf/restfiles/` |  [z/OS data set and file REST interface][6bbf5bfd] |
+  | z/OS jobs REST interface              | z/OS jobs REST interface is required to use the zos-jobs command group in the Zowe CLI. Endpoints begin with `/zosmf/restjobs/`                                             |  [z/OS jobs REST interface][9d372fb1] |
+  | z/OSMF workflow services              | z/OSMF workflow services is required to create and manage z/OSMF workflows on a z/OS system. Endpoints begin with `/zosmf/workflow/`                                        | [z/OSMF workflow services][4e443fd6] |
 
   [a5ec5a22]: https://www.ibm.com/docs/en/zos/2.3.0?topic=services-tsoe-address-space "TSO/E address space services"
   [aab6df02]: https://www.ibm.com/docs/en/zos/2.3.0?topic=configuration-preparing-use-cloud-provisioning "Cloud provisioning services"
