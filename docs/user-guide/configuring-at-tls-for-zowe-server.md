@@ -228,6 +228,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 </details>
 
 2. Verify port ranges.
+   
    :::note
    The required port ranges depend on your deployment mode.
    :::
@@ -291,7 +292,8 @@ Careful consideration needs to be made regarding which rules are to be configure
 Use the example in this section as a template for internal connections between Zowe core services.
 
 :::caution Important
-#### Outbound rule for z/OSMF
+
+**Outbound rule for z/OSMF**
 
 Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from Gateway to the Discovery Service.
 
@@ -303,6 +305,7 @@ The following diagram illustrates outbound rules between Zowe core components fo
 Outbound rules differ slightly between single-service and multi-service deployments. The following example is for single-service deployment mode.
 
 :::
+
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems.  
 
 Note the following conditions:
@@ -383,12 +386,11 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 ```
 
 * **`Jobname`**  
-  THis value is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
+  This parameter is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 
 * **`ZoweNoX509Keyring`**  
 This parameter is used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, and is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
   
-
 
 #### Outbound rule for communication between Zowe core components
 
