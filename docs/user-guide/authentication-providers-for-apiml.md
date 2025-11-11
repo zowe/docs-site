@@ -41,6 +41,5 @@ components.gateway.apiml.security.auth.provider: zosmf
 components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
 
-components.gateway.apiml.security.auth.provider: zosmf
 
 
