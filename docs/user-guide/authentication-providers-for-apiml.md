@@ -13,7 +13,7 @@ For development purposes, a dummy authentication provider is also available. Thi
 :::
 
 :::tip
-* We recommend you use SAF as your authentication provider when possible. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by API Gateway via SAF APIs.
+* We recommend that you use SAF as your authentication provider when possible. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by the API Gateway via SAF APIs.
 :::
 
 ## SAF Authentication Provider
@@ -27,7 +27,9 @@ components.gateway.apiml.security.auth.provider: saf
 
 :::note
 
-In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs used by Desktop Explorer apps authenticate using PassTickets instead of a JWT/LTPA token. As such, ensure that PassTickets are configured and enabled for z/OSMF.
+In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs used by 
+Desktop Explorer apps authenticate using PassTickets instead of a JWT/LTPA token. As such, ensure that 
+PassTickets are configured and enabled for z/OSMF.
 
 :::
 
@@ -40,6 +42,8 @@ Use the following properties of the API Gateway to enable the `z/OSMF Authentica
 components.gateway.apiml.security.auth.provider: zosmf
 components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
-
+In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs
+used by Desktop Explorer apps authenticate via PassTickets rather than via JWT/LTPA tokens. As such, 
+ensure that PassTickets are configured and enabled for z/OSMF.
 
 
