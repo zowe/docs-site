@@ -120,7 +120,20 @@ The first workflow step in API ML configuration is to define variables.
 
     ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
-5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.   
+Enabling and disabling the **Enable API ML** checkbox in the above diagram switches between the default and 
+recommended single-service deployment mode and the older multi-service deployment mode. Leave the checkbox enabled
+to use single-service deployment mode. See 
+:::caution Important
+Although single-service deployment mode from Zowe v3.4.0 makes the separate Gateway, ZAAS, Catalog, Discovery and 
+Caching services redundant, you must enable them in the workflow when using single-service deployment mode to 
+avoid parsing errors when starting API ML.
+
+The **Enable ZSS**, **Enable explorer JES**, **Enable explorer MVS** and **Enable explorer USS** checkboxes are
+not associated with single-service deployment mode, and you should enable or disable these checkboxes according
+to your own requirements.
+:::
+
+After you complete the definition of the main variables for your configuration, define all ports for automatically enabled API ML services.   
 
     ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
 
@@ -131,7 +144,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 The second workflow step is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** step.
 
-1. Review your configurations.
+1. Review your configuration.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
    The zowe.yaml file is ready, and the step is marked as Complete.
 
