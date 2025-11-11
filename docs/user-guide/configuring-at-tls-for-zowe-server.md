@@ -158,11 +158,11 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 <details>
 
-<summary>Click here to see the diagram and example for multi-service deployment mode.</summary>
+<summary>Click to view the diagram and example of inbound rules for multi-service deployment mode.</summary>
 
 ![AT-TLS_Inbound_Rules](../images/install/inbound-rules.png)
 
-The following example is for multi-service deployment mode:
+The following example is for AT-TLS inbound rules for multi-service deployment mode:
 
 ```bash
 TTLSRule ZoweServerRule
@@ -233,7 +233,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
    The required port ranges depend on your deployment mode.
    :::
 
-    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
+    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. Note that the `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
     
     | Port number | Category | Component  | Default Jobname     |
     |------|------|------------|---------------------|
@@ -260,7 +260,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
     Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
 
-    iii.  (Optional) Separate rules by certificate requirement.  
+    iii.  (Optional) Separate rules by certificate requirements.  
 
     * For services that **require** X.509 client certificate authentication (e.g., Discovery Service, Gateway Service, ZAAS), keep `HandshakeRole` as `ServerWithClientAuth`.  
     * For services that **do not require** X.509 client certificates (e.g., API Catalog), create separate TTLS rules with `HandshakeRole` as `Server`.
@@ -308,7 +308,7 @@ This example rule covers the connection between the API Gateway and ZAAS and the
 
 Note the following conditions:
 
-* If `zowe.network.client.tls.attls` is `true`AT-TLS performs encryption even when requests are issued as `http`.
+* If `zowe.network.client.tls.attls` is `true`, AT-TLS performs encryption even when requests are issued as `http`.
 * If `zowe.network.client.tls.attls` is `true` and the z/OSMF rule is not configured in the PAGENT, specify `zOSMF.scheme: https` in your `zowe.yaml`.
 
 ```bash
@@ -384,7 +384,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 ```
 
 * **`Jobname`**  
-  This parameter is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
+  This parameter is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Applying `ZWE1A*` as a jobname pattern captures both servers.
 
 * **`ZoweNoX509Keyring`**  
 This parameter is used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, and is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
@@ -394,7 +394,7 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 
 <details>
-<summary>Click to view the diagram and example for multi-service deployment mode.</summary>
+<summary>Click to view the diagram illustrating the outbound rule for communication between Zowe core components, and rule example for multi-service deployment mode.</summary>
 
 The following diagram illustrates outbound rules between Zowe core components for multi-service deployment mode:
 
@@ -590,7 +590,7 @@ The following diagram illustrates outbound rules for z/OSMF in single-service de
 
 </details>
 
-This example rule covers the connection between the API Gateway (and ZAAS in multi-server deployment mode) and the z/OSMF instance. This connection is made to authenticate users in z/OS. The example rule is the same for single-service and multi-service deployment mode.
+This example rule covers the connection between the API Gateway (and ZAAS in multi-server deployment mode) and the z/OSMF instance. This connection is made to authenticate users in z/OS. The example rule is the same for single-service and multi-service deployment modes.
 
 If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
 If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then it is necessary to specify `zOSMF.scheme: https` in your `zowe.yaml`.
