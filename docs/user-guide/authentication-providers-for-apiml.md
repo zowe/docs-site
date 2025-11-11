@@ -42,8 +42,6 @@ Use the following properties of the API Gateway to enable the `z/OSMF Authentica
 components.gateway.apiml.security.auth.provider: zosmf
 components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
 ```
-In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs
-used by Desktop Explorer apps authenticate via PassTickets rather than via JWT/LTPA tokens. As such, 
-ensure that PassTickets are configured and enabled for z/OSMF.
+
 
 

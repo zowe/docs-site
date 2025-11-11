@@ -2,10 +2,6 @@
 
 Before you install Zowe using IBM z/OSMF, address the following installation and security requirements. Your systems programmers and security administrators can complete these tasks in parallel.  
 
-:::note
-Although, from Zowe v3.4.0 onwards, the SAF provider is the default for the API Gateway rather than the z/OSMF provider, the tasks 
-on this page are still necessary to support Zowe CLI and Zowe Explorer.
-:::
 
 ## Configure z/OSMF
 

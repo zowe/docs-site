@@ -11,8 +11,8 @@ meta:
 Follow these steps described in this article to configure z/OSMF.
 
 :::note
-Although, from Zowe v3.4.0 onwards, the SAF provider is the default for the API Gateway rather than the z/OSMF provider, the tasks
-on this page are still necessary to support Zowe CLI and Zowe Explorer.
+If you are not using Zowe CLI or Zowe Explorer and you are using API ML's recommended SAF authentication provider, 
+you can skip this pre-requisite.
 :::
 
 :::info Required roles: system programmer, security administrator, domain administrator
