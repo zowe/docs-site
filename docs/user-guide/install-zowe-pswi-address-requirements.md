@@ -13,7 +13,7 @@ The IBM z/OS Management Facility Configuration Guide is your primary source of i
 ## Configure z/OSMF security
     
 :::info Roles required: Security administrator
-:::
+::: 
 
 Configure z/OSMF security for ACF2, Top Secret, or IBM RACF as applicable to authorize users and resources. To prevent SSL handshake failures when importing product information into z/OSMF, make sure that you have added the Digicert Intermediate CA certificate to the z/OSMF keyring. For information, see [Import Product Information into z/OSMF](https://techdocs.broadcom.com/us/en/ca-mainframe-software/traditional-management/mainframe-common-maintenance-procedures/1-0/getting-started/z-osmf-requirements/import-product-information-into-z-osmf.html).
 
