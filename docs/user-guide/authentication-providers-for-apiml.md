@@ -29,7 +29,7 @@ components.gateway.apiml.security.auth.provider: saf
 
 In Zowe v3.4 and later versions, if the API Gateway is configured to use SAF authentication, z/OSMF APIs used by 
 Desktop Explorer apps authenticate using PassTickets instead of a JWT/LTPA token. As such, ensure that 
-PassTickets are configured and enabled for z/OSMF.
+PassTickets are configured and enabled for z/OSMF. 
 
 :::
 
