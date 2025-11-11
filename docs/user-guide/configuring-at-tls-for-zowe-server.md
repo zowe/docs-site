@@ -244,7 +244,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
-3. Apply your keyring and configuring handshake role.
+3. Apply your keyring and configure the handshake role.
 
     i. Replace `ZoweKeyring` in the TTLS configuration to reference your environment's keyring (for example, a SAF keyring on z/OS or a file-based keystore).
 
@@ -256,12 +256,14 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
     ```
 
-    ii. Verify the `HandshakeRole` setting.  
-  Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
+    ii. Verify the `HandshakeRole` setting. 
+
+    Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
 
     iii.  (Optional) Separate rules by certificate requirement.  
-  For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service, ZAAS), keep `HandshakeRole` as `ServerWithClientAuth`.  
-  For services that do not require X.509 client certificates (e.g., API Catalog), create separate TTLS rules with `HandshakeRole` as `Server`.
+
+    * For services that **require** X.509 client certificate authentication (e.g., Discovery Service, Gateway Service, ZAAS), keep `HandshakeRole` as `ServerWithClientAuth`.  
+    * For services that **do not require** X.509 client certificates (e.g., API Catalog), create separate TTLS rules with `HandshakeRole` as `Server`.
 
   :::note
   For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
@@ -291,8 +293,6 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
-:::caution Important
-
 **Outbound rule for z/OSMF**
 
 Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from Gateway to the Discovery Service.
@@ -303,8 +303,6 @@ The following diagram illustrates outbound rules between Zowe core components fo
 
 
 Outbound rules differ slightly between single-service and multi-service deployments. The following example is for single-service deployment mode.
-
-:::
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems.  
 
@@ -392,7 +390,8 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 This parameter is used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, and is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
   
 
-#### Outbound rule for communication between Zowe core components
+#### Outbound rule for communication between Zowe core components (multi-service deployment mode)
+
 
 <details>
 <summary>Click to view the diagram and example for multi-service deployment mode.</summary>
@@ -469,8 +468,9 @@ The following diagram illustrates the rule for the API ML to a southbound servic
  
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service.png)
 
+
 <details>
-<summary>Click here to see the diagram for multi-service deployment mode.</summary>
+<summary>Click to view the diagram of the outbound rule for communication between API Gateway and southbound services for multi-service deployment mode.</summary>
 
 ![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
 </details>
@@ -583,7 +583,7 @@ The following diagram illustrates outbound rules for z/OSMF in single-service de
 
 <details>
 
-<summary>Click here to see the diagram with outbound rules for z/OSMF in multi-service deployment mode.</summary>
+<summary>Click to view the diagram of outbound rules for z/OSMF in multi-service deployment mode.</summary>
 
 
 ![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
