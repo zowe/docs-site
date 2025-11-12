@@ -1,5 +1,9 @@
 # Enabling AT-TLS for multi-service deployment mode
 
+This article describes the use of AT-TLS in multi-service deployment mode. From Zowe v.3.4 onwards,
+we recommend the use of single-service deployment mode. See [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md)
+for the benefits of running Zowe in this mode. 
+
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
 The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
 
@@ -148,14 +152,15 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
    The required port ranges depend on your deployment mode.
    :::
 
-    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. Note that the `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
-    
-    | Port number | Category | Component  | Default Jobname     |
-    |------|------|------------|---------------------|
-    | 7553 | API Mediation Layer | discovery  | ZWE1**AG**         |
-    | 7554 | API Mediation Layer | gateway    | ZWE1**AG**          |
-    | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1SV |
-    | 7557 | App Framework | zss        | ZWE1**SZ**          |
+    | Port number | Category | Component | Default Jobname         |
+    |------|------|------|-------------------------|
+    | 7552 | API Mediation Layer | api-catalog | ZWE1**AC**              |
+    | 7553 | API Mediation Layer | discovery | ZWE1**AD**              |
+    | 7554 | API Mediation Layer | gateway | ZWE1**AG**              |
+    | 7555 | API Mediation Layer | Caching Service | ZWE1**CS**              |
+    | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1**SV** |
+    | 7557 | App Framework | zss        | ZWE1**SZ**              |
+    | 7558 | API Mediation Layer | zaas | ZWE1**AZ**              | 
 
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
