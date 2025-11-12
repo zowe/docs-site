@@ -13,7 +13,7 @@ The built-in TLS networking is enabled by default. For details about this built-
 As a security administrator, you can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 ## AT-TLS configuration for Zowe
-
+ 
 Configuration to support AT-TLS is set in the following section of the `zowe.yaml` file:
 
 ```yaml
