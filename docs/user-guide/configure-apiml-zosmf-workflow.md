@@ -103,7 +103,7 @@ The first workflow step in API ML configuration is to define variables.
 
 
 :::note
-Currently the default deployment of API ML is the multi-service deployment, wherein the sub-components of  API ML including the Discovery service, Gateway, and API Catalog have unique ports. The newly introduced single-service deployment is, however, the recommended deployment. To use the single-service deployment mode, ensure that the checkbox for **Enable API ML** is checked. To review the benefits of using the songle-service deployment of API ML, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
+Currently the default deployment of API ML is the multi-service deployment, wherein the sub-components of  API ML including the Discovery service, Gateway, and API Catalog have unique ports. However, the newly introduced **single-service deployment is the recommended deployment**. To use the single-service deployment mode, ensure that the checkbox for **Enable API ML** is checked. To review the benefits of using the songle-service deployment of API ML, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
 
 The following checkboxes are not associated with single-service deployment:
 * Enable ZSS
