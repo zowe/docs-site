@@ -2,7 +2,7 @@
 
 After you install Zowe, you can register and execute the z/OSMF workflows in the web interface to perform a range of
 API ML/Zowe configuration tasks. The **Stand-alone Zowe API ML Configuration** workflow simplifies configuration of Zowe API Mediation Layer and does not require the level of
-expertise that is needed to perform manual API ML/Zowe configuration. The **Stand-alone Zowe API ML Configuration** workflow also runs the `zwe install` and `zwe init` command to initialize Zowe z/OS runtime.
+expertise that is needed to perform manual API ML/Zowe configuration. The **Stand-alone Zowe API ML Configuration** workflow also runs the `zwe install` and `zwe init` command to initialize the Zowe z/OS runtime.
 
 :::info Required role: system programmer
 :::
@@ -103,15 +103,11 @@ The first workflow step in API ML configuration is to define variables.
 
 
 :::note
-Currently the default deployment of API ML is the multi-service deployment, wherein the sub-components of  API ML including the Discovery service, Gateway, and API Catalog have unique ports. However, the newly introduced **single-service deployment is the recommended deployment**. To use the single-service deployment mode, ensure that the checkbox for **Enable API ML** is checked. To review the benefits of using the songle-service deployment of API ML, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
+From Zowe v3.4, **we recommend single-service deployment mode**. To enable single-service deployment mode, ensure 
+that the checkbox for **Enable API ML** is checked. To review the benefits of using the single-service deployment of API ML, 
+see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
 
-The following checkboxes are not associated with single-service deployment:
-* Enable ZSS
-* Enable explorer JES
-* Enable explorer MVS
-* Enable explorer USS 
 
-Enable or disable these checkboxes according to your own requirements.
 :::
 
 After you complete the definition of the main variables for your configuration, define all ports for automatically enabled API ML services.   
