@@ -131,7 +131,7 @@ The **Create configuration** step is mandatory. A valid zowe.yaml is required to
 :::
 
 ### Perform Zowe Installation
- 
+
 This step consumes the zowe.yaml configuration file and contains two sub-steps:
 
 1. **Run Zowe install** to run the `zwe install` command.
