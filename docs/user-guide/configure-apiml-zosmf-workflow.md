@@ -101,14 +101,17 @@ The first workflow step in API ML configuration is to define variables.
 
     ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
-Enabling and disabling the **Enable API ML** checkbox in the above diagram switches between the default and 
-recommended single-service deployment mode and the older multi-service deployment mode. Leave the checkbox enabled
-to use single-service deployment mode. See [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md)
-to see the benefits of doing this.
 
-The **Enable ZSS**, **Enable explorer JES**, **Enable explorer MVS** and **Enable explorer USS** checkboxes are
-not associated with single-service deployment mode, and you should enable or disable these checkboxes according
-to your own requirements.
+:::note
+Currently the default deployment of API ML is the multi-service deployment, wherein the sub-components of  API ML including the Discovery service, Gateway, and API Catalog have unique ports. The newly introduced single-service deployment is, however, the recommended deployment. To use the single-service deployment mode, ensure that the checkbox for **Enable API ML** is checked. To review the benefits of using the songle-service deployment of API ML, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
+
+The following checkboxes are not associated with single-service deployment:
+* Enable ZSS
+* Enable explorer JES
+* Enable explorer MVS
+* Enable explorer USS 
+
+Enable or disable these checkboxes according to your own requirements.
 :::
 
 After you complete the definition of the main variables for your configuration, define all ports for automatically enabled API ML services.   
