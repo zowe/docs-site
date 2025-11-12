@@ -101,7 +101,7 @@ The first workflow step in API ML configuration is to define variables.
 
     ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
-
+ 
 :::note
 From Zowe v3.4, **we recommend single-service deployment mode**. To enable single-service deployment mode, ensure 
 that the checkbox for **Enable API ML** is checked. To review the benefits of using the single-service deployment of API ML, 
