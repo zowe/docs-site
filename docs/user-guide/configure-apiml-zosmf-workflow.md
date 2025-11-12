@@ -12,29 +12,10 @@ expertise that is needed to perform manual API ML/Zowe configuration. The **Stan
 Ensure that you meet the following requirements before you start your Zowe configuration:
 
 - Install and configure z/OSMF
-- Install Zowe with an SMP/E build, PSWI, or a convenience build
+- Install Zowe with an [SMP/E build](install-zowe-smpe-overview.md), [Portable Software Instance](install-zowe-pswi.md), 
+or a [Convenience Build](install-zowe-zos-convenience-build.md).
 
 ## Overview of Stand-alone Zowe API ML Configuration workflow
-
-The following components are automatically enabled after performing the **Stand-alone Zowe API ML Configuration** workflow:
-
-- API Gateway
-- ZAAS
-- API Catalog
-- Discovery service
-- Caching service
-
-The following components are automatically disabled:
-
-- Application server
-- ZSS component
-- JES Explorer
-- MVS Explorer
-- USS Explorer
-  
-:::note
-These disabled components can be enabled by performing manual changes in the yaml file. Note that making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
-:::
 
 You can execute the **Stand-alone Zowe API ML Configuration** workflow either from a PSWI during deployment or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.
 
@@ -122,11 +103,8 @@ The first workflow step in API ML configuration is to define variables.
 
 Enabling and disabling the **Enable API ML** checkbox in the above diagram switches between the default and 
 recommended single-service deployment mode and the older multi-service deployment mode. Leave the checkbox enabled
-to use single-service deployment mode. See 
-:::caution Important
-Although single-service deployment mode from Zowe v3.4.0 makes the separate Gateway, ZAAS, Catalog, Discovery and 
-Caching services redundant, you must enable them in the workflow when using single-service deployment mode to 
-avoid parsing errors when starting API ML.
+to use single-service deployment mode. See [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md)
+to see the benefits of doing this.
 
 The **Enable ZSS**, **Enable explorer JES**, **Enable explorer MVS** and **Enable explorer USS** checkboxes are
 not associated with single-service deployment mode, and you should enable or disable these checkboxes according
@@ -160,7 +138,7 @@ This step consumes the zowe.yaml configuration file and contains two sub-steps:
 2. **Run Zowe init** to run `zwe init mvs` and `zwe init stc` commands.
 
 :::note
-If you did not set up security prior to this installation, you can  submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+If you did not set up security prior to this installation, you can submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
 :::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
