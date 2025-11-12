@@ -306,11 +306,6 @@ Outbound rules differ slightly between single-service and multi-service deployme
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems.  
 
-Note the following conditions:
-
-* If `zowe.network.client.tls.attls` is `true`, AT-TLS performs encryption even when requests are issued as `http`.
-* If `zowe.network.client.tls.attls` is `true` and the z/OSMF rule is not configured in the PAGENT, specify `zOSMF.scheme: https` in your `zowe.yaml`.
-
 ```bash
 TTLSRule ZoweClientRule1
 {
@@ -461,6 +456,14 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 }
 ```
 </details>
+   
+:::note
+Note the following conditions:
+
+* If `zowe.network.client.tls.attls` is `true`, AT-TLS performs encryption even when requests are issued as `http`.
+* If `zowe.network.client.tls.attls` is `true`, and the z/OSMF rule is not configured in the PAGENT, specify `zOSMF.scheme: https` in your `zowe.yaml`.
+  
+:::
 
 #### Outbound rule for communication between API Gateway and southbound services
 
