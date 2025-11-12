@@ -1,4 +1,4 @@
-# Enabling AT-TLS for multi-service deployment mode
+# Enabling AT-TLS for single-service deployment mode
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
 The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
@@ -10,7 +10,7 @@ As a security administrator, you can configure parameters in Zowe servers to swi
 
 ## AT-TLS configuration for Zowe
 
-Configuration to support AT-TLS is set in the following section of the `zowe.yaml` file: 
+Configuration to support AT-TLS is set in the following section of the `zowe.yaml` file:
 
 ```yaml
 zowe:
@@ -25,7 +25,7 @@ zowe:
         attls: true
 ```
 
-While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring.
 
 :::tip
 
@@ -75,18 +75,30 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-The following diagram illustrates inbound rules when Zowe is deployed in multi-service mode:
+The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
 
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules.png)
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
 
-1. Define a generic inbound rule that can be set for all Zowe services.
+1. Define a generic inbound rule that can be set for all Zowe services. The configuration differs slightly between single-service and multi-service deployment modes. The following example applies to single-service deployment. Note that port 7555 is intentionally excluded in order to allow for compatibility with multi-service deployment mode. As such, it is neccessary to split the configuration into two inbound rules are presented in the following rules section:
 
 ```bash
-TTLSRule ZoweServerRule
+TTLSRule ZoweServerRule1
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7552-7558 # Range covers all Zowe services
+  LocalPortRange 7553-7554 # Discovery and gateway services
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+}
+
+TTLSRule ZoweServerRule2
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7556-7557 # App server and ZSS
   Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -212,19 +224,32 @@ Use the example in this section as a template for internal connections between Z
 
 Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from Gateway to the Discovery Service.
 
-The following diagram illustrates outbound rules between Zowe core components for multi-service deployment mode:
+The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
 
-![AT-TLS_Outbound_Rules](../images/install/outbound-rules.png)
+![AT-TLS_Outbound_Rules](../images/install/outbound-rules-single-service.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems.  
 
 ```bash
-TTLSRule ZoweClientRule
+TTLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7552-7558 # Range covers API ML, app-server, and zss services
+  RemotePortRange 7553-7554 # Discovery and gateway services
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSRule ZoweClientRule2
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557 # App server and ZSS
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -276,6 +301,7 @@ TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
   SecondaryMap Off
 }
 ```
+
 Note the following conditions:
 
 * If `zowe.network.client.tls.attls` is `true`, AT-TLS performs encryption even when requests are issued as `http`.
@@ -285,17 +311,17 @@ Note the following conditions:
   This parameter is defined explicitly for the API Gateway and ZAAS component and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (Gateway) and `AZ` (ZAAS) suffixes. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 
 * **`ZoweNoX509Keyring`**  
-  This parameter is used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, and is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
+This parameter is used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, and is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
 
 #### Outbound rule for communication between API Gateway and southbound services
 
-The following diagram illustrates the rule for the API ML to a southbound service in multi-service deployment mode.
-
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
+The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
+ 
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service.png)
 
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
-Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-zosmf).
+Such a rule can apply to any remote destination, as seen in the `ZoweClientRule1` and `ZoweClientRule2` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server-single-service.md#outbound-rule-for-zosmf).
 
 <details>
 <summary>Click here for an example of a rule covering API Gateway to extension servers.</summary>
@@ -369,7 +395,6 @@ If a southbound service, including an onboarded service, supports X.509 client c
 
 </details>
 
-
 #### Outbound rule for services that validate tokens against the API Mediation Layer
 
 Services validating authentication tokens through the API Gateway require an outbound rule to the Gateway and an onboarding rule to the Discovery Service.
@@ -391,16 +416,16 @@ Ensure that the following rules are followed:
 * Outbound rule to the Discovery Service: Sends an X.509 Client Certificate to authenticate during onboarding.
 
 :::note
-Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
+Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
 
 #### Outbound rule for z/OSMF
 
-The following diagram illustrates outbound rules for z/OSMF in multi-service deployment mode:
+The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:
 
-![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
+![Outbound rules](../images/install/outbound-rules-single-service-zosmf.png)
 
-This example rule covers the connection between the API Gateway (and ZAAS in multi-server deployment mode) and the z/OSMF instance. This connection is made to authenticate users in z/OS. The example rule is the same for single-service and multi-service deployment mode.
+This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
 If `zowe.network.client.tls.attls` is `true`, this rule is assumed set. The requests to z/OSMF are issued using `http`.
 If `zowe.network.client.tls.attls` is `true` and z/OSMF rule is not set in the PAGENT then it is necessary to specify `zOSMF.scheme: https` in your `zowe.yaml`.
@@ -544,7 +569,7 @@ This section describes some common issues when using AT-TLS with Zowe and how to
 
 ### The message `This combination of port requires SSL` is thrown when accessing an API ML service through a Browser
 
-Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on a application-controlled secured port.
+Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
 
 __Solution:__
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
@@ -597,25 +622,35 @@ Ensure you collect the logs and current configurations when contacting support.
 
 Review a full working example of an AT-TLS configuration file on z/OS, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
 The example has comments for readability.
-
 <details>
 
-<summary>Click here to review the full AT-TLS configuration file for multi-service deployment mode.</summary>
+<summary>Click here to review the full AT-TLS configuration file for single-service deployment mode.</summary>
 
 ```bash
-# Main inbound rule, all Zowe services have it defined.
-TTLSRule ZoweServerRule
+# Main inbound rules, all Zowe services have them defined.
+TTLSRule ZoweServerRule1
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7552-7558 # Range covers all possible Zowe services
-  Jobname ZWE1*
+  LocalPortRange 7553-7554 # Discovery and gateway services
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
+TTLSRule ZoweServerRule2
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+}
 # Example southbound service inbound rule
 TTLSRule ApimlDCServerRule
 {
@@ -724,19 +759,32 @@ TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
   SecondaryMap Off
 }
 
-# Example outbound TTLS rule for a Zowe client calling a Zowe server
+# Example outbound TTLS rules for a Zowe client calling a Zowe server
 # In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
-TTLSRule ZoweClientRule
+TLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7552-7558 # API ML, app-server, and zss Zowe core services
-  Jobname ZWE1*
+  RemotePortRange 7553-7554 # Discovery and gateway services
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSRule ZoweClientRule2
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
 # Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
