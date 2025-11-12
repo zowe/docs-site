@@ -233,7 +233,7 @@ module.exports = {
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
                 "user-guide/tls-configuration",
-                "user-guide/configuring-at-tls-for-zowe-server-single-server",
+                "user-guide/configuring-at-tls-for-zowe-server-single-service",
                 "user-guide/configuring-at-tls-for-zowe-server",
                 "user-guide/using-icsf-hardware-private-keys",
               ],
