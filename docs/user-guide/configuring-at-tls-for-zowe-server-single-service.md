@@ -420,7 +420,7 @@ Services running off-host cannot use AT-TLS to make transparent https calls thou
 :::
 
 #### Outbound rule for z/OSMF
-
+ 
 The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:
 
 ![Outbound rules](../images/install/outbound-rules-single-service-zosmf.png)
