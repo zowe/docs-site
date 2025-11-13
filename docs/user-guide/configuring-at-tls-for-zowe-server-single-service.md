@@ -214,7 +214,7 @@ We recommend that you restart Zowe services after refreshing PAGENT to avoid iss
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
-
+ 
 Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID (server user ID). Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
