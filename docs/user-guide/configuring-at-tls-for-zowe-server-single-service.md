@@ -63,14 +63,16 @@ To comply with security settings, Zowe AT-TLS setup requires two keyrings:
 #### Keyring with a private key
 
 This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate 
-authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with its 
-corresponding private key. In single-service deployment mode, this refers only to connections to another 
-instance participating in HA.
+authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with the 
+certificate's corresponding private key. When Zowe is running in single-service deployment mode, the keyring with a private key is used only for connections to another instance that is part of the High Availability (HA) setup.
 
 * If the southbound service supports X.509 client certificate authentication, then AT-TLS cannot be used.
-* There are no internal calls in non-HA single-service deployment mode which require X.509 client certificate 
+* No internal calls in non-HA single-service deployment mode require X.509 client certificate 
 authentication.
+:::tip
+
 We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
+:::
 
 #### Keyring without a private key
 
@@ -177,14 +179,15 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 3. Apply your keyring and configure the handshake role.
 
-    i. Note the snippet below.
+    i. In the following keyring configuration, replace `ZWEKRNG` to reference your environment's keyring with a private key.
+
     ```bash
     TTLSKeyringParms ZoweKeyring
     {
        Keyring ZWEKRNG
     }
     ```   
-    Replace `ZWEKRNG` to reference your environment's keyring with a private key. See [Keyring with a private key](configuring-at-tls-for-zowe-server-single-service.md#keyring-with-a-private-key).
+    For additional details, see [Keyring with a private key](configuring-at-tls-for-zowe-server-single-service.md#keyring-with-a-private-key).
 
     ii. Verify the `HandshakeRole` setting. 
 
