@@ -49,9 +49,8 @@ Configuring AT-TLS for Zowe requires careful consideration of security settings.
 
 Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
-The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 
-Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode with multi-service deployment mode enabled, calls to this service are all internal between API ML components. These internal calls between the API Gateway and ZAAS must include the X.509 Client Certificate. With the recommended single-service deployment mode enabled, these calls are internal to Zowe, and require no configuration in AT-TLS.
+
 :::
 
 ### Required Keyrings
@@ -63,7 +62,14 @@ To comply with security settings, Zowe AT-TLS setup requires two keyrings:
 
 #### Keyring with a private key
 
-This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with its corresponding private key.
+This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate 
+authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with its 
+corresponding private key. In single-service deployment mode, this refers only to connections to another 
+instance participating in HA.
+
+* If the southbound service supports X.509 client certificate authentication, then AT-TLS cannot be used.
+* There are no internal calls in non-HA single-service deployment mode which require X.509 client certificate 
+authentication.
 We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
 
 #### Keyring without a private key
@@ -81,7 +87,7 @@ The following diagram illustrates inbound rules when Zowe is deployed in single-
 
 ![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
 
-1. Define a generic inbound rule that can be set for all Zowe services. The configuration differs slightly between single-service and multi-service deployment modes. The following example applies to single-service deployment. Note that port 7555 is intentionally excluded in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
+1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
 ```bash
 TTLSRule ZoweServerRule1
@@ -546,8 +552,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 * Discovery Service to Discovery Service. This is the replica request.
 * API Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
-* API Gateway Service to ZAAS running in another LPAR.
-* Southbound services to the Discovery Service. This applies during onboarding.
+* Southbound services to the Discovery Service on this LPAR, or another LPAR. This applies during onboarding.
 * All outbound connections need to include the IP range for all LPARs. Make sure to allow traffic not only to other LPARs but also to the LPAR where the rules are defined, as outbound requests continue to go through AT-TLS. 
 
 ## Multi-tenancy deployment
