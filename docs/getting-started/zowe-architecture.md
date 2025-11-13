@@ -14,13 +14,13 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 <details>
 
-<summary>Click here to see the architecture used in multi-service deployment.</summary>
+<summary>Click to view the architecture used in multi-service deployment.</summary>
 
 The following diagram illustrates the high-level Zowe architecture using multi-service deployment.
 
 ![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
-As with the single-service architecture diagram, the diagram for multi-service deplayment shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
+As with the single-service architecture diagram, the diagram for multi-service deplayment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
 </details>
 
@@ -41,7 +41,7 @@ The `zowe.yaml` file can be configured to start Zowe instances on more than two 
 
 The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the Gateway of the second LPAR, all desktop traffic is routed there.  
 
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+The Caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
 ## Zowe architecture when running in Kubernetes cluster
 
@@ -51,9 +51,9 @@ The following diagram for single-service deployment illustrates the difference i
 
 <details> 
 
-<summary>Click here to see the architecture used in multi-service deployment under Kubernetes.</summary>
+<summary>Click to view the architecture used in multi-service deployment under Kubernetes.</summary>
 
-The following diagram for multi-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
+The following diagram for multi-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as an alternative to running all components on a single z/OS system.
 
 ![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
 
