@@ -45,12 +45,12 @@ While TLS is not handled by the Zowe Server components with AT-TLS enabled on th
 
 :::caution Important security consideration
 
-Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the X.509 Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the X.509 Client Certificates authentication scheme.
+Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply 
+to the X.509 Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for 
+onboarded services that support the X.509 Client Certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
-
-
-
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the 
+server certificate should be limited to the services that __require__ service to service authentication.
 :::
 
 ### Required Keyrings
@@ -75,7 +75,7 @@ We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
 #### Keyring without a private key
 
 This keyring is used for outbound connections that do not require nor prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
-We recommend to create a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
+We recommend that you create a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
 
 ## AT-TLS rules
 
@@ -163,10 +163,6 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 ```
 
 2. Verify port ranges.
-   
-   :::note
-   The required port ranges depend on your deployment mode.
-   :::
 
     The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. Note that the `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
     
@@ -181,15 +177,14 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 3. Apply your keyring and configure the handshake role.
 
-    i. Replace `ZoweKeyring` in the TTLS configuration to reference your environment's keyring (for example, a SAF keyring on z/OS or a file-based keystore).
-
-    ```
+    i. Note the snippet below.
+    ```bash
     TTLSKeyringParms ZoweKeyring
     {
-      Keyring YOUR_KEYRING_NAME
+       Keyring ZWEKRNG
     }
-
-    ```
+    ```   
+    Replace `ZWEKRNG` to reference your environment's keyring with a private key. See [Keyring with a private key](configuring-at-tls-for-zowe-server-single-service.md#keyring-with-a-private-key).
 
     ii. Verify the `HandshakeRole` setting. 
 
