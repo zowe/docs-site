@@ -213,7 +213,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 :::tip
 We recommend that you restart Zowe services after refreshing PAGENT to avoid issues with open connections.
 :::
-
+ 
 ### Outbound rules
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
