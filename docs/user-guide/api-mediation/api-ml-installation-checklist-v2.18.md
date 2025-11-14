@@ -1,7 +1,6 @@
 # Zowe v2.18 – API ML Installation and Configuration Checklist
 
 ## Preparing for Installation
-Got it. Here's the regenerated table with the "Notes / References" column retitled to "Applicable Link":
 
 | Step | Task | Applicable Link | Results |
 | :--- | :----------------------------------------------------------------------- | :------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,8 +18,8 @@ Okay, here's the table with the requested formatting changes applied:
 | :--- | :----------------------------------------------------------------------------- | :--------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
 | 5 | Obtain and extract the Zowe v2.18 PAX or SMP/E package. | [Install Zowe on z/OS](https://docs.zowe.org/v2.18.x/user-guide/install-zos) | Zowe v2.18 PAX file downloaded and extracted to `/usr/local/zowe/runtime`. |
 | 6 | Run `zwe install` or equivalent setup job to deploy runtime. | [Zowe on z/OS Installation Overview](https://docs.zowe.org/v2.18.x/install-zos)  | Zowe runtime successfully deployed; `instance.env` and `zowe.yaml` generated. |
-| 7 | Prepare and update the `zowe.yaml` configuration file. | Define API ML components (gateway, discovery, catalog). | `zowe.yaml` updated with correct ports, certificate paths, and instance details. |
-| 8 | Validate environment variables for the Zowe runtime user (e.g., `JAVA_HOME`, `ZOWE_ROOT_DIR`). | Verify via `env` command. | `JAVA_HOME` set to Java 11 path; `ZOWE_ROOT_DIR` pointing to `/usr/local/zowe`. | 
+| 7 | Prepare and update the `zowe.yaml` configuration file. | [Configuring Zowe on z/OS](https://docs.zowe.org/v2.18.x/configure/configure-zowe-zos) | `zowe.yaml` updated with correct ports, certificate paths, and instance details. |
+| 8 | Validate environment variables for the Zowe runtime user (e.g., `JAVA_HOME`, `ZOWE_ROOT_DIR`). | [Configuring a Zowe Instance](https://docs.zowe.org/v2.18.x/configure/configure-zowe-instance) | `JAVA_HOME` set to Java 11 path; `ZOWE_ROOT_DIR` pointing to `/usr/local/zowe`. | 
 
 
 ## Configuring with a z/OSMF Workflow
@@ -28,7 +27,7 @@ Here's the table with the requested formatting changes applied:
 
 | Step | Task | Applicable Link | Results |
 | :--- | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| 9 | Import and start the “Install Zowe Server Components” z/OSMF workflow. | [Zowe z/OSMF workflow](https://docs.zowe.org/v2.18.x/user-guide/install-zosmf) | Zowe z/OSMF workflow imported and initiated in z/OSMF. |
+| 9 | Import and start the “Install Zowe Server Components” z/OSMF workflow. | [Zowe z/OSMF workflow](https://docs.zowe.org/v2.18.x/user-guide/configure-apiml-zosmf-workflow-2-18) | Zowe z/OSMF workflow imported and initiated in z/OSMF. |
 | 10 | Specify **“Install API ML and Zowe Server Components”** as the workflow option. | Ensures Gateway, Discovery, Catalog are configured. | Workflow option "Install API ML and Zowe Server Components" selected. |
 | 11 | Complete prompts for workspace, port assignments, and keyrings. | Auto-populates `zowe.yaml`. | All workflow prompts completed; `zowe.yaml` automatically populated and verified. | 
 
