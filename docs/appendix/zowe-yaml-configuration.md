@@ -147,7 +147,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
 
 - **keystore.type**  
- Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
 - **keystore.file**  
  Specifies the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
 - **keystore.password**  
@@ -155,7 +155,7 @@ In Zowe YAML configuration, the certificate definition shares the same format wh
 - **keystore.alias**  
  Represents the alias name of the certificate stored in keystore. If you are using keyring, this is the certificate label connected to the keyring.
 - **truststore.type**  
- Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
 - **truststore.file**  
  Specifies the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, and usually will be the same value of `keystore.file`.
 - **truststore.password**  
@@ -194,13 +194,14 @@ The high-level configuration `zowe` supports these definitions:
 - **zowe.externalDomains**  
  Specifies a list of external domains to be used by the Zowe instance. This configuration is an array of domain name strings.
  In Sysplex deployment, this value is the DVIPA domain name defined in Sysplex Distributor. For example,
-   
+
    ```yaml
    zowe:
     externalDomains:
     - external.my-company.com
     - additional-dvipa-domain.my-company.com
    ```
+
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
@@ -218,7 +219,7 @@ The high-level configuration `zowe` supports these definitions:
     environments:
       MY_NEW_ENV: value-of-my-env
    ```
- 
+
  :::note
  Variables defined here are global to all Zowe components, on all HA instances.
 
