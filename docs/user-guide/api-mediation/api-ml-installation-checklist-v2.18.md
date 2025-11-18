@@ -1,6 +1,6 @@
 # Zowe v2.18 – API ML Installation and Configuration Checklist
 
-
+Use the following installation and configuration checklist to aguide you through the full installation and configuration of Zowe server-side components in Zowe version 2.18.x. In this Zowe version, API Mediaiton Layer sub-components (API Gateway, Discovery Service, and API Catalog) are deployed as inherently linked, distinct microservices, each running in its own process and typically on its own port within a Zowe instance.  Unlike later Zowe releases, Zowe v2.18.x does not offer an option to configure or deploy the API ML independently of other Zowe server-side components.
 
 ### Preparing for Installation
 
@@ -29,7 +29,7 @@ Here is a specific checklist for configuring security for the API Mediation Laye
 
 This checklist consolidates all relevant security-focused tasks, even those that are part of the broader Zowe installation, as they directly impact the secure operation of the API ML.
 
-### **Zowe v2.18: Configuring API ML Security on z/OS**
+### Configuring API ML Security on z/OS
 
 | Step | Task | Applicable Link | Results | Required Role |
 | :--- | :---------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
