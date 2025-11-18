@@ -1,4 +1,4 @@
-## Customizing Security Plugins
+# Customizing Security Plugins
 
 By default, the `app-server` handles security questions by utilizing either the API Mediation Layer, or ZSS, depending on which is present. If the API Mediation Layer is present, it is used to establish an SSO session which ZSS also respects. When RBAC is enabled, ZSS is queried for authorization questions.
 
