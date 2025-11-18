@@ -1,4 +1,4 @@
-## Controlling access to apps
+# Controlling access to apps
 
 You can control which apps are accessible (visible) to all Zowe desktop users, and which are accessible only to individual users. For example, you can make an app that is under development only visible to the team working on it.
 

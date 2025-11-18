@@ -1,4 +1,4 @@
-## ZSS configuration
+# ZSS configuration
 
 ZSS provides APIs that any server or client can use. By default, the Zowe Desktop includes Apps which rely upon ZSS APIs, and therefore it's recommended that whenever the `app-server` is enabled in the Zowe YAML, that `zss` is also enabled.
 

@@ -1,4 +1,4 @@
-## Using multiple ZIS instances
+# Using multiple ZIS instances
 When you install Zowe, it is ready to be used for 1 instance of each component. However, ZIS can have a one-to-many relationship with the Zowe webservers, and so you may wish to have more than one copy of ZIS for testing or to handle different groups of ZIS plugins.
 
 The following steps can be followed to point a Zowe instance at a particular ZIS server.
