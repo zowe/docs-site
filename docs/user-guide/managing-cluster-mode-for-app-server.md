@@ -8,11 +8,11 @@ When you **disable** cluster mode, you will lose the following benefits:
 
 2. **Reduced downtime during unexpected exceptions:** The low-downtime characteristic, where only one request is interrupted compared to around 15 seconds of downtime, is compromised.
 
-### To turn the cluster mode on
+## To turn the cluster mode on
 
 - Do NOT include the `zowe.environments.ZLUX_NO_CLUSTER `in the `zowe.yaml` file.
 
-### To turn the cluster mode off
+## To turn the cluster mode off
 
 - Include `zowe.environments.ZLUX_NO_CLUSTER=1` in the `zowe.yaml` file.
 
