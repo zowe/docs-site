@@ -1,4 +1,4 @@
-## Administering the servers and plugins using an API
+# Administering the servers and plugins using an API
 The App Server has a REST API to retrieve and edit both the App Server and ZSS server configuration values, and list, add, update, and delete plugins. Most of the features require RBAC to be enabled and for your user to have RBAC access to utilize these endpoints. For more information see documentation on how to  [use RBAC](https://docs.zowe.org/stable/user-guide/mvd-configuration.html#controlling-access-to-dataservices)
 
 The API returns the following information in a JSON response: 
