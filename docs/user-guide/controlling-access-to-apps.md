@@ -6,13 +6,13 @@ You control access by editing JSON files that list the apps. One file lists the 
 
 You can also control access to the JSON files. The files are accessible directly on the file system, and since they are within the configuration dataservice directories, they are also accessible via REST API. We recommend that only Zowe administrators be allowed to access the file system locations, and you control that by setting the directories and their contents to have file permissions on z/OS that only allow the Zowe admin group read & write access. You control who can read and edit the JSON files through the REST API by controlling who can [access the configuration dataservice objects](mvd-configuration.md#creating-authorization-profiles) URLs that serve the JSON files.
 
-### Enabling RBAC
+## Enabling RBAC
 
 By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
 1. To enable RBAC, set the *components.zss.dataserviceAuthentication.rbac* and *components.app-server.dataserviceAuthentication.rbac* variables to `true` in the Zowe configuration file.
 
-### Controlling app access for all users
+## Controlling app access for all users
 
 **Note:**
 - `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
@@ -33,7 +33,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 5. [Restart the app server](start-zowe-zos.md).
 
-### Controlling app access for individual users
+## Controlling app access for individual users
 
 1. Enable RBAC.
 
