@@ -1,4 +1,4 @@
-## Accessing ZSS
+# Accessing ZSS
 
 The `zss` server should be accessed  through the `gateway` when both are present. When both are ready, ZSS can be accessed from the API Mediation Layer Gateway, such as
 
