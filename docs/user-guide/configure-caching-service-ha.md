@@ -33,6 +33,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
             mode: imMemory
             size: 10000
    ```
+   
+   In single-service mode, the port **7555** is ignored. The single-service port is used instead.
 
 ## Infinispan
 
@@ -142,3 +144,6 @@ To enable Personal Access Token support when using the Caching Service, **Infini
               trustStore:
               trustStorePassword
    ```
+
+   In single-service mode, the port **7555** is ignored. The single-service port is used instead.
+   
