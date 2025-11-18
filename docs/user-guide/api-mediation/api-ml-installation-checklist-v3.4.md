@@ -1,6 +1,6 @@
 # Zowe v3.4 – API ML Installation and Configuration Checklist 
 
-Zowe v3.4 introduces a significant architectural shift with its single-service deployment option for the API Mediation Layer (API ML). Unlike previous Zowe versions (such as v2.18 and early v3.0 releases) where the API Gateway, Discovery Service, and other core API ML components were often deployed as separate microservices, the single-service deployment consolidates these essential functionalities into a single, unified Spring Boot application. 
+Zowe v3.4 introduces a significant architectural shift with the single-service deployment option for the API Mediation Layer (API ML). Unlike previous Zowe versions (such as v2.18 and early v3.0 releases) where the API Gateway, Discovery Service, and other core API ML components are deployed as separate microservices, the single-service deployment consolidates these essential functionalities into a single, unified Spring Boot application. 
 
 This single-server architecture offers substantial benefits over multi-service deployments by simplifying installation and configuration, reducing the number of processes to manage, and lowering internal communication overhead. The result is a more streamlined, easier-to-maintain, and potentially more performant API ML environment.
 
