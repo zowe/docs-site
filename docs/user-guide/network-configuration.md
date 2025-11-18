@@ -4,7 +4,7 @@
 
 The App Server and ZSS both can be accessed over HTTPS, either natively or via AT-TLS by setting appropriate AT-TLS rules and Zowe YAML assignments. When using native HTTPS, the TLS properties can be further customized within the YAML.
 
-### Port configuration
+## Port configuration
 
 The Zowe YAML property `components.<component-name>.port` can be used to set the port for any Zowe server. By default, the following is used but can be overridden:
 
@@ -16,18 +16,18 @@ components:
     port: 7557
 ```
 
-### IP configuration
+## IP configuration
 
 By default, all Zowe servers listen on the IP address `0.0.0.0`. This can be customized.
 The Zowe YAML property `zowe.network.server.tls.listenAddresses` can be used to instruct both `app-server` and `zss` of which IP to listen on. This property can be nested within each component if it is desired to customize them individually. Alternatively, TCPIP port rules can be used to control the assignment of `0.0.0.0` into a particular alternative IP address.
 [You can read more about this in the network requirements page](./address-network-requirements.md).
 
-### Native TLS
+## Native TLS
 
 Both `app-server` and `zss` server components default to using HTTPS without the need for AT-TLS. AT-TLS is also possible. When using the native TLS, attributes such as TLS version and ciphers can be customized within the `zowe.network.server.tls` and `zowe.network.client.tls` objects of the Zowe configuration. These objects can also be placed within the `components.zss` and `components.app-server` objects, such as `components.zss.zowe.network.server.tls` in order to individually customize each server TLS configuration. For more information, read [TLS configuration](./tls-configuration.md).
 
 
-### AT-TLS
+## AT-TLS
 
 You can instruct Zowe servers to expect TLS using the property `zowe.network.server.tls.attls: true`. Use this property is to set AT-TLS for all Zowe servers. For more granular control, you can set the following section in the yaml file:
 
@@ -46,7 +46,7 @@ components:
 
 This configuration instructs only the `app-server` component to expect AT-TLS for both inbound and outbound traffic. Similarly, set the parameter `zowe.network.server.tls.attls` to `true` for the `zss` component. Use `zowe.network.server.tls.attls: true` to instruct both servers to expect AT-TLS altogether. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md).
 
-#### AT-TLS Rule Suggestions
+### AT-TLS Rule Suggestions
 
 The `app-server` and `zss` components of Zowe are servers that may accept incoming connections from each other, other Zowe servers, and clients outside z/OS such as browsers either directly or indirectly such as when API ML is used.
 
@@ -61,7 +61,7 @@ The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
 
 
-### Native TLS
+## Native TLS
 
 The configuration object `zowe.network.server.tls` and `zowe.network.client.tls` can be set to control all Zowe components, or just `app-server` or `zss` but nesting the object within them. This object can control ciphers by listing IANA cipher names, minimum and maximum TLS levels, and for some servers even curves can be customized via a list.
 
