@@ -8,8 +8,8 @@ This single-server architecture offers substantial benefits over multi-service d
 | Step | Task | Applicable Link | Results | Required Role |
 | :--- | :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------ | :--------------------------------------- |
 | 1 | Verify Java 17+, z/OS 2.4+, and Zowe 3.3 runtime prerequisites. | [Addressing Zowe server prerequisites](https://docs.zowe.org/stable/user-guide/install-nodejs-zos/) | Java 17, z/OS 2.4+, and Zowe 3.3 prerequisites confirmed; all system requirements met. | System Programmer / Zowe Administrator |
-| 2 | Choose deployment type: **single-service** or **multi-component**. | [Zowe deployment types](https://docs.zowe.org/stable/install-zos/install-zowe-zos.html#zowe-deployment-types) | Modulith deployment chosen for consolidated API ML. | Zowe Administrator |
-| 3 | Update firewall and port settings if using single-service mode. | [Zowe default ports](https://docs.zowe.org/stable/user-guide/configure-zos-system.html#zowe-default-ports) | Firewall rules updated for single-port operation; required ports confirmed open and available. | Network Administrator / Zowe Administrator |
+| 2 | Choose deployment type: **single-service** or **multi-component**. | [Zowe deployment types](https://docs.zowe.org/stable/install-zos/install-zowe-zos.html#zowe-deployment-types) | Single-service deployment chosen for consolidated API ML. | Zowe Administrator |
+| 3 | Update firewall and port settings if using single-service mode. | [Component ports](https://docs.zowe.org/stable/user-guide/address-network-requirements/#component-ports) | Firewall rules updated for single-port operation; required ports confirmed open and available. | Network Administrator / Zowe Administrator |
 
 ## Installing the Zowe z/OS Runtime
 | Step | Task | Applicable Link | Results | Required Role |
@@ -22,7 +22,7 @@ This single-server architecture offers substantial benefits over multi-service d
 | Step | Task | Applicable Link | Results | Required Role |
 | :--- | :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------- | :--------------------------------------- |
 | 7 | Use the Stand-alone Zowe API ML Configuration workflow. | [Configuring API ML with z/OSMF Workflow](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow.html) | Zowe API ML Configuration z/OSMF workflow imported and initiated. | System Programmer / Zowe Administrator |
-| 8 | We recommend you select “Modulith Deployment” as your deployment method. | [Define workflow variables in z/OSMF](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow.html#define-workflow-variables) | "Modulith Deployment" selected as the deployment method in the z/OSMF workflow. | Zowe Administrator |
+| 8 | We recommend you select “Single-service deployment” as your deployment method. | [Define workflow variables in z/OSMF](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow.html#define-workflow-variables) | "Single-service deployment" selected as the deployment method in the z/OSMF workflow. | Zowe Administrator |
 | 9 | Specify trusted proxies and forward-header parameters. | [Configure trusted proxies](https://docs.zowe.org/stable/user-guide/configure-apiml-zosmf-workflow.html#configure-trusted-proxies) | Trusted proxy and forward-header parameters configured as required during workflow execution. | Network Administrator / Zowe Administrator |
 
 ## Configuring Security
