@@ -1,6 +1,6 @@
 # Enabling AT-TLS for single-service deployment mode
 
-This article describes the use of AT-TLS in single-service deployment mode. From Zowe v.3.4 and later versions, we recommend the use of single-service deployment mode. For the benefits of running Zowe in this mode, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md). 
+This article describes the use of AT-TLS in single-service deployment mode. From Zowe v.3.4.0 and later versions, we recommend the use of single-service deployment mode. For the benefits of running Zowe in this mode, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md). 
 
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
 The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
@@ -164,7 +164,7 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 
 2. Verify port ranges.
 
-    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. Note that the `PortRange` requirement is different between single-service and multi-service deployment. For single-service deployment, include the following ports:
+    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. Include the following ports:
     
     | Port number | Category | Component  | Default Jobname         |
     |------|------|------------|-------------------------|
@@ -224,8 +224,6 @@ Careful consideration needs to be made regarding which rules are to be configure
 Use the example in this section as a template for internal connections between Zowe core services.
 
 **Outbound rule for z/OSMF**
-
-Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from the API Gateway to the Discovery Service.
 
 The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
 
