@@ -7,7 +7,7 @@ Security plugins can be installed as part of Zowe extensions, and `app-server` c
 Different security plugins could be used to operate in different environments, with different security systems, or with different session characteristics.
 For more information, [read the extender's guide on security plugins](../extend/extend-desktop/mvd-authentication-api.md)
 
-### Session duration and expiration
+## Session duration and expiration
 
 After successful authentication, a Zowe Desktop session is created by authentication plugins.
 
