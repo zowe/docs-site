@@ -1,4 +1,4 @@
-## Logging configuration
+# Logging configuration
 
 For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutility.md).
 

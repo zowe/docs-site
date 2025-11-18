@@ -1,4 +1,4 @@
-## Network configuration
+# Network configuration
 
 **Note:** The following attributes are to be defined in the Zowe configuration file.
 

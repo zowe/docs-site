@@ -1,4 +1,4 @@
-## Configuration Directories
+# Configuration Directories
 When running, the App Server will access the server's settings and read or modify the contents of its resource storage. All of this data is stored within a hierarchy of folders which correspond to scopes:
 
 - Product: The contents of this folder are not meant to be modified, but used as defaults for a product.
