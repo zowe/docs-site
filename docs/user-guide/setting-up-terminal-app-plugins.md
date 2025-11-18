@@ -1,4 +1,4 @@
-## Setting up terminal app plugins
+# Setting up terminal app plugins
 
 Follow these optional steps to configure the default connection to open for the terminal app plugins.
 
