@@ -2,7 +2,7 @@
 
 After you install Zowe, you can register and execute the z/OSMF workflows in the web interface to perform a range of
 API ML/Zowe configuration tasks. The **Stand-alone Zowe API ML Configuration** workflow simplifies configuration of Zowe API Mediation Layer and does not require the level of
-expertise that is needed to perform manual API ML/Zowe configuration. The **Stand-alone Zowe API ML Configuration** workflow also runs the `zwe install` and `zwe init` command to initialize Zowe z/OS runtime.
+expertise that is needed to perform manual API ML/Zowe configuration. The **Stand-alone Zowe API ML Configuration** workflow also runs the `zwe install` and `zwe init` command to initialize the Zowe z/OS runtime.
 
 :::info Required role: system programmer
 :::
@@ -12,29 +12,10 @@ expertise that is needed to perform manual API ML/Zowe configuration. The **Stan
 Ensure that you meet the following requirements before you start your Zowe configuration:
 
 - Install and configure z/OSMF
-- Install Zowe with an SMP/E build, PSWI, or a convenience build
+- Install Zowe with an [SMP/E build](install-zowe-smpe-overview.md), [Portable Software Instance](install-zowe-pswi.md), 
+or a [Convenience Build](install-zowe-zos-convenience-build.md).
 
 ## Overview of Stand-alone Zowe API ML Configuration workflow
-
-The following components are automatically enabled after performing the **Stand-alone Zowe API ML Configuration** workflow:
-
-- API Gateway
-- ZAAS
-- API Catalog
-- Discovery service
-- Caching service
-
-The following components are automatically disabled:
-
-- Application server
-- ZSS component
-- JES Explorer
-- MVS Explorer
-- USS Explorer
-  
-:::note
-These disabled components can be enabled by performing manual changes in the yaml file. Note that making such changes to the yaml file is not recommended for simplified and optimized configuration of API ML.
-:::
 
 You can execute the **Stand-alone Zowe API ML Configuration** workflow either from a PSWI during deployment or later from a created software instance in z/OSMF. Alternatively, you can execute the configuration workflow in z/OSMF during the workflow registration process.
 
@@ -120,7 +101,16 @@ The first workflow step in API ML configuration is to define variables.
 
     ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
-5. After you complete defining the main variables for your configuration, define all ports for automatically enabled API ML services.   
+ 
+:::note
+From Zowe v3.4, **we recommend single-service deployment mode**. To enable single-service deployment mode, ensure 
+that the checkbox for **Enable API ML** is checked. To review the benefits of using the single-service deployment of API ML, 
+see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
+
+
+:::
+
+After you complete the definition of the main variables for your configuration, define all ports for automatically enabled API ML services.   
 
     ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
 
@@ -131,7 +121,7 @@ After all sub-steps are completed, the step **Define variables** is marked as Co
 
 The second workflow step is to create a configuration zowe.yaml file with the variable setup that was defined in the **Define variables** step.
 
-1. Review your configurations.
+1. Review your configuration.
 2. If necessary, customize the JCL according you your specifications and click **Finish**.  
    The zowe.yaml file is ready, and the step is marked as Complete.
 
@@ -147,7 +137,7 @@ This step consumes the zowe.yaml configuration file and contains two sub-steps:
 2. **Run Zowe init** to run `zwe init mvs` and `zwe init stc` commands.
 
 :::note
-If you did not set up security prior to this installation, you can  submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
+If you did not set up security prior to this installation, you can submit the `ZWESECUR` JCL. For details, see [Configuring security](configuring-security.md).
 :::
 
 For more information about `zwe install` and `zwe init` commands, see the following articles:
