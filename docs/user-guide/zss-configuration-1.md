@@ -3,11 +3,11 @@
 ZSS provides APIs that any server or client can use. By default, the Zowe Desktop includes Apps which rely upon ZSS APIs, and therefore it's recommended that whenever the `app-server` is enabled in the Zowe YAML, that `zss` is also enabled.
 
 
-### ZSS 64 or 31 bit modes
+## ZSS 64 or 31 bit modes
 
 Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other.
 
-#### Verifying which ZSS mode is in use
+### Verifying which ZSS mode is in use
 
 You can check which version of ZSS you are running by looking at the logs. At startup, the message ZWES1013I states which mode is being used, for example:
 
@@ -17,7 +17,7 @@ Or
 
 `ZWES1013I ZSS Server has started. Version 3.0.0 31-bit`
 
-#### Verifying which ZSS mode plugins support
+### Verifying which ZSS mode plugins support
 
 You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plugin.
 In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
@@ -27,11 +27,11 @@ If the service has the property `libraryName64`, then it supports 64 bit. If it 
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
-#### Setting ZSS 64 bit or 31 bit mode
+### Setting ZSS 64 bit or 31 bit mode
 
 You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value will not take effect until next server restart.
 
-#### Customizing ZSS session duration
+### Customizing ZSS session duration
 
 In a standard Zowe installation, all Zowe servers utilize the API Mediation Layer's token-based, single-sign on authentication. This authentication in turn cooperates with z/OSMF, and the session duration is typically that of z/OSMF's, which defaults to 8 hours before the session expires.  In that situation, customization of session duration is best done by customizing z/OSMF's session duration, as a part of its Liberty configuration.
 
