@@ -980,6 +980,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/known-ze",
             "troubleshoot/ze/ze-known-limits",
+            "troubleshoot/cli/troubleshoot-http-codes",
             "troubleshoot/ze/ze-issues",
           ],
         },
