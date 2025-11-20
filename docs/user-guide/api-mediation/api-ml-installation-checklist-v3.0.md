@@ -1,6 +1,6 @@
 # Zowe v3.0 – API ML Installation and Configuration Checklist
 
-Use the following installation and configuration checklist to guide you through setting up Zowe version 3.0, a pivotal release in the platform's evolution. Zowe v3.0 fundamentally revamped the API Gateway, transitioning it to a robust Spring-based architecture, offering enhanced performance and stability. While it largely retains the multi-service deployment model for API Mediation Layer components, where the Gateway and Discovery Service run as distinct entities within the Zowe instance, it does not yet feature the consolidated 'modulith' option seen in later releases. Therefore, the API ML components are installed and configured as an integral part of the complete Zowe server runtime, similar to Zowe v2.18.
+Use the following installation and configuration checklist to guide you through setting up Zowe version 3.0. Zowe v3.0 fundamentally restructured the API Gateway, transitioning this component to a Spring-based architecture, offering enhanced performance and stability. While the v3.0 version retains the multi-service deployment model for API Mediation Layer components, where the Gateway and Discovery Service run as distinct services within the Zowe instance, this version does not feature the consolidated single-service option seen in later releases. Therefore, the API ML components are installed and configured as an integral part of the complete Zowe server runtime, similar to Zowe v2.18.
 
 ## Preparing for Installation
 | Step | Task | Applicable Link | Results | Required Role |
