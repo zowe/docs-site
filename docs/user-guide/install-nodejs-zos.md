@@ -1,6 +1,6 @@
 # Addressing Zowe server prerequisites
 
-To ensure a successful Zowe server-side installation on z/OS, certain components must be pre-installed and meet specific version requirements. The following table details these core prerequisites, including Node.js, Java, and z/OSMF, outlining their applicability across different Zowe versions.
+To ensure a successful Zowe server-side installation on z/OS, certain components must be pre-installed and meet specific version requirements. The following table details these core prerequisites, including Node.js, Java, and z/OSMF, outlining their applicability across different Zowe versions.  
 
 :::info Required role: system programmer
 :::
@@ -134,7 +134,7 @@ Follow these steps to install the PAX edition of Node.js - z/OS to run Zowe.
     node --version
     ```
 
-    If Node.js is installed correctly, the version of Node.js is displayed. If it is intalled correctly, you will see the version information on your device.
+    If Node.js is installed correctly, the version of Node.js is displayed. If it is installed correctly, you will see the version information on your device.
 1. After you install Node.js, set the `NODE_HOME` environment variable to the directory where Node.js is installed. For example, `NODE_HOME=/proj/mvd/node/installs/node-v18.18.2-os390-s390x`.
 
 </details>
