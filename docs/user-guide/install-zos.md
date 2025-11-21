@@ -94,7 +94,8 @@ Successful installation of either a convenience build or an SMP/E build creates 
 * The unconfigured Zowe runtime directory
 * The utility library `SZWEEXEC` that contains utilities
 * The SAMPLIB library `SZWESAMP` that contains sample members
-* The load library `SZWEAUTH` that contains load modules 
+* The load library `SZWEAUTH` that contains load modules
+* The load library `SZWELOAD` that contains `configmgr` for REXX
 
 The steps to prepare the z/OS environment to launch Zowe are the same for all installation methods.
 
