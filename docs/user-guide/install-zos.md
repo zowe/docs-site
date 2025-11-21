@@ -129,7 +129,7 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 :::note
 If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
 :::
-4. [Perform APF authorization of load libraries](./apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS privileded security calls.  
+4. [Perform APF authorization of load libraries](./apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS privileged security calls.  
 (Uses the command `zwe init apfauth`)
 5. [Configure Zowe to use TLS certificates](./configure-certificates.md)  
 (Uses the command `zwe init certificate`)
