@@ -958,6 +958,7 @@ module.exports = {
             "troubleshoot/cli/mustgather-cli",
             "troubleshoot/cli/use-individual-troubleshoot-commands",
             "troubleshoot/cli/cli-use-curl-to-troubleshoot",
+            "troubleshoot/cli/troubleshoot-http-codes",
             "troubleshoot/cli/zosmf-cli",
             "troubleshoot/cli/troubleshoot-cli-credentials",
             "troubleshoot/cli/known-cli",
@@ -979,6 +980,7 @@ module.exports = {
           items: [
             "troubleshoot/ze/known-ze",
             "troubleshoot/ze/ze-known-limits",
+            "troubleshoot/cli/troubleshoot-http-codes",
             "troubleshoot/ze/ze-issues",
           ],
         },
