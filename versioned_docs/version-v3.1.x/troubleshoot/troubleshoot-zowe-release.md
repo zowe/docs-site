@@ -12,7 +12,11 @@ Each time a new release is created, the release ID is incremented.  Each number 
 - `2.5.1` represents the first patch to the `2.5.0` release.
 - `2.6.0` is the first minor release to be created after `2.5.1`.
 
-To see the Zowe release schedule, see [Zowe PI Schedule and Releases](https://github.com/zowe/community/blob/master/Project%20Management/Schedule/Zowe%20PI%20%26%20Sprint%20Cadence.md).
+To see the Zowe release schedule for v3 releases and v2 patch releases, see the [Releases section](https://www.zowe.org/vnext) in zowe.org.
+
+:::note
+Zowe V2 is now in maintenance state. Patch releases are planned until the Zowe V2 End of Service scheduled for early 2027. 
+:::
 
 ### Major release
 
