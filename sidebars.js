@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
         "whats-new/release-notes/v3_3_0",
         "whats-new/release-notes/v3_2_0",
@@ -951,7 +952,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.3.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.x.md",
     },
   ],
 }
