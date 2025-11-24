@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor delete package</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_delete.html">delete</a> › <a href="zowe_endevor_delete_package.html">package</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The delete package command lets you delete Packages of any status type in Endevor.</p>
+<h4>Usage</h4>
+<p>zowe endevor delete package [package] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>package</code>		 <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor package.</li>
+</ul>
+</li>
+</ul>
+<h4>options</h4>
+<ul>
+<li>
+<p><code>--status</code> | <code>--st</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specify the status of the packages. Valid values are [APPROVED, EXECFAILED] for execute action, and additional values [INEDIT, INAPPROVAL, INEXECUTION, EXECUTED, COMMITTED, DENIED] for list action, additional value [ALLSTATE] for delete action.<br>
+It is possible to specify multiple status separated by &quot;,&quot; during list and delete package.</p>
+<p>Allowed values: ALLSTATE, INEDIT, INAPPROVAL, APPROVED, INEXECUTION, EXECUTED, COMMITTED, DENIED, EXECFAILED</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--older-than</code> | <code>--ot</code> <em>(number)</em></p>
+<ul>
+<li>Specify the minimum age of the package.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--maxrc</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The maximum value of the return code of a successful action. When the return code is greater than the maxrc value, the command fails</p>
+<p>Default value: 8</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>asynchronous task options</h4>
+<ul>
+<li>
+<p><code>--asynchronous</code> | <code>--async</code> <em>(boolean)</em></p>
+<ul>
+<li>Submit this command as an asynchronous Endevor Web Services task</li>
+</ul>
+</li>
+</ul>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>output customization options</h4>
+<ul>
+<li>
+<p><code>--suppress-messages</code> | <code>--sm</code> <em>(boolean)</em></p>
+<ul>
+<li>Suppress all [INFO]/[WARN] messages from terminal output.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-file</code> | <code>--file-name</code> <em>(string)</em></p>
+<ul>
+<li>File name for saving reports from Endevor SCM locally.</li>
+</ul>
+</li>
+<li>
+<p><code>--report-dir</code> <em>(string)</em></p>
+<ul>
+<li>Directory for saving reports from Endevor SCM locally, if --report-file wasn't specified. Defaults to current directory.</li>
+</ul>
+</li>
+<li>
+<p><code>--write-report</code> <em>(boolean)</em></p>
+<ul>
+<li>Write the endevor reports to a file. By default, when return code is 0, no report will be written, unless this option is specified. When return code is bigger than 0, reports will be written to a file, unless this option is specifed to be false</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Delete package with endevor profile set up:</p>
+<ul>
+<li><code>zowe endevor delete package packageName -i ENDEVOR</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor delete package packageName -i ENDEVOR">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
