@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>zos-ssh issue command</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_zos-ssh.html">zos-ssh</a> › <a href="zowe_zos-ssh_issue.html">issue</a> › <a href="zowe_zos-ssh_issue_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Issue a z/OS USS command</p>
+<p>Note: The common CLI 'Base Connection Options' of token-type and token-value are not applicable to the ssh command, since the ssh service is not accessible through APIML.</p>
+<h4>Usage</h4>
+<p>zowe zos-ssh issue command &lt;command&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>command</code>		 <em>(string)</em></p>
+<ul>
+<li>z/OS USS command to issue.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--cwd</code> <em>(string)</em></p>
+<ul>
+<li>Working directory in which to execute the command.</li>
+</ul>
+</li>
+</ul>
+<h4>z/OS Ssh Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The z/OS SSH server host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The z/OS SSH server port.</p>
+<p>Default value: 22</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe user name, which can be the same as your TSO login.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Mainframe password, which can be the same as your TSO password.</li>
+</ul>
+</li>
+<li>
+<p><code>--privateKey</code> | <code>--key</code> | <code>--pk</code> <em>(string)</em></p>
+<ul>
+<li>Path to a file containing your private key, that must match a public key stored in the server for authentication</li>
+</ul>
+</li>
+<li>
+<p><code>--keyPassphrase</code> | <code>--passphrase</code> | <code>--kp</code> <em>(string)</em></p>
+<ul>
+<li>Private key passphrase, which unlocks the private key.</li>
+</ul>
+</li>
+<li>
+<p><code>--handshakeTimeout</code> | <code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
+<ul>
+<li>How long in milliseconds to wait for the SSH handshake to complete.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ssh-profile</code> | <code>--ssh-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ssh) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Issue a simple command, giving the working directory:</p>
+<ul>
+<li><code>zowe zos-ssh issue command &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp </code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe zos-ssh issue command &quot;npm install express&quot; --cwd /u/cicprov/mnt/CICPY01I/bundles/myapp ">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

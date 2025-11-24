@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>endevor merge element</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_endevor.html">endevor</a> › <a href="zowe_endevor_merge.html">merge</a> › <a href="zowe_endevor_merge_element.html">element</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Merge Endevor elements from one Endevor location into another. Requires an initialized Endevor workspace to perform conflict resolution. Use &quot;synchronize workspace&quot; command afterwards to push the result back into Endevor.</p>
+<h4>Usage</h4>
+<p>zowe endevor merge element [element] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>element</code>		 <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element</li>
+</ul>
+</li>
+</ul>
+<h4>endevor-location definition options</h4>
+<ul>
+<li>
+<p><code>--environment</code> | <code>--env</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor environment where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--system</code> | <code>--sys</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor system where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--sub</code> <em>(string)</em></p>
+<ul>
+<li>The Endevor subsystem where your project resides.</li>
+</ul>
+</li>
+<li>
+<p><code>--type</code> | <code>--typ</code> <em>(string)</em></p>
+<ul>
+<li>Name of the Endevor element's type.</li>
+</ul>
+</li>
+<li>
+<p><code>--stage-number</code> | <code>--sn</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor stage number where your project resides.</p>
+<p>Allowed values: \*, \%, 1, 2</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--ccid</code> | <code>--cci</code> <em>(string)</em></p>
+<ul>
+<li>The CCID you want to use when performing an Element action.</li>
+</ul>
+</li>
+<li>
+<p><code>--comment</code> | <code>--com</code> <em>(string)</em></p>
+<ul>
+<li>The comment you want to have when performing an Element action</li>
+</ul>
+</li>
+<li>
+<p><code>--instance</code> | <code>-i</code> <em>(string)</em></p>
+<ul>
+<li>Specifies Endevor Web Services dataSource name.</li>
+</ul>
+</li>
+</ul>
+<h4>merge-location definition options</h4>
+<ul>
+<li>
+<p><code>--merge-environment</code> | <code>--menv</code> <em>(string)</em></p>
+<ul>
+<li>Merge elements from this environment to the target environment (specified by 'environment'). Defaults to the same environment as the target.</li>
+</ul>
+</li>
+<li>
+<p><code>--merge-stage-number</code> | <code>--msn</code> <em>(string)</em></p>
+<ul>
+<li>Merge elements from this stage number into the target stage number (specified by 'stage-number'). Defaults to the same stage number as the target.</li>
+</ul>
+</li>
+<li>
+<p><code>--merge-system</code> | <code>--msys</code> <em>(string)</em></p>
+<ul>
+<li>Merge elements from this system into the target system (specified by 'system'). Defaults to the same system as the target.</li>
+</ul>
+</li>
+<li>
+<p><code>--merge-subsystem</code> | <code>--msub</code> <em>(string)</em></p>
+<ul>
+<li>Merge elements from this subsystem into the target subsystem (specified by 'subsystem'). Defaults to the same subsystem as the target.</li>
+</ul>
+</li>
+<li>
+<p><code>--merge-out-of-sync</code> | <code>--moos</code> <em>(boolean)</em></p>
+<ul>
+<li>Merge out-of-sync elements at the target location with their next version in the map, and attempt to resolve the out-of-sync during the next synchronization with Endevor.</li>
+</ul>
+</li>
+</ul>
+<h4>workspace options</h4>
+<ul>
+<li>
+<p><code>--workspace-dir</code> | <code>--wsp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The Endevor workspace directory, if different from current working directory.</p>
+<p>Default value: .</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--dry-run</code> | <code>--dr</code> <em>(boolean)</em></p>
+<ul>
+<li>List all actions the synchronization would perform, without executing them.</li>
+</ul>
+</li>
+<li>
+<p><code>--limit</code> | <code>--lim</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>If the synchronization would need to perform more than 'limit' Endevor actions, do not perform the actions now, only report them. 0 means no limit.</p>
+<p>Default value: 0</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>options</h4>
+<ul>
+<li>
+<p><code>--override-signout</code> | <code>--os</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to override the Signout of any Endevor elements affected by this action.</li>
+</ul>
+</li>
+<li>
+<p><code>--signout</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify if you want to perform the action with signing out any retrieved elements.</li>
+</ul>
+</li>
+</ul>
+<h4>endevor session definition options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base host name.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the port number.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the protocol used for connecting to Endevor Rest API</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user name.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the user's password.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>Specify this option to have the server certificate verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>Specifies the base path used for connecting to Endevor Rest API</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--endevor-profile</code> | <code>--endevor-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--endevor-location-profile</code> | <code>--endevor-location-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (endevor-location) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Merge element ELEMENT1 of type COBPGM from subsystem SUBFROM into the same element found in subsystem SUBTO (system, stage and env taken from current location profile):</p>
+<ul>
+<li><code>zowe endevor merge element ELEMENT1 --type COBPGM --subsystem SUBTO --merge-subsystem SUBFROM</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor merge element ELEMENT1 --type COBPGM --subsystem SUBTO --merge-subsystem SUBFROM">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Merge any elements that are currently out of sync with their next element version up the map (map location determined by current profile):</p>
+<ul>
+<li><code>zowe endevor merge element * --merge-out-of-sync</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor merge element * --merge-out-of-sync">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Report which elements are currently out of sync with their next element version up the map, but do not merge them yet (map location determined by current profile):</p>
+<ul>
+<li><code>zowe endevor merge element * --merge-out-of-sync --dry-run</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor merge element * --merge-out-of-sync --dry-run">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Merge all elements from system SYSFROM, subsystem SUBFROM into matching elements in system SYSTO subsystem SUBTO (system, stage and env taken from current location profile):</p>
+<ul>
+<li><code>zowe endevor merge element * --system SYSTO --subsystem SUBTO --merge-system SYSFROM --merge-subsystem SUBFROM</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor merge element * --system SYSTO --subsystem SUBTO --merge-system SYSFROM --merge-subsystem SUBFROM">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Merge element ELEMENT1 of type COBPGM from subsystem SUBFROM into SUBTO, retrieving both elements using the provided ccid &amp; comment, with signout, and overriding signout if necessary:</p>
+<ul>
+<li><code>zowe endevor merge element ELEMENT1 --type COBPGM --subsystem SUBTO --merge-subsystem SUBFROM --ccid MYCCID --comment 'my comment' --signout --overrride-signout</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe endevor merge element ELEMENT1 --type COBPGM --subsystem SUBTO --merge-subsystem SUBFROM --ccid MYCCID --comment 'my comment' --signout --overrride-signout">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config update-schemas</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_update-schemas.html">update-schemas</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Update schema files by looking up the directory structure.</p>
+<p>Schema files up in higher level directories will always be updated. To also update schema files down in lower level directories, specify the `--depth` flag.</p>
+<h4>Usage</h4>
+<p>zowe config update-schemas [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--depth</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Specifies how many levels down the directory structure should the schemas be updated.</p>
+<p>Default value: 0</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Update all schema files found in higher level directories:</p>
+<ul>
+<li><code>zowe config update-schemas</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config update-schemas">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Update all schema files found in higher level directories and 2 levels down the directory structure:</p>
+<ul>
+<li><code>zowe config update-schemas --depth 2</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config update-schemas --depth 2">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -67,13 +67,3 @@ Go to the [Zowe Client Node.js SDK issue list](https://github.com/zowe/zowe-cli/
 ### Filing an issue for Zowe Client Python SDK *technical preview*
 
 Go to the [Zowe Client Python SDK issue list](https://github.com/zowe/zowe-client-python-sdk/issues) to file an issue. Include all relevant information.
-
-## Zowe Chat *technical preview*
-
-### Chatting with the Zowe Chat community
-
-Chat with the community on [Slack](https://openmainframeproject.slack.com/archives/C03NNABMN0J).
-
-### Filing an issue for Zowe Chat
-
-Go to the [Zowe Chat issue list](https://github.com/zowe/zowe-chat/issues) to file an issue. Include all relevant information.

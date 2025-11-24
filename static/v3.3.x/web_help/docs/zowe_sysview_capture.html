@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>sysview capture</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_sysview.html">sysview</a> › <a href="zowe_sysview_capture.html">capture</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Display output from a primary command stored in a SYSVIEW capture data set</p>
+<h4>Usage</h4>
+<p>zowe sysview capture &lt;capture-dsn&gt; &lt;capture-command&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>capture-dsn</code>		 <em>(string)</em></p>
+<ul>
+<li>Capture data set name from which to retrieve captured commands</li>
+</ul>
+</li>
+<li>
+<p><code>capture-command</code>		 <em>(string)</em></p>
+<ul>
+<li>Captured command to retrieve</li>
+</ul>
+</li>
+</ul>
+<h4>data options</h4>
+<ul>
+<li>
+<p><code>--capture-row</code> | <code>--cr</code> <em>(number)</em></p>
+<ul>
+<li>Row number of command within capture data set</li>
+</ul>
+</li>
+<li>
+<p><code>--capture-screen</code> | <code>--cs</code> <em>(string)</em></p>
+<ul>
+<li>Screen name, for commands which have multiple screens</li>
+</ul>
+</li>
+<li>
+<p><code>--capture-title</code> | <code>--ct</code> <em>(string)</em></p>
+<ul>
+<li>The captured command screen title or a user supplied title specified on the CAPIMMED command</li>
+</ul>
+</li>
+<li>
+<p><code>--fields</code> | <code>-f</code> <em>(array)</em></p>
+<ul>
+<li>Fields to be returned (by name). For example: &quot;jobname&quot; &quot;cpu&quot;</li>
+</ul>
+</li>
+<li>
+<p><code>--all-rows</code> | <code>--ar</code> <em>(boolean)</em></p>
+<ul>
+<li>Return all rows of data, no matter how many. Overrides --row-start and --row-end</li>
+</ul>
+</li>
+<li>
+<p><code>--row-start</code> | <code>--rs</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The first row of the response data to display</p>
+<p>Default value: 1</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--row-end</code> | <code>--re</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The last row of the response data to display</p>
+<p>Default value: 100</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--timeout</code> | <code>--to</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>The number of seconds to wait before timing out</p>
+<p>Default value: 30</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>display options</h4>
+<ul>
+<li>
+<p><code>--context-fields</code> | <code>--cf</code> <em>(array)</em></p>
+<ul>
+<li>Context fields to display. Defaults to hiding all context</li>
+</ul>
+</li>
+<li>
+<p><code>--overview</code> | <code>-o</code> <em>(boolean)</em></p>
+<ul>
+<li>Display the overview section</li>
+</ul>
+</li>
+<li>
+<p><code>--info</code> | <code>-i</code> <em>(boolean)</em></p>
+<ul>
+<li>Display the information area, if any</li>
+</ul>
+</li>
+<li>
+<p><code>--pretty</code> | <code>-p</code> <em>(boolean)</em></p>
+<ul>
+<li>Display formatted data</li>
+</ul>
+</li>
+<li>
+<p><code>--blank-if-zero</code> | <code>--biz</code> | <code>-b</code> <em>(boolean)</em></p>
+<ul>
+<li>Show a blank space instead of '0' values</li>
+</ul>
+</li>
+<li>
+<p><code>--truncate</code> | <code>--tr</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Truncate displays that are too wide for the console</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>response format options</h4>
+<ul>
+<li>
+<p><code>--response-format-csv</code> | <code>--csv</code> <em>(boolean)</em></p>
+<ul>
+<li>Format data as a set of Comma Seperated Values</li>
+</ul>
+</li>
+</ul>
+<h4>sysview connection options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>The port number of the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS username used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password used to authenticate to the SYSVIEW REST API</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>If set, the server certificate is verified against the list of supplied CAs</li>
+</ul>
+</li>
+<li>
+<p><code>--ssid</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>SSID of the SYSVIEW instance. Default value: GSVX</p>
+<p>Default value: GSVX</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The base path for your API mediation layer instance. Do not specify this option if you are not using an API mediation layer.</p>
+<p>Default value: /api/v1</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--sysview-profile</code> | <code>--sysview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (sysview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--sysview-format-profile</code> | <code>--sysview-format-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (sysview-format) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Display the captured ACTIVITY command from MY.CAPTURE.DATASET.:</p>
+<ul>
+<li><code>zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Display the Jobname, Jobid, and Status columns of the captured ACTIVITY command on row 3 from MY.CAPTURE.DATASET.:</p>
+<ul>
+<li><code>zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY --capture-row 3 --fields Jobname Jobid Status</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe sysview capture &quot;MY.CAPTURE.DATASET&quot; ACTIVITY --capture-row 3 --fields Jobname Jobid Status">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

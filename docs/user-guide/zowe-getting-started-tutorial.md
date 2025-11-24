@@ -19,7 +19,3 @@ Learn how to start using Zowe components, applications, and plug-ins.
 
 - [Zowe CLI plug-ins](cli-extending.md)
 - [Zowe Explorer extensions for Visual Studio Code](ze-using-zowe-explorer-cics-ext.md)
-
-### Incubator components
-
-- [Using Zowe Chat (incubator)](zowe-chat/chat_use_interact_methods.md)

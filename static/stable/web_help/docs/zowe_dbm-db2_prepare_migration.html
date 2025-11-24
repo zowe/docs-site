@@ -8,7 +8,7 @@
 <article class="markdown-body">
 <h2><a href="zowe.html">zowe</a> › <a href="zowe_dbm-db2.html">dbm-db2</a> › <a href="zowe_dbm-db2_prepare.html">prepare</a> › <a href="zowe_dbm-db2_prepare_migration.html">migration</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
 <p>Generate a script to migrate Db2 object definitions (DDL) and data from a source subsystem to a target subsystem. You can specify which objects to include and apply changes to the objects as part of the migration. To execute the script, use the 'zowe dbm execute migration-script' command.</p>
-<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli">https://github.com/BroadcomMFD/dbm-db2-for-zowe-cli</a></p>
+<p>For details about command usage for automation, see DBM-Db2 samples at <a href="https://github.com/BroadcomMFD/dbm-db2">https://github.com/BroadcomMFD/dbm-db2</a></p>
 <h4>Usage</h4>
 <p>zowe dbm-db2 prepare migration [options]</p>
 <h4>Required Options</h4>
@@ -172,12 +172,6 @@ TBTS TESTTS% PRODTS%</p>
 <p>Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.</p>
 <p>Allowed values: http, https</p>
 </li>
-</ul>
-</li>
-<li>
-<p><code>--environment-list</code> | <code>--el</code> <em>(string)</em></p>
-<ul>
-<li>Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at <a href="https://techdocs.broadcom.com/db2mgmt">https://techdocs.broadcom.com/db2mgmt</a></li>
 </ul>
 </li>
 <li>
