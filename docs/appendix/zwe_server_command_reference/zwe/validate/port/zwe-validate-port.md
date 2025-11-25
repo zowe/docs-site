@@ -1,48 +1,21 @@
-# zwe certificate pkcs12 create ca
+# zwe validate port
 
-[zwe](./../../.././zwe.md) > [certificate](./../.././zwe-certificate.md) > [pkcs12](./.././zwe-certificate-pkcs12.md) > [create](././zwe-certificate-pkcs12-create.md) > [ca](./zwe-certificate-pkcs12-create-ca.md)
+[zwe](../.././zwe.md) > [validate](.././zwe-validate.md) > [port](./zwe-validate-port.md)
 
-	zwe certificate pkcs12 create ca [parameter [parameter]...]
+	zwe validate port [sub-command [sub-command]...] [parameter [parameter]...]
 
-## Description
+## Sub-commands
 
-Create a new PKCS12 format certificate authority.
-
-
-
-
-### Inherited from parent command
-
-WARNING: This command is for experimental purposes and could be changed in the future releases.
-
-## Examples
-
-```
-zwe certificate pkcs12 create ca -d /path/to/my/keystore/dir -a ca-alias -p ca-keystore-password
-
-```
+* [bind](./zwe-validate-port-bind.md)
 
 ## Parameters
 
-Full name|Alias|Type|Required|Help message
-|---|---|---|---|---
---allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
---alias|-a|string|yes|Certificate authority alias name.
---password|-p|string|yes|Password of the certificate authority keystore.
---common-name|-cn|string|no|Common name of certificate authority.
---org-unit||string|no|Organization unit of certificate authority.
---org||string|no|Organization of certificate authority.
---locality||string|no|Locality of certificate authority.
---state||string|no|State of certificate authority.
---country||string|no|Country of certificate authority.
---validity||string|no|Validity days of certificate authority.
 
 
 ### Inherited from parent command
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---keystore-dir|-d|string|yes|Keystore directory.
 --help|-h|boolean|no|Display this help.
 --debug,--verbose|-v|boolean|no|Enable verbose mode.
 --trace|-vv|boolean|no|Enable trace level debug mode.
@@ -54,10 +27,6 @@ Full name|Alias|Type|Required|Help message
 
 ## Errors
 
-Error code|Exit code|Error message
-|---|---|---
-ZWEL0158E|158|%s already exists.
-ZWEL0168E|168|Failed to create certificate authority %s.
 
 
 ### Inherited from parent command
