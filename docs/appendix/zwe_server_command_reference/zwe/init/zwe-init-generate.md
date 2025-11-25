@@ -1,44 +1,111 @@
-# zwe init apfauth
+# zwe init generate
 
-[zwe](./.././zwe.md) > [init](././zwe-init.md) > [apfauth](./zwe-init-apfauth.md)
+[zwe](./.././zwe.md) > [init](././zwe-init.md) > [generate](./zwe-init-generate.md)
 
-	zwe init apfauth [parameter [parameter]...]
+	zwe init generate [parameter [parameter]...]
 
 ## Description
 
-This command will APF authorize load library for you.
+Generate ready to execute JCL samples from zowe.yaml configuration values.
 
-NOTE: You require proper permission to run APF authorize command.
+This command executes the job ZWEGENER which copies the JCL templates from Zowe's SZWESAMP dataset, except those not valid for your system ESM, and creates resolved, ready to execute JCL content within the dataset defined by the zowe.yaml property `zowe.setup.dataset.jcllib` (such as `zowe.setup.dataset.prefix` + "CUST.JCLLIB")
 
-These Zowe YAML configurations showing with sample values are used:
+For the JOB statement customization, update the zowe.yaml property `zowe.setup.jcl.header`. See examples at the end of this help.
 
+These JCL files can be run by any means desired afterward.
+The actions of `zwe init` will run them automatically if desired.
+Each `zwe init` action has a `--dry-run` command which will print the value of the particular JCL file used, but not submit it.
+
+This command supports `--security-dry-run` or `--dry-run` when called directly, but not when called on behalf of another `init` operation, as this command is used to create the JCL for all the other init commands and their `--dry-run` options.
+For example, if you run `zwe init generate --dry-run`, a dry run of the operation occurs. But if you run `zwe init mvs --dry-run`, `init mvs` requires the JCL to exist, so JCL generation will occur but the `init mvs` JCL will not be submitted afterward.
+
+The following JCL will be created into the jcllib, using the content of the same name from within the SZWESAMP dataset:
+
+Instance dataset creation:
+- ZWEIMVS: Creates Zowe instance Parmlib dataset
+- ZWERMVS: Removes this dataset
+- ZWEIMVS1: Creates Zowe instance ZIS Plugins dataset
+- ZWERMVS1: Removes this dataset
+- ZWEIMVS2: Creates the `zowe.setup.dataset.authLoadLib` dataset if you have customized its name. This is not recommended, it is best to leave it as default.
+- ZWERMVS2: Removes the above customized dataset.
+
+VSAM for caching service creation:
+- ZWECSVSM: Creates a VSAM for the caching service
+- ZWECSRVS: Removes the VSAM
+
+ZIS APF Authorization:
+- ZWEIAPF: An example of how one would APF authorize the ZIS content of Zowe.
+- ZWEIAPF2: An example of how one would APF authorize the ZIS content of Zowe.
+You may wish to do this step another way.
+You can read https://docs.zowe.org/stable/user-guide/apf-authorize-load-library to learn more.
+
+SAF permission setup:
+- ZWEIRAC: Sets up SAF permissions for RACF
+- ZWEITSS: Sets up SAF permissions for TSS
+- ZWEIACF: Sets up SAF permissions for ACF2
+
+SAF permission removal:
+- ZWENOSEC: Removes SAF permissions. Has RACF, TSS, ACF2 sections.
+
+
+Keyring creation:
+- ZWEIKRR1: Creates a keyring and certificate for RACF
+- ZWEIKRR2: Creates a keyring and connects a certificate for RACF
+- ZWEIKRR3: Creates a keyring and imports a certificate for RACF
+- ZWEIKRT1: Creates a keyring and certificate for TSS
+- ZWEIKRT2: Creates a keyring and connects a certificate for TSS
+- ZWEIKRT3: Creates a keyring and imports a certificate for TSS
+- ZWEIKRA1: Creates a keyring and certificate for ACF2
+- ZWEIKRA2: Creates a keyring and connects a certificate for ACF2
+- ZWEIKRA3: Creates a keyring and imports a certificate for ACF2
+
+Keyring removal:
+- ZWENOKRR: Removes Zowe's keyring for RACF
+- ZWENOKRT: Removes Zowe's keyring for TSS
+- ZWENORRA: Removes Zowe's keyring for ACF2
+
+STC job setup:
+- ZWEISTC: Copies the STC JCL of Zowe into your proclib
+- ZWERSTC: Removes the Zowe STC JCL from the proclib
+
+
+If you want to use a premade keyring with Zowe, do not run these. These are for Zowe assisting in keyring creation.
+
+The above datasets can be run to set up a Zowe instance.
+You can also use `zwe init` or `zwe init` subcommands to have them run automatically.
+
+JCL JOB statement customization:
+- Each JOB statement is defined as `//ZWEnnnnn JOB {zowe.setup.jcl.header}`, where `nnnnn` identifies the job
+- Default setting is empty string causing no additional JOB fields will be used - if your site or External Security Manager does not require additional fields, you can skip this
+- Otherwise you can use `zwe init generate` to set additional JOB fields
+- Note: JCL syntax is not checked by `zwe init generate` command, however empty lines are filtered out
+
+One line, for example accounting information only:
 ```yaml
 zowe:
   setup:
     jcl:
-      header: "123456"
-    dataset:
-      prefix: IBMUSER.ZWE
-      jcllib: IBMUSER.ZWE.CUST.JCLLIB
-      authLoadlib: IBMUSER.ZWE.CUST.ZWESALL
-      authPluginLib: IBMUSER.ZWE.CUST.ZWESAPL
+      header: '123456'
 ```
-- `zowe.setup.jcl.header` is optional additional JCL fields used for submitting JCLs.
-- `zowe.setup.dataset.prefix` shows where the `SZWEAUTH` data set is installed.
-- `zowe.setup.dataset.jcllib` is the custom JCL library. Zowe server command may
-  generate sample JCLs and put into this data set.
-- `zowe.setup.dataset.authLoadlib` is the user custom APF LOADLIB. This field is
-  optional. If it's not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` data
-  set will be APF authorized.
-- `zowe.setup.dataset.authPluginLib` is the user custom APF PLUGINLIB.
-  You can install Zowe ZIS plugins into this load library. This field is optional.
+
+Multiple lines in block literal style, '|-' is preferred as it removes accidental newlines:
+```yaml
+zowe:
+  setup:
+    jcl:
+      header: |-
+        123456,
+        //     'Zowe User',"
+        //      NOTIFY=&SYSUID"
+```
 
 
 ## Examples
 
 ```
-zwe init apfauth --security-dry-run -c /path/to/zowe.yaml
-zwe init apfauth --security-dry-run -c /path/to/zowe.yaml --generate
+zwe init generate --config /path/to/zowe.yaml
+
+zwe init generate -c 'PARMLIB(ZOWE.PARMLIB(ZWEYAML))' --dry-run
 
 ```
 
@@ -46,9 +113,7 @@ zwe init apfauth --security-dry-run -c /path/to/zowe.yaml --generate
 
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
---jcl||boolean|no|Generates and submits JCL to drive the install, rather than using USS utilities.
---security-dry-run,--dry-run||boolean|no|Generates JCL or displays actions to be taken on the system without modifying the system.
---generate||boolean|no|Whether to force rebuild of JCL prior to submission. Use this when you've changed zowe.yaml and are re-submitting this command.
+--dry-run||boolean|no|Generates and prints JCL but does not execute.
 
 
 ### Inherited from parent command
@@ -74,12 +139,7 @@ Full name|Alias|Type|Required|Help message
 
 Error code|Exit code|Error message
 |---|---|---
-ZWEL0319E|319|zowe.setup.dataset.jcllib does not exist, cannot run. Run 'zwe init', 'zwe init generate', or submit JCL zowe.setup.dataset.prefix.SZWESAMP(ZWEGENER) before running this command.
-ZWEL0324E|324|The dataset specified in %s does not exist.
-ZWEL0325E|325|Failed to prepare %s
-ZWEL0158I|158|zowe.setup.dataset.authLoadlib is not defined in Zowe YAML configuration file. Using the default value %s.SZWEAUTH.
-ZWEL0159I|159|zowe.setup.dataset.authPluginLib is not defined in Zowe YAML configuration file. Skipping.
-ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0143E|143|Cannot find data set member %s. You may need to re-run zwe install.
 
 
 ### Inherited from parent command
