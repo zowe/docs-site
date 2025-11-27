@@ -85,7 +85,7 @@ This workflow is in three parts:
 ### Define variables
 
 This workflow step includes the list of Zowe variables for configuration and as well as sub-steps.
-
+ 
 1. Expand **Define variables** to display the following screen:  
 
 ![Step1: Define variables](../images/zosmf/workflow-defineVariables.png)
