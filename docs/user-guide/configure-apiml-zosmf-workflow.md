@@ -99,14 +99,7 @@ The first workflow step in API ML configuration is to define variables.
 4. Customize workflow variables in the fields provided.  
    **Example:**
 
-    ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
-
- 
-:::note
-From Zowe v3.4, **we recommend single-service deployment mode**. To enable single-service deployment mode, ensure 
-that the checkbox for **Enable API ML** is checked. To review the benefits of using the single-service deployment of API ML, 
-see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
-
+    ![Step1.1: Define variables](../images/zosmf/workflow-defineMainVariables.png)
 
 :::
 
@@ -116,6 +109,10 @@ After you complete the definition of the main variables for your configuration, 
 
 
 After all sub-steps are completed, the step **Define variables** is marked as Complete.
+
+:::note
+Single-service deployment mode is activated by default in the zowe.yaml created by this workflow. See [Enabling Single-Service deployment of API Mediation Layer](./api-mediation/api-mediation-modulith.md) for the benefits of this deployment mode.
+:::
 
 ### Create configuration
 

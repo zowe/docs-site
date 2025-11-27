@@ -92,10 +92,12 @@ This workflow step includes the list of Zowe variables for configuration and as 
 
 2. Under **Input Variables**, click **Define the main variables**.
 3. Click the **Perform** tab. The input variables are displayed by category. 
-4. Customize workflow variables in the fields provided.  
-   **Example:**
+4. Customize workflow variables in the fields provided. Single-service deployment mode is enabled
+when the **Enable API ML** checkbox is left as ticked. See [Single-service deployment mode](./api-mediation/api-mediation-modulith.md) for the benefits of this deployment mode.
+    
+**Example:**
 
-    ![Enabling components](../images/zosmf/workflow-componentsVariables.png)
+![Enabling components](../images/zosmf/workflow-defineMainVariables.png)
 
   5. Perform the applicable sub-steps that correspond to the components you choose to enable.
 
