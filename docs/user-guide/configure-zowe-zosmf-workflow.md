@@ -99,7 +99,7 @@ when the **Enable API ML** checkbox is left as checked. To learn about the benef
 
 ![Enabling components](../images/zosmf/workflow-defineMainVariables.png)
 
-  1. Perform the applicable sub-steps that correspond to the components you choose to enable.
+5. Perform the applicable sub-steps that correspond to the components you choose to enable.
 
 #### Sequence to execute steps and sub-steps in the workflow
 
