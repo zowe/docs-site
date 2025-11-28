@@ -105,7 +105,7 @@ The first workflow step in API ML configuration is to define variables.
 
 After you complete the definition of the main variables for your configuration, define all ports for automatically enabled API ML services.   
 
-    ![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
+![Step1.2: Ports](../images/zosmf/workflow-APIMLdefinePorts.png)
 
 
 After all sub-steps are completed, the step **Define variables** is marked as Complete.

@@ -93,7 +93,7 @@ This workflow step includes the list of Zowe variables for configuration and as 
 2. Under **Input Variables**, click **Define the main variables**.
 3. Click the **Perform** tab. The input variables are displayed by category. 
 4. Customize workflow variables in the fields provided. Single-service deployment mode is enabled
-when the **Enable API ML** checkbox is left as ticked. See [Single-service deployment mode](./api-mediation/api-mediation-modulith.md) for the benefits of this deployment mode.
+when the **Enable API ML** checkbox is left as checked. See [Single-service deployment mode](./api-mediation/api-mediation-modulith.md) for the benefits of this deployment mode. When the box is unchecked, multi-service deployment mode is enabled.
     
 **Example:**
 
