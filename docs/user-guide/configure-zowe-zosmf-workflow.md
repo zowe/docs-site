@@ -96,7 +96,7 @@ This workflow step includes the list of Zowe variables for configuration and as 
 when the **Enable API ML** checkbox is left as checked. To learn about the benefits of this deployment mode, see [Enabling Single-service deployment of API Mediation Layer](./api-mediation/api-mediation-modulith.md). When the box is unchecked, multi-service deployment mode is enabled.
     
 **Example:**
-
+ 
 ![Enabling components](../images/zosmf/workflow-defineMainVariables.png)
 
 5. Perform the applicable sub-steps that correspond to the components you choose to enable.
