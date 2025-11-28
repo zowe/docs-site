@@ -99,7 +99,7 @@ The first workflow step in API ML configuration is to define variables.
 4. Customize workflow variables in the fields provided.  
    **Example:**
 
-    ![Step1.1: Define variables](../images/zosmf/workflow-defineMainVariables.png)
+    ![Step1.1: Define variables](../images/zosmf/workflow-APIMLdefineMainVariables.png)
 
 :::
 
