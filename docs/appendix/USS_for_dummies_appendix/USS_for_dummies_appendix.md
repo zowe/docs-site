@@ -1,15 +1,20 @@
 # z/OS UNIX for Dummies
 
+- [Introduction to z/OS UNIX](#introduction-to-zos-unix)
+- [Getting Started with z/OS UNIX](#getting-started-with-zos-unix)
+- [Zowe and z/OS UNIX](#zowe-and-zos-unix)
+
+
 ## Introduction to z/OS UNIX
 z/OS UNIX is an integral part of the z/OS operating system, bringing the strengths of UNIX to the powerful mainframe environment. z/OS UNIX allows you to run UNIX applications and services on a z/OS system, leveraging the robust security, scalability, and reliability features of the mainframe. It’s essential for modern enterprise applications and services, and for Zowe which leverages z/OS UNIX for various functionalities.
 
-Getting Started with z/OS UNIX
+## Getting Started with z/OS UNIX
 
 1.	Accessing the UNIX Shell: To begin, you need to access the UNIX System Services (USS) environment on your z/OS. You can do this by logging in to TSO/E and entering the OMVS command or directly through a secure shell (SSH) client.
 2.	Basic Commands: Familiarize yourself with basic UNIX commands. Commands like ls, cd, pwd, mkdir, and rmdir will help you navigate and manage directories.
 3.	File Permissions: Understand the UNIX file permissions and how to modify them using the chmod command. Remember that the right permissions are crucial for the proper execution of files and directories.
 
-Zowe and z/OS UNIX
+## Zowe and z/OS UNIX
 
 Zowe interacts with z/OS UNIX to provide several functionalities, such as:
 •	Zowe CLI: Zowe Command Line Interface (CLI) allows you to interact with z/OS UNIX. You can issue z/OS UNIX commands, manage datasets, USS files, and more.
