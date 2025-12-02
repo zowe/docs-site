@@ -1019,6 +1019,17 @@ module.exports = {
     "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
+    "appendix/USS_for_dummies_appendix"
+    {
+      type: "category",
+      label: "USS for dummies",
+      link: { type: "doc", id: "appendix/USS_for_dummies_appendix/USS_for_dummies_appendix" },
+      collapsed: false,
+      items: [
+            "appendix/USS_for_dummies_appendix/USS_for_dummies_appendix",
+          ],
+    },
+
     {
       type: "category",
       label: "Zowe Chat command reference",
