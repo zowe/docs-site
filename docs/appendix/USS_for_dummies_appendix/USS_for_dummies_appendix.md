@@ -73,7 +73,7 @@ rm	        | ReMoves a file. -r to remove a directory (recursive). -f to force (
 rmdir	    | Removes a directory.
 sed	        | Stream editor can modify text passed through it. Can be used to read a file and alter its contents and write it back out
 sh: SHell	| The default program you run when opening a unix terminal. /bin/sh is the standard zOS shell, but there are alternatives such as ksh, csh, and bash. Each has different features and a scripting language.
-ssh	        | Secure SHell. A protocol used with a unix terminal to securely make a remote session. Unix equivelent to TN3270 connection. Preferred for unix over OMVS when you want interactivity, color support, scrollback, and dynamic screen resizing.
+ssh	        | Secure SHell. A protocol used with a unix terminal to securely make a remote session. Unix equivalent to TN3270 connection. Preferred for unix over OMVS when you want interactivity, color support, scrollback, and dynamic screen resizing.
 tail	    | Shows the bottom of a file. tail -f can be used to continuously print the bottom of a file that is actively growing. Useful for monitoring a log file.
 tee	        | Content piped (|) to it can be simultaneously printed to the screen (STDOUT) and to a file.
 touch	    | Creates a file with default permissions, owned by you and your primary group.
