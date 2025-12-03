@@ -83,8 +83,8 @@ vi	        | A builtin editor for files. Has a learning curve, use ":q!" to exit
 &&	        | Used to run multiple programs but only on the condition that the first succeeds (has a return code $? of 0)
 ;	        | Used to run multiple programs (or statements) regardless of return codes.
 &	        | Used to run a program and run it in the background so that your terminal does not get stuck to just the output of that program.
->	        | Used to write the output (STDOUT) of a program to a file. Erases the previous contents of the file.
->> 	        | Used to append the output (STDOUT) of a program to a file. Does not erase the previous contents, just adds lines at the end.
+&gt;	     | Used to write the output (STDOUT) of a program to a file. Erases the previous contents of the file.
+&gt;&gt;       | Used to append the output (STDOUT) of a program to a file. Does not erase the previous contents, just adds lines at the end.
 
 
 
