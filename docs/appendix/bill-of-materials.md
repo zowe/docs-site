@@ -1,6 +1,7 @@
 # Bill of Materials
 
-Zowe&trade; uses the SPDX SBOM format to represent its bill of materials. To read more about why SBOMs and SPDX are used, see [this blog](https://www.linuxfoundation.org/blog/blog/spdx-its-already-in-use-for-global-software-bill-of-materials-sbom-and-supply-chain-security/). The hash codes can be used to validate your download is authentic using a command like `openssl dgst -sha1 <downloaded_sbom.zip>`. 
+Zowe&trade; uses the SPDX SBOM format to represent Zowe's bill of materials. To read more about why SBOMs and SPDX are used, see the blog post [SPDX: It’s Already in Use for Global Software Bill of Materials (SBOM) and Supply Chain Security](https://www.linuxfoundation.org/blog/blog/spdx-its-already-in-use-for-global-software-bill-of-materials-sbom-and-supply-chain-security/). Use Hash codes to validate that your download is authentic. USe the following command:  
+ `openssl dgst -sha1 <downloaded_sbom.zip>`. 
 
 The table lists an inventory of the third-party open-source software used by Zowe. This inventory specifies the name and version of each software component and the legal license governing its use.
 Zowe SBOMs are as follows:
