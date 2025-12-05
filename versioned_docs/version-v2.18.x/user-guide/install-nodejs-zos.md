@@ -28,12 +28,10 @@ The corresponding [IBM SDK for Node.js - z/OS documentation](https://www.ibm.com
    - z/OS V2R4: PTFs UI80106, UI81096, UI78103, UI80155, UI83490
    - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
    - z/OS V3R1: No PTFs needed.
-   - z/OS V3R2: No PTFs needed.
  
  - V22.x
    - z/OS V2R5: PTFs UI78912, UI81095, UI80156, UI83424
    - z/OS V3R1: No PTFs needed.
-   - z/OS V3R2: No PTFs needed.
  
 
 ## How to obtain IBM SDK for Node.js - z/OS
