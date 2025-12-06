@@ -122,7 +122,7 @@
       
       If unchecked, the encoding configured in your connection profile is used.
 
-   :::tip
+   :::note
 
    To download a data set in record mode, select **Choose Encoding**. When prompted, choose **Other** from the encoding options, then enter `Record` as the codepage value.
 
