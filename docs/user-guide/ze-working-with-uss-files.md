@@ -105,6 +105,96 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    ![Edit](../images/ze/ZE-editUSS.gif)
 
+## Downloading a USS file to a local file
+
+1. Expand the **UNIX SYSTEM SERVICES (USS)** tree in the **Side Bar**.
+
+2. Click on the **Search** icon next to a profile and enter the path of the desired directory.
+
+   All child files and directories of that path display under the profile in the **Side Bar**.
+
+3. Right-click on the desired USS file and select the **Download...** option.
+
+4. In the **Quick Pick** menu, check or uncheck the download options:
+
+   - **Overwrite**: Overwrites the existing file in the download location.
+   - **Generate Directory Structure**: Creates sub-folders based on the USS path.
+      
+      If unchecked, `/u/user/scripts/script.sh` downloads to `script.sh`
+      
+      If checked, `/u/user/scripts/script.sh` downloads to `u/user/scripts/script.sh`
+   
+   - **Choose Encoding**: Enables you to select a specific encoding for the download.
+      
+      If unchecked, the encoding configured in your connection profile is used.
+
+5. Press the `Enter` key to confirm your selections.
+
+6. If you selected **Choose Encoding**, select the encoding from the **Quick Pick** menu.
+
+7. In the file explorer dialog, select the location where you want to download the file and click **Select Download Location**.
+
+   The file is downloaded to the selected location with the specified options applied.
+
+8. On the download complete notification, click **Open File** to open the downloaded file in VS Code.
+
+## Downloading a USS directory to a local directory
+
+1. Expand the **UNIX SYSTEM SERVICES (USS)** tree in the **Side Bar**.
+
+2. Click on the **Search** icon next to a profile and enter the path of the desired directory.
+
+   All child files and directories of that path display under the profile in the **Side Bar**.
+
+3. Right-click on the desired USS directory and select the **Download...** option.
+
+4. In the **Quick Pick** menu, check or uncheck the download options:
+
+   - **Overwrite**: Overwrites existing files when downloading directories.
+   - **Generate Directory Structure**: Creates sub-folders based on the USS path.
+      
+      If unchecked, `/u/user/project/` downloads all files directly to the selected location
+      
+      If checked, `/u/user/project/` downloads to `u/user/project/` with full directory structure
+   
+   - **Include Hidden Files**: Includes hidden files (files beginning with `.`) in the download.
+   - **Search All Filesystems**: Searches across all mounted filesystems instead of limiting to the current filesystem.
+   - **Return Symlinks**: Stop at symbolic links instead of following them.
+   - **Set Filter Options**: Opens additional filtering options to control which files are downloaded.
+
+      Each checked filter option will open an input box to configure that filter.
+      
+      Available filter options include:
+      - **Group**: Filter by group owner or GID
+      - **User**: Filter by user name or UID
+      - **Modification Time**: Filter by modification time in days (e.g., `+7` for files older than 7 days, `-1` for files modified within the last day, `30` for files modified exactly 30 days ago)
+      - **Size**: Filter by file size (e.g., `+100M` for files larger than 100MB, `-500K` for files smaller than 500KB, `1G` for files exactly 1GB)
+      - **Permissions**: Filter by permission octal mask (e.g., `755`, `-644`)
+      - **File Type**: Filter by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
+      - **Depth**: Depth of directories to download
+
+      :::note
+
+      // TODO: Add note here about not using filter options based on what UX is decided on
+
+      :::
+   
+   - **Choose Encoding**: Enables you to select a specific encoding for the download.
+      
+      If unchecked, the encoding configured in your connection profile is used. You can also configure automatic encoding detection for files in the directory.
+
+5. Press the `Enter` key to confirm your selections.
+
+6. If you selected **Set Filter Options**, configure the desired filters in the subsequent **Quick Pick** menu and press the `Enter` key.
+
+7. If you selected **Choose Encoding**, select the encoding from the **Quick Pick** menu.
+
+8. In the file explorer dialog, select the location where you want to download the directory and click **Select Download Location**.
+
+   The directory and its contents are downloaded to the selected location with the specified options applied.
+
+9. On the download complete notification, click **Open Directory** to open the downloaded directory in the file explorer.
+
 ## Uploading a local file to a USS directory
 
 1. Expand the **UNIX SYSTEM SERVICES (USS)** tree in the **Side Bar**.
