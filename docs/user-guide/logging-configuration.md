@@ -8,17 +8,17 @@ To obtain more information about how a server is working, you can enable tracing
 
 For example:
 
-```
-app-server:
-    {...}
+```yaml
+components:
+  app-server:
     logLevels:
       _zsf.routing: 0
       _zsf.install: 0
 ```
 
-```
-zss:
-    {...}
+```yaml
+components:
+  zss:
     logLevels:
       _zss.traceLevel: 0
       _zss.fileTrace: 1
