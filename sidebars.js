@@ -342,45 +342,34 @@ module.exports = {
             "user-guide/mvd-configuration",
             {
               type: "category",
-              label: "Advanced Application Framework Configuration", link: { type: "doc", id: "user-guide/mvd-configuration", },
+              label: "Advanced Application Framework Configuration",
+              link: { type: "doc", id: "user-guide/mvd-configuration", },
               collapsed: false,
               items: [
-                 type: "category",
-                 label: "app-server", link: { type: "doc", id: "user-guide/managing-cluster-mode-for-app-server", },
-                 collapsed: false,
-                 "items": [
-                    "user-guide/managing-cluster-mode-for-app-server",
-                 ]
+                label: "app-server", link: { type: "doc", id: "user-guide/managing-cluster-mode-for-app-server", },
+                collapsed: false,
+                items: [
+                    "user-guide/managing-cluster-mode-for-app-server",]
 
-              type: "category",
-              label: "zss", link: { type: "doc", id: "user-guide/accessing-zss", },
-              collapsed: false,
-              items: [
-                 "items": [
+                label: "zss", link: { type: "doc", id: "user-guide/accessing-zss", },
+                items: [
                     "user-guide/accessing-zss",
                     "user-guide/zss-configuration-1",
+                ]
 
-
-              type: "category",
-              label: "zis", link: { type: "doc", id: "user-guide/using-multiple-zis-instances", },
-              collapsed: false,
-              items: [
+                label: "zis", link: { type: "doc", id: "user-guide/using-multiple-zis-instances", },
+                items: [
                     "user-guide/using-multiple-zis-instances",
-                  ]
+                ]
               
-
-              type: "category",
               label: "apps", link: { type: "doc", id: "user-guide/app-plugin-configuration", },
-              collapsed: false,
               items: [
                     "user-guide/app-plugin-configuration",
                     "user-guide/setting-up-terminal-app-plugins",
-                  ]
-
+                ]
 
               type: "category",
               label: "administration", link: { type: "doc", id: "user-guide/controlling-access-to-apps", },
-              collapsed: false,
               items: [
                     "user-guide/controlling-access-to-dataservices",
                     "user-guide/customizing-security-plugins",
@@ -388,7 +377,6 @@ module.exports = {
                     "user-guide/configuration-file",
                     "user-guide/logging-configuration",
                     "user-guide/network-configuration",
-
                  ]
 
                  
