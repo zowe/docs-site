@@ -341,7 +341,6 @@ module.exports = {
             "user-guide/install-configure-zos-extensions",
                 {
                   "type": "category",
-                  "label" "Advanced Application Framework Configuration",
                   "user-guide/mvd-configuration",
                   "items": [
                     "user-guide/mvd-configuration",
@@ -363,22 +362,7 @@ module.exports = {
                   ]
                 }
 
-            "user-guide/mvd-configuration",
-            "user-guide/accessing-zss",
-            "user-guide/configuration-file",
-            "user-guide/configuring-the-framework-as-a-mediation-layer-client",
-            "user-guide/setting-up-terminal-app-plugins",
-            "user-guide/network-configuration",
-            "user-guide/configuration-directories",
-            "user-guide/app-plugin-configuration",
-            "user-guide/logging-configuration",
-            "user-guide/zss-configuration-1",
-            "user-guide/using-multiple-zis-instances",
-            "user-guide/controlling-access-to-apps",
-            "user-guide/controlling-access-to-dataservices",
-            "user-guide/customizing-security-plugins",
-            "user-guide/administering-the-servers-and-plugins-using-an-api",
-            "user-guide/managing-cluster-mode-for-app-server",
+
               ],
             },
           ],
