@@ -16,11 +16,10 @@ Be sure your z/OS system meets the following prerequisites:
 
 ### z/OS
 
-- z/OS version is in active support, such as Version 2.4, 2.5, and 3.1
+- z/OS version is in active support, such as Version 2.5, and 3.1
 
   :::note Notes:
   * Zowe Version 2.11 or higher is required when using z/OS Version 3.1.
-  * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
 
 - zFS volume has at least 1200 mb of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
@@ -81,13 +80,9 @@ Zowe consumption reference data were measured with the default Zowe configuratio
 
 ### Node.js
 
-- Node.js v18.x, v20.x, or v22.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
+- Node.js v20.x, or v22.x is required during installation. After installation, it is only required when running the app-server component, unless you are running a version of Zowe older than v2.16.0
 
   Node is not included with z/OS so must be installed separately.  To install Node.js on z/OS, follow the instructions in [Addressing Node.js requirements](install-nodejs-zos.md).
-  
-  :::tip
-  If you are a software vendor building extensions for Zowe, we recommend you tag your plug-ins. For more information, see [Tagging on z/OS](../extend/extend-desktop/mvd-buildingplugins.md#tagging-plugin-files-on-zos).
-  :::
 
 ### Java 
 

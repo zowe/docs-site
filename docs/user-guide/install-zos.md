@@ -26,7 +26,7 @@ Other Zowe components can work through ZSS to handle z/OS data that would otherw
 
 ## Roles and responsibilities for server-side component installation
 
-To avoid interuptions in the installation of Zowe&trade; server-side components, it is useful to be aware of the roles required to perform various tasks in the installation and configuration process.
+To avoid interruptions in the installation of Zowe&trade; server-side components, it is useful to be aware of the roles required to perform various tasks in the installation and configuration process.
 
 ### Security administrator
 
@@ -34,7 +34,7 @@ To configure Zowe security for production environments, it is likely that your o
 
 ### Storage administrator
 
-Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requrements to install Zowe. For more information, see [Addressing storage requirements](./address-storage-requirements.md).
+Before starting installation, notify your storage administrator to reserve the required space for USS, directory storage space, and any other storage requirements to install Zowe. For more information, see [Addressing storage requirements](./address-storage-requirements.md).
 
 ### Network administrator
 
@@ -42,7 +42,7 @@ Notify your organization's network administrator to assign port numbers, reserve
 
 ### System programmer
 
-In most cases, the system programmer performs the Zowe installation and configuration, and starts Zowe. Ensure that your system programmers have general knowledge about SMP/E, z/OSMF workflows, and regular maintanance procedures. In many cases, the system programmer also prepares jobs for other administrators.
+In most cases, the system programmer performs the Zowe installation and configuration, and starts Zowe. Ensure that your system programmers have general knowledge about SMP/E, z/OSMF workflows, and regular maintenance procedures. In many cases, the system programmer also prepares jobs for other administrators.
 
 ## End-to-end installation
 
@@ -94,7 +94,8 @@ Successful installation of either a convenience build or an SMP/E build creates 
 * The unconfigured Zowe runtime directory
 * The utility library `SZWEEXEC` that contains utilities
 * The SAMPLIB library `SZWESAMP` that contains sample members
-* The load library `SZWEAUTH` that contains load modules 
+* The load library `SZWEAUTH` that contains load modules
+* The load library `SZWELOAD` that contains `configmgr` for REXX
 
 The steps to prepare the z/OS environment to launch Zowe are the same for all installation methods.
 
@@ -128,7 +129,7 @@ The following procedure outlines the steps to configure the Zowe z/OS runtime, a
 :::note
 If Zowe has already been launched on a z/OS system from a previous release of Zowe v2, you can skip this security configuration step unless told otherwise in the release documentation.
 :::
-4. [Perform APF authorization of load libraries](./apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS priviledged security calls.  
+4. [Perform APF authorization of load libraries](./apf-authorize-load-library.md). These load libraries contain the modules required to perform z/OS privileged security calls.  
 (Uses the command `zwe init apfauth`)
 5. [Configure Zowe to use TLS certificates](./configure-certificates.md)  
 (Uses the command `zwe init certificate`)

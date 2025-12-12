@@ -10,6 +10,8 @@
         "id": "whats-new/release-notes/release-notes-overview"
       },
       "items": [
+        "whats-new/release-notes/v2_18_4",
+        "whats-new/release-notes/v2_18_3",
         "whats-new/release-notes/v2_18_2",
         "whats-new/release-notes/v2_18_1",
         "whats-new/release-notes/v2_18_0",
@@ -1272,7 +1274,7 @@
     {
       "type": "link",
       "label": "Third Party Software Requirements",
-      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.2.md"
+      "href": "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v2.18.4.md"
     }
   ]
 }
