@@ -340,9 +340,10 @@ module.exports = {
             "user-guide/configmgr-using",
             "user-guide/install-configure-zos-extensions",
                 {
-                  "type": "category",
-                  "user-guide/mvd-configuration",
-                  "items": [
+                  type: "category",
+                  label: "Advanced Application Framework Configuration",
+                  link: { "type": "doc", "id": "user-guide/mvd-configuration" },
+                  items: [
                     "user-guide/mvd-configuration",
                     "user-guide/accessing-zss",
                     "user-guide/configuration-file",
