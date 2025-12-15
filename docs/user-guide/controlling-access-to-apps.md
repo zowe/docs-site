@@ -29,7 +29,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    ```
 4. Open the copied `allowedPlugins.json` file, and perform either of the following steps:
     - To make an app unavailable, delete it from the list of objects.
-    - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
+    - To make an app available, copy an existing plug-in object and specify the app's values in the new object. Identifier and version attributes are required.
 
 5. [Restart the app server](start-zowe-zos.md).
 
