@@ -1,8 +1,8 @@
 # Managing Cluster Mode for app-server
 
-On the Zowe servers, the component "app-server" has an environment variable "ZLUX_NO_CLUSTER" which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit.
+On the Zowe servers, the component app-server has an environment variable `ZLUX_NO_CLUSTER` which controls whether or not it uses cluster mode. Cluster mode is enabled by default. However, you might need to disable cluster mode under certain circumstances. When cluster mode is disabled, make sure you are aware of the potential drawbacks and benefit.
 
-When you **disable** cluster mode, you will lose the following benefits:
+When you **disable** cluster mode, you lose the following benefits:
 
 1. **Performance under high user Count:** This is due to the absence of redundant workers, which can impact the system's efficiency when dealing with a large number of users.
 
