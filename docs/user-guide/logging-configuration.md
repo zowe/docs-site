@@ -4,7 +4,7 @@ For more information, see [Logging Utility](../extend/extend-desktop/mvd-logutil
 
 ## Enabling tracing
 
-To obtain more information about how a server is working, you can enable tracing within the Zowe configuration file via *components.app-server.logLevels* or *components.zss.logLevels* variable. For more information on all loggers, check out the [Extended documentation](../extend/extend-desktop/mvd-core-loggers.md).
+To obtain more information about how a server is working, you can enable tracing within the Zowe configuration file via `components.app-server.logLevels` or `components.zss.logLevels` variable. For more information on all loggers, check out the [Extended documentation](../extend/extend-desktop/mvd-core-loggers.md).
 
 For example:
 
@@ -35,7 +35,7 @@ The app-server and zss will create log files containing processing messages and 
 
 ### Retaining logs
 
-By default, the last five log files are retained. You can change this by setting environment variables within the `zowe.environments` section of the Zowe server configuration file. To specify a different number of logs to retain, set `ZWED_NODE_LOGS_TO_KEEP` for app-server logs, or *ZWES_LOGS_TO_KEEP* for zss logs. For example, if you set `ZWED_NODE_LOGS_TO_KEEP` to 10, when the eleventh log is created, the first log is deleted.
+By default, the last five log files are retained. You can change this by setting environment variables within the `zowe.environments` section of the Zowe server configuration file. To specify a different number of logs to retain, set `ZWED_NODE_LOGS_TO_KEEP` for app-server logs, or `ZWES_LOGS_TO_KEEP` for zss logs. For example, if you set `ZWED_NODE_LOGS_TO_KEEP` to 10, when the eleventh log is created, the first log is deleted.
 
 ### Controlling the logging location
 
