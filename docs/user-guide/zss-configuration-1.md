@@ -1,15 +1,15 @@
 # ZSS configuration
 
-ZSS provides APIs that any server or client can use. By default, the Zowe Desktop includes Apps which rely upon ZSS APIs, and therefore it's recommended that whenever the `app-server` is enabled in the Zowe YAML, that `zss` is also enabled.
+ZSS provides APIs that any server or client can use. By default, the Zowe Desktop includes apps which rely upon ZSS APIs. Therefore, it is recommended that whenever the `app-server` is enabled in the Zowe YAML file, that `zss` is also enabled.
 
 
 ## ZSS 64 or 31 bit modes
 
-Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plugins support. Official Zowe distributions contain plugins that support both 64 bit and 31 bit, but extensions may only support one or the other.
+Two versions of ZSS are included in Zowe, a 64 bit version and a 31 bit version. It is recommended to run the 64 bit version to conserve shared system memory but you must match the ZSS version with the version your ZSS plug-in's support. Official Zowe distributions contain plug-ins that support both 64 bit and 31 bit, but extensions may only support one or the other.
 
 ### Verifying which ZSS mode is in use
 
-You can check which version of ZSS you are running by looking at the logs. At startup, the message ZWES1013I states which mode is being used, for example:
+You can check which version of ZSS you are running by looking at the log files. At startup, the message ZWES1013I states which mode is being used, for example:
 
 `ZWES1013I ZSS Server has started. Version 3.0.0 64-bit`
 
@@ -17,13 +17,13 @@ Or
 
 `ZWES1013I ZSS Server has started. Version 3.0.0 31-bit`
 
-### Verifying which ZSS mode plugins support
+### Verifying which ZSS mode plug-ins support
 
-You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plugin.
-In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
+You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plug-in.
+In each component or extension you have, its manifest file will state if there are `appFw` plug-in entries.
 In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
-If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plugin only supports 31 bit ZSS. A plugin only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
+If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
 Example: [the sample angular app supports both 31 bit and 64 bit zss](https://github.com/zowe/sample-angular-app/blob/083855582e8a82cf48abc21e15fa20bd59bfe180/pluginDefinition.json#L50-L53)
 
