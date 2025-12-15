@@ -19,9 +19,9 @@ Or
 
 ### Verifying which ZSS mode plug-ins support
 
-You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the pluginDefinition.json file of the plug-in.
+You can check if a ZSS plug-in supports 64 bit or 31 bit ZSS by reading the `pluginDefinition.json` file of the plug-in.
 In each component or extension you have, its manifest file will state if there are `appFw` plug-in entries.
-In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
+In each folder referenced by the `appFw` section, you will see a `pluginDefinition.json` file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
 If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both may exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plug-in only supports 31 bit ZSS. A plug-in only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
