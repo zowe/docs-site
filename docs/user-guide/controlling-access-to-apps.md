@@ -10,7 +10,7 @@ You can also control access to the JSON files. The files are accessible directly
 
 By default, RBAC is disabled and all authenticated Zowe users can access all dataservices. To enable RBAC, follow these steps:
 
-1. To enable RBAC, set the *components.zss.dataserviceAuthentication.rbac* and *components.app-server.dataserviceAuthentication.rbac* variables to `true` in the Zowe configuration file.
+1. Set the `components.zss.dataserviceAuthentication.rbac` and `components.app-server.dataserviceAuthentication.rbac` variables to `true` in the Zowe configuration file.
 
 ## Controlling app access for all users
 
@@ -23,11 +23,11 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    ```
    <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-3. Copy the `allowedPlugins.json` file and paste it in the following location:
+3. Copy the `allowedPlugins.json` file and paste the file in the following location:
    ```
    <zowe.workspaceDirectory>/app-server/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-4. Open the copied `allowedPlugins.json` file and perform either of the following steps:
+4. Open the copied `allowedPlugins.json` file, and perform either of the following steps:
     - To make an app unavailable, delete it from the list of objects.
     - To make an app available, copy an existing plugin object and specify the app's values in the new object. Identifier and version attributes are required.
 
@@ -46,7 +46,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    ```
    <zpwe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
-6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
+6. Open the `allowedPlugins.json` file, and specify apps that a user can access. For example:
     ```json
     {
       "allowedPlugins": [
