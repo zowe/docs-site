@@ -1,4 +1,4 @@
-# z/OS UNIX for Dummies
+# Zowe and z/OS UNIX
 
 - [Introduction to z/OS UNIX](#introduction-to-zos-unix)
 - [Getting Started with z/OS UNIX](#getting-started-with-zos-unix)
