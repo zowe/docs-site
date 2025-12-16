@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>config edit</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_config.html">config</a> › <a href="zowe_config_edit.html">edit</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Edit an existing config file in your system's default text editor.</p>
+<p>In a graphical environment, the application associated with JSON files will be launched. In a command-line environment, vi will be launched. To override the command-line editor used, specify it with the --editor option.</p>
+<h4>Usage</h4>
+<p>zowe config edit [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--global-config</code> | <code>--gc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the global config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user-config</code> | <code>--uc</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Target the user config files.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--editor</code> | <code>--ed</code> <em>(string)</em></p>
+<ul>
+<li>Editor that overrides the default editor for this file type. Set the option to the editor's executable file location or the program's name: ie &quot;--editor notepad&quot;.</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Edit global config file:</p>
+<ul>
+<li><code>zowe config edit --global-config</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe config edit --global-config">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

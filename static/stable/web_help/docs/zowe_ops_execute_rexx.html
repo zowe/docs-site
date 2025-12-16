@@ -24,7 +24,7 @@
 <li>
 <p><code>--argument</code> | <code>--arg</code> <em>(string)</em></p>
 <ul>
-<li>Specifies any characters to be passed to the OPS/REXX program. Leading blanks are stripped from the argument. Any embedded quotes will be passed on to the called OPS/REXX program unaltered and unfiltered. The length of the string cannot exceed 256 characters.</li>
+<li>Specifies any characters to be passed to the OPS/REXX program. Leading blanks are stripped from the argument. Any embedded quotes will be passed on to the called OPS/REXX program unaltered and unfiltered. The length of the string cannot exceed 6144 characters.</li>
 </ul>
 </li>
 <li>
@@ -55,7 +55,7 @@
 <p><code>--wait</code> | <code>-w</code> <em>(number)</em></p>
 <ul>
 <li>
-<p>Wait for the specified number of seconds for the OPS/MVS REXX program to end and the output to be returned. By default the command returns immediately after initiating the program's execution.</p>
+<p>Wait for the specified number of seconds for the OPS/MVS REXX program to end and the output to be returned. By default the command waits a maximum of 10 seconds for the output to be returned.</p>
 <p>Default value: 10</p>
 </li>
 </ul>
@@ -120,7 +120,7 @@ Allowed values: http, https</p>
 <p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
 <ul>
 <li>
-<p>Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored with the 'show status' and 'show subsystem' commands.</p>
+<p>Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored by the 'show status' and 'show subsystem' commands.</p>
 <p>Default value: OPSS</p>
 </li>
 </ul>
@@ -137,7 +137,7 @@ Allowed values: http, https</p>
 <li>
 <p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
 <ul>
-<li>NOTE: This can only be used with the REST API server. The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer.</li>
+<li>NOTE: This parameter can only be used with the REST API server. Specifies the base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer.</li>
 </ul>
 </li>
 </ul>

@@ -2,6 +2,10 @@
 
 Zowe provides sample configurations that make it easy for you to run Zowe in Kubernetes. You can use them directly or as a reference.
 
+:::note
+Kubernetes is not supported in Zowe 3.4 single-service deployment mode.
+:::
+
 You can customize the configuration or make your own. If you do so, note the following objects that are expected by the container deployments:
 
 |    Kind   | Name | Note |
@@ -105,7 +109,7 @@ a. To make Zowe v2 certificates work in Kubernetes, in your `zowe.yaml` (in runt
 - set `zowe.setup.certificate.pkcs12.caPassword`. Default CA password is `local_ca_password`.
 - make sure the certificate that you are using have defined the following domains in certificate Subject Alt Name (SAN):
 
-  - your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
+  - your external domains to access Zowe API ML Gateway Service running in Kubernetes cluster
   - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
   - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
   - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
@@ -199,7 +203,7 @@ If using `LoadBalancer`, run the command:
 kubectl apply -f samples/gateway-service-lb.yaml
 ```
 
-Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default gateway port is not 7554 but 32554. You will need to use `https://<your-k8s-node>:32554/` to access APIML Gateway. To apply `NodePort` type `gateway-service`, run the following command:
+Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default gateway port is not 7554 but 32554. You will need to use `https://<your-k8s-node>:32554/` to access API ML Gateway. To apply `NodePort` type `gateway-service`, run the following command:
 
 ```
 kubectl apply -f samples/gateway-service-np.yaml
@@ -223,7 +227,7 @@ To enable the service externally when using `LoadBalancer` services, run the com
 kubectl apply -f samples/discovery-service-lb.yaml
 ```
 
-Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default discovery port is not 7553 but 32553. And you will need to use `https://<your-k8s-node>:32553/` to access APIML Discovery. To apply `NodePort` type `discovery-service`, run the following command:
+Or if using `NodePort` instead, first check `spec.ports[0].nodePort` as this will be the port to be exposed to external. In this case, the default discovery port is not 7553 but 32553. And you will need to use `https://<your-k8s-node>:32553/` to access API ML Discovery. To apply `NodePort` type `discovery-service`, run the following command:
 
 ```
 kubectl apply -f samples/discovery-service-np.yaml
@@ -260,7 +264,7 @@ Upon completion, you can finish the setup by [applying zowe and starting it](./k
 
 ### 4c. Create Route (OpenShift)
 
-If you are using OpenShift and choose to use `LoadBalancer` services, you may already have an external IP for the service. You can use that external IP to access Zowe APIML Gateway. To verify your service external IP, run:
+If you are using OpenShift and choose to use `LoadBalancer` services, you may already have an external IP for the service. You can use that external IP to access Zowe API ML Gateway. To verify your service external IP, run:
 
 ```
 oc get svc -n zowe
@@ -293,7 +297,7 @@ Upon completion, you can finish the setup by [applying zowe and starting it](./k
 
 To make certificates work in Kubernetes, make sure the certificate you are using have defined the following domains in certificate Subject Alt Name (SAN):
 
-- your external domains to access Zowe APIML Gateway Service running in Kubernetes cluster
+- your external domains to access Zowe API ML Gateway Service running in Kubernetes cluster
 - `*.<k8s-namespace>.svc.<k8s-cluster-name>`
 - `*.discovery-service.<k8s-namespace>.svc.<k8s-cluster-name>`
 - `*.gateway-service.<k8s-namespace>.svc.<k8s-cluster-name>`
@@ -305,18 +309,18 @@ Without the additional domains in SAN, you may see warnings/errors related to ce
 
 :::caution
 
-It's not recommended to disable `zowe.verifyCertificates`.
+It is not recommended to disable `zowe.verifyCertificates`.
 
 :::
 
 **Notes**: When the following conditions are true, this migration script will regenerate a new set of certificates for you with proper domain names listed above.
 
 - You use `zwe init` command to initialize Zowe
-- You use `PKCS#12` format keystore by defining `zowe.setup.certificate.type: PKCS12`
+- You use a `PKCS#12` format keystore by defining `zowe.setup.certificate.type: PKCS12`
 - You did not define `zowe.setup.certificate.pkcs12.import.keystore` and let `zwe` command to generate PKCS12 keystore for you
 - You enabled `STRICT` mode `zowe.verifyCertificates`
 
-To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) used by Zowe containers, you must create the following objects:
+To create the [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/) and [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) used by Zowe containers manually, you must create the following objects:
 
 1. A ConfigMap, with values based upon a Zowe configuration `zowe.yaml` and similar to the example `samples/config-cm.yaml` with the following differences to the values seen on a z/OS installation:
 
@@ -324,17 +328,18 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
    * `java.home` and `node.home` are not usually needed if you are using Zowe base images.
    * `zowe.runtimeDirectory` must be set to `/home/zowe/runtime`.
    * `zowe.externalDomains` is suggested to define as a list of domains you are using to access your Kubernetes cluster.
-   * `zowe.externalPort` must be the port you expose to end-user. This value is optional if it's same as default APIML Gateway service port `7554`. With default settings,
+   * `zowe.externalPort` must be the port you expose to end-user. This value is optional if it is the same as the default API ML Gateway service port `7554`. With default settings,
      * if you choose `LoadBalancer` `gateway-service`, this value is optional, or set to `7554`,
      * if you choose `NodePort` `gateway-service` and access the service directly, this value should be same as `spec.ports[0].nodePort` with default value `32554`,
      * if you choose `NodePort` `gateway-service` and access the service through port forwarding, the value should be the forwarded port you set.
    * `components.discovery.replicas` should be set to same value of `spec.replicas` defined in `workloads/discovery-statefulset.yaml`.
    * All components running in Kubernetes should use default ports:
-     * `components.api-catalog.port` is `7552`,
+     * `components.api-catalog.port` is `7552`, 
      * `components.discovery.port` is `7553`,
      * `components.gateway.port` is `7554`,
-     * `components.caching-service.port` is `7555`,
+     * `components.caching-service.port` is `7555`, 
      * `components.app-server.port` is `7556`.
+     * `components.zaas.port` is `7558`, 
    * `components.caching-service.storage.mode` should NOT be set to `VSAM`. `redis` is suggested. Follow [Redis configuration](https://docs.zowe.org/stable/extend/extend-apiml/api-mediation-redis/#redis-configuration) documentation to customize other Redis related variables. Leave the value to empty for debugging purposes.
    * Must append and customize these 2 values into `zowe.environments` section:
      * `ZWED_agent_host=<ZOWE_ZOS_HOST>`
@@ -344,8 +349,8 @@ To manually create the [ConfigMaps](https://kubernetes.io/docs/concepts/configur
 
     You need 2 entries under the `data` section:
 
-    - `keystore.p12`: which is base64 encoded PKCS#12 keystore,
-    - `truststore.p12`: which is base64 encoded PKCS#12 truststore.
+    - `keystore.p12`: which is a BASE64 encoded PKCS#12 keystore,
+    - `truststore.p12`: which is a BASE64 encoded PKCS#12 truststore.
 
     And 3 entries under `stringData` section:
 

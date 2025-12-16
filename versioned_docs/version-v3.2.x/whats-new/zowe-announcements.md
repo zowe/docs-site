@@ -10,7 +10,7 @@ Got questions? Check the [Zowe V3 FAQs](..//whats-new/zowe-v3-frequently-asked-q
 
 ## Future Zowe V2 releases
 
-Zowe 2.0.x is now in maintenance state. Only [patch releases](https://github.com/zowe/community/blob/master/Project%20Management/Schedule/Zowe%20PI%20%26%20Sprint%20Cadence.md#v2) are planned until the Zowe V2 End of Service scheduled for early 2027.
+Zowe 2.0.x is now in maintenance state. Patch releases are planned until the Zowe V2 End of Service scheduled for early 2027. For details about the Zowe v2 release stream, see the [Releases section](https://www.zowe.org/vnext) in zowe.org.
 
 ## Archiving Zowe Version 1.0
 
