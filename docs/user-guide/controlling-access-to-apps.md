@@ -66,9 +66,10 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     }
     ```
 
-    **Notes:**
+    :::note Note
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
+:::
 
 6. [Restart the app server](start-zowe-zos.md).
 
