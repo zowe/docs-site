@@ -1,8 +1,10 @@
 # Network configuration
 
-**Note:** The following attributes are to be defined in the Zowe configuration file.
+:::note Note
+The following attributes are to be defined in the Zowe configuration file.
 
 The App Server and ZSS both can be accessed over HTTPS, either natively or via AT-TLS by setting appropriate AT-TLS rules and Zowe YAML assignments. When using native HTTPS, the TLS properties can be further customized within the YAML.
+:::
 
 ## Port configuration
 
