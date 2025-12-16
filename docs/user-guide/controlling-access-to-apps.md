@@ -14,8 +14,9 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 ## Controlling app access for all users
 
-**Note:**
+:::note Note
 - `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
+:::
 
 1. Enable RBAC.
 
