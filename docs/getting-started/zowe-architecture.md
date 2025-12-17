@@ -35,7 +35,7 @@ The caching services for each Zowe instance, whether on the same LPAR, or distri
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
 
-![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
+![Zowe Architecture Diagram in Kubernetes](../getting-started/diagrams/zowe-architecture-kubernetes-single-service.png)
 
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
