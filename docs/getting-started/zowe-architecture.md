@@ -104,7 +104,7 @@ When running on z/OS, the server uses the jobname suffix of AC.
 
 ### API Discovery Service
 
-The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7552` making it possible to view a list of registered API services on the API discovery homepage.
+The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7553` making it possible to view a list of registered API services on the API discovery homepage.
 
 ![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
 
