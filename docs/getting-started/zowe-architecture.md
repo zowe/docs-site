@@ -81,7 +81,6 @@ The API Mediation Layer is a collection of services for management and administr
 * API Catalog
 * API Discovery Service
 * Caching Service
-* ZAAS
 
 ### API Gateway
 
