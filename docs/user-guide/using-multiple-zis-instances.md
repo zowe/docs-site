@@ -11,7 +11,7 @@ Use the following steps to point a Zowe instance at a particular ZIS server:
       //ZWESIS02  PROC NAME='ZWESIS_MYSRV',MEM=00,RGN=0M
       ```
 
-      Where `ZWESIS_MYSRV` is the unique name of the new ZIS.
+      Where `ZWESIS_MYSRV` is the unique name of the new ZIS. 
 
 3. [Start the new ZIS](https://docs.zowe.org/stable/user-guide/configure-xmem-server#starting-and-stopping-the-cross-memory-server-on-zos) with whatever PROCLIB name was chosen.
 
