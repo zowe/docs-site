@@ -20,7 +20,7 @@ Tracking communication between the API ML services to determine the cause and so
 
 Review the following architecture of API ML single-service deployment mode.
 
-![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
+![Zowe API ML Single-service Architecture Diagram](../../getting-started/diagrams/zowe-architecture-apiml-single-service.png)
 
 ## Limitations
 
