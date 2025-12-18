@@ -50,26 +50,26 @@ chmod	    | Changes mode, changes the permission mode of a file or directory. Ch
 chown	    | Changes owner, changes the file or directory ownership, optionally including group ownership. Use as chown user:group filename.  Can be recursive over a directory with -R.
 echo	    | Prints given text, or environment variables prefixed with $, to the screen (STDOUT) or to a file (with > or >>), or to another program (with |).
 env	        | Prints all environment variables currently set and their values.
-export	    | sets an environment variable to a value. will remain set for the duration of the terminal connection. Can be used in a .profile file to set defaults for every session of that user.
+export	    | Sets an environment variable to a value. The value sets for the duration of the terminal connection. Can be used in a `.profile` file to set defaults for every session of that user.
 fg	        | Restores a program in the background to the foreground.
 find	    | Finds files that match a filename pattern given.
 grep	    | Finds files that contain text that match the regular expression pattern given.
 head	    | Prints the top of a file.
 id: IDentity| Prints your user id and the groups you are in.
 kill	    | sends a signal to one or more processes. misnamed; does not necessarily kill a process. by default, sends SIGTERM (graceful kill), and not SIGKILL (abrupt kill). You need sufficient SAF privilege to send signals to processes you do not own.
-ls	        | Lists files and folders. -l to list in a row format with details. -T to include tags in the list, and -E to include extended permissions. -a to show hidden (. dot) files. ls -alET shows most useful output.
+ls	        | Lists files and folders. `-l` to list in a row format with details. `-T` to include tags in the list, and -E to include extended permissions. `-a` to show hidden (. dot) files. `ls -alET` shows most useful output.
 more	    | Content piped (|) to it can be scrolled through by pressing space. Useful for reading large output.
 mv          | Moves or renames a file or folder.
 mkdir	    | Makes a directory with default permissions, owned by you and your primary group.
 mkdir -p	| Can be used to make all missing folders in along a given path.
-pwd	        | Prints the working directory. This shows the directory you are currently in. Similar to printing the value of $PWD environment variable.
-ps	        | lists running ProcesseS. by default, you can only see processes that you own.
-rm	        | ReMoves a file. -r to remove a directory (recursive). -f to force (delete without prompting)
+pwd	        | Prints the working directory. This shows the directory you are currently in. Similar to printing the value of `$PWD` environment variable.
+ps	        | Lists running ProcesseS. by default, you can only see processes that you own.
+rm	        | Removes a file. `-r` to remove a directory (recursive). `-f` to force (delete without prompting)
 rmdir	    | Removes a directory.
 sed	        | Stream editor can modify text passed through it. Can be used to read a file and alter its contents and write it back out
-sh: SHell	| The default program you run when opening a unix terminal. /bin/sh is the standard zOS shell, but there are alternatives such as ksh, csh, and bash. Each has different features and a scripting language.
+sh: Shell	| The default program you run when opening a unix terminal. `/bin/sh` is the standard zOS shell, but there are alternatives such as ksh, csh, and bash. Each has different features and a scripting language.
 ssh	        | Secure SHell. A protocol used with a unix terminal to securely make a remote session. Unix equivalent to TN3270 connection. Preferred for unix over OMVS when you want interactivity, color support, scrollback, and dynamic screen resizing.
-tail	    | Shows the bottom of a file. tail -f can be used to continuously print the bottom of a file that is actively growing. Useful for monitoring a log file.
+tail	    | Shows the bottom of a file. `tail -f` can be used to continuously print the bottom of a file that is actively growing. Useful for monitoring a log file.
 tee	        | Content piped (|) to it can be simultaneously printed to the screen (STDOUT) and to a file.
 touch	    | Creates a file with default permissions, owned by you and your primary group.
 tso	        | Can be used to issue non-administrative TSO commands
