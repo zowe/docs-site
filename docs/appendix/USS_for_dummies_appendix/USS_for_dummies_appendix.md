@@ -89,7 +89,7 @@ vi	        | A built-in editor for files. Has a learning curve, use `:q!` to exi
 
 Select option 17 Udlist (Print or Display (to process) z/OS Unix directory list). And type a path for the directory in which to search.
 In Unix, data is organized in the form of files and folders, where a folder can contain more folders. And it can also contain files, so it is little bit different from data sets.
-There are many restrictions on what a file or folder name can contain and how long those names can be. One of the 1st things to watch out for in Unix because of the lack of limitations. Sometimes things can be long and can create an issue, if you are trying to access or view it on a TN 3270 screen. 
+There are many restrictions on what a file or folder name can contain and how long those names can be. One of the first things to watch out for in Unix because of the lack of limitations. Sometimes things can be long and can create an issue, if you are trying to access or view it on a TN 3270 screen. 
 For example, if the path is very long it can go to the next row, which is problematic as you have to scroll on the screen.
 You can access directories from TN 3270 screen. 
 Unix files are tagged with different encoding. It can be EBCDIC, ASCII, binary and others. As opposed to data set files which have the data that tells you what the encoding is. 
