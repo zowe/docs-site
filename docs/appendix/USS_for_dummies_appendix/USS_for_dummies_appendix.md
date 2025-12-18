@@ -42,7 +42,7 @@ Command     | Description
 bash	    | A feature-rich shell that makes running and recalling previous commands easier. This is not on z/OS by default but is available for free.
 bg (ctrl+z)	| Sends the currently running program to the background so that your terminal can be used for other purposes.
 ctrl+c	    | Issues SIGTERM to a program (kill -15) which usually is used to close the program in the foreground.
-cd	        | Changes Directories. Can change directories relative to your current directory, especially with '.' for current directory, and '..' for going up one directory. Can change directories by absolute path too (paths that start with /).
+cd	        | Changes directories. Can change directories relative to your current directory, especially with '.' for current directory, and '..' for going up one directory. Can change directories by absolute path too (paths that start with /).
 cat	        | Prints contents of a file to the screen (STDOUT) by default.
 cp	        | Copies a file, dataset, or folder recursively. cp takes a source and target. cp -r will copy a folder recursively. cp from a dataset to a file can be done with dataset-specific syntax of "//'dsn'".
 chtag	    | Changes TAG or can add, remove, or list the tag on a file which tells you and the computer what encoding (ex 1047, ascii) that a file is in.
@@ -60,9 +60,9 @@ kill	    | sends a signal to one or more processes. misnamed; does not necessari
 ls	        | Lists files and folders. -l to list in a row format with details. -T to include tags in the list, and -E to include extended permissions. -a to show hidden (. dot) files. ls -alET shows most useful output.
 more	    | Content piped (|) to it can be scrolled through by pressing space. Useful for reading large output.
 mv          | Moves or renames a file or folder.
-mkdir	    | Makes a DIRectory with default permissions, owned by you and your primary group.
+mkdir	    | Makes a directory with default permissions, owned by you and your primary group.
 mkdir -p	| Can be used to make all missing folders in along a given path.
-pwd	        | Prints the Working Directory. This shows the directory you are currently in. Similar to printing the value of $PWD environment variable.
+pwd	        | Prints the working directory. This shows the directory you are currently in. Similar to printing the value of $PWD environment variable.
 ps	        | lists running ProcesseS. by default, you can only see processes that you own.
 rm	        | ReMoves a file. -r to remove a directory (recursive). -f to force (delete without prompting)
 rmdir	    | Removes a directory.
