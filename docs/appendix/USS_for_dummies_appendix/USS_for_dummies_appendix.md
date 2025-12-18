@@ -7,8 +7,8 @@ z/OS UNIX is an integral part of the z/OS operating system, bringing the strengt
 ## Getting started with z/OS UNIX
 
 1.	Accessing the UNIX Shell: To begin, you need to access the UNIX System Services (USS) environment on your z/OS. You can do this by logging in to TSO/E and entering the OMVS command or directly through a secure shell (SSH) client.
-2.	Basic Commands: Familiarize yourself with basic UNIX commands. Commands like ls, cd, pwd, mkdir, and rmdir will help you navigate and manage directories.
-3.	File Permissions: Understand the UNIX file permissions and how to modify them using the chmod command. Remember that the right permissions are crucial for the proper execution of files and directories.
+2.	Basic Commands: Familiarize yourself with basic UNIX commands. Commands like `ls`, `cd`, `pwd`, `mkdir`, and `rmdir` will help you navigate and manage directories.
+3.	File Permissions: Understand the UNIX file permissions and how to modify them using the `chmod` command. Remember that the right permissions are crucial for the proper execution of files and directories.
 
 ## Zowe and z/OS UNIX
 
