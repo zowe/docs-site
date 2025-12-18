@@ -18,7 +18,7 @@ Zowe interacts with z/OS UNIX to provide several functionalities, such as:
 - Zowe APIs: Zowe offers REST APIs that interact with z/OS UNIX. You can leverage these APIs to automate and integrate z/OS UNIX functionalities with other systems and services. Some APIs come from z/OSMF and some come from ZSS. 
 - Zowe App Framework: The Zowe Desktop has a collection of apps that interact with z/OS Unix, such as the Zowe Editor or USS Explorer. 
 
-## Best Practices
+## Best practices
 
 1. Security: Always follow the best practices for security. Ensure that files and directories have the correct permissions, and avoid using high-privileged accounts unless necessary.
 2. Scripting: Leverage scripting capabilities in z/OS UNIX. Shell scripting allows you to automate repetitive tasks, enhance productivity, and reduce errors.
