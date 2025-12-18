@@ -46,17 +46,17 @@ cd	        | Changes directories. Can change directories relative to your curren
 cat	        | Prints contents of a file to the screen (STDOUT) by default.
 cp	        | Copies a file, data set, or folder recursively. cp takes a source and target. `cp -r` copies a folder recursively. cp from a dataset to a file can be done with dataset-specific syntax of `//dsn`.
 chtag	    | Changes TAG or can add, remove, or list the tag on a file which tells you and the computer what encoding (ex 1047, ascii) that a file is in.
-chmod	    | Changes mode, changes the permission mode of a file or directory. Changes can be in octal digits or in +/- rwx format, such as chmod g+r filename to add group-level read permission to a file. Can be recursive over a directory with -R.
-chown	    | Changes owner, changes the file or directory ownership, optionally including group ownership. Use as chown user:group filename.  Can be recursive over a directory with -R.
-echo	    | Prints given text, or environment variables prefixed with $, to the screen (STDOUT) or to a file (with > or >>), or to another program (with |).
+chmod	    | Changes mode, changes the permission mode of a file or directory. Changes can be in octal digits or in `+/- rwx` format, such as `chmod g+r` filename to add group-level read permission to a file. Can be recursive over a directory with `-R`.
+chown	    | Changes owner, changes the file or directory ownership, optionally including group ownership. Use as chown user:group filename.  Can be recursive over a directory with `-R`.
+echo	    | Prints given text, or environment variables prefixed with `$`, to the screen (STDOUT) or to a file (with > or >>), or to another program (with |).
 env	        | Prints all environment variables currently set and their values.
 export	    | Sets an environment variable to a value. The value sets for the duration of the terminal connection. Can be used in a `.profile` file to set defaults for every session of that user.
 fg	        | Restores a program in the background to the foreground.
 find	    | Finds files that match a filename pattern given.
 grep	    | Finds files that contain text that match the regular expression pattern given.
 head	    | Prints the top of a file.
-id: IDentity| Prints your user id and the groups you are in.
-kill	    | sends a signal to one or more processes. misnamed; does not necessarily kill a process. by default, sends SIGTERM (graceful kill), and not SIGKILL (abrupt kill). You need sufficient SAF privilege to send signals to processes you do not own.
+id: IDentity | Prints your user id and the groups you are in.
+kill	    | sends a signal to one or more processes. misnamed; does not necessarily kill a process. By default, sends SIGTERM (graceful kill), and not SIGKILL (abrupt kill). You need sufficient SAF privilege to send signals to processes you do not own.
 ls	        | Lists files and folders. `-l` to list in a row format with details. `-T` to include tags in the list, and -E to include extended permissions. `-a` to show hidden (. dot) files. `ls -alET` shows most useful output.
 more	    | Content piped (|) to it can be scrolled through by pressing space. Useful for reading large output.
 mv          | Moves or renames a file or folder.
