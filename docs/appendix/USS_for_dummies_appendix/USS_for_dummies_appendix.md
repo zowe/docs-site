@@ -61,7 +61,7 @@ ls	        | Lists files and folders. `-l` to list in a row format with details.
 more	    | Content piped (|) to it can be scrolled through by pressing space. Useful for reading large output.
 mv          | Moves or renames a file or folder.
 mkdir	    | Makes a directory with default permissions, owned by you and your primary group.
-mkdir -p	| Can be used to make all missing folders in along a given path.
+mkdir -p	| Creates directories, including any necessary parent directories.
 pwd	        | Prints the working directory. This shows the directory you are currently in. Similar to printing the value of `$PWD` environment variable.
 ps	        | Lists running ProcesseS. by default, you can only see processes that you own.
 rm	        | Removes a file. `-r` to remove a directory (recursive). `-f` to force (delete without prompting)
