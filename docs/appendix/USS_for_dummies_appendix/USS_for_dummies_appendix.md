@@ -1,10 +1,5 @@
 # Zowe and z/OS UNIX
 
-- [Introduction to z/OS UNIX](#introduction-to-zos-unix)
-- [Getting Started with z/OS UNIX](#getting-started-with-zos-unix)
-- [Zowe and z/OS UNIX](#zowe-and-zos-unix)
-
-
 ## Introduction to z/OS UNIX
 
 z/OS UNIX is an integral part of the z/OS operating system, bringing the strengths of UNIX to the powerful mainframe environment. z/OS UNIX allows you to run UNIX applications and services on a z/OS system, leveraging the robust security, scalability, and reliability features of the mainframe. It’s essential for modern enterprise applications and services, and for Zowe which leverages z/OS UNIX for various functionalities.
