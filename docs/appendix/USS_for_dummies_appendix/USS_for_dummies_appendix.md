@@ -44,7 +44,7 @@ bg (ctrl+z)	| Sends the currently running program to the background so that your
 ctrl+c	    | Issues SIGTERM to a program (kill -15) which usually is used to close the program in the foreground.
 cd	        | Changes Directories. Can change directories relative to your current directory, especially with '.' for current directory, and '..' for going up one directory. Can change directories by absolute path too (paths that start with /).
 cat	        | Prints contents of a file to the screen (STDOUT) by default.
-cp	        | Copies a file, dataset, or folder recursively. cp takes a source and target. cp -r will copy a folder recursively. cp from a dataset to a file can be done with dataset-specific syntax of "//'dsn'".
+cp	        | Copies a file, data set, or folder recursively. cp takes a source and target. `cp -r` copies a folder recursively. cp from a dataset to a file can be done with dataset-specific syntax of `//dsn`.
 chtag	    | Changes TAG or can add, remove, or list the tag on a file which tells you and the computer what encoding (ex 1047, ascii) that a file is in.
 chmod	    | Changes mode, changes the permission mode of a file or directory. Changes can be in octal digits or in +/- rwx format, such as chmod g+r filename to add group-level read permission to a file. Can be recursive over a directory with -R.
 chown	    | Changes owner, changes the file or directory ownership, optionally including group ownership. Use as chown user:group filename.  Can be recursive over a directory with -R.
