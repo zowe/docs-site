@@ -73,7 +73,7 @@ tail	    | Shows the bottom of a file. `tail -f` can be used to continuously pri
 tee	        | Content piped (|) to it can be simultaneously printed to the screen (STDOUT) and to a file.
 touch	    | Creates a file with default permissions, owned by you and your primary group.
 tso	        | Can be used to issue non-administrative TSO commands.
-vi	        | A builtin editor for files. Has a learning curve, use ":q!" to exit if stuck.
+vi	        | A built-in editor for files. Has a learning curve, use `:q!` to exit if stuck.
 |	        | Pipe, used to forward the output (STDOUT) data from one program as input (STDIN) to another program.
 &&	        | Used to run multiple programs but only on the condition that the first succeeds (has a return code $? of 0).
 ;	        | Used to run multiple programs (or statements) regardless of return codes.
