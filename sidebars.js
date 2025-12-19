@@ -990,6 +990,18 @@ module.exports = {
       ],
     }
   ],
+
+  
+    {
+      type: "category",
+      label: "Troubleshooting z/OS Services",
+      collapsed: false,
+      link: { type: "doc", id: "troubleshoot/troubleshooting" },
+      items: [
+	"troubleshoot/zOS_services/Unable-to-generate-unique-CeaTso-APPTAG.md"	
+      ],
+    },
+
   "contributing": [
     "contribute/roadmap-contribute",
     {
