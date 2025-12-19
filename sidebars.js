@@ -1023,7 +1023,7 @@ module.exports = {
     "appendix/ZoweandzOSUnix"
     {
       type: "category",
-      label: "ZoweandzOSUnix",
+      label: "Zowe and z/OS Unix",
       link: { type: "doc", id: "appendix/USS_for_dummies_appendix/ZoweandzOSUnix" },
       collapsed: false,
       items: [
