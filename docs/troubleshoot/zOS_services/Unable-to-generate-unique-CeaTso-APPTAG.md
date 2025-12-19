@@ -1,6 +1,6 @@
 # Troubleshooting z/OS Services
 
-The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing and using Zowe™ z/OS Services.
+The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior with z/OS services while installing and using Zowe™.
 
 ### ISSUE: Unable to generate unique CeaTso APPTAG
 
