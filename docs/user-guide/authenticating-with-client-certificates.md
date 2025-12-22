@@ -71,6 +71,12 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   :::tip
   To disable the API ML mapper, ensure that you set the parameter `components.gateway.apiml.security.useInternalMapper` to `false`.
   :::
+
+  :::note
+  API ML currently only supports `DIGTNMAP` for certificate-to-user mapping.
+  :::
+
+
 </details>
 
 **ACF2** 
