@@ -4,7 +4,7 @@ Zowe&trade; is a collection of components that together form a framework that ma
 
 The following diagram illustrates the high-level Zowe architecture using the recommended Single Service Architecture.
 
-![Zowe API ML Single-service Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
+![Zowe API ML Single-service Architecture Diagram](../getting-started/diagrams/zowe-architecture-apiml-single-service.png)
     
 The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
@@ -18,7 +18,7 @@ Zowe server components can be installed and run entirely on z/OS, but a subset o
 
 The following diagram illustrates the high-level Zowe architecture using multi-service deployment.
 
-![Zowe Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
+![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
 As with the single-service architecture diagram, the diagram for multi-service deplayment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
