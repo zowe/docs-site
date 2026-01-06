@@ -2,6 +2,7 @@
 
 Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
+
 The following diagram illustrates the high-level Zowe architecture using the recommended Single Service Architecture.
 
 ![Zowe API ML Single-service Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
@@ -28,7 +29,7 @@ As with the single-service architecture diagram, the diagram for multi-service d
 
 The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Sysplex with high availability enabled as opposed to running all components on a single z/OS system.  
 
-![Zowe Architecture Diagram with High Availability Enablement](../images/common/zowe-architecture-lpar.png)
+![Zowe Architecture Diagram with High Availability Enablement](../getting-started/diagrams/zowe-architecture-lpar-single-service.png)
 
 Zowe has a high availability feature built in. To enable this feature, you can define the `haInstances` section in your YAML configuration file.
 
@@ -55,7 +56,7 @@ The following diagram for single-service deployment illustrates the difference i
 
 The following diagram for multi-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as an alternative to running all components on a single z/OS system.
 
-![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s.png)
+![Zowe Architecture Diagram in Kubernetes](../getting-started/diagrams/zowe-architecture-kubernetes-single-service.png)
 
 </details> 
 
@@ -103,13 +104,12 @@ The API Mediation Layer is a collection of services for management and administr
 * API Catalog
 * API Discovery Service
 * Caching Service
-* ZAAS
 
 ### API Gateway
 
 The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_ADDRESS>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
 
-![Zowe API Mediation Layer](../images/api-mediation/api-mediationlayer.png)
+![Zowe API Mediation Layer](../getting-started/diagrams/api-ml-homepage-single-instance.png)
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/`.
 When running on z/OS, the server uses the jobname suffix of AG.
@@ -128,13 +128,14 @@ When running on z/OS, the server uses the jobname suffix of AC.
 
 The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_ADDRESS>:7553` making it possible to view a list of registered API services on the API discovery homepage.
 
-![Zowe API Discovery](../images/api-mediation/api-discovery.png)
+![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
 
 When running on z/OS, the server uses the jobname suffix of AD.
 
 ### Caching Service
 
 The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. 
+
 For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.

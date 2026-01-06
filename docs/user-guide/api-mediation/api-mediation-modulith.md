@@ -27,7 +27,7 @@ To enable the single-service option in an existing installation, see [Enable sin
 
 Review the following architecture of API ML single-service deployment mode.
 
-![Zowe API ML Single-service Architecture Diagram](../../images/common/zowe-architecture-apiml-single-service.png)
+![Zowe API ML Single-service Architecture Diagram](../../getting-started/diagrams/zowe-architecture-apiml-single-service.png)
 
 ## Limitations
 
