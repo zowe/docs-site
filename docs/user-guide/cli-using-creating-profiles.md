@@ -171,16 +171,10 @@ In the following configuration, services are accessed through API ML (where mult
                 "basePath": "ibmzosmf/api/v1"
             }
         },
-        "cics": {
-            "type": "cics",
+        "example": {
+            "type": "example", //replace example with the profile type of the product you are communicating with
             "properties": {
-                "basePath": "ibmcics/api/v1"
-            }
-        },
-        "db2": {
-            "type": "db2",
-            "properties": {
-                "basePath": "ibmdb2/api/v1"
+                "basePath": "example/api/v1" //replace with the base path of the API for the product
             }
         },
         // highlight-start
@@ -200,8 +194,7 @@ In the following configuration, services are accessed through API ML (where mult
     },
     "defaults": {
         "zosmf": "zosmf",
-        "cics": "cics",
-        "db2": "db2",
+        "example": "example",
         "base": "project_base"
     },
     "autoStore": true
@@ -222,19 +215,13 @@ In the following configuration, services are accessed through API ML using certi
                 "basePath": "ibmzosmf/api/v1"
             }
         },
-        "cics": {
-            "type": "cics",
+        "example": {
+            "type": "example", //replace example with the profile type of the product you are communicating with
             "properties": {
-                "basePath": "ibmcics/api/v1"
+                "basePath": "example/api/v1" //replace with the base path of the API for the product
             }
         },
-        "db2": {
-            "type": "db2",
-            "properties": {
-                "basePath": "ibmdb2/api/v1"
-            }
-        },
-        // highlight-start
+// highlight-start
         "project_base": {
             "type": "base",
             "properties": {
@@ -245,12 +232,11 @@ In the following configuration, services are accessed through API ML using certi
                 "rejectUnauthorized": true
             }
         }
-        // highlight-end
+// highlight-end
     },
     "defaults": {
         "zosmf": "zosmf",
-        "cics": "cics",
-        "db2": "db2",
+        "example": "example",
         "base": "project_base"
     },
     "autoStore": true

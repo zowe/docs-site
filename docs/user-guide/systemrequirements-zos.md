@@ -20,8 +20,6 @@ Be sure your z/OS system meets the following prerequisites:
 
   :::note Notes:
   * Currently, access to z/OS V3.2 is not available on environments accessible to the Zowe community. As such, community members cannot run the automated test suite on z/OS V3.2. If you require further validation about z/OS V3.2 usage, please consult your Conformant Support Provider.
-  * z/OS V2.4 reached end of support on 30 September, 2024. 
-  * z/OS V2.3 reached end of support on 30 September, 2022. For more information, see the [z/OS v2.3 lifecycle details](https://www.ibm.com/support/pages/zos23x-withdrawal-notification).
   :::
 
 - zFS volume has at least 1200 MB of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.
