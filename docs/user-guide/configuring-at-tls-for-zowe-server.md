@@ -1,6 +1,15 @@
 # Enabling AT-TLS for multi-service deployment mode
 
-Configuring AT-TLS allows Zowe to offload all TLS responsibilities to the z/OS Communications Server, simplifying security configuration and ensuring consistent encryption across the network. 
+:::caution
+Do not use an AT-TLS setup until you have a non-AT-TLS setup that works.
+For more information about how to install Zowe, refer to [Installing Zowe](../user-guide/install-overview.md).
+For more information about how to verify whether Zowe components are functional, refer to [Verifying Zowe installation on z/OS](../user-guide/verify-zowe-runtime-install.md).
+:::
+
+Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
+The built-in TLS networking is enabled by default. To learn more, see [Customizing Native TLS](./tls-configuration.md).
+
+You can configure parameters in Zowe servers to switch to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 :::info Role: security administrator
 :::
