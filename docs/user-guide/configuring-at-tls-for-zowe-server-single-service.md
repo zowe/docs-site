@@ -657,113 +657,6 @@ TTLSRule ZoweServerRule2
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
-# Example southbound service inbound rule
-TTLSRule ApimlDCServerRule
-{
-  LocalAddr All
-  RemoteAddr All
-  LocalPortRange 8080-8090 # Example service ports
-  Jobname ZWE1DC* # Jobname prefix (optional)
-  Direction Inbound
-  TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
-  TTLSConnectionActionRef ZoweDCServerConnectionAction
-}
-
-TTLSGroupAction ServerGroupAction
-{
-  TTLSEnabled On
-}
-
-# Environment action for all Zowe service
-TTLSEnvironmentAction ZoweServerEnvironmentAction
-{
-  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
-  EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ZoweKeyring
-}
-
-# Environment action for sample southbound service
-TTLSEnvironmentAction ZoweDCServerEnvironmentAction
-{
-  HandshakeRole Server
-  EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ZoweDCServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ZoweKeyring
-}
-
-# Keyring with trusted CA certificates and personal certificate with its private key
-TTLSKeyringParms ZoweKeyring
-{
-  Keyring ZWEKRNG
-}
-
-# Keyring without a default personal certificate and its private key; contains only trusted CA certificates
-TTLSKeyringParms ZoweNoX509Keyring
-{
-  Keyring ZoweAttlsKeyring
-}
-
-# Advanced TLS settings, choose TLS versions supported.
-TTLSEnvironmentAdvancedParms ZoweServerEnvironmentAdvParms
-{
-  ClientAuthType Full # Support optional X.509 Client Certificate authentication
-  ApplicationControlled Off
-  Renegotiation Disabled
-  SSLv2 Off
-  SSLv3 Off
-  TLSv1 Off
-  TLSv1.1 Off
-  TLSv1.2 On
-  TLSv1.3 On
-}
-
-# Advanced TLS settings, choose TLS versions supported.
-TTLSEnvironmentAdvancedParms ZoweDCServerEnvironmentAdvParms
-{
-  ApplicationControlled Off
-  Renegotiation Disabled
-  SSLv2 Off
-  SSLv3 Off
-  TLSv1 Off
-  TLSv1.1 Off
-  TLSv1.2 On
-  TLSv1.3 On
-}
-
-# Server Connection Action for API ML core services.
-TTLSConnectionAction ZoweServerConnectionAction
-{
-  HandshakeRole ServerWithClientAuth # API ML Core Services use X.509 Client Certificate authentication
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ZoweServerConnectionAdvParms
-}
-
-# Server Connection Action for DC Service.
-TTLSConnectionAction ZoweDCServerConnectionAction
-{
-  HandshakeRole Server 
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ZoweDCServerConnectionAdvParms
-}
-
-# API ML Server connection action.
-# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLs connections.
-TTLSConnectionAdvancedParms ZoweServerConnectionAdvParms
-{
-  ApplicationControlled Off
-  ServerCertificateLabel apimlcert
-  SecondaryMap Off
-}
-
-# Service advanced server connection action.
-TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
-{
-  ApplicationControlled Off
-  ServerCertificateLabel apimlcert
-  SecondaryMap Off
-}
 
 # Example outbound TTLS rules for a Zowe client calling a Zowe server
 # In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
@@ -791,22 +684,6 @@ TTLSRule ZoweClientRule2
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
   TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
-}
-
-# Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
-# Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
-# Note ConnectionAction doesn't configure X.509 Client Certificate.
-TTLSRule ApimlServiceClientRule
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 40030 # Service ports
-  Jobname ZWE1A*
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
 # Optional. Can configure the outbound connection from API Gateway to work with AT-TLS while connecting to z/OSMF.
@@ -837,9 +714,78 @@ TTLSRule ApimlZLUXClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-TTLSGroupAction ClientGroupAction
+########################################################
+#            SAMPLE ONBOARDED SERVICE RULES            #
+########################################################
+
+# Example southbound service inbound rule
+TTLSRule ApimlDCServerRule
 {
-  TTLSEnabled On
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 8080-8090 # Example service ports
+  Jobname ZWE1DC* # Jobname prefix (optional)
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
+  TTLSConnectionActionRef ZoweDCServerConnectionAction
+}
+
+# Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
+# Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
+# Note ConnectionAction doesn't configure X.509 Client Certificate.
+TTLSRule ApimlServiceClientRule
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 40030 # Service ports
+  Jobname ZWE1A*
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+}
+
+# Environment action for sample southbound service
+TTLSEnvironmentAction ZoweDCServerEnvironmentAction
+{
+  HandshakeRole Server
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ZoweKeyring
+}
+
+# Server Connection Action for DC Service.
+TTLSConnectionAction ZoweDCServerConnectionAction
+{
+  HandshakeRole Server 
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweDCServerConnectionAdvParms
+}
+
+# Service advanced server connection action.
+TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  SecondaryMap Off
+}
+
+########################################################
+#                COMMON CONFIGURATION                  #
+########################################################
+
+# Keyring with trusted CA certificates and personal certificate with its private key
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
+# Keyring without a default personal certificate and its private key; contains only trusted CA certificates
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
 }
 
 TTLSEnvironmentAction ApimlX509ClientEnvAction
@@ -856,6 +802,46 @@ TTLSEnvironmentAction ApimlNoX509ClientEnvAction
   TTLSKeyringParmsRef NoKeyKeyring # Keyring does not contain personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
   EnvironmentUserInstance 0
+}
+
+# Environment action for all Zowe services
+TTLSEnvironmentAction ZoweServerEnvironmentAction
+{
+  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
+  EnvironmentUserInstance 0
+  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
+  TTLSKeyringParmsRef ZoweKeyring
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+TTLSEnvironmentAdvancedParms ZoweServerEnvironmentAdvParms
+{
+  ClientAuthType Full # Support optional X.509 Client Certificate authentication
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Server Connection Action for API ML core services.
+TTLSConnectionAction ZoweServerConnectionAction
+{
+  HandshakeRole ServerWithClientAuth # API ML Core Services use X.509 Client Certificate authentication
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweServerConnectionAdvParms
+}
+
+# API ML Server connection action.
+# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLs connections.
+TTLSConnectionAdvancedParms ZoweServerConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  SecondaryMap Off
 }
 
 TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
@@ -908,6 +894,16 @@ TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
   TLSv1.1 Off
   TLSv1.2 On
   TLSv1.3 On
+}
+
+TTLSGroupAction ServerGroupAction
+{
+  TTLSEnabled On
+}
+
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
 }
 
 # Example list of supported ciphers in handshake. Validate and filter this list based on local setup
@@ -971,6 +967,7 @@ TTLSCipherParms                   CipherParms
   V3CipherSuites                  TLS_DH_DSS_WITH_AES_128_CBC_SHA
   V3CipherSuites                  TLS_DH_RSA_WITH_AES_128_CBC_SHA
 }
+
 ```
 
 </details>
