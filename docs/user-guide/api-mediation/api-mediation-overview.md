@@ -34,7 +34,7 @@ Access to the API Catalog can be protected with an Enterprise z/OS Security Mana
 
 ### Caching service
 
-The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. The URL of the Caching service is `https://<ZOWE_HOST_IP>:7555`.
+The Caching service aims to provide an API which offers the possibility to store, retrieve and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. 
 For more information, see [Using the Caching Service](../api-mediation/api-mediation-caching-service).
 
 ## Extending API ML by Onboarding new APIs

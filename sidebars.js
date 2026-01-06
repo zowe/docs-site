@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
         "whats-new/release-notes/v3_3_0",
         "whats-new/release-notes/v3_2_0",
@@ -234,7 +235,9 @@ module.exports = {
                 "user-guide/use-certificates",
                 "user-guide/certificates-setup",
                 "user-guide/tls-configuration",
+                "user-guide/configuring-at-tls-for-zowe-server-single-service",
                 "user-guide/configuring-at-tls-for-zowe-server",
+                "user-guide/using-icsf-hardware-private-keys",
               ],
             },
             {
@@ -438,92 +441,6 @@ module.exports = {
           ],
         },
         "getting-started/install-zowe-sdks",
-        {
-          type: "category",
-          label: "Zowe Chat (technical preview)",
-          link: { type: "doc", id: "user-guide/zowe-chat/introduction" },
-          items: [
-            "user-guide/zowe-chat/systemrequirements-chat",
-            {
-              type: "category",
-              label: "Configuring chat platforms",
-              link: { type: "doc", id: "user-guide/zowe-chat/chat_configure_chat_platforms" },
-              items: [
-                {
-                  type: "category",
-                  label: "Configuring Mattermost",
-                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_mattermost" },
-                  items: [
-                    "user-guide/zowe-chat/chat_prerequisite_install_mattermost",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_admin_account",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_bot_account",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_team",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_invite_channel",
-                    "user-guide/zowe-chat/chat_prerequisite_mattermost_enable_connection",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Configuring Microsoft Teams",
-                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams" },
-                  items: [
-                    "user-guide/zowe-chat/chat_prerequisite_teams_create_app_developer_portal",
-                    {
-                      type: "category",
-                      label: "Creating a bot for Microsoft Teams bot app",
-                      link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams_create_bot" },
-                      items: [
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_framework",
-                        "user-guide/zowe-chat/chat_prerequisite_teams_create_bot_azure",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Configuring messaging endpoint",
-                      link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint" },
-                      items: [
-                        "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_framework",
-                        "user-guide/zowe-chat/chat_prerequisite_teams_configure_endpoint_azure",
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Configuring Slack",
-                  link: { type: "doc", id: "user-guide/zowe-chat/chat_prerequisite_slack" },
-                  items: [
-                    "user-guide/zowe-chat/chat_prerequisite_slack_create_app",
-                    {
-                      type: "category",
-                      label: "Configuring and connecting Slack app",
-                      items: [
-                        "user-guide/zowe-chat/chat_prerequisite_slack_configure_app",
-                        "user-guide/zowe-chat/chat_prerequisite_slack_socket_mode",
-                        "user-guide/zowe-chat/chat_prerequisite_slack_http_endpoint",
-                      ],
-                    },
-                    "user-guide/zowe-chat/chat_prerequisite_slack_install",
-                    "user-guide/zowe-chat/chat_prerequisite_slack_invite_app_to_channel",
-                  ],
-                },
-              ],
-            },
-            "user-guide/zowe-chat/chat_install_overview",
-            {
-              type: "category",
-              label: "Configuring Zowe Chat",
-              link: { type: "doc", id: "user-guide/zowe-chat/chat_configure_server" },
-              items: [
-                "user-guide/zowe-chat/chat_configure_mattermost",
-                "user-guide/zowe-chat/chat_configure_teams",
-                "user-guide/zowe-chat/chat_configure_slack",
-              ],
-            },
-            "user-guide/zowe-chat/chat_start_stop",
-            "user-guide/zowe-chat/chat_uninstall",
-          ],
-        },
       ],
     },
   ],
@@ -740,7 +657,6 @@ module.exports = {
           ],
         },
         "user-guide/sdks-using",
-        "user-guide/zowe-chat/chat_use_interact_methods",
         "user-guide/providing-feedback-and-contributing-client-side",
       ],
     },
@@ -986,7 +902,6 @@ module.exports = {
           ],
         },
         "troubleshoot/troubleshoot-intellij",
-        "troubleshoot/zowe-chat-troubleshoot/troubleshooting",
       ],
     }
   ],
@@ -1032,97 +947,7 @@ module.exports = {
     "appendix/server-datasets",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
-    {
-      type: "category",
-      label: "Zowe Chat command reference",
-      link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/zowe-chat-command-reference" },
-      items: [
-        {
-          type: "category",
-          label: "zos commands",
-          link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/zos-article" },
-          items: [
-            {
-              type: "category",
-              label: "zos job",
-              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/job/job-article" },
-              items: [
-                {
-                  type: "category",
-                  label: "zos job list",
-                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/job/list/list-article" },
-                  items: [
-                    "appendix/zowe-chat-command-reference/zos/job/list/zos-job-list-status",
-                  ]
-                },
-              ]
-            },
-            {
-              type: "category",
-              label: "zos dataset",
-              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/dataset/dataset-article" },
-              items: [
-                {
-                  type: "category",
-                  label: "zos dataset list",
-                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/dataset/list/list-article" },
-                  items: [
-                    "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-status",
-                    "appendix/zowe-chat-command-reference/zos/dataset/list/zos-dataset-list-member",
-                  ]
-                },
-              ]
-            },
-            {
-              type: "category",
-              label: "zos file",
-              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/file/file-article" },
-              items: [
-                {
-                  type: "category",
-                  label: "zos file list",
-                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/file/list/list-article" },
-                  items: [
-                    "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-status",
-                    "appendix/zowe-chat-command-reference/zos/file/list/zos-file-list-mounts",
-                  ]
-                },
-              ]
-            },
-            {
-              type: "category",
-              label: "zos command",
-              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/command/command-article" },
-              items: [
-                {
-                  type: "category",
-                  label: "zos command issue",
-                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/command/issue/issue-article" },
-                  items: [
-                    "appendix/zowe-chat-command-reference/zos/command/issue/zos-command-issue-console",
-                  ]
-                },
-              ]
-            },
-            {
-              type: "category",
-              label: "zos help",
-              link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/help/help-article" },
-              items: [
-                {
-                  type: "category",
-                  label: "zos help list",
-                  link: { type: "doc", id: "appendix/zowe-chat-command-reference/zos/help/list/list-article" },
-                  items: [
-                    "appendix/zowe-chat-command-reference/zos/help/list/zos-help-list-command",
-                  ]
-                },
-              ]
-            },
-          ]
-        },
-      ]
-    },
+
     "appendix/zowe-cli-command-reference",
     "appendix/zowe-yaml-configuration",
     {
@@ -1140,7 +965,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.3.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.x.md",
     },
   ],
 }
