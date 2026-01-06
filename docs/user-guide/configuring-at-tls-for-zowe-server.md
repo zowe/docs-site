@@ -5,7 +5,7 @@ Configuring AT-TLS allows Zowe to offload all TLS responsibilities to the z/OS C
 :::info Role: security administrator
 :::
 :::tip
-This article describes the use of AT-TLS in **multi-service deployment mode**. Beginning with Zowe v.3.4.0 and for later versions, **we recommend the use of single-service deployment mode**.
+This article describes the use of AT-TLS in **multi-service deployment mode**. Beginning with Zowe v3.4.0 and for later versions, **we recommend the use of single-service deployment mode**.
 
 * To review the benefits of running Zowe in single-service deployment mode, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
 * For details about configuring AT-TLS for single-service deployment mode, see [Enabling AT-TLS for single-service deployment mode](./configuring-at-tls-for-zowe-server-single-service.md).
@@ -15,7 +15,7 @@ This article describes the use of AT-TLS in **multi-service deployment mode**. B
 Zowe's core components use TLS networking as well as support AT-TLS as an alternative.
 The built-in TLS networking is enabled by default. For details about this built-in TLS support, see [Customizing Native TLS](./tls-configuration.md).
 
-As a security administrator, you can configure parameters in Zowe servers to switch from TLS to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+As a security administrator, you can configure parameters in Zowe servers to switch from native TLS to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 ## AT-TLS configuration for Zowe
 
@@ -34,7 +34,7 @@ zowe:
         attls: true
 ```
 
-While TLS is not handled by the Zowe Server components with AT-TLS enabled on their own, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring.
+While TLS is not handled by the Zowe Server components with AT-TLS enabled, API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring.
 
 :::tip
 
