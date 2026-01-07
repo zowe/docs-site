@@ -30,42 +30,57 @@ Configure Infinispan as a storage solution through the Caching service by settin
  
 * **`components.caching-service.storage.infinispan.initialHosts`**
 
-  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be
-  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
+  This property specifies the list of cluster nodes (members). List of all the members separated by a comma. 
+  The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
 * **`components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the data property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
+  :::note
+  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well. 
+
 * **`components.caching-service.storage.infinispan.persistence.indexLocation`**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
   The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  
+  :::note
+  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well.
 
 * **`components.caching-service.storage.infinispan.jgroups.port`**
 
-  (OPTIONAL)The default value is `7098`. The port number used by Infinispan to synchronise data among cahing-service instances.
+  (OPTIONAL)The default value is `7098`. The port number used by Infinispan to synchronise data among caching-service instances.
 
 * **`components.caching-service.storage.infinispan.jgroups.host`**
 
-  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among cahing-service instances.
+  (OPTIONAL)The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among caching-service instances.
 
-* **`components.caching-service.storage.infinispan.keyExchange.port`**
+* **`components.caching-service.storage.infinispan.jgroups.keyExchange.port`**
 
-  (OPTIONAL)The default value is `7118`. The port number used by Infinispan to exchange encryption key among cahing-service instances.
+  (OPTIONAL)The default value is `7118`. The port number used by Infinispan to exchange encryption key among caching-service instances.
 
   **Example of Caching service HA configuration using Infinispan:**
 
   ```yaml
+  components:
+    caching-service:
+      storage:
+        mode: infinispan
+        infinispan: 
+          initialHosts: lpar1[7098],lpar2[7098]
+          jgroups:
+            port: 7098
+            keyExchange:
+              port: 7118
+
   haInstances:
     lpar1:
       components:
         caching-service:
           storage:
-            mode: infinispan
             infinispan: 
-              initialHosts: lpar2[7098]
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data01
                 indexLocation: /global/zowe/workspace/caching-service/index01
@@ -73,9 +88,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
       components:
         caching-service:
           storage:
-            mode: infinispan
             infinispan: 
-              initialHosts: lpar1[7098]
               persistence:
                 dataLocation: /global/zowe/workspace/caching-service/data02
                 indexLocation: /global/zowe/workspace/caching-service/index02
