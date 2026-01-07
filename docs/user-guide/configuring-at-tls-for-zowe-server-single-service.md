@@ -462,6 +462,26 @@ Ensure that the following rules are followed:
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
 
+Example:
+
+```bash
+
+TTLSRule                            ApimlClientRule
+{ 
+  LocalAddr                         ALL
+  RemoteAddr                        ALL
+  LocalPortRange                    1024-65535
+  RemotePortRange                   7554 # Gateway port
+  Jobname                           # Jobname under which the onboarded service is running
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  Priority                          150
+  TTLSEnvironmentActionRef          ApimlClientEnvironmentAction # No X.509 authentication
+  TTLSConnectionActionRef           ApimlClientConnectionAction # No X.509 authentication
+}
+
+```
+
 #### Outbound rule for z/OSMF
 
 The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:

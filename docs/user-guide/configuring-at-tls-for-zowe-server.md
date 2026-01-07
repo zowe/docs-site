@@ -246,7 +246,7 @@ TTLSRule ZoweServerRule1
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 7553-7554 # Discovery and gateway services
+  LocalPortRange 7552-7555 # Zowe API Mediation Layer services
   Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
@@ -266,6 +266,7 @@ TTLSRule ZoweServerRule2
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
+# Optional, use if enabling Caching Service in ininispan storage mode
 TTLSRule ZoweServerRule3
 {
   LocalAddr All
@@ -357,20 +358,84 @@ The following diagram illustrates outbound rules between Zowe core components fo
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems when using z/OSMF as the authentication provider.
 
 ```bash
-TTLSRule ZoweClientRule1
-{
-  LocalAddr All
-  LocalPortRange 1024-65535
-  RemoteAddr All
-  RemotePortRange 7552-7558 # Range covers API ML, app-server, and zss services
-  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
-  Direction Outbound
-  TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+
+# Connection to Zaas from Gateway requires X.509 authentication
+TTLSRule                            ZoweZaasClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7558 # ZAAS port
+  Jobname                           ZWETAG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          100
 }
 
-TTLSRule ZoweClientRule2
+# Connection to Caching Service requires X.509 authentication
+TTLSRule                            ZoweCachingServiceClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7555 # Caching Service port
+  Jobname                           ZWET*
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          110
+}
+
+# ZAAS Can connect to Gateway, in these scenarios it requires X.509 authentication
+TTLSRule                            ZoweGwZaasClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7554 # Gateway Service port
+  Jobname                           ZWETAZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          110
+}
+
+# All Zowe services perform X.509 authentication to onboard to Discovery Service
+TTLSRule                            ZoweDiscoveryClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7553 # Discovery Service port
+  Jobname                           ZWET* # Set according to zowe.job.prefix in zowe.yaml
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          100
+}
+
+# Fallback rule, connections not covered above, use no X.509 authentication
+TTLSRule                            ZoweTrustClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7552-7558
+  Jobname                           ZWET*
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlNoX509ClientConnAction
+  Priority                          50
+}
+
+# Connections from Zowe components to App Server and ZSS
+TTLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -383,7 +448,8 @@ TTLSRule ZoweClientRule2
   TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
-TTLSRule ZoweClientRule3
+# Optional, set if enabling Caching Service with infinispan storage mode
+TTLSRule ZoweClientRule2
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -467,6 +533,26 @@ Ensure that the following rules are followed:
 :::note
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
+
+Example:
+
+```bash
+
+TTLSRule                            ApimlClientRule
+{ 
+  LocalAddr                         ALL
+  RemoteAddr                        ALL
+  LocalPortRange                    1024-65535
+  RemotePortRange                   7554 # Gateway port
+  Jobname                           # Jobname under which the onboarded service is running
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  Priority                          150
+  TTLSEnvironmentActionRef          ApimlClientEnvironmentAction # No X.509 authentication
+  TTLSConnectionActionRef           ApimlClientConnectionAction # No X.509 authentication
+}
+
+```
 
 #### Outbound rule for z/OSMF
 
@@ -647,47 +733,107 @@ TTLSRule ZoweServerRule
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
-TTLSRule ZoweServerRule2
-{
-  LocalAddr All
-  RemoteAddr All
-  LocalPortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
-  Direction Inbound
-  TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
-  TTLSConnectionActionRef ZoweServerConnectionAction
+# Connection to Zaas from Gateway requires X.509 authentication
+TTLSRule                            ZoweZaasClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7558 # ZAAS port
+  Jobname                           ZWETAG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          100
 }
 
-# Example outbound TTLS rules for a Zowe client calling a Zowe server
-# In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
-TTLSRule ZoweClientRule
+# Connection to Caching Service requires X.509 authentication
+TTLSRule                            ZoweCachingServiceClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7555 # Caching Service port
+  Jobname                           ZWET*
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          110
+}
+
+# ZAAS Can connect to Gateway, in these scenarios it requires X.509 authentication
+TTLSRule                            ZoweGwZaasClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7554 # Gateway Service port
+  Jobname                           ZWETAZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          110
+}
+
+# All Zowe services perform X.509 authentication to onboard to Discovery Service
+TTLSRule                            ZoweDiscoveryClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7553 # Discovery Service port
+  Jobname                           ZWET* # Set according to zowe.job.prefix in zowe.yaml
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlX509ClientConnAction
+  Priority                          100
+}
+
+# Fallback rule, connections not covered above, use no X.509 authentication
+TTLSRule                            ZoweTrustClientRule
+{ 
+  LocalAddr                         All
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7552-7558
+  Jobname                           ZWET*
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef           ApimlNoX509ClientConnAction
+  Priority                          50
+}
+
+# Connections from Zowe components to App Server and ZSS
+TTLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7552-7558 # API ML, app-server, and zss Zowe core services
-  Jobname ZWE1*
+  RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
-# Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
-# Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
-# Note ConnectionAction doesn't configure X.509 Client Certificate.
-TTLSRule ApimlServiceClientRule
+# Optional, set if enabling Caching Service with infinispan storage mode
+TTLSRule ZoweClientRule2
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 40030 # Service ports
-  Jobname ZWE1A*
+  RemotePortRange 7600-7601 # Caching service infinispan storage
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
 }
 
 # Optional. Can configure the outbound connection from API Gateway and ZAAS to work with AT-TLS while connecting to z/OSMF.
