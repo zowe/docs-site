@@ -287,17 +287,17 @@ TTLSRule ZoweServerRule3
    The required port ranges depend on your deployment mode.
    :::
 
-    | Port number | Category | Component | Default Jobname         |
-    |------|------|------|-------------------------|
-    | 7552 | API Mediation Layer | api-catalog | ZWE1**AC**              |
-    | 7553 | API Mediation Layer | discovery | ZWE1**AD**              |
-    | 7554 | API Mediation Layer | gateway | ZWE1**AG**              |
+    | Port number | Category            | Component       | Default Jobname         |
+    |------|---------------------|-----------------|-------------------------|
+    | 7552 | API Mediation Layer | api-catalog     | ZWE1**AC**              |
+    | 7553 | API Mediation Layer | discovery       | ZWE1**AD**              |
+    | 7554 | API Mediation Layer | gateway         | ZWE1**AG**              |
     | 7555 | API Mediation Layer | caching-service | ZWE1**CS**              |
-    | 7556 | App Framework | app-server | ZWE1**DS** & ZWE1**SV** |
-    | 7557 | App Framework | zss        | ZWE1**SZ**              |
-    | 7558 | API Mediation Layer | zaas | ZWE1**AZ**              |
-    | 7600 | API Mediation Layer | caching-service        | ZWE1**CS**              |
-    | 7601 | API Mediation Layer | caching-service        | ZWE1**CS**              |
+    | 7556 | App Framework       | app-server      | ZWE1**DS** & ZWE1**SV** |
+    | 7557 | App Framework       | zss             | ZWE1**SZ**              |
+    | 7558 | API Mediation Layer | zaas            | ZWE1**AZ**              |
+    | 7600 | API Mediation Layer | caching-service | ZWE1**CS**              |
+    | 7601 | API Mediation Layer | caching-service | ZWE1**CS**              |
 
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
