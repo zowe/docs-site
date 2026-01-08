@@ -54,7 +54,7 @@ While TLS is not handled by the Zowe Server components with AT-TLS enabled, API 
 
 Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the X.509 Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the X.509 Client Certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services, doing so can result in the server using authenticating, instead of an end user.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services, doing so can result in the Zowe Server user authenticating, instead of an end user.
 
 Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode with multi-service deployment mode enabled, calls to this service are all internal between API ML components. These internal calls between the API Gateway and ZAAS must include the X.509 Client Certificate. With the recommended single-service deployment mode enabled, these calls are internal to Zowe, and require no configuration in AT-TLS.
 :::
@@ -84,11 +84,11 @@ We recommend creating a new keyring, similar to the [above-mentioned keyring](./
 
 This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
 
-**Note:** Comments are added inline to aid in filling the details, make sure to remove them in the resulting z/OS configuration as they may be read by the interpreter.
+**Note:** Comments are added inline to aid in filling the details. Make sure to remove them in the resulting z/OS configuration as they may be read by the interpreter.
 
 ### Common configuration items
 
-The following configuration blocks are reused in a number of rules, use these as reference.
+The following configuration blocks are reused in a number of rules. Use these as reference.
 
 ```bash
 
@@ -343,7 +343,7 @@ Outbound rules in this section allow Zowe services to communicate with each othe
 
 :::caution Important:
 
-Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating as the Zowe Server user ID. Make sure to use a [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
+Careful consideration needs to be made regarding which rules are to be configured to send an X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating as the Zowe Server user ID. Make sure to use a [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
 
@@ -558,7 +558,7 @@ TTLSRule                            ApimlClientRule
 
 The following diagram illustrates outbound rules for z/OSMF in multi-service deployment mode:
 
-![Outbound rules for a zre/OSMF service](../images/install/outbound-rules-for-zosmf.png)
+![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
 This example rule covers the connection between the API Gateway (and ZAAS in multi-server deployment mode) and the z/OSMF instance. This connection is made to authenticate users in z/OS. The example rule is the same for single-service and multi-service deployment mode.
 

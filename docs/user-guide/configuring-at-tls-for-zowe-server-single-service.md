@@ -85,11 +85,11 @@ We recommend creating a new keyring, similar to the [above-mentioned keyring](./
 
 This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
 
-**Note:** Comments are added inline to aid in filling the details, make sure to remove them in the resulting z/OS configuration as they may be read by the interpreter.
+**Note:** Comments are added inline to aid in filling the details. Make sure to remove them in the resulting z/OS configuration as they may be read by the interpreter.
 
 ### Common configuration items
 
-The following configuration blocks are reused in a number of rules, use these as reference.
+The following configuration blocks are reused in a number of rules. Use these as reference.
 
 ```bash
 
