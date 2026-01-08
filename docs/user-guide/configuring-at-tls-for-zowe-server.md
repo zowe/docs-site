@@ -656,7 +656,7 @@ zowe:
 
 This section describes some common issues when using AT-TLS with Zowe and how to resolve these issues.
 
-### The message `This combination of host and port requires TLS.` is thrown when accessing an API ML service through a Browser 
+### The message `This combination of host and port requires TLS.` is thrown when accessing an API ML service through a Browser
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
 
