@@ -54,7 +54,7 @@ While TLS is not handled by the Zowe Server components with AT-TLS enabled, API 
 
 Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the X.509 Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the X.509 Client Certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services. Doing so can result in the Zowe Server user authenticating, instead of an end user.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services. Doing so can result in the authentication of the Zowe Server user, rather than the authentication of the end user.
 
 Zowe v3 includes a new component named ZAAS (Zowe Authentication and Authorization Service). In AT-TLS-aware mode with multi-service deployment mode enabled, calls to this service are all internal between API ML components. These internal calls between the API Gateway and ZAAS must include the X.509 Client Certificate. With the recommended single-service deployment mode enabled, these calls are internal to Zowe, and require no configuration in AT-TLS.
 :::
@@ -84,11 +84,13 @@ We recommend creating a new keyring, similar to the [above-mentioned keyring](./
 
 This section describes suggested AT-TLS settings, and serves as guidelines to set your AT-TLS rules.
 
-**Note:** Comments are added inline to aid in filling the details. Make sure to remove them in the resulting z/OS configuration as they may be read by the interpreter.
+:::note
+Comments are added inline to aid in filling the details. Make sure to remove these comments in the resulting z/OS configuration as these comments may be read by the interpreter.
+:::
 
 ### Common configuration items
 
-The following configuration blocks are reused in a number of rules. Use these as reference.
+The following configuration is reused in various rules. Use these configuration snippets as a reference.
 
 ```bash
 
@@ -658,7 +660,7 @@ This section describes some common issues when using AT-TLS with Zowe and how to
 
 ### The message `This combination of host and port requires TLS.` is thrown when accessing an API ML service through a Browser
 
-Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
+Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that an established connection is being attempted on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
 
 __Solution:__
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
