@@ -236,7 +236,7 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
 
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service1.png)
 
 1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
@@ -346,7 +346,7 @@ Use the example in this section as a template for internal connections between Z
 
 The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
 
-![AT-TLS_Outbound_Rules](../images/install/outbound-rules-single-service.png)
+![AT-TLS_Outbound_Rules](../images/install/outbound-rules1.png)
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance, which are required for user authentication on z/OS systems when using z/OSMF as the authentication provider.
 
@@ -404,10 +404,10 @@ Note the following conditions:
 
 The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
 
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service.png)
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service1.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
-Such a rule can apply to any remote destination, as seen in the `ZoweClientRule1` and `ZoweClientRule2` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server-single-service.md#outbound-rule-for-zosmf).
+Such a rule can apply to any remote destination, as seen in the `ZoweClientRule1` and `ZoweClientRule2` for Zowe core servers in the section [Outbound rule for z/OSMF](./configuring-at-tls-for-zowe-server-single-service.md#outbound-rule-for-zosmf).
 
 <details>
 <summary>Click to view an example of a rule covering API Gateway to extension servers.</summary>
@@ -486,7 +486,7 @@ TTLSRule                            ApimlClientRule
 
 The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:
 
-![Outbound rules](../images/install/outbound-rules-single-service-zosmf.png)
+![Outbound rules](../images/install/outbound-rules-for-zosmf-modulith1.png)
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
