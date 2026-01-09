@@ -39,7 +39,7 @@ While TLS is not handled by the Zowe Server components with AT-TLS enabled, API 
 :::tip
 
 * We strongly recommend that AT-TLS for inbound connections and outbound connections with X.509 Client Certificate authentication be configured with the same Zowe keyring as in `zowe.yaml`.
-* For outbound connections without an X.509 Client Certificate authentication, make sure you use a keyring that contains only the trusted public CA certificates, but does not contain a private key.
+* For outbound connections without an X.509 Client Certificate authentication, make sure you use a keyring that contains only the trusted public CA certificates, but _does not_ contain a private key.
 
 :::
 
@@ -78,7 +78,7 @@ authentication.
 #### Keyring without a private key
 
 This keyring is used for outbound connections that do not require nor prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
-We recommend creating a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
+We recommend creating a new keyring, similar to the previously mentioned [keyring with a private key](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
 
 ## AT-TLS rules
 
@@ -237,7 +237,7 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
 
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service.png)
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service1.png)
 
 1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
@@ -355,7 +355,7 @@ Use the example in this section as a template for internal connections between Z
 
 The following diagram illustrates outbound rules between Zowe core components for multi-service deployment mode:
 
-![AT-TLS_Outbound_Rules](../images/install/outbound-rules.png)
+![AT-TLS_Outbound_Rules](../images/install/outbound-rules1.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance, which are required for user authentication on z/OS systems when using z/OSMF as the authentication provider.
 
@@ -478,7 +478,7 @@ Note the following conditions:
 
 The following diagram illustrates the rule for the API ML to a southbound service in multi-service deployment mode.
 
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-a-southbound-service.png)
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service1.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-zosmf).
@@ -560,7 +560,7 @@ TTLSRule                            ApimlClientRule
 
 The following diagram illustrates outbound rules for z/OSMF in multi-service deployment mode:
 
-![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
+![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf-modulith1.png)
 
 This example rule covers the connection between the API Gateway (and ZAAS in multi-server deployment mode) and the z/OSMF instance. This connection is made to authenticate users in z/OS. The example rule is the same for single-service and multi-service deployment mode.
 

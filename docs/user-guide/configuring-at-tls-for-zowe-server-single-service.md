@@ -563,9 +563,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 ## Multi-tenancy deployment
 
 :::note
-
-Most installations do not need this feature
-
+Most installations do not need this feature.
 :::
 
 When the Central API ML runs on z/OS with AT-TLS enabled, you must override the external URL protocol so that it matches the outbound AT-TLS behavior. The Central API ML uses this external URL to call the domain API ML and needs to reflect the outbound AT-TLS rule.
@@ -587,7 +585,7 @@ This section describes some common issues when using AT-TLS with Zowe and how to
 
 ### The message `This combination of host and port requires TLS.` is thrown when accessing an API ML service through a Browser
 
-Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
+Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and that an established connection is being attempted on an unsecured port to the API Gateway, however the latter is still only listening on an application-controlled secured port.
 
 __Solution:__
 Review settings in the API Gateway. Ensure that the changes described in [AT-TLS configuration for Zowe](#at-tls-configuration-for-zowe) are applied.
