@@ -238,7 +238,7 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
 
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service1.png)
+![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service2.png)
 
 1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
@@ -404,7 +404,7 @@ Note the following conditions:
 
 The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
 
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service1.png)
+![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service2.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule1` and `ZoweClientRule2` for Zowe core servers in the section [Outbound rule for z/OSMF](./configuring-at-tls-for-zowe-server-single-service.md#outbound-rule-for-zosmf).
