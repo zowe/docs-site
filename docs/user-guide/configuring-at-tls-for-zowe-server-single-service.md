@@ -670,6 +670,18 @@ TTLSRule ZoweServerRule2
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
+TTLSRule ZoweServerRule3
+{
+  LocalAddr All
+  RemoteAddr All
+  LocalPortRange 7600-7601 # Caching-service infinispan ports
+  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Direction Inbound
+  TTLSGroupActionRef ServerGroupAction
+  TTLSEnvironmentActionRef ZoweServerEnvironmentAction
+  TTLSConnectionActionRef ZoweServerConnectionAction
+}
+
 # Example outbound TTLS rules for a Zowe client calling a Zowe server
 # In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
 TLSRule ZoweClientRule1
@@ -691,6 +703,19 @@ TTLSRule ZoweClientRule2
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7556-7557 # App server and ZSS
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Direction Outbound
+  TTLSGroupActionRef ClientGroupAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSRule ZoweClientRule3
+{
+  LocalAddr All
+  LocalPortRange 1024-65535
+  RemoteAddr All
+  RemotePortRange 7600-7601 # Caching service infinispan storage
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
