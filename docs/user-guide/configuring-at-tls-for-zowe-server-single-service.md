@@ -346,9 +346,14 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
-The following diagram illustrates outbound rules between Zowe core components for single-service deployment mode:
+The following diagrams illustrate the various outbound rules between Zowe core components for single-service 
+deployment mode. The rules mentioned in the diagrams are described below.
 
-![AT-TLS_Outbound_Rules](../images/install/outbound-rules1.png)
+![Onboarding Rule To Discovery Service](../images/install/onboarding-rule-to-dicovery-service.png)
+
+![Rule for Routing to Zowe Services](../images/install/rule-for-routing-to-zowe-services.png)
+
+![Rule for Connections to Infinispan Backend](../images/install/rule-for-connections-to-infinipan.png)
 
 ```bash
 TTLSRule ZoweClientRule1
@@ -461,6 +466,11 @@ Ensure that the following rules are followed:
 :::note
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
+ 
+The following diagram illustrates the rule a service to validate tokens in single-service
+deployment mode.
+
+![Rule for Service to Validate Tokens with API ML](../images/install/rule-for-service-to-validate-tokens-with-apiml.png)
 
 Example:
 
