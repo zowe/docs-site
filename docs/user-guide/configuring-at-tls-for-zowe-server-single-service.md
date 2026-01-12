@@ -347,7 +347,7 @@ Careful consideration needs to be made regarding which rules are to be configure
 Use the example in this section as a template for internal connections between Zowe core services.
 
 The following diagrams illustrate the various outbound rules between Zowe core components for single-service 
-deployment mode. The rules mentioned in the diagrams are described below.
+deployment mode. The rules mentioned in the diagrams are described following the diagrams.
 
 ![Onboarding Rule To Discovery Service](../images/install/onboarding-rule-to-dicovery-service.png)
 
@@ -467,12 +467,12 @@ Ensure that the following rules are followed:
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
 
-The following diagram illustrates the rule a service to validate tokens in single-service
+The following diagram illustrates the rule that applies for a service to validate tokens in single-service
 deployment mode.
 
 ![Rule for Service to Validate Tokens with API ML](../images/install/rule-for-service-to-validate-tokens-with-apiml.png)
 
-Example:
+**Example:**
 
 ```bash
 
@@ -520,7 +520,7 @@ TTLSRule ApimlZosmfClientRule
 
 ```
 
-* __`Jobname`__
+* **Jobname**  
  This parameter is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (API Gateway) suffix. Choosing `ZWE1A*` as a jobname pattern captures both servers.
 
 ### Ciphers
@@ -571,10 +571,10 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 ## Multi-tenancy deployment
 
 :::note
-Most installations do not need this feature.
+Multi-tenancy deployment is not required for most installations.
 :::
 
-When the Central API ML runs on z/OS with AT-TLS enabled, you must override the external URL protocol so that it matches the outbound AT-TLS behavior. The Central API ML uses this external URL to call the domain API ML and needs to reflect the outbound AT-TLS rule.
+When the Central API ML runs on z/OS with AT-TLS enabled, it is necessary to override the external URL protocol so that the URL protocol matches the outbound AT-TLS behavior. The Central API ML uses this external URL to call the domain API ML and needs to reflect the outbound AT-TLS rule.
 
 In this scenario, update your domain API ML configuration:
 
@@ -615,7 +615,7 @@ Review the supported TLS versions and ciphers used in both the client and the se
 
 ### Zowe Desktop IP Explorer or Editor does not work
 
-If the Zowe Desktop IP Explorer or Editor are not working correctly, either by failing to load or showing no data, it means there is a problem accessing the ZSS server.
+Failure of the Zowe Desktop IP Explorer or Editor to work properly, either by failing to load or showing no data, indicates a problem has occurred while accessing the ZSS server.
 
 __Solution:__
 
