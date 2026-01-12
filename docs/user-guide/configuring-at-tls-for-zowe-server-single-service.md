@@ -466,7 +466,7 @@ Ensure that the following rules are followed:
 :::note
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
- 
+
 The following diagram illustrates the rule a service to validate tokens in single-service
 deployment mode.
 
