@@ -350,15 +350,13 @@ The following diagram illustrates outbound rules between Zowe core components fo
 
 ![AT-TLS_Outbound_Rules](../images/install/outbound-rules1.png)
 
-This example rule covers the connection between the API Gateway and the z/OSMF instance, which are required for user authentication on z/OS systems when using z/OSMF as the authentication provider.
-
 ```bash
 TTLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7554 # Discovery and gateway services
+  RemotePortRange 7553 # Discovery service
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
