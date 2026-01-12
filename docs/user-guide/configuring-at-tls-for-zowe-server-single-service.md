@@ -459,7 +459,7 @@ For a full AT-TLS setup we strongly recommend the following conditions:
 * Include an Outbound rule set for the onboarding process against the Discovery Service.
 
 Ensure that the following rules are followed:
-
+ 
 * Outbound rule to the API Gateway: __Do not__ send X.509 Client Certificate.
 * Outbound rule to the Discovery Service: Sends an X.509 Client Certificate to authenticate during onboarding.
 
