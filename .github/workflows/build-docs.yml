@@ -40,13 +40,17 @@ jobs:
           # https://github.com/actions/checkout/issues/520#issuecomment-1320838255
           fetch-depth: 2147483647
 
+      - name: Reclaim Disk Space
+        uses: mathio/gha-cleanup@v1
+        with:
+          remove-browsers: true
+          verbose: true
+
       - name: Use Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-      
-      - run: df -h
 
       - name: Cache Webpack Build
         uses: actions/cache@v4
