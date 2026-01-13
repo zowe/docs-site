@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - test-timothy
   pull_request:
 
 permissions:
@@ -44,6 +45,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+      
+      - run: df -h
 
       - name: Cache Webpack Build
         uses: actions/cache@v4
