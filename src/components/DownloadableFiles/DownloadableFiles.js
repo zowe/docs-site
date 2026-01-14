@@ -234,7 +234,11 @@ function DownloadableFiles() {
   const { preferredVersion } = useDocsPreferredVersion();
   
   // Get the selected version - use preferred version if set, otherwise use latest
-  const selectedVersion = preferredVersion?.name || siteConfig.customFields.latestVersion;
+  // Note: "current" is Docusaurus's internal name for the latest version, so we map it to the actual version
+  const preferredVersionName = preferredVersion?.name;
+  const selectedVersion = (!preferredVersionName || preferredVersionName === "current") 
+    ? siteConfig.customFields.latestVersion 
+    : preferredVersionName;
 
   return (
     <>
