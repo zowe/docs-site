@@ -680,14 +680,14 @@ These configurations can be used under the `components.caching-service` section:
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well.
+  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
 - **storage.infinispan.persistence.indexLocation**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
   The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well.
+  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
 - **storage.infinispan.jgroups.port**  
   Specifies the port number used by Infinispan to synchronize data among caching-service instances.
 - **storage.infinispan.jgroups.host**

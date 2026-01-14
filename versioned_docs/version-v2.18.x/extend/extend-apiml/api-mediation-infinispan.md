@@ -33,13 +33,23 @@ Configure Infinispan as a storage solution through the Caching service by settin
   This property specifies the list of cluster nodes (members). List of all the members separated by a comma. 
   The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
+  **Example:**
+
+  ```yaml
+    components:
+      caching-service:
+        storage:
+          infinispan:
+            initialHosts: lpar1[7600],lpar2[7600],lpar3[7600]
+  ```
+
 * **`components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the data property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well. 
+  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`. 
 
 * **`components.caching-service.storage.infinispan.persistence.indexLocation`**
 
@@ -47,7 +57,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
   
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or later version leave this value in the configuration to be the storage migrated well.
+  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
 
 * **`components.caching-service.storage.infinispan.jgroups.port`**
 
