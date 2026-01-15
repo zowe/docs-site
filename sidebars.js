@@ -674,6 +674,7 @@ module.exports = {
           label: "Fundamentals",
           items: [
             "extend/packaging-zos-extensions",
+            "extend/server-extension-identification",
             "extend/server-schemas",
             "extend/component-registries",
             "extend/lifecycling-with-zwesvstc",
@@ -932,6 +933,7 @@ module.exports = {
   ],
   "reference": [
     "appendix/server-datasets",
+    "appendix/server-component-identification",
     "appendix/server-component-manifest",
     "appendix/zowe-api-reference",
 
