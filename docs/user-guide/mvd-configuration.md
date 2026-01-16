@@ -118,7 +118,6 @@ The Inbound rules can be filtered by the listening ports of the servers, but Out
 The ports and jobnames can be found in the [Addressing network requirements](./address-network-requirements.md) documentation.
 
 The Outbound rules can have HandshakeRole of Client, but when API ML is enabled, it is required that `app-server` and `zss` include their server certificates as client certificates using the `CertificateLabel` property of a `TTLSConnectionAdvancedParms` rule. For more information, see [Configuring AT-TLS for Zowe server](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-api-gateway-and-southbound-services).
-
 The Inbound rules can have a HandshakeRole of Server or ServerWithClientAuth.
 
 
@@ -426,7 +425,7 @@ The following are recommended for basic authorization:
 
 
 ### Endpoint URL length limitations
-SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that appliction developers maintain relatively short endpoint URL paths.
+SAF profiles cannot contain more than 246 characters. If the path section of an endpoint URL is long enough that the profile name exceeds the limit, the path is trimmed to only include elements that do not exceed the limit. To avoid this issue, we recommend that application developers maintain relatively short endpoint URL paths.
 
 For information on endpoint URLs, see [Using dataservices with RBAC](../extend/extend-desktop/mvd-dataservices.md#using-dataservices-with-rbac)
 
@@ -445,7 +444,7 @@ After successful authentication, a Zowe Desktop session is created by authentica
 
 The duration of the session is determined by the plugin used. Some plugins are capable of renewing the session prior to expiration, while others may have a fixed session length.
 
-The session duration and expiration behavior of the default security plugin, `sso-auth`, is determined by API Medation Layer configuration if present, and otherwise upon ZSS configuration.
+The session duration and expiration behavior of the default security plugin, `sso-auth`, is determined by API Mediation Layer configuration if present, and otherwise upon ZSS configuration.
 If API Medation Layer is enabled, by default it will use z/OSMF as the session provider and the session duration will be based upon z/OSMF settings. [You can read more about API Mediation Layer providers here](authentication-providers-for-apiml.md).
 If the API Mediation Layer is not enabled, you can [use or customize ZSS's default session duration of one hour](#customizing-zss-session-duration).
 

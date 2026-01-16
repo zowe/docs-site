@@ -147,10 +147,6 @@ This is an older, no-longer-used name for the [Zowe Application Framework](#zowe
 
 Refers to the Node.js-powered Application Server and is part of the [Zowe Application Framework](#zowe-application-framework) core project. The Zowe App Server hosts the web content of the Application Framework and provides the [Zowe Desktop](#zowe-desktop), which is accessible through a web browser.
 
-#### Zowe Chat
-
-An incubator focused on working with the mainframe from popular chat clients such as Mattermost®, Microsoft Teams®, and Slack®.
-
 #### Zowe Component
 
 Zowe is a collection of both *client* and *server* code. You can install only some of Zowe, or all of it, depending on your needs. Zowe splits the major sections of the code into *components*, with each serving an important purpose.
