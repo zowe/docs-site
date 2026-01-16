@@ -674,7 +674,7 @@ These configurations can be used under the `components.caching-service` section:
 ##### Infinispan specific configuration
 
 - **storage.infinispan.initialHosts**  
-  This property specifies the list of cluster nodes (members). The value should be list of all the members separated by a comma. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
+  This property specifies the list of cluster nodes (members). The value should be list of all the members separated by commas. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
 - **storage.infinispan.persistence.dataLocation**  
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
