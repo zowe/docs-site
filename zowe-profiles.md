@@ -1,79 +1,4 @@
-# Editing team configurations
-
-After you [initialize team configuration](../user-guide/cli-using-initializing-team-configuration), the newly created team profiles need additional details before they can be shared and applied in your environment. This could include information such as a port number or user credentials.
-
-You might also need to modify the configuration file to [create new profiles](../user-guide/cli-using-creating-profiles.md) for accessing mainframe services.
-
-## Adding, modifying team profiles
-
-To define additional mainframe services and other profiles in an existing global team configuration file:
-
-1. Open the `~/.zowe/zowe.config.json` file in a text editor or an IDE (such as Visual Studio Code) on your computer.
-
-2. Edit the file by adding to or modifying the profiles listed in the profiles object.
-
-    Each profile contains connection and other frequently needed information for accessing various mainframe services, as in the following example:
-
-    ```
-    {
-        "$schema": "./zowe.schema.json",
-        "profiles": {
-            "zosmf": {
-                "type": "zosmf",
-                "properties": {
-                    "port": 443
-                }
-            },
-            "global_base": {
-                "type": "base",
-                "properties": {
-                    "host": "example1.com"
-                },
-                "secure": [
-                    "user",
-                    "password"
-                ]
-            }
-        },
-        "defaults": {
-            "zosmf": "zosmf",
-            "base": "global_base"
-        },
-    }
-    ```
-
-## Available service profile types
-
-A profile contains all, or most, of the information you need to connect to a specific mainframe service. Your configuration can have multiple profiles, and these can consist of different profile *types* and even different *kinds* of a particular profile type, depending on the connection information.
-
-There are three basic profile types:
-
-- service profiles
-- base profiles
-- parent profiles
-
-You can learn more about how service, base, and parent profiles work in [Zowe CLI profile types](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types).
-
-### Core z/OS service profiles
-
-The three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
-
-- **z/OSMF** profiles connect with the IBM z/OS Management Facility service.
-- **TSO** profiles connect with the Time Sharing Option service.
-- **SSH** profiles connect with the Secure Shell service.
-
-### Zowe CLI plug-in service profiles
-
-Other kinds of *service profiles* can be used to configure connections for Zowe CLI plug-ins. A *base profile*, on the other hand, contains connection data that can be shared across multiple service profiles.
-
-To determine the types of plug-in service profiles that can be used in Zowe CLI configuration, refer to the tables on this page or check the Zowe CLI plug-in command groups listed in the [Zowe web help](https://docs.zowe.org/stable/web_help/index.html). Most group names match the plug-in profile name.
-
-## Profile properties
-
-Every profile in a configuration file includes specific information, such as properties and their values, to communicate with its respective mainframe service. The values for properties are defined by your specific connection information.
-
-The available properties for z/OS services and Zowe-conformant plug-ins profiles are listed in the following tables:
-
+## Profiles
 ### base
 
 | Property | Description | Allowed |
@@ -85,7 +10,7 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | rejectUnauthorized | Reject self-signed certificates.<br/><br/>**Default**: ```true``` | **boolean**:<br/> ```true```<br/>```false``` |
 | tokenType | The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'. | string |
 | tokenValue | The value of the token to pass to the API. | string |
-| certFile | The file path to a certificate file to use for authentication. <br/>  <br/> Note: <br/> The CLI does not support certificate files that require a password. For more information, search [PEM certificate files](../troubleshoot/cli/troubleshoot-cli-credentials.md#pem-certificate-files). | string |
+| certFile | The file path to a certificate file to use for authentication. <br/>  <br/> Note: <br/> The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs. | string |
 | certKeyFile | The file path to a certificate key file to use for authentication | string |
 
 
@@ -138,7 +63,7 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | password | Specifies the mainframe password for the user name that is used to connect to the mainframe systems during execution of the CLI commands. This password can be the same as your TSO password. | string |
 | protocol | Specifies the communication protocol between zowe dbm-db2 client and DBM Data Service.<br/><br/>**Default**: ```https``` | **string**:<br/> ```http```<br/>```https``` |
 | rejectUnauthorized | Determines whether the dbm-db2 command is accepted or rejected when a self-signed certificate is returned by the DBM Data Service.<br/><br/>**Default**: ```true``` | **boolean**:<br/> ```true```<br/>```false``` |
-| environmentList | Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the [Database Management Solutions for Db2 for z/OS documentation](https://techdocs.broadcom.com/db2mgmt)<br/><br/><details><summary>**Default**:</summary><br/>\{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ssid1": "env1@host1:port1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ssid2": "env2@host2:port2"<br/>\}</details> | object |
+| environmentList | Specifies a string of one or more entries consisting of a Db2 subsystem ID and a DBM Data Service REST API server host name or TCP/IP address. Use a comma to separate entries. The same Db2 subsystem can be used in multiple DBM Data Service environments. For more information about configuring the DBM Data Service, see the Database Management Solutions for Db2 for z/OS documentation at https://techdocs.broadcom.com/db2mgmt<br/><br/><details><summary>**Default**:</summary><br/>\{<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ssid1": "env1@host1:port1",<br/>&nbsp;&nbsp;&nbsp;&nbsp;"ssid2": "env2@host2:port2"<br/>\}</details> | object |
 | jobCards | Specifies a string array of z/OS JCL JOB statements.<br/><br/><details><summary>**Default**:</summary><br/>//DB2DVOPS JOB CLASS=A,<br/>//&nbsp;&nbsp;&nbsp;&nbsp; MSGCLASS=X</details> | array |
 | workDatasetPrefix | Specifies the prefix (high-level qualifier) in z/OS work data set names.<br/><br/>**Default**: ```${user}.dbmdb2``` | string |
 | deleteWorkDatasets | Specifies whether to delete work data sets on a mainframe after the request is fulfilled.<br/><br/>**Default**: ```true``` | **boolean**:<br/> ```true```<br/>```false``` |
@@ -154,17 +79,17 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | Property | Description | Allowed |
 | --- | --- | --- |
 | authid | Specifies the primary Db2 authorization ID that is used to establish a connection between Db2 and a process. | string |
-| changeSet | Specifies the creator and name of an existing RC/Migrator global change set that changes Db2 objects during a command execution. <br/>  <br/> Format: <br/> &lt;change-set-creator.change-set-name&gt;  <br/>  <br/> For more information about global change services, see the [RC/Migrator documentation](https://techdocs.broadcom.com/db2rcmig). <br/>  <br/> Note: <br/> If change-set and change-set-file are both specified, specifications in change-set-file take precedence.  | string |
-| changeSetValues | Specifies the global change specifications that modify Db2 object attributes during a command execution. <br/>  <br/> Format: <br/> &lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt; <br/> &nbsp;&nbsp; <br/> The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in &lt;from-value&gt; and &lt;to-value&gt;. If the same &lt;object-attribute&gt; is specified multiple times, the first occurrence takes precedence. <br/> &nbsp;  <br/> For a full list of attributes, see Global Change Set Attributes in the [RC/Migrator documentation](https://techdocs.broadcom.com/db2rcmig). <br/>  <br/> Example: <br/> The following example demonstrates changes to the table schema (creator) and tablespace names: <br/> &nbsp;&nbsp;  <br/> TBCR TEST% PROD% <br/> TBTS TESTTS% PRODTS% <br/>  <br/> Note: <br/> - If change-set and change-set-file are both specified, specifications in change-set-file take precedence. <br/> - The changeSetValues options-profile option has the same behavior as the change-set-file command option. <br/><br/><details><summary>**Default**:</summary><br/>-- DDL changes for a table with dependent objects.<br/>-- Note: Replace CHANGEME with your database name.<br/>ALDB * CHANGEME<br/>ALCR * \$\{user\}<br/>TBTC * \$\{user\}<br/>IXTC * \$\{user\}<br/>VWTC * \$\{user\}<br/>VWFS * \$\{user\}<br/>SYTC * \$\{user\}<br/>ASTC * \$\{user\}<br/>TGSC * \$\{user\}<br/>TGOW * \$\{user\}<br/>TGTC * \$\{user\}<br/>TGTO * \$\{user\}<br/>TGQU * \$\{user\}<br/>TGFS * \$\{user\}<br/>TGQS * \$\{user\}<br/>SQSC * \$\{user\}<br/>RTSC * \$\{user\}<br/>RTPO * \$\{user\}<br/>RTQU * \$\{user\}</details> | array |
+| changeSet | Specifies the creator and name of an existing RC/Migrator global change set that changes Db2 objects during a command execution. <br/>  <br/> Format: <br/> &lt;change-set-creator.change-set-name&gt;  <br/>  <br/> For more information about global change services, see the RC/Migrator documentation at https://techdocs.broadcom.com/db2rcmig <br/>  <br/> Note: <br/> If change-set and change-set-file are both specified, specifications in change-set-file take precedence.  | string |
+| changeSetValues | Specifies the global change specifications that modify Db2 object attributes during a command execution. <br/>  <br/> Format: <br/> &lt;object-attribute&gt; &lt;from-value&gt; &lt;to-value&gt; <br/> &nbsp;&nbsp; <br/> The &lt;object-attribute&gt; consists of four characters. The first two characters identify the object type. The last two characters identify the specific attribute. Wildcard characters are supported in &lt;from-value&gt; and &lt;to-value&gt;. If the same &lt;object-attribute&gt; is specified multiple times, the first occurrence takes precedence. <br/> &nbsp;  <br/> For a full list of attributes, see Global Change Set Attributes in the RC/Migrator documentation at https://techdocs.broadcom.com/db2rcmig <br/>  <br/> Example: <br/> The following example demonstrates changes to the table schema (creator) and tablespace names: <br/> &nbsp;&nbsp;  <br/> TBCR TEST% PROD% <br/> TBTS TESTTS% PRODTS% <br/>  <br/> Note: <br/> - If change-set and change-set-file are both specified, specifications in change-set-file take precedence. <br/> - The changeSetValues options-profile option has the same behavior as the change-set-file command option. <br/><br/><details><summary>**Default**:</summary><br/>-- DDL changes for a table with dependent objects.<br/>-- Note: Replace CHANGEME with your database name.<br/>ALDB * CHANGEME<br/>ALCR * \$\{user\}<br/>TBTC * \$\{user\}<br/>IXTC * \$\{user\}<br/>VWTC * \$\{user\}<br/>VWFS * \$\{user\}<br/>SYTC * \$\{user\}<br/>ASTC * \$\{user\}<br/>TGSC * \$\{user\}<br/>TGOW * \$\{user\}<br/>TGTC * \$\{user\}<br/>TGTO * \$\{user\}<br/>TGQU * \$\{user\}<br/>TGFS * \$\{user\}<br/>TGQS * \$\{user\}<br/>SQSC * \$\{user\}<br/>RTSC * \$\{user\}<br/>RTPO * \$\{user\}<br/>RTQU * \$\{user\}</details> | array |
 | deleteWorkDatasets | Specifies whether to delete work data sets on a mainframe after the request is fulfilled. | **boolean**:<br/> ```true```<br/>```false``` |
 | description | Specifies a 1- to 25-character description for the RC/Migrator compare strategy. | string |
 | id | Specifies the 1- to 8-character name of the RC/Migrator compare strategy that is created on the target Db2 subsystem during a command execution. <br/>  <br/> Format: <br/> The name must begin with a non-numeric character and contain the following characters only: uppercase letters from A to Z, numbers from 0 to 9, and special characters \$, #, and @.  | string |
 | jobCards | Specifies a string array of z/OS JCL JOB statements. | array |
-| matchSet | Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied. <br/>  <br/> Format: <br/> &lt;match-set-creator.match-set-name&gt; <br/>  <br/> For more information about mask services, see the [RC/Migrator documentation](https://techdocs.broadcom.com/db2rcmig). <br/>  <br/> Note: <br/> If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.  | string |
-| matchSetValues | Specifies the mapping mask specifications. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. For example, a mask specification can account for different schema naming patterns across environments. Matching determines whether the 'change-set' or 'rule-set' options are applied. <br/>  <br/> Format: <br/> &lt;object-type&gt; &lt;source-name-mask&gt; &lt;target-name-mask&gt;; <br/>  <br/> STOGROUP &lt;name&gt; &lt;name&gt; <br/> DATABASE &lt;name&gt; &lt;name&gt; <br/> TABLESPACE &lt;database.name&gt; &lt;database.name&gt; <br/> TABLE &lt;schema.name&gt; &lt;schema.name&gt; <br/> INDEX &lt;schema.name&gt; &lt;schema.name&gt; <br/> VIEW &lt;schema.name&gt; &lt;schema.name&gt; <br/> SYNONYM &lt;schema.name&gt; &lt;schema.name&gt; <br/> ALIAS &lt;schema.name&gt; &lt;schema.name&gt; <br/> TRIGGER &lt;schema.name&gt; &lt;schema.name&gt; <br/> SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt; <br/> FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt; <br/> PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt; <br/>  <br/> Note: <br/> - &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters. <br/> - &lt;schema&gt; must be between 1 and 128 characters. <br/> - &lt;version&gt; must be between 1 and 64 characters. <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> A mask specification can include the following wildcard characters: <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> Percent sign (%) indicates that zero or more characters can occupy that position and all remaining positions to the end of the name, or to the next character. The percent sign can be used anywhere in the name. However, the source and target characters must match exactly. <br/>   <br/> Hyphen or dash (-) indicates that any character can occupy that position, but a character must exist at that position, and the source and target character must match exactly. The hyphen can be repeated in several places in the name. <br/>   <br/> Asterisk (*) indicates matching values. An asterisk cannot be used with other characters. <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> Use a semicolon to separate mask specifications. Multiple mask specifications for the same object type are supported. <br/>  <br/> Example: <br/> The following example demonstrates different ways of matching the table MYNAME.MYTABLE to the table YOURNAME.YOURTABLE: <br/>   <br/> TABLE MY%.%TABLE YOUR%.%TABLE;  <br/> TABLE MYN-M-.MYT% YOURN-M-.YOURT%; <br/> TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;  <br/> TABLE *.MYTABLE *.YOURTABLE; <br/>  <br/> For a list of mask specifications, see the [RC/Migrator documentation](https://techdocs.broadcom.com/db2rcmig) <br/>  <br/> Note: <br/> - If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence. <br/> - The matchSetValues options-profile option has the same behavior as the match-set-file command option.  | array |
-| modification | Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values. <br/> &nbsp;  <br/>  For more information about using the modification option, see the [DBM Data Service documentation](https://techdocs.broadcom.com/db2mgmt)  | string |
+| matchSet | Specifies the creator and name of an existing RC/Migrator automapping mask set. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. Matching determines whether the 'change-set' or 'rule-set' options are applied. <br/>  <br/> Format: <br/> &lt;match-set-creator.match-set-name&gt; <br/>  <br/> For more information about mask services, see the RC/Migrator documentation at https://techdocs.broadcom.com/db2rcmig <br/>  <br/> Note: <br/> If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence.  | string |
+| matchSetValues | Specifies the mapping mask specifications. Matching is used to pair objects in a DDL file to objects that are defined on a Db2 subsystem. For example, a mask specification can account for different schema naming patterns across environments. Matching determines whether the 'change-set' or 'rule-set' options are applied. <br/>  <br/> Format: <br/> &lt;object-type&gt; &lt;source-name-mask&gt; &lt;target-name-mask&gt;; <br/>  <br/> STOGROUP &lt;name&gt; &lt;name&gt; <br/> DATABASE &lt;name&gt; &lt;name&gt; <br/> TABLESPACE &lt;database.name&gt; &lt;database.name&gt; <br/> TABLE &lt;schema.name&gt; &lt;schema.name&gt; <br/> INDEX &lt;schema.name&gt; &lt;schema.name&gt; <br/> VIEW &lt;schema.name&gt; &lt;schema.name&gt; <br/> SYNONYM &lt;schema.name&gt; &lt;schema.name&gt; <br/> ALIAS &lt;schema.name&gt; &lt;schema.name&gt; <br/> TRIGGER &lt;schema.name&gt; &lt;schema.name&gt; <br/> SEQUENCE &lt;schema.name&gt; &lt;schema.name&gt; <br/> FUNCTION &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt; <br/> PROCEDURE &lt;schema.name[.version]&gt; &lt;schema.name[.version]&gt; <br/>  <br/> Note: <br/> - &lt;name&gt; must be between 1 and 128 characters. For DATABASE and TABLESPACE, &lt;name&gt; must be between 1 and 8 characters. <br/> - &lt;schema&gt; must be between 1 and 128 characters. <br/> - &lt;version&gt; must be between 1 and 64 characters. <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> A mask specification can include the following wildcard characters: <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> Percent sign (%) indicates that zero or more characters can occupy that position and all remaining positions to the end of the name, or to the next character. The percent sign can be used anywhere in the name. However, the source and target characters must match exactly. <br/>   <br/> Hyphen or dash (-) indicates that any character can occupy that position, but a character must exist at that position, and the source and target character must match exactly. The hyphen can be repeated in several places in the name. <br/>   <br/> Asterisk (*) indicates matching values. An asterisk cannot be used with other characters. <br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/> Use a semicolon to separate mask specifications. Multiple mask specifications for the same object type are supported. <br/>  <br/> Example: <br/> The following example demonstrates different ways of matching the table MYNAME.MYTABLE to the table YOURNAME.YOURTABLE: <br/>   <br/> TABLE MY%.%TABLE YOUR%.%TABLE;  <br/> TABLE MYN-M-.MYT% YOURN-M-.YOURT%; <br/> TABLE MYNAME.MYTABLE YOURNAME.YOURTABLE;  <br/> TABLE *.MYTABLE *.YOURTABLE; <br/>  <br/> For a list of mask specifications, see the RC/Migrator documentation at https://techdocs.broadcom.com/db2rcmig <br/>  <br/> Note: <br/> - If --match-set and --match-set-file are both specified, specifications in match-set-file take precedence. <br/> - The matchSetValues options-profile option has the same behavior as the match-set-file command option.  | array |
+| modification | Specifies a named set of server-managed default parameter values that control the execution behavior of the zowe dbm-db2 commands. For example, you can use a modification to identify a set of default values that differ from the current set of default values. <br/> &nbsp;  <br/>  For more information about using the modification option, see the DBM Data Service documentation at https://techdocs.broadcom.com/db2mgmt  | string |
 | overwriteOutputFiles | Specifies whether to overwrite output files if they exist. | **boolean**:<br/> ```true```<br/>```false``` |
-| ruleSet | Specifies the creator and name of an existing RC/Migrator rule set that overrides Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file. The changes only apply to existing objects, as determined by match-set processing. <br/>  <br/> Format: <br/> &lt;rule-set-creator.rule-set-name&gt; <br/> &nbsp;&nbsp;&nbsp;&nbsp;  <br/> For more information about rule database services, see the [RC/Migrator documentation](https://techdocs.broadcom.com/db2rcmig).  | string |
+| ruleSet | Specifies the creator and name of an existing RC/Migrator rule set that overrides Db2 object attributes in the target Db2 subsystem with the corresponding values from the input DDL file. The changes only apply to existing objects, as determined by match-set processing. <br/>  <br/> Format: <br/> &lt;rule-set-creator.rule-set-name&gt; <br/> &nbsp;&nbsp;&nbsp;&nbsp;  <br/> For more information about rule database services, see the RC/Migrator documentation at https://techdocs.broadcom.com/db2rcmig  | string |
 | sqlid | Specifies the authorization ID that is used in generated SET CURRENT SQLID statements. | string |
 | sourceDb2 | Specifies the source Db2 subsystem or data sharing group where the objects that you want to use in a command are located. <br/>  <br/> Note: <br/> If you specify the data sharing group, the first active Db2 subsystem in the group is used.  | string |
 | targetDb2 | Specifies the target Db2 subsystem or data sharing group where you want to use a command. <br/>  <br/> Note: <br/> If you specify the data sharing group, the first active Db2 subsystem in the group is used.  | string |
@@ -278,9 +203,9 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | password | Your z/OS password that is used to authenticate to OPS/MVS Web Services / REST API. | string |
 | protocol | The protocol that is used for connecting to OPS/MVS Web Services / REST API.<br/><br/>**Default**: ```https``` | **string**:<br/> ```http```<br/>```https``` |
 | rejectUnauthorized | If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.<br/><br/>**Default**: ```true``` | **boolean**:<br/> ```true```<br/>```false``` |
-| subsystem | Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored by the `show status` and `show subsystem` commands.<br/><br/>**Default**: ```OPSS``` | string |
+| subsystem | Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored by the 'show status' and 'show subsystem' commands.<br/><br/>**Default**: ```OPSS``` | string |
 | restApi | If set to true, the plug-in executes the command against the OPS/MVS REST API. If set to false, the plug-in executes against the OPS/MVS Web Services.<br/><br/>**Default**: ```false``` | **boolean**:<br/> ```true```<br/>```false``` |
-| basePath | NOTE: This parameter can only be used with the REST API server. <br/><br/> Specifies the base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using a Zowe API Mediation Layer. | string |
+| basePath | NOTE: This parameter can only be used with the REST API server. Specifies the base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer. | string |
 
 
 ### pma
@@ -292,6 +217,7 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | job_mclass | Specifies the MSGCLASS parameter value and assigns the job log to the specified output class. The specified MSGCLASS value is used in all JCLs that PMA runs while you execute the commands. If you do not provide the job_mclass parameter, the default MSGCLASS value is used. Values: alphanumeric characters (A-Z, 0-9) <br/><br/>**Default**: ```A``` | string |
 | job_load | Specifies the PMA loadlib data set name that you defined during the PMA customization (&HLQ.CEETLOAD)  | string |
 | job_pmahlq | Specifies your PMA HLQ to access the KSDSALT, KSDSJOB, and KSDSEXC VSAM files that ensure the collection of the necessary data | string |
+
 
 ### rse
 
@@ -308,6 +234,7 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | tokenType | JWT type assigned to profile when "zowe rse auth login" is used for authentication. | string |
 | tokenValue | JWT value assigned to profile when "zowe rse auth login" is used for authentication. | string |
 | tokenExpiration | JWT expiration assigned to profile when "zowe rse auth login" is used for authentication. | string |
+
 
 ### ssh
 
@@ -368,7 +295,7 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | port | The port of the z/OS FTP server.<br/><br/>**Default**: ```21``` | number |
 | user | Username for authentication on z/OS | string |
 | password | Password to authenticate to FTP. | string |
-| secureFtp | Set to `true` for both control and data connection encryption, `control` for control connection encryption only, or `implicit` for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). <br/><br/>Note: Unfortunately, this plug-in's functionality only works with FTP and FTPS, not `SFTP` which is FTP over SSH.<br/><br/>**Default**: ```true``` | boolean,null |
+| secureFtp | Set to true for both control and data connection encryption, 'control' for control connection encryption only, or 'implicit' for implicitly encrypted control connection (this mode is deprecated in modern times, but usually uses port 990). Note: Unfortunately, this plugin's functionality only works with FTP and FTPS, not 'SFTP' which is FTP over SSH.<br/><br/>**Default**: ```true``` | boolean,null |
 | rejectUnauthorized | Reject self-signed certificates. Only specify this if you are connecting to a secure FTP instance. | boolean,null |
 | servername | Server name for the SNI (Server Name Indication) TLS extension. Only specify if you are connecting securely | string,null |
 | connectionTimeout | How long (in milliseconds) to wait for the control connection to be established.<br/><br/>**Default**: ```10000``` | number |
@@ -389,6 +316,6 @@ The available properties for z/OS services and Zowe-conformant plug-ins profiles
 | basePath | The base path for your API mediation layer instance. Specify this option to prepend the base path to all z/OSMF resources when making REST requests. Do not specify this option if you are not using an API mediation layer. | string |
 | protocol | The protocol used (HTTP or HTTPS)<br/><br/>**Default**: ```https``` | **string**:<br/> ```http```<br/>```https``` |
 | encoding | The encoding for download and upload of z/OS data set and USS files. The default encoding if not specified is IBM-1047. | string |
-| responseTimeout | The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5-600 | number |
+| responseTimeout | The maximum amount of time in seconds the z/OSMF Files TSO servlet should run before returning a response. Any request exceeding this amount of time will be terminated and return an error. Allowed values: 5 - 600 | number |
 
 
