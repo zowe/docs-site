@@ -49,7 +49,8 @@ Configure Infinispan as a storage solution through the Caching service by settin
   The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the data property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`. 
+  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
 
 * **`components.caching-service.storage.infinispan.persistence.indexLocation`**
 
@@ -58,6 +59,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
   
   :::note
   The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
 
 * **`components.caching-service.storage.infinispan.jgroups.port`**
 

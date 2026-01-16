@@ -641,30 +641,38 @@ These configurations can be used under the `components.caching-service` section:
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
-  Specifies if API ML is to verify certificates of services in strict mode. Set to `true` to enable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
+  Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
 
   :::note
   This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
+  :::
 
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
-  Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+  Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is disabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
   :::note
-  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used. 
+  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
+  :::
 
 - **storage.mode**  
   Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, `inMemory`, `redis`, and `vsam`.
+
+  :::note
+  The storage mode `vsam` is deprecated.
+  :::
 - **storage.size**  
   Specifies the number of records before eviction strategies start evicting.
 
   :::note
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`. 
+  :::
 
 - **storage.evictionStrategy**  
   Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
 
   :::note
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`.
+  :::
 
 ##### VSAM specific configuration
 
@@ -681,6 +689,7 @@ These configurations can be used under the `components.caching-service` section:
 
   :::note
   The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
 - **storage.infinispan.persistence.indexLocation**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
@@ -688,6 +697,7 @@ These configurations can be used under the `components.caching-service` section:
 
   :::note
   The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
 - **storage.infinispan.jgroups.port**  
   Specifies the port number used by Infinispan to synchronize data among caching-service instances.
 - **storage.infinispan.jgroups.host**
