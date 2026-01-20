@@ -31,11 +31,10 @@ There are multiple options for customizing Zowe API Mediation Layer according to
 * [Configuring an authentication provider for API Mediation Layer](./authentication-providers-for-apiml.md)
 * Configuring storage for the Caching service
     * [Using Infinispan as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-infinispan.md)
-    * [Using VSAM as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-vsam.md)
+    * [Using VSAM as a storage solution through the Caching service **Deprecated**](../extend/extend-apiml/api-mediation-vsam.md)
     * [Using Redis as a storage solution through the Caching service](../extend/extend-apiml/api-mediation-redis.md)
 * [Customizing the API Catalog UI](./api-mediation/configuration-customizing-the-api-catalog-ui.md)
 * [Customizing Zowe API Mediation Layer logging](./api-mediation/configuration-logging.md)
-* [Configuring initial API Mediation Layer startup message 
-* [Customizing logging for API Mediation Layer startup for SYSLOG](./api-mediation/wto-message-on-startup.md)
+* [Configuring initial for API Mediation Layer startup message for SYSLOG](./api-mediation/wto-message-on-startup.md)
   
 
