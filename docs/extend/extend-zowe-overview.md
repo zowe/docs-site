@@ -7,7 +7,7 @@ Zowe can be extended in the following ways:
 **[Extending the server side](#extending-the-server-side)**
 
 - [Extending Zowe API Mediation Layer](#extending-zowe-api-mediation-layer)
-- [Developing for Zowe Application Framework](#developing-for-zowe-application-framework)
+- [Extending Zowe Application Framework](#extending-zowe-application-framework)
 
 **[Extending the client side](#extending-the-client-side)**
 
@@ -23,7 +23,7 @@ To assist with extension development, see the following [Sample extensions](#sam
 ## Extending the server side
 
 Server extensions are delivered as a package that can contain one or more plug-ins to any part of the Zowe server install.
-To learn how to create a package based on the extension types below, see [Packing z/OS Extensions](./pacagking-zos-extensions).
+To learn how to create a package based on the extension types below, see [Packaging z/OS Extensions](./packaging-zos-extensions.md)
 
 ### Extending Zowe API Mediation Layer 
 
