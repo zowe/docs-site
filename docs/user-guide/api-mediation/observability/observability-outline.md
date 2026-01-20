@@ -11,6 +11,6 @@ The following files will be presented under Advanced server-side configuration u
 
 The following files will be presented under Using Zowe API Mediation Layer under the **Use** tab:
 
-* Using your OpenTelemetry metrics
+* Using your API ML OpenTelemetry metrics
   * Sample Output from API ML OpenTelemetry
     * API ML Provided Observability Signals and Attributes
