@@ -1,0 +1,1 @@
+# Configure OpenTelemetry Service Attributes

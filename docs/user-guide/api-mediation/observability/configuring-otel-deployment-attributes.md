@@ -1,0 +1,2 @@
+# Configure OpenTelemetry Deployment Attributes
+
