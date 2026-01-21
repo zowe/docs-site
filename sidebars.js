@@ -260,6 +260,8 @@ module.exports = {
         },
         "user-guide/start-zowe-zos",
         "user-guide/verify-zowe-runtime-install",
+        "user-guide/upgrade-zos",
+        "user-guide/backout-zos",
         {
           type: "category",
           label: "Advanced server-side configuration",
