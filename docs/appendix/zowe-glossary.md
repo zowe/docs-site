@@ -147,10 +147,6 @@ This is an older, no-longer-used name for the [Zowe Application Framework](#zowe
 
 Refers to the Node.js-powered Application Server and is part of the [Zowe Application Framework](#zowe-application-framework) core project. The Zowe App Server hosts the web content of the Application Framework and provides the [Zowe Desktop](#zowe-desktop), which is accessible through a web browser.
 
-#### Zowe Chat
-
-An incubator focused on working with the mainframe from popular chat clients such as Mattermost®, Microsoft Teams®, and Slack®.
-
 #### Zowe Component
 
 Zowe is a collection of both *client* and *server* code. You can install only some of Zowe, or all of it, depending on your needs. Zowe splits the major sections of the code into *components*, with each serving an important purpose.
@@ -272,7 +268,7 @@ Refers to the full, unarchived set of binaries, executable files, scripts, and o
  
 #### Sample library
 
-The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](https://docs.zowe.org/stable/user-guide/configure-xmem-server/#pds-sample-library-and-pdse-load-library).
+The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
 
 #### ZWEADMIN
 

@@ -31,7 +31,13 @@ Before installing Zowe Explorer, make sure that you meet the following requireme
     Secure credentials are not supported in Red Hat CodeReady Workspaces as the keyring is not unlocked by default. However, you can use the [Kubernetes Secrets plug-in for Zowe CLI or Zowe® Explorer for Kubernetes® Secrets](https://github.com/zowe/zowe-cli-secrets-for-kubernetes/blob/main/README.md) as an alternative, or you can create your own [Custom Credential Managers in Zowe Explorer and Zowe CLI](https://medium.com/zowe/custom-credential-managers-in-zowe-explorer-b37faeee4c29). 
 
     :::
-- [VS Code](https://code.visualstudio.com/) 1.79.0+
+- [VS Code](https://code.visualstudio.com/) 1.90.0+
+
+    :::note
+
+    Only VS Code versions that bundle actively maintained versions of Node.js are supported.
+
+    :::
 
 ## Server side requirements
 

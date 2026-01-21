@@ -2,15 +2,28 @@
 
 Zowe&trade; is a collection of components that together form a framework that makes Z-based functionality accessible across an organization. Zowe functionality includes exposing Z-based components, such as z/OSMF, as REST APIs. The Zowe framework provides an environment where other components can be included and exposed to a broader non-Z based audience.
 
-The following diagram illustrates the high-level Zowe architecture.
 
-![Zowe Architecture Diagram](../getting-started/diagrams/zowe-architecture-apiml-single-service.png)
+The following diagram illustrates the high-level Zowe architecture using the recommended Single Service Architecture.
 
+![Zowe API ML Single-service Architecture Diagram](../images/common/zowe-architecture-apiml-single-service.png)
+    
 The diagram shows the default port numbers that are used by Zowe. These are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
 Zowe components can be categorized by location: server or client. While the client is always an end-user tool such as a PC, browser, or mobile device, the server components can be further categorized by what machine they run on.
 
 Zowe server components can be installed and run entirely on z/OS, but a subset of the components can alternatively run on Linux or z/Linux via Docker. While on z/OS, many of these components run under UNIX System Services (USS). The components that do not run under USS must remain on z/OS when using Docker in order to provide connectivity to the mainframe.
+
+<details>
+
+<summary>Click to view the architecture used in multi-service deployment.</summary>
+
+The following diagram illustrates the high-level Zowe architecture using multi-service deployment.
+
+![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
+
+As with the single-service architecture diagram, the diagram for multi-service deplayment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
+
+</details>
 
 ## Zowe architecture with high availability enablement on Sysplex
 
@@ -29,17 +42,27 @@ The `zowe.yaml` file can be configured to start Zowe instances on more than two 
 
 The configuration entries of each LPAR in the `zowe.yaml` file control which components are started. This configuration mechanism makes it possible to start just the desktop and API Mediation Layer on the first LPAR, and start all of the Zowe components on the second LPAR. Because the desktop on the first LPAR is available to the Gateway of the second LPAR, all desktop traffic is routed there.  
 
-The caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
+The Caching services for each Zowe instance, whether on the same LPAR, or distributed across the sysplex, are connected to each other by the same shared VSAM data set. This arrangement allows state sharing so that each instance behaves similarly to the user irrespective of where their request is routed.  
 
 ## Zowe architecture when running in Kubernetes cluster
 
-The following diagram illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
+The following diagram for single-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as opposed to running all components on a single z/OS system.
+
+![Zowe Architecture Diagram in Kubernetes](../images/common/zowe-architecture-k8s-single-service.png)
+
+<details> 
+
+<summary>Click to view the architecture used in multi-service deployment under Kubernetes.</summary>
+
+The following diagram for multi-service deployment illustrates the difference in locations of Zowe components when deploying Zowe into a Kubernetes cluster as an alternative to running all components on a single z/OS system.
 
 ![Zowe Architecture Diagram in Kubernetes](../getting-started/diagrams/zowe-architecture-kubernetes-single-service.png)
 
+</details> 
+
 When deploying other server components into container orchestration software like Kubernetes, Zowe follows standard Kubernetes practices. The cluster can be monitored and managed with common Kubernetes administration methods.
 
-- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in same Kubernetes cluster.
+- All Zowe workloads run on a dedicated namespace (`zowe` by default) to distinguish from other workloads in the same Kubernetes cluster.
 - Zowe has its own `ServiceAccount` to help with managing permissions.
 - Server components use similar `zowe.yaml` on z/OS, which are stored in `ConfigMap` and `Secret`, to configure and start.
 - Server components can be configured by using the same certificates used on z/OS components.
@@ -55,16 +78,16 @@ The App Server is a portable, extensible HTTPS server written in node.js. It can
 
 ![Zowe Desktop Diagram](../images/mvd/zowe-desktop.png)
 
-When the API Gateway is running, this server and the Desktop are accessible at `https://<ZOWE_HOST_IP>:7554/zlux/ui/v1/`.
-When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Application Server`, which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zlux/zlux`.
+When the API Gateway is running, this server and the Desktop are accessible at `https://<ZOWE_HOST_ADDRESS>:7554/zlux/ui/v1/`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe Application Server`, which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zlux/zlux`.
 When running on z/OS, this server uses the jobname suffix of DS1. 
 
 ## ZSS
 
 Zowe System Services (ZSS) is a z/OS native, extensible HTTPS server which allows you to empower web programs with z/OS functionality due to ZSS' conveniences for writing REST and Websocket APIs around z/OS system calls. The Zowe desktop delegates a number of its services to the ZSS server.
 
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/zss/api/v1`.
-When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe System Services (ZSS)` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zss/zss`
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/zss/api/v1`.
+When the API Catalog is running, this server's API documentation is accessible at the API Catalog tile `Zowe System Services (ZSS)` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zss/zss`
 When running on z/OS, the server uses the jobname suffix of SZ.
 
 ## ZIS
@@ -84,11 +107,11 @@ The API Mediation Layer is a collection of services for management and administr
 
 ### API Gateway
 
-The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_IP>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
+The API Gateway is a proxy server that routes requests from clients on its northbound or upstream edge, such as web browsers or the Zowe command line interface, to servers on its southbound (downstream) edge that are able to provide data to serve the request. The API Gateway is also responsible for generating the authentication token used to provide single sign-on (SSO) functionality. The API Gateway homepage is `https://<ZOWE_HOST_ADDRESS>:7554`. Following authentication, this URL enables users to navigate to the API Catalog.
 
 ![Zowe API Mediation Layer](../getting-started/diagrams/api-ml-homepage-single-instance.png)
 
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/`.
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/`.
 When running on z/OS, the server uses the jobname suffix of AG.
 
 ### API Catalog
@@ -97,13 +120,13 @@ The API Catalog provides a list of the API services that have registered themsel
 
 ![Zowe API Catalog](../images/api-mediation/api-catalog.png)
 
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1`.
-When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1`.
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/apimediationlayer/apicatalog`
 When running on z/OS, the server uses the jobname suffix of AC.
 
 ### API Discovery Service
 
-The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_IP>:7553` making it possible to view a list of registered API services on the API discovery homepage.
+The API Discovery Service acts as the registration service broker between the API Gateway and its southbound (downstream) servers. This server can be accessed through the URL `https://<ZOWE_HOST_ADDRESS>:7553` making it possible to view a list of registered API services on the API discovery homepage.
 
 ![Zowe API Discovery](../getting-started/diagrams/api-discovery-single-service.png)
 
@@ -111,12 +134,14 @@ When running on z/OS, the server uses the jobname suffix of AD.
 
 ### Caching Service
 
-The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet.
+The Caching service aims to provide an API which offers the possibility to store, retrieve, and delete data associated with keys. The service is used only by internal Zowe applications and is not exposed to the internet. 
+
 For more information about the Caching service, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
-When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_IP>:7554/cachingservice/api/v1`.
-When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_IP>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
-When running on z/OS, the server uses the jobname suffix of CS.
+When the API Gateway is running, this server is accessible at `https://<ZOWE_HOST_ADDRESS>:7554/cachingservice/api/v1`.
+When the API Catalog is running, the API documentation of this server is accessible at the API Catalog tile `Zowe Applications` which can be viewed at `https://<ZOWE_HOST_ADDRESS>:7554/apicatalog/ui/v1/#/tile/zowe/cachingservice`.
+When running on z/OS in single-service deployment mode, the caching service is part of the gateway, which uses the jobname suffix of GW.
+When running on z/OS in multi-service deployment mode, the caching service uses the jobname suffix of CS.
 
 ## Desktop Apps
 

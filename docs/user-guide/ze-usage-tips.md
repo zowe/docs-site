@@ -6,6 +6,12 @@ Make the best use of Zowe Explorer with the following tips.
 
 You can store any data sets, USS files, or jobs permanently in the **Favorites** tab. Right-click on a data set, USS file, or job and click **Add Favorite**.
 
+## Pull from mainframe to update cached files
+
+When you work on a data set, PDS member, USS file, or job spool file, Zowe Explorer caches the resource data for faster performance. Over time, the data can become outdated.
+
+To ensure the file is up to date, right-click the file and select the **Pull from mainframe** option in the file's context menu.
+
 ## Identify syntax errors with a syntax highlighter
 
 Zowe Explorer supports a syntax highlighter for data sets. To enhance the experience of using the extension, you can download an extension that highlights syntax.

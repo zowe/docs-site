@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 job-instance list-custom 1</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_job-instance.html">job-instance</a> › <a href="zowe_ca7_job-instance_list-custom.html">list-custom</a> › <a href="zowe_ca7_job-instance_list-custom_1.html">1</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Displays information about jobs in the active workload.</p>
+<h4>Usage</h4>
+<p>zowe ca7 job-instance list-custom_1 [options]</p>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--ca7no</code> <em>(string)</em></p>
+<ul>
+<li>The CA 7 job number</li>
+</ul>
+</li>
+<li>
+<p><code>--jobname</code> | <code>--jn</code> <em>(string)</em></p>
+<ul>
+<li>The CA 7 job name</li>
+</ul>
+</li>
+<li>
+<p><code>--databasename</code> | <code>--db</code> <em>(string)</em></p>
+<ul>
+<li>The CA 7 database name</li>
+</ul>
+</li>
+<li>
+<p><code>--job</code> <em>(boolean)</em></p>
+<ul>
+<li>The job name for this job in the active workload, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--queueName</code> <em>(boolean)</em></p>
+<ul>
+<li>The name of the queue in which this job is currently located.  Values are:  1=pre-processing; 2=request;3=ready; 4=active; 5=post-processing; 6=prior-run, CHAR 16</li>
+</ul>
+</li>
+<li>
+<p><code>--ca7#</code> <em>(boolean)</em></p>
+<ul>
+<li>The job number for this job in the active workload</li>
+</ul>
+</li>
+<li>
+<p><code>--status</code> <em>(boolean)</em></p>
+<ul>
+<li>The job status<br>
+For more information about possible values refer to the LQ command.<br>
+Note:<br>
+This service determines values of status in much the same way as values are determined<br>
+for the JOB STATUS column of the LQ command.<br>
+The �LATE� value is an exception.<br>
+Unlike the LQ command, this service will only evaluate and report late conditions when<br>
+none of the other conditions are detected.<br>
+For example, the LQ command output may report a status value of �LATE�<br>
+even if the job is actually waiting for virtual resources.<br>
+In such a case, this service will report �W-RSRC�.</li>
+</ul>
+</li>
+<li>
+<p><code>--entryMode</code> <em>(boolean)</em></p>
+<ul>
+<li>Identifies how the job was brought into the queue.<br>
+The possible values are the following:<br>
+ARFJ<br>
+Indicates an ARF recovery job.<br>
+AUTO<br>
+Indicates a triggered job.<br>
+DEMD<br>
+Indicates a demanded job.<br>
+EXTL<br>
+Indicates a job that is submitted external to CA WA CA 7 Edition<br>
+LOAD<br>
+Indicates a job to be loaded (brought in by the LOAD command).<br>
+PS<br>
+Indicates a job that the Personal Scheduling System submitted.<br>
+RPET<br>
+Indicates a repeated job.<br>
+RUN<br>
+Indicates a job that is brought in by the RUN command.<br>
+SSCN<br>
+Indicates a job that is brought in by schedule scan.<br>
+XDEM<br>
+Indicates a job brought in by the DEMAND command from an XPS client.<br>
+XPS<br>
+Indicates a job brought in from an XPS client using the RUN command with the REF option.<br>
+XRUN<br>
+Indicates a job brought in from an XPS client using the RUN command.</li>
+</ul>
+</li>
+<li>
+<p><code>--abended</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job abended, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentIntervention</code> | <code>--age</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if INTERVENTION REQUIRED condition exists for this agent job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentJobNumber</code> | <code>--age</code> <em>(boolean)</em></p>
+<ul>
+<li>The job number/PID for this agent job, 28 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentName</code> <em>(boolean)</em></p>
+<ul>
+<li>The name of the agent where this job will execute, 16 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentStatus</code> | <code>--age</code> <em>(boolean)</em></p>
+<ul>
+<li>The status for this agent job, 40 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentStatusData</code> | <code>--age</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if status data is available for this agent job,N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentSubmitted</code> | <code>--age</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if agent job has been submitted to the agent, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--agentType</code> <em>(boolean)</em></p>
+<ul>
+<li>Agent job type, zero if this is not an agent job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--agentUser</code> <em>(boolean)</em></p>
+<ul>
+<li>The userid with which this agent job will execute, 120 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--ajbBuildError</code> | <code>--ajb</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if an error occurred while building an XPJOB job AJB or an agent job AFM, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job is monitored by ARF, N if not</li>
+</ul>
+</li>
+<li>
+<p><code>--arfAttachErr</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job had an ARF attach error, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfCompMatched</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Set to Y if an ARF JOB completion rule matched for this job, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfDate</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if the job uses ARF.  CA recommends using column ARF instead of this column, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfErrorCond</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Set to Y if there was an error during ARF condition detection, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfjJob</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is an ARF recovery job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfJobComplete</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Set to Y if this job's completion has been posted to ARF, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfRecovery</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is in ARF recovery, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfRecoveryErr</code> | <code>--arf</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job had an error in ARF recovery, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfset</code> <em>(boolean)</em></p>
+<ul>
+<li>The collection of ARF definitions that apply to this job, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--arfTime</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time that the ARFSET was attached to this job, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--autofDone</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job performed AUTO F, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11JesNode</code> | <code>--ca1</code> <em>(boolean)</em></p>
+<ul>
+<li>The JES node where this job executes, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11RestartStep</code> | <code>--ca1</code> <em>(boolean)</em></p>
+<ul>
+<li>The relative CA 11 restart step number, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11RmsCc</code> <em>(boolean)</em></p>
+<ul>
+<li>The CA 11 U11RMS step condition code, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11Subsystem</code> | <code>--ca1</code> <em>(boolean)</em></p>
+<ul>
+<li>The CA 11 subsystem name</li>
+</ul>
+</li>
+<li>
+<p><code>--ca7System</code> <em>(boolean)</em></p>
+<ul>
+<li>The user-defined application system associated with this job, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--compCode</code> <em>(boolean)</em></p>
+<ul>
+<li>The job completion code in number format, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--cpmJfm</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JFM is used to track CPM, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--cpuTableIndex</code> | <code>--cpu</code> <em>(boolean)</em></p>
+<ul>
+<li>Index to the CPU Table entry, SMALLINT</li>
+</ul>
+</li>
+<li>
+<p><code>--cputime</code> <em>(boolean)</em></p>
+<ul>
+<li>This Job's average CPU time, PACKED</li>
+</ul>
+</li>
+<li>
+<p><code>--currStepNum</code> | <code>--cur</code> <em>(boolean)</em></p>
+<ul>
+<li>The number of the step that is currently executing, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--defNotFound</code> | <code>--def</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job defintion not found on database, N if not found, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--doNotPrompt</code> | <code>--doN</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if prompts are bypassed for the job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--drclass</code> <em>(boolean)</em></p>
+<ul>
+<li>The job's disaster recovery class, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--drmode</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job entered the queues when disaster recovery mode was active, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--dueOutExists</code> | <code>--due</code> <em>(boolean)</em></p>
+<ul>
+<li>Determines if a zero value in DUE_OUT_TIME indicates midnight (Y) or no due out time (N), 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--dueOutTime</code> | <code>--due</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time this job is expected to complete, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--dupJob</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if a job with the same name is waiting on this job to complete, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--dupJobWait</code> | <code>--dup</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job is waiting on a job with the same name to complete, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--elapsedTime</code> | <code>--ela</code> <em>(boolean)</em></p>
+<ul>
+<li>This Job's average elapsed time, PACKED</li>
+</ul>
+</li>
+<li>
+<p><code>--endTime</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time this job ended, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--executable</code> | <code>--exe</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is executable, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--express</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if submission of this job has been expedited by use of the SUBMIT,EXPRESS=YES command, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--externalInput</code> | <code>--ext</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if we job has external input, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--externalJob</code> | <code>--ext</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an externally tracked job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--externalSatisfied</code> | <code>--ext</code> <em>(boolean)</em></p>
+<ul>
+<li>The number of satisfied external requirements for this job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--externalTotal</code> | <code>--ext</code> <em>(boolean)</em></p>
+<ul>
+<li>The total number of external requirements for this job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--forcedComplete</code> | <code>--for</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job was force completed, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--forcedSubmit</code> | <code>--for</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if all input requirements have been marked as satisfied by use of the SUBMIT command, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--fromXpRequest</code> | <code>--fro</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if scheduling request for this job came from an XPS client, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--hasCa11</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job has a CA11 segment, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--hasCpuTime</code> | <code>--has</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if we have non-zero CPU time for this job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--hasJo</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if the JCL or PARM DATA contains a #JO card, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--hasStepTime</code> | <code>--has</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job has non-zero step CPU time, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--held</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is held, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--heldByJob</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job was held on entry to the queues, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--heldSkeleton</code> | <code>--hel</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is held and in skeleton status, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--skeleton</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is in skeleton status, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--holdOnEntry</code> | <code>--hol</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job marked HOLD=YES, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--hostName</code> <em>(boolean)</em></p>
+<ul>
+<li>The SMF Id of the system where this is executing, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--inCpmFlow</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is part of a CPM flow, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--insertRms</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if an RMS step will be inserted into this job's JCL, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jclAllocErr</code> | <code>--jcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL or PARM DATA library could not be allocated, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jclCount</code> <em>(boolean)</em></p>
+<ul>
+<li>The number of non-# records in the JCL or PARM DATA members associated with this job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--jclError</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job marked with JCL error, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jclFromAltlib</code> | <code>--jcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL or PARM DATA was retrieved from an alternate library, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jclLibrary</code> | <code>--jcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Contains either a 3 digit JCL index value or a JCL variable beginning with an ampersand, 16 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jesHi</code> <em>(boolean)</em></p>
+<ul>
+<li>JES supports ID &gt; 99999, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--loadOnly</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is a LOAD only job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--loadStepDone</code> | <code>--loa</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if LOAD step ran OK for this job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--locked</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job is locked, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--longName</code> <em>(boolean)</em></p>
+<ul>
+<li>An alias name for this job.  This name may be used by scheduling engines on other platforms, such as AutoSys, 64 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--lterm</code> <em>(boolean)</em></p>
+<ul>
+<li>Logical terminal name from job definition, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--mainid</code> <em>(boolean)</em></p>
+<ul>
+<li>If positive, the CPU number on which the job may execute. If negative, the CPU number on which the job may not execute, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--maint</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job ignores requirements, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--manualRequeue</code> | <code>--man</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job has been re-queued to REQUEST queue, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--memberName</code> | <code>--mem</code> <em>(boolean)</em></p>
+<ul>
+<li>The JCL or PARM DATA library member name, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--mustStartExists</code> | <code>--mus</code> <em>(boolean)</em></p>
+<ul>
+<li>Determines if a zero value in MUST_START_TIME indicates midnight (Y) or no deadline time (N), 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--needsAutof</code> | <code>--nee</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if a job changed and requires 'F' in CA11, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--nextRunReq</code> | <code>--nex</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job has temporary requirements for the next execution, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--nodeFailed</code> | <code>--nod</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job and at the time of it last submit its node was down, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--nodeOffline</code> | <code>--nod</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job and at the time of its last submit its node was offline, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--nodeStopped</code> | <code>--nod</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job and at the time of it last submit its node was stopped, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--noUserId</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if there is not a valid security id for this job, N if there is, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--noXpsiParmlib</code> | <code>--noX</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job and has no PARMLIB, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--noXpsiXpsparm</code> | <code>--noX</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job and has no PARM, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--override</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL/PARM DATA override is required, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--overrideApplied</code> | <code>--ove</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL overrides have been applied for this job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--prompt</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job should have LATE PROMPTS, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--promptAck</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if user has acknowledged the prompt, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--prompted</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if user has been prompted, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--qjclUpdated</code> | <code>--qjc</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL or PARM DATA updated through QJCL, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--queueJcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if a QJCL command is in progress for this job N if not</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatCount</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The number of times to repeat this job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatDiff</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The difference between the original dueout time and the original submit time, used by repeating jobs.  The value is in minutes, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatInterval</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The interval between repetitions of the job, PACKED</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatLeadTime</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The lead time for this repeat job.  This is the amount of time to ensure it completes before it due out time, PACKED</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatStopExists</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>Determines if a zero value in REPEAT_STOP_TIME indicates midnight (Y) or no repeat stop time (N), 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatStopTime</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time on or after which a repeating job will not be repeated, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--repeatType</code> | <code>--rep</code> <em>(boolean)</em></p>
+<ul>
+<li>The type of repeat job. This field determines how the submit time requierement is calculated for repeating jobs, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--restartStep</code> | <code>--res</code> <em>(boolean)</em></p>
+<ul>
+<li>The step name in which the job was restarted, 8 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--retainJcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL or XPJOB information will be retained in the prior run queue, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--rqmtCount</code> <em>(boolean)</em></p>
+<ul>
+<li>The master requirement count for this job.  The number includes unsatisfied requirements, submit time, and other reasons preventing the job from being submitted, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--schdAdjusted</code> | <code>--sch</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job's schedule has been adjusted, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--nosecurity</code> | <code>--nos</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if there was an error retrieving security data,N if no, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--setNdb</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job will bypass LOAD processing at completion and not update the database, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--smfNeeded</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if SMF feedback is needed for this job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--startTime</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time this job started executing on its most recent submission, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--submitted</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job has been submitted to the host, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--submitTime</code> | <code>--sub</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time this job was submitted, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--triggered</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job triggered by another job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--uid</code> <em>(boolean)</em></p>
+<ul>
+<li>The CA 7 internal user security designation, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--verify</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job has a manual verification requirement, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--waitSubmitTime</code> | <code>--wai</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this job has a submit time requirement, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--xpAltNode</code> <em>(boolean)</em></p>
+<ul>
+<li>The alternate node where this XPJOB job was routed, CHAR 64</li>
+</ul>
+</li>
+<li>
+<p><code>--xpPrimaryNode</code> | <code>--xpP</code> <em>(boolean)</em></p>
+<ul>
+<li>The primary node associated with this XPJOB job, CHAR 64</li>
+</ul>
+</li>
+<li>
+<p><code>--xpsJob</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if this is an XPJOB job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--xpStatus</code> <em>(boolean)</em></p>
+<ul>
+<li>The status of the node associated with this XPJOB job. A: Active F: Failed CCI send O: Offline S:Stopped, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--xtrackerInact</code> | <code>--xtr</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if at time of submission, the XTRACKER task is not active for an XPJOB job or IAS is not active for an agent job, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--xplatNode</code> <em>(boolean)</em></p>
+<ul>
+<li>Cross platform long node name, 64 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--responseError</code> | <code>--res</code> <em>(boolean)</em></p>
+<ul>
+<li>Response Error</li>
+</ul>
+</li>
+<li>
+<p><code>--ca11FailingStep#</code> | <code>--ca1</code> <em>(boolean)</em></p>
+<ul>
+<li>CA 11 Failing Step Number, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--completeOk</code> | <code>--com</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job completed normally, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--jes#</code> <em>(boolean)</em></p>
+<ul>
+<li>The JES job number for this job.  A value of -1 indicates *NA*, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--needsLoad</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if LOAD processing will be done for this job, Nif not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--deadline</code> <em>(boolean)</em></p>
+<ul>
+<li>The date and time a job must be started by in order to meet its due out time, DATE/TIME</li>
+</ul>
+</li>
+<li>
+<p><code>--jclfrom254</code> | <code>--jcl</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if JCL or XPJOB information will be retained in the prior run queue, N if not, 1 CHAR</li>
+</ul>
+</li>
+<li>
+<p><code>--prose#</code> <em>(boolean)</em></p>
+<ul>
+<li>Number of the prose text associated with this job, or zero, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--scheduleId</code> | <code>--sch</code> <em>(boolean)</em></p>
+<ul>
+<li>The schedule id for this execution, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--triggeringJob#</code> | <code>--tri</code> <em>(boolean)</em></p>
+<ul>
+<li>The CA 7 internal job number of the job that triggered this job or job that created the data set that triggered this job, INTEGER</li>
+</ul>
+</li>
+<li>
+<p><code>--triggers</code> <em>(boolean)</em></p>
+<ul>
+<li>Y if job can trigger other jobs, N if not, 1 CHAR</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>List a CA 7 job (7777) information which resided in CA7DB database :</p>
+<ul>
+<li><code>zowe ca7 job-instance list-custom_1 --ca7no 7777 --db CA7DB --jobname TESTCA7</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 job-instance list-custom_1 --ca7no 7777 --db CA7DB --jobname TESTCA7">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
