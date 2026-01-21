@@ -80,6 +80,7 @@ In the following configuration, nested profiles (highlighted in the example) use
     "autoStore": true
 }
 ```
+
 ## Accessing LPARs that contain services that do not share the same credentials
 
 In the following configuration, profiles are highlighted to show they are nested to use the credentials from parent profiles for different LPARs to access services directly on multiple LPARs.
@@ -152,6 +153,71 @@ In the following configuration, profiles are highlighted to show they are nested
         "tso": "lpar1.tso",
         "ssh": "lpar1.ssh",
         "base": "project_base"
+    },
+    "autoStore": true
+}
+```
+
+## Accessing the same LPAR with multiple user credentials
+
+Configure different sets of credentials for the same system in order to apply different scenarios, such as production and development work.
+
+In the following configuration, nested profiles (highlighted in the example) provide different sets of credentials to connect to the same system, `lpar1`.
+
+```json showLineNumbers
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar1": {
+            "properties": {
+                "host": "example1.com",
+                "rejectUnauthorized": true
+            },
+            "profiles": {
+            // highlight-start
+                "user1": {
+                    "properties": {},
+                    "profiles": {
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "port": 443
+                            }
+                        },
+                        "ssh": {
+                            "type": "ssh",
+                            "properties": {
+                                "port": 22
+                            }
+                        }
+                    },
+                    "secure": ["user", "password"]
+                },
+                "user2": {
+                    "properties": {},
+                    "profiles": {
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "port": 443
+                            }
+                        },
+                        "ssh": {
+                            "type": "ssh",
+                            "properties": {
+                                "port": 22
+                            }
+                        }
+                    },
+                    "secure": ["user", "password"]
+                }
+                // highlight-end
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar1.user1.zosmf",
+        "ssh": "lpar1.user2.ssh"
     },
     "autoStore": true
 }
