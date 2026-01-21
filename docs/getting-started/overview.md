@@ -196,7 +196,7 @@ Zowe Explorer is a Visual Studio Code extension that modernizes the way develope
 - Enables you to create, modify, rename, copy, and upload data sets directly to a z/OS mainframe.
 - Enables you to create, modify, rename, and upload USS files directly to a z/OS mainframe.
 - Provides a more streamlined way to access data sets, uss files, and jobs.
-- Letting you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
+- Lets you create, edit, and delete Zowe CLI `zosmf` compatible profiles.
 - Lets you use the Secure Credential Store plug-in to store your credentials securely in the settings.
 - Lets you leverage the API Mediation Layer token-based authentication to access z/OSMF.
 
