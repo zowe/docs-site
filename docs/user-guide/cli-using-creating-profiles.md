@@ -166,61 +166,61 @@ In the following configuration, nested profiles (highlighted in the example) pro
 
 ```json showLineNumbers
 {
-  "$schema": "./zowe.schema.json",
-  "profiles": {
-    "lpar1": {
-      "properties": {
-        "host": "example1.com",
-        "rejectUnauthorized": true
-      },
-      "profiles": {
-        // highlight-start
-        "user1": {
-          "properties": {},
-          "profiles": {
-            "zosmf": {
-              "type": "zosmf",
-              "properties": {
-                "port": 443
-              }
-            },
-            "ssh": {
-              "type": "ssh",
-              "properties": {
-                "port": 22
-              }
-            }
-          },
-          "secure": ["user", "password"]
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+      "lpar1": {
+        "properties": {
+          "host": "example1.com",
+          "rejectUnauthorized": true
         },
-        "user2": {
-          "properties": {},
-          "profiles": {
-            "zosmf": {
-              "type": "zosmf",
-              "properties": {
-                "port": 443
+        "profiles": {
+        // highlight-start
+          "user1": {
+            "properties": {},
+            "profiles": {
+              "zosmf": {
+                "type": "zosmf",
+                "properties": {
+                  "port": 443
+                }
+              },
+              "ssh": {
+                "type": "ssh",
+                "properties": {
+                  "port": 22
+                }
               }
             },
-            "ssh": {
-              "type": "ssh",
-              "properties": {
-                "port": 22
-              }
-            }
+            "secure": ["user", "password"]
           },
-          "secure": ["user", "password"]
-        }
+          "user2": {
+            "properties": {},
+            "profiles": {
+              "zosmf": {
+                "type": "zosmf",
+                "properties": {
+                  "port": 443
+                }
+              },
+              "ssh": {
+                "type": "ssh",
+                "properties": {
+                  "port": 22
+                }
+              }
+            },
+            "secure": ["user", "password"]
+          }
         // highlight-end
+        }
       }
-    }
-  },
-  "defaults": {
-    "zosmf": "lpar1.user1.zosmf",
-    "ssh": "lpar1.user2.ssh"
-  },
-  "autoStore": true
-}
+    },
+    "defaults": {
+      "zosmf": "lpar1.user1.zosmf",
+      "ssh": "lpar1.user2.ssh"
+    },
+    "autoStore": true
+  }
 ```
 
 ## Accessing LPARs that access services through one API Mediation Layer
