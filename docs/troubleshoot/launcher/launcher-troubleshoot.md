@@ -61,8 +61,8 @@ Zowe Server ports may fail to bind with error messages such as:
 Caused by: java.net.SocketException: EDC5111I Permission denied
 ```
 
-In these conditions, make sure the Zowe Server ports are reserved for the Zowe task in the TCPIP profile via PORT or PORTRANGE statements.
-It is possible to specify which TCPIP profile to use if the system has more than one TCPIP profile active. To do so, add the following property to the zowe.yaml file:
+To resolve such errors, make sure the Zowe Server ports are reserved for the Zowe task in the TCP/IP profile via PORT or PORTRANGE statements.
+It is possible to specify which TCP/IP profile to use if the system has more than one TCP/IP profile active. To do so, add the following property to the zowe.yaml file:
 
 ```yaml
 zowe:
@@ -70,7 +70,7 @@ zowe:
     _BPXK_SETIBMOPT_TRANSPORT: TCPIP
 ```
 
-Where TCPIP is the name of the TCPIP stack to use.
+Where `TCPIP` is the name of the TCP/IP stack to use.
 
 ## Troubleshooting port validation
 
@@ -86,7 +86,7 @@ EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provid
 
 ### Resolving port validation failures
 
-Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
+Update the Zowe configuration property `zowe.network.server.validatePortFree` to the value `false`:
 
 ```yaml
 zowe: 
