@@ -7,7 +7,7 @@ Observability of functionalities in the Zowe API Mediation Layer (API ML) can be
 Required role: System administrator
 :::
 
-Observability can be enabled and configured using API ML and OpenTelemetry settings in the zowe.yaml file to control which data is produced and where data is exported.
+Observability can be enabled and configured using API ML and OpenTelemetry settings in the zowe.yaml file. You can also specify where data is exported.
 
 By leveraging the OpenTelemetry (OTel) standard, API ML allows system administrators to monitor performance, diagnose latency issues, and understand resource utilization within a mainframe environment using industry-standard tools like Prometheus, Grafana, or Jaeger.
 
@@ -17,45 +17,29 @@ Observability features are available exclusively for the API ML single-service d
 
 ## Resource Attributes 
 
-In OpenTelemetry, a **Resource** represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every signal (metric/trace) produced carries a set of attributes that identify this instance. The following attributes are integrated based on OpenTelemetry semantic conventions and z/OS-specific requirements:
+In OpenTelemetry, a **Resource** represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every signal (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
 
-| Attribute | Description | Configuration Source |
-| :--- | :--- | :--- |
-| **`service.name`** | Logical name of the service. Identical for all instances in an HA deployment. | `zowe.yaml` |
-| **`service.instance.id`** | Unique identifier for the instance (UUID recommended). | Auto-generated / `zowe.yaml` |
-| **`service.namespace`** | Groups services (e.g., by LPAR or Team). | `zowe.yaml` |
-| **`service.version`** | The version of the APIML component. | System metadata |
-| **`deployment.environment`** | Environment type (e.g., production, test). | `zowe.yaml` |
-| **`zos.smf.id`** | The SMF Identifier of the z/OS system. | System discovery |
-| **`zos.sysplex.name`** | Name of the SYSPLEX. | System discovery |
-| **`mainframe.lpar.name`** | Name of the LPAR hosting the process. | System discovery |
-| **`os.type`** | Set to `zos`. | Static |
-| **`process.pid`** | Address Space Identifier (ASID) on z/OS. | System discovery |
+To organize the OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups: Service, z/OS, and Deployment.
 
+This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
 
-## Enabling Observability 
+### Attribute Categories
 
-To enable observability, configure the OpenTelemetry exporter and resource attributes within the zowe.yaml configuration file.
+* **Service Attributes**  
+These identify the logical entity producing the data. They are used to group telemetry from all instances of the API ML into a single "service" view in your monitoring tools.
 
-Add or update the following section in your zowe.yaml:
+For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
-```
-zowe:
-  components:
-    api-mediation-layer:
-      observability:
-        enabled: true  # Master switch for OTel features
-        exporter:
-          otlp:
-            endpoint: "http://your-otel-collector:4317" # OTLP collector address
-            protocol: "grpc"
-        resource:
-          attributes:
-            service.name: "zowe-apiml"
-            service.namespace: "mainframe-lpar1"
-            deployment.environment: "production"
-            # Custom attributes can be added here
-```
+* **z/OS Attributes**  
+These provide critical mainframe context. They identify the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running, which is essential for mainframe-specific performance analysis.
+
+For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
+
+* **Deployment Attributes:**  
+These describe the lifecycle stage of the service. They allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
+
+For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
+
 
 ## Telemetry Data Produced
 
@@ -73,7 +57,7 @@ Zowe API ML produces several categories of data out-of-the-box via OpenTelemetry
 
 <!-- **Please review this for accuracy:**-->
 
-The following attributes are automatically captured by the APIML Modulith to ensure mainframe-inclusive observability:
+The following attributes are automatically captured by the API ML single-service deployment to ensure mainframe-inclusive observability:
 
 * `zos.smf.id`  
 Unique identifier for the z/OS system.

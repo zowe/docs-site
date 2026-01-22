@@ -25,24 +25,22 @@ Defines the identity of the producer (Attributes).
   * **resource.attributes**  
     A collection of key-value pairs used to identify the telemetry source.
 
-To enable observability, update your `zowe.yaml` file with the following structure:
+To enable observability, configure the OpenTelemetry exporter and resource attributes within your `zowe.yaml` file with the following structure:
 
 ```
 zowe:
-  components:
-    api-mediation-layer:
-      observability:
-        enabled: true
-        exporter:
-          otlp:
-            endpoint: "http://otel-collector.your.domain:4317"
-            protocol: "grpc"
-            timeout: 10000
-        resource:
-          attributes:
-            service.name: "zowe-apiml"
-            service.namespace: "finance-production"
-            deployment.environment.name: "production"
+  observability:
+    enabled: true
+    exporter:
+      otlp:
+        endpoint: "http://otel-collector.your.domain:4317"
+        protocol: "grpc"
+        timeout: 10000
+    resource:
+      attributes:
+        service.name: "zowe-apiml"
+        service.namespace: "finance-production"
+        deployment.environment.name: "production"
 ```
 
 ## How the Export Works
