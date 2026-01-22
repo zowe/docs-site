@@ -40,7 +40,6 @@ These describe the lifecycle stage of the service. They allow you to filter tele
 
 For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
 
-
 ## Telemetry Data Produced
 
 Zowe API ML produces several categories of data out-of-the-box via OpenTelemetry.
@@ -55,21 +54,3 @@ Zowe API ML produces several categories of data out-of-the-box via OpenTelemetry
 
 <!-- Are there Mainframe-specific metrics that we should mention? -->
 
-<!-- **Please review this for accuracy:**-->
-
-The following attributes are automatically captured by the API ML single-service deployment to ensure mainframe-inclusive observability:
-
-* `zos.smf.id`  
-Unique identifier for the z/OS system.
-
-* `zos.sysplex.name`  
-The SYSPLEX cluster name.
-
-* `os.version`  
-The release version (returned by D IPLINFO).
-
-* `process.command`  
-The Job name used to start the Zowe instance.
-
-* `process.pid`  
-The Address Space Identifier (ASID). 

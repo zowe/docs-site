@@ -1,4 +1,4 @@
-# Enable API ML Observability in zowe.yaml
+# Enabling API ML Observability in zowe.yaml
 
 Review how to enable and configure the OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML) single-service deployment. Configure these parameters in `zowe.yaml` to enable API ML to export metrics, traces, and logs to an OpenTelemetry Collector.
 

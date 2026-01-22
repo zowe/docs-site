@@ -3,11 +3,10 @@
 The following files will be presented under Advanced server-side configuration under the **Install** tab:
 
 * [Overview of Observability](overview-of-observability.md)
-  * [Configuring OpenTelemetry for Observability](configuring-otel-for-observability.md)
-    * [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md)
-    * [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md)
-    * [Configuring OpenTelemetry z/OS attributes](configuring-otel-zos-attributes.md)
-    * [Enabling observability in zowe.yaml](enabling-observability-in-zowe.yaml.md)
+  * [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md)
+  * [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md)
+  * [Configuring OpenTelemetry z/OS attributes](configuring-otel-zos-attributes.md)
+  * [Enabling observability in zowe.yaml](enabling-observability-in-zowe.yaml.md)
 
 The following files will be presented under Using Zowe API Mediation Layer under the **Use** tab:
 
