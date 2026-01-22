@@ -47,4 +47,8 @@ zowe:
 
 ## How the Export Works
 
-When enabled: `true` is set, the API ML single-service starts a background telemetry engine. It gathers internal metrics (like JVM heap or request latency) and bundles them with the Resource Attributes defined in your config. These bundles are then pushed via the OTLP Exporter to your specified endpoint.
+When `enabled: true` is set, the API ML single-service starts a background telemetry engine. This engine gathers internal metrics (like JVM heap or request latency) and bundles these metrics with the Resource Attributes defined in your config. These bundles are then pushed by means of the OTLP Exporter to your specified endpoint.
+
+:::note
+If the endpoint is unreachable, API ML logs a warning, but service traffic is not interrupted. It is recommended to use a local OTel collector to minimize network latency.
+:::

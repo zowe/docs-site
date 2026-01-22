@@ -56,3 +56,36 @@ zowe:
             deployment.environment: "production"
             # Custom attributes can be added here
 ```
+
+## Telemetry Data Produced
+
+Zowe API ML produces several categories of data out-of-the-box via OpenTelemetry.
+
+### Out-of-the-box (Standard OTel)
+
+* **JVM Metrics:** Memory usage (heap/non-heap), Garbage Collection (GC) frequency and duration, thread counts, and class loading.
+
+* **System Metrics:** CPU usage (System vs. Process) and File Descriptor usage.
+
+* **HTTP Metrics:** Request latency, throughput, and error rates (4xx/5xx) for all API traffic passing through the Modulith.
+
+<!-- Are there Mainframe-specific metrics that we should mention? -->
+
+<!-- **Please review this for accuracy:**-->
+
+The following attributes are automatically captured by the APIML Modulith to ensure mainframe-inclusive observability:
+
+* `zos.smf.id`  
+Unique identifier for the z/OS system.
+
+* `zos.sysplex.name`  
+The SYSPLEX cluster name.
+
+* `os.version`  
+The release version (returned by D IPLINFO).
+
+* `process.command`  
+The Job name used to start the Zowe instance.
+
+* `process.pid`  
+The Address Space Identifier (ASID). 
