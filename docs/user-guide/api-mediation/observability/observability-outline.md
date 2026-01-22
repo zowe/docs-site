@@ -2,7 +2,7 @@
 
 The following files will be presented under Advanced server-side configuration under the **Install** tab:
 
-* [Overview of Observability](overview-of-observability.md)
+* [Configuring API ML Observability via OpenTelemetry](configuring-apiml-observability-via-opentelemetry.md)
   * [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md)
   * [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md)
   * [Configuring OpenTelemetry z/OS attributes](configuring-otel-zos-attributes.md)
