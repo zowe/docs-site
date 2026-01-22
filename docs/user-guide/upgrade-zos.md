@@ -1,4 +1,4 @@
-# Zowe Server-side Upgrades
+# Upgrading
 
 Performing an upgrade of Zowe involves following a subset of the first-time installation steps documented within the [Zowe z/OS components installation checklist](./zos-components-installation-checklist.md), and updating your Zowe YAML. Exceptions are noted within this document.
 

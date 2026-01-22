@@ -1,4 +1,4 @@
-# Zowe Server-side Backout Procedure
+# Backout Procedure
 
 :::note
 Zowe cannot be reverted while it is running. You should [Stop Zowe](./start-zowe-zos.md) before proceeding.
