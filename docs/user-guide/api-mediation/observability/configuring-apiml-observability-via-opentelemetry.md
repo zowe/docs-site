@@ -19,7 +19,7 @@ Observability features are available exclusively for the API ML single-service d
 
 In OpenTelemetry, a **Resource** represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every signal (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
 
-To organize the OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups: Service, z/OS, and Deployment.
+OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups: Service, Deployment, and z/OS.
 
 This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
 
@@ -30,15 +30,15 @@ These identify the logical entity producing the data. They are used to group tel
 
 For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
-* **z/OS Attributes**  
-These provide critical mainframe context. They identify the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running, which is essential for mainframe-specific performance analysis.
-
-For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
-
 * **Deployment Attributes:**  
 These describe the lifecycle stage of the service. They allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
 
 For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
+
+* **z/OS Attributes**  
+These provide critical mainframe context. They identify the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running, which is essential for mainframe-specific performance analysis.
+
+For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
 
 ## Telemetry Data Produced
 

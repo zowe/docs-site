@@ -8,7 +8,7 @@ These attributes provide environmental context specific to the IBM z/OS platform
 
 ## z/OS Attribute Reference
 
-The following attributes are captured to describe the mainframe environment:
+The following attributes are captured during system discovery to describe the mainframe environment:
 
 * **zos.smf.id**  
 The System Management Facility (SMF) Identifier that uniquely identifies a z/OS system within a SYSPLEX.
