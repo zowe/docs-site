@@ -5,6 +5,7 @@ The following topics contain information that can help you troubleshoot problems
 Issues and development of the Zowe Launcher is managed in GitHub. When you troubleshoot a problem, you can check whether a GitHub issue (open or closed) that covers the problem already exists. For a list of issues, see the [launcher repo](https://github.com/zowe/launcher).
 
 [**Error Message Codes**](launcher-error-codes.md)
+
 ## Enable Zowe Launcher Debug Mode
 
 Use debug mode to display additional debug messages for Zowe Launcher.
@@ -20,9 +21,29 @@ Disable debug mode when you are not troubleshooting. Running Zowe Launcher in de
 
 3. Add a new line
   
-  ```
-  ZLDEBUG=ON
-  ```
-  By default debug mode is disabled, so the `ZLDEBUG` is set to `OFF`. To disable debug mode remove the line or set `ZLDEBUG` to `OFF`.
-   
-3. Restart ZWESLSTC Started Task.
+    ```log
+    ZLDEBUG=ON
+    ```
+
+    By default debug mode is disabled, so the `ZLDEBUG` is set to `OFF`. To disable debug mode remove the line or set `ZLDEBUG` to `OFF`.
+
+4. Restart ZWESLSTC Started Task.
+
+## Troubleshooting port reservations
+
+Zowe Server ports may fail to bind with error messages such as:
+
+```log
+Caused by: java.net.SocketException: EDC5111I Permission denied
+```
+
+To resolve such errors, make sure the Zowe Server ports are reserved for the Zowe task in the TCP/IP profile via PORT or PORTRANGE statements.
+It is possible to specify which TCP/IP profile to use if the system has more than one TCP/IP profile active. To do so, add the following property to the zowe.yaml file:
+
+```yaml
+zowe:
+  environments:
+    _BPXK_SETIBMOPT_TRANSPORT: TCPIP
+```
+
+Where `TCPIP` is the name of the TCP/IP stack to use.
