@@ -1,7 +1,6 @@
 # Configuring API ML Observability via OpenTelemetry
 
-<!-- DRAFT INTRO -->
-Observability of functionalities in the Zowe API Mediation Layer (API ML) can be provided through integration with OpenTelemetry (OTel). This integration enables API ML to produce observability data, including [metrics](https://opentelemetry.io/docs/concepts/signals/metrics/), [logs](https://opentelemetry.io/docs/concepts/signals/logs/), and [traces](https://opentelemetry.io/docs/concepts/signals/traces/), that describe runtime behavior, request processing, and service interactions. This observability data can be collected and exported to supported analysis tools, thereby making it possible for API ML users to monitor system activity, diagnose issues, and understand service behavior without requiring a specific observability vendor.
+Observability of functionalities in the Zowe API Mediation Layer (API ML) can be provided through integration with OpenTelemetry (OTel). This integration enables API ML to produce observability data that describe runtime behavior, request processing, and service interactions. This observability data can be collected and exported to supported analysis tools, thereby making it possible for API ML users to monitor system activity, diagnose issues, and understand service behavior without requiring a specific observability vendor.
 
 :::info
 Required role: System administrator
@@ -42,15 +41,66 @@ For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attribute
 
 ## Telemetry Data Produced
 
-Zowe API ML produces several categories of data out-of-the-box via OpenTelemetry.
+The API ML produces a range of telemetry data. By default, the OpenTelemetry integration captures performance, health, and interaction data made available through resource attributes  configured in your `zowe.yaml`. 
 
-### Out-of-the-box (Standard OTel)
+## Telemetry Signal Categories
 
-* **JVM Metrics:** Memory usage (heap/non-heap), Garbage Collection (GC) frequency and duration, thread counts, and class loading.
+Observability in the API ML is built on the interaction between Signals and Resource Attributes. A _signal_, defined as a discrete stream of telemetry data, is represented by any one of three types of telemetry data: 
 
-* **System Metrics:** CPU usage (System vs. Process) and File Descriptor usage.
+* [Metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) (performance tracking)
+* [Traces](https://opentelemetry.io/docs/concepts/signals/traces/) (request journeys)
+* [Logs](https://opentelemetry.io/docs/concepts/signals/logs/) (event records). 
 
-* **HTTP Metrics:** Request latency, throughput, and error rates (4xx/5xx) for all API traffic passing through the Modulith.
+Each of these types of telemetry data represent a specific category of observation from a system. Every signal is automatically created based on Resource Attributes. These attributes act as a common identity, whereby data is categorized into Service (logical identity), z/OS (system and hardware context), and Deployment (environment tier). This categorization approach ensures that all telemetry is "mainframe-aware" allowing administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools. 
+
+### Metrics (Runtime Behavior & Health)
+Metrics provide numerical data used to track trends and trigger alerts.
+
+* **JVM & System Metrics**
+    * **`process.runtime.jvm.memory.usage`**: Current utilization of heap and non-heap memory.
+    * **`process.runtime.jvm.gc.duration`**: Time spent in Garbage Collection, critical for identifying "stop-the-world" pauses.
+    * **`system.cpu.utilization`**: CPU usage percentage for the process and the overall LPAR.
+
+* **Request Processing Metrics**
+    * **`apiml.request.count`**: A counter of all incoming requests, categorized by `http.method` and `http.status_code`.
+    * **`apiml.request.duration`**: A histogram measuring the total time spent within the Modulith for each request.
+    * **`apiml.active.requests`**: A gauge showing the current number of concurrent requests being processed.
+
+### Traces (Service Interactions)
+Traces record the path of a request as it traverses the API ML.
+
+* **Gateway Spans**: Measures the entry point latency and the time taken to proxy the request to a backend service.
+* **Authentication Spans**: Tracks the duration of security checks (e.g., SAF, JWT validation, or ZSS calls).
+* **Discovery Spans**: Records the time taken to resolve a service ID to a specific physical URL.
+
+### Logs (System Events)
+Logs provide the "why" behind errors or changes in state.
+
+* **Access Logs**: High-volume logs detailing every request, including the `traceId` for correlation with traces.
+* **Security Logs**: Records of failed authentication attempts or unauthorized access to protected routes.
+* **Lifecycle Logs**: Critical events such as service registration, heartbeat failures, or Modulith startup/shutdown.
+
+## Examples of Useability of Telemetry data in API ML
+
+How a system administrator interacts with this data depends on the visualization tool used (e.g., Grafana, Jaeger, or Broadcom WatchTower).
+
+### Example 1: High-Level Health Monitoring (Metrics)
+A system administrator views a Grafana dashboard. The administrator notices a spike in **`apiml.request.errors`**. 
+* **The View**: A red line graph shows a sudden jump from 0% to 15% error rate.
+* **The Insight**: By filtering the dashboard using the attribute **`zos.smf.id`**, the admin realizes the errors are only occurring on **LPAR1**, while **LPAR2** remains healthy. This suggests a local configuration or connectivity issue on a specific system rather than a global software bug.
+
+
+### Example 2: Latency Troubleshooting (Traces)
+A user reports that a specific API is "timing out." The admin finds the relevant **`traceId`** in the logs and opens it in a trace viewer.
+* **The View**: A "Gantt chart" style visualization of the request.
+* **The Insight**:
+    * `apiml.gateway.total`: 2005ms
+    * `apiml.auth.check`: 5ms
+    * `apiml.backend.proxy`: 2000ms
+* **The Action**: The admin sees that the Modulith itself only spent 5ms on logic, but waited 2 seconds for the backend mainframe service to respond. The admin can now confidently contact the specific backend service team.
+
+
+
 
 <!-- Are there Mainframe-specific metrics that we should mention? -->
 
