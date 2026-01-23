@@ -127,7 +127,7 @@ components:
 
 The Caching service now defaults to **Infinispan** mode instead of **VSAM**.
 While **VSAM** is still supported, this storage method is being deprecated and is not recommended.
-A new parameter for the key exchange port has been added to the default configuraion.
+A new parameter for the key exchange port has been added to the default configuration.
 
 ```yaml
 components:
