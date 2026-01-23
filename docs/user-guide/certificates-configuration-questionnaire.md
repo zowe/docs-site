@@ -1,6 +1,6 @@
 # Zowe certificates configuration questionnaire
 
-To properly configure Zowe to use certificates for server-side component installation, review the  certificate setup options presented in this article. 
+To properly configure Zowe with certificates for server-side component installation, review the certificate setup options presented in this article. 
 Understanding these options makes it possible to select the best certificate configuration scenario that fits your Zowe deployment use case. 
 
 :::info Required roles: system programmer, security administrator
@@ -42,19 +42,19 @@ If you plan to use Zowe generated self-signed certificates and your target envir
 Decide if you want to store the certificate in a z/OS keyring or to a file based keystore/truststore.
 
 :::tip 
-While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS keyrings for production deployments.
+While using a keystore/truststore pair is possible to store your certificates, we recommend that you use z/OS key rings for production deployments.
 :::
 
 **Question 4:** Do you plan to use an existing certificate from another keyring or from a dataset?  
 If you have an existing certificate, you can import or connect this certificate to the planned z/OS keyring based storage.
 
-Before you import your certificates, check to make sure that the certificate format, type, and properties correspond to the required protection and acceptability depending on the planned deployment environment (DEV, TEST, PROD).
-For example, use Zowe generated self-signed certificates only with development or testing environments and not with production environments.
+Before you import your certificates, check to make sure that the certificate format, type, and properties meet your security requirements depending on the planned deployment environment (DEV, TEST, PROD). For example, Zowe generated self-signed certificates may be acceptable with development or testing environments, but not with production environments.
 
-For more information, see [Import and configure an existing certificate](./import-certificates.md).
+Required certificate properties are covered in [the Zowe Security Glossary](../appendix/zowe-security-glossary.md#zowe-certificate-requirements).
+
 ## Next steps
 
-After you select your applicable certificate configuration scenario and review the certificate configurate sample in the article [Certificate configuration scenarios](./certificate-configuration-scenarios.md), you can continue to  [Configure Zowe Certificates](./configure-certificates.md).  
+After you select your applicable certificate configuration scenario, you can proceed to [Certificate configuration scenarios](./certificates-configuration-scenarios.md).
 
 :::tip
 If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors.

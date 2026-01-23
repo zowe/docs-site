@@ -74,6 +74,7 @@ If you do not yet have certificates, Zowe can create self-signed certificates fo
 - [Extended key usage](#extended-key-usage)
 - [Hostname validity](#hostname-validity)
 - [z/OSMF access](#zosmf-access)
+
 ### Extended key usage
 Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
 
@@ -88,29 +89,19 @@ The z/OSMF certificate is verified according to Zowe [Certificate verification s
 
 
 ## Certificate setup types
-Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content format: file-based (`PKCS12`) or z/OS key ring-based.
+Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content format: file-based (`PKCS12`) or z/OS key ring-based. If you are bringing your own previously defined certificates and keyrings to Zowe, you can configure `zowe.certificate` with this information directly and bypass `zwe init certificate` completely. 
 
 - [File-based (PKCS12) certificate setup](#file-based-pkcs12-certificate-setup)
 - [z/OS key ring-based certificate setup](#zos-key-ring-based-certificate-setup)
+
 ### File-based (PKCS12) certificate setup
 
 Zowe is able to use PKCS12 certificates that are stored in USS. Zowe uses a `keystore` directory to contain its certificates primarily in PKCS12 (`.p12`, `.pfx`) file format, but also in PEM (`.pem`) format. The truststore is in the `truststore` directory that holds the public keys and CA chain of servers which Zowe communicates with (for example z/OSMF).
+Configuring PKCS12 certificates is covered under [Certificate Configuration](../user-guide/configure-certificates.md) and [Reviewing Certificate Configuration](../user-guide/certificates-finalize-configuration.md).
 
 ### z/OS key ring-based certificate setup
 
-Zowe is able to work with certificates held in a **z/OS Key ring**.
+Zowe is able to work with certificates held in a **z/OS key ring**.
 
-The JCL member `.SZWESAMP(ZWEKRING)` contains security commands to create a SAF keyring. By default, this key ring is named `ZoweKeyring`. You can use the security commands in this JCL member to generate a Zowe certificate authority (CA) and sign the server certificate with this CA. The JCL contains commands for all three z/OS security managers: RACF, TopSecret, and ACF2.
 
-There are two ways to configure and submit `ZWEKRING`:
-
-- Copy the JCL `ZWEKRING` member and customize its values.
-- Customize the `zowe.setup.certificate` section in `zowe.yaml` and use the `zwe init certificate` command.
-
-  You can also use the `zwe init certificate` command to prepare a customized JCL member using `ZWEKRING` as a template.
-
-A number of key ring scenarios are supported:
-
-- Creation of a local certificate authority (CA) which is used to sign a locally generated certificate. Both the CA and the certificate are placed in the `ZoweKeyring`.
-- Import of an existing certificate already held in z/OS to the `ZoweKeyring` for use by Zowe.
-- Creation of a locally generated certificate and signed by an existing certificate authority. The certificate is placed in the key ring.
+If you are not bringing your own certificate and keyring, and instead would like Zowe to create these for you, then you should follow the instructions under [Zowe Assisted Certificate Setup](../user-guide/certificates-configuration-questionnaire.md).
