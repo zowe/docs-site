@@ -148,7 +148,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 2. Copy your Db2 license file `db2consv_za.lic` and place it in the following directory.
       ```
-      <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
+      <zowe_home>/plugins/installed/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
       ```
     :::tip
 
