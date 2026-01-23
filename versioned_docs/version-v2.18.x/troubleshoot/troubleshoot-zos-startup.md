@@ -2,8 +2,7 @@
 
 The following topics contain information that can help you troubleshoot problems when you encounter unexpected behavior installing Zowe z/OS components or starting Zowe's `ZWESLSTC` started task.
 
-
-## How to check if `ZWESLSTC` startup is successful 
+## How to check if `ZWESLSTC` startup is successful
 
 The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There is no single **Zowe has launched and is ready to run** message as the sequence of address spaces initialization is environment-dependent, although the message ID `ZWED0021I` is typically the last one that is logged.  More details on each subsystem and their startup messages are described in the following sections.
 
@@ -12,7 +11,7 @@ The `ZWESLSTC` started task on z/OS brings up a number of address spaces.  There
     - [Check the startup of API Mediation Layer](#check-the-startup-of-api-mediation-layer)
     - [Check the startup of Zowe Desktop](#check-the-startup-of-zowe-desktop)
     - [Check the startup of Zowe Secure Services](#check-the-startup-of-zowe-secure-services)
-    
+
 To check that Zowe has started successfully, the most complete way is to check that each component successfully completed its initialization. Each component writes messages to the JES `SYSPRINT` and writes severe errors to the `STDERR` job spool file.  
 
 To learn more about the Zowe components and their role, see [Zowe Architecture](../getting-started/zowe-architecture.md). It is possible to configure Zowe to bring up only a subset of its components by using the `components.<NAME>.enabled: boolean` variables in the `zowe.yaml` file.
@@ -21,13 +20,13 @@ To learn more about the Zowe components and their role, see [Zowe Architecture](
 To determine the jobname for each component, see the "Default Jobname" column in the [Component Port table](../user-guide/address-network-requirements.md#component-ports) in the article _Addressing network requirements_.
 :::
 
-### Check the startup of API Mediation Layer 
+### Check the startup of API Mediation Layer
 
 The API Mediation Layer has four address spaces: API Catalog, API Gateway,  API Discovery and Caching Service.  
 
 To check whether the API mediation layer is fully initialized, look for the `ZWEAM000I` message. Each component writes a successful startup message `ZWEAM000I` to JES as shown below. The message also indicates the CPU of seconds spent. In a normal startup of the APIML components each one will write a `ZWEAM00I` message similar to below:
 
-```
+```log
 2023-02-21 17:20:57.614 [35m<ZWEACS1:main:33554882>[0;39m IBMUSER [32mINFO [0;39m [36m(o.z.a.p.s.ServiceStartupEventHandler)
 [0;39m ZWEAM000I Caching Service started in 43.818 seconds
 ...
@@ -41,17 +40,17 @@ ZWEAM000I API Catalog Service started in 53.75 seconds
 
 As well as looking for `ZWEAM00I` in the JES log, you can also log in to the gateway homepage and check the service status indicator.  If there is a red or yellow tick beside one of its three services, the components are still starting.  
 
-<img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/> 
+<img src={require("../images/api-mediation/apiml-startup.png").default} alt="Zowe API Mediation Layer Startup" width="600px"/>
 
 When all services are fully initialized, there will be three green ticks.
 
-<img src={require("../images/api-mediation/apiml-started.png").default} alt="Zowe API Mediation Layer Startup" width="300px"/> 
+<img src={require("../images/api-mediation/apiml-started.png").default} alt="Zowe API Mediation Layer Startup" width="300px"/>
 
-### Check the startup of Zowe Desktop 
+### Check the startup of Zowe Desktop
 
 During startup of the the Zowe desktop loads its plug-ins and writes a message `ZWED0031I` when it is completed.  
 
-```
+```log
 2023-02-21 12:10:12.824 <ZWED:33558118> ZWESVUSR INFO (_zsf.install,index.js:439) ZWED0031I - Server is ready at https://0.0.0.0:27556, Plugins successfully loaded: 100% (19/19)
 ```
 
@@ -59,7 +58,7 @@ The `ZWED0031I` message includes a count of the number of loaded plug-ins as wel
 
 If the the Zowe desktop is started together with the API Gateway, the Zowe Desktop it will register itself with the API Gateway. This step must be completed before a user is able to successfully log in to the Zowe Desktop. The message that is written to indicate that the registration handshake between the Zowe Desktop and the API GAteway has been successful is `ZWED0021I`, for example
 
-```
+```log
 2023-02-21 12:10:12.226 <ZWED:33558118> ZWESVUSR INFO (_zsf.apiml,apiml.js:309) ZWED0021I - Eureka Client Registered from 127.0.0.1. Available at https://tvt5003.svl.ibm.com:27553/zlux/ui/v1/
 ```
 
@@ -71,12 +70,12 @@ As well as spooling to the JES `SYSPRINT` file for the Zowe `ZWESLSTC` task, the
 
 The zssServer is used for secure services for the Zowe desktop.  
 
-```
+```log
 ZWES1013I ZSS Server has started. Version '2.5.0+20221130' 31-bit
 ```
 
 The zssServer will register itself with the cross memory server running under the address space `ZWESISTC`.  You can use the attach message ID `ZWES1014I` to check that this has occurred successfully.  If this message contains a nonzero return code in the `cmsRC=` value, then a failure occurred. For more information on how to diagnose these, see [ZSS server unable to communicate with ZIS](./app-framework/app-troubleshoot.md#zss-server-unable-to-communicate-with-zis).
 
-```
+```log
 ZWES1014I ZIS status - 'Ok' (name='ZWESIS_STD      ', cmsRC='0', description='Ok', clientVersion='2')
 ```
