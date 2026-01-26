@@ -13,5 +13,3 @@ The [Server data sets reference](../appendix/server-datasets.md) lists data sets
 All of the data sets and directories must be consistent with a single version of Zowe, so if you are performing a backout, you will want to restore all such data sets and files to that version.
 
 Because some Zowe YAML properties meant for a newer version of Zowe may be unknown to older versions of Zowe in ways that cause schema validation errors, it is best to restore the Zowe YAML to match the version of Zowe you are restoring.
-
-Zowe
