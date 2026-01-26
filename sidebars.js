@@ -345,7 +345,7 @@ module.exports = {
                     "user-guide/api-mediation/observability/configuring-otel-zos-attributes"
 					          "user-guide/api-mediation/observability/enabling-observability-in-zowe-yaml"
                   ]
-                }
+                },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
