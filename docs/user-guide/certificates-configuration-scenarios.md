@@ -198,7 +198,8 @@ The following command output shows the generation of a PKCS12 keystore using the
 >> Certificate localhost is created successfully.
 -------------------------------------------------------------------------------
 >> Export keystore /global/zowe/keystore/localhost/localhost.keystore.p12
->> Keystore /global/zowe/keystore/localhost/localhost.keystore.p12 is exported successfully.-------------------------------------------------------------------------------
+>> Keystore /global/zowe/keystore/localhost/localhost.keystore.p12 is exported successfully.
+-------------------------------------------------------------------------------
 >> Export keystore /global/zowe/keystore/localhost/localhost.truststore.p12
 >> Keystore /global/zowe/keystore/localhost/localhost.truststore.p12 is exported successfully.
 -------------------------------------------------------------------------------
@@ -269,7 +270,7 @@ PEM format certificate authorities can be imported and trusted.
 
   **Example zowe yaml for scenario 2 (PKCS12):**
 
-   ```
+   ```yaml
    certificate:
      type: PKCS12
      pkcs12:
@@ -350,7 +351,7 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
 
   **Example zowe yaml for scenario 3:**
   
-   ```
+   ```yaml
    certificate:
    #Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
      type: JCERACFKS
@@ -418,7 +419,7 @@ The following example uses an existing JCERACFKS certificate for Zowe's z/OS com
 
   **Example zowe yaml for scenario 4:**
 
-```
+```yaml
  # >>>> Certificate setup scenario 4
  # z/OS Keyring and connect to existing certificate
  certificate:
@@ -485,7 +486,7 @@ Follow this procedure and configure `scenario-5.yaml` within the `files/examples
        ```
   **Example zowe yaml for scenario 5:**  
 
-```
+```yaml
  # >>>> Certificate setup scenario 5
  # z/OS Keyring and connect to existing certificate
  certificate:
