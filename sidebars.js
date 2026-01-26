@@ -335,6 +335,17 @@ module.exports = {
                     "extend/extend-apiml/api-mediation-redis"
                   ]
                 },
+                {
+                  "type": "category",
+                  "label": "Configuring storage for the Caching service",
+				          "link": { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability-via-opentelemetry" },
+                  "items": [
+                    "user-guide/api-mediation/observability/configuring-otel-service-attributes",
+                    "user-guide/api-mediation/observability/configuring-otel-deployment-attributes",
+                    "user-guide/api-mediation/observability/configuring-otel-zos-attributes"
+					          "user-guide/api-mediation/observability/enabling-observability-in-zowe-yaml"
+                  ]
+                }
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
