@@ -7,10 +7,10 @@ Review how to enable and configure the OpenTelemetry (OTel) integration within t
 The observability configuration is located under the API Mediation Layer `component` section of the zowe.yaml, under which there are three observability properties:
 
 * **enabled**  
-  Activates the OTel SDK. Set to `true` to initialize the OpenTelemetry SDK.
+  Activates the OTel SDK. Set to `true` to initialize the OpenTelemetry SDK. 
 
 * **exporter**  
-Defines where the data is sent. 
+Defines where the data is sent.  Sub-properties of `exporter` include the following:
 
   * **exporter.otlp.protocol**  
     The URL of your OTLP-compatible collector (e.g., z-Iris or Jaeger)
