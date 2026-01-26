@@ -702,9 +702,9 @@ These configurations can be used under the `components.caching-service` section:
 - **storage.infinispan.jgroups.port**  
   Specifies the port number used by Infinispan to synchronize data among caching-service instances.
 - **storage.infinispan.jgroups.host**  
-  The default value is taken from the Zowe hostname. The hostname used by Infinispan to synchronize data among caching-service instances.
-- **storage.infinispan.jgroups.keyExchange.port**
-  The default value is `7118`. The port number used by Infinispan to exchange encryption key among caching-service instances.
+  The default value of this property is taken from the Zowe hostname. The hostname used by Infinispan to synchronize data among caching-service instances.
+- **storage.infinispan.jgroups.keyExchange.port**  
+  The default value is `7118`. The port number is used by Infinispan to exchange the encryption key among caching-service instances.
 
 ##### Redis specific configuration
 
