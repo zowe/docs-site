@@ -54,7 +54,7 @@ The following `zowe.yaml` example generates the following artifacts:
  - A certificate authority with the label `localca` specified in  `zowe.setup.certificate.keyring.caLabel` with a common name `Zowe Service CA`.
 
 **Example `zowe.yaml` file using a JCERACFKS certificate:**
-```
+```yaml
 zowe:
   setup:
     certificate:
@@ -80,7 +80,7 @@ zowe:
 
 :::note Notes:
 - Alias names should be all lower cases.
-- The name and lables shown above are the default value in `zowe.yaml`.
+- The name and labels shown above are the default value in `zowe.yaml`.
 - `dname` for distinguished name is all optional.
 - Domain names and IPs should be added to the certificate SAN. If the field `san` is not defined, the `zwe init` command will use `zowe.externalDomains`. The value for the `san` parameter presented in the example is for demonstration purposes.
 :::
@@ -125,7 +125,7 @@ As shown in the example, the job ends with code `0`. There may, however, be fail
 3. Open the `zowe.yaml` file to check the references to the newly generated certificate values. Because the `--update-config` parameter was specified, the runtime configuration section of zowe.yaml is updated to match the values to the generated keystore, certificate, and certificate authority. The updated section is shown in the following code snippet:
 
 **Updated `zowe.certificate` section in `zowe.yaml`:**
-```
+```yaml
 zowe:
   certificate:
     keystore:
