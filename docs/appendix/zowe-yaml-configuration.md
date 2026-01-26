@@ -641,7 +641,7 @@ These configurations can be used under the `components.caching-service` section:
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
-  Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
+  Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in a truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
 
   :::note
   This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
@@ -660,6 +660,7 @@ These configurations can be used under the `components.caching-service` section:
   :::note
   The storage mode `vsam` is deprecated.
   :::
+
 - **storage.size**  
   Specifies the number of records before eviction strategies start evicting.
 
@@ -668,7 +669,7 @@ These configurations can be used under the `components.caching-service` section:
   :::
 
 - **storage.evictionStrategy**  
-  Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
+  Specifies the eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
 
   :::note
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`.
@@ -682,14 +683,15 @@ These configurations can be used under the `components.caching-service` section:
 ##### Infinispan specific configuration
 
 - **storage.infinispan.initialHosts**  
-  This property specifies the list of cluster nodes (members). The value should be list of all the members separated by commas. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
+  This property specifies the list of cluster nodes (members). The value should be a list of all the members separated by commas. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
 - **storage.infinispan.persistence.dataLocation**  
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  Beginning with version 2.18.4, values for `storage.infinispan.persistence.dataLocation` are not not used. If you migrate to v2.18.4 or a later version, leaving this configuration results in  data migration to  `<workspace>/caching-service/<HA instance ID>/index`. In case of a non-HA instance value `localhost` is used as `HA instance ID`.
   :::
+  
 - **storage.infinispan.persistence.indexLocation**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
