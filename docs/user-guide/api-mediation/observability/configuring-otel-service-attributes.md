@@ -18,13 +18,13 @@ The following attributes are required to define the logical identity of the API 
 * **service.name**  (Required)  
 Logical name of the service. Must be the same for all instances within the same HA deployment. Expected to be globally unique if `namespace` is not defined. 
 
-* **service.instance.id** (Required)  
+* **service.instance.id** (Required)  <!-- Please confirm if this is required or optional. -->
 Must be unique for each instance of `service.name` and `service.namespace` pair. Automatically generated UUID is generally recommended to ensure uniqueness.
 
-* **service.namespace** (Required)   
+* **service.namespace** (Required)  <!-- Please confirm if this is required or optional. --> 
 The assigned value should help distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`.
 
-* **service.version**  (Required)   
+* **service.version**  (Required)   <!-- Please confirm if this is required or optional. -->
 The exact version of the service artifact, typically a semantic version (e.g., 1.2.3) or a build hash, used to identify the specific software release.
 
 #### Configuration Example (`zowe.yaml`)
@@ -36,5 +36,7 @@ zowe:
       attributes:
         service.name: "zowe-apiml"
         service.namespace: "mainframe-production"
-        # service.instance.id: "optional-custom-id"
+        service.instance.id: "optional-custom-id"
+        service.namespace: "optional-namespace"
+        service.version: "optional-version-number"
 
