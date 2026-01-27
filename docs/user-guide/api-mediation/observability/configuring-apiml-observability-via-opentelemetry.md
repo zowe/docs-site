@@ -35,17 +35,19 @@ These attributes provide critical mainframe context. They identify the specific 
 
 For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
 
-## Telemetry Signals 
+## Telemetry Signals and Observability
 
-The API ML produces a range of telemetry data referred to as _signals_. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported.
+The API ML produces a range of telemetry data referred to as _signals_. A _signal_, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
 
-Observability in the API ML is built on the interaction between Signals and Resource Attributes. A _signal_, defined as a discrete stream of telemetry data, is represented by any one of three types of telemetry data: 
+Signals can be any of the following signal types: 
 
 * [Metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) (performance tracking)
 * [Traces](https://opentelemetry.io/docs/concepts/signals/traces/) (request journeys)
 * [Logs](https://opentelemetry.io/docs/concepts/signals/logs/) (event records). 
 
-Each of these types of telemetry data represent a specific category of observation from a system. Every signal is automatically created based on the previously described Resource Attributes. These attributes act as a common identity, whereby data is categorized into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context). This categorization approach ensures that all telemetry is "mainframe-aware" allowing administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools. 
+Each of these signal types represent a specific category of observation from a system. Every signal is automatically enriched based on resource attributes. These attributes act as a common identity, whereby data is categorized into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context). This categorization approach ensures that all telemetry is "mainframe-aware" allowing administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools. 
+
+While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
 
 ### Metrics (Runtime Behavior & Health)
 
