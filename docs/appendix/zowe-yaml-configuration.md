@@ -675,7 +675,7 @@ These configurations can be used under the `components.caching-service` section:
   This property is used only when `storage.mode` is set to `vsam` or `inMemory`.
   :::
 
-##### VSAM specific configuration
+##### VSAM specific configuration (deprecated)
 
 - **storage.vsam.name**  
   Specifies the data set name of the Caching service VSAM data set.
