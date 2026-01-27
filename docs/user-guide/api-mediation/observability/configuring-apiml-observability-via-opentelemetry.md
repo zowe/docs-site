@@ -14,14 +14,14 @@ Observability features are available exclusively for the API ML single-service d
 
 ## Resource Attributes 
 
-A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every _signal_ (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
+A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every [signal](#telemetry-signals-and-observability) (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
 
 OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
 
 ### Attribute Categories
 
 * **Service Attributes**  
-These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example,  "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters ensures you can monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
+These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example, "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters allows you to monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
 
 For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
