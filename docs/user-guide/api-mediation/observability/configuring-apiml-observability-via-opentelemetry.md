@@ -49,14 +49,14 @@ Each of these signal types represent a specific category of observation from a s
 
 While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
 
-:::info How to understand Signals vs Resources
-To better understand the relationship between signals and resources, it is useful to consider this in the context of activity vs. organization:
+:::info How to understand Signals vs Resources 
 
-* The **Signal** provides an indicator of success or failure (e.g., response times, error counts).
-* The **Resource Attributes** provide the means used to unlock that evidence (e.g., sorting by a specific LPAR or a specific production site). 
+To better understand the relationship between signals and resources, it is useful to consider the analogy of a Shipping Package and its Label:
 
-Taken together, the signal tells you that a problem exists, while the resource attributes allow you to isolate exactly where that problem is occurring within your infrastructure. 
-:::
+* The **Signal** is the contents of the package. It contains the actual "goods"—the specific data about an event, such as a log message, a trace of a request, or a performance metric.
+* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label doesn't change the contents, but it tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
+
+Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. :::
 
 ### Metrics (Runtime Behavior & Health)
 
