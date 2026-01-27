@@ -1,6 +1,6 @@
 # Configuring API ML Observability via OpenTelemetry
 
-Enable observability of functionalities in the Zowe API Mediation Layer (API ML) through integration with OpenTelemetry (OTel). This integration enables API ML to produce observability data that describe runtime behavior, request processing, and service interactions.  
+Enable observability of functionalities in the Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describe runtime behavior, request processing, and service interactions.  
 
 :::info
 Required role: System administrator
