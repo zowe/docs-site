@@ -6,7 +6,7 @@ Enable observability of functionalities in the Zowe API Mediation Layer (API ML)
 Required role: System administrator
 :::
 
-API ML observability uses the OpenTelemetry (OTel) standard to enable system administrators to monitor performance, diagnose latency issues, and understand resource utilization within a mainframe environment using industry-standard tools like Prometheus, Grafana, or Jaeger.  These anaysis tools make it possible for API ML users to monitor system activity, diagnose issues, and understand service behavior without requiring a specific observability vendor.
+API ML observability uses the OpenTelemetry (OTel) standard to enable system administrators to monitor performance, diagnose latency issues, and understand resource utilization within a mainframe environment using industry-standard tools like [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/). These anaysis tools make it possible for API ML users to monitor system activity, diagnose issues, and understand service behavior without requiring a specific observability vendor.
 
 :::note
 Observability features are available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
@@ -37,7 +37,7 @@ For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attribute
 
 ## Telemetry Signals and Observability
 
-The API ML produces a range of telemetry data referred to as _signals_. A _signal_, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
+The API ML produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
 
 Signals can be any of the following signal types: 
 
@@ -54,7 +54,7 @@ While these signals are enriched with mainframe-aware context when running on z/
 To better understand the relationship between signals and resources, it is useful to consider the analogy of a Shipping Package and its Label:
 
 * The **Signal** is the contents of the package. It contains the actual "goods"—the specific data about an event, such as a log message, a trace of a request, or a performance metric.
-* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label doesn't change the contents, but it tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
+* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
 
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. 
 
