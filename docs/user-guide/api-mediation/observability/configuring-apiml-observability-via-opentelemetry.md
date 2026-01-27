@@ -56,7 +56,9 @@ To better understand the relationship between signals and resources, it is usefu
 * The **Signal** is the contents of the package. It contains the actual "goods"—the specific data about an event, such as a log message, a trace of a request, or a performance metric.
 * The **Resource Attributes** are the shipping label fixed to the outside of the package. The label doesn't change the contents, but it tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
 
-Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. :::
+Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. 
+
+:::
 
 ### Metrics (Runtime Behavior & Health)
 
