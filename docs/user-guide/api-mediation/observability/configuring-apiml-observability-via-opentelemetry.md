@@ -48,6 +48,8 @@ Observability in the API ML is built on the interaction between Signals and Reso
 Each of these types of telemetry data represent a specific category of observation from a system. Every signal is automatically created based on the previously described Resource Attributes. These attributes act as a common identity, whereby data is categorized into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context). This categorization approach ensures that all telemetry is "mainframe-aware" allowing administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools. 
 
 ### Metrics (Runtime Behavior & Health)
+
+<!-- Please replace these place holder metrics with actual metrics that will be implemented -->
 Metrics provide numerical data used to track trends and trigger alerts.
 
 * **JVM & System Metrics:**
@@ -78,6 +80,8 @@ For examples of usability of OpenTelemetry metrics, see [Using your API ML OpenT
 
 ### Traces (Service Interactions)
 Traces record the path of a request as it traverses the API ML.
+
+<!-- Please replace these place holder traces with actual traces that will be implemented -->
 
 * **Gateway Spans**  
 Measures the entry point latency and the time taken to proxy the request to a backend service.
