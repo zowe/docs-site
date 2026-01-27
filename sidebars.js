@@ -541,7 +541,7 @@ module.exports = {
             {
               type: "category",
               label: "Using your API ML OpenTelemetry metrics",
-              link: { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability-via-opentelemetry" },
+              link: { "type": "doc", "id": "user-guide/api-mediation/observability/using-your-otel-metrics" },
               items: [
                 "user-guide/api-mediation/observability/apiml-provided-observability-signals-and-attributes",
                 "user-guide/api-mediation/observability/sample-output-from-apiml-otel"
