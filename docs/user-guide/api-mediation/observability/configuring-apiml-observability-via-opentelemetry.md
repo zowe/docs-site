@@ -49,6 +49,15 @@ Each of these signal types represent a specific category of observation from a s
 
 While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
 
+:::info How to understand Signals vs Resources
+To better understand the relationship between signals and resources, it is useful to consider this in the context of activity vs. organization:
+
+* The **Signal** provides an indicator of success or failure (e.g., response times, error counts).
+* The **Resource Attributes** provide the means used to unlock that evidence (e.g., sorting by a specific LPAR or a specific production site). 
+
+Taken together, the signal tells you that a problem exists, while the resource attributes allow you to isolate exactly where that problem is occurring within your infrastructure. 
+:::
+
 ### Metrics (Runtime Behavior & Health)
 
 <!-- Please replace these place holder metrics with actual metrics that will be implemented -->
