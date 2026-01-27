@@ -1,76 +1,96 @@
 # Configure OpenTelemetry Service Attributes
 
-Services are identified via the `service.name` and `service.namespace` properties. These properties create a unique identity for API ML instances.
+Services are identified via the service.name, service.namespace, and service.instance.id properties. Together, these attributes create a unique identity for API ML instances across your enterprise.
 
-In complex enterprise environments, you likely have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (seeing all API ML traffic together) with Instance Differentiation (identifying exactly which installation is acting up).
+In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
 ## The Hierarchy of Identification
-To achieve this, OpenTelemetry uses a three-tier approach to service identity:
+OpenTelemetry uses a three-tier approach to define service identity:
 
-service.name (The Group): Identifies the overall function. Use this to group all instances that perform the same role (e.g., acme-apiml-production).
+* **service.name** (The Service)  
+Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
 
-service.namespace (The Installation): Identifies a specific deployment or site. Use this to separate different installations, such as us-east-1 vs. us-west-1, or sysplex-a vs. sysplex-b.
+* **service.namespace** (The Environment/Site)  
+Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
 
-service.instance.id (The Individual): Identifies the specific process or Address Space. On z/OS, this is often mapped to the Job Name or ASID.
+* **service.instance.id** (The Unique Instance)  
+Identifies the specific running process or Address Space. Must be unique for each instance of `service.name` and `service.namespace` pair. On z/OS, this property is typically mapped to the Job Name or a unique UUID.
 
-**Example of Multi-Sysplex Deployment**
-Imagine you have two API ML installations: one in Site 1 and one in Site 2. Each installation has two instances for high availability.
+<!-- Should we add service.version to this list of properties? -->
 
-| Attribute | Instance 1 (Site 1) | Instance 2 (Site 1) | Instance 3 (Site 2) |
+## Configuration Examples
+
+**Example 1: Single API ML Installation (High Availability)**
+
+In this scenario, both instances share the same namespace because they belong to the same logical cluster on the same Sysplex.
+
+| Attribute | Instance 1 | Instance 2 |
+| :--- | :--- | :--- |
+| **service.name** | `zowe-apiml` | `zowe-apiml` |
+| **service.namespace** | `production-plex` | `production-plex` |
+| **service.instance.id** | `APIML01` | `APIML02` |
+
+**Instance 1 configuration**
+```
+zowe:
+  components:
+    api-mediation-layer:
+      observability:
+        enabled: true
+        resource:
+          attributes:
+            service.name: "zowe-apiml"
+            service.namespace: "production-plex"
+            service.instance.id: "APIML01"
+```            
+**Instance 2 configuration**
+```
+zowe:
+  components:
+    api-mediation-layer:
+      observability:
+        enabled: true
+        resource:
+          attributes:
+            service.name: "zowe-apiml"
+            service.namespace: "production-plex"
+            service.instance.id: "APIML02"
+```
+
+## Example of Multi-Site Deployment
+
+In this scenario, instances are separated by namespace to represent their physical data center locations.
+
+| Attribute | Site 1 (Instance A) | Site 1 (Instance B) | Site 2 (Instance C) |
 | :--- | :--- | :--- | :--- |
 | **service.name** | `zowe-apiml` | `zowe-apiml` | `zowe-apiml` |
-| **service.namespace** | `site-1` | `site-1` | `site-2` |
-| **service.instance.id** | `ZOWEAPIML1` | `ZOWEAPIML2` | `ZOWEAPIML3` |
+| **service.namespace** | `east-coast` | `east-coast` | `west-coast` |
+| **service.instance.id** | `ZOWE-E1` | `ZOWE-E2` | `ZOWE-W1` |
 
-Example zowe.yaml:
+**Site 1 (East Coast) Configuration:**
+
 ```
 zowe:
-  observability:
-    enabled: true
-    resource:
-      attributes:
-        # The common logical group
-        service.name: "zowe-apiml"
-        # The specific installation or site
-        service.namespace: "site-2"
-        # The unique identifier for this specific job/process
-        service.instance.id: "ZOWEAPIML3"
+  components:
+    api-mediation-layer:
+      observability:
+        enabled: true
+        resource:
+          attributes:
+            service.name: "zowe-apiml"
+            service.namespace: "east-coast"
+            service.instance.id: "ZOWE-E1"
 ```
-
-<!-- Can we add some detail around these points? -->
-**Naming Conventions:** Provide guidance on naming services (e.g., zowe-apiml) to ensure consistency across HA (High Availability) deployments.
-
-**Instance Tracking:** Describe the use of `service.instance.id` and how to ensure uniqueness across instances.
-
-<!-- An idea might be to provide some detail of the mapping between zowe.yaml properties and OTel attributes. Also, where possible, can we specifiy default values? -->
-
-### Required Service Attributes
-
-The following attributes are required to define the logical identity of the API ML. These attributes, as with all attributes, are automatically appended to all telemetry signals (metrics, traces, and logs) produced by the resource:
-
-
-* **service.name**  (Required)  
-Logical name of the service. Must be the same for all instances within the same HA deployment. Expected to be globally unique if `namespace` is not defined. 
-
-* **service.instance.id** (Required)  <!-- Please confirm if this is required or optional. -->
-Must be unique for each instance of `service.name` and `service.namespace` pair. Automatically generated UUID is generally recommended to ensure uniqueness.
-
-* **service.namespace** (Required)  <!-- Please confirm if this is required or optional. --> 
-The assigned value should help distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`.
-
-* **service.version**  (Required)   <!-- Please confirm if this is required or optional. -->
-The exact version of the service artifact, typically a semantic version (e.g., 1.2.3) or a build hash, used to identify the specific software release.
-
-#### Configuration Example (`zowe.yaml`)
-
-```yaml
+**Site 2 (West Coast) Configuration:**
+```
 zowe:
-  observability:
-    resource:
-      attributes:
-        service.name: "zowe-apiml"
-        service.namespace: "mainframe-production"
-        service.instance.id: "optional-custom-id"
-        service.namespace: "optional-namespace"
-        service.version: "optional-version-number"
-
+  components:
+    api-mediation-layer:
+      observability:
+        enabled: true
+        resource:
+          attributes:
+            service.name: "zowe-apiml"
+            service.namespace: "west-coast"
+            service.instance.id: "ZOWE-W1"
+```
