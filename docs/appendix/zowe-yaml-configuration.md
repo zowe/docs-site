@@ -665,14 +665,14 @@ These configurations can be used under the `components.caching-service` section:
   Specifies the number of records before eviction strategies start evicting.
 
   :::note
-  This property is used only when `storage.mode` is set to `vsam` or `inMemory`. 
+  This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
 
 - **storage.evictionStrategy**  
-  Specifies the eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
+  Specifies the eviction strategy to be used when the maximum storage capacity has been reached. The valid values are `reject`, and `removeOldest`.
 
   :::note
-  This property is used only when `storage.mode` is set to `vsam` or `inMemory`.
+  This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
   :::
 
 ##### VSAM specific configuration (deprecated)
@@ -704,7 +704,8 @@ These configurations can be used under the `components.caching-service` section:
 - **storage.infinispan.jgroups.host**  
   The default value is derived from the Zowe hostname, which Infinispan uses to synchronize data among caching service instances.
 - **storage.infinispan.jgroups.keyExchange.port**  
-  The default value is `7118`. The port number is used by Infinispan to exchange the encryption key among caching-service instances.
+  The port number used by Infinispan to perform a secure handshake between caching-service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.
+  **Default:** `7118`. 
 
 ##### Redis specific configuration
 
