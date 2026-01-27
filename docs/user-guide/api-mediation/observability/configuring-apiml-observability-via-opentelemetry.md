@@ -21,25 +21,23 @@ OpenTelemetry resource attributes for the Zowe API ML are organized into three l
 ### Attribute Categories
 
 * **Service Attributes**  
-These identify the logical entity producing the data. They are used to group telemetry from all instances of the API ML into a single "service" view in your monitoring tools.
+These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example,  "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters ensures you can monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
 
 For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
 * **Deployment Attributes:**  
-These describe the lifecycle stage of the service. They allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
+These attributes describe the lifecycle stage of the service. They allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
 
 For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
 
 * **z/OS Attributes**  
-These provide critical mainframe context. They identify the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running, which is essential for mainframe-specific performance analysis.
+These attributes provide critical mainframe context. They identify the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running, which is essential for mainframe-specific performance analysis.
 
 For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
 
-## Telemetry Data Produced
+## Telemetry Signals 
 
-The API ML produces a range of telemetry data. By default, the OpenTelemetry integration captures performance, health, and interaction data made available through resource attributes configured in your `zowe.yaml`. You can also specify where data is exported.
-
-## Telemetry Signal Categories
+The API ML produces a range of telemetry data referred to as _signals_. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported.
 
 Observability in the API ML is built on the interaction between Signals and Resource Attributes. A _signal_, defined as a discrete stream of telemetry data, is represented by any one of three types of telemetry data: 
 

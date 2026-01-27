@@ -2,6 +2,40 @@
 
 Services are identified via the `service.name` and `service.namespace` properties. These properties create a unique identity for API ML instances.
 
+In complex enterprise environments, you likely have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (seeing all API ML traffic together) with Instance Differentiation (identifying exactly which installation is acting up).
+
+## The Hierarchy of Identification
+To achieve this, OpenTelemetry uses a three-tier approach to service identity:
+
+service.name (The Group): Identifies the overall function. Use this to group all instances that perform the same role (e.g., acme-apiml-production).
+
+service.namespace (The Installation): Identifies a specific deployment or site. Use this to separate different installations, such as us-east-1 vs. us-west-1, or sysplex-a vs. sysplex-b.
+
+service.instance.id (The Individual): Identifies the specific process or Address Space. On z/OS, this is often mapped to the Job Name or ASID.
+
+**Example of Multi-Sysplex Deployment**
+Imagine you have two API ML installations: one in Site 1 and one in Site 2. Each installation has two instances for high availability.
+
+| Attribute | Instance 1 (Site 1) | Instance 2 (Site 1) | Instance 3 (Site 2) |
+| :--- | :--- | :--- | :--- |
+| **service.name** | `zowe-apiml` | `zowe-apiml` | `zowe-apiml` |
+| **service.namespace** | `site-1` | `site-1` | `site-2` |
+| **service.instance.id** | `ZOWEAPIML1` | `ZOWEAPIML2` | `ZOWEAPIML3` |
+
+Example zowe.yaml:
+```
+zowe:
+  observability:
+    enabled: true
+    resource:
+      attributes:
+        # The common logical group
+        service.name: "zowe-apiml"
+        # The specific installation or site
+        service.namespace: "site-2"
+        # The unique identifier for this specific job/process
+        service.instance.id: "ZOWEAPIML3"
+```
 
 <!-- Can we add some detail around these points? -->
 **Naming Conventions:** Provide guidance on naming services (e.g., zowe-apiml) to ensure consistency across HA (High Availability) deployments.
@@ -12,7 +46,7 @@ Services are identified via the `service.name` and `service.namespace` propertie
 
 ### Required Service Attributes
 
-The following attributes are required to define the logical identity of the API ML. These attributes are automatically appended to all telemetry signals (metrics, traces, and logs) produced by the resource:
+The following attributes are required to define the logical identity of the API ML. These attributes, as with all attributes, are automatically appended to all telemetry signals (metrics, traces, and logs) produced by the resource:
 
 
 * **service.name**  (Required)  
