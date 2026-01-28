@@ -1,11 +1,11 @@
-# Using Infinispan as a storage solution through the Caching Service
+# Using Infinispan as a storage solution through the Caching service
 
 :::info Required roles: system administrator, security administrator
 :::
 
 You can configure Infinispan as a storage solution through the Caching Service, as well as configure Infinispan for high availability (HA) to replicate data to provide data durability and availability.
 
-- [Using Infinispan as a storage solution through the Caching Service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
+- [Using Infinispan as a storage solution through the Caching service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
   - [Understanding Infinispan](#understanding-infinispan)
     - [Infinispan replica instances](#infinispan-replica-instances)
   - [Infinispan configuration](#infinispan-configuration)
