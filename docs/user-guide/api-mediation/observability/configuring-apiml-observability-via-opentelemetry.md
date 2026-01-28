@@ -6,7 +6,7 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools—such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment. The implementation of the OTel standard ensures flexibility in your observability stack, whereby you can use any monitoring tool to perform the following processes:
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools - such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment. The implementation of the OTel standard ensures flexibility in your observability stack, whereby you can use any monitoring tool to perform the following processes:
 
 * Monitor system activity and overall health in real-time.
 * Diagnose latency issues by tracing requests across service boundaries.
@@ -16,13 +16,13 @@ By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to 
 API ML system observability is available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
 :::
 
-API ML observability is built upon Resources, which define the identity and z/OS context of the system, and Signals, which represent the actual streams of metrics, traces, and logs produced by those resources.
+API ML observability is built upon Resources (the 'who' and 'where'), which define the identity and z/OS context of the system, and Signals (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
 
 ## Resource Attributes 
 
 A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every [signal](#telemetry-signals-and-observability) (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
 
-OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
+OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
 
 ### Attribute Categories
 
@@ -82,7 +82,7 @@ Metrics are numerical representations of data measured over intervals of time. I
 Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
 
   * **Span Intervals**  
-  Captures discrete segments of work, such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
+  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
 
   * **Latency Analysis**  
   Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
