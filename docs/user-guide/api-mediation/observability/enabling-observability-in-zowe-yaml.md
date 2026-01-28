@@ -56,9 +56,3 @@ zowe:
 
 When `enabled: true` is set, the API ML single-service starts a background telemetry engine. This engine gathers all signals and bundles these signals with all Resource Attributes. These bundles are then pushed by means of the OTLP Exporter to your specified endpoint.
 
-:::note
-If the endpoint is unreachable, API ML logs a warning, but service traffic is not interrupted. It is recommended to use a local OTel collector to minimize network latency. For information about the OTel collector, see [Quick start](https://opentelemetry.io/docs/collector/quick-start/) in the OpenTelemetry documentation. 
-
-For the OTel official download, see [OpenTelemetry Collector Releases](https://github.com/open-telemetry/opentelemetry-collector-releases/releases)
-For z/OS environments, you would typically look for the Linux on Z versions if running in a containerized environment, or check specific vendor distributions if running natively.
-:::
