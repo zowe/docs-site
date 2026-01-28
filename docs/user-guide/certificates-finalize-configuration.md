@@ -39,9 +39,13 @@ zowe:
       certificateAuthorities: /path/to/your/cert_authority.cer
 ```
 
-Ensure all the values in this section are correct: they exist in their stated locations, the passwords to the keystore and truststore are accurate, and all file locations are accessible by your Zowe runtime user. 
+Manually review that all the values you provided are correct: 
+* The keystore, truststore, and certificates exist in their stated locations.
+* The passwords to the keystore and truststore are accurate.
+* The certificate alias is correct and exists in the provided keystore.
+* All file locations are accessible by your Zowe runtime user. 
 
-You can verify the certificate configuration is accurate by starting Zowe. <!-- TODO: cert preflight checks? -->
+After manual review, you are ready to start Zowe with your certificate configuration. When Zowe starts, it will perform another series of verifications against your configuration and alert you in the job output if there are any problems. <!-- TODO: cert preflight checks? -->
 
 ## Review JCERACFKS certificate configuration
 
@@ -72,4 +76,9 @@ zowe:
       password: "${{ zowe.certificate.keystore.password }}"
 ```
 
+Manually review that all the values you provided are correct: 
+* The keyring exists.
+* The certificate alias is correct and exists in the provided keyring.
+* The keyring is accessible by your Zowe runtime user.
 
+After manual review, you are ready to start Zowe with your certificate configuration. When Zowe starts, it will perform another series of verifications against your configuration and alert you in the job output if there are any problems. <!-- TODO: cert preflight checks? -->
