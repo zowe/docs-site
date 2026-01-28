@@ -6,7 +6,7 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools—such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment. The implementation of the OTel standard ensures flexibility in your observability stack, whereby you can use any OTLP-compatible backend to perform the following processes:
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools—such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment. The implementation of the OTel standard ensures flexibility in your observability stack, whereby you can use any monitoring tool to perform the following processes:
 
 * Monitor system activity and overall health in real-time.
 * Diagnose latency issues by tracing requests across service boundaries.
