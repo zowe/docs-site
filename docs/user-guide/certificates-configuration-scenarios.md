@@ -13,6 +13,11 @@ Zowe's assisted certificate setup begins with customizing certificate scenario Y
 Reminder: Automated generation of certificates is an option, but is not required. If you already have certificates and a key ring or keystore / truststore combination you've created on your own, you can go right to [Reviewing Certificate Configuration](./certificates-finalize-configuration.md).
 :::
 
+:::tip
+If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors.
+:::
+
+
 ## <b>*</b> What is a valid certificate in Zowe?
 
 A valid certificate for use in Zowe conforms to one of the following two options: 
@@ -298,18 +303,13 @@ Follow this procedure and configure `scenario-3.yaml` within the `files/examples
 <summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
-
+    * JCERACFKS (default)
     * JCEKS  
     * JCECCAKS  
-    * JCERACFKS  
     * JCECCARACFKS  
     * JCEHYBRIDRACFKS
 
-2. Add the parameter `createZosmfTrust` and set to true.  
-    ```
-    createZosmfTrust: true
-    ```
-3. Under the nested subsection `keyring:`, specify the following keyring values:  
+2. Under the nested subsection `keyring:`, specify the following keyring values:  
 
     * keyring name  
         ```
@@ -334,11 +334,11 @@ Follow this procedure and configure `scenario-3.yaml` within the `files/examples
             state: ""
             country: ""
         ```
-4. Set the validity in days for the Zowe generated certificates
+3. Set the validity in days for the Zowe generated certificates
     ```  
     validity: 3650
     ```
-5. Set the domain names and IPs specified in the certificate SAN. If 
+4. Set the domain names and IPs specified in the certificate SAN. If 
 this field is not defined, the `zwe init` command uses the value `zowe.externalDomains`.  
     ```
     san:

@@ -1,4 +1,4 @@
-# Finalize Certificate Configuration
+# Finalize certificate configuration
 
 Once you have your certificates and either key ring or USS keystore and truststore ready, you can finish configuring certificates with Zowe. Follow the procedure described in this article according to your requirements to finalize and review your Zowe certificate configuration.
 
@@ -9,11 +9,11 @@ Choose from the following procedures:
 - [Review PKCS12 Certificate Configuration](#review-pkcs12-certificate-configuration)
 - [Review JCERACFKS Certificate Configuration](#review-jceracfks-certificate-configuration)
 
-## Review PKCS12 Certificate Configuration
+## Review PKCS12 certificate configuration
 
-Details about the PKCS12 certificates used when Zowe is launched are specified in the `zowe.yaml` section `zowe.certificate`. This configuration block contains information about the certificate name and the location of the certificate, together with the keystore and truststore location.
+When Zowe is launched, details about the PKCS12 certificates are found in the `zowe.yaml` file's `zowe.certificate` section. This configuration block contains information about the certificate name and the location of the certificate, together with the keystore and truststore location.
 
-If you've used Zowe Assisted Certificate Setup with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own PKCS12 certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using this guide:
+If you have used [Zowe Assisted Certificate Setup](./certificates-configuration-scenarios.md) with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own PKCS12 certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using this guide:
 
 ```yaml
 zowe:
@@ -43,14 +43,14 @@ Ensure all the values in this section are correct: they exist in their stated lo
 
 You can verify the certificate configuration is accurate by starting Zowe. <!-- TODO: cert preflight checks? -->
 
-## Review JCERACFKS Certificate Configuration
+## Review JCERACFKS certificate configuration
 
-Details about the JCERACFKS certificates used when Zowe is launched are specified in the `zowe.yaml` section `zowe.certificate`. This section contains information about the certificate name, certificate keystore, and certificate truststore. Both the keystore and truststore will be z/OSMF key rings in this case.
+When Zowe is launched, details about the JCERACFKS certificates are found in the `zowe.yaml` file's `zowe.certificate` section. This section contains information about the certificate name, certificate keystore, and certificate truststore. Both the keystore and truststore are z/OSMF key rings in this case.
 
-If you've used Zowe Assisted Certificate Setup with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own JCERACFKS certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using this guide:
+If you have used Zowe Assisted Certificate Setup with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own JCERACFKS certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using this guide:
 
-::note If there is a `zowe.certificate.pem` section, remove it from your `zowe.yaml` file.
-::
+:::note If there is a `zowe.certificate.pem` section, remove it from your `zowe.yaml` file.
+:::
 
 ```yaml
 zowe:
@@ -60,7 +60,7 @@ zowe:
       # Type of certificate storage. Value by default should be JCERACFKS. APIML additionally supports: JCEKS, JCECCAKS, JCECCARACFKS, or JCEHYBRIDRACFKS
       type: JCERACFKS
       file: safkeyring://YOURID/YOURKEYRING
-      # "password" should literally "password" for key rings
+      # "password" should literally be "password" for key rings
       password: password
       # alias is the name of your key/cert. Use the Case Sensitive, Space Sensitive value in your ESM's list ring capability
       alias: your_cert_label_in_keyring
