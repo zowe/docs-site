@@ -29,17 +29,17 @@ OpenTelemetry resource attributes for the Zowe API ML are organized into three l
 * **Service Attributes**  
 These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example, "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters allows you to monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
 
-For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
+  For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
 * **Deployment Attributes:**  
 These attributes describe the lifecycle stage of the service, and allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
 
-For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
+  For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
 
 * **z/OS Attributes**  
 These attributes provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running. 
 
-For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
+  For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
 
 ## Telemetry Signals and Observability
 
@@ -51,9 +51,9 @@ Signals can be any of the following signal types:
 * [Traces](https://opentelemetry.io/docs/concepts/signals/traces/) (request journeys)
 * [Logs](https://opentelemetry.io/docs/concepts/signals/logs/) (event records). 
 
-Each of these signal types represent a specific category of observation from a system. Every signal is automatically enriched based on resource attributes. These attributes act as a common identity, wherein data is categorized into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context). This categorization approach ensures that all telemetry is allows administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools. 
+Each of these signal types represents a specific category of observation from a system. Every signal is automatically enriched based on resource attributes, which act as a common identity across all telemetry streams. This enrichment process categorizes data into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context) metadata. By mapping these consistent attributes to every metric, trace, and log, the system creates a unified data model where a performance spike in a metric can be directly linked to a specific error in a log or a delay in a trace. This structured categorization allows administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools, transforming raw telemetry into a detailed map of system health. 
 
-While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
+While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names, operating system types, and process identifiers. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
 
 :::info How to understand Signals vs Resources 
 
