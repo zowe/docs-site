@@ -1,20 +1,12 @@
 # Configure OpenTelemetry z/OS Attributes
 
+<!-- VALIDATE THIS CONTENT AFTER SUPPORT IS IMPLEMENTED. -->
+
 z/OS-specific resource attributes for API ML provide essential mainframe context to your telemetry data, allowing you to correlate metrics, traces, and logs with specific system identifiers such as SMF IDs, Sysplex names, and LPARs. By providing z/OS platform context, mainframe performance data can be integrated into distributed observability backends.
 
 ## How system discovery works
 
 The z/OS attributes are primarily populated through an automated System Discovery process that occurs during the initialization of the API ML service. The integrated OpenTelemetry SDK executes platform-specific calls to query z/OS Control Blocks (such as the CVTSNAME or ECVT) and system variables.
-
-This process identifies the current execution environment by retrieving values such as:
-
-* **Address Space Identifier (ASID):** Mapped to `process.pid`.
-* **System Release Level:** Retrieved via `D IPLINFO` and mapped to `os.version`.
-* **Job Name:** Mapped to `process.command`.
-
-:::note
-If these attributes are manually defined in the `zowe.yaml` configuration file, the discovery engine treats the manual entries as overrides, ensuring that user-defined values take precedence over detected system defaults.
-:::
 
 ## z/OS Attribute Reference
 
