@@ -65,7 +65,7 @@ To better understand the relationship between signals and resources, it is usefu
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. 
 
 :::
-## Understanding API ML Telemetry Signals
+### Understanding API ML Telemetry Signals
 
 API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how diffent signal types apply to API ML observability:
 
