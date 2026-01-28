@@ -65,65 +65,33 @@ To better understand the relationship between signals and resources, it is usefu
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. 
 
 :::
+## Understanding API ML Telemetry Signals
 
-### Metrics (Runtime Behavior & Health)
+API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how diffent signal types apply to API ML observability:
 
-<!-- Please replace these place holder metrics with actual metrics that will be implemented -->
-Metrics provide numerical data used to track trends and trigger alerts.
+* **Metrics (The "How Much")**  
+Metrics are numerical representations of data measured over intervals of time. In the context of API ML, they are used to track system health, observe performance trends, and trigger automated alerts before issues impact end-users.
 
-* **JVM & System Metrics:**
-    * **process.runtime.jvm.memory.usage**  
-    Current utilization of heap and non-heap memory.
+  * **JVM & System Health**  
+  Monitors standard indicators such as heap memory usage, garbage collection duration, and CPU utilization of the API ML process.
 
-    * **process.runtime.jvm.gc.duration**  
-    Time spent in Garbage Collection, critical for identifying critical pauses.
+  * **Traffic & Throughput**  
+  Tracks counters and gauges for request volume, HTTP error rates, and the number of active concurrent connections.
 
-    * **system.cpu.utilization**  
-    CPU usage percentage for the process and the overall LPAR.
+* **Traces (The "Where")**  
+Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
 
-* **Request Processing Metrics:**
-    * **apiml.request.count**  
-    A counter of all incoming requests, categorized by `http.method` and `http.
-    status_code`.
+  * **Span Intervals**  
+  Captures discrete segments of work, such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
 
-    * **apiml.request.duration**  
-    A histogram measuring the total time spent within the Modulith for each request.
+  * **Latency Analysis**  
+  Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
 
-    * **apiml.active.requests**  
-    A gauge showing the current number of concurrent requests being processed.
+* **Logs (The "What" and "Why")**  
+Logs are timestamped text records of discrete events. They provide the deep technical context necessary to understand why a specific error occurred or how the state of the API ML has changed.
 
-:::note
-For examples of usability of OpenTelemetry metrics, see [Using your API ML OpenTelemetry metrics](using-your-otel-metrics.md).
-:::
+  * **Activity Records**  
+  Captures critical system events such as service registration/deregistration, security audit failures, and lifecycle transitions like startup or shutdown.
 
-
-### Traces (Service Interactions)
-Traces record the path of a request as it traverses the API ML.
-
-<!-- Please replace these place holder traces with actual traces that will be implemented -->
-
-* **Gateway Spans**  
-Measures the entry point latency and the time taken to proxy the request to a backend service.
-
-* **Authentication Spans**  
-Tracks the duration of security checks (e.g., SAF, JWT validation, or ZSS calls).
-
-* **Discovery Spans**  
-Records the time taken to resolve a service ID to a specific physical URL.
-
-### Logs (System Events)
-Logs provide the "why" behind errors or changes in state.
-
-* **Access Logs**  
-High-volume logs detailing every request, including the `traceId` for correlation with traces.
-
-* **Security Logs**  
-Records of failed authentication attempts or unauthorized access to protected routes.
-
-* **Lifecycle Logs**  
-Critical events such as service registration, heartbeat failures, or Modulith startup/shutdown.
-
-
-
-<!-- Are there Mainframe-specific metrics that we should mention? -->
-
+  * **Correlation**  
+  Logs produced by the API ML include OTel traceId metadata. This allows you to jump from a specific error log directly to the associated trace to see the full context of the failed request.
