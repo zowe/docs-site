@@ -89,7 +89,7 @@ The z/OSMF certificate is verified according to Zowe [Certificate verification s
 
 
 ## Certificate setup types
-Whether importing or letting Zowe generate certificates, the setup for Zowe certificate automation and the configuration to use an existing keystore and truststore depends upon the content format: file-based (`PKCS12`) or z/OS key ring-based. If you are bringing your own previously defined certificates and keyrings to Zowe, you can configure `zowe.certificate` with this information directly and bypass `zwe init certificate` completely. 
+Zowe requires certificates in one of two formats: file-based (`PKCS12`) or z/OS key ring-based. If you are bringing your own previously defined certificates to Zowe, you can configure `zowe.certificate` with this information directly. If you are not bringing your own certificates, [Zowe can assist](../user-guide/certificates-configuration-scenarios.md) with certificate generation.
 
 - [File-based (PKCS12) certificate setup](#file-based-pkcs12-certificate-setup)
 - [z/OS key ring-based certificate setup](#zos-key-ring-based-certificate-setup)
@@ -97,11 +97,13 @@ Whether importing or letting Zowe generate certificates, the setup for Zowe cert
 ### File-based (PKCS12) certificate setup
 
 Zowe is able to use PKCS12 certificates that are stored in USS. Zowe uses a `keystore` directory to contain its certificates primarily in PKCS12 (`.p12`, `.pfx`) file format, but also in PEM (`.pem`) format. The truststore is in the `truststore` directory that holds the public keys and CA chain of servers which Zowe communicates with (for example z/OSMF).
-Configuring PKCS12 certificates is covered under [Certificate Configuration](../user-guide/configure-certificates.md) and [Reviewing Certificate Configuration](../user-guide/certificates-finalize-configuration.md).
+
+Generating PKCS12 certificate is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md), Scenarios 1 and 2.
+Configuring PKCS12 certificates is covered in [Finalize certificate configuration](../user-guide/certificates-finalize-configuration.md).
 
 ### z/OS key ring-based certificate setup
 
 Zowe is able to work with certificates held in a **z/OS key ring**.
 
-
-If you are not bringing your own certificate and keyring, and instead would like Zowe to create these for you, then you should follow the instructions under [Zowe Assisted Certificate Setup](../user-guide/certificates-configuration-questionnaire.md).
+Generating keyrings with certificates is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md), Scenarios 3 through 5.
+Configuring keyrings with certificates is covered in [Finalize certificate configuration](../user-guide/certificates-finalize-configuration.md).
