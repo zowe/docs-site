@@ -47,11 +47,15 @@ Manually review that all the values you provided are correct:
 
 After manual review, you are ready to start Zowe with your certificate configuration. When Zowe starts, it will perform another series of verifications against your configuration and alert you in the job output if there are any problems. <!-- TODO: cert preflight checks? -->
 
-## Review JCERACFKS certificate configuration
+## Review key ring certificate configuration
 
-When Zowe is launched, details about the JCERACFKS certificates are found in the `zowe.yaml` file's `zowe.certificate` section. This section contains information about the certificate name, certificate keystore, and certificate truststore. Both the keystore and truststore are z/OSMF key rings in this case.
+When Zowe is launched, details about the key ring certificates are found in the `zowe.yaml` file's `zowe.certificate` section. This section contains information about the certificate name, certificate keystore, and certificate truststore. Both the keystore and truststore are z/OSMF key rings in this case.
 
-If you have used Zowe Assisted Certificate Setup with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own JCERACFKS certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using this guide:
+If you have used Zowe Assisted Certificate Setup with `--update-config`, the `zowe.certificate` section should be filled out correctly for you. If you did not use `--update-config`, or are bringing your own key ring and certificates, then customize your `zowe.yaml` file's `zowe.certificate` section using the below guide.
+
+If you are using AT-TLS with Zowe, consult the [Enabling AT-TLS for single-service deployment mode](./configuring-at-tls-for-zowe-server-single-service.md) article before proceeding. The key ring you define in your AT-TLS configuration should be the key ring you supply in the below guide.
+
+If you want to use ICSF-backed private keys, consult the [Using ICSF Hardware Private Keys](./using-icsf-hardware-private-keys.md) article before proceeding. As mentioned in that article, ensure you are using `JCEHYBRIDRACFKS` as you follow the below example.
 
 :::note If there is a `zowe.certificate.pem` section, remove it from your `zowe.yaml` file.
 :::

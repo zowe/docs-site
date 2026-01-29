@@ -109,7 +109,7 @@ Zowe offers automated assistance setting up certificates, though this is disable
 
 Review the following options and choose which best applies to your use case:
 
-* If you are bringing your own certificates and key ring, and configuring them without Zowe's automated assistance, see [Finalize Certificate Configuration](./certificates-finalize-configuration.md).
+* If you are bringing your own certificates and key ring, and configuring them without Zowe's automated assistance, see [Finalize Certificate Configuration](./certificates-finalize-configuration.md). You should also choose this option if you are setting up Zowe with an [AT-TLS configuration](./configuring-at-tls-for-zowe-server-single-service.md).
 
 * If you are not bringing your own certificates and key ring and will use Zowe's automated assistance, take our [Certificates Configuration Questionnaire](./certificates-configuration-questionnaire.md) to determine which configuration scenario best suits your use case and proceed from there.
 
