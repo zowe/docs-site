@@ -1,6 +1,6 @@
 # Configure OpenTelemetry Service Attributes
 
-Services are identified via the service.name, service.namespace, and service.instance.id properties. Together, these attributes create a unique identity for API ML instances across your enterprise.
+Services are identified via the `service.name`, `service.namespace`, and `service.instance.id` properties. Together, these attributes create a unique identity for API ML instances across your enterprise.
 
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
