@@ -1,0 +1,1336 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AuthOrder | Zowe Node.js SDK - v3.4.1</title>
+	<meta name="description" content="Documentation for Zowe Node.js SDK - v3.4.1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">Zowe Node.js SDK - v3.4.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+				</li>
+				<li>
+					<a href="_zowe_imperative.authorder.html">AuthOrder</a>
+				</li>
+			</ul>
+			<h1>Class AuthOrder</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>The purpose of this class is to detect an authentication order property
+							supplied by a user in a profile, command line, or environment variable.
+							That authOrder is then used to place the correct set of credentials into
+						a session for authentication.</p>
+					</div>
+					<p>To accomplish this behavior, we call AuthOrder.addCredsToSession
+						early in the processing of a command (when both a session
+						configuration and command arguments are available). For example in:
+						ConnectionPropsForSessCfg.addPropsOrPrompt or
+					ProfileInfo.createSession</p>
+					<p>Before we use the session, we call AuthOrder.putTopAuthInSession.
+						For example in:
+						AbstractRestClient.constructor
+						AbstractRestClient.request
+						AuthOrder.putTopAuthInSession ensures that the session only contains the
+					credentials for the desired type of authentication.</p>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">AuthOrder</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#array_of_creds" class="tsd-kind-icon">ARRAY_<wbr>OF_<wbr>CREDS</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#sess_cert_key_name" class="tsd-kind-icon">SESS_<wbr>CERT_<wbr>KEY_<wbr>NAME</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#sess_cert_name" class="tsd-kind-icon">SESS_<wbr>CERT_<wbr>NAME</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#addcredstosession" class="tsd-kind-icon">add<wbr>Creds<wbr>ToSession</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#autharraytocfgval" class="tsd-kind-icon">auth<wbr>Array<wbr>ToCfg<wbr>Val</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#authcfgvaltoarray" class="tsd-kind-icon">auth<wbr>Cfg<wbr>Val<wbr>ToArray</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#cacheauthorder" class="tsd-kind-icon">cache<wbr>Auth<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#cachecred" class="tsd-kind-icon">cache<wbr>Cred</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#cachecredsandauthorder" class="tsd-kind-icon">cache<wbr>Creds<wbr>And<wbr>Auth<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#cachedefaultauthorder" class="tsd-kind-icon">cache<wbr>Default<wbr>Auth<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#choosedefaultauthorder" class="tsd-kind-icon">choose<wbr>Default<wbr>Auth<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#clearauthcache" class="tsd-kind-icon">clear<wbr>Auth<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#findorcreateauthcache" class="tsd-kind-icon">find<wbr>OrCreate<wbr>Auth<wbr>Cache</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#formnewauthorderarray" class="tsd-kind-icon">form<wbr>New<wbr>Auth<wbr>Order<wbr>Array</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#getauthorder" class="tsd-kind-icon">get<wbr>Auth<wbr>Order</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.authorder.html#getpropnmfor" class="tsd-kind-icon">get<wbr>Prop<wbr>NmFor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#keepcred" class="tsd-kind-icon">keep<wbr>Cred</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#makingrequestfortoken" class="tsd-kind-icon">making<wbr>Request<wbr>For<wbr>Token</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#putnewauthsfirstinsess" class="tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>InSess</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_zowe_imperative.authorder.html#putnewauthsfirstondisk" class="tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>OnDisk</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#puttopauthinsession" class="tsd-kind-icon">put<wbr>Top<wbr>Auth<wbr>InSession</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static"><a href="_zowe_imperative.authorder.html#removeextracredsfromsess" class="tsd-kind-icon">remove<wbr>Extra<wbr>Creds<wbr>From<wbr>Sess</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static"><a href="_zowe_imperative.authorder.html#removerequestfortoken" class="tsd-kind-icon">remove<wbr>Request<wbr>For<wbr>Token</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="array_of_creds" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> ARRAY_<wbr>OF_<wbr>CREDS</h3>
+					<div class="tsd-signature tsd-kind-icon">ARRAY_<wbr>OF_<wbr>CREDS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;user&quot;, &quot;password&quot;, &quot;base64EncodedAuth&quot;, &quot;tokenType&quot;, &quot;tokenValue&quot;,AuthOrder.SESS_CERT_NAME, AuthOrder.SESS_CERT_KEY_NAME]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L70">@zowe/imperative/src/rest/src/session/AuthOrder.ts:70</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="sess_cert_key_name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> SESS_<wbr>CERT_<wbr>KEY_<wbr>NAME</h3>
+					<div class="tsd-signature tsd-kind-icon">SESS_<wbr>CERT_<wbr>KEY_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"certKey"</span><span class="tsd-signature-symbol"> = &quot;certKey&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L69">@zowe/imperative/src/rest/src/session/AuthOrder.ts:69</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="sess_cert_name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagReadonly">Readonly</span> SESS_<wbr>CERT_<wbr>NAME</h3>
+					<div class="tsd-signature tsd-kind-icon">SESS_<wbr>CERT_<wbr>NAME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"cert"</span><span class="tsd-signature-symbol"> = &quot;cert&quot;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L68">@zowe/imperative/src/rest/src/session/AuthOrder.ts:68</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="addcredstosession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> add<wbr>Creds<wbr>ToSession</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Creds<wbr>ToSession&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L94">@zowe/imperative/src/rest/src/session/AuthOrder.ts:94</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Add available credentials (and the authentication order in which
+										credentials should be chosen) into a cache within the specified session.
+										Using that cached information put only the top selected credential as
+									the credential to be used by the session.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+											A session configuration object into which we place cached creds
+										and the selected creds.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol"> = { &quot;$0&quot;: &quot;NameNotUsed&quot;, &quot;_&quot;: [] }</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+											The set of arguments with which the calling function is operating.
+											For CLI, the cmdArgs come from the command line, profile, or
+											environment. Other apps can place relevant arguments into this
+										object to be processed by this function.</p>
+										<pre><code> <span class="hljs-keyword">If</span> cmdArgs <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> supplied, we <span class="hljs-keyword">only</span> <span class="hljs-keyword">cache</span> creds found in the sessCfg.
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="autharraytocfgval" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> auth<wbr>Array<wbr>ToCfg<wbr>Val</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">auth<wbr>Array<wbr>ToCfg<wbr>Val<span class="tsd-signature-symbol">(</span>authTypesArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L639">@zowe/imperative/src/rest/src/session/AuthOrder.ts:639</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Convert an AUTH_TYPE_CHOICES array to a string that is an appropriate
+									value for the &quot;authOrder&quot; configuration property.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>authTypesArray: <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										An array of auth types.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>A string containing a valid value for the authOrder configuration property.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="authcfgvaltoarray" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> auth<wbr>Cfg<wbr>Val<wbr>ToArray</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">auth<wbr>Cfg<wbr>Val<wbr>ToArray<span class="tsd-signature-symbol">(</span>authCfgVal<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L653">@zowe/imperative/src/rest/src/session/AuthOrder.ts:653</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Convert a string that is an appropriate value for the &quot;authOrder&quot;
+									configuration property into an array of AUTH_TYPE_CHOICES.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>authCfgVal: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										An authOrder property value.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>An array of AUTH_TYPE_CHOICES.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="cacheauthorder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> cache<wbr>Auth<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">cache<wbr>Auth<wbr>Order&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L706">@zowe/imperative/src/rest/src/session/AuthOrder.ts:706</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cache the authOrder property from the supplied cmdArgs. If no authOrder exists
+									in cmdArgs, a default authOrder is created and cached.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										A session configuration object into which we store the auth cache.</p>
+									</div>
+								</li>
+								<li>
+									<h5>cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										The set of arguments that the calling function is using.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="cachecred" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> cache<wbr>Cred</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">cache<wbr>Cred&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCredName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L775">@zowe/imperative/src/rest/src/session/AuthOrder.ts:775</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cache the named credential into our cache of available credentials.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCredName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										The name of a cred to be cached in a session.</p>
+									</div>
+								</li>
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										A session configuration object.</p>
+									</div>
+								</li>
+								<li>
+									<h5>cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										The set of arguments with which the calling function is operating.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="cachecredsandauthorder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> cache<wbr>Creds<wbr>And<wbr>Auth<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">cache<wbr>Creds<wbr>And<wbr>Auth<wbr>Order&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, cmdArgs<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L678">@zowe/imperative/src/rest/src/session/AuthOrder.ts:678</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cache all of the credentials that are available in either the supplied
+										sessCfg object or in the supplied command arguments. Also cache the
+										authOrder that is specified in the supplied command arguments. The
+									cache properties are stored into the sessCfg object itself.</p>
+								</div>
+								<p>Downstream logic uses this cache to determine which auth type should be
+								used in the final session used by a client REST request.</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										A session configuration object to which we place the cached creds.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> cmdArgs: <a href="../interfaces/_zowe_imperative.icommandarguments.html" class="tsd-signature-type">ICommandArguments</a><span class="tsd-signature-symbol"> = { &quot;$0&quot;: &quot;NameNotUsed&quot;, &quot;_&quot;: [] }</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+											The set of arguments with which the calling function is operating.
+											For CLI, the cmdArgs come from the command line, profile, or
+											environment. Other apps can place relevant arguments into this
+										object to be processed by this function.</p>
+										<pre><code> <span class="hljs-keyword">If</span> cmdArgs <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> supplied, we <span class="hljs-keyword">only</span> <span class="hljs-keyword">cache</span> creds found in the sessCfg.
+</code></pre>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="cachedefaultauthorder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> cache<wbr>Default<wbr>Auth<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">cache<wbr>Default<wbr>Auth<wbr>Order&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, topDefaultAuth<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">typeof </span><a href="../modules/_zowe_imperative.html#auth_type_basic" class="tsd-signature-type">AUTH_TYPE_BASIC</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">typeof </span><a href="../modules/_zowe_imperative.html#auth_type_token" class="tsd-signature-type">AUTH_TYPE_TOKEN</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L130">@zowe/imperative/src/rest/src/session/AuthOrder.ts:130</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Cache the default authentication order to be used when the user has NOT
+										specified an order. No action is performed if the end-user HAS defined
+									an authentication order in their zowe client configuration.</p>
+								</div>
+								<p>For historical reason, we have 2 default orders. Thus, the caller can
+									specify which of 2 creds to use as the top cred in the authentication order:
+								SessConstants.AUTH_TYPE_BASIC or SessConstants.AUTH_TYPE_TOKEN</p>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										A session configuration object into which we place the default order.</p>
+									</div>
+								</li>
+								<li>
+									<h5>topDefaultAuth: <span class="tsd-signature-symbol">typeof </span><a href="../modules/_zowe_imperative.html#auth_type_basic" class="tsd-signature-type">AUTH_TYPE_BASIC</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">typeof </span><a href="../modules/_zowe_imperative.html#auth_type_token" class="tsd-signature-type">AUTH_TYPE_TOKEN</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										The authentication type that will be used first.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>True when the default order was cached.
+								False when the user supplied an order, because you cannot
+							override the user-supplied order with any default.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="choosedefaultauthorder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> choose<wbr>Default<wbr>Auth<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">choose<wbr>Default<wbr>Auth<wbr>Order&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L802">@zowe/imperative/src/rest/src/session/AuthOrder.ts:802</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Choose a default authentication order and place it into the session sessCfg.</p>
+								</div>
+								<p>Other classes in the Zowe client API (like AbstractRestClient) call
+									cacheDefaultAuthOrder to specify the top default authentication type.
+								If so, we keep any topDefaultAuth that has already been set.</p>
+								<p>If topDefaultAuth has NOT been set, we set basic authentication as the
+								topDefaultAuth.</p>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										A session configuration object.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="clearauthcache" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> clear<wbr>Auth<wbr>Cache</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">clear<wbr>Auth<wbr>Cache&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L179">@zowe/imperative/src/rest/src/session/AuthOrder.ts:179</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Clears the authentication cache.</p>
+								</div>
+								<p>To get the right creds and auth order in your session after calling this
+									function you must once again call the appropriate combination of:
+									AuthOrder.addCredsToSession
+									AuthOrder.cacheDefaultAuthOrder
+								AuthOrder.putTopAuthInSession</p>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="findorcreateauthcache" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> find<wbr>OrCreate<wbr>Auth<wbr>Cache</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>OrCreate<wbr>Auth<wbr>Cache&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L824">@zowe/imperative/src/rest/src/session/AuthOrder.ts:824</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Find the auth cache in the session config. If there is no cache
+									recorded in the session config, create a new auth cache entry.</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										A session configuration object into which we record any newly created cache.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="formnewauthorderarray" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> form<wbr>New<wbr>Auth<wbr>Order<wbr>Array</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">form<wbr>New<wbr>Auth<wbr>Order<wbr>Array<span class="tsd-signature-symbol">(</span>existingAuths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span>, newFirstAuths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span>, newAuthsOpts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.inewfirstauthsopts.html" class="tsd-signature-type">INewFirstAuthsOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L599">@zowe/imperative/src/rest/src/session/AuthOrder.ts:599</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Form a new auth type array from an existing array and a second array
+										whose members should come first in the new array.
+										Duplicates are removed from the resulting authOrder array.
+										Any auth types from the existing array remain later in the array,
+									unless newAuthsOpts.onlyTheseAuths is true.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>existingAuths: <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										An existing array of auth types.</p>
+									</div>
+								</li>
+								<li>
+									<h5>newFirstAuths: <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+											An array of one or more auth types to be placed at the front of the
+										the existing array of auth types.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> newAuthsOpts: <a href="../interfaces/_zowe_imperative.inewfirstauthsopts.html" class="tsd-signature-type">INewFirstAuthsOpts</a><span class="tsd-signature-symbol"> = {onlyTheseAuths: false}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										Options that control some replacement choices.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>A new array of AUTH_TYPE_CHOICES.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="getauthorder" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Auth<wbr>Order</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Auth<wbr>Order&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L200">@zowe/imperative/src/rest/src/session/AuthOrder.ts:200</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns the cached authentication order.
+									If no auth order exists, we create and return a default auth order.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+											The session config from which we retrieve the cached auth order.
+											When no auth order exists in the sessCfg, a default auth order
+										is stored in the sessCfg, before returning that newly created value.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>The cached authentication order.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="getpropnmfor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> get<wbr>Prop<wbr>NmFor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Prop<wbr>NmFor<span class="tsd-signature-symbol">(</span>propName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, desiredUse<span class="tsd-signature-symbol">: </span><a href="../enums/_zowe_imperative.propuse.html" class="tsd-signature-type">PropUse</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L228">@zowe/imperative/src/rest/src/session/AuthOrder.ts:228</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the correct property name for use in either a session
+										or in a config file. Currently only certificate property names
+									are different between the two.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>propName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+											The name of a property for which we must select the
+										correct name to.</p>
+									</div>
+								</li>
+								<li>
+									<h5>desiredUse: <a href="../enums/_zowe_imperative.propuse.html" class="tsd-signature-type">PropUse</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										Specifies where property is to be used.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The cached authentication order.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+					<a name="keepcred" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> keep<wbr>Cred</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">keep<wbr>Cred<span class="tsd-signature-symbol">(</span>credToKeep<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, credsToRemove<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L857">@zowe/imperative/src/rest/src/session/AuthOrder.ts:857</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Keep the specified credential by deleting it from the set of
+									credentials to remove.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>credToKeep: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Input.
+										The credential that we want to keep.</p>
+									</div>
+								</li>
+								<li>
+									<h5>credsToRemove: <span class="tsd-signature-type">Set</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										The set of credentials that will be removed.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="makingrequestfortoken" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> making<wbr>Request<wbr>For<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">making<wbr>Request<wbr>For<wbr>Token&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L257">@zowe/imperative/src/rest/src/session/AuthOrder.ts:257</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Record that the session is being used to make a request for a token
+									(ie logging into APIML).</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										The session config into which we record that we are requesting a token.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="putnewauthsfirstinsess" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>New<wbr>Auths<wbr>First<wbr>InSess</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>InSess&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span>, newFirstAuths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span>, newAuthsOpts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.inewfirstauthsopts.html" class="tsd-signature-type">INewFirstAuthsOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L455">@zowe/imperative/src/rest/src/session/AuthOrder.ts:455</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Put the specified array of auth types first in the authOrder for the
+										specified session. Duplicates are removed from the resulting authOrder
+										array. Any existing auth types remain later in the array,
+									unless newAuthsOpts.onlyTheseAuths is true.</p>
+								</div>
+								<p>Calling apps should NOT use this function to impose a hard-coded
+									authentication order for the session. Users control that decision.
+									Apps should only call this function if the app is implementing a directive
+									from the user which implies that the authOrder should be changed. An example
+									is when a user logs into APIML. The implication is that the user wants to use
+								a token, and that tokens should be at the front of the authentication order.</p>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError}
+										If sessCfg is null or undefined.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										The session config into which we place the modified array of auth types.</p>
+									</div>
+								</li>
+								<li>
+									<h5>newFirstAuths: <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+											An array of one or more auth types to be placed at the front of the
+										the existing array of auth types.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> newAuthsOpts: <a href="../interfaces/_zowe_imperative.inewfirstauthsopts.html" class="tsd-signature-type">INewFirstAuthsOpts</a><span class="tsd-signature-symbol"> = {onlyTheseAuths: false}</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										Options that control some replacement choices.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="putnewauthsfirstondisk" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>New<wbr>Auths<wbr>First<wbr>OnDisk</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>OnDisk<span class="tsd-signature-symbol">(</span>profileName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, newFirstAuths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span>, newAuthsOnDiskOpts<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_zowe_imperative.inewfirstauthsondiskopts.html" class="tsd-signature-type">INewFirstAuthsOnDiskOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L506">@zowe/imperative/src/rest/src/session/AuthOrder.ts:506</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Put the specified array of auth types first in the authOrder property
+										for the specified profile and save it to the client config file on disk.
+										A new authOrder property will be created if needed.
+										Duplicates from any existing authOrder are removed from the resulting authOrder.
+										Any existing auth types remain later in the property value, unless
+									newAuthsOpts.onlyTheseAuths is true.</p>
+								</div>
+								<p>Calling apps should NOT use this function to impose a hard-coded
+									authentication order for a profile. Users control that decision.
+									Apps should only call this function if the app is implementing a directive
+									from the user which implies that the authOrder should be changed. An example
+									is when a user logs into APIML. The implication is that the user wants to use
+								a token, and that tokens should be at the front of the authentication order.</p>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError}
+										Any detected error is in the &#39;message&#39; of the ImperativeError.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>profileName: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+										The name of the profile into which the authOrder property will be placed.</p>
+									</div>
+								</li>
+								<li>
+									<h5>newFirstAuths: <span class="tsd-signature-type">SessConstants.AUTH_TYPE_CHOICES</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>input.
+											An array of one or more auth types to be placed at the front of the
+										the existing array of auth types.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> newAuthsOnDiskOpts: <a href="../interfaces/_zowe_imperative.inewfirstauthsondiskopts.html" class="tsd-signature-type">INewFirstAuthsOnDiskOpts</a><span class="tsd-signature-symbol"> = {onlyTheseAuths: false,clientConfig: ImperativeConfig.instance.config}</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_zowe_imperative.ipromisewithprogress.html#promise" class="tsd-signature-type">Promise</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="puttopauthinsession" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> put<wbr>Top<wbr>Auth<wbr>InSession</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">put<wbr>Top<wbr>Auth<wbr>InSession&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L302">@zowe/imperative/src/rest/src/session/AuthOrder.ts:302</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Find the highest auth type (according to the authOrder) that exists
+										in availableCreds within the supplied session config.
+										Then place the credentials associated with that auth type into the
+										top-level of the session config. Finally, remove credentials
+									for all other auth types from the top-level of session config.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+									<dt>throws</dt>
+									<dd><p>{ImperativeError} If an invalid auth type is encountered.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+											Authentication properties are added to and removed from this
+											session configuration, which can already have properties in
+										this object when passed to this function.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+					<a name="removeextracredsfromsess" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> remove<wbr>Extra<wbr>Creds<wbr>From<wbr>Sess</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Extra<wbr>Creds<wbr>From<wbr>Sess&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L872">@zowe/imperative/src/rest/src/session/AuthOrder.ts:872</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove all credential properties from the supplied session except for the
+									creds related to the session type specified within the sessCfg argument.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>throws</dt>
+									<dd><p>{ImperativeError}
+										If an invalid combination of session type and authTypeToRequestToken is encountered.</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										Authentication credentials are removed from this session configuration.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+					<a name="removerequestfortoken" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> remove<wbr>Request<wbr>For<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Request<wbr>For<wbr>Token&lt;SessCfgType&gt;<span class="tsd-signature-symbol">(</span>sessCfg<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SessCfgType</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/zowe/zowe-cli/blob/v8.29.12/packages/imperative/src/rest/src/session/AuthOrder.ts#L277">@zowe/imperative/src/rest/src/session/AuthOrder.ts:277</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Remove any request-for-token from the session config.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><ul>
+											<li>Cannot be used outside of the imperative package</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>SessCfgType<span class="tsd-signature-symbol">: </span><a href="../interfaces/_zowe_imperative.isession.html" class="tsd-signature-type">ISession</a></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>sessCfg: <span class="tsd-signature-type">SessCfgType</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Modified.
+										The session config from which we remove a request-for-token.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html">@zowe/imperative</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_core_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/core-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-module">
+						<a href="../modules/_zowe_imperative.html" class="tsd-kind-icon">@zowe/imperative</a>
+						<ul>
+							<li class="current tsd-kind-class tsd-parent-kind-module">
+								<a href="_zowe_imperative.authorder.html" class="tsd-kind-icon">Auth<wbr>Order</a>
+								<ul>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#array_of_creds" class="tsd-kind-icon">ARRAY_<wbr>OF_<wbr>CREDS</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#sess_cert_key_name" class="tsd-kind-icon">SESS_<wbr>CERT_<wbr>KEY_<wbr>NAME</a>
+									</li>
+									<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#sess_cert_name" class="tsd-kind-icon">SESS_<wbr>CERT_<wbr>NAME</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#addcredstosession" class="tsd-kind-icon">add<wbr>Creds<wbr>ToSession</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#autharraytocfgval" class="tsd-kind-icon">auth<wbr>Array<wbr>ToCfg<wbr>Val</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#authcfgvaltoarray" class="tsd-kind-icon">auth<wbr>Cfg<wbr>Val<wbr>ToArray</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#cacheauthorder" class="tsd-kind-icon">cache<wbr>Auth<wbr>Order</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#cachecred" class="tsd-kind-icon">cache<wbr>Cred</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#cachecredsandauthorder" class="tsd-kind-icon">cache<wbr>Creds<wbr>And<wbr>Auth<wbr>Order</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#cachedefaultauthorder" class="tsd-kind-icon">cache<wbr>Default<wbr>Auth<wbr>Order</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#choosedefaultauthorder" class="tsd-kind-icon">choose<wbr>Default<wbr>Auth<wbr>Order</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#clearauthcache" class="tsd-kind-icon">clear<wbr>Auth<wbr>Cache</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#findorcreateauthcache" class="tsd-kind-icon">find<wbr>OrCreate<wbr>Auth<wbr>Cache</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#formnewauthorderarray" class="tsd-kind-icon">form<wbr>New<wbr>Auth<wbr>Order<wbr>Array</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#getauthorder" class="tsd-kind-icon">get<wbr>Auth<wbr>Order</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#getpropnmfor" class="tsd-kind-icon">get<wbr>Prop<wbr>NmFor</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#keepcred" class="tsd-kind-icon">keep<wbr>Cred</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#makingrequestfortoken" class="tsd-kind-icon">making<wbr>Request<wbr>For<wbr>Token</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#putnewauthsfirstinsess" class="tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>InSess</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#putnewauthsfirstondisk" class="tsd-kind-icon">put<wbr>New<wbr>Auths<wbr>First<wbr>OnDisk</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#puttopauthinsession" class="tsd-kind-icon">put<wbr>Top<wbr>Auth<wbr>InSession</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-private tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#removeextracredsfromsess" class="tsd-kind-icon">remove<wbr>Extra<wbr>Creds<wbr>From<wbr>Sess</a>
+									</li>
+									<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-static">
+										<a href="_zowe_imperative.authorder.html#removerequestfortoken" class="tsd-kind-icon">remove<wbr>Request<wbr>For<wbr>Token</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_provisioning_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/provisioning-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_console_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>console-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_files_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>files-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_jobs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>jobs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_logs_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>logs-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_tso_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>tso-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_uss_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>uss-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zos_workflows_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zos-<wbr>workflows-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_zowe_zosmf_for_zowe_sdk.html" class="tsd-kind-icon">@zowe/zosmf-<wbr>for-<wbr>zowe-<wbr>sdk</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
