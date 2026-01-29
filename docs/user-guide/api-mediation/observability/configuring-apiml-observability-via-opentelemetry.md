@@ -95,3 +95,4 @@ Logs are timestamped text records of discrete events. They provide the deep tech
 
   * **Correlation**  
   Logs produced by the API ML include OTel traceId metadata. This allows you to jump from a specific error log directly to the associated trace to see the full context of the failed request.
+
