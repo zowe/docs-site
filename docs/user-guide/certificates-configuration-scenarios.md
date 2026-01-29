@@ -1,40 +1,26 @@
 # Certificate configuration scenarios 
 
- After you complete the [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md) to determine your specific configuration use case, choose from the five scenarios presented in this article to complete Zowe assisted certificate setup. Examples sections from `zowe.yaml` files are provided for each scenario.
+After you have completed the [Zowe certificates configuration questionnaire](./certificates-configuration-questionnaire.md) and chosen a certificate configuration scenario, follow the scenario-specific documentation and `zowe.yaml` examples in this article.
 
 :::info Required roles: system programmer, security administrator
 :::
 
 Zowe servers require both a keystore to store the certificates and a truststore to validate certificates.
 
-Zowe's assisted certificate setup begins with customizing certificate scenario YAML files found in the `files/examples/setup/certificate` sub-directory within your Zowe installation directory. Zowe will then use these scenarios and complete certificate setup via the `zwe init certificate` command. 
+Zowe's assisted certificate setup begins with customizing certificate scenario YAML files found in the `files/examples/setup/certificate` sub-directory within your Zowe installation directory. Zowe will then use these scenario configurations and complete certificate setup via the `zwe init certificate` command. 
 
 :::note 
-Reminder: Automated generation of certificates is an option, but is not required. If you already have certificates and a key ring or keystore / truststore combination you've created on your own, you can go right to [Reviewing Certificate Configuration](./certificates-finalize-configuration.md).
+Reminder: Zowe assisted generation of certificates is an option, but is not required. If you already have certificates and a key ring or keystore / truststore combination you created on your own, you can instead go to [Finalize certificate configuration](./certificates-finalize-configuration.md).
 :::
 
-:::tip
-If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors.
-:::
-
-
-## <b>*</b> What is a valid certificate in Zowe?
+## What is a valid certificate in Zowe?
 
 A valid certificate for use in Zowe conforms to one of the following two options: 
 
 * The certificate does not contain the _Extended Key Usage_ section.
 * The certificate does contain the _Extended Key Usage_ section, and also includes the **Server** and **Client** authentication fields.
 
-## Considerations for certificate scenario selection
-
-Consider the scenario that best suits your use case:
-
-* Do you plan to use a file-based (PKCS12) certificates, or z/OS keyrings?
-* Do you plan to enable Zowe to create self-signed certificates, or will Zowe be using pre-made certificates which you are providing?
-* If you are providing certificates to Zowe and using a keyring, does the certificate already exist in your security database, or are you importing it via a dataset?
-
-There are five scenarios/use cases for configuring certificates.
-Use the applicable certificate configuration scenario according to your needs.
+## Scenario overview
 
 Each scenario described in this article provides the configuration details via code snippets which you can use to edit your Zowe YAML configuration within the `zowe.setup.certificate` section.
 
@@ -45,10 +31,13 @@ Each scenario described in this article provides the configuration details via c
 * [Scenario 4: Use a z/OS keyring-based keystore and connect an existing certificate](#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
 * [Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set](#scenario-5-use-a-zos-keyring-based-keystore-and-import-a-certificate-stored-in-a-data-set)
 
+:::note
+Ensure that all certificate alias values for all scenarios use only lower-case.
+:::
 
-## Running a Scenario file
+## Running a scenario file
 
-Zowe supplies 5 certificate scenario YAML files in the `files/examples/setup/certificate` sub-directory within your Zowe installation directory. The scenario sections below will describe what each scenario will accomplish, and how to complete customization of the respective scenario YAML files. Once you have selected and finished configuring one of these scenarios, follow one of the two options below to execute them.
+Zowe supplies 5 certificate scenario YAML files in the `files/examples/setup/certificate` sub-directory within your Zowe installation directory. The scenario section below describes what each scenario will accomplish, and how to complete customization of the respective scenario YAML files. Once you have selected and finished configuring one of these scenarios, follow the below instructions to execute the scenario.
 
 <details>
 <summary>Run scenario YAML with configmgr</summary>
@@ -62,14 +51,30 @@ Zowe supplies 5 certificate scenario YAML files in the `files/examples/setup/cer
     FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)
     ```
 
-4. Submit `init certificate` using the configuration parameter from Step 3. Note the quotation marks surrounding the configuration parameter!
-    ```
-    zwe init certificate -c "FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)" --update-config
+4. Navigate to your Zowe installation root directory. <!-- TODO: do we have an easy way/link to say set zwe on your PATH? -->
+
+4. Submit `./bin/zwe init certificate` using the configuration parameter from Step 3. Note the quotation marks surrounding the configuration parameter! If you are running Scenario 3, 4, or 5, you can add `--dry-run` to the command and review the JCL used to create the keyring before submission.
+    ```shell
+    ./bin/zwe init certificate --update-config -c "FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)" 
+
+    # If you are using scenarios 3, 4, or 5, this will print JCL to the console for review
+    ./bin/zwe init certificate --dry-run --update-config -c "FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)" 
     ```
 
 </details>
 
-<details>
+<!--<
+
+Does not work right now, and does not work if you try to do something like 
+
+...first yaml
+---
+# scenario yaml
+zowe:
+  setup:
+    ...
+
+details>
 <summary>Append scenario YAML contents to main zowe.yaml</summary>
 
 1. Identify the fully-qualified path to your selected scenario YAML configuration file. In this example, we will use `/path/to/files/examples/setup/certificate/scenario-1.yaml`.
@@ -91,11 +96,10 @@ If you make changes to your scenario.yaml configuration file after this step or 
     zwe init certificate -c /path/to/zowe.yaml --update-config
     ```
 
-</details>
+</details>-->
 
-
-:::note
-Ensure that all alias values for all scenarios use only lower-case.
+:::tip
+If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md), to find resolution of errors.
 :::
 
 ## Scenario 1: Use a file-based (PKCS12) keystore with Zowe generated certificates
@@ -179,7 +183,7 @@ zowe:
         - dvipa.my-company.com
         - 12.34.56.78
 ```
-Your yaml file is now configured to enable Zowe to use generated PKCS12 certificates, and you are ready to [run the scenario](#running-a-scenario-file).
+Your yaml file is now configured to enable Zowe to use generated PKCS12 certificates. You can now go to [Running a scenario file](#running-a-scenario-file).
 
 The following command output shows the generation of a PKCS12 keystore using the default values, and has the following associated artifacts. (Note that some detailed output messages have been omitted.)
 
@@ -222,7 +226,8 @@ The following command output shows the generation of a PKCS12 keystore using the
 #>
 ```
 
-You are ready to [Finalize your Zowe Certificate Configuration](./certificates-finalize-configuration.md).
+You are ready to [Finalize your Zowe Certificate Configuration](./certificates-finalize-configuration.md). 
+
 
 ::note
 For more information about using a file-based PKCS12 certificate in Zowe services, see  the [video tutorials](https://www.youtube.com/playlist?list=PL8REpLGaY9QERUmM--1USMF8yOG-Awzwn) on YouTube. More information about this certificate configuration scenario is also available in [this Medium blog post](https://medium.com/zowe/step-by-step-guide-use-a-pkcs12-file-based-keystore-with-zowe-generated-certificate-365dc48eea29). Both of these resources target an older release of Zowe and modify `zowe.yaml` directly, so you'll need to adapt some of their configuration to your `scenario-1.yaml` configuration file instead.
@@ -238,35 +243,34 @@ Follow this procedure and configure `scenario-2.yaml` within the `files/examples
 <summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to `PKCS12`.
-
-2. Customize the keystore directory in the following format:
-    ```
-    /var/zowe/keystore
+2. Customize the keystore `directory` in the following format:
+    ```yaml
+    directory: /var/zowe/keystore
     ```
 3. Lock the keystore directory so it is accessible only to the Zowe runtime user and group:
-    ```
+    ```yaml
     lock: true
     ```
-4. Customize the certificate alias name. The default value is `localhost`.  
-5. Set keystore password. The default value is `password`.
-6. Set the existing PKCS12 keystore which holds the certificate issued by an external CA.  
-    ```
+4. Set keystore password. The default value is `password`.
+5. Set the existing PKCS12 keystore which holds the certificate issued by an external CA.  
+    ```yaml
     keystore: "<your-keystore-value>"  
     ```
    
-7. Set the password of the keystore set in step 6.  
-    ```
+6. Set the password of the keystore set in step 5. 
+    ```yaml
     password: "<your-password-value>"
     ```
    
-8. Specify the alias of the certificate to be imported.
-    ```
+7. Specify the alias of the certificate to be imported.
+    ```yaml
     alias: "<your-alias-value>"
     ```    
     
-9. Set the path to the certificate authority that signed the certificate to be imported.
-    ```
+8. Set the path to the certificate authority that signed the certificate to be imported. PEM-formatted certificate authorities can be imported.
+    ```yaml
     importCertificateAuthorities:
+      - "<empty-or-/path/to/your/ca.cer>"
     ```
   
 :::note
@@ -291,7 +295,12 @@ PEM format certificate authorities can be imported and trusted.
        - /certs/extca.1.cer
        - /certs/extca.2.cer
    ```
-Your yaml file is now configured to enable Zowe to use a file-based PKCS12 keystore to import a certificate generated by another CA.
+:::note 
+Due to the limitation of the RACDCERT command, the `importCertificateAuthorities` field can contain a maximum of two entries.
+:::
+
+  
+Your yaml file is now configured to enable Zowe to use a file-based PKCS12 keystore to import a certificate generated by another CA. You can now go to [Running a scenario file](#running-a-scenario-file).
 
 </details>
 
@@ -308,23 +317,22 @@ Follow this procedure and configure `scenario-3.yaml` within the `files/examples
     * JCECCAKS  
     * JCECCARACFKS  
     * JCEHYBRIDRACFKS
-
+  
 2. Under the nested subsection `keyring:`, specify the following keyring values:  
-
     * keyring name  
-        ```
+        ```yaml
         name: ZoweKeyring
         ```
     * Label of Zowe certificate. The default value is `localhost`.  
-        ```
+        ```yaml
         label: localhost
         ```
     * Label of Zowe CA certificate. The default value is `localca`.
-        ```
+        ```yaml
         caLabel: localca
         ```
-    * The distinguished name for Zowe generated certificates.  
-        ```
+    * (Optional) The distinguished name for Zowe generated certificates.  
+        ```yaml
         dname:
             caCommonName: ""
             commonName: ""
@@ -334,13 +342,13 @@ Follow this procedure and configure `scenario-3.yaml` within the `files/examples
             state: ""
             country: ""
         ```
-3. Set the validity in days for the Zowe generated certificates
-    ```  
+3. (Optional) Set the validity in days for the Zowe generated certificates. Defaults to 3650 days.
+    ```yaml
     validity: 3650
     ```
-4. Set the domain names and IPs specified in the certificate SAN. If 
+4. (Optional, Recommended) Set the domain names and IPs specified in the certificate SAN. If 
 this field is not defined, the `zwe init` command uses the value `zowe.externalDomains`.  
-    ```
+    ```yaml
     san:
       - dvipa.my-company.com
       - 12.34.56.78
@@ -353,12 +361,8 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
   
    ```yaml
    certificate:
-   #Type of certificate storage. Valid values are: PKCS12 or JCERACFKS
      type: JCERACFKS
-     createZosmfTrust: true
      keyring:
-     #**COMMONLY_CUSTOMIZED**
-     #Keystore directory
        name: ZoweKeyring
        label: localhost
        caLabel: localca
@@ -374,64 +378,90 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
        - system.my-company.com
        - 12.34.56.78
    ```
-Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates.
+Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates. You can now go to [Running a scenario file](#running-a-scenario-file).
+
+The following command output shows the generation of a JCERACFKS certificate using the default values. Note that some detailed output messages have been omitted.
+<!-- TODO: Update command output? Don't think  we're using ZWEKRING now -->
+**Command output:**
+```
+#>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
+-------------------------------------------------------------------------------
+>> Generate Zowe certificate in keyring
+
+>>>> Modify ZWEKRING
+    - IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431) is prepared
+>>>> Submit IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431)
+    - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
+>> Certificate is generated in keyring successfully.
+
+-------------------------------------------------------------------------------
+>> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
+>> Zowe configuration is updated successfully.
+
+#>
+```
+
+:::tip  
+As shown in the example, the job ends with code `0`. There may, however, be failures in the individual steps. It is advised to check the job output. The security manager commands in the job are generated based on the value of `zowe.security.product`. Job steps for each product can be determined by the security manager.  
+:::
 
 </details>
 
 ## Scenario 4: Use a z/OS keyring-based keystore and connect to an existing certificate
 
-Follow this procedure and configure `scenario-4.yaml` within the `files/examples/setup/certificate` directory to enable Zowe to connect existing certificates with a z/OS keyring-based keystore.
+Follow this procedure and configure `scenario-4.yaml` within the `files/examples/setup/certificate` directory to enable Zowe to connect existing certificates with a z/OS keyring-based keystore. 
 
 <details>
 <summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
-
+    * JCERACFKS (default)
     * JCEKS  
     * JCECCAKS  
-    * JCERACFKS  
     * JCECCARACFKS  
     * JCEHYBRIDRACFKS
 
-2. Under `keyring:`, specify the keyring name:  
-    ```
+2. Under keyring, specify the keyring `name`:  
+    ```yaml
     name: ZoweKeyring
     ```
-3. Under the nested subsection `connect:`, specify the following parameters:  
-    * The current owner of the certificate. Possible values can be `SITE` or a user ID.
-        ```
+3. Under the nested subsection `connect`, specify the following parameters:  
+    * The current owner of the existing certificate. Possible values can be `SITE` or a user ID.
+        ```yaml
         user: IBMUSER
         ```
     * The label of the existing certificate to be connected to the Zowe keyring.  
-        ```
+        ```yaml
         label: ""
         ```
     * All certificate authorities you want to be trusted in the Zowe keyring.
-        ```
+        ```yaml
         importCertificateAuthorities:
           - ""
         ```
 :::note
 Due to the limitation of `RACDCERT` command, this field should contain a maximum of 2 entries.
 ::: 
-  
-The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, see [this Medium blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f), or the video tutorials in [this YouTube playlist](https://www.youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
 
   **Example zowe yaml for scenario 4:**
 
 ```yaml
- # >>>> Certificate setup scenario 4
- # z/OS Keyring and connect to existing certificate
- certificate:
-   type: JCERACFKS
-   keyring:
-     name: ZoweKeyringZOSMF
-     connect:
-       user: IZUSVR
-       label: "DefaultzOSMFCert.IZUDFLT"
-   importCertificateAuthorities:
-     - "zOSMFCA"
+zowe:
+  setup:
+    certificate:
+      type: JCERACFKS
+      keyring:
+        name: ZoweKeyring
+        connect:
+          user: IBMUSER
+          label: ""
+      importCertificateAuthorities:
+        - "zOSMFCA"
 ```
+
+Your yaml file is now configured to enable Zowe to use a z/OS keyring-based keystore with Zowe generated certificates. You can now go to [Running a scenario file](#running-a-scenario-file).
+
+The following example uses an existing JCERACFKS certificate for Zowe's z/OS components. For more information about configuration in this scenario, see [this Medium blog post](https://medium.com/zowe/master-zowe-certificates-use-an-existing-jceracfks-certificate-for-zowes-z-os-components-975ffa0d9f2f), or the video tutorials in [this YouTube playlist](https://www.youtube.com/playlist?list=PL8REpLGaY9QEHLNA81DRgGqWcgOYC0PDX).
 
 **Example:**
 ![Alt text](../images/certificates/connect-JCERACFKS.png)
@@ -446,8 +476,6 @@ If you would like to use this example in your Zowe configuration YAML file, repl
 * Replace `DefaultzOSMFCert.IZUDFLT` with the label of the existing certificate you are connecting to (which is owned by the previously referenced user ID).
 * Replace `zOSMFCA` with the certificate authority that is used to sign the certificate. 
 
-Your yaml file is now configured to use a z/OS keyring-based keystore and connect to an existing certificate.
-
 </details>
 
 ## Scenario 5: Use a z/OS keyring-based keystore and import a certificate stored in a data set
@@ -458,45 +486,47 @@ Follow this procedure and configure `scenario-5.yaml` within the `files/examples
 <summary>Click here for details.</summary>
 
 1. Set the `type` of the certificate storage to one of the following keyring types:
-
+    * JCERACFKS (default)
     * JCEKS  
     * JCECCAKS  
-    * JCERACFKS  
     * JCECCARACFKS  
     * JCEHYBRIDRACFKS
 
-2. Under `keyring:`, specify the following keyring values:  
+2. Under `keyring`, specify the following keyring values:  
 
-    * keyring name  
-        ```
+    * keyring `name`
+        ```yaml
         name: ZoweKeyring
         ```
     * Label of Zowe certificate. The default value is `localhost`.  
-        ```
+        ```yaml
         label: localhost
         ```
-3. Under the nested subsection `import:` specify the following parameters:
-    * The name of the data set holds the certificate issued by another CA. This data set should be in PKCS12 format and contain private key.
-        ```
-        dsName: ""
+3. Under the nested subsection `import`, specify the following parameters:
+    * The name of the data set that holds the certificate issued by another CA. This data set should be in PKCS12 format and contain private key.
+        ```yaml
+        dsName: "<YOUR.CERT.DS>"
         ```
     * The password for the PKCS12 data set.
-        ```
-        password: ""
+        ```yaml
+        password: "<your-pkcs12-password>"
        ```
   **Example zowe yaml for scenario 5:**  
 
 ```yaml
- # >>>> Certificate setup scenario 5
- # z/OS Keyring and connect to existing certificate
- certificate:
-   type: JCERACFKS
-   keyring:
-     name: ZoweKeyring
-     import:
-       dsName: PRODUCT.X.CERT.P12
-       password: password
+zowe:
+  setup:
+    certificate:
+      type: JCERACFKS
+      keyring:
+        name: ZoweKeyring
+        label: localhost  # Optional, default value is localhost.
+      import:
+        dsName: ""
+        password: ""
 ```
-Your yaml file is now configured to use a z/OS keyring-based keystore and import a certificate stored in a data set.
+
+Your yaml file is now configured to use a z/OS keyring-based keystore and import a certificate stored in a data set. You can now go to [Running a scenario file](#running-a-scenario-file).
 
 </details>
+

@@ -82,8 +82,6 @@ For more information about the SAF resource check, see [Configuring SAF resource
 ## Additional resources
 For more information about getting started with certificates including determining your certificate configuration use case, importing certificates, generating certificates and using certificates, see the following resources:  
 
-- [Certificate configuration scenarios](../user-guide/certificate-configuration-scenarios.md)
-- [Generating a certificate](../user-guide/generate-certificates.md)
-- [Importing and configuring a certificate](../user-guide/import-certificates.md)
+- [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md)
 - [Configuring certificates](../user-guide/configure-certificates.md)
 

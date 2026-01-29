@@ -234,8 +234,6 @@ module.exports = {
                   items: [
                     "user-guide/certificates-configuration-questionnaire",
                     "user-guide/certificates-configuration-scenarios",
-                    "user-guide/import-certificates",
-                    "user-guide/generate-certificates",
                     "user-guide/certificates-workflow-setup"
                   ]
                 },
@@ -243,6 +241,7 @@ module.exports = {
                   type: "category",
                   label: "Advanced Certificate Topics",
                   items: [
+                    "user-guide/certificates-trust-off-platform",
                     "user-guide/tls-configuration",
                     "user-guide/configuring-at-tls-for-zowe-server-single-service",
                     "user-guide/configuring-at-tls-for-zowe-server",
