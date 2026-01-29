@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
         "whats-new/release-notes/v3_3_0",
