@@ -335,7 +335,7 @@ module.exports = {
                     "extend/extend-apiml/api-mediation-redis"
                   ]
                 },
-                 {
+                {
                   "type": "category",
                   "label": "Configuring API ML Observability via OpenTelemetry",
                   "link": { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability-via-opentelemetry" },
