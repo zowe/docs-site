@@ -335,6 +335,17 @@ module.exports = {
                     "extend/extend-apiml/api-mediation-redis"
                   ]
                 },
+                 {
+                  "type": "category",
+                  "label": "Configuring API ML Observability via OpenTelemetry",
+                  "link": { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability-via-opentelemetry" },
+                  "items": [
+                    "user-guide/api-mediation/observability/configuring-otel-service-attributes",
+                    "user-guide/api-mediation/observability/configuring-otel-deployment-attributes",
+                    "user-guide/api-mediation/observability/configuring-otel-zos-attributes",
+					          "user-guide/api-mediation/observability/enabling-observability-in-zowe-yaml"
+                  ]
+                },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
@@ -525,6 +536,15 @@ module.exports = {
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
                 "user-guide/api-mediation-change-password-via-catalog",
+              ],
+            },
+            {
+              type: "category",
+              label: "Using your API ML OpenTelemetry metrics",
+              link: { "type": "doc", "id": "user-guide/api-mediation/observability/using-your-otel-metrics" },
+              items: [
+                "user-guide/api-mediation/observability/apiml-provided-observability-signals-and-attributes",
+                "user-guide/api-mediation/observability/sample-output-from-apiml-otel"
               ],
             },
             "user-guide/api-mediation/api-mediation-update-password",
