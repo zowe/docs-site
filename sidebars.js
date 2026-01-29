@@ -25,6 +25,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [  
+        "whats-new/release-notes/v2_18_5",  
         "whats-new/release-notes/v2_18_4",  
         "whats-new/release-notes/v2_18_3",   
         "whats-new/release-notes/v2_18_2",  
@@ -955,7 +956,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.1.md",
     },
   ],
 }
