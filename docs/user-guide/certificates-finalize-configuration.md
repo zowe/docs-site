@@ -7,7 +7,7 @@ Once you have your certificates and either key ring or USS keystore and truststo
 Choose from the following procedures:
 
 - [Review PKCS12 Certificate Configuration](#review-pkcs12-certificate-configuration)
-- [Review JCERACFKS Certificate Configuration](#review-jceracfks-certificate-configuration)
+- [Review JCERACFKS Certificate Configuration](#review-key-ring-certificate-configuration)
 
 ## Review PKCS12 certificate configuration
 

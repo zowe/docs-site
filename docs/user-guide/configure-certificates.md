@@ -15,10 +15,10 @@ Zowe supports using either file-based (`PKCS12`) or z/OS key ring-based (when on
 * [Certificate verification](#certificate-verification)
 * [Zowe certificate requirements](#zowe-certificate-requirements)
 * [Certificate setup type](#certificate-setup-type)
-* [Next steps: Creating or importing certificates to Zowe](#next-steps-creating-or-importing-certificates-to-zowe)
+* [Next steps: Creating or importing certificates to Zowe](#next-steps-configuring-certificates-for-zowe)
 
 :::note 
-If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section [_Next steps: Creating or importing certificates to Zowe_](#next-steps-creating-or-importing-certificates-to-zowe) at the end of this article.
+If you are already familiar with certificate concepts and how Zowe uses certificates and are ready to get started, see the options under the section [_Next steps: Creating or importing certificates to Zowe_](#next-steps-configuring-certificates-for-zowe) at the end of this article.
 :::
 
 ## Certificate concepts
@@ -56,10 +56,10 @@ Servers need a certificate to identify themselves to clients. Every time that yo
 Clients do not always need certificates when they are communicating with servers, but sometimes client certificates can be used to establish the server's trust of a client's identity, similar to how the client verifies authenticity for the server. When client certificates are unique to a client, the certificate can be used as a form of authentication and login.
 
 ### Self-signed certificates
-A self-signed certificate is one that is not signed by a public or private certificate authority. In this case, the certificate is signed with its own private key, instead of requesting a signature from a public or a private CA. Self-signed certificates means there is no chain of trust to guarantee that the host with such a certificate is definitively the one you wanted to communicate with, and such they are considered **insecure**. Therefore, we highly recommended and by default require all certificates be verified against a certificate authority in the truststore.
+A self-signed certificate is one that is not signed by a public or private certificate authority. Instead, the certificate is signed with its own private key, hence self-signed. Self-signed certificates means there is no chain of trust to guarantee that the host with such a certificate is definitively the one you wanted to communicate with, and such they are considered **insecure**. Therefore, we highly recommended and by default require that all certificates are verified against a certificate authority in the truststore.
 
 ## Certificate verification
-When you configure Zowe, it is necessary to decide whether Zowe verifies certificates against its truststore.
+When you configure Zowe, you can change whether Zowe verifies certificates against its truststore or not.
 
 In the Zowe configuration YAML, the property `zowe.verifyCertificates` controls the verification behavior. It can be `DISABLED`, `NONSTRICT`, or `STRICT`.
 
@@ -103,9 +103,9 @@ The host communicating with a certificate should have its hostname match one of 
 z/OSMF's certificate is verified according to Zowe's [Certificate verification setting](#certificate-verification), as is the case with any certificate that is seen by Zowe. Therefore, you will need the certificate authority which signed z/OSMF's certificate in Zowe's truststore. 
 
 ## Certificate setup type
-Zowe offers automated assistance setting up certificates, though this is disabled by default during the installation process, as we expect most users to bring their own certificates to Zowe. Zowe offers automation for five different scenarios covering both PKCS12 and z/OS key ring options, detailed later under [Certificate Configuration Scenarios](./certificate-configuration-scenarios.md).
+Zowe offers automated assistance setting up certificates, though this is disabled by default during the installation process, as we expect most users to bring their own certificates to Zowe. Zowe offers automation for five different scenarios covering both PKCS12 and z/OS key ring options, detailed later under [Certificate Configuration Scenarios](./certificates-configuration-scenarios.md).
 
-## Next steps: Configuring Certificates for Zowe
+## Next steps: configuring certificates for Zowe
 
 Review the following options and choose which best applies to your use case:
 

@@ -105,8 +105,7 @@ Steps are verified with Ubuntu 20.04.6 LTS.
   --url 'https://tvt6092.svl.ibm.com:7554/jobs/api/v1?owner=ibmuser&prefix=*'
   --header 'Authorization: Basic ************'
   ```
-
 ## Next steps
 
-Once your certificate is successfully imported, review the documentation about how to [use certificates](./use-certificates.md) in a Zowe production environment.
+Once your certificate is successfully imported, your browser and operating system should no longer challenge every connection as untrusted.
 
