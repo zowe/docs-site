@@ -89,7 +89,7 @@ The z/OSMF certificate is verified according to Zowe [Certificate verification s
 
 
 ## Certificate setup types
-Zowe requires certificates in one of two formats: file-based (`PKCS12`) or z/OS key ring-based. If you are bringing your own previously defined certificates to Zowe, you can configure `zowe.certificate` with this information directly. If you are not bringing your own certificates, [Zowe can assist](../user-guide/certificates-configuration-scenarios.md) with certificate generation.
+Zowe requires certificates in one of two formats: file-based (`PKCS12`) or z/OS key ring-based. If you are bringing your own previously defined certificates to Zowe, you can configure `zowe.certificate` with this information directly. Key rings are required for Zowe AT-TLS configurations. If you are not bringing your own certificates, [Zowe can assist](../user-guide/certificates-configuration-scenarios.md) with certificate generation.
 
 - [File-based (PKCS12) certificate setup](#file-based-pkcs12-certificate-setup)
 - [z/OS key ring-based certificate setup](#zos-key-ring-based-certificate-setup)
