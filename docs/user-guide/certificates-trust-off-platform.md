@@ -1,8 +1,8 @@
 # Trusting certificates off platform
 
-Zowe services are protected by the certificates you set in your `zowe.yaml` configuration file, and these certificates are presented to all clients connecting to Zowe, including off-platform clients. If you are using your browser to view Zowe's API Mediation Layer or Web Desktop, or if you are using Zowe Explorer with an API Mediation Layer connection profile, the certificate Zowe presents may be challenged by your browser or operating system. This article covers a common method for trusting certificates: importing them in your off-platform client environment.
+Zowe services are protected by the certificates you set in your `zowe.yaml` configuration file, and these certificates are presented to all clients connecting to Zowe, including off-platform clients. If you are using your browser to view Zowe's API Mediation Layer or Web Desktop, or if you are using Zowe Explorer with an API Mediation Layer connection profile, the certificate Zowe presents might be challenged by your browser or operating system. This article covers a common method for trusting certificates: importing them in your off-platform client environment.
 
-## Importing a certificate Authority (CA)
+## Importing a certificate authority (CA)
 
 Importing a certificate authority (CA) is a prerequisite to importing a PKCS12 certificate. Use the method that applies to your use case.
 
@@ -13,13 +13,13 @@ Importing a certificate authority (CA) is a prerequisite to importing a PKCS12 c
 
 To avoid the browser untrusted CA challenge, import Zowe certificates into the browser.
 
-Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority (CA) public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
+Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
 :::tip  
- If a SAF keyring is used and the certificate was generated on z/OS, the procedure to obtain the certificate does not apply. In this case, we recommended that you work with your security system administrator to obtain the certificate.  
+ If a SAF keyring is used and the certificate was generated on z/OS, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.  
 :::
 
-The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored in a USS directory a defined in the `zowe.yaml` configuration file in the section `zowe.certificate.pem.certificateAuthorities`. The certificate is stored in UTF-8 encoding so you need to transfer the certificate as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
+The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored in a USS directory and defined in the `zowe.yaml` configuration file in the section `zowe.certificate.pem.certificateAuthorities`. The certificate is stored in UTF-8 encoding so you need to transfer the certificate as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
 
 :::note  
 Windows currently does not recognize the PEM format. For Windows, use the P12 version of the `local_cer`.
