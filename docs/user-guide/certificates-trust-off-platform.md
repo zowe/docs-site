@@ -94,7 +94,7 @@ Steps are verified with Ubuntu 20.04.6 LTS.
    
    `$ sudo update-ca-certificates`
 
-3. Verify that the new expected certificate was added (the newest will be at the bottom of the list which contains an extended list of concatenated CAs).
+3. Verify that the new expected certificate was added (the newest certificate is at the bottom of the list which contains an extended list of concatenated CAs).
    
    `$ cat /etc/ssl/certs/ca-certificates.crt`
 
