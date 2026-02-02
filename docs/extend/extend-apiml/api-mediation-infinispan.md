@@ -30,9 +30,19 @@ Configure Infinispan as a storage solution through the Caching Service by settin
  
 * **`components.caching-service.storage.infinispan.initialHosts`**
 
-  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be 
-  either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
+  This property specifies the list of cluster nodes (members). Ensure that all the members listed are separated by a comma.
+  The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
+  **Example:**
+
+  ```yaml
+    components:
+      caching-service:
+        storage:
+          mode: infinispan
+          infinispan:
+            initialHosts: lpar1[7600],lpar2[7600],lpar3[7600]
+  ```
 
 * **`components.caching-service.storage.infinispan.jgroups.port`**
 
@@ -50,7 +60,7 @@ Configure Infinispan as a storage solution through the Caching Service by settin
   We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
   :::
 
-* **`components.caching-service.storage.infinispan.keyExchange.port`**
+* **`components.caching-service.storage.infinispan.jgroup.keyExchange.port`**
 
   (Optional) The default value is `7601`. The port number used by Infinispan to exchange encryption key among Caching Service instances.
 
@@ -85,22 +95,14 @@ Configure Infinispan as a storage solution through the Caching Service by settin
   **Example of Caching Service HA configuration using Infinispan:**
 
   ```yaml
-  haInstances:
-    lpar1:
-      components:
-        caching-service:
-          storage:
-            mode: infinispan
-            infinispan:
-              jgroups.port: 7600
-              initialHosts: lpar2[7600]
-              
-    lpar2:
-      components:
-        caching-service:
-          storage:
-            mode: infinispan
-            infinispan:
-              jgroups.port: 7600
-              initialHosts: lpar1[7600]
+  components:
+    caching-service:
+      storage:
+        mode: infinispan
+        infinispan: 
+          initialHosts: lpar1[7600],lpar2[7600]
+          jgroups:
+            port: 7600
+            keyExchange:
+              port: 7601
  ```
