@@ -62,7 +62,7 @@ For Firefox, click here for command deails.
 Manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
 As a default, Firefox uses its own certificate truststore.
 
-Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the   following content:
+Create a new Javascript file firefox-windows-truststore.js at `C:\Program Files (x86)\Mozilla Firefox\defaults\pref` with the following content:
 
 ```
 /* Enable experimental Windows truststore support */
