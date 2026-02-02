@@ -105,5 +105,5 @@ Configuring PKCS12 certificates is covered in [Finalize certificate configuratio
 
 Zowe is able to work with certificates held in a **z/OS key ring**.
 
-Generating keyrings with certificates is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md), Scenarios 3-5.
-Configuring keyrings with certificates is covered in [Finalize certificate configuration](../user-guide/certificates-finalize-configuration.md).
+Generating key rings with certificates is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md), Scenarios 3-5.
+Configuring key rings with certificates is covered in [Finalize certificate configuration](../user-guide/certificates-finalize-configuration.md).
