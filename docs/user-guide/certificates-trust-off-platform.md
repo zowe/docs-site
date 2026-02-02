@@ -39,7 +39,9 @@ For Windows, click here for command details.
 certutil -enterprise -f -v -AddStore Root localca.cer
 ```
 
-**Note:** Ensure that you open the terminal as **administrator**. This operation installs the certificate to the Trusted Root Certification Authorities.
+:::note
+Ensure that you open the terminal as **administrator**. This operation installs the certificate to the Trusted Root Certification Authorities.
+:::
 
 </details>
 
