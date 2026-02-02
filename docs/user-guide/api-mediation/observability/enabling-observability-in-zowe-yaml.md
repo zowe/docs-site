@@ -56,7 +56,7 @@ After applying the changes to zowe.yaml and restarting the API Mediation Layer, 
 1. Check the API ML Startup Logs.
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
 
-To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs will typically show Exporting failed or Connection refused messages from the OTel SDK.
+    To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs will typically show Exporting failed or Connection refused messages from the OTel SDK.
 
 2. Verify Signal Reception in your Observability Tool.
 The most definitive validation is to confirm that data is appearing in your chosen observability backend: 
