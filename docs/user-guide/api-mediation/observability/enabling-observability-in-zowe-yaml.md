@@ -7,17 +7,15 @@ Review how to enable and configure the OpenTelemetry (OTel) integration within t
 The observability configuration is located under the API Mediation Layer `component` section of the zowe.yaml, under which there are three observability properties:
 
 * **enabled**  
-  Activates the OTel SDK. Set to `true` to initialize the OpenTelemetry SDK. 
+  Activates the OTel SDK. Set to `true` to initialize the OpenTelemetry SDK to enable observability. 
 
 * **exporter**  
-Defines where the data is sent.  Sub-properties of `exporter` include the following:
+Defines where the data is sent.  `exporter` has the following sub-property:  
 
   * **exporter.otlp.protocol**  
-    The URL of your OTLP-compatible collector (e.g., z-Iris or Jaeger)
-
-  * **exporter.otlp.protocol**  
-    The protocol is either `grpc` or `http/protobuf`.
+    The transport protocol used to transmit telemetry data. Options include `grpc` for high-performance streaming or `http/protobuf` for standard web compatibility.
     **Default:** `grcp`
+  
 
 * **resource**  
 Defines the identity of the producer (Attributes).

@@ -49,7 +49,7 @@ The command or JOB name used to launch the Zowe process.
 Configuration Source: System discovery
 
 * **process.pid**  
-The Process Identifier, which on z/OS is set to the Address Space Identifier (ASID).
+The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
 Configuration Source: System discovery
 
 ## Overriding Discovered Attributes in zowe.yaml

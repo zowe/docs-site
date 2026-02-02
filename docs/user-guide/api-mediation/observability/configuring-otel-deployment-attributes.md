@@ -2,7 +2,7 @@
 
 To configure deployment-specific resource attributes for the Zowe API ML. These attributes allow you to categorize telemetry data based on the lifecycle stage of the application, such as distinguishing between production, staging, or development environments.
 
-Unlike z/OS attributes which are often discovered automatically, deployment attributes are strictly informative and are typically defined manually. These attributes do not affect the unique identity of the service but are essential for filtering and grouping data within your observability backend. By explicitly labeling your environment, you ensure that performance anomalies in a test environment do not trigger false alerts in production monitoring views.
+While platform-specific attributes (like those for z/OS) focus on the execution environment and are often discovered automatically, deployment attributes are strictly informative and describe the logical purpose of the instance. Deployment attributes are defined manually and are universal across all platforms where API ML runs (z/OS, Linux, or Containers). These attributes do not affect the unique identity of the service but are essential for filtering and grouping data within your observability backend. By explicitly labeling your environment, you ensure that performance anomalies in a test environment do not trigger false alerts in production monitoring views.
 
 ## Deployment Attribute Reference
 
