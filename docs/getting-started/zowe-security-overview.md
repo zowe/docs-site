@@ -49,8 +49,7 @@ Review digital certificates terminology in the [Zowe security glossary](../appen
 Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that the identity of a client-user (the service user) is known to the mainframe security facility.   
 
 **Next Steps:**
-- For more information about the mechanics of digital certificate, see [Using certificates](../user-guide/use-certificates.md).
-- To learn more about the various options for Zowe certificate configuration, see [Zowe certificate configuration overview](../user-guide/configure-certificates.md) under the _Use_ tab.
+- To learn more about the various options for Zowe certificate configuration, see [Zowe certificate configuration overview](../user-guide/configure-certificates.md).
 
 ## User Authentication
 Zowe always authenticates the users accessing its interfaces and services. 
