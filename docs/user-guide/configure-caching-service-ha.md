@@ -48,12 +48,15 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
   ``` yaml
   components:
-        caching-service:
-          storage:
-            mode: infinispan
-            infinispan: 
-              jgroups:
-                port: 7098
+    caching-service:
+      storage:
+        mode: infinispan
+        infinispan: 
+          initialHosts: localhost[7600]
+          jgroups:
+            port: 7600
+            keyExchange:
+              port:7601
   ```
 
 ## VSAM (Deprecated)
@@ -125,24 +128,24 @@ To enable Personal Access Token support when using the Caching Service, **Infini
    ```yaml
     components:
       caching-service:
-      enabled: true
+        enabled: true
         port: 7555
-          storage:
-            size: 10000
-            evictionStrategy: reject
-            mode: redis
-            redis:
-              masterNodeUri: 
-              timeout: 60
-            sentinel:
-              masterInstance
-              nodes
-            ssl:
-              enabled: true
-              keystore:
-              keystorePassword:
-              trustStore:
-              trustStorePassword
+        storage:
+          size: 10000
+          evictionStrategy: reject
+          mode: redis
+          redis:
+            masterNodeUri: 
+            timeout: 60
+          sentinel:
+            masterInstance
+            nodes
+          ssl:
+            enabled: true
+            keystore:
+            keystorePassword:
+            trustStore:
+            trustStorePassword:
    ```
 
    In single-service mode, the port **7555** is ignored. The single-service port is used instead.
