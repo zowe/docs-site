@@ -57,7 +57,7 @@ Zowe supplies five certificate scenario YAML files in the `files/examples/setup/
     ```shell
     ./bin/zwe init certificate --update-config -c "FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)" 
 
-    # If you are using scenarios 3, 4, or 5, this will print JCL to the console for review
+    # If you are using scenarios 3, 4, or 5, this prints JCL to the console for review
     ./bin/zwe init certificate --dry-run --update-config -c "FILE(/path/to/files/examples/setup/certificate/scenario-1.yaml):FILE(/path/to/zowe.yaml)" 
     ```
 
