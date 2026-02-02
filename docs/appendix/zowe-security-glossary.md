@@ -98,7 +98,7 @@ Zowe requires certificates in one of two formats: file-based (`PKCS12`) or z/OS 
 
 Zowe is able to use PKCS12 certificates that are stored in USS. Zowe uses a `keystore` directory to contain its certificates primarily in PKCS12 (`.p12`, `.pfx`) file format, but also in PEM (`.pem`) format. The truststore is in the `truststore` directory that holds the public keys and CA chain of servers which Zowe communicates with (for example z/OSMF).
 
-Generating PKCS12 certificate is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md), Scenarios 1 and 2.
+Generating PKCS12 certificates is covered in [Certificate configuration scenarios](../user-guide/certificates-configuration-scenarios.md) Scenario 1 and Scenario 2.
 Configuring PKCS12 certificates is covered in [Finalize certificate configuration](../user-guide/certificates-finalize-configuration.md).
 
 ### z/OS key ring-based certificate setup
