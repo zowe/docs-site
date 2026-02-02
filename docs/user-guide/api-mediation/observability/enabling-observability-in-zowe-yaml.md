@@ -10,12 +10,7 @@ The observability configuration is located under the API Mediation Layer `compon
   Activates the OTel SDK. Set to `true` to initialize the OpenTelemetry SDK to enable observability. 
 
 * **exporter**  
-Defines where the data is sent.  `exporter` has the following sub-property:  
-
-  * **exporter.otlp.protocol**  
-    The transport protocol used to transmit telemetry data. Options include `grpc` for high-performance streaming or `http/protobuf` for standard web compatibility.
-    **Default:** `grcp`
-  
+Defines where the data is sent.  
 
 * **resource**  
 Defines the identity of the producer (Attributes).
@@ -54,3 +49,26 @@ zowe:
 
 When `enabled: true` is set, the API ML single-service starts a background telemetry engine. This engine gathers all signals and bundles these signals with all Resource Attributes. These bundles are then pushed by means of the OTLP Exporter to your specified endpoint.
 
+## Validating the Configuration
+
+After applying the changes to zowe.yaml and restarting the API Mediation Layer, verify that the OpenTelemetry integration is active and communicating with your collector.
+
+1. Check the API ML Startup Logs.
+Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
+
+To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs will typically show Exporting failed or Connection refused messages from the OTel SDK.
+
+2. Verify Signal Reception in your Observability Tool.
+The most definitive validation is to confirm that data is appearing in your chosen observability backend: 
+
+   a. Search by Service Name. 
+    In your monitoring tool's UI, look for the value you defined in `service.name` (e.g., zowe-apiml).  
+
+   b. Filter by Namespace.  
+    If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
+
+3. Confirm Attributes.  
+Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
+
+4. Use the Collector's Logging (Optional).  
+If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, you will see raw incoming "Export" requests from the API ML's IP address.
