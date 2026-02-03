@@ -26,7 +26,7 @@ Stay current with new developments in the Zowe ecosystem through the Open Mainfr
 * Squad-specific deep dives
 * Ecosystem and extension news
 * Training and community engagement
-* Demos & Use Cases
+* Demos and use cases
 
 To see the full list of Zowe Webinars on YouTube, see [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) by Open Mainframe Project.
 
