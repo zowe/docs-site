@@ -16,7 +16,7 @@ To avoid the browser untrusted CA challenge, import Zowe certificates into the b
 Trust in the API ML server is a necessary precondition for secure communication between the browser or API Client application. Ensure this trust by installing a Certificate Authority public certificate. By default, API ML creates a local CA. Import the CA public certificate to the truststore for REST API clients and to your browser. You can also import the certificate to your root certificate store.
 
 :::tip  
- If a SAF keyring is used and the certificate was generated on z/OS, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.  
+ If a SAF key ring is used and the certificate was generated on z/OS, the procedure to obtain the certificate does not apply. In this case, it is recommended that you work with your security system administrator to obtain the certificate.  
 :::
 
 The public certificate in [PEM format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail) is stored in a USS directory and defined in the `zowe.yaml` configuration file in the section `zowe.certificate.pem.certificateAuthorities`. The certificate is stored in UTF-8 encoding so you need to transfer the certificate as a binary file. Since this is the certificate to be trusted by your browser, it is recommended to use a secure connection for transfer.
@@ -58,7 +58,7 @@ $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.ke
 
 <details>
 <summary>
-For Firefox, click here for command deails.
+For Firefox, click here for command details.
 </summary>
 
 Manually import your root certificate via the Firefox settings, or force Firefox to use the Windows truststore.
