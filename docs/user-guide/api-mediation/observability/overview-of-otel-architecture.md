@@ -1,5 +1,6 @@
 # Overview of OpenTelemetry Architecture
 
+OpenTelemetry (OTel) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
 
 API ML observability is built upon Resources (the 'who' and 'where'), which define the identity and z/OS context of the system, and Signals (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
 
@@ -12,17 +13,17 @@ OpenTelemetry resource attributes for the Zowe API ML are organized into three l
 ### Attribute Categories
 
 * **Service Attributes**  
-These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example, "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters allows you to monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
+Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific LPAR or site.
 
   For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
 
 * **Deployment Attributes:**  
-These attributes describe the lifecycle stage of the service, and allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
+Describe the lifecycle stage of the service, and filter telemetry data by environment, such as distinguishing production issues from test environment noise.
 
   For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
 
 * **z/OS Attributes**  
-These attributes provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running. 
+Provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running. 
 
   For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
 
