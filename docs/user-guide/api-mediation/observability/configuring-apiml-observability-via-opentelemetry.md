@@ -16,83 +16,53 @@ By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to 
 API ML system observability is available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
 :::
 
-API ML observability is built upon Resources (the 'who' and 'where'), which define the identity and z/OS context of the system, and Signals (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
 
-## Resource Attributes 
+To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 
-A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every [signal](#telemetry-signals-and-observability) (metric/trace/log) produced carries a set of attributes that identify a specific instance. 
+## Prerequisites
 
-OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends. 
+* Administrative access to your `zowe.yaml` configuration file.
 
-### Attribute Categories
+## Overview of Observability Configuration
 
-* **Service Attributes**  
-These attributes define the logical identity of your application. The `service.name` allows you to group multiple instances into a single functional view (for example, "North-Region-APIML"). However, you can also use additional attributes like `service.instance.id` or `service.namespace` to distinguish between different installations or individual jobs. Configuring these sub-parameters allows you to monitor the health of the entire API ecosystem while still being able to identify issues within a specific LPAR or geographic site.
+Follow these steps to configure your observability metadata before activating the telemetry stream for API Mediation Layer.
 
-  For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
+### 1. Define Service Identity
+Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
 
-* **Deployment Attributes:**  
-These attributes describe the lifecycle stage of the service, and allow you to filter telemetry data by environment (e.g., distinguishing production issues from test environment noise).
+* Set the `service.name` to a common value across all instances (e.g., `zowe-apiml`).
+* Use `service.namespace` and `service.instance.id` to differentiate between data centers, sysplexes, or specific jobs.
+* For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
 
-  For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
+### 2. Label the Deployment Environment
+Manually define the lifecycle stage of the instance. Doing so prevents data from development or test environments from triggering false alerts in your production dashboards.
 
-* **z/OS Attributes**  
-These attributes provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running. 
+* Configure the `deployment.environment.name` (e.g., `production`, `test`).
+* For more information, see [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md).
 
-  For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
+### 3. Validate and Override z/OS Context
+Review the attributes captured automatically by the **System Discovery** process. The API ML queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR.
+* Verify that the automatically discovered attributes (like `zos.smf.id`) meet your reporting requirements.
+* Apply manual overrides in `zowe.yaml` only if custom logical identifiers are necessary.
+* For more information, see [Configuring OpenTelemetry z/OS attributes](configuring-otel-zos-attributes.md).
 
-## Telemetry Signals and Observability
 
-The API ML produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, each of which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
+### 4. Enable the OTel Exporter in zowe.yaml
+The final step is to activate the OTel SDK and point it toward your collector.
+* Set `enabled: true` under the observability section of `zowe.yaml`.
+* Define your collector's `endpoint` and preferred `protocol` (gRPC or HTTP).
+* **See:** [Enabling Observability in zowe.yaml](enabling-observability-in-zowe.yaml.md)
 
-Signals can be any of the following signal types: 
 
-* [Metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) (performance tracking)
-* [Traces](https://opentelemetry.io/docs/concepts/signals/traces/) (request journeys)
-* [Logs](https://opentelemetry.io/docs/concepts/signals/logs/) (event records). 
+### Understanding the Result
+Once this procedure is complete, the API ML begins producing **Signals** (Metrics, Traces, and Logs) that are wrapped in the **Resource Attributes** you configured.
 
-Each of these signal types represents a specific category of observation from a system. Every signal is automatically enriched based on resource attributes, which act as a common identity across all telemetry streams. This enrichment process categorizes data into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context) metadata. By mapping these consistent attributes to every metric, trace, and log, the system creates a unified data model where a performance spike in a metric can be directly linked to a specific error in a log or a delay in a trace. This structured categorization allows administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools, transforming raw telemetry into a detailed map of system health. 
+| Component | Role | Outcome |
+| :--- | :--- | :--- |
+| **Telemetry Signals** | Operational Data | Tells you **what** is happening (latency, errors). |
+| **Resource Attributes** | Identifying Metadata | Tells you **where** it is happening (LPAR, Job Name, Site). |
 
-While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names, operating system types, and process identifiers. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
+## Next Steps
 
-:::info How to understand Signals vs Resources 
-
-To better understand the relationship between signals and resources, it is useful to consider the analogy of a postal package and the label on the package:
-
-* The **Signal** is the contents of the package. It contains the actual "goods" — the specific data about an event, such as a log message, a trace of a request, or a performance metric.
-* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
-
-Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure. 
-
-:::
-### Understanding API ML Telemetry Signals
-
-API Mediation Layer utilizes the three core OpenTelemetry signals to provide a complete picture of your mainframe gateway’s health and performance. By combining these signals, administrators can identify high-level symptoms, and also pinpoint root causes within a specific service or address space. The follow points describe how diffent signal types apply to API ML observability:
-
-* **Metrics (The "How Much")**  
-Metrics are numerical representations of data measured over intervals of time. In the context of API ML, they are used to track system health, observe performance trends, and trigger automated alerts before issues impact end-users.
-
-  * **JVM & System Health**  
-  Monitors standard indicators such as heap memory usage, garbage collection duration, and CPU utilization of the API ML process.
-
-  * **Traffic & Throughput**  
-  Tracks counters and gauges for request volume, HTTP error rates, and the number of active concurrent connections.
-
-* **Traces (The "Where")**  
-Traces record the end-to-end path of a request as it moves through the API ML. They provide a "big picture" view of how the gateway interacts with discovery services and backend providers.
-
-  * **Span Intervals**  
-  Captures discrete segments of work (called Spans), such as the time required for SAF authentication, service ID resolution, or the physical routing of a request to a provider.
-
-  * **Latency Analysis**  
-  Identifies specific bottlenecks in the request lifecycle, allowing you to see exactly which stage of processing is causing delays.
-
-* **Logs (The "What" and "Why")**  
-Logs are timestamped text records of discrete events. They provide the deep technical context necessary to understand why a specific error occurred or how the state of the API ML has changed.
-
-  * **Activity Records**  
-  Captures critical system events such as service registration/deregistration, security audit failures, and lifecycle transitions like startup or shutdown.
-
-  * **Correlation**  
-  Logs produced by the API ML include OTel traceId metadata. This allows you to jump from a specific error log directly to the associated trace to see the full context of the failed request.
+Before you start to configure observability for API ML via OpenTelemetry, review the [Overview of OpenTelemetry Architecture](overview-of-otel-architecture.md).
 
