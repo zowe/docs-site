@@ -81,8 +81,8 @@ zowe:
 ```
 
 Manually review that all the values you provided are correct: 
-* The keyring exists.
-* The certificate alias is correct and exists in the provided keyring.
-* The keyring is accessible by your Zowe runtime user.
+* The key ring exists.
+* The certificate alias is correct and exists in the provided key ring.
+* The key ring is accessible by your Zowe runtime user.
 
 After manual review, you are ready to start Zowe with your certificate configuration. When Zowe starts, it performs another series of verifications against your configuration and alerts you in the job output if there are any problems. <!-- TODO: cert preflight checks? -->
