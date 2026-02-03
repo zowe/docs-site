@@ -14,17 +14,17 @@ API ML system observability is available exclusively for the API ML single-servi
 
 ## API ML Observability Use Cases
 
-The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe the Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can move beyond simple monitoring to active performance optimization and rapid troubleshooting.
+The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
 
 Common use cases for leveraging OpenTelemetry within the API ML include:
 
-* **Sysplex-Wide Traffic Analysis** Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This allows you to identify if a performance spike is isolated to a single LPAR or if it is a systemic issue affecting the entire Sysplex.
+* **Sysplex-Wide Traffic Analysis** Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if it is a systemic issue affecting the entire Sysplex.
 
-* **Latency Bottleneck Identification** By analyzing distributed traces, you can visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur—whether during **SAF authentication**, **service ID resolution** in the Discovery Service, or the physical **southbound routing** to a backend provider.
+* **Latency Bottleneck Identification** By analyzing distributed traces, you can visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur — whether during **SAF authentication**, **service ID resolution** in the Discovery Service, or during **southbound routing** to a backend provider.
 
-* **Cross-Platform Troubleshooting** When a distributed application (e.g., a cloud-based web app) experiences a failure, you can use a shared `traceId` to follow the request as it enters the mainframe. This links the "front-end" error directly to a specific **Service ID** or **ASID** on z/OS, drastically reducing the Mean Time to Repair (MTTR) by eliminating "finger-pointing" between platform teams.
+* **Cross-Platform Troubleshooting** When a distributed application, such as a cloud-based web app, experiences a failure, you can use a shared `traceId` to follow the request as the request enters the mainframe. This links the "front-end" error directly to a specific **Service ID** or **ASID** on z/OS, thereby reducing the Mean Time to Repair (MTTR).
 
-* **Proactive Resource Management** Monitor JVM-specific metrics—such as **Heap Memory usage** and **Garbage Collection duration**—within the API ML process. By correlating these with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
+* **Proactive Resource Management** Monitor JVM-specific metrics—such as **Heap Memory usage** and **Garbage Collection duration** — within the API ML process. By correlating these metrics with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
 
 * **Security and Audit Forensics** Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
 
