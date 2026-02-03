@@ -20,7 +20,7 @@ As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL
 
 ## Webinars
 
-Stay current with new developments in theZowe ecosystem through the Open Mainframe Project’s webinar series, where squad members present big-picture overviews, technical updates, and new features tailored for users and developers alike. These webinars are designed to bridge the gap between the Zowe development squads and the community, providing a deep dive into the evolution of the platform. Topic areas covered in the webinars include the following presentations:
+Stay current with new developments in the Zowe ecosystem through the Open Mainframe Project’s webinar series, where squads present big-picture overviews, technical updates, and new features tailored for users and developers alike. These webinars are designed to bridge the gap between the Zowe development squads and the community, providing a deep dive into the evolution of the platform. Topic areas covered in the webinars include the following presentations:
 
 * Quarterly Roadmap & Release Updates
 * Squad-Specific Deep Dives
