@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
         "whats-new/release-notes/v3_3_0",
@@ -24,6 +25,7 @@ module.exports = {
       className: "ToCheadercolor",
       collapsed: true,
       items: [  
+        "whats-new/release-notes/v2_18_5",  
         "whats-new/release-notes/v2_18_4",  
         "whats-new/release-notes/v2_18_3",   
         "whats-new/release-notes/v2_18_2",  
@@ -903,8 +905,17 @@ module.exports = {
         },
         "troubleshoot/troubleshoot-intellij",
       ],
-    }
-  ],
+    },  
+  {
+    type: "category",
+    label: "Troubleshooting z/OS Services",
+    collapsed: false,
+    link: { type: "doc", id: "troubleshoot/troubleshooting" },
+    items: [
+      "troubleshoot/zOS_services/Unable-to-generate-unique-CeaTso-APPTAG",
+          ],
+  },
+    ],
   "contributing": [
     "contribute/roadmap-contribute",
     {
@@ -954,7 +965,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.x.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.1.md",
     },
   ],
 }
