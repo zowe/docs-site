@@ -6,24 +6,35 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools - such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment. The implementation of the OTel standard ensures flexibility in your observability stack, whereby you can use any monitoring tool to perform the following processes:
-
-* Monitor system activity and overall health in real-time.
-* Diagnose latency issues by tracing requests across service boundaries.
-* Analyze service behavior to optimize resource allocation and performance.
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools - such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment.
 
 :::caution Important
 API ML system observability is available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
 :::
 
+## API ML Observability Use Cases
 
-To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
+The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe the Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can move beyond simple monitoring to active performance optimization and rapid troubleshooting.
+
+Common use cases for leveraging OpenTelemetry within the API ML include:
+
+* **Sysplex-Wide Traffic Analysis** Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This allows you to identify if a performance spike is isolated to a single LPAR or if it is a systemic issue affecting the entire Sysplex.
+
+* **Latency Bottleneck Identification** By analyzing distributed traces, you can visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur—whether during **SAF authentication**, **service ID resolution** in the Discovery Service, or the physical **southbound routing** to a backend provider.
+
+* **Cross-Platform Troubleshooting** When a distributed application (e.g., a cloud-based web app) experiences a failure, you can use a shared `traceId` to follow the request as it enters the mainframe. This links the "front-end" error directly to a specific **Service ID** or **ASID** on z/OS, drastically reducing the Mean Time to Repair (MTTR) by eliminating "finger-pointing" between platform teams.
+
+* **Proactive Resource Management** Monitor JVM-specific metrics—such as **Heap Memory usage** and **Garbage Collection duration**—within the API ML process. By correlating these with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
+
+* **Security and Audit Forensics** Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
 
 ## Prerequisites
 
 * Administrative access to your `zowe.yaml` configuration file.
 
 ## Overview of Observability Configuration
+
+To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 
 Follow these steps to configure your observability metadata before activating the telemetry stream for API Mediation Layer.
 
