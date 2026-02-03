@@ -24,7 +24,7 @@ Stay current with new developments in the Zowe ecosystem through the Open Mainfr
 
 * Quarterly roadmap and release updates
 * Squad-Specific Deep Dives
-* Ecosystem & Extension News
+* Ecosystem and extension news
 * Training & Community Engagement
 * Demos & Use Cases
 
