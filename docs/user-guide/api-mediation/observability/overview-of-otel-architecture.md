@@ -2,7 +2,7 @@
 
 OpenTelemetry (OTel) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
 
-API ML observability is built upon Resources (the 'who' and 'where'), which define the identity and z/OS context of the system, and Signals (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
+API ML observability is built upon **Resources** (the 'who' and 'where'), which define the identity and z/OS context of the system, and **Signals** (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
 
 ## Resource Attributes 
 

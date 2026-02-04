@@ -2,14 +2,13 @@
 
 Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.  
 
-:::info
-Required role: System administrator
+:::infoRequired role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tools - such as [Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/) - to gain insights into resource utilization and latency within the mainframe environment.
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tool, commonly referred to as an OpenTelemetry (OTel) Collector, to gain insights into resource utilization and latency within the mainframe environment.
 
 :::caution Important
-API ML system observability is available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
+API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
 :::
 
 ## API ML Observability Use Cases
@@ -18,19 +17,26 @@ The implementation of the OpenTelemetry standard provides a vendor-neutral way t
 
 Common use cases for leveraging OpenTelemetry within the API ML include:
 
-* **Sysplex-Wide Traffic Analysis** Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if it is a systemic issue affecting the entire Sysplex.
+* **Sysplex-Wide Traffic Analysis**  
+Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if the spike is caused by a systemic issue affecting the entire Sysplex.
 
-* **Latency Bottleneck Identification** By analyzing distributed traces, you can visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur — whether during **SAF authentication**, **service ID resolution** in the Discovery Service, or during **southbound routing** to a backend provider.
+* **Latency Bottleneck Identification**  
+ Analyze distributed traces to visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur — whether during SAF authentication, service ID resolution in the Discovery Service, or during southbound routing to a backend provider.
 
-* **Cross-Platform Troubleshooting** When a distributed application, such as a cloud-based web app, experiences a failure, you can use a shared `traceId` to follow the request as the request enters the mainframe. This links the "front-end" error directly to a specific **Service ID** or **ASID** on z/OS, thereby reducing the Mean Time to Repair (MTTR).
+* **Cross-Platform Troubleshooting**    
+ When a distributed application, such as a cloud-based web app, experiences a failure, you can use a shared `traceId` to follow the request as the request enters the mainframe. This links the "front-end" error directly to a specific Service ID or ASID on z/OS, thereby reducing the Mean Time to Repair (MTTR).
 
-* **Proactive Resource Management** Monitor JVM-specific metrics—such as **Heap Memory usage** and **Garbage Collection duration** — within the API ML process. By correlating these metrics with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
+* **Proactive Resource Management**  
+  Monitor JVM-specific metrics, such as Heap Memory usage and Garbage Collection duration, within the API ML process. By correlating these metrics with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
 
-* **Security and Audit Forensics** Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
+* **Security and Audit Forensics**  
+ Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
 
 ## Prerequisites
 
 * Administrative access to your `zowe.yaml` configuration file.
+* Access to an OTLP-collector to visualize the observability data. Common examples of OTLP-collectors include 
+[Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/).
 
 ## Overview of Observability Configuration
 
@@ -66,14 +72,13 @@ The final step is to activate the OTel SDK and point it toward your collector.
 
 
 ### Understanding the Result
-Once this procedure is complete, the API ML begins producing **Signals** (Metrics, Traces, and Logs) that are wrapped in the **Resource Attributes** you configured.
+Once this procedure is complete, the API ML begins producing **Signals** (Metrics, Traces, and Logs) that are wrapped in the **Resource Attributes** you configured. 
 
 | Component | Role | Outcome |
 | :--- | :--- | :--- |
 | **Telemetry Signals** | Operational Data | Tells you **what** is happening (latency, errors). |
 | **Resource Attributes** | Identifying Metadata | Tells you **where** it is happening (LPAR, Job Name, Site). |
 
-## Next Steps
+For details about signals and resource attributes, see the following article: [Overview of OpenTelemetry Architecture](overview-of-otel-architecture.md).
 
-Before you start to configure observability for API ML via OpenTelemetry, review the [Overview of OpenTelemetry Architecture](overview-of-otel-architecture.md).
 
