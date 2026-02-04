@@ -18,6 +18,7 @@ The default value of this parameter is `true`.
 :::
 
 **Example:**
+
 ```yaml
 components:
     gateway:
@@ -31,11 +32,14 @@ In this example, setting `protected` to `true` protects the health check endpoin
 
 To allow open access to the health check endpoint, set the parameter to `false`. Setting this parameter to `false` permits access to this endpoint without authentication. In this case, anyone can access the health check endpoint and obtain information about the status of the Gateway.
 
-* `components.discovery.apiml.health.protected`  
-  This property defines whether the health check endpoint on Discovery service is accessible with or without authentication.
-* `components.apiCatalog.apiml.health.protected`  
-  This property defines whether the health check endpoint on API Catalog is accessible with or without authentication.
+The health endpoint protection can be configured on other Zowe components as well:
 
+* `components.discovery.apiml.health.protected`  
+  This property defines whether the health check endpoint on Discovery Service is accessible with or without authentication.
+* `components.api-catalog.apiml.health.protected`  
+  This property defines whether the health check endpoint on API Catalog Service is accessible with or without authentication.
+* `components.zaas.apiml.health.protected`
+  This property defines whether the health check endpoint on ZAAS Service is accessible with or without authentication.
 
 ## Environment Recommendations
 
