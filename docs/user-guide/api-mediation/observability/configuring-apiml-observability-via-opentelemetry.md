@@ -8,7 +8,7 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tool, commonly referred to as an OpenTelemetry (OTel) Collector, to gain insights into resource utilization and latency within the mainframe environment.
 
 :::caution Important
-API ML system observability is available exclusively for the API ML single-service deployment. These features are not supported in the legacy microservice-based architecture of API ML.
+API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
 :::
 
 ## API ML Observability Use Cases
