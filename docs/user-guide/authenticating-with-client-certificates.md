@@ -4,20 +4,19 @@
 :::
 
 Authentication for integration with API Mediation Layer (API ML) can also be performed by the client when the service endpoint is called through
-the API ML Gateway with client certificates. Client certificates in Zowe follow the X.509 standard which provide secure communication of networks and authenticates the identity of a user, device, or server. 
+the API ML Gateway with client certificates. Client certificates in Zowe follow the X.509 standard which provide secure communication of networks and authenticates the identity of a user, device, or server.
 
 X.509 client certification must be enabled and configured. For details about this configuration, see [Enabling single sign on for clients via client certificate configuration](./api-mediation/configuration-client-certificates.md).
 
 :::note Notes:
 
-* When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic 
+* When calling the login endpoint with basic authentication credentials, as well as with client certificate, the basic
   authentication credentials take precedence and the client certificate is ignored.
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 :::
 
 For details about how authentication by means of client certificates is performed in the Gateway, see [How the Gateway resolves authentication](#how-the-gateway-resolves-authentication) later in this article.
-
 
 ## Configure your z/OS system to support client certificate authentication for specific users
 
