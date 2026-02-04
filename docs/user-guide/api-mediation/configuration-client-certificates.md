@@ -25,19 +25,20 @@ For information about the usage of the client certificate when this feature is e
 * The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
 :::
 
-2. Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
+* Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
-    :::note
-    Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. If you define a certificate using openssl on Linux, import the CA. Certificates can also be generated in SAF.
-    :::
+  :::note
+  Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. If you define a certificate using openssl on Linux, import the CA. Certificates can also be generated in SAF.
+  :::
 
-    :::caution Important:
-    * PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
-    :::
+  :::caution Important:
 
-    :::tip
-    There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended Internal API ML Mapper.
-    :::
+  * PassTicket generation must be enabled for the Zowe runtime user. The user must be able to generate a PassTicket for the user and for the APPLID of z/OSMF. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+  :::
+
+  :::tip
+  There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended Internal API ML Mapper.
+  :::
 
 ## Configure the Internal API ML Mapper
 
