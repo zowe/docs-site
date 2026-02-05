@@ -7,4 +7,5 @@ In Zowe's API Mediation Layer, system administrators can limit access to service
 
 - [Limiting access to information or services in the API Catalog](./configuration-limiting-access-to-info-or-services-in-api-catalog.md)
 - [Configuring SAF resource checking](./configuration-saf-resource-checking.md)
-- [Configurint Health Endpoint Protection](./configuration-health-endpoint-protection.md)
+- [Configuring Health Endpoint Protection](./configuration-health-endpoint-protection.md)
+- [Configuring delegated passticket generation](./configuration-delegated-passticket.md)
