@@ -62,62 +62,63 @@ For information about configuring ZSS, see [Configure components zss](../../appe
 
 When using ZSS for authentication, ensure that you satisfy the following prerequisites before you set up client certificate authentication:
 
-1. Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password.
+Set the password for the Zowe runtime user. The user is created with the `NOPASSWORD` parameter by the Zowe installer. It is necessary to change this password.
 
-    For RACF, issue the following TSO command:
+For RACF, issue the following TSO command:
 
-    ```racf
-    ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
-    ```
+```racf
+ALTUSER <ZOWE_RUNTIME_USER (ZWESVUSR by default)> PASSWORD(<NEWPASSWORD>)
+```
+For other security systems, refer to the documentation for an equivalent command.
 
-    For other security systems, refer to the documentation for an equivalent command.
+### Configuring X.509 Client Certificate Authentication in zowe.yaml
 
-### Configuring X.509 client certificate authentication in zowe.yaml
+Enable X.509 client certificates as an authentication method for the API Mediation Layer Gateway.
 
-Follow these steps to update the zowe.yaml configuration file to enable X.509 client certificates as an authentication method for the API Mediation Layer Gateway. 
+#### Prerequisites
 
-1. Open the `zowe.yaml` configuration file.
-2. Configure the following properties:
+Before you update configuration for X.509 Client Certificate authentication, ensure that the Zowe runtime user ID (default `ZWESVUSR`) has the required authorization to use the **`IRR.RUSERMAP`** resource within the **`FACILITY`** class. 
 
+These permissions are typically established during installation via the `ZWESECUR` JCL or configuration workflow. This authorization is required for the Gateway to map certificates to SAF user identities.
+
+### X.509 Client Certificate Authentication Configuration Procedure
+
+Follow these steps to update the `zowe.yaml` configuration file and enable certificate-based authentication:
+
+1. Open your `zowe.yaml` file.
+
+2. Enable the primary feature flags.  
+   Navigate to the security section and update the following properties to activate the certificate filter and define the authentication handshake:
    * **components.gateway.apiml.security.x509.enabled**  
-   This property is the global feature toggle. Set the value to `true` to enable the client certificate functionality.
-
+   Set this to `true` to enable the global client certificate functionality.
    * **components.gateway.apiml.security.zosmf.applid**  
-   When z/OSMF is used as an authentication provider, specify a valid `APPLID`. The API ML generates a PassTicket for the specified `APPLID` to authenticate the user to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
-  
-:::note
-The following steps are only required if the ZSS hostname or default Zowe user name are altered:
-:::
+   If using z/OSMF as an authentication provider, specify a valid `APPLID`. The API ML generates a PassTicket for this ID to authenticate users to z/OSMF. The default value is typically `IZUDFLT`.
 
-3. Configure an external mapper (Optional).  
-  If your environment requires user mapping through an external API rather than the default, update the following property:  
-
-   * **components.gateway.apiml.security.x509.externalMapperUrl**  
-   The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
-
-   The following URL is the default value for Zowe and ZSS:
-
-     ```url
-     https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
-     ```
-
-1. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
-
+3. Configure an external mapper (Optional).   
   :::note
-  Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
+  Skip this step if you use the default ZSS mapping service. 
+  ::: 
+   
+   If your environment requires user mapping through a custom external API, update the following property:
+   * **components.gateway.apiml.security.x509.externalMapperUrl**  
+   Specifies the location of the API used to map certificates to SAF owners.
+     
+     **Default ZSS URL:** `https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map`
+
+4. Define the runtime user for certificate mapping (Optional)  
+  :::note
+  Skip this step if your Zowe runtime user ID is the default `ZWESVUSR`.
   :::
 
-* **components.gateway.apiml.security.x509.externalMapperUser**  
-   To authenticate to the mapping API, a JWT is sent with the request. The token represents the user that is configured with this property. The user authorization is required to use the `IRR.RUSERMAP` resource within the `FACILITY` class. The default value is `ZWESVUSR`. Permissions are set up during installation with the `ZWESECUR` JCL or workflow.
-
-   If you customized the `ZWESECUR` JCL or workflow (the customization of zowe runtime user: `// SET ZOWEUSER=ZWESVUSR * userid for Zowe started task`) and changed the default USERID, create the `components.gateway.apiml.security.x509.externalMapperUser` property and set the value by adding a new line as in the following example:
-
+   If you customized the `ZWESECUR` JCL (for example, by setting `// SET ZOWEUSER=customID`), you must explicitly define the specified user to allow the Gateway to generate JSON Web Tokens (JWTs) for mapping requests:
+   * **components.gateway.apiml.security.x509.externalMapperUser**  
+   Set this to your customized Zowe runtime user ID.
+   
    **Example:**
-
    ```yaml
-   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
+   components.gateway.apiml.security.x509.externalMapperUser: yournewuserid
    ```
 
-5. Restart Zowe to apply the changes.
+5. Restart Zowe to refresh the configuration and initialize the new security filters.
 
-X.509 client certificate authentication is now configured and active for the API Mediation Layer.
+X.509 client certificate authentication is now active. The API ML can now attempt to authenticate clients using their provided certificates upon the next connection attempt.
