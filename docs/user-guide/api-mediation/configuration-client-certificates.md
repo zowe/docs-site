@@ -75,13 +75,13 @@ For other security systems, refer to the documentation for an equivalent command
 
 Enable X.509 client certificates as an authentication method for the API Mediation Layer Gateway.
 
-#### Prerequisites
+#### Prerequisites for X.509 Client Certificates
 
 Before you update configuration for X.509 Client Certificate authentication, ensure that the Zowe runtime user ID (default `ZWESVUSR`) has the required authorization to use the **`IRR.RUSERMAP`** resource within the **`FACILITY`** class. 
 
 These permissions are typically established during installation via the `ZWESECUR` JCL or configuration workflow. This authorization is required for the Gateway to map certificates to SAF user identities.
 
-### X.509 Client Certificate Authentication Configuration Procedure
+#### X.509 Client Certificate Authentication Configuration Procedure
 
 Follow these steps to update the `zowe.yaml` configuration file and enable certificate-based authentication:
 
@@ -105,7 +105,7 @@ Follow these steps to update the `zowe.yaml` configuration file and enable certi
      
      **Default ZSS URL:** `https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map`
 
-4. Define the runtime user for certificate mapping (Optional)  
+4. Define the runtime user for certificate mapping (Optional).  
   :::note
   Skip this step if your Zowe runtime user ID is the default `ZWESVUSR`.
   :::
