@@ -89,11 +89,8 @@ Follow these steps to update the zowe.yaml configuration file to enable X.509 cl
 The following steps are only required if the ZSS hostname or default Zowe user name are altered:
 :::
 
-3. Change the following property if user mapping is provided by an external API:
-
-  :::note
-   Skip this step if user mapping is not provided by an external API.
-   :::
+3. Configure an external mapper (Optional).  
+  If your environment requires user mapping through an external API rather than the default, update the following property:  
 
    * **components.gateway.apiml.security.x509.externalMapperUrl**  
    The API Mediation Gateway uses an external API to map a certificate to the owner in SAF. This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. You can provide your own API to perform the mapping. In this case, it is necessary to customize this value.
@@ -104,7 +101,7 @@ The following steps are only required if the ZSS hostname or default Zowe user n
      https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
      ```
 
-4. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
+1. Add the following property if the Zowe runtime userId is altered from the default `ZWESVUSR`:
 
   :::note
   Skip this step if the Zowe runtime userId is not altered from the default `ZWESVUSR`.
