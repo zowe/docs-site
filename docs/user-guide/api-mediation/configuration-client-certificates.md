@@ -3,7 +3,7 @@
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-In Zowe you can authenticate against API ML onboarded APIs using X.509 client certificates. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs with X.509 client certificates.
+In Zowe you can validate your identity with the API ML using X.509 client certificates to access onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs with X.509 client certificates.
 
 There are two methods to enable X.509 client certificate functionality integrated with the SAF:
 
@@ -17,18 +17,18 @@ For information about the usage of the client certificate when this feature is e
 
 ## General prerequisites
 
-* Zowe has correct TLS setup
-* The trust store, which is configured in the config file, needs to contain the CA certificates of all incoming client certificates.
+* Zowe has correct TLS setup.
+* The truststore, which is configured in the config file, needs to contain the CA certificates of all incoming client certificates.
 
 :::caution Important:
 
-* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-distributed-identity-mapping).
+* The Zowe runtime user must be enabled to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
 :::
 
 * Verify that the Zowe runtime user is allowed to log in to z/OSMF. (Check that the user is a member of the default `IZUUSER` group.)
 
   :::note
-  Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. If you define a certificate using openssl on Linux, import the CA. Certificates can also be generated in SAF.
+  Ensure that you have the Issuer certificate imported in the truststore or in the SAF keyring. If you define a certificate using openssl on Linux, import the Certificate Authority. Certificates can also be generated in SAF.
   :::
 
   :::caution Important:
@@ -72,18 +72,18 @@ When using ZSS for authentication, ensure that you satisfy the following prerequ
 
     For other security systems, refer to the documentation for an equivalent command.
 
-### Enabling zowe.yaml to use an X.509 client certificate
+### Configuring X.509 client certificate authentication in zowe.yaml
 
-Use the following procedure to enable the zowe.yaml file to use a client certificate as the method of authentication for the API Mediation Layer Gateway. 
+Follow these steps to update the zowe.yaml configuration file to enable X.509 client certificates as an authentication method for the API Mediation Layer Gateway. 
 
 1. Open the `zowe.yaml` configuration file.
 2. Configure the following properties:
 
    * **components.gateway.apiml.security.x509.enabled**  
-   This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
+   This property is the global feature toggle. Set the value to `true` to enable the client certificate functionality.
 
    * **components.gateway.apiml.security.zosmf.applid**  
-   When z/OSMF is used as an authentication provider, provide a valid `APPLID` to allow for client certificate authentication. The API ML generates a passticket for the specified `APPLID` and subsequently uses this passticket to authenticate to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
+   When z/OSMF is used as an authentication provider, specify a valid `APPLID`. The API ML generates a PassTicket for the specified `APPLID` to authenticate the user to z/OSMF. The default value in the installation of z/OSMF is `IZUDFLT`.
   
 :::note
 The following steps are only required if the ZSS hostname or default Zowe user name are altered:
@@ -121,6 +121,6 @@ The following steps are only required if the ZSS hostname or default Zowe user n
    components.gateway.apiml.security.x509.externalMapperUser: yournewuserid  
    ```
 
-5. Restart Zowe.
+5. Restart Zowe to apply the changes.
 
-You enabled zowe.yaml to use an X.509 client certificate.
+X.509 client certificate authentication is now configured and active for the API Mediation Layer.
