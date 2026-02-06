@@ -14,7 +14,7 @@ X.509 client certification must be enabled and configured. For details about thi
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 
-* During client certificate authentication, API Mediation Layer ignores and filters out its own certificates and logs them into the `sysprint` log files. For faster troubleshooting, find the ignored certificates in the `sysprint` log files.
+* During client certificate authentication, API Mediation Layer ignores and filters out its own certificates and logs the certificate file names into the `sysprint` log files. For faster troubleshooting, find the file names of the ignored certificates in the `sysprint` log files.
 :::
 
 For details about how authentication by means of client certificates is performed in the Gateway, see [How the Gateway resolves authentication](#how-the-gateway-resolves-authentication) later in this article.
