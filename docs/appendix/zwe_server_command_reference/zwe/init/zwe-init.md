@@ -1,6 +1,6 @@
 # zwe init
 
-[zwe](.././zwe.md) > [init](./zwe-init.md)
+[zwe](.././zwe) > [init](./zwe-init)
 
 	zwe init [sub-command [sub-command]...] [parameter [parameter]...]
 
@@ -8,7 +8,6 @@
 
 * [apfauth](./zwe-init-apfauth.md)
 * [certificate](./zwe-init-certificate.md)
-* [generate](./zwe-init-generate.md)
 * [mvs](./zwe-init-mvs.md)
 * [security](./zwe-init-security.md)
 * [stc](./zwe-init-stc.md)
@@ -18,24 +17,16 @@
 
 Init Zowe instance based on zowe.yaml configuration.
 
-You can find an `example-zowe.yaml` in Zowe runtime directory folder.
-
-This command can initialize Zowe using either pure JCL or shell scripts and utilities.
-If you want to use pure JCL, set `zowe.setup.jcl.enable` to `true` or run commands with the `--jcl` parameter.
+You can find an example zowe.yaml in Zowe runtime directory folder.
 
 This command will run these sub-commands in sequence:
 
-- (Pure JCL only) `zwe init generate`
 - `zwe init mvs`
 - `zwe init vsam`
 - `zwe init apfauth`
 - `zwe init security`
 - `zwe init certificate`
 - `zwe init stc`
-
-If you pass `--dry-run` with this command, each subcommand will print out the
-JCL that it would submit or actions it would take in shell without modifying the system. This can be used to
-review what Zowe would do before doing it.
 
 If you pass `--skip-security-setup` with this command, `zwe init apfauth` and
 `zwe init security` steps will be skipped.
@@ -49,51 +40,10 @@ be written back to your Zowe YAML configuration file:
 - `java.home` based on your current JAVA_HOME or automatic detection,
 - `node.home` based on your current NODE_HOME or automatic detection.
 
-If you are using the pure JCL option, the following are the JCL submitted by each command as needed:
-
-- `zwe init mvs`
-    - ZWEIMVS2, ZWEIMVS, ZWEIMVS1
-    - (If `--allow-overwrite` specified and old datasets exist) ZWERMVS, ZWERMVS1
-    - (If `zowe.setup.dataset.authLoadLib` is not named prefix + ZWELOAD) ZWEIMVS2
-    - (If above is true, and the dataset exists, and `--allow-overwrite` is set) ZWERMVS2
-- `zwe init vsam`
-    - ZWECSVSM
-    - (If `--allow-overwrite` specified and old datasets exist) ZWECSRVS
-- `zwe init apfauth`
-    - ZWEIAPF2
-- `zwe init security`
-    - (If RACF) ZWEIRAC
-    - (If TSS) ZWEITSS
-    - (If ACF2) ZWEIACF
-- `zwe init certificate`
-    - (If creating keyring and certificate for RACF) ZWEIKRR1
-    - (If creating keyring and connecting certificate for RACF) ZWEIKRR2
-    - (If creating keyring and importing certificate for RACF) ZWEIKRR3
-    - (If creating keyring and certificate for TSS) ZWEIKRR1
-    - (If creating keyring and connecting certificate for TSS) ZWEIKRT2
-    - (If creating keyring and importing certificate for TSS) ZWEIKRT3
-    - (If creating keyring and certificate for ACF2) ZWEIKRA1
-    - (If creating keyring and connecting certificate for ACF2) ZWEIKRA2
-    - (If creating keyring and importing certificate for ACF2) ZWEIKRA3
-- `zwe init stc`
-    - ZWEISTC
-    - (If `--allow-overwrite` specified and old members exist) ZWERSTC
-
-
-These Zowe YAML configurations showing with sample values are used:
-
-If you want to use JCL, include this in the Zowe YAML snippet:
-
-```yaml
-zowe:
-  setup:
-    jcl:
-      enable: true
-      header: ""   # optional jobcard information to include
-```
-
 **IMPORTANT**, if you modify any of the values below, it's suggested to re-run
 relevant `zwe init` command to make them taking effect.
+
+These Zowe YAML configurations showing with sample values are used:
 
 ```yaml
 zowe:
@@ -154,10 +104,10 @@ zowe:
           ca:
           user: IZUSVR
       san:
-        - zos.example.com
-        - internal-lpar1.zos.example.com
-        - internal-lpar2.zos.example.com
-        - internal-lpar3.zos.example.com
+        - zos.my-company.com
+        - internal-lpar1.zos.my-company.com
+        - internal-lpar2.zos.my-company.com
+        - internal-lpar3.zos.my-company.com
       importCertificateAuthorities:
         - 
     vsam:
@@ -165,10 +115,10 @@ zowe:
       volume: VOL123
       storageClass:
   externalDomains:
-   - zos.example.com
+   - zos.my-company.com
   verifyCertificates: STRICT
 zOSMF:
-  host: zosmf.example.com
+  host: zosmf.my-company.com
   port: 443
 components:
   caching-service:
@@ -225,7 +175,7 @@ components:
   hostname (domain) and one IP address.
 - `zowe.setup.certificate.importCertificateAuthorities` is the list of
   certificate authorities will be imported to Zowe PKCS12 keystore or
-  keyring. Please note, for keyring type, only maximum 2 CAs are supported.
+  keyring. Please note, for keyring type, only maximum 2 CAs is supported.
   If you are using `PKCS12` certificate, this should be USS files in PEM format.
   If you are using `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS`, or
   `JCEHYBRIDRACFKS` certificate, this should be certificate labels
@@ -268,7 +218,7 @@ components:
     `localca`.
 - If you want to import certificate stored in MVS data set into Zowe keyring,
   * `zowe.setup.certificate.keyring.connect.dsName` is required in this case. It
-    tells Zowe the data set where the certificate is stored.
+    tells Zowe the data set where the certificate stored.
   * `zowe.setup.certificate.keyring.connect.password` is the password when
     importing the certificate.
   * The certificate will be imported with label defined in
@@ -280,14 +230,14 @@ components:
     Zowe the label of existing certificate.
 - If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`)
   is provided, Zowe will try to trust z/OSMF certificate.
-  * If you are using `RACF` or `TSS` security manager, Zowe will try to 
-    automatically detect the z/OSMF CA based on certificate owner specified by
+  * If you are using `RACF` security manager, Zowe will try to automatically
+    detect the z/OSMF CA based on certificate owner specified by
     `zowe.setup.certificate.keyring.zOSMF.user`. Default value of this field is
     `IZUSVR`. If the automatic detection failed, you will need to define
     `zowe.setup.certificate.keyring.zOSMF.ca` indicates what is the label of
     z/OSMF root certificate authority.
-  * If you are using `ACF2` security manager,
-    `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicate what is
+  * If you are using `ACF2` or `TSS` (Top Secret) security manager,
+    `zowe.setup.certificate.keyring.zOSMF.ca` is required to indicates what is
     the label of z/OSMF root certificate authority.
 
 - `zowe.setup.vsam.mode` indicates whether the VSAM will utilize Record Level
@@ -306,7 +256,7 @@ components:
   required if you are using z/OSMF as authentication service.
 
 - `components.caching-service.storage.mode` indicates what storage Zowe Caching
-  Service will be used. Only if this value is `VSAM`, this command will try to
+  Service will use. Only if this value is `VSAM`, this command will try to
   create VSAM data set.
 - `components.caching-service.storage.vsam.name` defines the VSAM data set name.
 
@@ -320,8 +270,6 @@ zwe init apfauth -v -c /path/to/zowe.yaml
 
 zwe init certificate -v -c /path/to/zowe.yaml
 
-zwe init --config "PARMLIB(ZOWE.PARMS(MAIN)):PARMLIB(ZOWE.PARMS(DEBUGMOD))" --jcl
-
 ```
 
 ## Parameters
@@ -329,11 +277,10 @@ zwe init --config "PARMLIB(ZOWE.PARMS(MAIN)):PARMLIB(ZOWE.PARMS(DEBUGMOD))" --jc
 Full name|Alias|Type|Required|Help message
 |---|---|---|---|---
 --allow-overwrite,--allow-overwritten||boolean|no|Allow overwritten existing MVS data set.
---skip-security-setup||boolean|no|Whether to skip security related setup.
---security-dry-run,--dry-run||boolean|no|Generates JCL or displays actions to be taken on the system without modifying the system.
+--skip-security-setup||boolean|no|Whether should skip security related setup.
+--security-dry-run||boolean|no|Whether to dry run security related setup.
 --ignore-security-failures||boolean|no|Whether to ignore security setup job failures.
 --update-config||boolean|no|Whether to update YAML configuration file with initialization result.
---jcl||boolean|no|Generates and submits JCL to drive the init command, rather than using USS utilities.
 
 
 ### Inherited from parent command
@@ -346,7 +293,7 @@ Full name|Alias|Type|Required|Help message
 --silent|-s|boolean|no|Do not display messages to standard output.
 --log-dir,--log|-l|string|no|Write logs to this directory.
 --config|-c|string|no|Path to Zowe configuration zowe.yaml file.
---configmgr||boolean|no|Deprecated. This behavior is always enabled.
+--configmgr||boolean|no|Enable use of configmgr capabilities.
 
 
 ## Errors
@@ -358,9 +305,8 @@ Full name|Alias|Type|Required|Help message
 Error code|Exit code|Error message
 |---|---|---
 ||100|If the user pass `--help` or `-h` parameter, the zwe command always exits with `100` code.
-ZWEL0064E|64|failed to run command os.pipe - Cannot start component %s
 ZWEL0101E|101|ZWE_zowe_runtimeDirectory is not defined.
-ZWEL0102E|102|Invalid parameter %s. %s
+ZWEL0102E|102|Invalid parameter %s.
 ZWEL0103E|103|Invalid type of parameter %s.
 ZWEL0104E|104|Invalid command %s.
 ZWEL0105E|105|The Zowe YAML config file is associated to Zowe runtime "%s", which is not same as where zwe command is located.
@@ -372,8 +318,6 @@ ZWEL0110E|110|Doesn't have write permission on %s directory.
 ZWEL0111E|111|Command aborts with error.
 ZWEL0112E|112|Zowe runtime environment must be prepared first with "zwe internal start prepare" command.
 ZWEL0114E|114|Reached max retries on allocating random number.
-ZWEL0115E|115|This command was submitted with FILE() or PARMLIB() syntax, which is only supported when JCL is also enabled.
-ZWEL0116E|116|Could not delete existing dataset: %s
 ZWEL0120E|120|This command must run on a z/OS system.
 ZWEL0121E|121|Cannot find node. Please define NODE_HOME environment variable.
 ZWEL0122E|122|Cannot find java. Please define JAVA_HOME environment variable.
@@ -389,25 +333,10 @@ ZWEL0138E|138|Failed to update key %s of file %s.
 ZWEL0139E|139|Failed to create directory %s.
 ZWEL0140E|140|Failed to translate Zowe configuration (%s).
 ZWEL0142E|142|Failed to refresh APIML static registrations.
-ZWEL0144E|144|Cannot generate JCL with a header line greater than 80 characters. Line in error: %s. Please adjust this line in 'zowe.setup.jcl.header'.
-ZWEL0151E|151|Failed to create temporary file %s. Please check permission or volume free space.
-ZWEL0157E|157|%s (%s) is not defined in Zowe YAML configuration file.
-ZWEL0158W||Failed to find job %s result.
-ZWEL0159E|159|Failed to modify %s.
-ZWEL0160W||Failed to run JCL %s.
-ZWEL0160E|160|Failed to write to %s. Please check if target data set is opened by others.
-ZWEL0161E|161|Failed to run JCL %s.
-ZWEL0162E|162|Failed to find job %s result.
-ZWEL0163E|163|Job %s ends with code %s.
-ZWEL0164W||Job %s(%s) ends with code %s (%s).
 ZWEL0172E||Component %s has %s defined but the file is missing.
-ZWEL0173E|173|Please enter an IP address in either the subject alternative name (zowe.setup.certificate.san) or external domain (zowe.externalDomains) in the Zowe YAML configuration file.
 ZWEL0200E||Failed to copy USS file %s to MVS data set %s.
 ZWEL0201E||File %s does not exist.
 ZWEL0202E||Unable to find samplib key for %s.
 ZWEL0203E||Env value in key-value pair %s has not been defined.
-ZWEL0300W||%s already exists. This %s will be overwritten.
-ZWEL0301W||%s already exists and will not be overwritten. For upgrades, you must use --allow-overwrite.
-ZWEL0316E|316|Invalid PARMLIB format %s.
-ZWEL0322E|322|%s is not a valid directory.
-ZWEL0326E|326|An error occurred while processing Zowe YAML config %s:
+ZWEL0316E||Command requires zowe.useConfigmgr=true to use.
+ZWEL0319E||NodeJS required but not found. Errors such as ZWEL0157E may occur as a result. The value 'node.home' in the Zowe YAML is not correct.
