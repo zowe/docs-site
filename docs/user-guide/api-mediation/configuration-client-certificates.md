@@ -96,7 +96,7 @@ You can now procede to configuring X.509 Client Certificate Authentication in zo
 
 </details>
 
-## Configuring X.509 Client Certificate Authentication in zowe.yaml
+## Configure X.509 Client Certificate Authentication in zowe.yaml
 
 Enable X.509 client certificates as an authentication method for the API Mediation Layer Gateway.
 
