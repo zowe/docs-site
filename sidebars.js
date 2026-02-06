@@ -230,16 +230,27 @@ module.exports = {
               label: "Configuring certificates",
               link: { type: "doc", id: "user-guide/configure-certificates" },
               items: [
-                "user-guide/certificates-configuration-questionnaire",
-                "user-guide/certificate-configuration-scenarios",
-                "user-guide/import-certificates",
-                "user-guide/generate-certificates",
-                "user-guide/use-certificates",
-                "user-guide/certificates-setup",
-                "user-guide/tls-configuration",
-                "user-guide/configuring-at-tls-for-zowe-server-single-service",
-                "user-guide/configuring-at-tls-for-zowe-server",
-                "user-guide/using-icsf-hardware-private-keys",
+                {
+                  type: "category",
+                  label: "Zowe Assisted Certificate Setup",
+                  items: [
+                    "user-guide/certificates-configuration-questionnaire",
+                    "user-guide/certificates-configuration-scenarios",
+                    "user-guide/certificates-workflow-setup"
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Advanced Certificate Topics",
+                  items: [
+                    "user-guide/certificates-trust-off-platform",
+                    "user-guide/tls-configuration",
+                    "user-guide/configuring-at-tls-for-zowe-server-single-service",
+                    "user-guide/configuring-at-tls-for-zowe-server",
+                    "user-guide/using-icsf-hardware-private-keys",
+                  ]
+                },
+                "user-guide/certificates-finalize-configuration"
               ],
             },
             {

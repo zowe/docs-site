@@ -63,8 +63,8 @@ There are two ways to set up certificates on a z/OS machine:
 - [Certificates in SAF keyring](#api-ml-saf-keyring)
  
 For detailed instructions about how to set up certificates during installation, see the following articles:
-* [Use PKCS12 certificates](../../user-guide/use-certificates.md#use-pkcs12-certificates)
-* [Use JCERACFS certificates](../../user-guide/use-certificates.md#use-jceracfks-certificates) in a keyring 
+* [Use PKCS12 certificates](../../user-guide/certificates-configuration-scenarios.md#scenario-overview)
+* [Use JCERACFS certificates](../../user-guide/certificates-configuration-scenarios.md#scenario-overview) in a keyring 
 
 Follow the procedure in the applicable section in this article during installation.
 

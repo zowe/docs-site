@@ -8,7 +8,7 @@ Configuring AT-TLS allows Zowe to offload all TLS responsibilities to the z/OS C
 This article explains how to enable AT-TLS for single-service deployment mode so your Zowe environment can benefit from this streamlined, system-driven approach to secure communications.
 
 :::tip
-Beginning with Zowe v3.4.0 and for later versions, we recommend the use of single-service deployment mode. For the benefits of running Zowe in this mode, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md).
+Beginning with Zowe v3.4.0 and for later versions, it is recommend to use single-service deployment mode. For the benefits of running Zowe in this mode, see [Enabling Single-Service deployment of API Mediation Layer](api-mediation/api-mediation-modulith.md). 
 :::
 
 :::note
