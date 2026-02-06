@@ -65,6 +65,8 @@ Use the following procedure to enable the zowe.yaml file to use a X.509 client c
 
 3. Restart Zowe to re-initialize the API Mediation Layer Gateway so that the Internal API ML Mapper is operational.
 
+You can now proceed to [configuring X.509 Client Certificate Authentication in zowe.yaml](#configure-x509-client-certificate-authentication-in-zoweyaml).
+
 </details>
 
 <details>
@@ -92,7 +94,7 @@ If your ZSS instance is located in a separate Zowe instance, update the followin
      
   **Default ZSS URL:** https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
 
-You can now procede to configuring X.509 Client Certificate Authentication in zowe.yaml.
+You can now proceed to [configuring X.509 Client Certificate Authentication in zowe.yaml](#configure-x509-client-certificate-authentication-in-zoweyaml).
 
 </details>
 
