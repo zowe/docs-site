@@ -20,10 +20,10 @@ The default value of this parameter is `false`.  To enable the endpoint set it t
 **Example:**
 ```yaml
 components:
-    gateway:
-        apiml:
-            security:
-                delegatePassticket: true
+  gateway:
+      apiml:
+          security:
+            delegatePassticket: true
 ```
 
 The userID that makes the call to the API must have `READ` access to the class `ZOWE.APIML.DELEGATE.PASSTICKET`. For more information on how to configure this see [Configuring User permission call delegated passticket API](#configuring-user-permission-to-generate-delegated-passtickets)
