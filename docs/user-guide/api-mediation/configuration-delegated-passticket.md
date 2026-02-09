@@ -3,7 +3,7 @@
 :::info Role: system administrator
 :::
 
-As a system administrator, you can enable the endpoint of the API Gateway that allows passticket generation for a delegated e-mail.  This API allows the authenticated user to create a passticket for another user, so has the potential be be misused for priviledge escalation or impersonation.  For that reason the API authentication must be done with a client certificate for a userID who has `READ` access to the class `ZOWE.APIML.DELEGATE.PASSTICKET` and the endpoint must be enabled by setting `zowe.components.gateway.apiml.security.delegatePassticket` parameter to `true`.
+As a system administrator, you can enable the endpoint of the API Gateway that allows passticket generation for a delegated e-mail.  This API allows the authenticated user to create a passticket for another user, so has the potential be be misused for privilege escalation or impersonation.  For that reason the API authentication must be done with a client certificate for a userID who has `READ` access to the class `ZOWE.APIML.DELEGATE.PASSTICKET` and the endpoint must be enabled by setting `zowe.components.gateway.apiml.security.delegatePassticket` parameter to `true`.
 
 Use the following procedure to enable the delegated passticket endpoint of the API Gateway:  
 
@@ -14,7 +14,7 @@ Use the following procedure to enable the delegated passticket endpoint of the A
 This property defines whether the endpoint `/gateway/api/v1/auth/delegate/passticket` is available
 
 :::note
-The default value of this parameter is `false`.
+The default value of this parameter is `false`.  To enable the endpoint set it to be `true`.
 :::
 
 **Example:**
@@ -22,9 +22,8 @@ The default value of this parameter is `false`.
 components:
     gateway:
         apiml:
-            gateway:
-                security:
-                    delegatePassticket: false
+            security:
+                delegatePassticket: true
 ```
 
 The userID that makes the call to the API must have `READ` access to the class `ZOWE.APIML.DELEGATE.PASSTICKET`. For more information on how to configure this see [Configuring User permission call delegated passticket API](#configuring-user-permission-to-generate-delegated-passtickets)
@@ -61,14 +60,35 @@ In your ESM command line interface or other security environment, perform the fo
 
 </details>
 
+<details>
+
+<summary>Click here for command details about configuring user access using ACF2</summary>
+
+In your ESM command line interface or other security environment, perform the following step
+
+1.  Grant the userID `READ` access
+    ```acf2
+    SET RESOURCE(RDA) $KEY(ZOWE) TYPE(RDA) APIML.DELEGATE.PASSTICKET UID(<userID>) SERVICE(READ) ALLOW
+    ```
+
+</details>
+
+<details>
+
+<summary>Click here for command details about configuring user access using Top Secret</summary>
+
+In your ESM command line interface or other security environment, perform the following steps
+
+</details>
+
 ## Calling the /auth/delegate/passticket API
 
-To call the API `GET` `/gateway/api/v1/auth/delegate/passticket` the body should be `JSON`
+To call the API `POST` `/gateway/api/v1/auth/delegate/passticket` the body should be `JSON`
 
 ```
 {
     "applId": "APPLID",
-    "emailId": "email@domain.com"
+    "emailId": "email@example.com"
 }
 ```
 
