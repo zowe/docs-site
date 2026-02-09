@@ -97,7 +97,11 @@ For information about configuring ZSS, see [Configure components zss](../../appe
 
       Specifies the location of the API used to map certificates to SAF owners.
 
-      **Default ZSS URL:** https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
+      **Default ZSS URL:**
+
+      ```url
+        https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/x509/map
+      ```
 
 You can now proceed to [configuring X.509 Client Certificate Authentication in zowe.yaml](#configure-x509-client-certificate-authentication-in-zoweyaml).
 
