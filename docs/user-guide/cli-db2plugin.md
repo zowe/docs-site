@@ -44,7 +44,7 @@ If you installed Zowe CLI from **online registry**:
     zowe plugins install @zowe/db2-for-zowe-cli@zowe-v3-lts
     ```
 
-3. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
+2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
 ### Installing from a local package
 
@@ -56,9 +56,9 @@ Download the ODBC driver before you install the Db2 plug-in:
 
 1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
 
-3. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You need to provide the full path to this directory immediately before you install the Db2 plug-in.
+2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
-4. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
+3. Place the ODBC driver in the `odbc_cli` folder. **Do not extract the ODBC driver**.
 
     You downloaded and prepared to use the ODBC driver successfully. Proceed to install the plug-in to Zowe CLI.
 
@@ -146,7 +146,7 @@ If the utility `db2connectactivate` has not been executed against the Db2 databa
 
 2. Copy your Db2 license file `db2consv_za.lic` and place it in the following directory.
       ```
-      <zowe_home>/plugins/installed/lib/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
+      <zowe_home>/plugins/installed/node_modules/@zowe/db2-for-zowe-cli/node_modules/ibm_db/installer/clidriver/license
       ```
     :::tip
 
