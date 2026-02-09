@@ -75,7 +75,7 @@ You can now proceed to [configuring X.509 Client Certificate Authentication in z
 
 ## Configure ZSS
 
-**Note:** Configuring ZSS is not the recommended mapping method. For deatils about the recommended mapping method, see [Configure the Internal API ML Mapper](#configure-the-internal-api-ml-mapper).
+**Note:** Configuring ZSS is not the recommended mapping method. For details about the recommended mapping method, see [Configure the Internal API ML Mapper](#configure-the-internal-api-ml-mapper).
 
 For information about configuring ZSS, see [Configure components zss](../../appendix/zowe-yaml-configuration.md#configure-component-zss) in _Zowe YAML server configuration file references_.
 
