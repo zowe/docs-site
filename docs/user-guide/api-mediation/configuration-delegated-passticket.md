@@ -14,16 +14,16 @@ Use the following procedure to enable the delegated passticket endpoint of the A
 This property defines whether the endpoint `/gateway/api/v1/auth/delegate/passticket` is available
 
 :::note
-The default value of this parameter is `false`.  To enable the endpoint set it to be `true`.
+The default value of this parameter is `false`. To enable the endpoint set it to be `true`.
 :::
 
 **Example:**
 ```yaml
 components:
   gateway:
-      apiml:
-          security:
-            delegatePassticket: true
+    apiml:
+      security:
+        delegatePassticket: true
 ```
 
 The userID that makes the call to the API must have `READ` access to the class `ZOWE.APIML.DELEGATE.PASSTICKET`. For more information on how to configure this see [Configuring User permission call delegated passticket API](#configuring-user-permission-to-generate-delegated-passtickets)
