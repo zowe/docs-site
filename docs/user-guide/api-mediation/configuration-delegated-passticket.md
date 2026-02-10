@@ -11,11 +11,11 @@ This API allows the authenticated user to create a PassTicket for another user.T
 
 To enable and use this feature, complete the following steps:
 
-1. Enable the delegated PassTicket endpoint in the Zowe configuration.
+1. Enable the delegated PassTicket endpoint of the API Gateway.
 
-2. Configure user permissions in your External Security Manager (ESM).
+2. Configure user permissions to generate delegated PassTickets.
 
-3. Call the API using the correct JSON payload.
+3. Call the `/auth/delegate/passticket` API.
 
 ## Enabling the delegated PassTicket endpoint of the API Gateway
 
