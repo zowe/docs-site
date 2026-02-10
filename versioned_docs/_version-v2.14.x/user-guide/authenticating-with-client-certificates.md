@@ -13,6 +13,8 @@ There is a limitation with respect to performing authentication using Z Secure S
 * When calling the login endpoint with basic authentication credentials as well as with client certificate, the basic authentication credentials take precedence and client certificate is ignored. 
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
+
+* During client certificate authentication, API Mediation Layer filters out its own certificates and logs the certificate file names into the `sysprint` log files. For troubleshooting, you can find the file names of these ignored certificates in the `sysprint` log files. 
 :::
 
 ## How the Gateway resolves authentication 
