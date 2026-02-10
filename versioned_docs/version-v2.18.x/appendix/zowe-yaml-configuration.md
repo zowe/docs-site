@@ -428,6 +428,8 @@ The following configurations can be used under the `components.gateway` section:
  Defines the port which the Gateway should be started on. The value must be a valid port number.
 - **`debug`**  
  Defines whether to enable debug mode for the Gateway.
+- **`apiml.security.useInternalMapper`**
+  This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `false`.
 - **`apiml.service.allowEncodedSlashes`**  
  When this parameter is set to `true`, the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. 
 - **`apiml.service.corsEnabled`**  

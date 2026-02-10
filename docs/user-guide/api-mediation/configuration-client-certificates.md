@@ -63,7 +63,8 @@ Use the following procedure to enable the zowe.yaml file to use a X.509 client c
    * **components.gateway.apiml.security.x509.enabled**  
      This property is the global feature toggle. Set the value to `true` to enable client certificate functionality.
    * **components.gateway.apiml.security.useInternalMapper**  
-     This property is the global feature toggle. Set the value to `true` to enable the Internal API ML Mapper. (This is the default in v3)
+     This property is the global feature toggle. Set the value to `true` to enable the Internal API ML Mapper.
+     **Default:** `true`
 
 3. Restart Zowe to re-initialize the API Mediation Layer Gateway so that the Internal API ML Mapper is operational.
 

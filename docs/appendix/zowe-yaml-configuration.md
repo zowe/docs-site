@@ -547,7 +547,7 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 
 - **apiml.security.oidc.identityMapperUrl**  
  Specifies the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
-  This property informs the Gateway about the location of this API. Starting with Zowe v3, if you leave this parameter blank or do not configure it, the system automatically routes requests to the Zowe API Mediation Layer (API ML) internal mapper. Note that if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-the-internal-api-ml-mapper). To provide your own API to perform the mapping, it is necessary to customize this value.
+  This property informs the Gateway about the location of this API. Starting with Zowe v3, if you leave this parameter blank or do not configure it, the system automatically routes requests to the Zowe API Mediation Layer (API ML) internal mapper. Note that if you are using Zowe release 2.14 or a later version, we recommend you use the [internal API ML mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-the-internal-api-ml-mapper). To provide your own API to perform the mapping, it is necessary to customize this value.
 
   The following URL is the default value for Zowe and ZSS:  
     ```
