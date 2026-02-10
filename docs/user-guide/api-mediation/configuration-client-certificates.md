@@ -39,7 +39,7 @@ You can enable X.509 client certificate functionality integrated with the SAF th
 This is the default and most performant method for Zowe v3 and later. It is simpler to configure and is the required method for ACF2 users.  
 
 * **Configure ZSS**  
-This legacy method uses Z-Horizontal Services (ZSS) to perform mapping. You also have the option to call a ZSS endpoint in a separate Zowe instance. 
+This legacy method uses Z Secure Services (ZSS) to perform mapping. You also have the option to call a ZSS endpoint in a separate Zowe instance. 
 
   **Notes:**  
   * ZSS has limitations with ACF2 systems. 
