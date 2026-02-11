@@ -28,10 +28,10 @@ By default, the delegated PassTicket endpoint is set to `false` (disabled). Enab
 **Example:**
 ```yaml
 components:
-  gateway:
-    apiml:
-      security:
-        delegatePassticket: true
+  apiml:
+    security:
+      delegatePassticket:
+        enabled: true
 ```
 
 4. Restart API ML to apply the changes.
