@@ -13,7 +13,7 @@ the API ML Gateway with client certificates. This method of authentication requi
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
 
-* During client certificate authentication, API Mediation Layer filters out its own certificates and logs the certificate file names into the `sysprint` log files. For troubleshooting, you can find the file names of these ignored certificates in the `sysprint` log files.
+* During client certificate authentication, API Mediation Layer filters out its own certificates and logs them. For troubleshooting, see the `STC` logs for the ignored certificates. 
 :::
 
 ## How the Gateway resolves authentication
