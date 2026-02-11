@@ -22,8 +22,8 @@ To enable and use this feature, complete the following steps:
 By default, the delegated PassTicket endpoint is set to `false` (disabled). Enable this parameter in your zowe.yaml configuration file.
 
 1. Open the file `zowe.yaml`.
-2. Locate the `components.gateway.apiml.security` section.
-3. Set the `delegatePassticket` property to `true`.
+2. Locate the `components.apiml.security` section.
+3. Set the `delegatePassticket.enabled` property to `true`.
 
 **Example:**
 ```yaml
