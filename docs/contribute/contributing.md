@@ -460,6 +460,7 @@ Java  |  java
 keyboard shortcut | hotkey
 IBM z/OS Management Facility (z/OSMF) <br/> z/OSMF   | zosmf (unless used in syntax)
 ID| id
+key ring| keyring (unless used in syntax)
 PAX| pax
 personal computer <br/> PC <br/> server| machine
 later  | higher <br/> Do not use to describe versions of software or fix packs.
@@ -468,4 +469,5 @@ Node.js  | node.js <br/> Nodejs
 plug-in| plugin
 REXX  | Rexx
 UNIX System Services <br/> z/OS UNIX System Services  | USS
+YAML | Unless used in a file name
 zLUX  | ZLUX <br/> zLux
