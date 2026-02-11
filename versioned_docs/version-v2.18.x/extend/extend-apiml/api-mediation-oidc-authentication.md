@@ -17,13 +17,17 @@ This article details the API ML OIDC authentication functionality, and how to co
 There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended internal API ML mapper described in the [API ML OIDC configuration](#api-ml-oidc-configuration) section.
 :::
 
-- [Usage](#usage)
-- [Authentication flow](#authentication-flow)
-- [Prerequisites](#prerequisites)
-  - [OIDC provider](#oidc-provider-prerequisites)
-  - [ESM configuration](#esm-configuration-prerequisites)
-- [API ML configuration](#api-ml-oidc-configuration)
-- [Troubleshooting](#troubleshooting)
+- [Authenticating with OIDC](#authenticating-with-oidc)
+  - [Usage](#usage)
+  - [Authentication Flow](#authentication-flow)
+  - [Prerequisites](#prerequisites)
+    - [OIDC provider prerequisites](#oidc-provider-prerequisites)
+    - [ESM configuration prerequisites](#esm-configuration-prerequisites)
+      - [Parameters in the ESM commands](#parameters-in-the-esm-commands)
+  - [API ML OIDC configuration](#api-ml-oidc-configuration)
+  - [Troubleshooting](#troubleshooting)
+    - [API ML fails to validate the OIDC access token with the Distributed Identity Provider](#api-ml-fails-to-validate-the-oidc-access-token-with-the-distributed-identity-provider)
+    - [The access token validation fails with HTTP error](#the-access-token-validation-fails-with-http-error)
 
 ## Usage
 
