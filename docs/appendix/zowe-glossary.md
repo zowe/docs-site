@@ -231,7 +231,7 @@ The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the 
 
 #### Sample library
 
-The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
+The SZWESAMP PDS sample library includes cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
 
 #### Service profile
 
