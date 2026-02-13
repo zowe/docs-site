@@ -15,6 +15,10 @@ Ensure that you meet the following requirements before you start your Zowe confi
 - Install and configure z/OSMF
 - Install Zowe with an SMP/E build, PSWI, or a convenience build
 
+:::note
+From Zowe 3.3.0 forward, the Zowe z/OSMF Workflow supports JCL-driven actions. This will become the default method of configuration in a future release. Read [this guide](./configuring-zowe-via-jcl.md#following-existing-zosmf-workflow-documentation) for more information.
+:::
+
 ## Overview of Full Zowe server-side configuration for Zowe 3.0 workflow
 
 You can complete the following tasks with the **Full Zowe server-side configuration for Zowe 3.0** workflow:
