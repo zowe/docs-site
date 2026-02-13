@@ -103,3 +103,23 @@ CUST.PARMLIB | PARM Library Members | `zowe.setup.dataset.parmlib` | ANY | U | P
 CUST.JCLLIB | JCL Members | `zowe.setup.dataset.jcllib` | ANY | U | PDSE | FB | 80 | 60 | 5
 CUST.ZWESALL | APF load modules | `zowe.setup.dataset.authLoadlib` | ANY | U | PDSE | U | 0 | 30 | N/A
 CUST.ZWESAPL | APF plug-ins load modules | `zowe.setup.dataset.authPluginLib` | ANY | U | PDSE | U | 0 | 30 | N/A
+
+## Unix Runtime Directory
+
+The unix directory listed in the Zowe YAML as `zowe.runtimeDirectory` is the read-only directory which holds most of Zowe's code. Its subdirectories and files are subject to change without notice, except the following files:
+
+Name | Purpose
+---|---
+example-zowe.yaml | Example Zowe YAML for first-time installation
+manifest.json | States the Zowe version and the versions of the components within that Zowe release
+bin/zwe | The zwe command line utility
+
+## Unix Instance Directories
+
+The following directories are designed to be used by a single Zowe instance. These are created and populated when Zowe is running.
+
+Name | YAML Property | Purpose
+---|---|---
+Log Directory | `zowe.logDirectory` | Contains log files for some components and extensions.
+Workspace Directory | `zowe.workspaceDirectory` | Contains persistent configuration content for components and extensions.
+Extension Directory | `zowe.extensionDirectory` | May contain extensions installed into Zowe.
