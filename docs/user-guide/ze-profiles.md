@@ -128,7 +128,7 @@ You can use this example to customize your own profiles in a configuration file.
 
 ## Using base profiles and tokens with existing profiles
 
-As a Zowe user, you can leverage the base profile functionality to access multiple services through Single Sign-on. Base profiles enable you to authenticate using [Zowe API Mediation Layer](../appendix/zowe-glossary.md#zowe-api-mediation-layer-api-ml) (API ML). You can use [base profiles](../appendix/zowe-glossary.md#base-profile) with more than one service profile.
+As a Zowe user, you can leverage the base profile functionality to access multiple services through single sign-on. Base profiles enable you to authenticate using [Zowe API Mediation Layer](../appendix/zowe-glossary.md#zowe-api-mediation-layer-api-ml) (API ML). You can use [base profiles](../appendix/zowe-glossary.md#base-profile) with more than one service profile.
 
 :::note
 
