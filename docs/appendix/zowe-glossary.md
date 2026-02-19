@@ -221,9 +221,17 @@ Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as 
 
 An object in a team configuration file that groups service profiles together that share the same properties and values (for example, hostname or credentials). A parent profile makes it possible to define properties for its group of service profiles in one place rather than duplicating values throughout a configuration.
 
+#### Profile
+
+An object in a team configuration file that stores connection information for the mainframe. There are different types of profiles. See [base profile](#base-profile), [parent profile](#parent-profile), [service profile](#service-profile).
+
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
+
+#### Sample library
+
+The SZWESAMP PDS sample library includes cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
 
 #### Service profile
 
@@ -265,10 +273,6 @@ The instance directory also contains a log directory where different microservic
 #### Zowe runtime
 
 Refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
- 
-#### Sample library
-
-The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
 
 #### ZWEADMIN
 

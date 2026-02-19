@@ -5,9 +5,10 @@ The following topics contain information that can help you troubleshoot problems
 Issues and development of the Zowe Launcher is managed in GitHub. When you troubleshoot a problem, you can check whether a GitHub issue (open or closed) that covers the problem already exists. For a list of issues, see the [launcher repo](https://github.com/zowe/launcher).
 
 [**Error Message Codes**](launcher-error-codes.md)
+
 ## Enabling Zowe Launcher Debug Mode
 
-:::warning[Important] 
+:::warning[Important]
 You should enable debug mode **only** when you want to troubleshoot issues.
 Disable debug mode when you are not troubleshooting. Running Zowe Launcher in debug mode can adversely affect its performance and consume a large amount of spool space.
 :::
@@ -29,12 +30,13 @@ Use debug mode to display additional debug messages for Zowe Launcher.
   ZLDEBUG=ON
   /*
   ```
+
   By default, debug mode is disabled, in which `ZLDEBUG` is set to `OFF`. To disable debug mode, remove this line or set `ZLDEBUG` to `OFF`.
-   
+
 4. Restart `ZWESLSTC` Started Task.
 
 :::tip
-    
+
 [`_CEE_ENVFILE_COMMENT`](https://www.ibm.com/docs/en/zos/2.5.0?topic=library-cee-envfile-comment) sets the comment character. See the following example, in which the last two lines of in-stream data are commented (not in effect):
 
 ```jcl
@@ -48,7 +50,27 @@ CONFIG=/path/to/zowe.yaml
 * ZLDEBUG=ON
 /*
 ```
+
 :::
+
+## Troubleshooting port reservations
+
+Zowe Server ports may fail to bind with error messages such as:
+
+```log
+Caused by: java.net.SocketException: EDC5111I Permission denied
+```
+
+To resolve such errors, make sure the Zowe Server ports are reserved for the Zowe task in the TCP/IP profile via PORT or PORTRANGE statements.
+It is possible to specify which TCP/IP profile to use if the system has more than one TCP/IP profile active. To do so, add the following property to the zowe.yaml file:
+
+```yaml
+zowe:
+  environments:
+    _BPXK_SETIBMOPT_TRANSPORT: TCPIP
+```
+
+Where `TCPIP` is the name of the TCP/IP stack to use.
 
 ## Troubleshooting port validation
 
@@ -56,7 +78,7 @@ On start up, Zowe uses the `netstat` command to check whether the ports required
 
 Under configuration of dual stack networking, this can fail, with messages similar to the following:
 
-```
+```log
 Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, using default of 'INET'
 ...
 EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
@@ -64,7 +86,7 @@ EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provid
 
 ### Resolving port validation failures
 
-Update the Zowe configuration property `zowe.network.server.validatePortFree` to value `false`:
+Update the Zowe configuration property `zowe.network.server.validatePortFree` to the value `false`:
 
 ```yaml
 zowe: 

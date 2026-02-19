@@ -38,16 +38,19 @@ To enable Personal Access Token support when using the Caching Service, **Infini
   :::
 
   Infinispan is designed to be run mainly on z/OS since it offers good performance. To enable this method, set the value of `components.caching-service.storage.mode` to `infinispan` in the `zowe.yaml` configuration file.
-  Infinispan environment variables are not currently following the v2 naming convention, so they must be defined into `zowe.environments` section.  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
+  For more information on these properties and their values see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md#infinispan-configuration).
 
-  ``` yaml
+  ```yaml
   components:
-        caching-service:
-          storage:
-            mode: infinispan
-            infinispan: 
-              jgroups:
-                port: 7098
+    caching-service:
+      storage:
+        mode: infinispan
+        infinispan: 
+          initialHosts: localhost[7098]
+          jgroups:
+            port: 7098
+            keyExchange:
+              port: 7118
   ```
 
 ## VSAM (Deprecated)
