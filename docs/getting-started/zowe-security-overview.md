@@ -41,7 +41,7 @@ Use of certificates signed by generated CA, however, is not recommended for prod
 
 :::tip
 
-Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary.md#certificate-concepts) before getting started with configuring certificates.
 
 :::
 
