@@ -117,14 +117,15 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
 4. In the **Quick Pick** menu, check or uncheck the download options:
 
-   - **Overwrite**: Overwrites the existing file in the download location.
-   - **Generate Directory Structure**: Creates sub-folders based on the USS path.
+   - **Overwrite**: Overwrites the existing file in the download location. Default: `false`
+
+   - **Generate Directory Structure**: Creates sub-folders based on the USS path. Default: `false`
       
       If unchecked, `/u/user/scripts/script.sh` downloads to `script.sh`
       
       If checked, `/u/user/scripts/script.sh` downloads to `u/user/scripts/script.sh`
    
-   - **Choose Encoding**: Enables you to select a specific encoding for the download.
+   - **Choose Encoding**: Enables you to select a specific encoding for the download. Default: `false`
       
       If unchecked, the encoding configured in your connection profile is used.
 
@@ -150,36 +151,51 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
 4. In the **Quick Pick** menu, check or uncheck the download options:
 
-   - **Overwrite**: Overwrites existing files when downloading directories.
-   - **Generate Directory Structure**: Creates sub-folders based on the USS path.
+   - **Overwrite**: Overwrites existing files when downloading directories. Default: `false`
+
+   - **Generate Directory Structure**: Creates sub-folders based on the USS path. Default: `false`
       
-      If unchecked, `/u/user/project/` downloads all files directly to the selected location
+      If unchecked, `/u/user/project/` downloads to `project/`
       
       If checked, `/u/user/project/` downloads to `u/user/project/` with full directory structure
-   
-   - **Include Hidden Files**: Includes hidden files (files beginning with `.`) in the download.
-   - **Search All Filesystems**: Searches across all mounted filesystems instead of limiting to the current filesystem.
-   - **Return Symlinks**: Stop at symbolic links instead of following them.
-   - **Set Filter Options**: Opens additional filtering options to control which files are downloaded.
 
-      Each checked filter option will open an input box to configure that filter.
+   - **Follow Symlinks**: Follow symbolic links to their targets instead of stopping at them. Default: `true`
+
+   - **Apply Filter Options**: Opens additional filtering options to control which files are downloaded.
+
+      In the subsequent **quick pick** menu, click on an option to change its value.
+
+      When desired filters are set, click **Ready to download**.
+
+      If you change your mind about setting filters, press **Escape** to return to the previous menu, then uncheck **Apply Filter Options**.
       
       Available filter options include:
+   
+      - **Include Hidden Files**: Includes hidden files (files beginning with `.`) in the download. Default: `false`
+
+      - **Search All Filesystems**: Searches across all mounted filesystems instead of limiting to the current filesystem. Default: `false`
+
       - **Group**: Filter by group owner or GID
+
       - **User**: Filter by user name or UID
+
       - **Modification Time**: Filter by modification time in days (e.g., `+7` for files older than 7 days, `-1` for files modified within the last day, `30` for files modified exactly 30 days ago)
+
       - **Size**: Filter by file size (e.g., `+100M` for files larger than 100MB, `-500K` for files smaller than 500KB, `1G` for files exactly 1GB)
+
       - **Permissions**: Filter by permission octal mask (e.g., `755`, `-644`)
+
       - **File Type**: Filter by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
-      - **Depth**: Depth of directories to download
 
-      :::note
+      - **Depth**: Depth of directories to download. (e.g., a depth of `1` will only download the current directory)
 
-      // TODO: Add note here about not using filter options based on what UX is decided on
+      :::tip
+
+      To clear/unset a filter, click on an option and leave the input quick pick blank. 
 
       :::
    
-   - **Choose Encoding**: Enables you to select a specific encoding for the download.
+   - **Choose Encoding**: Enables you to select a specific encoding for the download. Default: `false`
       
       If unchecked, the encoding configured in your connection profile is used. You can also configure automatic encoding detection for files in the directory.
 
