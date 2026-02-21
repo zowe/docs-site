@@ -106,19 +106,21 @@
 
 4. In the **Quick Pick** menu, check or uncheck the download options:
 
-   - **Overwrite**: Overwrites existing files in the download location.
-   - **Generate Directory Structure**: Creates sub-folders based on the data set name.
+   - **Overwrite**: Overwrites existing files in the download location. Default: `true`
+
+   - **Generate Directory Structure**: Creates sub-folders based on the data set name. Default: `true`
       
       If unchecked, `HLQ.DATASET.TEST(HELLO)` downloads to `HELLO.txt`
       
       If checked, `HLQ.DATASET.TEST(HELLO)` downloads to `HLQ/DATASET/TEST/HELLO.txt` 
    
-   - **Preserve Original Letter Case**: Maintains the original letter case for automatically generated directories and files.
-   - **Override Extension**: Allows you to specify a custom file extension for the downloaded file. 
+   - **Use Uppercase Names**: Downloads files and directories using uppercase names. When disabled, names are converted to lowercase. Default: `true`
+
+   - **Override File Extension**: Allows you to specify a custom file extension for the downloaded file. Default: `false`
       
       If unchecked, the file extension is automatically determined based on the member name and partitioned data set name. If no extension can be determined, the default extension `.txt` is used.
       
-   - **Choose Encoding**: Enables you to select a specific encoding for the download.
+   - **Choose Encoding**: Enables you to select a specific encoding for the download. Default: `false`
       
       If unchecked, the encoding configured in your connection profile is used.
 
@@ -130,7 +132,7 @@
 
 5. Press the `Enter` key to confirm your selections.
 
-6. If you selected **Override Extension**, enter the desired file extension in the **input box** (for example, `csv`).
+6. If you selected **Override File Extension**, enter the desired file extension in the **input box** (for example, `csv`).
 
 7. If you selected **Choose Encoding**, select the encoding from the **Quick Pick** menu.
 
