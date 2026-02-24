@@ -454,8 +454,8 @@ Do  | Don't
 API ML (where appropriate) | The API ML
 application  | app
 data set | dataset (unless used in syntax)
-Capitalize "Server" when it's part of the product name |
-file name | filename (unless it's a property written as one word)
+Capitalize "Server" when part of the product name |
+file name | filename (unless a property written as one word)
 Java  |  java
 keyboard shortcut | hotkey
 IBM z/OS Management Facility (z/OSMF) <br/> z/OSMF   | zosmf (unless used in syntax)
@@ -468,6 +468,7 @@ macOS| MacOS
 Node.js  | node.js <br/> Nodejs
 plug-in| plugin
 REXX  | Rexx
+single sign-on <br/> Note: Hyphenated. Spell out in first reference. | Single Sign-on
 UNIX System Services <br/> z/OS UNIX System Services  | USS
 YAML | Unless used in a file name
 zLUX  | ZLUX <br/> zLux
