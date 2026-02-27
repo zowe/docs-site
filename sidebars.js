@@ -847,6 +847,7 @@ module.exports = {
             "troubleshoot/app-framework/app-mustgather",
             "troubleshoot/app-framework/app-issue",
             "troubleshoot/app-framework/appfw-tracing",
+            "troubleshoot/app-framework/core-loggers",
             "troubleshoot/app-framework/app-return-codes",
             "troubleshoot/app-framework/appserver-error-codes",
             "troubleshoot/app-framework/zss-error-codes",
