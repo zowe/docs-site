@@ -1,6 +1,8 @@
-This is a list of core loggers (and descriptions of each) that you can enable and increase verbosity on within the logging framework. See [the logging utility](mvd-logutility.md) for more info.
+# Primary loggers
 
-# Loggers for Zowe Application Server Core
+This is a list of primary loggers (and descriptions of each) that you can enable and increase verbosity on within the logging framework. See [enabling tracing](./appfw-tracing.md) for more info.
+
+## Loggers for app-server component
 The log prefix for the Zowe Application Server is `_zsf`, which is used by the server framework. (Applications and plug-ins that are attached to the server do not use the `_zsf` prefix.)
 The following are the logger names that you can specify:
 * **_zsf.bootstrap**: Logging that pertains to the startup of the server.
@@ -14,16 +16,8 @@ The following are the logger names that you can specify:
 * **_zsf.routing**: Logging for dispatching network requests to plug-in dataservices.
 * **_zsf.network**: Logging for the HTTPS server status (connection, ports, IP, and so on).
 
-# Zowe App Server Log levels
-* 0: SEVERE
-* 1: WARNING
-* 2 (Default): INFO
-* 3: FINE
-* 4: FINER
-* 5: FINEST
 
-
-# Loggers for ZSS Server Core
+## Loggers for zss component
 The log prefix for ZSS is `_zss`. The following are the logger names that you can specify:
 * **_zss.traceLevel**: Controls general server logging verbosity.
 * **_zss.fileTrace**: Logs file serving behavior (if file serving is enabled).
@@ -35,3 +29,14 @@ The log prefix for ZSS is `_zss`. The following are the logger names that you ca
 * **_zss.httpCloseConversationTrace**: Logs HTTP behavior for when an HTTP conversation ends.
 * **_zss.httpAuthTrace**: Logs behavior for session security.
 * **_zss.jwtTrace**: Logs the JSON Web Tokens.
+
+## Log levels
+Most loggers have levels ranging from 0 to 5 where 0 is the least verbose and 5 is the most verbose.
+
+* 0: SEVERE
+* 1: WARNING
+* 2 (Default): INFO
+* 3: FINE
+* 4: FINER
+* 5: FINEST
+
