@@ -12,6 +12,8 @@ the API ML Gateway with client certificates. This method of authentication requi
   authentication credentials take precedence and the client certificate is ignored.
 
 * If you are calling a specific endpoint on one of the onboarded services, API Mediation Layer ignores Basic authentication. In this case, the Basic authentication is not part of the authenticated request.
+
+* During client certificate authentication, API Mediation Layer filters out its own certificates and logs them. For troubleshooting, see the `STC` logs for the ignored certificates. 
 :::
 
 ## How the Gateway resolves authentication
