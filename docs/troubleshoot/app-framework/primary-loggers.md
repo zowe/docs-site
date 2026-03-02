@@ -37,12 +37,12 @@ Logger name | Description
 
 ## Log levels
 Most loggers have levels ranging from 0 to 5, where 0 is the least verbose and 5 is the most verbose.
-Log level | Verbosity
----|---|
-0 | SEVERE | Denotes critical errors, application failure.
-1 | WARNING | Denotes potential issues that need attention soon.
-2 (Default) | INFO | Denotes general operational updates, normal functioning.
-3 | FINE | Denotes detailed tracing information.
-4 | FINER | Denotes more detailed tracing information.
-5 | FINEST | Denotes extremely detailed tracing information which can be used for debugging.
+| Log level | Verbosity | Information |
+|---|---|---|
+| 0 | SEVERE | Denotes critical errors, application failure. |
+| 1 | WARNING | Denotes potential issues that need attention soon. |
+| 2 (Default) | INFO | Denotes general operational updates, normal functioning. |
+| 3 | FINE | Denotes detailed tracing information. |
+| 4 | FINER | Denotes more detailed tracing information. |
+| 5 | FINEST | Denotes extremely detailed tracing information which can be used for debugging. |
 
