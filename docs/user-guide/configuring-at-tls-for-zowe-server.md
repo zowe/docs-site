@@ -368,7 +368,7 @@ TTLSRule                            ZoweZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7558 # ZAAS port
-  Jobname                           ZWETAG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -383,7 +383,7 @@ TTLSRule                            ZoweCachingServiceClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7555 # Caching Service port
-  Jobname                           ZWET*
+  Jobname                           ZWE1*
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -398,7 +398,7 @@ TTLSRule                            ZoweGwZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7554 # Gateway Service port
-  Jobname                           ZWETAZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -413,7 +413,7 @@ TTLSRule                            ZoweDiscoveryClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7553 # Discovery Service port
-  Jobname                           ZWET* # Set according to zowe.job.prefix in zowe.yaml
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -428,7 +428,7 @@ TTLSRule                            ZoweTrustClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7552-7558
-  Jobname                           ZWET*
+  Jobname                           ZWE1*
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
@@ -742,7 +742,7 @@ TTLSRule                            ZoweZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7558 # ZAAS port
-  Jobname                           ZWETAG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -757,7 +757,7 @@ TTLSRule                            ZoweCachingServiceClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7555 # Caching Service port
-  Jobname                           ZWET*
+  Jobname                           ZWE1*
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -772,7 +772,7 @@ TTLSRule                            ZoweGwZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7554 # Gateway Service port
-  Jobname                           ZWETAZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -787,7 +787,7 @@ TTLSRule                            ZoweDiscoveryClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7553 # Discovery Service port
-  Jobname                           ZWET* # Set according to zowe.job.prefix in zowe.yaml
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -802,7 +802,7 @@ TTLSRule                            ZoweTrustClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7552-7558
-  Jobname                           ZWET*
+  Jobname                           ZWE1*
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
