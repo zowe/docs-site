@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>omview export report</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_omview.html">omview</a> › <a href="zowe_omview_export.html">export</a> › <a href="zowe_omview_export_report.html">report</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Export text report to spreadsheet using a predefined export rule.</p>
+<h4>Usage</h4>
+<p>zowe omview export report &lt;repositoryId&gt; &lt;reportHandle&gt; &lt;ruleId&gt; [fileTarget] [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>repositoryId</code>		 <em>(number)</em></p>
+<ul>
+<li>Repository identifier.</li>
+</ul>
+</li>
+<li>
+<p><code>reportHandle</code>		 <em>(string)</em></p>
+<ul>
+<li>Report handle.</li>
+</ul>
+</li>
+<li>
+<p><code>ruleId</code>		 <em>(number)</em></p>
+<ul>
+<li>Export rule identifier.</li>
+</ul>
+</li>
+<li>
+<p><code>fileTarget</code>		 <em>(string)</em></p>
+<ul>
+<li>Local file path.<br>
+If the path represents a directory location, the report will be exported into that directory using a default file name.<br>
+If the path does not represent a directory location, the report will be exported into the specified path.<br>
+If the path is not specified, the file will be saved to the current working directory using the default file name.<br>
+Any missing directories will be created. If the target file already exists, the file will be overwritten.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--pages</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Include the specified page numbers (or page ranges). Separate page numbers (or page ranges) with commas.<br>
+Separate boundaries of a page range with a dash (-). If you do not specify this option, all the pages of the report are exported.</p>
+<p>Allowed values: (\d+(-\d+)?)(,(\d+(-\d+)?))*</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>OM Web Viewer Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>--hostname</code> <em>(string)</em></p>
+<ul>
+<li>Hostname or ip address of the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> <em>(number)</em></p>
+<ul>
+<li>
+<p>Port of the target OM Web Viewer instance.</p>
+<p>Default value: 443</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>--username</code> <em>(string)</em></p>
+<ul>
+<li>User name used to authenticate against the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> <em>(string)</em></p>
+<ul>
+<li>Password used to authenticate against the target OM Web Viewer instance.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Context name of the target OM Web Viewer instance.</p>
+<p>Default value: web-viewer</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Protocol of the target OM Web Viewer instance.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--omview-profile</code> | <code>--omview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (omview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--caview-profile</code> | <code>--caview-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (caview) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

@@ -147,10 +147,6 @@ This is an older, no-longer-used name for the [Zowe Application Framework](#zowe
 
 Refers to the Node.js-powered Application Server and is part of the [Zowe Application Framework](#zowe-application-framework) core project. The Zowe App Server hosts the web content of the Application Framework and provides the [Zowe Desktop](#zowe-desktop), which is accessible through a web browser.
 
-#### Zowe Chat
-
-An incubator focused on working with the mainframe from popular chat clients such as Mattermost®, Microsoft Teams®, and Slack®.
-
 #### Zowe Component
 
 Zowe is a collection of both *client* and *server* code. You can install only some of Zowe, or all of it, depending on your needs. Zowe splits the major sections of the code into *components*, with each serving an important purpose.
@@ -225,9 +221,17 @@ Use of z/OS UNIX services requires a z/OS UNIX security context, referred to as 
 
 An object in a team configuration file that groups service profiles together that share the same properties and values (for example, hostname or credentials). A parent profile makes it possible to define properties for its group of service profiles in one place rather than duplicating values throughout a configuration.
 
+#### Profile
+
+An object in a team configuration file that stores connection information for the mainframe. There are different types of profiles. See [base profile](#base-profile), [parent profile](#parent-profile), [service profile](#service-profile).
+
 #### Runtime directory
 
 The z/OS Unix directory for the [Zowe runtime](#zowe-runtime), specified in the Zowe configuration file via `zowe.runtimeDirectory`. Also the parent directory of the `zwe` command.
+
+#### Sample library
+
+The SZWESAMP PDS sample library includes cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands. For more information, see [PDS sample library and PDSE load library](../user-guide/configure-xmem-server.md#pds-sample-library-and-pdse-load-library).
 
 #### Service profile
 
@@ -269,10 +273,6 @@ The instance directory also contains a log directory where different microservic
 #### Zowe runtime
 
 Refers to the full, unarchived set of binaries, executable files, scripts, and other elements that are run when Zowe is started.
- 
-#### Sample library
-
-The cross memory server runtime artifacts, the JCL for the started tasks, the parmlib, and members containing sample configuration commands are found in the SZWESAMP PDS sample library. For more information, see [PDS sample library and PDSE load library](https://docs.zowe.org/stable/user-guide/configure-xmem-server/#pds-sample-library-and-pdse-load-library).
 
 #### ZWEADMIN
 

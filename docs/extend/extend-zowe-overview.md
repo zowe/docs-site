@@ -7,7 +7,7 @@ Zowe can be extended in the following ways:
 **[Extending the server side](#extending-the-server-side)**
 
 - [Extending Zowe API Mediation Layer](#extending-zowe-api-mediation-layer)
-- [Developing for Zowe Application Framework](#developing-for-zowe-application-framework)
+- [Extending Zowe Application Framework](#extending-zowe-application-framework)
 
 **[Extending the client side](#extending-the-client-side)**
 
@@ -22,11 +22,14 @@ To assist with extension development, see the following [Sample extensions](#sam
 
 ## Extending the server side
 
+Server extensions are delivered as a package that can contain one or more plug-ins to any part of the Zowe server install.
+To learn how to create a package based on the extension types below, see [Packaging z/OS Extensions](./packaging-zos-extensions.md)
+
 ### Extending Zowe API Mediation Layer 
 
 The API Mediation Layer extension primarily focuses on extending via onboarding services running as standalone services. These services are subsequently available in the API Catalog and can be accessed through the API Gateway. For more information about onboarding a service to the API Mediation Layer, see the [Onboarding Overview](./extend-apiml/onboard-overview.md). The API Mediation Layer squad also provides libraries to simplify the integration for multiple programming languages and different frameworks.
 
-### Developing for Zowe Application Framework
+### Extending Zowe Application Framework
 
 You can create application plug-ins to extend the capabilities of the Zowe™ Application Framework. An application plug-in is an installable set of files that present resources in a web-based user interface, as a set of RESTful services, or in a web-based user interface and as a set of RESTful services.
 

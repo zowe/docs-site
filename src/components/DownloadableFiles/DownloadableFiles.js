@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useDocsPreferredVersion } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
-import versionsArray from "../../../versions.json";
 
 const downloadableFiles = [
   {
@@ -19,13 +19,13 @@ const downloadableFiles = [
   },
   {
     title: "Zowe CLI command reference guides",
-    description: (
+    description: (selectedVersion) => (
       <>
         View or download Zowe CLI web help. The web help contains information about
         commands, actions, and options for Zowe CLI and all Zowe ecosystem-conformant 
         plug-ins that contributed to this website. The web help is based on the 
-        <code>@zowe-v2-lts</code> version of the CLI. To view or download a previous version, select 
-        a version from the drop-down list.
+        <code>{selectedVersion.startsWith("v2.") ? "@zowe-v2-lts" : "@zowe-v3-lts"}</code> version of the CLI. To view or download a previous version, use 
+        the version selector in the navigation bar.
       </>
     ),
     firstSubDescription: <>Online interactive version</>,
@@ -40,7 +40,7 @@ const downloadableFiles = [
       <>
         View or download Zowe Client SDK reference guides. The guides contain 
         information about the API endpoints. To view or download a previous 
-        version, select a version from the drop-down list.
+        version, use the version selector in the navigation bar.
       </>
     ),
     firstSubDescription: <>Node SDK Reference</>,
@@ -81,7 +81,7 @@ function DownloadableFile({
         <div className={styles.metadata}>
           <h4>{title}</h4>
           <p>
-            {description}{" "}
+            {typeof description === "function" ? description(selectedVersion) : description}{" "}
             {downloadDocsPDF && siteConfig.customFields.latestVersion + "."}
           </p>
         </div>
@@ -229,22 +229,16 @@ function DownloadableFile({
 
 function DownloadableFiles() {
   const { siteConfig } = useDocusaurusContext();
-  const [clicked, setClicked] = useState(false);
-  const [isVersion, setIsVersion] = useState(false);
-  const [selectedVersion, setSelectedVersion] = useState(
-    siteConfig.customFields.latestVersion
-  );
-
-  //Appended latest version in the versionsArray
-  const newVersionsArray = [siteConfig.customFields.latestVersion].concat(
-    versionsArray
-  );
-
-  function handleClick(props) {
-    setIsVersion(true);
-    setClicked(true);
-    setSelectedVersion(props);
-  }
+  
+  // Use the preferred version from the navbar version selector
+  const { preferredVersion } = useDocsPreferredVersion();
+  
+  // Get the selected version - use preferred version if set, otherwise use latest
+  // Note: "current" is Docusaurus's internal name for the latest version, so we map it to the actual version
+  const preferredVersionName = preferredVersion?.name;
+  const selectedVersion = (!preferredVersionName || preferredVersionName === "current") 
+    ? siteConfig.customFields.latestVersion 
+    : preferredVersionName;
 
   return (
     <>
@@ -253,56 +247,14 @@ function DownloadableFiles() {
           <div className="row margin-horiz--lg">
             <div className={clsx("col col--2 p-none")}>
               <h3 className="container-h3">Downloadable files</h3>
-              <div className="dropdown dropdown--hoverable margin-right--md">
-                <button
-                  className={clsx(
-                    "button button--outline button--primary display-flex",
-                    styles.versionButton
-                  )}
-                >
-                  {isVersion
-                    ? selectedVersion
-                    : siteConfig.customFields.latestVersion}
-                  <img
-                    style={{marginRight: "15px", maxWidth: "50%"}}
-                    className="lightTheme margin-left--xs"
-                    alt="right arrow"
-                    src={useBaseUrl("/img/down-arrow-light-icon.svg")}
-                  />
-                  <img
-                    className="margin-left--xs darkTheme"
-                    alt="right arrow"
-                    src={useBaseUrl("/img/down-arrow-dark-icon.svg")}
-                  />
-                </button>
-                <ul
-                  className={
-                    clicked
-                      ? clsx(styles.displayNone)
-                      : clsx(
-                          "dropdown__menu pointer thin-scrollbar",
-                          styles.overflow
-                        )
-                  }
-                  onMouseLeave={() => setClicked(false)}
-                >
-                  {newVersionsArray.map((props, idx) => (
-                    <li key={idx}>
-                      <a
-                        className="dropdown__link"
-                        onClick={() => handleClick(props)}
-                      >
-                        {props}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <p className="margin-top--sm">
+                <small>Version: <strong>{selectedVersion}</strong></small>
+              </p>
             </div>
             <div className={clsx("col col--10 p-none")}>
               <div className={clsx("row")}>
                 {downloadableFiles.map((props, idx) => (
-                  <DownloadableFile key={idx} {...props} clicked={clicked} isVersion={isVersion} selectedVersion={selectedVersion} siteConfig={siteConfig} />
+                  <DownloadableFile key={idx} {...props} selectedVersion={selectedVersion} siteConfig={siteConfig} />
                 ))}
               </div>
             </div>

@@ -727,7 +727,7 @@ The following example shows enabler configuration with keyrings.
 
 **Example:**
 
-```
+```yaml
 ssl:
     keyAlias: localhost
     keyPassword: password
