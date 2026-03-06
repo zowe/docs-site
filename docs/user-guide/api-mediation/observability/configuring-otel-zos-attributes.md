@@ -56,7 +56,7 @@ Configuration Source: System discovery
 
 While the discovery process handles most identifiers automatically, you may occasionally need to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `resource.attributes` section of your zowe.yaml:
 
-```
+```yaml
 zowe:
   observability:
     enabled: true

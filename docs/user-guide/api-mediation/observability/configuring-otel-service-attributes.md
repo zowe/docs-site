@@ -5,6 +5,7 @@ Services are identified via the `service.name`, `service.namespace`, and `servic
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
 ## The Hierarchy of Identification
+
 OpenTelemetry uses a three-tier approach to define service identity:
 
 * **service.name** (The Service)  
@@ -31,9 +32,9 @@ In this scenario, both instances share the same namespace because they belong to
 | **service.instance.id** | `APIML01` | `APIML02` |
 
 **Instance 1 configuration**
-```
-zowe:
-  components:
+
+```yaml
+components:
     api-mediation-layer:
       observability:
         enabled: true
@@ -42,13 +43,14 @@ zowe:
             service.name: "zowe-apiml"
             service.namespace: "production-plex"
             service.instance.id: "APIML01"
-```            
-**Instance 2 configuration**
 ```
-zowe:
-  components:
-    api-mediation-layer:
-      observability:
+
+**Instance 2 configuration**
+
+```yaml
+components:
+    apiml:
+      telemetry:
         enabled: true
         resource:
           attributes:
@@ -69,28 +71,27 @@ In this scenario, instances are separated by namespace to represent their physic
 
 **Site 1 (East Coast) Configuration:**
 
-```
-zowe:
+```yaml
   components:
-    api-mediation-layer:
-      observability:
+    apiml:
+      telemetry:
         enabled: true
-        resource:
-          attributes:
-            service.name: "zowe-apiml"
-            service.namespace: "east-coast"
-            service.instance.id: "ZOWE-E1"
+        service:
+          name: "zowe-apiml"
+          namespace: "east-coast"
+        attributes:
+          instance.id: "ZOWE-E1"
 ```
+
 **Site 2 (West Coast) Configuration:**
-```
-zowe:
+
+```yaml
   components:
-    api-mediation-layer:
-      observability:
+    apiml:
+      telemetry:
         enabled: true
-        resource:
-          attributes:
-            service.name: "zowe-apiml"
-            service.namespace: "west-coast"
-            service.instance.id: "ZOWE-W1"
+        attributes:
+          service.name: "zowe-apiml"
+          service.namespace: "west-coast"
+          service.instance.id: "ZOWE-W1"
 ```

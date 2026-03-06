@@ -15,12 +15,14 @@ The following attribute is used to describe the deployment of the single-service
 
 To set the deployment environment, add the `deployment.environment.name` key to the `resource.attributes` section of your zowe.yaml file.
 
-```
-zowe:
-  observability:
-    enabled: true
-    resource:
+```yaml
+components:
+  apiml:
+    telemetry:
+      enabled: true
       attributes:
       # Deployment Attribute (Manual Entry)
-      deployment.environment.name: "production"
+        deployment:
+          environment:
+            name: "production"
 ```
