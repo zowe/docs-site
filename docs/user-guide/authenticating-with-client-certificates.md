@@ -69,7 +69,7 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   ```
 
   :::note
-  In API Mediation Layer, the Internal mapper is enabled by default. The API Mediation Layer hence supports `DIGTNMAP` and adding the certificate to the user, whereas the `ZSS` mapper only supports adding the certificate to the user.
+  By default, API Mediation Layer uses its Internal mapper, which supports both the `DIGTNMAP` class and certificate-to-user mapping. By contrast, the ZSS mapper only supports mapping the certificate directly to the user.
   :::
 
 </details>
