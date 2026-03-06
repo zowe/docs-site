@@ -68,9 +68,10 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
 
-  :::tip
-  To disable the API ML mapper, ensure that you set the parameter `components.gateway.apiml.security.useInternalMapper` to `false`.
+  :::note
+  By default, API Mediation Layer uses its Internal mapper, which supports both the `DIGTNMAP` class and certificate-to-user mapping. By contrast, the ZSS mapper only supports mapping the certificate directly to the user.
   :::
+
 </details>
 
 **ACF2** 
