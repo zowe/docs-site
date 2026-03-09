@@ -16,16 +16,16 @@ Follow these steps to configure your observability metadata before activating th
 
 Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
 
-1. **Assign a common service name.**
+1. **Assign a common service name.**  
 Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`).
 
-2. **Define the service namespace.**
+2. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit.
 
-3. **Identify specific instances.**
+3. **Identify specific instances.**  
 Utilize `service.instance.id` to differentiate between individual address spaces or jobs within the same namespace.
 
-4. **Confirm attribute requirements.**
+4. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
 For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
@@ -59,8 +59,8 @@ components:
       #     lpar:
       #       name: XXXX # Determined automatically based on system symbols, can be overriden by sysprog, or provided if the system symbol does not exist
 ```
-* For details about `deployment.environment.name`, see [Configuring OTel Deployment Attributes](configuring-otel-deployment-attributes.md).
-* For details about `zos.sysplex.name`, `zos.smf.id`, and `mainframe.lpar.name`, see [Configuring OTel z/OS Attributes](configuring-otel-zos-attributes.md).
+* For details about the optional override attribute `deployment.environment.name`, see [Configuring OTel Deployment Attributes](configuring-otel-deployment-attributes.md).
+* For details about the optional override attributes `zos.sysplex.name`, `zos.smf.id`, and `mainframe.lpar.name`, see [Configuring OTel z/OS Attributes](configuring-otel-zos-attributes.md).
 
 
 ::note
@@ -79,7 +79,7 @@ API ML performs automatic discovery of the environment name based on the `&ENVIR
 2. **Determine the lifecycle stage.**  
  Identify the appropriate logical name for the environment where this instance is running (For example, `production`, `staging`, `sandbox`).
 
-3. **Define the attribute in zowe.yaml**  
+3. **Define the attribute in zowe.yaml.**  
  Uncomment the `attributes` block and add the `deployment` and `environment` nesting as shown in the example to the resource section of your configuration. Doing so overrides the system discovery.
 
 4. **Restart API ML.**  
@@ -126,11 +126,8 @@ Choose the preferred communication protocol (usually `gRPC` on port `4317` or `H
 For the changes to take effect, you must restart the API ML address space.
 
 5. **Check the Logs.**  
-Upon restart, check the API ML logs for a message similar to the following message:
+Upon restart, Look for `OTel SDK initialized successfully` in the job log.
 
-  ```
-  OTel SDK initialized successfully. Exporting signals to http://...
-  ```
 For more information, see [Enabling Observability in zowe.yaml](enabling-observability-in-zowe.yaml.md).
 
 ### Understanding the Result
