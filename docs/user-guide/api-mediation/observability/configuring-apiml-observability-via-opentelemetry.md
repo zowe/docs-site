@@ -52,7 +52,38 @@ Establish the logical identity of your API ML instance. This step ensures that y
 * Use `service.namespace` and `service.instance.id` to differentiate between data centers, sysplexes, or specific jobs.
 * For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
 
+
+### 2. Configure zowe.yaml
+
+Recommendation:
+
+```yaml
+components:
+  apiml:
+    telemetry:
+      enabled: true
+      exporter:
+        endpoint: "http://otel-collector.your.domain:4317"
+      service:
+        name:
+        namespace:
+```
+
+With this you have a working OTel integration
+with assumptions:
+- Collector is working
+- Step 1 was done (i.e. service name, namespace are set). `service.instance.id` is automatically discovered.
+- the commented attributes in yaml are correctly set in z/OS
+
+If not, then provide settings for the properties that are not properly set for the automation to discover them
+
 ### 2. Label the Deployment Environment
+
+<!--
+We are doing automatic discovery of this value based on system symbols 
+"&ENVIRON."
+in z/OS, but it can be overriden
+ -->
 
 Manually define the lifecycle stage of the instance. Doing so prevents data from development or test environments from triggering false alerts in your production dashboards.
 
