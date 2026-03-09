@@ -1,4 +1,17 @@
-# Overview of OpenTelemetry Architecture
+# Overview of API ML Observability and OTel Architecture
+
+Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.
+
+:::infoRequired role: System administrator
+:::
+
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tool, commonly referred to as an OpenTelemetry (OTel) Collector, to gain insights into resource utilization and latency within the mainframe environment.
+
+:::caution Important
+API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
+:::
+
+## Overview of OpenTelemetry Architecture
 
 OpenTelemetry (OTel) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
 
@@ -49,7 +62,6 @@ To better understand the relationship between signals and resources, it is usefu
 * The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
 
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure.
-
 :::
 
 ### Understanding API ML Telemetry Signals
@@ -82,3 +94,24 @@ Logs are timestamped text records of discrete events. They provide the deep tech
 
   * **Correlation**  
   Logs produced by the API ML include OTel traceId metadata. This allows you to jump from a specific error log directly to the associated trace to see the full context of the failed request.
+
+## API ML Observability Use Cases
+
+The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
+
+Common use cases for leveraging OpenTelemetry within the API ML include:
+
+* **Sysplex-Wide Traffic Analysis**  
+Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if the spike is caused by a systemic issue affecting the entire Sysplex.
+
+* **Latency Bottleneck Identification**  
+ Analyze distributed traces to visualize the internal processing stages of the API ML. You can pinpoint exactly where delays occur — whether during SAF authentication, service ID resolution in the Discovery Service, or during southbound routing to a backend provider.
+
+* **Cross-Platform Troubleshooting**
+ When a distributed application, such as a cloud-based web app, experiences a failure, you can use a shared `traceId` to follow the request as the request enters the mainframe. This links the "front-end" error directly to a specific Service ID or ASID on z/OS, thereby reducing the Mean Time to Repair (MTTR).
+
+* **Proactive Resource Management**  
+  Monitor JVM-specific metrics, such as Heap Memory usage and Garbage Collection duration, within the API ML process. By correlating these metrics with request volume, you can predict when an instance might require additional memory or when to scale out by starting additional Gateway instances.
+
+* **Security and Audit Forensics**  
+ Correlate log records with traces to investigate failed security audits. If a request is rejected by the Gateway, the trace can show the origin of the call, while the associated logs (linked via the same `traceId`) provide the technical reason for the rejection, such as an expired token or insufficient SAF permissions.
