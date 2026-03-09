@@ -40,6 +40,7 @@ its performance and create large log files that consume a large volume of disk s
 
 2. For each component, find the `components.*.debug` parameter and set the value to `true`:
 
+   **Example:** 
    ```
     components.gateway.debug: true
    ```
