@@ -2,12 +2,15 @@
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
-For a simplified setup that relies on automatic system discovery, see [COnfiguring API ML Observability](configuring-apiml-observability.md).
+For a simplified setup that relies on automatic system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
 
 ## Full zowe.yaml configuration for API ML Observability
 
+The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
+
 Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, <your-service-name>) with your specific environment details.
 
+```yaml
 components:
   apiml:
     telemetry:
@@ -29,8 +32,9 @@ components:
         mainframe:
           lpar:
             name: "<your-lpar-name>"
+```
 
-The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
+Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability. 
 
 ### Core Configuration
 
@@ -68,14 +72,14 @@ The name of the Logical Partition (LPAR).
 
 ## Validating the Configuration
 
-After applying the changes to zowe.yaml and restarting the API Mediation Layer, verify that the OpenTelemetry integration is active and communicating with your collector.
+After you apply the changes to zowe.yaml and restart the API ML, verify that the OpenTelemetry integration is active and communicating with your collector.
 
-1. **Check the API ML Startup Logs.**
+1. **Check the API ML Startup Logs.**  
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
 
     To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs will typically show Exporting failed or Connection refused messages from the OTel SDK.
 
-2. **Verify Signal Reception in your Observability Tool.**
+2. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options: 
 
      * **Search by Service Name**   
@@ -88,6 +92,6 @@ The most definitive validation is to confirm that data is appearing in your chos
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
 4. **Use the Collector's Logging (Optional).**  
-If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming "Export" requests from the API ML's IP address are generated.
+If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
 

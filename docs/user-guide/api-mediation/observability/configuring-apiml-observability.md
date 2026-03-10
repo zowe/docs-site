@@ -56,16 +56,12 @@ If you are not overriding the automated values or defining custom environment va
 
 ### 3. Review or override the Deployment Environment label
 
-:::note
-If the deployment environment is not z/OS, such as for a Kubernetes deployment, these attribute values are not self-discovered and must be configured manually. If you need to manually define the lifecycle stage to prevent data from development or test environments from appearing in production dashboards, you can override this resource attribute.
-::: 
+By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. You only need to manually configure this attribute if you are deploying in a non-z/OS environment (such as Kubernetes), if the system symbol is missing, or if you want to use a custom label to isolate development data from production dashboards.
 
-API ML performs automatic discovery of the environment name based on the `&ENVIRON.` z/OS system symbol. 
-
-For details about the optional override attribute `deployment.environment.name`, see [Configuring OTel Deployment Attributes](configuring-otel-deployment-attributes.md).
+Fordetails about overriding the deployment environment variable, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 i. **Check for existing system symbols.**  
-    Determine if the `&ENVIRON.` symbol is already defined in your z/OS environment. If it is correctly set (`PROD` or `TEST`), API ML captures this value automatically.
+    Determine if the `&ENVIRON.` symbol is already defined in your z/OS environment. If this attribute is correctly set (`PROD` or `TEST`), API ML captures this value automatically.
 
 ii. **Determine the lifecycle stage.**  
  Identify the appropriate logical name for the environment where this instance is running (For example, `production`, `staging`, `sandbox`).
@@ -76,11 +72,9 @@ iii. **Define the attribute in zowe.yaml.**
 iv. **Restart API ML.**  
  Apply the changes and restart the service to ensure the new environment label is attached to all outgoing telemetry signals.
 
-For more information, see [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md).
-
 ### 4. Review or override the z/OS context
 
-Review the resource attributes captured automatically by the system discovery process. API ML queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR.
+API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR. You only need to manually configure these attributes in zowe.yaml if the system symbols (`&SMFID.`, `&SYSPLEX.`, `&SYSNAME.`) are missing, or if you require custom logical identifiers for your reporting.
 
 | Component z/OS attribute | z/OS system symbol | 
 | :--- | :--- | 
@@ -88,47 +82,21 @@ Review the resource attributes captured automatically by the system discovery pr
 | zos.sysplex.name | &SYSPLEX. |
 | mainframe.lpar.name | &SYSNAME. |
 
+For details about overriding the values of these z/OS attributes, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 i. **Verify reporting requirements.**  
-Check that the automatically discovered attributes (e.g., zos.smf.id or zos.sysplex.name) align with your organization’s naming conventions and reporting requirements.
+Check that the automatically discovered attributes align with your organization’s naming conventions and reporting requirements.
 
 ii. **Identify missing or incorrect symbols.**  
-If attributes are missing or incorrect, confirm whether the corresponding z/OS system symbols (like `&SYSNAME.`) are properly set. Automation relies on these symbols for discovery.
+If attributes are missing in your observability backend, confirm whether the corresponding z/OS system symbols are properly set in your environment.
 
 iii. **Apply manual overrides in `zowe.yaml`.**  
-If the system symbols cannot be changed or if you require custom logical identifiers, manually define the properties in the `resource` section of your zowe.yaml.
+To override the system discovery, add the specific attribute path to the attributes block in your zowe.yaml. This ensures the manual value takes precedence.
 
 iv. **Restart API ML.**  
 For the changes to take effect, you must restart the Zowe task.
 
-**Example of a manual override for SMF ID:**
-
-```yaml
-      attributes:
-        zos:
-          smf:
-            id: "MYSMF"
-```
-
-**Example of a manual override for sysplex name:**
-
-```yaml
-      attributes:
-        zos:
-          sysplex:
-            name: "<your-sysplex-name>"
-``` 
-
-**Example of a manual override for lpar name:**
-
-```yaml
-      attributes:
-        mainframe:
-          lpar:
-            name: "<your-lpar-name>"
-```
-For more information, see [Configuring OpenTelemetry z/OS attributes](configuring-otel-zos-attributes.md).
-
+For a complete list of override examples, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 ### Understanding the Result
 
