@@ -12,20 +12,20 @@ For details about OTel Observability architecture and API ML Observability use c
 
 Follow these steps to configure your observability metadata before activating the telemetry stream for API Mediation Layer.
 
-### 1. Define Service Identity
+### 1. Define service identity
 
 Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
 
-  i. **Assign a common service name.**  
-      Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`).
+i. **Assign a common service name.**  
+    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`).
 
-  ii. **Define the service namespace.**  
+ii. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit.
 
-  iii. **Identify specific instances.**  
-Utilize `service.instance.id` to differentiate between individual address spaces or jobs within the same namespace.
+iii. **Identify specific instances.**  
+Customize the `service.instance.id` to differentiate between individual address spaces or jobs within the same namespace.
 
-  iv. **Confirm attribute requirements.**  
+iv. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
 For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
@@ -64,16 +64,16 @@ API ML performs automatic discovery of the environment name based on the `&ENVIR
 
 For details about the optional override attribute `deployment.environment.name`, see [Configuring OTel Deployment Attributes](configuring-otel-deployment-attributes.md).
 
-  a. **Check for existing system symbols.**  
+i. **Check for existing system symbols.**  
     Determine if the `&ENVIRON.` symbol is already defined in your z/OS environment. If it is correctly set (`PROD` or `TEST`), API ML captures this value automatically.
 
-  b. **Determine the lifecycle stage.**  
+ii. **Determine the lifecycle stage.**  
  Identify the appropriate logical name for the environment where this instance is running (For example, `production`, `staging`, `sandbox`).
 
-  c. **Define the attribute in zowe.yaml.**  
+iii. **Define the attribute in zowe.yaml.**  
  To override the system discovery, uncomment the `attributes` block and add the `deployment` and `environment` nesting as shown in the example to the resource section of your configuration. Doing so overrides the system discovery.
 
-  d. **Restart API ML.**  
+iv. **Restart API ML.**  
  Apply the changes and restart the service to ensure the new environment label is attached to all outgoing telemetry signals.
 
 For more information, see [Configuring OpenTelemetry deployment attributes](configuring-otel-deployment-attributes.md).
