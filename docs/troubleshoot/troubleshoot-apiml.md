@@ -41,8 +41,10 @@ its performance and create large log files that consume a large volume of disk s
 2. For each component, find the `components.*.debug` parameter and set the value to `true`:
 
    **Example:** 
-   ```
-    components.gateway.debug: true
+   ```yaml
+   components:
+     gateway:
+       debug: true
    ```
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
@@ -217,7 +219,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 
 ## SDSF Job search fails
 
-Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
+Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impact ZD&T boxes)
 
 **Solution:**
 
