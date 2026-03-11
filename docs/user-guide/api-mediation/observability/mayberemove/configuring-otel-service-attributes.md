@@ -6,6 +6,8 @@ In complex mainframe environments, you may have multiple API ML installations ac
 
 ## The Hierarchy of Identification
 
+<!-- Basic concepts, to overview -->
+
 OpenTelemetry uses a three-tier approach to define service identity:
 
 * **service.name** (The Service)  
@@ -13,6 +15,8 @@ Identifies the logical name of the service. This property value should be identi
 
 * **service.namespace** (The Environment/Site)  
 Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
+
+<!-- Describe that service.instance.id is automatically generated, hostname:serviceId:port -->
 
 * **service.instance.id** (The Unique Instance)  
 Identifies a specific running process or Address Space. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
@@ -56,7 +60,6 @@ components:
           attributes:
             service.name: "zowe-apiml"
             service.namespace: "production-plex"
-            service.instance.id: "APIML02"
 ```
 
 ## Example of Multi-Site Deployment
@@ -79,8 +82,6 @@ In this scenario, instances are separated by namespace to represent their physic
         service:
           name: "zowe-apiml"
           namespace: "east-coast"
-        attributes:
-          instance.id: "ZOWE-E1"
 ```
 
 **Site 2 (West Coast) Configuration:**
@@ -93,5 +94,4 @@ In this scenario, instances are separated by namespace to represent their physic
         attributes:
           service.name: "zowe-apiml"
           service.namespace: "west-coast"
-          service.instance.id: "ZOWE-W1"
 ```

@@ -1,3 +1,5 @@
+<!-- DELETE -->
+
 # Configuring OpenTelemetry Deployment Attributes
 
 To configure deployment-specific resource attributes for the Zowe API ML. These attributes allow you to categorize telemetry data based on the lifecycle stage of the application, such as distinguishing between production, staging, or development environments.

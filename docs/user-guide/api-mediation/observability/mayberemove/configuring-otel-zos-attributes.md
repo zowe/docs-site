@@ -4,6 +4,8 @@
 
 z/OS-specific resource attributes for API ML provide essential mainframe context to your telemetry data, allowing you to correlate metrics, traces, and logs with specific system identifiers such as SMF IDs, Sysplex names, and LPARs. By providing z/OS platform context, mainframe performance data can be integrated into distributed observability backends.
 
+<!-- 
+DELETE THIS SECTION
 ## How system discovery works
 
 System Discovery is the automated process by which API ML identifies its own physical and logical environment. Instead of requiring a system administrator to manually enter details for every instance, the software performs an internal "inventory" check at startup to populate its identity.
@@ -18,7 +20,7 @@ While the OTel SDK gathers low-level operating system data, the SDK queries the 
 
 By the time the API ML is ready to process its first request, the system discovery process has already enriched the service with its identity — the unique combination of service name, location, and z/OS system data that distinguishes this instance. This automation ensures every telemetry signal is accurately tagged with the following z/OS attributes without manual intervention:
 
-The z/OS attributes are primarily populated through an automated System Discovery process that occurs during the initialization of the API ML service. The integrated OpenTelemetry SDK executes platform-specific calls to query z/OS Control Blocks (such as the CVTSNAME or ECVT) and system variables.
+The z/OS attributes are primarily populated through an automated System Discovery process that occurs during the initialization of the API ML service. The integrated OpenTelemetry SDK executes platform-specific calls to query z/OS Control Blocks (such as the CVTSNAME or ECVT) and system variables. -->
 
 ## z/OS Attribute Reference
 
@@ -36,19 +38,19 @@ Configuration Source: System discovery
 Name of the LPAR that hosts the z/OS system.
 Configuration Source: System discovery
 
-* **os.type**  
+* **os.type**
 The operating system type, set to `zos`.
 Configuration Source: Static
 
-* **os.version**  
+* **os.version**
 The version string of the operating system (e.g., the release returned by `D IPLINFO`).
 Configuration Source: System discovery
 
-* **process.command**  
+* **process.command**
 The command or JOB name used to launch the Zowe process.
 Configuration Source: System discovery
 
-* **process.pid**  
+* **process.pid**
 The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
 Configuration Source: System discovery
 
