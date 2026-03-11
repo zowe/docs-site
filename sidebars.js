@@ -345,10 +345,11 @@ module.exports = {
                   "link": { "type": "doc", "id": "user-guide/api-mediation/observability/overview-of-apiml-observability-and-otel-architecture" },
                   "items": [
                     "user-guide/api-mediation/observability/configuring-apiml-observability",
+                    "user-guide/api-mediation/observability/advanced-apiml-observability-config",
                     "user-guide/api-mediation/observability/configuring-otel-service-attributes",
                     "user-guide/api-mediation/observability/configuring-otel-deployment-attributes",
-                    "user-guide/api-mediation/observability/configuring-otel-zos-attributes",
-					          "user-guide/api-mediation/observability/enabling-observability-in-zowe-yaml"
+                    "user-guide/api-mediation/observability/configuring-otel-zos-attributes"
+					          
                   ]
                 },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
