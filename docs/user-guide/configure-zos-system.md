@@ -1,6 +1,6 @@
 # Customizing z/OS system security 
 
-As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and fuctionalities.
+As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and functionalities.
 
 :::info Required role: security administrator
 :::
@@ -652,7 +652,7 @@ where:
 
 * `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
 
-/* Activate these changes */
+Activate the changes:
 
 ```
 SETROPTS RACLIST(FACILITY) REFRESH      
@@ -932,7 +932,7 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 This configuration applies to the Application Framework.
 :::
 
-Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
+Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-privileged clients.  
 
 If you have run `ZWESECUR` you do not need to perform the steps described in this section.
 
