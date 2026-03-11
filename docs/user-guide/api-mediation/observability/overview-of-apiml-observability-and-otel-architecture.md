@@ -15,14 +15,15 @@ API ML system observability is available exclusively for the API ML single-servi
 
 <!-- Link to OpenTelemetry project ?-->
 
-OpenTelemetry (OTel) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
+[OpenTelemetry (OTel)](https://opentelemetry.io/) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
 
-<!-- API ML is integrating OpenTelemetry from 3.5.0 (using the defaults from OTel project, with some z/OS-specific features) -->
+:::note
+Beginning with Zowe v 3.5.0 API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. For details about specified z/OS attributes, see [Advanced API ML Observability Configuration in zowe.yaml](advanced-apiml-observability-config.md).
+:::
 
 API ML observability is built upon **Resources** (the 'who' and 'where'), which define the identity and z/OS context of the system, and **Signals** (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources.
 
-<!-- API ML supports both z/OS and non-z/OS deployments -->
-<!-- API ML's OTel integration follows the current semantics -->
+API ML supports both z/OS and non-z/OS deployments. 
 
 ## Resource Attributes
 
