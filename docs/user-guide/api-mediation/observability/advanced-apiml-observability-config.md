@@ -8,7 +8,7 @@ For a simplified setup that relies on automatic system discovery, see [Configuri
 
 The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
 
-Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, <your-service-name>) with your specific environment details.
+Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, `<your-service-name>`) with your specific environment details.
 
 ```yaml
 components:
@@ -34,7 +34,7 @@ components:
             name: "<your-lpar-name>"
 ```
 
-Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability. 
+Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
 ### Core Configuration
 
@@ -69,7 +69,6 @@ The System Management Facilities identifier. This is a one to four character ID 
 * **mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
 
-
 ## Validating the Configuration
 
 After you apply the changes to zowe.yaml and restart the API ML, verify that the OpenTelemetry integration is active and communicating with your collector.
@@ -80,18 +79,16 @@ Review the job logs for the API ML service. Upon successful initialization with 
     To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs will typically show Exporting failed or Connection refused messages from the OTel SDK.
 
 2. **Verify Signal Reception in your Observability Tool.**  
-The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options: 
+The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
-     * **Search by Service Name**   
+* **Search by Service Name**
     In your monitoring tool's UI, look for the value you defined in `service.name` (For example, `zowe-apiml`).  
 
-     * **Filter by Namespace**    
+* **Filter by Namespace**ß
     If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
 
-3. **Confirm Attributes.**  
+1. **Confirm Attributes.**  
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
-4. **Use the Collector's Logging (Optional).**  
+2. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
-
-

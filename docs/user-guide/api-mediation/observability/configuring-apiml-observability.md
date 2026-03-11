@@ -22,10 +22,7 @@ i. **Assign a common service name.**
 ii. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit.
 
-iii. **Identify specific instances.**  
-Customize the `service.instance.id` to differentiate between individual address spaces or jobs within the same namespace.
-
-iv. **Confirm attribute requirements.**  
+iii. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
 For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
