@@ -16,10 +16,8 @@ Identifies the logical name of the service. This property value should be identi
 * **service.namespace** (The Environment/Site)  
 Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
 
-<!-- Describe that service.instance.id is automatically generated, hostname:serviceId:port -->
-
 * **service.instance.id** (The Unique Instance)  
-Identifies a specific running process or Address Space. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
+Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, if customizing this attribute, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
 
 <!-- Should we add service.version to this list of properties? -->
 

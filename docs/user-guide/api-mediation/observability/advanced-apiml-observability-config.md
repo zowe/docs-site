@@ -53,6 +53,9 @@ The logical name of the application. All instances of API ML in a high-availabil
 * **service.namespace**  
 The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`.
 
+* **service.instance.id** (The Unique Instance)    
+Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, if customizing this attribute, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
+
 ### Resource Attributes (Manual Overrides)
 
 These attributes describe the host environment. While API ML attempts to discover these automatically from z/OS system symbols, these attriibutes can be manually defined as needed according to your company policies.  
@@ -61,7 +64,7 @@ These attributes describe the host environment. While API ML attempts to discove
 Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
 
 * **zos.sysplex.name**  
-The name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
+Specifies the name of the z/OS Sysplex where the Zowe instance is executing. Specify this attribute to aggregate performance data across a cluster of systems.
 
 * **zos.smf.id**  
 The System Management Facilities identifier. This is a one to four character ID that uniquely identifies the specific z/OS image within a complex.
@@ -81,14 +84,14 @@ Review the job logs for the API ML service. Upon successful initialization with 
 2. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
-* **Search by Service Name**
+* **Search by Service Name**  
     In your monitoring tool's UI, look for the value you defined in `service.name` (For example, `zowe-apiml`).  
 
-* **Filter by Namespace**ß
+* **Filter by Namespace**  
     If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
 
-1. **Confirm Attributes.**  
+3. **Confirm Attributes.**  
 Select a trace or metric and verify that the Resource Attributes (such as `zos.smf.id` or `mainframe.lpar.name`) are correctly attached.
 
-2. **Use the Collector's Logging (Optional).**  
+4. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.

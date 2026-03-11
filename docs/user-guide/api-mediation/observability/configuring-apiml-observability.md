@@ -16,11 +16,35 @@ Follow these steps to configure your observability metadata before activating th
 
 Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
 
+Services are identified via the `service.name`, `service.namespace`, and `service.instance.id` properties. Together, these attributes create a unique identity for API ML instances across your enterprise.
+
+In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
+
+## The Hierarchy of Identification
+
+<!-- Basic concepts, to overview -->
+
+OpenTelemetry uses a three-tier approach to define service identity:
+
+* **service.name** (The Service)  
+Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
+
+* **service.namespace** (The Environment/Site)  
+Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
+
+* **service.instance.id** (The Unique Instance)  
+Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, if customizing this attribute, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
+
+<!-- Should we add service.version to this list of properties? -->
+
+
 i. **Assign a common service name.**  
-    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`).
+    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`). This attribute identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function. The service name value is expected to be globally unique if `namespace` is not defined.
 
 ii. **Define the service namespace.**  
-Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit.
+Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
+
+<!-- Should service.instance.id be included in the base configuration or just in advanced? -->
 
 iii. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
@@ -43,7 +67,7 @@ components:
         namespace: "<your-environment-name>"  # e.g., "production" or "test"
 ```
 
-<!-- MAYBE LINK TO THE DETAILED ZOWE.YAML ARTICLE -->
+To review the full zowe.yaml configuration for API ML observability, see [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
 
 ::note
 If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
@@ -55,7 +79,7 @@ If you are not overriding the automated values or defining custom environment va
 
 By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. You only need to manually configure this attribute if you are deploying in a non-z/OS environment (such as Kubernetes), if the system symbol is missing, or if you want to use a custom label to isolate development data from production dashboards.
 
-Fordetails about overriding the deployment environment variable, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
+For details about overriding the deployment environment variable, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 i. **Check for existing system symbols.**  
     Determine if the `&ENVIRON.` symbol is already defined in your z/OS environment. If this attribute is correctly set (`PROD` or `TEST`), API ML captures this value automatically.

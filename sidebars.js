@@ -346,10 +346,8 @@ module.exports = {
                   "items": [
                     "user-guide/api-mediation/observability/configuring-apiml-observability",
                     "user-guide/api-mediation/observability/advanced-apiml-observability-config",
-                    "user-guide/api-mediation/observability/configuring-otel-service-attributes",
-                    "user-guide/api-mediation/observability/configuring-otel-deployment-attributes",
-                    "user-guide/api-mediation/observability/configuring-otel-zos-attributes"
-					          
+                    "user-guide/api-mediation/observability/index-of-otel-zos-attributes",
+                    "user-guide/api-mediation/observability/sample-output-from-apiml-otel"
                   ]
                 },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
