@@ -341,7 +341,7 @@ module.exports = {
                 },
                 {
                   "type": "category",
-                  "label": "Configuring API ML Observability via OpenTelemetry",
+                  "label": "Overview of API ML Observability and OTel Architecture",
                   "link": { "type": "doc", "id": "user-guide/api-mediation/observability/overview-of-apiml-observability-and-otel-architecture" },
                   "items": [
                     "user-guide/api-mediation/observability/configuring-apiml-observability",
