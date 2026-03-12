@@ -2,6 +2,9 @@
 
 To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **[telemetry signals](overview-of-apiml-observability-and-otel-architecture.md#telemetry-signals-and-observability)** and enrich them with **[resource attributes](overview-of-apiml-observability-and-otel-architecture.md#resource-attributes)**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 
+:::info Required role: System administrator
+:::
+
 For details about OTel Observability architecture and API ML Observability use cases, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
 
 ## Prerequisites
@@ -29,8 +32,7 @@ Services are identified via the `service.name`, `service.namespace`, and `servic
 
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
-:::info 
-**The Hierarchy of Identification**
+:::info **The Hierarchy of Identification**
 
 OpenTelemetry uses a three-tier approach to define service identity:
  
