@@ -20,11 +20,11 @@ Services are identified via the `service.name`, `service.namespace`, and `servic
 
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
-:::info
+:::info 
 **The Hierarchy of Identification**
 
 OpenTelemetry uses a three-tier approach to define service identity:
-
+ 
 * **service.name** (The Service)  
 Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
 
