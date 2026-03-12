@@ -45,7 +45,7 @@ A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate
 * **exporter.endpoint**  
 The destination URL for your OTLP (OpenTelemetry Protocol) collector.
 
-### Service Identity
+### Service Identity Attributes
 
 * **service.name**  
 The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). Expected to be globally unique if `namespace` is not defined.

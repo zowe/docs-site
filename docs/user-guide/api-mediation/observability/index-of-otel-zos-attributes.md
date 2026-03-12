@@ -20,25 +20,25 @@ Configuration Source: System discovery
 Name of the LPAR that hosts the z/OS system.
 Configuration Source: System discovery
 
-* **os.type**
+* **os.type**  
 The operating system type, set to `zos`.
 Configuration Source: Static
 
-* **os.version**
+* **os.version**  
 The version string of the operating system (e.g., the release returned by `D IPLINFO`).
 Configuration Source: System discovery
 
-* **process.command**
+* **process.command**  
 The command or JOB name used to launch the Zowe process.
 Configuration Source: System discovery
 
-* **process.pid**
+* **process.pid**  
 The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
 Configuration Source: System discovery
 
 ## Overriding Discovered Attributes in zowe.yaml
 
-While the discovery process handles most identifiers automatically, you may occasionally need to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `resource.attributes` section of your zowe.yaml:
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `resource.attributes` section of your zowe.yaml:
 
 **Example:**
 
