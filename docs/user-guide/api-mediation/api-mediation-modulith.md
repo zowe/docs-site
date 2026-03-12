@@ -6,8 +6,7 @@ configuration from the previous multiple-service option to a single-service opti
 From Zowe version 3.4.0 onwards, we recommend the single-service option. The workflow for new installations 
 will set the single-service deployment option in `zowe.yaml`. 
 
-:::info
-Required roles: System Programmer, Network Administrator
+:::info Required roles: System Programmer, Network Administrator
 :::
 
 This **single-service deployment mode** (which is also referred to as modulith mode) is an alternative to the multi-service scheme which brings the following performance benefits and simplification in configuration for new installations:
@@ -120,9 +119,11 @@ To enable single-service deployment mode for API ML, perform the following chang
         enabled: true
     ```
 
-    **Note:** If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
+    :::note Notes:  
+    * If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
 
-    **Note:** To enable the debug mode in the single-service deployment mode, find the `components.gateway.debug` parameter and set the value to `true`.
+    * To enable the debug mode in the single-service deployment mode, find the `components.gateway.debug` parameter and set the value to `true`.
+    ```
 
 2. Start the Zowe started task.
 
@@ -131,7 +132,7 @@ To enable single-service deployment mode for API ML, perform the following chang
 It is possible to revert to the original multi-service deployment mode by reverting changes in the `zowe.yaml` file:
 
 1. Disable the `apiml` component:
-    Set `components.apiml.enabled` to `false`.
+   Set `components.apiml.enabled` to `false`.
 
 2. Start the Zowe started task.
 
