@@ -2,7 +2,8 @@
 
 Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.
 
-:::infoRequired role: System administrator
+:::info
+Required role: System administrator
 :::
 
 By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tool, commonly referred to as an OpenTelemetry (OTel) Collector, to gain insights into resource utilization and latency within the mainframe environment.
@@ -12,10 +13,6 @@ API ML system observability is available exclusively for the API ML single-servi
 :::
 
 ## Overview of OpenTelemetry Architecture
-
-<!-- Link to OpenTelemetry project ?-->
-
-[OpenTelemetry (OTel)](https://opentelemetry.io/) is an industry-standard observability framework designed to create, manage, and export telemetry data across diverse environments. By integrating OpenTelemetry into Zowe API Mediation Layer (API ML), organizations can bridge the gap between traditional mainframe monitoring and modern distributed tracing, providing a unified view of system health and performance.
 
 :::note
 Beginning with Zowe v 3.5.0 API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. For details about specified z/OS attributes, see [Advanced API ML Observability Configuration in zowe.yaml](advanced-apiml-observability-config.md).
@@ -31,22 +28,18 @@ A **Resource** In OpenTelemetry represents the entity producing telemetry. For Z
 
 OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends.
 
-### Attribute Categories
+### Resource Attribute Categories
 
 * **Service Attributes**  
 Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific LPAR or site.
 
-  For details about Service Attributes, see [Configuring OpenTelemetry Service Attributes](configuring-otel-service-attributes.md).
-
 * **Deployment Attributes:**  
 Describe the lifecycle stage of the service, and filter telemetry data by environment, such as distinguishing production issues from test environment noise.
-
-  For details about Deployment Attributes, see [Configuring OpenTelemetry Deployment Attributes](configuring-otel-deployment-attributes.md).
 
 * **z/OS Attributes**  
 Provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running.
 
-  For details about z/OS Attributes, see [Configuring OpenTelemetry z/OS Attributes](configuring-otel-zos-attributes.md).
+  For details about specific z/OS Attributes, see [Index of OpenTelemetry z/OS Attributes](index-of-otel-zos-attributes.md).
 
 ## Telemetry Signals and Observability
 
