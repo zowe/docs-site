@@ -16,10 +16,10 @@ Follow these steps to configure your observability metadata before activating th
 
 Perform the following steps to configure base API ML observability:
 
-[1. Define service identity](#1-define-service-identity)
-[2. Configure zowe.yaml](#2-configure-zoweyaml)
-[3. Review or override the Deployment Environment label](#3-review-or-override-the-deployment-environment-label)
-[4. Review or override the z/OS context](#4-review-or-override-the-zos-context)
+[1. Define service identity](#1-define-service-identity)  
+[2. Configure zowe.yaml](#2-configure-zoweyaml)  
+[3. Review or override the Deployment Environment label](#3-review-or-override-the-deployment-environment-label)  
+[4. Review or override the z/OS context](#4-review-or-override-the-zos-context)  
 
 ### 1. Define service identity
 
