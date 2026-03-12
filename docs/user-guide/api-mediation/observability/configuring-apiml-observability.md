@@ -71,7 +71,7 @@ To review the full zowe.yaml configuration for API ML observability, see [Advanc
 If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
 :::
 
-If you are not overriding the automated values or defining custom environment variables, proceed to [Enable the OTel Exporter in zowe.yaml](#enable-the-otel-exporter-in-zoweyaml).
+If you are not overriding the automated values or defining custom environment variables, and `apiml.telemetry.enabled` is set to `true`, API ML observability is enabled.
 
 ### 3. Review or override the Deployment Environment label
 
@@ -126,4 +126,6 @@ Once this procedure is complete, the API ML begins producing **Signals** (Metric
 | **Telemetry Signals** | Operational Data | Tells you **what** is happening (latency, errors). |
 | **Resource Attributes** | Identifying Metadata | Tells you **where** it is happening (LPAR, Job Name, Site). |
 
-For details about signals and resource attributes, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
+* To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md)
+
+* For details about signals and resource attributes used in OpenTelemetry, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
