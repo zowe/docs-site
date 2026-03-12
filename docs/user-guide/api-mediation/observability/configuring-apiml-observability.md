@@ -137,6 +137,6 @@ Once this procedure is complete, the API ML begins producing **Signals** (Metric
 | **Telemetry Signals** | Operational Data | Tells you **what** is happening (latency, errors). |
 | **Resource Attributes** | Identifying Metadata | Tells you **where** it is happening (LPAR, Job Name, Site). |
 
-* To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md)
+* To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
 
 * For details about signals and resource attributes used in OpenTelemetry, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
