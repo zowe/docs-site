@@ -20,9 +20,8 @@ Services are identified via the `service.name`, `service.namespace`, and `servic
 
 In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
 
-## The Hierarchy of Identification
-
-<!-- Basic concepts, to overview -->
+:::info
+**The Hierarchy of Identification**
 
 OpenTelemetry uses a three-tier approach to define service identity:
 
@@ -34,9 +33,7 @@ Groups services into logical sets. Use this property value to distinguish betwee
 
 * **service.instance.id** (The Unique Instance)  
 Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, if customizing this attribute, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
-
-<!-- Should we add service.version to this list of properties? -->
-
+:::
 
 i. **Assign a common service name.**  
     Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`). This attribute identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function. The service name value is expected to be globally unique if `namespace` is not defined.
@@ -44,9 +41,10 @@ i. **Assign a common service name.**
 ii. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
 
-<!-- Should service.instance.id be included in the base configuration or just in advanced? -->
+iii. **Define the service instance ID (Optional).**  
+While this attribute is automatically generated using `hostname:serviceId:port`, you can manually set `service.instance.id` to provide a more recognizable identifier for a specific Address Space. If customizing this value in a mainframe environment, ensure the value combines the Job Name with a unique LPAR name or UUID to maintain global uniqueness and allow for precise isolation during troubleshooting.
 
-iii. **Confirm attribute requirements.**  
+iv. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
 For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
@@ -63,8 +61,8 @@ components:
       exporter:
         endpoint: "http://otel-collector.your.domain:4317"
       service:
-        name: "<your-service-name>"           # e.g., "zowe-apiml"
-        namespace: "<your-environment-name>"  # e.g., "production" or "test"
+        name: "<your-service-name>"           # example: "zowe-apiml"
+        namespace: "<your-environment-name>"  # example: "production" or "test"
 ```
 
 To review the full zowe.yaml configuration for API ML observability, see [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
