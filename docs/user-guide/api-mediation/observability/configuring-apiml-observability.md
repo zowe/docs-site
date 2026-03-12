@@ -12,6 +12,15 @@ For details about OTel Observability architecture and API ML Observability use c
 
 Follow these steps to configure your observability metadata before activating the telemetry stream for API Mediation Layer.
 
+## Procedure to Configure Base API ML Observability
+
+Perform the following steps to configure base API ML observability:
+
+[1. Define service identity](#1-define-service-identity)
+[2. Configure zowe.yaml](#2-configure-zoweyaml)
+[3. Review or override the Deployment Environment label](#3-review-or-override-the-deployment-environment-label)
+[4. Review or override the z/OS context](#4-review-or-override-the-zos-context)
+
 ### 1. Define service identity
 
 Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
