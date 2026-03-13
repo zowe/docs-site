@@ -346,7 +346,8 @@ module.exports = {
                   "items": [
                     "user-guide/api-mediation/observability/configuring-apiml-observability",
                     "user-guide/api-mediation/observability/advanced-apiml-observability-config",
-                    "user-guide/api-mediation/observability/index-of-otel-zos-attributes"
+                    "user-guide/api-mediation/observability/index-of-otel-zos-attributes",
+                    "user-guide/api-mediation/observability/apiml-provided-observability-signals-and-attributes"
                   ]
                 },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
@@ -539,15 +540,6 @@ module.exports = {
               items: [
                 "user-guide/api-mediation-view-service-information-and-api-doc",
                 "user-guide/api-mediation-change-password-via-catalog",
-              ],
-            },
-            {
-              type: "category",
-              label: "Using your API ML OpenTelemetry metrics",
-              link: { "type": "doc", "id": "user-guide/api-mediation/observability/using-your-otel-metrics" },
-              items: [
-                "user-guide/api-mediation/observability/apiml-provided-observability-signals-and-attributes",
-                "user-guide/api-mediation/observability/sample-output-from-apiml-otel"
               ],
             },
             "user-guide/api-mediation/api-mediation-update-password",
