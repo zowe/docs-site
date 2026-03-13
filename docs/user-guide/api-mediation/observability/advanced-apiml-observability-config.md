@@ -9,6 +9,11 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 For a simplified setup that relies on automatic system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
 :::
 
+<!--
+PLEASE ADD SECTION ABOUT THE COLLECTOR CONNECTION ADVANCED CONFIGURATION
+
+-->
+
 ## Full zowe.yaml configuration for API ML Observability
 
 The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
@@ -80,6 +85,8 @@ The System Management Facilities identifier. This value is a one to four charact
 The name of the Logical Partition (LPAR).
 
 ## Validating the Configuration
+
+<!-- PABLO TO VALIDATE CONTENT -->
 
 After you apply the changes to zowe.yaml and restart the API ML, verify that the OpenTelemetry integration is active and communicating with your collector.
 

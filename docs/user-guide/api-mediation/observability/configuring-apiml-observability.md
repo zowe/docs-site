@@ -52,6 +52,7 @@ i. **Assign a common service name.**
 ii. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
 
+<!-- ANDREW TO UPDATE, IT'S NOT OPTIONAL, IT CANNOT BE OVERRIDEN, IT'S AUTOMATICALLY GENERATED, ONLY KEEP THE CONTEXTUAL NOTE TO EXPLAIN THE HIERARCHY -->
 iii. **Define the service instance ID (Optional).**  
 While this attribute is automatically generated using `hostname:serviceId:port`, you can manually set `service.instance.id` to provide a more recognizable identifier for a specific Address Space. If customizing this value in a mainframe environment, ensure the value combines the Job Name with a unique LPAR name or UUID to maintain global uniqueness and allow for precise isolation during troubleshooting.
 
@@ -128,6 +129,8 @@ For the changes to take effect, you must restart the Zowe task.
 For a complete list of override examples, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 ### Understanding the Result
+
+<!-- REFACTOR TO NEXT STEPS, ADD STEP TO VALIDATE DATA IN THE COLLECTOR -->
 
 Once this procedure is complete, the API ML begins producing **Signals** (Metrics, Traces, and Logs) that are wrapped in the **Resource Attributes** you configured.
 

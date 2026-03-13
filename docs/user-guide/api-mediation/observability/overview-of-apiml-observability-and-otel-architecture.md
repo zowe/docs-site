@@ -97,6 +97,8 @@ Logs are timestamped text records of discrete events. They provide the deep tech
 
 ## API ML Observability Use Cases
 
+<!-- PABLO TO VALIDATE IF THESE CASES ARE CORRECT-->
+
 The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
 
 Common use cases for leveraging OpenTelemetry within the API ML include:
