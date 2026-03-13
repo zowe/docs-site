@@ -99,7 +99,7 @@ ii. **Determine the lifecycle stage.**
 iii. **Define the attribute in zowe.yaml.**  
  To override the system discovery, uncomment the `attributes` block and add the `deployment` and `environment` nesting as shown in the example to the resource section of your configuration. Doing so overrides the system discovery.
 
-iv. **Restart Zowe task.**  
+iv. **Restart the Zowe task.**  
  Apply the changes and restart the service to ensure the new environment label is attached to all outgoing telemetry signals.
 
 ### 4. Review or override the z/OS context
@@ -123,7 +123,7 @@ If attributes are missing in your observability backend, confirm whether the cor
 iii. **Apply manual overrides in `zowe.yaml`.**  
 To override the system discovery, add the specific attribute path to the attributes block in your zowe.yaml. This ensures the manual value takes precedence.
 
-iv. **Restart Zowe task.**  
+iv. **Restart the Zowe task.**  
 For the changes to take effect, you must restart the Zowe task.
 
 For a complete list of override examples, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).

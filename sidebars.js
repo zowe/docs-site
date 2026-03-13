@@ -347,7 +347,7 @@ module.exports = {
                     "user-guide/api-mediation/observability/configuring-apiml-observability",
                     "user-guide/api-mediation/observability/advanced-apiml-observability-config",
                     "user-guide/api-mediation/observability/index-of-otel-zos-attributes",
-                    "user-guide/api-mediation/observability/apiml-provided-observability-signals-and-attributes"
+                    "user-guide/api-mediation/observability/sample-output-from-apiml-otel"
                   ]
                 },
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
