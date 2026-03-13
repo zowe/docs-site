@@ -22,7 +22,7 @@ To activate observability, you must define the identity of the API ML instance a
 1. **Define Service Identity.**  
 Set the name (`service.name`) and the environment (`service.namespace`) to ensure data is correctly grouped and isolated in your dashboards.
 
-2. **Configure the zowe.yaml**  
+2. **Configure the zowe.yaml.**  
 Enable the telemetry stream and defining your OTLP collector URL.
 
 For detailed instructions of how to configure these settings, see [Configuring API ML Observability](configuring-apiml-observability.md).
@@ -66,7 +66,7 @@ Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualize
 
 ## Next Step
 
-* For a quick-start to configure API ML to collect observability data through OpenTlemetry, see [Configuring API ML Observability](configuring-apiml-observability.md).
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Configuring API ML Observability](configuring-apiml-observability.md).
 
 ## Additional Resources
 
