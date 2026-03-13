@@ -59,7 +59,7 @@ For more information, see the [Zowe Conformance Program](https://www.openmainfra
 
 ### Chat with the Zowe community
 
-Join the Zowe community on Slack to get real-time support, brainstorm with peers, and engage in current discussionsacross the Zowe ecosystem.
+Join the Zowe community on Slack to get real-time support, brainstorm with peers, and engage in current discussions across the Zowe ecosystem.
 
 **Zowe Slack**
 
@@ -89,7 +89,7 @@ Join the Zowe community on Slack to get real-time support, brainstorm with peers
 
 For a deep dive into how we organize, govern, and collaborate, explore the Zowe community repository. This is the best place to understand the 'who, what, and why' behind the Zowe Open Mainframe Project.
 
-For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe iniitatives, see [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md)
+For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initiatives, see [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md)
 
 
  
