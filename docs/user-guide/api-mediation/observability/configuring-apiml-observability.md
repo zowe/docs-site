@@ -58,8 +58,6 @@ While this attribute is automatically generated using `hostname:serviceId:port`,
 iv. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
-For more information, see [Configuring OpenTelemetry service attributes](configuring-otel-service-attributes.md).
-
 ### 2. Configure zowe.yaml
 
 Update your `zowe.yaml` configuration to enable the telemetry signal collection and direct these signals to your OpenTelemetry collector endpoint.
@@ -76,10 +74,11 @@ components:
         namespace: "<your-environment-name>"  # example: "production" or "test"
 ```
 
-To review the full zowe.yaml configuration for API ML observability, see [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
+:::note **Notes:**
 
-::note
-If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
+* If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
+
+* If you wish to customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
 :::
 
 If you are not overriding the automated values or defining custom environment variables, and `apiml.telemetry.enabled` is set to `true`, API ML observability is enabled.
