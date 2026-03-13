@@ -46,6 +46,8 @@ components:
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
+You can manually 
+
 ### Core Configuration
 
 Configuration of the following core attributes is required.

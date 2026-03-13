@@ -52,11 +52,7 @@ i. **Assign a common service name.**
 ii. **Define the service namespace.**  
 Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
 
-<!-- ANDREW TO UPDATE, IT'S NOT OPTIONAL, IT CANNOT BE OVERRIDEN, IT'S AUTOMATICALLY GENERATED, ONLY KEEP THE CONTEXTUAL NOTE TO EXPLAIN THE HIERARCHY -->
-iii. **Define the service instance ID (Optional).**  
-While this attribute is automatically generated using `hostname:serviceId:port`, you can manually set `service.instance.id` to provide a more recognizable identifier for a specific Address Space. If customizing this value in a mainframe environment, ensure the value combines the Job Name with a unique LPAR name or UUID to maintain global uniqueness and allow for precise isolation during troubleshooting.
-
-iv. **Confirm attribute requirements.**  
+iii. **Confirm attribute requirements.**  
 Ensure these identifiers align with the grouping and filtering logic of your backend.
 
 ### 2. Configure zowe.yaml
@@ -82,63 +78,19 @@ components:
 * If you wish to customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
 :::
 
-If you are not overriding the automated values or defining custom environment variables, and `apiml.telemetry.enabled` is set to `true`, API ML observability is enabled.
+API ML observability is enabled.
 
-### 3. Review or override the Deployment Environment label
 
-By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. You only need to manually configure this attribute if you are deploying in a non-z/OS environment (such as Kubernetes), if the system symbol is missing, or if you want to use a custom label to isolate development data from production dashboards.
+## Verify your configuration
 
-For details about overriding the deployment environment variable, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
+To verify your configuration, you can check local logs by adding the Debug Exporter to your collector's pipeline. With the Debug exporter you can print telemetry directly to the console. This method is the fastest way to see the raw output from API ML. For details about the Debug Exporter, see [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/) in the OpenTelemetry documentation.
 
-i. **Check for existing system symbols.**  
-    Determine if the `&ENVIRON.` symbol is already defined in your z/OS environment. If this attribute is correctly set (`PROD` or `TEST`), API ML captures this value automatically.
+## Next steps
 
-ii. **Determine the lifecycle stage.**  
- Identify the appropriate logical name for the environment where this instance is running (For example, `production`, `staging`, `sandbox`).
+* **Review your observability output.**  
+To verify that telemetry is flowing, configure an exporter in your OTLP-collector to send data to your chosen visualization tool (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
 
-iii. **Define the attribute in zowe.yaml.**  
- To override the system discovery, uncomment the `attributes` block and add the `deployment` and `environment` nesting as shown in the example to the resource section of your configuration. Doing so overrides the system discovery.
+* **Review Sample Output.**  
+  To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
 
-iv. **Restart the Zowe task.**  
- Apply the changes and restart the service to ensure the new environment label is attached to all outgoing telemetry signals.
-
-### 4. Review or override the z/OS context
-
-API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR. You only need to manually configure these attributes in zowe.yaml if the system symbols (`&SMFID.`, `&SYSPLEX.`, `&SYSNAME.`) are missing, or if you require custom logical identifiers for your reporting.
-
-| Component z/OS attribute | z/OS system symbol | 
-| :--- | :--- | 
-| zos.smf.id | &SMFID. |
-| zos.sysplex.name | &SYSPLEX. |
-| mainframe.lpar.name | &SYSNAME. |
-
-For details about overriding the values of these z/OS attributes, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
-
-i. **Verify reporting requirements.**  
-Check that the automatically discovered attributes align with your organization’s naming conventions and reporting requirements.
-
-ii. **Identify missing or incorrect symbols.**  
-If attributes are missing in your observability backend, confirm whether the corresponding z/OS system symbols are properly set in your environment.
-
-iii. **Apply manual overrides in `zowe.yaml`.**  
-To override the system discovery, add the specific attribute path to the attributes block in your zowe.yaml. This ensures the manual value takes precedence.
-
-iv. **Restart the Zowe task.**  
-For the changes to take effect, you must restart the Zowe task.
-
-For a complete list of override examples, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
-
-### Understanding the Result
-
-<!-- REFACTOR TO NEXT STEPS, ADD STEP TO VALIDATE DATA IN THE COLLECTOR -->
-
-Once this procedure is complete, the API ML begins producing **Signals** (Metrics, Traces, and Logs) that are wrapped in the **Resource Attributes** you configured.
-
-| Component | Role | Outcome |
-| :--- | :--- | :--- |
-| **Telemetry Signals** | Operational Data | Tells you **what** is happening (latency, errors). |
-| **Resource Attributes** | Identifying Metadata | Tells you **where** it is happening (LPAR, Job Name, Site). |
-
-* To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
-
-* For details about signals and resource attributes used in OpenTelemetry, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
+* For details about signals and resource attributes used in OpenTelemetry, see [Overview of API ML Observability and OpenTelemetry Architecture](overview-of-apiml-observability-and-otel-architecture.md).

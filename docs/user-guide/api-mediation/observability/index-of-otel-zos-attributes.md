@@ -38,18 +38,23 @@ Configuration Source: System discovery
 
 ## Overriding Discovered Attributes in zowe.yaml
 
-While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `resource.attributes` section of your zowe.yaml:
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `attributes.zos` section of your zowe.yaml:
 
 **Example:**
 
 ```yaml
-zowe:
-  observability:
-    enabled: true
-    resource:
+components:
+  apiml:
+    telemetry:
+      enabled: true
       attributes:
         # Overriding discovered z/OS attributes
-        zos.smf.id: "MVS1"
-        zos.sysplex.name: "LOCALPLX"
-        mainframe.lpar.name: "PRODLPAR"
+        zos:
+          sysplex:
+            name: "<your-sysplex-name>"
+          smf:
+            id: "<your-smf-id>"
+        mainframe:
+          lpar:
+            name: "<your-lpar-name>"
 ```
