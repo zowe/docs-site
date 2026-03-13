@@ -58,6 +58,8 @@ Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualize
 * For a quick-start to configure API ML to collect observability data through OpenTlemetry, see [Configuring API ML Observability](configuring-apiml-observability.md).
 * For details about how to override the automated assigning of environment and z/OS attributes, see [Advanced API ML Observability Configuration in zowe.yaml](advanced-apiml-observability-config.md).
 
-## Additional resources
+## Additional Resources
 
-* For details about API ML Telemetry signals, see [Understanding API ML Telemetry Signals]()
+* For details about API ML Telemetry signals, see [Understanding API ML Telemetry Signals](./mayberemove/understanding-apiml-telemetry-signals.md).
+* For details about OpenTelemetry architecture, see [Overview of OpenTelemetry Architecture](./mayberemove/overview-of-otel-architecture.md).
+* For details about how API ML OpenTelemetry data could apply to a range of use cases, see [API ML Observability Use Cases](./mayberemove/apiml-observability-use-cases.md).

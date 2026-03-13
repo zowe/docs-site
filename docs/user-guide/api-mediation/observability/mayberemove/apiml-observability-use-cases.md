@@ -4,7 +4,7 @@
 
 The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
 
-Common use cases for leveraging OpenTelemetry within the API ML include:
+The collection of API ML OpenTelemetry data could apply to the following use cases: 
 
 * **Sysplex-Wide Traffic Analysis**  
 Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare API traffic across your entire mainframe footprint. This traffic analysis allows you to identify if a performance spike is isolated to a single LPAR or if the spike is caused by a systemic issue affecting the entire Sysplex.
