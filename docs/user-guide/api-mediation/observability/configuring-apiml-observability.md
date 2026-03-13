@@ -21,8 +21,7 @@ Perform the following steps to configure base API ML observability:
 
 [1. Define service identity](#1-define-service-identity)  
 [2. Configure zowe.yaml](#2-configure-zoweyaml)  
-[3. Review or override the Deployment Environment label](#3-review-or-override-the-deployment-environment-label)  
-[4. Review or override the z/OS context](#4-review-or-override-the-zos-context)  
+[3. Verify your configuration](#3-verify-your-configuration) 
 
 ### 1. Define service identity
 
@@ -81,7 +80,7 @@ components:
 API ML observability is enabled.
 
 
-## Verify your configuration
+### 3. Verify your configuration
 
 To verify your configuration, you can check local logs by adding the Debug Exporter to your collector's pipeline. With the Debug exporter you can print telemetry directly to the console. This method is the fastest way to see the raw output from API ML. For details about the Debug Exporter, see [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/) in the OpenTelemetry documentation.
 
@@ -93,4 +92,4 @@ To verify that telemetry is flowing, configure an exporter in your OTLP-collecto
 * **Review Sample Output.**  
   To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
 
-* For details about signals and resource attributes used in OpenTelemetry, see [Overview of API ML Observability and OpenTelemetry Architecture](overview-of-apiml-observability-and-otel-architecture.md).
+
