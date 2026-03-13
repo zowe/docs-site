@@ -49,7 +49,7 @@ Zowe is a community-led project that is driven by diverse perspectives and colla
 
 Quality is a collective effort; by reporting bugs or suggesting improvements to the documentation, you can help with ensuring Zowe remains a robust, enterprise-grade solution for a wide spectrum of business needs.
 <!--Let's add links to opening issues in other repos as well.-->
-To open a doc issue, see [Open a Doc Issue](https://github.com/zowe/docs-site/issues/new/choose)
+To open a doc isee, see [Open a Doc Issue](https://github.com/zowe/docs-site/issues/new/choose)
 
 ### Contribute
 
