@@ -16,6 +16,17 @@ API ML system observability is available exclusively for the API ML single-servi
 * API ML supports both z/OS and non-z/OS deployments. 
 :::
 
+## Core Configuration Steps
+To activate observability, you must define the identity of the API ML instance and the data destination of the instance:
+
+1. **Define Service Identity.**  
+Set the name (`service.name`) and the environment (`service.namespace`) to ensure data is correctly grouped and isolated in your dashboards.
+
+2. **Configure the zowe.yaml**  
+Enable the telemetry stream and defining your OTLP collector URL.
+
+For detailed instructions of how to configure these settings, see [Configuring API ML Observability](configuring-apiml-observability.md).
+
 ## Automated Resource Attribution
 
 To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This allow users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without manual tagging.
@@ -53,10 +64,9 @@ A standalone service (OTel Collector) that receives, processes, and exports data
 * **The Backend (Visualization)**  
 Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about the Backend visualization is found in the specific product documentation.
 
-## Next Steps
+## Next Step
 
 * For a quick-start to configure API ML to collect observability data through OpenTlemetry, see [Configuring API ML Observability](configuring-apiml-observability.md).
-* For details about how to override the automated assigning of environment and z/OS attributes, see [Advanced API ML Observability Configuration in zowe.yaml](advanced-apiml-observability-config.md).
 
 ## Additional Resources
 
