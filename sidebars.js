@@ -977,11 +977,12 @@ module.exports = {
         {
       type: "category",
       label: "Further Resouces",
-      collapsed: false,
+      collapsed: true,
       items: [
         {
           type: "category",
           label: "API ML Observability Resources",
+          collapsed: true,
           items: [
             "user-guide/api-mediation/observability/observability-resouces/understanding-apiml-telemetry-signals",
             "user-guide/api-mediation/observability/observability-resouces/overview-of-otel-architecture",
