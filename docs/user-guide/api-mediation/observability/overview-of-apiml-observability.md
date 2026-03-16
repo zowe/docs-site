@@ -12,11 +12,14 @@ API ML system observability is available exclusively for the API ML single-servi
 :::
 
 :::note Notes:
-* Beginning with Zowe v 3.5.0 API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. 
-* API ML supports both z/OS and non-z/OS deployments. 
+
+* Beginning with Zowe v 3.5.0 API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features.
+* API ML supports both z/OS and non-z/OS deployments.
+
 :::
 
 ## Core Configuration Steps
+
 To activate observability, you must define the identity of the API ML instance and the data destination of the instance:
 
 1. **Define Service Identity.**  
@@ -32,6 +35,7 @@ For detailed instructions of how to configure these settings, see [Configuring A
 To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This allow users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without manual tagging.
 
 ### Automated Environment Discovery
+
 By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. Manual configuration of the deployment environment is only necessary if:
 
 * You are deploying in a non-z/OS environment (such as Kubernetes).
@@ -41,6 +45,7 @@ By default, API ML automatically discovers your environment name using the `&ENV
 For details about how to override the deployment environment variable, see [Advanced API ML Observability Configuration](advanced-apiml-observability-config.md).
 
 ### z/OS Contextual Metadata
+
 API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR. The following system symbols are used to automatically assign values to the corresponding OpenTelemetry resource attributes:
 
 | z/OS system symbol | Component z/OS attribute |
