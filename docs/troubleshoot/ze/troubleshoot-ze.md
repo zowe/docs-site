@@ -111,4 +111,14 @@ To troubleshoot the table view for data sets and jobs, review the following comm
   - Ensure you have selected at least one job row.
   - For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
 
+## Troubleshooting Zowe Remote SSH
 
+To troubleshoot any issues with ZRS, try the following commands by searching for `Zowe-SSH` in the **Command Palette**:
+
+- **Zowe-SSH: Show Log**: Displays the Zowe SSH log file, providing operation insights and potential error messages for diagnosis.
+
+- **Zowe-SSH: Restart Zowe Server on Host ...**: Easily restart the ZRS server component running on your mainframe host. This can be helpful in resolving temporary connectivity or operational issues.
+
+- **Zowe-SSH: Uninstall Zowe Server from Host ...**: Removes the currently installed instance of the ZRS server from a selected host or profile. This can also be useful for changing the location of the server.
+
+These troubleshooting commands are designed to provide users with tools to quickly diagnose and resolve common issues. If you encounter a problem while using ZRS, file an issue in the [Zowe Remote SSH GitHub repository](https://github.com/zowe/zowe-native-proto).
