@@ -72,6 +72,12 @@ Identifies a specific running process or Address Space. This attribute is automa
 
 The following resource attributes describe the host environment. While API ML attempts to discover these automatically from z/OS system symbols, these attributes can be manually defined as needed according to your company policies.  
 
+:::caution
+API ML is designed to automatically detect your environment name, and the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. We recommend that you **_do not_** manually configure these environment attributes unless your company policies require customization.
+
+For details about how resource atributes are automatically detected, see [Automated Resource Attribution](overview-of-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
+:::
+
 * **deployment.environment.name**  
 Specifies the lifecycle stage of the service. Common values include `production`, `staging`, `test`, or `dev`.
 
@@ -95,7 +101,7 @@ Review the job logs for the API ML service. Upon successful initialization with 
 
     To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs typically show Exporting failed or Connection refused messages from the OTel SDK.
 
-1. **Verify Signal Reception in your Observability Tool.**  
+2. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
 * **Search by Service Name**  
