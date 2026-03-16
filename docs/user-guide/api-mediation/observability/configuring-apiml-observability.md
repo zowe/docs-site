@@ -74,7 +74,7 @@ components:
 
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
 
-* If you wish to customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md).
+* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md). Note that using the values generated through the automization is the preferred method.  
 :::
 
 API ML observability is enabled.
