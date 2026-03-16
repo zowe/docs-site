@@ -974,6 +974,22 @@ module.exports = {
         }
       ]
     },
+        {
+      type: "category",
+      label: "Further Resouces",
+      collapsed: false,
+      items: [
+        {
+          type: "category",
+          label: "API ML Observability Resources",
+          items: [
+            "user-guide/api-mediation/observability/observability-resouces/understanding-apiml-telemetry-signals",
+            "user-guide/api-mediation/observability/observability-resouces/overview-of-otel-architecture",
+            "user-guide/api-mediation/observability/observability-resouces/apiml-observability-use-cases",
+          ]
+        },
+      ]  
+    },
     "appendix/bill-of-materials",
     {
       type: "link",
