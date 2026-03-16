@@ -46,11 +46,9 @@ components:
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
-You can manually 
-
 ### Core Configuration
 
-Configuration of the following core attributes is required.
+Configuration of the following core attributes is required:
 
 * **enabled**  
 A flag that initializes the OpenTelemetry SDK. Must be set to `true` to generate and export observability data.  
@@ -62,7 +60,7 @@ The destination URL for your OTLP (OpenTelemetry Protocol) collector.
 ### Service Identity Attributes
 
 * **service.name**  
-The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). Expected to be globally unique if `namespace` is not defined. Configuration of this attribute is required.
+The logical name of the application. All instances of API ML in a high-availability (HA) cluster should share this name to be grouped correctly in your backend (for example, `zowe-apiml`). The `service.name` value is expected to be globally unique if `namespace` is not defined. Configuration of this attribute is required.
 
 * **service.namespace**  
 The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is required.
