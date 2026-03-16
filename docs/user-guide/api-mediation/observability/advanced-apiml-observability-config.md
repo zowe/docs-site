@@ -75,7 +75,7 @@ The following resource attributes describe the host environment. While API ML at
 :::caution
 API ML is designed to automatically detect your environment name, and the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. We recommend that you **_do not_** manually configure these environment attributes unless your company policies require customization.
 
-For details about how resource atributes are automatically detected, see [Automated Resource Attribution](overview-of-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
+For details about how resource attributes are automatically detected, see [Automated Resource Attribution](overview-of-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
 :::
 
 * **deployment.environment.name**  
