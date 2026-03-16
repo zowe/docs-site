@@ -104,10 +104,10 @@ Review the job logs for the API ML service. Upon successful initialization with 
 2. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 
-* **Search by Service Name**  
+   * **Search by Service Name**  
     In your monitoring tool's UI, look for the value you defined in `service.name` (For example, `zowe-apiml`).  
 
-* **Filter by Namespace**  
+   * **Filter by Namespace**  
     If you have multiple installations, use the `service.namespace` filter to isolate data from this specific instance.
 
 3. **Confirm Attributes.**  
