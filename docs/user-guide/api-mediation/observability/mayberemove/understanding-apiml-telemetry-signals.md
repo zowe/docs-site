@@ -29,3 +29,8 @@ Logs are timestamped text records of discrete events. They provide the deep tech
   * **Correlation**  
   Logs produced by the API ML include OTel traceId metadata. This allows you to jump from a specific error log directly to the associated trace to see the full context of the failed request.
 
+## Next Steps
+
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Configuring API ML Observability](../configuring-apiml-observability.md).
+
+* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Overview of API ML Observability](../overview-of-apiml-observability.md).

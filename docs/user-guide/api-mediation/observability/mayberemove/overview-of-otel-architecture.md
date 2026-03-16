@@ -44,3 +44,9 @@ To better understand the relationship between signals and resources, it is usefu
 
 Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure.
 :::
+
+## Next Steps
+
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Configuring API ML Observability](../configuring-apiml-observability.md).
+
+* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Overview of API ML Observability](../overview-of-apiml-observability.md).
