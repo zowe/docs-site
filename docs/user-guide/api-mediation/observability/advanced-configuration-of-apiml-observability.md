@@ -1,4 +1,4 @@
-# Advanced API ML Observability Configuration in zowe.yaml
+# Advanced configuration of API ML Observability 
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 

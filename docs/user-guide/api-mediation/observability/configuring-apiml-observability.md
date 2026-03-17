@@ -137,5 +137,4 @@ Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualize
 ## Additional Resources
 
 * For details about API ML Telemetry signals, see [Understanding API ML Telemetry Signals](./using-observability/understanding-apiml-telemetry-signals.md).
-* For details about OpenTelemetry architecture, see [Overview of OpenTelemetry Architecture](./using-observability/overview-of-otel-architecture.md).
 * For details about how API ML OpenTelemetry data could apply to a range of use cases, see [API ML Observability Use Cases](./using-observability/apiml-observability-use-cases.md).
