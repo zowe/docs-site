@@ -2,7 +2,7 @@
 
 <!-- PABLO TO VALIDATE IF THESE CASES ARE CORRECT-->
 
-The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe Zowe API Mediation Layer. By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
+The implementation of the OpenTelemetry standard provides a vendor-neutral way to observe API Mediation Layer (API ML). By combining "mainframe-aware" resource attributes with real-time signals, you can monitor performance and pinpoint issue troubleshooting.
 
 The collection of API ML OpenTelemetry data could apply to the following use cases: 
 

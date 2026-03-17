@@ -5,14 +5,14 @@ Enable system observability of Zowe API Mediation Layer (API ML) through integra
 :::info Required role: System administrator
 :::
 
-By adopting the OpenTelemetry standard, API ML provides a vendor-neutral way to monitor performance and diagnose issues. System administrators can export this data to industry-standard analysis tool, commonly referred to as an OpenTelemetry (OTel) Collector, to gain insights into resource utilization and latency within the mainframe environment.
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration utilizes the OpenTelemetry Protocol (OTLP), which standardizes how traces, metrics, and logs are encoded and transmitted. By leveraging OTLP, API ML ensures that telemetry data output is fully compatible with the broader observability ecosystem, regardless of the specific analysis tool used.
 
 :::caution Important
 API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
 :::
 
 :::note Notes:
-* Beginning with Zowe v 3.5.0 API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. 
+* Beginning with Zowe v 3.5.0, API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. 
 * API ML supports both z/OS and non-z/OS deployments. 
 :::
 
@@ -23,13 +23,13 @@ To activate observability, you must define the identity of the API ML instance a
 Set the name (`service.name`) and the environment (`service.namespace`) to ensure data is correctly grouped and isolated in your dashboards.
 
 2. **Configure the zowe.yaml.**  
-Enable the telemetry stream and defining your OTLP collector URL.
+Enable the telemetry stream and defining your OpenTelemetry Protocol (OTLP) collector URL.
 
 For detailed instructions of how to configure these settings, see [Configuring API ML Observability](configuring-apiml-observability.md).
 
 ## Automated Resource Attribution
 
-To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This allow users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without manual tagging.
+To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This metadate enrichment allows users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without tagging manually.
 
 ### Automated Environment Discovery
 By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. Manual configuration of the deployment environment is only necessary if:

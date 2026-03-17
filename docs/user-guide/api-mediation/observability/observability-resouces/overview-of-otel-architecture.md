@@ -6,12 +6,12 @@ API ML observability is built upon **Resources** (the 'who' and 'where'), which 
 
 A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every [signal](#telemetry-signals-and-observability) (metric/trace/log) produced carries a set of attributes that identify a specific instance.
 
-OpenTelemetry resource attributes for the Zowe API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends.
+OpenTelemetry resource attributes for API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends.
 
 ### Resource Attribute Categories
 
 * **Service Attributes**  
-Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific LPAR or site.
+Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific Logical Partition (LPAR) or site.
 
 * **Deployment Attributes:**  
 Describe the lifecycle stage of the service, and filter telemetry data by environment, such as distinguishing production issues from test environment noise.
@@ -23,7 +23,7 @@ Provide critical mainframe context by identifying the specific physical and logi
 
 ## Telemetry Signals and Observability
 
-The API ML produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, each of which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
+API ML produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs, each of which are described in more detail in this section. By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
 
 Signals can be any of the following signal types:
 

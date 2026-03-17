@@ -64,7 +64,7 @@ components:
     telemetry:
       enabled: true
       exporter:
-        endpoint: "http://otel-collector.your.domain:4317"
+        endpoint: "https://otel-collector.your.domain:4317"
       service:
         name: "<your-service-name>"           # example: "zowe-apiml"
         namespace: "<your-environment-name>"  # example: "production" or "test"
