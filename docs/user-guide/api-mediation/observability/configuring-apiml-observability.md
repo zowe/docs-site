@@ -34,7 +34,7 @@ In complex mainframe environments, you may have multiple API ML installations ac
 :::info **The Hierarchy of Identification**
 
 OpenTelemetry uses a three-tier approach to define service identity:
- 
+
 * **service.name** (The Service)  
 Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
 
@@ -79,7 +79,6 @@ components:
 
 API ML observability is enabled.
 
-
 ### 3. Verify your configuration
 
 To verify your configuration, you can check local logs by adding the Debug Exporter to your collector's pipeline. With the Debug exporter you can print telemetry directly to the console. This method is the fastest way to see the raw output from API ML. For details about the Debug Exporter, see [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/) in the OpenTelemetry documentation.
@@ -91,5 +90,3 @@ To verify that telemetry is flowing, configure an exporter in your OTLP-collecto
 
 * **Review Sample Output.**  
   To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
-
-
