@@ -1,92 +1,141 @@
 # Configuring API ML Observability
 
-To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **[telemetry signals](overview-of-apiml-observability-and-otel-architecture.md#telemetry-signals-and-observability)** and enrich them with **[resource attributes](overview-of-apiml-observability-and-otel-architecture.md#resource-attributes)**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
+Enable system observability of Zowe API Mediation Layer (API ML) through integration with [OpenTelemetry (OTel)](https://opentelemetry.io/). This integration enables API ML to produce observability data that describes runtime behavior, request processing, and service interactions.
 
 :::info Required role: System administrator
 :::
 
-For details about OTel Observability architecture and API ML Observability use cases, see [Overview of API ML Observability and OTel Architecture](overview-of-apiml-observability-and-otel-architecture.md).
+By adopting the OpenTelemetry standard, API ML provides a vendor-neutral framework to monitor performance and diagnose issues. System administrators can export telemetry data to an industry-standard OpenTelemetry (OTel) Collector to gain insights into resource utilization and latency within the mainframe environment. This integration utilizes the OpenTelemetry Protocol (OTLP), which standardizes how traces, metrics, and logs are encoded and transmitted. By leveraging OTLP, API ML ensures that telemetry data output is fully compatible with the broader observability ecosystem, regardless of the specific analysis tool used.
 
-## Prerequisites
-
-* Administrative access to your `zowe.yaml` configuration file.
-* Access to an OTLP-collector to visualize the observability data. Common examples of OTLP-collectors include
-[Prometheus](https://prometheus.io/), [Grafana](https://grafana.io/), or [Jaeger](https://www.jaegertracing.io/).
-
-Follow these steps to configure your observability metadata before activating the telemetry stream for API Mediation Layer.
-
-## Procedure to Configure Base API ML Observability
-
-Perform the following steps to configure base API ML observability:
-
-[1. Define service identity](#1-define-service-identity)  
-[2. Configure zowe.yaml](#2-configure-zoweyaml)  
-[3. Verify your configuration](#3-verify-your-configuration) 
-
-### 1. Define service identity
-
-Establish the logical identity of your API ML instance. This step ensures that your monitoring tool can group high-availability instances together while still allowing you to pinpoint specific address spaces.
-
-Services are identified via the `service.name`, `service.namespace`, and `service.instance.id` properties. Together, these attributes create a unique identity for API ML instances across your enterprise. Note that `service.instance.id` is automatically generated via `hostname:serviceId:port` and is not customizable.
-
-In complex mainframe environments, you may have multiple API ML installations across different Sysplexes or data centers. To monitor these effectively, you must balance Logical Grouping (viewing all API ML traffic as one functional unit) with Instance Differentiation (identifying exactly which specific Address Space is experiencing an issue).
-
-:::info **The Hierarchy of Identification**
-
-OpenTelemetry uses a three-tier approach to define service identity:
-
-* **service.name** (The Service)  
-Identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function (e.g., zowe-apiml). Expected to be globally unique if `namespace` is not defined.
-
-* **service.namespace** (The Environment/Site)  
-Groups services into logical sets. Use this property value to distinguish between different installations, such as sysplex-a vs. sysplex-b, or north-datacenter vs. south-datacenter. `service.name` is expected to be unique within the same `namespace`.
-
-* **service.instance.id** (The Unique Instance)  
-Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`.
+:::caution Important
+API ML system observability is available exclusively for the API ML single-service deployment. The Observability feature is not supported in the legacy microservice-based architecture of API ML.
 :::
 
-i. **Assign a common service name.**  
-    Set the `service.name` to a shared value across all instances belonging to the same logical application (For example, `zowe-apiml`). This attribute identifies the logical name of the service. This property value should be identical for all instances across your entire organization that perform the same function. The service name value is expected to be globally unique if `namespace` is not defined.
-
-ii. **Define the service namespace.**  
-Use `service.namespace` to group instances by logical boundaries, such as a specific data center, sysplex, or business unit. `service.name` is expected to be unique within the same `namespace`.
-
-iii. **Confirm attribute requirements.**  
-Ensure these identifiers align with the grouping and filtering logic of your backend.
-
-### 2. Configure zowe.yaml
-
-Update your `zowe.yaml` configuration to enable the telemetry signal collection and direct these signals to your OpenTelemetry collector endpoint.
-
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      exporter:
-        endpoint: "https://otel-collector.your.domain:4317"
-      service:
-        name: "<your-service-name>"           # example: "zowe-apiml"
-        namespace: "<your-environment-name>"  # example: "production" or "test"
-```
-
-:::note **Notes:**
-
-* If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
-
-* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md). Note that using the values generated through the automization is the preferred method.  
+:::note Notes:
+* Beginning with Zowe v 3.5.0, API ML integrates OpenTelemetry following current OTel semantics and defaults from the OTel project, and select z/OS-specific features. 
+  
+* API ML supports both z/OS and non-z/OS deployments. 
 :::
 
-API ML observability is enabled.
+## Overview of OpenTelemetry Architecture
 
-### 3. Verify your configuration
+API ML observability is built upon **Resources** (the 'who' and 'where'), which define the identity and z/OS context of the system, and **Signals** (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources. 
+In the API ML context, resource attributes attributes are defined in three categories:
+* Service Attributes
+* Deployment Attributes 
+* z/OS Attributes
 
-To verify your configuration, you can check local logs by adding the Debug Exporter to your collector's pipeline. With the Debug exporter you can print telemetry directly to the console. This method is the fastest way to see the raw output from API ML. For details about the Debug Exporter, see [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/) in the OpenTelemetry documentation.
+ 
 
-## Next steps
+<details>
+<summary>Click here for details about Resouce Attributes in OpenTelemetry.</summary>
 
-* **Review your observability output.**  
-To verify that telemetry is flowing, configure an exporter in your OTLP-collector to send data to your chosen visualization tool (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
+## Resource Attributes
 
-* **Review Sample Output.**  
-  To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
+A **Resource** In OpenTelemetry represents the entity producing telemetry. For Zowe, this is the API ML single-service instance. Every _signal_ (metric/trace/log) produced carries a set of attributes that identify a specific instance.
+
+OpenTelemetry resource attributes for API ML are organized into three logical groups of attributes: Service, Deployment, and z/OS. This categorization follows the [OpenTelemetry Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/resource/) (standardized naming rules) to ensure that the telemetry produced by Zowe is consistent with industry standards and easily consumable by monitoring backends.
+
+### Resource Attribute Categories
+
+* **Service Attributes**  
+Define the logical identity of your application. The service.name allows you to group multiple instances into a single functional view. Additional attributes like `service.instance.id` or `service.namespace` distinguish between different installations or individual jobs, allowing you to monitor the entire ecosystem while pinpointing issues within a specific Logical Partition (LPAR) or site.
+
+* **Deployment Attributes:**  
+Describe the lifecycle stage of the service, and filter telemetry data by environment, such as distinguishing production issues from test environment noise.
+
+* **z/OS Attributes**  
+Provide critical mainframe context by identifying the specific physical and logical environment (LPAR, Sysplex, and OS version) where the process is running.
+
+  For details about specific z/OS Attributes, see [Index of OpenTelemetry z/OS Attributes](index-of-otel-zos-attributes.md).
+
+</details>
+
+The API ML service itself produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs.
+
+<details>
+<summary>Click here for futher details about API ML signals used in OpenTelemetry.</summary>
+
+## Telemetry Signals and Observability
+
+By default, the OpenTelemetry integration captures performance, health, and interaction signals, which are enriched with the resource attributes configured in your zowe.yaml to provide environmental context. You can also specify where data is exported. Observability is achieved through the combination of telemetry signals, which quantify the real-time state and activity of the system, and resource attributes, which provide the structural labels necessary to organize and interpret those signals.
+
+Signals can be any of the following signal types:
+
+* [Metrics](https://opentelemetry.io/docs/concepts/signals/metrics/) (performance tracking)
+* [Traces](https://opentelemetry.io/docs/concepts/signals/traces/) (request journeys)
+* [Logs](https://opentelemetry.io/docs/concepts/signals/logs/) (event records).
+
+Each of these signal types represents a specific category of observation from a system. Every signal is automatically enriched based on resource attributes, which act as a common identity across all telemetry streams. This enrichment process categorizes data into Service (logical identity), Deployment (environment tier), and z/OS (system and hardware context) metadata. By mapping these consistent attributes to every metric, trace, and log, the system creates a unified data model where a performance spike in a metric can be directly linked to a specific error in a log or a delay in a trace. This structured categorization allows administrators to filter, group, and correlate data across the entire Sysplex using standard observability tools, transforming raw telemetry into a detailed map of system health.
+
+While these signals are enriched with mainframe-aware context when running on z/OS, API ML can also have full observability when deployed on other platforms such as Linux or within containerized environments. In these non-z/OS scenarios, the discovery engine automatically applies standard OpenTelemetry semantic conventions, capturing metadata like host names, operating system types, and process identifiers. This flexibility ensures that regardless of the underlying infrastructure, the telemetry signals remain consistent and actionable across your monitoring stack.
+
+:::info How to understand Signals vs Resources
+
+To better understand the relationship between signals and resources, it is useful to consider the analogy of a postal package and the label on the package:
+
+* The **Signal** is the contents of the package. It contains the actual "goods" — the specific data about an event, such as a log message, a trace of a request, or a performance metric.
+* The **Resource Attributes** are the shipping label fixed to the outside of the package. The label does not change the contents, but tells you exactly where the package originated (e.g., the specific LPAR, Sysplex, or Service Name).
+
+Taken together, the Signal provides the evidence of what happened (the "what"), while the Resource Attributes provide the context of where it happened (the "where"). Without the label, the data is just a pile of anonymous packages; with the label, you can immediately sort and filter your data to isolate issues in specific parts of your infrastructure.
+:::
+
+</details>
+
+## Overview of Manual Core Configuration 
+
+To activate observability, you must:
+
+1. Define the identity of the API ML instance by setting the name (`service.name`) and the environment (`service.namespace`).
+2. Enable the telemetry stream and define your OpenTelemetry Protocol (OTLP) collector URL in the zowe.yaml.
+
+For detailed instructions of how to configure these settings, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
+
+## Automated Resource Attribution
+
+To simplify the configuration process, API ML is designed to automatically detect the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. This metadate enrichment allows users to filter, group, and visualize data by Sysplex, LPAR, or specific environment without tagging manually.
+
+### Automated Environment Discovery
+
+By default, API ML automatically discovers your environment name using the `&ENVIRON.` z/OS system symbol. Manual configuration of the deployment environment is only necessary if:
+
+* You are deploying in a non-z/OS environment (such as Kubernetes).
+* The `&ENVIRON.` system symbol is missing from your system configuration.
+* You want to use a custom label to isolate development data from production dashboards (e.g., using `SANDBOX` instead of the system default).
+
+For details about how to override the deployment environment variable, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
+
+### z/OS Contextual Metadata
+
+API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex, and LPAR. The following system symbols are used to automatically assign values to the corresponding OpenTelemetry resource attributes:
+
+| z/OS system symbol | Component z/OS attribute |
+| :--- | :--- |
+| `&SMFID.` | `zos.smf.id` |
+| `&SYSPLEX.` | `zos.sysplex.name` |
+| `&SYSNAME.` | `mainframe.lpar.name` |
+
+This contextual automation ensures that telemetry data remains traceable to the LPAR where the service is running.
+
+For details about how to override the values of these z/OS attributes, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
+
+## Architecture Components of API ML Observability
+
+The observability stack for API ML consists of three primary layers:
+
+* **The Provider (API ML)**  
+Captures internal events and exports them using the OTLP protocol. Details about the provider are found in the Zowe Docs documentation.
+* **The Collector**  
+A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Colector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
+* **The Backend (Visualization)**  
+Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about the Backend visualization is found in the specific product documentation.
+
+## Next Step
+
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
+
+## Additional Resources
+
+* For details about API ML Telemetry signals, see [Understanding API ML Telemetry Signals](./using-observability/understanding-apiml-telemetry-signals.md).
+* For details about OpenTelemetry architecture, see [Overview of OpenTelemetry Architecture](./using-observability/overview-of-otel-architecture.md).
+* For details about how API ML OpenTelemetry data could apply to a range of use cases, see [API ML Observability Use Cases](./using-observability/apiml-observability-use-cases.md).
