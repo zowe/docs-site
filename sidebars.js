@@ -534,6 +534,13 @@ module.exports = {
               items: [
               ],
             },
+                        {
+              type: "category",
+              label: "Using your OpenTelemetry metrics",
+              link: { type: "doc", id: "user-guide/api-mediation/observability/using-your-otel-metrics" },
+              items: [
+              ],
+            },
             {
               type: "category",
               label: "Using API Catalog",
