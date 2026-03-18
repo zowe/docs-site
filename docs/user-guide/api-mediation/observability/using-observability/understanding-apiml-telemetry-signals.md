@@ -31,6 +31,6 @@ Logs are timestamped text records of discrete events. They provide the deep tech
 
 ## Next Steps
 
-* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Configuring API ML Observability](../configuring-apiml-observability.md).
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start configuration of API ML Observability](../quick-start-configuration-of-apiml-observability.md).
 
-* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Overview of API ML Observability](../overview-of-apiml-observability.md).
+* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Configuring API ML Observability](../configuring-apiml-observability.md).

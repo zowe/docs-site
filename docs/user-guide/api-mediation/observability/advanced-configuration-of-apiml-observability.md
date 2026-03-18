@@ -1,4 +1,4 @@
-# Advanced API ML Observability Configuration in zowe.yaml
+# Advanced configuration of API ML Observability 
 
 Review the complete configuration structure for OpenTelemetry (OTel) integration within the Zowe API Mediation Layer (API ML). Use this advanced configuration to manually define or override system-discovered attributes to align with specific organizational reporting requirements.
 
@@ -6,7 +6,7 @@ Review the complete configuration structure for OpenTelemetry (OTel) integration
 :::
 
 :::note
-For a simplified setup that relies on automatic system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
+For a simplified setup that relies on automatic system discovery, see [Quick-start configuration of API ML Observability](quick-start-configuration-of-apiml-observability.md).
 :::
 
 <!--
@@ -75,7 +75,7 @@ The following resource attributes describe the host environment. While API ML at
 :::caution
 API ML is designed to automatically detect your environment name, and the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. We recommend that you **_do not_** manually configure these environment attributes unless your company policies require customization.
 
-For details about how resource attributes are automatically detected, see [Automated Resource Attribution](overview-of-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
+For details about how resource attributes are automatically detected, see [Automated Resource Attribution](configuring-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
 :::
 
 * **deployment.environment.name**  
