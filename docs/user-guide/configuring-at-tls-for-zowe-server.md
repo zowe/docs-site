@@ -391,8 +391,8 @@ TTLSRule                            ZoweCachingServiceClientRule
   Priority                          110
 }
 
-# ZAAS Can connect to Gateway, in these scenarios it requires X.509 authentication
-TTLSRule                            ZoweGwZaasClientRule
+# ZAAS can connect to Gateway, in these scenarios it requires X.509 authentication
+TTLSRule                            ZoweZaasGwClientRule
 { 
   LocalAddr                         All
   LocalPortRange                    1024-65535
@@ -540,18 +540,18 @@ Example:
 
 ```bash
 
-TTLSRule                            ApimlClientRule
+TTLSRule                            DCClientRule
 { 
-  LocalAddr                         ALL
-  RemoteAddr                        ALL
+  LocalAddr                         All
+  RemoteAddr                        All
   LocalPortRange                    1024-65535
   RemotePortRange                   7554 # Gateway port
   Jobname                           # Jobname under which the onboarded service is running
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   Priority                          150
-  TTLSEnvironmentActionRef          ApimlClientEnvironmentAction # No X.509 authentication
-  TTLSConnectionActionRef           ApimlClientConnectionAction # No X.509 authentication
+  TTLSEnvironmentActionRef          DCNoX509ClientEnvAction # No X.509 authentication
+  TTLSConnectionActionRef           DCNoX509ClientConnAction # No X.509 authentication
 }
 
 ```
@@ -765,8 +765,8 @@ TTLSRule                            ZoweCachingServiceClientRule
   Priority                          110
 }
 
-# ZAAS Can connect to Gateway, in these scenarios it requires X.509 authentication
-TTLSRule                            ZoweGwZaasClientRule
+# ZAAS can connect to Gateway, in these scenarios it requires X.509 authentication
+TTLSRule                            ZoweZaasGwClientRule
 { 
   LocalAddr                         All
   LocalPortRange                    1024-65535
@@ -811,7 +811,9 @@ TTLSRule                            ZoweTrustClientRule
 }
 
 # Connections from Zowe components to App Server and ZSS
-TTLSRule ZoweClientRule1
+# TODO: Note that this rule has as default Priority = 1, therefore ZoweTrustClientRule will be the one really matching connections to App server and ZSS
+# TODO Therefore if we verify that x509 is needed, we should set some priority higher than 50
+TTLSRule ZoweClientRule1 
 {
   LocalAddr All
   LocalPortRange 1024-65535
@@ -853,6 +855,7 @@ TTLSRule ApimlZosmfClientRule
 }
 
 # Example outbound rule from API Gateway to app server and zss.
+# TODO: This rule is a duplicate of ZoweClientRule1. If we verify that no X509 cert is needed, than communication is already covered by ZoweTrustClientRule which has a higher priority and takes precedence, therefore it can be removed.
 TTLSRule ApimlZLUXClientRule
 {
   LocalAddr All
@@ -871,16 +874,46 @@ TTLSRule ApimlZLUXClientRule
 ########################################################
 
 # Example southbound service inbound rule
-TTLSRule ApimlDCServerRule
+TTLSRule DCServerRule
 {
   LocalAddr All
   RemoteAddr All
-  LocalPortRange 8080-8090 # Example service ports
-  Jobname ZWE1DC* # Jobname prefix (optional)
+  LocalPortRange 40030 # Example service port
+  Jobname ZWE1DC* # Jobname under which the onboarded service is running (optional)
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
-  TTLSConnectionActionRef ZoweDCServerConnectionAction
+  TTLSEnvironmentActionRef DCServerEnvironmentAction
+  TTLSConnectionActionRef DCServerConnectionAction
+}
+
+# Onboarding southbound service to Zowe Discovery Service 
+TTLSRule                            DCDiscoveryClientRule
+{ 
+  LocalAddr                         All 
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7553 # Discovery Service Port
+  Jobname                           ZWE1DC* # Jobname under which the onboarded service is running
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          DCX509ClientEnvAction
+  TTLSConnectionActionRef           DCX509ClientConnAction
+  Priority                          150
+}
+
+# Southbound service communicating with Gateway 
+TTLSRule                            DCGatewayClientRule
+{ 
+  LocalAddr                         All 
+  LocalPortRange                    1024-65535
+  RemoteAddr                        All
+  RemotePortRange                   7554 # Gateway Port
+  Jobname                           ZWE1DC* # Jobname under which the onboarded service is running
+  Direction                         Outbound
+  TTLSGroupActionRef                ClientGroupAction
+  TTLSEnvironmentActionRef          DCNoX509ClientEnvAction
+  TTLSConnectionActionRef           DCNoX509ClientConnAction
+  Priority                          150
 }
 
 # Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
@@ -891,7 +924,7 @@ TTLSRule ApimlServiceClientRule
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 40030 # Service ports
+  RemotePortRange 40030 # Service port
   Jobname ZWE1A*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -899,28 +932,101 @@ TTLSRule ApimlServiceClientRule
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-# Environment action for sample southbound service
-TTLSEnvironmentAction ZoweDCServerEnvironmentAction
+# Keyring of DC service with trusted CA certificates and personal certificate with its private key
+TTLSKeyringParms DCKeyring
+{
+  Keyring DCKeyring
+}
+
+# Keyring of DC service without a default personal certificate and its private key; contains only trusted CA certificates
+TTLSKeyringParms DCNoX509Keyring
+{
+  Keyring DCAttlsKeyring
+}
+
+# Server Environment action for sample southbound service
+TTLSEnvironmentAction DCServerEnvironmentAction
 {
   HandshakeRole Server
   EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
-  TTLSKeyringParmsRef ZoweKeyring
+  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+  TTLSKeyringParmsRef DCKeyring
 }
 
-# Server Connection Action for DC Service.
-TTLSConnectionAction ZoweDCServerConnectionAction
+# Server Connection action for sample southbound service
+TTLSConnectionAction DCServerConnectionAction
 {
   HandshakeRole Server 
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ZoweDCServerConnectionAdvParms
+  TTLSConnectionAdvancedParmsRef DCServerConnectionAdvParms
+}
+
+# Advanced TLS settings, choose TLS versions supported
+TTLSEnvironmentAdvancedParms DCEnvironmentAdvParms
+{
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
 }
 
 # Service advanced server connection action.
-TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
+# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLS connections
+TTLSConnectionAdvancedParms DCServerConnectionAdvParms
 {
   ApplicationControlled Off
-  ServerCertificateLabel apimlcert
+  ServerCertificateLabel servicecert
+  SecondaryMap Off
+}
+
+TTLSEnvironmentAction DCX509ClientEnvAction
+{ 
+  HandshakeRole Client
+  TTLSKeyringParmsRef DCKeyring # Keyring contains personal X.509 certificate and its private key
+  TTLSCipherParmsRef CipherParms
+  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+}
+
+TTLSEnvironmentAction DCNoX509ClientEnvAction
+{ 
+  HandshakeRole Client
+  TTLSKeyringParmsRef DCNoX509Keyring # Keyring does not contain personal X.509 certificate and its private key
+  TTLSCipherParmsRef CipherParms
+  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+}
+
+TTLSConnectionAction DCX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef DCX509ClientConnAdvParms
+}
+
+TTLSConnectionAction DCNoX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef DCNoX509ClientConnAdvParms
+}
+
+# In case the connection needs/requires X.509 Client Certificate authentication, this is where the label is set for outbound rules
+TTLSConnectionAdvancedParms DCX509ClientConnAdvParms
+{ 
+  ApplicationControlled Off
+  CertificateLabel servicecert 
+  SecondaryMap Off
+}
+
+# ConnectionAdvanced parameters for connections not requiring X.509 Client Certificate authentication
+# Note: If the set Keyring has a default certificate this will not prevent sending it
+TTLSConnectionAdvancedParms DCNoX509ClientConnAdvParms
+{ 
+  # No CertificateLabel; Keyring contains no X.509 Client Certificate
+  ApplicationControlled Off
   SecondaryMap Off
 }
 
