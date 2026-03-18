@@ -92,9 +92,7 @@ The name of the Logical Partition (LPAR).
 
 ## Validating the Configuration
 
-<!-- PABLO TO VALIDATE CONTENT -->
-
-After you apply the changes to zowe.yaml and restart the API ML, verify that the OpenTelemetry integration is active and communicating with your collector.
+After you apply the changes to zowe.yaml and restart the Zowe task, verify that the OpenTelemetry integration is active and communicating with your collector.
 
 1. **Check the API ML Startup Logs.**  
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
@@ -123,4 +121,3 @@ To verify that telemetry is flowing, configure an exporter in your OTLP-collecto
 
 * **Review Sample Output.**  
   To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
-
