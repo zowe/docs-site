@@ -20,6 +20,12 @@ Configuration Source: System discovery
 Name of the LPAR that hosts the z/OS system.
 Configuration Source: System discovery
 
+:::note
+The attributes `zos.smf.id`, `zos.sysplex.name`, and `mainframe.lpar.name` are automatically assigned through system discovery. These values can be overridden manually if required. 
+* For details about automated system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
+* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](advanced-configuration-of-apiml-observability.md#resource-attributes-manual-overrides) in the article _Advanced Configuration of API ML Observability_.
+:::
+
 * **os.type**  
 The operating system type, set to `zos`.
 Configuration Source: Static

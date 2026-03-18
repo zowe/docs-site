@@ -63,7 +63,7 @@ components:
         endpoint: "https://otel-collector.your.domain:4317"
       service:
         name: "<your-service-name>"           # example: "zowe-apiml"
-        namespace: "<your-environment-name>"  # example: "production" or "test"
+        namespace: "<your-environment-name>"  
 ```
 
 :::note **Notes:**
@@ -77,7 +77,13 @@ API ML observability is enabled.
 
 ### 3. Verify your configuration
 
-To verify your configuration, you can check local logs by adding the Debug Exporter to your collector's pipeline. With the Debug exporter you can print telemetry directly to the console. This method is the fastest way to see the raw output from API ML. For details about the Debug Exporter, see [Troubleshooting](https://opentelemetry.io/docs/collector/troubleshooting/) in the OpenTelemetry documentation.
+To ensure your configuration is working as expected, perform the following checks:
+
+1. Monitor the OTel Collector.  
+   Access your OTLP-collector (such as Prometheus, Grafana, or Jaeger) to confirm that telemetry signals from the API ML components are being received, parsed, and visualized correctly.
+
+2. Review API ML Error Logs.  
+  If telemetry data does not appear in your collector, review the API ML service logs. These logs provide details regarding connectivity issues, incorrect endpoints, or authentication errors between Zowe and the OpenTelemetry backend.
 
 ## Next steps
 

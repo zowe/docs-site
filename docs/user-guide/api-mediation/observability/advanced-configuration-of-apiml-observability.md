@@ -14,35 +14,6 @@ PLEASE ADD SECTION ABOUT THE COLLECTOR CONNECTION ADVANCED CONFIGURATION
 
 -->
 
-## Full zowe.yaml configuration for API ML Observability
-
-The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
-
-Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, `<your-service-name>`) with your specific environment details.
-
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      exporter:
-        endpoint: "http://otel-collector.your.domain:4317"
-      service:
-        name: "zowe-apiml"
-        namespace: "production"
-      attributes:
-        deployment:
-          environment:
-            name: "<your-deployment-environment-name>"
-        zos:
-          sysplex:
-            name: "<your-sysplex-name>"
-          smf:
-            id: "<your-smf-id>"
-        mainframe:
-          lpar:
-            name: "<your-lpar-name>"
-```
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
@@ -89,6 +60,37 @@ The System Management Facilities identifier. This value is a one to four charact
 
 * **mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
+
+## Full zowe.yaml configuration for API ML Observability
+
+The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
+
+Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, `<your-service-name>`) with your specific environment details.
+
+```yaml
+components:
+  apiml:
+    telemetry:
+      enabled: true
+      exporter:
+        endpoint: "http://otel-collector.your.domain:4317"
+      service:
+        name: "zowe-apiml"
+        namespace: "production"
+      attributes:
+        deployment:
+          environment:
+            name: "<your-deployment-environment-name>" # example: "production" or "test"
+        zos:
+          sysplex:
+            name: "<your-sysplex-name>"
+          smf:
+            id: "<your-smf-id>"
+        mainframe:
+          lpar:
+            name: "<your-lpar-name>"
+```
+
 
 ## Validating the Configuration
 
