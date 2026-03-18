@@ -20,15 +20,13 @@ API ML system observability is available exclusively for the API ML single-servi
 ## Overview of OpenTelemetry Architecture
 
 API ML observability is built upon **Resources** (the 'who' and 'where'), which define the identity and z/OS context of the system, and **Signals** (the 'what' and 'how'), which represent the actual streams of metrics, traces, and logs produced by those resources. 
-In the API ML context, resource attributes attributes are defined in three categories:
+In the API ML context, resource attributes are defined in three categories:
 * Service Attributes
 * Deployment Attributes 
 * z/OS Attributes
-
  
-
 <details>
-<summary>Click here for details about Resouce Attributes in OpenTelemetry.</summary>
+<summary>Click here for details about <b>Resource Attributes</b> in OpenTelemetry.</summary>
 
 ## Resource Attributes
 
@@ -54,7 +52,7 @@ Provide critical mainframe context by identifying the specific physical and logi
 The API ML service itself produces a range of telemetry data referred to as _signals_. A signal, defined as a discrete stream of telemetry data, is represented by any one of three types: metrics, traces, and logs.
 
 <details>
-<summary>Click here for futher details about API ML signals used in OpenTelemetry.</summary>
+<summary>Click here for futher details about API ML <b>Signals</b> used in OpenTelemetry.</summary>
 
 ## Telemetry Signals and Observability
 
@@ -82,7 +80,7 @@ Taken together, the Signal provides the evidence of what happened (the "what"), 
 
 </details>
 
-## Architecture Components of API ML Observability
+### Architectural Components of API ML Observability
 
 The observability stack for API ML consists of three primary layers:
 
@@ -91,7 +89,7 @@ Captures internal events and exports them using the OTLP protocol. Details about
 * **The Collector**  
 A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Colector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
 * **The Backend (Visualization)**  
-Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about the Backend visualization is found in the specific product documentation.
+Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about backend visualization are found in the specific product documentation.
 
 ## Overview of Manual Core Configuration 
 
