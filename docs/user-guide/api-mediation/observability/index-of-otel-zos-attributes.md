@@ -42,25 +42,6 @@ Configuration Source: System discovery
 The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
 Configuration Source: System discovery
 
-## Overriding Discovered Attributes in zowe.yaml
-
-While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `attributes.zos` section of your zowe.yaml:
-
-**Example:**
-
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      attributes:
-        # Overriding discovered z/OS attributes
-        zos:
-          sysplex:
-            name: "<your-sysplex-name>"
-          smf:
-            id: "<your-smf-id>"
-        mainframe:
-          lpar:
-            name: "<your-lpar-name>"
-```
+:::note
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [advanced COnfiguration of API ML Observability](advanced-configuration-of-apiml-observability.md). 
+:::

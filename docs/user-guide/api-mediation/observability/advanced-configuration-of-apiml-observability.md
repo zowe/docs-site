@@ -116,10 +116,5 @@ Select a trace or metric and verify that the Resource Attributes (such as `zos.s
 4. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
-## Next steps
-
-* **Review your observability output.**  
-To verify that telemetry is flowing, configure an exporter in your OTLP-collector to send data to your chosen visualization tool (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
-
-* **Review Sample Output.**  
-  To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
+You can now review your OTLP-collector output.  
+To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).

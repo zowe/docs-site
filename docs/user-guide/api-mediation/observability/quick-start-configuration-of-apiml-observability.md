@@ -63,7 +63,7 @@ components:
         endpoint: "https://otel-collector.your.domain:4317"
       service:
         name: "<your-service-name>"           # example: "zowe-apiml"
-        namespace: "<your-environment-name>"  
+        namespace: "<your-service-namespace>" # example: "sysplex-a" 
 ```
 
 :::note **Notes:**
