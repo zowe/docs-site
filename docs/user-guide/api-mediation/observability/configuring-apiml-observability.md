@@ -82,6 +82,17 @@ Taken together, the Signal provides the evidence of what happened (the "what"), 
 
 </details>
 
+## Architecture Components of API ML Observability
+
+The observability stack for API ML consists of three primary layers:
+
+* **The Provider (API ML)**  
+Captures internal events and exports them using the OTLP protocol. Details about the provider are found in the Zowe Docs documentation.
+* **The Collector**  
+A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Colector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
+* **The Backend (Visualization)**  
+Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about the Backend visualization is found in the specific product documentation.
+
 ## Overview of Manual Core Configuration 
 
 To activate observability, you must:
@@ -118,17 +129,6 @@ API ML automatically queries z/OS control blocks to identify the SMF ID, Sysplex
 This contextual automation ensures that telemetry data remains traceable to the LPAR where the service is running.
 
 For details about how to override the values of these z/OS attributes, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md).
-
-## Architecture Components of API ML Observability
-
-The observability stack for API ML consists of three primary layers:
-
-* **The Provider (API ML)**  
-Captures internal events and exports them using the OTLP protocol. Details about the provider are found in the Zowe Docs documentation.
-* **The Collector**  
-A standalone service (OTel Collector) that receives, processes, and exports data. Details about the OTel Colector are found in the [OpenTelemetry documentation](https://opentelemetry.io/).
-* **The Backend (Visualization)**  
-Tools like Grafana, Jaeger, or Prometheus where the data is stored and visualized. Details about the Backend visualization is found in the specific product documentation.
 
 ## Next Step
 

@@ -1,6 +1,6 @@
 # Sample Output from API ML OpenTelemetry
 
-Once the configuration is active, API ML exports OTLP-compliant packets to your collector. The result is a context-aware telemetry stream where every signal (Metric, Trace, or Log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
+Once the configuration is active, API ML exports OTLP-compliant packets to your collector. The result is a context-aware telemetry stream where every signal (metric, trace, or log) is enriched with resource attributes. These attributes allow you to filter and group performance data by infrastructure, application identity, or specific process details.
 
 <!-- Note output data also contains attributes coming from the  Spring OpenTelemetry SDK, these are documented in the respective SDK documentation -->
 **Sample Output:**
@@ -140,7 +140,7 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
 }
 ```
 
-API ML exports OTLP-compliant telemetry signals where each payload is enriched with namespaced resource attributes. These attributes are transmitted as a flat-map structure, and adhere to OpenTelemetry Semantic Conventions—using dot-notation prefixes to establish logical hierarchies. THese hierarchies  facilitate analysis, filtering, and aggregation within an observability backend.
+API ML exports OTLP-compliant telemetry signals where each payload is enriched with namespaced resource attributes. These attributes are transmitted as a flat-map structure, and adhere to OpenTelemetry Semantic Conventions—using dot-notation prefixes to establish logical hierarchies. These hierarchies facilitate analysis, filtering, and aggregation within an observability backend.
 
 :::note
 For a full list of OTel z/OS attributes for z/OS integration, see the _OpenTelemetry Semanic Conventions_ for [z/OS software](https://opentelemetry.io/docs/specs/semconv/resource/zos/).

@@ -14,35 +14,6 @@ PLEASE ADD SECTION ABOUT THE COLLECTOR CONNECTION ADVANCED CONFIGURATION
 
 -->
 
-## Full zowe.yaml configuration for API ML Observability
-
-The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
-
-Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, `<your-service-name>`) with your specific environment details.
-
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      exporter:
-        endpoint: "http://otel-collector.your.domain:4317"
-      service:
-        name: "zowe-apiml"
-        namespace: "production"
-      attributes:
-        deployment:
-          environment:
-            name: "<your-deployment-environment-name>"
-        zos:
-          sysplex:
-            name: "<your-sysplex-name>"
-          smf:
-            id: "<your-smf-id>"
-        mainframe:
-          lpar:
-            name: "<your-lpar-name>"
-```
 
 Review the following attributes and their corresponding definitions in the full zowe.yaml configuration for API ML observability.
 
@@ -90,6 +61,37 @@ The System Management Facilities identifier. This value is a one to four charact
 * **mainframe.lpar.name**  
 The name of the Logical Partition (LPAR).
 
+## Full zowe.yaml configuration for API ML Observability
+
+The observability configuration is located under the `apiml` API Mediation Layer `components` section of the zowe.yaml.
+
+Use the following zowe.yaml configuration template for the full hierarchy of service identity and resource attribute overrides. Replace the placeholder values (for example, `<your-service-name>`) with your specific environment details.
+
+```yaml
+components:
+  apiml:
+    telemetry:
+      enabled: true
+      exporter:
+        endpoint: "http://otel-collector.your.domain:4317"
+      service:
+        name: "zowe-apiml"
+        namespace: "production"
+      attributes:
+        deployment:
+          environment:
+            name: "<your-deployment-environment-name>" # example: "production" or "test"
+        zos:
+          sysplex:
+            name: "<your-sysplex-name>"
+          smf:
+            id: "<your-smf-id>"
+        mainframe:
+          lpar:
+            name: "<your-lpar-name>"
+```
+
+
 ## Validating the Configuration
 
 After you apply the changes to zowe.yaml and restart the Zowe task, verify that the OpenTelemetry integration is active and communicating with your collector.
@@ -114,10 +116,5 @@ Select a trace or metric and verify that the Resource Attributes (such as `zos.s
 4. **Use the Collector's Logging (Optional).**  
 If data is not appearing in the backend, check the logs of your OpenTelemetry Collector. If the collector is configured with the logging or debug exporter, raw incoming export requests from the API ML's IP address are generated.
 
-## Next steps
-
-* **Review your observability output.**  
-To verify that telemetry is flowing, configure an exporter in your OTLP-collector to send data to your chosen visualization tool (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
-
-* **Review Sample Output.**  
-  To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
+You can now review your OTLP-collector output.  
+To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).

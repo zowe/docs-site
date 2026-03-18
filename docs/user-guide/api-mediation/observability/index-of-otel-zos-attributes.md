@@ -18,6 +18,12 @@ Configuration Source: System discovery
 Name of the LPAR that hosts the z/OS system.
 Configuration Source: System discovery
 
+:::note
+The attributes `zos.smf.id`, `zos.sysplex.name`, and `mainframe.lpar.name` are automatically assigned through system discovery. These values can be overridden manually if required. 
+* For details about automated system discovery, see [Configuring API ML Observability](configuring-apiml-observability.md).
+* For details about overriding these attributes, see [Resource Attributes (Manual Overrides)](advanced-configuration-of-apiml-observability.md#resource-attributes-manual-overrides) in the article _Advanced Configuration of API ML Observability_.
+:::
+
 * **os.type**  
 The operating system type, set to `zos`.
 Configuration Source: Static
@@ -34,25 +40,6 @@ Configuration Source: System discovery
 The Process Identifier. For details about this property, see [Process Attributes](https://opentelemetry.io/docs/specs/semconv/registry/attributes/process/) in the OpenTelemetry documentation.
 Configuration Source: System discovery
 
-## Overriding Discovered Attributes in zowe.yaml
-
-While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). This is performed in the `attributes.zos` section of your zowe.yaml:
-
-**Example:**
-
-```yaml
-components:
-  apiml:
-    telemetry:
-      enabled: true
-      attributes:
-        # Overriding discovered z/OS attributes
-        zos:
-          sysplex:
-            name: "<your-sysplex-name>"
-          smf:
-            id: "<your-smf-id>"
-        mainframe:
-          lpar:
-            name: "<your-lpar-name>"
-```
+:::note
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). 
+:::

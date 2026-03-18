@@ -23,6 +23,6 @@ Use the `zos.sysplex.name` and `zos.smf.id` attributes to aggregate and compare 
 
  ## Next Steps
 
-* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Configuring API ML Observability](../configuring-apiml-observability.md).
+* For a quick-start to configure API ML to collect observability data through OpenTelemetry, see [Quick-start Configuration of API ML Observability](../quick-start-configuration-of-apiml-observability.md).
 
-* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Overview of API ML Observability](../overview-of-apiml-observability.md).
+* For general information about configuration for  OpenTelemetry integration, automization of z/OS resource attribution, and architectural components for API ML observability, see [Configuring API ML Observability](../configuring-apiml-observability.md).
