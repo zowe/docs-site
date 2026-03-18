@@ -37,14 +37,14 @@ The logical name of the application. All instances of API ML in a high-availabil
 The assigned value used to distinguish a group of services, such as the LPAR, or owner team. `service.name` is expected to be unique within the same `namespace`. Configuration of this attribute is required.
 
 * **service.instance.id** (The Unique Instance)    
-Identifies a specific running process or Address Space. This attribute is automatically generated via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical Job Names, if customizing this attribute, ensure that you combine the Job Name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
+Identifies a specific running process or Address Space. This attribute is  generated automatically via `hostname:serviceId:port`. This value must be globally unique for every instance. As multiple z/OS systems can run identical job names, if customizing this attribute, ensure that you combine the job name with a unique identifier (such as the LPAR name or a UUID) to ensure the instance can be isolated during troubleshooting.
 
 ### Resource Attributes (Manual Overrides)
 
 The following resource attributes describe the host environment. While API ML attempts to discover these automatically from z/OS system symbols, these attributes can be manually defined as needed according to your company policies.  
 
 :::caution
-API ML is designed to automatically detect your environment name, and the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. We recommend that you **_do not_** manually configure these environment attributes unless your company policies require customization.
+API ML is designed to automatically detect your environment name, and the z/OS environment context. This automation ensures that every telemetry signal (metric, trace, or log) is enriched with mainframe-specific metadata. We recommend that you **_do not_** manually configure these environment attributes unless your company policies require this customization.
 
 For details about how resource attributes are automatically detected, see [Automated Resource Attribution](configuring-apiml-observability.md#automated-resource-attribution) in the _Overview of API ML Observability_.
 :::
