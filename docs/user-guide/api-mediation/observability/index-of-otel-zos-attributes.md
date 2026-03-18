@@ -1,7 +1,5 @@
 # Index of OpenTelemetry z/OS Attributes
 
-<!-- VALIDATE THIS CONTENT AFTER SUPPORT IS IMPLEMENTED. -->
-
 z/OS-specific resource attributes for API ML provide essential mainframe context to your telemetry data, allowing you to correlate metrics, traces, and logs with specific system identifiers such as SMF IDs, Sysplex names, and LPARs. By providing z/OS platform context, mainframe performance data can be integrated into distributed observability backends.
 
 ## z/OS Attribute Reference
