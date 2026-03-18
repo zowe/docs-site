@@ -43,5 +43,5 @@ The Process Identifier. For details about this property, see [Process Attributes
 Configuration Source: System discovery
 
 :::note
-While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [advanced COnfiguration of API ML Observability](advanced-configuration-of-apiml-observability.md). 
+While the discovery process handles most identifiers automatically, you have the option to provide a manual override (for example, in shared environments where you wish to report a custom logical LPAR name). For details about overriding discovered attributes, see [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). 
 :::
