@@ -344,8 +344,8 @@ module.exports = {
                   "label": "Configuring API ML Observability",
                   "link": { "type": "doc", "id": "user-guide/api-mediation/observability/configuring-apiml-observability" },
                   "items": [
-                    "user-guide/api-mediation/observability/quick-start-configuration-of-apiml-observability",
-                    "user-guide/api-mediation/observability/advanced-configuration-of-apiml-observability",
+                    "user-guide/api-mediation/observability/quick-start",
+                    "user-guide/api-mediation/observability/advanced",
                     "user-guide/api-mediation/observability/index-of-otel-zos-attributes",
                     "user-guide/api-mediation/observability/sample-output-from-apiml-otel",
                   ]
