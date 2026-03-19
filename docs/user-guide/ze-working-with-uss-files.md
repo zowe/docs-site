@@ -121,7 +121,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    - **Generate Directory Structure**: Creates sub-folders based on the USS path. Default: `false`
       
-      If unchecked, `/u/user/scripts/script.sh` downloads to `script.sh`
+      If unchecked, `/u/user/scripts/script.sh` downloads to `script.sh`.
       
       If checked, `/u/user/scripts/script.sh` downloads to `u/user/scripts/script.sh`
    
