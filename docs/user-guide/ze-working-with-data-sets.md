@@ -152,7 +152,7 @@
 
 3. Right-click on the desired sequential data set and select the **Download Data Set...** option.
 
-4. Follow the same steps as [downloading a member](#downloading-a-data-set-member) (steps 4-8 above) to configure download options and select a location.
+4. Follow Steps 4-8 in [downloading a member](#downloading-a-data-set-member) to configure download options and select a location.
 
    The sequential data set is downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the sequential data set.
 
