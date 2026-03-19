@@ -137,7 +137,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    The file is downloaded to the selected location with the specified options applied.
 
-8. On the download complete notification, click **Open File** to open the downloaded file in VS Code.
+8. To open the downloaded file in VS Code, click **Open File** on the download complete notification. 
 
 ## Downloading a USS directory to a local directory
 
