@@ -73,7 +73,7 @@ components:
     telemetry:
       enabled: true
       exporter:
-        endpoint: "http://otel-collector.your.domain:4317"
+        endpoint: "https://otel-collector.your.domain:4317"
       service:
         name: "zowe-apiml"
         namespace: "production"
@@ -90,7 +90,7 @@ components:
           lpar:
             name: "<your-lpar-name>"
 ```
-
+<!--TODO: Secure exporter endpoint requires configuration-->
 
 ## Validating the Configuration
 
@@ -100,7 +100,7 @@ After you apply the changes to zowe.yaml and restart the Zowe task, verify that 
 Review the job logs for the API ML service. Upon successful initialization with observability enabled, look for messages indicating the OpenTelemetry SDK has started.
 
     To confirm successful initialization, review the log entries which confirm that the OTLP exporter has initialized and is attempting to connect to the specified endpoint. If the endpoint is unreachable or the protocol is mismatched, the logs typically show Exporting failed or Connection refused messages from the OTel SDK.
-
+<!--TODO: Refine the above paragraph when logs are reviewed -->
 2. **Verify Signal Reception in your Observability Tool.**  
 The most definitive validation is to confirm that data is appearing in your chosen observability backend. Use either of the following options:
 

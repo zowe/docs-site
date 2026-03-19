@@ -65,7 +65,7 @@ components:
         name: "<your-service-name>"           # example: "zowe-apiml"
         namespace: "<your-service-namespace>" # example: "sysplex-a" 
 ```
-
+<!--TODO: Secure exporter endpoint requires configuration-->
 :::note **Notes:**
 
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
