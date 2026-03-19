@@ -177,7 +177,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **Group**: Filters by group owner or GID.
 
-      - **User**: Filter by user name or UID
+      - **User**: Filters by user name or UID.
 
       - **Modification Time**: Filters by modification time in days (for example, `+7` for files older than 7 days, `-1` for files modified within the last day, `30` for files modified exactly 30 days ago)
 
