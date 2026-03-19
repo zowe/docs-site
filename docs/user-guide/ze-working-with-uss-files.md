@@ -175,7 +175,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **Search All Filesystems**: Searches across all mounted filesystems instead of limiting to the current filesystem. Default: `false`
 
-      - **Group**: Filter by group owner or GID
+      - **Group**: Filters by group owner or GID.
 
       - **User**: Filter by user name or UID
 
