@@ -181,7 +181,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **Modification Time**: Filters by modification time in days (for example, `+7` for files older than 7 days, `-1` for files modified within the last day, `30` for files modified exactly 30 days ago)
 
-      - **Size**: Filter by file size (e.g., `+100M` for files larger than 100MB, `-500K` for files smaller than 500KB, `1G` for files exactly 1GB)
+      - **Size**: Filters by file size (for example, `+100M` for files larger than 100MB, `-500K` for files smaller than 500KB, `1G` for files exactly 1GB)
 
       - **Permissions**: Filter by permission octal mask (e.g., `755`, `-644`)
 
