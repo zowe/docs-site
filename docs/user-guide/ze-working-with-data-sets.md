@@ -110,7 +110,7 @@
 
    - **Generate Directory Structure**: Creates sub-folders based on the data set name. Default: `true`
       
-      If unchecked, `HLQ.DATASET.TEST(HELLO)` downloads to `HELLO.txt`
+      If unchecked, `HLQ.DATASET.TEST(HELLO)` downloads to `HELLO.txt`.
       
       If checked, `HLQ.DATASET.TEST(HELLO)` downloads to `HLQ/DATASET/TEST/HELLO.txt` 
    
