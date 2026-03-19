@@ -172,7 +172,7 @@
 
    All members of the partitioned data set are downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the data set containing all its members.
 
-5. On the download complete notification, click **Open Directory** to open the downloaded directory in the file explorer.
+5. To open the downloaded directory in the file explorer, click **Open Directory** on the download complete notification.
 
 ## Uploading a local file to a data set
 
