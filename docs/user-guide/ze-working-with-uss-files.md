@@ -123,7 +123,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
       
       If unchecked, `/u/user/scripts/script.sh` downloads to `script.sh`.
       
-      If checked, `/u/user/scripts/script.sh` downloads to `u/user/scripts/script.sh`
+      If checked, `/u/user/scripts/script.sh` downloads to `u/user/scripts/script.sh`.
    
    - **Choose Encoding**: Enables you to select a specific encoding for the download. Default: `false`
       
