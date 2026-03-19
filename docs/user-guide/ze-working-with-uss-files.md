@@ -191,7 +191,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       :::tip
 
-      To clear/unset a filter, click on an option and leave the input quick pick blank. 
+      To clear/unset a filter, click on an option and leave the input **Quick Pick** blank. 
 
       :::
    
