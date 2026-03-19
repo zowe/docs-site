@@ -209,7 +209,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    The directory and its contents are downloaded to the selected location with the specified options applied.
 
-9. On the download complete notification, click **Open Directory** to open the downloaded directory in the file explorer.
+9. To open the downloaded directory in the file explorer,  click **Open Directory** on the download complete notification.
 
 ## Uploading a local file to a USS directory
 
