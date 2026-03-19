@@ -185,7 +185,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **Permissions**: Filters by permission octal mask (for example, `755`, `-644`)
 
-      - **File Type**: Filter by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
+      - **File Type**: Filters by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
 
       - **Depth**: Depth of directories to download. (for example, a depth of `1` will only download the current directory)
 
