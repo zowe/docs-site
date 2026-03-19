@@ -156,7 +156,7 @@
 
    The sequential data set is downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the sequential data set.
 
-5. On the download complete notification, click **Open File** to open the downloaded file in VS Code.
+5. To open the downloaded file in VS Code, click **Open File** on the download complete notification.
 
 ### Downloading all members of a partitioned data set
 
