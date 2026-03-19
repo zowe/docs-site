@@ -183,7 +183,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **Size**: Filters by file size (for example, `+100M` for files larger than 100MB, `-500K` for files smaller than 500KB, `1G` for files exactly 1GB)
 
-      - **Permissions**: Filter by permission octal mask (e.g., `755`, `-644`)
+      - **Permissions**: Filters by permission octal mask (for example, `755`, `-644`)
 
       - **File Type**: Filter by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
 
