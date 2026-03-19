@@ -163,7 +163,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    - **Apply Filter Options**: Opens additional filtering options to control which files are downloaded.
 
-      In the subsequent **quick pick** menu, click on an option to change its value.
+      In the subsequent **Quick Pick** menu, click on an option to change its value.
 
       When desired filters are set, click **Ready to download**.
 
