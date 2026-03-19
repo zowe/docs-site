@@ -187,7 +187,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       - **File Type**: Filter by file type (`c`=character special file, `d`=directory, `f`=file, `l`=symlink, `p`=FIFO (named pipe), `s`=socket)
 
-      - **Depth**: Depth of directories to download. (e.g., a depth of `1` will only download the current directory)
+      - **Depth**: Depth of directories to download. (for example, a depth of `1` will only download the current directory)
 
       :::tip
 
