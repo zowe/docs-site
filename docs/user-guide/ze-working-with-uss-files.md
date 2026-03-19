@@ -167,7 +167,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
       When desired filters are set, click **Ready to download**.
 
-      If you change your mind about setting filters, press **Escape** to return to the previous menu, then uncheck **Apply Filter Options**.
+      To cancel setting filters, press **Esc** to return to the previous menu, then uncheck **Apply Filter Options**.
       
       Available filter options include:
    
