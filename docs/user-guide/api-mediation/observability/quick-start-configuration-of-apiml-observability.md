@@ -1,6 +1,6 @@
 # Quick-start configuration of API ML Observability
 
-To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **[telemetry signals](configuring-apiml-observability.md#telemetry-signals-and-observability)** and enrich them with **[resource attributes](configuring-apiml-observability.md#resource-attributes)**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
+To enable observability in the Zowe API Mediation Layer (API ML), you must configure the OpenTelemetry (OTel) SDK to capture **telemetry signals** and enrich them with **resource attributes**. This process ensures that your mainframe performance and health data are accurately identified and correlated within your observability backend.
 
 :::info Required role: System administrator
 :::
@@ -70,7 +70,7 @@ components:
 
 * If your collector is working and you have defined the service identity and correctly configured the zowe.yaml file, the integration is fully functional. API Mediation Layer automatically discovers the `service.instance.id` and existing z/OS system attributes defined in zowe.yaml. If you choose to manually override these automated values or define custom environment labels, you can perform the remaining optional steps in this procedure.
 
-* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced API ML Observability configuration in zowe.yaml](advanced-apiml-observability-config.md). Note that using the values generated through the automization is the preferred method.  
+* To customize automatically discovered attributes, see the full zowe.yaml configuration for API ML observability in the article [Advanced configuration of API ML Observability](advanced-configuration-of-apiml-observability.md). Note that using the values generated through the automization is the preferred method.  
 :::
 
 API ML observability is enabled.
