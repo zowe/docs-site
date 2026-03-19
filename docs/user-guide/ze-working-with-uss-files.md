@@ -155,7 +155,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
 
    - **Generate Directory Structure**: Creates sub-folders based on the USS path. Default: `false`
       
-      If unchecked, `/u/user/project/` downloads to `project/`
+      If unchecked, `/u/user/project/` downloads to `project/`.
       
       If checked, `/u/user/project/` downloads to `u/user/project/` with full directory structure
 
