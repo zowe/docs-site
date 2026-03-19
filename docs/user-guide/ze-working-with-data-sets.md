@@ -112,7 +112,7 @@
       
       If unchecked, `HLQ.DATASET.TEST(HELLO)` downloads to `HELLO.txt`.
       
-      If checked, `HLQ.DATASET.TEST(HELLO)` downloads to `HLQ/DATASET/TEST/HELLO.txt` 
+      If checked, `HLQ.DATASET.TEST(HELLO)` downloads to `HLQ/DATASET/TEST/HELLO.txt`.
    
    - **Use Uppercase Names**: Downloads files and directories using uppercase names. When disabled, names are converted to lowercase. Default: `true`
 
