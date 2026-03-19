@@ -157,7 +157,7 @@ To select one or more files or folders in the tree and drag them to a folder or 
       
       If unchecked, `/u/user/project/` downloads to `project/`.
       
-      If checked, `/u/user/project/` downloads to `u/user/project/` with full directory structure
+      If checked, `/u/user/project/` downloads to `u/user/project/` with full directory structure.
 
    - **Follow Symlinks**: Follow symbolic links to their targets instead of stopping at them. Default: `true`
 
