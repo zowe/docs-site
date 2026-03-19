@@ -140,7 +140,7 @@
 
    The member is downloaded to the selected location with the specified options applied.
 
-9. On the download complete notification, click **Open File** to open the downloaded file in VS Code.
+9. To open the downloaded file in VS Code, click **Open File** on the download complete notification.
 
 ### Downloading a sequential data set
 
