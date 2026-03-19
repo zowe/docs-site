@@ -168,7 +168,7 @@
 
 3. Right-click on the desired partitioned data set and select the **Download All Members...** option.
 
-4. Follow the same steps as [downloading a member](#downloading-a-data-set-member) (steps 4-8 above) to configure download options and select a location.
+4. Follow Steps 4-8 in [downloading a member](#downloading-a-data-set-member) to configure download options and select a location.
 
    All members of the partitioned data set are downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the data set containing all its members.
 
