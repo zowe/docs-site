@@ -26,8 +26,8 @@ Register the client certificate with the user IDs in your ESM.
 ### User prerequisites
 
 In order for a user to be valid for certificate authentication, ensure that the following prerequisites are met:
-
 * The user ID must have a password assigned. Note that while the user does not enter the password during certificate login, a valid password status is required by the ESM to map the identity and generate security tokens (like PassTickets).
+  
 * The user must have a valid OMVS segment defined to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
 
 ### Commands for API ML mapper and ZSS 
