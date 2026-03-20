@@ -117,8 +117,8 @@ To troubleshoot any issues with ZRS, try the following commands by searching for
 
 - **Zowe-SSH: Show Log**: Displays the Zowe SSH log file, providing operation insights and potential error messages for diagnosis.
 
-- **Zowe-SSH: Restart Zowe Server on Host ...**: Easily restart the ZRS server component running on your mainframe host. This can be helpful in resolving temporary connectivity or operational issues.
+- **Zowe-SSH: Restart Zowe Server on Host...**: Easily restart the ZRS server component running on your mainframe host. This can be helpful in resolving temporary connectivity or operational issues.
 
-- **Zowe-SSH: Uninstall Zowe Server from Host ...**: Removes the currently installed instance of the ZRS server from a selected host or profile. This can also be useful for changing the location of the server.
+- **Zowe-SSH: Uninstall Zowe Server from Host...**: Removes the currently installed instance of the ZRS server from a selected host or profile. This can also be useful for changing the location of the server.
 
 These troubleshooting commands are designed to provide users with tools to quickly diagnose and resolve common issues. If you encounter a problem while using ZRS, file an issue in the [Zowe Remote SSH GitHub repository](https://github.com/zowe/zowe-native-proto).

@@ -8,7 +8,7 @@ Zowe Remote SSH offers a compelling set of advantages for developers and system 
 
 - **Secure and standard communication**: Leveraging the robust and widely-adopted Secure Shell (SSH) protocol for data transmission ensures a secure channel for interacting with your mainframe systems. This commitment to industry-standard security practices provides peace of mind when accessing and managing critical mainframe data.
 
-- **Enhanced user experience within existing Zowe tools**: Both Zowe Explorer and the Zowe CLI plug-in **(should we mention this plug-in?)** leverage ZRS to provide an alternative communication pathway to mainframe resources with a direct SSH-based stack. By integrating with existing Zowe tools, ZRS provides flexibility for engaging with mainframe capabilities within your preferred workflow. ZRS also maintains a persistent connection with the server so that the user remains authenticated while working in Zowe Explorer.
+- **Enhanced user experience within existing Zowe tools**: Zowe Explorer leverages ZRS to provide an alternative communication pathway to mainframe resources with a direct SSH-based stack. By integrating with existing Zowe tools, ZRS provides flexibility for engaging with mainframe capabilities within your preferred workflow. ZRS also maintains a persistent connection with the server so that the user remains authenticated while working in Zowe Explorer.
 
 ## Status of Zowe Remote SSH functionality
 
