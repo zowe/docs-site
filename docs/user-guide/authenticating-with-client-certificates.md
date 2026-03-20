@@ -23,6 +23,15 @@ For details about how authentication by means of client certificates is performe
 
 Register the client certificate with the user IDs in your ESM.
 
+### User prerequisites
+
+In order for a user to be valid for certificate authentication, ensure that the following prerequisites are met:
+
+* Must have a valid password, which is required to map the user identity 
+* Must have OMVS segment defined
+
+### Commands for API ML mapper and ZSS 
+
 The following commands show options for both the internal API ML mapper and ZSS.
 
 :::note
