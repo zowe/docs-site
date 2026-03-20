@@ -84,6 +84,7 @@ To ensure your configuration is working as expected, perform the following check
 
 2. Review API ML Error Logs.  
   If telemetry data does not appear in your collector, review the API ML service logs. These logs provide details regarding connectivity issues, incorrect endpoints, or authentication errors between Zowe and the OpenTelemetry backend.
+<!--TODO: Refine the above paragraph when logs are reviewed. -->
 
 ## Next steps
 

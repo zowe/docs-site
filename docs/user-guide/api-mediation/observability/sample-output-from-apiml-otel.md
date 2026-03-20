@@ -20,13 +20,13 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "host.name",
                         "value": {
-                            "stringValue": "MVSDE66"
+                            "stringValue": "MVSLPR1"
                         }
                     },
                     {
                         "key": "mainframe.lpar.name",
                         "value": {
-                            "stringValue": "DE66"
+                            "stringValue": "LPR1"
                         }
                     },
                     {
@@ -124,7 +124,7 @@ Once the configuration is active, API ML exports OTLP-compliant packets to your 
                     {
                         "key": "zos.smf.id",
                         "value": {
-                            "stringValue": "DE66"
+                            "stringValue": "LPR1"
                         }
                     },
                     {
