@@ -32,8 +32,9 @@ Would you like to contribute a blog? Find details about how to contribute to the
 
 Expand your knowledge of Zowe by following our structured educational tracks. From foundational concepts to specialized roles, these paths help you to develop the skills to utilize Zowe within your organization.
 
-### Online Professional Curriculum 
-Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. For details about Zowe Interskill courses, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) (Interskill Learning).
+### Online Badges 
+ * [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) (Interskill Learning).
+ Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
 
 ### Zowe Formal Learning Paths 
 <!--We should expand the list of roles with links to the path per role.-->
@@ -49,15 +50,16 @@ Zowe is a community-led project that is driven by diverse perspectives and colla
 
 Quality is a collective effort; by reporting bugs or suggesting improvements to the documentation, you can help with ensuring Zowe remains a robust, enterprise-grade solution for a wide spectrum of business needs.
 <!--Let's add links to opening issues in other repos as well.-->
-To open a doc issue, see [Open a Doc Issue](https://github.com/zowe/docs-site/issues/new/choose)
 
-### Contribute
 
-The Zowe Conformance Program ensures that products and extensions built for the Zowe ecosystem provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
+| Open&nbsp;an&nbsp;Issue | Details |
+|----|---|
+| [Open&nbsp;a&nbsp;Doc&nbsp;Issue](https://github.com/zowe/docs-site/issues/new/choose) | This encompasses all necessary improvements to Zowe Docs, from minor corrections like typos and grammar to more significant updates concerning settings, instructions, and configurations. |
+| [Report&nbsp;Bugs](https://github.com/zowe/docs-site/issues/new/choose) | Download and try one of the latest Zowe builds. Report any bugs you find. |
+| [Request&nbsp;Enhancements](mailt:zowe-security@lists.openmainframeproject.org) | Got an idea for a feature? Or something you're already using could be improved?  |
+| [Report&nbsp;Security&nbsp;Issues](mailt:zowe-security@lists.openmainframeproject.org)| Please direct all security issues to zowe-security@lists.openmainframeproject.org. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
 
-For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance).
-
-### Chat with the Zowe community
+### Connect with the Zowe community
 
 Join the Zowe community on Slack to get real-time support, brainstorm with peers, and engage in current discussions across the Zowe ecosystem.
 
@@ -71,6 +73,12 @@ Join the Zowe community on Slack to get real-time support, brainstorm with peers
  You can join one of the Zowe meetings to get latest Zowe updates and get involved in different squads and initiatives.
 
  [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
+
+ ### Contribute
+
+The Zowe Conformance Program ensures that products and extensions built for the Zowe ecosystem provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
+
+For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance).
 
 **Attend squad calls of specific Zowe squads:**
 <!--Let's add short descriptions of what each squad does.-->
@@ -89,7 +97,7 @@ Join the Zowe community on Slack to get real-time support, brainstorm with peers
 
 For a deep dive into how we organize, govern, and collaborate, explore the Zowe community repository. This is the best place to understand the 'who, what, and why' behind the Zowe Open Mainframe Project.
 
-For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md)
+For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
 
 
  
