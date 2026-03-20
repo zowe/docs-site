@@ -46,8 +46,10 @@ This legacy method uses Z Secure Services (ZSS) to perform mapping. You also hav
   * This method requires the certificate to be added to the user in z/OS.
   * ZSS mapping does not support `IDMAP`.   
 
-:::note
-For information about the usage of the client certificate when this feature is enabled, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
+:::note Notes
+* For information about the usage of the client certificate when this feature is enabled, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
+
+* For specific information about client certificate authentication for specific users, see the section [Configure your z/OS system to support client certificate authentication for specific users](../authenticating-with-client-certificates.md#configure-your-zos-system-to-support-client-certificate-authentication-for-specific-users) in _Authenticating with client certificates_.
 :::
 
 <details>
