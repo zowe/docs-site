@@ -26,7 +26,7 @@ The Infinispan storage method is recommended for production usage.
          port: 7555
            storage:
              evictionStrategy: reject
-             mode: imMemory
+              mode: inMemory
              size: 10000
    ```
 
