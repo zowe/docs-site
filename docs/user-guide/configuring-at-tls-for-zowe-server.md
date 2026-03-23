@@ -949,7 +949,7 @@ TTLSEnvironmentAction DCServerEnvironmentAction
 {
   HandshakeRole Server
   EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+  TTLSEnvironmentAdvancedParmsRef DCServerEnvironmentAdvParms
   TTLSKeyringParmsRef DCKeyring
 }
 
@@ -961,8 +961,8 @@ TTLSConnectionAction DCServerConnectionAction
   TTLSConnectionAdvancedParmsRef DCServerConnectionAdvParms
 }
 
-# Advanced TLS settings, choose TLS versions supported
-TTLSEnvironmentAdvancedParms DCEnvironmentAdvParms
+# Advanced TLS server settings, choose TLS versions supported
+TTLSEnvironmentAdvancedParms DCServerEnvironmentAdvParms
 {
   ApplicationControlled Off
   Renegotiation Disabled
@@ -988,7 +988,7 @@ TTLSEnvironmentAction DCX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef DCKeyring # Keyring contains personal X.509 certificate and its private key
   TTLSCipherParmsRef CipherParms
-  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+  TTLSEnvironmentAdvancedParmsRef DCClientEnvironmentAdvParms
 }
 
 TTLSEnvironmentAction DCNoX509ClientEnvAction
@@ -996,7 +996,7 @@ TTLSEnvironmentAction DCNoX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef DCNoX509Keyring # Keyring does not contain personal X.509 certificate and its private key
   TTLSCipherParmsRef CipherParms
-  TTLSEnvironmentAdvancedParmsRef DCEnvironmentAdvParms
+  TTLSEnvironmentAdvancedParmsRef DCClientEnvironmentAdvParms
 }
 
 TTLSConnectionAction DCX509ClientConnAction
@@ -1013,12 +1013,24 @@ TTLSConnectionAction DCNoX509ClientConnAction
   TTLSConnectionAdvancedParmsRef DCNoX509ClientConnAdvParms
 }
 
+# Advanced client environment settings
+TTLSEnvironmentAdvancedParms DCClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+}
+
 # In case the connection needs/requires X.509 Client Certificate authentication, this is where the label is set for outbound rules
 TTLSConnectionAdvancedParms DCX509ClientConnAdvParms
 { 
   ApplicationControlled Off
   CertificateLabel servicecert 
   SecondaryMap Off
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
 }
 
 # ConnectionAdvanced parameters for connections not requiring X.509 Client Certificate authentication
@@ -1028,6 +1040,12 @@ TTLSConnectionAdvancedParms DCNoX509ClientConnAdvParms
   # No CertificateLabel; Keyring contains no X.509 Client Certificate
   ApplicationControlled Off
   SecondaryMap Off
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
 }
 
 ########################################################
