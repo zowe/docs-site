@@ -6,7 +6,7 @@ Review the hierarchical structure and attribute sequence of the OpenTelemetry (O
 The export follows a three-layer nesting strategy:
 
 * **Resource Logs**  
-Metadata about the entity producing the logs (e.g., the service, host, and OS).
+Metadata about the entity producing the logs (for example, the service, host, and OS).
 
 * **Scope Logs**  
 Information about the specific library or "instrumentation scope" that collected the log.
@@ -35,7 +35,7 @@ Attributes found under `resourceLogs` -> `resource` -> `attributes` represent th
   Full text description of the Operating System. Type: String.
 
 * **os.type**
-  The operating system family (for example, darwin, linux). Type: String.
+  The operating system family (for example, `darwin`, `linux`). Type: String.
 
 * **os.version**
   The specific version of the host OS. Type: String.
@@ -53,7 +53,7 @@ Attributes found under `resourceLogs` -> `resource` -> `attributes` represent th
   Detailed string describing the JVM and build version. Type: String.
 
 * **process.runtime.name**
-  The commercial name of the runtime (for example, IBM Semeru). Type: String.
+  The commercial name of the runtime (for example, `IBM Semeru`). Type: String.
 
 * **process.runtime.version**
   The technical version of the Java runtime. Type: String.
@@ -62,19 +62,19 @@ Attributes found under `resourceLogs` -> `resource` -> `attributes` represent th
   A unique identifier for the specific running service instance. Type: String.
 
 * **service.name**
-  The logical name of the service (for example, apiml). Type: String.
+  The logical name of the service (for example, `apiml`). Type: String.
 
 * **service.version**
   The build version of the API ML component. Type: String.
 
 * **telemetry.distro.name**
-  The name of the OTel distribution (for example, opentelemetry-spring-boot-starter). Type: String.
+  The name of the OTel distribution (for example, `opentelemetry-spring-boot-starter`). Type: String.
 
 * **telemetry.distro.version**
   The version of the distribution wrapper. Type: String.
 
 * **telemetry.sdk.language**
-  The SDK language (always java). Type: String.
+  The SDK language (always `java`). Type: String.
 
 * **telemetry.sdk.name**
   The official name of the OTel SDK. Type: String.
@@ -129,13 +129,13 @@ The following attributes are found within the stringified JSON of the `body` fie
   The absolute path of the request processed by the API ML Gateway. Type: String.
 
 * **url.scheme**
-  The protocol used for the request (e.g., https). Type: String.
+  The protocol used for the request (for example, `https`). Type: String.
 
 * **http.request.method**
-  The HTTP verb used for the request (e.g., GET, POST, PUT). Type: String.
+  The HTTP verb used for the request (for example, `GET`, `POST`, `PUT`). Type: String.
 
 * **error.type**
-  High-level classification of a failure (e.g., Timeout, AuthError), populated on non-success results. Type: String.
+  High-level classification of a failure (for example, `Timeout`, `AuthError`), populated on non-success results. Type: String.
 
 * **error.message**
   Detailed description providing context for the encountered failure. Type: String.
@@ -144,10 +144,10 @@ The following attributes are found within the stringified JSON of the `body` fie
   The identifier of the authenticated principal or user. Type: String.
 
 * **auth.method**
-  The authentication mechanism utilized by the client (e.g., JWT, x509, zoweJwt). Type: String.
+  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`). Type: String.
 
 * **auth.status**
-  The result of the credential validation process (e.g., OK, DENIED). Type: String.
+  The result of the credential validation process (for example, `OK`, `DENIED`). Type: String.
 
 * **service.id**
   The logical identifier of the target service in the API ML ecosystem. Type: String.
