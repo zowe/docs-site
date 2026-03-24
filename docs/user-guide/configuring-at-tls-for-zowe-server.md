@@ -709,6 +709,20 @@ When asking for support, make sure to follow IBM guides for troubleshooting AT-T
 
 Ensure you collect the logs and current configurations when contacting support.
 
+#### AT-TLS setup in ACF2 with TLSv1.2 with Hardware Ciphers or TLSv1.3
+
+In an ACF2 environment, setting up AT-TLS with TLSv1.3 or TLSv1.2 using modern hardware ciphers like Elliptic Curve (ECC) can trigger a `CRYPTOZ` class violation for the `CLEARKEY.SYSTOK-SESSION-ONLY` resource.
+This occurs because negotiating these advanced cipher suites requires cryptographic processing via ICSF PKCS#11 callable services. 
+ICSF uses a temporary, in-memory "session-only" token to manage the clear keys during the handshake. By default, ACF2 secures this virtual token under the `CRYPTOZ` resource class.
+To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant READ access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as:
+
+```markup
+SET RESOURCE(CRY)
+RECKEY CLEARKEY ADD(SYSTOK-SESSION-ONLY USER(ZWESVUSR) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(CRY)
+```
+For more information, see _Using cryptographic features with System SSL_ in the IBM documentation.
+
 ## Full example of AT-TLS configuration
 
 Review a full working example of an AT-TLS configuration file on z/OS, specifically used for defining secure communication between different services in a mainframe environment. All port values are examples.
