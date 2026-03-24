@@ -178,6 +178,230 @@ Requests that pass through the Gateway to reach external microservices onboarded
 
 In both scenarios, the Gateway acts as the central processing point, emitting a signal immediately after a result (success or failure) is obtained from the target service.
 
+## Example of Batch exporter
+
+
+In the following example, the exporter is a batch exporter wherein  a number of logs are collected and exported all at once.
+The custom attributes are the keys and values in the JSON-formatted string of the log record
+<details>
+
+<summary>Click here for the full batch exporter example.</summary>
+
+```json
+
+{
+    "resourceLogs": [
+        {
+            "resource": {
+                "attributes": [
+                    {
+                        "key": "deployment.environment",
+                        "value": {
+                            "stringValue": "dev"
+                        }
+                    },
+                    {
+                        "key": "host.arch",
+                        "value": {
+                            "stringValue": "aarch64"
+                        }
+                    },
+                    {
+                        "key": "host.name",
+                        "value": {
+                            "stringValue": "LNWRVGV2LP"
+                        }
+                    },
+                    {
+                        "key": "os.description",
+                        "value": {
+                            "stringValue": "Mac OS X 26.3.1"
+                        }
+                    },
+                    {
+                        "key": "os.type",
+                        "value": {
+                            "stringValue": "darwin"
+                        }
+                    },
+                    {
+                        "key": "os.version",
+                        "value": {
+                            "stringValue": "26.3.1"
+                        }
+                    },
+                    {
+                        "key": "process.command_args",
+                        "value": {
+                            "arrayValue": {
+                                "values": [
+                                    {
+                                        "stringValue": "/Users/pc891986/.sdkman/candidates/java/17.0.18.1-sem/bin/java"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/java.lang=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/java.nio.channels.spi=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/java.util=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "--add-opens=java.base/javax.net.ssl=ALL-UNNAMED"
+                                    },
+                                    {
+                                        "stringValue": "-jar"
+                                    },
+                                    {
+                                        "stringValue": "apiml/build/libs/apiml.jar"
+                                    },
+                                    {
+                                        "stringValue": "--spring.config.additional-location=file:./config/local/apiml-service.yml"
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "key": "process.executable.path",
+                        "value": {
+                            "stringValue": "/Users/pc891986/.sdkman/candidates/java/17.0.18.1-sem/bin/java"
+                        }
+                    },
+                    {
+                        "key": "process.pid",
+                        "value": {
+                            "intValue": "66470"
+                        }
+                    },
+                    {
+                        "key": "process.runtime.description",
+                        "value": {
+                            "stringValue": "Eclipse OpenJ9 Eclipse OpenJ9 VM 17.0.18+8-openj9-0.57.0"
+                        }
+                    },
+                    {
+                        "key": "process.runtime.name",
+                        "value": {
+                            "stringValue": "IBM Semeru Runtime Open Edition"
+                        }
+                    },
+                    {
+                        "key": "process.runtime.version",
+                        "value": {
+                            "stringValue": "17.0.18+8"
+                        }
+                    },
+                    {
+                        "key": "service.instance.id",
+                        "value": {
+                            "stringValue": "localhost:gateway:10010"
+                        }
+                    },
+                    {
+                        "key": "service.name",
+                        "value": {
+                            "stringValue": "apiml"
+                        }
+                    },
+                    {
+                        "key": "service.version",
+                        "value": {
+                            "stringValue": "3.5.12-SNAPSHOT"
+                        }
+                    },
+                    {
+                        "key": "telemetry.distro.name",
+                        "value": {
+                            "stringValue": "opentelemetry-spring-boot-starter"
+                        }
+                    },
+                    {
+                        "key": "telemetry.distro.version",
+                        "value": {
+                            "stringValue": "2.24.0"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.language",
+                        "value": {
+                            "stringValue": "java"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.name",
+                        "value": {
+                            "stringValue": "opentelemetry"
+                        }
+                    },
+                    {
+                        "key": "telemetry.sdk.version",
+                        "value": {
+                            "stringValue": "1.58.0"
+                        }
+                    }
+                ]
+            },
+            "scopeLogs": [
+                {
+                    "scope": {
+                        "name": "org.zowe.apiml.opentelemetry"
+                    },
+                    "logRecords": [
+                        {
+                            "timeUnixNano": "1774256967925054000",
+                            "observedTimeUnixNano": "1774256967931296000",
+                            "severityNumber": 9,
+                            "severityText": "INFO",
+                            "body": {
+                                "stringValue": "{\"http.request.method\":\"GET\",\"service.id\":\"discovery\",\"service.instance.id\":\"localhost:discovery:10011\",\"service.response_code\":\"200\",\"url.path\":\"/eureka/apps/\",\"url.scheme\":\"https\"}"
+                            },
+                            "flags": 1,
+                            "traceId": "9f58121a31d1e6920e177fec52720478",
+                            "spanId": "ac9f3b1fb720d6c9"
+                        },
+                        {
+                            "timeUnixNano": "1774256967982081000",
+                            "observedTimeUnixNano": "1774256967982108000",
+                            "severityNumber": 9,
+                            "severityText": "INFO",
+                            "body": {
+                                "stringValue": "{\"http.request.method\":\"PUT\",\"service.id\":\"discovery\",\"service.instance.id\":\"localhost:discovery:10011\",\"service.response_code\":\"200\",\"url.path\":\"/eureka/apps/DISCOVERABLECLIENT/localhost:discoverableclient:10012\",\"url.scheme\":\"https\"}"
+                            },
+                            "flags": 1,
+                            "traceId": "33cab24562932b9d905b1b9b3abdc026",
+                            "spanId": "95d795fdb6275d38"
+                        },
+                        {
+                            "timeUnixNano": "1774256968029241000",
+                            "observedTimeUnixNano": "1774256968029284000",
+                            "severityNumber": 9,
+                            "severityText": "INFO",
+                            "body": {
+                                "stringValue": "{\"http.request.method\":\"POST\",\"service.id\":\"discovery\",\"service.instance.id\":\"localhost:discovery:10011\",\"service.response_code\":\"204\",\"url.path\":\"/eureka/apps/DISCOVERABLECLIENT\",\"url.scheme\":\"https\"}"
+                            },
+                            "flags": 1,
+                            "traceId": "5a1ac23171136688a9fcb80c33c607f4",
+                            "spanId": "340d2212dd655078"
+                        }
+                    ]
+                }
+            ],
+            "schemaUrl": "https://opentelemetry.io/schemas/1.24.0"
+        }
+    ]
+}
+```
+</details>
+
+
 ## Signal Examples and Attribute Mapping
 
 The following scenarios represent common signals emitted by the API Mediation Layer. Each example includes the specific attributes present in the signal body and the resulting JSON payload.
