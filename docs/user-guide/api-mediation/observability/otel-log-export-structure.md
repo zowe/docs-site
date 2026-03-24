@@ -178,17 +178,24 @@ Requests that pass through the Gateway to reach external microservices onboarded
 
 In both scenarios, the Gateway acts as the central processing point, emitting a signal immediately after a result (success or failure) is obtained from the target service.
 
-## Common Telemetry Scenarios and Signal Examples
+## Signal Examples and Attribute Mapping
 
-The following examples illustrate the JSON-formatted string found within the `body` attribute of the OTLP log record. These examples represent the finalized result of various interactions within the API ML.
+The following scenarios represent common signals emitted by the API Mediation Layer. Each example includes the specific attributes present in the signal body and the resulting JSON payload.
 
-### Service Discovery Lifecycle
-These signals are emitted by the **Discovery Service** and track how microservices interact with the Eureka registry.
+### A Service registered successfully to Eureka (API ML - Discovery Service)
 
-**Successful Service Registration**
-Indicates a new service instance has successfully introduced itself to the ecosystem.
-* **Response Code:** `204` (No Content - typical for successful Eureka registration).
-* **Key Path:** `/eureka/apps/{SERVICE_ID}`.
+* **http.request.method**  
+The HTTP verb (`POST`).
+* **service.id**  
+The logical ID of the Discovery service.
+* **service.instance.id**  
+The specific host and port of the Discovery instance.
+* **service.response_code**  
+The status returned by the registry (`204`).
+* **url.path**  
+The Eureka registration endpoint.
+* *url.scheme**  
+The communication protocol (`https`).
 
 ```json
 {
@@ -200,15 +207,28 @@ Indicates a new service instance has successfully introduced itself to the ecosy
   "url.scheme": "https"
 }
 ```
-### A successful instance heartbeat
 
-Indicates an onboarded service remains in "UP" status.
+### A Service sent a successful heartbeat
 
-**Response Code:** `200` (OK).
+* **http.request.method**  
+The HTTP verb (`PUT`).
 
-**HTTP Method:** `PUT`.
+* **service.id**  
+The logical ID of the target service.
 
-```
+* **service.instance.id**  
+The specific instance sending the heartbeat.
+
+* **service.response_code**  
+The status of the heartbeat renewal (`200`).
+
+* **url.path**  
+The specific Eureka instance lease renewal path.
+
+* **url.scheme**  
+The communication protocol (`https`).
+
+```json
 {
   "http.request.method": "PUT",
   "service.id": "discovery",
@@ -219,17 +239,26 @@ Indicates an onboarded service remains in "UP" status.
 }
 ```
 
-### Gateway Authentication and Access
+### A successful login attempt
 
-These signals track security events and internal API ML service requests.
+* **http.request.method**  
+The HTTP verb (`POST`).
 
-#### Successful User Login
-A finalized signal from the Gateway authentication provider.
+* **service.id**  
+The logical ID for the Gateway.
 
-**Service ID:** `gateway`.
+* **service.instance.id**  
+The Gateway instance handling the authentication.
 
-**Response Code:** `204` (Success).
-```
+* **service.response_code**  
+The status of the login request (`204`).
+
+* **url.path**  
+The authentication login endpoint.
+
+* **url.scheme**  
+The communication protocol (`https`).
+```json
 {
   "http.request.method": "POST",
   "service.id": "gateway",
@@ -240,11 +269,26 @@ A finalized signal from the Gateway authentication provider.
 }
 ```
 
-#### Authenticated Request to API Catalog
+### A successful request to API ML (authenticated but not populating information)
 
-A successful request to the API Catalog service by an authenticated principal.
+* **http.request.method**  
+The HTTP verb (`GET`).
 
-```
+* **service.id**  
+The logical ID of the API Catalog.
+
+* **service.instance.id**  
+The instance providing catalog data.
+
+* **service.response_code**  
+The success status (`200`).
+
+* **url.path**  
+The endpoint for retrieving containers.
+
+* **url.scheme**  
+The communication protocol (`https`).
+```json
 {
   "http.request.method": "GET",
   "service.id": "apicatalog",
@@ -252,5 +296,87 @@ A successful request to the API Catalog service by an authenticated principal.
   "service.response_code": "200",
   "url.path": "/apicatalog/api/v1/containers",
   "url.scheme": "https"
+}
+```
+
+### Invalid authentication (WIP)
+
+* **auth.service.auth.method**  
+The security provider method (`x509`).
+
+* **http.request.method**  
+The HTTP verb (`GET`).
+
+* **service.id**  
+The logical ID of the target client service.
+
+* **service.instance.id**  
+The instance identifier.
+
+* **service.response_code**  
+The status code returned (`200`).
+
+* **url.path**  
+The request path for the client API.
+
+* **url.scheme**  
+The communication protocol (`https`).
+
+```json
+{
+  "auth.service.auth.method": "x509",
+  "http.request.method": "GET",
+  "service.id": "discoverableclient",
+  "service.instance.id": "localhost:discoverableclient:10012",
+  "service.response_code": "200",
+  "url.path": "/discoverableclient/api/v1/request",
+  "url.scheme": "https"
+}
+```
+
+### Valid authentication when routing to an onboarded service (JWT)
+
+* **auth.method**  
+The general authentication type (`JWT`).
+
+* **auth.service.auth.method**  
+The specific Zowe provider (`zoweJwt`).
+
+* **auth.status**  
+The final result of authentication (`OK`).
+
+* **http.request.method**  
+The HTTP verb (`GET`).
+
+* **service.id**  
+The logical ID of the Zowe JWT service.
+
+* **service.instance.id**  
+The unique service instance identifier.
+
+* **service.response_code**  
+The successful status code (`200`).
+
+* **url.path**  
+The routed request endpoint.
+
+* **url.scheme**  
+The communication protocol (`https`).
+
+* **user.id**  
+The identifier of the authenticated user.
+
+```json
+{
+  "auth.method": "JWT",
+  "auth.service.auth.method": "zoweJwt",
+  "auth.status": "OK",
+  "http.request.method": "GET",
+  "service.id": "zowejwt",
+  "service.instance.id": "static-localhost:zowejwt:10012",
+  "service.response_code": "200",
+  "url.path": "/zowejwt/api/v1/request",
+  "url.scheme": "https",
+  "user.id": "USER"
 }
 ```
