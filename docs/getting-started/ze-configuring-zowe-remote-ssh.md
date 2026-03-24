@@ -6,11 +6,6 @@ Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with m
 
 Create an SSH Zowe profile in your Zowe [team configuration](../ppendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
 
-## Preface step
-
-Open ZE, open the command palette, search **Zowe-Explorer: Connect to Host...***
-
-
 ### Connecting with an SSH command
 
 Create an SSH profile faster by using an SSH command to authenticate and deploy to the server. The user included in the command is used to search the local SSH configuration file for host directives that match the host in the command. 
@@ -23,9 +18,11 @@ When there is a match, Zowe Remote SSH attempts public-private key authenticatio
 
 If an IdentityFile is found and fails to authenticate, or no IdentityFile is found, you are prompted for basic credentials.
 
-Use an SSH command to connect and deploy to the server:
+To use an SSH command to connect and deploy to the server:
 
-1. Enter an SSH connection command in the **Quick Pick**:
+1. In the **Command Palette**, search for **Zowe-Explorer: Connect to Host...**.
+
+2. Enter an SSH connection command in the **Quick Pick**:
 
     ```
     ssh <user@example.net>
@@ -46,11 +43,11 @@ Use an SSH command to connect and deploy to the server:
 
         Specifies the port number for the SSH connection. 
 
-2. Answer any prompts in the **Quick Pick** to provide any additional credentials required for authentication.
+3. Answer any prompts in the **Quick Pick** to provide any additional credentials required for authentication.
 
  A new SSH profile is added to the corresponding Zowe team configuration file in your system and the Zowe Remote SSH binary is uploaded to your mainframe host to be used with this new profile.
 
- You can now interact with this SSH profile in one of the Zowe Explorer tree views (Data Sets, USS, or Jobs) to start using ZRS.
+ You can now interact with this SSH profile in its Zowe Explorer tree view (Data Sets, USS, or Jobs) to start using ZRS.
 
 ### Connecting with an existing SSH configuration file
 
@@ -60,11 +57,11 @@ To create a new SSH profile in your team configuration:
 
 1. In the **Command Palette**, search for **Zowe-SSH: Connect to Host...**.
 2. Select a profile listed **below** the **Migrate From SSH Config** separator in the drop-down.
-3. Answer any prompts to provide any additional credentials required for authentication.
+3. Answer prompts in the **Quick Pick** to provide any additional credentials required for authentication.
 
     The user's existing SSH host directive in their SSH configuration file remains unchanged. A new SSH profile is added to the corresponding Zowe team configuration file in your system and the Zowe Remote SSH binary is uploaded to your mainframe host to be used with this new profile.
 
-    You can now interact with this SSH profile in one of the Zowe Explorer tree views (Data Sets, USS, or Jobs) to start using ZRS.
+    You can now interact with this SSH profile in its Zowe Explorer tree view (Data Sets, USS, or Jobs) to start using ZRS.
 
 ### Connecting with an existing team configuration profile
 
@@ -72,21 +69,8 @@ Use an existing SSH profile from a Zowe team configuration file to deploy Zowe R
 
 1. In the **Command Palette**, search for **Zowe-SSH: Connect to Host...**.
 2. Select a profile listed **above** the **Migrate From SSH Config** separator in the drop-down.
-3. Answer any prompts to provide any additional credentials required for authentication.
+3. Answer prompts in the **Quick Pick** to provide any additional credentials required for authentication.
 
     The Zowe Remote SSH binary is uploaded to your mainframe host to be used with this new profile. 
 
-    You can now interact with this SSH profile in one of the Zowe Explorer tree views (Data Sets, USS, or Jobs) to start using ZRS.
-
-
-=======
-
-ignore this:
-
-the server is ZRS, a process that's running on the mainframe that we can call a server
-
-order: (1) if use -i, (2) common names, (3) looks for match
-
-
-The client pieces (VS Code extension, CLI plug-in) communicate with the ZRS binary using the SSH protocol. So the client sends a command over SSH to that binary, and the binary responds with some data the client can parse/understand.
-You could mention that the clients communicate with the ZRS binary using JSON-RPC, if you want to be specific on the underlying technology.
+    You can now interact with this SSH profile in its Zowe Explorer tree view (Data Sets, USS, or Jobs) to start using ZRS.
