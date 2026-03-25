@@ -1,24 +1,29 @@
-# OpenTelemetry Log Export Structure
+# Interpreting API ML OpenTelemetry Log Export Structures
 
-Review the hierarchical structure and attribute sequence of the OpenTelemetry (OTel) signals exported by the API Mediation Layer (API ML).
+Interpret API ML telemetry signals to pinpoint the root cause of latency spikes, audit security events, and correlate cross-service requests across your mainframe ecosystem
+
+:::info Required role: System administrator
+:::
 
 API ML signals act as a post-execution receipt. A signal is generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
+
+By linking specific backend performance metrics to individual user actions and mainframe resource states within each signal, administrators can pinpoint whether a latency spike was caused by a routing error, an authentication failure, or an infrastructure bottleneck. To optimize network performance, these captured attributes are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
 
 ## High-Level Hierarchy
 
 API ML exports observability data using a hierarchical OpenTelemetry (OTel) structure that correlates infrastructure metadata with specific application events. This hierarchy consists of the following log types:
 
 * **Resource Logs**  
-Metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
+Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
 For details, see [Resource Attributes](configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
 
 * **Scope Logs**  
-Scope Logs identify the specific instrumentation library responsible for capturing the telemetry. API ML utilizes a **Batch Exporter** to deliver these signals to the OTel Collector. Within this section, the `logRecords` array contains the individual signals, which the SDK buffers in memory and exports as a single collection to minimize network overhead and improve performance.
+Scope Logs identify the specific instrumentation library responsible for capturing the telemetry. Within this section, the `logRecords` array contains the individual signals, which the SDK buffers in memory and exports as a single collection to minimize network overhead and improve performance.
 
   While multiple `logRecords` are delivered in a single bundle, the OTel Collector processes each entry in the array as a unique, independent signal.
 
 * **Schema URL**  
-Information about which version of the OTel Semantic Conventions is being used. This URL ensures that all attributes are standardized, allowing downstream collectors to consistently interpret the data across different monitoring platforms.
+The Schema URL provides information about which version of the OTel Semantic Conventions is being used. This URL ensures that all attributes are standardized, allowing downstream collectors to consistently interpret the data across different monitoring platforms.
 
 ## Functional Classification of API ML Signals
 
@@ -65,41 +70,40 @@ For details about these log record attributes, see [Log and Event Record Definit
 
 ## Body JSON Attributes (Custom Signals)
 
-The following attributes are found within the stringified JSON of the `body` field and represent API ML specific logic:
+The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
 
 * **url.path**  
-  The absolute path of the request processed by the API ML Gateway. Type: String.
+  The absolute path of the request processed by the API ML Gateway. 
 
 * **url.scheme**  
-  The protocol used for the request (for example, `https`). Type: String.
+  The protocol used for the request (for example, `https`). 
 
 * **http.request.method**  
-  The HTTP verb used for the request (for example, `GET`, `POST`, `PUT`). Type: String.
+  The HTTP verb used for the request (for example, `GET`, `POST`, `PUT`). 
 
 * **error.type**  
-  High-level classification of a failure (for example, `Timeout`, `AuthError`), populated on non-success results. Type: String.
+  High-level classification of a failure (for example, `Timeout`, `AuthError`), populated on non-success results. 
 
 * **error.message**  
-  Detailed description providing context for the encountered failure. Type: String.
+  Detailed description providing context for the encountered failure. 
 
 * **user.id**  
-  The identifier of the authenticated principal or user. Type: String.
+  The identifier of the authenticated principal or user. 
 
 * **auth.method**  
-  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`). Type: String.
+  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`). 
 
 * **auth.status**  
-  The result of the credential validation process (for example, `OK`, `DENIED`). Type: String.
+  The result of the credential validation process (for example, `OK`, `DENIED`). 
 
 * **service.id**  
-  The logical identifier of the target service in the API ML ecosystem. Type: String.
+  The logical identifier of the target service in the API ML ecosystem. 
 
 * **service.instance.id**  
-  The unique identifier for the specific instance of the service handling the request. Type: String.
+  The unique identifier for the specific instance of the service handling the request. 
 
 * **service.response_code**  
-  The HTTP status code returned to the client following the operation. Type: String.
-
+  The HTTP status code returned to the client following the operation. 
 
 **Example Body Structure:**
 ```json
