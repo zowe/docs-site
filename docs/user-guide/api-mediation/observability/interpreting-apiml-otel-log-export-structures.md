@@ -114,7 +114,6 @@ The following attributes are found within the JSON of the `body` field and repre
   "url.path": "/eureka/apps/"
 }
 ```
-:::note
 
 
 ## Example of Batch exporter
