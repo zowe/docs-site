@@ -363,7 +363,8 @@ Error: Terminal closed due to websocket error. Code=4000
 
 **Solution:**
 
-One cause of this issue is an incorrect TN3270 connection setting when `TELNET` is used for a secured port. Review the z/OS Communications Server TN3270E Telnet server profile.
+One cause of this issue is the usage of an incorrect TN3270 setting to connect to a secure `TELNET` port.
+Review the z/OS Communications Server TN3270E Telnet server profile.
 
 **Example of a profile:**
 
