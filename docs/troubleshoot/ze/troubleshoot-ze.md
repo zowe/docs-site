@@ -113,6 +113,8 @@ To troubleshoot the table view for data sets and jobs, review the following comm
 
 ## Troubleshooting Zowe Remote SSH
 
+### Commands for troubleshooting
+
 To troubleshoot any issues with ZRS, try the following commands by searching for `Zowe-SSH` in the **Command Palette**:
 
 - **Zowe-SSH: Show Log**: Displays the Zowe SSH log file, providing operation insights and potential error messages for diagnosis.
@@ -122,3 +124,16 @@ To troubleshoot any issues with ZRS, try the following commands by searching for
 - **Zowe-SSH: Uninstall Zowe Server from Host...**: Removes the currently installed instance of the ZRS server from a selected host or profile. This can also be useful for changing the location of the server.
 
 These troubleshooting commands are designed to provide users with tools to quickly diagnose and resolve common issues. If you encounter a problem while using ZRS, file an issue in the [Zowe Remote SSH GitHub repository](https://github.com/zowe/zowe-native-proto).
+
+### Server deploy process hangs
+
+**Symptom**: The deploy process can hang when a user's password has expired.
+
+**Solution**: Ensure that user access was not revoked. Contact your system administrator for more information on authenticating to z/OS.
+
+### `RC 3: Permission denied` error
+
+**Symptom**: Error message `RC 3: Permission denied` displays when deploying to the server.
+
+**Solution**: Specify a server path that the user has sufficient permissions for. See [System requirements](./getting-started/ze-configuring-zowe-remote-ssh.md#system-requirements) for more information on permissions.
+

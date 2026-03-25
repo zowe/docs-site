@@ -2,6 +2,12 @@
 
 Use Zowe Remote SSH in Zowe Explorer to perform z/OS mainframe operations with minimal server-side configuration.
 
+## System requirements
+
+- 16 MB of free space for deploying ZRS on z/OS Unix
+- z/OS OpenSSH set up and configured for the user
+- At minimum, user permissions for read, write, and execute (`700`) for deployment directory
+
 ## Configuration methods
 
 Create an SSH Zowe profile in your Zowe [team configuration](../ppendix/zowe-glossary.md#team-configuration) to connect to z/OS and deploy to the z/OS system.
