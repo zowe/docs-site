@@ -1,6 +1,6 @@
 # Interpreting API ML OpenTelemetry Log Export Structures
 
-Interpret API ML telemetry signals to pinpoint the root cause of latency spikes, audit security events, and correlate cross-service requests across your mainframe ecosystem
+Interpret API ML telemetry signals to pinpoint the root cause of latency spikes, audit security events, and correlate cross-service requests across your mainframe ecosystem.
 
 :::info Required role: System administrator
 :::
