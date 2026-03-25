@@ -351,7 +351,7 @@ z/OSMF is set as the authentication provider:
 ## TN3270 websocket error 4000 and EZZ6034I ERR 600D
 
 **Symptoms:**
-* The Zowe Desktop TN3270 application fails to connect with the following errors:
+* The Zowe Desktop TN3270 application fails to connect and displays the following errors:
 ```
 Error: Terminal closed due to websocket error. Code=4000
 ```
@@ -363,9 +363,9 @@ Error: Terminal closed due to websocket error. Code=4000
 
 **Solution:**
 
-This issue is likely caused by a TN3270 connection setting mismatch when `TELNET` is used for a secured port. Review the z/OS Communications Server TN3270E Telnet server profile.
+One cause of this issue is an incorrect TN3270 connection setting when `TELNET` is used for a secured port. Review the z/OS Communications Server TN3270E Telnet server profile.
 
-**Profile example:**
+**Example of a profile:**
 
 ```
 ; Use type TELNET and port 23 in Zowe Desktop TN3270
@@ -380,4 +380,4 @@ TELNETPARMS
 ENDTELNETPARMS
 ```
 
-Review [Using the 3270 Terminal](../../user-guide/mvd-3270.md) article to update the relevant environment variables in your `zowe.yaml` configuration.
+Review [Using the 3270 Terminal](../../user-guide/mvd-3270.md) article to update the relevant environment variables in the configuration of your `zowe.yaml` file.
