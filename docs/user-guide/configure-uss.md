@@ -27,7 +27,7 @@ The following Language Environment options should be set for Zowe.
 
 ## OMVS segment
 
-An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zowe to run Zowe scripts. 
+An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zowe to run Zowe scripts. An OMVS segment is also required for users with client certificates.
 
 :::tip
 For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. 
