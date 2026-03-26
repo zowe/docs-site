@@ -174,7 +174,7 @@ The custom attributes are the keys and values in the JSON-formatted string of th
                             "arrayValue": {
                                 "values": [
                                     {
-                                        "stringValue": "/Users/pc891986/.sdkman/candidates/java/17.0.18.1-sem/bin/java"
+                                        "stringValue": "/Users/<user-id>/.sdkman/candidates/java/17.0.18.1-sem/bin/java"
                                     },
                                     {
                                         "stringValue": "--add-opens=java.base/java.lang=ALL-UNNAMED"
