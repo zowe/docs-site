@@ -540,7 +540,7 @@ module.exports = {
               link: { type: "doc", id: "user-guide/api-mediation/observability/using-observability/using-your-otel-metrics" },
               items: [
             "user-guide/api-mediation/observability/using-observability/understanding-apiml-telemetry-signals",
-            "user-guide/api-mediation/observability/using-observability/interpreting-apiml-otel-log-export-structures",
+            "user-guide/api-mediation/observability/using-observability/customizing-and-interpreting-apiml-otel-log-signals",
             "user-guide/api-mediation/observability/using-observability/apiml-observability-use-cases",
               ],
             },
