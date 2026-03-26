@@ -1,16 +1,14 @@
 # Limiting started Zowe services to API Mediation Layer
 
-As a Zowe user, you can start API Mediation Layer independently of other Zowe components. 
-By default, the Gateway, Zowe System Services, and Virtual Desktop start when
- Zowe runs. To limit consumed resources when the Virtual Desktop or Zowe System
- Services are not required, it is possible to specify which components start in the
- context of Zowe. No change is required during the installation process to
+As a Zowe user, you can start API Mediation Layer (API ML) independently of other Zowe components. 
+By default, the Gateway, Zowe System Services (ZSS), and Virtual Desktop start when
+ Zowe runs. To limit consumed resources when the Virtual Desktop or ZSS are not required, it is possible to specify which Zowe components start.  No change is required during the installation process to
  support this setup.
  
 Once Zowe is installed, use this procedure to limit which components start. 
 
 :::note
-Zowe System Services are required for API Mediation Layer functionalities like Client Certificates or OIDC only when the API ML is deployed outside of z/OS.
+ZSS is only required for API ML functionalities like Client Certificates or OIDC when API ML is deployed outside of z/OS.
 :::
 
 **Follow these steps:**
