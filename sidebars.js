@@ -541,6 +541,7 @@ module.exports = {
               items: [
             "user-guide/api-mediation/observability/using-observability/understanding-apiml-telemetry-signals",
             "user-guide/api-mediation/observability/using-observability/customizing-and-interpreting-apiml-otel-log-signals",
+            "user-guide/api-mediation/observability/using-observability/log-signal-examples-and-attribute-mapping",
             "user-guide/api-mediation/observability/using-observability/apiml-observability-use-cases",
               ],
             },
