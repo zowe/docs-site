@@ -10,7 +10,7 @@ By default, the Gateway, Zowe System Services, and Virtual Desktop start when
 Once Zowe is installed, use this procedure to limit which components start. 
 
 :::note
-Zowe System Services are required for some of functionalities of API Mediation Layer such as Client Certificates or OIDC.
+Zowe System Services are required for API Mediation Layer functionalities like Client Certificates or OIDC only when the API ML is deployed outside of z/OS.
 :::
 
 **Follow these steps:**
