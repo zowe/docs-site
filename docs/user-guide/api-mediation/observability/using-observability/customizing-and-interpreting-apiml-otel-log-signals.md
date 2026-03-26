@@ -9,25 +9,9 @@ API ML signals function as a post-execution receipt. A signal is generated and q
 
 By linking specific backend performance metrics to individual user actions and mainframe resource states within each signal, administrators can pinpoint whether a latency spike was caused by a routing error, an authentication failure, or an infrastructure bottleneck. 
 
-## Signal Hierarchy
-
-API ML generates signals within a hierarchical framework that correlates customized mainframe infrastructure metadata with application-level events. This hierarchy ensures that every signal is enriched with the context necessary to identify the origin and purpose of the signal:
-
-* **Resource Context (Resource Logs)**  
-Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
-For details, see [Resource Attributes](../configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
-
-* **Instrumentation Context (Scope Logs)**  
-Scope Logs identify the specific instrumentation library responsible for capturing the telemetry. Within this section, the `logRecords` array contains the individual signals, which the SDK buffers in memory and exports as a single collection to minimize network overhead and improve performance.
-
-  While multiple `logRecords` are delivered in a single bundle, the OTel Collector processes each entry in the array as a unique, independent signal.
-
-* **Standardization Context (Schema URL)**  
-The Schema URL provides information about which version of the OTel Semantic Conventions is being used. This URL ensures that all attributes are standardized, allowing downstream collectors to consistently interpret the data across different monitoring platforms.
-
 ## Functional Classification of API ML Signals
 
-API ML signals represent a standardized telemetry record for every transaction handled by the Gateway. To monitor the ecosystem effectively, administrators must distinguish between the two primary traffic flows captured by these signals:
+API ML signals represent a standardized telemetry log record for every transaction handled by the Gateway. To monitor the ecosystem effectively, administrators must distinguish between the two primary traffic flows captured by these signals:
 
 | Category | Target Endpoint | Description | Common Paths |
 | :--- | :--- | :--- | :--- |
@@ -35,13 +19,21 @@ API ML signals represent a standardized telemetry record for every transaction h
 | **Routed Service Traffic** | Onboarded Microservices | Requests where the Gateway acts as a reverse proxy, authenticating and forwarding traffic to external microservices. | `/apicatalog/api/v1/...`, `/your-app/api/...` |
 
 
-## Log Record Attributes (Signals)
+## Log Record Attributes  
 
-Each entry in the `logRecords` array represents a distinct signal and contains the following standard OpenTelemetry fields:
+* **Resource Context (Resource Logs)**  
+Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
+For details, see [Resource Attributes](../configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
+
+* **Log and Event Record Definition**  
+
+The Log and Event Record Definition establishes a standardized logical model that contextualizes discrete events within a specific resource and is comprised of specific fields including timestamps, severity levels, and body content. 
 
 :::info
 For details about these log record attributes, see [Log and Event Record Definition](https://opentelemetry.io/docs/specs/otel/logs/data-model/#log-and-event-record-definition) in the OpenTelemetry documentation.
 :::
+
+Each entry in the `logRecords` section represents a distinct signal and contains the following standard OpenTelemetry fields:
 
 * **timeUnixNano**  
   The precise time the event occurred in nanoseconds since the Unix epoch. Type: Int64.
@@ -56,7 +48,7 @@ For details about these log record attributes, see [Log and Event Record Definit
   The human-readable string representing the severity level (for example, INFO, ERROR). Type: String.
 
 * **body**  
-  A JSON-formatted string containing the application-specific custom attributes. Type: String (JSON).
+  A JSON-formatted string containing the application-specific custom attributes. Type: String (JSON). API ML custom inforation is contained in this section
 
 * **flags**  
   Internal OpenTelemetry flags, typically used to indicate if the trace was sampled. Type: Int.
@@ -68,9 +60,9 @@ For details about these log record attributes, see [Log and Event Record Definit
   A unique 8-byte identifier for the specific unit of work within the trace. Type: String.
 
 
-## Body JSON Attributes (Custom Signals)
+## Body JSON Attributes (Custom API ML Signals)
 
-The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
+API ML automatically collects specific data points including request paths, HTTP methods, user IDs, and authentication status to enable customized filtering within your monitoring backend. The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
 
 * **url.path**  
   The absolute path of the request processed by the API ML Gateway. 
@@ -125,6 +117,10 @@ The custom attributes are the keys and values in the JSON-formatted string of th
 
 <summary>Click here for the full batch exporter example.</summary>
 
+
+The following data payload is an example of an OTel collector exporting data to a JSON formatted output. 
+
+**Example:**
 ```json
 
 {
