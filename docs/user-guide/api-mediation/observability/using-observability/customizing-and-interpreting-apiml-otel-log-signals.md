@@ -1,6 +1,6 @@
 # Customizing and Interpreting API ML OpenTelemetry Log Signals
 
-Use API ML OpenTelemetry (OTel) log signals to monitor and assess the performance, security, and routing health of your mainframe ecosystem. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time.
+Use API ML OpenTelemetry (OTel) log signals to monitor and assess the performance, security, and routing health of your z/OS-based service infrastructure. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time.
 
 :::info Required role: System administrator
 :::
@@ -15,7 +15,7 @@ API ML generates signals within a hierarchical framework that correlates customi
 
 * **Resource Context (Resource Logs)**  
 Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
-For details, see [Resource Attributes](configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
+For details, see [Resource Attributes](../configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
 
 * **Instrumentation Context (Scope Logs)**  
 Scope Logs identify the specific instrumentation library responsible for capturing the telemetry. Within this section, the `logRecords` array contains the individual signals, which the SDK buffers in memory and exports as a single collection to minimize network overhead and improve performance.
