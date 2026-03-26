@@ -1,28 +1,28 @@
-# Interpreting API ML OpenTelemetry Log Export Structures
+# Customizing and Interpreting API ML OpenTelemetry Log Signals
 
-Interpret API ML telemetry signals to pinpoint the root cause of latency spikes, audit security events, and correlate cross-service requests across your mainframe ecosystem.
+Use API ML OpenTelemetry (OTel) log signals to monitor and assess the performance, security, and routing health of your mainframe ecosystem. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time.
 
 :::info Required role: System administrator
 :::
 
-API ML signals act as a post-execution receipt. A signal is generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
+API ML signals function as a post-execution receipt. A signal is generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
 
-By linking specific backend performance metrics to individual user actions and mainframe resource states within each signal, administrators can pinpoint whether a latency spike was caused by a routing error, an authentication failure, or an infrastructure bottleneck. To optimize network performance, these captured attributes are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
+By linking specific backend performance metrics to individual user actions and mainframe resource states within each signal, administrators can pinpoint whether a latency spike was caused by a routing error, an authentication failure, or an infrastructure bottleneck. 
 
-## High-Level Hierarchy
+## Signal Hierarchy
 
-API ML exports observability data using a hierarchical OpenTelemetry (OTel) structure that correlates infrastructure metadata with specific application events. This hierarchy consists of the following log types:
+API ML generates signals within a hierarchical framework that correlates customized mainframe infrastructure metadata with application-level events. This hierarchy ensures that every signal is enriched with the context necessary to identify the origin and purpose of the signal:
 
-* **Resource Logs**  
+* **Resource Context (Resource Logs)**  
 Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
 For details, see [Resource Attributes](configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
 
-* **Scope Logs**  
+* **Instrumentation Context (Scope Logs)**  
 Scope Logs identify the specific instrumentation library responsible for capturing the telemetry. Within this section, the `logRecords` array contains the individual signals, which the SDK buffers in memory and exports as a single collection to minimize network overhead and improve performance.
 
   While multiple `logRecords` are delivered in a single bundle, the OTel Collector processes each entry in the array as a unique, independent signal.
 
-* **Schema URL**  
+* **Standardization Context (Schema URL)**  
 The Schema URL provides information about which version of the OTel Semantic Conventions is being used. This URL ensures that all attributes are standardized, allowing downstream collectors to consistently interpret the data across different monitoring platforms.
 
 ## Functional Classification of API ML Signals
