@@ -1,6 +1,6 @@
 # Customizing and Interpreting API ML OpenTelemetry Log Signals
 
-Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and routing activity of your z/OS-based service infrastructure. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time. 
+Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and routing activity of your z/OS-based service infrastructure. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, validate request routing, and maintain a comprehensive audit trail of all Gateway transactions. 
 
 By aggregating these signals in a monitoring backend, administrators can visualize usage trends and operational evolution, such as shifting latency patterns, fluctuations in traffic volume, and the long-term stability of service registrations.
 
@@ -70,6 +70,12 @@ Due to the batch nature of the API ML implementation, each entry in the `logReco
 
 API ML automatically collects specific data points including request paths, HTTP methods, user IDs, and authentication status to enable customized filtering within your monitoring backend. The following attributes are found within the JSON of the `body` field and represent API ML specific logic:
 
+* **auth.service.auth.method**  
+The specific authentication credential required by the target backend service from the API ML Gateway (for example, `passticket` or `jwt`). This attribute identifies the mechanism used to ensure the Gateway can successfully authenticate with the microservice on behalf of the user.
+
+* **user.distributed_id**  
+The original remote identity provided during OIDC-based authentication. While the standard `user.id` attribute contains the identity as mapped to the local z/OS environment, `user.distributed_id` applies the unique identifier from the external distributed identity provider.
+
 * **url.path**  
   The absolute path of the request processed by the API ML Gateway. 
 
@@ -102,7 +108,7 @@ API ML automatically collects specific data points including request paths, HTTP
   The unique identifier for the specific instance of the service handling the request. 
 
 * **service.response_code**  
-  The HTTP status code returned to the client following the operation. 
+  The HTTP status code returned to API ML after the routing. 
 
 **Example Body Structure:**
 ```json
