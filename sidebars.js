@@ -363,6 +363,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/cli-install-configure-zosmf" },
           items: [
             "user-guide/cli-install-configure-zosmf-security",
+            "user-guide/configure-workload-management",
           ],
         },
         {
