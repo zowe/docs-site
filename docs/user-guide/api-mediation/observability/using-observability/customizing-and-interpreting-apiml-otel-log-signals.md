@@ -95,8 +95,8 @@ The original remote identity provided during OIDC-based authentication. While th
   The identifier of the authenticated principal or user. 
 
 * **auth.method**  
-  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`).  
-  **Note:** Multiple credential types are supported, primarily utilizing JWT (JSON Web Tokens), zoweJwt, and x509 certificate-based authentication. Each of these credential types are tracked via the `auth.method` attribute to audit security flows.
+  The authentication mechanism utilized by the client (for example, `JWT`, `x509`).  
+  **Note:** Multiple credential types are supported, primarily utilizing JWT (JSON Web Tokens), and x509 certificate-based authentication. Each of these credential types are tracked via the `auth.method` attribute to audit security flows.
 
 * **auth.status**  
   The result of the credential validation process (for example, `OK`, `DENIED`). 
