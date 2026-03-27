@@ -128,8 +128,8 @@ The communication protocol (`https`).
 }
 ```
 
-## Invalid authentication (WIP)
-
+## Invalid authentication 
+<!--TODO-->
 This signal captures the technical context of a request utilizing x509 certificate-based authentication during the routing process.
 
 * **auth.service.auth.method**  
