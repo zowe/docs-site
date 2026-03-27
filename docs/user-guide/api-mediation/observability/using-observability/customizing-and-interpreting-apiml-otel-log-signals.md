@@ -1,22 +1,27 @@
 # Customizing and Interpreting API ML OpenTelemetry Log Signals
 
-Use API ML OpenTelemetry (OTel) log signals to monitor and assess the performance, security, and routing health of your z/OS-based service infrastructure. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time.
+Use API ML OpenTelemetry (OTel) log signals to monitor and assess security and routing activity of your z/OS-based service infrastructure. By interpreting these signals, system administrators can pinpoint latency spikes, audit authentication flows, and maintain the operational health of the entire API environment in real-time. 
+
+By aggregating these signals in a monitoring backend, administrators can visualize usage trends and operational evolution, such as shifting latency patterns, fluctuations in traffic volume, and the long-term stability of service registrations.
 
 :::info Required role: System administrator
 :::
 
-API ML signals function as a post-execution receipt. A signal is generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent signal.
-
-By linking specific backend performance metrics to individual user actions and mainframe resource states within each signal, administrators can pinpoint whether a latency spike was caused by a routing error, an authentication failure, or an infrastructure bottleneck. 
+API ML signals function as a post-execution receipt. System usage is recorded on a per-transaction basis, where every individual request, service heartbeat, and registration event triggers a unique, independent log signal. Signals are generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, log signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent log signal.
 
 ## Functional Classification of API ML Signals
 
-API ML signals represent a standardized telemetry log record for every transaction handled by the Gateway. To monitor the ecosystem effectively, administrators must distinguish between the two primary traffic flows captured by these signals:
+API ML signals represent a standardized telemetry log record for every transaction handled by the Gateway. 
 
-| Category | Target Endpoint | Description | Common Paths |
-| :--- | :--- | :--- | :--- |
-| **Internal Service Requests** | API ML Core Services | Requests processed directly by native API ML components for administrative or session-based tasks. | `/login`, `/logout`, `/services` |
-| **Routed Service Traffic** | Onboarded Microservices | Requests where the Gateway acts as a reverse proxy, authenticating and forwarding traffic to external microservices. | `/apicatalog/api/v1/...`, `/your-app/api/...` |
+The telemetry data identifies users as authenticated principals (captured via the `user.id` attribute) who interact with two distinct service types: 
+* Internal API ML Core Services (such as Discovery and API Catalog)
+* Onboarded Microservices routed through the Gateway
+
+
+| Target Endpoint | Description | Common Paths |
+| :--- | :--- | :--- |
+| **API ML Core Services** | Requests processed directly by native API ML components for administrative or session-based tasks. | `/login`, `/logout`, `/services` |
+| **Onboarded Microservices** | Requests where the Gateway acts as a reverse proxy, authenticating and forwarding traffic to external microservices. | `/apicatalog/api/v1/...`, `/your-app/api/...` |
 
 
 ## Log Record Attributes  
@@ -33,10 +38,11 @@ The Log and Event Record Definition establishes a standardized logical model tha
 For details about these log record attributes, see [Log and Event Record Definition](https://opentelemetry.io/docs/specs/otel/logs/data-model/#log-and-event-record-definition) in the OpenTelemetry documentation.
 :::
 
-Each entry in the `logRecords` section represents a distinct signal and contains the following standard OpenTelemetry fields:
+Due to the batch nature of the API ML implementation, each entry in the `logRecords` section represents a distinct signal and contains the following standard OpenTelemetry fields:
 
 * **timeUnixNano**  
-  The precise time the event occurred in nanoseconds since the Unix epoch. Type: Int64.
+  The precise time the event occurred in nanoseconds since the Unix epoch. Type: Int64.   
+  **Note:** Usage is captured at the moment of execution; while signals are buffered for network efficiency, the `timeUnixNano` field records the exact nanosecond a user or service interaction occurred on the mainframe.
 
 * **observedTimeUnixNano**  
   The time the event was observed by the OpenTelemetry SDK. Type: Int64.
@@ -83,7 +89,8 @@ API ML automatically collects specific data points including request paths, HTTP
   The identifier of the authenticated principal or user. 
 
 * **auth.method**  
-  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`). 
+  The authentication mechanism utilized by the client (for example, `JWT`, `x509`, `zoweJwt`).  
+  **Note:** Multiple credential types are supported, primarily utilizing JWT (JSON Web Tokens), zoweJwt, and x509 certificate-based authentication. Each of these credential types are tracked via the `auth.method` attribute to audit security flows.
 
 * **auth.status**  
   The result of the credential validation process (for example, `OK`, `DENIED`). 
@@ -110,17 +117,18 @@ API ML automatically collects specific data points including request paths, HTTP
 
 ## Example of Batch exporter
 
-In the following example, the exporter is a batch exporter wherein a number of logs are collected and exported all at once.
-The custom attributes are the keys and values in the JSON-formatted string of the log record.
+In the following example, the exporter functions as a batch exporter, where multiple logs are collected and transmitted simultaneously.
+
+:::note
+The signals in these examples are presented in JSON format, which reflects how the the signals were saved for subsequent reception by the collector. Depending on your specific OpenTelemetry Collector configuration, the data representation may vary. To verify the signals in your environment, you can view them directly in the collector output logs or through an OpenTelemetry log viewer application.
+:::
 
 <details>
 
-<summary>Click here for the full batch exporter example.</summary>
-
-
-The following data payload is an example of an OTel collector exporting data to a JSON formatted output. 
+<summary>Click here for the full batch exporter example in JSON formatted output.</summary> 
 
 **Example:**
+
 ```json
 
 {
