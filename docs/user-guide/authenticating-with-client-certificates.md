@@ -23,11 +23,22 @@ For details about how authentication by means of client certificates is performe
 
 Register the client certificate with the user IDs in your ESM.
 
+### User prerequisites
+
+In order for a user to be valid for certificate authentication, ensure that the following prerequisites are met:
+* The user ID must have a password assigned. Note that while the user does not enter the password during certificate login, a valid password status is required by the ESM to map the identity and generate security tokens (like PassTickets).
+  
+* The user must have a valid OMVS segment defined to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
+
+### Commands for API ML mapper and ZSS 
+
 The following commands show options for both the internal API ML mapper and ZSS.
 
 :::note
 
 If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format of the certificate's distinguished name as displayed.
+
+Using the internal API ML mapper is the preferred method.
 :::
 
 **RACF**
@@ -68,9 +79,10 @@ If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP
   SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
   ```
 
-  :::tip
-  To disable the API ML mapper, ensure that you set the parameter `components.gateway.apiml.security.useInternalMapper` to `false`.
+  :::note
+  By default, API Mediation Layer uses its Internal mapper, which supports both the `DIGTNMAP` class and certificate-to-user mapping. By contrast, the ZSS mapper only supports mapping the certificate directly to the user.
   :::
+
 </details>
 
 **ACF2** 
