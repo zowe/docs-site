@@ -7,7 +7,7 @@ By aggregating these signals in a monitoring backend, administrators can visuali
 :::info Required role: System administrator
 :::
 
-API ML signals function as a post-execution receipt. System usage is recorded on a per-transaction basis, where every individual request, service heartbeat, and registration event triggers a unique, independent log signal. Signals are generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, log signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent log signal.
+API ML signals are generated only after a request is complete, thereby documenting the final state of a transaction, and providing a definitive record of whether the routing or authentication succeeded. System usage is monitored whereby every individual request, service heartbeat, and registration event triggers a unique, independent log signal. Signals are generated and queued for export only after the Gateway has obtained a definitive result (success or failure) from a target service. To optimize network performance, log signals are buffered in memory and transmitted via a Batch Exporter. While delivered as a bundle, each entry in the export is processed by your OTel Collector as a unique, independent log signal.
 
 ## Functional Classification of API ML Signals
 
