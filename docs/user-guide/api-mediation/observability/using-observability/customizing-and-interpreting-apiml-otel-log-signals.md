@@ -28,11 +28,12 @@ API ML telemetry links a parent Resource Context with individual Log Records to 
 
 By linking discrete Log Records to this parent context, the telemetry hierarchy ensures that every signal, such as service heartbeats to routed requests, is automatically contextualized by the metadata of the specific API ML instance that generated the signal.
 
-* **Resource Context (Resource Logs)**  
+### Resource Context (Resource Logs)  
 Resource Logs provide the metadata about the entity producing the logs (for example, the service, host, and OS). Resource Logs define the environmental and process context, such as host architecture and service names, to ensure that global metadata is defined once rather than redundantly for every event.
+
 For details, see [Resource Attributes](../configuring-apiml-observability.md#resource-attributes) in _Configuring API ML Observability_
 
-* **Log and Event Record Definition**  
+### Log and Event Record Definition  
 
 The Log and Event Record Definition establishes a standardized logical model that contextualizes discrete events within a specific resource and is comprised of specific fields including timestamps, severity levels, and body content. 
 
@@ -43,29 +44,37 @@ For details about these log record attributes, see [Log and Event Record Definit
 Due to the batch nature of the API ML implementation, each entry in the `logRecords` section represents a distinct signal and contains the following standard OpenTelemetry fields:
 
 * **timeUnixNano**  
-  The precise time the event occurred in nanoseconds since the Unix epoch. Type: Int64.   
+  The precise time the event occurred in nanoseconds since the Unix epoch.  
+  **Type:** Int64.   
   **Note:** Usage is captured at the moment of execution; while signals are buffered for network efficiency, the `timeUnixNano` field records the exact nanosecond a user or service interaction occurred on the mainframe.
 
 * **observedTimeUnixNano**  
-  The time the event was observed by the OpenTelemetry SDK. Type: Int64.
+  The time the event was observed by the OpenTelemetry SDK.  
+  **Type:** Int64.
 
 * **severityNumber**  
-  A standardized numerical value (1-24) representing the severity of the log. Type: Int.
+  A standardized numerical value (1-24) representing the severity of the log.  
+  **Type:** Int.
 
 * **severityText**  
-  The human-readable string representing the severity level (for example, INFO, ERROR). Type: String.
+  The human-readable string representing the severity level (for example, INFO, ERROR).  
+   **Type:** String.
 
 * **body**  
-  A JSON-formatted string containing the application-specific custom attributes. Type: String (JSON). API ML custom inforation is contained in this section
+  A JSON-formatted string containing the application-specific custom attributes. API ML custom information is contained in this section. Specific body attributes for custom API ML signals are presented in the next section.  
+  **Type:** String (JSON).
 
 * **flags**  
-  Internal OpenTelemetry flags, typically used to indicate if the trace was sampled. Type: Int.
+  Internal OpenTelemetry flags, typically used to indicate if the trace was sampled.  
+  **Type:** Int.
 
 * **traceId**  
-  A unique 16-byte identifier for the entire distributed trace. Type: String.
+  A unique 16-byte identifier for the entire distributed trace.  
+  **Type:** String.
 
 * **spanId**  
-  A unique 8-byte identifier for the specific unit of work within the trace. Type: String.
+  A unique 8-byte identifier for the specific unit of work within the trace.  
+  **Type:** String.
 
 
 ## Body JSON Attributes (Custom API ML Signals)

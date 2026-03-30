@@ -87,8 +87,11 @@ To ensure your configuration is working as expected, perform the following check
 
 ## Next steps
 
-* **Review your observability output.**  
+* **Review your observability output**  
 To verify that telemetry is flowing, configure an exporter in your OTLP-collector to send data to your chosen visualization tool (such as Grafana, Jaeger, or Prometheus). For details on how to route this data, see the heading _Exporters_ in the [OpenTelemetry documentation](https://opentelemetry.io/docs/concepts/components/).
 
-* **Review Sample Output.**  
+* **Using your OpenTelemetry metrics**  
+For details about API ML telemetry signals and how to use API ML OTel signals to monitor and assess security and routing activity of your z/OS-based service-based infrastructure, see the articles in the section [Using your OpenTelemetry metrics](./using-observability/using-your-otel-metrics.md).
+
+* **Review Sample Output**  
   To review sample output for API ML OpenTelemetry, see [Sample Output from API ML OpenTelemetry](sample-output-from-apiml-otel.md).
