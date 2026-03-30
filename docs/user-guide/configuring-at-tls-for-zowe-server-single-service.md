@@ -199,18 +199,6 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
   TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
 }
 
-TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
-{
-  Renegotiation Disabled
-  3DesKeyCheck Off
-  ClientEDHGroupSize Legacy
-  ServerEDHGroupSize Legacy
-  PeerMinCertVersion Any
-  ServerScsv Off
-  MiddleBoxCompatMode Off
-  CertValidationMode Any
-}
-
 TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 {
 # No CertificateLabel; Keyring contains no X.509 Client Certificate
