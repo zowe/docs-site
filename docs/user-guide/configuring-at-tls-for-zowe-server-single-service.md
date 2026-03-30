@@ -234,10 +234,6 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 ### Inbound rules
 
-The following diagram illustrates inbound rules when Zowe is deployed in single-service mode:
-<!-- TODO replace ports for App Server and ZSS to 7556-7557; Ports 7555 and 7558-7599 are omitted deliberately -->
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules-single-service2.png)
-
 1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
 Note: Rules can be unified into one if they are using contiguous ports.
@@ -344,18 +340,6 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
-The following diagrams illustrate the various outbound rules between Zowe core components for single-service 
-deployment mode. The rules mentioned in the diagrams are described following the diagrams.
-
-<!-- TODO 7554 (ZWE1AG) & 7557 (ZWE1SZ) -->
-![Onboarding Rule To Discovery Service](../images/install/onboarding-rule-to-dicovery-service.png)  -->
-
-<!-- TODO 7556 (ZWE1SV & ZWE1DS) and 7557 (ZWE1SZ); In the rules there is no x.509 certificate sent to App Service and ZSS -->
-![Rule for Routing to Zowe Services](../images/install/rule-for-routing-to-zowe-services.png) 
-
-<!-- TODO In the rules we document ZoweClientRule3 with sending x.509. Do we need to change description? -->
-![Rule for Connections to Infinispan Backend](../images/install/rule-for-connections-to-infinipan.png)
-
 ```bash
 TTLSRule ZoweClientRule1
 {
@@ -378,7 +362,7 @@ TTLSRule ZoweClientRule2
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
@@ -391,7 +375,7 @@ TTLSRule ZoweClientRule3
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7600-7601 # Caching service infinispan storage
-  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
@@ -405,16 +389,10 @@ Note the following conditions:
 * If `zowe.network.client.tls.attls` is `true`, AT-TLS performs encryption even when requests are issued as `http`.
 * If `zowe.network.client.tls.attls` is `true` and the z/OSMF rule is not configured in the PAGENT, specify `zOSMF.scheme: https` in your `zowe.yaml`.
 
-<!-- TODO Double check if this note for ZWE1AG jobname is correct. It does not match all the diagrams and rules above -->
 * __`Jobname`__
-  This parameter is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` (API Gateway) suffix.
+  This parameter is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus the component code as suffix such as`AG` (API Gateway).
 
 #### Outbound rule for communication between API Gateway and southbound services
-
-The following diagram illustrates the rule for the API ML to a southbound service in single-service deployment mode.
-
-<!-- TODO Change Job.prefix to ZWE1AG and match diagram description; should be updated in the rule below -->
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service2.png)
 
 In this example, the rule covers all outbound connections originating from the API Gateway to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule1` and `ZoweClientRule2` for Zowe core servers in the section [Outbound rule for z/OSMF](./configuring-at-tls-for-zowe-server-single-service.md#outbound-rule-for-zosmf).
@@ -472,12 +450,6 @@ Ensure that the following rules are followed:
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
 
-The following diagram illustrates the rule that applies for a service to validate tokens in single-service
-deployment mode.
-
-<!-- TODO Rename the rule in the diagram to DcGatewayClientRule -->
-![Rule for Service to Validate Tokens with API ML](../images/install/rule-for-service-to-validate-tokens-with-apiml.png)
-
 **Example:**
 
 ```bash
@@ -499,10 +471,6 @@ TTLSRule                            DcGatewayClientRule
 ```
 
 #### Outbound rule for z/OSMF
-
-The following diagram illustrates outbound rules for z/OSMF in single-service deployment mode:
-<!-- TODO Based on the diagram and Jobname description below, update Job.prefix to ZWE1AG* and match the diagram description as well. -->
-![Outbound rules](../images/install/outbound-rules-for-zosmf-modulith1.png)
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -736,7 +704,7 @@ TTLSRule ZoweClientRule2
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7556-7557 # App server and ZSS
-  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
@@ -749,7 +717,7 @@ TTLSRule ZoweClientRule3
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7600-7601 # Caching service infinispan storage
-  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlX509ClientEnvAction
@@ -763,7 +731,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 443 # z/OSMF Port
-  Jobname ZWE1A*
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction

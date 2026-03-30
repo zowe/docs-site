@@ -231,10 +231,6 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 ### Inbound rules
 
-The following diagram illustrates inbound rules when Zowe is deployed in multi-service mode:
-
-![AT-TLS_Inbound_Rules](../images/install/inbound-rules.png)
-
 1. Define a generic inbound rule that can be set for all Zowe services.
 
 Note: Rules can be unified into one if they are using contiguous ports.
@@ -320,10 +316,6 @@ Careful consideration needs to be made regarding which rules are to be configure
 
 Use the example in this section as a template for internal connections between Zowe core services.
 
-The following diagram illustrates outbound rules between Zowe core components for multi-service deployment mode:
-<!-- TODO Wrong diagram; uses ZoweServerRule for outbound connections. Temporarily updated to another diagram from the available outbound diagrams; however this is a generic diagram and not split as in the rules-->
-![AT-TLS_Outbound_Rules](../images/install/outbound-rules.png)
-
 ```bash
 
 # Connection to Zaas from Gateway requires X.509 authentication
@@ -333,7 +325,7 @@ TTLSRule                            ZoweZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7558 # ZAAS port
-  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -348,7 +340,7 @@ TTLSRule                            ZoweCachingServiceClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7555 # Caching Service port
-  Jobname                           ZWE1*
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -363,7 +355,7 @@ TTLSRule                            ZoweZaasGwClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7554 # Gateway Service port
-  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ (ZAAS)
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -378,7 +370,7 @@ TTLSRule                            ZoweDiscoveryClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7553 # Discovery Service port
-  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -393,7 +385,7 @@ TTLSRule                            ZoweTrustClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7552-7558
-  Jobname                           ZWE1*
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
@@ -442,10 +434,6 @@ Note the following conditions:
 
 #### Outbound rule for communication between API Gateway and southbound services
 
-The following diagram illustrates the rule for the API ML to a southbound service in multi-service deployment mode.
-<!-- TODO We can also add 7552 ZWE1AC to the left side diagram since the rule captures outbound connections from API Catalog to southbound service also-->
-![Rule for API ML to a southbound service](../images/install/rule-for-apiml-to-southbound-service-single-service2.png)
-
 In this example, the rule covers all outbound connections originating from the API Gateway and API Catalog to a server which is not part of Zowe, such as an extension's server, listening on port `8080`.
 Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rules for z/OSMF](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-zosmf).
 
@@ -461,7 +449,7 @@ TTLSRule ApimlServiceClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 8080 # Set to range of ports where services are listening
-  Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml
+  Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml + A* (API Catalog and API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
@@ -502,11 +490,6 @@ Ensure that the following rules are followed:
 Services running off-host cannot use AT-TLS to make transparent https calls though http. As such, no Outbound rules apply from such services to the API Gateway and the Discovery Service.
 :::
 
-The following diagram illustrates the rule that applies for a service to validate tokens in multi-service deployment mode.
-
-<!-- TODO Rename the rule in the diagram to DcGatewayClientRule -->
-![Rule for Service to Validate Tokens with API ML](../images/install/rule-for-service-to-validate-tokens-with-apiml.png)
-
 Example:
 
 ```bash
@@ -528,10 +511,6 @@ TTLSRule                            DcGatewayClientRule
 ```
 
 #### Outbound rule for z/OSMF
-
-The following diagram illustrates outbound rules for z/OSMF in multi-service deployment mode:
-<!-- TODO Limit the jobs at the right to pnly APIML jobs starting with ZWE1A* -->
-![Outbound rules for a z/OSMF service](../images/install/outbound-rules-for-zosmf.png)
 
 This example rule covers the connection between the API Gateway and ZAAS and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
@@ -713,7 +692,7 @@ TTLSRule ZoweServerRule
   LocalAddr All
   RemoteAddr All
   LocalPortRange 7552-7558 # Range covers all possible Zowe services
-  Jobname ZWE1* # Jobname according to zowe.job.prefix in zowe.yaml
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweServerEnvironmentAction
@@ -727,7 +706,7 @@ TTLSRule                            ZoweZaasClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7558 # ZAAS port
-  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG
+  Jobname                           ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -742,7 +721,7 @@ TTLSRule                            ZoweCachingServiceClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7555 # Caching Service port
-  Jobname                           ZWE1*
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -757,7 +736,7 @@ TTLSRule                            ZoweZaasGwClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7554 # Gateway Service port
-  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ
+  Jobname                           ZWE1AZ* # Set according to zowe.job.prefix in zowe.yaml + AZ (ZAAS)
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -772,7 +751,7 @@ TTLSRule                            ZoweDiscoveryClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7553 # Discovery Service port
-  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlX509ClientEnvAction
@@ -787,7 +766,7 @@ TTLSRule                            ZoweTrustClientRule
   LocalPortRange                    1024-65535
   RemoteAddr                        All
   RemotePortRange                   7552-7558
-  Jobname                           ZWE1*
+  Jobname                           ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction                         Outbound
   TTLSGroupActionRef                ClientGroupAction
   TTLSEnvironmentActionRef          ApimlNoX509ClientEnvAction
@@ -832,7 +811,7 @@ TTLSRule ApimlZosmfClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 443 # z/OSMF Port
-  Jobname ZWE1A*
+  Jobname ZWE1A*  # Set according to zowe.job.prefix in zowe.yaml. Zowe components *AG and *AZ are needed in this rule.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
@@ -847,7 +826,7 @@ TTLSRule ApimlZLUXClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 7556-7557 
-  Jobname ZWE1AG*
+  Jobname ZWE1AG* # Set according to zowe.job.prefix in zowe.yaml + AG (API Gateway)
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
