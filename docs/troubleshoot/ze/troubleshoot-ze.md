@@ -93,6 +93,16 @@ To avoid this, change the `logs` and `temp` folder locations:
 
     <br/>After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
 
+
+## Excessive z/OSMF address space `S222` ABENDs
+
+**Symptom**: Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
+
+**Cause**: z/OSMF address spaces are terminated with an S222 return code. z/OSMF attempts to reuse up to two address spaces by default. When additional concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+
+
+**Solution**: Lower the value of the zowe.settings.zosmfMaxConcurrentRequests setting. If the issue persists, continue lowering the setting value to `1`. Note, lowering this setting might cause requests to take longer, negatively impacting performance.
+
 ## Common issues with Zowe Explorer table view
 
 To troubleshoot the table view for data sets and jobs, review the following common issues:
