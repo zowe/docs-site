@@ -96,12 +96,25 @@ To avoid this, change the `logs` and `temp` folder locations:
 
 ## Excessive z/OSMF address space `S222` ABENDs
 
-**Symptom**: Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
+**Symptom**:
 
-**Cause**: z/OSMF address spaces are terminated with an S222 return code. z/OSMF attempts to reuse up to two address spaces by default. When additional concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
 
+**Sample errors:**
 
-**Solution**: Lower the value of the zowe.settings.zosmfMaxConcurrentRequests setting. If the issue persists, continue lowering the setting value to `1`. Note, lowering this setting might cause requests to take longer, negatively impacting performance.
+![ABENDs with reason code S222](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-symptom.png)
+
+z/OSMF attempts to continually use up to two address spaces by default. When too many concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+
+**Solution**: Lower the value of the **zowe.settings.zosmfMaxConcurrentRequests** setting. If the issue persists, continue lowering the setting value to `1`.
+
+:::note
+
+Lowering this setting might cause requests to take longer, negatively impacting performance.
+
+:::
+
+![The zosmfMaxConcurrentRequests setting can be modified to help avoid ABENDs.](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-solution.png)
 
 ## Common issues with Zowe Explorer table view
 
