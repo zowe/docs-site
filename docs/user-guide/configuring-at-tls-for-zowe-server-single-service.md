@@ -103,7 +103,6 @@ TTLSGroupAction ServerGroupAction
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }
@@ -189,7 +188,6 @@ TTLSEnvironmentAction ApimlNoX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef ZoweNoX509Keyring
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
@@ -269,7 +267,6 @@ TTLSRule ZoweServerRule2
   TTLSConnectionActionRef ZoweServerConnectionAction
 }
 
-# Optional, use if enabling Caching Service in infinispan storage mode
 TTLSRule ZoweServerRule3
 {
   LocalAddr All
@@ -285,10 +282,6 @@ TTLSRule ZoweServerRule3
 ```
 
 1. Verify port ranges.
-
-   :::note
-   The required port ranges depend on your deployment mode.
-   :::
 
     | Port number | Category | Component  | Default Jobname         |
     |------|------|------------|-------------------------|
@@ -364,13 +357,12 @@ deployment mode. The rules mentioned in the diagrams are described following the
 ![Rule for Connections to Infinispan Backend](../images/install/rule-for-connections-to-infinipan.png)
 
 ```bash
-#TODO confirm that gateway port should be listed in RemotePortRange (in the full rules below we have it 7553-7554)
 TTLSRule ZoweClientRule1
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7554 # Discovery and Gateway services
+  RemotePortRange 7553 # Discovery service
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -727,7 +719,7 @@ TLSRule ZoweClientRule1
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7554 # Discovery and gateway services
+  RemotePortRange 7553 # Discovery service
   Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
@@ -871,7 +863,6 @@ TTLSKeyringParms DCNoX509Keyring
 TTLSEnvironmentAction DCServerEnvironmentAction
 {
   HandshakeRole Server
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef DCServerEnvironmentAdvParms
   TTLSKeyringParmsRef DCKeyring
 }
@@ -992,7 +983,6 @@ TTLSEnvironmentAction ApimlX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef ZoweKeyring # Keyring contains personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 TTLSEnvironmentAction ApimlNoX509ClientEnvAction
@@ -1000,14 +990,12 @@ TTLSEnvironmentAction ApimlNoX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef NoKeyKeyring # Keyring does not contain personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 # Environment action for all Zowe services
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }

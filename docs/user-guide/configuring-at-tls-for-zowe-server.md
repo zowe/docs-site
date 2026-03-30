@@ -100,7 +100,6 @@ TTLSGroupAction ServerGroupAction
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }
@@ -186,7 +185,6 @@ TTLSEnvironmentAction ApimlNoX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef ZoweNoX509Keyring
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
@@ -257,10 +255,6 @@ TTLSRule ZoweServerRule
 ```
 
 1. Verify port ranges.
-
-   :::note
-   The required port ranges depend on your deployment mode.
-   :::
 
     | Port number | Category            | Component       | Default Jobname         |
     |------|---------------------|-----------------|-------------------------|
@@ -939,7 +933,6 @@ TTLSKeyringParms DCNoX509Keyring
 TTLSEnvironmentAction DCServerEnvironmentAction
 {
   HandshakeRole Server
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef DCServerEnvironmentAdvParms
   TTLSKeyringParmsRef DCKeyring
 }
@@ -1060,7 +1053,6 @@ TTLSEnvironmentAction ApimlX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef ZoweKeyring # Keyring contains personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 TTLSEnvironmentAction ApimlNoX509ClientEnvAction
@@ -1068,14 +1060,12 @@ TTLSEnvironmentAction ApimlNoX509ClientEnvAction
   HandshakeRole Client
   TTLSKeyringParmsRef NoKeyKeyring # Keyring does not contain personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
-  EnvironmentUserInstance 0
 }
 
 # Environment action for all Zowe services
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
-  EnvironmentUserInstance 0
   TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }
