@@ -12,7 +12,7 @@ For more information about variable names in the following table, see the [Zowe 
 
 Most Components of Zowe are HTTPS servers. The ports of each and their default jobnames are listed below.
 The ports can be customized for each component by editing the value of `components.<component-name>.port` within the Zowe YAML file.
-Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file. The ports used are different between single-service deployment and multi-service deployment.
+Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file. The ports used are different between single-service API ML deployment and multi-service API ML deployment.
 
 ### Single-service deployment
 
@@ -61,7 +61,7 @@ Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the ser
 
 If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.5.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
 
-When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service deployment:
+When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service API ML deployment:
 
 ```plaintext
    7553 TCP ZWE1AG BIND 10.11.12.13 ; Zowe Discovery
