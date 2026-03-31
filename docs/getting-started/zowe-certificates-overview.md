@@ -99,7 +99,7 @@ For example, Java servers can use JKS and JCEKS keystores, which are specific fo
 Zowe supports:
 * **file-based PKCS12**  
   PKCS12 certificates are the most general and widely deployed certificate format.
-* **z/OS keyring-based keystore (JKS/JCEKS)**  
+* **z/OS key ring-based keystore (JKS/JCEKS)**  
   JKS/JCEKS certificates are specific types of certificates that depend on the Java environment.
 
 :::note
