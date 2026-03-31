@@ -16,7 +16,7 @@ The built-in TLS networking is enabled by default. For details about this built-
 
 :::
 
-As a security administrator, you can configure parameters in Zowe Server to switch from native TLS to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
+Configure parameters in Zowe Server to switch from native TLS to AT-TLS. Review this article for information about AT-TLS inbound and outbound rules, and the required configuration to use AT-TLS in high availability. You can also find troubleshooting tips as well as security recommendations.
 
 ## AT-TLS configuration for Zowe
 
@@ -236,7 +236,7 @@ This parameter is used for outbound rules that do not require or prohibit X.509 
 
 1. Define a generic inbound rule that can be set for all Zowe services. Note that port 7555 is excluded intentionally in order to allow for compatibility with multi-service deployment mode. As such, the configuration is split into two inbound rules as presented in the following rules section:
 
-Note: Rules can be unified into one if they are using contiguous ports.
+**Note:** Rules can be unified into one if they are using contiguous ports.
 
 ```bash
 TTLSRule ZoweServerRule1
@@ -277,7 +277,7 @@ TTLSRule ZoweServerRule3
 
 ```
 
-1. Verify port ranges.
+2. Verify port ranges.
 
     | Port number | Category | Component  | Default Jobname         |
     |------|------|------------|-------------------------|
@@ -288,9 +288,25 @@ TTLSRule ZoweServerRule3
     | 7600 | API Mediation Layer | caching-service        | ZWE1**AG**              |
     | 7601 | API Mediation Layer | caching-service        | ZWE1**AG**              |
 
+:::note Zowe Jobname Suffixes
+The bolded letters in the jobnames identify the specific functional area of the Zowe framework. These suffixes remain constant:
+
+* **AG** (API Gateway)  
+  In single-service mode, this represents the entire API Mediation Layer (Gateway, Discovery, and Catalog).
+
+* **DS** (Desktop Server)  
+  The Zowe Application Server (ZLUX) process.
+
+* **SV** (Server)  
+The Zowe server task (often used in cluster/HA modes).
+
+* **SZ** (Secure Services)  
+Zowe Secure Services (ZSS), which handles low-level z/OS security and system calls.
+:::
+
     For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
-2. Apply your keyring and configure the handshake role.
+3. Apply your keyring and configure the handshake role.
 
     i. In the following keyring configuration, replace `ZWEKRNG` to reference your environment's keyring with a private key.
 
@@ -316,7 +332,7 @@ TTLSRule ZoweServerRule3
       For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
    :::
 
-3. Refresh PAGENT and verify the contents.
+4. Refresh PAGENT and verify the contents.
 
 * Refresh the policy configuration by issuing the MVS command: `F PAGENT,REFRESH`.
 * Test connectivity for all inbound services.
@@ -390,7 +406,7 @@ Note the following conditions:
 * If `zowe.network.client.tls.attls` is `true` and the z/OSMF rule is not configured in the PAGENT, specify `zOSMF.scheme: https` in your `zowe.yaml`.
 
 * __`Jobname`__
-  This parameter is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus the component code as suffix such as`AG` (API Gateway).
+  This parameter is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus the component code as a suffix such as `AG` (API Gateway).
 
 #### Outbound rule for communication between API Gateway and southbound services
 
@@ -621,7 +637,7 @@ Ensure you collect the logs and current configurations when contacting support.
 In an ACF2 environment, setting up AT-TLS with TLSv1.3 or TLSv1.2 using modern hardware ciphers like Elliptic Curve (ECC) can trigger a `CRYPTOZ` class violation for the `CLEARKEY.SYSTOK-SESSION-ONLY` resource.
 This occurs because negotiating these advanced cipher suites and key exchange algorithms requires cryptographic processing via ICSF PKCS#11 callable services.
 ICSF uses a temporary, in-memory "session-only" token to manage the clear keys during the handshake. By default, ACF2 secures this virtual token under the `CRYPTOZ` resource class.
-To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant READ access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as:
+To resolve the violation and allow the Zowe user (ZWESVUSR) to read this "omnipresent" session token, you must grant `READ` access to `CLEARKEY.SYSTOK-SESSION-ONLY` with a rule such as:
 
 ```markup
 SET RESOURCE(CRY)
