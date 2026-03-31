@@ -130,8 +130,8 @@ TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
 TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 {
   ApplicationControlled Off
-  ServerCertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
-  CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
+  ServerCertificateLabel zowecert # Specify the personal server certificate used for the Zowe Server
+  CertificateLabel zowecert # Specify the personal server certificate used for the Zowe Server
   SecondaryMap Off
 }
 
@@ -166,9 +166,10 @@ TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
   CertValidationMode Any
 }
 
+# TODO recheck all rule names (zowe vs apiml); should match their usage and the cert names 
 TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 {
-  CertificateLabel apimlcert # Label of personal certificate in the ZoweKeyring
+  CertificateLabel zowecert # Label of personal certificate in the ZoweKeyring
   SecondaryMap Off
   SSLv2 Off
   SSLv3 Off
@@ -454,6 +455,7 @@ Services running off-host cannot use AT-TLS to make transparent https calls thou
 
 ```bash
 
+<!-- TODO this rule should describe App Server or ZSS communication with API Gateway withoutb X.509 cert. Update accordingly -->
 TTLSRule                            ApimlClientRule
 { 
   LocalAddr                         All
@@ -697,7 +699,7 @@ TLSRule ZoweClientRule1
 
 # TODO: Note that in our testing environment we are testing this rule without x.509 certificate. Need double checking before publishing
 # TODO The rule we use in our testing environment is ApimlZLUXClientRule
-# Example outbound TTLS rule for a Zowe client calling App server and ZSS
+# Example outbound TTLS rule for Api Gateway calling App server and ZSS
 TTLSRule ZoweClientRule2
 {
   LocalAddr All
@@ -756,19 +758,6 @@ TTLSRule ApimlZLUXClientRule
 #            SAMPLE ONBOARDED SERVICE RULES            #
 ########################################################
 
-# Example southbound service inbound rule
-TTLSRule ApimlDCServerRule
-{
-  LocalAddr All
-  RemoteAddr All
-  LocalPortRange 40030 # Example service port
-  Jobname ZWE1DC* # Jobname under which the onboarded service is running (optional)
-  Direction Inbound
-  TTLSGroupActionRef ServerGroupAction
-  TTLSEnvironmentActionRef DCServerEnvironmentAction
-  TTLSConnectionActionRef DCServerConnectionAction
-}
-
 # Example outbound rule for connections from API ML Gateway (during request routing) to a southbound service running in port 40030 
 # Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
 # Note ConnectionAction doesn't configure X.509 Client Certificate.
@@ -783,50 +772,6 @@ TTLSRule ApimlServiceClientRule
   TTLSGroupActionRef ClientGroupAction
   TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
-}
-
-# Keyring of DC service
-TTLSKeyringParms DCKeyring
-{
-  Keyring DCKeyring
-}
-
-# Server Environment action for sample southbound service
-TTLSEnvironmentAction DCServerEnvironmentAction
-{
-  HandshakeRole Server
-  TTLSEnvironmentAdvancedParmsRef DCServerEnvironmentAdvParms
-  TTLSKeyringParmsRef DCKeyring
-}
-
-# Server Connection Action for DC Service.
-TTLSConnectionAction DCServerConnectionAction
-{
-  HandshakeRole Server 
-  TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef DCServerConnectionAdvParms
-}
-
-# Advanced TLS server settings, choose TLS versions supported
-TTLSEnvironmentAdvancedParms DCServerEnvironmentAdvParms
-{
-  ApplicationControlled Off
-  Renegotiation Disabled
-  SSLv2 Off
-  SSLv3 Off
-  TLSv1 Off
-  TLSv1.1 Off
-  TLSv1.2 On
-  TLSv1.3 On
-}
-
-# Service advanced server connection action.
-# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLS connections
-TTLSConnectionAdvancedParms DCServerConnectionAdvParms
-{
-  ApplicationControlled Off
-  ServerCertificateLabel servicecert
-  SecondaryMap Off
 }
 
 ########################################################
@@ -881,7 +826,7 @@ TTLSEnvironmentAdvancedParms ZoweServerEnvironmentAdvParms
   TLSv1.3 On
 }
 
-# Server Connection Action for API ML core services.
+# Server Connection Action for Zowe core services.
 TTLSConnectionAction ZoweServerConnectionAction
 {
   HandshakeRole ServerWithClientAuth # API ML Core Services use X.509 Client Certificate authentication
@@ -889,12 +834,12 @@ TTLSConnectionAction ZoweServerConnectionAction
   TTLSConnectionAdvancedParmsRef ZoweServerConnectionAdvParms
 }
 
-# API ML Server connection action.
+# Zowe Server connection action.
 # ServerCertificateLabel indicates which certificate is used on server-side for establishing TLs connections.
 TTLSConnectionAdvancedParms ZoweServerConnectionAdvParms
 {
   ApplicationControlled Off
-  ServerCertificateLabel apimlcert
+  ServerCertificateLabel zowecert
   SecondaryMap Off
 }
 
