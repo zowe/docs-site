@@ -348,5 +348,37 @@ One possible cause of these errors in when SAF is the authentication provider. C
 z/OSMF is set as the authentication provider:  
 `components.gateway.apiml.security.auth.provider: zosmf`
 
+## TN3270 websocket error 4000 and EZZ6034I ERR 600D
 
+**Symptoms:**
+* The Zowe Desktop TN3270 application fails to connect and displays the following errors:
+```
+Error: Terminal closed due to websocket error. Code=4000
+```
+* There is SYSLOG message `EZZ6034I` with `ERR 600D`, for example:
+```
+04:05:06.07 STC11111 00000007  EZZ6034I TCPTEL CONN 009BAD81 LU **N/A**  CONN DROP  ERR 600D 054
+                 054 00000007    IP..PORT: ::FFFF:10.10.10.10..12345                       EZBTPOSL
+```
 
+**Solution:**
+
+One cause of this issue is the usage of an incorrect TN3270 setting to connect to a secure `TELNET` port.
+Review the z/OS Communications Server TN3270E Telnet server profile.
+
+**Example of a profile:**
+
+```
+; Use type TELNET and port 23 in Zowe Desktop TN3270
+TELNETPARMS
+  PORT 23
+ENDTELNETPARMS
+
+; Use type TLS and port 123 in Zowe Desktop TN3270
+TELNETPARMS
+  TTLSPORT   123
+  CONNTYPE SECURE
+ENDTELNETPARMS
+```
+
+Review [Using the 3270 Terminal](../../user-guide/mvd-3270.md) article to update the relevant environment variables in the configuration of your `zowe.yaml` file.
