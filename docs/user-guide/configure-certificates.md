@@ -42,7 +42,7 @@ The truststore is used by Zowe to verify the authenticity of the certificates th
 ### PKCS12
 PKCS12 is a file format that allows a Zowe user to hold many cryptographic objects in one encrypted, password-protected file which is well supported across platforms. PKCS12 setups typically have distinct keystores and truststores, though you can use one store as both keystore and truststore. Throughout Zowe's documentation, we will by default treat the keystore and truststore as separate and distinct.
 
-* Use of PKCS12 keystores and truststores is recommended for non-production environments.
+* Use of PKCS12 keystores and truststores is recommended for proof of concept environments.
 
 ### z/OS key ring
 z/OS provides an interface to manage cryptographic objects in "key rings". Compared with PKCS12, using z/OS key rings grants a deeper integration of certificates into z/OS systems and security management, which benefits systems management and operations across multiple products. z/OS key rings are still encrypted, but do not use passwords for access. Instead, SAF privileges are used to manage access.
@@ -105,7 +105,7 @@ z/OSMF's certificate is verified according to Zowe's [Certificate verification s
 ## Certificate setup type
 Zowe offers automated assistance setting up certificates, though this is disabled by default during the installation process, as we expect most users to bring their own certificates to Zowe. Zowe offers automation for five different scenarios covering both PKCS12 and z/OS key ring options, detailed later under [Certificate Configuration Scenarios](./certificates-configuration-scenarios.md).
 
-## Next steps: configuring certificates for Zowe
+## Next steps: Configuring certificates for Zowe
 
 Review the following options and choose which best applies to your use case:
 
