@@ -63,41 +63,6 @@ Zowe supplies five certificate scenario YAML files in the `files/examples/setup/
 
 </details>
 
-<!--<
-
-Does not work right now, and does not work if you try to do something like 
-
-...first yaml
----
-# scenario yaml
-zowe:
-  setup:
-    ...
-
-details>
-<summary>Append scenario YAML contents to main zowe.yaml</summary>
-
-1. Identify the fully-qualified path to your selected scenario YAML configuration file. In this example, we use `/path/to/files/examples/setup/certificate/scenario-1.yaml`.
-
-2. Identify the fully-qualified path to your main `zowe.yaml` configuration file. In this example, we use `/path/to/zowe.yaml`.
-
-3. Make a manual backup of your `zowe.yaml` file before modification.
-
-4. Append the contents of your selected scenario YAML configuration file to your main `zowe.yaml` configuration. For example:
-    ```
-    cat /path/to/files/examples/setup/certificate/scenario-1.yaml >> /path/to/zowe.yaml
-    ```
-:::note
-If you make changes to your scenario.yaml configuration file after this step or if you decide on a different certificate scenario, you should either modify the appended values in your `zowe.yaml` file directly, or restore `zowe.yaml` from your backup in Step 3 and re-run Step 4.
-:::
-
-5. Issue `init certificate` using your `zowe.yaml` file.
-    ```
-    zwe init certificate -c /path/to/zowe.yaml --update-config
-    ```
-
-</details>-->
-
 :::tip
 If you encounter issues when configuring your certificate, see [Troubleshooting the certificate configuration](../troubleshoot/troubleshoot-zos-certificate.md) to find resolution of errors.
 :::
