@@ -380,24 +380,29 @@ Due to the limitation of the `RACDCERT` command, this field should contain exact
    ```
 Your YAML file is now configured to enable Zowe to use a z/OS key ring-based keystore with Zowe generated certificates. You can now go to [Running a scenario file](#running-a-scenario-file).
 
-The following command output shows the generation of a JCERACFKS certificate using the default values on a RACF system. Note that some detailed output messages have been omitted, and the jobname will be different on ACF2 and Top Secret systems.
+The following command output shows the generation of a key ring and certificates using the default values on a RACF system. Note that some detailed output messages have been omitted, and the JCL member name will be different on ACF2 and Top Secret systems.
 <!-- TODO: Update command output? Don't think  we're using ZWEKRING now -->
 **Command output:**
 ```
 #>zwe init certificate -c <path-to-your-zowe-configuration-yaml> --update-config
 -------------------------------------------------------------------------------
->> Generate Zowe certificate in keyring
+>> Generate certificate 
 
->>>> Modify ZWEIKRR1
-    - IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431) is prepared
->>>> Submit IBMUSER.ZWEV3.CUST.JCLLIB(ZW101431)
-    - Job ZWEKRING(JOB03054) ends with code 0 (COMPLETED).
->> Certificate is generated in keyring successfully.
+Template JCL: YOUR.DATASET.PREFIX(ZWEIKRR1) , Executable JCL: YOUR.DATASET.PREFIX(ZWEIKRR1)
+--- JCL Content ---
+//ZWEIKRR1 JOB 
+...
+--- End of JCL ---
+Submitting Job ZWEIKRR1
+    - Job ZWEIKRR1(JOB05693) ends with code 0 (COMPLETED).
 
 -------------------------------------------------------------------------------
->> Update certificate configuration to <path-to-your-zowe-configuration-yaml>
->> Zowe configuration is updated successfully.
+>> Update certificate configuration to FILE(./files/scenario3.yaml):FILE(zowe.test.yaml):FILE(./files/defaults.yaml)
 
+Please manually update to these values:
+
+zowe:
+ ...values
 #>
 ```
 
