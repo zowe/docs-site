@@ -6,7 +6,7 @@ As a system administrator, you can configure the Workload Management plug-in to 
 
 To learn about Workload Management and how to use it, refer to the [IBM documentation](https://www.ibm.com/docs/en/zos/3.2.0?topic=management-what-is-mvs-workload).
 
-## Making minimal configuration changes
+## Configuring Workload Management from the z/OSMF web interface
 
 Follow these steps to configure the entire interactive workload that goes through a z/OS service.
 
@@ -38,9 +38,9 @@ Due to the complex nature of Workload Management settings, only system administr
 
     See the [IBM documentation](https://www.ibm.com/docs/en/zos/3.2.0?topic=goals-defining-performance) to learn more about goal types.
 
-## Making more detailed configuration changes
+## Defining a new service class
 
-This configuration follows the same steps as [Making minimal configuration changes](#making-minimal-configuration-changes). However, you must first take some additional preparation steps:
+This configuration follows the same steps as [Configuring Workload Management from the z/OSMF web interface](#configuring-workload-management-from-the-zOSMF-web-interface). However, you must first take some additional preparation steps:
 
 1. Define the performance attributes in the default log-on procedure (such as `IZUFPROC`) that z/OSMF uses to spawn new address spaces.
 
