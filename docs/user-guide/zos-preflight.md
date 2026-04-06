@@ -59,6 +59,7 @@ zowe:
       ports: warn         # override: port conflicts become warnings, not errors
       zosmf: exit
       user: exit
+      certificate: exit
 ```
 
 If a per-check key is absent, `default` is used. If `default` is also absent, `exit` is
@@ -83,7 +84,7 @@ corresponding `zwe validate` command that can be run manually at any time.
 | Node validity | *(unconditional when app-server enabled)* | always exits | A usable Node.js is available. | `node --version` | — |
 | z/OSMF reachability | `zosmf` | `exit` | z/OSMF at `zOSMF.host:zOSMF.port` accepts HTTPS connections. | HTTP(S) probe via Gateway jobname | `zwe validate` *(no dedicated subcommand; logic is inline)* |
 | Port availability | `ports` | `exit` | Each enabled component can bind to its configured TCP port. | [`bind-test`](#bind-test) | [`zwe validate port bind`](#zwe-validate-port-bind) |
-| Certificates | *(via component validate scripts)* | — | Keystore and truststore are valid and meet Zowe requirements. | [`certificate-analyser.jar`](#certificate-analyserjar) | [`zwe validate certificate`](#zwe-validate-certificate) |
+| Certificates | `certificate` | `exit` | Keystore and truststore are valid and meet Zowe requirements. | [`certificate-analyser.jar`](#certificate-analyserjar) | [`zwe validate certificate`](#zwe-validate-certificate) |
 
 ### z/OSMF reachability check
 
@@ -187,7 +188,7 @@ zwe validate config -c /path/to/zowe.yaml --all
 ### `zwe validate certificate`
 
 Validates that Zowe's keystore and truststore are present, readable, and meet TLS
-requirements. Uses [`certificate-analyser.jar`](#certificate-analyserjat) internally.
+requirements. Uses [`certificate-analyser.jar`](#certificate-analyserjar) internally.
 
 ```sh
 zwe validate certificate -c /path/to/zowe.yaml
@@ -224,7 +225,7 @@ Zowe port bind validation passed.
 
 ## Standalone utilities
 
-These utilities are distributed in `<runtimeDirectory>/bin/utils`. They are used internally
+These utilities are distributed in `<zowe.runtimeDirectory>/bin/utils`. They are used internally
 by Zowe's pre-flight checks but are designed as general-purpose tools that can be used
 independently — in system administration scripts, product prerequisites, CI pipelines, or
 other software that runs on z/OS.
