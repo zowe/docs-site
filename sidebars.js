@@ -260,7 +260,14 @@ module.exports = {
             }
           ]
         },
-        "user-guide/start-zowe-zos",
+        { 
+          "type": "category", 
+          "label": "Starting and Stopping Zowe",
+          "link": { "type": "doc", "id": "user-guide/start-zowe-zos" },
+          "items": [
+            "user-guide/zos-preflight"
+          ]
+        },
         "user-guide/verify-zowe-runtime-install",
         "user-guide/upgrade-zos",
         "user-guide/backout-zos",
