@@ -31,7 +31,7 @@ zwe start
        │    ├─ Workspace directory writability
        │    ├─ Java validity (if APIML / Gateway components are enabled)
        │    ├─ Node validity (if app-server is enabled)
-       |    ├─ Certifivate validity [zowe.launchScript.startupChecks.certificate]
+       |    ├─ Certificate validity [zowe.launchScript.startupChecks.certificate]
        │    ├─ z/OSMF reachability  [zowe.launchScript.startupChecks.zosmf]
        └─ Component validations (one pass per enabled component)
             ├─ Port bind check  (Is each server's port available) [zowe.launchScript.startupChecks.ports]
