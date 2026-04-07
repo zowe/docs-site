@@ -92,6 +92,88 @@
 
    ![Edit and upload a data set member](../images/ze/ZE-edit-upload.gif)
 
+## Downloading a data set to a local file
+
+### Downloading a data set member
+
+1. Expand the **DATA SETS** tree in the **Side Bar**.
+
+2. Click on the **Search** icon next to a profile to search for a pattern that matches the data set that you want to download.
+
+   Search results display under the profile in the **Side Bar**.
+
+3. Right-click on the desired data set member and select the **Download Member...** option.
+
+4. In the **Quick Pick** menu, check or uncheck the download options:
+
+   - **Overwrite**: Overwrites existing files in the download location. Default: `checked`
+
+   - **Generate Directory Structure**: Creates sub-folders based on the data set name. Default: `checked`
+      
+      If unchecked, `HLQ.DATASET.TEST(HELLO)` downloads to `HELLO.txt`.
+      
+      If checked, `HLQ.DATASET.TEST(HELLO)` downloads to `HLQ/DATASET/TEST/HELLO.txt`.
+   
+   - **Use Uppercase Names**: Downloads files and directories using uppercase names. When disabled, names are converted to lowercase. Default: `checked`
+
+   - **Override File Extension**: Allows you to specify a custom file extension for the downloaded file. Default: `unchecked`
+      
+      If unchecked, the file extension is automatically determined based on the member name and partitioned data set name. If no extension can be determined, the default extension `.txt` is used.
+      
+   - **Choose Encoding**: Enables you to select a specific encoding for the download. Default: `unchecked`
+      
+      If unchecked, the encoding configured in your connection profile is used.
+
+   :::note
+
+   To download a data set in record mode, select **Choose Encoding**. When prompted, choose **Other** from the encoding options, then enter `Record` as the codepage value.
+
+   :::
+
+5. Press the `Enter` key to confirm your selections.
+
+6. If you selected **Override File Extension**, enter the desired file extension in the **input box** (for example, `csv`). If not, proceed to the next step.
+
+7. If you selected **Choose Encoding**, select the encoding from the **Quick Pick** menu. If not, proceed to the next step.
+
+8. In the file explorer dialogue, select the location where you want to download the member and click **Select Download Location**.
+
+   The member is downloaded to the selected location with the specified options applied.
+
+9. To open the downloaded file in VS Code, click **Open File** on the download complete notification.
+
+### Downloading a sequential data set
+
+1. Expand the **DATA SETS** tree in the **Side Bar**.
+
+2. Click on the **Search** icon next to a profile to search for a pattern that matches the data set that you want to download.
+
+   Search results display under the profile in the **Side Bar**.
+
+3. Right-click on the desired sequential data set and select the **Download Data Set...** option.
+
+4. Follow Steps 4-8 in [downloading a data set member](#downloading-a-data-set-member) to configure download options and select a location.
+
+   The sequential data set is downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the sequential data set.
+
+5. To open the downloaded file in VS Code, click **Open File** on the download complete notification.
+
+### Downloading all members of a partitioned data set
+
+1. Expand the **DATA SETS** tree in the **Side Bar**.
+
+2. Click on the **Search** icon next to a profile to search for a pattern that matches the data set that you want to download.
+
+   Search results display under the profile in the **Side Bar**.
+
+3. Right-click on the desired partitioned data set and select the **Download All Members...** option.
+
+4. Follow Steps 4-8 in [downloading a data set member](#downloading-a-data-set-member) to configure download options and select a location.
+
+   All members of the partitioned data set are downloaded to the selected location. If **Generate Directory Structure** is enabled, a folder is created for the data set containing all its members.
+
+5. To open the downloaded directory in the file explorer, click **Open Directory** on the download complete notification.
+
 ## Uploading a local file to a data set
 
 1. Expand the **DATA SETS** tree in the **Side Bar**.
