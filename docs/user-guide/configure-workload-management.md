@@ -34,16 +34,10 @@ Due to the complex nature of Workload Management settings, only system administr
     :::
 
 8. Change the number in the **Importance** drop-down menu to reflect your performance goal.
+
+    :::note
+    For more control over settings, create a new service class to define additional configurations.
+    :::
 9. Use the **Goal Type** drop-down menu to specify a goal for both service classes. Change the z/OSMF response time by adjusting the appropriate goal field.
 
     See the [IBM documentation](https://www.ibm.com/docs/en/zos/3.2.0?topic=goals-defining-performance) to learn more about goal types.
-
-## Defining a new service class
-
-This configuration follows the same steps as [Configuring Workload Management from the z/OSMF web interface](#configuring-workload-management-from-the-zOSMF-web-interface). However, you must first take some additional preparation steps:
-
-1. Define the performance attributes in the default log-on procedure (such as `IZUFPROC`) that z/OSMF uses to spawn new address spaces.
-
-2. Create a new service class and workload that are mapped to the default log-on procedure.
-
-3. Follow the steps in [Making minimal configuration changes](#making-minimal-configuration-changes). For Step 7, use the service class you defined in the preceding paragraph.
