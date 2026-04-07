@@ -218,7 +218,7 @@
 
 ## Filtering partitioned data set members
 
-Filter partitioned data set members in the **DATA SETS** tree view by **Date Modified** or **User ID**.
+Filter partitioned data set members in the **DATA SETS** tree view by **Name**, **Date Created**, **Date Modified** or **User ID**.
 
 ### Filtering all partitioned data set members under a specific profile
 
@@ -227,14 +227,15 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
    The filter selection menu appears in the **Quick Pick**.
 3. Select a filter type from the list of available options:
+   - **Name**
+   - **Date Created**
    - **Date Modified**
    - **User ID**
 4. In the **Quick Pick**, enter a valid value for the selected filter.
 5. Press the `Enter` key to confirm the filter.
 
    Expanded data sets display a filtered list of members under the selected profile in the **DATA SETS** tree.
-
-   ![Filtering all PDS members under a specific profile](../images/ze/ZE-filtering-profile-PDS-members.gif)
+6. To clear the filter on the profile, click on the **Filter** icon to the right of the profile, then select **Clear filter for profile** in the **Quick Pick**.
 
 ### Filtering members for a single partitioned data set
 
@@ -246,14 +247,15 @@ Filter partitioned data set members in the **DATA SETS** tree view by **Date Mod
 
    The filter selection menu appears in the **Quick Pick**.
 4. Select a filter type from the list of available options:
+   - **Name**
+   - **Date Created**
    - **Date Modified**
    - **User ID**
-5. In the **Quick Pick**, enter a valid value for the selected filter.
-6. Press the `Enter` key to confirm the filter. This overrides any *profile* filter preferences that might be in effect for the single data set.
+6. In the **Quick Pick**, enter a valid value for the selected filter.
+7. Press the `Enter` key to confirm the filter. This overrides any *profile* filter preferences that might be in effect for the single data set.
 
    The selected data set displays a filtered list of members in the **DATA SETS** tree.
-
-   ![Filtering PDS members for a single PDS](../images/ze/ZE-filtering-a-specific-PDS.gif)
+8. To clear the filter on the data set, click on the **Filter** icon to the right of the profile, then select **Clear filter for profile** in the **Quick Pick**.
 
 ## Sorting partitioned data set members
 
