@@ -218,7 +218,7 @@
 
 ## Filtering partitioned data set members
 
-Filter partitioned data set members in the **DATA SETS** tree view by **Name**, **Date Created**, **Date Modified** or **User ID**.
+Filter partitioned data set members in the **DATA SETS** tree view by **Name**, **Date Created**, **Date Modified**, or **User ID**.
 
 ### Filtering all partitioned data set members under a specific profile
 
