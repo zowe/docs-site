@@ -147,7 +147,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 In Zowe YAML configuration, the certificate definition shares the same format which can be used in several configuration entries. For example, `zowe.certificate`, `components.<component>.certificate`, and `haInstances.<ha-instance>.components.<component>.certificate`. The certificate definition may include the following entries:
 
 - **keystore.type**  
- Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
 - **keystore.file**  
  Specifies the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
 - **keystore.password**  
@@ -155,7 +155,7 @@ In Zowe YAML configuration, the certificate definition shares the same format wh
 - **keystore.alias**  
  Represents the alias name of the certificate stored in keystore. If you are using keyring, this is the certificate label connected to the keyring.
 - **truststore.type**  
- Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using keyring, this value should be `JCERACFKS`.
+ Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
 - **truststore.file**  
  Specifies the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, and usually will be the same value of `keystore.file`.
 - **truststore.password**  
@@ -194,13 +194,14 @@ The high-level configuration `zowe` supports these definitions:
 - **zowe.externalDomains**  
  Specifies a list of external domains to be used by the Zowe instance. This configuration is an array of domain name strings.
  In Sysplex deployment, this value is the DVIPA domain name defined in Sysplex Distributor. For example,
-   
+
    ```yaml
    zowe:
     externalDomains:
     - external.my-company.com
     - additional-dvipa-domain.my-company.com
    ```
+
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
@@ -218,7 +219,7 @@ The high-level configuration `zowe` supports these definitions:
     environments:
       MY_NEW_ENV: value-of-my-env
    ```
- 
+
  :::note
  Variables defined here are global to all Zowe components, on all HA instances.
 
@@ -336,13 +337,13 @@ Specifies the user custom APF LOADLIB. This field is optional. If this parameter
 - **zowe.setup.dataset.authPluginLib**  
 Specifies the user custom APF PLUGINLIB. Zowe ZIS plug-ins can be installed into this load library. This loadlib requires APF authorize.
 - **zowe.setup.security.product**  
-Speficies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+Specifies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
 - **zowe.setup.security.groups.admin**  
 Specifies the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.stc**  
 Specifies the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.groups.sysProg**  
-Speficies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+Specifies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
 - **zowe.setup.security.users.zowe**  
 Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
 - **zowe.setup.security.users.zis**  
@@ -366,6 +367,9 @@ Specifies the list of certificate authorities to be imported to the Zowe `PKCS12
 
 **For `PKCS12` certificate users**
 
+<details>
+<summary>Click here to review the following parameters for PKCS12 certificate users. </summary>
+
 - **zowe.setup.certificate.pkcs12.directory**  
 Specifies the directory where the PKCS12 keystore and truststore are stored. This value is required if `zowe.setup.certificate.type` is `PKCS12`.
 - **zowe.setup.certificate.pkcs12.lock**  
@@ -380,7 +384,12 @@ Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.im
 - **zowe.setup.certificate.pkcs12.import.alias**  
 Specifies the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After import, the certificate is saved as an alias specified in `zowe.setup.certificate.pkcs12.name`.
 
+</details>
+
 **For `JCERACFKS` certificate (z/OS keyring) users**
+
+<details>
+<summary>Click here to review the following parameters for JCERACFKS certificate users.</summary>
 
 - **zowe.setup.certificate.keyring.owner**  
 Specifies the keyring owner. It's optional and default value is `zowe.setup.security.users.zowe`. If it's also not defined, the default value is `ZWESVUSR`.
@@ -392,7 +401,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
 - To import a certificate stored in an MVS data set into Zowe keyring, use the following parameters:
   * **zowe.setup.certificate.keyring.connect.dsName**  
   This value is required to inform Zowe about the data set where the certificate stored.
-  * **zowe.setup.certificate.keyring.connect.passwor**  
+  * **zowe.setup.certificate.keyring.connect.password**  
   Specifies the password when importing the certificate.
   * **zowe.setup.certificate.keyring.label**  
   Specifies the label of the certificate to be  imported.
@@ -422,6 +431,9 @@ Indicates if VSAM utilizes Record Level Sharing (RLS) services. Valid values are
 Indicates the name of volume. This field is required if VSAM mode is `NONRLS`.
 - **zowe.setup.vsam.storageClass**  
 Indicates the name of RLS storage class. This field is required if VSAM mode is `RLS`.
+
+</details>
+
 
 ### YAML configurations - java
 
@@ -479,7 +491,7 @@ These configurations can be used under the `components.gateway` section:
  Specifies the port which the Gateway should start on. This value must be a valid port number.
 - **debug**  
  Specifies the enablement of debug mode for the Gateway.
-- **apiml.connectionTimeout**
+- **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
 - **apiml.connection.idleConnectionTimeoutSeconds**  
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
@@ -509,8 +521,8 @@ These configurations can be used under the `components.gateway` section:
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
-- **apiml.security.forwardHeader.trustedProxies** 
-  Specifies the regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. This parameter applies to Zowe version 3.3.0 and later versions.
+- **apiml.security.forwardHeader.trustedProxies**  
+  Specifies the IP address regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. For example: to trust all proxies from range 10.10.10.0-10.10.10.255, use `10\.10\.10\..*`. This parameter applies to Zowe version 3.3.0 and later versions.
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
 - **apiml.security.oidc.enabled**  
@@ -518,11 +530,14 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.oidc.registry**  
   Specifies the SAF registry used to group identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between distributed and mainframe user identities. For more information, see [ESM configuration prerequisites](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
 - **apiml.security.oidc.jwks.uri**  
-  Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI.
+  Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
 - **apiml.security.oidc.jwks.refreshInternalHours**  
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+- **apiml.security.oidc.userIdField**  
+  Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. This parameter applies to Zowe version 3.4.0 and later versions.  
+  **Default:** `sub`
 
 :::note
 
@@ -532,10 +547,9 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
 
 - **apiml.security.oidc.identityMapperUrl**  
  Specifies the URL where the Gateway can query the mapping of the distributed user ID to the mainframe user ID. 
-  This property informs the Gateway about the location of this API. ZSS is the default API provider in Zowe. Note that if you are using Zowe release 2.14 or a later version, we recommend you use the [API ML internal mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-internal-api-ml-mapper). To provide your own API to perform the mapping, it is necessary to customize this value.
+  This property informs the Gateway about the location of this API. Starting with Zowe v3, if you leave this parameter blank or do not configure it, the system automatically routes requests to the Zowe API Mediation Layer (API ML) internal mapper. Note that if you are using Zowe release 2.14 or a later version, we recommend you use the [internal API ML mapper](../user-guide/api-mediation/configuration-client-certificates.md#configure-the-internal-api-ml-mapper). To provide your own API to perform the mapping, it is necessary to customize this value.
 
-  The following URL is the default value for Zowe and ZSS:
-
+  The following URL is the default value for Zowe and ZSS:  
     ```
     https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
@@ -622,24 +636,78 @@ The following configurations can be used under the `components.api-catalog` sect
 These configurations can be used under the `components.caching-service` section:
 
 - **port**  
- Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+  Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug**  
- Specifies if debug mode is enabled for the Caching Service.
+  Specifies if debug mode is enabled for the Caching Service.
+- **apiml.security.ssl.verifySslCertificatesOfServices**  
+  Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in a truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
+
+  :::note
+  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
+  :::
+
+- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
+  Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is disabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+
+  :::note
+  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
+  :::
+
 - **storage.mode**  
- Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, and `redis`.
+  Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, `inMemory`, `redis`, and `vsam`.
+
+  :::note
+  The storage mode `vsam` is deprecated.
+  :::
+
 - **storage.size**  
- Specifies the number of records before eviction strategies start evicting.
+  Specifies the number of records before eviction strategies start evicting.
+
+  :::note
+  This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
+  :::
+
 - **storage.evictionStrategy**  
- Specifies eviction strategy to be used when the storage size is achieved. The valid values are `reject`, and `removeOldest`.
+  Specifies the eviction strategy to be used when the maximum storage capacity has been reached. The valid values are `reject`, and `removeOldest`.
+
+  :::note
+  This property is used only when `storage.mode` is set to `vsam` or `inMemory`. Note that `vsam` is deprecated.
+  :::
+
+##### VSAM specific configuration (deprecated)
+
 - **storage.vsam.name**  
- Specifies the data set name of the Caching service VSAM data set.
+  Specifies the data set name of the Caching service VSAM data set.
+
+##### Infinispan specific configuration
+
 - **storage.infinispan.initialHosts**  
-  This property specifies the list of cluster nodes (members). In case of multiple instances, the value for each Caching Service instance can be either a list of all the members, separated by a comma, or just the replica. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
+  This property specifies the list of cluster nodes (members). The value should be a list of all the members separated by commas. The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`. 
 - **storage.infinispan.persistence.dataLocation**  
-  The path where the Soft-Index store keeps its data files for the Infinispan Soft-Index Cache Store.
+  The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+
+  :::note
+  Beginning with version 2.18.4, values for `storage.infinispan.persistence.dataLocation` are not not used. If you migrate to v2.18.4 or a later version, leaving this configuration results in  data migration to  `<workspace>/caching-service/<HA instance ID>/index`. In case of a non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
+
+- **storage.infinispan.persistence.indexLocation**  
+  The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
+  The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+
+  :::note
+  Beginning with version 2.18.4, the value for `storage.infinispan.persistence.indexLocation` is no longer used. If you migrate to v2.18.4 or a later version, leaving this configuration results in a data migration. to `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
+  :::
 - **storage.infinispan.jgroups.port**  
   Specifies the port number used by Infinispan to synchronize data among caching-service instances.
+- **storage.infinispan.jgroups.host**  
+  The default value is derived from the Zowe hostname, which Infinispan uses to synchronize data among caching service instances.
+- **storage.infinispan.jgroups.keyExchange.port**  
+  The port number used by Infinispan to perform a secure handshake between caching-service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.
+  **Default:** `7118`. 
+
+##### Redis specific configuration
+
 - **storage.redis.masterNodeUri**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
 - **storage.redis.timeout**  
@@ -658,10 +726,6 @@ These configurations can be used under the `components.caching-service` section:
  Specifies the truststore file used to keep other parties public keys and certificates.
 - **storage.redis.ssl.truststorePassword**  
  Specifies the password used to unlock the truststore.
-- **apiml.security.ssl.verifySslCertificatesOfServices**  
- Specifies if API ML is to verify certificates of services in strict mode. Set to `true` to enable `strict` mode where API ML validates both if the certificate is trusted in truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) match the service hostname.
-- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
- Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 
 #### Configure component app-server
 

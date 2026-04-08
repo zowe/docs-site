@@ -17,11 +17,7 @@ Client-side components are also available. **Zowe CLI** is available from NPM. T
 
 ## Future Zowe Version 2.0 releases
 
-Three releases have been added to the Zowe V2 release schedule:
-
-- Zowe v2.16 in May
-- Zowe v2.17 in July
-- Zowe v2.18 in August
+Zowe 2.0.x is now in maintenance state. Patch releases are planned until the Zowe V2 End of Service scheduled for early 2027. For details about the Zowe v2 release stream, see the [Releases section](https://www.zowe.org/vnext) in zowe.org.
 
 ## Archiving Zowe Version 1.0
 

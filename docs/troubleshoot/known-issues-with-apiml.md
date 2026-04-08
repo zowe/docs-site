@@ -3,14 +3,15 @@
 ## Error messages from TCP/IP
 
 On starting Zowe, you may see the following messages in `DDNAME SYSPRINT`:
-```
+
+```log
 2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) - Netstat test fail with exit code 16 (EZZ2376I Could not determine TCPIPjobname, using default of 'INET'
 2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) - EZZ2377I Could not establish affinity with INET (1011/11B3005A) - can not provide the requested option information)
 ```
 
 Alternatively, you may see the following message:
 
-```
+```log
 2025-09-02 11:05:10 user ERROR (gateway-service,bin/validate.sh:14) Netstat test fail with exit code 255 (EZZ2385I Access to Netstat -c denied - SAF RC is 00000008)
 ```
 
@@ -18,15 +19,13 @@ In both cases, more details should be available on the SYSLOG.
 
 In the first case, it is likely that the SYSTCPD dataset from the TCP/IP job may not be accessible to the user running Zowe. A message such as the following may be seen on the SYSLOG at the same time as the error is generated in the Zowe output:
 
-```
+```log
 TSS7220E 101 J=stc A=user VOL=volume ACC=READ DSN=systcpd.dataset.name TSS7221E Dataset Not Accessible - systcpd.dataset.name
 IEC150I 913-38,IFG0194E,stc,*OMVSEX,SYS00003,24A4,volume, 692 systcpd.dataset.name(member) *EZZ9297E UNABLE TO ACCESS FILE systcpd.dataset.name(member) - RC 00080008
 ```
 
 **Action:**  
 The security administrator should grant READ access to the SYSTCPD dataset mentioned on the SYSLOG to the user running Zowe.
-
-
 
 ## API ML stops accepting connections after z/OS TCP/IP stack is recycled
 

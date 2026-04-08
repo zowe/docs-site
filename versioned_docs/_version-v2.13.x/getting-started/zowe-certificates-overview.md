@@ -72,7 +72,7 @@ The following diagram illustrates the TLS handshake steps:
 The architecture of Zowe strictly relies on  Transport Layer Security (TLS) to secure   communication channels between its components,
 as well as between client applications and Zowe server components.
 
-For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview#zowe-api-ml-tls-requirements).
+For more information, see the [TLS requirements in Zowe API ML requirements](../extend/extend-apiml/zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements).
 
 **Note:** 
 When installed on a mainframe system, Zowe is able to utilize the AT-TLS implementation if supported by the corresponding z/OS version/installation.

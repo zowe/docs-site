@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ops execute command</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ops.html">ops</a> › <a href="zowe_ops_execute.html">execute</a> › <a href="zowe_ops_execute_command.html">command</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Execute the specified operator command.</p>
+<h4>Usage</h4>
+<p>zowe ops execute command &lt;command&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>command</code>		 <em>(string)</em></p>
+<ul>
+<li>The text of the operator command to be issued. The length of this string cannot exceed 240 characters.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--bmpCmdOut</code> | <code>--bco</code> <em>(string)</em></p>
+<ul>
+<li>If the specified command is an IMS command, this parameter controls the echoing of the command output. This keyword only applies if you are using an IMS Operations Facility (IOF) Batch Message Processing (BMP) program for issuing IMS commands. Valid values are: OPSLOG, WTO, and NONE. A value of 'OPSLOG' echoes all output that is associated with the current IMS command back to OPSLOG as trace messages. This results in a small amount of additional overhead to the command, assuming that the number of lines of output is not large. No output is sent back to any z/OS console or to the subsystem interface. A value of 'WTO' echoes all output that is associated with the current IMS command as Write To Operator messages to the z/OS console. Using this option can add a significant amount of overhead to IMS command processing and has the potential of flooding the consoles with command output messages. A value of 'NONE' sends IMS commands to the BMP and returns the responses to the issuing program (if so requested). This recommended approach results in the lowest amount of overhead. The use of this parameter does not affect how the IMS command output is returned to the command issuer. The default value for this parameter is 'NONE'.</li>
+</ul>
+</li>
+<li>
+<p><code>--capture</code> | <code>--cp</code> <em>(string)</em></p>
+<ul>
+<li>This parameter captures command responses that are not internally routed back to the OPS/MVS console that issued the command. If this parameter is specified, command response messages are captured based on text segments matching the first characters (starting with column 1) of the messages. These captured response messages are in addition to the usual command response messages that are captured based on other specified parameters. You can specify up to 10 message text segments with this parameter, and each text segment can have up to 124 characters.</li>
+</ul>
+</li>
+<li>
+<p><code>--cart</code> | <code>--ct</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies a z/OS command and response token (CART). This token can be represented as either a one- to eight-character string such as MYCMDTOK, or as a one- to eight-byte hexadecimal value such as X'D6D7E2E205162738'. Messages issued in response to this command are issued using the same CART. If this parameter is not specified, OPS/MVS will generate a unique CART token and use this generated token to determine which response messages should be returned to the caller.</li>
+</ul>
+</li>
+<li>
+<p><code>--cmdEcho</code> | <code>--ce</code> <em>(string)</em></p>
+<ul>
+<li>This parameter determines whether the issued command is echoed as the first line of the command response. You can specify either YES, which is the default, or NO. This parameter is ignored when the cmdLog parameter is set to NO.</li>
+</ul>
+</li>
+<li>
+<p><code>--cmdLog</code> | <code>--cl</code> <em>(string)</em></p>
+<ul>
+<li>This parameter determines whether the issued command is echoed in both SYSLOG and the command response, or neither. You can specify either YES, which is the default, or NO. The NO setting overrides the setting of the cmdEcho parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--cmdWait</code> | <code>--cw</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies, in seconds, how long to wait for command output collection to complete. The number of lines that are collected are analyzed every few hundredths of a second, based on the value specified with the interval parameter. If no new output lines are forthcoming after at least two output lines have been received, the wait for more response characters is terminated before this cmdWait period expires. You can specify a value for this parameter from 1 through 600 seconds. If you specify a value of YES for the stopEnd parameter, the end line of a multi-line WTO message also stops response collection. The main difference between the cmdWait and wait parameters is that the wait parameter specifies an unconditional wait period, while the cmdWait parameter specifies a conditional wait based on a continuous, timely collection of response lines. The default value for this parameter is the value of the OCWAIT global OPS/MVS parameter. When used in IMS Type 2 message syntax, the cmdWait and wait parameters are identical and specify the maximum wait time in seconds for message completion. IBM documentation on IMSPLEX usage implies that the delay in gathering results from multiple IMS systems can be considerable and should be considered normal. The default if omitted is 120, or 2 minutes. This cmdWait parameter is mutually exclusive with the wait parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--conName</code> | <code>--cn</code> <em>(string)</em></p>
+<ul>
+<li>This parameter defines the name of the console to receive the issued command. The console name that you provide can contain as many as eight characters. You can retrieve command output when the specified console is allocated to OPS/MVS. If the console is not allocated or does not exist, this request will return an error code of 190. This conName parameter is mutually exclusive with the conType parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--conType</code> | <code>--cnt</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies the appropriate type of console that should be used for the command that you are issuing. The default value for this parameter is the current value of the OCCONTYPE global OPS/MVS parameter. Valid values are: ANY, EXTCONS, SSCONS, or XTRACONS. A value of 'ANY' tells OPS/MVS to select the first available console to issue the command. In this case, OPS/MVS selects consoles in the following order: Subsystem consoles, followed by XTRACONS consoles, and finally Extended consoles. A value of 'EXTCONS' tells OPS/MVS to select the first available extended console. Extended consoles are controlled by the EXTENDEDCONSOLES global OPS/MVS parameter. A value of 'SSCONS' tells OPS/MVS to select the first available subsystem console. Subsystem consoles are controlled by the SUBSYSDEFAULT global OPS/MVS parameter. A value of 'XTRACONS' tells OPS/MVS to select the first available extra extended console. Extra extended consoles are controlled by the EXTRAEXTCONSOLES global OPS/MVS parameter. This conType parameter is mutually exclusive with the conName parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--imsId</code> | <code>--id</code> <em>(string)</em></p>
+<ul>
+<li>If you use the IMS Operations Facility (IOF) at your site, you can use the /opscmd endpoint to issue IMS commands. If you are running only one copy of IMS on the system where the current instance of the OPS/MVS REST API is running, you can omit the imsId parameter. However, if several copies of IMS (such as a production version and a test version) reside on the system, use this parameter to specify the IMS control region that should receive the command. IMS IDs can contain from one to four characters. IBM ships IMS with a default IMS ID of IMSA. If you do not know the IMS ID of the IMS you want OPS/MVS to control, ask your systems management department. When used in IMS Type 2 message syntax, the command is issued to the IMSPLEX manager, and distributed from there. The imsId parameter is used to establish the eligibility of participating IMS systems to receive the command. If the imsId parameter is omitted, the first IMS system capable of responding receives the command. If the value of the imsId parameter is specified as a wildcard *, all participating IMS systems receive the command. The value of the imsId parameter can also be specified as a list, separated by spaces or commas, of specific IMS system names to receive the command. The wildcard * should not be used with the imsId parameter unless the imsPlex parameter is specified with an explicit name.</li>
+</ul>
+</li>
+<li>
+<p><code>--imsPlex</code> | <code>--ip</code> <em>(string)</em></p>
+<ul>
+<li>If you use the IMS Operations Facility (IOF) at your site, you can use the /opscmd endpoint to issue IMS commands. If you are running only one copy of IMS on the system where the current instance of the OPS/MVS REST API is running, you can omit the imsId parameter. However, if several copies of IMS (such as a production version and a test version) reside on the system, use this parameter to specify the IMS control region that should receive the command. IMS IDs can contain from one to four characters. IBM ships IMS with a default IMS ID of IMSA. If you do not know the IMS ID of the IMS you want OPS/MVS to control, ask your systems management department. When used in IMS Type 2 message syntax, the command is issued to the IMSPLEX manager, and distributed from there. The imsId parameter is used to establish the eligibility of participating IMS systems to receive the command. If the imsId parameter is omitted, the first IMS system capable of responding receives the command. If the value of the imsId parameter is specified as a wildcard *, all participating IMS systems receive the command. The value of the imsId parameter can also be specified as a list, separated by spaces or commas, of specific IMS system names to receive the command. The wildcard * should not be used with the imsId parameter unless the imsPlex parameter is specified with an explicit name.</li>
+</ul>
+</li>
+<li>
+<p><code>--imsReply</code> | <code>--ir</code> <em>(string)</em></p>
+<ul>
+<li>The presence of this imsPlex parameter implies you are issuing an IMS command using the IMS Type 2 message syntax. This value can be specified as a specific IMSPLEX name, in which case the imsId parameter controls the selection of participating IMS systems. The imsPlex parameter can also be specified as a wildcard *, meaning the imsId determines the IMSPLEX name. In this case, the imsId parameter cannot be specified as a wildcard *, but must contain a valid IMS system name. The imsId parameter, or the first of a list, will be used to locate the name of its associated IMSPLEX.</li>
+</ul>
+</li>
+<li>
+<p><code>--interval</code> | <code>--int</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies, in centiseconds, how frequently to test for command response lines to see if the response has ended. This interval parameter temporarily overrides the value of the OCINTERVAL global OPS/MVS parameter. The default for this interval parameter is the value of the OCINTERVAL global OPS/MVS parameter, but you can specify any number from 10 through 300, or a value of 0 to bypass interval testing.</li>
+</ul>
+</li>
+<li>
+<p><code>--localOnly</code> | <code>--loc</code> <em>(string)</em></p>
+<ul>
+<li>When 'YES' is specified for this parameter, only messages from the local system are considered as potential command response candidates. This parameter should be used in conjunction with the capture and stopMsg parameters to prevent output from other systems possibly being returned as command output. You can specify either NO, which is the default, or YES.</li>
+</ul>
+</li>
+<li>
+<p><code>--log</code> | <code>--lg</code> <em>(string)</em></p>
+<ul>
+<li>This parameter determines whether response lines from the issued command go into the SYSLOG and/or OPSLOG data sets. Valid options are: YES, NO, OFF, and NOWHERE. A value of 'YES' means command responses and command echo will be logged in both SYSLOG and OPSLOG. A value of 'NO' means SYSLOG will only contain the command echo, not the command responses, and OPSLOG will contain both the command echo and the command responses. A value of 'OFF' means the command echo and command responses will not be logged to SYSLOG. OPSLOG will contain the command responses, but not the command echo. A value of 'NOWHERE' means the command echo and command responses will not be logged to either the SYSLOG or the OPSLOG. Note that the logging of command response lines is also influenced by MIC and AOF rule processing. The default value for this parameter is 'YES'.</li>
+</ul>
+</li>
+<li>
+<p><code>--maxCmdOut</code> | <code>--mco</code> <em>(string)</em></p>
+<ul>
+<li>This parameter defines how many command output lines to collect before terminating the command response. If the command output contains more lines than this maxCmdOut value, no more command output lines are collected. You can specify any value from 1 through 32767 for this parameter. The default value for this parameter is the value of the OCMAXMSG global OPS/MVS parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--output</code> | <code>--out</code> <em>(string)</em></p>
+<ul>
+<li>This parameter determines whether you receive output from the issued command. You can specify either YES, which is the default, or NO. The NO setting is mutually exclusive with the wait parameter.</li>
+</ul>
+</li>
+<li>
+<p><code>--stopEnd</code> | <code>--se</code> <em>(string)</em></p>
+<ul>
+<li>This parameter determines whether the end line of a multiline WTO message stops the collection of command output. Valid options are: YES, and NO. A value of 'YES' will cause the command response to terminate at the first end line of a multiline WTO message or at the time that is specified through the cmdWait parameter or the OCWAIT global OPS/MVS parameter. A value of 'NO' will cause the command output to continue collecting until either: the time interval that is specified by the cmdWait parameter or the OCWAIT global parameter expires; or no new command output lines are collected in the time interval that is specified by the interval parameter. The default value for this parameter is 'YES'.</li>
+</ul>
+</li>
+<li>
+<p><code>--stopMsg</code> | <code>--sm</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies a list of one to ten message text segments matching the first characters (starting with column 1) of the messages that terminate the collection of command response lines. When any of these text segments are detected, the collection of response lines stops. The message segment or segments you specify need not be directed to the console receiving the command response. Each item in the list of message text segments you specify can contain no more than 124 characters. All message text segments that are specified on this parameter will match both uppercase and lowercase text in potential matching messages (case-insensitive). This parameter does not work with IMS Type 2 commands. The stopMsg and stopResp parameters are mutually exclusive.</li>
+</ul>
+</li>
+<li>
+<p><code>--stopResp</code> | <code>--sr</code> <em>(string)</em></p>
+<ul>
+<li>This parameter specifies a list of one to ten message text segments matching the first characters (starting with column 1) of the messages that terminate the collection of command response lines. The message segments that you specify must be directed to the console receiving the command response, and each item in the segment list can contain no more than 124 characters. You can use this stopResp parameter to terminate the collection of a long command response once the desired response line is found. All message text segments that are specified on this keyword will match both uppercase and lowercase text in potential matching messages (case-insensitive). The stopResp and stopMsg parameters are mutually exclusive.</li>
+</ul>
+</li>
+<li>
+<p><code>--wait</code> | <code>-w</code> <em>(number)</em></p>
+<ul>
+<li>This parameter specifies a period of time (in seconds) to unconditionally wait to receive output from the issued command. Control is not returned to the caller until the full wait period elapses. In most cases, a conditional wait using the cmdWait parameter in conjunction with the interval and various stopXxxx parameters can be used to effectively collect command responses, thus eliminating the need for an unconditional wait. When used in IMS Type 2 message syntax, the wait parameter is identical to the cmdWait parameter. This wait parameter is mutually exclusive with the cmdWait parameter. If the output parameter is set to NO, you can not use this parameter (mutually exclusive).</li>
+</ul>
+</li>
+<li>
+<p><code>--format</code> | <code>-f</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Format of the displayed output.</p>
+<p>Default value: namevalue<br>
+Allowed values: namevalue, namevaluecolor, csv, json</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>OPS/MVS Web Services / REST API connection options</h4>
+<ul>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS user name that is used to authenticate to OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password that is used to authenticate to OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the server where OPS/MVS Web Services / REST API is running.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
+<ul>
+<li>The port number for OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol that is used for connecting to OPS/MVS Web Services / REST API.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored with the 'show status' and 'show subsystem' commands.</p>
+<p>Default value: OPSS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rest-api</code> | <code>--ra</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If set to true, the plug-in executes the command against the OPS/MVS REST API. If set to false, the plug-in executes against the OPS/MVS Web Services.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>NOTE: This can only be used with the REST API server. The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ops-profile</code> | <code>--ops-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ops) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Execute the operator command, &quot;D A,L&quot; on the &quot;OPSS&quot; subsystem.:</p>
+<ul>
+<li><code>zowe ops execute command &quot;D A,L&quot; --subsystem &quot;OPSS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops execute command &quot;D A,L&quot; --subsystem &quot;OPSS&quot;">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

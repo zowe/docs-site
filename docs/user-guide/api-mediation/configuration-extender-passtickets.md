@@ -73,7 +73,6 @@ In your ESM command line interface or other security environment, perform the fo
 
     ```tss
     TSS WHOHAS APPL(<applid>)
-    TSS WHOHAS PTKTDATA(<applid>)
     TSS WHOHAS PTKTDATA(IRRPTAUTH.<applid>.)
     ```
 2. If APPL and PTKTDATA are not yet defined, follow the steps to create them as described in the [Enabling PassTickets with Top Secret](#enabling-passtickets-with-top-secret) section.

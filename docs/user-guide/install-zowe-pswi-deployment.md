@@ -9,7 +9,7 @@ After the portable software instance or software instance is registered in z/OSM
 
 To install Zowe PSWI using z/OSMF and make the product software available for use on a system by users and other programs, you first need to define a new deployment. This step defines the SMP/E environment name and the prefix of the CSI data set in z/OSMF. Specify data set allocation parameters for all SMP/E data sets, target libraries, and distribution libraries.
 
-To define a new deployment, complete the deployment checklist as specified in [Deploying software](https://www.ibm.com/docs/en/zos/2.4.0?topic=task-deploying-software) in the IBM documentation.
+To define a new deployment, complete the deployment checklist as specified in [Deploying software](https://www.ibm.com/docs/en/zos/2.5.0?topic=task-deploying-software) in the IBM documentation.
 Specify the following configuration elements:
 
 * UNIX System Services path (USS path) 
@@ -24,7 +24,7 @@ Before installing, ensure the [z/OSMF requirements](./install-zowe-pswi-address-
 
 ## Installing process
 
-1. Display the Deployments table in z/OSMF (**Software ManagementU**, **Deployments**).
+1. Display the Deployments table in z/OSMF (**Software Management**, **Deployments**).
 2. Define a new deployment by selecting **New** from the Actions menu. The deployment checklist displays where you can also modify, view, copy, cancel, or remove existing deployments.
 3. Complete the deployment checklist items as described in _Defining new deployments_ in the IBM documentation. As you complete the deployment checklist, be sure to make the following selections:
     1. Specify the properties for this deployment (name, description, and optional category).

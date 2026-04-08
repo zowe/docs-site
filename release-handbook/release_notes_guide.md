@@ -19,12 +19,6 @@ See [New features and enhancements](#new-features-and-enhancements) for a full l
 
 Zowe Version 2.3.0 contains the enhancements that are described in the following topics.
 
-:::info find out more
-To watch a demo of new enhancements and updated features included in a Zowe minor release, look for the release demo recording in the [Zowe V2 System Demo playlist](https://www.youtube.com/playlist?list=PL8REpLGaY9QGjSTAqZaWxLG_g-jW1qGmo) on YouTube.
-
-System demos are typically held the week after a minor release becomes available. Check the [Open Mainframe Project Calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe) for the latest schedule.
-:::
-
 ### Zowe installation and packaging
 
 ### Zowe Application Framework
@@ -55,9 +49,9 @@ System demos are typically held the week after a minor release becomes available
 
 - See the [Zowe Explorer API](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-#### Zowe Explorer FTP Extension
+#### Zowe Explorer for IBM z/OS FTP
 
-- See the [Zowe Explorer FTP Extension](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+- See the [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
 #### Zowe Explorer ESLint Plug-in
 
@@ -97,9 +91,9 @@ Zowe Version 2.3.0 contains the bug fixes that are described in the following to
 
 - See the [Zowe Explorer API](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-api/CHANGELOG.md) changelog for updates included in this release.
 
-####  Zowe Explorer FTP Extension
+#### Zowe Explorer for IBM z/OS FTP
 
-- See the [Zowe Explorer FTP Extension](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
+- See the [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode/blob/main/packages/zowe-explorer-ftp-extension/CHANGELOG.md) changelog for updates included in this release.
 
 #### Zowe Explorer ESLint Plug-in
 

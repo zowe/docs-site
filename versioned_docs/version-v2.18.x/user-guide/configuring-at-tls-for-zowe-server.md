@@ -30,33 +30,67 @@ zowe:
             attls: true
 ```
 
-While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. We strongly recommend that AT-TLS be configured with the same Zowe keyring.
+While the Zowe Server components do not handle TLS on its own with AT-TLS enabled, the API Mediation Layer (API ML) requires information about the server certificate that is defined in the AT-TLS rule. Ensure that the server certificates provided by the AT-TLS layer are trusted in the configured Zowe keyring. 
+
+:::tip
+* We strongly recommend that AT-TLS for inbound connections and outbound connections with X.509 Client Certificate authentication be configured with the same Zowe keyring as in `zowe.yaml`.
+* For outbound connections without an X.509 Client Certificate authentication, make sure you use a keyring that contains only the trusted public CA certificates, but does not contain a private key.
+:::
 
 If there is an outbound AT-TLS rule configured for the link between the API Gateway and z/OSMF, set the `zowe.zOSMF.scheme` property to `http`.
 
 :::note Notes
-
 - AT-TLS is supported in the API Cloud Gateway Mediation Layer component (SCGW) beginning with version 2.17.
   - Support is partial. X.509 Client Certificates are not supported, if the AT-TLS rule is not in effect, the SCGW will allow unsecured connections.
-
 - As the API ML Gateway is a core component of API ML, other components that need to interact with the Gateway, such as Zowe ZLUX App Server, also require AT-TLS configuration.
-
 :::
 
 :::caution Important security consideration
 
-Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the x.509 client certificates authentication scheme.
+Configuring AT-TLS for Zowe requires careful consideration of security settings. These security settings apply to the X.509 Client Certificate authentication feature in Zowe API Mediation Layer components, as well as for onboarded services that support the X.509 Client Certificates authentication scheme.
 
-Outbound AT-TLS rules (i.e. to make a transparent https calls through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 client certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
+Outbound AT-TLS rules (i.e. to make a transparent https call through http) that are configured to send the server certificate should be limited to the services that __require__ service to service authentication. If an API ML-onboarded southbound service needs to support X.509 Client Certificate authentication, we recommend to use the integrated TLS handshake capabilities of API ML. Do not configure an outbound AT-TLS rule for these services.
 
 The Discovery Service endpoints are not reachable by standard API Gateway routing by default.
 :::
 
-### Limitations
+### Required Keyrings
+To comply with security settings, Zowe AT-TLS setup requires two keyrings:
+* [Keyring with a private key](#keyring-with-a-private-key)
+* [Keyring without a private key](#keyring-without-a-private-key)
 
-If using AT-TLS with a z/OS Keyring backed by an ICSF hardware module, the only supported configuration is Zowe with z/OSMF authentication provider in JWT mode.
-A LTPA token and SAF provider cannot be used in this configuration because API ML cannot access the hardware key to sign its own tokens.
-Personal Access Tokens (PAT) are not supported in this configuration because API ML cannot access the hardware key to sign the tokens.
+#### Keyring with a private key
+This keyring is used for inbound connections and outbound connections that require X.509 Client Certificate authentication. This keyring contains trusted public CA certificates and a Zowe server certificate with its corresponding private key.
+We strongly recommend that you use the same Zowe keyring as in `zowe.yaml`.
+
+#### Keyring without a private key
+This keyring is used for outbound connections that do not require nor prohibit X.509 Client Certificate authentication. This keyring contains only the trusted public CA certificates.
+We recommend to create a new keyring, similar to the [above-mentioned keyring](./configuring-at-tls-for-zowe-server.md#keyring-with-a-private-key), but __without the private key__.
+
+### Limitations when using AT-TLS with ICSF Hardware keyring
+
+API ML cannot currently read private keys if these keys reside in a hardware module. When using AT-TLS with a z/OS Keyring with private keys stored or managed by ICSF, use one of the following options:
+
+* [Prevent API Mediation Layer from reading the private key](#prevent-api-ml-from-reading-the-private-key)
+* [Use an alternative non-hardware keyring](#use-an-alternative-non-hardware-keyring)
+
+#### Prevent API ML from reading the private key
+
+Set `environments.APIML_ATTLS_LOAD_KEYRING: true` in `zowe.yaml` to prevent API ML from loading the keyring.
+The only supported configuration is Zowe with the z/OSMF authentication provider in JWT mode.
+This mode requires both server and client AT-TLS enabled in the `zowe.yaml` with full coverage of Inbound and Outbound rules.
+
+:::note  
+The z/OSMF LTPA token, SAF native authentication provider, and Personal Access Tokens (PAT) cannot be used in this configuration as there is not a private key.
+
+:::
+
+#### Use an alternative non-hardware keyring
+
+Since handshakes are handled by AT-TLS, API ML only requires access to the private key to sign API ML's own tokens when required by the configuration. The following scenarios require a private key so that API ML is able to sign API ML's own tokens:
+- Personal Access Tokens
+- SAF native provider (API ML signs its own JWT in this scenario)
+- z/OSMF in LTPA mode. In this scenario z/OSMF does not issue a JWT. API ML signs the JWT that contains the LTPA token.
 
 ## AT-TLS rules
 
@@ -64,7 +98,7 @@ This section describes suggested AT-TLS settings, and serves as guidelines to se
 
 ### Inbound rules
 
-A generic inbound rule can be set for all Zowe services:
+1. Define a generic inbound rule that can be set for all Zowe services:
 
 ```bash
 TTLSRule ZoweServerRule
@@ -84,6 +118,12 @@ TTLSGroupAction ServerGroupAction
   TTLSEnabled On
 }
 
+# Keyring with trusted CA certificates and Zowe server certificate with its private key
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
   HandshakeRole ServerWithClientAuth
@@ -99,6 +139,19 @@ TTLSConnectionAction ZoweServerConnectionAction
   TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
 }
 
+TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
+{
+  ClientAuthType Full # Support optional X.509 Client Certificate authentication
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
 TTLSConnectionAdvancedParms ZoweConnectionAdvParms
 {
   ApplicationControlled Off
@@ -106,60 +159,73 @@ TTLSConnectionAdvancedParms ZoweConnectionAdvParms
   CertificateLabel apimlcert # Specify the personal server certificate used for the Zowe Server
   SecondaryMap Off
 }
-
-# Keyring, used for TLS, will be used also to load trusted certificates
-TTLSKeyringParms ZoweKeyring
-{
-  Keyring ZWEKRNG
-}
 ```
 
-The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
+2. Verify port ranges.
 
-| Component | Default Port |
-|----|-----------------------|
-| Gateway | 7554 |
-| Discovery | 7553 |
-| Caching Service | 7555 |
-| API Catalog | 7552 |
-| Metrics Service | 7551 |
-| Zowe System Services (ZSS) | 7557 |
-| Zowe Application Server | 7556 |
+    The `PortRange` of this inbound rule is taken from the list of API Mediation Layer components in the `zowe.yaml` file. The `PortRange` should cover the following components:
 
-**Follow this step:**
+    | Component | Default Port |
+    |----|-----------------------|
+    | Gateway | 7554 |
+    | Discovery | 7553 |
+    | Caching Service | 7555 |
+    | API Catalog | 7552 |
+    | Metrics Service | 7551 |
+    | Zowe System Services (ZSS) | 7557 |
+    | Zowe Application Server | 7556 |
 
-Replace `ZoweKeyring` with the keyring configured for your installation. Follow [the SAF keyring instructions](../getting-started/zowe-certificates-overview.md#saf-keyring) in the article _Zowe Certificates overview_ to configure keyrings for your Zowe instance.
+    For more information on each component's networking requirements, see [Addressing network requirements](./address-network-requirements.md).
 
-Note the setting `HandshakeRole`. This setting applies to core services which authenticate through certificates with each other. This setting allows the API Gateway to receive and accept X.509 client certificates from API Clients.
 
-For more granularity in the AT-TLS rules, separate the rules that need to support Client Certificate authentication (Discovery Service, Gateway Service) from the ones that do not (for example a rule covering API Gateway to an onboarded service).
+3. Apply your keyring and configure handshake role.
+
+    i. Replace `ZoweKeyring` in the TTLS configuration with the keyring name configured for your environment (for example, a SAF keyring on z/OS or a file-based keystore).
+
+   **Example:**
+
+    ```
+    TTLSKeyringParms ZoweKeyring
+    {
+    Keyring YOUR_KEYRING_NAME
+    }
+
+    ```
+    ii. Verify the `HandshakeRole` setting.  
+   Ensure `HandshakeRole` is set to `ServerWithClientAuth` for core Zowe services. This setting enables the API Gateway to accept X.509 Client Certificates from API Clients.
+
+   iii.  (Optional) Separate rules by certificate requirement.  
+   For services that require X.509 client certificate authentication (e.g., Discovery Service, Gateway Service), keep `HandshakeRole` as `ServerWithClientAuth`.  
+   For services that do not require X.509 client certificates (e.g., API Catalog), create separate TTLS rules with `HandshakeRole` as `Server`.
+
+  :::note
+  For more information about the use of SAF keyrings with API ML, see [API ML SAF Keyring](../extend/extend-apiml/certificate-management-in-zowe-apiml.md#api-ml-saf-keyring) in the article _Managing certificates in Zowe API Mediation Layer_.
+  :::
+
+4. Refresh PAGENT and verify the contents.
+  * Refresh the policy configuration by issuing the MVS command `F PAGENT,REFRESH`.
+  * Test connectivity for all inbound services.
+  * Ensure services that require client certificate authentication are successfully receiving X.509 Client Certificates.
+
+:::tip
+We recommend you restart Zowe services after refreshing PAGENT to avoid issues with open connections.
+::: 
 
 ### Outbound rules
 
 Outbound rules in this section allow Zowe services to communicate with each other and to other southbound services using HTTP.
 
 :::caution Important:
-Careful consideration needs to be made regarding which rules are to be configured to send a Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so results in unintentionally authenticating the server ACID.
+Careful consideration needs to be made regarding which rules are to be configured to send X.509 Client Certificate. Since configuration cannot be performed on a per-request basis, it is essential not to configure the rule to send the Zowe Server certificate to the API Gateway or to a southbound service that supports X.509 Client Certificate authentication. Doing so will result in unintentionally authenticating the server ACID. Make sure to use [Keyring without a private key](./configuring-at-tls-for-zowe-server.md#keyring-without-a-private-key) in such rules.
 
 :::
 
-**Example:**
 
-```yaml
-TTLSConnectionAction ClientConnectionAction  
-{  
-  HandshakeRole Client  
-  TTLSCipherParmsRef CipherParms  
-  TTLSConnectionAdvancedParmsRef ConnectionAdvancedParms  
-  CertificateLabel  
-}
-```
-
-#### For z/OSMF
+#### Outbound rule for z/OSMF
 
 This example rule covers the connection between the API Gateway and the z/OSMF instance. This connection is made to authenticate users in z/OS.
 
-Ensure that you set `zowe.zOSMF.scheme` to `http` in zowe.yaml if this rule is set.
+Ensure that you set `zowe.zOSMF.scheme` to `http` in `zowe.yaml` if this rule is set.
 
 ```bash
 TTLSRule ApimlZosmfClientRule
@@ -167,54 +233,110 @@ TTLSRule ApimlZosmfClientRule
   LocalAddr All
   LocalPortRange 1024-65535 # Using any outbound port
   RemoteAddr All
-  RemotePortRange 449 # Set to z/OSMF port
+  RemotePortRange 443 # Set to z/OSMF port
   Jobname ZWE1AG* # Generate according to zowe.job.prefix in zowe.yaml + AG for Gateway outbound
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
   TTLSConnectionActionRef ApimlNoX509ClientConnAction # No X.509 Client Certificate required
 }
 
 TTLSGroupAction ClientGroupAction
 {
-  TTLSEnabled ON
+  TTLSEnabled On
 }
 
-TTLSEnvironmentAction ApimlClientEnvironmentAction
+# Keyring without a default personal certificate and private key; contains only trusted CA certificates
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
+}
+
+TTLSEnvironmentAction ApimlNoX509ClientEnvAction
 {
   HandshakeRole Client
-  TTLSKeyringParmsRef ApimlKeyring
-  TTLSCipherParmsRef CipherParms
+  TTLSKeyringParmsRef ZoweNoX509Keyring
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
+}
+
+TTLSConnectionAction ApimlNoX509ClientConnAction
+{
+  HandshakeRole Client
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweClientNoX509ConnAdvParms
+}
+
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
+}
+
+TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
+{
+# No CertificateLabel; Keyring contains no X.509 Client Certificate
+  ApplicationControlled Off
+  SecondaryMap Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
 }
 ```
 
-:::note
-`Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
+:::tip Tips:
+* `Jobname` is defined explicitly for the API Gateway and is formed with the `zowe.job.prefix` setting from `zowe.yaml` plus `AG` as the Gateway identifier.
+
+* Note that the `ZoweNoX509Keyring`, used for outbound rules that do not require or prohibit X.509 Client Certificate authentication, is distinct from `ZoweKeyring`. Refer to the complete PAGENT rules provided later in this article.
 :::
 
-#### For communication between API Gateway and other core services
+#### Outbound rule for communication between Zowe core components
 
-Use the example in this section as a template for internal connections between API Mediation Layer core services.
+Use the example in this section as a template for internal connections between Zowe core services.
 
 :::caution Important
 
-The outbound connection from the Gateway Service to the Discovery Service must be configured without a `CertificateLabel`. Ensure that the certificate label is not included (but keep the `CertificateLabel` field) to avoid sending the certificate in case routing would be possible to the Discovery Service. Note that this route is disabled by default.
+Routing to the Discovery Service is disabled by default. Ensure this routing remains disabled in AT-TLS setup to avoid sending the Zowe server certificate during routing from the Gateway to the Discovery Service.
 
 :::
 
 ```bash
-TTLSRule ApimlClientRule
+TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7551-7559 # Range covers API ML services (gateway, discovery, api catalog, caching service)
-  Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml
+  RemotePortRange 7551-7559 # Range covers API ML, app-server, and zss services
+  Jobname ZWE1* # Set according to zowe.job.prefix in zowe.yaml - this covers all servers within Zowe core.
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Authentication is required in cross-service API ML communication
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
+  TTLSConnectionActionRef ApimlX509ClientConnAction # X.509 Client Certificate Authentication is required in cross-service API ML communication
+}
+
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+# Keyring with trusted CA certificates and personal certificate with its private key
+TTLSKeyringParms ZoweKeyring
+{
+  Keyring ZWEKRNG
+}
+
+TTLSEnvironmentAction ApimlX509ClientEnvAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef ZoweKeyring
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
 }
 
 TTLSConnectionAction ApimlX509ClientConnAction
@@ -224,18 +346,30 @@ TTLSConnectionAction ApimlX509ClientConnAction
   TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
 }
 
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
+}
+
 TTLSConnectionAdvancedParms ApimlClientX509ConnAdvParms
 {
+  CertificateLabel Zowe Server # Label of personal certificate in the ZoweKeyring
   ApplicationControlled Off
-  CertificateLabel Zowe Server
   SecondaryMap Off
 }
 ```
 
-#### For communication between API Gateway and southbound services
+#### Outbound rule for communication between API Gateway and southbound services
 
-In this example, the rule covers all outbound connections originating from the API Gateway to an example southbound service listening on port 8080.
-This rule applies for Zowe services as well, such as the ZSS and app-server if they are enabled.
+In this example, the rule covers all outbound connections originating from the API Gateway to a server that is not part of Zowe, such as an extension's server, listening on port 8080.
+Such a rule can apply to any remote destination, as seen in the `ZoweClientRule` for Zowe core servers in the section [Outbound rule for communication between Zowe core components](./configuring-at-tls-for-zowe-server.md#outbound-rule-for-communication-between-zowe-core-components).
 
 This example covers routing scenarios.
 
@@ -246,11 +380,29 @@ TTLSRule ApimlServiceClientRule
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 8080 # Set to range of ports where services are listening
-  Jobname ZWE1AG* # Generate according to zowe.job.prefix in zowe.yaml
+  Jobname ZWE1A* # Generate according to zowe.job.prefix in zowe.yaml
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction # Do not send X.509 Client Certificates
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction # Do not send X.509 Client Certificate
+}
+
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+# Keyring without a default personal certificate and its private key; contains only trusted CA certificates
+TTLSKeyringParms ZoweNoX509Keyring
+{
+  Keyring ZoweAttlsKeyring
+}
+
+TTLSEnvironmentAction ApimlNoX509ClientEnvAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef ZoweNoX509Keyring
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
@@ -260,34 +412,55 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
   TTLSConnectionAdvancedParmsRef ApimlClientNoX509ConnAdvParms
 }
 
+TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
+{
+  Renegotiation Disabled
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
+  CertValidationMode Any
+}
+
 TTLSConnectionAdvancedParms ApimlClientNoX509ConnAdvParms
 {
+# No CertificateLabel; Keyring contains no X.509 Client Certificate
   ApplicationControlled Off
-  CertificateLabel # Leave empty to avoid sending a client certificate (i.e. if the keyring has a default certificate)
   SecondaryMap Off
 }
 ```
 
 :::caution Important
 
-Outbound connections from the Gateway to southbound services (onboarded services) must not send the server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, the server user is subsequently authenticated.
+Outbound connections from the Gateway to southbound services (onboarded services) must not send the Zowe server certificate if the service accepts X.509 Client Certificate authentication. If the server certificate is sent, the server user is subsequently authenticated.
 
 :::
 
-#### Services that validate tokens against the API Mediation Layer
+#### Outbound rule for services that validate tokens against the API Mediation Layer
 
 In this scenario, the services issue a request against the API Gateway to validate the received authentication token.
 
-This scenario includes services that set `zoweJwt` as authentication scheme, those that require an Open ID Connect (OIDC) token, or forwarded X.509 certificates.
+This scenario includes the following services:
 
-In this case it is necessary to have an Outbound rule from the service to the API Gateway.
+* Services that set `zoweJwt` as the authentication scheme
+* Services that require an Open ID Connect (OIDC) token
+* Forwarded X.509 certificates
 
-These service also already have an outbound rule set for the onboarding process against the Discovery Service.
+For a full AT-TLS setup we strongly recommend the following conditions:
 
-Ensure these rules are followed:
+* To have an Outbound rule from the service to the API Gateway.
+* To have an Outbound rule set for the onboarding process against the Discovery Service.
 
-- Outbound rule to Discovery Service: Sends X.509 Client Certificate to authorize the onboarding.
-- Outbound rule to API Gateway: __Do not__ set a Client Certificate.
+Ensure that these rules are followed:
+
+- Outbound rule to the API Gateway: __Do not__ set X.509 Client Certificate.
+- Outbound rule to the Discovery Service: Sends X.509 Client Certificate to authenticate during onboarding.
+
+:::note
+Services running outside of z/OS cannot use AT-TLS to make transparent https calls though http, hence there are no Outbound rules from such services to the API Gateway and the Discovery Service.
+:::
 
 ### Ciphers
 
@@ -296,7 +469,7 @@ This list of ciphers is provided as an example only. Actual ciphers should be cu
 :::
 
 The list of supported ciphers should be constructed according to the TLS supported versions.
-Ensure that the cipher list has matches with non-AT-TLS clients.
+Ensure that the cipher list has matches with non-AT-TLS-aware clients.
 
 <details>
 <summary>Click here for an example of Cipher parameters.</summary>
@@ -331,7 +504,7 @@ Ensure that the `RemoteAddr` setting in the rules accounts for the following con
 
 - Discovery Service to Discovery Service. This is the replica request.
 - Gateway Service to southbound services (including app-server and ZSS) running in another LPAR.
-- Southbound services to Discovery Service. This applies during onboarding.
+- Southbound services to the Discovery Service. This applies during onboarding.
 - All outbound connections need to account for all LPARs including the same where the rules are applied.
 
 ## Multi-tenancy deployment
@@ -351,7 +524,7 @@ zowe:
 
 This section describes some common issues when using AT-TLS with Zowe and how to resolve these issues.
 
-### The message `This combination of port requires SSL` is thrown when accesing an API ML service through a Browser
+### The message `This combination of port requires SSL` is thrown when accessing an API ML service through a Browser
 
 Make sure the URL starts with `https://`. This message indicates that AT-TLS rules are in place and it is trying to connect on an unsecured port to the API Gateway, however the latter is still only listening on a application-controlled secured port.
 
@@ -411,7 +584,7 @@ TTLSRule ApimlDCServerRule
   Direction Inbound
   TTLSGroupActionRef ServerGroupAction
   TTLSEnvironmentActionRef ZoweDCServerEnvironmentAction
-  TTLSConnectionActionRef ZoweServerConnectionAction
+  TTLSConnectionActionRef ZoweDCServerConnectionAction
 }
 
 TTLSGroupAction ServerGroupAction
@@ -422,9 +595,9 @@ TTLSGroupAction ServerGroupAction
 # Environment action for all Zowe service
 TTLSEnvironmentAction ZoweServerEnvironmentAction
 {
-  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support Client Certificate authentication
+  HandshakeRole ServerWithClientAuth # Zowe Servers can optionally support X.509 Client Certificate authentication
   EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
+  TTLSEnvironmentAdvancedParmsRef ZoweServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }
 
@@ -433,20 +606,39 @@ TTLSEnvironmentAction ZoweDCServerEnvironmentAction
 {
   HandshakeRole Server
   EnvironmentUserInstance 0
-  TTLSEnvironmentAdvancedParmsRef ServerEnvironmentAdvParms
+  TTLSEnvironmentAdvancedParmsRef ZoweDCServerEnvironmentAdvParms
   TTLSKeyringParmsRef ZoweKeyring
 }
 
-# Keyring, used for TLS, will be used also to load trusted certificates
+# Keyring with trusted CA certificates and personal certificate with its private key
 TTLSKeyringParms ZoweKeyring
 {
   Keyring ZWEKRNG
 }
 
-# Advanced TLS settings, choose TLS versions supported.
-TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
+# Keyring without a default personal certificate and its private key; contains only trusted CA certificates
+TTLSKeyringParms ZoweNoX509Keyring
 {
-  ClientAuthType Full # Support optional Client Certificate authentication
+  Keyring ZoweAttlsKeyring
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+TTLSEnvironmentAdvancedParms ZoweServerEnvironmentAdvParms
+{
+  ClientAuthType Full # Support optional X.509 Client Certificate authentication
+  ApplicationControlled Off
+  Renegotiation Disabled
+  SSLv2 Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# Advanced TLS settings, choose TLS versions supported.
+TTLSEnvironmentAdvancedParms ZoweDCServerEnvironmentAdvParms
+{
   ApplicationControlled Off
   Renegotiation Disabled
   SSLv2 Off
@@ -460,83 +652,112 @@ TTLSEnvironmentAdvancedParms ServerEnvironmentAdvParms
 # Server Connection Action for API ML core services.
 TTLSConnectionAction ZoweServerConnectionAction
 {
-  HandshakeRole ServerWithClientAuth # API ML Core Services use Client Certificate authentication
+  HandshakeRole ServerWithClientAuth # API ML Core Services use X.509 Client Certificate authentication
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ZoweConnectionAdvParms
+  TTLSConnectionAdvancedParmsRef ZoweServerConnectionAdvParms
+}
+
+# Server Connection Action for DC Service.
+TTLSConnectionAction ZoweDCServerConnectionAction
+{
+  HandshakeRole Server 
+  TTLSCipherParmsRef CipherParms
+  TTLSConnectionAdvancedParmsRef ZoweDCServerConnectionAdvParms
 }
 
 # API ML Server connection action.
-# Certificate label indicates which certificate is used in the client certificate authentication process between core services.
-TTLSConnectionAdvancedParms ZoweConnectionAdvParms
+# ServerCertificateLabel indicates which certificate is used on server-side for establishing TLs connections.
+TTLSConnectionAdvancedParms ZoweServerConnectionAdvParms
 {
   ApplicationControlled Off
   ServerCertificateLabel apimlcert
-  CertificateLabel apimlcert
   SecondaryMap Off
 }
 
-# Example outbound TTLS rule for a client calling API ML
-# In this scenario this client (a southbound service) presents client certificate to authenticate (for example during onboarding)
+# Service advanced server connection action.
+TTLSConnectionAdvancedParms ZoweDCServerConnectionAdvParms
+{
+  ApplicationControlled Off
+  ServerCertificateLabel apimlcert
+  SecondaryMap Off
+}
+
+# Example outbound TTLS rule for a Zowe client calling a Zowe server
+# In this scenario this client (a southbound service) presents X.509 Client Certificate to authenticate (for example during onboarding)
 TTLSRule ZoweClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7553-7555 # API ML Core services ports
+  RemotePortRange 7551-7559 # API ML, app-server, and zss Zowe core services
   Jobname ZWE1*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSEnvironmentActionRef ApimlX509ClientEnvAction
   TTLSConnectionActionRef ApimlX509ClientConnAction
 }
 
-# Example outbound rule for connections from API ML Gateway to a southbound service running in port 40030 (during request routing)
-# Note ConnectionAction doesn't configure a client certificate.
+# Example outbound rule for connections from Catalog and API ML Gateway (during request routing) to a southbound service running in port 40030 
+# Note EnvironmentAction defines a Keyring that does not contain X.509 Client Certificate with its private key
+# Note ConnectionAction doesn't configure X.509 Client Certificate.
 TTLSRule ApimlServiceClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
   RemotePortRange 40030 # Service ports
-  Jobname ZWE1AG*
+  Jobname ZWE1A*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-# Optional. Can configure the outbound connection from Gateway to work with AT-TLS while connecting to z/OSMF.
+# Optional. Can configure the outbound connection from API Gateway to work with AT-TLS while connecting to z/OSMF.
 TTLSRule ApimlZosmfClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 449
+  RemotePortRange 443 # z/OSMF Port
   Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
   TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-# Example outbound rule from app server to gateway.
+# Example outbound rule from API Gateway to app server and zss.
 TTLSRule ApimlZLUXClientRule
 {
   LocalAddr All
   LocalPortRange 1024-65535
   RemoteAddr All
-  RemotePortRange 7556
+  RemotePortRange 7556-7557
   Jobname ZWE1AG*
   Direction Outbound
   TTLSGroupActionRef ClientGroupAction
-  TTLSEnvironmentActionRef ApimlClientEnvironmentAction
-  TTLSConnectionActionRef ApimlNoX509ClientConnAction # Southbound services should not sent a client certificate to Gateway
+  TTLSEnvironmentActionRef ApimlNoX509ClientEnvAction
+  TTLSConnectionActionRef ApimlNoX509ClientConnAction
 }
 
-TTLSEnvironmentAction ApimlClientEnvironmentAction
+TTLSGroupAction ClientGroupAction
+{
+  TTLSEnabled On
+}
+
+TTLSEnvironmentAction ApimlX509ClientEnvAction
 {
   HandshakeRole Client
-  TTLSKeyringParmsRef ZoweKeyring
+  TTLSKeyringParmsRef ZoweKeyring # Keyring contains personal X.509 certificate and its private key
+  TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
+  EnvironmentUserInstance 0
+}
+
+TTLSEnvironmentAction ApimlNoX509ClientEnvAction
+{
+  HandshakeRole Client
+  TTLSKeyringParmsRef NoKeyKeyring # Keyring does not contain personal X.509 certificate and its private key
   TTLSEnvironmentAdvancedParmsRef ClientEnvironmentAdvParms
   EnvironmentUserInstance 0
 }
@@ -544,25 +765,20 @@ TTLSEnvironmentAction ApimlClientEnvironmentAction
 TTLSEnvironmentAdvancedParms ClientEnvironmentAdvParms
 {
   Renegotiation Disabled
-  3DESKEYCHECK OFF
-  CLIENTEDHGROUPSIZE legacy
-  SERVEREDHGROUPSIZE legacy
-  PEERMINCERTVERSION any
-  SERVERSCSV OFF
-  MIDDLEBOXCOMPATMODE Off
+  3DesKeyCheck Off
+  ClientEDHGroupSize Legacy
+  ServerEDHGroupSize Legacy
+  PeerMinCertVersion Any
+  ServerScsv Off
+  MiddleBoxCompatMode Off
   CertValidationMode Any
-}
-
-TTLSGroupAction ClientGroupAction
-{
-  TTLSEnabled ON
 }
 
 TTLSConnectionAction ApimlX509ClientConnAction
 {
   HandshakeRole Client
   TTLSCipherParmsRef CipherParms
-  TTLSConnectionAdvancedParmsRef ApimlClientX509ConnAdvParms
+  TTLSConnectionAdvancedParmsRef ZoweClientX509ConnAdvParms
 }
 
 TTLSConnectionAction ApimlNoX509ClientConnAction
@@ -572,28 +788,28 @@ TTLSConnectionAction ApimlNoX509ClientConnAction
   TTLSConnectionAdvancedParmsRef ZoweClientNoX509ConnAdvParms
 }
 
-# ConnectionAdvanced parameters for connections not requiring x.509 Client Certificate authentication
-# If the set Keyring has a default certificate this will not prevent sending it
-TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
-{
-  SSLv3 Off
-  TLSv1 Off
-  TLSv1.1 Off
-  ApplicationControlled Off
-  CertificateLabel # Keep the Label empty to ensure a default certificate will not be picked from the keyring
-  SecondaryMap Off
-  TLSv1.2 On
-  TLSv1.3 Off
-}
-
-# In case the connection requires a client certificate authentication, this is where the label is set for outbound connections.
+# In case the connection needs/requires X.509 Client Certificate authentication, this is where the label is set for outbound connections.
 TTLSConnectionAdvancedParms ZoweClientX509ConnAdvParms
 {
+  CertificateLabel apimlcert
+  SecondaryMap Off
   SSLv3 Off
   TLSv1 Off
   TLSv1.1 Off
-  CertificateLabel apimlcert
+  TLSv1.2 On
+  TLSv1.3 On
+}
+
+# ConnectionAdvanced parameters for connections not requiring X.509 Client Certificate authentication
+# Note: If the set Keyring has a default certificate this will not prevent sending it
+TTLSConnectionAdvancedParms ZoweClientNoX509ConnAdvParms
+{
+# No CertificateLabel; Keyring contains no X.509 Client Certificate
+  ApplicationControlled Off
   SecondaryMap Off
+  SSLv3 Off
+  TLSv1 Off
+  TLSv1.1 Off
   TLSv1.2 On
   TLSv1.3 On
 }

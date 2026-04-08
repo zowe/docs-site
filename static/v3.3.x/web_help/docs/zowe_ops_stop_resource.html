@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ops stop resource</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ops.html">ops</a> › <a href="zowe_ops_stop.html">stop</a> › <a href="zowe_ops_stop_resource.html">resource</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>Stop the specified resource. The desired state of the resource is set to the appropriate DOWN state and SSM takes action to stop the resource.</p>
+<h4>Usage</h4>
+<p>zowe ops stop resource &lt;resourcename&gt; &lt;tablename&gt; [options]</p>
+<h4>Positional Arguments</h4>
+<ul>
+<li>
+<p><code>resourcename</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the resource.</li>
+</ul>
+</li>
+<li>
+<p><code>tablename</code>		 <em>(string)</em></p>
+<ul>
+<li>The name of the table that contains the resource.</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--wait</code> | <code>-w</code> <em>(number)</em></p>
+<ul>
+<li>Wait for the specified number of seconds for the current state of the SSM resource to match the new desired state. If more than the specified number of seconds elapses and the current and desired states still do not match, the command fails with a timeout error.</li>
+</ul>
+</li>
+</ul>
+<h4>OPS/MVS Web Services / REST API connection options</h4>
+<ul>
+<li>
+<p><code>--user</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS user name that is used to authenticate to OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> <em>(string)</em></p>
+<ul>
+<li>Your z/OS password that is used to authenticate to OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--host</code> <em>(string)</em></p>
+<ul>
+<li>The hostname of the server where OPS/MVS Web Services / REST API is running.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-p</code> <em>(number)</em></p>
+<ul>
+<li>The port number for OPS/MVS Web Services / REST API.</li>
+</ul>
+</li>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If set to true, the server certificate is verified against the list of supplied CAs. If set to false, certificate verification is not performed.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>--prot</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>The protocol that is used for connecting to OPS/MVS Web Services / REST API.</p>
+<p>Default value: https<br>
+Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--subsystem</code> | <code>--subs</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies the subsystem ID of the OPS/MVS instance to which commands will be directed. This parameter is ignored with the 'show status' and 'show subsystem' commands.</p>
+<p>Default value: OPSS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--rest-api</code> | <code>--ra</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>If set to true, the plug-in executes the command against the OPS/MVS REST API. If set to false, the plug-in executes against the OPS/MVS Web Services.</p>
+<p>Default value: false</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>NOTE: This can only be used with the REST API server. The base path for your Zowe API Mediation Layer instance. Specify this option to prepend the base path to all resources when making REST requests. Only specify this option if you are using an Zowe API Mediation Layer.</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ops-profile</code> | <code>--ops-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ops) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Stop the resource &quot;RESOURCE1&quot; in the table &quot;MYTABLE&quot; for the &quot;OPSS&quot; subsystem.:</p>
+<ul>
+<li><code>zowe ops stop resource &quot;RESOURCE1&quot; &quot;MYTABLE&quot; --subsystem &quot;OPSS&quot;</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops stop resource &quot;RESOURCE1&quot; &quot;MYTABLE&quot; --subsystem &quot;OPSS&quot;">Copy</button></li>
+</ul>
+</li>
+<li>
+<p>Stop the &quot;RESOURCE1&quot; in the table &quot;MYTABLE&quot; for the &quot;OPSS&quot; subsystem, and wait for up to 2 minutes for &quot;RESOURCE1&quot; to have a current state of DOWN.:</p>
+<ul>
+<li><code>zowe ops stop resource &quot;RESOURCE1&quot; &quot;MYTABLE&quot; --subsystem &quot;OPSS&quot; -w 120</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ops stop resource &quot;RESOURCE1&quot; &quot;MYTABLE&quot; --subsystem &quot;OPSS&quot; -w 120">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>

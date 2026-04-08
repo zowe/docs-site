@@ -2,7 +2,7 @@
 
 Zowe&trade; application plug-ins can opt-in to various application framework abilities, such as the ability to have a Logger, the ability to use a URI builder utility, and more. 
 
-The ability for one appliccation plug-in to communicate with another is an ability that is unique to Zowe environments with multiple application plug-ins. The application framework provides constructs that facilitate this ability. 
+The ability for one application plug-in to communicate with another is an ability that is unique to Zowe environments with multiple application plug-ins. The application framework provides constructs that facilitate this ability. 
 
 The constructs are: the Dispatcher, Actions, Recognizers, Registry, and the features that utilize them such as the framework's Context menu.
 
@@ -24,7 +24,7 @@ This way, rather than finding out that an attachment with the extension ".dat" w
 ## Actions
 
 To manage communication from one application plug-in to another, a specific structure is needed. In the application framework, the unit of application-to-application communication is an Action. The typescript definition of an Action is as follows:
-```
+```typescript
 export class Action implements ZLUX.Action {
     id: string;           // id of action itself.
     i18nNameKey: string;  // future proofing for I18N
@@ -66,7 +66,7 @@ The Action can be less detailed than a message. It can be a request to minimize,
 
 When you request an Action on an application plug-in, the behavior is dependent on the instance of the application plug-in you are targeting.
 You can instruct the framework to target the application plug-in with a target mode from the `ActionTargetMode` `enum`:
-```
+```typescript
 export enum ActionTargetMode {
   PluginCreate,                // require pluginType
   PluginFindUniqueOrCreate,    // required AppInstance/ID
@@ -79,7 +79,7 @@ export enum ActionTargetMode {
 ### Action types
 
 The application framework performs different operations on application plug-ins depending on the type of an Action. The behavior can be quite different, from simple messaging to requesting that an application plug-in be minimized. The types are defined by an `enum`:
-```
+```typescript
 export enum ActionType {       // not all actions are meaningful for all target modes
   Launch,                      // essentially do nothing after target mode
   Focus,                       // bring to fore, but nothing else
@@ -148,7 +148,7 @@ You can create Actions by calling the following Dispatcher method: `makeAction(i
 ### Saved on system
 
 Actions can be stored in JSON files that are loaded at login. The JSON structure is as follows:
-```
+```json
 {
   "actions": [
     {
@@ -179,7 +179,7 @@ Actions are meant to be invoked when certain conditions are met. For example, yo
 ### Recognition clauses
 
 Recognizers associate a clause of recognition with an action, as you can see from the following class:
-```
+```typescript
 export class RecognitionRule {
   predicate:RecognitionClause;
   actionID:string;
@@ -192,7 +192,7 @@ export class RecognitionRule {
 ```
 
 A clause, in turn, is associated with an operation, and the subclauses upon which the operation acts. The following operations are supported:
-```
+```typescript
 export enum RecognitionOp {
   AND,
   OR,
@@ -215,7 +215,7 @@ You can call the Dispatcher method, `addRecognizer(predicate:RecognitionClause, 
 
 Recognizers can be stored in JSON files that are loaded at login. The JSON structure is as follows:
 
-```
+```json
 {
   "recognizers": [
     {
@@ -245,7 +245,7 @@ Where this one can again, have subclauses.
 ### Recognizer example
 
 Recognizers can be as simple or complex as you write them to be, but here is an example to illustrate the mechanism:
-```
+```json
 {
   "recognizers":[
     {

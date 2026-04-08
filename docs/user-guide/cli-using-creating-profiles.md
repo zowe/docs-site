@@ -80,6 +80,7 @@ In the following configuration, nested profiles (highlighted in the example) use
     "autoStore": true
 }
 ```
+
 ## Accessing LPARs that contain services that do not share the same credentials
 
 In the following configuration, profiles are highlighted to show they are nested to use the credentials from parent profiles for different LPARs to access services directly on multiple LPARs.
@@ -157,6 +158,71 @@ In the following configuration, profiles are highlighted to show they are nested
 }
 ```
 
+## Accessing the same LPAR with multiple user credentials
+
+Configure different sets of credentials for the same system in order to apply different scenarios, such as production and development work.
+
+In the following configuration, nested profiles (highlighted in the example) provide different sets of credentials to connect to the same system, `lpar1`.
+
+```json showLineNumbers
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "lpar1": {
+            "properties": {
+                "host": "example1.com",
+                "rejectUnauthorized": true
+            },
+            "profiles": {
+            // highlight-start
+                "user1": {
+                    "properties": {},
+                    "profiles": {
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "port": 443
+                            }
+                        },
+                        "ssh": {
+                            "type": "ssh",
+                            "properties": {
+                                "port": 22
+                            }
+                        }
+                    },
+                    "secure": ["user", "password"]
+                },
+                "user2": {
+                    "properties": {},
+                    "profiles": {
+                        "zosmf": {
+                            "type": "zosmf",
+                            "properties": {
+                                "port": 443
+                            }
+                        },
+                        "ssh": {
+                            "type": "ssh",
+                            "properties": {
+                                "port": 22
+                            }
+                        }
+                    },
+                    "secure": ["user", "password"]
+                }
+                // highlight-end
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "lpar1.user1.zosmf",
+        "ssh": "lpar1.user2.ssh"
+    },
+    "autoStore": true
+}
+```
+
 ## Accessing LPARs that access services through one API Mediation Layer
 
 In the following configuration, services are accessed through API ML (where multi-factor authentication (MFA) or single sign-on (SSO) is achievable) using token-based authorization stored in a base profile (highlighted in the example).
@@ -171,16 +237,10 @@ In the following configuration, services are accessed through API ML (where mult
                 "basePath": "ibmzosmf/api/v1"
             }
         },
-        "cics": {
-            "type": "cics",
+        "example": {
+            "type": "example", //replace example with the profile type of the product you are communicating with
             "properties": {
-                "basePath": "ibmcics/api/v1"
-            }
-        },
-        "db2": {
-            "type": "db2",
-            "properties": {
-                "basePath": "ibmdb2/api/v1"
+                "basePath": "example/api/v1" //replace with the base path of the API for the product
             }
         },
         // highlight-start
@@ -200,8 +260,7 @@ In the following configuration, services are accessed through API ML (where mult
     },
     "defaults": {
         "zosmf": "zosmf",
-        "cics": "cics",
-        "db2": "db2",
+        "example": "example",
         "base": "project_base"
     },
     "autoStore": true
@@ -222,19 +281,13 @@ In the following configuration, services are accessed through API ML using certi
                 "basePath": "ibmzosmf/api/v1"
             }
         },
-        "cics": {
-            "type": "cics",
+        "example": {
+            "type": "example", //replace example with the profile type of the product you are communicating with
             "properties": {
-                "basePath": "ibmcics/api/v1"
+                "basePath": "example/api/v1" //replace with the base path of the API for the product
             }
         },
-        "db2": {
-            "type": "db2",
-            "properties": {
-                "basePath": "ibmdb2/api/v1"
-            }
-        },
-        // highlight-start
+// highlight-start
         "project_base": {
             "type": "base",
             "properties": {
@@ -245,12 +298,11 @@ In the following configuration, services are accessed through API ML using certi
                 "rejectUnauthorized": true
             }
         }
-        // highlight-end
+// highlight-end
     },
     "defaults": {
         "zosmf": "zosmf",
-        "cics": "cics",
-        "db2": "db2",
+        "example": "example",
         "base": "project_base"
     },
     "autoStore": true

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>ca7 commands cancel</title>
+<link rel="stylesheet" href="../css/bundle-docs.css">
+<link rel="stylesheet" href="../css/docs.css">
+<article class="markdown-body">
+<h2><a href="zowe.html">zowe</a> › <a href="zowe_ca7.html">ca7</a> › <a href="zowe_ca7_commands.html">commands</a> › <a href="zowe_ca7_commands_cancel.html">cancel</a><button id="btn-print" class="no-print" onclick="window.print();" title="Print">🖨️</button></h2>
+<p>The CANCEL command deletes jobs from the CA Workload Automation CA 7® Edition queues.</p>
+<p>For CPU jobs, the CANCEL command only removes the job from the queues.<br>
+Cancelation of a job in the active queue or ready queue (if it has been submitted)<br>
+does not cause termination of the job's execution.<br>
+CPU jobs that can be executing have to be canceled from the operating system separately.<br>
+Execution must be terminated from an OS system console.<br>
+For XPJOB jobs, the CANCEL command removes the job from the queues.<br>
+If the XPDEF initialization option XPKILL is set to YES,<br>
+and the XPJOB job has been submitted to the target node but is still in the ready queue or the active queue,<br>
+a cancel request is created and sent to the target node.<br>
+Some remote CA Scheduling Agents support the cancel request, and the request cancels or 'kills' the process execution.<br>
+It is not the responsibility of CA WA CA 7 Edition to verify that the target platform supports the kill facility.<br>
+If the cancel request was not transmitted, an error message appears in the browse and log data.<br>
+For agent definition jobs (AGJOBs), the CANCEL command sends a request to the agent and removes the job from the queues.<br>
+If the agent is not active at the time of the CANCEL request, the message is queued and sent when the agent becomes active.<br>
+If the XPDEF initialization option XPKILL is set to NO, the XPJOB is canceled from the queues, and no cancel request is sent to the target platform.<br>
+To view the XPKILL option, enter the command /DISPLAY,ST=XPS.</p>
+<p>This function is available on the QM.1, QM.6, and QM.7 panels as option C.<br>
+The CANCEL command has three formats, depending on the queues in which the task resides.</p>
+<h4>Usage</h4>
+<p>zowe ca7 commands cancel [options]</p>
+<h4>Required Options</h4>
+<ul>
+<li>
+<p><code>--ca7Id</code> <em>(string)</em></p>
+<ul>
+<li>CA7ONL Instance</li>
+</ul>
+</li>
+</ul>
+<h4>Options</h4>
+<ul>
+<li>
+<p><code>--key</code> <em>(string)</em></p>
+<ul>
+<li>The command transaction key</li>
+</ul>
+</li>
+<li>
+<p><code>--ca7#</code> <em>(string)</em></p>
+<ul>
+<li>Indicates the individual job to cancel, and the value must be a CA 7 job number.</li>
+</ul>
+</li>
+<li>
+<p><code>--force</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Specifies to force the cancellation of the job.<br>
+If you want to cancel the job to dump the log data set, specify FORCE=YES to prevent the job from being resubmitted.<br>
+Use FORCE=YES when a job to be canceled shows a status of SKELETON or RETRY.<br>
+Use FORCE=YES to cancel a job with connected resources.<br>
+Warning! Use of this option can potentially cause CA WA CA 7 Edition to abend; therefore, only use it as a last resort.</li>
+</ul>
+</li>
+<li>
+<p><code>--reason</code> <em>(string)</em></p>
+<ul>
+<li>(Optional) Defines the reason for the job cancellation.<br>
+Depending on the initialization file CANCEL statement value, this reason can be required or optional.<br>
+If it is required but not given, a message prompts the user to provide it.<br>
+The text is entered into the run log entry for this occurrence of this job and is displayed on any subsequent LRLOG inquiries.<br>
+Limits:<br>
+1 to 40 alphanumeric characters<br>
+Required:<br>
+No (depending on initialization options)</li>
+</ul>
+</li>
+</ul>
+<h4>CA7 Connection Options</h4>
+<ul>
+<li>
+<p><code>--host</code> | <code>-H</code> <em>(string)</em></p>
+<ul>
+<li>Host name of the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--port</code> | <code>-P</code> <em>(number)</em></p>
+<ul>
+<li>Port for the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--user</code> | <code>-u</code> <em>(string)</em></p>
+<ul>
+<li>User name for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--password</code> | <code>--pass</code> | <code>--pw</code> <em>(string)</em></p>
+<ul>
+<li>Password for authenticating connections to the CA7 API service that is running on the mainframe system.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-path</code> | <code>--bp</code> <em>(string)</em></p>
+<ul>
+<li>The base path for your API mediation layer instance. Specify this option to prepend the base path to all resources when making REST requests. Do not specify this option if you are not using an API mediation layer.</li>
+</ul>
+</li>
+<li>
+<p><code>--protocol</code> | <code>-o</code> <em>(string)</em></p>
+<ul>
+<li>
+<p>Specifies protocol to use for CA7 connection (http or https).</p>
+<p>Allowed values: http, https</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Profile Options</h4>
+<ul>
+<li>
+<p><code>--ca7-profile</code> | <code>--ca7-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (ca7) profile to load for this command execution.</li>
+</ul>
+</li>
+<li>
+<p><code>--base-profile</code> | <code>--base-p</code> <em>(string)</em></p>
+<ul>
+<li>The name of a (base) profile to load for this command execution.</li>
+</ul>
+</li>
+</ul>
+<h4>Base Connection Options</h4>
+<ul>
+<li>
+<p><code>--reject-unauthorized</code> | <code>--ru</code> <em>(boolean)</em></p>
+<ul>
+<li>
+<p>Reject self-signed certificates.</p>
+<p>Default value: true</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--token-type</code> | <code>--tt</code> <em>(string)</em></p>
+<ul>
+<li>The type of token to get and use for the API. Omit this option to use the default token type, which is provided by 'zowe auth login'.</li>
+</ul>
+</li>
+<li>
+<p><code>--token-value</code> | <code>--tv</code> <em>(string)</em></p>
+<ul>
+<li>The value of the token to pass to the API.</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-file</code> <em>(local file path)</em></p>
+<ul>
+<li>
+<p>The file path to a certificate file to use for authentication.</p>
+<p>Note: The CLI does not support certificate files that require a password. For more information, search Troubleshooting PEM Certificates in Zowe Docs.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>--cert-key-file</code> <em>(local file path)</em></p>
+<ul>
+<li>The file path to a certificate key file to use for authentication</li>
+</ul>
+</li>
+</ul>
+<h4>Examples</h4>
+<ul>
+<li>
+<p>Cancels a job request for Instance1 and ca7 number 0016 from CA 7:</p>
+<ul>
+<li><code>zowe ca7 commands cancel --ca7Id Instance1 --ca7# 0016</code> <button class="btn-copy no-print" data-balloon-pos="right" data-clipboard-text="zowe ca7 commands cancel --ca7Id Instance1 --ca7# 0016">Copy</button></li>
+</ul>
+</li>
+</ul>
+</article>
+<script src="../js/bundle-docs.js"></script>
+<script src="../js/docs.js"></script>
