@@ -90,7 +90,7 @@ Once the Wizard is installed, use the procedure as presented in the Wizard. The 
    New Zowe Installation|This option directs you to the Connection window. Provide details as presented in the following table: **Connecting the Wizard to z/OS**.
    Zowe Installation Preview mode|This option does not run the installation. You can use this option to preview or simulate the installation.
 
-  ### Connecting the Wizard to z/OS
+### Connecting the Wizard to z/OS
 
 2. Set the following fields according to your environment:
 
@@ -115,7 +115,7 @@ Once the Wizard is installed, use the procedure as presented in the Wizard. The 
 8. In the **Job statement** field, customize the job statement as necessary and click **SAVE AND VALIDATE**.
 9. Further down the _Planning_ page, provide details for z/OS Unix locations (including Node and Java), identifiers, and z/OSMF details. 
 
-  ### Setting z/OSMF Attributes
+### Setting z/OSMF Attributes
   Provide details for z/OSMF. 
 
 1. After specifying all the mandatory details, click **VALIDATE LOCATIONS**.
