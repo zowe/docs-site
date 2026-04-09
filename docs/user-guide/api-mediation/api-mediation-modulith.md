@@ -122,7 +122,7 @@ To enable single-service deployment mode for API ML, perform the following chang
     :::note Notes:  
     * If the Caching Service is not configured on your system, follow the steps described in [Using the Caching Service](./api-mediation-caching-service.md) to configure the Caching Service. The Caching Service is enabled by default in the single-service deployment of API Mediation Layer.
 
-    * To enable the debug mode in the single-service deployment mode, find the `components.gateway.debug` parameter and set the value to `true`.
+    * To enable the debug mode in the single-service deployment mode, find the `components.apiml.debug` parameter and set the value to `true`.
     ```
 
 2. Start the Zowe started task.
