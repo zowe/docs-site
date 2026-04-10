@@ -4,6 +4,7 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 :::note
 **Component Prefix Requirement**
+
 All properties in `zowe.yaml` must specify the full component prefix.
 
 For example, for API ML single-service deployments, use the prefix `zowe.components.gateway`.
@@ -131,11 +132,11 @@ The following commands are examples of establishing a trust relationship between
 
     - **Keyring**
       
-    For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
+        For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
 
-    <details>
-    <summary>Click here for command details for RACF.</summary>
-    - **For RACF:**
+        <details>
+        <summary>Click here for command details for RACF.</summary>
+      - **For RACF:**
       
         ```
         RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
@@ -145,15 +146,15 @@ The following commands are examples of establishing a trust relationship between
         SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
         ```
 
-      Verify:
-      ```
-      RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
-      ```
-    </details>
+        Verify:
+        ```
+        RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+        ```
+        </details>
 
-    <details>
-    <summary>Click here for command details for ACF2.</summary>
-    - **For ACF2:**
+        <details>
+        <summary>Click here for command details for ACF2.</summary>
+      - **For ACF2:**
       
         ```
         ACF
@@ -168,16 +169,16 @@ The following commands are examples of establishing a trust relationship between
         F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
         ```
       
-      Verify:
-      ```
-      SET PROFILE(USER) DIVISION(KEYRING)
-      LIST LIKE(ZWESVUSR.-)
-      ```
-    </details>
+        Verify:
+        ```
+        SET PROFILE(USER) DIVISION(KEYRING)
+        LIST LIKE(ZWESVUSR.-)
+        ```
+        </details>
 
-    <details>
-    <summary>Click here for command details for Top Secret.</summary>
-    - **For Top Secret:**
+        <details>
+        <summary>Click here for command details for Top Secret.</summary>
+      - **For Top Secret:**
       
         ```
         TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
@@ -186,11 +187,11 @@ The following commands are examples of establishing a trust relationship between
         TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
         ```
 
-      Verify:
-      ```
-      TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
-      ```
-    </details>  
+        Verify:
+        ```
+        TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
+        ```
+        </details>  
       
 2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
 
@@ -209,22 +210,22 @@ The following commands are examples of establishing a trust relationship between
 
     - **Keyring**
 
-    For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
+        For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
   
     <details>
     <summary>Click here for command details for RACF.</summary>
     - **For RACF:**
   
-      ```
-      RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
-      RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-      SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
-      ```
+    ```
+    RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
+    RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+    SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+    ```
 
-      Verify:
-      ```
-      RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
-      ```
+    Verify:
+    ```
+    RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+    ```
     </details>
 
     <details>
