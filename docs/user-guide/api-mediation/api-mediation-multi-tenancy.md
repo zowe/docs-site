@@ -154,6 +154,7 @@ RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
 
 <details>
 <summary>Click here for command details for ACF2.</summary>
+
 **For ACF2:**
       
 ```
@@ -178,6 +179,7 @@ LIST LIKE(ZWESVUSR.-)
 
 <details>
 <summary>Click here for command details for Top Secret.</summary>
+
 **For Top Secret:**
       
 ```
@@ -214,6 +216,7 @@ For keyring certificates, use the following examples of commands specific to you
   
 <details>
 <summary>Click here for command details for RACF.</summary>
+
 **For RACF:**
   
 ```
@@ -230,6 +233,7 @@ RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
 
 <details>
 <summary>Click here for details for ACF2.</summary>
+
 **For ACF2:**
   
 ```
@@ -308,7 +312,7 @@ This request lists services in the API ML of the specific apimlId given.
 ### Response with `/registry`
 
 <details>
-<summary>Click here for an example of the response with /registry</summary>
+<summary>Click here for an example of the response with /registry.</summary>
 
 **Example:**
 
@@ -366,7 +370,7 @@ This request lists services in the API ML of the specific apimlId given.
 This response should contain information about all services in an API ML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response</summary>
+<summary>Click here for an example response.</summary>
 
 **Example:**
 
@@ -411,7 +415,7 @@ This response should contain information about all services in an API ML with th
 This response should contain information about a specific service in an APIML with the specific apimlId.
 
 <details>
-<summary>Click here for an example response</summary>
+<summary>Click here for an example response.</summary>
 
 **Example:**
 
