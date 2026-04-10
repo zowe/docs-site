@@ -117,154 +117,154 @@ The following commands are examples of establishing a trust relationship between
 
 1. Import the root and, if applicable, the intermediate public key certificate of registered "Domain API ML 2" and "Domain API ML 3" API MLs running on systems Y and Z into the truststore of the "Domain API ML 1" running on system X.
 
-    - **PKCS12**
+ **PKCS12**
   
-      <details>
-      <summary>Click here for an example of keytool commands for PKCS12 certificates.</summary>
+<details>
+<summary>Click here for an example of keytool commands for PKCS12 certificates.</summary>
 
-      For PKCS12 certificates, use the following example of keytool commands:
+For PKCS12 certificates, use the following example of keytool commands:
   
-      `keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
+`keytool -import -file sysy/keystore/local_ca/local_ca.cer -alias gateway_sysy -keystore sysx/keystore/localhost/localhost.truststore.p12`
   
-      `keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
+`keytool -import -file sysz/keystore/local_ca/local_ca.cer -alias gateway_sysz -keystore sysx/keystore/localhost/localhost.truststore.p12`
 
-      </details>
+</details>
 
-    - **Keyring**
+**Keyring**
       
-        For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
+For keyrings, use the following examples of commands specific to your ESM to add certificates from the dataset and connect these certificates to the keyring used by the "Domain APIML 1":
 
-        <details>
-        <summary>Click here for command details for RACF.</summary>
-      - **For RACF:**
+<details>
+<summary>Click here for command details for RACF.</summary>
+**For RACF:**
       
-        ```
-        RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
-        RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
-        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-        RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-        SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
-        ```
+```
+RACDCERT ADD('SHARE.SYSY.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert Root CA') TRUST
+RACDCERT ADD('SHARE.SYSZ.INTERCA.CER') ID(ZWESVUSR) WITHLABEL('DigiCert CA') TRUST
+RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert Root CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('DigiCert CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+```
 
-        Verify:
-        ```
-        RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
-        ```
-        </details>
+Verify:
+```
+RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+```
+</details>
 
-        <details>
-        <summary>Click here for command details for ACF2.</summary>
-      - **For ACF2:**
+<details>
+<summary>Click here for command details for ACF2.</summary>
+**For ACF2:**
       
-        ```
-        ACF
-        SET PROFILE(USER) DIV(CERTDATA)
-        INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
-        INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
-        F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+```
+ACF
+SET PROFILE(USER) DIV(CERTDATA)
+INSERT CERTAUTH.SYSYROOT DSNAME('SHARE.SYSY.ROOTCA.CER') LABEL(DigiCert Root CA) TRUST
+INSERT CERTAUTH.SYSZINTR DSNAME('SHARE.SYSZ.INTERCA.CER') LABEL(DigiCert CA) TRUST
+F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
       
-        SET PROFILE(USER) DIVISION(KEYRING)
-        CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-        CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-        F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
-        ```
+SET PROFILE(USER) DIVISION(KEYRING)
+CONNECT CERTDATA(CERTAUTH.SYSYROOT) LABEL(DigiCert Root CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+CONNECT CERTDATA(CERTAUTH.SYSZINTR) LABEL(DigiCert CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+```
       
-        Verify:
-        ```
-        SET PROFILE(USER) DIVISION(KEYRING)
-        LIST LIKE(ZWESVUSR.-)
-        ```
-        </details>
+Verify:
+```
+SET PROFILE(USER) DIVISION(KEYRING)
+LIST LIKE(ZWESVUSR.-)
+```
+</details>
 
-        <details>
-        <summary>Click here for command details for Top Secret.</summary>
-      - **For Top Secret:**
+<details>
+<summary>Click here for command details for Top Secret.</summary>
+**For Top Secret:**
       
-        ```
-        TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
-        TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
-        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
-        TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
-        ```
+```
+TSS ADD(CERTAUTH) DCDS(SHARE.SYSY.ROOTCA.CER)  DIGICERT(SYSYROOT) LABLCERT('DigiCert Root CA') TRUST
+TSS ADD(CERTAUTH) DCDS(SHARE.SYSZ.INTERCA.CER)  DIGICERT(SYSZINTR) LABLCERT('DigiCert CA') TRUST
+TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSYROOT) USAGE(CERTAUTH)
+TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSZINTR) USAGE(CERTAUTH)
+```
 
-        Verify:
-        ```
-        TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
-        ```
-        </details>  
+Verify:
+```
+TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
+```
+</details>  
       
-2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
+1. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
 
-    - **PKCS12**
+**PKCS12**
 
-      <details>
-      <summary>Click here for example keytool commands for PKCS12 certificates.</summary>
+<details>
+<summary>Click here for example keytool commands for PKCS12 certificates.</summary>
 
-      For PKCS12 certificates, use the following example of the keytool commands:
+For PKCS12 certificates, use the following example of the keytool commands:
 
-      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
+`keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore y/keystore/localhost/localhost.truststore.p12`
 
-      `keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
+`keytool -import -file x/keystore/local_ca/local_ca.cer -alias gateway_x -keystore z/keystore/localhost/localhost.truststore.p12`
   
-      </details>
+</details>
 
-    - **Keyring**
+**Keyring**
 
-        For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
+For keyring certificates, use the following examples of commands specific to your ESM to add certificates from the dataset, and connect these certificates to the keyrings used by registered API MLs:
   
-    <details>
-    <summary>Click here for command details for RACF.</summary>
-    - **For RACF:**
+<details>
+<summary>Click here for command details for RACF.</summary>
+**For RACF:**
   
-    ```
-    RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
-    RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
-    SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
-    ```
+```
+RACDCERT ADD('SHARE.SYSX.ROOTCA.CER') ID(ZWESVUSR) WITHLABEL('Local CA') TRUST
+RACDCERT ID(ZWESVUSR) CONNECT(ID(ZWESVUSR) LABEL('Local CA') RING(ZoweKeyring) USAGE(CERTAUTH))
+SETROPTS RACLIST(DIGTCERT, DIGTRING) REFRESH
+```
 
-    Verify:
-    ```
-    RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
-    ```
-    </details>
+Verify:
+```
+RACDCERT LISTRING(ZoweKeyring) ID(ZWESVUSR)
+```
+</details>
 
-    <details>
-    <summary>Click here for details for ACF2.</summary>
-    - **For ACF2:**
+<details>
+<summary>Click here for details for ACF2.</summary>
+**For ACF2:**
   
-      ```
-      ACF
-      SET PROFILE(USER) DIV(CERTDATA)
-      INSERT CERTAUTH.SYSXROOT DSNAME('SHARE.SYSX.ROOTCA.CER') LABEL(Local CA) TRUST
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
+```
+ACF
+SET PROFILE(USER) DIV(CERTDATA)
+INSERT CERTAUTH.SYSXROOT DSNAME('SHARE.SYSX.ROOTCA.CER') LABEL(Local CA) TRUST
+F ACF2,REBUILD(USR),CLASS(P),DIVISION(CERTDATA)
       
-      SET PROFILE(USER) DIVISION(KEYRING)
-      CONNECT CERTDATA(CERTAUTH.SYSXROOT) LABEL(Local CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
-      F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
-      ```
+SET PROFILE(USER) DIVISION(KEYRING)
+CONNECT CERTDATA(CERTAUTH.SYSXROOT) LABEL(Local CA) KEYRING(ZWESVUSR.ZOWERING) USAGE(CERTAUTH)
+F ACF2,REBUILD(USR),CLASS(P),DIVISION(KEYRING)
+```
 
-      Verify:
-      ```
-      SET PROFILE(USER) DIVISION(KEYRING)
-      LIST LIKE(ZWESVUSR.-)
-      ```
-    </details>
+Verify:
+```
+SET PROFILE(USER) DIVISION(KEYRING)
+LIST LIKE(ZWESVUSR.-)
+```
+</details>
 
-    <details>
-    <summary>Click here for command details for Top Secret.</summary>
+<details>
+<summary>Click here for command details for Top Secret.</summary>
 
-    - **For Top Secret:**
+**For Top Secret:**
   
-      ```
-      TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.ROOTCA.CER)  DIGICERT(SYSXROOT) LABLCERT('Local CA') TRUST
-      TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXROOT) USAGE(CERTAUTH)
-      ```
+```
+TSS ADD(CERTAUTH) DCDS(SHARE.SYSX.ROOTCA.CER)  DIGICERT(SYSXROOT) LABLCERT('Local CA') TRUST
+TSS ADD(ZWESVUSR) KEYRING(ZOWERING) RINGDATA(CERTAUTH,SYSXROOT) USAGE(CERTAUTH)
+```
 
-      Verify:
-      ```
-      TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
-      ```
-    </details>
+Verify:
+```
+TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
+```
+</details>
 
 You completed certificates setup for multitenancy configuration, whereby registered API MLs can trust the API ML where they are registered and vice versa.
 
