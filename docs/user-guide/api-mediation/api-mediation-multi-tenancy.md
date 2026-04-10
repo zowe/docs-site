@@ -1,6 +1,15 @@
-# Multitenancy Configuration
+# Configure Multitenancy
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
+
+:::note
+**Component Prefix Requirement**
+All properties in `zowe.yaml` must specify the full component prefix.
+
+For example, for API ML single-service deployments, use the prefix `zowe.components.gateway`.
+
+:::
+
 
 ## Overview of API MLs
 
@@ -8,28 +17,26 @@ The following diagram illustrates communication between the API Mediation Layers
 
 ![Multi-domain architecture diagram](./diagrams/multi-domain_architecture_V3.svg)
 
-The diagram illustrates a Multitenacy environment where the API MLs in Domain(2-N) are registered to API ML in Domain-1. The API ML in Domain-1 may be running on z/OS, or off z/OS, for example in Kubernetes. This API ML serves as a single point of access to all API Mediation Layers registered in this and, by extension, to all services registered in those API MLs.
+**Domain-1**  
+Serves as the central hub (running on z/OS or off z/OS like on Kubernetes) This API ML serves as a single point of access and provides a single point of access for all services registered across connected domains.
 
-The API MLs in Domain(2-N) are installed on z/OS systems with the standard Zowe API ML running either in HA (sysplex) or non-HA (monoplex). These API MLs are registered to API ML in Domain-1.
+**Domain(2-N)**  
+Consists of standard Zowe API ML instances (HA or non-HA) that register directly with the central API ML in Domain-1.
+
 
 ## Multitenancy component enablement settings
 
-In the multitenancy environment, certain Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (for example API ML in Domain-1) that handles the discovery and registration as well as routing to the other API MLs (API MLs in Domain(2-N)) installed in any other specific domains. 
+In the multitenancy environment, specific Zowe components may be enabled, while others may be disabled. The multitenancy environment expects one API ML (for example API ML in Domain-1) that handles the discovery and registration as well as routing to the other API MLs (API MLs in Domain(2-N)) installed in another domain. 
 
 ## Onboarding a Gateway service in one domain to the Discovery service of API ML in another domain
 
-A Gateway from any domain can onboard Gateways of any other domains. Onboarding this service can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file and environment variables, and how to validate successful configuration.
+A Gateway from any domain can onboard Gateways of any other domains. Onboarding this service can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file, and how to validate successful configuration.
 
-- [Dynamic configuration via zowe.yaml](#dynamic-configuration-via-zoweyaml)
-- [Dynamic configuration via Environment variables](#dynamic-configuration-via-environment-variables)
-
-### Dynamic configuration via zowe.yaml 
-
-1. In zowe.yml, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1:
+1. In `zowe.yaml`, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1:
 
     `components.gateway.apiml.service.additionalRegistration`
 
-Use the following example as a template for how to set the value of this property in zowe.yaml.
+Use the following example as a template for how to set the value of this property in `zowe.yaml`.
 
 **Example:**
 ```
@@ -38,10 +45,10 @@ components.gateway.apiml.service.additionalRegistration:
       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
   ```
 
-:::note Notes:
+:::tip Tips:
   * Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs.
 
-  * We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
+  * Provide all available Discovery URLs in the value `discoveryServiceUrls`.
 
   * Always provide the direct address to the system. Do not use the DVIPA address. Using this DVIPA address could lead to unexpected behaviour.
 
@@ -49,42 +56,13 @@ components.gateway.apiml.service.additionalRegistration:
 :::
 
 2. (Optional) Configure the Gateway to forward client certificates.   
-Use this step to enable the domain(2-N) Gateway to use this client certificate for authentication.  
-Set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
+To enable the domain(2-N) Gateway to use this client certificate for authentication, set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
 ```
 components.gateway.apiml.security.x509:
     # gateway port in domain-1 
     certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
 ```
-
-### Dynamic configuration via Environment variables
-
-The list of additional registrations is extracted from environment variables. You can define a list of objects by following YML -> Environment translation rules. 
-
-The previous example can be substituted with the following variables:
-
-```
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_DISCOVERYSERVICEURLS=https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_GATEWAYURL=/
-ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_0_ROUTES_0_SERVICEURL=/
-```
-
-* **#**  
-`#` in `ZWE_CONFIGS_APIML_SERVICE_ADDITIONALREGISTRATION_#_*` specifies the ID of API ML instance.
-
-:::note Notes:
-
-  * Ensure that each API ML instance is defined in a separated record. Do not combine multiple API ML instances in a 
-  single record. In the case of a high availability setup, the value `discoveryServiceUrls` may contain multiple URLs. 
-  We highly recommend to provide all available Discovery URLs in the value `discoveryServiceUrls`.
-
-  * Always provide the direct address to the system. Do not use the DVIPA address. Using this address could lead to unexpected behaviour.
-
-  * Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
-:::
-
-This Zowe configuration transforms the zowe.yaml configuration file into the environment variables described previously. 
 
 ### Validating successful configuration
 
@@ -98,10 +76,19 @@ To see details of all instances of the ‘GATEWAY’ application, perform a **GE
 
 ## Establishing a trust relationship between the API MLs
 
-For routing to work in a multitenancy configuration, as represented in the previous diagram where "Domain API ML 2" and "Domain API ML 3" are registered to "Domain API ML 1", "Domain API ML 1" must trust  "Domain API ML 2" and "Domain API ML 3". This trust is required for successful registration into the Discovery Service component of Domain API ML 1.
+For routing to succeed, Domain-1 must trust Domain(2-N) and vice versa. This trust requires exchanging root and intermediate public certificates.
 
-To accept routed requests, "Domain API ML 2" and "Domain API ML 3" must trust the "Domain API ML 1" Gateway where Domains API ML 2 and 3 are registered to.
+**Trust Requirements:**
+
+* **Domain-1 Truststore:**  
+Must contain the public keys from Domain-2 and Domain-3 (e.g., DigiCert Root CAs).
+
+* **Domain(2-N) Truststores:**  
+Must contain the local CA public key from Domain-1 to accept routed requests.
+
+:::note
 It is necessary that the root and, if applicable, intermediate public certificates are shared between these domain API Mediation Layers. 
+:::
 
 The following diagram shows the relationship between the API MLs. 
 
@@ -283,20 +270,16 @@ You completed certificates setup for multitenancy configuration, whereby registe
 ## Using the `/registry` endpoint in the Central Cloud Gateway
 
 The `/registry` endpoint provides information about services onboarded to all registered Gateways. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
-The `/registry` endpoint provides information about services onboarded to all registered Gateways. This section describes the configuration, authentication, authorization, example of requests, and responses when using the `/registry` endpoint. 
 
 ### Configuration for `/registry`
 
-The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
-environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
-The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true` or
-environment variable `APIML_GATEWAY_REGISTRY_ENABLED=TRUE` to enable this feature.
+The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true`.
 
 ### Authentication for `/registry`
 
 The `/registry` endpoint is authenticated by the client certificate. The Gateway accepts certificates that are trusted. The username is obtained from the common name of the client certificate.
 
-Unsuccessful authentication returns a 401 error code.
+Unsuccessful authentication returns a `401` error code.
 
 ### Authorization with `/registry`
 
