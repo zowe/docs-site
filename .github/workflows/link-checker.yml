@@ -5,6 +5,9 @@ on:
     branches:
       - docs-staging
       - master
+  schedule:
+    # This triggers the workflow every day at 00:00 UTC
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
