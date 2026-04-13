@@ -136,6 +136,7 @@ For keyrings, use the following examples of commands specific to your ESM to add
 
 <details>
 <summary>Click here for command details for RACF.</summary>
+
 **For RACF:**
       
 ```
@@ -195,7 +196,7 @@ TSS LIST(ZWESVUSR) KEYRING(ZOWERING)
 ```
 </details>  
       
-1. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
+2. Import root and, if applicable, intermediate public key certificates of the API ML running on system X into the truststore of the API MLs running on systems Y and Z.
 
 **PKCS12**
 
