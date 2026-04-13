@@ -16,19 +16,22 @@ If configuration files were used in the example above, the user would have neede
 
 `zowe zos-files list data-set "SYS1.PARMLIB*"`
 
-## Learning the terminology
+## Zowe client side terminology
 
 As of Zowe V2, Zowe CLI relies on the profiles stored in configuration files to obtain connection information.
 
 Both *user* and *team* profiles are stored in configuration files, and these configuration files can either be *project* configuration files or *global* configuration files. It is helpful to understand how these differ.
 
 - A **user configuration file** stores *user profiles* and is used for one person who needs their own unique properties to run commands.
+    - Created with the command `zowe config init --user-config`.
 
 - A **team configuration file** stores *team profiles* and is used by a group of people who need the same properties to run commands.
+    - Created with the command `zowe config init`.
 
 - A **global configuration file** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default). It contains global *user profiles* and global *team profiles*.
-
+    - Created with the commands `zowe config init --global-config` or `zowe config init --user-config --global-config`.
 - A **project configuration file** resides in a directory of your choice. It contains project *user profiles* and project *team profiles*.
+    - Created with the command `zowe config init`. There can be multiple project configuration files. To define the directory for a configuration file, issue the `zowe config init` command from the directory you want the project configuration applied. 
 
 All configuration files are saved in `.json` format.
 
@@ -38,7 +41,7 @@ There may be instances where a user has all four types of files in their system,
 
 This can mean working with files that have conflicting configurations. One file can specify that a certain profile property has a value of `ABC`, while another file uses `XYZ` as a value.
 
-When the same properties have different values across multiple configuration files, Zowe CLI follows a two-step check to determine which configurations apply:
+When the same properties have different values across multiple configuration files, Zowe CLI looks for the narrowest scope with the most specific application by following a two-step check:
 
 1. Does the configuration file have a *more narrow* or a *more broad* scope?
 2. Is the configuration file *more specific* or *less specific*?
