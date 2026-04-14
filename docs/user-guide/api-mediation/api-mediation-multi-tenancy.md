@@ -5,11 +5,11 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 :::note
 **Component Prefix Requirement**
 
-All properties in `zowe.yaml` must specify the component sufix applicable to either single-service or multi-service deployments.
+Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component suffix in zowe.yaml for your environment type:
 
-* For single-service deployments of API ML, use `components.apiml`.
-* For multi-service deployments of API ML, use `components.gateway`.
-
+* For standard multi-service deployment, use `components.gateway` (Most common for Multitenancy).
+* For simplified single-service depoyment, use `components.apiml`.
+ 
 :::
 
 
@@ -65,6 +65,15 @@ components.gateway.apiml.security.x509:
     # gateway port in domain-1 
     certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
 ```
+
+:::note
+
+Ensure that you specify the component suffix applicable to either single-service or multi-service deployments.
+
+* For single-service deployments of API ML, use `components.apiml`.
+* For multi-service deployments of API ML, use `components.gateway`.
+
+:::
 
 ### Validating successful configuration
 
