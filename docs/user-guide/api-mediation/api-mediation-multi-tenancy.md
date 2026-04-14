@@ -5,9 +5,10 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 :::note
 **Component Prefix Requirement**
 
-All properties in `zowe.yaml` must specify the full component prefix.
+All properties in `zowe.yaml` must specify the component sufix applicable to either single-service or multi-service deployments.
 
-For example, for API ML single-service deployments, use the prefix `zowe.components.gateway`.
+* For single-service deployments of API ML, use `components.apiml`.
+* For multi-service deployments of API ML, use `components.gateway`.
 
 :::
 
@@ -33,7 +34,7 @@ In the multitenancy environment, specific Zowe components may be enabled, while 
 
 A Gateway from any domain can onboard Gateways of any other domains. Onboarding this service can be achieved similar to additional registrations of the Gateway. This section describes the dynamic configuration of the yaml file, and how to validate successful configuration.
 
-1. In `zowe.yaml`, set the following property for the Gateway of API MLs in Domain(2-N) to dynamically onboard to the Discovery service of API ML in Domain-1:
+1. In `zowe.yaml`, set the following property for the Gateway of API MLs in Domain(2-N) to onboard dynamically to the Discovery service of API ML in Domain-1:
 
     `components.gateway.apiml.service.additionalRegistration`
 
@@ -280,6 +281,7 @@ The `/registry` endpoint provides information about services onboarded to all re
 ### Configuration for `/registry`
 
 The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true`.
+* 
 
 ### Authentication for `/registry`
 
