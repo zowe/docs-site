@@ -73,8 +73,8 @@ assumed.
 
 ## Built-in Zowe startup checks
 
-These checks run every startup as part of `zwe internal start prepare`. Each one has a
-corresponding `zwe validate` command that can be run manually at any time.
+These checks run every startup as part of `zwe internal start prepare`. 
+Some have a corresponding `zwe validate` command that can be run manually at any time, as shown in the table.
 
 | Check | YAML key | Default | What it verifies | Underlying mechanism | Manual command |
 |---|---|---|---|---|---|
