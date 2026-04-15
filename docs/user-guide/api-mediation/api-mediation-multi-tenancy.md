@@ -36,13 +36,13 @@ A Gateway from any domain can onboard Gateways of any other domains. Onboarding 
 
 1. In `zowe.yaml`, set the following property for the Gateway of API MLs in Domain(2-N) to onboard dynamically to the Discovery service of API ML in Domain-1:
 
-    `components.gateway.apiml.service.additionalRegistration`
+    `gateway.apiml.service.additionalRegistration`
 
 Use the following example as a template for how to set the value of this property in `zowe.yaml`.
 
 **Example:**
 ```
-components.gateway.apiml.service.additionalRegistration:
+gateway.apiml.service.additionalRegistration:
       # APIML in Domain-1 (in HA, for non-HA mode use only 1 hostname)
       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
   ```
@@ -57,7 +57,7 @@ components.gateway.apiml.service.additionalRegistration:
   * Use hostnames `sys1` and `sys2` for the LPAR in the sysplex.
 :::
 
-2. (Optional) Configure the Gateway to forward client certificates.   
+1. (Optional) Configure the Gateway to forward client certificates.   
 To enable the domain(2-N) Gateway to use this client certificate for authentication, set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
 ```
