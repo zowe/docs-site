@@ -78,7 +78,7 @@ corresponding `zwe validate` command that can be run manually at any time.
 
 | Check | YAML key | Default | What it verifies | Underlying mechanism | Manual command |
 |---|---|---|---|---|---|
-| User identity | *(unconditional)* | always runs | Warns if Zowe is running as `root`. | `id -u` | — |
+| User identity | `user` | `exit` | Warns if Zowe is running as `root`. | `id -u` | — |
 | Workspace writability | *(unconditional)* | always exits | `zowe.workspaceDirectory` is writable. | filesystem check | — |
 | Java validity | *(unconditional when APIML/Gateway enabled)* | always exits | A usable JVM is available. | `java -version` | — |
 | Node validity | *(unconditional when app-server enabled)* | always exits | A usable Node.js is available. | `node --version` | — |
@@ -360,7 +360,7 @@ Verify a SAF keyring truststore and test connectivity to z/OSMF:
 java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
      -jar certificate-analyser.jar \
      -tt=JCERACFKS \
-     -t="safkeyring://ZWESVUSR/ZOWERING" \
+     -t="safkeyringjce://ZWESVUSR/ZOWERING" \
      -tp=password \
      -r=https://zos.example.com:443/zosmf/info
 ```
