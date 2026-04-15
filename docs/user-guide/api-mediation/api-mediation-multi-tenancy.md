@@ -5,10 +5,12 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 :::note
 **Component Prefix Requirement**
 
-Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component suffix in zowe.yaml for your environment type:
+Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component prefix in zowe.yaml for your environment type:
 
-* For standard multi-service deployment, use `components.gateway` (Most common for Multitenancy).
-* For simplified single-service depoyment, use `components.apiml`.
+Ensure that you specify the component prefix applicable to either single-service or multi-service deployments.
+
+* For multi-service deployments of API ML, use `components.gateway` for <_component-prefix_> (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for <_component-prefix_> 
  
 :::
 
@@ -36,13 +38,13 @@ A Gateway from any domain can onboard Gateways of any other domains. Onboarding 
 
 1. In `zowe.yaml`, set the following property for the Gateway of API MLs in Domain(2-N) to onboard dynamically to the Discovery service of API ML in Domain-1:
 
-    `gateway.apiml.service.additionalRegistration`
+    `_component-prefix_.apiml.service.additionalRegistration`
 
 Use the following example as a template for how to set the value of this property in `zowe.yaml`.
 
 **Example:**
 ```
-gateway.apiml.service.additionalRegistration:
+<_component-prefix_>.apiml.service.additionalRegistration:
       # APIML in Domain-1 (in HA, for non-HA mode use only 1 hostname)
       - discoveryServiceUrls: https://sys1:{discoveryServicePort}/eureka/,https://sys2:{discoveryServicePort}/eureka/
   ```
@@ -60,20 +62,24 @@ gateway.apiml.service.additionalRegistration:
 1. (Optional) Configure the Gateway to forward client certificates.   
 To enable the domain(2-N) Gateway to use this client certificate for authentication, set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
+:::note
+
+**Component Prefix Requirement**
+
+Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component prefix in zowe.yaml for your environment type:
+
+* For multi-service deployments of API ML, use `components.gateway` for <_component-prefix_> (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for <_component-prefix_> 
+  
+:::
+
 ```
-apiml.security.x509:
+<_component-prefix_>.apiml.security.x509:
     # gateway port in domain-1 
     certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
 ```
 
-:::note
 
-Ensure that you specify the component suffix applicable to either single-service or multi-service deployments.
-
-* For single-service deployments of API ML, use `components.apiml`.
-* For multi-service deployments of API ML, use `components.gateway`.
-
-:::
 
 ### Validating successful configuration
 
