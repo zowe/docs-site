@@ -61,7 +61,7 @@ components.gateway.apiml.service.additionalRegistration:
 To enable the domain(2-N) Gateway to use this client certificate for authentication, set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
 ```
-components.gateway.apiml.security.x509:
+apiml.security.x509:
     # gateway port in domain-1 
     certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
 ```
@@ -289,7 +289,7 @@ The `/registry` endpoint provides information about services onboarded to all re
 
 ### Configuration for `/registry`
 
-The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true`.
+The `/registry` endpoint is disabled by default. Use the configuration property `components.gateway.apiml.gateway.registry.enabled=true`.
 * 
 
 ### Authentication for `/registry`
