@@ -7,8 +7,8 @@ Zowe supports management of multiple tenants, whereby different tenants can serv
 
 Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component prefix in zowe.yaml for your environment type (for either multi-service or single-service deployments):
 
-* For multi-service deployments of API ML, use `components.gateway` for <component-prefix> (This prefix is most common for Multitenancy).
-* For single-service deployments of API ML, use `components.apiml` for <component-prefix> 
+* For multi-service deployments of API ML, use `components.gateway` for &lt;component-prefix&gt; (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for &lt;component-prefix&gt; 
  
 :::
 
@@ -66,8 +66,8 @@ To enable the domain(2-N) Gateway to use this client certificate for authenticat
 
 Multitenancy environments typically utilize multi-service deployments. Ensure you use the correct component prefix in zowe.yaml for your environment type (for either multi-service or single-service deployments):
 
-* For multi-service deployments of API ML, use `components.gateway` for <component-prefix> (This prefix is most common for Multitenancy).
-* For single-service deployments of API ML, use `components.apiml` for <component-prefix> 
+* For multi-service deployments of API ML, use `components.gateway` for &lt;component-prefix&gt; (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for &lt;component-prefix&gt; 
   
 :::
 
