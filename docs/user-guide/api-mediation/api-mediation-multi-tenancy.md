@@ -2,7 +2,15 @@
 
 Zowe supports management of multiple tenants, whereby different tenants can serve different purposes or different customers. The use case for multi-tenant support is when a service provider manages sysplexes/monoplexes for multiple customers. This configuration makes it possible to have a single access point for all customers, and properly route and authenticate across different domains.
 
+:::note
+**Component Prefix Requirement**
 
+Multitenancy environments typically utilize multi-service deployments. Ensure that you use the correct component prefix in zowe.yaml for your environment type (for either multi-service or single-service deployments):
+
+* For multi-service deployments of API ML, use `components.gateway` for _component-prefix_ (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for _component-prefix_
+ 
+:::
 
 
 ## Overview of API MLs
@@ -52,15 +60,21 @@ Use the following example as a template for how to set the value of this propert
 1. (Optional) Configure the Gateway to forward client certificates.   
 To enable the domain(2-N) Gateway to use this client certificate for authentication, set the `certificatesUrl` property to ensure that only  Gateway-forwarded certificates are used for client certificate authentication. This URL returns a certificate chain from the Gateway.
 
+:::note
+**Component Prefix Requirement**
 
+Multitenancy environments typically utilize multi-service deployments. Ensure that you use the correct component prefix in zowe.yaml for your environment type (for either multi-service or single-service deployments):
+
+* For multi-service deployments of API ML, use `components.gateway` for _component-prefix_ (This prefix is most common for Multitenancy).
+* For single-service deployments of API ML, use `components.apiml` for _component-prefix_
+ 
+:::
 
 ```
 <component-prefix>.apiml.security.x509:
     # gateway port in domain-1 
     certificatesUrl: https://{gatewayHost}:{gatewayPort}/gateway/certificates
 ```
-
-
 
 ### Validating successful configuration
 
