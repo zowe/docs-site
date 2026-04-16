@@ -31,7 +31,7 @@ Both *user* and *team* profiles are stored in configuration files, and these con
 - A **global configuration file** resides in the `ZOWE_CLI_HOME` directory (YourUserHomeDirectory/.zowe, by default). It contains global *user profiles* and global *team profiles*.
     - Created with the commands `zowe config init --global-config` or `zowe config init --user-config --global-config`.
 - A **project configuration file** resides in a directory of your choice. It contains project *user profiles* and project *team profiles*.
-    - Created with the command `zowe config init`. There can be multiple project configuration files. To define the directory for a configuration file, issue the `zowe config init` command from the directory you want the project configuration applied. 
+    - Created with the command `zowe config init` or `zowe config init --user-config`. You can create multiple project configuration files. To designate a directory for a configuration file, issue the `zowe config init` command from the directory you want the project configuration applied. Project configuration files affect actions performed only while you are within that file's designated directory.
 
 All configuration files are saved in `.json` format.
 
