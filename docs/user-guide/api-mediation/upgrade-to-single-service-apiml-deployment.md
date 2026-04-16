@@ -1,4 +1,4 @@
-# Upgrade to single-service API ML deployment
+# Upgrading to single-service API ML deployment
 
 Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18** (the final v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
 
@@ -15,7 +15,9 @@ Must be upgraded to **v18 or v20**. Update `node.home`.
 Requires **V2R5** or **V3R1**. 
 * **JWT Support:**  
 Highly recommended. If JWT support is not available, set `jwtAutoconfiguration` to `ltpa`.
-
+:::tip
+Ensure that all Zowe address spaces are stopped before modifying configuration files.
+:::
 
 ## Enabling the ZAAS Component
 In Zowe v3, the **Zowe Authentication and Authorization Service (ZAAS)** is a mandatory standalone component for API ML. In previous versions, this logic was embedded within the Gateway.
@@ -29,6 +31,10 @@ components:
     port: 7558
     debug: false
 ```
+:::note
+Port `7558` was previously used by the `jobs-api`. Ensure the `jobs-api` component is removed to avoid a port conflict with ZAAS.
+:::
+
 ## Transitioning to Single-Service Mode
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
@@ -54,11 +60,17 @@ components:
   caching-service:
     enabled: false
 ```
+3. Remove deprecated components. 
+To prevent "component not found" errors, remove the configuration blocks for these services that no longer exist in v3:
+
+* `metrics-service`
+* `jobs-api`
+* `files-api`
 
 ## Authentication & Gateway Updates
 Update the Gateway’s security configuration to reflect the service ID changes in v3:
 
-1. Update your rervice ID to `ibmzosmf`.
+1. Update your service ID to `ibmzosmf`.
 
 2. Set `jwtAutoconfiguration` to `jwt` (preferred) or `ltpa`.
 
@@ -82,5 +94,5 @@ Run the command `zwe init stc` (or use JCL `ZWEISTC`) to ensure your `ZWESLSTC` 
 Re-run `zwe init apfauth` to ensure the ZIS load libraries are authorized.
 
 ## References & Detailed Architecture
-For comprehensive information about enabling single-servie deployement, performance improvements, and internal service consolidation, see the article, [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+For comprehensive information about single-servie deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
 

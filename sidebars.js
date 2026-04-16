@@ -348,7 +348,8 @@ module.exports = {
             "user-guide/install-configure-zos-extensions",
             "user-guide/mvd-configuration",
           ],
-        }
+        },
+        "user-guide/upgrade-to-single-service-apiml-deployment"
       ],
     },
     {
