@@ -168,6 +168,8 @@ When z/OSMF is present and configured, Zowe automatically detects and leverages 
 :::
 
 :::note
+Before you run Zowe on z/OS 2.5 with Java 21, ensure that you apply PTF 'z/OS 2.5 PTF UI95696'. For more information, see [Java 21 users receiving CEE3728S under z/OS 2.5](https://www.ibm.com/support/pages/java-21-users-receiving-cee3728s-under-zos-25)
+
 For specific z/OS security configuration options pertaining to the Zowe server-side components in your setup, consult [Security customization of your z/OS system](./configure-zos-system.md).
 ::: 
 
