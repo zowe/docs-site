@@ -93,6 +93,7 @@ Run the command `zwe init stc` (or use JCL `ZWEISTC`) to ensure your `ZWESLSTC` 
 2. Update APF Authorization. 
 Re-run `zwe init apfauth` to ensure the ZIS load libraries are authorized.
 
-## References & Detailed Architecture
-For comprehensive information about single-servie deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+:::note
+For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+:::
 
