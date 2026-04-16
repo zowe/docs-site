@@ -24,6 +24,18 @@ To define additional mainframe services and other profiles in an existing global
                     "port": 443
                 }
             },
+            "Your_default_cics_profile_name": {
+                "type": "cics",
+                "properties": {
+                    "port": 000
+                }
+            },
+            "Your_non-default_cics_profile_name": {
+                "type": "cics",
+                "properties": {
+                    "port": 000
+                }
+            },                        
             "global_base": {
                 "type": "base",
                 "properties": {
@@ -37,6 +49,7 @@ To define additional mainframe services and other profiles in an existing global
         },
         "defaults": {
             "zosmf": "zosmf",
+            "cics": "Your_default_cics_profile_name",
             "base": "global_base"
         },
     }
@@ -48,15 +61,15 @@ A profile contains all, or most, of the information you need to connect to a spe
 
 There are three basic profile types:
 
-- service profiles
-- base profiles
-- parent profiles
+- [service profiles](../appendix/zowe-glossary.md#service-profile)
+- [base profiles](../appendix/zowe-glossary.md#base-profile)
+- [parent profiles](../appendix/zowe-glossary.md#parent-profil)
 
 You can learn more about how service, base, and parent profiles work in [Zowe CLI profile types](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types).
 
 ### Core z/OS service profiles
 
-The three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
+There are three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
 
 - **z/OSMF** profiles connect with the IBM z/OS Management Facility service.
 - **TSO** profiles connect with the Time Sharing Option service.
@@ -64,9 +77,77 @@ The three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
 
 ### Zowe CLI plug-in service profiles
 
-Other kinds of *service profiles* can be used to configure connections for Zowe CLI plug-ins. A *base profile*, on the other hand, contains connection data that can be shared across multiple service profiles.
+Other kinds of service profiles can be used to configure connections for Zowe CLI plug-ins. A base profile, on the other hand, contains connection data that can be shared across multiple service profiles.
 
 To determine the types of plug-in service profiles that can be used in Zowe CLI configuration, refer to the tables on this page or check the Zowe CLI plug-in command groups listed in the [Zowe web help](https://docs.zowe.org/stable/web_help/index.html). Most group names match the plug-in profile name.
+
+### Defining default profiles
+
+You can save multiple service profiles for the same service in your configuration file. This is useful when you want to store different configurations for different types of applications, such as a configuration for development purposes and another configuration for testing.
+
+Specify a service profiles as a default in your configuration file to apply that profile when issuing commands: 
+
+```
+"defaults": {
+   "zosmf": "zosmf",
+   "tso": "tso",
+   "ssh": "ssh",
+   "cics": "Your_default_cics_profile_name",
+   "base":"global_base"
+  }
+```
+
+Using the preceding `defaults` section with the configuration at the start of this page, you can issue `cics` commands that apply your default `cics` profile without having to specify it your command:
+
+```
+zowe cics define transaction <transactionName> <programName> <csdGroup>
+```
+
+To issue a `cics` command with a non-default profile, add the `--cics-profile` option to your command:
+
+```
+zowe cics define transaction <transactionName> <programName> <csdGroup> --cics-profile Your_non-default_cics_profile_name
+```
+
+## Command groups and their profile types
+
+Depending on how many Zowe CLI plug-ins you have installed, a range of command groups can be issued in Zowe CLI.
+
+Command groups apply to specific profile types. The following table shows which profile types are used by a specific command group.
+
+| command group | applicable profile types |
+| - | - |
+| `auth` | `base` |
+| `ca7` | `ca7`, `base` |
+| `cics` | `cics`, `base` |
+| `config` | N/A <br/> except for `config auto-init` command, which uses `base` |
+| `daemon` | N/A |
+| `db2` | `db2`, `base` |
+| `dbm-db2` | `dbm-db2`, `dbm-db2-options`, `base` |
+| `endevor` | `endevor`, `endevor-location`, `base` |
+| `endevor-bridge-for-git` | `ebg`, `base` |
+| `file-master-plus` | `fmp`, `base` |
+| `idms` | `idms`, `base` |
+| `jclcheck` | `jclcheck`, `base` |
+| `mat` | `mat`, `base` |
+| `mat-pma-util` | `pma`, `zosmf`, `base` |
+| `mq` | `mq`, `base` |
+| `omspool` | `omspool`, `zosmf`, `base` |
+| `omview` | `omview`/`caview`, `base` |
+| `ops` | `ops`, `base` |
+| `plugins` | N/A |
+| `provisioning` | `zosmf`, `base` |
+| `rse` | `rse`, `base` |
+| `sysview` | `sysview`, `sysview-format`, `base` |
+| `zos-console` | `zosmf`, `base` |
+| `zos-files` | `zosmf`, `base` |
+| `zos-ftp` | `zftp`, `base` |
+| `zos-jobs` | `zosmf`, `base` |
+| `zos-logs` | `zosmf`, `base`|
+| `zos-ssh` | `ssh`, `base` |
+| `zos-tso` | `tso`, `zosmf`, `base` |
+| `zos-workflows` | `zosmf`, `base` |
+| `zosmf` | `zosmf`, `base` |
 
 ## Profile properties
 
