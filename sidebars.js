@@ -349,7 +349,7 @@ module.exports = {
             "user-guide/mvd-configuration",
           ],
         },
-        "user-guide/upgrade-to-single-service-apiml-deployment"
+        "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
       ],
     },
     {
