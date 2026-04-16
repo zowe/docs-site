@@ -293,7 +293,7 @@ The `/registry` endpoint provides information about services onboarded to all re
 
 ### Configuration for `/registry`
 
-The `/registry` endpoint is disabled by default. Use the configuration property `apiml.gateway.registry.enabled=true`.
+The `/registry` endpoint is disabled by default. Use the configuration property `<component-prefix>.apiml.gateway.registry.enabled=true`.
 * 
 
 ### Authentication for `/registry`
