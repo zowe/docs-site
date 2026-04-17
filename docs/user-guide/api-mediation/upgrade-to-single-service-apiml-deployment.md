@@ -4,6 +4,10 @@ Enable the single-service deployment of API ML for an existing multi-service API
 
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog components within a single address space.
 
+:::note
+For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
+:::
+
 ## System Requirements & Prerequisites
 Before transitioning to the single-service model, verify that your z/OS environment meets the minimum standards for Zowe v3:
 
@@ -93,7 +97,29 @@ Run the command `zwe init stc` (or use JCL `ZWEISTC`) to ensure your `ZWESLSTC` 
 2. Update APF Authorization. 
 Re-run `zwe init apfauth` to ensure the ZIS load libraries are authorized.
 
-:::note
-For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
-:::
+## Restarting Zowe
 
+After completing the infrastructure refresh and mandatory cleanup, you can bring Zowe back online.
+
+1. Start the Zowe Cross-Memory Server (ZIS).
+If you stopped the Cross-Memory server during the upgrade, start ZIS first. This server provides the authorized services required by Zowe.
+
+    ```
+    /S ZWESISTC 
+    ```
+
+2. Start the Zowe main launcher.
+Start the main Zowe task. Because you have enabled single-service deployment, the launcher will now initialize the consolidated "Modulith" instead of multiple separate address spaces for the API Mediation Layer.
+    ```
+    /S ZWESLSTC
+    ```
+3. Verify the Consolidated Address Spaces.
+In a single-service deployment, your SDSF (or equivalent) should show a simplified list of address spaces. Specifically, you should see:
+
+* `ZWESL` (or similar): The main launcher.
+* `GW` suffix: The consolidated Gateway (now hosting Discovery and Catalog).
+* `AZ` suffix: The new ZAAS (Zowe Authentication and Authorization Service).
+
+    :::note
+    You should no longer see separate address spaces for DS (Discovery) or AC (Catalog).
+    :::
