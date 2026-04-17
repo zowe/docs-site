@@ -4,7 +4,7 @@ Enable the single-service deployment of API ML for an existing multi-service API
 
 :::info Required role: system administrator:::
 
-Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog components within a single address space.
+Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog, the Caching service and ZAAS components within a single address space.
 
 :::note
 For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
@@ -16,9 +16,9 @@ Before transitioning to the single-service model, verify that your z/OS environm
 * **Java:**  
 Must be upgraded to **Java 17** or **Java 21**. Update the `java.home` parameter in your `zowe.yaml`.
 * **Node.js:**  
-Must be upgraded to **v18 or v20**. Update `node.home`.
+Recommended to be upgraded to **v20**. Update `node.home`.
 * **z/OSMF:**  
-Requires **V2R5** or **V3R1**. 
+SAF is recommended as the authentication provider. If, however, you are using z/OSMF, the following versions are supported: **V2R5**, **V3R1**, or **V3R2**. 
 * **JWT Support:**  
 Highly recommended. If JWT support is not available, set `jwtAutoconfiguration` to `ltpa`.
 :::tip
@@ -103,8 +103,7 @@ Re-run `zwe init apfauth` to ensure the ZIS load libraries are authorized.
 
 After completing the infrastructure refresh and mandatory cleanup, you can bring Zowe back online.
 
-1. Start the Zowe Cross-Memory Server (ZIS).
-If you stopped the Cross-Memory server during the upgrade, start ZIS first. This server provides the authorized services required by Zowe.
+1. If you use Zowe Cross-Memory Server (ZIS), start this component first. This server provides the authorized services required by Zowe. for more details, see [Configuring the Zowe cross memory server (ZIS)](../configure-xmem-server.md).
 
     ```
     /S ZWESISTC 
