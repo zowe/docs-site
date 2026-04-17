@@ -2,6 +2,8 @@
 
 Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18** (the final v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
 
+:::info Required role: system administrator:::
+
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog components within a single address space.
 
 :::note
