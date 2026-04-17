@@ -24,7 +24,7 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 :::
 
 ## Enabling the ZAAS Component
-In Zowe v3, the **Zowe Authentication and Authorization Service (ZAAS)** is a mandatory standalone component for API ML. In previous versions, this logic was embedded within the Gateway.
+In Zowe v3, the **Zowe Authentication and Authorization Service (ZAAS)** is a mandatory standalone component for API ML. In previous versions, this functionality was embedded within the Gateway.
 
 Ensure that your `zowe.yaml` contains the following section with the specified parameter values:
 
@@ -52,8 +52,8 @@ components:
       deploymentMode: single-service
 ```
 
-2. Disable Standalone Components.
-Because the Discovery Service, API Catalog, and Caching Service are now internal to the Gateway address space, they must be disabled as standalone components to prevent port conflicts and unnecessary address spaces:
+2. Disable standalone components.
+Because the Discovery Service, API Catalog, and Caching Service are now internal to the Gateway address space, these components must be disabled to prevent port conflicts and unnecessary address spaces:
 
 ```yaml
 components:
@@ -108,12 +108,11 @@ If you stopped the Cross-Memory server during the upgrade, start ZIS first. This
     /S ZWESISTC 
     ```
 
-2. Start the Zowe main launcher.
-Start the main Zowe task. Because you have enabled single-service deployment, the launcher will now initialize the consolidated "Modulith" instead of multiple separate address spaces for the API Mediation Layer.
+1. Start the main Zowe task. The launcher now initializes the consolidated single-service instead of multiple separate address spaces for the API Mediation Layer.
     ```
     /S ZWESLSTC
     ```
-3. Verify the Consolidated Address Spaces.
+2. Verify the consolidated address spaces.
 In a single-service deployment, your SDSF (or equivalent) should show a simplified list of address spaces. Specifically, you should see:
 
 * `ZWESL` (or similar): The main launcher.
@@ -121,5 +120,5 @@ In a single-service deployment, your SDSF (or equivalent) should show a simplifi
 * `AZ` suffix: The new ZAAS (Zowe Authentication and Authorization Service).
 
     :::note
-    You should no longer see separate address spaces for DS (Discovery) or AC (Catalog).
+    You should no longer see separate address spaces for `DS` (Discovery) or `AC` (Catalog).
     :::
