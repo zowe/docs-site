@@ -67,7 +67,7 @@ The recommended Gateway configuration is to use System Authorization Facility (S
               jwtAutoconfiguration: ltpa
               serviceId: ibmzosmf
   ```
-API ML now used z/OSMF as its identity validator.
+API ML now uses z/OSMF as its identity validator.
 
 2. Enable SAF authorization.
    
@@ -94,20 +94,20 @@ While SAF is the recommended provider for enterprise production environments, yo
 
 1. Set `jwtAutoconfiguration` to `jwt`:
    
-   ```yaml
-   components:
-     gateway:
-       apiml:
-         security:
-           auth:
-             zosmf:
-               jwtAutoconfiguration: jwt
-               serviceId: ibmzosmf
-  ```
+```yaml
+  components:
+    gateway:
+      apiml:
+        security:
+          auth:
+            zosmf:
+              jwtAutoconfiguration: jwt
+              serviceId: ibmzosmf
+```
 
 2. Disable SAF resource checking: 
 
-  ```yaml
+```yaml
   components:
     gateway:
       apiml:
@@ -115,9 +115,9 @@ While SAF is the recommended provider for enterprise production environments, yo
           authorization:
             saf:
               enabled: false              
-  ```
+```
 
-* For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](https://docs.zowe.org/stable/user-guide/authenticating-with-jwt-token/).
+For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../authenticating-with-jwt-token.md).
   
 </details>
 
@@ -125,7 +125,7 @@ While SAF is the recommended provider for enterprise production environments, yo
 
 ## Refreshing Infrastructure & Cleanup
 
-Update PROCLIB. 
+Update PROCLIB.  
 Run the command `zwe init stc` (or use JCL `ZWEISTC`) to ensure your `ZWESLSTC` and `ZWESISTC` members are updated for v3.
 
 :::note
