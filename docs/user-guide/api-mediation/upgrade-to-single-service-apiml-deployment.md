@@ -13,20 +13,20 @@ For comprehensive information about single-service deployment, performance impro
 ## System Requirements & Prerequisites
 Before transitioning to the single-service model, verify that your z/OS environment meets the minimum standards for Zowe v3:
 
-* **Java** 
-Must be upgraded to Java 17 or Java 21. Ensure the java.home parameter in your zowe.yaml points to the correct home location for one of these versions.
+* **Java**  
+Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your zowe.yaml points to the correct home location for one of these versions.
 
-* **Node.js**  
-Upgrading to v20 is recommended. Update the node.home parameter in your zowe.yaml accordingly.
+* **Node.js**  
+Upgrading to v20 is recommended. Update the `node.home` parameter in your zowe.yaml accordingly.
 
-* **Authentication**  
-SAF (System Authorization Facility) is the recommended authentication provider for enterprise security. This ensures Zowe uses your existing security manager (ESM) for identity and access management.
+* **Authentication**  
+SAF (System Authorization Facility) is the recommended authentication provider for enterprise security. Enabling SAF ensures that Zowe uses your existing security manager (ESM) for identity and access management.
 
-* **z/OSMF**:**  
+* **z/OSMF**  
 If you are using z/OSMF to communicate to SAF, the following versions are supported: V2R5, V3R1, or V3R2.
 
-* **JWT Support**  
-If JWT (JSON Web Token) support is not configured or available in your environment, set  `jwtAutoconfiguration` to `ltpa` to maintain SAF-backed authentication.
+* **JWT Support**  
+Zowe v3 uses JWT as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. If JWT support is not yet configured or available in your z/OSMF environment, set `jwtAutoconfiguration` to `ltpa` to maintain SAF-backed authentication using legacy session tokens.
 
 :::tip
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
@@ -46,18 +46,10 @@ Set `deploymentMode` to single-service under the gateway configuration:
         deploymentMode: single-service
   ```
 
-2. Disable standalone components.
-Because the Discovery Service, API Catalog, and Caching Service are now internal to the Gateway address space, these components must be disabled to prevent port conflicts and unnecessary address spaces:
+:::note
+All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
+:::
 
-```yaml
-components:
-  discovery:
-    enabled: false
-  api-catalog:
-    enabled: false
-  caching-service:
-    enabled: false
-```
 
 ## Authentication & Gateway Updates
 The recommended Gateway configuration is to use System Authorization Facility (SAF) via LTPA and enable SAF resource checking.
@@ -74,6 +66,7 @@ The recommended Gateway configuration is to use System Authorization Facility (S
               jwtAutoconfiguration: ltpa
               serviceId: ibmzosmf
   ```
+API ML now used z/OSMF as its identity validator.
 
 2. Enable SAF authorization.
   ```yaml
@@ -85,6 +78,51 @@ The recommended Gateway configuration is to use System Authorization Facility (S
             saf:
               enabled: true
   ```
+API ML now checks specific SAF Resource Profiles before a request is allowed to pass through the Gateway.
+
+:::note
+While SAF is the recommended authentication provider, it is possible to use JWT-based authentication if you cannot use SAF.
+
+<details>
+<summary>Click here for details about using JWT as your authentication provider,</summary>
+
+**JWT-Based Authentication (Not Recommended)
+While SAF is the recommended provider for enterprise production environments, you may choose to use **JSON Web Token (JWT)** authentication for specific use cases (e.g., development labs). 
+
+> [!CAUTION]
+> Using JWT without SAF authorization limits your ability to perform granular resource-level auditing and access control via your External Security Manager (RACF, ACF2, or Top Secret). For more information on the benefits of SAF-based security, see [Addressing authentication requirements](https://docs.zowe.org/stable/user-guide/address-authentication-requirements/).
+
+### Configuration Steps for JWT**
+
+1. Set `jwtAutoconfiguration` to `jwt`:
+   ```yaml
+   components:
+     gateway:
+       apiml:
+         security:
+           auth:
+             zosmf:
+               jwtAutoconfiguration: jwt
+               serviceId: ibmzosmf
+  ```
+
+2. Disable SAF resource checking: 
+
+  ```yaml
+  components:
+    gateway:
+      apiml:
+        security:
+          authorization:
+            saf:
+              enabled: false              
+  ```
+
+* For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](https://docs.zowe.org/stable/user-guide/authenticating-with-jwt-token/).
+  
+</details>
+
+:::
 
 ## Refreshing Infrastructure & Cleanup
 
@@ -102,14 +140,14 @@ After completing the infrastructure refresh and mandatory cleanup, you can bring
 
 :::note
 If you are using ZIS, start this component first. This server provides the authorized services required by Zowe. 
-
 ```
 /S ZWESISTC 
 ```
 For details about ZIS configuration, see [Configuring the Zowe cross memory server (ZIS)](../configure-xmem-server.md).
 :::
 
-Start the main Zowe task. The launcher now initializes the consolidated single-service instead of multiple separate address spaces for the API Mediation Layer.
+Start the main Zowe task. 
     ```
     /S ZWESLSTC
     ```
+The launcher now initializes the consolidated single-service instead of multiple separate address spaces for the API Mediation Layer.
