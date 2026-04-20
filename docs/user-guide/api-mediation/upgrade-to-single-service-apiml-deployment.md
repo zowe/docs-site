@@ -84,15 +84,11 @@ API ML now checks specific SAF Resource Profiles before a request is allowed to 
 While SAF is the recommended authentication provider, it is possible to use JWT-based authentication if you cannot use SAF.
 
 <details>
-<summary>Click here for details about using JWT as your authentication provider,</summary>
+<summary>Click here for details about using JWT as your authentication provider.</summary>
 
-**JWT-Based Authentication (Not Recommended)
-While SAF is the recommended provider for enterprise production environments, you may choose to use **JSON Web Token (JWT)** authentication for specific use cases (e.g., development labs). 
+**JWT-Based Authentication (Not Recommended)** 
 
-> [!CAUTION]
-> Using JWT without SAF authorization limits your ability to perform granular resource-level auditing and access control via your External Security Manager (RACF, ACF2, or Top Secret). For more information on the benefits of SAF-based security, see [Addressing authentication requirements](https://docs.zowe.org/stable/user-guide/address-authentication-requirements/).
-
-### Configuration Steps for JWT**
+While SAF is the recommended provider for enterprise production environments, you may choose to use **JSON Web Token (JWT)** authentication for specific use cases. 
 
 1. Set `jwtAutoconfiguration` to `jwt`:
    ```yaml
