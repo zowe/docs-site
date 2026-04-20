@@ -2,7 +2,8 @@
 
 Enable the single-service deployment of API ML for an existing multi-service API ML deployment. This procedure is specifically designed for users upgrading from **Zowe v2.18** (the final v2 release) or **Zowe v3.3.x** multi-service deployments to the consolidated single-service deployment model.
 
-:::info Required role: system administrator:::
+:::info Required role: system administrator
+:::
 
 Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog, the Caching service and ZAAS components within a single address space.
 
@@ -36,7 +37,7 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 ## Transitioning to Single-Service Mode
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
-1. Enable single-service deployment.
+Enable single-service deployment.
 Set `deploymentMode` to single-service under the gateway configuration:
 
   ```yaml
@@ -69,6 +70,7 @@ The recommended Gateway configuration is to use System Authorization Facility (S
 API ML now used z/OSMF as its identity validator.
 
 2. Enable SAF authorization.
+   
   ```yaml
   components:
     gateway:
@@ -91,6 +93,7 @@ While SAF is the recommended authentication provider, it is possible to use JWT-
 While SAF is the recommended provider for enterprise production environments, you may choose to use **JSON Web Token (JWT)** authentication for specific use cases. 
 
 1. Set `jwtAutoconfiguration` to `jwt`:
+   
    ```yaml
    components:
      gateway:
