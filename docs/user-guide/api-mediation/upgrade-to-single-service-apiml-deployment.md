@@ -52,7 +52,7 @@ All standalone components from the multi-service API ML deployment including the
 :::
 
 
-## Authentication & Gateway Updates
+## Configuring authentication 
 The recommended Gateway configuration is to use System Authorization Facility (SAF) via LTPA and enable SAF resource checking.
 
 1. Set `jwtAutoconfiguration` to `ltpa` to use SAF-backed tokens for z/OSMF.
@@ -80,7 +80,7 @@ API ML now used z/OSMF as its identity validator.
             saf:
               enabled: true
   ```
-API ML now checks specific SAF Resource Profiles before a request is allowed to pass through the Gateway.
+API ML now checks specific SAF resource profiles before a request is allowed to pass through the Gateway.
 
 :::note
 While SAF is the recommended authentication provider, it is possible to use JWT-based authentication if you cannot use SAF.
