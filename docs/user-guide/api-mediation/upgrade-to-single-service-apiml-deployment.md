@@ -149,4 +149,4 @@ Start the main Zowe task.
     ```
     /S ZWESLSTC
     ```
-The launcher now initializes the consolidated single-service instead of multiple separate address spaces for the API Mediation Layer.
+The launcher now initializes the API Mediation Layer in a single address space instead of multiple address spaces.
