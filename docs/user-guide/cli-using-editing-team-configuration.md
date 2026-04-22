@@ -27,13 +27,13 @@ To define additional mainframe services and other profiles in an existing global
             "Your_default_cics_profile_name": {
                 "type": "cics",
                 "properties": {
-                    "port": 000
+                    "port": 123
                 }
             },
             "Your_non-default_cics_profile_name": {
                 "type": "cics",
                 "properties": {
-                    "port": 000
+                    "port": 123
                 }
             },                        
             "global_base": {
@@ -63,7 +63,7 @@ There are three basic profile types:
 
 - [service profiles](../appendix/zowe-glossary.md#service-profile)
 - [base profiles](../appendix/zowe-glossary.md#base-profile)
-- [parent profiles](../appendix/zowe-glossary.md#parent-profil)
+- [parent profiles](../appendix/zowe-glossary.md#parent-profile)
 
 You can learn more about how service, base, and parent profiles work in [Zowe CLI profile types](../user-guide/cli-using-using-team-profiles.md#zowe-cli-profile-types).
 
@@ -72,7 +72,7 @@ You can learn more about how service, base, and parent profiles work in [Zowe CL
 There are three z/OS services that Zowe CLI and Zowe Explorer profiles connect to:
 
 - **z/OSMF** profiles connect with the IBM z/OS Management Facility service.
-- **TSO** profiles connect with the Time Sharing Option service.
+- **TSO** profiles provide properties used for issuing Time Sharing Option commands with z/OSMF.
 - **SSH** profiles connect with the Secure Shell service.
 
 ### Zowe CLI plug-in service profiles
@@ -85,7 +85,7 @@ To determine the types of plug-in service profiles that can be used in Zowe CLI 
 
 You can save multiple service profiles for the same service in your configuration file. This is useful when you want to store different configurations for different types of applications, such as a configuration for development purposes and another configuration for testing.
 
-Specify a service profiles as a default in your configuration file to apply that profile when issuing commands: 
+Specify a service profile as a default in your configuration file to apply that profile when issuing commands: 
 
 ```
 "defaults": {
