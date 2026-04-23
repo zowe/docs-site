@@ -24,7 +24,7 @@ Upgrading to v20 is recommended. Update the `node.home` parameter in your zowe.y
 SAF (System Authorization Facility) is the recommended authentication provider for enterprise security. Enabling SAF ensures that Zowe uses your existing security manager (ESM) for identity and access management.
 
 * **z/OSMF**  
-If you are using z/OSMF to communicate to SAF, the following versions are supported: V2R5, V3R1, or V3R2.
+If you are using z/OSMF as the authentication provider, the following versions are supported: V2R5, V3R1, or V3R2.
 
 * **JWT Support**  
 Zowe v3 uses JWT as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. 
@@ -65,11 +65,13 @@ While SAF is the recommended provider for enterprise production environments, yo
 1. Set `jwtAutoconfiguration` to `jwt`:
    
 ```yaml
+In case you want to continue using a zOSMF as authentication provider, you need to set:
   components:
     gateway:
       apiml:
         security:
           auth:
+            provider: zosmf
             zosmf:
               jwtAutoconfiguration: jwt
               serviceId: ibmzosmf
@@ -119,4 +121,4 @@ Start the main Zowe task.
     ```
     /S ZWESLSTC
     ```
-The launcher now initializes the consolidated single-service instead of multiple separate address spaces for the API Mediation Layer.
+The launcher now initializes the API Mediation Layer in a single address space instead of multiple address spaces.
