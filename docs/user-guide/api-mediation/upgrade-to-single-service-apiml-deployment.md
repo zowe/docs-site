@@ -40,17 +40,16 @@ To migrate from the multi-service deployment to the single-service deployment, a
 Enable single-service deployment.
 Set `deploymentMode` to single-service under the gateway configuration:
 
+:::note
+All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
+:::
+
   ```yaml
   components:
     gateway:
       apiml:
         deploymentMode: single-service
   ```
-
-:::note
-All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
-:::
-
 
 :::note Alternative authentication with z/OSMF
 While SAF is the recommended authentication provider, it is possible to use z/OSMF  authentication with a Java Web Token (JWT) if you cannot use SAF.
@@ -60,7 +59,7 @@ While SAF is the recommended authentication provider, it is possible to use z/OS
 
 **z/OSMF-Based Authentication (Not Recommended)** 
 
-1. To use zOSMF as authentication provider, set `jwtAutoconfiguration` to `jwt`:
+1. To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `jwtAutoconfiguration` to `jwt`:
   
 ```yaml
   components:
