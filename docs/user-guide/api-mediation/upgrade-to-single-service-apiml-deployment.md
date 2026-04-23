@@ -27,7 +27,7 @@ SAF (System Authorization Facility) is the recommended authentication provider f
 If you are using z/OSMF to communicate to SAF, the following versions are supported: V2R5, V3R1, or V3R2.
 
 * **JWT Support**  
-Zowe v3 uses JWT as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. If JWT support is not yet configured or available in your z/OSMF environment, set `jwtAutoconfiguration` to `ltpa` to maintain SAF-backed authentication using legacy session tokens.
+Zowe v3 uses JWT as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. 
 
 :::tip
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
@@ -51,36 +51,6 @@ Set `deploymentMode` to single-service under the gateway configuration:
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
 :::
 
-
-## Configuring authentication 
-The recommended Gateway configuration is to use System Authorization Facility (SAF) via LTPA and enable SAF resource checking.
-
-1. Set `jwtAutoconfiguration` to `ltpa` to use SAF-backed tokens for z/OSMF.
-
-  ```yaml
-  components:
-    gateway:
-      apiml:
-        security:
-          auth:
-            zosmf:
-              jwtAutoconfiguration: ltpa
-              serviceId: ibmzosmf
-  ```
-API ML now uses z/OSMF as its identity validator.
-
-2. Enable SAF authorization.
-   
-  ```yaml
-  components:
-    gateway:
-      apiml:
-        security:
-          authorization:
-            saf:
-              enabled: true
-  ```
-API ML now checks specific SAF resource profiles before a request is allowed to pass through the Gateway.
 
 :::note
 While SAF is the recommended authentication provider, it is possible to use JWT-based authentication if you cannot use SAF.
