@@ -2,7 +2,7 @@
 
 Whether you are a mainframe veteran or an open-source newcomer, these curated resources are designed to help you master Zowe’s capabilities and find your place within our growing community.
 
-## Get the latest updates on Zowe!
+## Get the latest updates on Zowe
 
 ### Webinars
 <!--The link here should be the latest webinar available at the youtube page for Zowe Quarterly Webinars. -->
@@ -17,7 +17,7 @@ Stay current with new developments in the Zowe ecosystem through the Open Mainfr
 * Training and community engagement
 * Demos and use cases
 
-To see the full list of Zowe webinars on YouTube, see [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) by Open Mainframe Project.
+Zowe webinar YouTube Playlist: [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) by Open Mainframe Project.
 
 Additional webinars about Zowe can be found at the [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
 
@@ -36,12 +36,10 @@ Expand your knowledge of Zowe by following our structured educational tracks. Fr
  * [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) (Interskill Learning).  
  Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
 
-<!--
+
+<!--We can expand the list of roles with links to the path per role.
 ### Zowe Formal Learning Paths 
-We should expand the list of roles with links to the path per role.
- 
-* System Admin
-* Developer
+Commenting this portion out since it would be from specific vendors.
 -->
 ## Get involved with Zowe
 
