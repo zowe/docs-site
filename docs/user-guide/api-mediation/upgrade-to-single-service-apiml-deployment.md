@@ -95,11 +95,13 @@ While SAF is the recommended provider for enterprise production environments, yo
 1. Set `jwtAutoconfiguration` to `jwt`:
    
 ```yaml
+In case you want to continue using a zOSMF as authentication provider, you need to set:
   components:
     gateway:
       apiml:
         security:
           auth:
+            provider: zosmf
             zosmf:
               jwtAutoconfiguration: jwt
               serviceId: ibmzosmf
