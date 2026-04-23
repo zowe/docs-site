@@ -52,20 +52,17 @@ All standalone components from the multi-service API ML deployment including the
 :::
 
 
-:::note
-While SAF is the recommended authentication provider, it is possible to use JWT-based authentication if you cannot use SAF.
+:::note Alternative authentication with z/OSMF
+While SAF is the recommended authentication provider, it is possible to use z/OSMF  authentication with a Java Web Token (JWT) if you cannot use SAF.
 
 <details>
-<summary>Click here for details about using JWT as your authentication provider.</summary>
+<summary>Click here for details about using z/OSMF as your authentication provider.</summary>
 
-**JWT-Based Authentication (Not Recommended)** 
+**z/OSMF-Based Authentication (Not Recommended)** 
 
-While SAF is the recommended provider for enterprise production environments, you may choose to use **JSON Web Token (JWT)** authentication for specific use cases. 
-
-1. Set `jwtAutoconfiguration` to `jwt`:
-   
+1. To use zOSMF as authentication provider, set `jwtAutoconfiguration` to `jwt`:
+  
 ```yaml
-In case you want to continue using a zOSMF as authentication provider, you need to set:
   components:
     gateway:
       apiml:
