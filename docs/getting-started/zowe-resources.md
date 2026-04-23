@@ -56,9 +56,9 @@ Quality is a collective effort; by reporting bugs or suggesting improvements to 
 | Open an Issue | Details |
 |----|---|
 | [Open a Doc Issue](https://github.com/zowe/docs-site/issues/new/choose) | This encompasses all necessary improvements to Zowe Docs, from minor corrections like typos and grammar to more significant updates concerning settings, instructions, and configurations. |
-| [Report Bugs](https://github.com/zowe/docs-site/issues/new/choose) | Download and try one of the latest Zowe builds. Report any bugs you find. |
-| [Request Enhancements](zowe-security@lists.openmainframeproject.org) | Got an idea for a feature? Or something you're already using could be improved?  |
-| [Report Security Issues](zowe-security@lists.openmainframeproject.org)| Please direct all security issues to [zowe-security@lists.openmainframeproject.org](zowe-security@lists.openmainframeproject.org). A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
+| [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with a few details about how to reproduce the issue and what area of Zowe the bug appears in. |
+| [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Got an idea for a feature? Or thought on how something you're already using could be improved?  |
+| Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
 
 ### Connect with the Zowe community
 
