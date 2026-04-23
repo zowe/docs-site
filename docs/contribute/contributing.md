@@ -161,6 +161,10 @@ Example:
 - See the "Measuring the true performance of a cloud" entry in the blog.
 - For installation information, see "Installing the product".
 
+#### Example domains
+
+To avoid potential conflicts with real domain registrations, only use [domain names that have been reserved for use in examples](https://www.iana.org/domains/reserved). For example, `example.com`. Even if other fictitious domain names are not already in use, they may be registered later.
+
 ### Tone
 
 #### Use simple present tense rather than future or past tense, as much as possible
@@ -225,6 +229,14 @@ Example:
 :x: Product focus: The Replicator page lets you synchronize your local database with replica databases.
 
 #### Avoid complex sentences that overuse punctuation such as commas and semicolons.
+
+### Trademarks
+
+Follow the [Linux Foundations's guidelines when using trademarks](https://www.linuxfoundation.org/legal/trademark-usage).
+
+Include the relevant symbol immediately after the first usage of each trademark in normal text.
+
+Do not use trademark symbols in titles or anywhere that would cause technical issues. For example, in code blocks.
 
 ### Release notes
 
