@@ -5,7 +5,7 @@ Enable the single-service deployment of API ML for an existing multi-service API
 :::info Required role: system administrator
 :::
 
-Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog, the Caching service and ZAAS components within a single address space.
+Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog, the Caching service, and ZAAS components within a single address space.
 
 :::note
 For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling Single-Service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
@@ -38,7 +38,7 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
 Enable single-service deployment.
-Set `deploymentMode` to single-service under the gateway configuration:
+Set `components.apiml.enabled` to `true` under the `components.gateway` configuration:
 
 :::note
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
@@ -48,7 +48,7 @@ All standalone components from the multi-service API ML deployment including the
   components:
     gateway:
       apiml:
-        deploymentMode: single-service
+        enabled: true
   ```
 
 :::note Alternative authentication with z/OSMF
