@@ -45,9 +45,9 @@ TSS PERMIT(user) ZOWE(APIML.SERVICES) ACCESS(READ)
 In ACF2:
 
 ```markup
-SET RESOURCE(ZWE)
+SET RESOURCE(ZOW)
 RECKEY APIML ADD(SERVICES SERVICE(READ) ROLE(user) ALLOW)
-F ACF2,REBUILD(ZWE)
+F ACF2,REBUILD(ZOW)
 ```
 
 The API Gateway can be configured to check for SAF resource authorization in several ways. For more information, see [SAF Resource Checking](./api-mediation/configuration-saf-resource-checking.md).
