@@ -30,7 +30,7 @@ The following Language Environment options should be set for Zowe.
 An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zowe to run Zowe scripts. An OMVS segment is also required for users with client certificates.
 
 :::tip
-For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. 
+For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the [IBM documentation](https://www.ibm.com/docs). 
 ::: 
 
 ### Baseline User ID Requirements
@@ -43,10 +43,10 @@ The user ID must have a password or passphrase enabled (not NOPASSWORD), even if
 The ID must have a valid OMVS segment assigned.
 
 * **HOME Directory**  
-Set to a valid path (For example, `HOME=/u/xxxxxx` where `xxxxxx` is the user ID).
+Set to a valid path (for example, `HOME=/u/xxxxxx` where `xxxxxx` is the user ID).
 
 * **Program/Shell**  
-Set to a valid shell path (For example, `OMVSPGM=/bin/sh`).
+Set to a valid shell path (for example, `OMVSPGM=/bin/sh`).
 
 * **UID Assignment** 
 Assign a unique numeric User ID (UID).
@@ -54,7 +54,7 @@ Assign a unique numeric User ID (UID).
 ### Assigning and mapping a UID 
 When defining the UID in the OMVS segment, choose a mapping method:
 
-* **Automatic UID Mapping (Recommended):**  
+* **Automatic UID Mapping (Recommended)**  
 If your External Security Manager (ESM) is configured for automatic assignment (such as `AUTOUID` in RACF), you can specify `AUTO`. Using this method reduces administrative overhead and prevents duplicate UIDs.
 
    **RACF Example:**  
@@ -62,7 +62,7 @@ If your External Security Manager (ESM) is configured for automatic assignment (
    ALTUSER <userid> OMVS(UID(AUTO) ...)
    ```
 
-* **Manual UID Assignment:**  
+* **Manual UID Assignment**  
 Alternatively, you can manually assign a specific numeric UID (For example, `nnnnnn`). This method provides precise control but requires manual tracking to prevent UID conflicts across your system.
 
    **RACF Example:**
