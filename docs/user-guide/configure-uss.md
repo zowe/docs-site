@@ -43,31 +43,31 @@ The user ID must have a password or passphrase enabled (not NOPASSWORD), even if
 The ID must have a valid OMVS segment assigned.
 
 * **HOME Directory**  
-Set to a valid path (e.g., HOME=/u/xxxxxx where xxxxxx is the user ID).
+Set to a valid path (For example, `HOME=/u/xxxxxx` where `xxxxxx` is the user ID).
 
 * **Program/Shell**  
-Set to a valid shell path (e.g., OMVSPGM=/bin/sh).
+Set to a valid shell path (For example, `OMVSPGM=/bin/sh`).
 
 * **UID Assignment** 
-A unique numeric User ID (UID) must be assigned.
+Assign a unique numeric User ID (UID).
 
-### UID Assignment and Mapping
+### Assigning and mapping a UID 
 When defining the UID in the OMVS segment, choose a mapping method:
 
-* **Manual UID Assignment:**  
-You can manually assign a specific numeric UID (e.g., nnnnnn). This provides precise control but requires manual tracking to prevent UID conflicts across your system.
-
-   **RACF Example:**
-   ```
-   ALTUSER <userid> OMVS(UID(nnnnnn) HOME('/u/userid') PROGRAM('/bin/sh'))
-   ```
-
 * **Automatic UID Mapping (Recommended):**  
-If your External Security Manager (ESM) is configured for automatic assignment (such as AUTOUID in RACF), you can specify AUTO. This reduces administrative overhead and prevents duplicate UIDs.
+If your External Security Manager (ESM) is configured for automatic assignment (such as `AUTOUID` in RACF), you can specify `AUTO`. Using this method reduces administrative overhead and prevents duplicate UIDs.
 
    **RACF Example:**  
    ```
    ALTUSER <userid> OMVS(UID(AUTO) ...)
+   ```
+
+* **Manual UID Assignment:**  
+Alternatively, you can manually assign a specific numeric UID (For example, `nnnnnn`). This method provides precise control but requires manual tracking to prevent UID conflicts across your system.
+
+   **RACF Example:**
+   ```
+   ALTUSER <userid> OMVS(UID(nnnnnn) HOME('/u/userid') PROGRAM('/bin/sh'))
    ```
 
 :::note
