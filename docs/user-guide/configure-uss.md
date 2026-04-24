@@ -33,6 +33,49 @@ An OMVS segment is required for users (`ZWESVUSR` or `ZWESIUSR`) who install Zow
 For information about OMVS segments, see the article _The OMVS segment in user profiles_ in the IBM documentation. 
 ::: 
 
+### Baseline User ID Requirements
+To ensure successful authentication and operation through Zowe, verify that user profiles meet the following criteria:
+
+* **Password Status**  
+The user ID must have a password or passphrase enabled (not NOPASSWORD), even if using certificate-based authentication. For Zowe service IDs, ensure the password is set to non-expire to avoid service interruptions.
+
+* **TSO/OMVS Segment**  
+The ID must have a valid OMVS segment assigned.
+
+* **HOME Directory**  
+Set to a valid path (e.g., HOME=/u/xxxxxx where xxxxxx is the user ID).
+
+* **Program/Shell**  
+Set to a valid shell path (e.g., OMVSPGM=/bin/sh).
+
+* **UID Assignment** 
+A unique numeric User ID (UID) must be assigned.
+
+### UID Assignment and Mapping
+When defining the UID in the OMVS segment, choose a mapping method:
+
+* **Manual UID Assignment:**  
+You can manually assign a specific numeric UID (e.g., nnnnnn). This provides precise control but requires manual tracking to prevent UID conflicts across your system.
+
+   **RACF Example:**
+   ```
+   ALTUSER <userid> OMVS(UID(nnnnnn) HOME('/u/userid') PROGRAM('/bin/sh'))
+   ```
+
+* **Automatic UID Mapping (Recommended):**  
+If your External Security Manager (ESM) is configured for automatic assignment (such as AUTOUID in RACF), you can specify AUTO. This reduces administrative overhead and prevents duplicate UIDs.
+
+   **RACF Example:**  
+   ```
+   ALTUSER <userid> OMVS(UID(AUTO) ...)
+   ```
+
+:::note
+If running Zowe in a High Availability (HA) or Sysplex environment, UIDs must be consistent across all LPARs sharing the same file systems to prevent "Permission Denied" errors.
+:::
+
+### Troubleshooting Missing Segments
+
 If the user profile does not have an OMVS segment, the following messages can occur:
 
 - When you access USS through TSO OMVS, the following message is thrown:
