@@ -536,8 +536,11 @@ These configurations can be used under the `components.gateway` section:
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
 - **apiml.security.oidc.userIdField**  
-  Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. This parameter applies to Zowe version 3.4.0 and later versions.  
+  Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. This parameter applies to Zowe version 3.4.0 
+  and later versions.
   **Default:** `sub`
+- **apiml.security.delegatePassticket.enabled**
+  Specifies whether the API `POST` for endpoint `/gateway/api/v1/auth/delegate/passticket` is enabled.  The default value is `false`.  For more information, see [Configuring Delegated Passticket Generation](../user-guide/api-mediation/configuration-delegated-passticket.md).
 
 :::note
 
