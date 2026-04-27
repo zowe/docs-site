@@ -38,7 +38,7 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
 Enable single-service deployment.
-Set `components.apiml.enabled` to `true` under the `components.gateway` configuration:
+Set `components.apiml.enabled` to `true`:
 
 :::note
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
