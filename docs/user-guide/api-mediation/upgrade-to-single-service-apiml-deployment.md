@@ -44,7 +44,9 @@ Set `components.apiml.enabled` to `true` under the `components.gateway` configur
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
 :::
 
-  ```yaml
+  components:
+      apiml:
+        enabled: true
   components:
     gateway:
       apiml:
