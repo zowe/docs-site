@@ -54,7 +54,7 @@ All standalone components from the multi-service API ML deployment including the
   ```
 
 :::note Alternative authentication with z/OSMF
-While SAF is the recommended authentication provider, it is possible to use z/OSMF  authentication with a Java Web Token (JWT) if you cannot use SAF.
+While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) if you prefer not to use SAF.
 
 <details>
 <summary>Click here for details about using z/OSMF as your authentication provider.</summary>
