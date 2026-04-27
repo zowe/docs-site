@@ -133,7 +133,7 @@ Using the internal API ML mapper is the preferred method.
   Create the mapping for the user and a distinguished name filter:
   
   ```tss
-  TSS ADDT0(<userid>) CERTMAP(<recid>)
+  TSS ADDTO(<userid>) CERTMAP(<recid>)
   SDNFILTR('<subject's-distinguished-name-filter>')
   USERID(<userid>)
   TRUST
