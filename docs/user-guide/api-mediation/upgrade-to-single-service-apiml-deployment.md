@@ -93,8 +93,7 @@ For details about using JWT and the token lifecycle, see [Authenticating with a 
 
 ## Refreshing Infrastructure & Cleanup
 
-Update PROCLIB.  
-Run the command `zwe init stc` (or use JCL `ZWEISTC`) to ensure your `ZWESLSTC` and `ZWESISTC` members are updated for v3.
+Update the procedure library by running the command `zwe init stc` (or use JCL `ZWEISTC`). This update ensures your `ZWESLSTC` and `ZWESISTC` members are updated for v3.
 
 :::note
 If using Zowe Cross-Memory Server (ZIS), ensure that you update APF Authorization. 
