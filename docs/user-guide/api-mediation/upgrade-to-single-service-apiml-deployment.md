@@ -43,7 +43,7 @@ Set `components.apiml.enabled` to `true`:
 :::note
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
 :::
-
+  ```
   components:
       apiml:
         enabled: true
@@ -57,6 +57,7 @@ All standalone components from the multi-service API ML deployment including the
 While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) if you prefer not to use SAF.
 
 <details>
+
 <summary>Click here for details about using z/OSMF as your authentication provider.</summary>
 
 **z/OSMF-Based Authentication (Not Recommended)** 
