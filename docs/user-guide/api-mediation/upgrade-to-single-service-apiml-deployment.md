@@ -28,6 +28,9 @@ If you are using z/OSMF as the authentication provider, the following versions a
 
 * **JWT Support**  
 Zowe v3 uses JSON Web Token (JWT) as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. To enable JWT support, you must have a signing certificate (stored in a PKCS12 keystore or SAF keyring).   Ensure the Gateway has access to a private key for signing JWTs. 
+
+Set `components.gateway.apiml.security.auth.provider: saf`
+The certificate that is used for signing is found in `zowe.certificate.keystore.file`.
   
 
 :::tip
