@@ -27,7 +27,9 @@ SAF (System Authorization Facility) is the recommended authentication provider f
 If you are using z/OSMF as the authentication provider, the following versions are supported: V2R5, V3R1, or V3R2.
 
 * **JWT Support**  
-Zowe v3 uses JWT as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. 
+Zowe v3 uses JSON Web Token (JWT) as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. To enable JWT support, you must have a signing certificate (stored in a PKCS12 keystore or SAF keyring).   
+  * Ensure the Gateway has access to a private key for signing, and that the public certificate is distributed to any downstream services requiring authentication.
+  * Verify that `zowe.configs.apiml.security.token.certificateAlias` in your zowe.yaml correctly points to your signing certificate.
 
 :::tip
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
@@ -62,7 +64,7 @@ While SAF is the recommended authentication provider, it is possible to use z/OS
 
 **z/OSMF-Based Authentication (Not Recommended)** 
 
-1. To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `jwtAutoconfiguration` to `jwt`:
+To use z/OSMF as authentication provider, set `auth.provider` to `zosmf`, and `jwtAutoconfiguration` to `jwt`:
   
 ```yaml
   components:
@@ -74,18 +76,6 @@ While SAF is the recommended authentication provider, it is possible to use z/OS
             zosmf:
               jwtAutoconfiguration: jwt
               serviceId: ibmzosmf
-```
-
-2. Disable SAF resource checking: 
-
-```yaml
-  components:
-    gateway:
-      apiml:
-        security:
-          authorization:
-            saf:
-              enabled: false              
 ```
 
 For details about using JWT and the token lifecycle, see [Authenticating with a JWT token](../authenticating-with-jwt-token.md).
