@@ -23,7 +23,7 @@ Before you start the configuration process, review [Overview of z/OSMF](https://
 
 As a z/OSMF administrator, you can assign different roles and groups to allow users to perform certain actions.
 
-For example, if you want to allow users to run MVS console commands with z/OSMF, give users read access to the `MVS.MCSOPER.IZU@*` resource. By default, z/OSMF gives IZUUSER read access to this resource which means any user connected to the IZUUSER group automatically has access to run MVS console commands.
+For example, if you want to allow users to run MVS console commands with z/OSMF, give users read access to the `MVS.MCSOPER.IZU@*` resource. By default, z/OSMF gives IZUUSER read access to this resource, allowing any user connected to the IZUUSER group to run MVS console commands.
 
 For more information on resource authorizations for z/OSMF core functions, see the [IBM documentation](https://www.ibm.com/docs/en/zos/3.2.0?topic=guide-security-structures-zosmf#DefaultSecuritySetupForZosmf__SecuritySetupRequirementsForCoreFun__title__1).
 
