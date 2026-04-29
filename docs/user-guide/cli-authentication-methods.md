@@ -293,9 +293,63 @@ See the [Integrating with API Mediation Layer](https://docs.zowe.org/zowe-docs-v
 
 Certificates are a long lasting type of authentication, rather than a password or token that can expire in hours, days, or months. A certificate is authenticated by matching a public and private key.
 
-To use a client certificate for authentication:
+Zowe CLI supports certificates stored in your operating system keystore and certificates stored in a local file.
 
-1. Specify the path to the certificate file in the relevant profile :
+:::tip
+
+If you have properties for multiple authentication methods stored in the same team configuration profile, set the `authOrder` property to your preferred [order of precedence](#order-of-precedence). Place `cert-pem` first in the list if you want Zowe CLI to check for that authentication method first.
+
+:::
+
+### Using certificates from keystore
+
+:::note
+
+This option is not supported for Linux operating systems.
+
+:::
+
+To use a certificate from keystore for authentication:
+
+1. If your certificate is not already imported into the keystore, import the certificate into your operating system certificate manager.
+
+2. Specify the name of the certificate in the relevant profile:
+
+   ```
+   zowe config set profiles.base.properties.certAccount <certName> 
+   ```
+
+   - `<certName>`
+   
+      Specifies the name of the certificate in your keystore. Matches the Common Name (CN) of the certificate.
+      
+    If you are using a **global** team configuration file (located in your home directory), add the `--global-config` option to the end of the command.
+
+    The configuration file profile is updated with the specified certificate Common Name:
+
+    ```
+        "project_base": {
+            "type": "base",
+            "properties": {
+                "certAccount": "XXX",
+                ...
+            }
+        }
+    ```
+
+
+:::note Notes
+
+- If the user has both methods (keystore and local file) in their profile, keystore takes precedence.
+- If the keystore method is attempted with a Linux system, Zowe CLI looks for a local file configuration and if found, a message displays advising that the local certificate is being used. If a local file configuration is not found, authentication fails.
+
+:::
+
+### Using local certificate files
+
+To use a local client certificate file for authentication:
+
+1. Specify the path to the certificate file in the relevant profile:
 
    ```
    zowe config set profiles.base.properties.certFile <certPath> 
@@ -305,7 +359,7 @@ To use a client certificate for authentication:
    
       Specifies the location on your computer where the certificate is stored.
       
-    If you are using a **global** team configuration file (located in your home directory), add `--global-config` to the end of the command.
+    If you are using a **global** team configuration file (located in your home directory), add the `--global-config` option to the end of the command.
 
 2. Configure the file path to the private key:
    ```
@@ -313,8 +367,20 @@ To use a client certificate for authentication:
    ```
       - `<certKeyPath>`
    
-      Specifies the location on your computer where the private key is stored.
+        Specifies the location on your computer where the private key is stored.
 
+    The configuration file profile is updated with the specified certificate key path: 
+
+    ```
+        "project_base": {
+            "type": "base",
+            "properties": {
+                "certFile": "XXX",
+                "certKeyFile": "XXX",
+                ...
+            }
+        }
+    ```
 
 :::tip
 Add the `--secure` option to the preceding commands to avoid saving certificate file paths as plain text in your configuration file.
