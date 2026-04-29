@@ -446,8 +446,8 @@ div[class^='announcementBar_'] {
   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
 /* --- Added to support multiple lines --- */
   height: auto !important;      /* Overrides the default fixed height */
-  min-height: 50px;
-  padding: 20px 50px !important; /* Increased padding to prevent top/bottom cutoff */
+  min-height: 60px;
+  padding: 30px 60px !important; /* Increased padding to prevent top/bottom cutoff */
   line-height: 1.5 !important;
   overflow: visible !important;  /* Ensures large fonts aren't sliced off */
   display: flex !important;
