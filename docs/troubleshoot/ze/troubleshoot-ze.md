@@ -111,4 +111,22 @@ To troubleshoot the table view for data sets and jobs, review the following comm
   - Ensure you have selected at least one job row.
   - For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
 
+## Error message with extension schema files
 
+There can be instances where issuing the Zowe CLI command `zowe config update-schemas` removes an installed extension's schema from the `extenders.json` file. In this case, an error message displays either in the extension's tree view or in a pop-up window.
+
+Reinstalling the extension does not fix the issue.
+
+This affects IBM® CICS® Transaction Server, Zowe Explorer for IBM z/OS FTP, and other Zowe Explorer extensions.
+
+To resolve the error message, update the `extenders.json` file:
+
+1. Remove the profile type from the `~/.zowe/extenders.json` file and save.
+
+    For example, if this affects the CICS extensions, remove the `cics` section from the `extenders.json` file:
+
+    ![CICS extenstion](../../images/troubleshoot/ZE/cics-section.png)
+
+2. Reload Visual Studio Code.
+
+    The profile type is re-added to the schema (`zowe.schema.json`) and reappears in `extenders.json`. The profiles should now be accessible from the extension.
