@@ -443,6 +443,10 @@ div[class^='announcementBar_'] {
   font-weight: 400;
   font-size: 1.5em;
   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
+/* --- Added to support multiple lines --- */
+  height: auto !important;      /* Overrides the default fixed height */
+  padding: 15px 45px;          /* Vertical padding (15px) prevents cropping; Horizontal (45px) avoids the 'X' button */
+  line-height: 1.4;            /* Adds comfortable spacing between your two bullets */
 }
 
 [data-rmiz-modal-overlay='visible'] {
