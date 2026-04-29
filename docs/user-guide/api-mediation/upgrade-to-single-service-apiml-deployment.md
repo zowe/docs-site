@@ -20,18 +20,25 @@ Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your
 * **Node.js**  
 Upgrading to v20 is recommended. Update the `node.home` parameter in your zowe.yaml accordingly.
 
-* **Authentication**  
-SAF (System Authorization Facility) is the recommended authentication provider for enterprise security. Enabling SAF ensures that Zowe uses your existing security manager (ESM) for identity and access management.
+* **Authentication and Identity Validation**  
+API ML supports the following methods for validating user identity. The two primary providers for enterprise security on z/OS are:
 
-* **z/OSMF**  
-If you are using z/OSMF as the authentication provider, the following versions are supported: V2R5, V3R1, or V3R2.
+  * **SAF (System Authorization Facility): (Recommended)**  
+   The Gateway uses SAF Direct APIs to authenticate users against your existing Security Server (e.g., RACF, ACF2, or Top Secret).
 
-* **JWT Support**  
-Zowe v3 uses JSON Web Token (JWT) as the primary mechanism for session management and Single Sign-On (SSO), while SAF is the recommended provider for identity and resource authorization. To enable JWT support, you must have a signing certificate (stored in a PKCS12 keystore or SAF keyring).   Ensure the Gateway has access to a private key for signing JWTs. 
+  * **z/OSMF:**  
+  The Gateway delegates authentication to z/OSMF REST APIs. If you are using z/OSMF as the authentication provider, the following versions are supported: V2R5, V3R1, or V3R2.
 
-Set `components.gateway.apiml.security.auth.provider: saf`
-The certificate that is used for signing is found in `zowe.certificate.keystore.file`.
-  
+* **Ensure JWT Support**   
+Zowe v3 utilizes JSON Web Tokens (JWT) as the primary mechanism for Single Sign-On (SSO). JWT provides the authentication context to downstream services.
+
+  * **When using SAF**  
+  The Gateway signs the JWT directly using the private key of the server certificate. Note that API ML exclusively uses the server's identity certificate for this purpose. Ensure the Gateway has access to a private key (stored in a PKCS12 keystore or SAF keyring) for signing.
+
+    Set `components.gateway.apiml.security.auth.provider: saf`. The certificate that is used for signing is found in `zowe.certificate.keystore.file`. This configuration enables API ML to validate identities using SAF Direct APIs.
+
+  * **When using z/OSMF**  
+  Token issuance is delegated to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider.
 
 :::tip
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
