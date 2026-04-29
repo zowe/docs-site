@@ -9,6 +9,7 @@
 
 /* You can override the default Infima variables here. */
 :root {
+  --ifm-announcement-bar-height: auto !important;
   --ifm-color-primary: #3162ac;
   --docusaurus-details-decoration-color: #3162ac !important;
   --ifm-color-primary-dark: #2c589b;
@@ -432,21 +433,29 @@ html[data-theme="light"] .darkTheme {
     margin-left: 0rem !important;
   }
 }
-
+/* 
 @media (min-width: 997px) {
   :root {
     --docusaurus-announcement-bar-height: 1.8em !important;
   }
 }
-
+*/
 div[class^='announcementBar_'] {
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.3em;
   background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
 /* --- Added to support multiple lines --- */
   height: auto !important;      /* Overrides the default fixed height */
-  padding: 15px 45px;          /* Vertical padding (15px) prevents cropping; Horizontal (45px) avoids the 'X' button */
-  line-height: 1.4;            /* Adds comfortable spacing between your two bullets */
+  min-height: 50px;
+  padding: 20px 50px !important; /* Increased padding to prevent top/bottom cutoff */
+  line-height: 1.5 !important;
+  overflow: visible !important;  /* Ensures large fonts aren't sliced off */
+  display: flex !important;
+  align-items: center;
+}
+/* Ensures the inner text container also expands */
+div[class^='announcementBarContent_'] {
+  height: auto !important;
 }
 
 [data-rmiz-modal-overlay='visible'] {
