@@ -5,13 +5,13 @@ Enable the single-service deployment of API ML for an existing multi-service API
 :::info Required role: system administrator
 :::
 
-Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery, and API Catalog, the Caching service, and ZAAS components within a single address space.
+Single-service deployment reduces the Zowe footprint by running the Gateway, Discovery Service, API Catalog, Caching Service, and ZAAS within a single address space.
 
 :::note
 For comprehensive information about single-service deployment, performance improvements, and internal service consolidation, see [Enabling single-service deployment of API Mediation Layer](../api-mediation/api-mediation-modulith.md).
 :::
 
-## System Requirements & Prerequisites
+## System requirements and prerequisites
 Before transitioning to the single-service model, verify that your z/OS environment meets the minimum standards for Zowe v3:
 
 * **Java**  
@@ -45,24 +45,22 @@ Ensure that all Zowe address spaces are stopped before modifying configuration f
 :::
 
 
-## Transitioning to Single-Service Mode
+## Transitioning to single-service mode
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
 Enable single-service deployment.
 Set `components.apiml.enabled` to `true`:
 
+  ```yaml
+  components:
+      apiml:
+        enabled: true
+  ```
+
 :::note
 All standalone components from the multi-service API ML deployment including the Discovery Service, API Catalog, and Caching Service are internal to the Gateway address space in the single-service deployent and are disabled when `apiml.enabled` is configured.
 :::
-  ```
-  components:
-      apiml:
-        enabled: true
-  components:
-    gateway:
-      apiml:
-        enabled: true
-  ```
+
 
 :::note Alternative authentication with z/OSMF
 While SAF is the recommended authentication provider, it is possible to use z/OSMF authentication with a JSON Web Token (JWT) if you prefer not to use SAF.
@@ -93,7 +91,7 @@ For details about using JWT and the token lifecycle, see [Authenticating with a 
 
 :::
 
-## Refreshing Infrastructure & Cleanup
+## Refreshing infrastructure and cleanup
 
 Update the procedure library by running the command `zwe init stc` (or use JCL `ZWEISTC`). This update ensures your `ZWESLSTC` and `ZWESISTC` members are updated for v3.
 
