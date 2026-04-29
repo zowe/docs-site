@@ -16,7 +16,7 @@ The following definition of skill levels about Zowe assist you with gathering th
 
    New to API Mediation Layer? This overview topic introduces the key features, main components, benefits, and architecture of the API Mediation Layer.
 
-- [**Architecture**](zowe-architecture.md#zowe-architecture)
+- [**Zowe architecture**](zowe-architecture.md#zowe-architecture)
 
    Review the Zowe architecture to understand how the API Mediation Layer works in the Zowe framework.
 
@@ -24,41 +24,41 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 > Zowe skill level: Beginner
 
-- [**System requirements**](../user-guide/systemrequirements-zos.md)
+- [**System requirements for z/OS**](../user-guide/systemrequirements-zos.md)
 
    Review this topic to ensure that your system meets the requirements for installing the API Mediation Layer. The API Mediation Layer is one of the server-side components. 
 
-- [**Planning**](../user-guide/installandconfig.md)
+- [**Preparing for installation**](../user-guide/installandconfig.md)
 
   This article includes details about planning for installation, the Zowe z/OS launch process, and information about the Zowe runtime directory, instance directory, and keystore directory.
 
-- [**Installing API Mediation Layer**](../user-guide/install-zos.md)
+- [**Zowe z/OS components installation checklist**](../user-guide/zos-components-installation-checklist.md)
 
-   This article provides an overview of the essential steps involved in installing the API Mediation Layer.
+   Use this checklist to guide you through the installation and configuration of Zowe server-side components for z/OS including Zowe API Mediation Layer. 
 
 ## Configuring and updating
 
 > Zowe skill level: Intermediate
 
-- **Configuring API Mediation Layer**
-
-   - [Advanced API Mediation Layer features configuration](../user-guide/advanced-apiml-configuration.md)
+- [Advanced API Mediation Layer Configuration](../user-guide/advanced-apiml-configuration.md)
       
-      This article is for system programmers who want to configure advanced features of the API Mediation Layer, such as the Gateway retry policy, connection limits, Gateway timeouts, and other advanced features.
+   This article is for system programmers who want to configure advanced features of the API Mediation Layer, including enabling single-service deployment of API Mediation Layer.
 
 ## Using Zowe API Mediation Layer
 
 > Zowe skill level: Intermediate
 
-- [**Using API Mediation Layer**](../user-guide/api-mediation/using-api-mediation-layer.md)
+- [**Using Zowe API Mediation Layer**](../user-guide/api-mediation/using-api-mediation-layer.md)
 
-   Learn how to use the API Catalog to view what services are running in the API Mediation Layer. Through the API Catalog, you can also view associated API documentation corresponding to a service, descriptive information about the service, and the current state of the service. 
+   Use various features of API Mediation Layer (API ML) including single sign-on, high availability, and dynamic service discovery. Through the API Catalog, users can easily discover available services, view interactive Swagger documentation, and test API responses using the "Try it out" functionality. Additionally, API ML provides a secure framework for developers to onboard their own REST services and streamline the administration of mainframe APIs through a consolidated service instance.
+   
+  
 
 - [**Blog: Introducing “Try it out” functionality in the Zowe API Mediation Layer**](https://medium.com/zowe/introducing-try-it-out-functionality-in-the-zowe-api-mediation-layer-930aa9e947bd) 
 
    This blog describes one key functionality of the Zowe API Mediation Layer to validate that services are returning the expected responses. 
 
-- [**Docs: Zowe API reference guide**](../appendix/zowe-api-reference.md)
+- [**Zowe API reference**](../appendix/zowe-api-reference.md)
 
    Discover and learn about Zowe APIs that you can use.
 
@@ -68,25 +68,25 @@ The following definition of skill levels about Zowe assist you with gathering th
 
 - [**Extend Zowe API Mediation Layer**](../extend/extend-zowe-overview.md#extending-zowe-api-mediation-layer) 
 
-   Learn how you can extend the Zowe API Mediation Layer. Extenders make it possible to build and onboard additional API services to the API ML microservices ecosystem. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog, and for routing through the API Gateway.
+   Learn how you can extend the Zowe API Mediation Layer. Extenders make it possible to build and onboard additional API services to instances of API ML. REST APIs can register to the API Mediation Layer, which makes them available in the API Catalog, and for routing through the API Gateway.
 
-- [**Onboarding overview**](../extend/extend-apiml/onboard-overview.md#prerequisites)
+- [**Onboarding overview**](../extend/extend-apiml/onboard-overview.md)
 
-   This article provides details about onboarding a REST API service to the Zowe API Mediation Layer. 
+   This article provides details about the range of options for onboarding a REST API service to the Zowe API Mediation Layer. 
 
 - [**Zowe API ML repository**](https://github.com/zowe/api-layer)
 
-   To start working with the code immediately, check out this code repository. 
+   To start working with the code immediately, check out the api-layer code repository. 
 
 ## Security
 
 > Zowe skill level: Advanced
 
-- [**API Mediation Layer Security**](../extend/extend-apiml/zowe-api-mediation-layer-security-overview.md)
+- [**API Mediation Layer Security Overview**](../extend/extend-apiml/zowe-api-mediation-layer-security-overview.md)
 
    This article describes how API ML uses Transport Layer Security (TLS). Use this guide to familiarize yourself with the API ML security concepts.
 
-- [**Zowe API Mediation Layer Single Sign On Overview**](../user-guide/api-mediation-sso.md)
+- [**Using API ML Single Sign On**](../user-guide/api-mediation-sso.md)
 
    This article provides an overview of the API ML single-sign-on feature, the principle participants in the SSO process, and links to detailed Zowe SSO documentation.
 
@@ -99,23 +99,28 @@ The following definition of skill levels about Zowe assist you with gathering th
    This blog takes a deeper dive into the SSO feature of API ML.
    
 - [**Blog: Zowe client certificate authentication**](https://medium.com/zowe/zowe-client-certificate-authentication-5f1c7d4d579) 
-- [**Blog: CLI and Client Certificates](https://medium.com/zowe/zowe-cli-and-client-certificates-dae341f8f52a)
+
+   Learn about how the Zowe API ML utilizes client certificates to provide a more secure, password-less authentication method that maps digital identities to mainframe user IDs and issues JSON Web Tokens (JWT) for unified access to services.
+
+- [**Blog: CLI and Client Certificates**](https://medium.com/zowe/zowe-cli-and-client-certificates-dae341f8f52a)
+
+  Review steps to create a client certificate on z/OS and configure a Zowe CLI profile for secure, password-less authentication in place of a traditional user ID and password. 
 
 ## Contributing to Zowe API Mediation Layer
 
 > Zowe skill level: Advanced
 
-- [**Contributing guidelines**](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
+- [**Contribution guidelines**](https://github.com/zowe/api-layer/blob/master/CONTRIBUTING.md)
 
    This document is a summary of conventions and best practices for development within Zowe API Mediation Layer.
 
-- [**Conformance Program**](../extend/zowe-conformance-program.md)
+- [**Zowe Conformance Program**](../extend/zowe-conformance-program.md)
    
-  This topic introduces the Zowe Conformance Program. Conformance provides Independent Software Vendors (ISVs), System Integrators (SIs), and end users greater confidence that their software will behave as expected. As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today.
+   Learn how the Zowe Conformance Program provides Independent Software Vendors (ISVs), System Integrators (SIs), and end users greater confidence that their software behaves as expected. As vendors, you are invited to submit conformance testing results for review and approval by the Open Mainframe Project. If your company provides software based on Zowe CLI, you are encouraged to get certified today.
 
 - [**Blog: Zowe Conformance Program Explained**](https://medium.com/zowe/zowe-conformance-program-7f1574ade8ea)
 
-   This blog describes the Conformance Program in more details.
+   Review how the Conformance Program ensures that Zowe third-party extensions and plug-ins offer a secure, compatible, and unified user experience across the mainframe ecosystem platform.
 
 ## Troubleshooting and support
 
