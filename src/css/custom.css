@@ -443,7 +443,7 @@ html[data-theme="light"] .darkTheme {
 div[class^='announcementBar_'] {
   font-weight: 400;
   font-size: 1.3em;
-  background: #ffd699 !important;
+  background: #33f5ff !important;
 /* --- Added to support multiple lines --- */
   height: auto !important;      /* Overrides the default fixed height */
   min-height: 60px;
