@@ -42,12 +42,12 @@ Zowe v3 utilizes JSON Web Tokens (JWT) as the primary mechanism for Single Sign-
 * **When using z/OSMF**  
   Token issuance is delegated to z/OSMF, wherein the JWT is produced by the z/OSMF authentication provider.
 
-:::tip
+## Transitioning to single-service mode
+
+:::caution
 Ensure that all Zowe address spaces are stopped before modifying configuration files.
 :::
 
-
-## Transitioning to single-service mode
 To migrate from the multi-service deployment to the single-service deployment, apply these changes to your zowe.yaml file:
 
 Enable single-service deployment.
