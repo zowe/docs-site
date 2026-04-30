@@ -1,4 +1,4 @@
-# Enabling Single-Service deployment of API Mediation Layer
+# Enabling single-service deployment of API Mediation Layer
 
 Zowe version 3.3.0 introduced the option to switch the execution mode for API Mediation Layer (API ML) 
 configuration from the previous multiple-service option to a single-service option based on "[modulith](https://medium.com/@harsard/understanding-monolith-modulith-and-microservices-f96555545c0c)" architecture. 
@@ -15,7 +15,8 @@ This **single-service deployment mode** (which is also referred to as modulith m
 Enhanced performance, faster startup times, reduced CPU and memory consumption
 * **Operational Efficiency**  
 Simplified deployment processes, a single JVM process, decreased network traffic
-* **Unified configuration options**
+* **Unified configuration options**  
+Manage parameters for all API ML services within a single `apiml` configuration block in the zowe.yaml file, thereby reducing the complexity of maintaining separate settings for the Gateway, Discovery, API Catalog, and Caching services.
 * **Simplified debugging**  
 Tracking communication between the API ML services to determine the cause and source of issues not required 
 
@@ -86,7 +87,7 @@ This change affects only logs printed to spool or USS files. WTOs remain unchang
 
 ### Update AT-TLS rules
 
-If your installation is configured with AT-TLS, you will need to update the rules. Perform the following updates to the PAGENT rules:
+If your installation is configured with AT-TLS, you are required to update the rules. Perform the following updates to the PAGENT rules:
 
 1. Update job name filters to use `ZWE1AG`.
    
@@ -95,7 +96,7 @@ If your installation is configured with AT-TLS, you will need to update the rule
 
     * Remove rules that apply to communication between Gateway, Discovery Service, API Catalog, and Caching Service.
     * Remove all rules that apply to the core components except for rules that apply to the Gateway Service (`ZWE1AG`).
-    * Remove ports which are no longer used from the server rules. See [Enabling AT-TLS rules](../../user-guide/configuring-at-tls-for-zowe-server#inbound-rules). 
+    * Remove ports which are no longer used from the server rules. For details, see [Enabling AT-TLS rules](../../user-guide/configuring-at-tls-for-zowe-server#inbound-rules). 
 
 :::note Notes:
 * In High Availability scenarios, TCP communication still exists between LPARs for the Discovery Service port.
