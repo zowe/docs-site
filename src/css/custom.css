@@ -441,17 +441,17 @@ html[data-theme="light"] .darkTheme {
 }
 */
 div[class^='announcementBar_'] {
-  font-weight: 400;
+background: #33f5ff !important; /* Vivid Light Blue */
+  font-weight: 600;               /* Slightly bolder for readability */
   font-size: 1.3em;
-  background: #33f5ff !important;
-/* --- Added to support multiple lines --- */
-  height: auto !important;      /* Overrides the default fixed height */
+  height: auto !important;
   min-height: 60px;
-  padding: 30px 60px !important; /* Increased padding to prevent top/bottom cutoff */
+  padding: 20px 60px !important;
   line-height: 1.5 !important;
-  overflow: visible !important;  /* Ensures large fonts aren't sliced off */
+  overflow: visible !important;
   display: flex !important;
   align-items: center;
+  color: #000 !important;        /* Ensures text stays black on light blue */
 }
 /* Ensures the inner text container also expands */
 div[class^='announcementBarContent_'] {
