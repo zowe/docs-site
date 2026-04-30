@@ -6,7 +6,7 @@
 
 For information about changes to Zowe components introduced in Zowe V3, see [Important updates in Zowe V3](breaking-changes-v3.md). For more details, review the [Zowe V3 release notes](release-notes/v3_0_0.md).
 
-If you have a question regarding, see [Zowe V3 FAQs](..//whats-new/zowe-v3-frequently-asked-questions.md) to see if your question has already been answered.
+If you have a question regarding Zowe V3, from either the point of view of a Zowe user or Zowe extender, see [Zowe V3 FAQs](../whats-new/zowe-v3-frequently-asked-questions.md) to see if your question has already been answered.
 
 ## Future Zowe V2 releases
 

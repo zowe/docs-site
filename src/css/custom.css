@@ -443,7 +443,7 @@ html[data-theme="light"] .darkTheme {
 div[class^='announcementBar_'] {
   font-weight: 400;
   font-size: 1.3em;
-  background: repeating-linear-gradient(35deg,#fefae9,#fefae9 20px,#fdf0be 10px, #fdf0be 40px) !important;
+  background: #ffd699 !important;
 /* --- Added to support multiple lines --- */
   height: auto !important;      /* Overrides the default fixed height */
   min-height: 60px;
