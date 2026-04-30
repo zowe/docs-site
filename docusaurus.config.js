@@ -28,8 +28,9 @@ module.exports = {
         announcementBar: {
       id: 'announcementBar-1', // increment on change
       content:
-          '📌  <b>Support for Zowe Version 2 ends on March 30, 2027</b>. Follow <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3. The last v3 release is scheduled for March 1, 2027.',
+          '📌  <b>Support for Zowe Version 2 ends on March 30, 2027</b>. Follow <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3. Zowe Version 3 transitions to maintenance phase on March 1, 2027 with the last active v3 release.',
       textColor: '#000',
+      backgroundColor: '#33f5ff',
       },
     docs: {
       sidebar: {
