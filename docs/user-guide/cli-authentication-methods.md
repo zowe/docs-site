@@ -293,7 +293,7 @@ See the [Integrating with API Mediation Layer](https://docs.zowe.org/zowe-docs-v
 
 Certificates are a long lasting type of authentication, rather than a password or token that can expire in hours, days, or months. A certificate is authenticated by matching a public and private key.
 
-Zowe CLI supports certificates stored in your operating system keystore and certificates stored in a local file.
+Zowe CLI supports certificates stored in your operating system keychain and certificates stored in a local file. These client certificates allow users to authenticate to a given service such as z/OSMF, and must be generated on z/OS.
 
 :::tip
 
@@ -301,7 +301,7 @@ If you have properties for multiple authentication methods stored in the same te
 
 :::
 
-### Using certificates from keystore
+### Using certificates from OS keychain
 
 :::note
 
@@ -309,9 +309,9 @@ This option is not supported for Linux operating systems.
 
 :::
 
-To use a certificate from keystore for authentication:
+To use a certificate from keychain for authentication:
 
-1. If your certificate is not already imported into the keystore, import the certificate into your operating system certificate manager.
+1. If your certificate is not already imported into the keychain, import the certificate into your operating system certificate manager.
 
 2. Specify the name of the certificate in the relevant profile:
 
@@ -321,7 +321,7 @@ To use a certificate from keystore for authentication:
 
    - `<certName>`
    
-      Specifies the name of the certificate in your keystore. Matches the Common Name (CN) of the certificate.
+      Specifies the name of the certificate in your keychain. Matches the Common Name (CN) of the certificate.
       
     If you are using a **global** team configuration file (located in your home directory), add the `--global-config` option to the end of the command.
 
@@ -340,8 +340,8 @@ To use a certificate from keystore for authentication:
 
 :::note Notes
 
-- If the user has both methods (keystore and local file) in their profile, keystore takes precedence.
-- If the keystore method is attempted with a Linux system, Zowe CLI looks for a local file configuration and if found, a message displays advising that the local certificate is being used. If a local file configuration is not found, authentication fails.
+- If the user has both methods (keychain and local file) in their profile, keychain takes precedence.
+- If the keychain method is attempted with a Linux system, Zowe CLI looks for a local file configuration and if found, a message displays advising that the local certificate is being used. If a local file configuration is not found, authentication fails.
 
 :::
 
