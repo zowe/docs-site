@@ -1,8 +1,8 @@
-# Learn, Connect, and Contribute to Zowe
+# Learning, Connecting, and Contributing to Zowe
 
 Whether you are a mainframe veteran or an open-source newcomer, these curated resources are designed to help you master Zowe’s capabilities and find your place within our growing community.
 
-## Learn about the latest updates to Zowe
+## Learning about the latest Zowe updates 
 
 Stay current with the latest features introduced to the Zowe platform, and build your technical expertise through curated content and structured training.
 
@@ -31,7 +31,7 @@ For a deeper contextual dive into a wide range of Zowe topics, including detaile
 
 Would you like to contribute a blog? Find details about how to contribute to the [Zowe blogs on Medium](https://medium.com/zowe) at [Zowe Blog Guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md).  
 
-## Zowe Training and Badges
+### Zowe Training and Badges
 
 Expand your knowledge of Zowe by following our structured educational tracks. From foundational concepts to specialized roles, these paths help you to develop the skills to utilize Zowe within your organization.
 
@@ -56,7 +56,6 @@ Zowe is a community-led project that is driven by diverse perspectives and colla
 For a deep dive into how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
 
 For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
-
 
 ### Reporting an Issue 
 
@@ -90,11 +89,10 @@ Quality is a collective effort. By reporting bugs or suggesting improvements to 
     | [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Got an idea for a feature? Or some thoughts on how something you are already using could be improved?  |
     | Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
 
-
-### Contributing to Zowe 
+## Contributing to Zowe 
 
 The Zowe Conformance Program ensures that products and extensions built for the Zowe ecosystem provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
 
-For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance).
+For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance) in `openmainframeproject.org` from the Linux Foundation.
 
 
