@@ -30,18 +30,22 @@ Open a terminal and issue the `zowe --help`command to return information for the
 
 Open a terminal and issue the `zowe zowe-cli-sample list directory-contents` command:
 
-![Output](../../images/guides/CLI/SampleOutput.png "Sample Plugin Output")
+![Output](../../images/guides/CLI/sample_plugin_list_dir_output.png "Sample Plugin Output")
 
 ## Testing the installed plug-in
 
 1. Open a terminal and enter `cd zowe-tutorial/zowe-cli-sample-plugin` to run automated tests against the plug-in.
 
-2. Issue the following command:
+2. Issue the following commands:
 
     ```
-    npm run test
+    npm run test:unit
     ```
-    The command runs the automated unit and system tests defined in the `__tests__` folder. Test results are displayed in the terminal with the count of passed and failed tests. Failed tests are identified in the results.
+
+    ```
+    npm run test:integration
+    ```
+    The commands run the automated unit and integration tests defined in the `__tests__` folder. Test results are displayed in the terminal with the count of passed and failed tests. Failed tests are identified in the results.
 
 ## Next steps
 
