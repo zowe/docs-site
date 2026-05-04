@@ -9,19 +9,21 @@ Whether you are a mainframe veteran or an open-source newcomer, these curated re
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
-Stay current with new developments in the Zowe ecosystem through the Open Mainframe Project’s webinar series, where squads present big-picture overviews, technical updates, and new features tailored for users and developers alike. These webinars are designed to bridge the gap between the Zowe development squads and the community, providing a deep dive into the evolution of the platform. Topic areas covered in the webinars include the following presentations:
+Stay current with the latest Zowe developments through the Open Mainframe Project’s webinar series, where squads present big-picture overviews, technical updates, and new features tailored for users and developers alike. These webinars are designed to bridge the gap between the Zowe development squads and the community, providing a deep dive into the evolution of the platform. Topic areas covered in the webinars include the following presentations:
 
 * Quarterly roadmap and release updates
 * Squad-specific deep dives
-* Ecosystem and extension news
+* Platform development and extension news
 * Training and community engagement
 * Demos and use cases
 
-Zowe webinar YouTube Playlist: [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) by Open Mainframe Project.
+For more information about Zowe webinars, see the [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) YouTube playlist by Open Mainframe Project.
 
 Additional webinars about Zowe can be found at the [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
 
 ### Blogs
+
+For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we strongly recommend checking out the following blog landing pages: 
 
 - [Zowe blogs on Medium](https://medium.com/zowe)
 - [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
