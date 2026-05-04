@@ -1,11 +1,12 @@
-# Zowe learning resources
+# Learn, Connect, and Contribute to Zowe
 
 Whether you are a mainframe veteran or an open-source newcomer, these curated resources are designed to help you master Zowe’s capabilities and find your place within our growing community.
 
-## The latest updates on Zowe
+## Learn about the latest updates to Zowe
 
-### Webinars
-<!--The link here should be the latest webinar available at the youtube page for Zowe Quarterly Webinars. -->
+Stay current with the latest features introduced to the Zowe platform, and build your technical expertise through curated content and structured training.
+
+### Zowe Webinars
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
@@ -21,7 +22,7 @@ For more information about Zowe webinars, see the [Zowe Webinars](https://www.yo
 
 Additional webinars about Zowe can be found at the [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
 
-### Blogs
+### Zowe Blogs
 
 For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we strongly recommend checking out the following blog landing pages: 
 
@@ -30,44 +31,19 @@ For a deeper contextual dive into a wide range of Zowe topics, including detaile
 
 Would you like to contribute a blog? Find details about how to contribute to the [Zowe blogs on Medium](https://medium.com/zowe) at [Zowe Blog Guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md).  
 
-## Training and Badges
+## Zowe Training and Badges
 
 Expand your knowledge of Zowe by following our structured educational tracks. From foundational concepts to specialized roles, these paths help you to develop the skills to utilize Zowe within your organization.
 
-### Online Badges 
- [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) (Interskill Learning).  
- Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
+**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. For more information about this training and earning Insterskill bandges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/).   
 
 
-<!--We can expand the list of roles with links to the path per role.
-### Zowe Formal Learning Paths 
-Commenting this portion out since it would be from specific vendors.
--->
-## Getting involved with Zowe
+## Connecting to the Zowe community
 
-Zowe is a community-led project that is driven by diverse perspectives and collaboration. No matter your skill level, there are multiple ways you can contribute to the future of the platform.
+Zowe is a community-led project that is driven by diverse perspectives and collaboration. No matter your skill level, there are multiple ways you can contribute to the future of the platform. Use these channels to get involved with the Zowe community:
 
-### Reporting an Issue 
-
-Quality is a collective effort. By reporting bugs or suggesting improvements to the documentation, you can help with ensuring Zowe remains a robust, enterprise-grade solution for a wide spectrum of business needs.
-<!--Let's add links to opening issues in other repos as well.-->
-
-
-| Open an Issue | Details |
-|----|---|
-| [Open a Doc Issue](https://github.com/zowe/docs-site/issues/new/choose) | This encompasses all necessary improvements to Zowe Docs, from minor corrections like typos and grammar to more significant updates concerning settings, instructions, and configurations. |
-| [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with a few details about how to reproduce the issue and what area of Zowe the bug appears in. |
-| [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Got an idea for a feature? Or some thoughts on how something you are already using could be improved?  |
-| Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
-
-### Connecting with the Zowe community
-
-Join the Zowe community on Slack to get real-time support, brainstorm with peers, and engage in current discussions across the Zowe ecosystem.
-
-**Zowe Slack**
-
-- [Slack invite link](https://slack.openmainframeproject.org/)  
-- [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) 
+- To join the Zowe community via Slack, go to the [Open Mainframe Project Slack invitation](https://slack.openmainframeproject.org/).  
+- For information about joining the various Zowe slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
 
 ### Joining Zowe meetings
 
@@ -75,14 +51,50 @@ Join the Zowe community on Slack to get real-time support, brainstorm with peers
 
  For information about how to join the Zowe TSC call, see the [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
- ### Contributing
+### Learning more about the Zowe community
+
+For a deep dive into how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
+
+For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
+
+
+### Reporting an Issue 
+
+Quality is a collective effort. By reporting bugs or suggesting improvements to Zowe, you can help ensure Zowe remains a robust, enterprise-grade solution for a wide spectrum of business needs.
+
+* **Open a documentation related issue**
+
+    To open an issue that applies to Zowe documentation including updates to settings and configurations, see the [Create new issue](https://github.com/zowe/docs-site/issues/new/choose) page in the **Zowe docs-site repository**.  
+
+* **Open a Zowe component related issue**
+
+    If you would like to raise an issue that applies to a specific Zowe component, you can open an issue in the repository of that particular component. Use the link to open an issue that applies to the specific Zowe component:
+
+  * [Zowe API Mediation Layer (API ML)](https://github.com/zowe/api-layer/issues/)
+  * [Zowe App Server (zLUX)](https://github.com/zowe/zlux/issues/)
+  * [Zowe System Services (ZSS)](https://github.com/zowe/zss/issues/)
+  * [Zowe Command Line Interface (CLI)](https://github.com/zowe/zowe-cli/issues/)
+  * [Zowe Explorer for Visual Studio Code](https://github.com/zowe/zowe-explorer-vscode/issues/) 
+  * [Zowe Explorer for IntelliJ](https://github.com/zowe/zowe-explorer-intellij/issues/)
+  * [Zowe Client Java SDK](https://github.com/zowe/zowe-client-java-sdk/issues/)
+  * [Zowe Client Python SDK](https://github.com/zowe/zowe-client-python-sdk/issues/)
+  * [CICS for Zowe Client](https://github.com/zowe/cics-for-zowe-client/issues/)
+  * [Zowe CLI DB2 Plug-in](https://github.com/zowe/zowe-cli-db2-plugin/issues/)
+
+* **Open a community related issue**
+
+    For all other issues, see the following options available through the Zowe Community:
+    | Issue | Details |
+    |----|---|
+    | [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with a few details about how to reproduce the issue and what area of Zowe the bug appears in. |
+    | [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Got an idea for a feature? Or some thoughts on how something you are already using could be improved?  |
+    | Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
+
+
+### Contributing to Zowe 
 
 The Zowe Conformance Program ensures that products and extensions built for the Zowe ecosystem provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
 
 For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance).
 
-### Learning more about the community
 
-For a deep dive into how we organize, govern, and collaborate, explore the Zowe community repository. This is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
-
-For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
