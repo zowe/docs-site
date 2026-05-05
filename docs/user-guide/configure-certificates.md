@@ -84,9 +84,37 @@ If you set `zowe.verifyCertificates` to `NONSTRICT`, certificate verification is
 If you do not yet have certificates, Zowe can create self-signed certificates for you. The use of self-signed certificates for production is not recommended, so you should bring your own certificates. Note that the certificates must be valid for use with Zowe.
 
 ### Extended key usage
-Zowe server certificates must either not have the `Extended Key Usage` (EKU) attribute, or have both the `TLS Web Server Authentication (1.3.6.1.5.5.7.3.1)` and `TLS Web Client Authentication (1.3.6.1.5.5.7.3.2)` values present within.
 
-Some Zowe components act as a server, some as a client, and some as both - client and server. The component certificate usage for each of these cases is controlled by the Extended Key Usage (EKU) certificate attribute. The Zowe components use a single certificate (or the same certificate) for client and server authentication, so it is required that this certificate is valid for the intended usage/s of the component - client, server, or both. The EKU certificate extension attribute is not required, however, if it is specified, it must be defined with the intended usage/s. Otherwise, connection requests will be rejected by the other party
+Zowe certificates carry an Extended Key Usage (EKU) extension (OID 2.5.29.37) that constrains what a certificate may legitimately be used for. In secure enterprise environments—particularly on z/OS—security policies often require that certificates carry only the specific EKU values appropriate to their role.
+
+The two relevant EKU values are:
+
+* **TLS Web Server Authentication** (`1.3.6.1.5.5.7.3.1`)  
+Used to authenticate as a TLS server (inbound HTTPS).
+* **TLS Web Client Authentication** (`1.3.6.1.5.5.7.3.2`)  
+Used to authenticate as a TLS client (outbound mTLS).
+
+#### Certificate Requirements
+
+By default, Zowe components use a single certificate for both inbound and outbound traffic. Therefore, your certificate must meet one of the following criteria:
+
+* **No EKU attribute**  
+If the certificiate does not have an EKU attribute, the certificate is typically treated as valid for all uses.
+* **Both Server and Client Auth**  
+If EKU is present, the EKU attribute must contain both ServerAuth and ClientAuth OIDs.
+
+If a certificate carries only serverAuth but is presented during an outbound mTLS handshake (for example, the API Gateway calling the Discovery Service), the connection will be rejected by properly-hardened z/OS systems because the certificate is not authorized for client authentication.
+
+#### Using Dedicated Client Certificates
+
+For environments where security policy does not allow a single certificate from holding both EKUs, Zowe provides a property to designate a separate certificate for outbound connections.
+
+| Property | Description |
+| :--- | :--- |
+| **YAML Key** | `zowe.certificate.keystore.clientCertificateAlias` |
+| **Env Var** | `ZWE_zowe_certificate_keystore_clientCertificateAlias` |
+| **Default** | (Empty) Falls back to the main `zowe.certificate.keystore.alias` |
+| **Purpose** | Designates a separate certificate alias for outbound (client) TLS connections. This is used when security policy requires a dedicated certificate carrying the `clientAuth` EKU, distinct from the `serverAuth` certificate used for inbound traffic. |
 
 
 ### Supported algorithm
