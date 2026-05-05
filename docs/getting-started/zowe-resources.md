@@ -1,6 +1,6 @@
 # Learning, Connecting, and Contributing to Zowe
 
-Whether you are a mainframe veteran or an open-source newcomer, the Zowe project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning, connecting, and contributing to the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through stuctured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls; and ultimately, help shape the future of the Zowe platform with your own contributions. 
+Whether you are a mainframe veteran or an open-source newcomer, the Zowe Open Mainframe Project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning, connecting, and contributing to the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through stuctured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls; and ultimately, help shape the future of the Zowe platform with your own contributions. 
 
 ## Learning about the latest Zowe updates 
 
@@ -49,23 +49,23 @@ Zowe is a community-led project that is driven by diverse perspectives and colla
 
 ### Joining Zowe meetings
 
- Join the weekly meeting of the Zowe Technical Steering Committee (TSC) to get latest Zowe updates from each Zowe squad and get involved with these squads and their initiatives.
+ Join the weekly meeting of the Zowe Technical Steering Committee (TSC) to get latest updates from each Zowe squad and get involved with these squads and their initiatives.
 
  For information about how to join the Zowe TSC call, see the [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
 ### Learning more about the Zowe community
 
-For a deep dive into how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
+To find out more about how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This repository is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
 
 For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
 
 ### Reporting an Issue 
 
-Quality is a collective effort. By reporting bugs or suggesting improvements to Zowe, you can help ensure Zowe remains a robust, enterprise-grade solution for a wide spectrum of business needs.
+Ensuring quality in Zowe is a collective effort. By reporting bugs or suggesting improvements, you can help ensure Zowe remains a robust, enterprise-grade solution for a spectrum of business needs.
 
 * **Open a documentation related issue**
 
-    To open an issue that applies to Zowe documentation including updates to settings and configurations, see the [Create new issue](https://github.com/zowe/docs-site/issues/new/choose) page in the **Zowe docs-site repository**.  
+    To open an issue that applies to Zowe documentation including updates to settings and configurations, see [Create new issue](https://github.com/zowe/docs-site/issues/new/choose) in the **Zowe docs-site repository**.  
 
 * **Open a Zowe component related issue**
 
@@ -87,13 +87,13 @@ Quality is a collective effort. By reporting bugs or suggesting improvements to 
     For all other issues, see the following options available through the Zowe Community:
     | Issue | Details |
     |----|---|
-    | [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with a few details about how to reproduce the issue and what area of Zowe the bug appears in. |
-    | [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Got an idea for a feature? Or some thoughts on how something you are already using could be improved?  |
+    | [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with details about how to reproduce the issue, and what area of Zowe the bug appears in. |
+    | [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Share your ideas for a new feature, or thoughts about how a feature you are already using could be improved.  |
     | Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
 
 ## Contributing to Zowe 
 
-The Zowe Conformance Program ensures that products and extensions built for the Zowe ecosystem provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
+The Zowe Conformance Program ensures that products and extensions built for the Zowe platform provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
 
 For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance) in `openmainframeproject.org` from the Linux Foundation.
 
