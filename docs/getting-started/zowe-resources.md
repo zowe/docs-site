@@ -26,24 +26,26 @@ Additional webinars about Zowe can be found at the [OMP Youtube channel](https:/
 
 For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we strongly recommend checking out the following blog landing pages: 
 
-- [Zowe blogs on Medium](https://medium.com/zowe)
-- [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
+* [Zowe blogs on Medium](https://medium.com/zowe)
+* [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
 
 Would you like to contribute a blog? Find details about how to contribute to the [Zowe blogs on Medium](https://medium.com/zowe) at [Zowe Blog Guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md).  
 
 ### Zowe Training and Badges
 
-Expand your knowledge of Zowe by following our structured educational tracks. From foundational concepts to specialized roles, these paths help you to develop the skills to utilize Zowe within your organization.
+**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
 
-**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. For more information about this training and earning Insterskill bandges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/).   
+The Zowe Fundamentals course covers Zowe architecture, core components (API Mediation Layer, ZLUX, CLI), how the Zowe server and client components can be installed, and basic usage patterns after Zowe startup. The course is ideal for developers and system programmers new to Zowe. 
+
+For more information about this training and earning Interskill badges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) on the Interskill Learning website.   
 
 
 ## Connecting to the Zowe community
 
 Zowe is a community-led project that is driven by diverse perspectives and collaboration. No matter your skill level, there are multiple ways you can contribute to the future of the platform. Use these channels to get involved with the Zowe community:
 
-- To join the Zowe community via Slack, go to the [Open Mainframe Project Slack invitation](https://slack.openmainframeproject.org/).  
-- For information about joining the various Zowe slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
+* To join the Zowe community via Slack, go to the [Open Mainframe Project Slack invitation](https://slack.openmainframeproject.org/).  
+* For information about joining the various Zowe slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
 
 ### Joining Zowe meetings
 
