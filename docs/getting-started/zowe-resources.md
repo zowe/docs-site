@@ -1,6 +1,6 @@
 # Learning, Connecting, and Contributing to Zowe
 
-Whether you are a mainframe veteran or an open-source newcomer, these curated resources are designed to help you master Zowe’s capabilities and find your place within our growing community.
+Whether you are a mainframe veteran or an open-source newcomer, the Zowe project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning, connecting, and contributing to the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through stuctured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls; and ultimately, help shape the future of the Zowe platform with your own contributions. 
 
 ## Learning about the latest Zowe updates 
 
