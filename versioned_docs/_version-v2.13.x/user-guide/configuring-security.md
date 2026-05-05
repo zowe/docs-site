@@ -28,7 +28,7 @@ Review and perform z/OS configuration steps based on your settings. For a detail
 
 ## Assign security permissions to users
 
-Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users](./assign-security-permissions-to-users).
+Assign users (ZWESVUSR and ZWESIUSR) and the ZWEADMIN security group permissions required to perform specific tasks. For more information see, [Assign security permissions to users](./assign-security-permissions-to-users.md).
 
 ## Zowe Feature specific configuration tasks
 
