@@ -85,9 +85,9 @@ If you do not yet have certificates, Zowe can create self-signed certificates fo
 
 ### Extended key usage
 
-Zowe certificates carry an **Extended Key Usage (EKU)** extension (OID `2.5.29.37`) that constrains what a certificate may legitimately be used for. In secure  environments, such as on z/OS, security policies often require that certificates carry only the specific EKU values appropriate to their role.
+It is possible for TLS Certificates to carry EKU extensions that constrain what a certificate may be used for.
 
-The two relevant EKU values are:
+An EKU can have either of the following values: 
 
 * **TLS Web Server Authentication** (`1.3.6.1.5.5.7.3.1` / `id-kp-serverAuth`)  
 Used to authenticate as a TLS server (inbound HTTPS).
@@ -107,14 +107,15 @@ If a certificate carries only `serverAuth` but is presented during an outbound m
 
 #### Using Dedicated Client Certificates
 
-For environments where the security policy does not allow a single certificate to hold both EKUs, Zowe provides a property to designate a separate certificate for outbound connections.
+If a single certificate is not allowed to hold both EKUs, Zowe provides a property to use a separate certificate for outbound connections.
 
-| Property | Description |
-| :--- | :--- |
-| **YAML Key** | `zowe.certificate.keystore.clientCertificateAlias` |
-| **Env Var** | `ZWE_zowe_certificate_keystore_clientCertificateAlias` |
-| **Default** | (Empty) Falls back to the main `zowe.certificate.keystore.alias` |
-| **Purpose** | Designates a separate certificate alias for outbound (client) TLS connections. The property `zowe.certificate.keystore.clientCertificateAlias` is used when the security policy requires a dedicated certificate carrying the `clientAuth` EKU, distinct from the `serverAuth` certificate used for inbound traffic. |
+To designate a dedicated certificate for outbound traffic, configure the following property in your zowe.yaml file:
+
+* **zowe.certificate.keystore.clientCertificateAlias**  
+Designates a separate certificate alias for outbound (client) TLS connections. 
+This property is used when the security policy requires a dedicated certificate carrying the `clientAuth` EKU, distinct from the `serverAuth` certificate used for inbound traffic.  
+**Default:** (Empty) Falls back to the main `zowe.certificate.keystore.alias` 
+
 See the following example of how this property is configured within the zowe.yaml file.
 
 **Example:**
@@ -124,11 +125,11 @@ zowe:
   certificate:
     keystore:
       # The primary alias used for serving inbound HTTPS traffic.
-      # This certificate requires the 'serverAuth' EKU.
+      # This certificate requires the 'serverAuth' EKU or no EKU.
       alias: "zowe-server-cert"
 
       # The dedicated alias used for outbound mTLS connections to other services.
-      # This certificate requires the 'clientAuth' EKU.
+      # This certificate requires the 'clientAuth' EKU or no EKU.
       clientCertificateAlias: "zowe-client-cert"
 
       # Other typical keystore configuration
