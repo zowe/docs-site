@@ -14,6 +14,12 @@ Most Components of Zowe are HTTPS servers. The ports of each and their default j
 The ports can be customized for each component by editing the value of `components.<component-name>.port` within the Zowe YAML file.
 Each Jobname has a default prefix of ZWE1, but that can be customized via the `zowe.job.prefix` value in the Zowe YAML file. The ports used are different between single-service API ML deployment and multi-service API ML deployment.
 
+:::note
+**Internal and External Port Isolation**
+
+Zowe v3 allows you to assign distinct ports and IP addresses to internal and external listeners. This separation enables you to implement firewall rules that prevent external users from accessing sensitive internal management endpoints, even if the services are hosted on the same LPAR.
+:::
+
 ### Single-service deployment
 
 | Port number | Category | Component(s) | Default Jobname     | Log Suffix | Purpose                                                                                                                                                                                                              |
@@ -59,7 +65,41 @@ The Caching Service will use these additional ports if enabled (`components.cach
 
 Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
 
-If this default is not desired, it is recommended to use [TCPIP port assignment statements](https://www.ibm.com/docs/en/zos/2.5.0?topic=assignments-profiletcpip-port) to restrict the IP & ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>` as shown in the table prior.
+:::note 
+**Using the Wildcard Address**
+
+The address `0.0.0.0` acts as a wildcard, instructing Zowe to bind to all available network interfaces on the host. This is the default behavior and is recommended for environments where strict interface isolation is not required.
+:::
+
+### Binding to Specific or Multiple Addresses
+
+:::note
+**Internal and External Port Isolation**
+
+Zowe v3 allows you to assign distinct ports and IP addresses to internal and external listeners. This separation enables you to implement firewall rules that prevent external users from accessing sensitive internal management endpoints, even if the services are hosted on the same LPAR.
+:::
+
+If the default is not desired, you can use the following properties in zowe.yaml to restrict which network interfaces Zowe services use:
+
+* **zowe.network.server.listenAddresses**  
+Defines the specific IP address or addresses for the server to bind to. To bind to multiple interfaces or specific TCP/IP stacks, provide a comma-separated list of IP addresses.
+
+* **zowe.network.external.address**  
+Defines the address used for external listeners (end-user traffic).
+
+* **zowe.network.internal.address**  
+Defines the address used for internal listeners (service-to-service communication).
+
+:::note
+
+### Binding to Multiple TCP/IP Stacks  
+
+In environments with multiple TCP/IP stacks, you can bind Zowe to specific addresses across those stacks by providing a comma-separated list in the `zowe.network.server.listenAddresses` property. Zowe startup scripts automatically parse this list to ensure the services bind correctly to every specified interface.
+:::
+
+### TCPIP Port Reservations
+
+It is also recommended to use TCPIP port assignment statements to restrict the IP and ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and <component-suffix> as shown in the table prior. For details, see the topic _PROFILE.TCPIP port assignments_ in the IBM documentation.
 
 When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service API ML deployment:
 
@@ -71,6 +111,9 @@ When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed I
    7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
 ```
 
+:::note
+This TCP IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`.
+:::
 
 With multi-service deployment, it could be as follows:
 
