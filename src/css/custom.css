@@ -441,9 +441,9 @@ html[data-theme="light"] .darkTheme {
 }
 */
 div[class^='announcementBar_'] {
-background: #33f5ff !important; /* Vivid Light Blue */
-  font-weight: 600;               /* Slightly bolder for readability */
-  font-size: 1.3em;
+background: #fdf0be !important; /* Vivid Light Blue */
+  font-weight: 700;               /* Slightly bolder for readability */
+  font-size: 1.5em;
   height: auto !important;
   min-height: 60px;
   padding: 20px 60px !important;
