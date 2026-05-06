@@ -97,9 +97,9 @@ Defines the address used for internal listeners (service-to-service communicatio
 In environments with multiple TCP/IP stacks, you can bind Zowe to specific addresses across those stacks by providing a comma-separated list in the `zowe.network.server.listenAddresses` property. Zowe startup scripts automatically parse this list to ensure the services bind correctly to every specified interface.
 :::
 
-### TCPIP Port Reservations
+### TCP/IP Port Reservations
 
-It is also recommended to use TCPIP port assignment statements to restrict the IP and ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and <component-suffix> as shown in the table prior. For details, see the topic _PROFILE.TCPIP port assignments_ in the IBM documentation.
+The best practice is to use TCP/IP port assignment statements to restrict the IP and ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `<component-suffix>`. For details, see the topic _PROFILE.TCPIP port assignments_ in the IBM documentation.
 
 When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service API ML deployment:
 
@@ -112,7 +112,7 @@ When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed I
 ```
 
 :::note
-This TCP IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`.
+This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`.
 :::
 
 With multi-service deployment, it could be as follows:
@@ -128,4 +128,4 @@ With multi-service deployment, it could be as follows:
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
 
-:::note This TCP IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. :::
+:::note This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. :::
