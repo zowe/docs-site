@@ -63,7 +63,7 @@ The Caching Service will use these additional ports if enabled (`components.cach
 
 ## IP Addresses
 
-Zowe's servers by default use the TCP IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
+Zowe's servers by default use the TCP/IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
 
 :::note 
 **Using the Wildcard Address**
@@ -90,6 +90,19 @@ Defines the address used for external listeners (end-user traffic).
 * **zowe.network.internal.address**  
 Defines the address used for internal listeners (service-to-service communication).
 
+**Example:**
+```yaml
+zowe:
+  network:
+    server:
+      # Comma-separated list of IP addresses for the server to bind to
+      listenAddresses: "127.0.0.1, 10.11.12.13"
+    external:
+      address: "10.11.12.13"
+    internal:
+      address: "127.0.0.1"
+```
+
 :::note
 
 ### Binding to Multiple TCP/IP Stacks  
@@ -101,7 +114,9 @@ In environments with multiple TCP/IP stacks, you can bind Zowe to specific addre
 
 The best practice is to use TCP/IP port assignment statements to restrict the IP and ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `component-suffix`. For details, see the topic _PROFILE.TCPIP port assignments_ in the IBM documentation.
 
-When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed IP of `10.11.12.13` could be as follows with single-service API ML deployment:
+When `zowe.job.prefix` is set to `ZWE1` and the IP address is `10.11.12.13`, the port reservations for a single-service API ML deployment would appear as follows:
+
+**Example:**
 
 ```plaintext
    7553 TCP ZWE1AG BIND 10.11.12.13 ; Zowe Discovery
@@ -115,7 +130,9 @@ When `zowe.job.prefix` is `ZWE1`, an example of port reservations with a fixed I
 This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`.
 :::
 
-With multi-service deployment, it could be as follows:
+For a multi-service deployment, the port reservations would be configured as shown in this example:
+
+**Example:**
 
 ```plaintext
    7552 TCP ZWE1AC BIND 10.11.12.13 ; Zowe API Catalog
@@ -128,4 +145,6 @@ With multi-service deployment, it could be as follows:
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
 
-:::note This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. :::
+:::note 
+This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. 
+:::
