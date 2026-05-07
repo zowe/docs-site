@@ -17,7 +17,7 @@ Each Jobname has a default prefix of ZWE1, but that can be customized via the `z
 :::note
 **Internal and External Port Isolation**
 
-Zowe v3 allows you to assign distinct ports and IP addresses to internal and external listeners. This separation enables you to implement firewall rules that prevent external users from accessing sensitive internal management endpoints, even if the services are hosted on the same LPAR.
+Zowe v3 provides isolation between internal and external listeners, enabling you to implement firewall rules that prevent external users from accessing sensitive management endpoints. For details, see [Binding to Specific or Multiple Addresses](#binding-to-specific-or-multiple-addresses) later in this article.
 :::
 
 ### Single-service deployment
@@ -63,44 +63,60 @@ The Caching Service will use these additional ports if enabled (`components.cach
 
 ## IP Addresses
 
-Zowe's servers by default use the TCP/IP address `0.0.0.0` which assigns the servers to be available on all network interfaces available to the jobs.
-
 :::note 
 **Using the Wildcard Address**
 
 The address `0.0.0.0` acts as a wildcard, instructing Zowe to bind to all available network interfaces on the host. This is the default behavior and is recommended for environments where strict interface isolation is not required.
 :::
 
-### Binding to Specific or Multiple Addresses
+### Network Interface Binding and Traffic Isolation
 
-:::note
-**Internal and External Port Isolation**
+Zowe allows you to precisely control how services interact with your network. This configuration serves two main purposes: 
+* **Binding**  
+Defining which network interfaces Zowe uses
+* **Isolation**  
+Separating end-user traffic from service-to-service communication 
 
-Zowe v3 allows you to assign distinct ports and IP addresses to internal and external listeners. This separation enables you to implement firewall rules that prevent external users from accessing sensitive internal management endpoints, even if the services are hosted on the same LPAR.
-:::
+#### Interface Binding
 
-If the default is not desired, you can use the following properties in zowe.yaml to restrict which network interfaces Zowe services use:
+By default, Zowe binds to `0.0.0.0`, making it available on all network interfaces. To restrict Zowe to specific TCP/IP stacks or specific IP addresses, use the `listenAddresses` property.
 
 * **zowe.network.server.listenAddresses**  
-Defines the specific IP address or addresses for the server to bind to. To bind to multiple interfaces or specific TCP/IP stacks, provide a comma-separated list of IP addresses.
+Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
+
+
+#### Traffic Isolation (Internal vs. External)
+
+Zowe distinguishes between external traffic and traffic moving between Zowe API ML components. This separatation allows you to apply different firewall rules to each type of traffic.
+
+If the default is not desired, you can use the following properties in zowe.yaml to restrict which network interfaces Zowe services use:
 
 * **zowe.network.external.address**  
 Defines the address used for external listeners (end-user traffic).
 
-* **zowe.network.internal.address**  
+* **components.apiml.internal.discovery.address**  
 Defines the address used for internal listeners (service-to-service communication).
+  :::note
+  The equivalent parameter in multi-service deployment is:
+  `components.gateway.server.internal.address` 
+  :::
 
 **Example:**
 ```yaml
 zowe:
   network:
     server:
-      # Comma-separated list of IP addresses for the server to bind to
+      # Binds to both local and external interfaces
       listenAddresses: "127.0.0.1, 10.11.12.13"
     external:
       address: "10.11.12.13"
+
+components:
+  apiml:
     internal:
-      address: "127.0.0.1"
+      discovery:
+        # Defines the internal listener for the Discovery service
+        address: "127.0.0.1"
 ```
 
 :::note
