@@ -21,7 +21,7 @@ The following diagram illustrates the high-level Zowe architecture using multi-s
 
 ![Zowe Architecture Diagram](../images/common/zowe-architecture.png)
 
-As with the single-service architecture diagram, the diagram for multi-service deplayment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
+As with the single-service architecture diagram, the diagram for multi-service deployment shows the default port numbers that are used by Zowe. These ports are dependent on each instance of Zowe and are held in the Zowe YAML configuration file.
 
 </details>
 
