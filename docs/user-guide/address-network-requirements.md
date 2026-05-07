@@ -61,7 +61,13 @@ The Caching Service will use these additional ports if enabled (`components.cach
 | 7601        | zowe.components.caching-service.storage.infinispan.jgroups.keyExchange.port | The port at which the key server in Infinispan is listening. If the port is not available, the next port is probed, up to port+5. Used by the key server (server) to create an SSLServerSocket and by clients to connect to the key server. |
 | 7600        | zowe.components.caching-service.storage.infinispan.jgroups.port | Bind port for the socket that is used to form an Infinispan cluster. |
 
-## IP Addresses
+## Network Configuration
+
+Configure how Zowe identifies and binds to network interfaces on your system to ensure accessibility for users while maintaining secure internal communication between services.
+
+### Interface Binding and Traffic Isolation
+
+By default, Zowe binds to the wildcard address `0.0.0.0`, making its services available on all available network interfaces.
 
 :::note 
 **Using the Wildcard Address**
@@ -69,37 +75,22 @@ The Caching Service will use these additional ports if enabled (`components.cach
 The address `0.0.0.0` acts as a wildcard, instructing Zowe to bind to all available network interfaces on the host. This is the default behavior and is recommended for environments where strict interface isolation is not required.
 :::
 
-### Network Interface Binding and Traffic Isolation
-
-Zowe allows you to precisely control how services interact with your network. This configuration serves two main purposes: 
-* **Binding**  
-Defining which network interfaces Zowe uses
-* **Isolation**  
-Separating end-user traffic from service-to-service communication 
-
-#### Interface Binding
-
-By default, Zowe binds to `0.0.0.0`, making it available on all network interfaces. To restrict Zowe to specific TCP/IP stacks or specific IP addresses, use the `listenAddresses` property.
+If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic from external user traffic, use the following properties in zowe.yaml:
 
 * **zowe.network.server.listenAddresses**  
 Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
 
-
-#### Traffic Isolation (Internal vs. External)
-
-Zowe distinguishes between external traffic and traffic moving between Zowe API ML components. This separatation allows you to apply different firewall rules to each type of traffic.
-
-If the default is not desired, you can use the following properties in zowe.yaml to restrict which network interfaces Zowe services use:
-
 * **zowe.network.external.address**  
 Defines the address used for external listeners (end-user traffic).
 
-* **components.apiml.internal.discovery.address**  
-Defines the address used for internal listeners (service-to-service communication).
-  :::note
-  The equivalent parameter in multi-service deployment is:
-  `components.gateway.server.internal.address` 
-  :::
+* **components.apiml.internal.discovery.address** (Used in single-service deployment) 
+Defines the address used for internal listeners for service-to-service communication. In a multi-service deployment, use `components.gateway.server.internal.address`. 
+
+
+:::note Internal and External Listener Isolation
+
+Zowe v3 provides isolation between internal and external listeners, enabling you to implement firewall rules that prevent external users from accessing sensitive management endpoints. 
+:::  
 
 **Example:**
 ```yaml
