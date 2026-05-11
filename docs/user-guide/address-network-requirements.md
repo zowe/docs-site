@@ -74,11 +74,11 @@ If you need to restrict Zowe to specific TCP/IP stacks or separate internal serv
 * **zowe.network.server.listenAddresses**  
 Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
 
-* **zowe.network.external.address**  
-Defines the address used for external listeners (end-user traffic).
+* **zowe.externalPort**  
+Specifies the primary port number used for external user access to Zowe services. This is a single integer that defines the entry point for end-user traffic, typically routed through the API Gateway.
 
-* **components.apiml.internal.discovery.address** (used in single-service deployment)   
-Defines the address used for internal listeners for service-to-service communication. In a multi-service deployment, use `components.gateway.server.internal.address`. 
+* **zowe.externalDomains** (used in single-service deployment)   
+Specifies authorized domain names or hostnames that are valid for use with the Zowe instance. This property helps define the network boundaries and is used for security validations, such as ensuring that the Zowe instance only accepts requests directed to these specific domains.
 
 
 :::note Internal and External Listener Isolation
@@ -93,15 +93,14 @@ zowe:
     server:
       # Binds to both local and external interfaces
       listenAddresses: "127.0.0.1, 10.11.12.13"
-    external:
-      address: "10.11.12.13"
+  
+  # The main external port for end-user traffic
+  externalPort: 7554
 
-components:
-  apiml:
-    internal:
-      discovery:
-        # Defines the internal listener for the Discovery service
-        address: "127.0.0.1"
+  # List of valid domains for the Zowe instance
+  externalDomains: 
+    - "zowe.example.com"
+    - "api.internal.org"
 ```
 
 :::note Binding to Multiple TCP/IP Stacks 
@@ -113,7 +112,11 @@ In environments with multiple TCP/IP stacks, you can bind Zowe to specific addre
 
 The best practice is to use TCP/IP port assignment statements to restrict the IP and ports of each server by their jobnames. The jobnames of each Zowe component is derived from the property `zowe.job.prefix` and `component-suffix`. For details, see the topic _PROFILE.TCPIP port assignments_ in the IBM documentation.
 
-When `zowe.job.prefix` is set to `ZWE1` and the IP address is `10.11.12.13`, the port reservations for a **single-service API ML deployment** would appear as follows:
+When `zowe.job.prefix` is set to `ZWE1`, the external IP is `10.11.12.13`. The port reservations should be configured to reflect traffic isolation.
+
+**Single-Service Deployment**
+
+In a single-service deployment, Zowe components run under a single started task jobname (default `ZWE1SV`).
 
 **Example:**
 
@@ -125,11 +128,9 @@ When `zowe.job.prefix` is set to `ZWE1` and the IP address is `10.11.12.13`, the
    7557 TCP ZWE1SZ BIND 10.11.12.13 ; Zowe ZSS
 ```
 
-:::note
-This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`.
-:::
+**Multi-Service Deployment**
 
-For a **multi-service deployment**, the port reservations would be configured as shown in this example:
+In a multi-service deployment, each component runs in its own address space with a unique jobname suffix.
 
 **Example:**
 
@@ -144,6 +145,9 @@ For a **multi-service deployment**, the port reservations would be configured as
    7558 TCP ZWE1AZ BIND 10.11.12.13 ; Zowe ZAAS
 ```
 
-This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. 
+:::note
+This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=` parameter to match the prefix. For example `S ZWESLSTC,JOBNAME=ZWE1SV`.
+:::
 
-z
+
+
