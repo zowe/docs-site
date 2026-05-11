@@ -75,15 +75,14 @@ If you need to restrict Zowe to specific TCP/IP stacks or separate internal serv
 Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
 
 * **zowe.externalPort**  
-Specifies the primary port number used for external user access to Zowe services. This is a single integer that defines the entry point for end-user traffic, typically routed through the API Gateway.
+Specifies the primary port number used for external user access to Zowe services. This value defines the entry point for end-user traffic.
 
 * **zowe.externalDomains** (used in single-service deployment)   
-Specifies authorized domain names or hostnames that are valid for use with the Zowe instance. This property helps define the network boundaries and is used for security validations, such as ensuring that the Zowe instance only accepts requests directed to these specific domains.
-
+Specifies authorized domain names or hostnames through which Zowe expects to be contacted. 
 
 :::note Internal and External Listener Isolation
 
-Zowe v3 provides isolation between internal and external listeners, enabling you to implement firewall rules that prevent external users from accessing sensitive management endpoints. 
+Zowe v3 provides isolation between internal and external listeners, enabling the network administrator or system programmer to implement firewall rules that prevent external users from accessing sensitive management endpoints. 
 :::  
 
 **Example:**
