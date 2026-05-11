@@ -67,13 +67,7 @@ Configure how Zowe identifies and binds to network interfaces on your system to 
 
 ### Interface Binding and Traffic Isolation
 
-By default, Zowe binds to the wildcard address `0.0.0.0`, making its services available on all available network interfaces.
-
-:::note 
-**Using the Wildcard Address**
-
-The address `0.0.0.0` acts as a wildcard, instructing Zowe to bind to all available network interfaces on the host. This is the default behavior and is recommended for environments where strict interface isolation is not required.
-:::
+By default, Zowe binds to the wildcard address `0.0.0.0`, making Zowe services available on all network interfaces. This configuration is recommended for environments where strict interface isolation is not required.
 
 If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic from external user traffic, use the following properties in zowe.yaml:
 
@@ -110,9 +104,7 @@ components:
         address: "127.0.0.1"
 ```
 
-:::note 
-
-**Binding to Multiple TCP/IP Stacks**  
+:::note Binding to Multiple TCP/IP Stacks 
 
 In environments with multiple TCP/IP stacks, you can bind Zowe to specific addresses across those stacks by providing a comma-separated list in the `zowe.network.server.listenAddresses` property. Zowe startup scripts automatically parse this list to ensure the services bind correctly to every specified interface.
 :::
@@ -154,3 +146,4 @@ For a **multi-service deployment**, the port reservations would be configured as
 
 This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=ZWE1SV` option, for example `S ZWESLSTC,JOBNAME=ZWE1SV`. 
 
+z
