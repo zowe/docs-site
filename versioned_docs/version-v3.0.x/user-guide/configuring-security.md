@@ -10,6 +10,15 @@ For initial tasks to be performed by the security administrator before Zowe serv
 
 :::
 
+:::note
+For the users of Zowe who are not database administrators, administrators, or superusers, the minimum access requirements are as follows:
+
+- z/OSMF Access: The user must be a member of the IZUUSER group (membership in IZUADMIN is optional and provides additional privileges if required).
+- USS Access: The user ID must have an ** OMVS segment defined to interact with UNIX System Services.
+- Dataset and USS Permissions: The user requires the standard RACF/ACF2/Top Secret permissions to access datasets and USS files.
+
+:::
+
 ## Validate and re-run `zwe init` commands
 
 During installation, the system programmer customizes values in the zowe.yaml file. However, due to insufficient permissions of the system programmer, the `zwe init security` command may fail without sufficient user authorization. 
