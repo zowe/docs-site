@@ -74,6 +74,9 @@ If you need to restrict Zowe to specific TCP/IP stacks or separate internal serv
 * **zowe.network.server.listenAddresses**  
 Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
 
+* **components.apiml.internal.discovery.address**  
+Defines the address used specifically for internal listeners and service-to-service communication. Configuring this parameter ensures that internal discovery traffic remains on a protected or local interface.
+
 * **zowe.externalPort**  
 Specifies the primary port number used for external user access to Zowe services. This value defines the entry point for end-user traffic.
 
@@ -100,6 +103,13 @@ zowe:
   externalDomains: 
     - "zowe.example.com"
     - "api.internal.org"
+
+components:
+  apiml:
+    internal:
+      # Defines the address for service-to-service communication
+      discovery:
+        address: "127.0.0.1"    
 ```
 
 :::note Binding to Multiple TCP/IP Stacks 
