@@ -1,6 +1,6 @@
 # Learning, Connecting, and Contributing to Zowe
 
-Whether you are a mainframe veteran or an open-source newcomer, the Zowe Open Mainframe Project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning, connecting, and contributing to the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through stuctured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls; and ultimately, help shape the future of the Zowe platform with your own contributions. 
+Whether you are a mainframe veteran or an open-source newcomer, the Zowe Open Mainframe Project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning, connecting, and contributing to the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through structured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls, and ultimately, help shape the future of the Zowe platform with your own contributions. 
 
 ## Learning about the latest Zowe updates 
 
@@ -18,9 +18,9 @@ Stay current with the latest Zowe developments through the Open Mainframe Projec
 * Training and community engagement
 * Demos and use cases
 
-For more information about Zowe webinars, see the [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) YouTube playlist by Open Mainframe Project.
+For more information about Zowe webinars, see the [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) on the Open Mainframe Project's YouTube channel. 
 
-Additional webinars about Zowe can be found at the [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
+Additional webinars about Zowe can be found at the [OMP YouTube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
 
 ### Zowe Blogs
 
@@ -33,7 +33,7 @@ Would you like to contribute a blog? Find details about how to contribute to the
 
 ### Zowe Training and Badges
 
-**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
+**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of Zowe and how its capabilities can be extended. 
 
 The Zowe Fundamentals course covers Zowe architecture, core components (API Mediation Layer, ZLUX, CLI), how the Zowe server and client components can be installed, and basic usage patterns after Zowe startup. The course is ideal for developers and system programmers new to Zowe. 
 
@@ -45,11 +45,11 @@ For more information about this training and earning Interskill badges, see [Zow
 Zowe is a community-led project that is driven by diverse perspectives and collaboration. No matter your skill level, there are multiple ways you can contribute to the future of the platform. Use these channels to get involved with the Zowe community:
 
 * To join the Zowe community via Slack, go to the [Open Mainframe Project Slack invitation](https://slack.openmainframeproject.org/).  
-* For information about joining the various Zowe slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
+* For information about joining the various Zowe Slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
 
 ### Joining Zowe meetings
 
- Join the weekly meeting of the Zowe Technical Steering Committee (TSC) to get latest updates from each Zowe squad and get involved with these squads and their initiatives.
+ Join the weekly meeting of the Zowe Technical Steering Committee (TSC) to get the latest updates from each Zowe squad and get involved with these squads and their initiatives.
 
  For information about how to join the Zowe TSC call, see the [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
@@ -57,17 +57,17 @@ Zowe is a community-led project that is driven by diverse perspectives and colla
 
 To find out more about how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This repository is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
 
-For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
+For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initiatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
 
 ### Reporting an Issue 
 
 Ensuring quality in Zowe is a collective effort. By reporting bugs or suggesting improvements, you can help ensure Zowe remains a robust, enterprise-grade solution for a spectrum of business needs.
 
-* **Open a documentation related issue**
+* **Open a documentation-related issue**
 
     To open an issue that applies to Zowe documentation including updates to settings and configurations, see [Create new issue](https://github.com/zowe/docs-site/issues/new/choose) in the **Zowe docs-site repository**.  
 
-* **Open a Zowe component related issue**
+* **Open a Zowe component-related issue**
 
     If you would like to raise an issue that applies to a specific Zowe component, you can open an issue in the repository of that particular component. Use the link to open an issue that applies to the specific Zowe component:
 
