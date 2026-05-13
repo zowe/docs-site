@@ -69,7 +69,7 @@ Configure how Zowe identifies and binds to network interfaces on your system. Th
 
 By default, Zowe binds to the wildcard address `0.0.0.0`, making Zowe services available on all network interfaces. This configuration is recommended for environments where strict interface isolation is not required.
 
-Zowe V3 uses two listeners to separate internal traffic from external traffic. If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic, use the following properties in zowe.yaml:
+Zowe V3 uses two listeners to separate internal traffic from external traffic:
 
 * **Internal Port**  
 Used for services to register themselves with the API Mediation Layer. This traffic is typically restricted to the internal network.
@@ -77,7 +77,7 @@ Used for services to register themselves with the API Mediation Layer. This traf
 * **External Port**  
 The primary access point for all external user access (Web UI, CLI, VS Code) and onboarded services. This is the port used for opening firewalls and defining external access rules.
 
-To manage this isolation, use the following properties in zowe.yaml:
+If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic from external traffic, use the following properties in zowe.yaml:
 
 * **zowe.network.server.listenAddresses**  
 Defines the specific IP address or a comma-separated list of addresses for the server to bind to (replacing the default `0.0.0.0` wildcard).
@@ -157,6 +157,7 @@ In a multi-service deployment, each component runs in its own address space with
 ```
 
 :::note
+
 This TCP/IP setting is valid for the Zowe Server started with `JOBNAME=` parameter to match the prefix. For example `S ZWESLSTC,JOBNAME=ZWE1SV`.
 :::
 
