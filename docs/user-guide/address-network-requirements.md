@@ -69,24 +69,26 @@ Configure how Zowe identifies and binds to network interfaces on your system to 
 
 By default, Zowe binds to the wildcard address `0.0.0.0`, making Zowe services available on all network interfaces. This configuration is recommended for environments where strict interface isolation is not required.
 
-If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic from external user traffic, use the following properties in zowe.yaml:
+Zowe V3 utilizes a dual-listener architecture to separate internal traffic from user traffic. If you need to restrict Zowe to specific TCP/IP stacks or separate internal service traffic, use the following properties in zowe.yaml:
+
+* **Internal Port**  
+Used exclusively for Zowe services to register themselves with the API Mediation Layer and for service-to-service discovery. This traffic should be restricted to the local or internal network.
+* **External Port**  
+The primary gateway for all external user access (Web UI, CLI, VS Code) and onboarded services. This is the port used for opening firewalls and defining external access rules.
+
+To manage this isolation, use the following properties in zowe.yaml:
 
 * **zowe.network.server.listenAddresses**  
-Defines the specific IP address or a comma-separated list of addresses for the server to bind to.
+Defines the specific IP address or a comma-separated list of addresses for the server to bind to (replacing the default `0.0.0.0` wildcard).
 
 * **components.apiml.internal.discovery.address**  
-Defines the address used specifically for internal listeners and service-to-service communication. Configuring this parameter ensures that internal discovery traffic remains on a protected or local interface.
+Defines the address used specifically for internal listeners (service-to-service communication). Configuring this parameter ensures that internal discovery traffic remains on a protected or local interface.
 
 * **zowe.externalPort**  
-Specifies the primary port number used for external user access to Zowe services. This value defines the entry point for end-user traffic.
+Specifies the primary port number (default `7554`) used for external user access to Zowe services. This value defines the entry point for end-user traffic.
 
-* **zowe.externalDomains** (used in single-service deployment)   
+* **zowe.externalDomains**    
 Specifies authorized domain names or hostnames through which Zowe expects to be contacted. 
-
-:::note Internal and External Listener Isolation
-
-Zowe v3 provides isolation between internal and external listeners, enabling the network administrator or system programmer to implement firewall rules that prevent external users from accessing sensitive management endpoints. 
-:::  
 
 **Example:**
 ```yaml
@@ -102,7 +104,6 @@ zowe:
   # List of valid domains for the Zowe instance
   externalDomains: 
     - "zowe.example.com"
-    - "api.internal.org"
 
 components:
   apiml:
