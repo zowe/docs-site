@@ -37,7 +37,7 @@ function Resource({ title, link, icon, description }) {
         style={{ height: "70px", width: "70px" }}
         src={useBaseUrl(icon)}
       />
-      <p className={clsx("padding--lg")}>{description}</p>
+      <p>{description}</p>
       <a className={clsx("margin-top--lg", styles.posAbsolute)} href={link}>
         {title}
       </a>
