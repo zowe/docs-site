@@ -19,19 +19,19 @@ module.exports = {
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
-    experimental_faster: true,
+    faster: true,
     v4: {
       removeLegacyPostBuildHeadAttribute: true
     }
   },
   themeConfig: {
-        announcementBar: {
+    announcementBar: {
       id: 'announcementBar-1', // increment on change
       content:
-          '📌  <b>Support for Zowe Version 2 ends on March 30, 2027</b>. Follow <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3. Zowe Version 3 transitions to maintenance phase on March 1, 2027 with the last active v3 release.',
+        '📌  <b>Support for Zowe Version 2 ends on March 30, 2027</b>. Follow <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3. Zowe Version 3 transitions to maintenance phase on March 1, 2027 with the last active v3 release.',
       textColor: '#000',
       backgroundColor: '#33f5ff',
-      },
+    },
     docs: {
       sidebar: {
         hideable: true
@@ -212,7 +212,7 @@ module.exports = {
           remarkPlugins: [() => {
             // https://github.com/facebook/docusaurus/issues/9789
             return async (root) => {
-              const {visit} = await import('unist-util-visit');
+              const { visit } = await import('unist-util-visit');
               visit(root, 'mdxJsxFlowElement', (node) => {
                 if (node.name === 'img') {
                   node.name = 'Img';
