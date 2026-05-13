@@ -127,7 +127,7 @@ When `zowe.job.prefix` is set to `ZWE1`, the external IP is `10.11.12.13`. The p
 
 **Single-Service Deployment**
 
-In a single-service deployment, API ML sub-components run under a single started task jobname (default `ZWE1AG`).
+In a single-service deployment, API ML components run under a single started task jobname (default `ZWE1AG`).
 
 **Example:**
 
@@ -141,7 +141,7 @@ In a single-service deployment, API ML sub-components run under a single started
 
 **Multi-Service Deployment**
 
-In a multi-service deployment, each component runs in its own address space with a unique jobname suffix.
+In a multi-service deployment, each API ML component runs in its own address space with a unique jobname suffix.
 
 **Example:**
 
