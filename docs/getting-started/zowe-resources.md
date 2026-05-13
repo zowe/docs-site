@@ -24,7 +24,7 @@ Additional webinars about Zowe can be found at the [OMP YouTube channel](https:/
 
 ### Zowe Blogs
 
-For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we strongly recommend checking out the following blog landing pages: 
+For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we recommend checking out the following blog landing pages: 
 
 * [Zowe blogs on Medium](https://medium.com/zowe)
 * [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
@@ -33,11 +33,11 @@ Would you like to contribute a blog? Find details about how to contribute to the
 
 ### Zowe Training and Badges
 
-**Interskill Learning** offers a free training course that introduces the components that comprise Zowe and the benefits of Zowe and how its capabilities can be extended. 
+**Interskill Learning** offers a free training course that introduces the components that comprise Zowe, the benefits of using Zowe in your mainframe environment, and how Zowe capabilities can be extended. 
 
 The Zowe Fundamentals course covers Zowe architecture, core components (API Mediation Layer, ZLUX, CLI), how the Zowe server and client components can be installed, and basic usage patterns after Zowe startup. The course is ideal for developers and system programmers new to Zowe. 
 
-For more information about this training and earning Interskill badges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) on the Interskill Learning website.   
+For more information about this training and earning Interskill badges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) on the _Interskill Learning_ website.   
 
 
 ## Connecting to the Zowe community
