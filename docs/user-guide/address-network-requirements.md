@@ -63,7 +63,7 @@ The Caching Service will use these additional ports if enabled (`components.cach
 
 ## Network Configuration
 
-Configure how Zowe identifies and binds to network interfaces on your system to ensure accessibility for users while maintaining secure internal communication between services.
+Configure how Zowe identifies and binds to network interfaces on your system. The default behavior binds to all interfaces, but it is possible to configure binding to just a specific subset of available Network Interfaces (NIC).
 
 ### Interface Binding and Traffic Isolation
 
@@ -95,10 +95,10 @@ Specifies authorized domain names or hostnames through which Zowe expects to be 
 zowe:
   network:
     server:
-      # Binds to both local and external interfaces
-      listenAddresses: "127.0.0.1, 10.11.12.13"
+      # Binds to two of the Network Interfaces available on the system.
+      listenAddresses: "10.11.12.13, 11.12.13.14"
   
-  # The main external port for end-user traffic
+  # The main external port for incoming traffic
   externalPort: 7554
 
   # List of valid domains for the Zowe instance
@@ -108,7 +108,7 @@ zowe:
 components:
   apiml:
     internal:
-      # Defines the address for service-to-service communication
+      # Defines the address for the communication from z/OS services to the endpoint managing registration of the services. 
       discovery:
         address: "127.0.0.1"    
 ```
