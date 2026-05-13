@@ -17,7 +17,7 @@ Each Jobname has a default prefix of ZWE1, but that can be customized via the `z
 :::note
 **Internal and External Port Isolation**
 
-Zowe v3 provides isolation between internal and external listeners, enabling you to implement firewall rules that prevent external users from accessing sensitive management endpoints. For details, see [Binding to Specific or Multiple Addresses](#binding-to-specific-or-multiple-addresses) later in this article.
+Zowe v3 supports the use of separate internal and external listeners to isolate service-to-service communication from external traffic. For information on how to configure these listeners and their associated ports, see [Interface Binding and Traffic Isolation](#interface-binding-and-traffic-isolation) later in this article.
 :::
 
 ### Single-service deployment
