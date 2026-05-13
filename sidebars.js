@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_5_0",        
         "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
@@ -260,7 +261,14 @@ module.exports = {
             }
           ]
         },
-        "user-guide/start-zowe-zos",
+        { 
+          "type": "category", 
+          "label": "Starting and Stopping Zowe",
+          "link": { "type": "doc", "id": "user-guide/start-zowe-zos" },
+          "items": [
+            "user-guide/zos-preflight"
+          ]
+        },
         "user-guide/verify-zowe-runtime-install",
         "user-guide/upgrade-zos",
         "user-guide/backout-zos",
@@ -364,6 +372,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/cli-install-configure-zosmf" },
           items: [
             "user-guide/cli-install-configure-zosmf-security",
+            "user-guide/configure-workload-management",
           ],
         },
         {
@@ -968,7 +977,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.1.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.5.x.md",
     },
   ],
 }

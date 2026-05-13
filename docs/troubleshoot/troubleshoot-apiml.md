@@ -8,7 +8,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
   
 ## Install API ML without Certificate Setup
 
-For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
+For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `zowe.verifyCertificates: DISABLED`.
 
 :::caution Important:
 For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
@@ -40,8 +40,11 @@ its performance and create large log files that consume a large volume of disk s
 
 2. For each component, find the `components.*.debug` parameter and set the value to `true`:
 
-   ```
-    components.gateway.debug: true
+   **Example:** 
+   ```yaml
+   components:
+     gateway:
+       debug: true
    ```
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
    
@@ -216,7 +219,7 @@ Review tips described in the blog post [Troubleshooting SSL/TLS setup with Zowe 
 
 ## SDSF Job search fails
 
-Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impace ZD&T boxes)
+Search for jobs using SDSF failed for prefix {} and owner {}: exc.sdsf_invocation_failed 8 (Issue does not impact ZD&T boxes)
 
 **Solution:**
 
