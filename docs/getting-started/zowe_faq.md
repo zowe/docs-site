@@ -122,8 +122,6 @@ z/OS is still required when using the Docker image. Depending on which component
 
 ### Is the Zowe CLI packaged within the Zowe Docker download?  
 
-<Badge text="Technical Preview"/>
-
 <details className="zowe-faq">
 
 <summary></summary>
@@ -292,6 +290,16 @@ You can install Zowe CLI using the following methods:
 
 </details>
 
+### How does Zowe CLI support single sign-on (SSO)?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Zowe CLI supports SSO through the Zowe API Mediation Layer. With Zowe CLI you can log into the API ML with user and password or client certificates using the `zowe auth login apiml` command. This command logs you into the API ML which returns a token that Zowe CLI can use for subsequent requests for services accessed through the API ML.
+
+</details>
+
 ### Does Zowe CLI support multi-factor authentication (MFA)?
 
 <details className="zowe-faq">
@@ -444,6 +452,16 @@ Although not recommended in all cases, it is possible to disable Zowe Explorer's
 <summary></summary>
 
 Zowe Explorer V2 supports using Service Profiles, Base Profiles, and Team Profiles. For more information, see [Using V1 profiles](../user-guide/cli-using-using-profiles-v1.md) and [Team configurations](../user-guide/cli-using-using-team-profiles.md) in the Using Zowe CLI section.
+
+</details>
+
+### How does Zowe Explorer support single sign-on SSO?
+
+<details className="zowe-faq">
+
+<summary></summary>
+
+Zowe Explorer supports SSO through the Zowe API Mediation Layer. With Zowe Explorer you can log into the API ML with user and password or client certificates by selecting the **Log in to Authentication Service** in a profile's **Manage profile** settings. This logs you into the API ML which returns a token that Zowe Explorer can use for subsequent requests for services accessed through the API ML.
 
 </details>
 
