@@ -214,7 +214,7 @@ See Integrating with API Mediation Layer in the [Zowe V1 documentation](https://
 
 ### Accessing multiple services with SSO
 
-If multiple services are registered to the API Mediation Layer at your site, Zowe CLI lets you access the services with Single Sign-on (SSO). Log in once to conveniently access all available services.
+If multiple services are registered to the API Mediation Layer at your site, Zowe CLI lets you access the services with single sign-on (SSO). Log in once to conveniently access all available services.
 
 Edit your configuration file so that each service profile includes the `basePath` property and the corresponding value. Ensure that you do not provide username, password, host, or port in the service profiles. Supplying those options causes the CLI to ignore the token in your base profile and directly access the service.
 
