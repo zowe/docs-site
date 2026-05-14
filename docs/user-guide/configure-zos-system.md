@@ -28,6 +28,7 @@ Before performing configuration steps specific to your use case, ensure that you
 | Required to configure the cross memory server for SAF to guard against access by non-privileged clients. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| Application Framework | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
 | To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | Application Framework | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
 | To use Single Sign-On (SSO) | All components | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| Optional: Enable the Zowe cross-memory server to use 1 MB large page frames for improved performance. | Cross Memory Server | [Configure access to large memory pages](#configure-access-to-large-memory-pages) |
 
 
 ### Configure address space job naming
@@ -1018,3 +1019,46 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::
+
+### Configure access to large memory pages
+
+:::note
+This configuration is primarily relevant for ACF2 environments where silent denials can prevent performance optimizations from taking effect.
+:::
+
+`IARRSM.LRGPAGES` is a FACILITY class resource that controls access to z/OS 1 MB large page frames. During initialization, the Zowe cross-memory server (typically `ZWESLUSR`) can request large page frames to improve performance.
+
+If the user ID associated with the cross-memory server does not have READ access to `IARRSM.LRGPAGES`, z/OS silently falls back to standard 4 KB pages. Zowe continues to function, but without the large-page performance benefits. In some ACF2 environments, this denial might not appear in standard violation reports, making it difficult to diagnose why large pages are not being used.
+
+1. Perform a pre-check before adding the rule to verify the following:
+
+Ensure that Large page frames are configured in your z/OS LPAR (Check the LFAREA parameter in IEASYSxx).
+
+2. Verify if an existing FACILITY rule already grants access:
+
+```
+ACF
+SET RESOURCE(FAC)
+LIST LIKE(IAR-)
+END
+```
+#### Granting READ access (ACF2)
+
+To grant the Zowe cross-memory server user ID access to large pages, issue the following commands:
+
+1. Add the following rule:
+
+```
+ACF
+SET RESOURCE(FAC)
+RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESLUSR) SERVICE(READ) ALLOW)
+END
+```
+
+Replace `uid-string-for-ZWESLUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
+
+2. Rebuild the FACILITY directory:
+
+```
+F ACF2,REBUILD(FAC)
+```
