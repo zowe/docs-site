@@ -117,7 +117,7 @@ The default service ID is provided by the service developer in the service confi
 
 Services are deployed using one or more service instances, which share the same service ID and implementation.
 
-#### Single Sign-On (SSO)
+#### Single sign-on (SSO)
 
 An authentication service that enables a user to log in once to obtain a reusable authentication token which can then be used to provide authenticated access to multiple services.
 
