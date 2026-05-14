@@ -101,7 +101,7 @@ This can be resolved by clearing the local storage that contains your Zowe Explo
 
 :::warning
 
-Clearing your local storage removes your historical data on Zowe Explorer such favorites, search history, and added profiles to tree views.
+Clearing your local storage removes your historical data on Zowe Explorer such favorites, search history, and profiles added to tree views.
 
 :::
 
