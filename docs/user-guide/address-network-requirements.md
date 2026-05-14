@@ -17,7 +17,7 @@ Each Jobname has a default prefix of ZWE1, but that can be customized via the `z
 :::note
 **Internal and External Port Isolation**
 
-Zowe v3 supports the use of separate internal and external listeners to isolate communication for registration of the services to API ML from external traffic. For information on how to configure these listeners and their associated ports, see [Interface Binding and Traffic Isolation](#interface-binding-and-traffic-isolation) later in this article.
+Zowe v3 supports the use of separate internal and external listeners to isolate communication for registration of the services to API ML from external communication. For information on how to configure these listeners and their associated ports, see [Interface Binding and Traffic Isolation](#interface-binding-and-traffic-isolation) later in this article.
 :::
 
 ### Single-service deployment
