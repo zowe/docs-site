@@ -117,6 +117,10 @@ The default service ID is provided by the service developer in the service confi
 
 Services are deployed using one or more service instances, which share the same service ID and implementation.
 
+#### Single Sign-On (SSO)
+
+An authentication service that enables a user to log in once to obtain a reusable authentication token which can then be used to provide authenticated access to multiple services.
+
 #### Team configuration
 
 This method saves team-specific profiles in the `zowe.config.json` configuration file and user-specific profiles in the `zowe.config.user.json` configuration file. These profiles are stored locally in the user's client OS file system (for example, when using Zowe Explorer for Visual Studio Code or IntelliJ IDEA) and determine whether they are applied *globally* (to all projects) or *per project*. This configuration manages Zowe CLI and Explorer settings on the local client and does not store or affect z/OS configurations.
@@ -199,7 +203,7 @@ The Zowe Support Provider Conformance Program gives vendors the ability to showc
 
 An object in a team configuration file that stores connection information for use with one or more services. Depending on your configuration file type, the base profile can be either a `global_base` or `project_base` profile. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once, for example.
 
-The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and single sign-on (SSO).
 
 #### Convenience build
 
