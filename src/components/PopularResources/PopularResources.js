@@ -15,6 +15,17 @@ const data = [
       </>
     ),
   },
+    {
+    title: "Migrate to Zowe V3",
+    link: "https://docs.zowe.org/stable/whats-new/zowe-v3-migration.html",
+    icon: "img/zowe-icon.png",
+    description: (
+      <>
+        Support for Zowe V2 ends March 30, 2027. Use this guide to migrate 
+        to Zowe V3, which transitions to maintenance on March 1, 2027. 
+      </>
+    ),
+  },
 ];
 
 function Resource({ title, link, icon, description }) {
@@ -27,7 +38,7 @@ function Resource({ title, link, icon, description }) {
         src={useBaseUrl(icon)}
       />
       <p>{description}</p>
-      <a className={clsx("margin-top--sm", styles.posAbsolute)} href={link}>
+      <a className={clsx("margin-top--lg", styles.posAbsolute)} href={link}>
         {title}
       </a>
     </div>
