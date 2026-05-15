@@ -163,7 +163,7 @@ For more information, see [Adding active profiles](https://docs.spring.io/spring
 
 
 * **sslDebug**  
-This property enables SSL/TLS debug logging and can assist with determining what is happening at the SSL layer. THis property maps directly to the `-Djavax.net.debug` Java system property.
+This property enables SSL/TLS debug logging and can assist with determining what is happening at the SSL layer. This property maps directly to the `-Djavax.net.debug` Java system property.
 
 Set `sslDebug` under the relevant component in `zowe.yaml`. The following example enables full SSL debug logging on the Gateway:
 
