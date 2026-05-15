@@ -1062,3 +1062,20 @@ Replace `uid-string-for-ZWESLUSR` with the actual ACF2 UID string for the Zowe c
 ```
 F ACF2,REBUILD(FAC)
 ```
+
+## Verification of ACF2 rule
+
+Use the `ACCESS` command to verify that the ACF2 rule has been correctly applied and is visible to the system. 
+
+Run the following command:
+
+```
+ACF
+SET RESOURCE(FAC)
+ACCESS IARRSM.LRGPAGES LID(ZWESLUSR)
+END
+```
+
+A message indicating `ACCESS ALLOWED` indicates successful configuration.
+
+Alternatively, you can check the `ZWESISTC` JES log for `ZWES0104I`. This message usually indicates that the server is initializing memory objects.
