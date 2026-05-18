@@ -213,3 +213,52 @@ The identifier of the authenticated user.
   "user.id": "USER"
 }
 ```
+
+## Invalid authentication when routing to an onboarded service (JWT)
+
+This signal describes a request with an expired Zowe JWT token that was routed to a downstream onboarded service.
+
+* **auth.service.auth.method**
+The specific Zowe provider (zoweJwt).
+
+* **auth.status**
+The final result of authentication (ERROR).
+
+* **auth.error.message**
+A description of the error message.
+
+* **auth.error.type**
+Type of error.
+
+* **http.request.method**
+The HTTP verb (GET).
+
+* **service.id**
+The logical ID of the Zowe JWT service.
+
+* **service.instance.id**
+The unique service instance identifier.
+
+* **service.response_code**
+The successful status code (401).
+
+* **url.path**
+The routed request endpoint.
+
+* **url.scheme**
+The communication protocol (https).
+
+```yaml
+{
+ "auth.service.auth.method": "zoweJwt",
+ "auth.status": "ERROR",
+ "auth.error.message": "ZWEAO402E The request has not been applied because it lacks valid authentication credentials.",
+ "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException"
+ "http.request.method": "GET",
+ "service.id": "zowejwt",
+ "service.instance.id": "static-localhost:zowejwt:10012",
+ "service.response_code": "401",
+ "url.path": "/zowejwt/api/v1/request",
+ "url.scheme": "https"
+}
+```
