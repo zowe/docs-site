@@ -219,10 +219,10 @@ The identifier of the authenticated user.
 This signal describes a request with an expired Zowe JWT token that was routed to a downstream onboarded service.
 
 * **auth.service.auth.method**
-The specific Zowe provider (zoweJwt).
+The specific Zowe provider (`zoweJwt`).
 
 * **auth.status**
-The final result of authentication (ERROR).
+The final result of authentication (`ERROR`).
 
 * **auth.error.message**
 A description of the error message.
@@ -231,7 +231,7 @@ A description of the error message.
 Type of error.
 
 * **http.request.method**
-The HTTP verb (GET).
+The HTTP verb (`GET`).
 
 * **service.id**
 The logical ID of the Zowe JWT service.
@@ -240,15 +240,19 @@ The logical ID of the Zowe JWT service.
 The unique service instance identifier.
 
 * **service.response_code**
-The successful status code (401).
+The successful status code (`401`).
 
 * **url.path**
 The routed request endpoint.
 
 * **url.scheme**
-The communication protocol (https).
+The communication protocol (`https`).
 
-```yaml
+The following example presents the payload when an expired token has been used.
+
+**Example:**
+
+```json
 {
  "auth.service.auth.method": "zoweJwt",
  "auth.status": "ERROR",
