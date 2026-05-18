@@ -5,7 +5,7 @@
 
 Choose from the following providers to handle authentication for the API Gateway:  
 - [Configuring an authentication provider for API Mediation Layer](#configuring-an-authentication-provider-for-api-mediation-layer)
-  - [SAF Authentication Provider](#saf-authentication-provider)
+  - [SAF Authentication Provider (Recommended)](#saf-authentication-provider-recommended)
   - [z/OSMF Authentication Provider](#zosmf-authentication-provider)
 
 :::note
@@ -13,10 +13,10 @@ For development purposes, a dummy authentication provider is also available. Thi
 :::
 
 :::tip
-* We recommend that you use SAF as your authentication provider when possible. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by the API Gateway via SAF APIs.
+We recommend that you use SAF as your authentication provider when possible. With the SAF provider, the API Gateway acts as the authentication service. The provided credentials are validated directly by the API Gateway via SAF APIs.
 :::
 
-## SAF Authentication Provider
+## SAF Authentication Provider (Recommended)
 
 The `SAF Authentication Provider` allows the API Gateway to authenticate directly with the z/OS SAF provider that is installed on the system. The user needs a SAF account to authenticate. 
 

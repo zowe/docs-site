@@ -64,6 +64,6 @@ Go to the [Zowe Client Kotlin SDK issue list](https://github.com/zowe/zowe-clien
 
 Go to the [Zowe Client Node.js SDK issue list](https://github.com/zowe/zowe-cli/issues) to file an issue. Include all relevant information.
 
-### Filing an issue for Zowe Client Python SDK *technical preview*
+### Filing an issue for Zowe Client Python SDK
 
 Go to the [Zowe Client Python SDK issue list](https://github.com/zowe/zowe-client-python-sdk/issues) to file an issue. Include all relevant information.
