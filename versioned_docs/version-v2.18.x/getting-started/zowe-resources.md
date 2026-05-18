@@ -1,75 +1,103 @@
-# Zowe learning resources
+# Learning, Connecting, and Extending Zowe
 
-Learn more about Zowe from these blog posts, videos, and other resources.
+Whether you are a mainframe veteran or an open-source newcomer, the Zowe Open Mainframe Project is designed to instruct users, grow the Zowe community, and offer a range of ways to contribute to this continuously evolving open-source project. This resource hub is designed to support learning about Zowe, connecting to the Zowe community, and further extending the Zowe project. Through Zowe learning resources, bring yourself up to speed with the latest Zowe updates discussed in detail in various blog posts. Gain a technical understanding of the platform's architecture and core Zowe components through structured courses. Engage with the squads driving Zowe innovations on Slack, and Zowe Technical Steering Committee (TSC) calls, and ultimately, help shape the future of the Zowe platform with your own contributions. 
 
-## Blogs
+## Learning about the latest Zowe updates 
 
-- [Zowe blogs on Medium](https://medium.com/zowe)
-- [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
+Stay current with the latest features introduced to the Zowe platform, and build your technical expertise through curated content and structured training.
 
-Want to contribute a blog? Details for how to contribute to the [Zowe blogs on Medium](https://medium.com/zowe) site are at [Zowe Blog Guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md).  
-
-## Videos
+### Zowe Webinars
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Zowe videos" type="text/html" width="100%" height="365" src="https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true"> </iframe>
 
-As well as [Zowe videos](https://www.youtube.com/embed?listType=playlist&list=PL8REpLGaY9QE_9d57tw3KQdwSVLKuTpUZ) owned and managed by the community, there are a number of external youtubers who host Zowe related content. 
+Stay current with the latest Zowe developments through the Open Mainframe Project’s webinar series, where squads present big-picture overviews, technical updates, and new features tailored for users and developers alike. These webinars are designed to bridge the gap between the Zowe development squads and the community, providing a deep dive into the evolution of the platform. Topic areas covered in the webinars include the following presentations:
 
-- [Zowe Demos playlist from Bill Pereira](https://www.youtube.com/playlist?list=PLM85SdWDWtebJ13Kww8rxKlDlWe72D7b3)
-- [Mainframe Bytes channel from Jessielaine Punongbayan](https://www.youtube.com/channel/UCZrvxFwT1GpvJuFRyqc5uWg)
+* Quarterly roadmap and release updates
+* Squad-specific deep dives
+* Platform development and extension news
+* Training and community engagement
+* Demos and use cases
+
+For more information about Zowe webinars, see the [Zowe Webinars](https://www.youtube.com/playlist?list=PL8REpLGaY9QHtnElqPosteBFpITStkAxo) on the Open Mainframe Project's YouTube channel. 
+
+Additional webinars about Zowe can be found at the [OMP YouTube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos).
+
+### Zowe Blogs
+
+For a deeper contextual dive into a wide range of Zowe topics, including detailed component functionalities, we recommend checking out the following blog landing pages: 
+
+* [Zowe blogs on Medium](https://medium.com/zowe)
+* [Zowe blogs on Open Mainframe Project website](https://www.openmainframeproject.org/category/blog/zowe)
+
+Would you like to contribute a blog? Find details about how to contribute to the [Zowe blogs on Medium](https://medium.com/zowe) at [Zowe Blog Guidelines](https://github.com/zowe/community/blob/master/blogging/blog_guidelines.md).  
+
+### Zowe Training and Badges
+
+**Interskill Learning** offers a free training course that introduces the components that comprise Zowe, the benefits of using Zowe in your mainframe environment, and how Zowe capabilities can be extended. 
+
+The Zowe Fundamentals course covers Zowe architecture, core components (API Mediation Layer, ZLUX, CLI), how the Zowe server and client components can be installed, and basic usage patterns after Zowe startup. The course is ideal for developers and system programmers new to Zowe. 
+
+For more information about this training and earning Interskill badges, see [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/) on the _Interskill Learning_ website.   
 
 
-## Webinars
+## Connecting to the Zowe community
 
-Find out what's happening with Zowe in the Zowe Quarterly Update Webinar Series.
+Zowe is a community-led project that is driven by diverse perspectives and collaboration. No matter your skill level, there are multiple ways you can contribute to the future of the platform. Use these channels to get involved with the Zowe community:
 
-- [Zowe Quarterly Update Webinar: October 2021](https://youtu.be/b0Xo6WIy3vc)
-- [Zowe Quarterly Update Webinar: July 2021](https://youtu.be/T3Z4hMwElII)
-- [Zowe Quarterly Update Webinar: April 2021](https://youtu.be/9rQCcZGVDzQ)
-- [Zowe Quarterly Update Webinar: January 2021](https://youtu.be/ZEwd8wZvbIw)
-- [Zowe Quarterly Update Webinar: October 2020](https://youtu.be/GbAFO5vzBhw)
+* To join the Zowe community via Slack, go to the [Open Mainframe Project Slack invitation](https://slack.openmainframeproject.org/).  
+* For information about joining the various Zowe Slack channels, see the [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack) in the Zowe Community repository.  
 
-The [OMP Youtube channel](https://www.youtube.com/channel/UC-WTXQQtz2m5iTflJLK59aw/videos) also offers other webinars about Zowe. 
-- [Treat Yourself to a Guided, Comprehensive Tour of Zowe Desktop Applications](https://youtu.be/cbEVbcsaGCs)
-- [Zowe Webinar Feb. 22, 2019](https://youtu.be/XixEltbRmds)
-- [Open Mainframe Project Webinar: Zowe Virtual Hackathon](https://youtu.be/zIPzaQK2bfU)
+### Joining Zowe meetings
 
+ Join the weekly meeting of the Zowe Technical Steering Committee (TSC) to get the latest updates from each Zowe squad and get involved with these squads and their initiatives.
 
-## Community
+ For information about how to join the Zowe TSC call, see the [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe).
 
-**Join us on Slack** 
+### Learning more about the Zowe community
 
-- [Slack invite link](https://slack.openmainframeproject.org/)  
-- [Introduction to Zowe Slack channels](https://github.com/zowe/community/blob/master/README.md#slack)
+To find out more about how Zowe is organized, governed, and how collaboration works within Zowe, explore the Zowe community repository. This repository is the best place to understand the "who, what, and why" behind the Zowe Open Mainframe Project.
 
-**Learn more about the community**
+For more information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and other Zowe initiatives, see the [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md).
 
-- [Zowe community GitHub repo](https://github.com/zowe/community/blob/master/README.md)
+### Reporting an Issue 
 
-   Find out information about Zowe sub-projects, GitHub repos, mailing lists, community meeting minutes, contribution guidelines, and so on. 
+Ensuring quality in Zowe is a collective effort. By reporting bugs or suggesting improvements, you can help ensure Zowe remains a robust, enterprise-grade solution for a spectrum of business needs.
 
-**Connect with the community through meetings** 
+* **Open a documentation-related issue**
 
-- [Zowe meeting calendar](https://zoom-lfx.platform.linuxfoundation.org/meetings/zowe)
+    To open an issue that applies to Zowe documentation including updates to settings and configurations, see [Create new issue](https://github.com/zowe/docs-site/issues/new/choose) in the **Zowe docs-site repository**.  
 
-   You can join one of the Zowe meetings to get latest Zowe updates and get involved in different squads and initiatives.
+* **Open a Zowe component-related issue**
 
-## Training
+    If you would like to raise an issue that applies to a specific Zowe component, you can open an issue in the repository of that particular component. Use the link to open an issue that applies to the specific Zowe component:
 
-**Courses**
+  * [Zowe API Mediation Layer (API ML)](https://github.com/zowe/api-layer/issues/)
+  * [Zowe App Server (zLUX)](https://github.com/zowe/zlux/issues/)
+  * [Zowe System Services (ZSS)](https://github.com/zowe/zss/issues/)
+  * [Zowe Command Line Interface (CLI)](https://github.com/zowe/zowe-cli/issues/)
+  * [Zowe Explorer for Visual Studio Code](https://github.com/zowe/zowe-explorer-vscode/issues/) 
+  * [Zowe Explorer for IntelliJ](https://github.com/zowe/zowe-explorer-intellij/issues/)
+  * [Zowe Client Java SDK](https://github.com/zowe/zowe-client-java-sdk/issues/)
+  * [Zowe Client Python SDK](https://github.com/zowe/zowe-client-python-sdk/issues/)
+  * [CICS for Zowe Client](https://github.com/zowe/cics-for-zowe-client/issues/)
+  * [Zowe CLI DB2 Plug-in](https://github.com/zowe/zowe-cli-db2-plugin/issues/)
+  * [IBM® MQ Plug-in for Zowe CLI](https://github.com/zowe/zowe-cli-mq-plugin)
+  * [IBM® z/OS® FTP Plug-in for Zowe™ CLI](https://github.com/zowe/zowe-cli-ftp-plugin)
+  * [Zowe® Explorer for IBM® z/OS® FTP](https://github.com/zowe/zowe-explorer-vscode)
 
-- [Zowe Fundamentals](https://interskill.com/course/zowe-foundations/)
+* **Open a community related issue**
 
-  Interskill Learning offers a free training course that introduces the components that comprise Zowe and the benefits of using Zowe and how its capabilities can be extended. 
+    For all other issues, see the following options available through the Zowe Community:
+    | Issue | Details |
+    |----|---|
+    | [Report Bugs](https://github.com/zowe/community/issues/new?assignees=&labels=bug&template=bug_report.md&title=) | Create an issue with details about how to reproduce the issue, and what area of Zowe the bug appears in. |
+    | [Post an Enhancement Request](https://github.com/zowe/community/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=) | Share your ideas for a new feature, or thoughts about how a feature you are already using could be improved.  |
+    | Report Security Issues | Please direct all security issues to `zowe-security@lists.openmainframeproject.org`. A member of the security team will reply to acknowledge receipt of the vulnerability and coordinate remediation with the affected project. |
 
-**Trials**
+## Extending Zowe 
 
-- [Zowe trial](https://early-access.ibm.com/software/support/trial/cst/welcomepage.wss?siteId=936&tabId=2216&w=1&mhsrc=ibmsearch_a&mhq=Zowe%20trial)
+The Zowe Conformance Program ensures that products and extensions built for the Zowe platform provide a consistent, interoperable, and high-quality user experience across different vendors. By earning a conformance badge, software providers demonstrate that their solutions meet rigorous community-defined technical criteria, giving users the confidence that these tools will integrate seamlessly within their modern mainframe environments.
 
-   The Zowe trial hosted by IBM is a fully configured z/OS environment with Zowe preinstalled and set up along with a set of integrated easy-to-follow tutorials that walk you through the basics of Zowe and gives you hands-on experience of extending Zowe. This no-charge trial is available in two hours for three days. 
-
-- [Get started with the Zowe Web UI](https://developer.ibm.com/components/ibmz/tutorials/zowe-step-by-step-tutorial/)
-   
-   This online tutorial hosted by IBM guides you to add new apps to the Zowe Web UI. It provides a public hosted Zowe instance that allows you to perform the steps in a z/OS environment. 
+For more information, see the [Zowe Conformance Program](https://www.openmainframeproject.org/projects/zowe/conformance) in `openmainframeproject.org` from the Linux Foundation.
 
 
