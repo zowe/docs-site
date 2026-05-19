@@ -30,6 +30,8 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
+This signal confirms that the service is online, the service metadata is accurate, and that the service is discoverable and ready to accept routed traffic through API ML.
+
 
 ## A Service sent a successful heartbeat
 
@@ -64,6 +66,8 @@ The communication protocol (`https`).
 }
 ```
 
+This signal confirms that the service instance remains healthy and active, whereby the Discovery Service does not evict the service from the routing table.
+
 ## A successful login attempt
 
 This signal captures a successful authentication event initiated by a user through the API ML Gateway login endpoint.
@@ -96,6 +100,8 @@ The communication protocol (`https`).
 }
 ```
 
+This signal confirms a successful authentication event and marks the generation of a valid security session for the user.
+
 ## A successful request to API ML (authenticated but not populating information)
 
 This signal represents a successful, authenticated request to the API Catalog service, typically used for retrieving container or service metadata. While the status indicates a successful transaction, this signal is frequently used to troubleshoot scenarios where the request is valid but the resulting response contains an empty data set.
@@ -127,6 +133,7 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
+This signal confirms that the API Catalog communication layer and authentication are working properly, proving that the empty response is a data-population issue rather than a system connectivity failure.
 
 ## Invalid authentication 
 <!--TODO-->
@@ -164,6 +171,8 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
+
+This signal indicates a TLS handshake or trust verification failure, meaning the client's physical certificate was rejected before any application-level routing could occur.
 
 ## Valid authentication when routing to an onboarded service (JWT)
 
@@ -213,6 +222,7 @@ The identifier of the authenticated user.
   "user.id": "USER"
 }
 ```
+This signal verifies an end-to-end successful transaction where the user's identity was validated via token and securely propagated to the target downstream microservice.
 
 ## Invalid authentication when routing to an onboarded service (JWT)
 
@@ -266,3 +276,4 @@ The following example presents the payload when an expired token has been used.
  "url.scheme": "https"
 }
 ```
+This signal indicates that the Gateway blocked unauthorized access due to an unusable token or invalid credentials before it could reach downstream resources.
