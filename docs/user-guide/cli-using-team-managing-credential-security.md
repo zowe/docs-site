@@ -6,9 +6,9 @@ The Zowe CLI **Secure Credential Store (SCS) Plug-in** was deprecated in Zowe V2
 
 Secure credential encryption is included with the Zowe CLI core application. When a command using a profile with missing `user` and `password` information is issued, Zowe CLI prompts you to enter the username and password. Both are then stored securely by default.
 
-:::note macOS users
+:::info macOS users
 
-When Zowe CLI accesses the macOS Keychain to store or retrieve credentials, the operating system may display a **Keychain Access** dialog. This is expected behavior. For details on the prompt options and how to suppress future prompts, see [Keychain Access prompts on macOS](../../troubleshoot/cli/troubleshoot-cli-credentials.md#keychain-access-prompts-on-macos).
+When Zowe CLI accesses the macOS Keychain to store or retrieve credentials, the operating system might display a keychain access dialog. This is expected behavior. For details on the prompt options and how to suppress future prompts, see [Keychain Access prompts on macOS](./../troubleshoot/cli/troubleshoot-cli-credentials.md#keychain-access-prompts-on-macos).
 
 :::
 

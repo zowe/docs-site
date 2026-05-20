@@ -10,7 +10,7 @@ Zowe CLI v1 contains the following types of profiles:
 
 - [**Service profiles:**](#service-profiles) let you store connection information for specific mainframe service, such as IBM z/OSMF. Plug-ins can introduce other service profile types, such as the `cics` profile to connect to IBM CICS.
 
-- [**Base profiles:**](#base-profiles) let you store connection information for use with one or more services. Your service profiles can pull information from- base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+- [**Base profiles:**](#base-profiles) let you store connection information for use with one or more services. Your service profiles can pull information from- base profiles as needed, so that you can specify a common username and password once. The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and single sign-on (SSO).
 
 ### Tips for using Zowe CLI v1 profiles
 
