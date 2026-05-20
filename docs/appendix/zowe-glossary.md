@@ -73,7 +73,7 @@ ZSS is written in C and uses native calls to z/OS to provide its services.
 
 #### Client-side credentials
 
-In client components such as Zowe CLI and Zowe Explorer, credential information can be stored in multiple ways, including environment variables, SSH keys, parent or nested profiles, base profiles, or other configuration files. Credentials can include certificates, tokens, and username and passwords.
+In client components such as Zowe CLI and Zowe Explorer, credential information can be stored in multiple ways, including environment variables, parent or nested profiles, base profiles, or other configuration files. Credentials can include certificates, tokens, username and passwords, and SSH keys.
 
 #### Configuration Manager
 

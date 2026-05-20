@@ -157,7 +157,7 @@ However, you might need to use a different base profile. To do so, add the `--ba
     zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path> --base-profile <profile_name>
     ```
 
-    Logging in with existing credentials saved elsewhere (for example, as environment variables, SSH keys, in parent or nested profiles, base profiles, or other configuration files):
+    Logging in with existing credentials saved elsewhere (for example, environment variables, in parent or nested profiles, base profiles, or other configuration files):
 
     ```
     zowe auth login apiml --host <APIML Host> --port <APIML Port> --user <username> --password <user password> --base-profile <profile_name>
