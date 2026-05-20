@@ -99,23 +99,23 @@ To customize the persistence level on Windows:
 
     Updated secured credentials are stored with the configured persistence level.
 
-### Keychain Access prompts on macOS[​](#keychain-access-prompts-on-macos "Direct link to Keychain Access prompts on macOS")
+### Keychain Access prompts on macOS
 
 **Symptom:**
 
-When running Zowe CLI commands on macOS, a **Keychain Access** dialog appears asking whether to allow access to a keychain item. For example:
+When running Zowe CLI commands on macOS, a keychain access dialog displays asking whether to allow access to a keychain item.
 
-> *"cocoasecurity" wants to access key "..."  in your keychain.*
+On macOS, Zowe CLI stores and retrieves secure credentials (such as usernames and passwords) using the operating system's keychain. The dialog is a standard macOS security prompt that appears whenever an application requests access to a keychain item that has not previously been granted access.
 
-**Explanation:**
-
-On macOS, Zowe CLI stores and retrieves secure credentials (such as usernames and passwords) using the operating system's **Keychain**. The dialog is a standard macOS security prompt that appears whenever an application requests access to a keychain item that has not previously been granted access.
-
-This prompt is expected behavior and is not an error. It may appear:
+This prompt is expected behavior and is not an error. It might display:
 
 - The first time you run a Zowe CLI command after installing or updating Zowe CLI.
 - After your macOS user password changes.
 - When running a command that accesses a profile whose credentials have not yet been unlocked in the current login session.
+
+**Sample message:**
+
+![macOS keychain access prompt](../../images/troubleshoot/cli/macOS_keychain_access_prompt.png)
 
 **Solution:**
 
@@ -123,9 +123,10 @@ Select one of the following options in the dialog:
 
 | Option | Effect |
 |---|---|
+| **Always Allow** | Grants permanent access for Zowe CLI. The prompt does not appear again for this keychain item. |
 | **Deny** | The command fails to retrieve credentials. You are prompted to re-enter them manually. |
 | **Allow** | Grants access for this single request. The prompt reappears on subsequent commands. |
-| **Always Allow** | Grants permanent access for Zowe CLI. The prompt does not appear again for this keychain item. |
+
 
 Selecting **Always Allow** is recommended for most users to avoid repeated prompts during normal Zowe CLI usage.
 
