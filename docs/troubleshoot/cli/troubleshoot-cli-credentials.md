@@ -132,7 +132,7 @@ Selecting **Always Allow** is recommended for most users to avoid repeated promp
 
 :::note
 
-If you are running Zowe CLI in a CI/CD pipeline or another non-interactive environment on macOS, the Keychain Access dialog cannot be displayed. Without user interaction to approve access, credential retrieval is blocked and commands will fail silently. To avoid this, use environment variables to supply credentials instead of the secure credential store. For more information, see [Using environment variables](../../user-guide/cli-using-using-environment-variables.md).
+If you are running Zowe CLI in a CI/CD pipeline or another non-interactive environment on macOS, the keychain access dialog cannot be displayed. Without user interaction to approve access, credential retrieval is blocked and commands fail silently. To avoid this, use environment variables to supply credentials instead of the secure credential store. For more information, see [Using environment variables](../../user-guide/cli-using-using-environment-variables.md).
 
 :::
 
