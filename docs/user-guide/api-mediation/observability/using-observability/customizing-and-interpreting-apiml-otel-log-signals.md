@@ -100,7 +100,7 @@ The original remote identity provided during OIDC-based authentication. While th
   High-level classification of a failure populated with the specific exception type on non-success results (for example, `org.zowe.apiml.security.common.token.TokenNotValidException`) 
 
 * **auth.error.message**  
-  Detailed description providing context for the encountered failure (for example, `ZWEAO402E`. The request has not been applied because it lacks valid authentication credentials).
+  Detailed description providing context for the encountered failure (for example, `ZWEAO402E. The request has not been applied because it lacks valid authentication credentials`).
 
 * **user.id**  
   The identifier of the authenticated principal or user. 

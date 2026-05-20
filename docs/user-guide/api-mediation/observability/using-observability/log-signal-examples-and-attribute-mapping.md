@@ -26,11 +26,11 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "204",
-  "url.path": "/eureka/apps/DISCOVERABLECLIENT",
+  "url.path": "/eureka/apps/<target-app>",
   "url.scheme": "https"
 }
 ```
-This signal confirms that the service is online, the service metadata is accurate, and that the service is discoverable and ready to accept routed traffic through API ML.
+This signal confirms that the onboarding is accepted by the Discovery Service..
 
 
 ## A Service sent a successful heartbeat
@@ -61,12 +61,12 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "200",
-  "url.path": "/eureka/apps/DISCOVERABLECLIENT/localhost:discoverableclient:10012",
+  "url.path": "/eureka/apps/<target-app>/localhost:<target-app>:10012",
   "url.scheme": "https"
 }
 ```
 
-This signal confirms that the service instance remains healthy and active, whereby the Discovery Service does not evict the service from the routing table.
+This signal confirms the Discovery Service received the health information from the service (`target-app`)
 
 ## A successful login attempt
 
@@ -100,7 +100,7 @@ The communication protocol (`https`).
 }
 ```
 
-This signal confirms a successful authentication event and marks the generation of a valid security session for the user.
+This signal confirms that the Gateway has successfully validated the inbound client credentials, establishing the active session required to authorize subsequent routed API requests.
 
 ## A successful request to API ML (authenticated but not populating information)
 
@@ -133,7 +133,7 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
-This signal confirms that the API Catalog communication layer and authentication are working properly, proving that the empty response is a data-population issue rather than a system connectivity failure.
+This signal confirms that the API Catalog communication layer and authentication are working correctly, and that the empty response is due to an empty service registry rather than a system connectivity failure.
 
 ## Invalid authentication 
 <!--TODO-->
@@ -164,10 +164,10 @@ The communication protocol (`https`).
 {
   "auth.service.auth.method": "x509",
   "http.request.method": "GET",
-  "service.id": "discoverableclient",
-  "service.instance.id": "localhost:discoverableclient:10012",
+  "service.id": "<target-app>",
+  "service.instance.id": "localhost:<target-app>:10012",
   "service.response_code": "200",
-  "url.path": "/discoverableclient/api/v1/request",
+  "url.path": "/<target-app>/api/v1/request",
   "url.scheme": "https"
 }
 ```
@@ -276,4 +276,4 @@ The following example presents the payload when an expired token has been used.
  "url.scheme": "https"
 }
 ```
-This signal indicates that the Gateway blocked unauthorized access due to an unusable token or invalid credentials before it could reach downstream resources.
+This signal confirms that the Gateway successfully routed the incoming request downstream, but did not attach a valid authentication token, resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.
