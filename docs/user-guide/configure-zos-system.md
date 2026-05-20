@@ -1051,11 +1051,11 @@ To grant the Zowe cross-memory server user ID access to large pages, issue the f
 ```
 ACF
 SET RESOURCE(FAC)
-RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESLUSR) SERVICE(READ) ALLOW)
+RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESIUSR) SERVICE(READ) ALLOW)
 END
 ```
 
-Replace `uid-string-for-ZWESLUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
+Replace `uid-string-for-ZWESIUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
 
 2. Rebuild the FACILITY directory:
 
@@ -1072,7 +1072,7 @@ Run the following command:
 ```
 ACF
 SET RESOURCE(FAC)
-ACCESS IARRSM.LRGPAGES LID(ZWESLUSR)
+ACCESS IARRSM.LRGPAGES LID(ZWESIUSR)
 END
 ```
 
