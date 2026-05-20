@@ -18,7 +18,8 @@
 
 .posRelative {
   position: relative;
-  height: 250px;
+  min-height: 250px;
+  padding-bottom: 3rem !important;
 }
 
 .posAbsolute {
@@ -34,7 +35,7 @@
 
 @media screen and (max-width: 996px) {
   .posRelative {
-    height: inherit;
+    min-height: inherit;
   }
 
   .responsiveIframe {
