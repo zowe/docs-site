@@ -1026,7 +1026,7 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 This configuration is primarily relevant for ACF2 environments where silent denials can prevent performance optimizations from taking effect.
 :::
 
-`IARRSM.LRGPAGES` is a FACILITY class resource that controls access to z/OS 1 MB large page frames. During initialization, the Zowe cross-memory server (typically `ZWESLUSR`) can request large page frames to improve performance.
+`IARRSM.LRGPAGES` is a FACILITY class resource that controls access to z/OS 1 MB large page frames. During initialization, the Zowe cross-memory server (typically `ZWESIUSR`) can request large page frames to improve performance.
 
 If the user ID associated with the cross-memory server does not have READ access to `IARRSM.LRGPAGES`, z/OS silently falls back to standard 4 KB pages. Zowe continues to function, but without the large-page performance benefits. In some ACF2 environments, this denial might not appear in standard violation reports, making it difficult to diagnose why large pages are not being used.
 
