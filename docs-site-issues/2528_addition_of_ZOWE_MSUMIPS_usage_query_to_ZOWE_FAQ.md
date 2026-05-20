@@ -10,6 +10,29 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The Zowe FAQ does not contain information about MSU and MIPS consumption.
+
+**Current State:**
+- `docs/getting-started/zowe_faq.md` contains FAQs about Zowe but no MSU/MIPS information
+- No search results for "MSU", "MIPS", "Processor Capacity Index", or "LSPR" in the documentation
+- Customers frequently ask about MSU consumption for Zowe started task (as noted in the issue)
+
+**Missing:** The requested FAQ entry with:
+- Explanation of MSU and MIPS calculation formulas
+- CP (number of processors), PCI (Processor Capacity Index), MSU, LSPR definitions
+- Conversion formulas for CPU seconds to MSU, MIPS, and 4HRA MSU
+- Example calculations
+
+**Recommendation:** This issue remains valid. The FAQ should be enhanced with the MSU/MIPS usage information as described in the issue.
+
+---
+
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
 <!-- See [How to contribute](https://docs.zowe.org/stable/contribute/contributing.html) for guidance on writing an actionable issue description. -->

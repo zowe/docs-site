@@ -10,6 +10,28 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The documentation does not currently have a tagging and filtering system to personalize the installation docs based on user selections (components, security managers, optional features, etc.).
+
+**Current State:**
+- No tagging system in documentation frontmatter
+- No filtering mechanism in the Docusaurus theme
+- Documentation is presented as-is without personalization
+- Users must manually navigate through all sections regardless of their specific configuration
+
+**Technical Context:** The issue mentions that Docusaurus (the site generator) could support this through custom React components and frontmatter tags. The `DocItem` component was mentioned as a potential customization point. However, no implementation has been done.
+
+**Impact:** Users installing Zowe with specific configurations (e.g., only API ML, with RACF, without HA) still see all documentation sections, which may include irrelevant or confusing information for their use case.
+
+**Recommendation:** This issue remains valid. Implementing this feature would significantly improve the user experience for Zowe installation documentation.
+
+---
+
 Proposal from Sean @1000TurquoisePogs : 
 
 - Allow users to filter content by some sort of tagging we can apply to the docs. 

@@ -10,6 +10,31 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The onboarding documentation does not clearly distinguish between first service and subsequent services when using passtickets.
+
+**Current State:**
+- Onboarding documentation exists at `docs/extend/extend-apiml/`
+- Documentation shows how to use `httpBasicPassTicket` authentication scheme
+- No clear distinction between:
+  - Onboarding the first service with passtickets enabled
+  - Onboarding subsequent (2nd, 3rd, 4th, etc.) services with passtickets enabled
+- Users with one service already onboarded don't know what additional steps (if any) are needed for subsequent services
+
+**Missing:**
+- Clear documentation of the difference between first and subsequent service onboarding
+- Steps specific to subsequent service onboarding with passtickets
+- Explanation of what configuration is shared vs. service-specific
+
+**Recommendation:** This issue remains valid. The onboarding documentation should be reviewed and updated to clearly delineate between first service and subsequent service onboarding scenarios, particularly for httpBasicPassTicket authentication.
+
+---
+
 As an adopter of the APIML with pass tickets enabled and a 1st service onboarded, i want the documentation to clearly state what is required to onboard further services.
 
 **Context**

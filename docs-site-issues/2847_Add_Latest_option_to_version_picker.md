@@ -10,6 +10,26 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The version picker on docs.zowe.org does not have a "Latest" option.
+
+**Current State:**
+- The version picker remembers the last selected version
+- When visiting docs.zowe.org, it defaults to the last manually selected version
+- No "Latest" or "Stable" option exists in the version picker
+- Users must manually select the newest version from the dropdown
+
+**Impact:** Users who previously selected an older version (e.g., v2.7.x) will continue seeing that version even after newer versions are released, unless they manually change it.
+
+**Recommendation:** This issue remains valid. Adding a "Latest" option would improve user experience by ensuring users always see the most current documentation by default.
+
+---
+
 A few days ago I used the version picker to switch back and forth between multiple versions. The final version I selected was "v2.7.x" which was the latest version at the time.
 
 ![image](https://user-images.githubusercontent.com/22344007/235144390-6096d008-e957-4838-bd34-bdf2b0797feb.png)

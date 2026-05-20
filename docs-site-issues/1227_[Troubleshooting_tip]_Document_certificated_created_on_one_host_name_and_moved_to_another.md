@@ -10,6 +10,25 @@
 
 ---
 
+## Validation Status: ✅ RESOLVED
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is addressed in the current documentation. The troubleshooting guide `docs/troubleshoot/known-issues-with-apiml.md` contains detailed information about certificate hostname mismatches, including:
+
+- Error messages for missing z/OSMF host name in subject alternative names
+- Error messages for invalid z/OSMF host name in subject alternative names
+- Solution to re-create the Zowe keystore by deleting it and re-creating it
+- References to certificate configuration documentation
+
+The documentation now includes specific error messages like: "Certificate for <ABC12.slv.broadcom.net> doesn't match any of the subject alternative names" and provides step-by-step solutions including keystore recreation.
+
+**Documentation Location:** `docs/troubleshoot/known-issues-with-apiml.md` (lines 154-206)
+
+---
+
 ### 2. Choose a title
 Certificate mismatch when host name changes
 

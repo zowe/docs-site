@@ -10,6 +10,31 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The container extension documentation does not include the important facts about environment variables and configuration differences.
+
+**Current State:**
+- No documentation found for `ZWE_RUN_IN_CONTAINER` or `ZWE_RUN_IN_ZOS` environment variables
+- No documentation about differences between z/OS and container configurations
+- No guidance on using `ZWE_GATEWAY_HOST` vs `zowe.externalDomains` in containers
+- No documentation about `component.gateway.port` vs `zowe.externalPort` in containers
+- The container extension guide needs review and improvement
+
+**Missing:** Documentation of:
+- Container-specific environment variables (`ZWE_RUN_IN_CONTAINER`, `ZWE_RUN_IN_ZOS`, `ZWE_GATEWAY_HOST`)
+- Configuration property differences between z/OS and container environments
+- How to determine the accessible hostname for discovery and gateway in containers
+- How to make platform-dependent decisions in extensions
+
+**Recommendation:** This issue remains valid. The container extension documentation should be updated with these important facts to prevent regressions and confusion.
+
+---
+
 After struggling through some regressions on the app-server container, I realized the reason for the regressions was a few undocumented facts needed to be successful in containers.
 
 I'm writing this here so I don't forget, but the whole container extension sections of zowe server docs do need review by dev and improvement.

@@ -10,6 +10,29 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The documentation still references commercial products without the requested vendor-neutral disclaimer.
+
+**Current State:**
+- `docs/user-guide/address-authentication-requirements.md` (lines 13-15) references:
+  - Advanced Authentication Mainframe 2.0 (Broadcom)
+  - IBM Z Multi-Factor Authentication
+  With the text: "The following MFA products are known to work with Zowe:"
+- `docs/user-guide/api-mediation/using-multi-factor-authentication.md` (lines 33-35) also references IBM Z MFA
+- `docs/getting-started/zowe-security-authentication.md` (line 37) references IBM Z Multi-Factor Authentication
+
+**Missing:** The suggested disclaimer text is not present:
+> "The following commercial product offerings have been identified as compatible with Zowe for this purpose. Please note that Zowe does not endorse these specific offerings for this purpose, nor does the Zowe community perform any ongoing validation of the compatibility of these solutions with Zowe for this purpose. For more information please contact your commercial vendor."
+
+**Recommendation:** This issue remains valid. A thorough review of documentation for commercial product references is needed, and the standard disclaimer should be added.
+
+---
+
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
 <!-- See [How to contribute](https://docs.zowe.org/stable/contribute/contributing.html) for guidance on writing an actionable issue description. -->

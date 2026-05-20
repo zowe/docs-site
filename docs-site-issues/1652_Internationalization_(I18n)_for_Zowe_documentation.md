@@ -10,6 +10,34 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed for documentation. While there is extensive documentation about internationalization (I18n) for Zowe applications (see `docs/extend/extend-desktop/mvd-internationalization.md`), this covers how to internationalize Zowe Application Framework plugins using Angular and React frameworks.
+
+However, the Zowe documentation site itself (docs.zowe.org) does not have internationalization support:
+- No language selector or translation feature on the documentation site
+- No translated versions of documentation pages
+- No evidence of Crowdin or other translation platform integration for docs
+- No folder structure for multiple languages
+
+The issue specifically requested discussion and decisions on:
+- Whether to support I18n for Zowe docs
+- Team structure and governance for I18n
+- Languages to translate
+- I18n process and folder structure
+- Translation platform (Crowdin was suggested)
+- Community contribution management
+
+**Current State:** None of these decisions appear to have been implemented. The documentation remains English-only.
+
+**Recommendation:** This issue remains valid. The documentation team should revisit the I18n strategy for Zowe documentation.
+
+---
+
 _"Internationalization is the process of designing a software application so that it can be adapted to various languages and regions without engineering changes. Localization is the process of adapting internationalized software for a specific region or language by adding locale-specific components and translating text." - from wikipedia._  
 
 For this issue, need to discuss and consider: 

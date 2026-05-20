@@ -10,6 +10,32 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. There is no consolidated best practices article for Zowe server-side installation and configuration.
+
+**Current State:**
+- No dedicated "Best Practices" page exists for Zowe server installation
+- Installation information is spread across multiple documents:
+  - `docs/user-guide/installandconfig.md`
+  - `docs/user-guide/configure-zos-system.md`
+  - Various component-specific configuration guides
+- No consolidated guidance on:
+  - Using SSH vs ishell
+  - API ML one-time, one-place installation pattern
+  - Security, zFS, mount points configuration
+  - ZIS/ZSS for certificates
+  - Multi-service configuration
+  - Diagram of full Zowe environment
+
+**Recommendation:** This issue remains valid. Creating a best practices guide based on the installation study findings would help users avoid common pitfalls.
+
+---
+
 ## Is your request for enhancement related to a problem? Please describe.
 Zowe install teams are missing a consolidated set of best practices to install/configure Zowe Server side.
 

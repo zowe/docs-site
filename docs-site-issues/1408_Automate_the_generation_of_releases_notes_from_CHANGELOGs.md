@@ -10,6 +10,26 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. Release notes in `docs/whats-new/release-notes/` are still manually created. Each release note file (e.g., `v3_4_0.md`, `v3_3_0.md`) contains manually compiled lists of features and bug fixes with references to GitHub PRs. There is no evidence of automated generation from CHANGELOGs across the various Zowe repositories.
+
+The issue describes a need for automation to:
+- Identify applicable changes based on timestamp or version number
+- Classify entries by tags (Bugfix, Enhancement, Feature)
+- Format into required Markdown sections
+- Pull from multiple CHANGELOGs across different repos
+
+No such automation script or workflow was found in the current codebase. The release notes appear to be manually curated for each release.
+
+**Recommendation:** This issue remains valid and should be prioritized for implementation to reduce manual effort in release note generation.
+
+---
+
 ## What's the expectation
 
 Now we have a list of CHANGELOGs in different GitHub repos under Zowe. We want to pick up the changes applicable to the new release from different changelogs into a single Markdown file for download. This file can be used as input for the Zowe release notes, better to have exact format with release notes. Take v1.14 release notes for example: https://docs.zowe.org/stable/getting-started/summaryofchanges.html#new-features-and-enhancements

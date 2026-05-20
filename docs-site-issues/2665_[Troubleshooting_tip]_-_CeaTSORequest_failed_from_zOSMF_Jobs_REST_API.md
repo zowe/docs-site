@@ -10,6 +10,29 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The troubleshooting information for CeaTSORequest failures is not documented in the main documentation.
+
+**Current State:**
+- No documentation found for CeaTSORequest failures in `docs/troubleshoot/` or other troubleshooting sections
+- No mention of `ZWE_PRIVATE_CLEANUP_IPC_MQ` configuration parameter in the documentation
+- No guidance on using `ipcs -x` to check for IPC resources
+- No documentation of the permanent fix with the zowe.environments configuration
+
+**Missing:**
+- Troubleshooting guide for CeaTSORequest failed errors
+- Documentation of the `ZWE_PRIVATE_CLEANUP_IPC_MQ: true` configuration option
+- Procedure for recycling ZWESLSTC started task when IPC cleanup is needed
+
+**Recommendation:** This issue remains valid. The troubleshooting information should be added to the documentation, preferably in the troubleshooting section or in the z/OSMF Jobs REST API documentation.
+
+---
+
 ### 2. Choose a title
 
 Fixing a REST API request (from Zowe CLI or Zowe Explorer) with CeaTSORequest failure

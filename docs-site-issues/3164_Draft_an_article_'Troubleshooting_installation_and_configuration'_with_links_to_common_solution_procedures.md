@@ -27,3 +27,21 @@ This is a stretch item from #2960
 ## Additional context
 <!-- Add any other context or screenshots about the feature request here.-->
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. There is no dedicated "Troubleshooting installation and configuration" article with links to common solution procedures.
+
+**Current State:** While there are various troubleshooting pages in the documentation:
+- `docs/troubleshoot/troubleshooting.md` - General troubleshooting guide
+- `docs/troubleshoot/known-issues-with-apiml.md` - Known issues with API ML
+- `docs/user-guide/troubleshooting-zowe-server-install-wizard.md` - Install wizard troubleshooting
+- Various component-specific troubleshooting guides in `docs/troubleshoot/`
+
+There is no single consolidated article that specifically focuses on "Troubleshooting installation and configuration" with links to common solution procedures, nor are there links from installation articles to a central troubleshooting guide as requested.
+
+**Recommendation:** Create a new article `docs/user-guide/troubleshoot-install-config.md` (or similar) that consolidates common installation and configuration issues with links to their solution procedures. Add links from installation articles to this central guide.
+
