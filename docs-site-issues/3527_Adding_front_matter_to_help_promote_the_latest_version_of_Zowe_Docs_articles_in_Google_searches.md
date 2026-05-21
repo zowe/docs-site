@@ -26,3 +26,24 @@ https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicat
 ## Additional context
 <img width="734" alt="image" src="https://github.com/zowe/docs-site/assets/109533923/f025df82-b21e-4f24-9f08-b656b6138106">
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. No front matter or SEO annotations have been added to help Google prioritize latest versions.
+
+**Current State:** 
+- Multiple versioned documentation exists in `versioned_docs/` (v1.27.x, v1.28.x, v2.13.x, v2.14.x, v2.18.x, v3.0.x, v3.1.x, v3.2.x, v3.3.x)
+- Latest/stable docs are in `docs/` directory
+- No front matter annotations exist in markdown files to indicate canonical URLs or deprecation of older versions
+- No `canonical`, `noindex`, or other SEO-related front matter is present in any documentation files
+- Google is still indexing older versioned docs, potentially leading users to outdated information
+
+**Recommendation:** Add front matter to versioned documentation files with:
+- `canonical` URLs pointing to the latest/stable version
+- `noindex` meta tags for older versions when a newer version exists
+- Consider implementing rel=canonical HTTP headers via Docusaurus configuration
+- Reference: [Google's guide on consolidating duplicate URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+

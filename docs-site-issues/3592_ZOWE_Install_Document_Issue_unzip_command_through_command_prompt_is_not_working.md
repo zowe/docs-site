@@ -52,3 +52,22 @@ If applicable, add server logs collected at the time of your problem.
 **Additional context**
 Add any other context about the problem here.
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The documentation still only mentions `unzip` command which doesn't work on Windows Command Prompt.
+
+**Current State:** 
+- `docs/user-guide/install-zowe-smpe.md:54` states: "You may need to use the `unzip` command at a terminal rather than an unzip utility. For example, run `unzip zowe-smpe-package-3.0.0.zip` in your terminal."
+- This command does NOT work on Windows Command Prompt as reported
+- The user found that `tar -xf zowe-smpe-package-2.0.0.zip` works on Windows Command Prompt
+- On Windows, `unzip` is not a native command, while `tar` is available in recent Windows versions
+
+**Recommendation:** Update the documentation to provide platform-specific extraction commands:
+- For Linux/macOS/Unix: `unzip zowe-smpe-package-3.0.0.zip`
+- For Windows Command Prompt: `tar -xf zowe-smpe-package-3.0.0.zip`
+- Or use a cross-platform alternative like noting that both commands work
+

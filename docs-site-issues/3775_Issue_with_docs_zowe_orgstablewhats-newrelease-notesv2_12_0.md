@@ -10,6 +10,31 @@
 
 ---
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet fully addressed. The TLS 1.3 information is only documented in the v2_12_0 release notes and has not been carried forward to later versions or to the main configuration documentation.
+
+**Current State:**
+- The information exists in `docs/whats-new/release-notes/v2_12_0.md`:
+  - ZSS now defaults to using TLS 1.3, which requires a minimum of zOS Version 2.4
+  - Added configuration parameter `components.zss.agent.https.maxTls` to control TLS level
+  - Added configuration parameter `components.zss.agent.https.trace` for GSK trace
+- The information is NOT in later release notes (checked v1_24.md, v2_13_0.md, v2_14_0.md, etc.)
+- The information is NOT in the main configuration documentation where users would look for TLS settings
+
+**Missing:** This known issue/limitation should be documented in:
+- All subsequent release notes (v2_13_0, v2_14_0, v2_15_0, etc.)
+- The main ZSS configuration documentation
+- The TLS configuration guide
+
+**Recommendation:** This issue remains valid. The TLS 1.3 requirement for ZSS should be added to the main configuration documentation and carried forward in release notes for versions above v2.12.
+
+---
+
 <!-- Thanks for deciding to open an issue! Before submitting, please fill in the following information. -->
 
 <!-- See [How to contribute](https://docs.zowe.org/stable/contribute/contributing.html) for guidance on writing an actionable issue description. -->

@@ -31,3 +31,29 @@ Despite that this is how AT-TLS rules work from my understanding.
 6) The same is not required of clients. Users that wish to avoid client certificates can set just "Server" type for source IPs that are not from the mainframe. Then, you get 2 rules... one for internal IPs and one for external.
 7) Should z/OSMF even be covered by AT-TLS rules? In my testing, I have been unable to get APIML to work with z/OSMF under AT-TLS, so I did the OPPOSITE of their documentation, kept scheme as https, excluded zosmf from the rules, and it worked. But this means APIML then is doing Native TLS to zosmf, and I presume AT-TLS for everything else. Which is weird and not helpful for controlling TLS settings.
 8) APIML still needs to see the truststore according to them, even when AT-TLS should be handling the TLS, because they do some client certificate stuff that requires them to review the certificate (which you can read off an AT-TLS socket) and compare it to CAs. This means even with AT-TLS, zowe certificate setup is still required.
+
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. AT-TLS documentation exists but needs cleanup and consolidation as described.
+
+**Current State:** 
+AT-TLS documentation exists but is scattered across multiple files:
+- `docs/user-guide/configuring-at-tls-for-zowe-server.md` - Main AT-TLS configuration guide (multi-service mode)
+- `docs/user-guide/configuring-at-tls-for-zowe-server-single-service.md` - Single-service mode AT-TLS guide
+- `docs/user-guide/tls-configuration.md` - Native TLS configuration
+- Various references in API Mediation Layer documentation
+
+The concerns raised in the issue are NOT addressed:
+1. No clear explanation of AT-TLS filter/behavior relationship with sockets
+2. No comprehensive list of Zowe job prefixes and server codes for AT-TLS rules
+3. No clear guidance on avoiding double-TLS (TLS wrapping HTTPS)
+4. No clarification on when Zowe servers send HTTP vs HTTPS with AT-TLS
+5. No documentation on ServerWithClientAuth vs Server rule types for different scenarios
+6. No consolidated guidance on z/OSMF AT-TLS configuration
+7. No explanation of why APIML needs truststore even with AT-TLS
+
+**Recommendation:** Consolidate all AT-TLS documentation into a single comprehensive guide that addresses all the points raised by Sean, with clear examples, rule patterns, and troubleshooting information. The current scattered documentation makes it difficult for users to properly configure AT-TLS without encountering the issues described.

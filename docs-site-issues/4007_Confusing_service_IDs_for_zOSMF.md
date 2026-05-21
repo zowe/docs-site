@@ -32,3 +32,29 @@ Helpful links:
 [Understanding zosmfServiceId configuration](https://docs.zowe.org/stable/user-guide/authentication-providers-for-apiml/#zosmf-authentication-provider)
 [API Gateway configuration parameters and zosmfServiceId](https://docs.zowe.org/v1.28.x/user-guide/api-mediation/api-mediation-internal-configuration/)
 [Accessing services through API ML](https://docs.zowe.org/v2.15.x/user-guide/cli-using-integrating-apiml/#:~:text=Accessing%20multiple%20services%20with%20SSO,Developing%20for%20API%20Mediation%20Layer)
+
+## Validation Status: ⚠️ PARTIALLY RESOLVED
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is PARTIALLY addressed. Some documentation exists but the key clarification is missing.
+
+**Current State:** 
+- `docs/user-guide/authentication-providers-for-apiml.md:43` contains misleading comment: `# Replace me with the correct z/OSMF service id` for `ibmzosmf`
+- `docs/appendix/zowe-yaml-configuration.md:517` documents the parameter but doesn't explain the behavior difference
+- `docs/whats-new/breaking-changes-v3.md:22` and `docs/whats-new/release-notes/v3_0_0.md:79` state that V3 only supports `/ibmzosmf` route, not `/zosmf` route
+- Various docs show `ibmzosmf` as the default value
+
+However, the CRITICAL clarification requested is MISSING:
+- No explanation that when service ID is `zosmf`, CLI automatically prepends `/zosmf/` to base path
+- No explanation that when service ID is `ibmzosmf`, APIML manages the base path and CLI does NOT prepend `/zosmf/`
+- No explanation that `ibmzosmf` is a valid, recommended service ID (not just a placeholder)
+
+**Recommendation:** 
+1. Update `docs/user-guide/authentication-providers-for-apiml.md:43` to remove the misleading comment and explain that `ibmzosmf` is the default and recommended value
+2. Add a section explaining the difference between `zosmf` and `ibmzosmf` service IDs:
+   - `zosmf`: CLI prepends `/zosmf/` to API requests (legacy behavior)
+   - `ibmzosmf`: APIML manages base path, CLI does not prepend `/zosmf/` (recommended for V3+)
+3. Clarify that V3+ requires `ibmzosmf` route
