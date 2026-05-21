@@ -128,7 +128,7 @@ Verify that your service is discovered by the Discovery Service with the followi
     </application>
     ```
     :::tip Tips:
-    - Ensure that addresses and user credentials for individual API ML components correspond to your target runtime environment.  
+    - Ensure that the hostnames, ports, and user credentials used match your specific target runtime environment.  
     - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
     :::
 
