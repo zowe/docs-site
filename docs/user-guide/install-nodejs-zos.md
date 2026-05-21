@@ -72,7 +72,7 @@ Here's a rewritten version of that section, aiming for improved readability, cla
 To successfully install and run Node.js for Zowe on z/OS, ensure your system meets the following hardware and software requirements:
 
 **Hardware:**
-*   IBM zEnterprise® 196 (z196) or newer.
+*   IBM z13&trade; or newer.
 
 **Software:**
 *   z/OS UNIX System Services (USS) enabled.
