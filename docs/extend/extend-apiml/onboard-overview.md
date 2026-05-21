@@ -12,7 +12,7 @@ To streamline the process of onboarding new REST API services to the Zowe API ML
 This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
-- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with API ML
+- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service to API ML
 - [Verify successful onboarding to API ML](#verify-successful-onboarding-to-api-ml)
 - Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to API ML 
 
@@ -73,12 +73,12 @@ Use one of the following guides if your service is not built with Java, or you d
 Enabler version 1.2 and previous versions are no longer supported.
 
 :::tip
-We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Medaition Layer.
+We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Mediation Layer.
 :::
 
 ## Verify successful onboarding to API ML
 
-Verifying that your service was successfully onboraded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
+Verifying that your service was successfully onboarded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
 
 ### Verifying service discovery through Discovery Service
 
@@ -89,7 +89,7 @@ Verify that your service is discovered by the Discovery Service with the followi
     ```
     https://{zowe-hostname}:{discovery-service-port}/eureka/apps/{serviceId}
     ```
-    **Note:** The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP GET request.
+    **Note:** The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP `GET` request.
 
  2. Check your service metadata.
 
