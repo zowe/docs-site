@@ -8,7 +8,7 @@ The following SDKs are available.
 - Zowe Client Java SDK
 - Zowe Client Kotlin SDK
 - Zowe Client Node.js SDK
-- Zowe Client Python SDK *technical preview*
+- Zowe Client Python SDK 
 
 ## Fundamentals
 
@@ -22,7 +22,7 @@ For detailed SDK documentation, see the following:
 - [Zowe Client Java SDK](https://github.com/Zowe-Java-SDK)
 - [Zowe Client Kotlin SDK](https://zowe.github.io/zowe-client-kotlin-sdk/)
 - [Zowe Client Node.js SDK](https://docs.zowe.org/stable/typedoc/index.html)
-- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) *technical preview*
+- [Zowe Client Python SDK](https://zowe-client-python-sdk.readthedocs.io/en/latest/) 
 - [Zowe SDK Sample Scripts](https://github.com/zowe/zowe-sdk-sample-scripts/)
 
 ## SDK software requirements and dependencies
@@ -71,7 +71,7 @@ npm install imperative.tgz
 npm install core-for-zowe-sdk.tgz
 ```
 
-### Python SDK *technical preview*
+### Python SDK 
 
 If you install Python SDK packages from the [online registry](#installing-an-sdk-from-an-online-registry), the required dependencies are installed automatically.
 

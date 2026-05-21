@@ -8,7 +8,7 @@ The following SDKs are available.
 - Zowe Client Java SDK
 - Zowe Client Kotlin SDK
 - Zowe Client Node.js SDK
-- Zowe Client Python SDK *technical preview*
+- Zowe Client Python SDK
 
 ## SDK documentation
 
