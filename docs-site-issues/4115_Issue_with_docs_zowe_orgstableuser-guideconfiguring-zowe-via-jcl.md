@@ -143,3 +143,47 @@ So all of the steps in the heirrchy
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2026-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is **STILL VALID** and reveals multiple documentation gaps.
+
+**User's Problems:**
+1. ISPF dataset allocation errors when running `SZWESAMP(ZWEGENER)` - needs `ISPLIST` and `ISPLOG` DD statements
+2. CEE3608I message with no following messages (unclear guidance)
+3. Issues using multiple configuration files with `//MYCONFIG DD` and `FILE` statements
+4. Validation errors when using `security:` configuration (needs to be nested under `setup:`)
+5. No explanation of precedence rules for multiple configuration files
+
+**Current Documentation State:**
+- `docs/user-guide/configuring-zowe-via-jcl.md`:
+  - Explains that `ZWEGENER` validates `zowe.yaml` and prepares JCL
+  - Lists JCL samples and their purposes
+  - **MISSING:** ISPF dataset requirements for ZWEGENER
+  - **MISSING:** How to use `//MYCONFIG DD` with multiple files
+  - **MISSING:** CONFIG= parameter syntax for JCL
+  - **MISSING:** Common validation errors and fixes
+- `docs/user-guide/configmgr-using.md`:
+  - **HAS:** Information about multiple configuration files and precedence rules
+  - **HAS:** `CONFIG=FILE(file1):FILE(file2)` syntax
+  - **BUT:** Not referenced from the JCL configuration page
+
+**What's Missing:**
+1. **ISPF Requirements:** No mention that `ZWEGENER` requires ISPLIST and ISPLOG DD statements to avoid allocation errors
+2. **Multiple Files in JCL:** No documentation on how to use `//MYCONFIG DD` with multiple files
+3. **Precedence Rules:** Precedence rules exist in `configmgr-using.md` but aren't cross-referenced from `configuring-zowe-via-jcl.md`
+4. **Validation Errors:** No documentation on common validation errors (e.g., `security:` must be under `setup:`)
+5. **CEE3608I:** No explanation of this message and how to resolve it
+
+**Assessment:** The user encountered real problems that the documentation doesn't address. The page needs significant updates to cover these scenarios.
+
+**Recommendation:** KEEP OPEN. The documentation should be enhanced with:
+1. ISPF dataset allocation requirements for ZWEGENER
+2. Clear examples of using multiple configuration files with both `CONFIG=` parameter and `//MYCONFIG DD`
+3. Cross-reference to `configmgr-using.md` for precedence rules
+4. Common validation errors and their fixes (e.g., proper YAML nesting)
+5. Explanation of common runtime messages like CEE3608I
+

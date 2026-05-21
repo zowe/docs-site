@@ -40,3 +40,26 @@ cd  /usr/lpp/.zowe31
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+
+## Validation Status: ❌ STILL OPEN
+
+**Validation Date:** 2025-05-20
+
+**Validator:** Mistral Vibe
+
+**Findings:** The issue is NOT yet addressed. The documentation doesn't mention creating the directory before expanding the PAX file.
+
+**Current State:** 
+- `docs/user-guide/install-zowe-zos-convenience-build.md:80` states: "Expand the PAX file by issuing the following command in the USS shell" with command `pax -ppx -rf <zowe-V.v.p>.pax`
+- There is NO mention of:
+  - Creating a directory for the product libraries (e.g., `mkdir /usr/lpp/zowe31`)
+  - Changing to that directory before expanding (e.g., `cd /usr/lpp/zowe31`)
+  - Ensuring there is enough space in the target directory
+- The documentation assumes users know to create an appropriate directory and navigate to it before expanding
+
+**Recommendation:** Add steps before the PAX expansion:
+1. Create a directory with sufficient space: `mkdir /usr/lpp/zowe31` (or similar)
+2. Navigate to that directory: `cd /usr/lpp/zowe31`
+3. Then expand the PAX file: `pax -ppx -rf <zowe-V.v.p>.pax`
+
+This ensures users don't accidentally expand the PAX file in an inappropriate location or run out of space.
