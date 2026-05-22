@@ -17,7 +17,7 @@ Extensions are recommended to adhere to the specific configuration. Ensure that 
 
 By default, Zowe's servers use the TCP IP address `0.0.0.0`, which assigns the servers to be available on all network interfaces available to the jobs.
 
-If this default is not desired, you can either change the configuration within Zowe or by setting TCPIP port assignment statements. For more information, see [IP Addresses](./address-network-requirements.md#ip-addresses) in the article _Addressing network requirements_.
+If this default is not desired, you can either change the configuration within Zowe or by setting TCPIP port assignment statements. For more information, see [IP Addresses](./address-network-requirements.md#tcpip-port-reservations) in the article _Addressing network requirements_.
 
 To customize IP addresses within Zowe, define the parameter `zowe.network.server.listenAddresses`. For example, to have all Zowe servers use IP `1.2.3.4`, except for App Server which will use IP `2.3.4.5`, set the following section in your Zowe YAML:
 
