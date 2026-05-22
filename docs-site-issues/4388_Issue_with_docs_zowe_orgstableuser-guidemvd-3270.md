@@ -42,3 +42,13 @@ was not helpful.
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation in `/home/balda/zowe/docs-site/docs/user-guide/mvd-3270.md` mentions that "The terminal connection can be customized per user and saved for future sessions using the connection toolbar of the application" and references the configuration dataservice storage. However, it does not provide clear, step-by-step instructions for end users on how to actually customize the keys in a 3270 session. The documentation shows environment variables for system-level customization but lacks user-level customization instructions. The issue specifically mentions wanting to remove the default "hw" (Hello World) key sequence and set both system and user defaults. User guidance is needed.
+

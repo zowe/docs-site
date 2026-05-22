@@ -48,3 +48,20 @@ am I missing something?
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Partially Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation in `/home/balda/zowe/docs-site/docs/user-guide/cli-configuringcli-ev.md` has been improved:
+- ✓ Warning about TRACE/ALL logging sensitive data is now present
+- ✓ ZOWE_IMPERATIVE_LOG_LEVEL is now explained in the table
+- ⚠ **Still missing:** The log level table lists `OFF`, `TRACE`, `DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL` but does NOT include `ALL` which the user expects to see
+
+Additionally, the user reports that setting `ZOWE_APP_LOG_LEVEL="TRACE"` and running a command produced no trace output, suggesting there may be a usage issue or missing configuration step that should be documented.
+
+The `ALL` log level option should be added to the documentation for completeness.
+

@@ -53,3 +53,40 @@ Please explain how I know what to put in the basepath value.   This is the first
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation in `/home/balda/zowe/docs-site/docs/user-guide/cli-using-integrating-apiml.md` (around line 50) shows:
+
+```
+If you already have a profile in your configuration for the service you want to connect to, use a text editor to open the applicable configuration file and replace the port property with a basePath property to enable the use of API ML.
+
+A profile with a port number:
+  "type": "zosmf",
+    "properties": {
+        "port": 443
+    }
+
+A profile with a base path:
+"type": "zosmf",
+    "properties": {
+        "basePath": "/ibmzosmf/api/v1"
+    }
+```
+
+The user is confused about:
+1. Whether "A profile with a base path:" is showing what the profile BECOMES (replacement) or is a separate example
+2. How replacing the port property with basePath tells the session which port to use (the port information seems to be lost)
+3. What to put in the basePath value (this is the first mention of basePath in the docs)
+
+The documentation needs to clearly explain:
+- The transformation process (port -> basePath)
+- That the port information comes from the base profile when using basePath
+- How to determine the correct basePath value for their API ML configuration
+- That basePath is the path portion of the URL (not including host:port)
+

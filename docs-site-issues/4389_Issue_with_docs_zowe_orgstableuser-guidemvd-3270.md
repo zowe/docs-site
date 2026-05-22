@@ -37,3 +37,17 @@ There is an icon of a diskette.  This does nothing.
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation in `/home/balda/zowe/docs-site/docs/user-guide/mvd-3270.md` does not contain any explanation of the UI icons (green icon, diskette icon, on/off icon). The user reports:
+- Green icon: shows current connected status, click to disconnect (icon gets grey background), allows changing Host, Port, Type, Model and Codepage, then click to reconnect (should go green)
+- Diskette icon: does nothing (user expectation is that it should save settings)
+
+These UI elements and their functionality should be documented.
+

@@ -51,3 +51,22 @@ Please sort this out.
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+There is a discrepancy between the CLI help text and the documentation:
+
+- **CLI help (`zowe config init -h`)**: States that `--user-config` initializes "the configuration files in your home ~/.zowe directory" (i.e., ZOWE_CLI_HOME)
+- **Documentation** in `/home/balda/zowe/docs-site/docs/user-guide/cli-using-initializing-user-configuration.md`: States that "The configuration file **zowe.config.user.json is created in the ZOWE_CLI_HOME directory.**"
+
+However, looking at the actual documentation content, it says:
+- Line 33: "The configuration file `zowe.config.user.json` is created in the `ZOWE_CLI_HOME` directory."
+- But earlier it also mentions creating configs in "the current working directory unless otherwise specified"
+
+The issue is that the documentation needs to be consistent and clear about WHERE each type of config file is created based on the flags used (`--global-config`, `--user-config`, or neither). The help text and documentation should align.
+

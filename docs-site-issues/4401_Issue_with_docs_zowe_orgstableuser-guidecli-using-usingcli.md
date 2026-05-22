@@ -52,3 +52,13 @@ We could do with a page or two for people who have never used the zowe command i
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The user is confused about setting up Zowe CLI on Linux to connect to z/OS when z/OSMF only has a TLS-protected port (not a non-TLS port). The documentation in `/home/balda/zowe/docs-site/docs/user-guide/cli-using-usingcli.md` mentions installing npm and shows example commands using port 123, but doesn't clearly address TLS-only configurations. The user also doesn't understand the relationship between Zowe CLI profiles, teams, and specifying public/private keys. The documentation lacks a comprehensive getting-started guide for users who have never used Zowe CLI before and are using TLS. The referenced article https://medium.com/zowe/zowe-cli-and-client-certificates-dae341f8f52a and the CLI profile documentation don't provide clear end-to-end guidance.
+

@@ -47,3 +47,18 @@ means... and what I can do about it...  eg give me a link on how to configure fa
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation for ZWES1601I exists in `/home/balda/zowe/docs-site/docs/troubleshoot/app-framework/zss-error-codes.md` but is very brief. It states "Server is ready to accept JWT `with` or `without` fallback to legacy tokens." with no further explanation. The issue requests:
+1. Clarification that it's the ZSS server that is ready
+2. Explanation of what "with(or without) fallback to legacy tokens" means
+3. Link to how to configure fallback to legacy tokens
+
+The documentation should be enhanced to address all three points.
+

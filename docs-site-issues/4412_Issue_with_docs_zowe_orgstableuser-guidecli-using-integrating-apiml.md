@@ -89,3 +89,30 @@ what is the default base profile called?  Ive got base and base_aplim
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The documentation in `/home/balda/zowe/docs-site/docs/user-guide/cli-using-integrating-apiml.md` shows examples but lacks clarity on several points raised in the issue:
+
+1. **Port clarification:** The example `https://myapilayerhost:port/ibmzosmf/api/v1` doesn't specify whether "port" is the z/OSMF port or the APIML port (e.g., 7554). This needs explicit clarification.
+
+2. **--reject-unauthorized flag:** When logging in with a client certificate, the user needs to know when/where to specify `--reject-unauthorized false`. This is not clearly documented.
+
+3. **--base-profile visibility:** The user wants the `--base-profile <profile_name>` option to be more visible in the command examples (e.g., shown immediately after `zowe auth login apiml` in bold).
+
+4. **basePath explanation:** The documentation doesn't clearly explain:
+   - What exactly is the base path? (The full URL path, just the path part, or something else?)
+   - How to know what value to put in basePath
+   - Whether "A profile with a base path" is showing what the profile becomes or is a separate example
+
+5. **basePath vs port:** The documentation doesn't explain how replacing port with basePath tells the session which port to use.
+
+6. **Default base profile:** The user asks what the default base profile is called. They mention having both "base" and "base_apiml".
+
+The documentation needs significant clarification on these points.
+

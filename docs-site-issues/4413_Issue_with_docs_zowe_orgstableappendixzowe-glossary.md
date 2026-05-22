@@ -45,3 +45,21 @@ The team administrator can update and distribute the zowe.config.json file.  Use
 ## Additional context
 <!--Add any other context about the documentation error here.-->
 
+## Validation Status
+**Status:** Still Valid
+
+**Date Validated:** 2025-01-17
+
+**Validator:** Mistral Vibe
+
+**Notes:** 
+The glossary in `/home/balda/zowe/docs-site/docs/appendix/zowe-glossary.md` now contains definitions for "team configuration", "base profile", and mentions `zowe.config.json` and `zowe.config.user.json`. However, the user is still confused about the practical implementation:
+
+1. The user understands the hierarchy concept but is confused about how it works in practice when both files are on their local machine (ZOWE_CLI_HOME).
+
+2. The user doesn't understand how team administrators can share `zowe.config.json` when both files are stored in ZOWE_CLI_HOME (which is user-specific).
+
+3. The user suggests clearer wording like: "As a team administrator put common service definitions in the zowe.config.json or zowe.config.json.global (whatever it is). Distribute these to the team. They should be stored in the ZOWE_CLI_HOME directory. If individuals need their own definitions, they should use zowe.config.user.json for just their own overrides."
+
+The glossary definitions are technically correct but could benefit from practical usage examples and clearer explanation of the sharing mechanism (or lack thereof when both files are in ZOWE_CLI_HOME).
+
