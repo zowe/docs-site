@@ -3228,7 +3228,7 @@ The following error message codes may appear on the app-server log. Use the foll
 
   **Action:**
 
-  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios.md#scenario-4-use-a-zos-keyring-based-keystore-and-connect-to-an-existing-certificate)
+  Check the keystore configuration of the server such as in `zowe.certificate` or `components.app-server.node.https` to see if it is valid for Zowe. The SAF keyring Zowe was configured to use may be missing a key and certificate pair, or certificate authorities keychain. For more suggestions on configuring keyrings for Zowe, review the [install guide](../../user-guide/certificate-configuration-scenarios.md#scenario-4-use-a-zos-keyring-based-key-store-and-connect-to-an-existing-certificate)
 
 
 
