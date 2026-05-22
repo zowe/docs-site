@@ -71,6 +71,10 @@ ZSS is written in C and uses native calls to z/OS to provide its services.
 
 ## Architecture and other components
 
+#### Client-side credentials
+
+In client components such as Zowe CLI and Zowe Explorer, credential information can be stored in multiple ways, including environment variables, parent or nested profiles, base profiles, or other configuration files. Credentials can include certificates, tokens, username and passwords, and SSH keys.
+
 #### Configuration Manager
 
 Works closely with the [Zowe Launcher](#zowe-launcher) to manage the configuration of Zowe across its lifecycle. Interacted with primarily via `zwe` command
@@ -116,6 +120,10 @@ A service provides one or more APIs, and is identified by a service ID. Note tha
 The default service ID is provided by the service developer in the service configuration file. A system administrator can replace the service ID with the specific name of a deployment environment through the use of additional configuration that is external to the service deployment unit. Most often, this is configured in a JAR or WAR file.
 
 Services are deployed using one or more service instances, which share the same service ID and implementation.
+
+#### Single sign-on (SSO)
+
+An authentication service that enables a user to log in once to obtain a reusable authentication token which can then be used to provide authenticated access to multiple services.
 
 #### Team configuration
 
@@ -199,7 +207,7 @@ The Zowe Support Provider Conformance Program gives vendors the ability to showc
 
 An object in a team configuration file that stores connection information for use with one or more services. Depending on your configuration file type, the base profile can be either a `global_base` or `project_base` profile. Your service profiles can pull information from base profiles as needed, to specify a common username and password only once, for example.
 
-The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and Single Sign-on (SSO).
+The base profile can optionally store tokens to connect to Zowe API Mediation Layer, which improves security by enabling Multi-Factor Authentication (MFA) and single sign-on (SSO).
 
 #### Convenience build
 

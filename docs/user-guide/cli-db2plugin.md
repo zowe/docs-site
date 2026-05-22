@@ -46,6 +46,25 @@ If you installed Zowe CLI from **online registry**:
 
 2. [Address the license requirements](#addressing-the-license-requirement) to begin using the plug-in.
 
+:::tip
+
+ This downloads the latest version of the IBM DB2 driver by default. To select a different version, set the environment variable `npm_config_clidriver` to the version you want.
+ 
+ From a command line window, set the `npm_config_clidriver` environment variable for the duration of the terminal session:
+
+- Windows operating systems:
+
+    ```
+    set npm_config_clidriver=vX.X.X
+    ```
+- Linux and Mac operating systems:
+
+    ```
+    export npm_config_clidriver=vX.X.X
+    ```
+
+:::
+
 ### Installing from a local package
 
 Follow these procedures if you downloaded the Zowe installation package:
@@ -55,6 +74,12 @@ Follow these procedures if you downloaded the Zowe installation package:
 Download the ODBC driver before you install the Db2 plug-in:
 
 1. [Download the ODBC CLI Driver](https://github.com/ibmdb/node-ibm_db#-download-clidriver-based-on-your-platform--architecture-from-the-below-ibm-hosted-url). Use the table within the download URL to select the correct CLI Driver for your platform and architecture.
+
+    :::note
+
+    To select the correct version of the driver, identify the version of IBM Db2 running on the mainframe and pick the corresponding version number to download.
+
+    :::
 
 2. Create a new directory named `odbc_cli`  on your computer. Remember the path to the new directory. You need to provide the full path to this directory immediately before you install the Db2 plug-in.
 
