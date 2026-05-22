@@ -1044,7 +1044,10 @@ LIST IARRSM
 For more information on large page configuration, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
 :::
 
-#### Granting READ Access to IARRSM.LRGPAGES
+<details>
+<summary>Click here for details about how to grant READ access to IARRSM.LRGPAGES. </summary>
+
+**Granting READ Access to IARRSM.LRGPAGES**
 
 Follow these steps to define the CA ACF2 resource rule and grant the required access:
 
@@ -1053,18 +1056,21 @@ Execute the following commands to grant the Zowe user ID READ access to the IARR
 
 ```
 SET RESOURCE(FAC)
-RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
+RECKEY IARRSM ADD(LRGPAGES UID(<uid-string-for-ZWESVUSR>) SERVICE(READ) ALLOW)
 ```
 
 Replace `uid-string-for-ZWESVUSR` with the actual CA ACF2 UID string for your Zowe cross-memory user ID.
 
 
-1. Refresh the resource class.  
+2. Refresh the resource class.  
 Rebuild the `FACILITY` directory to activate the new rule:
 
 ```
 F ACF2,REBUILD(FAC)
 ```
+
+</details>
+
 ## Verification of ACF2 rule
 
 Use the `ACCESS` command to verify that the ACF2 rule has been correctly applied and is visible to the system. 
