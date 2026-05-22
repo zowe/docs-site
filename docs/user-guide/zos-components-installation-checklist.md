@@ -45,7 +45,7 @@ Zowe is able to use PKCS12 certificates or certificates held in a z/OS Keyring.
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-| Read the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md). Then use one of the following options:<br /><br /> **Option 1: Choose the [certificate configuration scenario](../user-guide/certificate-configuration-scenarios.md)** that best applies to your use case, and follow the configuration procedure and scenario template. <br /> <br /> **Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-setup.md)** | Your certificates are configured and stored securely. |2 hours  
+| Read the article [Zowe certificate configuration overview](../user-guide/configure-certificates.md). Then use one of the following options:<br /><br /> **Option 1: Choose the [certificate configuration scenario](../user-guide/certificate-configuration-scenarios.md)** that best applies to your use case, and follow the configuration procedure and scenario template. <br /> <br /> **Option 2: [Set up Zowe certificates using workflows](../user-guide/certificates-workflow-setup.md)** | Your certificates are configured and stored securely. |2 hours  
 
 ## Configuring the Zowe cross memory server (ZIS)
 
