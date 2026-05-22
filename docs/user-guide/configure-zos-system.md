@@ -1026,43 +1026,45 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 This configuration is primarily relevant for ACF2 environments where silent denials can prevent performance optimizations from taking effect.
 :::
 
-`IARRSM.LRGPAGES` is a FACILITY class resource that controls access to z/OS 1 MB large page frames. During initialization, the Zowe cross-memory server (typically `ZWESIUSR`) can request large page frames to improve performance.
+Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests. If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
 
-If the user ID associated with the cross-memory server does not have READ access to `IARRSM.LRGPAGES`, z/OS silently falls back to standard 4 KB pages. Zowe continues to function, but without the large-page performance benefits. In some ACF2 environments, this denial might not appear in standard violation reports, making it difficult to diagnose why large pages are not being used.
+Follow these steps to verify and configure access to large memory pages:
 
-1. Perform a pre-check before adding the rule to verify the following:
+1. Verify large page frame configuration.  
+Check the `LFAREA` parameter in `IEASYSxx` to ensure that large page frames are configured on your z/OS system.
 
-Ensure that Large page frames are configured in your z/OS LPAR (Check the LFAREA parameter in IEASYSxx).
-
-2. Verify if an existing FACILITY rule already grants access:
+2. Verify existing CA ACF2 rules.  
+Run the following commands to check the current rule configuration for the resource:
 
 ```
-ACF
 SET RESOURCE(FAC)
-LIST LIKE(IAR-)
-END
+LIST IARRSM
 ```
-#### Granting READ access (ACF2)
+:::tip
+For more information on large page configuration, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
+:::
 
-To grant the Zowe cross-memory server user ID access to large pages, issue the following commands:
+#### Granting READ Access to IARRSM.LRGPAGES
 
-1. Add the following rule:
+Follow these steps to define the CA ACF2 resource rule and grant the required access:
+
+1. Define the resource rule.  
+Execute the following commands to grant the Zowe user ID READ access to the IARRSM.LRGPAGES resource:
 
 ```
-ACF
 SET RESOURCE(FAC)
-RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESIUSR) SERVICE(READ) ALLOW)
-END
+RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
 ```
 
-Replace `uid-string-for-ZWESIUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
+Replace `uid-string-for-ZWESVUSR` with the actual CA ACF2 UID string for your Zowe cross-memory user ID.
 
-2. Rebuild the FACILITY directory:
+
+1. Refresh the resource class.  
+Rebuild the `FACILITY` directory to activate the new rule:
 
 ```
 F ACF2,REBUILD(FAC)
 ```
-
 ## Verification of ACF2 rule
 
 Use the `ACCESS` command to verify that the ACF2 rule has been correctly applied and is visible to the system. 
