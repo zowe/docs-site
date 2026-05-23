@@ -5,6 +5,10 @@
 
 In Zowe you can validate your identity with the API ML using X.509 client certificates to access onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs with X.509 client certificates.
 
+:::tip
+This page covers **server-side configuration** to enable X.509 client certificate authentication. For instructions on how to **use** a client certificate to authenticate from a client application, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
+:::
+
 ## Procedure overview
 
 Follow these steps to enable single sign on for clients via X.509 client certificate configuration:
@@ -22,7 +26,8 @@ Follow these steps to enable single sign on for clients via X.509 client certifi
 
 Before enabling this feature, ensure your environment meets the following requirements:
 
-* **TLS Setup:** Zowe must have a correct TLS configuration. The truststore must contain the Certificate Authority (CA) certificates of all incoming client certificates.
+* **z/OSMF as authentication provider:** z/OSMF must be configured as the authentication provider for the API Mediation Layer. For more information, see [Configuring an authentication provider for API Mediation Layer](../authentication-providers-for-apiml.md).
+* **TLS Setup:** Zowe must have a correct TLS configuration. The truststore must contain the Certificate Authority (CA) certificates (the issuer certificates) of all incoming client certificates.
 * **SAF Identity Mapping:** The Zowe runtime user must be authorized to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
 * **z/OSMF Access:** The Zowe runtime user must be a member of the default `IZUUSER` group to log in to z/OSMF.
 * **PassTicket Generation:** The Zowe runtime user must be able to generate PassTickets for the user and for the z/OSMF `APPLID`. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
@@ -99,7 +104,7 @@ For information about configuring ZSS, see [Configure components zss](../../appe
 
     * **components.gateway.apiml.security.x509.externalMapperUrl**  
 
-      Specifies the location of the API used to map certificates to SAF owners.
+      Specifies the location of the API used to map certificates to SAF owners. This configuration is also required if the ZSS hostname has been customized.
 
       **Default ZSS URL:**
 
@@ -117,7 +122,7 @@ Enable X.509 client certificates as an authentication method for the API Mediati
 
 ### Prerequisites for X.509 Client Certificates
 
-Before you update configuration for X.509 Client Certificate authentication, ensure that the Zowe runtime user ID (default `ZWESVUSR`) has the required authorization to use the **`IRR.RUSERMAP`** resource within the **`FACILITY`** class.
+Before you update configuration for X.509 Client Certificate authentication, ensure that the Zowe runtime user ID (default `ZWESVUSR`) has **READ** access to the **`IRR.RUSERMAP`** resource within the **`FACILITY`** class.
 
 These permissions are typically established during installation via the `ZWESECUR` JCL or configuration workflow. This authorization is required for the Gateway to map certificates to SAF user identities.
 
@@ -159,5 +164,19 @@ Follow these steps to update the `zowe.yaml` configuration file and enable certi
    ```
 
 4. Restart Zowe to refresh the configuration and initialize the new security filters.
+
+5. (Optional) Test the client certificate authentication by running the following `curl` command:
+
+   ```bash
+   curl --cert /path/to/client-cert.pem --key /path/to/client-key.pem \
+        --cacert /path/to/ca-cert.pem \
+        https://<external-gateway-host>:<external-gateway-port>/gateway/api/v1/auth/login
+   ```
+
+   If the configuration is correct, the API ML returns a successful authentication response with a JWT token.
+
+:::note
+If authentication fails, check the API ML Gateway log files for details. The Gateway logs X.509 certificate mapping failures in the `$ZWE_zowe_workspaceDirectory/gateway/logs/` directory. Look for messages containing `X509` or `client certificate` in the Gateway `messages.log`.
+:::
 
 X.509 client certificate authentication is now active. The API ML can now attempt to authenticate clients using their provided certificates upon the next connection attempt.

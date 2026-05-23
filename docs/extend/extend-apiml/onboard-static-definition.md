@@ -39,6 +39,12 @@ The first step in API service onboarding is to identify the APIs that you want t
     * (Optional) base path where the service is available.
       This URL is called the base URL of the service.
 
+      For example, in the URL `http://host:port/myapp/api/v1`, the base path is `/myapp/api/v1`.
+      The full URL `http://host:port/myapp/api/v1` can be broken down as:
+        - **Hostname**: `host`
+        - **Port**: `port`
+        - **Base path**: `/myapp/api/v1`
+
    **Example:**
 
    In the sample service described in the [Onboarding Overview](onboard-overview.md#sample-rest-api-service), the URL of the service is: `http://localhost:8080`.
@@ -61,7 +67,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
    **Example:**
 
-   In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
+   In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version segment is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
 
 ## Define your service and API in YAML format
 
@@ -108,6 +114,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 * The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 * The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
+* The validation of the static definition may fail if the `catalogUiTileId` value does not match a tile ID defined under `catalogUiTiles`.
 
 :::tip Tips:
 
@@ -161,6 +168,10 @@ This method enables you to access the service through a stable URL, and move the
 :::
 
 ## Customize configuration parameters
+
+:::tip
+The following sections describe each configuration parameter in detail. Use the table of contents or search within this page to quickly find the parameter you need.
+:::
 
 This part contains a more complex example of the configuration and an explanation of all the possible parameters:
 
@@ -398,7 +409,16 @@ additionalServiceMetadata:
 
 * **authentication**
 
-  The information about the possible ways to integrate authentication are available in [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md) article.
+  The `authentication` object specifies how the API Gateway authenticates requests to your service. The `scheme` property under `authentication` defines which authentication scheme the service accepts. Available scheme values include:
+
+    * `zoweJwt` — The service accepts Zowe JWT tokens
+    * `safIdt` — The service accepts SAF IDT tokens
+    * `httpBasicPassTicket` — The service accepts PassTickets via HTTP Basic Authentication
+    * `zosmf` — The service accepts z/OSMF LTPA tokens
+    * `bypass` — The token is passed unchanged (no authentication)
+    * `x509` — The service accepts client certificates forwarded in headers
+
+  For detailed information about each authentication scheme, see [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md).
 
 * **apiInfo**
 
@@ -473,6 +493,10 @@ additionalServiceMetadata:
   together into "tiles".
   Each unique identifier represents a single API Catalog UI dashboard tile.
   Specify the value based on the ID of the defined tile.
+
+  :::caution
+  The `catalogUiTileId` value must use only lowercase alphanumeric characters. The value must match a tile ID defined under `catalogUiTiles`. If the `catalogUiTileId` does not match any defined tile, the API Mediation Layer rejects the definition with a validation error.
+  :::
 
 * **catalogUiTile**
 

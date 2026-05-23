@@ -38,12 +38,16 @@ its performance and create large log files that consume a large volume of disk s
 
 1. Open the file `zowe.yaml`.
 
-2. For each component, find the `components.*.debug` parameter and set the value to `true`:
+2. Each API ML component has its own `components.<component>.debug` parameter. Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
 
-   **Example:** 
+   **Example — enable debug for all three core services:** 
    ```yaml
    components:
      gateway:
+       debug: true
+     discovery:
+       debug: true
+     catalog:
        debug: true
    ```
    By default, debug mode is disabled, and the `components.*.debug` is set to `false`.
@@ -60,9 +64,9 @@ You can change the log level of a particular code component of the API ML intern
 
 **Follow these steps:**
 
-1. Enable API ML Debug Mode as described in Enable API ML Debug Mode.
-This activates the application/loggers endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
-2. List the available loggers of a service by issuing the **GET** request for the given service URL:
+1. Enable API ML Debug Mode as described in [Enable API ML Debug Mode](#enable-api-ml-debug-mode).
+This activates the `/application/loggers` endpoints in each API ML internal service (Gateway, Discovery service, and Catalog).
+2. List the available loggers of a service by issuing the **GET** request for the given service URL. Use the direct service URL when accessing a specific API ML component, or the Gateway-routed URL when accessing through the API Gateway:
 
     ```
     GET scheme://hostname:port/application/loggers
@@ -77,9 +81,13 @@ This activates the application/loggers endpoints in each API ML internal service
 
     - **port**
 
-        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
-    MFS_DS_PORT for the Discovery service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
+|        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
+    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
     (by default, set to gateway port + 2).
+
+    :::note Deprecated
+    The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the corresponding `zowe.yaml` parameters (`components.gateway.port`, `components.discovery.port`, `components.catalog.port`) instead.
+    :::
 
     **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
     ```
@@ -90,9 +98,13 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Example:**
 
+    ```bash
+    # HTTPie (requires: pip install httpie)
+    http GET https://<gateway-hostname>:7554/application/loggers
+
+    # curl
+    curl -k https://<gateway-hostname>:7554/application/loggers | jq .
     ```
-    HTTPie command:
-    http GET https://lpar.ca.com:10000/application/loggers
 
     Output:
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
@@ -103,6 +115,11 @@ This activates the application/loggers endpoints in each API ML internal service
        ...
      }
     }
+    ```
+
+    **Tip:** Filter logger output with `grep` to narrow down specific packages, for example:
+    ```bash
+    http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
     ```
 
 3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
@@ -135,16 +152,49 @@ This activates the application/loggers endpoints in each API ML internal service
 
     **Example:**
 
-    ```
+    ```bash
+    # HTTPie (requires: pip install httpie)
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
+
+    # curl
+    curl -k -X POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model \
+      -H "Content-Type: application/json" \
+      -d '{"configuredLevel": "WARN"}'
     ```
+
+    **HTTPie vs curl comparison:**
+
+    | Tool | Installation | Command syntax | Use case |
+    |------|-------------|----------------|----------|
+    | HTTPie | `pip install httpie` | `http POST <url> key=value` | Human-friendly, auto-formatted output |
+    | curl | Pre-installed on most systems | `curl -X POST <url> -H ... -d '...'` | Universal, scriptable, no extra dependencies |
+
+    **Hierarchical logging:**
+
+    Loggers in the API ML follow a hierarchical naming convention. Setting the log level on a parent logger (e.g., `org.zowe.apiml`) affects all child loggers (`org.zowe.apiml.gateway`, `org.zowe.apiml.security`, etc.) unless a child has an explicitly configured level.
+
+    **Common loggers:**
+
+    | Logger | Description |
+    |--------|-------------|
+    | `org.zowe.apiml` | All API ML components (Gateway, Discovery, Catalog) |
+    | `org.zowe.apiml.gateway` | Gateway-specific components |
+    | `org.zowe.apiml.security` | Security and authentication components |
+    | `com.netflix.eureka` | Eureka service discovery and registration |
+    | `org.springframework` | Spring framework internals |
+    | `org.apache.http` | HTTP client and wire-level requests |
+    | `reactor.netty` | Reactive Netty I/O operations |
+
+    :::warning Runtime-only persistence
+    Log level changes made via the `/application/loggers` endpoint apply only for the current session. They are **not** persisted across restarts. To make permanent changes, set `components.<component>.debug: true` or configure logging in the component's `application.yml`.
+    :::
 
 ## Gather atypical debug information
 
 Use the following configuration to set either verbose internal logging for key system packages, or enable detailed SSL/TLS tracing to analyze encrypted traffic layers.
 
 * **debug**  
-This boolean property activates the Spring `debug` profile for an API ML component. Enabling this property sets verbose `DEBUG` or `TRACE` log levels for key packages, including `org.zowe.apiml`, `org.springframework`, `org.apache.http`, and `reactor.netty`.
+This boolean property activates the Spring `debug` profile for an API ML component and enables the `/application/loggers` endpoint at runtime. Enabling this property sets verbose `DEBUG` or `TRACE` log levels for key packages, including `org.zowe.apiml`, `org.springframework`, `org.apache.http`, and `reactor.netty`.
 
 Set `debug` to `true` under the relevant component in `zowe.yaml`:
 
@@ -162,7 +212,11 @@ components:
     debug: true
 ```
 
-For more information, see [Adding active profiles](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) in the Spring documentation.
+For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-boot/reference/features/profiles.html) in the Spring documentation.
+
+:::note Troubleshooting
+When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (e.g., `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
+:::
 
 
 * **sslDebug**  

@@ -36,7 +36,15 @@ The following commands show options for both the internal API ML mapper and ZSS.
 
 :::note
 
-If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format of the certificate's distinguished name as displayed.
+If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHKCERT` or equivalent command on the certificate to display the subject distinguished name (DN) as it is stored in the ESM. The DN filter must match the order and format shown by `CHKCERT`.
+
+For example, if `CHKCERT` displays:
+
+```
+CN=USER1.OU=DEPT1.O=ORG1
+```
+
+the SDNFILTER must be specified exactly as `CN=USER1.OU=DEPT1.O=ORG1`.
 
 Using the internal API ML mapper is the preferred method.
 :::
@@ -185,7 +193,7 @@ Validate using _CURL_, a command line utility that runs on Linux based systems:
 curl -X POST \
 --cert /path/to/cert.pem \
 --key /path/to/key.pem \
-https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
+https://<gateway-hostname>:7554/gateway/api/v1/auth/login -v
 ```
 
 * **cert**  
@@ -193,7 +201,7 @@ https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
 * **key**  
   Path to the private key
 * **7554**  
-  This value is a place holder. Replace this value with the configured API Gateway port in the instance
+  <gateway-port> — Replace this value with the configured API Gateway port in the instance. Default is 7554. Configured under `components.gateway.port`. For more information about the zowe.yaml configuration, see [Creating and configuring the Zowe instance directory](./install-instance-zos.md#creating-and-configuring-the-zowe-instance-directory).
 
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 
