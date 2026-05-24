@@ -185,7 +185,7 @@ Validate using _CURL_, a command line utility that runs on Linux based systems:
 curl -X POST \
 --cert /path/to/cert.pem \
 --key /path/to/key.pem \
-https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
+https://<gateway-hostname>:7554/gateway/api/v1/auth/login -v
 ```
 
 * **cert**  
@@ -193,7 +193,7 @@ https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
 * **key**  
   Path to the private key
 * **7554**  
-  This value is a place holder. Replace this value with the configured API Gateway port in the instance
+  This is a placeholder for the API Gateway port. The default value is `7554`. Replace this value with the Gateway port configured in your `zowe.yaml` file under `components.gateway.port`.
 
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 

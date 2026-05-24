@@ -40,7 +40,7 @@ The `z/OSMF Authentication Provider` is the alternative provider which allows th
 Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
 ```
 components.gateway.apiml.security.auth.provider: zosmf
-components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
+components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Default z/OSMF service ID
 ```
 
 

@@ -41,7 +41,10 @@ The first step in API service onboarding is to identify the APIs that you want t
 
    **Example:**
 
-   In the sample service described in the [Onboarding Overview](onboard-overview.md#sample-rest-api-service), the URL of the service is: `http://localhost:8080`.
+   For a service at `https://myhost:9443/myapp/api/v2/`:
+   - Hostname: `myhost`
+   - Port: `9443`
+   - Base path: `/myapp/api/v2`
 
 2. Identify the API of the service that you want to expose through the API Gateway.
 
@@ -472,7 +475,14 @@ additionalServiceMetadata:
   This is the grouping value used by the API Mediation Layer to group multiple API services
   together into "tiles".
   Each unique identifier represents a single API Catalog UI dashboard tile.
-  Specify the value based on the ID of the defined tile.
+
+  :::caution
+  The `catalogUiTileId` value must match a tile ID defined in the `catalogUiTiles` section (see below).
+  If no matching tile definition exists, the service will not appear in the API Catalog UI.
+
+  Valid characters: lowercase alphanumeric and hyphens (`-`). Dots, spaces, and other special characters
+  are not allowed. Maximum length: 64 characters.
+  :::
 
 * **catalogUiTile**
 

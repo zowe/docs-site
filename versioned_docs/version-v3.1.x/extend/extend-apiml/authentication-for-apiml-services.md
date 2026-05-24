@@ -45,7 +45,11 @@ For information about authentication providers that handle authentication for th
 The API Gateway contains the following REST API authentication endpoints, which are also documented in the [Open API Documentation](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/zowe/docs-site/docs-staging/api_definitions/gateway.json):
 
 - **auth/login**  
-The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{gatewayPort}/gateway/api/v1/auth/login`.
+The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/login`.
+
+:::note
+The `/gateway/api/v1/` prefix routes through the Gateway's API ML layer. The shorter form `/api/v1/` addresses Gateway endpoints directly. Both work; use the full form for external access.
+:::
 
   The `auth/login` endpoint authenticates mainframe user credentials and returns an authentication token. The login request requires user credentials though one of the following methods:
     * Basic access authentication
@@ -55,7 +59,7 @@ The full path of the `auth/login` endpoint appears as `https://{gatewayUrl}  :{g
   When authentication is successful, the response to the request is an empty body and a token is contained in a secure `HttpOnly` cookie named `apimlAuthenticationToken`. When authentication fails, the user receives a 401 status code.
 
 * **auth/query**  
-The full path of the `auth/query` endpoint appears as `https://{gatewayUrl}:   {gatewayPort}/gateway/api/v1/auth/query`.
+The full path of the `auth/query` endpoint appears as `https://{gatewayUrl}:{gatewayPort}/gateway/api/v1/auth/query`.
 
    The `auth/query` endpoint validates the token and retrieves information associated with the token.
    The query request requires the token through one of the following methods:
@@ -124,10 +128,11 @@ Review the following table of available authentication mechanisms according to t
 | UI (eureka homepage)                 | basic auth(MF), token              | see note about mainframe authentication  |
 | application/**                       | basic auth(MF), token              |  see note about mainframe authentication  |
 | application/health, application/info | none                          |     |
-| eureka/**                            | client certificate                   | Allows for the other services to register without mainframe credentials or token. API ML's certificate can be used. It is stored in the `keystore/localhost/localhost.keystore.p12` keystore or in the SAF keyring. It is exported to .pem format for convenience. Any other certificate which is valid and trusted by Discovery service can be used. |
+| eureka/**                            | client certificate                   | Allows services to register without mainframe credentials or token. The API ML's own certificate can be used. It is stored in one of two locations depending on your setup:<br><br>- **Keystore** (`keystore/localhost/localhost.keystore.p12`): A local PKCS#12 file used outside of z/OS. A PEM copy is exported to `keystore/localhost/localhost.pem` during keystore setup for tools requiring PEM format.<br>- **SAF keyring**: A z/OS security construct (RACF/ACF2/Top Secret) configured via ZWESECUR. No automatic PEM export occurs when using a SAF keyring — the private key stays in the keyring.<br><br>Any other certificate trusted by the Discovery Service can also be used. |
 | discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication |
 
 :::note Notes:
+* The `**` notation is a glob pattern that matches any sub-path recursively. For example, `eureka/**` matches `eureka/apps/`, `eureka/apps/service1`, etc.
 * Some endpoints are protected by mainframe authentication. The authentication function is provided by the API Gateway. This functionality is not available until the Gateway registers itself to the Discovery Service.
 
 * Since the Discovery Service uses HTTPS, your client also requires verification of the validity of its certificate. Verification is performed by validating the client certificate against certificates stored in the truststore or SAF keyring.

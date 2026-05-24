@@ -106,7 +106,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
     ```
     HTTPie command:
-    http GET https://lpar.ca.com:10000/application/loggers
+    http GET https://<gateway-hostname>:7554/application/loggers
 
     Output:
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
