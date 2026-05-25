@@ -137,7 +137,7 @@ This signal confirms that the API Catalog communication layer and authentication
 
 ## Invalid authentication 
 <!--TODO-->
-This signal captures the technical context of a request utilizing x509 certificate-based authentication during the routing process.
+
 
 * **auth.service.auth.method**  
 The security provider method (`x509`).
@@ -173,6 +173,44 @@ The communication protocol (`https`).
 ```
 
 This signal indicates a TLS handshake or trust verification failure, meaning the client's physical certificate was rejected before any application-level routing could occur.
+
+
+<!-- DRAFT with "auth.status": "ERROR"
+
+This signal captures the technical context of a request utilizing x509 certificate-based authentication during the routing process.
+
+* auth.service.auth.method  
+The security provider method (x509).
+
+* auth.status  
+The final result of the authentication attempt (ERROR).
+
+* auth.error.type  
+The specific categories of TLS or certificate failure (e.g., CertVerificationFailed).
+
+* auth.error.message  
+A detailed description of why the certificate verification failed.
+
+* http.request.method  
+The HTTP verb used when the connection was attempted (GET).
+
+* url.scheme  
+The communication protocol (https).
+
+```json
+{
+  "auth.service.auth.method": "x509",
+  "auth.status": "ERROR",
+  "auth.error.type": "CertVerificationFailed",
+  "auth.error.message": "The client certificate presented is expired or not trusted by the root CA.",
+  "http.request.method": "GET",
+  "url.scheme": "https"
+}
+```
+
+This signal indicates a TLS handshake or trust verification failure, meaning the client's physical certificate was rejected before any application-level routing could occur.
+
+-->
 
 ## Valid authentication when routing to an onboarded service (JWT)
 
