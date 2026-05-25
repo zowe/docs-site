@@ -30,7 +30,7 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
-This signal confirms that the onboarding is accepted by the Discovery Service..
+This signal confirms that the onboarding is accepted by the Discovery Service.
 
 
 ## A Service sent a successful heartbeat
@@ -305,7 +305,7 @@ The following example presents the payload when an expired token has been used.
  "auth.service.auth.method": "zoweJwt",
  "auth.status": "ERROR",
  "auth.error.message": "ZWEAO402E The request has not been applied because it lacks valid authentication credentials.",
- "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException"
+ "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException",
  "http.request.method": "GET",
  "service.id": "zowejwt",
  "service.instance.id": "static-localhost:zowejwt:10012",
