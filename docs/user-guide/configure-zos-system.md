@@ -1033,7 +1033,7 @@ Follow these steps to verify and configure access to large memory pages:
 1. Verify large page frame configuration.  
 Check the `LFAREA` parameter in `IEASYSxx` to ensure that large page frames are configured on your z/OS system.
 
-2. Verify existing CA ACF2 rules.  
+2. Verify existing ACF2 rules.  
 Run the following commands to check the current rule configuration for the resource:
 
 ```
@@ -1049,17 +1049,17 @@ For more information on large page configuration, see _z/OS MVS Programming: Ass
 
 **Granting READ Access to IARRSM.LRGPAGES**
 
-Follow these steps to define the CA ACF2 resource rule and grant the required access:
+Follow these steps to define the ACF2 resource rule and grant the required access:
 
 1. Define the resource rule.  
-Execute the following commands to grant the Zowe user ID READ access to the IARRSM.LRGPAGES resource:
+Execute the following commands to grant the Zowe user ID READ access to the `IARRSM.LRGPAGES` resource:
 
 ```
 SET RESOURCE(FAC)
 RECKEY IARRSM ADD(LRGPAGES UID(<uid-string-for-ZWESVUSR>) SERVICE(READ) ALLOW)
 ```
 
-Replace `uid-string-for-ZWESVUSR` with the actual CA ACF2 UID string for your Zowe cross-memory user ID.
+Replace `uid-string-for-ZWESVUSR` with the actual ACF2 UID string for your Zowe cross-memory user ID.
 
 
 2. Refresh the resource class.  
