@@ -7,7 +7,7 @@ You can use various SAF resource providers depending on your use case to handle 
 
 ## SAF Resource Checking Providers 
 
-API ML can check for the authorization of the user on endpoints such as `/gateway/api/v1/auth/check`. Access to a SAF resource is checked with your External Security Manager (ESM).
+API ML can check for the authorization of the user using endpoint `/gateway/api/v1/auth/check`. Access to a SAF resource is checked with your External Security Manager (ESM).
 
 Verification of the SAF resource is possible by any of the following three providers:
 
