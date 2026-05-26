@@ -73,8 +73,6 @@ Provide your username and password to generate a token and log in to API ML:
         }
     ```
 
-
-
      If you use the  `--show-token` option with the `login` command, you must manually supply the token on each command using the `--token-value` option. For example:
 
      ```
@@ -146,17 +144,34 @@ However, you might need to use a different base profile. To do so, add the `--ba
 
 - Use `--base-profile` to log in to API ML and save your token in a specific base profile that is not the default base profile:
 
-    Logging in with a username and password:
-        
+    Logging in with a username and password for the first time:
+
     ```
-    zowe auth login apiml --base-profile <profile_name>
+    zowe auth login apiml --host <APIML Host> --port <APIML Port> --base-profile <profile_name>
+
     ```
 
-    Logging in with a client certificate:
+    Logging in with a client certificate for the first time:
 
     ```
     zowe auth login apiml --host <APIML Host> --port <APIML Port> --cert-file <PEM Public Certificate Path> --cert-key-file <PEM Private Certificate Path> --base-profile <profile_name>
     ```
+
+    Logging in with existing credentials saved elsewhere (for example, environment variables, in parent or nested profiles, base profiles, or other configuration files):
+
+    ```
+    zowe auth login apiml --host <APIML Host> --port <APIML Port> --user <username> --password <user password> --base-profile <profile_name>
+    ```
+
+    :::note
+
+    Depending on your configuration, your base profile could contain the values for most of these properties and you might not need to include these properties in your command:
+    - `host`
+    - `port`
+    - `cert-file`, `cert-key-file` (instead of `user`, `password`)
+    - `user`, `password` (instead of `cert-file`, `cert-key-file`)
+    :::
+
 
 - Use `--base-profile` when issuing commands with API ML:
 
