@@ -1047,4 +1047,4 @@ RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
 F ACF2,REBUILD(FAC)
 ```
 
-Large memory pages are now configured. 
+Access to large memory pages is now configured.
