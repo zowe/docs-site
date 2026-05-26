@@ -1028,8 +1028,7 @@ Large pages are a z/OS performance feature for memory objects that use 1 MB page
 
 For more information, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
 
-1. Verify that large page frames are configured on the z/OS system.  
-Check the `LFAREA` parameter in `IEASYSxx`.
+1. Ensure that large page frames are configured on the z/OS system.  Check that the `LFAREA` parameter in `IEASYSxx` is specified with a non-zero value for 1 MB pages (for example, `1M=value`).
 
 ACF2 Rule Verification:
 
