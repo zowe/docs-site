@@ -51,7 +51,7 @@ In the event that there is an issue with authentication, API ML sets `X-Zowe-Aut
 
 ## Accepting JWT
 
-Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the client-side. 
+Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the client-side. No additional configuration is needed in the service's onboarding definition beyond specifying the scheme.
 
 ```yaml
 authentication:
@@ -83,8 +83,8 @@ For more information, see [Implement a SAF IDT provider](implement-new-saf-provi
 Using the scheme value `httpBasicPassTicket` specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
 It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent PassTicket generation errors and to make sure API Mediation Layer can generate PassTickets with the given APPLID. 
 
-* When a JWT is provided, the API Gateway validates the Zowe JWT, generates a PassTicket from it, and passes it to the downstream service. The downstream service then validates the PassTicket.
-* When a client certificate is provided, the service validates the certificate by mapping the certificate to a mainframe user to use for PassTicket generation.
+* When a client authenticates to API ML using a Zowe JWT, the API ML Gateway validates the JWT to identify the user, generates a PassTicket for that user using the configured `APPLID`, and forwards the PassTicket to your service in the `Authorization: Basic` header. Your service does not receive or validate the JWT directly.
+* When a client authenticates to API ML using a client certificate, the API ML Gateway maps the certificate to a mainframe user identity, generates a PassTicket for that user using the configured `APPLID`, and forwards it to your service in the `Authorization: Basic` header. Your service does not receive or validate the certificate directly.
 * If the downstream service needs to consume the user ID and the PassTicket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
 * The HTTP headers are then added to each request towards the downstream service. The headers contain the user ID and the PassTicket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt). 
 

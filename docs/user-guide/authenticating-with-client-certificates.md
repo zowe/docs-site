@@ -193,15 +193,17 @@ Validate using _CURL_, a command line utility that runs on Linux based systems:
 curl -X POST \
 --cert /path/to/cert.pem \
 --key /path/to/key.pem \
-https://<gateway-hostname>:7554/gateway/api/v1/auth/login -v
+https://<zowe-gateway-host>:<port>/gateway/api/v1/auth/login -v
 ```
 
 * **cert**  
   Specifies the certificate location
 * **key**  
   Path to the private key
-* **7554**  
-  <gateway-port> — Replace this value with the configured API Gateway port in the instance. Default is 7554. Configured under `components.gateway.port`. For more information about the zowe.yaml configuration, see [Creating and configuring the Zowe instance directory](./install-instance-zos.md#creating-and-configuring-the-zowe-instance-directory).
+* **zowe-gateway-host**  
+  Specifies the hostname or IP address of the z/OS system where the Zowe API Mediation Layer Gateway is running.
+* *port**  
+  This value is a place holder. Replace this value with the configured API Gateway port in the instance. The Zowe default port is `7554`.
 
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 
