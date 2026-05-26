@@ -93,6 +93,80 @@ To avoid this, change the `logs` and `temp` folder locations:
 
     <br/>After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
 
+## Activation failures when downgrading Zowe Explorer
+
+When you downgrade your Zowe Explorer version from a more recent version, it is possible to experience activation failures when starting Zowe Explorer.
+
+This can be resolved by clearing the local storage that contains your Zowe Explorer historical data that Zowe Explorer manages for improved performance.
+
+:::warning
+
+Clearing your local storage removes your historical data on Zowe Explorer such favorites, search history, and profiles added to tree views.
+
+:::
+
+To clear your local storage on Visual Studio Code:
+
+1. Install the [SQLite3 Editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) extension on VS Code.
+
+2. In your operating system's file explorer, locate the `state.vscdb` file:
+
+    - In macOS, go to `~/Library/Application Support/Code/User/globalStorage/`.
+
+    - In Linux, go to `~/.config/Code/User/globalStorage/`.
+    
+    - In Windows, go to `%APPDATA%\Code\User\globalStorage\`.
+
+3. Open the `state.vscdb` file in VS Code.
+
+4. Ensure that the `ItemTable` option is selected in the `tables` tab.
+
+    A table displays showing historical data for all VS Code extensions. 
+
+5.  Use the **Find** tab to search for `zowe.vscode`.
+
+    A filtered version of the table displays.
+
+6. Locate the `zowe.vscode-extension-for-zowe` key and select its value.
+
+    The value entry displays at the bottom of VS Code.
+
+7. Select and delete the value entry contents.
+
+    :::tip
+
+    To reuse this data later, save the content in a new, separate file.
+
+    :::
+
+8. Click the **Commit** button and close/quit VS Code.
+
+9. Reopen VS Code and restart Zowe Explorer.
+
+    Zowe Explorer activates and favorites and search history are now empty.
+
+## Excessive z/OSMF address space `S222` ABENDs
+
+**Symptom**:
+
+Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
+
+**Sample errors:**
+
+![ABENDs with reason code S222](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-symptom.png)
+
+z/OSMF attempts to continually use up to two address spaces by default. When too many concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+
+**Solution**: Lower the value of the **zowe.settings.zosmfMaxConcurrentRequests** setting. If the issue persists, continue lowering the setting value to `1`.
+
+:::note
+
+Lowering this setting might cause requests to take longer, negatively impacting performance.
+
+:::
+
+![The zosmfMaxConcurrentRequests setting can be modified to help avoid ABENDs.](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-solution.png)
+
 ## Common issues with Zowe Explorer table view
 
 To troubleshoot the table view for data sets and jobs, review the following common issues:
