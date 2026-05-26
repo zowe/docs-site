@@ -26,7 +26,6 @@ Follow these steps to enable single sign on for clients via X.509 client certifi
 
 Before enabling this feature, ensure your environment meets the following requirements:
 
-* **z/OSMF as authentication provider:** z/OSMF must be configured as the authentication provider for the API Mediation Layer. For more information, see [Configuring an authentication provider for API Mediation Layer](../authentication-providers-for-apiml.md).
 * **TLS Setup:** Zowe must have a correct TLS configuration. The truststore must contain the Certificate Authority (CA) certificates (the issuer certificates) of all incoming client certificates.
 * **SAF Identity Mapping:** The Zowe runtime user must be authorized to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
 * **z/OSMF Access:** The Zowe runtime user must be a member of the default `IZUUSER` group to log in to z/OSMF.
