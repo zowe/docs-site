@@ -1053,3 +1053,4 @@ Replace `uid-string-for-ZWESVUSR` with the actual ACF2 UID string for the Zowe c
 ```
 F ACF2,REBUILD(FAC)
 ```
+Large memory pages are now configured. 
