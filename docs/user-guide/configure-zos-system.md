@@ -1022,68 +1022,34 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 
 ### Configure access to large memory pages
 
-:::note
-This configuration is primarily relevant for ACF2 environments where silent denials can prevent performance optimizations from taking effect.
-:::
+If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
 
-Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests. If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
+Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests.
 
-Follow these steps to verify and configure access to large memory pages:
+For more information, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
 
-1. Verify large page frame configuration.  
-Check the `LFAREA` parameter in `IEASYSxx` to ensure that large page frames are configured on your z/OS system.
+1. Verify that large page frames are configured on the z/OS system.  
+Check the `LFAREA` parameter in `IEASYSxx`.
 
-2. Verify existing ACF2 rules.  
-Run the following commands to check the current rule configuration for the resource:
+ACF2 Rule Verification:
 
 ```
 SET RESOURCE(FAC)
 LIST IARRSM
 ```
-:::tip
-For more information on large page configuration, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
-:::
 
-<details>
-<summary>Click here for details about how to grant READ access to IARRSM.LRGPAGES. </summary>
+2. Grant `READ` access to `IARRSM.LRGPAGES`.
 
-**Granting READ Access to IARRSM.LRGPAGES**
-
-Follow these steps to define the ACF2 resource rule and grant the required access:
-
-1. Define the resource rule.  
-Execute the following commands to grant the Zowe user ID READ access to the `IARRSM.LRGPAGES` resource:
+To grant the Zowe user ID access, define the following ACF2 resource rule:
 
 ```
 SET RESOURCE(FAC)
-RECKEY IARRSM ADD(LRGPAGES UID(<uid-string-for-ZWESVUSR>) SERVICE(READ) ALLOW)
+RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
 ```
 
-Replace `uid-string-for-ZWESVUSR` with the actual ACF2 UID string for your Zowe cross-memory user ID.
+Replace `uid-string-for-ZWESVUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
 
-
-2. Refresh the resource class.  
-Rebuild the `FACILITY` directory to activate the new rule:
-
+3. Rebuild the `FACILITY` directory:
 ```
 F ACF2,REBUILD(FAC)
 ```
-
-</details>
-
-## Verification of ACF2 rule
-
-Use the `ACCESS` command to verify that the ACF2 rule has been correctly applied and is visible to the system. 
-
-Run the following command:
-
-```
-ACF
-SET RESOURCE(FAC)
-ACCESS IARRSM.LRGPAGES LID(ZWESIUSR)
-END
-```
-
-A message indicating `ACCESS ALLOWED` indicates successful configuration.
-
-Alternatively, you can check the `ZWESISTC` JES log for `ZWES0104I`. This message usually indicates that the server is initializing memory objects.
