@@ -19,6 +19,7 @@ module.exports = {
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
+    experimental_vcs: "default-v1",
     faster: true,
     v4: {
       removeLegacyPostBuildHeadAttribute: true
