@@ -175,7 +175,7 @@ Follow these steps to update the `zowe.yaml` configuration file and enable certi
    If the configuration is correct, the API ML returns a successful authentication response with a JWT token.
 
 :::note
-If authentication fails, check the API ML Gateway log files for details. The Gateway logs X.509 certificate mapping failures in the `$ZWE_zowe_workspaceDirectory/gateway/logs/` directory. Look for messages containing `X509` or `client certificate` in the Gateway `messages.log`.
+If authentication fails, check the zowe log files for details. Look for messages containing `X509` or `client certificate` in the spool.
 :::
 
 X.509 client certificate authentication is now active. The API ML can now attempt to authenticate clients using their provided certificates upon the next connection attempt.
