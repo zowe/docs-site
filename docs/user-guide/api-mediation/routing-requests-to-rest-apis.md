@@ -1,6 +1,6 @@
 # Routing requests to REST APIs
 
-API consumers can access any services onboarded to the API Mediation Layer through a single port. In this context, 'service' refers to one or more instances that share the same API and are onboarded under the same service Id. Some services provide versioned APIs, while other services provide an unversioned API. From the consumer side, the API Mediation Layer takes care of situations in which one instance is down and/or ditributing the load between different instances of a service. 
+API consumers can access any services onboarded to the API Mediation Layer through a single port. In this context, 'service' refers to one or more instances that share the same API and are onboarded under the same service Id. Some services provide versioned APIs, while other services provide an unversioned API. From the consumer side, the API Mediation Layer takes care of situations in which one instance is down and/or distributing the load between different instances of a service. 
 
 Types of services include both versioned and nonversioned services:
 
@@ -18,7 +18,7 @@ Under certain conditions it is possible to route to a specific instance of servi
 
   * A service provides one or more APIs, and is identified by a service ID. Note that sometimes the term "service name" is used to mean the service ID.  
   * The default service ID is provided by the service developer in the service configuration file.  
-  * A system administrator can replace the service ID with a deployment environment specific name using additional configuration that is external to the service deployment unit. Most often, configuration is performed in a JAR or WAR file.  
+  * A system administrator can replace the service ID with a deployment environment specific name by setting the `apimlId` property in the service metadata. This allows routing to use a custom identifier without changing the service's own configuration.  
   * Services are deployed using one or more service instances, which share the same service ID and implementation.
 
 * **URI (Uniform Resource Identifier)**
@@ -31,9 +31,11 @@ The basic method of routing is based on the service ID. For services that have m
 
 ### API ML Routing to the Versioned service
 
-The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided, such as when a service is running in high-availability (HA) mode. To get to a specific instance, it is necessary to access the instance with a specific API ML configuration and header X-Instance-Id.
+The URI identifies the resource, but does not identify the instance of the service as unique when multiple instances of the same service are provided, such as when a service is running in high-availability (HA) mode. To get to a specific instance, it is necessary to access the instance with a specific API ML configuration and header `X-Forward-To`.
 
-In addition to the basic Zuul routing, the Zowe API Gateway supports versioning in which the user can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
+In addition to the basic routing, the Zowe API Gateway supports versioning in which the user can specify a major version. The Gateway routes a request only to an instance that provides the specified major version of the API.
+
+The URL prefixes are defined by each service in its metadata configuration. Common conventions include:
 
 * The `/api/` prefix is used for REST APIs.
 * The prefix `/ui/` applies to web UIs
@@ -42,7 +44,9 @@ In addition to the basic Zuul routing, the Zowe API Gateway supports versioning 
 
 The URL expected by the API Gateway has the following format:
 
-`https://{gatewayHost}:{port}/{serviceId}/api/v{majorVersion}/{resource}`
+`https://{gatewayHost}:{port}/{serviceId}/{gatewayUrl}/{resource}`
+
+Where `{gatewayUrl}` is the prefix registered by the service (e.g., `api/v1`, `ui/v1`, `ws/v1`). The gateway port on z/OS defaults to `7554` (configurable via `zowe.yaml`).
 
 **Example:**
 
@@ -55,7 +59,7 @@ https://service:10015/enablerv1sampleapp/api/v1/samples
 The following address shows the API Gateway URL of the resource:
 
 ```
-https://gateway:10010/enablerv1sampleapp/api/v1/samples
+https://gateway:7554/enablerv1sampleapp/api/v1/samples
 ```
 
 The following diagram illustrates how basic routing works:
@@ -63,6 +67,18 @@ The following diagram illustrates how basic routing works:
 ![Zowe API Mediation basic routing](../../images/api-mediation/Basic-Routing.png)
 
 ### Implementation details for routing
+
+The Zowe API Gateway is built on Spring Cloud Gateway. It dynamically generates routes from the service registry (Eureka). Services register their `gatewayUrl` prefixes in metadata, and the gateway creates routing rules by matching the path `/{serviceId}/{gatewayUrl}/**` and rewriting it to the service's internal URL.
+
+Routing supports two modes:
+- **Path-based routing** (`ByBasePath`): matches requests by `/{serviceId}/{gatewayUrl}/**` and rewrites the path to the service's internal URL.
+- **Header-based routing** (`ByHeader`): uses the `X-Forward-To` header to route requests to a specific service or instance.
+
+The gateway also exposes its own native endpoints under the `/gateway/` prefix for authentication and token management:
+- `/gateway/api/v1/auth/login` — user login
+- `/gateway/api/v1/auth/query` — query authentication status
+- `/gateway/api/v1/auth/access-token/generate` — generate access tokens
+- `/gateway/api/v1/auth/keys/public` — retrieve public keys for token verification
 
 
 ## Zowe architecture with high availability enablement on Sysplex
