@@ -1045,12 +1045,7 @@ To grant the Zowe user ID access, define the following ACF2 resource rule:
 ```
 SET RESOURCE(FAC)
 RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
-```
-
-Replace `uid-string-for-ZWESVUSR` with the actual ACF2 UID string for the Zowe cross-memory user.
-
-3. Rebuild the `FACILITY` directory:
-```
 F ACF2,REBUILD(FAC)
 ```
+
 Large memory pages are now configured. 
