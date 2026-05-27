@@ -32,7 +32,6 @@ The communication protocol (`https`).
 ```
 This signal confirms that the onboarding is accepted by the Discovery Service.
 
-
 ## A Service sent a successful heartbeat
 
 This signal indicates that an active service instance has successfully renewed its lease with the Discovery Service to maintain its availability status.
@@ -135,83 +134,6 @@ The communication protocol (`https`).
 ```
 This signal confirms that the API Catalog communication layer and authentication are working correctly, and that the empty response is due to an empty service registry rather than a system connectivity failure.
 
-## Invalid authentication 
-<!--TODO-->
-
-
-* **auth.service.auth.method**  
-The security provider method (`x509`).
-
-* **http.request.method**  
-The HTTP verb (`GET`).
-
-* **service.id**  
-The logical ID of the target client service.
-
-* **service.instance.id**  
-The instance identifier.
-
-* **service.response_code**  
-The status code returned (`200`).
-
-* **url.path**  
-The request path for the client API.
-
-* **url.scheme**  
-The communication protocol (`https`).
-
-```json
-{
-  "auth.service.auth.method": "x509",
-  "http.request.method": "GET",
-  "service.id": "<target-app>",
-  "service.instance.id": "localhost:<target-app>:10012",
-  "service.response_code": "200",
-  "url.path": "/<target-app>/api/v1/request",
-  "url.scheme": "https"
-}
-```
-
-This signal indicates a TLS handshake or trust verification failure, meaning the client's physical certificate was rejected before any application-level routing could occur.
-
-
-<!-- DRAFT with "auth.status": "ERROR"
-
-This signal captures the technical context of a request utilizing x509 certificate-based authentication during the routing process.
-
-* auth.service.auth.method  
-The security provider method (x509).
-
-* auth.status  
-The final result of the authentication attempt (ERROR).
-
-* auth.error.type  
-The specific categories of TLS or certificate failure (e.g., CertVerificationFailed).
-
-* auth.error.message  
-A detailed description of why the certificate verification failed.
-
-* http.request.method  
-The HTTP verb used when the connection was attempted (GET).
-
-* url.scheme  
-The communication protocol (https).
-
-```json
-{
-  "auth.service.auth.method": "x509",
-  "auth.status": "ERROR",
-  "auth.error.type": "CertVerificationFailed",
-  "auth.error.message": "The client certificate presented is expired or not trusted by the root CA.",
-  "http.request.method": "GET",
-  "url.scheme": "https"
-}
-```
-
-This signal indicates a TLS handshake or trust verification failure, meaning the client's physical certificate was rejected before any application-level routing could occur.
-
--->
-
 ## Valid authentication when routing to an onboarded service (JWT)
 
 This signal describes a request successfully authenticated via a Zowe JWT that has been routed to a downstream onboarded service.
@@ -307,11 +229,11 @@ The following example presents the payload when an expired token has been used.
  "auth.error.message": "ZWEAO402E The request has not been applied because it lacks valid authentication credentials.",
  "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException",
  "http.request.method": "GET",
- "service.id": "zowejwt",
- "service.instance.id": "static-localhost:zowejwt:10012",
+ "service.id": "<target-app>",
+ "service.instance.id": "static-localhost:<target-app>:10012",
  "service.response_code": "401",
- "url.path": "/zowejwt/api/v1/request",
+ "url.path": "/<target-app>/api/v1/request",
  "url.scheme": "https"
 }
 ```
-This signal confirms that the Gateway successfully routed the incoming request downstream, but did not attach a valid authentication token, resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.
+This signal confirms that the Gateway successfully routed the incoming request downstream resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.
