@@ -1045,5 +1045,5 @@ RECKEY IARRSM ADD(LRGPAGES UID(user_uid) SERVICE(READ) ALLOW)
 F ACF2,REBUILD(FAC)
 ```
 
-Replace `user_uid` with the UID for the zowe STC user that needs access.
+**Note:** Replace `user_uid` with the UID for the Zowe STC user that needs access.
 
