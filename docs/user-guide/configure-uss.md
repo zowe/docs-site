@@ -37,7 +37,10 @@ For information about OMVS segments, see the article _The OMVS segment in user p
 To ensure successful authentication and operation through Zowe, verify that user profiles meet the following criteria:
 
 * **Password Status**  
-The user ID must have a password or passphrase enabled (not NOPASSWORD), even if using certificate-based authentication. For Zowe service IDs, ensure the password is set to non-expire to avoid service interruptions.
+Password requirements depend on your authentication provider:
+  * **z/OSMF provider**: The user ID must have a password or passphrase enabled (not NOPASSWORD), even if using certificate-based authentication.
+  * **SAF provider (e.g., RACF, ACF2, Top Secret)**: Users authenticating with client certificates are not required to have a password for login. However, a password is required if the user needs PassTicket-based access to z/OSMF or downstream services. Suspended users cannot authenticate with client certificates in either case.
+  * For Zowe service IDs (e.g., `ZWESVUSR`, `ZWESIUSR`), ensure the password is set to non-expire to avoid service interruptions, regardless of provider.
 
 * **TSO/OMVS Segment**  
 The ID must have a valid OMVS segment assigned.
