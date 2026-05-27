@@ -30,7 +30,7 @@ In order for a user to be valid for certificate authentication, ensure that the 
 
   * **z/OSMF authentication provider**: The user ID must have a password assigned. The password can be expired. Users without a password (NOPASSWORD/PROTECTED) or suspended users cannot authenticate with client certificates. Ensure that PassTickets are enabled for z/OSMF.
 
-  * **SAF authentication provider (e.g., RACF, ACF2, Top Secret)**: The user ID does not require a password for client certificate login or JWT token generation. However, a password must be set if the user needs to call services that rely on PassTickets (such as z/OSMF REST APIs or downstream services that use PassTicket authentication). Suspended users cannot authenticate in either case.
+  * **SAF authentication provider (RACF, ACF2, Top Secret)**: The user ID does not require a password for client certificate login or JWT token generation. However, a password must be set if the user needs to call services that rely on PassTickets (such as z/OSMF REST APIs or downstream services that use PassTicket authentication). Suspended users cannot authenticate in either case.
   
 * The user must have a valid OMVS segment defined and password set, and include a unique User ID (UID). This segment is required to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
 
