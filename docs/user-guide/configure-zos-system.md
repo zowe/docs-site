@@ -1041,11 +1041,9 @@ Define the following ACF2 resource rule for the Zowe user ID:
 
 ```
 SET RESOURCE(FAC)
-RECKEY IARRSM ADD(LRGPAGES UID(uid-string-for-ZWESVUSR) SERVICE(READ) ALLOW)
+RECKEY IARRSM ADD(LRGPAGES UID(user_uid) SERVICE(READ) ALLOW)
 F ACF2,REBUILD(FAC)
 ```
-* **uid-string-for-ZWESVUSR**  
-The ACF2 UID string that matches the Zowe started task user ID.  
-**Default:** `ZWESVUSR`
 
-Access to large memory pages is now configured.
+Replace `user_uid` with the UID for the zowe STC user that needs access.
+
