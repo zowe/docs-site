@@ -141,20 +141,55 @@ This activates the application/loggers endpoints in each API ML internal service
 
 ## Gather atypical debug information
 
-* **ZWE_configs_debug**  
-This property can be used to unconditionally add active debug profiles.
+Use the following configuration to set either verbose internal logging for key system packages, or enable detailed SSL/TLS tracing to analyze encrypted traffic layers.
+
+* **debug**  
+This boolean property activates the Spring `debug` profile for an API ML component. Enabling this property sets verbose `DEBUG` or `TRACE` log levels for key packages, including `org.zowe.apiml`, `org.springframework`, `org.apache.http`, and `reactor.netty`.
+
+Set `debug` to `true` under the relevant component in `zowe.yaml`:
+
+```yaml
+components:
+  gateway:
+    debug: true
+```
+
+To enable debug logging on the API ML single-service, set `debug` to `true` under `apiml`:
+
+```yaml
+components:
+  apiml:
+    debug: true
+```
 
 For more information, see [Adding active profiles](https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-adding-active-profiles) in the Spring documentation.
 
-* **ZWE_configs_sslDebug**  
-This property can be used to enable the SSL debugging. This property can also assist with determining what exactly is happening at the SSL layer.
 
-This property uses the `-Djavax.net.debug` Java parameter when starting the Gateway component. By setting `ZWE_configs_sslDebug` to `ssl`, all SSL debugging is turned on. The `ZWE_configs_sslDebug` parameter also accepts other values that can enable a different level of tracing. 
+* **sslDebug**  
+This property enables SSL/TLS debug logging and can assist with determining what is happening at the SSL layer. This property maps directly to the `-Djavax.net.debug` Java system property.
+
+Set `sslDebug` under the relevant component in `zowe.yaml`. The following example enables full SSL debug logging on the Gateway:
+
+```yaml
+components:
+  gateway:
+    sslDebug: "ssl"
+```
+
+To enable SSL debugging on the API ML single-service deployment (which bundles Gateway, Discovery, API Catalog, and ZAAS), set `sslDebug` under `apiml`:
+
+```yaml
+components:
+  apiml:
+    sslDebug: "ssl"
+```
+
+The value `ssl` turns on all SSL debugging. For finer-grained tracing, the property accepts the same sub-options as the standard `javax.net.debug` Java property, for example `ssl:record,handshake` or `all`.
 
 For more information, see the article **_Debugging Utilities_** in the IBM documentation.
 
 :::note
-This property can also be enabled for other API ML components.
+The `sslDebug` property can also be enabled for other API ML components.
 :::
 
 

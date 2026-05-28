@@ -28,7 +28,7 @@ Register the client certificate with the user IDs in your ESM.
 In order for a user to be valid for certificate authentication, ensure that the following prerequisites are met:
 * The user ID must have a password assigned. Note that while the user does not enter the password during certificate login, a valid password status is required by the ESM to map the identity and generate security tokens (like PassTickets).
   
-* The user must have a valid OMVS segment defined to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
+* The user must have a valid OMVS segment defined and password set, and include a unique User ID (UID). This segment is required to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
 
 ### Commands for API ML mapper and ZSS 
 
@@ -133,7 +133,7 @@ Using the internal API ML mapper is the preferred method.
   Create the mapping for the user and a distinguished name filter:
   
   ```tss
-  TSS ADDT0(<userid>) CERTMAP(<recid>)
+  TSS ADDTO(<userid>) CERTMAP(<recid>)
   SDNFILTR('<subject's-distinguished-name-filter>')
   USERID(<userid>)
   TRUST
@@ -185,15 +185,17 @@ Validate using _CURL_, a command line utility that runs on Linux based systems:
 curl -X POST \
 --cert /path/to/cert.pem \
 --key /path/to/key.pem \
-https://api-mediation-layer:7554/gateway/api/v1/auth/login -v
+https://<zowe-gateway-host>:<port>/gateway/api/v1/auth/login -v
 ```
 
 * **cert**  
   Specifies the certificate location
 * **key**  
   Path to the private key
-* **7554**  
-  This value is a place holder. Replace this value with the configured API Gateway port in the instance
+* **zowe-gateway-host**  
+  Specifies the hostname or IP address of the z/OS system where the Zowe API Mediation Layer Gateway is running.
+* *port**  
+  This value is a place holder. Replace this value with the configured API Gateway port in the instance. The Zowe default port is `7554`.
 
 x.509 Client Certificate authentication is correctly configured if the result of the request is HTTP 200 with an `apimlAuthenticationToken` cookie generated.
 

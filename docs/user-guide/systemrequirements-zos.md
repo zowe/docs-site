@@ -18,8 +18,10 @@ Be sure your z/OS system meets the following prerequisites:
 
 - z/OS version is in active support, such as Version 2.5, and 3.1
 
-  :::note Notes:
-  * Currently, access to z/OS V3.2 is not available on environments accessible to the Zowe community. As such, community members cannot run the automated test suite on z/OS V3.2. If you require further validation about z/OS V3.2 usage, please consult your Conformant Support Provider.
+  :::note 
+  While automated testing by the community is performed on z/OS V2.5 and V3.1, z/OS V3.2 has been validated and tested by community members for Zowe V2 (beginning with 2.18.4), and Zowe V3 (beginning with 3.3). For a full list of the latest supported versions and testing statuses, see the Zowe [Compatibility Matrix](https://www.zowe.org/compatibility) in _zowe.org_. 
+  
+  If you require further validation about z/OS V3.2 usage, please consult your Conformant Support Provider.
   :::
 
 - zFS volume has at least 1200 MB of free space for Zowe server components, the corresponding keystore, instance configuration files and logs, and third-party plug-ins.

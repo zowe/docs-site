@@ -9,6 +9,7 @@ module.exports = {
       link: { type: "doc", id: "whats-new/release-notes/release-notes-overview" },
       collapsed: false,
       items: [
+        "whats-new/release-notes/v3_5_0",        
         "whats-new/release-notes/v3_4_1",
         "whats-new/release-notes/v3_4_0",
         "whats-new/release-notes/v3_3_1",
@@ -230,16 +231,27 @@ module.exports = {
               label: "Configuring certificates",
               link: { type: "doc", id: "user-guide/configure-certificates" },
               items: [
-                "user-guide/certificates-configuration-questionnaire",
-                "user-guide/certificate-configuration-scenarios",
-                "user-guide/import-certificates",
-                "user-guide/generate-certificates",
-                "user-guide/use-certificates",
-                "user-guide/certificates-setup",
-                "user-guide/tls-configuration",
-                "user-guide/configuring-at-tls-for-zowe-server-single-service",
-                "user-guide/configuring-at-tls-for-zowe-server",
-                "user-guide/using-icsf-hardware-private-keys",
+                {
+                  type: "category",
+                  label: "Zowe Assisted Certificate Setup",
+                  items: [
+                    "user-guide/certificates-configuration-questionnaire",
+                    "user-guide/certificates-configuration-scenarios",
+                    "user-guide/certificates-workflow-setup"
+                  ]
+                },
+                {
+                  type: "category",
+                  label: "Advanced Certificate Topics",
+                  items: [
+                    "user-guide/certificates-trust-off-platform",
+                    "user-guide/tls-configuration",
+                    "user-guide/configuring-at-tls-for-zowe-server-single-service",
+                    "user-guide/configuring-at-tls-for-zowe-server",
+                    "user-guide/using-icsf-hardware-private-keys",
+                  ]
+                },
+                "user-guide/certificates-finalize-configuration"
               ],
             },
             {
@@ -260,7 +272,14 @@ module.exports = {
             }
           ]
         },
-        "user-guide/start-zowe-zos",
+        { 
+          "type": "category", 
+          "label": "Starting and Stopping Zowe",
+          "link": { "type": "doc", "id": "user-guide/start-zowe-zos" },
+          "items": [
+            "user-guide/zos-preflight"
+          ]
+        },
         "user-guide/verify-zowe-runtime-install",
         "user-guide/upgrade-zos",
         "user-guide/backout-zos",
@@ -359,7 +378,8 @@ module.exports = {
             "user-guide/install-configure-zos-extensions",
             "user-guide/mvd-configuration",
           ],
-        }
+        },
+        "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
       ],
     },
     {
@@ -374,6 +394,7 @@ module.exports = {
           link: { type: "doc", id: "user-guide/cli-install-configure-zosmf" },
           items: [
             "user-guide/cli-install-configure-zosmf-security",
+            "user-guide/configure-workload-management",
           ],
         },
         {
@@ -989,7 +1010,7 @@ module.exports = {
     {
       type: "link",
       label: "Third Party Software Requirements",
-      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.4.1.md",
+      href: "https://github.com/zowe/docs-site/tree/master/tpsr/tpsr-v3.5.x.md",
     },
   ],
 }
