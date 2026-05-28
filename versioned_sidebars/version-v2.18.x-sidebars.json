@@ -121,7 +121,7 @@
     "whats-new/zowe-compatibility-statement-v2",
     {
       "type": "doc",
-      "label": "Zowe learning resources",
+      "label": "Learning, Connecting, and Extending Zowe",
       "className": "ToCitemcolor",
       "id": "getting-started/zowe-resources"
     }
