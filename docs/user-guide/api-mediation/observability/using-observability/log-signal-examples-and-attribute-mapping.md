@@ -26,7 +26,7 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "204",
-  "url.path": "/eureka/apps/<target-app>",
+  "url.path": "/eureka/apps/<service Id>",
   "url.scheme": "https"
 }
 ```
@@ -60,7 +60,7 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "200",
-  "url.path": "/eureka/apps/<target-app>/localhost:<target-app>:10012",
+  "url.path": "/eureka/apps/<service Id>/localhost:<service Id>:10012",
   "url.scheme": "https"
 }
 ```
@@ -229,11 +229,12 @@ The following example presents the payload when an expired token has been used.
  "auth.error.message": "ZWEAO402E The request has not been applied because it lacks valid authentication credentials.",
  "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException",
  "http.request.method": "GET",
- "service.id": "<target-app>",
- "service.instance.id": "static-localhost:<target-app>:10012",
+ "service.id": "<service Id>",
+ "service.instance.id": "static-localhost:<service Id>:10012",
  "service.response_code": "401",
- "url.path": "/<target-app>/api/v1/request",
+ "url.path": "/<service Id>/api/v1/request",
  "url.scheme": "https"
 }
 ```
-This signal confirms that the Gateway successfully routed the incoming request downstream resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.
+
+This signal confirms that while the API ML failed to validate the authentication credentials, the Gateway still routed the request downstream, resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.
