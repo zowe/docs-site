@@ -1,4 +1,4 @@
-const LATEST_VERSION = "v3.4.x";
+const LATEST_VERSION = "v3.5.x";
 const versionsArray = require("./versions.json");
 
 module.exports = {
@@ -19,13 +19,14 @@ module.exports = {
   },
   future: {
     // https://docusaurus.io/blog/releases/3.6#docusaurus-faster
-    experimental_faster: true,
+    experimental_vcs: "default-v1",
+    faster: true,
     v4: {
       removeLegacyPostBuildHeadAttribute: true
     }
   },
   themeConfig: {
-        announcementBar: {
+    announcementBar: {
       id: 'announcementBar-1', // increment on change
       content:
           '📌  <b>Support for Zowe Version 2 ends March 30, 2027</b>. Use <a href="https://docs.zowe.org/stable/whats-new/zowe-v3-migration/" target="_blank">this guide</a> to migrate to Zowe Version 3, which transitions to maintenance on March 1, 2027.',
@@ -211,7 +212,7 @@ module.exports = {
           remarkPlugins: [() => {
             // https://github.com/facebook/docusaurus/issues/9789
             return async (root) => {
-              const {visit} = await import('unist-util-visit');
+              const { visit } = await import('unist-util-visit');
               visit(root, 'mdxJsxFlowElement', (node) => {
                 if (node.name === 'img') {
                   node.name = 'Img';
@@ -224,6 +225,9 @@ module.exports = {
               path: "stable",
               label: `${LATEST_VERSION}` + " LTS",
             },
+            "v3.4.x": {
+              label: "v3.4.x LTS",              
+            },
             "v3.3.x": {
               label: "v3.3.x LTS",
             },
@@ -232,9 +236,6 @@ module.exports = {
             },
             "v3.1.x": {
               label: "v3.1.x LTS",
-            },
-            "v3.0.x": {
-              label: "v3.0.x LTS",
             },
             "v2.18.x": {
               label: "v2.18.x LTS",

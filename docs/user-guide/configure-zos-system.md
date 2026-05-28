@@ -28,6 +28,7 @@ Before performing configuration steps specific to your use case, ensure that you
 | Required to configure the cross memory server for SAF to guard against access by non-privileged clients. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| Application Framework | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
 | To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | Application Framework | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
 | To use Single Sign-On (SSO) | All components | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| Optional: Enable the Zowe cross-memory server to use 1 MB large page frames for improved performance. | Cross Memory Server | [Configure access to large memory pages](#configure-access-to-large-memory-pages) |
 
 
 ### Configure address space job naming
@@ -1018,3 +1019,31 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::
+
+### Configure access to large memory pages
+
+If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
+
+Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests.
+
+For more information, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
+
+1. Ensure that large page frames are configured. Configrm that the `LFAREA` parameter in `IEASYSxx` has a non-zero value for 1 MB pages (for example, `1M=value`), then review the existing ACF2 rule:
+
+```
+SET RESOURCE(FAC)
+LIST IARRSM
+```
+
+2. Grant `READ` access to `IARRSM.LRGPAGES`.
+
+Define the following ACF2 resource rule for the Zowe user ID:
+
+```
+SET RESOURCE(FAC)
+RECKEY IARRSM ADD(LRGPAGES UID(user_uid) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(FAC)
+```
+
+**Note:** Replace `user_uid` with the UID for the Zowe STC user that needs access.
+

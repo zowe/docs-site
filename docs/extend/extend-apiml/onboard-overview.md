@@ -12,7 +12,7 @@ To streamline the process of onboarding new REST API services to the Zowe API ML
 This Onboarding Overview article addresses the following topics:
 
 - [Prerequisites](#prerequisites)
-- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service with API ML
+- [Service Onboarding Guides](#service-onboarding-guides) to onboard your REST service to API ML
 - [Verify successful onboarding to API ML](#verify-successful-onboarding-to-api-ml)
 - Using the [Sample REST API Service](#sample-rest-api-service) to learn how to onboard a REST service to API ML 
 
@@ -20,28 +20,29 @@ This Onboarding Overview article addresses the following topics:
 
 Ensure that you meet the following prerequisites before you onboard your service:
 
-- A running instance of Zowe
+- **A running instance of Zowe**
   
   **Note**: For [static onboarding](onboard-static-definition.md), access to Zowe runtime is required to create the static service definition.
   
-- A certificate that is trusted by Zowe and certificate(s) to trust Zowe services
+- **A certificate configuration compatible with Zowe**
 
-  Zowe uses secured communication over TLSv1.2. As such, the protocol version and the certificate is required. For more information, see [Certificate management in API Mediation Layer](../extend-apiml/certificate-management-in-zowe-apiml.md) and [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements)
+   Zowe uses secured communication over TLSv1.2. As such, you must provide a certificate that is trusted by Zowe, as well as the certificate(s) required to trust Zowe services. Ensure that the certificate Subject contains a valid **Common Name (CN)** representing your server's hostname.
+
+   For more information, see [Certificate management in API Mediation Layer](../extend-apiml/certificate-management-in-zowe-apiml.md) and [Zowe API ML TLS requirements](./zowe-api-mediation-layer-security-overview.md#zowe-api-ml-tls-requirements)
   
-- A REST API-enabled service that you want to onboard
+- **A REST API-enabled service to onboard**
 
   If you do not have a specific REST API service, you can use the [sample service](#sample-rest-api-service). 
-  
   Your service should be documented in a valid `OpenApi 2.0/3.0` Swagger JSON format.
 
-- Access to the Zowe artifactory
+- **Access to the Zowe artifactory**
 
-    ```
-    Repository URL: https://zowe.jfrog.io/zowe/libs-release
-    ```
+  Repository URL: `https://zowe.jfrog.io/zowe/libs-release`
+   
+- **A build automation system**  
 
-- Either the _Gradle_ or _Maven_ build automation system
-  
+    Use either the _Gradle_ or _Maven_ build system to complete the integration.
+
 ## Service Onboarding Guides
 
 Services can be updated to support API Mediation Layer natively by updating the service code. Use one of the following guides to onboard your REST service to Zowe API Mediation Layer:
@@ -72,23 +73,23 @@ Use one of the following guides if your service is not built with Java, or you d
 Enabler version 1.2 and previous versions are no longer supported.
 
 :::tip
-We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Medaition Layer.
+We recommend you use the enabler version 1.3 or higher to onboard your REST API service to Zowe API Mediation Layer.
 :::
 
 ## Verify successful onboarding to API ML
 
-Verifying that your service was successfully onboraded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
+Verifying that your service was successfully onboarded to API ML can be done by ensuring service registration in the API ML Discovery Service or visibility of the service in the API ML Catalog.
 
 ### Verifying service discovery through Discovery Service
 
 Verify that your service is discovered by the Discovery Service with the following procedure.
 
- 1. Issue a HTTP GET request to the Discovery Service endpoint `/eureka/apps` to get service instance information:
+ 1. Issue a HTTP `GET` request to the Discovery Service endpoint `/eureka/apps` to get service instance information:
 
     ```
     https://{zowe-hostname}:{discovery-service-port}/eureka/apps/{serviceId}
     ```
-    **Note:** The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP GET request.
+    **Note:** The endpoint is protected by client certificate verification. A valid trusted certificate must be provided with the HTTP `GET` request.
 
  2. Check your service metadata.
 
@@ -127,13 +128,13 @@ Verify that your service is discovered by the Discovery Service with the followi
     </application>
     ```
     :::tip Tips:
-    - Ensure that addresses and user credentials for individual API ML components correspond to your target runtime environment.
+    - Ensure that the hostnames, ports, and user credentials used match your specific target runtime environment.  
     - If you work with local installation of API ML and you use our dummy identity provider, enter `user` for both `username` and `password`. If API ML was installed by system administrators, ask them to provide you with actual addresses of API ML components and the respective user credentials.
     :::
 
 ### Verifying service discovery through the API Catalog
 
- Services may not be immediately visible in the API Catalog. We recommend you wait for 2 minutes as it may take a moment for your service to be visible in the Catalog. If your service still does not appear in the Catalog, ensure that your configuration settings are correct.
+ Services may not be immediately visible in the API Catalog. We recommend you wait for 2 minutes as it may take a moment for your service to be visible in the API Catalog. If your service still does not appear in the API Catalog, ensure that your configuration settings are correct.
 
   1. Check to see that your API service is displayed in the API Catalog UI, and that all information including API documentation is correct.
 
