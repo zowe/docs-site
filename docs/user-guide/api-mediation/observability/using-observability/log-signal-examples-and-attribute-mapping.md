@@ -65,7 +65,7 @@ The communication protocol (`https`).
 }
 ```
 
-This signal confirms the Discovery Service received the health information from the service (`target-app`)
+This signal confirms the Discovery Service received the health information from the service (`service Id`)
 
 ## A successful login attempt
 
