@@ -1,6 +1,6 @@
 # Plug-ins definition and structure
 
-The Zowe&trade; Application Server (`zlux-app-server`) enables extensiblity with application Plugins. Application Plugins are a subcategory of the unit of extensibility in the server called a *plugin*.
+The Zowe&trade; Application Server (`zlux-app-server`) enables extensibility with application Plugins. Application Plugins are a subcategory of the unit of extensibility in the server called a *plugin*.
 
 The files that define a Plugin are located in the `pluginsDir` directory. 
 
