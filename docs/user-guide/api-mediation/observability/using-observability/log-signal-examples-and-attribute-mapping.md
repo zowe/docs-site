@@ -26,10 +26,11 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "204",
-  "url.path": "/eureka/apps/DISCOVERABLECLIENT",
+  "url.path": "/eureka/apps/<service Id>",
   "url.scheme": "https"
 }
 ```
+This signal confirms that the onboarding is accepted by the Discovery Service.
 
 ## A Service sent a successful heartbeat
 
@@ -59,10 +60,12 @@ The communication protocol (`https`).
   "service.id": "discovery",
   "service.instance.id": "localhost:discovery:10011",
   "service.response_code": "200",
-  "url.path": "/eureka/apps/DISCOVERABLECLIENT/localhost:discoverableclient:10012",
+  "url.path": "/eureka/apps/<service Id>/localhost:<service Id>:10012",
   "url.scheme": "https"
 }
 ```
+
+This signal confirms the Discovery Service received the health information from the service (`target-app`)
 
 ## A successful login attempt
 
@@ -96,6 +99,8 @@ The communication protocol (`https`).
 }
 ```
 
+This signal confirms that the Gateway has successfully validated the inbound client credentials, establishing the active session required to authorize subsequent routed API requests.
+
 ## A successful request to API ML (authenticated but not populating information)
 
 This signal represents a successful, authenticated request to the API Catalog service, typically used for retrieving container or service metadata. While the status indicates a successful transaction, this signal is frequently used to troubleshoot scenarios where the request is valid but the resulting response contains an empty data set.
@@ -127,43 +132,7 @@ The communication protocol (`https`).
   "url.scheme": "https"
 }
 ```
-
-## Invalid authentication 
-<!--TODO-->
-This signal captures the technical context of a request utilizing x509 certificate-based authentication during the routing process.
-
-* **auth.service.auth.method**  
-The security provider method (`x509`).
-
-* **http.request.method**  
-The HTTP verb (`GET`).
-
-* **service.id**  
-The logical ID of the target client service.
-
-* **service.instance.id**  
-The instance identifier.
-
-* **service.response_code**  
-The status code returned (`200`).
-
-* **url.path**  
-The request path for the client API.
-
-* **url.scheme**  
-The communication protocol (`https`).
-
-```json
-{
-  "auth.service.auth.method": "x509",
-  "http.request.method": "GET",
-  "service.id": "discoverableclient",
-  "service.instance.id": "localhost:discoverableclient:10012",
-  "service.response_code": "200",
-  "url.path": "/discoverableclient/api/v1/request",
-  "url.scheme": "https"
-}
-```
+This signal confirms that the API Catalog communication layer and authentication are working correctly, and that the empty response is due to an empty service registry rather than a system connectivity failure.
 
 ## Valid authentication when routing to an onboarded service (JWT)
 
@@ -213,3 +182,59 @@ The identifier of the authenticated user.
   "user.id": "USER"
 }
 ```
+This signal verifies an end-to-end successful transaction where the user's identity was validated via token and securely propagated to the target downstream microservice.
+
+## Invalid authentication when routing to an onboarded service (JWT)
+
+This signal describes a request with an expired Zowe JWT token that was routed to a downstream onboarded service.
+
+* **auth.service.auth.method**
+The specific Zowe provider (`zoweJwt`).
+
+* **auth.status**
+The final result of authentication (`ERROR`).
+
+* **auth.error.message**
+A description of the error message.
+
+* **auth.error.type**
+Type of error.
+
+* **http.request.method**
+The HTTP verb (`GET`).
+
+* **service.id**
+The logical ID of the Zowe JWT service.
+
+* **service.instance.id**
+The unique service instance identifier.
+
+* **service.response_code**
+The successful status code (`401`).
+
+* **url.path**
+The routed request endpoint.
+
+* **url.scheme**
+The communication protocol (`https`).
+
+The following example presents the payload when an expired token has been used.
+
+**Example:**
+
+```json
+{
+ "auth.service.auth.method": "zoweJwt",
+ "auth.status": "ERROR",
+ "auth.error.message": "ZWEAO402E The request has not been applied because it lacks valid authentication credentials.",
+ "auth.error.type": "org.zowe.apiml.security.common.token.TokenExpireException",
+ "http.request.method": "GET",
+ "service.id": "<service Id>",
+ "service.instance.id": "static-localhost:<service Id>:10012",
+ "service.response_code": "401",
+ "url.path": "/<service Id>/api/v1/request",
+ "url.scheme": "https"
+}
+```
+
+This signal confirms that while the API ML failed to validate the authentication credentials, the Gateway still routed the request downstream, resulting in the target service (`zowejwt`) rejecting the request with a `401` unauthorized response.

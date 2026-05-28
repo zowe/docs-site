@@ -96,11 +96,11 @@ The original remote identity provided during OIDC-based authentication. While th
 * **http.request.method**  
   The HTTP verb used for the request (for example, `GET`, `POST`, `PUT`). 
 
-* **error.type**  
-  High-level classification of a failure (for example, `Timeout`, `AuthError`), populated on non-success results. 
+* **auth.error.type**  
+  High-level classification of a failure populated with the specific exception type on non-success results (for example, `org.zowe.apiml.security.common.token.TokenNotValidException`) 
 
-* **error.message**  
-  Detailed description providing context for the encountered failure. 
+* **auth.error.message**  
+  Detailed description providing context for the encountered failure (for example, `ZWEAO402E. The request has not been applied because it lacks valid authentication credentials`).
 
 * **user.id**  
   The identifier of the authenticated principal or user. 
@@ -110,7 +110,7 @@ The original remote identity provided during OIDC-based authentication. While th
   **Note:** Multiple credential types are supported, primarily utilizing JWT (JSON Web Tokens), and x509 certificate-based authentication. Each of these credential types are tracked via the `auth.method` attribute to audit security flows.
 
 * **auth.status**  
-  The result of the credential validation process (for example, `OK`, `DENIED`). 
+  The result of the credential validation process (for example, `OK`, `ERROR`). 
 
 * **service.id**  
   The logical identifier of the target service in the API ML ecosystem. 
