@@ -1,17 +1,17 @@
 # Onboarding a REST or GraphQL API without code changes required
 
-This article is part of a series of onboarding guides, which outline the process of onboarding API services to the Zowe API Mediation Layer (API ML).
+This article is part of a series of onboarding guides, which outline the process of onboarding API services to Zowe API Mediation Layer (API ML).
 
 :::info Role: API service developer
 :::
 
-Review this article to onboard an existing REST or GraphQL API service to the Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
+Review this article to onboard an existing REST or GraphQL API service to Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
 :::note
-When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to the API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
+When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
 :::
 
-The following procedure outlines the steps to onboard an API service through the API Gateway in the API Mediation Layer without requiring code changes.
+The following procedure outlines the steps to onboard an API service through the API Gateway in  API ML without requiring code changes.
 
 - [Onboarding a REST or GraphQL API without code changes required](#onboarding-a-rest-or-graphql-api-without-code-changes-required)
   - [Identify the APIs that you want to expose](#identify-the-apis-that-you-want-to-expose)
@@ -24,7 +24,7 @@ The following procedure outlines the steps to onboard an API service through the
   - [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
 
 :::tip
-For more information about the structure of APIs and which APIs to expose in the Zowe API Mediation Layer, see the [Onboarding Overview](onboard-overview.md).
+For more information about the structure of APIs and which APIs to expose in Zowe API ML, see the [Onboarding Overview](onboard-overview.md).
 :::
 
 ## Identify the APIs that you want to expose
@@ -39,17 +39,23 @@ The first step in API service onboarding is to identify the APIs that you want t
     * (Optional) base path where the service is available.
       This URL is called the base URL of the service.
 
+      For example, in the URL `http://host:port/myapp/api/v1`, the base path is `/myapp/api/v1`.
+      The full URL `http://host:port/myapp/api/v1` can be broken down as:
+        - **Hostname**: `host`
+        - **Port**: `port`
+        - **Base path**: `/myapp/api/v1`
+
    **Example:**
 
    In the sample service described in the [Onboarding Overview](onboard-overview.md#sample-rest-api-service), the URL of the service is: `http://localhost:8080`.
 
 2. Identify the API of the service that you want to expose through the API Gateway.
 
-   **Example:**
-
+   :::note
    The API provided by the sample service is a second version of the Pet Store API. All the endpoints to be onboarded are available
    through `http://localhost:8080/v2/` URL. This API is therefore available at the path `/v2` relative to base URL of the service.
    There is no version 1 in this case.
+   :::
 
 3. Choose the `service ID` of your service. The `service ID` identifies the service uniquely in the API Gateway. The `service ID` is an alphanumeric string in lowercase ASCII.
 
@@ -59,15 +65,13 @@ The first step in API service onboarding is to identify the APIs that you want t
 
 4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. The usually used types are: `api`, `ui` and `ws` but you can use any valid URL element you want.
 
-   **Example:**
-
-   In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
+   :::note
+   In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version segment is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
+   :::
 
 ## Define your service and API in YAML format
 
-After you identify the APIs you want to expose, you need to define your service and API in YAML format as presented in the following sample `petstore` service example.
-
-**Example:**
+After you identify the APIs you want to expose, define your service and API in YAML format as presented in the following sample `petstore` service example.
 
 To define your service in YAML format, provide the following definition in a YAML file as in the following sample `petstore` service.
 This configuration is the minimal configuration necessary for the Gateway to properly route the requests to the application and to show the Service in the Catalog UI.
@@ -75,6 +79,8 @@ This configuration is the minimal configuration necessary for the Gateway to pro
 :::note
 For more details about configuration, see [Customize configuration parameters](onboard-static-definition.md#customize-configuration-parameters).
 :::
+
+**Example:**
 
 ```yaml
 services:
@@ -108,17 +114,22 @@ In this example, a suitable name for the file is `petstore.yml`.
 * The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
 * The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
+* The validation of the static definition may fail if the `catalogUiTileId` value does not match a tile ID defined under `catalogUiTiles`.
 
 :::tip Tips:
 
 * There are more examples of API definitions at this [link](https://github.com/zowe/api-layer/tree/master/config/local/api-defs).
 * For more details about how to use YAML format, see this [link](https://learnxinyminutes.com/docs/yaml/).
-  :::
+  
+:::  
 
 ## Route your API
 
-Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. The configuration parameters are explained in [Customize configuration parameters](#customize-configuration-parameters).
-Gateway URL format:
+Routing is the process of sending requests from the API Gateway to a specific API service. Route your API by using the same format as in the following `petstore` example. For detailed information about configuration parameters, see [Customize configuration parameters](#customize-configuration-parameters).
+
+**Gateway URL format**
+
+The standard Gateway URL utilizes the following format:
 ```
 https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
 ```
@@ -126,9 +137,10 @@ https://{gatewayHost}:{port}/api/v{majorVersion}/{serviceId}/{resource}
 The API Gateway differentiates major versions of an API.
 :::
 
-**Example:**
+**Routing example**
 
-When the configuration parameters are:
+The following example demonstrates how a service configuration maps to target URLs.
+
 ```
 services:
     serviceId: petstore
@@ -138,29 +150,35 @@ services:
         gatewayUrl: api/v2
         serviceRelativeUrl: /v2
 ```
-To access API version 2 of the service `petstore`, gateway URL will be:
+
+**Scenario 1: Accessing the base service**
+
+To access API version 2 of the service `petstore`, use the following Gateway URL: 
 ```
 https://gateway-host:port/petstore/api/v2
 ```
-It will be routed to:
+The API Gateway routes this request to the following target endpoint:
 ```
 https://localhost:8080/v2
 ```
+**Scenario 2: Accessing a specific resource**
 
-To access resource `pets` of the `petstore` version 2 API, gateway URL will be:
+To access the `pets` resource of the `petstore` version 2 API, use the following Gateway URL:
 ```
 https://gateway:port/petstore/api/v2/pets
 ```
-It will be routed to:
+The API Gateway routes this request to the following target endpoint:
  ```
  https://localhost:8080/v2/pets
  ```
 
-:::note
-This method enables you to access the service through a stable URL, and move the service to another machine without changing the gateway URL. Accessing a service through the API Gateway also enables you to have multiple instances of the service running on different machines to achieve high-availability.
+:::tip
+Routing your service through the API Gateway provides a stable URL endpoint. This allows you to move the underlying service to a different host machine without altering the client-facing Gateway URL. Furthermore, this routing enables you to run multiple instances of the service across different machines to achieve high-availability (HA) and automatic load balancing.
 :::
 
 ## Customize configuration parameters
+
+The following sections describe each configuration parameter in detail. Use the table of contents or search within this page to quickly find the parameter you need.
 
 This part contains a more complex example of the configuration and an explanation of all the possible parameters:
 
@@ -299,8 +317,10 @@ additionalServiceMetadata:
 
   This parameter specifies the human readable name of the API service instance (for example, `Monitoring Prod` or `systemInfo LPAR1`). This value is displayed in the API catalog when a specific API service instance is selected. This parameter is externalized and set by the customer system administrator.
 
-  **Tip:** We recommend that you provide a specific default value of the `title`.
+  :::tip
+  We recommend that you provide a specific default value of the `title`.
   Use a title that describes the service instance so that the end user knows the specific purpose of the service instance.
+  :::
 
 * **description**
 
@@ -398,7 +418,16 @@ additionalServiceMetadata:
 
 * **authentication**
 
-  The information about the possible ways to integrate authentication are available in [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md) article.
+  The `authentication` object specifies how the API Gateway authenticates requests to your service. The `scheme` property under `authentication` defines which authentication scheme the service accepts. Available scheme values include:
+
+    * `zoweJwt` — The service accepts Zowe JWT tokens
+    * `safIdt` — The service accepts SAF IDT tokens
+    * `httpBasicPassTicket` — The service accepts PassTickets via HTTP Basic Authentication
+    * `zosmf` — The service accepts z/OSMF LTPA tokens
+    * `bypass` — The token is passed unchanged (no authentication)
+    * `x509` — The service accepts client certificates forwarded in headers
+
+  For detailed information about each authentication scheme, see [Single Sign On Integration for Extenders](./api-medation-sso-integration-extenders.md).
 
 * **apiInfo**
 
@@ -473,6 +502,10 @@ additionalServiceMetadata:
   together into "tiles".
   Each unique identifier represents a single API Catalog UI dashboard tile.
   Specify the value based on the ID of the defined tile.
+
+  :::caution
+  The `catalogUiTileId` value must use only lowercase alphanumeric characters. The value must match a tile ID defined under `catalogUiTiles`. If the `catalogUiTileId` does not match any defined tile, the API Mediation Layer rejects the definition with a validation error.
+  :::
 
 * **catalogUiTile**
 

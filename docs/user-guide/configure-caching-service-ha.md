@@ -1,5 +1,18 @@
 # Configuring the Caching Service for high availability
 
+## Why the Caching Service is needed for HA
+
+In a high availability (HA) setup, multiple Zowe API Mediation Gateway instances run concurrently — either on the same LPAR or across different LPARs connected through sysplex distributor. These Gateway instances are stateless, meaning they do not retain session information locally. Client authentication state (such as JWT tokens, Personal Access Tokens, and other session data) must be shared across all Gateway instances so that authentication performed on one Gateway is recognized by another after a failover.
+
+The Caching Service provides this shared state layer. It centralizes session data so that any Gateway instance can verify and serve authenticated requests, regardless of which Gateway initially handled the login. Without the Caching Service, each Gateway instance would have its own isolated state, causing authentication failures when traffic is routed to a different Gateway instance.
+
+The following table summarizes the differences between a standalone (single-instance) setup and a high availability (HA) setup:
+
+| Scenario | Authentication | Failover behavior | Load balancing |
+|---|---|---|---|
+| **Standalone (single instance)** | Local state only — the single Gateway stores session data internally. The Caching Service is optional and not needed for authentication persistence. | No failover — if the Gateway becomes unavailable, all in-flight sessions are lost. | Not applicable — only one Gateway instance handles all traffic. |
+| **High availability (HA)** | Centralized state — multiple Gateway instances share authentication state through the Caching Service. A session established on one Gateway works on all others. | Seamless failover — if one Gateway instance becomes unavailable, another instance can still serve authenticated requests using the shared state in the Caching Service. | Traffic is distributed across multiple Gateway instances via sysplex distributor or a similar load balancer, improving throughput and resource utilization. |
+
 Use Zowe in a high availability (HA) configuration where multiple instances of the Zowe launcher are started. These instances can be either on the same LPAR, or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR, you do not need to create a Caching Service.   
 
 In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate gateways that, in turn, dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
@@ -34,7 +47,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
             size: 10000
    ```
    
-   In single-service mode, the port **7555** is ignored. The single-service port is used instead.
+   In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
 
 ## Infinispan
 
@@ -148,5 +161,5 @@ To enable Personal Access Token support when using the Caching Service, **Infini
             trustStorePassword:
    ```
 
-   In single-service mode, the port **7555** is ignored. The single-service port is used instead.
+   In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
    

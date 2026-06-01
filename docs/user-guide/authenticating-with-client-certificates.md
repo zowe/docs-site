@@ -40,7 +40,15 @@ The following commands show options for both the internal API ML mapper and ZSS.
 
 :::note
 
-If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHCKCERT` or equivalent command on the certificate to use the same order and format of the certificate's distinguished name as displayed.
+If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHKCERT` or equivalent command on the certificate to display the subject distinguished name (DN) as it is stored in the ESM. The DN filter must match the order and format shown by `CHKCERT`.
+
+For example, if `CHKCERT` displays:
+
+```
+CN=USER1.OU=DEPT1.O=ORG1
+```
+
+the SDNFILTER must be specified exactly as `CN=USER1.OU=DEPT1.O=ORG1`.
 
 Using the internal API ML mapper is the preferred method.
 :::

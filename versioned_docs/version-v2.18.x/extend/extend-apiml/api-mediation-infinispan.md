@@ -46,7 +46,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
 * **`components.caching-service.storage.infinispan.persistence.dataLocation`**
 
   The path where the service keeps its data files for the Infinispan Soft-Index Cache Store.
-  The default value is `data`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the data property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `data`. When running the Caching Service in HA mode with instances on the same filesystem (e.g., shared GPFS or NFS), each instance **must** use a unique path. This is because the Infinispan Soft-Index File Store requires exclusive access to its data and index directories — sharing a path between instances will cause data corruption. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
   Beginning with version 2.18.4, this value is no longer used. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
@@ -55,7 +55,7 @@ Configure Infinispan as a storage solution through the Caching service by settin
 * **`components.caching-service.storage.infinispan.persistence.indexLocation`**
 
   The path where the service keeps its index data for the Infinispan Soft-Index Cache Store.
-  The default value is `index`. If you run the Caching Service in HA and the instances use the same filesystem, you have to specify a different value of the index property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
+  The default value is `index`. When running the Caching Service in HA mode with instances on the same filesystem (e.g., shared GPFS or NFS), each instance **must** use a unique path. This is because the Infinispan Soft-Index File Store requires exclusive access to its data and index directories — sharing a path between instances will cause data corruption. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
   
   :::note
   The value is not used since version 2.18.4. If you migrate to this or a later version, leaving this configuration will result in a data migration. The new location is located at `<workspace>/caching-service/<HA instance ID>/index`. In case of non-HA instance value `localhost` is used as `HA instance ID`.

@@ -86,6 +86,28 @@ The following `logback.xml` is an example of logging configuration file which is
 You can find the current default logging configuration file by following [this link](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml).
 :::
 
+## Understanding appenders
+
+The default `logback.xml` configuration defines two appenders:
+
+- **STDOUT** - A console appender that prints log messages to standard output. Useful for real-time monitoring and containerized deployments.
+- **FILE** - A rolling file appender that writes log messages to files in the location specified by `STORAGE_LOCATION`.
+
+The **FILE** appender uses the value of the `STORAGE_LOCATION` property, which is resolved from the `apiml.logs.location` setting in the service's `application.yml`. By default, this points to `<ZOWE_INSTANCE_DIR>/logs/<service>/`. You can override this by setting `apiml.logs.location` in your configuration.
+
+### Root logger level
+
+The `<root level="INFO">` element in the default configuration sets the base logging level to `INFO` for all packages. This means only messages at INFO, WARN, and ERROR levels are logged. DEBUG and TRACE messages are suppressed. To change the root level, modify the `level` attribute:
+
+```xml
+<root level="DEBUG">
+  <appender-ref ref="STDOUT"/>
+  <appender-ref ref="FILE"/>
+</root>
+```
+
+Setting the root level to `DEBUG` enables verbose logging for all packages, which is useful for troubleshooting but can generate large log volumes.
+
 ## Customization example
 
 One of the examples of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, the API Mediation Layer prints log messages, as in the following example:
@@ -107,4 +129,36 @@ You can edit, move, remove, or add some parts in the pattern based on your requi
 
 :::note
 The full documentation of Logback pattern are available on [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
+:::
+
+## Setting different log levels for specific packages
+
+You can override the root log level for specific Java packages by adding `<logger>` elements before the `<root>` element. This is useful when you need more detailed logging from a particular component without enabling verbose logging for the entire application.
+
+**Example: Enable DEBUG logging for specific packages**
+
+```xml
+<configuration>
+    <!-- ... existing properties and appenders ... -->
+
+    <logger name="org.zowe.apiml.gateway" level="DEBUG"/>
+    <logger name="org.zowe.apiml.security" level="DEBUG"/>
+    <logger name="org.springframework.security" level="DEBUG"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
+```
+
+In this example:
+- `org.zowe.apiml.gateway` and `org.zowe.apiml.security` log at `DEBUG` level for detailed troubleshooting of Gateway and security operations.
+- `org.springframework.security` logs at `DEBUG` level to help diagnose authentication and authorization issues.
+- All other packages remain at `INFO` level as specified by the root logger.
+
+You can also set the level to `TRACE`, `WARN`, `ERROR`, or `OFF` depending on your needs.
+
+:::tip
+Using per-package log levels is the recommended approach for troubleshooting specific issues in production, as it avoids the large log volumes caused by setting the root level to `DEBUG`.
 :::

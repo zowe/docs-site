@@ -857,11 +857,36 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  The authorization header is missing, or the request body is missing or invalid.
+  The authorization header is missing, or the request body is missing or invalid. This error indicates that the API Gateway did not receive the expected authentication information in the request.
 
   **Action:**
 
-  Provide valid authentication.
+  Verify that the client is sending the correct authentication information. Use the following checklist based on the authentication method in use:
+
+  - **Basic Authentication (username/password):**
+    - Confirm the `Authorization` header is present in the HTTP request.
+    - Verify the header value is formatted correctly as `Basic <base64-encoded-credentials>`.
+    - Ensure the username and password are not empty or null.
+    - Check that the request body (if required) is properly formatted and not empty.
+
+  - **Client Certificate Authentication:**
+    - Ensure the client certificate is installed and configured correctly on the client machine.
+    - Verify that the certificate is trusted by the API Gateway (check the truststore configuration).
+    - Confirm that the certificate has not expired.
+    - For more details, see [Client Certificate Authentication](https://docs.zowe.org/stable/user-guide/api-mediation/client-certificate-authentication/).
+
+  - **JWT Token Authentication:**
+    - Verify that the JWT token is present in the `Authorization` header as `Bearer <token>`.
+    - Confirm that the token has not expired.
+    - Ensure the token was issued by a trusted authentication service (z/OSMF or Zowe).
+    - For more information, refer to [JWT Authentication](https://docs.zowe.org/stable/user-guide/api-mediation/jwt-authentication/).
+
+  **Troubleshooting steps:**
+
+  1. **Enable debug logging** — Set the APIML component log level to `DEBUG` to capture detailed authentication flow information. Look for entries related to authentication header parsing and validation.
+  2. **Check the STC job log** — Review the API Gateway started task (STC) job log for any related error messages or stack traces that may provide additional context.
+  3. **Verify the request URL** — Confirm that the request URL is correct and reaches the intended API Gateway endpoint. A mistyped or misrouted URL can result in missing authentication headers.
+  4. **Test with a simple curl command** — Use a tool like `curl` to reproduce the issue with a controlled request and inspect the headers being sent.
 
 ### ZWEAS123E
 
@@ -869,11 +894,31 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Could not retrieve the proper authentication token from the Authentication service response.
+  Could not retrieve the proper authentication token from the Authentication service response. This typically occurs when the authentication service (e.g., z/OSMF) returns a token format that the API Gateway does not recognize or expect.
 
   **Action:**
 
   Review your APIML authentication provider configuration and ensure your Authentication service is working.
+
+  **Troubleshooting steps for z/OSMF JWT configuration:**
+
+  1. **Verify z/OSMF JWT support** — Check that your version of z/OSMF supports JWT token generation. JWT support was introduced in z/OSMF V2R4 with the required PTFs. Consult your z/OSMF documentation for the applicable PTF list.
+
+  2. **Check z/OSMF configuration** — Ensure that z/OSMF is configured to issue JWT tokens. In the z/OSMF `jwt.yml` configuration file, confirm the following settings:
+     - `jwt.enabled: true`
+     - A valid keystore and key alias are specified for signing JWTs.
+
+  3. **Validate the token endpoint** — Test the z/OSMF JWT endpoint directly using a REST client:
+     ```
+     POST /zosmf/services/authenticate
+     ```
+     Verify that the response contains a `jwt` field with a valid token string.
+
+  4. **Examine the APIML gateway STC log** — Look for entries containing `ZWEAS123E` along with preceding debug messages that show the raw response received from the authentication service. This can help identify whether the issue is in the response format or content.
+
+  5. **Enable gateway debug logging** — Set the API Gateway log level to `DEBUG` and reproduce the issue. Search for messages that log the authentication service response type. This will show what token type was returned versus what was expected.
+
+  6. **Review z/OSMF applied PTFs** — Ensure all required z/OSMF maintenance for JWT support is applied. Missing PTFs can cause the authentication service to return an unexpected token format (e.g., a legacy LtpaToken instead of a JWT).
 
 ### ZWEAS130E
 

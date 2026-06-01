@@ -34,13 +34,30 @@ authentication:
 ```
 
 * **authentication.scheme**  
-Specifies a service authentication scheme. The following schemes participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
+Specifies a service authentication scheme. The following schemes that participate in single sign on are supported by the API Gateway: 
+* `zoweJwt`
+* `safIdt`
+* `httpBasicPassTicket`
+* `zosmf`. 
+  
+    Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
+
+  The following table provides a quick reference of the available authentication schemes, their descriptions, and whether they are integrated with SSO:
+
+  | Scheme | Description | SSO Integrated |
+  |---|---|:---:|
+  | `zoweJwt` | Service accepts Zowe JWT tokens | Fully integrated |
+  | `safIdt` | Service accepts SAF IDT tokens | Fully integrated |
+  | `httpBasicPassTicket` | Service accepts PassTickets via HTTP Basic Auth | Fully integrated |
+  | `zosmf` | Service accepts z/OSMF LTPA tokens | Integrated with limitations. Recommended not to be used outside the z/OSMF setup for the z/OSMF authentication provider |
+  | `bypass` | Token passed unchanged to the service | Not integrated |
+  | `x509` | Service accepts client certificates forwarded in headers | Not integrated |
 
 In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
 ## Accepting JWT
 
-Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No additional configuration is needed in the service's onboarding definition beyond specifying the scheme.
+Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the client-side. No additional configuration is needed in the service's onboarding definition beyond specifying the scheme.
 
 ```yaml
 authentication:

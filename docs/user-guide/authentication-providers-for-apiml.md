@@ -38,10 +38,17 @@ PassTickets are configured and enabled for z/OSMF.
 The `z/OSMF Authentication Provider` is the alternative provider which allows the API Gateway to authenticate with the z/OSMF service. In this case, user access to z/OSMF is required to authenticate.
 
 Use the following properties of the API Gateway to enable the `z/OSMF Authentication Provider`:
-```
+```yaml
 components.gateway.apiml.security.auth.provider: zosmf
-components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Replace me with the correct z/OSMF service id
+components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Default z/OSMF service ID
 ```
+
+**`components.gateway.apiml.security.auth.zosmfServiceId`**  
+Default: `ibmzosmf`. Change only if you customized the z/OSMF service ID in your static API definition. The value must match the `serviceId` of the z/OSMF static definition that Zowe generates during configuration.
+
+**Multiple z/OSMF instances:**
+- **Identical instances (HA across sysplex):** Use the same service ID (`ibmzosmf`). The Gateway discovers all instances and load-balances.
+- **Distinct instances (different LPARs with different configs):** Use unique service IDs per instance.
 
 
 
