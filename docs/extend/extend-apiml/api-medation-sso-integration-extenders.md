@@ -34,18 +34,24 @@ authentication:
 ```
 
 * **authentication.scheme**  
-Specifies a service authentication scheme. The following schemes participate in single sign on are supported by the API Gateway: `zoweJwt`, `safIdt`, `httpBasicPassTicket`, `zosmf`. Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
+Specifies a service authentication scheme. The following schemes that participate in single sign on are supported by the API Gateway: 
+* `zoweJwt`
+* `safIdt`
+* `httpBasicPassTicket`
+* `zosmf`. 
+  
+    Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
 
   The following table provides a quick reference of the available authentication schemes, their descriptions, and whether they are integrated with SSO:
 
-  | Scheme | Description | SSO Integrated? |
+  | Scheme | Description | SSO Integrated |
   |---|---|:---:|
-  | `zoweJwt` | Service accepts Zowe JWT tokens | Yes |
-  | `safIdt` | Service accepts SAF IDT tokens | Yes |
-  | `httpBasicPassTicket` | Service accepts PassTickets via HTTP Basic Auth | Yes |
-  | `zosmf` | Service accepts z/OSMF LTPA tokens | With Limitations, should not be used outside zOSMF setup for zOSMF authentication provider |
-  | `bypass` | Token passed unchanged to the service | No |
-  | `x509` | Service accepts client certificates forwarded in headers | No |
+  | `zoweJwt` | Service accepts Zowe JWT tokens | Fully integrated |
+  | `safIdt` | Service accepts SAF IDT tokens | Fully integrated |
+  | `httpBasicPassTicket` | Service accepts PassTickets via HTTP Basic Auth | Fully integrated |
+  | `zosmf` | Service accepts z/OSMF LTPA tokens | Integrated with limitations. Recommended not to be used outside the z/OSMF setup for the z/OSMF authentication provider |
+  | `bypass` | Token passed unchanged to the service | Not integrated |
+  | `x509` | Service accepts client certificates forwarded in headers | Not integrated |
 
 In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
