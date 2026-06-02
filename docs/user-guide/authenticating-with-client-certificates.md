@@ -34,19 +34,28 @@ In order for a user to be valid for certificate authentication, ensure that the 
 
 The following commands show options for both the internal API ML mapper and ZSS.
 
-:::note
+:::note Important: Certificate Mapping & Filter Formatting
 
-If using the internal API ML mapper (default from Zowe v3) and the MAP / CERTMAP option with distinguished name filters, use the `CHKCERT` or equivalent command on the certificate to display the subject distinguished name (DN) as it is stored in the ESM. The DN filter must match the order and format shown by `CHKCERT`.
+If you are using the internal API ML mapper (the default and preferred method starting in Zowe v3) with the `MAP` / `CERTMAP` option, you must configure a Subject Distinguished Name Filter (**SDNFILTER**). 
 
-For example, if `CHKCERT` displays:
+The SDNFILTER is an ESM rule that matches an incoming client certificate's identity string to a mainframe User ID without requiring you to manually import the entire physical certificate file into the security database. The `SDNFILTER` pattern you define must perfectly match the character casing, spacing, and order shown in that display.
 
-```
-CN=USER1.OU=DEPT1.O=ORG1
-```
+1. Run the Check Command for Your ESM.
+Execute the appropriate command against your certificate dataset to view how the mainframe formats its internal string:
 
-the SDNFILTER must be specified exactly as `CN=USER1.OU=DEPT1.O=ORG1`.
+* **For RACF:** `RACDCERT CHECKCERT('YOUR.CERT.DATASET')`
+* **For ACF2:** `SET PROFILE(USER) DIV(CERTDATA)` followed by `CHKCERT DSN('YOUR.CERT.DATASET')`
+* **For Top Secret:** `TSS CHKCERT DCDSN('YOUR.CERT.DATASET')`
 
-Using the internal API ML mapper is the preferred method.
+2. Match the Filter to the Screen Display.  
+For example, if your ESM command output displays the subject name like this:
+   ```text
+    CN=USER1.OU=DEPT1.O=ORG1
+    ```
+
+    The `SDNFILTER `(or `SDNFILTR` in ACF2/Top Secret) parameter in your configuration must be specified exactly as: `CN=USER1.OU=DEPT1.O=ORG1`. Any variation will cause certificate mapping and authentication to fail.
+
+    Using the internal API ML mapper is the preferred method.
 :::
 
 **RACF**

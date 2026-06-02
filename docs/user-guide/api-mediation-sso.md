@@ -5,9 +5,9 @@ You can extend Zowe and utilize Zowe Single Sign On (SSO) provided by Zowe API M
 :::info Required roles: system administrator, security administrator
 :::
 
-Zowe Single Sign On (SSO) allows a user to authenticate once and access multiple z/OS services through the API Mediation Layer. Upon authentication, ZAAS (Zowe Authentication and Authorization Service) issues an access token that represents the user's identity. This token can be reused across all services that participate in SSO, so the user does not need to re-enter credentials for each service.
+Zowe Single Sign On (SSO) allows a user to authenticate once and access multiple z/OS services through API Mediation Layer. Upon authentication, ZAAS (Zowe Authentication and Authorization Service) issues an access token that represents the user's identity. This token can be reused across all services that participate in SSO, so the user does not need to re-enter credentials for each service.
 
-In simpler terms: you log in once with your mainframe credentials. Zowe gives you a token that any service through the API Gateway will accept to verify your identity. 
+In other words, after initial log-in with your mainframe credentials, Zowe gives you a token that is accepted by any service through the API Gateway which is used to verify your identity. 
 
 :::note
 Currently, API ML can provide SSO only in a single security domain.
