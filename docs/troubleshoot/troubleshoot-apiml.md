@@ -1,6 +1,6 @@
 # Troubleshooting Zowe API Mediation Layer
 
-As an API Mediation Layer user, you may encounter problems with how the API ML functions. This article presents known API ML issues and their solutions.
+As an API Mediation Layer user, you may encounter problems with how API ML functions. This article presents known API ML issues and their solutions.
 
 :::note
 To troubleshoot errors or warnings that can occur when configuring certificates, see the article [Troubleshooting certificate configuration](./troubleshoot-zos-certificate.md).
@@ -40,7 +40,7 @@ its performance and create large log files that consume a large volume of disk s
 
 2. Each API ML component has its own `components.<component>.debug` parameter. Set the value to `true` for **each** component you want to debug. Note that there is no single setting that enables debug mode for all components at once.
 
-   **Example — enable debug for all three core services:** 
+   **Example yaml to enable debug for all three core services:** 
    ```yaml
    components:
      gateway:
@@ -54,7 +54,7 @@ its performance and create large log files that consume a large volume of disk s
    
 3. Restart Zowe&trade;.
 
-   You enabled debug mode for the API ML core services (API Catalog, API Gateway and Discovery service).
+   You enabled debug mode for API ML core services (API Catalog, API Gateway and Discovery service).
 
 4. (Optional) Reproduce a bug that causes issues and review debug messages. If you are unable to resolve the issue, create an issue [here](https://github.com/zowe/api-layer/issues/).     
 
@@ -71,40 +71,50 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
     ```
     GET scheme://hostname:port/application/loggers
     ```
-    - **scheme**
+    - **scheme**  
+    Specifies the API ML service scheme (http or https)
 
-        Specifies the API ML service scheme (http or https)
+    - **hostname**  
+    Specifies the API ML service hostname
 
-    - **hostname**
-
-        Specifies the API ML service hostname
-
-    - **port**
-
-|        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
+    - **port**  
+    Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
     `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
     (by default, set to gateway port + 2).
 
     :::note Deprecated
-    The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the corresponding `zowe.yaml` parameters (`components.gateway.port`, `components.discovery.port`, `components.catalog.port`) instead.
+
+    The following environment variables are deprecated. It is recommended to migrate to the corresponding `zowe.yaml` parameters.
+
+    | Deprecated Environment Variable | Replacement `zowe.yaml` Parameter |
+    | :--- | :--- |
+    | `MFS_GW_PORT` | `components.gateway.port` |
+    | `MFS_DS_PORT` | `components.discovery.port` |
+    | `MFS_AC_PORT` | `components.catalog.port` |
+
     :::
 
-    **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
+    **List loggers for API Catalog**
+
+    To list the available loggers, issue a **GET** request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
 
-    **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
+:::tip
 
-    **Example:**
+One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
-    ```bash
-    # HTTPie (requires: pip install httpie)
-    http GET https://<gateway-hostname>:7554/application/loggers
+**Example:**
 
-    # curl
-    curl -k https://<gateway-hostname>:7554/application/loggers | jq .
-    ```
+```bash
+# HTTPie (requires: pip install httpie)
+http GET https://<gateway-hostname>:7554/application/loggers
+
+# curl
+curl -k https://<gateway-hostname>:7554/application/loggers | jq .
+```
+```
 
     Output:
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
@@ -115,14 +125,16 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
        ...
      }
     }
-    ```
+```
 
-    **Tip:** Filter logger output with `grep` to narrow down specific packages, for example:
-    ```bash
-    http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
-    ```
+Filter logger output with `grep` to narrow down specific packages, for example:
 
-3. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
+```bash
+http GET https://<gateway-hostname>:7554/application/loggers | grep -i "zowe"
+```
+:::
+
+1. Alternatively, extract the configuration of a specific logger using the extended **GET** request:
 
     ```
     GET scheme://hostname:port/application/loggers/{name}
@@ -132,7 +144,7 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
 
          Specifies the logger name
 
-4. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
+2. Change the log level of the given component of the API ML internal service. Use the **POST** request for the given service URL:
 
     ```
     POST scheme://hostname:port/application/loggers/{name}
@@ -171,7 +183,7 @@ This activates the `/application/loggers` endpoints in each API ML internal serv
 
     **Hierarchical logging:**
 
-    Loggers in the API ML follow a hierarchical naming convention. Setting the log level on a parent logger (e.g., `org.zowe.apiml`) affects all child loggers (`org.zowe.apiml.gateway`, `org.zowe.apiml.security`, etc.) unless a child has an explicitly configured level.
+    Loggers in API ML follow a hierarchical naming convention. Setting the log level on a parent logger (for example, `org.zowe.apiml`) affects all child loggers (`org.zowe.apiml.gateway`, `org.zowe.apiml.security`, etc.) unless a child has an explicitly configured level.
 
     **Common loggers:**
 
@@ -214,8 +226,9 @@ components:
 
 For more information, see [Spring Boot Profiles](https://docs.spring.io/spring-boot/reference/features/profiles.html) in the Spring documentation.
 
-:::note Troubleshooting
-When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (e.g., `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
+:::note 
+
+When `debug: true` is set, you may not see the debug output immediately in the STC job log on z/OS or in the container logs. Check the component's application log file (for example, `$WORKSPACE_DIR/.logs/gateway/`) for the detailed debug messages. On z/OS, the debug output is written to the job log of the started task.
 :::
 
 

@@ -3,10 +3,10 @@
 :::info Roles: system programmer, system administrator, security administrator
 :::
 
-In Zowe you can validate your identity with the API ML using X.509 client certificates to access onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs with X.509 client certificates.
+In Zowe you can validate your identity with API ML using X.509 client certificates to access onboarded APIs. This functionality is disabled by default. Follow the steps in this article to enable authentication against API ML onboarded APIs with X.509 client certificates.
 
-:::tip
-This page covers **server-side configuration** to enable X.509 client certificate authentication. For instructions on how to **use** a client certificate to authenticate from a client application, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
+:::note
+This article addresses server-side configuration to enable X.509 client certificate authentication. For instructions on how to use a client certificate to authenticate from a client application, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
 :::
 
 ## Procedure overview
@@ -15,9 +15,9 @@ Follow these steps to enable single sign on for clients via X.509 client certifi
 
 1. Map your authentication with the API ML Gateway through any one of the following options:
 
-     * Configure the Internal API ML Mapper (recommended)  
+     * **Configure the Internal API ML Mapper (recommended)**  
         This is the default setting in Zowe v3 and later releases.
-     * Configure ZSS  
+     * **Configure ZSS**  
         (You also have the option to configure ZSS in a separate Zowe instance.)
 
 2. Configure X.509 Client Certificate Authentication in zowe.yaml.
@@ -26,10 +26,14 @@ Follow these steps to enable single sign on for clients via X.509 client certifi
 
 Before enabling this feature, ensure your environment meets the following requirements:
 
-* **TLS Setup:** Zowe must have a correct TLS configuration. The truststore must contain the Certificate Authority (CA) certificates (the issuer certificates) of all incoming client certificates.
-* **SAF Identity Mapping:** The Zowe runtime user must be authorized to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
-* **z/OSMF Access:** The Zowe runtime user must be a member of the default `IZUUSER` group to log in to z/OSMF.
-* **PassTicket Generation:** The Zowe runtime user must be able to generate PassTickets for the user and for the z/OSMF `APPLID`. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
+* **TLS Setup**  
+Zowe must have a correct TLS configuration. The truststore must contain the Certificate Authority (CA) certificates (the issuer certificates) of all incoming client certificates.
+* **SAF Identity Mapping**  
+The Zowe runtime user must be authorized to perform identity mapping in SAF. For more information about identity mapping in SAF, see [Configure main Zowe server to use client certificate identity mapping](../configure-zos-system.md#configure-main-zowe-server-to-use-client-certificate-identity-mapping).
+* **z/OSMF Access**  
+The Zowe runtime user must be a member of the default `IZUUSER` group to log in to z/OSMF.
+* **PassTicket Generation**  
+The Zowe runtime user must be able to generate PassTickets for the user and for the z/OSMF `APPLID`. For more information, see [Configuring Zowe to use PassTickets](../api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 
 :::note
 There is a limitation with respect to performing authentication using Z Secure Services (ZSS) with ACF2 systems. If you are using ACF2, use the recommended Internal API ML Mapper.
@@ -40,21 +44,21 @@ There is a limitation with respect to performing authentication using Z Secure S
 You can enable X.509 client certificate functionality integrated with the SAF through either of the the following methods:
 
 * **Configure the Internal API ML Mapper**  
-This is the default and most performant method for Zowe v3 and later. It is simpler to configure and is the required method for ACF2 users.  
+The Internal API ML Mapper is the default and most performant method for Zowe v3 and later. It is simpler to configure and is the required method for ACF2 users.  
 
 * **Configure ZSS**  
-This legacy method uses Z Secure Services (ZSS) to perform mapping. You also have the option to call a ZSS endpoint in a separate Zowe instance. 
+Z Secure Services (ZSS) configuration is the legacy method to perform mapping. You also have the option to call a ZSS endpoint in a separate Zowe instance. 
 
   **Notes:**  
   * ZSS has limitations with ACF2 systems. 
   * This method requires the certificate to be added to the user in z/OS.
   * ZSS mapping does not support `IDMAP`.   
 
-:::note Notes
+
 * For information about the usage of the client certificate when this feature is enabled, see [Authenticating with client certificates](../authenticating-with-client-certificates.md).
 
 * For specific information about client certificate authentication for specific users, see the section [Configure your z/OS system to support client certificate authentication for specific users](../authenticating-with-client-certificates.md#configure-your-zos-system-to-support-client-certificate-authentication-for-specific-users) in _Authenticating with client certificates_.
-:::
+
 
 <details>
 <summary> Click here to configure the internal API ML mapper. (recommended)</summary>
@@ -172,10 +176,10 @@ Follow these steps to update the `zowe.yaml` configuration file and enable certi
         https://<external-gateway-host>:<external-gateway-port>/gateway/api/v1/auth/login
    ```
 
-   If the configuration is correct, the API ML returns a successful authentication response with a JWT token.
+   If the configuration is correct, API ML returns a successful authentication response with a JWT.
 
-:::note
-If authentication fails, check the zowe log files for details. Look for messages containing `X509` or `client certificate` in the spool.
+:::tip
+If authentication fails, check the Zowe log files for details. Look for messages containing `X509` or `client certificate` in the spool.
 :::
 
-X.509 client certificate authentication is now active. The API ML can now attempt to authenticate clients using their provided certificates upon the next connection attempt.
+X.509 client certificate authentication is now active. API ML can now attempt to authenticate clients using their provided certificates upon the next connection attempt.
