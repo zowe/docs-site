@@ -7,7 +7,7 @@ You can use various SAF resource providers depending on your use case to handle 
 
 ## SAF Resource Checking Providers 
 
-API ML can check for the authorization of the user using endpoint `/gateway/api/v1/auth/check`. Access to a SAF resource is checked with your External Security Manager (ESM).
+API ML can check for the authorization of the user using the endpoint `/gateway/api/v1/auth/check`. Access to a SAF resource is checked with your External Security Manager (ESM).
 
 Verification of the SAF resource is possible by any of the following three providers:
 
@@ -22,10 +22,12 @@ The endpoint provider relies on APIs such as through a REST endpoint call (for e
 - **dummy**  
 The dummy provider is the lowest priority provider. This is the dummy implementation and is defined in a file.
 
-:::note
+**Prioritization of the provider**
+
 Verification of the SAF resource uses the first available provider based on a predefined priority order. The provider selection logic evaluates providers in the following order: **native**, **endpoint**, **dummy**. The first provider that is available and enabled in the configuration is used. The default configuration resolves to the **native** provider.
 
-Note: The property `components.gateway.apiml.security.authorization.provider` controls the SAF resource authorization provider. Do not confuse it with `components.gateway.apiml.security.auth.provider`, which controls the authentication provider (for example, `zosmf` or `saf`).
+:::note
+The property `components.gateway.apiml.security.authorization.provider` controls the SAF resource authorization provider. Do not confuse this property with the similarly-structured property `components.gateway.apiml.security.auth.provider`, which controls the authentication provider (for example, `zosmf` or `saf`).
 :::
 
 ### Setting the native provider to perform SAF resource check (Default setting) 
@@ -54,9 +56,9 @@ Ensure that your system uses the same version of Java as the classes and method 
 When a user accesses a protected endpoint, the API Mediation Layer Gateway intercepts the request and determines which SAF resource to check. The process follows these steps:
 
 1. The Gateway identifies the target SAF class and resource name based on the endpoint being accessed.
-2. The configured authorization provider (native, endpoint, or dummy) performs the SAF authorization check.
+2. The configured authorization provider (`native`, `endpoint`, or `dummy`) performs the SAF authorization check.
 3. The External Security Manager (ESM) such as IBM RACF, CA ACF2, or CA Top Secret evaluates the access.
-4. If the user is authorized, the request proceeds to the target service. If not, the request is denied with a 403 Forbidden response.
+4. If the user is authorized, the request proceeds to the target service. If not, the request is denied with a `403 Forbidden` response.
 
 #### Concrete RACF examples
 
@@ -117,7 +119,7 @@ If you use IBM MQ REST API, you can configure SAF resource checking for MQ endpo
    ```yaml
    components.gateway.apiml.security.authorization.endpoint.url: https://<mq_host>:<mq_port>/ibmmq/rest/v1/authorization
    ```
-4. Ensure the MQ REST API is configured to use RACF profiles with class `MQQUEUE` for access control.
+4. Ensure the MQ REST API is configured to use RACF profiles with the class `MQQUEUE` for access control.
 5. Restart Zowe.
 
 For more information about MQ REST API authorization, see the [IBM MQ Knowledge Center](https://www.ibm.com/docs/en/ibm-mq).
@@ -166,7 +168,7 @@ The following YAML presents the structure of the file:
 
 :::note Notes
 - Classes and resources are mapped into a map with user IDs contained in a list.
-- The load method does not support formatting with periods (`.`), such as shown in the following example:  
+- The load method does not support formatting with periods (`.`), such as shown in the following example.  
   
   **Example:** `{CLASS}.{RESOURCE}`
 - Ensure that each element is separated.
