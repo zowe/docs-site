@@ -83,21 +83,24 @@ The following `logback.xml` is an example of logging configuration file which is
 ```
 
 :::note
-You can find the current default logging configuration file by following [this link](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml).
+You can find the current default logging configuration in the [logback-spring.xml](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml) file in the api-layer repository.
 :::
 
 ## Understanding appenders
 
 The default `logback.xml` configuration defines two appenders:
 
-- **STDOUT** - A console appender that prints log messages to standard output. Useful for real-time monitoring and containerized deployments.
-- **FILE** - A rolling file appender that writes log messages to files in the location specified by `STORAGE_LOCATION`.
+- **STDOUT**  
+A console appender that prints log messages to standard output. This appender is useful for real-time monitoring and containerized deployments.
 
-The **FILE** appender uses the value of the `STORAGE_LOCATION` property, which is resolved from the `apiml.logs.location` setting in the service's `application.yml`. By default, this points to `<ZOWE_INSTANCE_DIR>/logs/<service>/`. You can override this by setting `apiml.logs.location` in your configuration.
+- **FILE**  
+A rolling file appender that writes log messages to files in the location specified by `STORAGE_LOCATION`.
+
+    The **FILE** appender uses the value of the `STORAGE_LOCATION` property, which is resolved from the `apiml.logs.location` setting in the service's `application.yml`. By default, this points to `<ZOWE_INSTANCE_DIR>/logs/<service>/`. You can override this by setting `apiml.logs.location` in your configuration.
 
 ### Root logger level
 
-The `<root level="INFO">` element in the default configuration sets the base logging level to `INFO` for all packages. This means only messages at INFO, WARN, and ERROR levels are logged. DEBUG and TRACE messages are suppressed. To change the root level, modify the `level` attribute:
+The `<root level="INFO">` element in the default configuration sets the base logging level to `INFO` for all packages. In this default configuration, only messages at `INFO`, `WARN`, and `ERROR` levels are logged. `DEBUG` and `TRACE` messages are suppressed. To change the root level, modify the `level` attribute:
 
 ```xml
 <root level="DEBUG">
@@ -110,7 +113,9 @@ Setting the root level to `DEBUG` enables verbose logging for all packages, whic
 
 ## Customization example
 
-One of the examples of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, the API Mediation Layer prints log messages, as in the following example:
+One example of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, API ML prints log messages, as in the following example.
+
+**Example:**
 ```log
 2024-08-01 12:52:27.922 <ZWEAGW1:DiscoveryClient-InstanceInfoReplicator-0:33948829> ZWESVUSR INFO (o.z.a.g.h.GatewayHealthIndicator) ZWEAM001 API Mediation Layer started
 ```
@@ -128,7 +133,7 @@ In the following table you can see each part of the `apimlLogPattern` in the exa
 You can edit, move, remove, or add some parts in the pattern based on your requirements.
 
 :::note
-The full documentation of Logback pattern are available on [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
+The full documentation of Logback pattern are available on the [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
 :::
 
 ## Setting different log levels for specific packages
@@ -157,8 +162,8 @@ In this example:
 - `org.springframework.security` logs at `DEBUG` level to help diagnose authentication and authorization issues.
 - All other packages remain at `INFO` level as specified by the root logger.
 
-You can also set the level to `TRACE`, `WARN`, `ERROR`, or `OFF` depending on your needs.
+You can optionally set the level to `TRACE`, `WARN`, `ERROR`, or `OFF` depending on your needs.
 
 :::tip
-Using per-package log levels is the recommended approach for troubleshooting specific issues in production, as it avoids the large log volumes caused by setting the root level to `DEBUG`.
+Using per-package log levels is the recommended approach for troubleshooting specific issues in production, as these log levels prevent the large log volumes which may result from setting the root level to `DEBUG`.
 :::
