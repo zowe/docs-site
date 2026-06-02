@@ -427,17 +427,17 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Possible actions regarding to message content:
-  - Message: The certificate is not trusted by the API Gateway.
-  Action: Verify trust of the certificate is the issue by disabling certificate verification and retry the request.
-  - Message: Certificate does not match any of the subject alternative names.
-  Action: Verify that the hostname which the certificate is issued for matches the hostname of the service.
-  - Message: Unable to find the valid certification path to the requested target.
-  Action: Import the root CA that issued services' certificate to API Gateway truststore.
-  - Message: Verify the requested service supports TLS.
-  Action: Ensure the requested service is running with TLS enabled.
-  - Message: Review the APIML debug log for more information.
-  Action: Enable APIML debug mode and retry the request, then review the APIML log for TLS errors.
+  Possible actions based on message content:
+  - **Message:** `The certificate is not trusted by the API Gateway.`  
+  **Action:** Verify trust of the certificate is the issue by disabling certificate verification and retry the request.
+  - **Message:** `Certificate does not match any of the subject alternative names.`  
+  **Action:** Verify that the hostname which the certificate is issued for matches the hostname of the service.
+  - **Message:** `Unable to find the valid certification path to the requested target.`  
+  **Action:** Import the root CA that issued services' certificate to API Gateway truststore.
+  - **Message:** `Verify the requested service supports TLS.`  
+  **Action:** Ensure the requested service is running with TLS enabled.
+  - **Message:** `Review the API ML debug log for more information.`  
+  **Action:** Enable API ML debug mode and retry the request, then review the API ML log for TLS errors.
 
 ### ZWEAM600W
 
@@ -861,7 +861,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Verify that the client is sending the correct authentication information. Use the following checklist based on the authentication method in use:
+  Verify that the client is sending the correct authentication information. Use the following checklist according to the authentication method used:
 
   - **Basic Authentication (username/password):**
     - Confirm the `Authorization` header is present in the HTTP request.
@@ -883,10 +883,14 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Troubleshooting steps:**
 
-  1. **Enable debug logging** — Set the APIML component log level to `DEBUG` to capture detailed authentication flow information. Look for entries related to authentication header parsing and validation.
-  2. **Check the STC job log** — Review the API Gateway started task (STC) job log for any related error messages or stack traces that may provide additional context.
-  3. **Verify the request URL** — Confirm that the request URL is correct and reaches the intended API Gateway endpoint. A mistyped or misrouted URL can result in missing authentication headers.
-  4. **Test with a simple curl command** — Use a tool like `curl` to reproduce the issue with a controlled request and inspect the headers being sent.
+  1. **Enable debug logging.**  
+  Set the API ML component log level to `DEBUG` to capture detailed authentication flow information. Look for entries related to authentication header parsing and validation.
+  1. **Check the STC job log.**  
+  Review the API Gateway started task (STC) job log for any related error messages, or stack traces that may provide additional context.
+  1. **Verify the request URL.**  
+  Confirm that the request URL is correct and reaches the intended API Gateway endpoint. A mistyped or misrouted URL can result in missing authentication headers.
+  1. **Test with a simple curl command.**  
+  Use a tool like `curl` to reproduce the issue with a controlled request and inspect the headers being sent.
 
 ### ZWEAS123E
 
@@ -894,31 +898,37 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
-  Could not retrieve the proper authentication token from the Authentication service response. This typically occurs when the authentication service (e.g., z/OSMF) returns a token format that the API Gateway does not recognize or expect.
+  Could not retrieve the proper authentication token from the Authentication service response. This typically occurs when the authentication service (for example, z/OSMF) returns a token format that the API Gateway does not recognize or expect.
 
   **Action:**
 
-  Review your APIML authentication provider configuration and ensure your Authentication service is working.
+  Review your API ML authentication provider configuration and ensure your Authentication service is working.
 
   **Troubleshooting steps for z/OSMF JWT configuration:**
 
-  1. **Verify z/OSMF JWT support** — Check that your version of z/OSMF supports JWT token generation. JWT support was introduced in z/OSMF V2R4 with the required PTFs. Consult your z/OSMF documentation for the applicable PTF list.
+  1. **Verify z/OSMF JWT support.**  
+  Check that your version of z/OSMF supports JWT token generation. JWT support was introduced in z/OSMF V2R4 with the required PTFs. Consult your z/OSMF documentation for the applicable PTF list.
 
-  2. **Check z/OSMF configuration** — Ensure that z/OSMF is configured to issue JWT tokens. In the z/OSMF `jwt.yml` configuration file, confirm the following settings:
+  1. **Check z/OSMF configuration.**  
+  Ensure that z/OSMF is configured to issue JWT tokens. In the z/OSMF `jwt.yml` configuration file, confirm the following settings:
      - `jwt.enabled: true`
      - A valid keystore and key alias are specified for signing JWTs.
 
-  3. **Validate the token endpoint** — Test the z/OSMF JWT endpoint directly using a REST client:
+  1. **Validate the token endpoint.**  
+  Test the z/OSMF JWT endpoint directly using a REST client:
      ```
      POST /zosmf/services/authenticate
      ```
      Verify that the response contains a `jwt` field with a valid token string.
 
-  4. **Examine the APIML gateway STC log** — Look for entries containing `ZWEAS123E` along with preceding debug messages that show the raw response received from the authentication service. This can help identify whether the issue is in the response format or content.
+  2. **Examine the API ML Gateway STC log.**  
+  Look for entries containing `ZWEAS123E` along with preceding debug messages that show the raw response received from the authentication service. This can help identify whether the issue is in the response format or content.
 
-  5. **Enable gateway debug logging** — Set the API Gateway log level to `DEBUG` and reproduce the issue. Search for messages that log the authentication service response type. This will show what token type was returned versus what was expected.
+  3. **Enable Gateway debug logging.**  
+  Set the API Gateway log level to `DEBUG` and reproduce the issue. Search for messages that log the authentication service response type. This will show what token type was returned versus what was expected.
 
-  6. **Review z/OSMF applied PTFs** — Ensure all required z/OSMF maintenance for JWT support is applied. Missing PTFs can cause the authentication service to return an unexpected token format (e.g., a legacy LtpaToken instead of a JWT).
+  4. **Review z/OSMF applied PTFs.**  
+  Ensure all required z/OSMF maintenance for JWT support is applied. Missing PTFs can cause the authentication service to return an unexpected token format (for example, a legacy `LtpaToken` instead of a `jwt`).
 
 ### ZWEAS130E
 

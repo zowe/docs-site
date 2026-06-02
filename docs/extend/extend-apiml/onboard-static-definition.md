@@ -8,7 +8,7 @@ This article is part of a series of onboarding guides, which outline the process
 Review this article to onboard an existing REST or GraphQL API service to Zowe&trade; API Mediation Layer without changing the code of the API service. This form of onboarding is also refered to as, "static onboarding".
 
 :::note
-When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to API Mediation Layer. For a complete list of methods to onboard a service natively to the API Mediation Layer, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
+When developing a new service, it is not recommended to onboard a service using this method, as this method is non-native to API Mediation Layer. For a complete list of methods to onboard a service natively to API ML, see the [Service onboarding guides](onboard-overview.md#service-onboarding-guides) in the _Onboarding overview_.
 :::
 
 The following procedure outlines the steps to onboard an API service through the API Gateway in  API ML without requiring code changes.
@@ -18,10 +18,10 @@ The following procedure outlines the steps to onboard an API service through the
   - [Define your service and API in YAML format](#define-your-service-and-api-in-yaml-format)
   - [Route your API](#route-your-api)
   - [Customize configuration parameters](#customize-configuration-parameters)
-  - [Add and validate the definition in the API Mediation Layer running on your machine](#add-and-validate-the-definition-in-the-api-mediation-layer-running-on-your-machine)
-  - [Add a definition in the API Mediation Layer in the Zowe runtime](#add-a-definition-in-the-api-mediation-layer-in-the-zowe-runtime)
-  - [(Optional) Check the log of the API Mediation Layer](#optional-check-the-log-of-the-api-mediation-layer)
-  - [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started)
+  - [Add and validate the definition in API ML running on your machine](#add-and-validate-the-definition-in-api-ml-running-on-your-machine)
+  - [Add a definition in API ML in the Zowe runtime](#add-a-definition-in-api-ml-in-the-zowe-runtime)
+  - [(Optional) Check the log of API ML](#optional-check-the-log-of-api-ml)
+  - [(Optional) Reload the services definition after the update when API ML is already started](#optional-reload-the-services-definition-after-the-update-when-api-ml-is-already-started)
 
 :::tip
 For more information about the structure of APIs and which APIs to expose in Zowe API ML, see the [Onboarding Overview](onboard-overview.md).
@@ -113,7 +113,7 @@ In this example, a suitable name for the file is `petstore.yml`.
 * Each service has a service ID. In this example, the service ID is `petstore`. The service id is used as a part of the request URL towards the Gateway. It is removed by the Gateway when forwarding the request to the service.
 * The service can have one or more instances. In this case, only one instance `http://localhost:8080` is used.
 * One API is provided and the requests with the relative base path `api/v2` at the API Gateway (full gateway URL: `https://gateway:port/serviceId/api/v2/...`) are routed to the relative base path `/v2` at the full URL of the service (`http://localhost:8080/v2/...`).
-* The file on USS should be encoded in ASCII to be read correctly by the API Mediation Layer.
+* The file on USS should be encoded in ASCII to be read correctly by API ML.
 * The validation of the static definition may fail if the `catalogUiTileId` value does not match a tile ID defined under `catalogUiTiles`.
 
 :::tip Tips:
@@ -287,9 +287,9 @@ additionalServiceMetadata:
 
 * **serviceId**
 
-  This parameter specifies the service instance identifier that is registered in the API Mediation Layer installation.
+  This parameter specifies the service instance identifier that is registered in API ML installation.
   The service ID is used in the URL for routing to the API service through the Gateway.
-  The service ID uniquely identifies the service in the API Mediation Layer.
+  The service ID uniquely identifies the service in API ML.
   The system administrator at the customer site defines this parameter.
 
   :::caution
@@ -435,7 +435,7 @@ additionalServiceMetadata:
 
     * **apiInfo.apiId**
 
-      This parameter specifies the API identifier that is registered in the API Mediation Layer installation. The API ID uniquely identifies the API in the API Mediation Layer.
+      This parameter specifies the API identifier that is registered in API ML installation. The API ID uniquely identifies the API in API ML.
       The same API can be provided by multiple services. The API ID can be used to locate the same APIs that are provided by different services.
 
       The creator of the API defines this ID.
@@ -498,13 +498,13 @@ additionalServiceMetadata:
 * **catalogUiTileId**
 
   This parameter specifies the unique identifier for the API services group.
-  This is the grouping value used by the API Mediation Layer to group multiple API services
+  This is the grouping value used by API ML to group multiple API services
   together into "tiles".
   Each unique identifier represents a single API Catalog UI dashboard tile.
   Specify the value based on the ID of the defined tile.
 
   :::caution
-  The `catalogUiTileId` value must use only lowercase alphanumeric characters. The value must match a tile ID defined under `catalogUiTiles`. If the `catalogUiTileId` does not match any defined tile, the API Mediation Layer rejects the definition with a validation error.
+  The `catalogUiTileId` value must use only lowercase alphanumeric characters. The value must match a tile ID defined under `catalogUiTiles`. If the `catalogUiTileId` does not match any defined tile, API ML rejects the definition with a validation error.
   :::
 
 * **catalogUiTile**
@@ -554,19 +554,19 @@ additionalServiceMetadata:
 
       This parameter specifies any metadata parameters that are updated.
 
-## Add and validate the definition in the API Mediation Layer running on your machine
+## Add and validate the definition in API ML running on your machine
 
-After you define the service in YAML format, you are ready to add your service definition to the API Mediation Layer ecosystem.
+After you define the service in YAML format, you are ready to add your service definition to API ML ecosystem.
 
-The following procedure describes how to add your service to the API Mediation Layer on your local machine.
+The following procedure describes how to add your service to API ML on your local machine.
 
 **Follow these steps:**
 
 1.  Copy or move your YAML file to the `config/local/api-defs` directory in the directory with API Mediation Layer.
 
-2.  Start the API Mediation Layer services.
+2.  Start API ML services.
 
-    **Tip:** For more information about how to run the API Mediation Layer locally, see [Running the API Mediation Layer on Local Machine](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md).
+    **Tip:** For more information about how to run API ML locally, see [Running API ML on Local Machine](https://github.com/zowe/api-layer/blob/master/docs/local-configuration.md).
 
 3.  Run your Java application.
 
@@ -579,9 +579,9 @@ The following procedure describes how to add your service to the API Mediation L
     `https://localhost:10010/petstore/api/v2/pets/1`
 
 
-## Add a definition in the API Mediation Layer in the Zowe runtime
+## Add a definition in API ML in the Zowe runtime
 
-After you define and validate the service in YAML format, you are ready to add your service definition to the API Mediation Layer running as part of the Zowe runtime installation on z/OS.
+After you define and validate the service in YAML format, you are ready to add your service definition to API ML running as part of the Zowe runtime installation on z/OS.
 
 **Follow these steps:**
 
@@ -604,7 +604,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
 
 3. Ensure that your application that provides the endpoints described in the YAML file is running.
 
-4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when the API Mediation Layer is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.
+4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when API ML is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.
 
 5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
@@ -613,7 +613,7 @@ You successfully defined your Java application if your service is running and yo
 https://l${zoweHostname}:${gatewayHttpsPort}/petstore/api/v2/pets/1
 ```
 
-## (Optional) Check the log of the API Mediation Layer
+## (Optional) Check the log of API ML
 
 The API Mediation Layer log can contain messages based on the API ML configuration. The API ML prints the following messages to its log when the API definitions are processed:
 
@@ -627,9 +627,9 @@ Adding static instance STATIC-localhost:petstore:8080 for service ID petstore ma
 If these messages are not displayed in the log, ensure that the [API ML debug mode](https://docs.zowe.org/stable/troubleshoot/troubleshoot-apiml#enable-api-ml-debug-mode) is active.
 :::
 
-## (Optional) Reload the services definition after the update when the API Mediation Layer is already started
+## (Optional) Reload the services definition after the update when API ML is already started
 
-The following procedure enables you to refresh the API definitions after you change the definitions when the API Mediation Layer is already running.
+The following procedure enables you to refresh the API definitions after you change the definitions when API ML is already running.
 
 **Follow these steps:**
 
@@ -637,7 +637,7 @@ The following procedure enables you to refresh the API definitions after you cha
 
    `http://localhost:10011/discovery/api/v1/staticApi`
 
-   The Discovery Service requires authentication by a client certificate. If the API Mediation Layer is running on your local machine, the certificate is stored at `keystore/localhost/localhost.pem`.
+   The Discovery Service requires authentication by a client certificate. If API ML is running on your local machine, the certificate is stored at `keystore/localhost/localhost.pem`.
 
    This example uses the [HTTPie command-line HTTP client](https://httpie.org) and is run with Python 3 installed:
 
