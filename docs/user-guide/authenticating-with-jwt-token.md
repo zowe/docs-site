@@ -29,9 +29,10 @@ Secondly, the API client stores the JWT or cookie and sends the token with every
 To obtain a JWT, call the endpoint with the credentials for either basic authentication or the client certificate.
 
 
-- The full path for API ML is: ```/gateway/api/v1/auth/login```. The full URL follows the format: `https://<gateway-hostname>:<gateway-port>/gateway/api/v1/auth/login`.
+- The full path for API ML is: ```/gateway/api/v1/auth/login```.  
+The full URL follows the format: `https://<gateway-hostname>:<gateway-port>/gateway/api/v1/auth/login`.
 
-- Credentials are provided in the JSON request or in Basic Authentication. The JSON request example looks like:
+- Credentials are provided in the JSON request or in Basic Authentication. **JSON Request Example:**
 
     ```json
     {
@@ -51,7 +52,7 @@ curl -v -c - -X POST "https://<gateway-hostname>:<gateway-port>/gateway/api/v1/a
 ```
 
 :::note
-`<gateway-hostname>` is the hostname of the API Gateway and `<gateway-port>` is the port on which the API Gateway listens. In the examples below, `zowe` is used as a placeholder hostname and `7554` as a placeholder port — replace these with your actual gateway hostname and port.
+`<gateway-hostname>` is the hostname of the API Gateway. `<gateway-port>` is the port on which the API Gateway listens. In the following examples, `zowe` is used as a placeholder hostname and `7554` as a placeholder port.  Replace these placeholder values with your actual gateway hostname and port.
 :::
 
 The following output describes the status of the JWT:
@@ -70,6 +71,14 @@ Content-Type: application/json
 HTTP/1.1 204
 Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
 ```
+The output shows that the JWT was successfully created and issued to the client.
+
+* **Status Code HTTP/1.1 204**  
+A `204` No Content status code indicates that the request was successful, the user's credentials were authenticated, and the server fulfilled the request without needing to return an entry body.
+
+* **The `Set-Cookie` Header**  
+The server is actively sending the token back to the client's browser/application via the `apimlAuthenticationToken=` cookie. The actual token payload is the encoded string beginning with `eyJhbGciOiJSUzI1NiJ9....`
+
 
 ## Making an authenticated request
 
@@ -127,7 +136,7 @@ The JSON response contains the following fields:
 
 These fields correspond to `iss`, `exp`, and `sub` JWT claims. The timestamps are in ISO 8601 format.
 
-Execute the following curl command to validate the existing JWT, and to retrieve the contents of the token: 
+Execute the following _curl_ command to validate the existing JWT, and to retrieve the contents of the token: 
 
 ```bash
 curl -k --cookie "apimlAuthenticationToken={token to query}" -X GET "https://<gateway-hostname>:<gateway-port>/gateway/api/v1/auth/query"
@@ -149,6 +158,17 @@ Content-Type: application/json;charset=UTF-8
     "expiration": "2019-11-30T13:39:18.000+0000"
 }
 ```
+The specific details from the output confirms the status of the token:
+
+* **Status Code HTTP/1.1 200**  
+An HTTP `200` OK response means the query endpoint successfully processed the request and verified that the token provided in the cookie is authentic and valid.
+
+* **Active User Identity ("userId": "zowe")**  
+The output confirms that the token belongs to a valid, recognized user ID (`zowe`), mapping directly to the JWT sub (subject) claim.
+
+* **Token Lifespan Status**  
+The JSON body returns the exact lifespan metadata of the token, confirming it is within its valid operational window:
+
 
 ## Refreshing the JWT 
 
@@ -169,6 +189,7 @@ The new token overwrites the old cookie with a Set-Cookie header. As part of the
 - The refresh request requires the token in one of the following formats:
   - Cookie named `apimlAuthenticationToken`.
   - Bearer authentication
+  
 :::
 
 For more information, see the OpenAPI documentation of the API Mediation Layer in the API Catalog.
@@ -195,6 +216,17 @@ Content-Type: application/json
 HTTP/1.1 204
 Set-Cookie: apimlAuthenticationToken=eyJhbGciOiJSUzI1NiJ9...; Path=/; Secure; HttpOnly
 ```
+
+The outpu explains the status of the JWTs involved:
+
+* **Status Code HTTP/1.1 204**  
+Just like the login flow, the `204` No Content status means the server successfully authorized the request and performed the action without needing to return a JSON response body.
+
+* **Issuance of a New JWT**  
+The Set-Cookie header contains a brand new `apimlAuthenticationToken`. Because this is a fresh token, its expiration timer has been completely reset, granting the client a prolonged validity window.
+
+* **Invalidation of the Old JWT**  
+While not explicitly visible in the string text of the cookie itself, the context of a successful `204` response at this endpoint indicates that the previous JWT is now invalidated and can no longer be used for authentication.
 
 ## Token format
 
