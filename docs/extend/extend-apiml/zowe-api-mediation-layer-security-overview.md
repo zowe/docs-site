@@ -84,7 +84,7 @@ The following range of service types apply to Zowe&trade; API ML:
 API ML requires TLS-secured HTTPS communication for all internal services. Each component must be configured with the appropriate keystores, truststores, and HTTPS ports:
 
 - **API Client**
-    - Acts strictly as a client, not an HTTPS server
+    - Acts strictly as a client, not an HTTPS server.
     - Must trust the API Gateway's server certificate via a local truststore or a SAF keyring containing the Gateway's CA or server certificate.
 
 - **Gateway Service**
@@ -93,7 +93,7 @@ API ML requires TLS-secured HTTPS communication for all internal services. Each 
     - Requires a truststore or SAF keyring containing certificates needed to trust downstream API Services.
 
 - **API Catalog**
-    - Exposes an internal HTTPS port
+    - Exposes an internal HTTPS port.
     - Requires a keystore or SAF keyring with a server certificate that must be trusted by the API Gateway (it does not need to be trusted by external clients).
 
 - **Discovery Service**
@@ -102,8 +102,8 @@ API ML requires TLS-secured HTTPS communication for all internal services. Each 
     - Requires a truststore or SAF keyring containing certificates needed to trust registering API services.
 
 - **API Service**
-    - Exposes an HTTPS port
-    - Requires a keystore or SAF keyring with a server and client certificate (these can be identical). The server certificate must be trusted by the Gateway; the client certificate must be trusted by the Discovery Service.
+    - Exposes an HTTPS port.
+    - Requires a keystore or SAF keyring with a server and client certificate (these can be identical). The server certificate must be trusted by the Gateway, whereby the client certificate must be trusted by the Discovery Service.
     - Requires a truststore or SAF keyring containing the certificates necessary to trust both the Gateway and the Discovery Service.
 
 ## Setting ciphers for API ML services
@@ -130,6 +130,7 @@ by adding the following Java property:
 Modify the respective YAML files in your local configuration directory, such as [config/local/gateway-service.yml](https://github.com/zowe/api-layer/blob/master/config/local/gateway-service.yml) (including other YAML files for development purposes).
  
 ### Default Cipher Suite Order 
+
 The following list shows the default ciphers. API ML services use the following cipher order:
 
 **Note:** Ensure that the version of Java you use is compatible with the default cipherset.
