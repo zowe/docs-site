@@ -20,7 +20,7 @@ If the mediation layer is not used, ZSS directly at `https://<zowe.externalDomai
 
 ### app-server configuration
 
-The app-server uses the Zowe server configuration file for customizing server behavior. For a full list of parameters, requirements, and descriptions, see [the json-schema document for the app-server](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json) which describes attributes that can be specified within the configuration file section `components.app-server`
+The app-server uses the Zowe server configuration file for customizing server behavior. For a full list of parameters, requirements, and descriptions, see [the json-schema document for the app-server](https://github.com/zowe/zlux-app-server/blob/v3.x/staging/schemas/app-server-config.json) which describes attributes that can be specified within the configuration file section `components.app-server`.
 
 ### zss configuration
 
@@ -50,7 +50,7 @@ The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/stora
 
 ### Setting up the VT Terminal app plugin
 
-The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you will see a file with the following properties:
+The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you see a file with the following properties:
 
 ```
   "host":<hostname>
@@ -158,12 +158,12 @@ When running, the App Server accesses the server's settings and read or modify t
 - Group: Multiple users can be associated into one group, so that settings are shared among them.
 - User: When authenticated, users have their own settings and storage for the apps that they use.
 
-These directories dictate where the Configuration Dataservice will store content. For more information, see the [Configuration Dataservice documentation](../extend/extend-desktop/mvd-configdataservice.md).
+These directories dictate where the Configuration Dataservice stores content. For more information, see the [Configuration Dataservice documentation](../extend/extend-desktop/mvd-configdataservice.md).
 
 
 ## App plugin configuration
 
-The App framework will load plugins from components such as extensions based on their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the `components.app-server.pluginsDir` variable in the Zowe configuration file.
+The App framework loads plugins from components such as extensions based on their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the `components.app-server.pluginsDir` variable in the Zowe configuration file.
 
 ## Logging configuration
 
@@ -195,7 +195,7 @@ All settings are optional.
 
 ### Log files
 
-The app-server and zss will create log files containing processing messages and statistics. The log files are generated within the log directory specified within the Zowe configuration file  (`zowe.logDirectory`). The filename patterns are:
+The app-server and zss create log files containing processing messages and statistics. The log files are generated within the log directory specified within the Zowe configuration file  (`zowe.logDirectory`). The filename patterns are:
 
 - App Server: `<zowe.logDirectory>/appServer-yyyy-mm-dd-hh-mm.log`
 - ZSS: `<zowe.logDirectory>/zssServer-yyyy-mm-dd-hh-mm.log`
@@ -213,10 +213,10 @@ The following environment variables can be used to customize the app-server and 
 
 * `ZWED_NODE_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for app-server, but keeps the default filenames.
 * `ZWES_LOG_DIR`: Overrides the zowe configuration file value of `zowe.logDirectory` for zss, but keeps the default filenames.
-* `ZWED_NODE_LOG_FILE`: Specifies the full path to the file where logs will be written from app-server. This overrides both `ZWED_NODE_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
-* `ZWES_LOG_FILE`: Specifies the full path to the file where logs will be written from zss. This overrides both `ZWES_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file will be written. This option does not timestamp logs or keep multiple of them.
+* `ZWED_NODE_LOG_FILE`: Specifies the full path to the file where logs are written from app-server. This overrides both `ZWED_NODE_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file is written. This option does not timestamp logs or keep multiple of them.
+* `ZWES_LOG_FILE`: Specifies the full path to the file where logs are written from zss. This overrides both `ZWES_LOG_DIR` and `zowe.logDirectory`. If the path is `/dev/null` then no log file is written. This option does not timestamp logs or keep multiple of them.
 
-If the directory or file specified cannot be created, the server will run (but it might not perform logging properly).
+If the directory or file specified cannot be created, the server runs, but it might not perform logging properly.
 
 
 ## ZSS configuration
@@ -241,8 +241,8 @@ Or
 #### Verifying which ZSS mode plugins support
 
 You can check if a ZSS plugin supports 64 bit or 31 bit ZSS by reading the `pluginDefinition.json` file of the plugin.
-In each component or extension you have, its manifest file will state if there are `appFw` plugin entries.
-In each folder referenced by the `appFw` section, you will see a pluginDefinition.json file.
+In each component or extension you have, its manifest file states if there are `appFw` plugin entries.
+In each folder referenced by the `appFw` section, you see a `pluginDefinition.json` file.
 Within that file, if you see a section that says `type: 'service'`, then you can check its ZSS mode support.
 If the service has the property `libraryName64`, then it supports 64 bit. If it says `libraryName31`, then it supports 31 bit. Both might exist if it supports both. If it instead only contains `libraryName`, this is ambigious and deprecated, and most likely that plugin only supports 31 bit ZSS. A plugin only supporting 31 bit ZSS must be recompiled for 64 bit support, so you must contact the developers to accomplish that.
 
@@ -250,13 +250,13 @@ Example: [the sample angular app supports both 31 bit and 64 bit zss](https://gi
 
 #### Setting ZSS 64 bit or 31 bit mode
 
-You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value will not take effect until next server restart.
+You can switch between ZSS 64 bit and 31 bit mode by setting the value `components.zss.agent.64bit` to true or false in the Zowe configuration file. The value does not effect until next server restart.
 
 #### Customizing ZSS session duration
 
 In a standard Zowe installation, all Zowe servers utilize the API Mediation Layer's token-based, single-sign on authentication. This authentication in turn cooperates with z/OSMF, and the session duration is typically that of z/OSMF's, which defaults to 8 hours before the session expires.  In that situation, customization of session duration is best done by customizing z/OSMF's session duration, as a part of its Liberty configuration.
 
-If you are not using the API Mediation Layer, or are trying to contact ZSS directly, then ZSS's own session logic is used. When authenticated directly to ZSS, it will respond to authenticated HTTP requests with a cookie which is valid by default for 1 hour. This can be customized by creating and editing a file named `timeouts.json` within ZSS's instance directory. The default location is `<zowe.workspaceDirectory>/app-server/serverConfig/timeouts.json`, because the default instance directory is `<zowe.workspaceDirectory>/app-server`, but can be customized by editing the value of `components.zss.instanceDir`.
+If you are not using the API Mediation Layer, or are trying to contact ZSS directly, then ZSS's own session logic is used. When authenticated directly to ZSS, it responds to authenticated HTTP requests with a cookie which is valid by default for one hour. This can be customized by creating and editing a file named `timeouts.json` within ZSS's instance directory. The default location is `<zowe.workspaceDirectory>/app-server/serverConfig/timeouts.json`, because the default instance directory is `<zowe.workspaceDirectory>/app-server`, but can be customized by editing the value of `components.zss.instanceDir`.
 
 The timeouts.json file has the following layout:
 
@@ -275,7 +275,7 @@ Where you can have a "users" section that lists user accounts on the z/OS system
 The numbers for each entry are in seconds, where in the example `zoweuser1` has the default session duration value of one hour.
 It is possible that a user specified in this file is also in a group specified in this file. If so, the user value takes priority.
 If a user authenticates to ZSS and their user or group is not found in this file, then the default value of 1 hour is used.
-If this file is missing, Zowe will print a message about it missing, but it does not harm Zowe as the default value of one hour would be used for all direct authentications to ZSS.
+If this file is missing, Zowe prints a message about it missing, but it does not harm Zowe as the default value of one hour would be used for all direct authentications to ZSS.
 
 
 ## Using multiple ZIS instances
@@ -448,12 +448,12 @@ After successful authentication, a Zowe Desktop session is created by authentica
 The duration of the session is determined by the plugin used. Some plugins are capable of renewing the session prior to expiration, while others might have a fixed session length.
 
 The session duration and expiration behavior of the default security plugin, `sso-auth`, is determined by API Mediation Layer configuration if present, and otherwise upon ZSS configuration.
-If API Mediation Layer is enabled, by default it will use z/OSMF as the session provider and the session duration will be based upon z/OSMF settings. [You can read more about API Mediation Layer providers here](authentication-providers-for-apiml.md).
+If API Mediation Layer is enabled, by default it uses z/OSMF as the session provider and the session duration is based upon z/OSMF settings. [You can read more about API Mediation Layer providers here](authentication-providers-for-apiml.md).
 If the API Mediation Layer is not enabled, you can [use or customize ZSS's default session duration of one hour](#customizing-zss-session-duration).
 
 When a session expires, the credentials used for the initial login are likely to be invalid for re-use, since MFA credentials are often one-time-use or time-based.
 
-In the Desktop, apps that you opened prior to expiration will remain open so that your work can resume after entering new credentials.
+In the Desktop, apps that you open prior to expiration remain open so that your work can resume after entering new credentials.
 
 
 ## Administering the servers and plugins using an API
