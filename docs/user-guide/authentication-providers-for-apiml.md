@@ -7,6 +7,7 @@ Choose from the following providers to handle authentication for the API Gateway
 - [Configuring an authentication provider for API Mediation Layer](#configuring-an-authentication-provider-for-api-mediation-layer)
   - [SAF Authentication Provider (Recommended)](#saf-authentication-provider-recommended)
   - [z/OSMF Authentication Provider](#zosmf-authentication-provider)
+    - [Handling Multiple z/OSMF Instances](#handling-multiple-zosmf-instances)
 
 :::note
 For development purposes, a dummy authentication provider is also available. This provider is not intend for production purposes. For more information, see [Dummy Authentication Provider](../extend/extend-apiml/api-mediation-layer-development-setup.md#dummy-authentication-provider) in _Deploy API Mediation Layer locally_.
@@ -44,11 +45,31 @@ components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf  # Default z/OSM
 ```
 
 **`components.gateway.apiml.security.auth.zosmfServiceId`**  
-Default: `ibmzosmf`. Change only if you customized the z/OSMF service ID in your static API definition. The value must match the `serviceId` of the z/OSMF static definition that Zowe generates during configuration.
+ Change only if you customized the z/OSMF service ID in your static API definition. The value must match the `serviceId` of the z/OSMF static definition that Zowe generates during configuration.  
+ **Default:** `ibmzosmf`.
 
-**Multiple z/OSMF instances:**
-- **Identical instances (HA across sysplex):** Use the same service ID (`ibmzosmf`). The Gateway discovers all instances and load-balances.
-- **Distinct instances (different LPARs with different configs):** Use unique service IDs per instance.
+ ### Handling Multiple z/OSMF Instances
+
+ If your environment utilizes multiple z/OSMF instances, choose one of the following configuration options based on your architectural needs:
+
+- **Identical instances (HA across sysplex):** 
+Use this option if your z/OSMF instances are identical and you want the API Gateway to automatically load-balance requests across your sysplex for High Availability.
+
+  Use the same service ID (`ibmzosmf`). The Gateway discovers all instances and load-balances.
+
+  **Example:**
+  ```
+  components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf
+  ```
+
+- **Distinct instances (different LPARs with different configs):** 
+
+  Assign a unique service ID to each distinct z/OSMF instance. This unique value must exactly match the custom serviceId specified in the corresponding z/OSMF static API definition that Zowe generates during configuration.
+  
+  **Example:**
+  ```
+  components.gateway.apiml.security.auth.zosmfServiceId: ibmzosmf-lpar2
+  ```
 
 
 
