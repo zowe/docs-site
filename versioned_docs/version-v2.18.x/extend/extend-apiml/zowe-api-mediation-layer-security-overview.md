@@ -32,7 +32,9 @@ API ML uses the following authentication methods:
     - The user ID and password are validated by a z/OS security manager whereby
     a token is issued that is then used to access the API service
 
-- **TLS client certificates** - Used for service-to-service auth between API ML components. Can also authenticate end users via X.509 certs mapped to mainframe identities. See [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
+- **TLS client certificates**  
+  
+    Used for service-to-service authentication between API ML components. End users can also be authenticated via X.509 certificates mapped to mainframe identities. For nmor information, see [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
 - **OIDC authentication**
  
@@ -44,11 +46,11 @@ API ML uses the following authentication methods:
   - The client application passes the access JWT token to the API ML Gateway with subsequent requests for mainframe resources.
   - API ML federates the user identities and calls the requested resource with appropriate mainframe user credentials.
 
-For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md).
+    For more information, see the detailed explanation of the [OIDC authentication and Identity Federation](api-mediation-oidc-authentication.md).
 
 ### Zowe API ML services
 
-The following range of service types apply to the Zowe&trade; API ML:
+The following range of service types apply to Zowe&trade; API ML:
 
 - **Zowe API ML services**
 
@@ -156,5 +158,5 @@ You can also use the `/gateway/api/v1/auth/keys/public` endpoint to obtain a pub
 
 
 Your z/OSMF instance can be enabled to support JWTs as described in [Enabling JSON Web Token support](https://www.ibm.com/support/knowledgecenter/SSLTBW_2.4.0/com.ibm.zos.v2r4.izua300/izuconfig_EnableJSONWebTokens.htm).
-In such cases, the Zowe API ML uses this JWT and does not generate its own Zowe JWT. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
+In such cases, Zowe API ML uses this JWT and does not generate its own Zowe JWT. All authentication APIs, such as `/gateway/api/v1/login` and `/gateway/api/v1/check` function in the same way as without z/OSMF JWT.
 The Gateway service endpoint `/gateway/api/v1/auth/keys/public` serves the z/OSMF JWK that can be used for JWT signature validation.
