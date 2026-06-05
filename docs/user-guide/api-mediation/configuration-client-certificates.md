@@ -59,11 +59,12 @@ Z Secure Services (ZSS) configuration is the legacy method to perform mapping. Y
 
 * For specific information about client certificate authentication for specific users, see the section [Configure your z/OS system to support client certificate authentication for specific users](../authenticating-with-client-certificates.md#configure-your-zos-system-to-support-client-certificate-authentication-for-specific-users) in _Authenticating with client certificates_.
 
+### Configure the Internal API ML Mapper
 
 <details>
-<summary> Click here to configure the internal API ML mapper. (recommended)</summary>
+<summary> Click here for internal API ML mapper configuration details. (recommended method)</summary>
 
-## Configure the internal API ML mapper
+**Configure the internal API ML mapper**
 
 Use the following procedure to enable the zowe.yaml file to use a X.509 client certificate as the method of authentication for the API Mediation Layer Gateway. Note that the use of the Internal API ML Mapper is the recommended method.
 
@@ -82,10 +83,12 @@ You can now proceed to [configuring X.509 Client Certificate Authentication in z
 
 </details>
 
-<details>
-<summary>Click here to Configure ZSS.</summary>
-
 ## Configure ZSS
+
+<details>
+<summary>Click here for ZSS configuration details.</summary>
+
+**Configure ZSS**
 
 **Note:** Configuring ZSS is not the recommended mapping method. For details about the recommended mapping method, see [Configure the Internal API ML Mapper](#configure-the-internal-api-ml-mapper).
 
