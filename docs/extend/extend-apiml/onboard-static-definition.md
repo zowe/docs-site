@@ -63,7 +63,7 @@ The first step in API service onboarding is to identify the APIs that you want t
 
    In the sample service, the `service ID` is `petstore`.
 
-4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. The usually used types are: `api`, `ui` and `ws` but you can use any valid URL element you want.
+4. Decide which URL to use to make this API available in the API Gateway. This URL is referred to as the gateway URL and is composed of the API type and the major version. Commonly used API types are: `api`, `ui` and `ws` but you can use any valid URL element you want.
 
    :::note
    In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version segment is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
@@ -180,7 +180,7 @@ Routing your service through the API Gateway provides a stable URL endpoint. Thi
 
 The following sections describe each configuration parameter in detail. Use the table of contents or search within this page to quickly find the parameter you need.
 
-This part contains a more complex example of the configuration and an explanation of all the possible parameters:
+This section contains a complex example of the configuration and an explanation of all the possible parameters:
 
 **REST API**
 

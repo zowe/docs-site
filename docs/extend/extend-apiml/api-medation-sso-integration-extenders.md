@@ -3,19 +3,19 @@
 :::info Role: Infrastructure application developer
 :::
 
-As an infrastructure application developer, review the ways a service can integrate with API Mediation Layer (API ML) and participate in the Single Sign On for REST APIs on the z/OS platform. 
+As an infrastructure application developer, review the ways a service can integrate with API Mediation Layer (API ML) and participate in the Single Sign On (SSO) for REST APIs on the z/OS platform. 
 
 :::note
 This article does not cover the client methods to call API ML and authenticate. For more information about API ML authentication, see the [Single Sign On Overview](../../user-guide/api-mediation-sso.md) in the User Guide. 
 :::
 
-To integrate with API Mediation Layer and leverage Single Sign On, choose from the following three possible methods:
+To integrate with API Mediation Layer and leverage SSO, choose from the following three possible methods:
 
 - [Accepting JWT token (recommended)](#accepting-jwt)
 - [Accepting SAF IDT token](#accepting-saf-idt)
 - [Accepting PassTicket](#accepting-passtickets)
 
-Additional possibilities can potentially be leveraged to enable Single Sign On but are **not** properly integrated with the standard API ML:
+Additional possibilities can potentially be leveraged to enable SSO but are **not** properly integrated with the standard API ML:
 
 * [Bypassing authentication for the service](#bypassing-authentication-for-the-service)   
     **Note:** This option is for SSO only if the service does not have an authenticated endpoint.
@@ -34,13 +34,13 @@ authentication:
 ```
 
 * **authentication.scheme**  
-Specifies a service authentication scheme. The following schemes that participate in single sign on are supported by the API Gateway: 
+Specifies a service authentication scheme. The following schemes that participate in SSO are supported by the API Gateway: 
 * `zoweJwt`
 * `safIdt`
 * `httpBasicPassTicket`
 * `zosmf`. 
   
-    Two additional schemes that do not properly participate but may be relevant are `bypass`, and `x509`.
+    Two additional schemes that do not properly participate in SSO but may be relevant are `bypass`, and `x509`.
 
   The following table provides a quick reference of the available authentication schemes, their descriptions, and whether they are integrated with SSO:
 
@@ -53,11 +53,11 @@ Specifies a service authentication scheme. The following schemes that participat
   | `bypass` | Token passed unchanged to the service | Not integrated |
   | `x509` | Service accepts client certificates forwarded in headers | Not integrated |
 
-In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also  passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
+In the event that there is an issue with authentication, API ML sets `X-Zowe-Auth-Failure` error headers which are passed to downstream services. In addition, any `X-Zowe-Auth-Failure` error headers coming from an upstream service are also passed to the downstream services without setting valid headers. The `X-Zowe-Auth-Failure` error header contains details about the error and suggests potential actions.
 
 ## Accepting JWT
 
-Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the client-side. No additional configuration is needed in the service's onboarding definition beyond specifying the scheme.
+Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the client-side. No additional configuration is needed in the service's onboarding definition beyond specifying the scheme:
 
 ```yaml
 authentication:
@@ -71,7 +71,7 @@ authentication:
 
 ## Accepting SAF IDT
 
-Using the scheme value `safIdt` specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter.
+Using the scheme value `safIdt` specifies that the service accepts SAF IDT, and expects that the token produced by the SAF IDT provider implementation is in the `X-SAF-Token` header. It is necessary to provide a service APPLID in the `authentication.applid` parameter:
 
 ```yaml
 authentication:
@@ -80,18 +80,18 @@ authentication:
 ```
 
 - `<applid>`  
-Specifies the `APPLID` value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`).
+Specifies the APPLID value that is used by the API service for PassTicket support (for example, `OMVSAPPL`).
 
-For more information, see [Implement a SAF IDT provider](implement-new-saf-provider.md).
+For more information, see [Implementing a new SAF IDT provider](implement-new-saf-provider.md).
 
 ## Accepting PassTickets
 
 Using the scheme value `httpBasicPassTicket` specifies that a service accepts PassTickets in the Authorization header of the HTTP requests using the basic authentication scheme.
-It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent PassTicket generation errors and to make sure API Mediation Layer can generate PassTickets with the given APPLID. 
+It is necessary to provide a service APPLID in the `authentication.applid` parameter to prevent PassTicket generation errors, and to make sure API Mediation Layer can generate PassTickets with the given APPLID. 
 
-* When a client authenticates to API ML using a Zowe JWT, the API ML Gateway validates the JWT to identify the user, generates a PassTicket for that user using the configured `APPLID`, and forwards the PassTicket to your service in the `Authorization: Basic` header. Your service does not receive or validate the JWT directly.
-* When a client authenticates to API ML using a client certificate, the API ML Gateway maps the certificate to a mainframe user identity, generates a PassTicket for that user using the configured `APPLID`, and forwards it to your service in the `Authorization: Basic` header. Your service does not receive or validate the certificate directly.
-* If the downstream service needs to consume the user ID and the PassTicket from custom HTTP request headers (i.e. to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
+* When a client authenticates to API ML using a Zowe JWT, the API ML Gateway validates the JWT to identify the user, generates a PassTicket for that user using the configured APPLID, and forwards the PassTicket to your service in the `Authorization: Basic` header. Your service does not receive or validate the JWT directly.
+* When a client authenticates to API ML using a client certificate, the API ML Gateway maps the certificate to a mainframe user identity, generates a PassTicket for that user using the configured APPLID, and forwards it to your service in the `Authorization: Basic` header. Your service does not receive or validate the certificate directly.
+* If the downstream service needs to consume the user ID and the PassTicket from custom HTTP request headers (for example, to participate in the Zowe SSO), it is possible to provide the headers in the Gateway configuration.
 * The HTTP headers are then added to each request towards the downstream service. The headers contain the user ID and the PassTicket to be consumed by the service. For more information about the custom HTTP request headers, see [Adding a custom HTTP Auth header to store Zowe JWT](../../user-guide/api-mediation/configuration-extender-jwt.md#adding-a-custom-http-auth-header-to-store-zowe-jwt). 
 
 ```yaml
@@ -101,7 +101,7 @@ authentication:
 ```
 
 - `<applid>`  
-Specifies the `APPLID` value that is used by the API service for PassTicket support (e.g. `OMVSAPPL`).
+Specifies the APPLID value that is used by the API service for PassTicket support (for example, `OMVSAPPL`).
 
 For more information, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 
@@ -110,7 +110,7 @@ For more information, see [Enabling single sign on for extending services via Pa
 Using the scheme value `bypass` specifies that the token is passed unchanged to the service.
 
 :::note
-This is the default scheme when no authentication parameters are specified.
+`bypass` is the default scheme when no authentication parameters are specified.
 :::
 
 ```yaml
@@ -120,9 +120,9 @@ authentication:
 
 ## Accepting client certificates via x509 scheme
 
-While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML will validate the certificate for you and ideally provide a Zowe JWT. 
+While it is possible to integrate with client certificates by setting the scheme with the value `x509`, this approach is not recommended. We recommend that you use any of the previously described methods, whereby API ML validates the certificate for you and ideally provides a Zowe JWT. 
 
-The `x509` scheme value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (1.3.6.1.5.5.7.3.2) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the downstream service, but rather the certificate that is forwarded in the header that authenticates the user.
+The `x509` scheme value specifies that a service accepts client certificates forwarded in the HTTP header only. The Gateway service extracts information from a valid client certificate. For validation, the certificate needs to be trusted by API Mediation Layer. Extended Key Usage must either be empty or needs to contain a Client Authentication (`1.3.6.1.5.5.7.3.2`) entry. To use this scheme, it is also necessary to specify which headers to include. Specify these parameters in `headers`. This scheme does not relate to the certificate used in the TLS handshake between API ML and the downstream service, but rather the certificate that is forwarded in the header that authenticates the user.
 
 ```yaml
 authentication:
@@ -157,7 +157,7 @@ For more information about z/OSMF single sign-on, see [Establishing a single sig
 :::
 
 ## Forwarding x509 client certificate
-When client uses a x509 client certificates for authentication, the certificate can be forwarded to a downstream service. This is an alternative to the [Bypassing authentication for the service](#bypassing-authentication-for-the-service) option for client certificates.
+When a client uses a x509 client certificates for authentication, the certificate can be forwarded to a downstream service. This is an alternative to the [Bypassing authentication for the service](#bypassing-authentication-for-the-service) option for client certificates.
 
 The following steps outline the x509 client certificate forwarding flow:
 
@@ -168,7 +168,7 @@ The following steps outline the x509 client certificate forwarding flow:
 
 Both the API ML Gateway and the downstream service must conform to the following requirements to support x509 certificate forwarding:
 
-### API ML Gateway Requirements
+### API ML Gateway requirements
 
 - Enable client certificate forwarding in the `zowe.yaml`
     ```yaml
@@ -183,6 +183,6 @@ Both the API ML Gateway and the downstream service must conform to the following
 
 ### Downstream service requirements
 
-- The downstream service must indicate that it supports  forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
+- The downstream service must indicate that it supports forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
   
 - To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
