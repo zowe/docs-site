@@ -15,43 +15,25 @@ The following table summarizes the differences between a standalone (single-inst
 
 Use Zowe in a high availability (HA) configuration where multiple instances of the Zowe launcher are started. These instances can be either on the same LPAR, or different LPARs connected through a sysplex distributor. If you are only running a single Zowe instance on a single LPAR, you do not need to create a Caching Service.   
 
-In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate gateways that, in turn, dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
+In an HA setup, the different Zowe API Mediation Gateway servers share the same northbound port (by default `7554`). Client traffic to this port is distributed between separate Gateways that, in turn, dispatch their work to different services. When any of the services individually become unavailable, the work can be routed to available services, thereby completing the initial northbound request.  
 
 ## Caching Service storage methods
 
 Zowe uses the Caching Service to centralize the state data persistent in high availability (HA) mode. Three storage methods are supported if you are running the Caching Service on z/OS:
-* **inMemory**
+
 * **Infinispan**
+* **inMemory**
 * **VSAM** 
 
 :::note
 If you are running the Caching Service off platform, such as a Linux or Windows container image, it is also possible to specify `redis` as your storage method.  
 :::
 
-To learn more about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
+For more information about how the Caching Service can be used, see [Using the Caching Service](../user-guide/api-mediation/api-mediation-caching-service.md).
 
 :::caution Important  
 To enable Personal Access Token support when using the Caching Service, **Infinispan is the required storage solution**. _Infinispan_ is part of Zowe installation. No additional software or installation is required when using this storage solution. _Infinispan_ is the recommended storage method to use in production.
 :::
-
-### inMemory
-
-   _inMemory_ is the storage method designed for quick start of a service and should be used only in a single instance scenario, during development, or test purpose. Do not use _inMemory_ in production or high availability scenario.
-  
-   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service does not persist any data.  
-
-   ``` yaml
-    components:
-      caching-service:
-        enabled: true
-        port: 7555
-          storage:
-            evictionStrategy: reject
-            mode: inMemory
-            size: 10000
-   ```
-   
-   In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
 
 ### Infinispan
 
@@ -75,6 +57,27 @@ To enable Personal Access Token support when using the Caching Service, **Infini
             keyExchange:
               port:7601
   ```
+
+
+### inMemory
+
+   _inMemory_ is the storage method designed for quick start of a service and should be used only in a single instance scenario, during development, or test purpose. Do not use _inMemory_ in production or high availability scenario.
+  
+   To use this method, set the `components.caching-service.storage.mode` value to `inMemory` in the `zowe.yaml` configuration file. When this method is enabled, the Caching Service does not persist any data.  
+
+   ``` yaml
+    components:
+      caching-service:
+        enabled: true
+        port: 7555
+          storage:
+            evictionStrategy: reject
+            mode: inMemory
+            size: 10000
+   ```
+   
+   In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
+
 
 ### VSAM (Deprecated)
 
@@ -104,7 +107,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
           name: IBMUSER.ZWE.CUST.CACHE
   ```
 
-  - `components.caching-service.storage.vsam.name`  
+  - **components.caching-service.storage.vsam.name**  
   Specifies the data set name that the `ZWECSVSM` JCL creates, and is used to replace all occurrences of `#dsname` in the `ZWECSVSM` data set.
 
     :::note
@@ -112,14 +115,14 @@ To enable Personal Access Token support when using the Caching Service, **Infini
     `zowe.environments.CACHING_STORAGE_VSAM_KEYLENGTH` and `zowe.environments.CACHING_STORAGE_VSAM_RECORDLENGTH` must be set to the new values.
     :::
 
-  - `components.caching-service.storage.mode`  
+  - **components.caching-service.storage.mode**  
   Specifies the access mode for the VSAM data set — either [`Record Level Sharing (RLS)`](https://www.ibm.com/support/pages/vsam-record-level-sharing-rls-overview)
  or `NONRLS`. Use `RLS` for Sysplex environments where concurrent access is required; otherwise, NONRLS is also supported.
 
-  - `zowe.setup.vsam.storageClass`  
+  - **zowe.setup.vsam.storageClass**  
   If you use the `RLS` mode, a storage class is required.
 
-  - `zowe.setup.vsam.volume`  
+  - **zowe.setup.vsam.volume**  
   If you set to use the `NONRLS` mode, a storage volume is required.
 
   To preview the member before submitting it, use the value `--security-dry-run`.  Otherwise, the command automatically submits the JCL and waits for completion.
@@ -138,11 +141,13 @@ To enable Personal Access Token support when using the Caching Service, **Infini
 
 ### Redis
 
-   _Redis_ is not available if you are running the API Mediation Layer on z/OS under Unix System Services. The use of _redis_ is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
+ _Redis_ is not available if you are running the API Mediation Layer on z/OS under Unix System Services.  _Redis_ is intended for when API ML is running off platform, such as in a Linux or Windows container as part of a hybrid cloud deployment.
 
-   To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  There are a number of values to control the redis nodes, sentinel and ssl properties that need to be set in the `zowe.yaml` file.  For more information on these properties and their values, see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
+To enable this method, set the value of `components.caching-service.storage.mode` to `redis` in the `zowe.yaml` configuration file.  
+   
+A range of values which control the redis nodes, sentinel and ssl properties also need to be set in the `zowe.yaml` file.  For more information on these properties and their values, see [Redis configuration](../extend/extend-apiml/api-mediation-redis.md#redis-configuration).  
 
-   ```yaml
+```yaml
     components:
       caching-service:
         enabled: true
@@ -163,7 +168,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
             keystorePassword:
             trustStore:
             trustStorePassword:
-   ```
-
-   In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
+ ```
+:::note
+In single-service mode (when the Caching Service is deployed as an embedded component alongside the Gateway rather than as a standalone service), the configured port **7555** is ignored. Instead, the Gateway communicates with the Caching Service using an internal single-service port.
+:::
    

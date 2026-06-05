@@ -32,7 +32,7 @@ The property `components.gateway.apiml.security.authorization.provider` controls
 
 ### Setting the native provider to perform SAF resource check (Default setting) 
 
-The Native provider is the easiest approach to use the SAF resource checking feature on the mainframe.
+The Native provider is the most straight-forward approach to use the SAF resource checking feature on the mainframe.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the following property with the value set as `native`:
@@ -145,7 +145,7 @@ Use the Dummy provider for testing purpose outside of the mainframe.
  * `<zowe_installation_dir>/components/gateway/bin folder (V3)`  
   The directory for the Gateway 
   
-  Alternatively, you can create the file `mock-saf.yml` in the test module (root folder). 
+    Alternatively, you can create the file `mock-saf.yml` in the test module (root folder). 
 
 4. Restart Zowe.
 
