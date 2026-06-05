@@ -26,7 +26,11 @@ Register the client certificate with the user IDs in your ESM.
 ### User prerequisites
 
 In order for a user to be valid for certificate authentication, ensure that the following prerequisites are met:
-* The user ID must have a password assigned. Note that while the user does not enter the password during certificate login, a valid password status is required by the ESM to map the identity and generate security tokens (like PassTickets).
+* Password requirements depend on your authentication provider:
+
+  * **z/OSMF authentication provider**: The user ID must have a password assigned. The password can be expired. Users without a password (NOPASSWORD/PROTECTED) or suspended users cannot authenticate with client certificates. Ensure that PassTickets are enabled for z/OSMF.
+
+  * **SAF authentication provider (RACF, ACF2, Top Secret)**: The user ID does not require a password for client certificate login or JWT token generation. However, a password must be set if the user needs to call services that rely on PassTickets (such as z/OSMF REST APIs or downstream services that use PassTicket authentication). Suspended users cannot authenticate in either case.
   
 * The user must have a valid OMVS segment defined and password set, and include a unique User ID (UID). This segment is required to allow access to Zowe and Unix System Services (USS) resources. For details about defining the OMVS segment, see [OMVS segment](../user-guide/configure-uss.md#omvs-segment) in _Addressing UNIX System Services (USS) Requirements_.
 

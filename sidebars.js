@@ -89,9 +89,9 @@ module.exports = {
         "getting-started/zowe-high-availability"
       ],
     },
+    "getting-started/zowe-resources",
     "getting-started/zowe_faq",
     "appendix/zowe-glossary",
-    "getting-started/zowe-resources",
     {
       type: "category", // doc(default), 'link'(external links), 'ref'(page without without sidebar)
       label: "Zowe V3",
