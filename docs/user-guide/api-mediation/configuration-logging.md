@@ -4,7 +4,7 @@ Zowe API Mediation Layer uses logback for its logging. You can customize the log
 
 To change the default logback configuration file, set `components.<component>.logging.config` with a path to your `logback.xml`.
 
-* `component`  
+* **component**  
   Specifies one of the following services:
     - `gateway`
     - `discovery`
@@ -133,14 +133,14 @@ In the following table you can see each part of the `apimlLogPattern` in the exa
 You can edit, move, remove, or add some parts in the pattern based on your requirements.
 
 :::note
-The full documentation of Logback pattern are available on the [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
+The full documentation of Logback pattern is available on the [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
 :::
 
 ## Setting different log levels for specific packages
 
 You can override the root log level for specific Java packages by adding `<logger>` elements before the `<root>` element. This is useful when you need more detailed logging from a particular component without enabling verbose logging for the entire application.
 
-**Example: Enable DEBUG logging for specific packages**
+**Example of enabling DEBUG logging for specific packages:**
 
 ```xml
 <configuration>
