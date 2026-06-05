@@ -366,7 +366,6 @@ module.exports = {
             "user-guide/configmgr-using",
             "user-guide/install-configure-zos-extensions",
             "user-guide/mvd-configuration",
-            "user-guide/accessing-zss",
           ],
         },
         "user-guide/api-mediation/upgrade-to-single-service-apiml-deployment",
