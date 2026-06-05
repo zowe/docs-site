@@ -93,7 +93,7 @@ Used to authenticate as a TLS client (outbound mTLS).
 
 #### Certificate Requirements
 
-By default, Zowe components use a single certificate for both inbound and outbound traffic. This certificate is defined in the `zowe.yaml` file `zowe.certificate.keystore.alias:` property.
+By default, Zowe components use a single certificate for both inbound and outbound traffic. This certificate is defined in the `zowe.yaml` file `zowe.certificate.keystore.alias` property.
 
 As such, your certificate must meet one of the following criteria:
 
@@ -102,12 +102,12 @@ If the certificate does not have an Extended Key Usage (EKU) attribute, the cert
 * **Server**
 If EKU is present, the EKU attribute must contain `ServerAuth` OID.
 * **Client**
-In Zowe 3.5 the attribute `zowe.certificate.keystore.clientCertificateAlias:` was introduced to allow a separate certificate to be used for client authentication that is different to Zowe's server certificate. This certificate can have no EKU, or an EKU of `clientAuth`. 
+In Zowe 3.5 the attribute `zowe.certificate.keystore.clientCertificateAlias` was introduced to allow a separate certificate to be used for client authentication that is different to Zowe's server certificate. This certificate can have no EKU, or an EKU of `clientAuth`. 
 * *Server and Client*
 If the certificate is dual use it cannot contain an EKU.  During 2026 dual use EKUs are being phased out by certificate issuers.  
 
 
-If a certificate carries any kind of EKU this will be either `serverAuth` (and should be used as the `alias:` server certificate) or it will be `clientAuth` (and should be used as the `zowe.certificate.keystore.clientCertificateAlias` client certificate.)
+If a certificate carries any kind of EKU this will be either `serverAuth` (and should be used as the `alias` server certificate) or it will be `clientAuth` (and should be used as the `zowe.certificate.keystore.clientCertificateAlias` client certificate.)
 
 
 #### Using Dedicated Client Certificates
