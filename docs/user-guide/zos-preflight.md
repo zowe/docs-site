@@ -2,9 +2,11 @@
 
 Pre-flight checks are configuration and environmental verifications that happen automatically
 during Zowe startup to surface problems before they cause harder-to-diagnose failures at
-runtime. Zowe also ships the standalone utilities that power these checks as reusable tools in
+runtime. Pre-flight checks include validation of certificates, dependencies, ATTLS configuration, and other critical settings required for Zowe to operate correctly. 
+Zowe also ships the standalone utilities that power these checks as reusable tools in
 `<runtimeDirectory>/bin/utils`, where they can be invoked directly by administrators,
-developers, and other products under the terms of the EPL-2.0 license.
+developers, and other products under the terms of the EPL-2.0 license. 
+You can run each utility independently to diagnose specific issues or to validate configuration changes before restarting Zowe. For more details on available utilities and their usage, refer to the documentation in the user guide or the help output of each utility.
 
 - [How pre-flight checks work](#how-pre-flight-checks-work) — the lifecycle and control knobs
 - [Built-in Zowe startup checks](#built-in-zowe-startup-checks) — checks keyed under `zowe.launchScript.startupChecks`
