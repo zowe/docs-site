@@ -55,9 +55,13 @@ This activates the application/loggers endpoints in each API ML internal service
 
     - **port**
 
-        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
-    MFS_DS_PORT for the Discovery Service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
+        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
+    `components.discovery.port` for the Discovery Service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
     (by default, set to gateway port + 2).
+
+    :::note deprecated
+    The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the `zowe.yaml` parameters `components.gateway.port`, `components.discovery.port`, and `components.catalog.port` instead.
+    :::
 
     **Note:**  For the Catalog you can list the available loggers by issuing a GET request for the given service URL in the following format:
     ```
@@ -70,7 +74,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
     ```
     HTTPie command:
-    http GET https://lpar.ca.com:10000/application/loggers
+    http GET https://&lt;gateway-hostname&gt;:7554/application/loggers
 
     Output:
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
