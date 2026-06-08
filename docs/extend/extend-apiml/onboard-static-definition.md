@@ -31,6 +31,10 @@ For more information about the structure of APIs and which APIs to expose in Zow
 
 The first step in API service onboarding is to identify the APIs that you want to expose.
 
+:::warning Important
+Ensure that the **Hostname** or domain where your service runs is permitted by the API ML configuration property `zowe.network.allowedDomains`. If your service utilizes an unauthorized domain in its metadata (such as `instanceBaseUrls` or `swaggerUrl`), it will be silently blocked during registration. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+:::
+
 **Follow these steps:**
 
 1. Identify the following parameters of your API service:
@@ -68,6 +72,8 @@ The first step in API service onboarding is to identify the APIs that you want t
    :::note
    In the sample service, we provide a REST API. The first segment is `/api` as the service provides only one REST API. To indicate that this is version 2, the second segment is `/v2`. This version segment is required by the Gateway. If your service does not have a version, use `v1` on the Gateway.
    :::
+
+
 
 ## Define your service and API in YAML format
 
