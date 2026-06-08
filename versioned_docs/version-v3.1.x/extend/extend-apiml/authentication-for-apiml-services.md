@@ -126,9 +126,9 @@ Review the following table of available authentication mechanisms according to t
 | Endpoint | Authentication method | Note |
 |----|-----|------|
 | UI (eureka homepage)                 | basic auth(MF), token              | see note about mainframe authentication  |
-| application/**                       | basic auth(MF), token              |  see note about mainframe authentication  |
-| application/health, application/info | none                          |     |
-|| eureka/**                            | client certificate                   | Allows services to register without mainframe credentials or token. The API ML's own certificate can be used. It is stored in one of two locations depending on your setup:<br><br>- **Keystore** (`keystore/localhost/localhost.keystore.p12`): A local PKCS#12 file used outside of z/OS. A PEM copy is exported to `keystore/localhost/localhost.pem` during keystore setup for tools requiring PEM format.<br>- **SAF keyring**: A z/OS security construct (RACF/ACF2/Top Secret) configured via ZWESECUR. No automatic PEM export occurs when using a SAF keyring — the private key stays in the keyring.<br><br>Any other certificate trusted by the Discovery Service can also be used. |
+| application/**                       | basic auth(MF), token              |  see note about mainframe authentication |
+| application/health, application/info | none                               |                                          |
+| eureka/**                            | client certificate                 | Allows services to register without mainframe credentials or token. The API ML's own certificate can be used. It is stored in one of two locations depending on your setup:<br /><br />- **Keystore** (`keystore/localhost/localhost.keystore.p12`): A local PKCS#12 file used outside of z/OS. A PEM copy is exported to `keystore/localhost/localhost.pem` during keystore setup for tools requiring PEM format.<br />- **SAF keyring**: A z/OS security construct (RACF/ACF2/Top Secret) configured via ZWESECUR. No automatic PEM export occurs when using a SAF keyring — the private key stays in the keyring.<br /><br />Any other certificate trusted by the Discovery Service can also be used. |
 | discovery/**                         | certificate, basic auth(MF), token | see note about mainframe authentication |
 
 :::note Notes:
