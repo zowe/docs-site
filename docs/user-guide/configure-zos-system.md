@@ -1,6 +1,6 @@
 # Customizing z/OS system security 
 
-As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and fuctionalities.
+As a security administrator, configure your z/OS system according to the specific features and functionalities you choose to include in your Zowe installation. Review the following article for specific configuration steps that apply to these features and functionalities.
 
 :::info Required role: security administrator
 :::
@@ -28,6 +28,7 @@ Before performing configuration steps specific to your use case, ensure that you
 | Required to configure the cross memory server for SAF to guard against access by non-privileged clients. Tasks are performed as part of [Zowe runtime configuration](./configure-zowe-runtime.md).| Application Framework | [Configure the cross memory server for SAF](#configure-the-cross-memory-server-for-saf) |
 | To use Zowe desktop. This step generates random numbers for zssServer that the Zowe desktop uses. | Application Framework | [Configure an ICSF cryptographic services environment](#configure-an-icsf-cryptographic-services-environment) |
 | To use Single Sign-On (SSO) | All components | [Single Sign-On (SSO)](#single-sign-on-sso) |
+| Optional: Enable the Zowe cross-memory server to use 1 MB large page frames for improved performance. | Cross Memory Server | [Configure access to large memory pages](#configure-access-to-large-memory-pages) |
 
 
 ### Configure address space job naming
@@ -36,10 +37,10 @@ Before performing configuration steps specific to your use case, ensure that you
 This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
-The user ID `ZWESVUSR` that is associated with the Zowe started task must have READ permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
+The user ID `ZWESVUSR` that is associated with the Zowe started task must have `READ` permission for the `BPX.JOBNAME` profile in the `FACILITY` class. This is to allow setting of the names for the different z/OS UNIX address spaces for the Zowe runtime components.
 
 :::note
-This procedure may require security administrator authorization. Consult with your security administrator.
+This procedure may require the authorization of a security administrator. Consult with your security administrator.
 :::
 
 To display who is authorized to the profile, issue the following command:
@@ -84,7 +85,7 @@ To assign the FACILITY to the started task, issue the following command:
 TSS ADD(ZWESVUSR) MASTFAC(ZOWE)
 ```
 
-To authorize a user to sign on to the FACILITY, issues the following command:
+To authorize a user to sign on to the FACILITY, issue the following command:
 ```
 TSS ADD(user_acid) FAC(ZOWE)
 ```
@@ -247,7 +248,7 @@ If you have not run `ZWESECUR` and are manually creating the user ID and groups 
 This configuration applies to all Zowe components and is required for stand-alone installation of API Mediation Layer.
 :::
 
-You need Zowe started task `ZWESLSTC` for Zowe high availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  A different user ID and group can be used if required to conform with existing naming standards.
+You need Zowe started task `ZWESLSTC` for Zowe high availability. When the Zowe started task `ZWESLSTC` is started, it must be associated with the user ID `ZWESVUSR` and group `ZWEADMIN`.  You can use a different user ID and group to conform with the existing naming standards.
 
 If you have run `ZWESECUR`, you do not need to perform the steps described in this section, because they are executed during the JCL section of `ZWESECUR`.  
 ```
@@ -392,7 +393,7 @@ If you use TSS, verify and update permission in `FACILITY` class.
 This configuration is required for stand-alone installation of API Mediation Layer.
 :::
 
-This security configuration is necessary for API ML to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have READ access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
+This security configuration is necessary for API ML to map the association between a z/OS user ID and a distributed user identity. A user running the API Gateway must have `READ` access to the SAF resource `IRR.IDIDMAP.QUERY` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.28 and lower, use the following configuration steps according to your ESM:
 
 <details>
@@ -402,7 +403,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has READ access.
+1. Verify that user `ZWESVUSR` has `READ` access.
     ```
     RLIST FACILITY IRR.IDIDMAP.QUERY AUTHUSER
     ```
@@ -414,7 +415,7 @@ If you use RACF, verify and update permission in the `FACILITY` class.
     ```
     RDEFINE FACILITY IRR.IDIDMAP.QUERY
     ```
-4. Add user `ZWESVUSR` permission to with READ access.
+4. Add user `ZWESVUSR` permission to with `READ` access.
     ```
     PERMIT IRR.IDIDMAP.QUERY CLASS(FACILITY) ACCESS(READ) ID(ZWESVUSR)
     ```
@@ -433,13 +434,13 @@ If you use ACF2, verify and update permission in the `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has READ access.
+1. Verify that user `ZWESVUSR` has `READ` access.
     ```      
     SET RESOURCE(FAC) 
     LIST LIKE(IRR-)
     ```    
 
-2. Add user `ZWESVUSR` permission with READ access.
+2. Add user `ZWESVUSR` permission with `READ` access.
     ```
     RECKEY IRR.IDIDMAP.QUERY ADD(SERVICE(READ) ROLE(&STCGRP.) ALLOW)
     ```
@@ -457,12 +458,12 @@ If you use TSS, verify and update permission in `FACILITY` class.
 
 **Follow these steps:**
 
-1. Verify that user `ZWESVUSR` has READ access.
+1. Verify that user `ZWESVUSR` has `READ` access.
     ```      
     TSS WHOHAS IBMFAC(IRR.IDIDMAP.QUERY)
     ```    
 
-2. Add user `ZWESVUSR` permission with READ access.
+2. Add user `ZWESVUSR` permission with `READ` access.
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.IDIDMAP.QUERY) ACCESS(READ)
     ```
@@ -476,10 +477,10 @@ If you use TSS, verify and update permission in `FACILITY` class.
 This configuration is required for stand-alone installation of API Mediation Layer.
 :::
 
-This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have READ access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
+This security configuration is necessary for API ML to be able to issue SMF records. A user running the API Gateway must have `READ` access to the RACF general resource `IRR.RAUDITX` in the `FACILITY` class.
 To set up this security configuration, submit the `ZWESECUR` JCL member. For users upgrading from version 1.18 and lower, use the configuration steps that correspond to the ESM.
 
-* To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has READ access to this profile.
+* To check whether you already have the auditing profile defined, issue the following command and review the output to confirm that the profile exists and that the user `ZWESVUSR` who runs the `ZWESLSTC` started task has `READ` access to this profile.
 
     <details>
     <summary>Click here for command details for RACF.</summary>
@@ -513,7 +514,7 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
 
     </details>
 
-* If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have READ access to this profile, follow the procedure that corresponds to your ESM:
+* If the user `ZWESVUSR` who runs the `ZWESLSTC` started task does not have `READ` access to this profile, follow the procedure that corresponds to your ESM:
 
     <details>
     <summary>Click here for procedure details for RACF.</summary>
@@ -552,7 +553,7 @@ To set up this security configuration, submit the `ZWESECUR` JCL member. For use
     <details>
     <summary>Click here for command details for Top Secret.</summary>
 
-    If you use Top Secret, add user `ZWESVUSR` permission to READ. Issue the following command:
+    If you use Top Secret, add user `ZWESVUSR` permission to `READ`. Issue the following command:
     ```
     TSS PER(ZWESVUSR) IBMFAC(IRR.RAUDITX) ACCESS(READ)
     ```
@@ -652,7 +653,7 @@ where:
 
 * `<zowe_stc_user>` is `ZWESVUSR` unless a different user ID is being used for the z/OS environment.
 
-/* Activate these changes */
+Activate the changes:
 
 ```
 SETROPTS RACLIST(FACILITY) REFRESH      
@@ -726,7 +727,7 @@ LIST BPX
 </details>
 
 
-You must also grant READ access to the OMVSAPPL profile in the APPL class to the Zowe STC user as well as **all other Zowe users** using various Zowe features. Skip the following steps when the OMVSAPPL profile is not defined in your environment.
+You must also grant `READ` access to the OMVSAPPL profile in the APPL class to the Zowe STC user as well as **all other Zowe users** using various Zowe features. Skip the following steps when the OMVSAPPL profile is not defined in your environment.
 
 <details>
 <summary>Click here for procedure details for RACF.</summary>
@@ -837,7 +838,7 @@ If you run Zowe high availability on a Sysplex, ICSF needs to be configured in a
 
 The Zowe z/OS environment configuration JCL member `ZWESECUR` does not perform any steps related to ICSF that is required for zssServer that the Zowe desktop uses. Therefore, if you want to use Zowe desktop, you must perform the steps that are described in this section manually.
 
-To generate symmetric keys, the `ZWESVUSR` user who runs Zowe server started task requires READ access to `CSFRNGL` in the `CSFSERV` class.
+To generate symmetric keys, the `ZWESVUSR` user who runs Zowe server started task requires `READ` access to `CSFRNGL` in the `CSFSERV` class.
 
 Define or check the following configurations depending on whether ICSF is already installed:
 
@@ -932,7 +933,7 @@ TSS PERMIT(user-acid) CSFSERV(profile-prefix.profile-suffix) ACCESS(READ)
 This configuration applies to the Application Framework.
 :::
 
-Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-priviledged clients.  
+Zowe has a cross memory server that runs as an APF-authorized program with key 4 storage.  Client processes accessing the cross memory server's services must have READ access to a security profile `ZWES.IS` in the `FACILITY` class.  This authorization step is used to guard against access by non-privileged clients.  
 
 If you have run `ZWESECUR` you do not need to perform the steps described in this section.
 
@@ -943,7 +944,7 @@ If you have run `ZWESECUR` you do not need to perform the steps described in thi
 
 If you have not run `ZWESECUR` and are configuring your z/OS environment manually, the following steps describe how to configure the cross memory server for SAF.
 
-Activate the FACILITY class, define a `ZWES.IS` profile, and grant READ access to the user ID `ZWESVUSR`. This is the user ID that the main Zowe started task runs under. 
+Activate the FACILITY class, define a `ZWES.IS` profile, and grant `READ` access to the user ID `ZWESVUSR`. This is the user ID that the main Zowe started task runs under. 
     
 To perform these steps, issue the following commands that are also included in the `ZWESECUR` JCL member. The commands assume that you run the Zowe server under the `ZWESVUSR` user.
 
@@ -965,7 +966,7 @@ If you use RACF, issue the following commands:
         ```
         SETROPTS RACLIST(FACILITY)
         ```
-    - To define the `ZWES.IS` profile in the FACILITY class and grant Zowe's started task userid READ access, issue the following commands:
+    - To define the `ZWES.IS` profile in the FACILITY class and grant Zowe's started task userid `READ` access, issue the following commands:
         ```
         RDEFINE FACILITY ZWES.IS UACC(NONE)
         ```
@@ -980,7 +981,7 @@ If you use RACF, issue the following commands:
         ```
         RLIST FACILITY ZWES.IS AUTHUSER
         ```
-        This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task user ID with READ access.
+        This shows the user IDs who have access to the `ZWES.IS` class, which should include Zowe's started task user ID with `READ` access.
 
 </details>
 
@@ -1018,3 +1019,31 @@ If you use Top Secret, issue the following commands, where `owner-acid` can be I
 - The cross memory server treats "no decision" style SAF return codes as failures. If there is no covering profile for the `ZWES.IS` resource in the FACILITY class, the request will be denied.
 - Cross memory server clients other than Zowe might have additional SAF security requirements. For more information, see the documentation for the specific client.
 :::
+
+### Configure access to large memory pages
+
+If large page frames are configured and used on the system, the Zowe user ID requires `READ` access to the `IARRSM.LRGPAGES` resource in the `FACILITY` class.
+
+Large pages are a z/OS performance feature for memory objects that use 1 MB page frames. Programs with `READ` access to `IARRSM.LRGPAGES` can request large pages by specifying the `PAGEFRAMESIZE` parameter on `IARV64` requests.
+
+For more information, see _z/OS MVS Programming: Assembler Services Guide_ and _z/OS MVS Initialization and Tuning Reference_.
+
+1. Ensure that large page frames are configured. Configrm that the `LFAREA` parameter in `IEASYSxx` has a non-zero value for 1 MB pages (for example, `1M=value`), then review the existing ACF2 rule:
+
+```
+SET RESOURCE(FAC)
+LIST IARRSM
+```
+
+2. Grant `READ` access to `IARRSM.LRGPAGES`.
+
+Define the following ACF2 resource rule for the Zowe user ID:
+
+```
+SET RESOURCE(FAC)
+RECKEY IARRSM ADD(LRGPAGES UID(user_uid) SERVICE(READ) ALLOW)
+F ACF2,REBUILD(FAC)
+```
+
+**Note:** Replace `user_uid` with the UID for the Zowe STC user that needs access.
+

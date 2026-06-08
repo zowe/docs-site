@@ -5,7 +5,7 @@ To deploy Zowe in high availability (HA) mode, it is necessary to set up a Paral
 
 ## Sysplex architecture and configuration
 
-Sysplex is required to make sure multiple Zowe instances can work together. For more information, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex).
+Sysplex is required to make sure multiple Zowe instances can work together. For more information, see [Configuring Sysplex for high availability](../user-guide/configure-sysplex.md).
 
 To enable high availability when Zowe runs in Sysplex, it is necessary to meet the following requirements:
 

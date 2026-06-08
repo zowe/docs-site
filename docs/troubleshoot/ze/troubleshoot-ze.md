@@ -93,6 +93,80 @@ To avoid this, change the `logs` and `temp` folder locations:
 
     <br/>After a new path is entered, Zowe Explorer writes logs and temporary files using the corresponding path.
 
+## Activation failures when downgrading Zowe Explorer
+
+When you downgrade your Zowe Explorer version from a more recent version, it is possible to experience activation failures when starting Zowe Explorer.
+
+This can be resolved by clearing the local storage that contains your Zowe Explorer historical data that Zowe Explorer manages for improved performance.
+
+:::warning
+
+Clearing your local storage removes your historical data on Zowe Explorer such favorites, search history, and profiles added to tree views.
+
+:::
+
+To clear your local storage on Visual Studio Code:
+
+1. Install the [SQLite3 Editor](https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor) extension on VS Code.
+
+2. In your operating system's file explorer, locate the `state.vscdb` file:
+
+    - In macOS, go to `~/Library/Application Support/Code/User/globalStorage/`.
+
+    - In Linux, go to `~/.config/Code/User/globalStorage/`.
+    
+    - In Windows, go to `%APPDATA%\Code\User\globalStorage\`.
+
+3. Open the `state.vscdb` file in VS Code.
+
+4. Ensure that the `ItemTable` option is selected in the `tables` tab.
+
+    A table displays showing historical data for all VS Code extensions. 
+
+5.  Use the **Find** tab to search for `zowe.vscode`.
+
+    A filtered version of the table displays.
+
+6. Locate the `zowe.vscode-extension-for-zowe` key and select its value.
+
+    The value entry displays at the bottom of VS Code.
+
+7. Select and delete the value entry contents.
+
+    :::tip
+
+    To reuse this data later, save the content in a new, separate file.
+
+    :::
+
+8. Click the **Commit** button and close/quit VS Code.
+
+9. Reopen VS Code and restart Zowe Explorer.
+
+    Zowe Explorer activates and favorites and search history are now empty.
+
+## Excessive z/OSMF address space `S222` ABENDs
+
+**Symptom**:
+
+Numerous user address spaces are spawned and abend with reason code `S222`, resulting in excessive spool use.
+
+**Sample errors:**
+
+![ABENDs with reason code S222](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-symptom.png)
+
+z/OSMF attempts to continually use up to two address spaces by default. When too many concurrent REST requests are received, additional address spaces are spawned. These additional address spaces are immediately terminated when the request has been processed. This results in many terminated address spaces, and increased spool resource use, particularly when performing many parallel operations (such as downloading many data set members).
+
+**Solution**: Lower the value of the **zowe.settings.zosmfMaxConcurrentRequests** setting. If the issue persists, continue lowering the setting value to `1`.
+
+:::note
+
+Lowering this setting might cause requests to take longer, negatively impacting performance.
+
+:::
+
+![The zosmfMaxConcurrentRequests setting can be modified to help avoid ABENDs.](../../images/troubleshoot/ZE/ZE-throttling-troubleshoot-solution.png)
+
 ## Common issues with Zowe Explorer table view
 
 To troubleshoot the table view for data sets and jobs, review the following common issues:
@@ -111,4 +185,48 @@ To troubleshoot the table view for data sets and jobs, review the following comm
   - Ensure you have selected at least one job row.
   - For the **Cancel** action, verify that all selected jobs have **ACTIVE** status.
 
+## Troubleshooting Zowe Remote SSH
 
+### Commands for troubleshooting
+
+To troubleshoot any issues with ZRS, try the following commands by searching for `Zowe-SSH` in the **Command Palette**:
+
+- **Zowe-SSH: Show Log**: Displays the Zowe SSH log file, providing operation insights and potential error messages for diagnosis.
+
+- **Zowe-SSH: Restart Zowe Server on Host...**: Easily restart the ZRS server component running on your mainframe host. This can be helpful in resolving temporary connectivity or operational issues.
+
+- **Zowe-SSH: Uninstall Zowe Server from Host...**: Removes the currently installed instance of the ZRS server from a selected host or profile. This can also be useful for changing the location of the server.
+
+These troubleshooting commands are designed to provide users with tools to quickly diagnose and resolve common issues. If you encounter a problem while using ZRS, file an issue in the [Zowe Remote SSH GitHub repository](https://github.com/zowe/zowe-native-proto).
+
+### Server deploy process hangs
+
+**Symptom**: The deploy process can hang when a user's password has expired.
+
+**Solution**: Ensure that user access was not revoked. Contact your system administrator for more information on authenticating to z/OS.
+
+### `RC 3: Permission denied` error
+
+**Symptom**: Error message `RC 3: Permission denied` displays when deploying to the server.
+
+**Solution**: Specify a server path that the user has sufficient permissions for. See [System requirements](./getting-started/ze-configuring-zowe-remote-ssh.md#system-requirements) for more information on permissions.
+
+## Error message with extension schema files
+
+There can be instances where issuing the Zowe CLI command `zowe config update-schemas` removes an installed extension's schema from the `extenders.json` file. In this case, an error message displays either in the extension's tree view or in a pop-up window.
+
+Reinstalling the extension does not fix the issue.
+
+This affects IBM® CICS® Transaction Server, Zowe Explorer for IBM z/OS FTP, and other Zowe Explorer extensions.
+
+To resolve the error message, update the `extenders.json` file:
+
+1. Remove the profile type from the `~/.zowe/extenders.json` file and save.
+
+    For example, if this affects the CICS extensions, remove the `cics` section from the `extenders.json` file:
+
+    ![CICS extenstion](../../images/troubleshoot/ZE/cics-section.png)
+
+2. Reload Visual Studio Code.
+
+    The profile type is re-added to the schema (`zowe.schema.json`) and reappears in `extenders.json`. The profiles should now be accessible from the extension.

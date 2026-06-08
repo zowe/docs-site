@@ -32,7 +32,7 @@ A certificate can be self-signed or issued by a Certificate Authority (CA). A CA
 For testing purposes of Zowe, it is acceptable to use certificates issued and signed either by the company's local CA, or even self-signed certificates issued by Zowe security tools specific for the target technology platform.
 Use of self-signed certificates, however, is not recommended for production environments.
 
-**Tip:** Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary#certificate-concepts) before getting started with configuring certificates.
+**Tip:** Review digital certificates terminology in the [Zowe security glossary](../appendix/zowe-security-glossary.md#certificate-concepts) before getting started with configuring certificates.
 
 ### Digital certificates usage
 Zowe uses digital certificates to secure the communication channel between Zowe components as well as between Zowe clients and Zowe services. Digital client certificates can also be used to validate that a client-user (the service user) identity is known to the mainframe security facility.   

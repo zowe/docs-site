@@ -25,7 +25,7 @@ To enable Personal Access Token support when using the Caching Service, **Infini
         port: 7555
           storage:
             evictionStrategy: reject
-            mode: imMemory
+            mode: inMemory
             size: 10000
    ```
 
