@@ -329,13 +329,13 @@ ZIS Failure (rc=39, description='PC call failed', clientVersion='2')
 [GitHub source code](https://github.com/zowe/api-layer/tree/v3.x.x/certificate-analyser)
 
 A Java utility that validates keystores and truststores and optionally tests TLS connectivity
-to a remote server. Supports both PKCS12 files and z/OS SAF keyrings. Used by
+to a remote server. Supports both PKCS12 files and z/OS SAF key rings. Used by
 `zwe validate certificate` to confirm Zowe's TLS configuration before startup.
 
 #### Usage
 
 ```sh
-java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
+java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
      -jar certificate-analyser.jar \
      [-hl] [-kp[=<keyPasswd>]] [-tp[=<trustPasswd>]] \
      [-a=<keyAlias>] [-k=<keyStore>] [-kt=<keyStoreType>] \
@@ -346,10 +346,10 @@ java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
 |---|---|---|
 | `-a` | `--keyalias` | Alias under which the key is stored in the keystore. |
 | `-h` | `--help` | Display help. |
-| `-k` | `--keystore` | Path to a PKCS12 file or SAF keyring (`safkeyring[jce\|cca\|hybrid]://USER/RingName`). |
-| `-kp` | `--keypasswd` | Keystore password. For SAF keyrings use the literal `password`. |
+| `-k` | `--keystore` | Path to a PKCS12 file or SAF key ring (`safkeyring[jce\|cca\|hybrid]://USER/RingName`). |
+| `-kp` | `--keypasswd` | Keystore password. For SAF key rings use the literal `password`. |
 | `-kt` | `--keystoretype` | One of: `PKCS12`, `JCERACFKS`, `JCECCARACFKS`, `JCEHYBRIDRACFKS`. |
-| `-t` | `--truststore` | Path to the truststore file or SAF keyring. |
+| `-t` | `--truststore` | Path to the truststore file or SAF key ring. |
 | `-tp` | `--trustpasswd` | Truststore password. |
 | `-tt` | `--truststoretype` | One of: `PKCS12`, `JCERACFKS`, `JCECCARACFKS`, `JCEHYBRIDRACFKS`. |
 | `-l` | `--local` | Perform a local TLS handshake using the keystore and truststore. |
@@ -357,9 +357,9 @@ java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
 
 #### Examples
 
-Verify a SAF keyring truststore and test connectivity to z/OSMF:
+Verify a SAF key ring truststore and test connectivity to z/OSMF:
 ```sh
-java -Djava.protocol.handler.pkgs=com.ibm.crypto.provider \
+java --add-modules ibm.crypto.zsecurity,ibm.crypto.hdwrcca \
      -jar certificate-analyser.jar \
      -tt=JCERACFKS \
      -t="safkeyringjce://ZWESVUSR/ZOWERING" \
