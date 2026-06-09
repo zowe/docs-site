@@ -275,6 +275,7 @@ apiml:
         hostname: <fill-your-hostname>                           # hostname can be externalized by specifying -Dapiml.service.hostname command line parameter
         port: <fill-your-port>                                    # port can be externalized by specifying -Dapiml.service.port command line parameter
         serviceIpAddress: <fill-your-ipAddress>                    # serviceIpAddress can be externalized by specifying -Dapiml.service.ipAddress command line parameter
+        advertisedIpAddress: <fill-your-ipAddress>               # (Optional) Overrides the Eureka-advertised IP address. Falls back to serviceIpAddress if not set. Use for DVIPA hot-standby deployments to advertise an LPAR-specific address different from the listen address.
 
         baseUrl: ${apiml.service.scheme}://${apiml.service.hostname}:${apiml.service.port}
         contextPath: /${apiml.service.serviceId}      # By default the contextPath is set to be the same as apiml.service.serviceId, but doesn't have to be the same
