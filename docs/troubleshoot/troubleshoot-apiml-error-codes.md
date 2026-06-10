@@ -462,9 +462,9 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**  
   
-  Check the `allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted.
+  Check `zowe.network.allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted.
 
-### ZWEAM601W 
+### ZWEAM602W 
 
   Pattern `*` is not recommended in `apiml.corsAllowedOrigins`
 
@@ -474,7 +474,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**  
   
-  Replace the wildcard pattern with a specific list of trusted domains or use a more restrictive pattern in the `apiml.corsAllowedOrigins` parameter in your `zowe.yaml`.
+  Replace the wildcard pattern with a specific list of trusted domains or use a more restrictive pattern in the `apiml.corsAllowedOrigins` parameter defined as a metadata entry in the onboarding service.
 
 
 ### ZWEAM700E

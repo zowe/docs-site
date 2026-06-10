@@ -1,4 +1,4 @@
-# Configuring Allowed Domains for Service Registration
+# Configuring allowed domains for service registration
 
 As a system administrator, you can use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Layer (API ML) by restricting which domains are permitted to register services with the API ML Discovery Service.
 
@@ -33,7 +33,7 @@ No configuration needed — only `zowe.externalDomains` in non-HA setup or `zowe
 
 ### 2. Explicit Configuration with Wildcards and Internal Hosts
 
-To permit external, distributed, or third-party services to onboard, you must explicitly define your allowed domains. The list supports leading wildcards (e.g., `*.mycompany.com`) to match all subdomains, as well as literal internal hostnames.
+To permit external, distributed, or third-party services to onboard, you must explicitly define your allowed domains. The list supports leading wildcards (for example, `*.mycompany.com`) to match all subdomains, as well as literal internal hostnames.
 
 ```yaml
 zowe:
@@ -46,7 +46,7 @@ zowe:
 
 :::note Note on Wildcards:
 
-`*.mycompany.com` will match `service1.mycompany.com` and `api.internal.mycompany.com`, but it will not match the exact base domain mycompany.com. If needed, list the base domain explicitly.
+`*.mycompany.com` will match `service1.mycompany.com` and `api.internal.mycompany.com`, but it will not match the exact base domain `mycompany.com`. If needed, list the base domain explicitly.
 :::
 
 ## Evaluated Metadata and URLs
@@ -96,10 +96,11 @@ Any other designated external reference links.
 
 ## Troubleshooting & Emergency Override
 
-If an extender's service fails to register, it will be silently blocked from the perspective of the registering client, but the event will be captured in the Discovery Service logs.
+If an extender's service fails to register, the service is silently blocked from the perspective of the registering client, but the event will be captured in the Discovery Service logs.
 
-### Error Log Example (Blocked Registration)
-When registration is blocked due to an unlisted domain, you will see an entry similar to the following in the Discovery Service log:
+**Error Log Example (Blocked Registration)**
+
+When registration is blocked due to an unlisted domain, an entry similar to the following appears in the Discovery Service log:
 
 ```text
 ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evil.example.com/api) is not allowed for instance 'my-service:my-service:8080'
@@ -112,6 +113,6 @@ ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evi
 2. **Update the Allowlist.**  
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
-   :::tip 
-If you are working in a non-production or development environment and need to temporarily downgrade this blocking behavior to a warning while you correct your `zowe.yaml` parameters, see the emergency override instructions in the [API Mediation Layer Troubleshooting Guide](../troubleshoot/troubleshoot-apiml.md#zweam601w).
-:::
+  :::tip 
+  If you are working in a non-production or development environment and need to temporarily downgrade this blocking behavior to a warning while you correct your `zowe.yaml` parameters, see the emergency override instructions in the [API Mediation Layer Troubleshooting Guide](../troubleshoot/troubleshoot-apiml.md#zweam601w).
+  :::
