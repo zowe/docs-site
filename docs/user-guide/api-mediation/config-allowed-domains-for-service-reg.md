@@ -31,7 +31,7 @@ If the `zowe.network.allowedDomains` property is left unconfigured, the API ML d
 No explicit configuration is needed if you only want to allow the local infrastructure. The system automatically permits either `zowe.externalDomains` (in a non-HA setup) or `zowe.haInstances.<id>.hostname` (in an HA setup).
 
 :::note
-No configuration needed — only `zowe.externalDomains` in non-HA setup or `zowe.haInstances.<id>.hostname` in HA setup  is allowed.
+No configuration needed — only `zowe.externalDomains` in non-HA setup or `zowe.haInstances.<id>.hostname` in HA setup is allowed.
 :::
 
 ### 2. Explicit Configuration with Wildcards and Internal Hosts
@@ -56,8 +56,11 @@ zowe:
 
 When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration footprint. If even one URL contains a domain not matching the allowlist, the registration is blocked.
 
-### Service Metadata Validation
+## Service Metadata Validation
+
 The following example shows how the domain validation check looks at both the base connection URLs and individual API metadata fields:
+
+**Example:**
 ```yaml
 services:
   serviceId: my-service
@@ -66,6 +69,18 @@ services:
   apiInfo:
     swaggerUrl: [https://my-service.mycompany.com:8443/v3/api-docs](https://my-service.mycompany.com:8443/v3/api-docs)  # ← Checked against allowlist
 ```
+
+### Validation steps
+
+1. Start Zowe with `zowe.network.allowedDomains` set to only the local hostname.
+
+2. Attempt to register a service with `instanceBaseUrl`s pointing to an unlisted domain.
+
+3. Verify registration is blocked and `ZWEAM601` appears in the Discovery Service log.
+
+4. Add the domain to allowedDomains, restart, verify registration succeeds.
+
+5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
 
 ### All Checked Metadata Fields and Patterns
 The validator explicitly scans the following properties within the service registration metadata:
