@@ -451,6 +451,32 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Remove or fix the referenced metadata parameter.
 
+
+### ZWEAM601W 
+
+  `<key>` `<value>` is not allowed for instance `<instanceID>`
+
+  **Reason:**  
+  
+  The URL provided for the service instance is not included in the allowed domains list configured in API ML.
+
+  **Action:**  
+  
+  Check the `allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted.
+
+### ZWEAM601W 
+
+  Pattern `*` is not recommended in `apiml.corsAllowedOrigins`
+
+  **Reason:**  
+  
+  Using the wildcard (`*`) pattern in the Cross-Origin Resource Sharing (CORS) configuration parameter `apiml.corsAllowedOrigins` allows requests from any domain, which creates a potential security risk by bypassing intended origin restrictions.
+
+  **Action:**  
+  
+  Replace the wildcard pattern with a specific list of trusted domains or use a more restrictive pattern in the `apiml.corsAllowedOrigins` parameter in your `zowe.yaml`.
+
+
 ### ZWEAM700E
 
   No response received within the allowed time: %s

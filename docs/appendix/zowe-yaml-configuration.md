@@ -203,6 +203,10 @@ The high-level configuration `zowe` supports these definitions:
    ```
 
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
+
+- **zowe.network.apllowedDomains**  
+ Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`.
+
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
  In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. For more information, see [Configure Sysplex Distributor](../user-guide/configure-sysplex.md#configuring-sysplex-distributor). 
