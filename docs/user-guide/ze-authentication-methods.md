@@ -63,6 +63,13 @@ Zowe Explorer supports client certificates used with Zowe API ML as well as dire
 
 To learn how to use Zowe CLI to set up your client certificates in Zowe Explorer, see [Using client certificates](../user-guide/cli-authentication-methods.md#using-client-certificates) in the Zowe CLI documentation.
 
+:::tip
+If you are using certificates from the OS keychain, by default VS Code routes all network requests through its own proxy, which interferes with Zowe certificate authentication. 
+
+To fix this, disable the VS Code **HTTP: Proxy** (`http:proxy`) setting by changing the value to either `fallback` (recommended) or `off` in order to use certificates from the OS keychain.
+:::
+
+
 ## Multi-factor authentication (MFA) support
 
 Zowe Explorer supports multi-factor authentication used with basic authentication (using a username and password) and single-sign on when logging in with a username and password. 
