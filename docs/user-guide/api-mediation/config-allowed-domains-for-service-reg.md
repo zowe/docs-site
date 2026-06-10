@@ -1,6 +1,9 @@
 # Configuring allowed domains for service registration
 
-As a system administrator, you can use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Layer (API ML) by restricting which domains are permitted to register services with the API ML Discovery Service.
+Use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Layer (API ML) by restricting which domains are permitted to register services with the API ML Discovery Service.
+
+:::info Required Role: System administrator
+:::
 
 :::important Breaking Change 
 After upgrade, any service whose URLs resolve to a domain not in the `allowlist` will fail to register with the Discovery Service and will be invisible to API Gateway routing. The default (only `zowe.externalDomains` in non-HA setup or `zowe.haInstances.<id>.hostname` in HA setup) means that existing extenders may need to explicitly configure `zowe.network.allowedDomains` after upgrading.
