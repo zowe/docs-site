@@ -76,7 +76,7 @@ services:
 
 2. Attempt to register a service with `instanceBaseUrl`s pointing to an unlisted domain.
 
-3. Verify registration is blocked and `ZWEAM601` appears in the Discovery Service log.
+3. Verify registration is blocked and `ZWEAM601W` appears in the Discovery Service log.
 
 4. Add the domain to allowedDomains, restart, verify registration succeeds.
 
