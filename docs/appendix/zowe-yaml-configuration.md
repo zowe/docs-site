@@ -256,9 +256,9 @@ Launcher is the program behind the `ZWESLSTC` started task.
 
 Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
 - **zowe.sysMessages**  
- The array of message IDs or any text.
+ The array of message IDs or any text. Wildcards are not supported.
 - **zowe.sysMessageTrim**  
-  Specifies to trim SYSLOG messages and print only from the matching message ID or text.
+  Specifies to trim SYSLOG message and print only from the matching message ID or text.
 
 ```yaml
 zowe:
