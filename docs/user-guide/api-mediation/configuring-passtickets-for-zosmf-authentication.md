@@ -134,3 +134,5 @@ RLIST PTKTDATA IRRPTAUTH.<zosmf-applid>.* ALL
 Verify that the output shows your Zowe started task user listed under USER ACCESS with UPDATE authority.
 
 </details>
+
+Correct verification output indicates you successfully granted the Zowe runtime permission to generate PassTickets for z/OSMF.
