@@ -66,7 +66,7 @@ To learn how to use Zowe CLI to set up your client certificates in Zowe Explorer
 :::tip
 If you are using certificates from the OS keychain, by default VS Code routes all network requests through its own proxy, which interferes with Zowe certificate authentication. 
 
-To fix this, disable the VS Code **HTTP: Proxy** (`http:proxy`) setting by changing the value to either `fallback` (recommended) or `off` in order to use certificates from the OS keychain. Then close and reopen VS Code.
+To fix this, disable the VS Code **HTTP: Proxy** (`http:proxy`) setting by changing the value to either `fallback` (recommended) or `off` in order to use certificates from the OS keychain. Then close and reopen VS Code to activate the change.
 :::
 
 
