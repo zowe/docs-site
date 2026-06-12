@@ -127,6 +127,7 @@ This parameter specifies service behavior when the limit of records is reached. 
 ## Authentication
 
 ### Direct calls
+<!-- TODO verify the following statement -->
 The Caching Service requires TLS mutual authentication. This verifies authenticity of the client. Calls without a valid client certificate generate a `403` response code: `Forbidden`. This requirement is disabled when `VERIFY_CERTIFICATES=false` in `zowe-certificates.env` configuration file.
 
 The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`. 

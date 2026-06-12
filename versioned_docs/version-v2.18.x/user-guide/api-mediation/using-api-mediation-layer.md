@@ -4,7 +4,6 @@ There are numerous ways you can use the API Mediation Layer. Review this topic a
 For information about the API versioning, see [API Catalog and Versioning](../../extend/extend-apiml/api-mediation-versioning.md).
 
 **Tip:** 
-For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.  
 
 For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA.  
 

@@ -228,7 +228,7 @@ components:
     the owner of existing certificate. This field can have value of `SITE`.
   * `zowe.setup.certificate.keyring.connect.label` is also required and tells
     Zowe the label of existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`)
+- When `zowe.verifyCertificates` is `STRICT` or `NONSTRICT`, and z/OSMF host (`zOSMF.host`)
   is provided, Zowe will try to trust z/OSMF certificate.
   * If you are using `RACF` security manager, Zowe will try to automatically
     detect the z/OSMF CA based on certificate owner specified by
@@ -248,8 +248,8 @@ components:
   This field is required if VSAM mode is `RLS`.
 
 - `zowe.verifyCertificates` indicates how Zowe should validate the certificate
-  of services registered under Zowe APIML. Valid values are "STRICT",
-  "NONSTRICT" or "DISABLED". If this is "STRICT", this command will try to
+  of services registered under Zowe APIML. Valid values are "STRICT", or 
+  "NONSTRICT". If this is "STRICT", this command will try to
   validate the z/OSMF service certificate if z/OSMF is defined.
 
 - `zOSMF.host` and `zOSMF.port` is the z/OSMF service information. This is

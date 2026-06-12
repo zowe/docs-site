@@ -6,7 +6,7 @@ As an API Mediation Layer user, you may encounter problems with how the API ML f
 To troubleshoot errors or warnings that can occur when configuring certificates, see the article [Troubleshooting certificate configuration](./troubleshoot-zos-certificate.md).
 :::
 
-* [Install API ML without Certificate Setup](#install-api-ml-without-certificate-setup)
+* [Install API ML with Certificate Setup](#install-api-ml-with-certificate-setup)
 * [Enable API ML Debug Mode](#enable-api-ml-debug-mode)
 * [Change the Log Level of Individual Code Components](#change-the-log-level-of-individual-code-components)
 * [Services that are not running appear to be running](#services-that-are-not-running-appear-to-be-running)
@@ -17,9 +17,7 @@ To troubleshoot errors or warnings that can occur when configuring certificates,
     * [SEC0002 error when logging in to API Catalog](#sec0002-error-when-logging-in-to-api-catalog)
     * [API ML throws I/O error on GET request and cannot connect to other services](#api-ml-throws-io-error-on-get-request-and-cannot-connect-to-other-services)
     
-## Install API ML without Certificate Setup
-
-For testing purposes, it is not necessary to set up certificates when configuring the API Mediation Layer. You can configure Zowe without certificate setup and run Zowe with `verify_certificates: DISABLED`.
+## Install API ML with Certificate Setup
 
 **Important:** For production environments, certificates are required. Ensure that certificates for each of the following services are issued by the Certificate Authority (CA) and that all keyrings contain the public part of the certificate for the relevant CA:
 * z/OSMF
@@ -346,9 +344,7 @@ Fix the missing z/OSMF host name in subject alternative names using the followin
 **Follow these steps:**
 
 1. Re-create the Zowe keystore by deleting it and re-creating it. 
-2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `DISABLED` or `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name. 
-
-**Important!** Disabling `zowe.verifyCertificates` may expose your server to security risks. Ensure that you contact your system administrator before disabling these certificates and use these options only for troubleshooting purposes.
+2. In the `zowe.yaml` file that used to launch Zowe, ensure the property `zowe.verifyCertificates` is set to `NONSTRICT`. The default value is `STRICT` which ensures that Zowe validates the certificate authority's signing chain is trusted, and that the IP address for Zowe's servers match the certificate's subject alternative name.
 
 #### Invalid z/OSMF host name in subject alternative names
 
