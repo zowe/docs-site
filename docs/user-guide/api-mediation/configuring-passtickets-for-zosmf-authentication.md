@@ -5,15 +5,15 @@ Starting in Zowe v3.4.0, System Authorization Facility (SAF) is the default auth
 :::info Required role: Security Administrator
 :::
 
-Use of SAF as the authentication provider requires that PassTicket generation permissions are configured for the z/OSMF application ID (APPLID) if your deployment routes traffic to z/OSMF via the API Gateway. Without this configuration, the API Gateway cannot securely validate requests against z/OSMF, causing core subsystem API requests to fail.
+The use of SAF as the authentication provider requires that PassTicket generation permissions are configured for the z/OSMF application ID (APPLID) if your deployment routes traffic to z/OSMF via the API Gateway. Without this configuration, the API Gateway cannot securely validate requests against z/OSMF, causing core subsystem API requests to fail.
 
 :::info
-This configuration grants the Zowe started task permissions to generate PassTickets specifically for the z/OSMF APPLID (`IZUDFLT`). It does not require generating a new application session key (`SSKEY`), establishing an application profile, or adjusting replay protection settings. Those settings are already managed globally by your operating system's z/OSMF installation.
+This configuration grants the Zowe started task permissions to generate PassTickets specifically for the z/OSMF APPLID (`IZUDFLT`). This configuration does not require generating a new application session key (`SSKEY`), establishing an application profile, or adjusting replay protection settings. Those settings are already managed globally by your operating system's z/OSMF installation.
 :::
 
 ## Prerequisites
 
-Before executing the commands below, ensure that your environment meets these criteria:
+Before executing the commands specified in this article, ensure that your environment meets these criteria:
 
 * **Zowe Version:** v3.4.0 or higher.
 
@@ -33,16 +33,14 @@ The User ID/Accessor ID assigned to the Zowe started task.
 
 ## Configure PassTicket permissions by ESM
 
-Choose the commands that correspond to your system's External Security Manager (ESM)to grant the Zowe runtime permission to generate PassTickets for z/OSMF.
+Choose the commands that correspond to your system's External Security Manager (ESM) to grant the Zowe runtime permission to generate PassTickets for z/OSMF.
 
 **Top Secret (TSS)**
-
-
 
 <details>
 <summary>Click here for command details for Top Secret (TSS).</summary>
 
-Authorize the Zowe started task Accessor ID (ACID) to generate PassTickets for the target z/OSMF instance by adding the following update permit:
+Authorize the Zowe started task Accessor ID (`ACID`) to generate PassTickets for the target z/OSMF instance by adding the following update permit:
 
 ```
 /* Grant update access to the Zowe started task ACID for the specific z/OSMF APPLID */
@@ -59,7 +57,7 @@ TSS REFRESH
 <details>
 <summary>Click here for command details for ACF2.</summary>
 
-Compile the resource rule inside the PassTicket (PTK) to validate and allow generation from the Zowe server user ID:
+Compile the resource rule inside the PassTicket (PTK) to validate, and allow generation from the Zowe server user ID:
 
 ```
 SET RESOURCE(PTK)
@@ -104,7 +102,7 @@ To verify that the permissions were correctly applied and that the Zowe started 
 TSS WHOHAS PTKTDATA(IRRPTAUTH.<zosmf-applid>.)
 ```
 
-Verify that the returned access mask confirms READ,UPDATE visibility for the Zowe ACID.
+Verify that the returned access confirms READ,UPDATE visibility for the Zowe ACID.
 
 </details>
 
@@ -118,7 +116,7 @@ SET RESOURCE(PTK)
 LIST LIKE(IRRPTAUTH-)
 ```
 
-Ensure that the compiled record properly lists the <zosmf-applid> rule containing your Zowe user ID's UID string match.
+Ensure that the compiled record properly lists the `<zosmf-applid>` rule containing your Zowe user ID's UID string match.
 
 </details>
 
