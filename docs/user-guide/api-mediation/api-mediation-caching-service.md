@@ -101,13 +101,13 @@ Deletes a key/value pair
 
 ## Configuration properties
 
-The Caching Service uses the standard `application.yml` structure for configuration. The service is built on top of the Spring enabler. As such, it dynamically registers to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
+The Caching Service uses the standard YAML structure for configuration. The service is built on top of the Spring enabler. As such, it dynamically registers to the API Mediation Layer. The service appears in the API Catalog under the tile, "Zowe Applications".
 
-* **`caching.storage.size`**  
+* **`components.caching-service.storage.size`**  
 This property limits the size of the Caching Service. In the VSAM and InMemory implementations, this property represents the number of records stored before the eviction strategy is initiated. The default value is `100`.  
 **Note:** Different implementations may implement this property differently.
 
-* **`caching.storage.evictionStrategy`**  
+* **`components.caching-service.storage.evictionStrategy`**  
 This parameter specifies service behavior when the limit of records is reached. The default value is `Reject`.
 
   where:
@@ -126,19 +126,4 @@ This parameter specifies service behavior when the limit of records is reached. 
 
 ## Authentication
 
-### Direct calls
-
-The Caching Service requires TLS mutual authentication. This verifies authenticity of the client. Calls without a valid client certificate generate a `403` response code: `Forbidden`. This requirement is disabled when `VERIFY_CERTIFICATES=false` in `zowe-certificates.env` configuration file.
-
-The call must have a header `X-Certificate-DistinguishedName` containing information about the certificate's distinguished name. This header is added by the API Gateway. For a direct call, this header needs to be added manually. Calls without this header produce a `401` response code: `Unauthorized`.
-
-### Routed calls through API Gateway
-
-Caching service registers with the following authentication scheme to Discovery service:
-
-```yaml
-apiml.service.authentication.scheme: x509
-apiml.service.authentication.headers: X-Certificate-Public,X-Certificate-DistinguishedName,X-Certificate-CommonName
-```
-
-The result is that the Gateway attempts mutual authentication with the Client.  If authentication is succesful, the Client's certificate information is propogated to `X-Certificate-` headers. With this scheme, the Gateway uses its server/client certificate for the routed call to the Caching Service.
+The Caching Service requires mutual TLS (mTLS) authentication. This verifies the authenticity of the client. Calls routed through the API Gateway leverage client certificate forwarding. In this case, the client certificate provided in the mTLS with the API Gateway will be forwarded as an HTTP header. The Caching Service is configured to accept these headers only from trusted proxies. A trusted proxy is identified by `certificatesUrl` in the Caching Service configuration. The Certificates URL is configured automatically by the Zowe installation. It is possible to override this parameter with: `components.caching-service.apiml.security.x509.certificatesUrl: <certificate-url-on-gateway>`. Calls without a valid client certificate generate a `403` response code: `Forbidden`.
