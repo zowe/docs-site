@@ -23,8 +23,6 @@ The Caching Service is available only for internal Zowe applications, and is not
   - [Methods to use the Caching Service API](#methods-to-use-the-caching-service-api)
   - [Configuration properties](#configuration-properties)
   - [Authentication](#authentication)
-    - [Direct calls](#direct-calls)
-    - [Routed calls through API Gateway](#routed-calls-through-api-gateway)
 
 ## Architecture
 
@@ -120,4 +118,4 @@ This parameter specifies service behavior when the limit of records is reached. 
 
 ## Authentication
 
-The Caching Service requires mutual TLS (mTLS) authentication. This verifies the authenticity of the client. Calls routed through the API Gateway leverage client certificate forwarding. In this case, the client certificate provided in the mTLS with the API Gateway will be forwarded as an HTTP header. The Caching Service is configured to accept these headers only from trusted proxies. A trusted proxy is identified by `certificatesUrl` in the Caching Service configuration. The Certificates URL is configured automatically by the Zowe installation. It is possible to override this parameter with: `components.caching-service.apiml.security.x509.certificatesUrl: <certificate-url-on-gateway>`. Calls without a valid client certificate generate a `403` response code: `Forbidden`.
+The Caching Service requires mutual TLS (mTLS) authentication. mTLS authentication verifies the authenticity of the client. Calls routed through the API Gateway leverage client certificate forwarding. In this case, the client certificate provided in the mTLS with the API Gateway is forwarded as an HTTP header. The Caching Service is configured to accept HTTP headers only from trusted proxies. A trusted proxy is identified by `certificatesUrl` in the Caching Service configuration. The Certificates URL is configured automatically by the Zowe installation. Override this parameter with: `components.caching-service.apiml.security.x509.certificatesUrl: <certificate-url-on-gateway>`. Calls without a valid client certificate generate a `403` response code: `Forbidden`.
