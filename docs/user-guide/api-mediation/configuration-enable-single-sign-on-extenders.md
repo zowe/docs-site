@@ -3,10 +3,24 @@
 :::info Roles: system programmer, API service extender
 :::
 
-Enabling Single Sign On (SSO) in Zowe involves configuring JWT tokens or PassTickets for secure authentication. The JWT token configuration requires setting up a custom HTTP header to store the token, thereby enhancing secure communication with southbound services. 
+Enabling Single Sign On (SSO) in Zowe involves configuring JSON Web Tokens (JWT) or PassTickets for secure authentication. 
 
-For more information, see [Enabling single sign on for extending services via JWT token configuration](./configuration-extender-jwt.md).
+## Configuring JWTs
 
-PassTicket configuration, alternatively, allows services that do not natively support JWT tokens or client certificates to authenticate via the API Gateway. This authentication process requires the activation of PassTicket support, recording the APPLID, and configuring the Zowe started task user ID. Additionally, custom HTTP headers can be set up for PassTickets and user IDs, ensuring secure and streamlined access within the Zowe ecosystem.
+The JWT configuration requires setting up a custom HTTP header to store the token, thereby enhancing secure communication with southbound services. 
 
-For more information, see [Enabling single sign on for extending services via PassTicket configuration](./configuration-extender-passtickets.md).
+For more information, see [Enabling single sign on for extending services via JSON Web Token (JWT) configuration](./configuration-extender-jwt.md).
+
+## Configuring PassTickets
+
+PassTicket configuration serves two distinct purposes within Zowe depending on your authentication architecture:
+
+* **Core Infrastructure (z/OSMF)**  
+Starting in Zowe v3.4.0, when SAF is used as the default authentication provider, the API Gateway relies on PassTickets to communicate with z/OSMF. This is a mandatory core installation step if z/OSMF is present on your system.
+
+To configure PassTickets for core Zowe and z/OSMF functionality, see [Configuring PassTickets for z/OSMF Authentication](../api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+
+* **Extending Services**  
+PassTickets can also be used to allow third-party extending services that do not natively support JWT or client certificates to securely authenticate users via the API Gateway. This method requires activating PassTicket support, recording your custom service APPLID, and establishing dedicated application session keys.
+
+To configure PassTickets for a custom downstream service onboarding onto the API Mediation Layer, see [Enabling single sign on for extending services via PassTicket configuration](./configuration-extender-passtickets.md).

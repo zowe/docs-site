@@ -54,13 +54,21 @@ The REST API of ZAAS can easily be called from a Java application using the [ZAA
 
 ### Existing services that cannot be modified
 
-If you have a service that cannot be changed to adopt the Zowe authentication token, the service can utilize Zowe SSO if the API service is able to handle PassTickets. 
+If an API service cannot be modified to natively validate the Zowe JWT access token, it can still participate in Zowe SSO if authentication is possible via standard z/OS PassTickets. When a client presents a valid Zowe token, the API Gateway automatically generates a one-time PassTicket and passes the PassTicket to the downstream service in the HTTP Basic Authentication header.
 
+Depending on the service you are connecting to, PassTicket configuration falls into one of two categories:
+
+* **Core Subsystems (z/OSMF)**  
+Starting in Zowe v3.4.0, when SAF is configured as your default authentication provider, API ML uses this PassTicket exchange mechanism to route core traffic to z/OSMF (`IZUDFLT`). This is a mandatory configuration requirement for standard Zowe installations.
+For installation steps, see [Configuring PassTickets for z/OSMF Authentication](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+
+* **Extending Services**  
+If you are onboarding an existing, non-Zowe REST interface to API Mediation Layer that relies on PassTickets for mainframe authentication, you must configure a unique APPLID and session key profile. For extension steps, see
 For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets.md).
 
 ## Further resources
 
 * [Accessing multiple services with SSO](./cli-using-integrating-apiml.md#accessing-multiple-services-with-sso)
-* [Enabling single sign on for clients via JSON Web Token (JWT) configuration](./api-mediation/configuration-jwt.md)
+
 
 
