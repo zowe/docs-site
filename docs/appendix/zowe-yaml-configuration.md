@@ -235,7 +235,6 @@ The high-level configuration `zowe` supports these definitions:
    **Possible values:**
   * `STRICT`: This is the default value. Zowe validates if the certificate is trusted in Zowe's trust store and if the certificate Command Name and Subject Alternative Name (SAN) is validated. This is recommended for the best security.
   * `NONSTRICT`: Zowe validates if the certificate is trusted in Zowe's trust store. In this mode, Zowe does not validate certificate Common Name and Subject Alternative Name (SAN). This option does not have the highest security level but allows you to try out Zowe when you do not have permission to fix the certificate used by external services like z/OSMF.
-  * `DISABLED`: This value disables certificate validation completely. This is **NOT** recommended for security purpose.
 
 #### Launcher and launch scripts
 
@@ -410,7 +409,7 @@ The default value of `label` is `localhost`. The default value of `caLabel` is `
   This parameter is required and specifies the owner of an existing certificate. This field can have the value of `SITE`.
   * **zowe.setup.certificate.keyring.connect.label**  
   This parameter is required and specifies the label of an existing certificate.
-- If `zowe.verifyCertificates` is not `DISABLED`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
+- When `zowe.verifyCertificates` is `STRICT` or `NONSTRICT`, and z/OSMF host (`zOSMF.host`) is provided, Zowe attempts to trust the z/OSMF certificate.
   * **For RACF**  
   If the CA of the z/OSMF is not in the Zowe truststore, you can define it using
 `zowe.setup.certificate.keyring.zOSMF.user` and label `zowe.setup.certificate.keyring.zOSMF.ca`  
@@ -553,10 +552,6 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
     ```
     https://${ZWE_haInstance_hostname}:${ZWE_components_gateway_port}/zss/api/v1/certificate/dn
     ```
-- **apiml.security.ssl.verifySslCertificatesOfServices**  
- Specifies if API ML is used to verify certificates of services in strict mode. Setting to `true` enables `strict` mode where API ML validates if the certificate is trusted in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
-- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
- Specifies if API ML is used to verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **apiml.service.allowEncodedSlashes**  
  Specifies if the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. Set to `true` to allow encoded characters to be part of URL requests. 
 - **apiml.service.corsEnabled**  
@@ -588,10 +583,6 @@ These configurations can be applied to the `components.discovery` section:
 
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
-- **apiml.security.ssl.verifySslCertificatesOfServices**  
- Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
-- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
- Specifies if API ML is to verify certificates of services in `non-strict` mode. Set to `true` to enable the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
 - **alternativeStaticApiDefinitionsDirectories**  
  Specifies the alternative directories of static definitions. A valid value is the list of directories separated by commas. 
 - **apiml.server.maxTotalConnections**  
@@ -639,19 +630,6 @@ These configurations can be used under the `components.caching-service` section:
   Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
-- **apiml.security.ssl.verifySslCertificatesOfServices**  
-  Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in a truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
-
-  :::note
-  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
-  :::
-
-- **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
-  Specifies if API ML is to verify certificates of services in non-strict mode. Set to `true` to enable `non-strict` mode where API ML validates if the certificate is trusted in truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if strict mode is disabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
-
-  :::note
-  This configuration value is used only for onboarding and has no impact when Redis or Infinispan storage is used.
-  :::
 
 - **storage.mode**  
   Sets the storage type used to persist data in the Caching Service. The valid values are `infinispan`, `inMemory`, `redis`, and `vsam`.

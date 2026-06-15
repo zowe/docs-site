@@ -307,12 +307,6 @@ To make certificates work in Kubernetes, make sure the certificate you are using
 
 Without the additional domains in SAN, you may see warnings/errors related to certificate validation.
 
-:::caution
-
-It is not recommended to disable `zowe.verifyCertificates`.
-
-:::
-
 **Notes**: When the following conditions are true, this migration script will regenerate a new set of certificates for you with proper domain names listed above.
 
 - You use `zwe init` command to initialize Zowe
