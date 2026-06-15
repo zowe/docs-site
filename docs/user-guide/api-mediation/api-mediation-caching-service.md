@@ -118,12 +118,6 @@ This parameter specifies service behavior when the limit of records is reached. 
   * **removeOldest**  
   removes the oldest item in the cache when the service reaches the configured maximum number
 
-:::note
-- For more information about how to configure the Caching Service in the `application.yml`, see
- [Add API Onboarding Configuration](../../extend/extend-apiml/onboard-spring-boot-enabler.md).
-- When using VSAM, ensure that you set the additional configuration parameters. For more information about setting these parameters, see [Using VSAM as a storage solution through the Caching Service](../../extend/extend-apiml/api-mediation-vsam.md).
-:::
-
 ## Authentication
 
 The Caching Service requires mutual TLS (mTLS) authentication. This verifies the authenticity of the client. Calls routed through the API Gateway leverage client certificate forwarding. In this case, the client certificate provided in the mTLS with the API Gateway will be forwarded as an HTTP header. The Caching Service is configured to accept these headers only from trusted proxies. A trusted proxy is identified by `certificatesUrl` in the Caching Service configuration. The Certificates URL is configured automatically by the Zowe installation. It is possible to override this parameter with: `components.caching-service.apiml.security.x509.certificatesUrl: <certificate-url-on-gateway>`. Calls without a valid client certificate generate a `403` response code: `Forbidden`.
