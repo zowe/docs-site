@@ -51,7 +51,7 @@ TSS REFRESH
 ```
 
 </details>
-</br>
+<br />
 
 **ACF2**
 
@@ -70,7 +70,7 @@ RECKEY IRRPTAUTH ADD(<zosmf-applid>.- UID(<zowe-user-id>) SERVICE(UPDATE,READ) A
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 </details>
-</br>
+<br />
 
 **IBM RACF**
 
@@ -107,7 +107,7 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<zosmf-applid>.)
 Verify that the returned access confirms READ,UPDATE visibility for the Zowe ACID.
 
 </details>
-</br>
+<br />
 
 **ACF2 verification**
 
@@ -122,7 +122,7 @@ LIST LIKE(IRRPTAUTH-)
 Ensure that the compiled record properly lists the `<zosmf-applid>` rule containing your Zowe user ID's UID string match.
 
 </details>
-</br>
+<br />
 
 **IBM RACF verification**
 
@@ -136,6 +136,6 @@ RLIST PTKTDATA IRRPTAUTH.<zosmf-applid>.* ALL
 Verify that the output shows your Zowe started task user listed under USER ACCESS with UPDATE authority.
 
 </details>
-</br>
+<br />
 
 Correct verification output indicates you successfully granted the Zowe runtime permission to generate PassTickets for z/OSMF.
