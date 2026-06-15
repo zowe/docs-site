@@ -35,7 +35,7 @@ The User ID/Accessor ID assigned to the Zowe started task.
 
 Choose the commands that correspond to your system's External Security Manager (ESM) to grant the Zowe runtime permission to generate PassTickets for z/OSMF.
 
-**Top Secret (TSS)**
+**Top Secret (TSS)** 
 
 <details>
 <summary>Click here for command details for Top Secret (TSS).</summary>
@@ -51,6 +51,7 @@ TSS REFRESH
 ```
 
 </details>
+</br>
 
 **ACF2**
 
@@ -69,6 +70,7 @@ RECKEY IRRPTAUTH ADD(<zosmf-applid>.- UID(<zowe-user-id>) SERVICE(UPDATE,READ) A
 F ACF2,REBUILD(PTK),CLASS(P)
 ```
 </details>
+</br>
 
 **IBM RACF**
 
@@ -105,6 +107,7 @@ TSS WHOHAS PTKTDATA(IRRPTAUTH.<zosmf-applid>.)
 Verify that the returned access confirms READ,UPDATE visibility for the Zowe ACID.
 
 </details>
+</br>
 
 **ACF2 verification**
 
@@ -119,6 +122,7 @@ LIST LIKE(IRRPTAUTH-)
 Ensure that the compiled record properly lists the `<zosmf-applid>` rule containing your Zowe user ID's UID string match.
 
 </details>
+</br>
 
 **IBM RACF verification**
 
@@ -132,5 +136,6 @@ RLIST PTKTDATA IRRPTAUTH.<zosmf-applid>.* ALL
 Verify that the output shows your Zowe started task user listed under USER ACCESS with UPDATE authority.
 
 </details>
+</br>
 
 Correct verification output indicates you successfully granted the Zowe runtime permission to generate PassTickets for z/OSMF.
