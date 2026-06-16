@@ -1,4 +1,4 @@
-# Addressing z/OSMF authentication requirements 
+# Addressing z/OSMF PassTicket and authentication requirements 
 
 Starting in Zowe v3.4.0, System Authorization Facility (SAF) is the default authentication provider (`apiml.security.auth.provider=saf`). Under this framework, API Mediation Layer (API ML) automatically communicates with z/OSMF using a static routing definition defined with the `httpBasicPassticket` authentication scheme.
 
