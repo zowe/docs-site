@@ -255,6 +255,7 @@ Launcher is the program behind the `ZWESLSTC` started task.
 #### System messages
 
 Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
+
 - **zowe.sysMessages**  
  The array of message IDs or any text. Wildcards are not supported.
 - **zowe.sysMessageTrim**  
@@ -269,12 +270,14 @@ zowe:
 ```
 :::note
 For example, when the `ZWEAM001I` is issued, `zowe.sysMessageTrim` controls the start of the SYSLOG message:
-- `zowe.sysMessageTrim=false` - SYSLOG message contains the timestamp and other text
+- `zowe.sysMessageTrim=false`   
+The SYSLOG message contains the timestamp and other text:
 ```
 2026-06-06 01:02:03.045 <ZWEAGW1:main:12345678> ZWESVUSR INFO ZWEAM001I Mediation Layer started 
 ```
 
-- `zowe.sysMessageTrim=true` - SYSLOG message starts at matching ID `ZWEAM001I`
+- `zowe.sysMessageTrim=true`  
+The SYSLOG message starts at matching ID `ZWEAM001I`:
 ```
 ZWEAM001I Mediation Layer started
 ```
