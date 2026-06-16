@@ -604,7 +604,7 @@ The `${zoweInstanceDir}` symbol is used in following instructions.
 
 3. Ensure that your application that provides the endpoints described in the YAML file is running.
 
-4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when API ML is already started](#optional-reload-the-services-definition-after-the-update-when-the-api-mediation-layer-is-already-started) which allows you to add your static API service to an already running Zowe.
+4. Restart Zowe runtime or follow steps in section [(Optional) Reload the services definition after the update when API ML is already started](#optional-reload-the-services-definition-after-the-update-when-api-ml-is-already-started) which allows you to add your static API service to an already running Zowe.
 
 5.  [Validate successful onboarding](./onboard-overview.md#verify-successful-onboarding-to-api-ml)
 
