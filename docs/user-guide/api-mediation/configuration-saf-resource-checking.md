@@ -87,7 +87,7 @@ PERMIT IRR.RUSERMAP CLASS(FACILITY) ID(ZWEADMIN) ACCESS(READ)
 
 ### Setting the endpoint provider to perform SAF resouce check
 
-To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the [ZSS API](https://docs.zowe.org/stable/user-guide/zss-api/) is configured and used.
+To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the following properties and their corresponding values:

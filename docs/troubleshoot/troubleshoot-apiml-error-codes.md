@@ -873,13 +873,13 @@ The following error message codes may appear on logs or API responses. Use the f
     - Ensure the client certificate is installed and configured correctly on the client machine.
     - Verify that the certificate is trusted by the API Gateway (check the truststore configuration).
     - Confirm that the certificate has not expired.
-    - For more details, see [Client Certificate Authentication](https://docs.zowe.org/stable/user-guide/api-mediation/client-certificate-authentication/).
+    - For more details, see [Authenticating with client certificates](../user-guide/authenticating-with-client-certificates.md).
 
   - **JWT Token Authentication:**
     - Verify that the JWT token is present in the `Authorization` header as `Bearer <token>`.
     - Confirm that the token has not expired.
     - Ensure the token was issued by a trusted authentication service (z/OSMF or Zowe).
-    - For more information, refer to [JWT Authentication](https://docs.zowe.org/stable/user-guide/api-mediation/jwt-authentication/).
+    - For more information, see [Authenticating with a JSON Web Token (JWT)](../user-guide/authenticating-with-jwt-token.md).
 
   **Troubleshooting steps:**
 
