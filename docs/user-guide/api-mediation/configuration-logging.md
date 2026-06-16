@@ -133,7 +133,7 @@ In the following table you can see each part of the `apimlLogPattern` in the exa
 You can edit, move, remove, or add some parts in the pattern based on your requirements.
 
 :::note
-The full documentation of Logback pattern is available on the [Logback site](https://logback.qos.ch/manual/layouts.html#ClassicPatternLayout).
+The full documentation of Logback pattern is available on the [Logback site](https://logback.qos.ch).
 :::
 
 ## Setting different log levels for specific packages
