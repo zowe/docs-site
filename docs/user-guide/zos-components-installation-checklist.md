@@ -1,6 +1,6 @@
 # Zowe z/OS components installation checklist
 
-Use this checklist to guide you through the installation and configuration of Zowe server-side components for z/OS. 
+Use this checklist to guide you through the installation and configuration of Zowe server-side components for z/OS.
 
 
 ## Preparing for installation
