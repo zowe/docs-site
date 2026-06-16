@@ -18,7 +18,7 @@ PassTicket configuration serves two distinct purposes within Zowe depending on y
 * **Core Infrastructure (z/OSMF)**  
 Starting in Zowe v3.4.0, when SAF is used as the default authentication provider, the API Gateway relies on PassTickets to communicate with z/OSMF. This is a mandatory core installation step if z/OSMF is present on your system.
 
-To configure PassTickets for core Zowe and z/OSMF functionality, see [Configuring PassTickets for z/OSMF Authentication](../api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+To configure PassTickets for core Zowe and z/OSMF functionality, see [Addressing z/OSMF PassTicket and authentication requirements](../api-mediation/configuring-passtickets-for-zosmf-authentication.md).
 
 * **Extending Services**  
 PassTickets can also be used to allow third-party extending services that do not natively support JWT or client certificates to securely authenticate users via the API Gateway. This method requires activating PassTicket support, recording your custom service APPLID, and establishing dedicated application session keys.

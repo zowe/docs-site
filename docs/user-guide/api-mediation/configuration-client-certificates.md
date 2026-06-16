@@ -33,7 +33,7 @@ The Zowe runtime user must be authorized to perform identity mapping in SAF. For
 * **z/OSMF Access**  
 The Zowe runtime user must be a member of the default `IZUUSER` group to log in to z/OSMF.
 * **PassTicket Generation**  
-The Zowe runtime user must be able to generate PassTickets for the user and for the z/OSMF `APPLID`. For more information, see [Configuring PassTickets for z/OSMF Authentication](../api-mediation/configuring-passtickets-for-zosmf-authentication.md)
+The Zowe runtime user must be able to generate PassTickets for the user and for the z/OSMF `APPLID`. For more information, see [Addressing z/OSMF PassTicket and authentication requirements](../api-mediation/configuring-passtickets-for-zosmf-authentication.md)
 
 
 :::note

@@ -132,7 +132,7 @@ In return, this method provides a valid pass ticket as a String to the authorize
 :::tip
 Depending on whether you are requesting a PassTicket for core Zowe functions or a custom application, see the following resources for ESM setup instructions:
 
-* For core z/OSMF configuration (required for Zowe v3.4+ installations utilizing the default SAF authentication provider), see [Configuring PassTickets for z/OSMF Authentication](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
+* For core z/OSMF configuration (required for Zowe v3.4+ installations utilizing the default SAF authentication provider), see [Addressing z/OSMF PassTicket and authentication requirements](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
 
 * For third-party downstream services onboarding to API ML, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 :::

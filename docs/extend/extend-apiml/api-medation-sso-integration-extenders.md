@@ -109,7 +109,7 @@ Specifies the APPLID value that is used by the API service for PassTicket suppor
 
 Use the configuration that applies to your use case:
 
-* To configure PassTickets for core Zowe and z/OSMF functionality, see [Configuring PassTickets for z/OSMF Authentication](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
+* To configure PassTickets for core Zowe and z/OSMF functionality, see [Addressing z/OSMF PassTicket and authentication requirements](../../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md)
 
 * To configure PassTickets for an external extending service onboarding to API Mediation Layer, see [Enabling single sign on for extending services via PassTicket configuration](../../user-guide/api-mediation/configuration-extender-passtickets.md).
 

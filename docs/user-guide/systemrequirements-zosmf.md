@@ -11,7 +11,7 @@ meta:
 Follow these steps described in this article to configure z/OSMF.
 
 :::caution Important
-If you are not using Zowe CLI or Zowe Explorer and you are using API ML's recommended SAF authentication provider, it is necessary to configure PassTickets for z/OSMF authentication. This configuration is required to enable the API Gateway to securely validate requests against z/OSMF. For more information, see [Configuring PassTickets for z/OSMF Authentication](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+If you are not using Zowe CLI or Zowe Explorer and you are using API ML's recommended SAF authentication provider, it is necessary to configure PassTickets for z/OSMF authentication. This configuration is required to enable the API Gateway to securely validate requests against z/OSMF. For more information, see [Addressing z/OSMF PassTicket and authentication requirements](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
 :::
 
 :::info Required roles: system programmer, security administrator, domain administrator
