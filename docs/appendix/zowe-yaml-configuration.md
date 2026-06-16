@@ -823,7 +823,7 @@ Each line of Zowe YAML configuration has a matching environment variable during 
 
 **Examples:**
 
-- `ZWE_zowe_runtimeDirectory` is parent directory where `zwe` server command is located.
+- `ZWE_zowe_runtimeDirectory` is the parent directory where the `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of the user customized workspace directory.
 - `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
 - `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.
