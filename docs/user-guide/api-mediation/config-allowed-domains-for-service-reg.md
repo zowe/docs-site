@@ -28,11 +28,13 @@ If the `zowe.network.allowedDomains` property is left unconfigured, the API ML d
 ## Configuration Examples (`zowe.yaml`)
 
 ### 1. Minimal Configuration (Default Behavior)
-No explicit configuration is needed if you only want to allow the local infrastructure. The system automatically permits either `zowe.externalDomains` (in a non-HA setup) or `zowe.haInstances.<id>.hostname` (in an HA setup).
+No explicit configuration is needed if you only want to allow the local infrastructure. 
 
-:::note
-No configuration needed — only `zowe.externalDomains` in non-HA setup or `zowe.haInstances.<id>.hostname` in HA setup is allowed.
-:::
+| Setup Environment | Automatically Permitted Domains/Hostnames |
+| :--- | :--- |
+| Non-HA Setup | `zowe.externalDomains` |
+| HA Setup | `zowe.haInstances.<id>.hostname` |
+
 
 ### 2. Explicit Configuration with Wildcards and Internal Hosts
 
