@@ -63,7 +63,7 @@ Starting in Zowe v3.4.0, when SAF is configured as your default authentication p
 For installation steps, see [Addressing z/OSMF PassTicket and authentication requirements](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
 
 * **Extending Services**  
-If you are onboarding an existing, non-Zowe REST interface to API Mediation Layer that relies on PassTickets for mainframe authentication, you must configure a unique APPLID and session key profile. For extension steps, see
+If you are onboarding an existing, non-Zowe REST interface to API Mediation Layer that relies on PassTickets for mainframe authentication, you must configure a unique APPLID and session key profile. 
 For more information, see [Enabling single sign on for extending services via PassTicket configuration](./api-mediation/configuration-extender-passtickets.md).
 
 ## Further resources
