@@ -14,7 +14,7 @@ After upgrade, any service whose URLs resolve to a domain not in the `allowlist`
 By default, the API ML Discovery Service accepts metadata from any service attempting to onboard. Without domain validation, a compromised or untrusted service could register malicious URLs (such as `homePageUrl` or `healthCheckUrl`) pointing to external, unverified infrastructure. 
 
 Implementing an explicit domain `allowlist` ensures the following security measures:
-* Only trusted infrastructure within your enterprise domain can participate in the API ML ecosystem.
+* Only trusted infrastructure within your enterprise domain can integrate with API ML.
 * Malicious or misconfigured services are blocked at the boundary before they can expose users to SSRF (Server-Side Request Forgery) or phishing vulnerabilities via the API ML Gateway dashboard.
 
 ## Default allowed domain behavior

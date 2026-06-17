@@ -3,7 +3,7 @@
 Zowe v3 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
-For details on the schema technology and where to find the schema files within our source code, see [Using the Configuration Manager](../user-guide/configmgr-using.md#json-schema-validation).
+For details on the schema technology and where to find the schema files within our source code, see [JSON-Schema validation](../user-guide/configmgr-using.md#json-schema-validation) in the article _Zowe Configuration Manager_.
 
 :::note
 
@@ -204,7 +204,7 @@ The high-level configuration `zowe` supports these definitions:
 
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 
-- **zowe.network.apllowedDomains**  
+- **zowe.network.allowedDomains**  
  Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`.
 
 - **zowe.externalPort**  
