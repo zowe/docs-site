@@ -80,11 +80,12 @@ services:
 
 3. Verify registration is blocked and `ZWEAM601W` appears in the Discovery Service log.
 
-4. Add the domain to allowedDomains, restart, verify registration succeeds.
+4. Add the domain to `allowedDomains`, restart, verify registration succeeds.
 
 5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
 
 ### All Checked Metadata Fields and Patterns
+
 The validator explicitly scans the following properties within the service registration metadata:
 
 * **homePageUrl**  
@@ -128,7 +129,7 @@ ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evi
 
 **Resolution:**
 1. **Identify the Blocked Domain.**  
-   Check the log entry (like the one above) to find the offending URL and domain.
+   Check the log entry to find the offending URL and domain.
 
 2. **Update the Allowlist.**  
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
