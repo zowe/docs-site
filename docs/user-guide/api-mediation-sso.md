@@ -59,8 +59,8 @@ If an API service cannot be modified to natively validate the Zowe JWT access to
 Depending on the service you are connecting to, PassTicket configuration falls into one of two categories:
 
 * **Core Subsystems (z/OSMF)**  
-Starting in Zowe v3.4.0, when SAF is configured as your default authentication provider, API ML uses this PassTicket exchange mechanism to route core traffic to z/OSMF (`IZUDFLT`). This is a mandatory configuration requirement for standard Zowe installations.
-For installation steps, see [Addressing z/OSMF PassTicket and authentication requirements](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+Starting in Zowe v3.4.0, System Authorization Facility (SAF) is the default authentication provider (`apiml.security.auth.provider=saf`) for all new installations performed via Portable Software Instance (**PSWI**), which is the recommended method for installing Zowe API Mediation Layer (API ML). API ML uses this PassTicket exchange mechanism to route core traffic to z/OSMF (`IZUDFLT`). This is a mandatory configuration requirement for standard Zowe installations. For more information, see [Addressing z/OSMF PassTicket and authentication requirements](../user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication.md).
+
 
 * **Extending Services**  
 If you are onboarding an existing, non-Zowe REST interface to API Mediation Layer that relies on PassTickets for mainframe authentication, you must configure a unique APPLID and session key profile. 
