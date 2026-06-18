@@ -28,7 +28,7 @@
 
 6. Do the dependency changes mean that I need Java 17 to run Zowe V3?
 
-   Yes, Java 17 is required to run the API Mediation Layer in Zowe V3.
+   Yes, Java 17 is required to run the API Mediation Layer in Zowe V3. Java 21 and Java 25 are also supported.
 
 ### Zowe Explorer for Visual Studio Code
 

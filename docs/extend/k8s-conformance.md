@@ -16,6 +16,13 @@ Here are our recommendations of base images:
   * `ompzowe/base`: `zowe-docker-release.jfrog.io/ompzowe/base:latest-ubuntu` and `zowe-docker-release.jfrog.io/ompzowe/base:latest-ubi`.
   * `ompzowe/base-node`: `zowe-docker-release.jfrog.io/ompzowe/base-node:latest-ubuntu` and `zowe-docker-release.jfrog.io/ompzowe/base-node:latest-ubi` has node.js LTS (v14) version pre-installed.
   * `ompzowe/base-jdk`: `zowe-docker-release.jfrog.io/ompzowe/base-jdk:latest-ubuntu` and `zowe-docker-release.jfrog.io/ompzowe/base-jdk:latest-ubi` has JRE v8 pre-installed.
+
+  **Java 25 support**: Official Zowe base images with Java 25 are pending. Users who want to run API ML on Java 25 in containers can use `eclipse-temurin:25-jdk` as a custom base image:
+  ```dockerfile
+  FROM eclipse-temurin:25-jdk
+  # Add Zowe component artifacts and entrypoint
+  ```
+  The API ML compiles to Java 17 bytecode which runs natively on Java 25 JVMs. No bytecode recompilation is required.
 - [Red Hat Universal Base Image 8 Minimal](https://developers.redhat.com/articles/ubi-faq?redirect_fragment=resources#ubi_details)
 - [Ubuntu](https://hub.docker.com/_/ubuntu)
 

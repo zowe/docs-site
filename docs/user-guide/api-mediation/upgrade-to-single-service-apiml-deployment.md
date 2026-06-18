@@ -15,7 +15,7 @@ For comprehensive information about single-service deployment, performance impro
 Before transitioning to the single-service model, verify that your z/OS environment meets the minimum standards for Zowe v3:
 
 * **Java**  
-Must be upgraded to Java 17 or Java 21. Ensure the `java.home` parameter in your zowe.yaml points to the correct home location for one of these versions.
+Must be upgraded to Java 17, Java 21, or Java 25. Ensure the `java.home` parameter in your zowe.yaml points to the correct home location for one of these versions.
 
 * **Node.js**  
 Upgrading to v20 is recommended. Update the `node.home` parameter in your zowe.yaml accordingly.
