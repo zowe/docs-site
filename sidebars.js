@@ -139,6 +139,7 @@ module.exports = {
             "user-guide/install-nodejs-zos",
             "user-guide/address-security-requirements",
             "user-guide/address-authentication-requirements",
+            "user-guide/api-mediation/configuring-passtickets-for-zosmf-authentication",
             "user-guide/configure-uss",
             "user-guide/address-storage-requirements",
             "user-guide/address-network-requirements",

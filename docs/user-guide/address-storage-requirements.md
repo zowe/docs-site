@@ -1,6 +1,6 @@
 # Addressing storage requirements 
 
-:::info Roles required: storage administrator, system programmer
+:::info Required role: storage administrator, system programmer
 :::
 
 Ensure that you have sufficient storage depending on the installation method. Review the storage requirements according 
