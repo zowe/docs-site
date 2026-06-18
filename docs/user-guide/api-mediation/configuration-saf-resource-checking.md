@@ -183,4 +183,5 @@ The following YAML presents the structure of the file:
 - [IBM RACF documentation](https://www.ibm.com/docs/en/zos/latest?topic=racf)
 - [IBM MQ security documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=security)
 - [Class PlatformAccessControl (IBM Java)](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-)
-- [Zowe ZSS API documentation](https://docs.zowe.org/stable/user-guide/zss-api/)
+- [Zowe ZSS documentation](../../getting-started/zowe-architecture.md#zss)
+
