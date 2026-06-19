@@ -205,7 +205,7 @@ The high-level configuration `zowe` supports these definitions:
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 
 - **zowe.network.allowedDomains**  
- Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`.
+ Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`. By default, Zowe automatically populates this list with all hostnames configured in `zowe.externalDomains`. Specific hostnames of High Availability (HA) instances are also included in the list if they are defined in the zowe.yaml file. Any values explicitly provided in this parameter are appended to that default list.
 
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
