@@ -107,9 +107,13 @@ services:
 
 5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
 -->
-## Troubleshooting and Emergency Override
+## Troubleshooting and `allowedDomains` Override
 
-If an extender's service utilizes an unauthorized domain in the service's metadata profile, the onboarding process is prevented. From the perspective of the registering client, the service will silently fail to register and will remain invisible to the API Gateway. However, the API ML Discovery Service will actively catch this validation failure and issue an explicit warning in the logs.
+If an extender's service utilizes an unauthorized domain in its registration profile, the registration will be blocked, and a ZWEAM601W warning message will be issued in the logs. This validation applies to:  
+* **Base Connection URLs:** Such as `instanceBaseUrls`.  
+* **Service Metadata Keys:** Such as `swaggerUrl`, `graphqlUrl`, `documentationUrl`, `externalUrl`, and `corsAllowedOrigins`.
+* **Standard Eureka Endpoints:** Including Home Page, Health Check, and Status Page URLs.
+
 
 **Error Log Example (Blocked Registration)**
 
@@ -127,7 +131,7 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
 
-  :::tip Emergency Development Override
+  :::tip `allowedDomains` Development Override
   If you are working in a non-production or development environment and need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, override the `allowedDomains` configuration.
 
   Set the following environment variable in your `zowe.environments`:
