@@ -1,12 +1,12 @@
 # Configuring allowed domains for service registration
 
-Use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Layer (API ML) by restricting which domains are permitted to register services with the API ML Discovery Service.
+Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure Zowe API Mediation Layer (API ML) by restricting which domains are permitted to register services with the API ML Discovery Service.
 
 :::info Required Role: System administrator
 :::
 
 :::caution Breaking Change   
-After upgrade, any service whose URLs resolve to a domain not in the `allowlist` will fail to register with the Discovery Service and will be invisible to API Gateway routing.
+After upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
 * `zowe.externalDomains` (in a non-HA setup)
@@ -20,11 +20,15 @@ By default, the Discovery Service only trusts:
 Existing extenders using domains outside of these defaults must explicitly configure `zowe.network.allowedDomains` after upgrading to prevent registration failures.
 :::
 
+:::note
+To override the `allowedDomains` configuration, set `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true` in the `zowe.environments` attribute in your `zowe.yaml` file. 
+:::
+
 ## Allowed domains security overview
 
 By default, the API ML Discovery Service accepts metadata from any service attempting to onboard. Without domain validation, a compromised or untrusted service could register malicious URLs (such as `homePageUrl` or `healthCheckUrl`) pointing to external, unverified infrastructure. 
 
-Implementing an explicit domain `allowlist` ensures the following security measures:
+Implementing an explicit domain allowlist ensures the following security measures:
 * Only trusted infrastructure within your enterprise domain can integrate with API ML.
 * Malicious or misconfigured services are blocked at the boundary before they can expose users to SSRF (Server-Side Request Forgery) or phishing vulnerabilities via the API ML Gateway dashboard.
 
@@ -78,7 +82,7 @@ zowe:
 
 ## Evaluated Metadata and URLs
 
-When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration profile. If even one URL contains a domain that does not not match the `allowlist,` the registration is blocked.
+When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration profile. If even one URL contains a domain that does not not match the allowlist, the registration is blocked.
 
 ## Service Metadata Validation
 
@@ -107,16 +111,16 @@ services:
 
 5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
 -->
-## Troubleshooting & Emergency Override
+## Troubleshooting and Emergency Override
 
-If an extender's service fails to register, the service is silently blocked from the perspective of the registering client, but the event will be captured in the Zowe server logs.
+If an extender's service utilizes an unauthorized domain in the service's metadata profile, the onboarding process is prevented. From the perspective of the registering client, the service will silently fail to register and will remain invisible to the API Gateway. However, the API ML Discovery Service will actively catch this validation failure and issue an explicit warning in the logs.
 
 **Error Log Example (Blocked Registration)**
 
 When registration is blocked due to an unlisted domain, an entry similar to the following appears in the Zowe server log:
 
 ```text
-ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evil.example.com/api) is not allowed for instance 'my-service:my-service:8080'
+ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowed for instance 'my-service:my-service:8080'
 ```
 
 **Resolution:**
@@ -127,5 +131,6 @@ ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evi
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
   :::tip 
-  If you are working in a non-production or development environment and need to temporarily downgrade this blocking behavior to a warning while you correct your `zowe.yaml` parameters, see the emergency override instructions in the [API Mediation Layer Troubleshooting Guide](../troubleshoot/troubleshoot-apiml.md#zweam601w).
+  If you are working in a non-production or development environment and need to temporarily downgrade this blocking behavior to a warning while you correct your `zowe.yaml` parameters, see the emergency override instructions in the [API Mediation Layer Troubleshooting Guide](../../troubleshoot/troubleshoot-apiml.md)
   :::
+ 

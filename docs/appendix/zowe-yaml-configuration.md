@@ -205,7 +205,18 @@ The high-level configuration `zowe` supports these definitions:
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
 
 - **zowe.network.allowedDomains**  
- Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`. By default, Zowe automatically populates this list with all hostnames configured in `zowe.externalDomains`. Specific hostnames of High Availability (HA) instances are also included in the list if they are defined in the zowe.yaml file. Any values explicitly provided in this parameter are appended to that default list.
+ Specifies a list of trusted hostnames and domain patterns that API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata does not match an entry in this list. Supports exact hostnames and leading wildcard patterns such as `*.example.com`. 
+
+  By default, Zowe automatically populates this list with the following trusted zones (any values explicitly provided in this parameter are appended to this base list):
+ 
+  * `zowe.externalDomains` – All hostnames configured in this array for non-HA setups.
+  * **HA Instance Hostnames** – Specific hostnames of High Availability (HA) instances defined under zowe.haInstances.<id>.hostname.
+  * **z/OSMF Hostname** – The target hostname defined for the z/OS Management Facility under the zOSMF configuration block.
+  * **Built-in Community & Vendor Domains** – Hardcoded defaults for trusted documentation endpoints:
+      * `www.ibm.com`
+      * `zowe.github.io`
+      * `www.zowe.org`
+      * `techdocs.broadcom.com`
 
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
