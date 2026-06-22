@@ -11,6 +11,7 @@ By default, the Discovery Service only trusts:
 
 * `zowe.externalDomains` (in a non-HA setup)
 * `zowe.haInstances.<id>.hostname` (in an HA setup)
+* The target hostname defined for z/OSMF under the `zOSMF` configuration block.
 * The following built-in default domains:  
     * `www.ibm.com`
     * `zowe.github.io`
@@ -26,36 +27,18 @@ By default, the API ML Discovery Service accepts metadata from any service attem
 
 Implementing an explicit domain allowlist ensures the following security measures:
 * Only trusted infrastructure within your enterprise domain can integrate with API ML.
-* Malicious or misconfigured services are blocked at the boundary before they can expose users to SSRF (Server-Side Request Forgery) or phishing vulnerabilities via the API ML Gateway dashboard.
-
-## Default allowed domain behavior
-
-If the `zowe.network.allowedDomains` property is left unconfigured, the API ML defaults to a strict, highly secure configuration:
-
-* **Default Value:** `${apiml.service.hostname}`
-* **Impact:** In addition to the local hostname where the Discovery Service is running, the following domains are automatically trusted by default:
-    * **Network & Cluster Hostnames:**
-      * The primary domains or hostnames configured under `zowe.externalDomains` (in a non-HA setup).
-      * All instance hostnames listed under `zowe.haInstances.<id>.hostname` (in a HA setup).
-      * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
-    * **Built-in Community & Vendor Documentation Domains:**
-      * `www.ibm.com`
-      * `zowe.github.io`
-      * `www.zowe.org`
-      * `techdocs.broadcom.com`
-
-Any service attempting to register metadata or establish CORS connections utilizing an external domain outside of this aggregated list will be rejected immediately unless `zowe.network.allowedDomains` is expanded to include this domain.
-
+* Malicious or misconfigured services are blocked at the boundary before they can expose users to SSRF (Server-Side Request Forgery).
 
 ## Configuration Examples (`zowe.yaml`)
 
 ### 1. Minimal Configuration (Default Behavior)
 No explicit configuration is needed if you only want to allow the local infrastructure. 
 
-| Setup Environment | Automatically Permitted Domains/Hostnames |
+| Setup Environment | Automatically Permitted Domains / Hostnames (Defaults) |
 | :--- | :--- |
-| Non-HA Setup | `zowe.externalDomains` |
-| HA Setup | `zowe.haInstances.<id>.hostname` |
+| **Global Defaults (All Environments)** | • `zOSMF` target hostname<br>• `www.ibm.com`<br>• `zowe.github.io`<br>• `www.zowe.org`<br>• `techdocs.broadcom.com` |
+| **Non-HA Setup Only** | • Hostnames configured under `zowe.externalDomains` |
+| **HA Setup Only** | • Individual instance hostnames listed under `zowe.haInstances.<id>.hostname` |
 
 
 ### 2. Explicit Configuration with Wildcards and Internal Hosts
@@ -80,19 +63,6 @@ zowe:
 
 When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration profile. If even one URL contains a domain that does not not match the allowlist, the registration is blocked.
 
-## Service Metadata Validation
-
-The following example shows how the domain validation check looks at both the base connection URLs and individual API metadata fields:
-
-**Example:**
-```yaml
-services:
-  serviceId: my-service
-  instanceBaseUrls:
-    - https://my-service.mycompany.com:8443/   # ← Domain checked against allowlist
-  apiInfo:
-    swaggerUrl: https://my-service.mycompany.com:8443/v3/api-docs  # ← Checked against allowlist
-```
 <!-- **Earmarked as this validation procedure should probably be removed**
 
 ### Validation steps
@@ -132,7 +102,7 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
 
 
   :::tip `allowedDomains` Development Override
-  If you are working in a non-production or development environment and need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, override the `allowedDomains` configuration.
+  If you need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, override the `allowedDomains` configuration.
 
   Set the following environment variable in your `zowe.environments`:
   ```text
