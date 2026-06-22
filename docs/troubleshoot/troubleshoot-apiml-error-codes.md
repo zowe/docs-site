@@ -458,11 +458,13 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**  
   
-  The URL provided for the service instance is not included in the allowed domains list configured in API ML.
+  The URL provided for the service instance is not included in the allowed domains list configured in API ML. By default, this validation failure blocks the service from successfully onboarding.
 
   **Action:**  
   
   Check `zowe.network.allowedDomains` configuration in `zowe.yaml` to ensure the instance's URL is permitted.
+
+  * **Emergency Override:** If you need to temporarily prevent this error from blocking service onboarding in a development environment, set the environment variable `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true`. This downgrades the behavior to a log warning only and allows the service to register.
 
 ### ZWEAM602W 
 
