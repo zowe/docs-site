@@ -5,7 +5,7 @@ Use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Laye
 :::info Required Role: System administrator
 :::
 
-:::important Breaking Change   
+:::caution Breaking Change   
 After upgrade, any service whose URLs resolve to a domain not in the `allowlist` will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
@@ -30,7 +30,7 @@ Implementing an explicit domain `allowlist` ensures the following security measu
 
 ## Default allowed domain behavior
 
-If the `zowe.network.allowedDomains` property is left unconfigured, the API ML defaults to a strict, highly secure posture:
+If the `zowe.network.allowedDomains` property is left unconfigured, the API ML defaults to a strict, highly secure configuration:
 
 * **Default Value:** `${apiml.service.hostname}`
 * **Impact:** In addition to the local hostname where the Discovery Service is running, the following domains are automatically trusted by default:
@@ -78,7 +78,7 @@ zowe:
 
 ## Evaluated Metadata and URLs
 
-When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration footprint. If even one URL contains a domain not matching the allowlist, the registration is blocked.
+When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration profile. If even one URL contains a domain that does not not match the `allowlist,` the registration is blocked.
 
 ## Service Metadata Validation
 
@@ -109,7 +109,7 @@ services:
 -->
 ## Troubleshooting & Emergency Override
 
-If an extender's service fails to register, the service is silently blocked from the perspective of the registering client, but the event will be captured in the Discovery Service logs.
+If an extender's service fails to register, the service is silently blocked from the perspective of the registering client, but the event will be captured in the Zowe server logs.
 
 **Error Log Example (Blocked Registration)**
 
