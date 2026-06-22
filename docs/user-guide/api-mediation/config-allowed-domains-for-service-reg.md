@@ -130,7 +130,12 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
 2. **Update the Allowlist.**  
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
-  :::tip 
-  If you are working in a non-production or development environment and need to temporarily downgrade this blocking behavior to a warning while you correct your `zowe.yaml` parameters, see the emergency override instructions in the [API Mediation Layer Troubleshooting Guide](../../troubleshoot/troubleshoot-apiml.md)
+
+  :::tip Emergency Development Override
+  If you are working in a non-production or development environment and need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, you can use an environment variable override.
+
+  Set the following environment variable in your Zowe launch environment:
+  ```text
+  ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true
+  ```
   :::
- 
