@@ -5,8 +5,19 @@ Use the property `zowe.network.allowedDomains` to secure Zowe API Mediation Laye
 :::info Required Role: System administrator
 :::
 
-:::important Breaking Change 
-After upgrade, any service whose URLs resolve to a domain not in the `allowlist` will fail to register with the Discovery Service and will be invisible to API Gateway routing. The default (only `zowe.externalDomains` in non-HA setup or `zowe.haInstances.<id>.hostname` in HA setup) means that existing extenders may need to explicitly configure `zowe.network.allowedDomains` after upgrading.
+:::important Breaking Change   
+After upgrade, any service whose URLs resolve to a domain not in the `allowlist` will fail to register with the Discovery Service and will be invisible to API Gateway routing.
+By default, the Discovery Service only trusts:
+
+* `zowe.externalDomains` (in a non-HA setup)
+* `zowe.haInstances.<id>.hostname` (in an HA setup)
+* The following built-in default domains:  
+    * `www.ibm.com`
+    * `zowe.github.io`
+    * `www.zowe.org`
+    * `techdocs.broadcom.com`
+
+Existing extenders using domains outside of these defaults must explicitly configure `zowe.network.allowedDomains` after upgrading to prevent registration failures.
 :::
 
 ## Allowed domains security overview
@@ -22,7 +33,18 @@ Implementing an explicit domain `allowlist` ensures the following security measu
 If the `zowe.network.allowedDomains` property is left unconfigured, the API ML defaults to a strict, highly secure posture:
 
 * **Default Value:** `${apiml.service.hostname}`
-* **Impact:** Only the local hostname where the API ML Discovery Service itself is running is permitted. Any service attempting to register from a different host or domain will be rejected immediately unless the allowlist is expanded.
+* **Impact:** In addition to the local hostname where the Discovery Service is running, the following domains are automatically trusted by default:
+    * **Network & Cluster Hostnames:**
+      * The primary domains or hostnames configured under `zowe.externalDomains` (in a non-HA setup).
+      * All instance hostnames listed under `zowe.haInstances.<id>.hostname` (in a HA setup).
+      * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
+    * **Built-in Community & Vendor Documentation Domains:**
+      * `www.ibm.com`
+      * `zowe.github.io`
+      * `www.zowe.org`
+      * `techdocs.broadcom.com`
+
+Any service attempting to register metadata or establish CORS connections utilizing an external domain outside of this aggregated list will be rejected immediately unless `zowe.network.allowedDomains` is expanded to include this domain.
 
 
 ## Configuration Examples (`zowe.yaml`)
@@ -67,10 +89,11 @@ The following example shows how the domain validation check looks at both the ba
 services:
   serviceId: my-service
   instanceBaseUrls:
-    - [https://my-service.mycompany.com:8443/](https://my-service.mycompany.com:8443/)   # ← Domain checked against allowlist
+    - https://my-service.mycompany.com:8443/   # ← Domain checked against allowlist
   apiInfo:
-    swaggerUrl: [https://my-service.mycompany.com:8443/v3/api-docs](https://my-service.mycompany.com:8443/v3/api-docs)  # ← Checked against allowlist
+    swaggerUrl: https://my-service.mycompany.com:8443/v3/api-docs  # ← Checked against allowlist
 ```
+<!-- **Earmarked as this validation procedure should probably be removed**
 
 ### Validation steps
 
@@ -83,45 +106,14 @@ services:
 4. Add the domain to `allowedDomains`, restart, verify registration succeeds.
 
 5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
-
-### All Checked Metadata Fields and Patterns
-
-The validator explicitly scans the following properties within the service registration metadata:
-
-* **homePageUrl**  
-The landing page URL for the service.
-
-* **healthCheckUrl**  
-The standard endpoint used to monitor service availability.
-
-* **statusPageUrl**  
-The page displaying detailed status metrics.
-
-* **secureHealthCheckUrl**  
-The HTTPS-secured health check endpoint.
-
-* **apiml.corsAllowedOrigins**  
-A comma-separated list. The validator splits this string and verifies *every single entry* against the allowlist.
-
-* **Custom keys ending in swaggerUrl**  
-OpenAPI/Swagger documentation endpoints.
-
-* **Custom keys ending in graphqlUrl**  
-GraphQL playground or schema endpoints.
-
-* **Custom keys ending in documentationUrl**  
-Links to internal or external service documentation.
-
-* **Custom keys ending in externalUrl**  
-Any other designated external reference links.
-
+-->
 ## Troubleshooting & Emergency Override
 
 If an extender's service fails to register, the service is silently blocked from the perspective of the registering client, but the event will be captured in the Discovery Service logs.
 
 **Error Log Example (Blocked Registration)**
 
-When registration is blocked due to an unlisted domain, an entry similar to the following appears in the Discovery Service log:
+When registration is blocked due to an unlisted domain, an entry similar to the following appears in the Zowe server log:
 
 ```text
 ZWEAM601W 'apiml.service.externalUrl' [https://evil.example.com/api](https://evil.example.com/api) is not allowed for instance 'my-service:my-service:8080'
