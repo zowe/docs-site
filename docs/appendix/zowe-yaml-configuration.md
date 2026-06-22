@@ -210,7 +210,7 @@ The high-level configuration `zowe` supports these definitions:
   By default, Zowe automatically populates this list with the following trusted zones (any values explicitly provided in this parameter are appended to this base list):
  
   * `zowe.externalDomains` – All hostnames configured in this array for non-HA setups.
-  * **HA Instance Hostnames** – Specific hostnames of High Availability (HA) instances defined under zowe.haInstances.<id>.hostname.
+  * **HA Instance Hostnames** – Specific hostnames of High Availability (HA) instances defined under `zowe.haInstances.<id>.hostname`.
   * **z/OSMF Hostname** – The target hostname defined for the z/OS Management Facility under the zOSMF configuration block.
   * **Built-in Community & Vendor Domains** – Hardcoded defaults for trusted documentation endpoints:
       * `www.ibm.com`
