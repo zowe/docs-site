@@ -20,10 +20,6 @@ By default, the Discovery Service only trusts:
 Existing extenders using domains outside of these defaults must explicitly configure `zowe.network.allowedDomains` after upgrading to prevent registration failures.
 :::
 
-:::note
-To override the `allowedDomains` configuration, set `ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true` in the `zowe.environments` attribute in your `zowe.yaml` file. 
-:::
-
 ## Allowed domains security overview
 
 By default, the API ML Discovery Service accepts metadata from any service attempting to onboard. Without domain validation, a compromised or untrusted service could register malicious URLs (such as `homePageUrl` or `healthCheckUrl`) pointing to external, unverified infrastructure. 
@@ -132,9 +128,9 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
 
 
   :::tip Emergency Development Override
-  If you are working in a non-production or development environment and need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, you can use an environment variable override.
+  If you are working in a non-production or development environment and need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, override the `allowedDomains` configuration.
 
-  Set the following environment variable in your Zowe launch environment:
+  Set the following environment variable in your `zowe.environments`:
   ```text
   ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true
   ```
