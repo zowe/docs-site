@@ -6,7 +6,7 @@ Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure
 :::
 
 :::caution Breaking Change   
-Beginning with Zowe v 3.6 and susequent Zowe releases, after upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
+Beginning with Zowe v 3.6 and subsequent Zowe releases, after upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
 * `zowe.externalDomains` (in a non-HA setup)
@@ -59,20 +59,6 @@ zowe:
 `*.mycompany.com` will match `service1.mycompany.com` and `api.internal.mycompany.com`, but it will not match the exact base domain `mycompany.com`. If needed, list the base domain explicitly.
 :::
 
-<!-- **Earmarked as this validation procedure should probably be removed**
-
-### Validation steps
-
-1. Start Zowe with `zowe.network.allowedDomains` set to only the local hostname.
-
-2. Attempt to register a service with `instanceBaseUrl`s pointing to an unlisted domain.
-
-3. Verify registration is blocked and `ZWEAM601W` appears in the Discovery Service log.
-
-4. Add the domain to `allowedDomains`, restart, verify registration succeeds.
-
-5. Verify wildcard `*.example.com` matches `sub.example.com` but not `other.org`.
--->
 ## Troubleshooting and `allowedDomains` Override
 
 If an extender's service utilizes an unauthorized domain in its registration profile, the registration will be blocked, and a ZWEAM601W warning message will be issued in the logs. This validation applies to:  

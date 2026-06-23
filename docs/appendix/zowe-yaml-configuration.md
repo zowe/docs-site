@@ -207,7 +207,7 @@ The high-level configuration `zowe` supports these definitions:
 - **zowe.network.allowedDomains**  
 Specifies a list of trusted hostnames and domain patterns that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata (such as base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames and leading wildcard patterns (such as `*.example.com`).
 
-  If left unconfigured, the Discovery Service implicitly aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
+  If left unconfigured, the Discovery Service aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
   * `zowe.externalDomains` (in a non-HA setup)
   * `zowe.haInstances.<id>.hostname` (in an HA setup)
   * The target hostname defined for z/OSMF under the `zOSMF` configuration block
