@@ -12,7 +12,7 @@ By default, the Discovery Service only trusts:
 * `zowe.externalDomains` (in a non-HA setup)
 * `zowe.haInstances.<id>.hostname` (in an HA setup)
 * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
-* The following built-in default domains:  
+* The following built-in default community and vendor domains:  
     * `www.ibm.com`
     * `zowe.github.io`
     * `www.zowe.org`

@@ -39,7 +39,13 @@ If your service utilizes an unauthorized domain in its metadata fields (such as 
 * **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
 * **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
 
-By default, Zowe automatically trusts local environment topologies (like `zowe.externalDomains`, HA hostnames, and the `zOSMF` target hostname) along with standard built-in vendor documentation domains. Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+By default, Zowe automatically trusts local environment topologies like `zowe.externalDomains`, HA hostnames (`zowe.haInstances.<id>.hostname`), and the `zOSMF` target hostname, along with the following community and vendor documentation domains:
+  * `www.ibm.com`
+  * `zowe.github.io`
+  * `www.zowe.org`
+  * `techdocs.broadcom.com` 
+  
+ Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 :::
 
 **Follow these steps:**
