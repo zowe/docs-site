@@ -47,7 +47,7 @@ Ensure that the domain or host where your service runs is included in the API Me
 
     The validation mechanism scans both default Eureka fields and API ML specific metadata keys:  
    * **Standard Eureka Fields:** Home Page URL, HealthCheck URL, Status Page URL, and Secure Health Check URL.
-   * **API ML Metadata Keys:** `apiml.catalog.swaggerUrl`, `apiml.catalog.graphqlUrl`, `apiml.catalog.documentationUrl`, `apiml.externalUrl`, and `apiml.corsAllowedOrigins`.
+   * **API ML Metadata Keys:** `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
 
     For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 
