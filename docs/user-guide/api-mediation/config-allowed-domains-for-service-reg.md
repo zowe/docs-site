@@ -9,7 +9,7 @@ Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure
 Beginning with Zowe v 3.6 and subsequent Zowe releases, after upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
-* `zowe.externalDomains` (in a non-HA setup)
+* `zowe.externalDomains` (in a both single instance and HA setup)
 * `zowe.haInstances.<id>.hostname` (in an HA setup)
 * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
 * The following built-in default community and vendor domains:  
