@@ -6,7 +6,7 @@ Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure
 :::
 
 :::caution Breaking Change   
-After upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
+Beginning with Zowe v 3.6 and susequent Zowe releases, after upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
 * `zowe.externalDomains` (in a non-HA setup)
@@ -97,11 +97,13 @@ ZWEAM601W 'apiml.service.externalUrl' https://evil.example.com/api is not allowe
    Coordinate with your System Administrator to add the missing domain or wildcard pattern to the `zowe.network.allowedDomains` array in `zowe.yaml`.
 
 
-  :::tip `allowedDomains` Development Override
+  :::tip `allowedDomains` Override
   If you need to temporarily bypass this blocking behavior while correcting your `zowe.yaml` parameters, override the `allowedDomains` configuration.
 
   Set the following environment variable in your `zowe.environments`:
-  ```text
-  ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED=true
+  ```yaml
+  zowe:
+    environments:
+      ZWE_ONLY_WARN_ON_URL_NOT_ALLOWED: true
   ```
   :::

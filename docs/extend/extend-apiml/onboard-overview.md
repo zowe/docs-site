@@ -43,13 +43,15 @@ Ensure that you meet the following prerequisites before you onboard your service
 Use either the _Gradle_ or _Maven_ build system to complete the integration.
 
 - **Domain Allowlist Validation**  
-Ensure that the domain or host where your service runs is included in the API Mediation Layer's domain allowlist (`zowe.network.allowedDomains`). Include all external URLs such as URLs from supporting documentation. If your domain is not explicitly allowed, your service will fail to register with the Discovery Service and will be invisible to API Gateway routing. 
+Ensure that the domain or host where your service runs is included in the API Mediation Layer's domain allowlist (`zowe.network.allowedDomains`). By default, the Discovery Service automatically trusts local environment topologies (like `zowe.externalDomains`, HA instance hostnames, and the `zOSMF` target hostname) along with standard built-in vendor documentation domains. However, if your service utilizes an external domain outside of these defaults, it must be explicitly configured. If a domain is not permitted, the service will fail to register with the Discovery Service and will remain invisible to API Gateway routing.
 
-    The validation mechanism scans both default Eureka fields and API ML specific metadata keys:  
-   * **Standard Eureka Fields:** Home Page URL, HealthCheck URL, Status Page URL, and Secure Health Check URL.
-   * **API ML Metadata Keys:** `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+    The validation mechanism scans both default Eureka fields and API ML specific metadata keys:
+  * **Standard Eureka Fields:** Home Page URL, HealthCheck URL, Status Page URL, and Secure Health Check URL.
+  * **API ML Metadata Keys:** `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
 
     For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+
+
 
 ## Service Onboarding Guides
 

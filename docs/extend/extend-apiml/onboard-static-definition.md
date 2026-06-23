@@ -32,13 +32,14 @@ For more information about the structure of APIs and which APIs to expose in Zow
 The first step in API service onboarding is to identify the APIs that you want to expose.
 
 :::warning Important
-Ensure that the **Hostname** or domain where your service runs is permitted by the API ML configuration property `zowe.network.allowedDomains`.   
-If your service utilizes an unauthorized domain in its registration profile, the registration will be blocked, and a ZWEAM601W warning message will be issued in the logs. This validation applies to:  
-* **Base Connection URLs:** Such as instanceBaseUrls.  
-* **Service Metadata Keys:** Such as `swaggerUrl`, `graphqlUrl`, `documentationUrl`, `externalUrl`, and `corsAllowedOrigins`.
-* **Standard Eureka Endpoints:** Including Home Page, Health Check, and Status Page URLs.
+Ensure that all domains and hostnames referenced in your service's registration profile are permitted by the API ML configuration property `zowe.network.allowedDomains`. 
 
-Be sure to include all external links (such as URLs from supporting documentation) in your allowed domains configuration. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+* **Base Connection URLs:** Such as `instanceBaseUrls`. 
+* **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+* **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
+
+By default, Zowe automatically trusts local environment topologies (like `zowe.externalDomains`, HA hostnames, and the `zOSMF` target hostname) along with standard built-in vendor documentation domains. Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 :::
 
 **Follow these steps:**
