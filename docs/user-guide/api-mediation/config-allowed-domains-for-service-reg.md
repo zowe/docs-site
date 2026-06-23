@@ -31,7 +31,7 @@ Implementing an explicit domain allowlist ensures the following security measure
 
 ## Configuration Examples (`zowe.yaml`)
 
-### 1. Minimal Configuration (Default Behavior)
+### 1. Default Configuration 
 No explicit configuration is needed if you only want to allow the local infrastructure. 
 
 | Setup Environment | Automatically Permitted Domains / Hostnames (Defaults) |
@@ -58,10 +58,6 @@ zowe:
 
 `*.mycompany.com` will match `service1.mycompany.com` and `api.internal.mycompany.com`, but it will not match the exact base domain `mycompany.com`. If needed, list the base domain explicitly.
 :::
-
-## Evaluated Metadata and URLs
-
-When a service attempts to register, a `MetadataFilterService` scans and validates every URL field provided in the service's registration profile. If even one URL contains a domain that does not not match the allowlist, the registration is blocked.
 
 <!-- **Earmarked as this validation procedure should probably be removed**
 
