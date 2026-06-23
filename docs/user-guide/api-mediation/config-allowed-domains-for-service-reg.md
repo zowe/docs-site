@@ -36,7 +36,7 @@ No explicit configuration is needed if you only want to allow the local infrastr
 
 | Setup Environment | Automatically Permitted Domains / Hostnames (Defaults) |
 | :--- | :--- |
-| **Global Defaults (All Environments)** | • `zOSMF` target hostname<br>• `www.ibm.com`<br>• `zowe.github.io`<br>• `www.zowe.org`<br>• `techdocs.broadcom.com` |
+| **Global Defaults (All Environments)** | • `zOSMF` target hostname<br />• `www.ibm.com`<br />• `zowe.github.io`<br />• `www.zowe.org`<br />• `techdocs.broadcom.com` |
 | **Non-HA Setup Only** | • Hostnames configured under `zowe.externalDomains` |
 | **HA Setup Only** | • Individual instance hostnames listed under `zowe.haInstances.<id>.hostname` |
 
