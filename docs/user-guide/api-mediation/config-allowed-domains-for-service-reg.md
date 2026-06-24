@@ -10,7 +10,7 @@ Beginning with Zowe v 3.6 and subsequent Zowe releases, after upgrade, any servi
 By default, the Discovery Service only trusts:
 
 * `zowe.externalDomains` (in both single instance and HA setups)
-* `haInstances.<id>.hostname` (where `haInstances` is a top-level configuration attribute used in HA setups)
+* `haInstances.<id>.hostname` (for HA setups)
 * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
 * The following built-in default community and vendor domains:  
     * `www.ibm.com`

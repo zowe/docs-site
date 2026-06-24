@@ -209,7 +209,7 @@ Specifies a list of trusted hostnames and domain patterns that the API Mediation
 
   If left unconfigured, the Discovery Service aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
   * `zowe.externalDomains` (in both single instance and HA setups)
-  * `haInstances.<id>.hostname` (where `haInstances` is a top-level configuration attribute used in HA setups)
+  * `haInstances.<id>.hostname` (for HA setups)
   * The target hostname defined for z/OSMF under the `zOSMF` configuration block
   * The following built-in community and vendor documentation domains:
     * `www.ibm.com`
