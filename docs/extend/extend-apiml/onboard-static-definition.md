@@ -31,7 +31,7 @@ For more information about the structure of APIs and which APIs to expose in Zow
 
 The first step in API service onboarding is to identify the APIs that you want to expose.
 
-:::warning Important
+:::warning Important  
 Ensure that all domains and hostnames referenced in your service's registration profile are permitted by the API ML configuration property `zowe.network.allowedDomains`. 
 
 If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
@@ -39,14 +39,19 @@ If your service utilizes an unauthorized domain in its metadata fields (such as 
 * **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
 * **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
 
-By default, Zowe automatically trusts local environment topologies like `zowe.externalDomains`, HA hostnames (`zowe.haInstances.<id>.hostname`), and the `zOSMF` target hostname, along with the following community and vendor documentation domains:
-  * `www.ibm.com`
-  * `zowe.github.io`
-  * `www.zowe.org`
-  * `techdocs.broadcom.com` 
-  
- Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
+By default, the Discovery Service automatically trusts:
+* `zowe.externalDomains` (in both single instance and HA setups)
+* `haInstances.<id>.hostname` (for HA setups)
+* The target hostname defined under the top-level `zOSMF` configuration block
+* The following built-in community and vendor documentation domains:  
+    * `www.ibm.com`
+    * `zowe.github.io`
+    * `www.zowe.org`
+    * `techdocs.broadcom.com`
+
+Any additional external domains must be explicitly configured in `zowe.network.allowedDomains`. For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 :::
+
 
 **Follow these steps:**
 
