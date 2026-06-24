@@ -362,6 +362,7 @@ module.exports = {
                 "user-guide/api-mediation/configuration-customizing-the-api-catalog-ui",
                 "user-guide/api-mediation/configuration-logging",
                 "user-guide/api-mediation/wto-message-on-startup",
+                "user-guide/api-mediation/config-allowed-domains-for-service-reg",
               ]
             },
             "user-guide/configmgr-using",

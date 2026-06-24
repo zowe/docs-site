@@ -3,7 +3,7 @@
 Zowe v3 uses a YAML configuration file for server installation, configuration, and runtime. This file is usually referred to as the Zowe configuration YAML file or the `zowe.yaml` file. YAML is a human-friendly data serialization language for all programming languages. To learn more about YAML specifications, see [https://yaml.org/](https://yaml.org/). For a free, offline YAML validator to help validate your syntax, download the [Red Hat's VS Code YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 Content within the YAML file is documented by and validated against schema files which are shipped within Zowe and extended by Zowe extensions.
-For details on the schema technology and where to find the schema files within our source code, see [Using the Configuration Manager](../user-guide/configmgr-using.md#json-schema-validation).
+For details on the schema technology and where to find the schema files within our source code, see [JSON-Schema validation](../user-guide/configmgr-using.md#json-schema-validation) in the article _Zowe Configuration Manager_.
 
 :::note
 
@@ -203,6 +203,20 @@ The high-level configuration `zowe` supports these definitions:
    ```
 
  In Kubernetes deployment, this value is the domain name you will use to access your Zowe running in a Kubernetes cluster.
+
+- **zowe.network.allowedDomains**  
+Specifies a list of trusted hostnames and domain patterns that the API Mediation Layer uses when validating service registration metadata. A service registration is rejected if any hostname referenced in its metadata (such as base connection URLs or documentation endpoints) does not match an entry in this list. Supports exact hostnames and leading wildcard patterns (such as `*.example.com`).
+
+  If left unconfigured, the Discovery Service aggregates a base allowlist from your environment configuration. Any values explicitly provided in this parameter are appended to this default list. By default, the system automatically trusts:
+  * `zowe.externalDomains` (in both single instance and HA setups)
+  * `haInstances.<id>.hostname` (for HA setups)
+  * The target hostname defined for z/OSMF under the `zOSMF` configuration block
+  * The following built-in community and vendor documentation domains:
+    * `www.ibm.com`
+    * `zowe.github.io`
+    * `www.zowe.org`
+    * `techdocs.broadcom.com`
+
 - **zowe.externalPort**  
  Specifies the port that is to be exposed to external Zowe users. By default, this value is set based on Zowe APIML Gateway port.
  In Sysplex deployment, this is the DVIPA port defined in Sysplex Distributor. For more information, see [Configure Sysplex Distributor](../user-guide/configure-sysplex.md#configuring-sysplex-distributor). 
