@@ -121,7 +121,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The requested resource URI was not found on the target service.
+
   **Action:**
+
+  Verify that the request URI is correct and that the target service exposes the requested endpoint.
 
 ### ZWEAO405E
 
@@ -129,7 +133,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The HTTP method used in the request (e.g., POST, PUT) is not supported by the target resource.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which HTTP methods are supported for this endpoint, and correct the request.
 
 ### ZWEAO415E
 
@@ -137,7 +145,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The Content-Type header in the request specifies a media type that is not supported by the target service.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which media types are accepted, and set the Content-Type header accordingly
 
 ### ZWEAO500E
 
@@ -145,7 +157,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  An unexpected error occurred in the upstream service while processing the request.
+
   **Action:**
+
+  Check the upstream service logs for details. Use the message instance ID from the log entry to correlate the error across services. If the issue persists, contact support.
 
 ### ZWEAO503E
 
