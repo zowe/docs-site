@@ -9,8 +9,8 @@ Use the property `zowe.network.allowedDomains`in your `zowe.yaml` file to secure
 Beginning with Zowe v 3.6 and subsequent Zowe releases, after upgrade, any service whose URLs resolve to a domain not in the allowlist will fail to register with the Discovery Service and will be invisible to API Gateway routing.
 By default, the Discovery Service only trusts:
 
-* `zowe.externalDomains` (in a both single instance and HA setup)
-* `zowe.haInstances.<id>.hostname` (in an HA setup)
+* `zowe.externalDomains` (in both single instance and HA setups)
+* `haInstances.<id>.hostname` (where `haInstances` is a top-level configuration attribute used in HA setups)
 * The target hostname defined for z/OSMF under the `zOSMF` configuration block.
 * The following built-in default community and vendor domains:  
     * `www.ibm.com`
@@ -37,7 +37,7 @@ No explicit configuration is needed if you only want to allow the local infrastr
 | Setup Environment | Automatically Permitted Domains / Hostnames (Defaults) |
 | :--- | :--- |
 | **Global Defaults (All Environments)** | • `zOSMF` target hostname<br />• `www.ibm.com`<br />• `zowe.github.io`<br />• `www.zowe.org`<br />• `techdocs.broadcom.com` |
-| **Non-HA Setup Only** | • Hostnames configured under `zowe.externalDomains` |
+| **HA and Non-HA Setups** | • Hostnames configured under `zowe.externalDomains` |
 | **HA Setup Only** | • Individual instance hostnames listed under `zowe.haInstances.<id>.hostname` |
 
 
