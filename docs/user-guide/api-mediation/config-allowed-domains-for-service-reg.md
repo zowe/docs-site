@@ -61,10 +61,10 @@ zowe:
 
 ## Troubleshooting and `allowedDomains` Override
 
-If an extender's service utilizes an unauthorized domain in its registration profile, the registration will be blocked, and a ZWEAM601W warning message will be issued in the logs. This validation applies to:  
-* **Base Connection URLs:** Such as `instanceBaseUrls`.  
-* **Service Metadata Keys:** Such as `swaggerUrl`, `graphqlUrl`, `documentationUrl`, `externalUrl`, and `corsAllowedOrigins`.
-* **Standard Eureka Endpoints:** Including Home Page, Health Check, and Status Page URLs.
+If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+* **Base Connection URLs:** Such as `instanceBaseUrls`. 
+* **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+* **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
 
 
 **Error Log Example (Blocked Registration)**

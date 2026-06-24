@@ -44,12 +44,11 @@ Ensure that you meet the following prerequisites before you onboard your service
     * `zowe.github.io`
     * `www.zowe.org`
     * `techdocs.broadcom.com` 
-    
-    Note that if your service utilizes an external domain outside of these defaults, the external domain must be explicitly configured. If a domain is not permitted, the service will fail to register with the Discovery Service and will remain invisible to API Gateway routing.
 
-    The validation mechanism scans both default Eureka fields and API ML specific metadata keys:
-  * **Standard Eureka Fields:** Home Page URL, HealthCheck URL, Status Page URL, and Secure Health Check URL.
-  * **API ML Metadata Keys:** `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+    If your service utilizes an unauthorized domain in its metadata fields (such as a documentation endpoint or a base connection URL), the registration will be blocked, and a `ZWEAM601W` warning message will be issued in the logs. This validation applies to:
+  * **Base Connection URLs:** Such as `instanceBaseUrls`. 
+  * **Service Metadata Keys:** Such as `apiml.*.swaggerUrl`, `apiml.*.graphqlUrl`, `apiml.*.documentationUrl`, `apiml.*.externalUrl`, and `apiml.corsAllowedOrigins`.
+  * **Standard Eureka Endpoints:** Including Home Page, Health Check, Status Page, and Secure Health Check URLs.
 
     For more information, see [Configuring Allowed Domains for Service Registration](../../user-guide/api-mediation/config-allowed-domains-for-service-reg.md).
 
