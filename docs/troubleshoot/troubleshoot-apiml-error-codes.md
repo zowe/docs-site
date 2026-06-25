@@ -3,7 +3,7 @@
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-## API mediation utility messages
+## API ML utility messages
 
 ### ZWEAM000I
 
@@ -29,7 +29,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required.  
 
-## API mediation common messages
+## API ML common messages
 
 ### ZWEAO102E
 
@@ -1456,7 +1456,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ## Onboarding enabler messages
 
-### ZWEA001I
+### ZWEAO001I
 
   Registering to API Mediation Layer: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
 
@@ -1468,7 +1468,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required. The service is now registered and discoverable via the Gateway.
 
-### ZWEA002I
+### ZWEAO002I
 
   Registering to API Mediation Layer: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
 
@@ -1480,7 +1480,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required during normal startup. If this message appears repeatedly, check the Discovery Service reachability and certificate configuration.
 
-### ZWEA003I
+### ZWEAO003I
 
   Already registered to API Mediation Layer. Will Unregister then register with actual settings: Old values: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}; New values: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
 
@@ -1492,7 +1492,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required. The service will unregister its old configuration and register with the new settings. If registration fails after renewal, check the subsequent error messages.
 
-### ZWEA004E
+### ZWEAO004E
 
   Registering to API Mediation Layer failed: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s} failed with exception %s
 
