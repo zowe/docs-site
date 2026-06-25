@@ -117,11 +117,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO404E
 
-  The service can not find the requested resource.
+  The service cannot find the requested resource.
 
   **Reason:**
 
+  The requested resource URI was not found on the target service.
+
   **Action:**
+
+  Verify that the request URI is correct and that the target service exposes the requested endpoint.
 
 ### ZWEAO405E
 
@@ -129,7 +133,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The HTTP method used in the request (e.g., POST, PUT) is not supported by the target resource.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which HTTP methods are supported for this endpoint, and correct the request.
 
 ### ZWEAO415E
 
@@ -137,7 +145,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The Content-Type header in the request specifies a media type that is not supported by the target service.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which media types are accepted, and set the Content-Type header accordingly.
 
 ### ZWEAO500E
 
@@ -145,7 +157,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  An unexpected error occurred in the upstream service while processing the request.
+
   **Action:**
+
+  Check the upstream service logs for details. Use the message instance ID from the log entry to correlate the error across services. If the issue persists, contact support.
 
 ### ZWEAO503E
 
@@ -765,6 +781,8 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
+  Verify the OIDC identity mapping configuration. Ensure that `components.gateway.apiml.security.oidc.registry` is correctly set in `zowe.yaml`. Check that the configured identity mapper class is available and correctly configured. If the mapping failure is transient, it may resolve on the next authentication attempt.
+
 ### ZWEAT610E
 
   Missing registry name configuration.
@@ -1191,7 +1209,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The Gateway encountered an unexpected error that it cannot handle.
+
   **Action:**
+
+  Check the Gateway logs for additional details. Use the message instance ID from the log entry to trace the request. If the issue persists, contact support.
 
 ### ZWEAG501E
 
@@ -1376,6 +1398,56 @@ The following error message codes may appear on logs or API responses. Use the f
   **Action:**
 
   Wait for the number of active connections to decrease before retrying your request.
+
+## Onboarding enabler messages
+
+### ZWEA001I
+
+  Registering to API Mediation Layer: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
+
+  **Reason:**
+
+  The service successfully registered with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  No action required. The service is now registered and discoverable via the Gateway.
+
+### ZWEA002I
+
+  Registering to API Mediation Layer: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
+
+  **Reason:**
+
+  The service is attempting to register with the API Mediation Layer Discovery Service for the first time.
+
+  **Action:**
+
+  No action required during normal startup. If this message appears repeatedly, check the Discovery Service reachability and certificate configuration.
+
+### ZWEA003I
+
+  Already registered to API Mediation Layer. Will Unregister then register with actual settings: Old values: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}; New values: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}
+
+  **Reason:**
+
+  The service is re-registering with updated configuration settings.
+
+  **Action:**
+
+  No action required. The service will unregister its old configuration and register with the new settings. If registration fails after renewal, check the subsequent error messages.
+
+### ZWEA004E
+
+  Registering to API Mediation Layer failed: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s} failed with exception %s
+
+  **Reason:**
+
+  The service failed to register with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  Check that the Discovery Service is running and reachable at the configured URL. Verify your SSL/TLS certificate configuration. Ensure network connectivity between this service and the Discovery Service. Check the exception message in the log for specific details.
 
 ## API Catalog messages
 
