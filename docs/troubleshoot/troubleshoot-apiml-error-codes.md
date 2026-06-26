@@ -3,11 +3,11 @@
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-## API mediation utility messages
+## API Mediation Layer utility messages
 
 ### ZWEAM000I
 
-  %s started in %s seconds
+  `%s` started in `%s` seconds
 
   **Reason:**
 
@@ -29,7 +29,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   No action required.  
 
-## API mediation common messages
+## API Mediation Layer common messages
 
 ### ZWEAO102E
 
@@ -45,7 +45,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO104W
 
-  GatewayInstanceInitializer has been stopped due to exception: %s
+  GatewayInstanceInitializer has been stopped due to exception: `%s`
 
   **Reason:**
 
@@ -57,7 +57,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO105W
 
-  Gateway HTTP Client per-route connection limit (maxConnectionsPerRoute) of %s has been reached for the '%s' route.
+  Gateway HTTP Client per-route connection limit (maxConnectionsPerRoute) of `%s` has been reached for the %s route.
 
   **Reason:**
 
@@ -69,7 +69,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO106W
 
-  Gateway HTTP Client total connection limit (maxTotalConnections) of %s has been reached.
+  Gateway HTTP Client total connection limit (maxTotalConnections) of `%s` has been reached.
 
   **Reason:**
 
@@ -81,7 +81,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO400E
 
-  The structure of the request is invalid: %s
+  The structure of the request is invalid: `%s`
 
   **Reason:**
 
@@ -93,7 +93,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO401E
 
-  Unknown error in HTTPS configuration: '%s'
+  Unknown error in HTTPS configuration: `%s`
 
   **Reason:**
 
@@ -117,11 +117,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAO404E
 
-  The service can not find the requested resource.
+  The service cannot find the requested resource.
 
   **Reason:**
 
+  The requested resource URI was not found on the target service.
+
   **Action:**
+
+  Verify that the request URI is correct and that the target service exposes the requested endpoint.
 
 ### ZWEAO405E
 
@@ -129,7 +133,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The HTTP method used in the request (e.g., POST, PUT) is not supported by the target resource.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which HTTP methods are supported for this endpoint, and correct the request.
 
 ### ZWEAO415E
 
@@ -137,7 +145,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The Content-Type header in the request specifies a media type that is not supported by the target service.
+
   **Action:**
+
+  Check the API documentation for the target service to determine which media types are accepted, and set the Content-Type header accordingly.
 
 ### ZWEAO500E
 
@@ -145,11 +157,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  An unexpected error occurred in the upstream service while processing the request.
+
   **Action:**
+
+  Check the upstream service logs for details. Use the message instance ID from the log entry to correlate the error across services. If the issue persists, contact support.
 
 ### ZWEAO503E
 
-  The server is not ready to handle the request: %s
+  The server is not ready to handle the request: `%s`
 
   **Reason:**
 
@@ -163,7 +179,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM100E
 
-  Could not read properties from: '%s'
+  Could not read properties from: `%s`
 
   **Reason:**
 
@@ -175,7 +191,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM101E
 
-  I/O Error reading properties from: '%s' Details: '%s'
+  I/O Error reading properties from: `%s` Details: `%s`
 
   **Reason:**
 
@@ -187,7 +203,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM102E
 
-  Internal error: Invalid message key '%s' is provided. Please create an issue with this message.
+  Internal error: Invalid message key `%s` is provided. Please create an issue with this message.
 
   **Reason:**
 
@@ -211,7 +227,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM104E
 
-  The endpoint you are looking for '%s' could not be located
+  The endpoint you are looking for `%s` could not be located
 
   **Reason:**
 
@@ -247,7 +263,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG141E
 
-  The generation of the PassTicket failed. Reason: %s
+  The generation of the PassTicket failed. Reason: `%s`
 
   **Reason:**
 
@@ -259,7 +275,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM400E
 
-  Error initializing SSL Context: '%s'
+  Error initializing SSL Context: `%s`
 
   **Reason:**
 
@@ -299,7 +315,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM502E
 
-  Error reading secret key: '%s'
+  Error reading secret key: `%s`
 
   **Reason:**
 
@@ -311,7 +327,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM503E
 
-  Error reading secret key: '%s'
+  Error reading secret key: `%s`
 
   **Reason:**
 
@@ -327,7 +343,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM504E
 
-  Error reading public key: '%s'
+  Error reading public key: `%s`
 
   **Reason:**
 
@@ -343,7 +359,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM505E
 
-  Error initializing SSL/TLS context: '%s'
+  Error initializing SSL/TLS context: `%s`
 
   **Reason:**
 
@@ -407,7 +423,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM510E
 
-  Invalid key alias '%s'
+  Invalid key alias `%s`
 
   **Reason:**
 
@@ -419,7 +435,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM511E
 
-  There was a TLS request error accessing the URL '%s': '%s'
+  There was a TLS request error accessing the URL `%s`: `%s`
 
   **Reason:**
 
@@ -441,7 +457,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM600W
 
-  Invalid parameter in metadata: '%s'
+  Invalid parameter in metadata: `%s`
 
   **Reason:**
 
@@ -481,7 +497,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM700E
 
-  No response received within the allowed time: %s
+  No response received within the allowed time: `%s`
 
   **Reason:**
 
@@ -495,7 +511,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM701E
 
-  The request to the URL '%s' has failed: %s caused by: %s
+  The request to the URL `%s` has failed: `%s` caused by: `%s`
 
   **Reason:**
 
@@ -509,7 +525,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT100E
 
-  Token is expired for URL '%s'
+  Token is expired for URL `%s`
 
   **Reason:**
 
@@ -521,7 +537,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT103E
 
-  Could not write response: %s
+  Could not write response: `%s`
 
   **Reason:**
 
@@ -533,7 +549,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT403E
 
-  The user is not authorized to the target resource: %s
+  The user is not authorized to the target resource: `%s`
 
   **Reason:**
 
@@ -545,7 +561,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT409E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -557,7 +573,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT410E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -569,7 +585,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT411E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -581,7 +597,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT412E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -593,7 +609,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT413E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -605,7 +621,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT414E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -617,7 +633,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT415E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -629,7 +645,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT416E
 
-  The platform returned error: %s
+  The platform returned error: `%s`
 
   **Reason:**
 
@@ -641,7 +657,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT500E
 
-  Failed to parse the client certificate forwarded from the Gateway. Hostname is %s. Error message is %s. The client certificate was %s
+  Failed to parse the client certificate forwarded from the Gateway. Hostname is `%s`. Error message is `%s`. The client certificate was `%s`
 
   **Reason:**
 
@@ -653,7 +669,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT501E
 
-  Failed to get trusted certificates from the Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
+  Failed to get trusted certificates from the Gateway. Unexpected response from `%s` endpoint. Status code: `%s`. Response body: `%s`
 
   **Reason:**
 
@@ -665,7 +681,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT502E
 
-  Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
+  Invalid URL specified to get trusted certificates from the Gateway. URL is `%s`. Error message: `%s`
 
   **Reason:**
 
@@ -677,7 +693,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT503E
 
-  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
+  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is `%s`. Error message: `%s`
 
   **Reason:**
 
@@ -689,7 +705,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT504E
 
-  Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
+  Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is `%s`. Error message `%s`
 
   **Reason:**
 
@@ -713,7 +729,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT602E
 
-  The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is '%s'
+  The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is `%s`
 
   **Reason:**
 
@@ -773,7 +789,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT608E
 
-  Error mapping between distributed and mainframe identity. Reason: %s %s
+  Error mapping between distributed and mainframe identity. Reason: `%s` `%s`
 
   **Reason:**
 
@@ -785,13 +801,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT609W
 
-  Mapping between distributed and mainframe identity failed. Reason: %s
+  Mapping between distributed and mainframe identity failed. Reason: `%s`
 
   **Reason:**
 
   Mapping between distributed and mainframe identity failed.
 
   **Action:**
+
+  Verify the OIDC identity mapping configuration. Ensure that `components.gateway.apiml.security.oidc.registry` is correctly set in `zowe.yaml`. Check that the configured identity mapper class is available and correctly configured. If the mapping failure is transient, it may resolve on the next authentication attempt.
 
 ### ZWEAT610E
 
@@ -809,7 +827,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS100E
 
-  Authentication exception: '%s' for URL '%s'
+  Authentication exception: `%s` for URL `%s`
 
   **Reason:**
 
@@ -821,7 +839,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS101E
 
-  Authentication method '%s' is not supported for URL '%s'
+  Authentication method `%s` is not supported for URL `%s`
 
   **Reason:**
 
@@ -833,7 +851,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS103E
 
-  API Gateway Service is not available by URL '%s' (API Gateway is required because it provides the authentication functionality)
+  API Gateway Service is not available by URL `%s` (API Gateway is required because it provides the authentication functionality)
 
   **Reason:**
 
@@ -845,7 +863,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS104E
 
-  Authentication service is not available by URL '%s'
+  Authentication service is not available by URL `%s`
 
   **Reason:**
 
@@ -857,7 +875,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS105E
 
-  Authentication is required for URL '%s'
+  Authentication is required for URL `%s`
 
   **Reason:**
 
@@ -869,7 +887,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS120E
 
-  Invalid username or password for URL '%s'
+  Invalid username or password for URL `%s`
 
   **Reason:**
 
@@ -881,7 +899,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS121E
 
-  Authorization header is missing, or the request body is missing or invalid for URL '%s'
+  Authorization header is missing, or the request body is missing or invalid for URL `%s`
 
   **Reason:**
 
@@ -960,7 +978,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS130E
 
-  Token is not valid for URL '%s'
+  Token is not valid for URL `%s`
 
   **Reason:**
 
@@ -972,7 +990,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS131E
 
-  No authorization token provided for URL '%s'
+  No authorization token provided for URL `%s`
 
   **Reason:**
 
@@ -1154,7 +1172,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAS504E
 
-  Internal server error while generating PassTicket: %s
+  Internal server error while generating PassTicket: `%s`
 
   **Reason:**
 
@@ -1168,7 +1186,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD400E
 
-  Cannot notify Gateway on '%s' about new instance '%s'
+  Cannot notify Gateway on `%s` about new instance `%s`
 
   **Reason:**
 
@@ -1180,7 +1198,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD401E
 
-  Cannot notify Gateway on '%s' about cancelled registration
+  Cannot notify Gateway on `%s` about cancelled registration
 
   **Reason:**
 
@@ -1192,7 +1210,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD700W
 
-  Static API definition directory '%s' is not a directory or does not exist
+  Static API definition directory `%s` is not a directory or does not exist
 
   **Reason:**
 
@@ -1204,7 +1222,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD701E
 
-  Error loading static API definition file '%s'
+  Error loading static API definition file `%s`
 
   **Reason:**
 
@@ -1216,7 +1234,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAD702W
 
-  Unable to process static API definition data: '%s' - '%s'
+  Unable to process static API definition data: `%s` - `%s`
 
   **Reason:**
 
@@ -1227,21 +1245,21 @@ The following error message codes may appear on logs or API responses. Use the f
   Review the mentioned static API definition file for errors.
   Refer to the specific log message to determine the exact cause of the problem:
  
-  - ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId.
-  - The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
-  - The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
-  - One of the instanceBaseUrl of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
-  - The URL %s does not contain a hostname. The instance of %s will not be created. The specified URL is malformed. Make sure to specify valid URL.
-  - The URL %s does not contain a port number. The instance of %s will not be created.
+  - ServiceId is not defined in the file `%s`. The instance will not be created. Make sure to specify the ServiceId.
+  - The `instanceBaseUrls` parameter of `%s` is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
+  - The API Catalog UI tile ID `%s` is invalid. The service `%s` will not have an API Catalog UI tile. Specify the correct catalog title ID.
+  - One of the instanceBaseUrl of `%s` is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
+  - The URL `%s` does not contain a hostname. The instance of `%s` will not be created. The specified URL is malformed. Make sure to specify valid URL.
+  - The URL `%s` does not contain a port number. The instance of `%s` will not be created.
   - The specified URL is missing a port number. Make sure to specify a valid URL.
-  - The URL %s is malformed. The instance of %s will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
-  - The hostname of URL %s is unknown. The instance of %s will not be created: The specified hostname of the URL is invalid. Make sure to specify a valid hostname.
+  - The URL `%s` is malformed. The instance of `%s` will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
+  - The hostname of URL `%s` is unknown. The instance of `%s` will not be created: The specified hostname of the URL is invalid. Make sure to specify a valid hostname.
   - Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
-  - Additional service metadata of %s in processing file %s could not be created: %s
+  - Additional service metadata of `%s` in processing file `%s` could not be created: `%s`
 
 ### ZWEAD703E
 
-  A problem occurred during reading the static API definition directory: '%s'
+  A problem occurred during reading the static API definition directory: `%s`
 
   **Reason:**
 
@@ -1274,7 +1292,11 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Reason:**
 
+  The Gateway encountered an unexpected error that it cannot handle.
+
   **Action:**
+
+  Check the Gateway logs for additional details. Use the message instance ID from the log entry to trace the request. If the issue persists, contact support.
 
 ### ZWEAG501E
 
@@ -1290,7 +1312,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG701E
 
-  Service '%s' does not allow encoded characters in the request path: '%s'.
+  Service `%s` does not allow encoded characters in the request path: `%s`.
 
   **Reason:**
 
@@ -1302,7 +1324,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG702E
 
-  Gateway does not allow encoded slashes in request: '%s'.
+  Gateway does not allow encoded slashes in request: `%s`.
 
   **Reason:**
 
@@ -1314,7 +1336,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG717E
 
-  The service id provided is invalid: '%s'
+  The service id provided is invalid: `%s`
 
   **Reason:**
 
@@ -1326,7 +1348,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG718E
 
-  Cannot retrieve metadata: '%s'
+  Cannot retrieve metadata: `%s`
 
   **Reason:**
 
@@ -1338,7 +1360,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG719I
 
-  The service is not conformant: %s
+  The service is not conformant: `%s`
 
   **Reason:**
 
@@ -1350,7 +1372,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG101E
 
-  Authentication method '%s' is not supported for URL '%s'
+  Authentication method `%s` is not supported for URL `%s`
 
   **Reason:**
 
@@ -1362,7 +1384,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAG105E
 
-  Authentication is required for URL '%s'
+  Authentication is required for URL `%s`
 
   **Reason:**
 
@@ -1386,7 +1408,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAM400E
 
-  Error initializing SSL Context: '%s'
+  Error initializing SSL Context: `%s`
 
   **Reason:**
 
@@ -1402,7 +1424,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAT403E
 
-  The user is not authorized to the target resource: %s
+  The user is not authorized to the target resource: `%s`
 
   **Reason:**
 
@@ -1426,7 +1448,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWESG100W
 
-  Cannot receive information about services on API Gateway with apimlId '%s' because: %s
+  Cannot receive information about services on API Gateway with apimlId `%s` because: `%s`
 
   **Reason:**
 
@@ -1438,7 +1460,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWESG101E
 
-  An internal exception occurred in ZAAS service %s.
+  An internal exception occurred in ZAAS service `%s`.
 
   **Reason:**
 
@@ -1460,11 +1482,61 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Wait for the number of active connections to decrease before retrying your request.
 
+## Onboarding spring enabler messages
+
+### ZWEA001I
+
+  Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service successfully registered with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  No action required. The service is now registered and discoverable via the Gateway.
+
+### ZWEA002I
+
+  Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service is attempting to register with the API Mediation Layer Discovery Service for the first time.
+
+  **Action:**
+
+  No action required during normal startup. If this message appears repeatedly, check the Discovery Service reachability and certificate configuration.
+
+### ZWEA003I
+
+  Already registered to API Mediation Layer. Will Unregister then register with actual settings: Old values: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`; New values: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service is re-registering with updated configuration settings.
+
+  **Action:**
+
+  No action required. The service will unregister its old configuration and register with the new settings. If registration fails after renewal, check the subsequent error messages.
+
+### ZWEA004E
+
+  Registering to API Mediation Layer failed: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}` failed with exception `%s`
+
+  **Reason:**
+
+  The service failed to register with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  Check that the Discovery Service is running and reachable at the configured URL. Verify your SSL/TLS certificate configuration. Ensure network connectivity between this service and the Discovery Service. Check the exception message in the log for specific details.
+
 ## API Catalog messages
 
 ### ZWEAC100W
 
-  Could not retrieve information about service %s from the Discovery Service. Requested URL: %s. Response received: status code: %s, body: %s
+  Could not retrieve information about service `%s` from the Discovery Service. Requested URL: `%s`. Response received: status code: `%s`, body: `%s`
 
   **Reason:**
 
@@ -1476,7 +1548,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC101E
 
-  Could not parse service info from discovery -- %s
+  Could not parse service info from discovery -- `%s`
 
   **Reason:**
 
@@ -1488,7 +1560,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC102E
 
-  Could not retrieve containers. Status: %s
+  Could not retrieve containers. Status: `%s`
 
   **Reason:**
 
@@ -1500,7 +1572,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC103E
 
-  API Documentation not retrieved, %s
+  API Documentation not retrieved, `%s`
 
   **Reason:**
 
@@ -1512,7 +1584,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC104E
 
-  Could not retrieve container statuses, %s
+  Could not retrieve container statuses, `%s`
 
   **Reason:**
 
@@ -1524,7 +1596,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC105W
 
-  API Documentation not retrieved for service '%s' due to communication error, %s
+  API Documentation not retrieved for service '`%s`' due to communication error, `%s`
 
   **Reason:**
 
@@ -1536,7 +1608,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC106E
 
-  Could not retrieve service. Status: %s
+  Could not retrieve service. Status: `%s`
 
   **Reason:**
 
@@ -1548,7 +1620,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC700E
 
-  Failed to update cache with discovered services: '%s'
+  Failed to update cache with discovered services: `%s`
 
   **Reason:**
 
@@ -1572,7 +1644,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC702E
 
-  An unexpected exception occurred when trying to retrieve an API Catalog instance from the Discovery Service: %s
+  An unexpected exception occurred when trying to retrieve an API Catalog instance from the Discovery Service: `%s`
 
   **Reason:**
 
@@ -1596,7 +1668,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC704E
 
-  ApiDoc retrieval problem for '%s' service. %s
+  ApiDoc retrieval problem for `%s` service. `%s`
 
   **Reason:**
 
@@ -1608,7 +1680,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC705W
 
-  The home page url for service %s was not transformed. %s
+  The home page url for service `%s` was not transformed. `%s`
 
   **Reason:**
 
@@ -1625,7 +1697,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC706E
 
-  Service not located, %s
+  Service not located, `%s`
 
   **Reason:**
 
@@ -1637,7 +1709,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC707E
 
-  Static API refresh failed, caused by exception: %s
+  Static API refresh failed, caused by exception: `%s`
 
   **Reason:**
 
@@ -1649,7 +1721,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC708E
 
-  The API base path for service %s was not retrieved. %s
+  The API base path for service `%s` was not retrieved. `%s`
 
   **Reason:**
 
@@ -1665,7 +1737,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
 ### ZWEAC709E
 
-  Static definition generation failed, caused by exception: %s
+  Static definition generation failed, caused by exception: `%s`
 
   **Reason:**
 
