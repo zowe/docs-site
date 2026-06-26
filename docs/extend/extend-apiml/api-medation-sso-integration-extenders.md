@@ -187,27 +187,26 @@ Both the API ML Gateway and the downstream service must conform to the following
   
 - To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
 
-### Authentication Failure Handling
-
+## Authentication Failure Handling
 
 When a downstream (southbound) service is integrated with API ML, the API Gateway evaluates incoming authentication and translates this authentication into downstream security artifacts. If this upstream authentication process fails, API ML provides diagnostic feedback to your service via a dedicated HTTP header:
 
 * **Header Name:** `X-Zowe-Auth-Failure`
 
-#### Purpose and Flow of the Header
+### Purpose and Flow of the Header
 
 The primary purpose of the `X-Zowe-Auth-Failure` header is to help your service distinguish between an **upstream authentication failure** (where API ML could not verify the user's identity or generate credentials) and a **downstream authorization failure** (where the user's identity is valid, but your service lacks permissions to grant them access).
 
-The follwoing sequence outlines the flow when an authentication anomaly occurs at the Gateway layer:
+The following sequence outlines the flow when an authentication anomaly occurs at the Gateway layer:
 1. **Request Propagation:**  
 API ML strips out potentially broken identity artifacts (such as empty basic auth credentials) and injects the `X-Zowe-Auth-Failure` header into the request forwarded to your southbound service.
 2. **Upstream Pass-Through:**  
-If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call, API ML ensures it is safely passed through to the downstream services for consistency.
-1. **Response Propagation:**  
-The API ML Gateway also attaches this same header to the final HTTP response sent back to the client, ensuring visibility across the entire request-response lifecycle.
+If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call, API ML ensures the header is safely passed through to the downstream services for consistency.
+3. **Response Propagation:**  
+The API ML Gateway also attaches this same header to the final HTTP response sent back to the client, ensuring request-response visibility.
 
 
-#### Expected Error Codes
+### Expected Error Codes
 
 The value of the `X-Zowe-Auth-Failure` header contains explicit message strings. The table below outlines the core error codes that can appear in this header, along with their general meanings:
 
@@ -225,10 +224,10 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 For the complete definitions, mitigation steps, and deeper technical context for each of these codes, see the full error documentation in [troubleshoot-apiml-error-codes.md](../../troubleshoot/troubleshoot-apiml-error-codes.md)
 
 
-#### HTTP Request and Response Examples
+### HTTP Request and Response Examples
 
-**Example of the header on the forwarded request to the southbound service**
-When an upstream failure occurs (for example, no mapping identity is found), the API ML forwards the request to your service with the header injected:
+**Example of the header on the forwarded request to the southbound service**  
+When an upstream failure occurs (for example, no mapping identity is found), API ML forwards the request to your service with the header injected:
 
 ```http
 GET /my-service/api/v1/data HTTP/1.1
@@ -236,7 +235,7 @@ Host: my-service:8080
 X-Zowe-Auth-Failure: ZWEAG161E No user was found
 ```
 
-**Example HTTP response showing the header to the client**
+**Example HTTP response showing the header to the client**  
 The corresponding response returned by the Gateway contains the header context to inform the client or UI application:
 
 ```
@@ -247,8 +246,8 @@ Content-Type: application/json
 {"message": "The request was processed but authentication was not successful"}
 ```
 
-**Personal Access Token (PAT) specific example**
-If an engineering client passes a valid token that was explicitly built for a completely different service scope, it results in a localized failure response format:
+**Personal Access Token (PAT) specific example**  
+If a client passes a valid token that was built for a different service, a localized failure response is issued:
 
 ```
 GET /some-service/api/v1/data HTTP/1.1
@@ -260,9 +259,9 @@ X-Zowe-Auth-Failure: The provided authentication is not valid
 
 **Code Example: Reading the Header (Java)**
 
-o handle this header cleanly within your southbound service logic, intercept the incoming header value using your application framework's routing layer. Extenders should read the header, log it locally, use it to construct meaningful error responses, and cleanly separate gateway identity concerns from internal authorization routines.
+To handle this header cleanly within your southbound service logic, intercept the incoming header value using your application framework's routing layer. Extenders should read the header, log it locally, use it to construct meaningful error responses, and cleanly separate gateway identity concerns from internal authorization routines.
 
-Below is a Spring Boot example demonstrating how to extract the error, log its context, and propagate a meaningful response:
+The following Spring Boot example demonstrates how to extract the error, log its context, and propagate a meaningful response:
 
 ```
 @GetMapping("/api/v1/data")
@@ -281,5 +280,7 @@ public ResponseEntity<?> getData(
     // Normal processing...
 }
 ```
+
+This example demonstrates how a southbound service can intercept upstream issues by checking for the `X-Zowe-Auth-Failure` header before executing any business logic. When present, the service safely logs the specific diagnostic message locally to preserve an audit trail and interupts the request issuing a 401 Unauthorized JSON response. This pattern ensures that upstream authentication failures are isolated from your service's internal authorization logic while also providing clear feedback to the client.
 
 
