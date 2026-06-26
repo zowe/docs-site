@@ -186,3 +186,6 @@ Both the API ML Gateway and the downstream service must conform to the following
 - The downstream service must indicate that it supports forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
   
 - To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
+
+### Authentication Failure Handling
+
