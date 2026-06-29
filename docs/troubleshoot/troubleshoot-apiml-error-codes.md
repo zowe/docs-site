@@ -2,13 +2,18 @@
 
 The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
 
-## API Mediation Utility and Core Messages (ZWEAM###)
+## API Mediation Layer utility messages
 
 ### ZWEAM000I
 %s started in %s seconds
 
-**Reason:**  
-The service started.
+  `%s` started in `%s` seconds
+
+  **Reason:**
+
+  The service started.
+
+  **Action:**
 
 **Action:**  
 No action required.
@@ -16,17 +21,174 @@ No action required.
 ### ZWEAM001I
 API Mediation Layer started
 
-**Reason:**  
-All key API Mediation Layer services started.
+  API Mediation Layer started
 
-**Action:**  
-No action required.  
+  **Reason:**
+
+  All key API Mediation Layer services started.
+
+  **Action:**
+
+  No action required.  
+
+## API Mediation Layer common messages
+
+### ZWEAO102E
+
+  Gateway not yet discovered. The Transform service cannot perform the request
+
+  **Reason:**
+
+  The Transform service was requested to transform a url, but the Gateway instance was not discovered.
+
+  **Action:**
+
+  Do not begin performing requests until the API Mediation Layer fully initializes after startup. Check that your Discovery service is running and that all services (especially the Gateway) are discovered correctly.
+
+### ZWEAO104W
+
+  GatewayInstanceInitializer has been stopped due to exception: `%s`
+
+  **Reason:**
+
+  An unexpected exception occurred while retrieving the Gateway service instance from the Discovery Service.
+
+  **Action:**
+
+  Check that both the service and the Gateway can register with Discovery. If the services are not registering, investigate the reason why. If no cause can be determined, create an issue.
+
+### ZWEAO105W
+
+  Gateway HTTP Client per-route connection limit (maxConnectionsPerRoute) of `%s` has been reached for the %s route.
+
+  **Reason:**
+
+  Too many concurrent connection requests were made to the same route.
+
+  **Action:**
+
+  Further connections will be queued until there is room in the connection pool. You may also increase the per-route connection limit via the gateway start-up script by setting the Gateway configuration for maxConnectionsPerRoute.
+
+### ZWEAO106W
+
+  Gateway HTTP Client total connection limit (maxTotalConnections) of `%s` has been reached.
+
+  **Reason:**
+
+  Too many concurrent connection requests were made.
+
+  **Action:**
+
+  Further connections will be queued until there is room in the connection pool. You may also increase the total connection limit via the gateway start-up script by setting the Gateway configuration for maxTotalConnections.
+
+### ZWEAO400E
+
+  The structure of the request is invalid: `%s`
+
+  **Reason:**
+
+  A value in the request is missing or contains an invalid value.
+
+  **Action:**
+
+  Fix the request and try again.
+
+### ZWEAO401E
+
+  Unknown error in HTTPS configuration: `%s`
+
+  **Reason:**
+
+  An Unknown error occurred while setting up an HTTP client during service initialization, followed by a system exit.
+
+  **Action:**
+
+  Start the service again in debug mode to get a more descriptive message. This error indicates it is not a configuration issue.
+
+### ZWEAO402E
+
+  The request has not been applied because it lacks valid authentication credentials.
+
+  **Reason:**
+
+  The accessed resource requires authentication. The request is missing valid authentication credentials or the token expired.
+
+  **Action:**
+
+  Review the product documentation for more details about acceptable authentication. Verify that your credentials are valid and contact security administrator to obtain valid credentials.
+
+### ZWEAO404E
+
+  The service cannot find the requested resource.
+
+  **Reason:**
+
+  The requested resource URI was not found on the target service.
+
+  **Action:**
+
+  Verify that the request URI is correct and that the target service exposes the requested endpoint.
+
+### ZWEAO405E
+
+  The request method has been disabled and cannot be used for the requested resource.
+
+  **Reason:**
+
+  The HTTP method used in the request (e.g., POST, PUT) is not supported by the target resource.
+
+  **Action:**
+
+  Check the API documentation for the target service to determine which HTTP methods are supported for this endpoint, and correct the request.
+
+### ZWEAO415E
+
+  The media format of the requested data is not supported by the service, so the service has rejected the request.
+
+  **Reason:**
+
+  The Content-Type header in the request specifies a media type that is not supported by the target service.
+
+  **Action:**
+
+  Check the API documentation for the target service to determine which media types are accepted, and set the Content-Type header accordingly.
+
+### ZWEAO500E
+
+  The service has encountered a situation it doesn't know how to handle. Please contact support for further assistance. More details are available in the log under the provided message instance ID
+
+  **Reason:**
+
+  An unexpected error occurred in the upstream service while processing the request.
+
+  **Action:**
+
+  Check the upstream service logs for details. Use the message instance ID from the log entry to correlate the error across services. If the issue persists, contact support.
+
+### ZWEAO503E
+
+  The server is not ready to handle the request: `%s`
+
+  **Reason:**
+
+  The service is not ready to handle the request, it is being initialized or waiting for another service to start.
+
+  **Action:**
+
+  Repeat the request later. Please contact support for further assistance.
+
+## Common service core messages
 
 ### ZWEAM100E
 Could not read properties from: '%s'
 
-**Reason:**  
-The Build Info properties file is empty or null.
+  Could not read properties from: `%s`
+
+  **Reason:**
+
+  The Build Info properties file is empty or null.
+
+  **Action:**
 
 **Action:**  
 The jar file is not packaged correctly. Please submit an issue.
@@ -34,8 +196,7 @@ The jar file is not packaged correctly. Please submit an issue.
 ### ZWEAM101E
 I/O Error reading properties from: '%s' Details: '%s'
 
-**Reason:**  
-I/O error reading `META-INF/build-info.properties` or `META-INF/git.properties`.
+  I/O Error reading properties from: `%s` Details: `%s`
 
 **Action:**  
 The jar file is not packaged correctly. Please submit an issue.
@@ -43,8 +204,9 @@ The jar file is not packaged correctly. Please submit an issue.
 ### ZWEAM102E
 Internal error: Invalid message key '%s' is provided. Please create an issue with this message.
 
-**Reason:**  
-Message service is requested to create a message with an invalid key.
+  Internal error: Invalid message key `%s` is provided. Please create an issue with this message.
+
+  **Reason:**
 
 **Action:**  
 Create an issue with this message.
@@ -61,17 +223,56 @@ Create an issue with this message.
 ### ZWEAM104E
 The endpoint you are looking for '%s' could not be located
 
-**Reason:**  
-The endpoint you are looking for could not be located.
+  The endpoint you are looking for `%s` could not be located
 
-**Action:**  
-Verify that the URL of the endpoint you are trying to reach is correct.
+  **Reason:**
+
+  The endpoint you are looking for could not be located.
+
+  **Action:**
+
+  Verify that the URL of the endpoint you are trying to reach is correct.
+
+### ZWEAG120E
+
+  Invalid username or password for URL '/gateway/api/v1/auth/login'
+
+  **Reason:**
+
+  The username or password is invalid.
+
+  **Action:**
+
+  Provide a valid username and password.
+
+### ZWEAG140E
+
+  The 'applicationName' parameter name is missing.
+
+  **Reason:**
+
+  The application name is not provided.
+
+  **Action:**
+
+  Provide the 'applicationName' parameter.
+
+### ZWEAG141E
+
+  The generation of the PassTicket failed. Reason: `%s`
+
+  **Reason:**
+
+  An error occurred in the SAF Auth Service. Review the reason in the error message.
+
+  **Action:**
+
+  Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 
 ### ZWEAM400E
 Error initializing SSL Context: '%s'
 
-**Reason:**  
-An error occurred while initializing the SSL Context.
+  Error initializing SSL Context: `%s`
 
 **Action:**  
 Refer to the specific message to identify the exact problem.
@@ -101,8 +302,11 @@ For production use, start the Discovery Service in HTTPS mode and configure the 
 ### ZWEAM502E
 Error reading secret key: '%s'
 
-**Reason:**  
-A key with the specified alias cannot be loaded from the keystore.
+  Error reading secret key: `%s`
+
+  **Reason:**
+
+  A key with the specified alias cannot be loaded from the keystore.
 
 **Action:**  
 Ensure that the configured key is present, in the correct format, and not corrupt.
@@ -110,8 +314,13 @@ Ensure that the configured key is present, in the correct format, and not corrup
 ### ZWEAM503E
 Error reading secret key: '%s'
 
-**Reason:**  
-Error reading secret key.
+  Error reading secret key: `%s`
+
+  **Reason:**
+
+  Error reading secret key.
+
+  **Action:**
 
 **Action:**  
 Refer to the specific message to identify the exact problem.
@@ -123,8 +332,13 @@ Possible causes include:
 ### ZWEAM504E
 Error reading public key: '%s'
 
-**Reason:**  
-Error reading public key.
+  Error reading public key: `%s`
+
+  **Reason:**
+
+  Error reading secret key.
+
+  **Action:**
 
 **Action:**  
 Refer to the specific message to identify the exact problem.
@@ -136,8 +350,7 @@ Possible causes include:
 ### ZWEAM505E
 Error initializing SSL/TLS context: '%s'
 
-**Reason:**  
-Error initializing SSL/TLS context.
+  Error initializing SSL/TLS context: `%s`
 
 **Action:**  
 Refer to the specific message to identify the exact problem.
@@ -185,8 +398,7 @@ Ensure that the correct password to your keystore in the parameter server.ssl.ke
 ### ZWEAM510E
 Invalid key alias '%s'
 
-**Reason:**  
-The key alias was not found.
+  Invalid key alias `%s`
 
 **Action:**  
 Ensure that the key alias provided for the key exists in the provided keystore.
@@ -194,8 +406,9 @@ Ensure that the key alias provided for the key exists in the provided keystore.
 ### ZWEAM511E
 There was a TLS request error accessing the URL '%s': '%s'
 
-**Reason:**  
-The Gateway refuses to communicate with the requested service.
+  There was a TLS request error accessing the URL `%s`: `%s`
+
+  **Reason:**
 
 **Action:**  
 Possible actions based on message content:
@@ -213,8 +426,9 @@ Possible actions based on message content:
 ### ZWEAM600W
 Invalid parameter in metadata: '%s'
 
-**Reason:**  
-An invalid apiInfo parameter was found while parsing the service metadata.
+  Invalid parameter in metadata: `%s`
+
+  **Reason:**
 
 **Action:**  
 Remove or fix the referenced metadata parameter.
@@ -222,8 +436,11 @@ Remove or fix the referenced metadata parameter.
 ### ZWEAM700E
 No response received within the allowed time: %s
 
-**Reason:**  
-No response was received within the allowed time.
+  No response received within the allowed time: `%s`
+
+  **Reason:**
+
+  No response was received within the allowed time.
 
 **Action:**  
 Verify that the URL you are trying to reach is correct and all services are running.
@@ -233,8 +450,7 @@ For more information about the properties to configure, see the [Customizing Gat
 ### ZWEAM701E
 The request to the URL '%s' has failed: %s caused by: %s
 
-**Reason:**  
-The request failed because of an internal error.
+  The request to the URL `%s` has failed: `%s` caused by: `%s`
 
 **Action:**  
 Refer to specific exception details for troubleshooting. Create an issue with this message.
@@ -251,8 +467,7 @@ The Transform service was requested to transform a url, but the Gateway instance
 **Action:**  
 Do not begin performing requests until the API Mediation Layer fully initializes after startup. Check that your Discovery service is running and that all services (especially the Gateway) are discovered correctly.
 
-### ZWEAO104W
-GatewayInstanceInitializer has been stopped due to exception: %s
+  Token is expired for URL `%s`
 
 **Reason:**  
 An unexpected exception occurred while retrieving the Gateway service instance from the Discovery Service.
@@ -269,8 +484,7 @@ Too many concurrent connection requests were made to the same route.
 **Action:**  
 Further connections will be queued until there is room in the connection pool. You may also increase the per-route connection limit via the gateway start-up script by setting the Gateway configuration for maxConnectionsPerRoute.
 
-### ZWEAO106W
-Gateway HTTP Client total connection limit (maxTotalConnections) of %s has been reached.
+  Could not write response: `%s`
 
 **Reason:**  
 Too many concurrent connection requests were made.
@@ -287,8 +501,7 @@ A value in the request is missing or contains an invalid value.
 **Action:**  
 Fix the request and try again.
 
-### ZWEAO401E
-Unknown error in HTTPS configuration: '%s'
+  The user is not authorized to the target resource: `%s`
 
 **Reason:**  
 An Unknown error occurred while setting up an HTTP client during service initialization, followed by a system exit.
@@ -305,8 +518,7 @@ The accessed resource requires authentication. The request is missing valid auth
 **Action:**  
 Review the product documentation for more details about acceptable authentication. Verify that your credentials are valid and contact security administrator to obtain valid credentials.
 
-### ZWEAO404E
-The service can not find the requested resource.
+  The platform returned error: `%s`
 
 **Reason:**  
 The requested resource URI was not found on the target service.
@@ -323,8 +535,7 @@ The HTTP method used in the request (e.g., POST, PUT) is not supported by the ta
 **Action:**  
 Check the API documentation for the target service to determine which HTTP methods are supported for this endpoint, and correct the request.
 
-### ZWEAO415E
-The media format of the requested data is not supported by the service, so the service has rejected the request.
+  The platform returned error: `%s`
 
 **Reason:**  
 The Content-Type header in the request specifies a media type that is not supported by the target service.
@@ -341,8 +552,7 @@ An unexpected error occurred in the upstream service while processing the reques
 **Action:**  
 Check the upstream service logs for details. Use the message instance ID from the log entry to correlate the error across services. If the issue persists, contact support.
 
-### ZWEAO503E
-The server is not ready to handle the request: %s
+  The platform returned error: `%s`
 
 **Reason:**  
 The service is not ready to handle the request, it is being initialized or waiting for another service to start.
@@ -356,8 +566,7 @@ Repeat the request later. Please contact support for further assistance.
 ### ZWEAT100E
 Token is expired for URL '%s'
 
-**Reason:**  
-The validity of the token is expired.
+  The platform returned error: `%s`
 
 **Action:**  
 Obtain a new token by performing an authentication request.
@@ -374,8 +583,7 @@ Please submit an issue with this message.
 ### ZWEAT403E
 The user is not authorized to the target resource: %s
 
-**Reason:**  
-The service has accepted the authentication of the user but the user does not have access rights to the resource.
+  The platform returned error: `%s`
 
 **Action:**  
 Contact your security administrator to give you access.
@@ -392,8 +600,7 @@ Please submit an issue with this message.
 ### ZWEAT410E
 The platform returned error: %s
 
-**Reason:**  
-The specified password is incorrect.
+  The platform returned error: `%s`
 
 **Action:**  
 Provide correct password.
@@ -410,8 +617,7 @@ Contact your security administrator with the message.
 ### ZWEAT412E
 The platform returned error: %s
 
-**Reason:**  
-The specified password is expired.
+  The platform returned error: `%s`
 
 **Action:**  
 Contact your security administrator to reset your password.
@@ -428,8 +634,7 @@ Provide valid password.
 ### ZWEAT414E
 The platform returned error: %s
 
-**Reason:**  
-The user name access has been revoked.
+  The platform returned error: `%s`
 
 **Action:**  
 Contact your security administrator to unsuspend your account.
@@ -446,8 +651,7 @@ Provide correct user name.
 ### ZWEAT416E
 The platform returned error: %s
 
-**Reason:**  
-The specified user name or password is invalid.
+  Failed to parse the client certificate forwarded from the Gateway. Hostname is `%s`. Error message is `%s`. The client certificate was `%s`
 
 **Action:**  
 Provide correct user name or password.
@@ -464,8 +668,11 @@ Ensure that forwarding of the client certificate is also enabled in the Gateway.
 ### ZWEAT501E
 Failed to get trusted certificates from the Gateway. Unexpected response from %s endpoint. Status code: %s. Response body: %s
 
-**Reason:**  
-The response status code is different from expected 200 OK.
+  Failed to get trusted certificates from the Gateway. Unexpected response from `%s` endpoint. Status code: `%s`. Response body: `%s`
+
+  **Reason:**
+
+  The response status code is different from expected 200 OK.
 
 **Action:**  
 Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured with the complete URL to the Gateway certificates endpoint. Test the URL manually.
@@ -473,8 +680,13 @@ Ensure that the parameter apiml.security.x509.certificatesUrls is correctly conf
 ### ZWEAT502E
 Invalid URL specified to get trusted certificates from the Gateway. URL is %s. Error message: %s
 
-**Reason:**  
-The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
+  Invalid URL specified to get trusted certificates from the Gateway. URL is `%s`. Error message: `%s`
+
+  **Reason:**
+
+  The parameter apiml.security.x509.certificatesUrls is not correctly configured with the complete URL to the Gateway certificates endpoint.
+
+  **Action:**
 
 **Action:**  
 Ensure that the parameter apiml.security.x509.certificatesUrls is correctly configured.
@@ -482,8 +694,7 @@ Ensure that the parameter apiml.security.x509.certificatesUrls is correctly conf
 ### ZWEAT503E
 An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is %s. Error message: %s
 
-**Reason:**  
-Communication with the Gateway was interrupted or an error occurred during processing of the response.
+  An error occurred during retrieval of trusted certificates from the Gateway. The certificate endpoint is `%s`. Error message: `%s`
 
 **Action:**  
 Check the provided error message. Contact the support.
@@ -491,8 +702,9 @@ Check the provided error message. Contact the support.
 ### ZWEAT504E
 Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is %s. Error message %s
 
-**Reason:**  
-The string sent by the Gateway was not recognized as a valid DER-encoded certificates in Base64 printable form.
+  Failed to parse the trusted certificates provided by the Gateway. Certificate endpoint is `%s`. Error message `%s`
+
+  **Reason:**
 
 **Action:**  
 Check that the URL configured in apiml.security.x509.certificatesUrls responds with valid DER-encoded certificates in the Base64 printable form.
@@ -509,8 +721,11 @@ Ensure that the parameter apiml.security.auth.zosmf.serviceId is correctly enter
 ### ZWEAT602E
 The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is '%s'
 
-**Reason:**  
-The parameter `apiml.security.authorization.provider` is set to `endpoint`
+  The SAF provider `endpoint` supports only the resource class 'ZOWE', but the current one is `%s`
+
+  **Reason:**
+
+  The parameter `apiml.security.authorization.provider` is set to `endpoint`
 
 **Action:**  
 Change the SAF provider to another one to use this endpoint
@@ -554,8 +769,9 @@ Provide a list of services for which this token will be valid
 ### ZWEAT608E
 Error mapping between distributed and mainframe identity. Reason: %s %s
 
-**Reason:**  
-Unexpected error occurred when mapping between distributed and mainframe identity
+  Error mapping between distributed and mainframe identity. Reason: `%s` `%s`
+
+  **Reason:**
 
 **Action:**  
 Contact Broadcom support.
@@ -563,11 +779,16 @@ Contact Broadcom support.
 ### ZWEAT609W
 Mapping between distributed and mainframe identity failed. Reason: %s
 
-**Reason:**  
-Mapping between distributed and mainframe identity failed.
+  Mapping between distributed and mainframe identity failed. Reason: `%s`
+
+  **Reason:**
+
+  Mapping between distributed and mainframe identity failed.
 
 **Action:**  
 Verify the OIDC identity mapping configuration. Ensure that `components.gateway.apiml.security.oidc.registry` is correctly set in zowe.yaml. Check that the configured identity mapper class is available and correctly configured. If the mapping failure is transient, it may resolve on the next authentication attempt.
+
+  Verify the OIDC identity mapping configuration. Ensure that `components.gateway.apiml.security.oidc.registry` is correctly set in `zowe.yaml`. Check that the configured identity mapper class is available and correctly configured. If the mapping failure is transient, it may resolve on the next authentication attempt.
 
 ### ZWEAT610E
 Missing registry name configuration.
@@ -584,8 +805,11 @@ Make sure that 'components.gateway.apiml.security.oidc.registry' is correctly se
 ### ZWEAS100E
 Token is expired for URL
 
-**Reason:**  
-The application using the token kept it for longer than the expiration time.
+  Authentication exception: `%s` for URL `%s`
+
+  **Reason:**
+
+  A generic failure occurred while authenticating.
 
 **Action:**  
 When this error occurs it is necessary to get a new JWT token.
@@ -593,8 +817,13 @@ When this error occurs it is necessary to get a new JWT token.
 ### ZWEAS101E
 Authentication method '%s' is not supported for URL '%s'
 
-**Reason:**  
-The HTTP request method is not supported for the URL.
+  Authentication method `%s` is not supported for URL `%s`
+
+  **Reason:**
+
+  The HTTP request method is not supported for the URL.
+
+  **Action:**
 
 **Action:**  
 Use the correct HTTP request method that is supported for the URL.
@@ -602,8 +831,13 @@ Use the correct HTTP request method that is supported for the URL.
 ### ZWEAS103E
 API Gateway Service is not available by URL '%s' (API Gateway is required because it provides the authentication functionality)
 
-**Reason:**  
-The security client cannot find a Gateway instance to perform authentication. The API Gateway is required because it provides the authentication functionality.
+  API Gateway Service is not available by URL `%s` (API Gateway is required because it provides the authentication functionality)
+
+  **Reason:**
+
+  The security client cannot find a Gateway instance to perform authentication. The API Gateway is required because it provides the authentication functionality.
+
+  **Action:**
 
 **Action:**  
 Check that both the service and Gateway are correctly registered in the Discovery service. Allow some time after the services are discovered for the information to propagate to individual services.
@@ -611,8 +845,7 @@ Check that both the service and Gateway are correctly registered in the Discover
 ### ZWEAS104E
 Authentication service is not available by URL '%s'
 
-**Reason:**  
-The Authentication service is not available.
+  Authentication service is not available by URL `%s`
 
 **Action:**  
 Make sure that the Authentication service is running and is accessible by the URL provided in the message.
@@ -620,8 +853,9 @@ Make sure that the Authentication service is running and is accessible by the UR
 ### ZWEAS105E
 Authentication is required for URL '%s'
 
-**Reason:**  
-Authentication is required.
+  Authentication is required for URL `%s`
+
+  **Reason:**
 
 **Action:**  
 Provide valid authentication.
@@ -629,15 +863,18 @@ Provide valid authentication.
 ### ZWEAS120E
 Invalid username or password
 
-**Reason:**  
-Provided credentials weren't recognized.
+  Invalid username or password for URL `%s`
+
+  **Reason:**
+
+  The username or password is invalid.
 
 **Action:**  
 Try with different credentials.
 
 ### ZWEAS121E
 
-  Authorization header is missing, or the request body is missing or invalid for URL '%s'
+  Authorization header is missing, or the request body is missing or invalid for URL `%s`
 
   **Reason:**  
   The authorization header is missing, or the request body is missing or invalid. This error indicates that the API Gateway did not receive the expected authentication information in the request.
@@ -721,8 +958,13 @@ Ensure all required z/OSMF maintenance for JWT support is applied. Missing PTFs 
 ### ZWEAS130E
 Token is not valid for URL '%s' (or Invalid token provided)
 
-**Reason:**  
-The token is not valid.
+  Token is not valid for URL `%s`
+
+  **Reason:**
+
+  The token is not valid.
+
+  **Action:**
 
 **Action:**  
 Provide a valid token.
@@ -730,8 +972,51 @@ Provide a valid token.
 ### ZWEAS131E
 No authorization token provided for URL '%s'
 
-**Reason:**  
-No authorization token is provided.
+  No authorization token provided for URL `%s`
+
+  **Reason:**
+
+  No authorization token is provided.
+
+  **Action:**
+
+  Provide a valid authorization token.
+
+## ZAAS client messages
+
+### ZWEAS100E
+
+  Token is expired for URL
+
+  **Reason:**
+
+  The application using the token kept it for longer than the expiration time
+
+  **Action:**
+
+  When this error occurs it is necessary to get a new JWT token.
+
+### ZWEAS120E
+
+  Invalid username or password
+
+  **Reason:**
+
+  Provided credentials weren't recognized
+
+  **Action:**
+
+  Try with different credentials
+
+### ZWEAS121E
+
+  Empty or null username or password values provided
+
+  **Reason:**
+
+  One of the credentials was null or empty
+
+  **Action:**
 
 **Action:**  
 Provide a valid authorization token.
@@ -820,8 +1105,7 @@ Ensure that both provided paths are resolved to a valid trust store and valid ke
 ### ZWEAS504E
 Internal server error while generating PassTicket: %s
 
-**Reason:**  
-Unable to generate PassTicket.
+  Internal server error while generating PassTicket: `%s`
 
 **Action:**  
 Supply a valid user and application name, and check that corresponding permissions have been set up.
@@ -837,8 +1121,7 @@ Cannot connect to the Gateway service.
 **Action:**  
 Make sure that the external Gateway service is running and the truststore of the both Gateways contain the corresponding certificate.
 
-### ZWESG101E
-An internal exception occurred in ZAAS service %s.
+  Cannot notify Gateway on `%s` about new instance `%s`
 
 **Reason:**  
 ZAAS cannot process authentication required to finish the request.
@@ -855,6 +1138,7 @@ Connections limit exceeded.
 **Action:**  
 Wait for the number of active connections to decrease before retrying your request.
 
+  Cannot notify Gateway on `%s` about cancelled registration
 
 ## Discovery Service Messages (ZWEAD###)
 
@@ -870,8 +1154,7 @@ Ensure that there are no network issues and that the Gateway was not restarted. 
 ### ZWEAD401E
 Cannot notify Gateway on '%s' about cancelled registration
 
-**Reason:**  
-The Discovery Service tried to notify the Gateway about service un-registration, but the REST call failed. The purpose of this call is to update the Gateway caches. The Gateway might be down or a network problem occurred.
+  Static API definition directory `%s` is not a directory or does not exist
 
 **Action:**  
 Ensure that there are no network issues and that the Gateway was not restarted. If the problem reoccurs, contact Broadcom support.
@@ -888,42 +1171,49 @@ Review the static API definition directories and their setup. The static definit
 ### ZWEAD701E
 Error loading static API definition file '%s'
 
-**Reason:**  
-A problem occurred while reading (IO operation) of a specific static API definition file.
+  Error loading static API definition file `%s`
 
 **Action:**  
 Ensure that the file data is not corrupted or incorrectly encoded.
 
 ### ZWEAD702W
-Unable to process static API definition data: '%s' - '%s'
 
-**Reason:**  
-A problem occurred while parsing a static API definition file.
+  Unable to process static API definition data: `%s` - `%s`
 
-**Action:**  
-Review the mentioned static API definition file for errors.
-Refer to the specific log message to determine the exact cause of the problem:
+  **Reason:**
 
-- ServiceId is not defined in the file '%s'. The instance will not be created. Make sure to specify the ServiceId.
-- The `instanceBaseUrls` parameter of %s is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
-- The API Catalog UI tile ID %s is invalid. The service %s will not have an API Catalog UI tile. Specify the correct catalog title ID.
-- One of the instanceBaseUrl of %s is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
-- The URL %s does not contain a hostname. The instance of %s will not be created. The specified URL is malformed. Make sure to specify valid URL.
-- The URL %s does not contain a port number. The instance of %s will not be created.
-- The specified URL is missing a port number. Make sure to specify a valid URL.
-- The URL %s is malformed. The instance of %s will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
-- The hostname of URL %s is unknown. The instance of %s will not be created: The specified hostname of the URL is invalid. Make sure to specify a valid hostname.
-- Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
-- Additional service metadata of %s in processing file %s could not be created: %s
+  A problem occurred while parsing a static API definition file.
+
+  **Action:**
+
+  Review the mentioned static API definition file for errors.
+  Refer to the specific log message to determine the exact cause of the problem:
+ 
+  - ServiceId is not defined in the file `%s`. The instance will not be created. Make sure to specify the ServiceId.
+  - The `instanceBaseUrls` parameter of `%s` is not defined. The instance will not be created. Make sure to specify the `InstanceBaseUrl` property.
+  - The API Catalog UI tile ID `%s` is invalid. The service `%s` will not have an API Catalog UI tile. Specify the correct catalog title ID.
+  - One of the instanceBaseUrl of `%s` is not defined. The instance will not be created. Make sure to specify the InstanceBaseUrl property.
+  - The URL `%s` does not contain a hostname. The instance of `%s` will not be created. The specified URL is malformed. Make sure to specify valid URL.
+  - The URL `%s` does not contain a port number. The instance of `%s` will not be created.
+  - The specified URL is missing a port number. Make sure to specify a valid URL.
+  - The URL `%s` is malformed. The instance of `%s` will not be created: The Specified URL is malformed. Make sure to specify a valid URL.
+  - The hostname of URL `%s` is unknown. The instance of `%s` will not be created: The specified hostname of the URL is invalid. Make sure to specify a valid hostname.
+  - Invalid protocol. The specified protocol of the URL is invalid. Make sure to specify valid protocol.
+  - Additional service metadata of `%s` in processing file `%s` could not be created: `%s`
 
 ### ZWEAD703E
 A problem occurred during reading the static API definition directory: '%s'
 
-**Reason:**  
-There are three possible causes of this error:
-- The specified static API definition folder is empty.
-- The definition does not denote a directory.
-- An I/O error occurred while attempting to read the static API definition directory.
+  A problem occurred during reading the static API definition directory: `%s`
+
+  **Reason:**
+
+  There are three possible causes of this error:
+  - The specified static API definition folder is empty.
+  - The definition does not denote a directory.
+  - An I/O error occurred while attempting to read the static API definition directory.
+
+  **Action:**
 
 **Action:**  
 Review the static API definition directory definition and its contents on the storage. The static definition directories are specified as a parameter to launch a Discovery Service jar. The property key is: `apiml.discovery.staticApiDefinitionsDirectories`
@@ -931,14 +1221,69 @@ Review the static API definition directory definition and its contents on the st
 ### ZWEAD704E
 Gateway Service is not available so it cannot be notified about changes in Discovery Service
 
-**Reason:**  
-Gateway Service is probably mis-configured or failed to start from another reason.
+  Gateway Service is not available so it cannot be notified about changes in Discovery Service
+
+  **Reason:**
+
+  Gateway Service is probably mis-configured or failed to start from another reason.
+
+  **Action:**
+
+  Review the log of Gateway Service and its configuration.
+
+## Gateway service messages
+
+### ZWEAG111E
+
+  The service has encountered a situation it doesn't know how to handle. Please contact support for further assistance. More details are available in the log under the provided message instance ID
+
+  **Reason:**
+
+  The Gateway encountered an unexpected error that it cannot handle.
+
+  **Action:**
+
+  Check the Gateway logs for additional details. Use the message instance ID from the log entry to trace the request. If the issue persists, contact support.
+
+### ZWEAG501E
+
+  The connection is not secure.
+
+  **Reason:**
+
+  AT-TLS is not properly configured.
+
+  **Action:**
+
+  Review AT-TLS documentation and make sure your configuration is correct for this service.
+
+### ZWEAG701E
+
+  Service `%s` does not allow encoded characters in the request path: `%s`.
+
+  **Reason:**
+
+  The request that was issued to the Gateway contains an encoded character in the URL path. The service that the request was addressing does not allow this pattern.
+
+  **Action:**
+
+  Contact the system administrator and request enablement of encoded characters in the service.
+
+### ZWEAG702E
+
+  Gateway does not allow encoded slashes in request: `%s`.
+
+  **Reason:**
+
+  The request that was issued to the Gateway contains an encoded slash in the URL path. Gateway configuration does not allow this encoding in the URL.
 
 **Action:**  
 Review the log of Gateway Service and its configuration.
 
 
-## Gateway Service Messages (ZWEAG###)
+### ZWEAG717E
+
+  The service id provided is invalid: `%s`
 
 ### ZWEAG101E
 Authentication method '%s' is not supported for URL '%s'
@@ -952,8 +1297,7 @@ Use the correct HTTP request method supported by the URL.
 ### ZWEAG105E
 Authentication is required for URL '%s'
 
-**Reason:**  
-Authentication is required.
+  Cannot retrieve metadata: `%s`
 
 **Action:**  
 Provide valid authentication.
@@ -970,8 +1314,7 @@ Check the Gateway logs for additional details. Use the message instance ID from 
 ### ZWEAG120E
 Invalid username or password for URL '/gateway/api/v1/auth/login'
 
-**Reason:**  
-The username or password is invalid.
+  The service is not conformant: `%s`
 
 **Action:**  
 Provide a valid username and password.
@@ -988,8 +1331,7 @@ Provide the 'applicationName' parameter.
 ### ZWEAG141E
 The generation of the PassTicket failed. Reason: %s
 
-**Reason:**  
-An error occurred in the SAF Auth Service. Review the reason in the error message.
+  Authentication method `%s` is not supported for URL `%s`
 
 **Action:**  
 Supply a valid user and application name, and check that corresponding permissions have been set up. See [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
@@ -1006,8 +1348,7 @@ Configure your client to provide valid authentication. For more information, see
 ### ZWEAG161E
 No user was found
 
-**Reason:**  
-It was not possible to map provided token or certificate to the mainframe identity.
+  Authentication is required for URL `%s`
 
 **Action:**  
 Ask your security administrator to connect your token or client certificate with your mainframe user. For more information, see [Authentication Failure Handling](../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling).
@@ -1027,8 +1368,7 @@ No client certificate provided in the request
 **Reason:**  
 The X509 client certificate was not provided with the request
 
-**Action:**  
-Configure your client to provide valid certificate.
+  Error initializing SSL Context: `%s`
 
 ### ZWEAG501E
 The connection is not secure.
@@ -1045,8 +1385,7 @@ Request to the resource ended with unexpected status code.
 **Reason:**  
 The service did not respond properly.
 
-**Action:**  
-Verify that the target service is healthy.
+  The user is not authorized to the target resource: `%s`
 
 ### ZWEAG701E
 Service '%s' does not allow encoded characters in the request path: '%s'.
@@ -1081,8 +1420,7 @@ Cannot retrieve metadata: '%s'
 **Reason:**  
 Metadata aren't accessible
 
-**Action:**  
-Verify that the metadata are accessible and not empty
+  Cannot receive information about services on API Gateway with apimlId `%s` because: `%s`
 
 ### ZWEAG719I
 The service is not conformant: %s
@@ -1098,8 +1436,7 @@ Verify the conformance criteria.
 ### ZWEA001I  
 Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
 
-**Reason:**  
-The service successfully registered with the API Mediation Layer Discovery Service.
+  An internal exception occurred in ZAAS service `%s`.
 
 **Action:**  
 No action required. The service is now registered and discoverable via the Gateway.
@@ -1131,13 +1468,66 @@ The service failed to register with the API Mediation Layer Discovery Service.
 **Action:**  
 Check that the Discovery Service is running and reachable at the configured URL. Verify your SSL/TLS certificate configuration. Ensure network connectivity between this service and the Discovery Service. Check the exception message in the log for specific details.
 
-## API Catalog Messages (ZWEAC###)
+## Onboarding spring enabler messages
+
+### ZWEA001I
+
+  Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service successfully registered with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  No action required. The service is now registered and discoverable via the Gateway.
+
+### ZWEA002I
+
+  Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service is attempting to register with the API Mediation Layer Discovery Service for the first time.
+
+  **Action:**
+
+  No action required during normal startup. If this message appears repeatedly, check the Discovery Service reachability and certificate configuration.
+
+### ZWEA003I
+
+  Already registered to API Mediation Layer. Will Unregister then register with actual settings: Old values: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`; New values: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
+
+  **Reason:**
+
+  The service is re-registering with updated configuration settings.
+
+  **Action:**
+
+  No action required. The service will unregister its old configuration and register with the new settings. If registration fails after renewal, check the subsequent error messages.
+
+### ZWEA004E
+
+  Registering to API Mediation Layer failed: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}` failed with exception `%s`
+
+  **Reason:**
+
+  The service failed to register with the API Mediation Layer Discovery Service.
+
+  **Action:**
+
+  Check that the Discovery Service is running and reachable at the configured URL. Verify your SSL/TLS certificate configuration. Ensure network connectivity between this service and the Discovery Service. Check the exception message in the log for specific details.
+
+## API Catalog messages
 
 ### ZWEAC100W
 Could not retrieve information about service %s from the Discovery Service. Requested URL: %s. Response received: status code: %s, body: %s
 
-**Reason:**  
-The response from The Discovery Service about the registered service instances returned an error or empty body.
+  Could not retrieve information about service `%s` from the Discovery Service. Requested URL: `%s`. Response received: status code: `%s`, body: `%s`
+
+  **Reason:**
+
+  The response from The Discovery Service about the registered service instances returned an error or empty body.
 
 **Action:**  
 Make sure the Discovery Service and requested service are up and running. If the HTTP response error code refers to a security issue, make sure that security configuration is correct.
@@ -1145,8 +1535,13 @@ Make sure the Discovery Service and requested service are up and running. If the
 ### ZWEAC101E
 Could not parse service info from discovery -- %s
 
-**Reason:**  
-The response from the Discovery Service about the registered instances could not be parsed to extract applications.
+  Could not parse service info from discovery -- `%s`
+
+  **Reason:**
+
+  The response from the Discovery Service about the registered instances could not be parsed to extract applications.
+
+  **Action:**
 
 **Action:**  
 Run debug mode and look at the Discovery Service potential issues while creating a response. If the Discovery Service does not indicate any error, create an issue.
@@ -1154,8 +1549,13 @@ Run debug mode and look at the Discovery Service potential issues while creating
 ### ZWEAC102E
 Could not retrieve containers. Status: %s
 
-**Reason:**  
-One or more containers could not be retrieved.
+  Could not retrieve containers. Status: `%s`
+
+  **Reason:**
+
+  One or more containers could not be retrieved.
+
+  **Action:**
 
 **Action:**  
 Check the status of the message for more information and the health of the Discovery Service.
@@ -1163,8 +1563,7 @@ Check the status of the message for more information and the health of the Disco
 ### ZWEAC103E
 API Documentation not retrieved, %s
 
-**Reason:**  
-API documentation was not found.
+  API Documentation not retrieved, `%s`
 
 **Action:**  
 Make sure the service documentation is configured correctly.
@@ -1172,8 +1571,9 @@ Make sure the service documentation is configured correctly.
 ### ZWEAC104E
 Could not retrieve container statuses, %s
 
-**Reason:**  
-The status of one or more containers could not be retrieved.
+  Could not retrieve container statuses, `%s`
+
+  **Reason:**
 
 **Action:**  
 Check the status of the message for more information and the health of the Discovery Service.
@@ -1181,8 +1581,9 @@ Check the status of the message for more information and the health of the Disco
 ### ZWEAC105W
 API Documentation not retrieved for service '%s' due to communication error, %s
 
-**Reason:**  
-Unable to fetch API documentation.
+  API Documentation not retrieved for service '`%s`' due to communication error, `%s`
+
+  **Reason:**
 
 **Action:**  
 Make sure the service documentation url or server transport encoding is configured correctly.
@@ -1190,8 +1591,11 @@ Make sure the service documentation url or server transport encoding is configur
 ### ZWEAC106E
 Could not retrieve service. Status: %s
 
-**Reason:**  
-Service could not be retrieved.
+  Could not retrieve service. Status: `%s`
+
+  **Reason:**
+
+  Service could not be retrieved.
 
 **Action:**  
 Check the status of the message for more information and the health of the Discovery Service.
@@ -1199,8 +1603,11 @@ Check the status of the message for more information and the health of the Disco
 ### ZWEAC700E
 Failed to update cache with discovered services: '%s'
 
-**Reason:**  
-Cache could not be updated.
+  Failed to update cache with discovered services: `%s`
+
+  **Reason:**
+
+  Cache could not be updated.
 
 **Action:**  
 Check the status of the Discovery Service.
@@ -1217,8 +1624,7 @@ The jar file is not packaged correctly. Please submit an issue.
 ### ZWEAC702E
 An unexpected exception occurred when trying to retrieve an API Catalog instance from the Discovery Service: %s
 
-**Reason:**  
-An unexpected error occurred during API Catalog initialization. The API Catalog was trying to locate an instance of itself in the Discovery Service.
+  An unexpected exception occurred when trying to retrieve an API Catalog instance from the Discovery Service: `%s`
 
 **Action:**  
 Review the specific message for more information. Verify if the Discovery Service and service registration work as expected.
@@ -1235,8 +1641,11 @@ Ensure services are started and discovered properly.
 ### ZWEAC704E
 ApiDoc retrieval problem for '%s' service. %s
 
-**Reason:**  
-ApiDoc for service could not be retrieved.
+  ApiDoc retrieval problem for `%s` service. `%s`
+
+  **Reason:**
+
+  ApiDoc for service could not be retrieved.
 
 **Action:**  
 Verify that the service provides a valid ApiDoc.
@@ -1244,8 +1653,11 @@ Verify that the service provides a valid ApiDoc.
 ### ZWEAC705W
 The home page url for service %s was not transformed. %s
 
-**Reason:**  
-The home page url for service was not transformed. The original url will be used.
+  The home page url for service `%s` was not transformed. `%s`
+
+  **Reason:**
+
+  The home page url for service was not transformed. The original url will be used.
 
 **Action:**  
 Refer to the specific printed message. Possible causes include:
@@ -1257,8 +1669,13 @@ Refer to the specific printed message. Possible causes include:
 ### ZWEAC706E
 Service not located, %s
 
-**Reason:**  
-The service could not be found.
+  Service not located, `%s`
+
+  **Reason:**
+
+  The service could not be found.
+
+  **Action:**
 
 **Action:**  
 Check if the service is up and registered. If it is not registered, review the onboarding guide to ensure that all steps were completed.
@@ -1266,8 +1683,13 @@ Check if the service is up and registered. If it is not registered, review the o
 ### ZWEAC707E
 Static API refresh failed, caused by exception: %s
 
-**Reason:**  
-The Static API refresh could not be performed because of exception.
+  Static API refresh failed, caused by exception: `%s`
+
+  **Reason:**
+
+  The Static API refresh could not be performed because of exception.
+
+  **Action:**
 
 **Action:**  
 Check the specific exception for troubleshooting.
@@ -1275,8 +1697,7 @@ Check the specific exception for troubleshooting.
 ### ZWEAC708E
 The API base path for service %s was not retrieved. %s
 
-**Reason:**  
-The API base path for service was not retrieved. An empty path will be used.
+  The API base path for service `%s` was not retrieved. `%s`
 
 **Action:**  
 Refer to the specific printed message. Possible causes include:
@@ -1287,8 +1708,15 @@ Refer to the specific printed message. Possible causes include:
 ### ZWEAC709E
 Static definition generation failed, caused by exception: %s
 
-**Reason:**  
-The Static definition generation could not be performed because of exception.
+  Static definition generation failed, caused by exception: `%s`
+
+  **Reason:**
+
+  The Static definition generation could not be performed because of exception.
+
+  **Action:**
+
+  Check the specific exception for troubleshooting.
 
 **Action:**  
 Check the specific exception for troubleshooting.
