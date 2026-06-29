@@ -276,3 +276,36 @@ There are four ways the API client can use the Personal Access Token to authenti
 In these examples, the API client is authenticated.  
 
 If the API client tries to authenticate with a service that is not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to the southbound service. The error message contains a message that the provided authentication is not valid.
+
+## Troubleshooting PAT Authentication Failures
+
+When integrating Personal Access Tokens into automated scripts or CI/CD pipelines, your HTTP client may occasionally receive a `401 Unauthorized` response. To identify the root cause the API Gateway injects a dedicated diagnostic header into the HTTP response:
+
+* **Header Name:** `X-Zowe-Auth-Failure`
+
+Checking the value of this header allows your scripts to distinguish between different types of token rejections. Common PAT-specific failures include:
+
+* **Scope mismatches:**  
+The token is cryptographically valid, but its generated scopes do not include the specific downstream service your script is trying to call.
+
+* **Expiration:**  
+The token's requested validity period has lapsed.
+
+* **Missing or malformed context:**  
+The request dropped the `Authorization: Bearer` header, or the token string was truncated.
+
+**Example: Token Scope Mismatch**
+If a client passes a valid Personal Access Token that was built for a different service, the Gateway strips the invalid authorization and injects the failure header. The response returned to the client includes this diagnostic header so your script can parse the exact reason for the failure:
+
+```
+GET /some-service/api/v1/data HTTP/1.1
+Authorization: Bearer <valid-PAT-for-different-service>
+
+HTTP/1.1 200 OK
+X-Zowe-Auth-Failure: The provided authentication is not valid
+```
+:::note
+While the previous example shows a `200 OK` (which occurs if the downstream service allows fallback unauthenticated access to that specific endpoint), endpoints that strictly require authorization will typically return a `401 Unauthorized` status alongside this header.
+:::
+
+For a complete list of error codes, specific message strings, and mitigation steps associated with this header, see the [Authentication Failure Handling](../../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling) in _Single Sign On Integration for Extenders_.

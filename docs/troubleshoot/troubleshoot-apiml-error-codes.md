@@ -582,13 +582,13 @@ Make sure that 'components.gateway.apiml.security.oidc.registry' is correctly se
 ## Security Client Messages (ZWEAS###)
 
 ### ZWEAS100E
-Authentication exception: '%s' for URL '%s'
+Token is expired for URL
 
 **Reason:**  
-A generic failure occurred while authenticating.
+The application using the token kept it for longer than the expiration time.
 
 **Action:**  
-Refer to the specific message to troubleshoot.
+When this error occurs it is necessary to get a new JWT token.
 
 ### ZWEAS101E
 Authentication method '%s' is not supported for URL '%s'
@@ -627,13 +627,13 @@ Authentication is required.
 Provide valid authentication.
 
 ### ZWEAS120E
-Invalid username or password for URL '%s'
+Invalid username or password
 
 **Reason:**  
-The username or password is invalid.
+Provided credentials weren't recognized.
 
 **Action:**  
-Provide a valid username and password.
+Try with different credentials.
 
 ### ZWEAS121E
 
@@ -1001,7 +1001,7 @@ No authentication provided in the request
 The JWT token or client certificate was not provided with the request.
 
 **Action:**  
-Configure your client to provide valid authentication.
+Configure your client to provide valid authentication. For more information, see [Authentication Failure Handling](../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling).
 
 ### ZWEAG161E
 No user was found
@@ -1010,7 +1010,7 @@ No user was found
 It was not possible to map provided token or certificate to the mainframe identity.
 
 **Action:**  
-Ask your security administrator to connect your token or client certificate with your mainframe user.
+Ask your security administrator to connect your token or client certificate with your mainframe user. For more information, see [Authentication Failure Handling](../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling).
 
 ### ZWEAG162E  
 ZAAS failed to obtain token
@@ -1019,7 +1019,7 @@ ZAAS failed to obtain token
 Authentication request to get token failed.
 
 **Action:**  
-Contact your administrator.
+Contact your administrator. For more information, see [Authentication Failure Handling](../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling).
 
 ### ZWEAG167E
 No client certificate provided in the request
