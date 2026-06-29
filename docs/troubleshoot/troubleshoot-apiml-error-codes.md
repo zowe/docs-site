@@ -1093,7 +1093,7 @@ The provided service does not satisfy the conformance criteria and is therefore 
 **Action:**  
 Verify the conformance criteria.
 
-## Onboarding spring enabler messages
+## Onboarding spring enabler messages (ZWEA###)
 
 ### ZWEA001I  
 Registering to API Mediation Layer: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}`
