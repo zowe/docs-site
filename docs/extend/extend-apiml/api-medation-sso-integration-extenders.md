@@ -221,7 +221,7 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 | *(Variant)* | **Invalid client certificate in request:** Fallback string when a client certificate is supplied but fails validation check variants. |
 
 :::note
-For the complete definitions, mitigation steps, and deeper technical context for each of these codes, see the full error documentation in [troubleshoot-apiml-error-codes.md](../../troubleshoot/troubleshoot-apiml-error-codes.md)
+For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediaiton Layer_.
 
 
 ### HTTP Request and Response Examples

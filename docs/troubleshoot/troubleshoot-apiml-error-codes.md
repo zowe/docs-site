@@ -930,8 +930,6 @@ Connections limit exceeded.
 **Action:**  
 Wait for the number of active connections to decrease before retrying your request.
 
-  Cannot notify Gateway on `%s` about cancelled registration
-
 ## Discovery Service Messages (ZWEAD###)
 
 ### ZWEAD400E
@@ -1206,7 +1204,7 @@ The service failed to register with the API Mediation Layer Discovery Service.
 **Action:**  
 Check that the Discovery Service is running and reachable at the configured URL. Verify your SSL/TLS certificate configuration. Ensure network connectivity between this service and the Discovery Service. Check the exception message in the log for specific details.
 
-## API Catalog messages
+## API Catalog messages (ZWEAC###)
 
 ### ZWEAC100W
 Could not retrieve information about service %s from the Discovery Service. Requested URL: %s. Response received: status code: %s, body: %s
