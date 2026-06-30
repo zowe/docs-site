@@ -5,15 +5,9 @@
 
 You can configure Infinispan as a storage solution through the Caching Service, as well as configure Infinispan for high availability (HA) to replicate data to provide data durability and availability.
 
-- [Using Infinispan as a storage solution through the Caching service](#using-infinispan-as-a-storage-solution-through-the-caching-service)
-  - [Understanding Infinispan](#understanding-infinispan)
-    - [Infinispan replica instances](#infinispan-replica-instances)
-  - [Infinispan configuration](#infinispan-configuration)
-
 ## Understanding Infinispan
 
-Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching Service uses hash sets, where each
-service storing data via the Caching Service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
+Infinispan is a storage solution that stores data structures in key-value pairs. The API Caching Service uses hash sets, wherein each service storing data via the Caching Service has its own hash, and each data entry is a key-value entry within that service's Infinispan hash set.
 
 For more information on Infinispan, see the [official Infinispan documentation](https://infinispan.org/documentation/).
 
@@ -28,9 +22,8 @@ For more information on Infinispan replication and how to configure a replica in
 
 Configure Infinispan as a storage solution through the Caching Service by setting the following configuration parameters in the `zowe.yaml`.
  
-* **`components.caching-service.storage.infinispan.initialHosts`**
-
-  This property specifies the list of cluster nodes (members). Ensure that all the members listed are separated by a comma.
+* **components.caching-service.storage.infinispan.initialHosts**  
+Specifies the list of cluster nodes (members). Ensure that all the members listed are separated by a comma.
   The format is `${haInstance.hostname}[${components.caching-service.storage.infinispan.jgroups.port}]`.
 
   **Example:**
@@ -44,60 +37,60 @@ Configure Infinispan as a storage solution through the Caching Service by settin
             initialHosts: lpar1[7600],lpar2[7600],lpar3[7600]
   ```
 
-* **`components.caching-service.storage.infinispan.jgroups.port`**
-
-  (Optional) The default value is `7600`. The port number used by Infinispan to synchronise data among Caching Service instances.
-
-  :::note
-  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
-  :::
-
-* **`components.caching-service.storage.infinispan.jgroups.host`**
-
-  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
+* **components.caching-service.storage.infinispan.jgroups.port**  
+(Optional) The port number used by Infinispan to synchronise data among Caching Service instances.  
+**Default:** `7600`
 
   :::note
   We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
   :::
 
-* **`components.caching-service.storage.infinispan.jgroup.keyExchange.port`**
+* **components.caching-service.storage.infinispan.jgroups.host**  
+(Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
+**Default:** value is taken from zowe hostname
 
-  (Optional) The default value is `7601`. The port number used by Infinispan to exchange encryption key among Caching Service instances.
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
+  :::
+
+* **components.caching-service.storage.infinispan.jgroup.keyExchange.port**  
+(Optional) The port number used by Infinispan to exchange encryption key among Caching Service instances.  
+**Default:** `7601`
 
 
-* **`components.caching-service.storage.infinispan.jgroups.port`**
-  
-  (Optional) The default value is `7600`. The port number is used by Infinispan to synchronise data among Caching Service instances.
+* **components.caching-service.storage.infinispan.jgroups.port**  
+(Optional) The port number is used by Infinispan to synchronise data among Caching Service instances.  
+**Default:** `7600`
 
   :::note
   We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
   from version 2.x through v3.1 to v3.2 and newer versions.
   :::
 
-* **`components.caching-service.storage.infinispan.jgroups.host`**
+* **components.caching-service.storage.infinispan.jgroups.host**  
+(Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
+**Default:** value is taken from zowe hostname
 
-  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances. 
 
+* **components.caching-service.storage.infinispan.jgroups.keyExchange.por`**  
+(Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
+**Default:** value is taken from zowe hostname
 
-* **`components.caching-service.storage.infinispan.jgroups.keyExchange.port`**
-
-  (Optional) The default value is taken from zowe hostname. The hostname used by Infinispan to synchronise data among Caching Service instances.
-
-* **components.caching-service.storage.infinispan.jgroups.keyExchange.port**
-
-  (Optional) The default value is `7601`. The port number is used by Infinispan to exchange encryption key among Caching Service instances.
+* **components.caching-service.storage.infinispan.jgroups.keyExchange.port**  
+(Optional) The port number is used by Infinispan to exchange encryption key among Caching Service instances.  
+**Default:** `7601`
 
   :::note
   We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
   from version 2.x through v3.1 to v3.2 and newer versions.
   :::
 
-* **components.caching-service.storage.infinispan.useVirtualThreads**
-  
-  (Optional) The default value is `false`. This property enables the Infinispan virtual threads feature available from JDK 21+.
+* **components.caching-service.storage.infinispan.useVirtualThreads**  
+(Optional) Enables the Infinispan virtual threads feature (requires JDK 21 or later).  
+**Default:** `false`
 
   :::note
-  On z/OS, virtual threads currently cause JGroups cluster communication stalls due to thread pinning, so we strictly recommend enabling this feature only off-platform.
+  We recommend the enablment of this feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning.
   :::
 
   **Example of Caching Service HA configuration using Infinispan:**
