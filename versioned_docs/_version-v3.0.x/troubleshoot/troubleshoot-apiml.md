@@ -91,14 +91,32 @@ This activates the application/loggers endpoints in each API ML internal service
 
     - **port**
 
-        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter MFS_GW_PORT for the Gateway,
-    MFS_DS_PORT for the Discovery service (by default, set to gateway port + 1), and MFS_AC_PORT for the Catalog
+        Specifies the TCP port where API ML service listens on. The port is defined by the configuration parameter `components.gateway.port` for the Gateway,
+    `components.discovery.port` for the Discovery service (by default, set to gateway port + 1), and `components.catalog.port` for the Catalog
     (by default, set to gateway port + 2).
+
+    :::note deprecated
+    The environment variables `MFS_GW_PORT`, `MFS_DS_PORT`, and `MFS_AC_PORT` are deprecated. Use the `zowe.yaml` parameters `components.gateway.port`, `components.discovery.port`, and `components.catalog.port` instead.
+    :::
 
     **Note:**  For the Catalog you can list the available loggers by issuing a **GET** request for the given service URL in the following format:
     ```
     GET [gateway-scheme]://[gateway-hostname]:[gateway-port]/apicatalog/api/v1/application/loggers
     ```
+
+    The following table summarizes the available endpoints for each API ML internal service:
+
+    | Service | Direct Endpoint (Internal Port) | Gateway-Routed Endpoint |
+    |---------|-------------------------------|------------------------|
+    | API Gateway | `https://host:{gateway-port}/application/loggers` | Not available through Gateway northbound |
+    | Discovery Service | `https://host:{discovery-port}/application/loggers` | `https://host:{gateway-port}/discovery/api/v1/application/loggers` |
+    | API Catalog | `https://host:{catalog-port}/application/loggers` | `https://host:{gateway-port}/apicatalog/api/v1/application/loggers` |
+
+    **Important:** The `/application/loggers` endpoint of the **API Gateway** is only accessible via its direct internal port. It is not exposed through the Gateway's API northbound interface. Attempting to reach the Gateway's own `/application/loggers` through a Gateway-routed path will result in a **404 Not Found** error. For the Discovery Service and API Catalog, you may use either the direct endpoint or the Gateway-routed endpoint.
+
+    The `/application/loggers` endpoints are **protected** and require authentication. Ensure that you include valid credentials when issuing requests.
+
+    **Rate limiting:** Be aware that repeated or high-frequency requests to `/application/loggers` endpoints may be subject to rate limiting. If you encounter throttling, reduce the frequency of your requests.
 
     **Tip:** One way to issue REST calls is to use the http command in the free HTTPie tool: https://httpie.org/.
 
@@ -106,7 +124,7 @@ This activates the application/loggers endpoints in each API ML internal service
 
     ```
     HTTPie command:
-    http GET https://lpar.ca.com:10000/application/loggers
+    http GET https://&lt;gateway-hostname&gt;:7554/application/loggers
 
     Output:
     {"levels":["OFF","ERROR","WARN","INFO","DEBUG","TRACE"],
@@ -152,6 +170,26 @@ This activates the application/loggers endpoints in each API ML internal service
     ```
     http POST https://hostname:port/application/loggers/org.zowe.apiml.enable.model configuredLevel=WARN
     ```
+
+#### Offline Alternative: Change Log Level via zowe.yaml
+
+If the API ML service is unreachable (e.g., the service is down or the `/application/loggers` endpoint is not responding), you can change the log level offline by modifying the `zowe.yaml` configuration file and restarting Zowe.
+
+**Follow these steps:**
+
+1. Open the file `zowe.yaml`.
+
+2. Add or modify the following parameter under the relevant component section to set the desired log level:
+
+   ```yaml
+   components.gateway.logLevel: "DEBUG"
+   ```
+
+   Replace `gateway` with `discovery` or `catalog` for the other internal services. Valid log levels are: **OFF**, **ERROR**, **WARN**, **INFO**, **DEBUG**, **TRACE**.
+
+3. Restart Zowe.
+
+   The specified log level takes effect after the restart. This approach is especially useful when the service is not running or the endpoint is inaccessible.
 
 ### Gather atypical debug information
 

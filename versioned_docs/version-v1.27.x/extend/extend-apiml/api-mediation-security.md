@@ -64,8 +64,7 @@ API ML uses the following authentication methods:
     - The user ID and password are validated by a z/OS security manager whereby
     a token is issued that is then used to access the API service
 
-- **TLS client certificates**
-    - Certificates are used for service-only requests
+- **TLS client certificates** - Used for service-to-service auth between API ML components. Can also authenticate end users via X.509 certs mapped to mainframe identities. See [Authenticating with client certificates](../../user-guide/authenticating-with-client-certificates.md).
 
 ### Zowe API ML services
 
@@ -104,12 +103,12 @@ The following range of service types apply to the Zowe&trade; API ML:
 
 ### Zowe API ML TLS requirements
 
-The API ML TLS requires servers to provide HTTPS ports. Each API ML service has the following specific requirements:
+API ML requires TLS-secured HTTPS communication for all internal services. Each component must be configured with the appropriate keystores, truststores, and HTTPS ports as described below:
 
 - **API Client**
     - The API Client is not a server
-    - Requires trust of the API Gateway
-    - Has a truststore or SAF keyring that contains certificates required to trust the Gateway
+    - Must trust the API Gateway's server certificate (via truststore/SAF keyring)
+    - Has a truststore or SAF keyring that contains the Gateway's CA certificate or Gateway's server certificate
 
 - **Gateway Service**
     - Provides an HTTPS port
