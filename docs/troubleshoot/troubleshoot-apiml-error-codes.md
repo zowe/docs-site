@@ -1114,16 +1114,6 @@ AT-TLS is not properly configured.
 **Action:**  
 Review AT-TLS documentation and make sure your configuration is correct for this service.
 
-
-### ZWEAG501E
-The connection is not secure.
-
-**Reason:**  
-AT-TLS is not properly configured.
-
-**Action:**  
-Review AT-TLS documentation and make sure your configuration is correct for this service.
-
 ### ZWEAG510E
 Request to the resource ended with unexpected status code.
 
@@ -1132,7 +1122,6 @@ The service did not respond properly.
 
 **Action:**  
 Verify that the target service is healthy.
-
 
 ### ZWEAG701E
 Service '%s' does not allow encoded characters in the request path: '%s'.
