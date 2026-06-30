@@ -1196,7 +1196,7 @@ The service is re-registering with updated configuration settings.
 No action required. The service will unregister its old configuration and register with the new settings. If registration fails after renewal, check the subsequent error messages.
 
 ### ZWEA004E  
-Registering to API Mediation Layer failed: {baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s} failed with exception %s
+Registering to API Mediation Layer failed: `{baseUrl=%s, ipAddress=%s, discoveryServiceUrls=%s}` failed with exception %s
 
 **Reason:**  
 The service failed to register with the API Mediation Layer Discovery Service.
