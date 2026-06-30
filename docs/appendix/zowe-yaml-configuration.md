@@ -733,7 +733,7 @@ These configurations can be used under the `components.caching-service` section:
   The default value is `data`. If you run the Caching Service in Highly Available mode and the instances use the same filesystem, you have to specify a different value of the `CACHING_STORAGE_INFINISPAN_PERSISTENCE_DATALOCATION` property for each instance. For more information, see the [Soft-Index File Store](https://infinispan.org/blog/2014/10/31/soft-index-file-store).
 
   :::note
-  Beginning with version 2.18.4, values for `storage.infinispan.persistence.dataLocation` are not not used. If you migrate to v2.18.4 or a later version, leaving this configuration results in  data migration to  `<workspace>/caching-service/<HA instance ID>/index`. In case of a non-HA instance value `localhost` is used as `HA instance ID`.
+  Beginning with version 2.18.4, values for `storage.infinispan.persistence.dataLocation` are not used. If you migrate to v2.18.4 or a later version, leaving this configuration results in  data migration to  `<workspace>/caching-service/<HA instance ID>/index`. In case of a non-HA instance value `localhost` is used as `HA instance ID`.
   :::
 
 - **storage.infinispan.persistence.indexLocation**  
@@ -750,6 +750,13 @@ These configurations can be used under the `components.caching-service` section:
 - **storage.infinispan.jgroups.keyExchange.port**  
   The port number used by Infinispan to perform a secure handshake between caching-service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.
   **Default:** `7118`. 
+- **storage.infinispan.useVirtualThreads**
+  Enable Infinispan virtual threads feature available from JDK 21+.
+  The default value is `false`.
+
+  :::note
+  On z/OS, virtual threads currently cause JGroups cluster communication stalls due to thread pinning, so we strictly recommend enabling this feature only off-platform. 
+  :::
 
 ##### Redis specific configuration
 

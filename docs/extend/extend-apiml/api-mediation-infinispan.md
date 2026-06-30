@@ -92,6 +92,14 @@ Configure Infinispan as a storage solution through the Caching Service by settin
   from version 2.x through v3.1 to v3.2 and newer versions.
   :::
 
+* **components.caching-service.storage.infinispan.useVirtualThreads**
+  
+  (Optional) The default value is `false`. This property enables the Infinispan virtual threads feature available from JDK 21+.
+
+  :::note
+  On z/OS, virtual threads currently cause JGroups cluster communication stalls due to thread pinning, so we strictly recommend enabling this feature only off-platform.
+  :::
+
   **Example of Caching Service HA configuration using Infinispan:**
 
   ```yaml
