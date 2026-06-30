@@ -163,7 +163,7 @@ These directories dictate where the Configuration Dataservice stores content. Fo
 
 ## App plugin configuration
 
-The App framework loads plugins from components such as extensions based on their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the `components.app-server.pluginsDir` variable in the Zowe configuration file.
+The App framework loads plug-ins from components such as extensions based on their enabled status in Zowe configuration. The server caches knowledge of these plugins in the `<workspaceDirectory>/app-server/plugins` folder. This location can be customized with the `components.app-server.pluginsDir` variable in the Zowe configuration file.
 
 ## Logging configuration
 
