@@ -486,7 +486,8 @@ The API returns the following information in a JSON response:
 
 Swagger API documentation is provided in the `<zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/doc/swagger/server-plugins-api.yaml` file. To see it in HTML format, you can paste the contents into the Swagger editor at https://editor.swagger.io/.
 
-:::note: The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.
+:::note
+The "agent" end points interact with the agent specified in the zowe configuration file. By default this is ZSS.
 :::
 
 
