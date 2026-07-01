@@ -42,10 +42,10 @@ The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/stora
 
 ```json
 {
-  "host": "<hostname>",
-  "port": "<port>",
+  "host": "hostname",
+  "port": "port",
   "security": {
-    "type": "<telnet or tls>"
+    "type": "telnet or tls"
   }
 }
 ```
@@ -360,20 +360,20 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
    <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
 6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
-    ```json
-    {
-  "allowedPlugins": [
-    {
-      "identifier": "org.zowe.appA",
-      "versions": ["1.1"]
-    },
-    {
-      "identifier": "org.zowe.appB",
-      "versions": ["*"]
-    }
-  ]
-}
-    ```
+     ```json
+     {
+       "allowedPlugins": [
+         {
+           "identifier": "org.zowe.appA",
+           "versions": ["1.1"]
+         },
+         {
+           "identifier": "org.zowe.appB",
+           "versions": ["*"]
+         }
+       ]
+     }
+     ```
 
     :::note
     - Identifier and version attributes are required.
