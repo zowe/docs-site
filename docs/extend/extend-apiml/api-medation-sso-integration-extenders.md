@@ -201,8 +201,8 @@ The following sequence outlines the flow when an authentication anomaly occurs a
 1. **Request Propagation:**  
 API ML strips out potentially broken identity artifacts (such as empty basic auth credentials) and injects the `X-Zowe-Auth-Failure` header into the request forwarded to your southbound service.
 2. **Upstream Pass-Through:**  
-If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call, API ML ensures the header is safely passed through to the downstream services for consistency.
-3. **Response Propagation:**  
+If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call. API ML does not remove the header if passed from the upstream service. 
+1. **Response Propagation:**  
 The API ML Gateway also attaches this same header to the final HTTP response sent back to the client, ensuring request-response visibility.
 
 
