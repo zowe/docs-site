@@ -755,7 +755,7 @@ These configurations can be used under the `components.caching-service` section:
   **Default:** `false`.
 
   :::note
-  We recommend the enablment of this feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning.
+  We recommend the enablement of this feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning.
   :::
 
 ##### Redis specific configuration
