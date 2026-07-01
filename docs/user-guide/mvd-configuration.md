@@ -48,12 +48,12 @@ The file `_defaultTN3270.json` within the `tn3270-ng2` app folder `/config/stora
     "type": "<telnet or tls>"
   }
 }
-
+```
 ### Setting up the VT Terminal app plug-in
 
 The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaults/sessions/` is deployed to the [configuration dataservice](../extend/extend-desktop/mvd-configdataservice.md) when the app-server runs for the first time. This file is used to tell the terminal what host to connect to by default. If you'd like to customize this default, you can edit the file directly within the configuration dataservice `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Or you can open the app, customize a session within the UI, click the save icon (floppy icon) and then copy that file from `<components.app-server.usersDir>/<your user>/org.zowe.terminal.vt/sessions/_defaultVT.json` to `<components.app-server.instanceDir>/org.zowe.terminal.vt/sessions/_defaultVT.json`. Either way, you see a file with the following properties:
 
-```
+```json
 {
   "host": "<hostname>",
   "port": "<port>",
@@ -362,20 +362,21 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
     ```json
     {
-      "allowedPlugins": [
-        {
-          "identifier": "org.zowe.appA",
-          "versions": [
-            "1.1"
-          ]
-        },
-        {
-          "identifier": "org.zowe.appB",
-          "versions": [
-            "*"
-          ]
-        },
+  "allowedPlugins": [
+    {
+      "identifier": "org.zowe.appA",
+      "versions": [
+        "1.1"
+      ]
+    },
+    {
+      "identifier": "org.zowe.appB",
+      "versions": [
+        "*"
+      ]
     }
+  ]
+}
     ```
 
     :::note
