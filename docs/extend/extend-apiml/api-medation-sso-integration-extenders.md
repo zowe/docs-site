@@ -212,9 +212,9 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 
 | Error Code | Reason for Failure |
 | :--- | :--- |
+| **`ZWEAG160E`** | **No authentication provided:** The client request is missing required authentication context or headers completely. |
 | **`ZWEAG167E`** | **No client certificate provided in the request:** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG141E`** | **PassTicket generation failed:** API ML authenticated the user session successfully but failed to generate a PassTicket for your service's specific application ID (`applid`). |
-| **`ZWEAG162E`** | **ZAAS failed to obtain token:** The Zowe Authentication and Authorization Service (ZAAS) encountered an internal error or could not issue a token. |
+| **`ZWEAG141E`** | **The generation of the PassTicket failed:** Invalid or missing authentication. |
 | *(Generic Fallback)* | **Invalid or missing authentication:** Fallback string when a generalized authentication validation error occurs. |
 | *(Variant)* | **Invalid client certificate in request:** Fallback string when a client certificate is supplied but fails validation check variants. |
 
@@ -231,7 +231,7 @@ When an upstream failure occurs (for example, no mapping identity is found), API
 ```http
 GET /my-service/api/v1/data HTTP/1.1
 Host: my-service:8080
-X-Zowe-Auth-Failure: ZWEAG161E No user was found
+X-Zowe-Auth-Failure: ZWEAG160E No authentication provided in the request
 ```
 
 **Example HTTP response showing the header to the client**  
