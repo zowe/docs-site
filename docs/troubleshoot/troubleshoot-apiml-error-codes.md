@@ -273,6 +273,15 @@ The following error message codes may appear on logs or API responses. Use the f
 
   Supply a valid user and application name, and check that corresponding permissions have been set up. For more information, see [Enabling single sign on for extending services via PassTicket configuration](../user-guide/api-mediation/configuration-extender-passtickets.md#configuring-zowe-to-use-passtickets).
 
+### ZWEAG160E
+No authentication provided in the request
+
+**Reason:**  
+The JWT token or client certificate was not provided with the request.
+
+**Action:**  
+Configure your client to provide valid authentication. For more information, see [Authentication Failure Handling](../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling).
+
 ### ZWEAM400E
 
   Error initializing SSL Context: `%s`
