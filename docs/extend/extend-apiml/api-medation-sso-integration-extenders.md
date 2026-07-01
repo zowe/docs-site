@@ -212,16 +212,15 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 
 | Error Code | Reason for Failure |
 | :--- | :--- |
-| **`ZWEAG160E`** | **No authentication provided:** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG161E`** | **No user found:** The mapping from the provided token or X.509 certificate to a valid mainframe/host identity failed. |
-| **`ZWEAG167E`** | **No client certificate provided:** The request failed because it did not include the required client certificate. |
+| **`ZWEAG167E`** | **No client certificate provided in the request:** The client request is missing required authentication context or headers completely. |
 | **`ZWEAG141E`** | **PassTicket generation failed:** API ML authenticated the user session successfully but failed to generate a PassTicket for your service's specific application ID (`applid`). |
 | **`ZWEAG162E`** | **ZAAS failed to obtain token:** The Zowe Authentication and Authorization Service (ZAAS) encountered an internal error or could not issue a token. |
 | *(Generic Fallback)* | **Invalid or missing authentication:** Fallback string when a generalized authentication validation error occurs. |
 | *(Variant)* | **Invalid client certificate in request:** Fallback string when a client certificate is supplied but fails validation check variants. |
 
 :::note
-For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediaiton Layer_.
+For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediation Layer_.
+:::
 
 
 ### HTTP Request and Response Examples
@@ -238,7 +237,7 @@ X-Zowe-Auth-Failure: ZWEAG161E No user was found
 **Example HTTP response showing the header to the client**  
 The corresponding response returned by the Gateway contains the header context to inform the client or UI application:
 
-```
+```html
 HTTP/1.1 200 OK
 X-Zowe-Auth-Failure: ZWEAG160E No authentication provided in the request
 Content-Type: application/json
@@ -249,7 +248,7 @@ Content-Type: application/json
 **Personal Access Token (PAT) specific example**  
 If a client passes a valid token that was built for a different service, a localized failure response is issued:
 
-```
+```html
 GET /some-service/api/v1/data HTTP/1.1
 Authorization: Bearer <valid-PAT-for-different-service>
 
@@ -263,7 +262,7 @@ To handle this header cleanly within your southbound service logic, intercept th
 
 The following Spring Boot example demonstrates how to extract the error, log its context, and propagate a meaningful response:
 
-```
+```java
 @GetMapping("/api/v1/data")
 public ResponseEntity<?> getData(
     @RequestHeader(value = "X-Zowe-Auth-Failure", required = false) String authFailure
@@ -281,6 +280,6 @@ public ResponseEntity<?> getData(
 }
 ```
 
-This example demonstrates how a southbound service can intercept upstream issues by checking for the `X-Zowe-Auth-Failure` header before executing any business logic. When present, the service safely logs the specific diagnostic message locally to preserve an audit trail and interupts the request issuing a 401 Unauthorized JSON response. This pattern ensures that upstream authentication failures are isolated from your service's internal authorization logic while also providing clear feedback to the client.
+This example demonstrates how a southbound service can intercept upstream issues by checking for the `X-Zowe-Auth-Failure` header before executing any business logic. When present, the service safely logs the specific diagnostic message locally to preserve an audit trail and interrupts the request issuing a 401 Unauthorized JSON response. This pattern ensures that upstream authentication failures are isolated from your service's internal authorization logic while also providing clear feedback to the client.
 
 
