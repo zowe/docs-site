@@ -357,7 +357,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 3. In the `/plugins` directory, create an `allowedPlugins.json` file. You can use the default `allowedPlugins.json` file as a template by copying it from the following location:
    ```
-   <zpwe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
+   <zowe.runtimeDirectory>/components/app-server/share/zlux-app-server/defaults/ZLUX/pluginStorage/org.zowe.zlux.bootstrap/plugins
    ```
 6. Open the `allowedPlugins.json` file and specify apps that user can access. For example:
     ```json
