@@ -36,31 +36,9 @@ Specifies the list of cluster nodes (members). Ensure that all the members liste
           infinispan:
             initialHosts: lpar1[7600],lpar2[7600],lpar3[7600]
   ```
-
 * **components.caching-service.storage.infinispan.jgroups.port**  
-(Optional) The port number used by Infinispan to synchronise data among Caching Service instances.  
-**Default:** `7600`
-
-  :::note
-  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
-  :::
-
-* **components.caching-service.storage.infinispan.jgroups.host**  
-(Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
-**Default:** value is taken from zowe hostname
-
-  :::note
-  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
-  :::
-
-* **components.caching-service.storage.infinispan.jgroup.keyExchange.port**  
-(Optional) The port number used by Infinispan to exchange encryption key among Caching Service instances.  
-**Default:** `7601`
-
-
-* **components.caching-service.storage.infinispan.jgroups.port**  
-(Optional) The port number is used by Infinispan to synchronise data among Caching Service instances.  
-**Default:** `7600`
+  (Optional) The port number is used by Infinispan to synchronise data among Caching Service instances.  
+  **Default:** `7600`
 
   :::note
   We recommend you define this value to avoid potential problems or errors in future Zowe upgrades, for example
@@ -69,12 +47,11 @@ Specifies the list of cluster nodes (members). Ensure that all the members liste
 
 * **components.caching-service.storage.infinispan.jgroups.host**  
 (Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
-**Default:** value is taken from zowe hostname
+**Default:** value is taken from Zowe hostname
 
-
-* **components.caching-service.storage.infinispan.jgroups.keyExchange.por`**  
-(Optional) The hostname used by Infinispan to synchronise data among Caching Service instances.  
-**Default:** value is taken from zowe hostname
+  :::note
+  We recommend you define this value to avoid potential problems or errors in future Zowe upgrades.
+  :::
 
 * **components.caching-service.storage.infinispan.jgroups.keyExchange.port**  
 (Optional) The port number is used by Infinispan to exchange encryption key among Caching Service instances.  
