@@ -63,7 +63,8 @@ The file `_defaultVT.json` within the `vt-ng2` app folder `/config/storageDefaul
 
 ## Network configuration
 
-:::note: The following attributes are to be defined in the Zowe configuration file.
+:::note
+The following attributes are to be defined in the Zowe configuration file.
 :::
 
 The App Server and ZSS both can be accessed over HTTPS, either natively or via AT-TLS by setting appropriate AT-TLS rules and Zowe YAML assignments. When using native HTTPS, the TLS properties can be further customized within the YAML.
@@ -323,7 +324,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
 
 ### Controlling app access for all users
 
-:::note: 
+:::note
 - `<zowe.runtimeDirectory>` variable comes from the Zowe configuration file.
 :::
 
@@ -375,7 +376,7 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
     }
     ```
 
-    :::note:
+    :::note
     - Identifier and version attributes are required.
     - When a user logs in to the desktop, Zowe determines which apps they can see by concatenating the list of apps available to all users with the apps available to the individual user.
     :::
