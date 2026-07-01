@@ -365,15 +365,11 @@ By default, RBAC is disabled and all authenticated Zowe users can access all dat
   "allowedPlugins": [
     {
       "identifier": "org.zowe.appA",
-      "versions": [
-        "1.1"
-      ]
+      "versions": ["1.1"]
     },
     {
       "identifier": "org.zowe.appB",
-      "versions": [
-        "*"
-      ]
+      "versions": ["*"]
     }
   ]
 }
