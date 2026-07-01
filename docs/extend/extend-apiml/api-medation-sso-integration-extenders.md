@@ -253,7 +253,7 @@ GET /some-service/api/v1/data HTTP/1.1
 Authorization: Bearer <valid-PAT-for-different-service>
 
 HTTP/1.1 200 OK
-X-Zowe-Auth-Failure: The provided authentication is not valid
+X-Zowe-Auth-Failure: Invalid or missing authentication
 ```
 
 **Code Example: Reading the Header (Java)**
