@@ -90,7 +90,7 @@ Specifies the list of cluster nodes (members). Ensure that all the members liste
 **Default:** `false`
 
   :::note
-  We recommend the enablment of this feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning.
+  We recommend the enablement of this feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning.
   :::
 
   **Example of Caching Service HA configuration using Infinispan:**
