@@ -203,4 +203,10 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
+### Caching Service stalls in HA mode on z/OS with Java 21+
 
+Infinispan 16 enables virtual thread pools by default on JDK 21+. On z/OS, this causes thread pinning that stalls JGroups cluster communication, effectively freezing the Caching Service in HA mode.
+
+**Solutions are either:**
+- Downgrade to Java 17 (where virtual threads are not enabled by default in Infinispan).
+- Upgrade Zowe to version v3.6 or higher where this issue has been resolved.
