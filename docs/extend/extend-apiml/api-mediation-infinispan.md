@@ -84,3 +84,29 @@ Specifies the list of cluster nodes (members). Ensure that all the members liste
             keyExchange:
               port: 7601
  ```
+
+  **Example of explicitly disabling virtual threads via APIML configuration:**
+
+  ```yaml
+  components:  
+    apiml:   
+      storage:
+        mode: infinispan
+        infinispan:
+          useVirtualThreads: false   # default; explicitly disable virtual threads
+  ```
+
+  **Example of Caching Service HA configuration using Infinispan:**
+  ```yaml
+  components:
+    caching-service:
+      storage:
+        mode: infinispan
+        infinispan: 
+          initialHosts: lpar1[7600],lpar2[7600]
+          jgroups:
+            port: 7600
+            keyExchange:
+              port: 7601
+          useVirtualThreads: false
+  ```
