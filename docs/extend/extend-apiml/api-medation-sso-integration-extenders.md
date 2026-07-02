@@ -212,7 +212,7 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 
 | Error Code | Reason for Failure |
 | :--- | :--- |
-| **`ZWEAG160E`** | **No authentication provided:** The client request is missing required authentication context or headers completely. |
+| **`ZWEAG160E`** | **No authentication provided in the request:** The client request is missing required authentication context or headers completely. |
 | **`ZWEAG167E`** | **No client certificate provided in the request:** The client request is missing required authentication context or headers completely. |
 | **`ZWEAG141E`** | **The generation of the PassTicket failed:** Invalid or missing authentication. |
 | *(Generic Fallback)* | **Invalid or missing authentication:** Fallback string when a generalized authentication validation error occurs. |
