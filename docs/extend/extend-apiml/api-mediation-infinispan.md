@@ -69,7 +69,7 @@ Specifies the list of cluster nodes (members). Ensure that all the members liste
   :::warning Important Note for z/OS Deployments
 Infinispan 16 enables virtual thread pools by default on JDK 21+. However, on z/OS, virtual threads cause thread pinning that stalls JGroups cluster communication, effectively freezing the Caching Service when running in High Availability (HA) mode. We recommend the enablement of this feature only on non-z/OS platforms.
 
-Starting in Zowe v3.6, the Caching Service startup scripts automatically force-disable virtual threads on z/OS with Java 21+ to safeguard cluster stability. It is highly recommended to leave this property set to false on z/OS. You may explicitly set this property to `true` only on non-z/OS platform environments.
+Starting in Zowe v3.6, the Caching Service startup scripts automatically force-disable virtual threads on z/OS with Java 21+ to safeguard cluster stability. It is highly recommended to leave this property set to `false` on z/OS. You may explicitly set this property to `true` only on non-z/OS platform environments.
 :::
 
   **Example of Caching Service HA configuration using Infinispan:**
