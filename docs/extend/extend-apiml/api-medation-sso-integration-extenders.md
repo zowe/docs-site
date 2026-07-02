@@ -212,11 +212,11 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 
 | Error Code | Reason for Failure |
 | :--- | :--- |
-| **`ZWEAG160E`** | **No authentication provided in the request:** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG167E`** | **No client certificate provided in the request:** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG141E`** | **The generation of the PassTicket failed:** Invalid or missing authentication. |
-| *(Generic Fallback)* | **Invalid or missing authentication:** Fallback string when a generalized authentication validation error occurs. |
-| *(Variant)* | **Invalid client certificate in request:** Fallback string when a client certificate is supplied but fails validation check variants. |
+| **`ZWEAG160E`** | **No authentication provided in the request** The client request is missing required authentication context or headers completely. |
+| **`ZWEAG167E`** | **No client certificate provided in the request** The client request is missing required authentication context or headers completely. |
+| **`ZWEAG141E`** | **The generation of the PassTicket failed** Invalid or missing authentication. |
+| *(Generic Fallback)* | **Invalid or missing authentication** Fallback string when a generalized authentication validation error occurs. |
+| *(Variant)* | **Invalid client certificate in request. Error message: Test Exception:** Fallback string when a client certificate is supplied but fails validation check variants. |
 
 :::note
 For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediation Layer_.
