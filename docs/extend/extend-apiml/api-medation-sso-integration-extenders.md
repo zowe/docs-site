@@ -197,7 +197,7 @@ When a downstream (southbound) service is integrated with API ML, the API Gatewa
 
 The primary purpose of the `X-Zowe-Auth-Failure` header is to help your service distinguish between an **upstream authentication failure** (where API ML could not verify the user's identity or generate credentials) and a **downstream authorization failure** (where the user's identity is valid, but your service lacks permissions to grant them access).
 
-The following sequence outlines the flow when an authentication anomaly occurs at the Gateway layer:
+The following sequence outlines the flow when an authentication failure occurs at the Gateway layer:
 1. **Request Propagation:**  
 API ML strips out potentially broken identity artifacts (such as empty basic auth credentials) and injects the `X-Zowe-Auth-Failure` header into the request forwarded to your southbound service.
 2. **Upstream Pass-Through:**  
@@ -210,13 +210,13 @@ The API ML Gateway also attaches this same header to the final HTTP response sen
 
 The value of the `X-Zowe-Auth-Failure` header contains explicit message strings. The table below outlines the core error codes that can appear in this header, along with their general meanings:
 
-| Error Code | Reason for Failure |
-| :--- | :--- |
-| **`ZWEAG160E`** | **No authentication provided in the request** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG167E`** | **No client certificate provided in the request** The client request is missing required authentication context or headers completely. |
-| **`ZWEAG141E`** | **The generation of the PassTicket failed** Invalid or missing authentication. |
-| *(Generic Fallback)* | **Invalid or missing authentication** Fallback string when a generalized authentication validation error occurs. |
-| *(Variant)* | **Invalid client certificate in request. Error message: Test Exception:** Fallback string when a client certificate is supplied but fails validation check variants. |
+| Error Code | Error Message | Reason for Failure |
+| :--- | :--- | :--- | 
+| **`ZWEAG160E`** | No authentication provided in the request |   The client request is missing required authentication context or headers completely. |
+| **`ZWEAG167E`** | No client certificate provided in the request | The client request is missing required authentication context or headers completely. |
+| **`ZWEAG141E`** | The generation of the PassTicket failed | Invalid or missing authentication. |
+| *(Generic Fallback)* | Invalid or missing authentication | Fallback string when a generalized authentication validation error occurs. |
+| *(Variant)* | Invalid client certificate in request. Error message: Test Exception: | Fallback string when a client certificate is supplied but fails validation check variants. |
 
 :::note
 For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediation Layer_.
@@ -246,11 +246,11 @@ Content-Type: application/json
 ```
 
 **Personal Access Token (PAT) specific example**  
-If a client passes a valid token that was built for a different service, a localized failure response is issued:
+If a client passes a PAT that has expired, a localized validation failure occurs. Note that API ML cannot differentiate scope-related errors from other validation constraints.  As such, an expired token results in a generalized authentication failure response:
 
 ```html
 GET /some-service/api/v1/data HTTP/1.1
-Authorization: Bearer <valid-PAT-for-different-service>
+Authorization: Bearer <expired-PAT>
 
 HTTP/1.1 200 OK
 X-Zowe-Auth-Failure: Invalid or missing authentication
