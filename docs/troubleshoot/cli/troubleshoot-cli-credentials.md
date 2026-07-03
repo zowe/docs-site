@@ -24,7 +24,7 @@ Some users choose to secure PEM certificates by placing them in a password prote
 
 :::note
 
-These client certificate files are different from the certificates generated or imported during Zowe server configuration. For more information, see [Using Certificates](https://docs.zowe.org/stable/user-guide/use-certificates/).
+These client certificate files are different from the certificates generated or imported during Zowe server configuration. For more information, see [Working with Certificates](../../user-guide/cli-using-working-certificates.md).
 
 :::
 
@@ -99,7 +99,41 @@ To customize the persistence level on Windows:
 
     Updated secured credentials are stored with the configured persistence level.
 
+### Keychain Access prompts on macOS
+
+**Symptom:**
+
+When running Zowe CLI commands on macOS, a keychain access dialog displays asking whether to allow access to a keychain item.
+
+On macOS, Zowe CLI stores and retrieves secure credentials (such as usernames and passwords) using the operating system's keychain. The dialog is a standard macOS security prompt that appears whenever an application requests access to a keychain item that has not previously been granted access.
+
+This prompt is expected behavior and is not an error. It might display:
+
+- The first time you run a Zowe CLI command after installing or updating Zowe CLI.
+- After your macOS user password changes.
+- When running a command that accesses a profile whose credentials have not yet been unlocked in the current login session.
+
+**Sample message:**
+
+![macOS keychain access prompt](../../images/troubleshoot/cli/macOS_keychain_access_prompt.png)
+
+**Solution:**
+
+Select one of the following options in the dialog:
+
+| Option | Effect |
+|---|---|
+| **Always Allow** | Grants permanent access for Zowe CLI. The prompt does not appear again for this keychain item. |
+| **Deny** | The command fails to retrieve credentials. You are prompted to re-enter them manually. |
+| **Allow** | Grants access for this single request. The prompt reappears on subsequent commands. |
 
 
+Selecting **Always Allow** is recommended for most users to avoid repeated prompts during normal Zowe CLI usage.
+
+:::note
+
+If you are running Zowe CLI in a CI/CD pipeline or another non-interactive environment on macOS, the keychain access dialog cannot be displayed. Without user interaction to approve access, credential retrieval is blocked and commands fail silently. To avoid this, use environment variables to supply credentials instead of the secure credential store. For more information, see [Using environment variables](../../user-guide/cli-using-using-environment-variables.md).
+
+:::
 
 
