@@ -58,8 +58,8 @@ To enable Personal Access Token support when using the Caching Service, **Infini
               port:7601
   ```
 :::note
-Infinispan introduced virtual threads on JDK 21+. However, on z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning. 
-Therefore, this functionality is disabled by default. We recommend the enablement of this feature only on non-z/OS platforms, by setting the `components.caching-service.storage.infinispan.useVirtualThreads` to `true`.
+Infinispan introduced virtual threads on JDK 21+. On z/OS, however, virtual threads cause JGroups cluster communication to stall as a result of thread pinning. 
+As such, this functionality is disabled by default. We recommend the enablement of the virtual thread feature only on non-z/OS platforms. To enable this feature, set `components.caching-service.storage.infinispan.useVirtualThreads` to `true` in your `zowe.yaml` configuration file.
 :::
 
 ### inMemory
