@@ -228,7 +228,7 @@ Found an invalid protobuf tag (1) having a field number smaller than 1`
 This issue can occur because the persisted cache store created by an earlier Zowe version may not be compatible with the version that uses Infinispan 16.x.
 
 **Resolution:**  
-As a workaround, stop Zowe, remove the existing Infinispan persistence directory, located under `<zowe_installation_dir>/workspace/caching-service`, and restart the instance so that the cache store can be recreated on startup.
+As a workaround, stop Zowe, remove the existing Infinispan persistence directory, located under `zowe.workspaceDirectory`/caching-service, and restart the instance so that the cache store can be recreated on startup.
 
 :::note
 Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
