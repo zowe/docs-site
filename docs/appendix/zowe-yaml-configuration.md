@@ -252,6 +252,37 @@ Launcher is the program behind the `ZWESLSTC` started task.
 - **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
+#### System messages
+
+Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items.
+
+- **zowe.sysMessages**  
+ The array of message IDs or any text. Wildcards are not supported.
+- **zowe.sysMessageTrim**  
+  Specifies to trim SYSLOG message and print only from the matching message ID or text.
+
+```yaml
+zowe:
+  sysMessageTrim: true
+  sysMessages:
+  #   # API ML components ready
+    - "ZWEAM001I"
+```
+:::note
+For example, when the `ZWEAM001I` is issued, `zowe.sysMessageTrim` controls the start of the SYSLOG message:
+- `zowe.sysMessageTrim=false`   
+The SYSLOG message contains the timestamp and other text:
+```
+2026-06-06 01:02:03.045 <ZWEAGW1:main:12345678> ZWESVUSR INFO ZWEAM001I Mediation Layer started 
+```
+
+- `zowe.sysMessageTrim=true`  
+The SYSLOG message starts at matching ID `ZWEAM001I`:
+```
+ZWEAM001I Mediation Layer started
+```
+:::
+
 #### Setup
 
 Zowe YAML configuration uses the `zowe.setup` section to instruct how Zowe should be installed and configured. This section is optional for Zowe runtime and only applies to `zwe install` and `zwe init` commands.
@@ -792,7 +823,7 @@ Each line of Zowe YAML configuration has a matching environment variable during 
 
 **Examples:**
 
-- `ZWE_zowe_runtimeDirectory` is parent directory where `zwe` server command is located.
+- `ZWE_zowe_runtimeDirectory` is the parent directory where the `zwe` server command is located.
 - `ZWE_zowe_workspaceDirectory` is the path of the user customized workspace directory.
 - `ZWE_zowe_setup_dataset_prefix` is the high-level qualifier where Zowe MVS data sets are installed.
 - `ZWE_zowe_setup_dataset_parmlib` is the data set configured to store customized version of parameter library members.
