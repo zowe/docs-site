@@ -16,7 +16,7 @@ Some of the following `zwe init` subcommands require elevated permissions. See t
 
 ## Initializing Zowe custom data sets (`zwe init mvs`)
 
-Use the `zwe init mvs` command to intialize Zowe custom MVS data sets. 
+Use the `zwe init mvs` command to initialize Zowe custom MVS data sets. 
 
 :::info Required role: system programmer
 :::
@@ -117,7 +117,7 @@ For more information about `zwe init security`, see:
 
 :::tip
 
-To avoid having to run the `init security` command, you can specify the flag `--security-dry-run`. This flag enables you to construct a JCL member containing the security commmands without running the member. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
+To avoid having to run the `init security` command, you can specify the flag `--security-dry-run`. This flag enables you to construct a JCL member containing the security commands without running the member. This is useful for previewing commands and can also be used to copy and paste commands into a TSO command prompt for step by step manual execution. 
 
 **Example:**
 
@@ -160,7 +160,7 @@ For more information about `zwe init apfauth` see:
 
 :::tip
 
-To avoid having to run the `init apfauth` command, you can specify the flag `--security-dry-run` as in the following example. 
+To avoid having to run the `init apfauth` command, you can specify the flag `--security-dry-run` as in the following example: 
 
 **Example:**
 
@@ -199,7 +199,7 @@ Zowe uses digital certificates for secure, encrypted network communication over 
 Zowe supports using either file-based (PKCS12) or z/OS key ring-based (when on z/OS) keystores and truststores, and can reuse compatible stores. You can use the `zwe init certificate` command to create keystores and truststores by either generating certificates or by allowing users to import their own compatible certificates.
 
 For more information about `init certificate`, see:
-* [Configuring certificates](./configure-certificates).
+* [Configuring certificates](./configure-certificates.md).
 * [`zwe init certificate`](../appendix/zwe_server_command_reference/zwe/init/zwe-init-certificate.md) in the Reference section.
 
 ## Installing Zowe main started tasks (`zwe init stc`)
@@ -213,7 +213,7 @@ Once you have completed security configuration, you can install the Zowe main st
 :::info Required role: system programmer
 :::
 
-The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.  
+The JCL members for each of Zowe's started tasks need to be present on the JES proclib concatenation path. The command `zwe init stc` copies these members from the install source location `.SZWESAMP` to the targeted PDS specified in the `zowe.setup.dataset.proclib` value `USER.PROCLIB`. The three proclib member names are specified in `zowe.yaml` arguments.  
 
 ```yaml
 zowe:
@@ -225,7 +225,7 @@ zowe:
         aux: ZWESASTC
 ```
 
-The `zwe init stc` command uses the `CUST.JCL` LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shiped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.  If you wish to just generate the `CUST.JCLLIB` members without having them copied to  `USER.PROCLIB`, specify `--security-dry-run`.  If the JCL members are already in the target PROCLIB, specify `--allow-overwritten`.   
+The `zwe init stc` command uses the `CUST.JCL` LIB data sets as a staging area to contain intermediatory JCL which are transformed version of the originals that are shipped in `.SZWESAMP` with paths, PDS locations, and other runtime data updated.  If you wish to just generate the `CUST.JCLLIB` members without having them copied to  `USER.PROCLIB`, specify `--security-dry-run`.  If the JCL members are already in the target PROCLIB, specify `--allow-overwritten`.   
 
 **Example:**
 
@@ -248,9 +248,9 @@ Copy IBMUSER.ZWEV2.CUST.JCLLIB(ZWESASTC) to USER.PROCLIB(ZWESASTC)
 
 ## (Deprecated) Creating VSAM caching service datasets (`zwe init vsam`)
 
-This command is no longer required as the Caching service by default uses Infinispan instead. You only need to run this command if you wish the Caching service to use VSAM for its storage medium.
+This command is no longer required as the caching service by default uses Infinispan instead. You only need to run this command if you wish the caching service to use VSAM for its storage medium.
 
-Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you are only running a single Zowe instance on a single LPAR you do not need to create a caching service so you may skip this step.
+Zowe can work in a high availability (HA) configuration where multiple instances of the Zowe launcher are started, either on the same LPAR or different LPARs connected through sysplex distributor. If you run a single Zowe instance on a single LPAR, you do not need to create a caching service. You can skip this step.
 
 :::info Required roles: system programmer
 :::
