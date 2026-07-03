@@ -211,8 +211,4 @@ When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the C
 Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
 
 **Resolution:**  
-In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, apply one of the following workarounds:
-
-* **Option 1:** Downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
-
-* **Option 2:** Upgrade your Zowe instance installation to Zowe v3.6.0 or higher to automatically inherit the runtime startup script safeguards and configuration properties.
+In Zowe v3.5.0, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
