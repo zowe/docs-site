@@ -203,17 +203,3 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 ### Re-create the Zowe keystore
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
-
-### Caching Service stalls in HA mode on z/OS with Java 21+
-
-When running Zowe in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls. JGroups cluster communication fails, nodes drop out or fail to form a stable cluster, and data replication stops working correctly.
-
-**Cause:**  
-Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
-
-**Resolution:**  
-In Zowe v3.3, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, apply one of the following workarounds:
-
-* **Option 1:** Downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
-
-* **Option 2:** Upgrade your Zowe instance installation to Zowe v3.6 or higher to automatically inherit the runtime startup script safeguards and configuration properties.

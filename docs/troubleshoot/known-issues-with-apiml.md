@@ -203,9 +203,23 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 
 Recreate the Zowe keystore by deleting it and recreating it. For more information, see [Scenario 2: Importing a file-based PKCS12 certificate](../user-guide/certificates-configuration-scenarios.md#scenario-2-use-a-file-based-pkcs12-keystore-and-import-a-certificate-generated-by-another-ca).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
 
+### Caching Service stalls in HA mode on z/OS with Java 21+ after upgrading to Zowe 3.5
+
+When running Zowe v3.5 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls. JGroups cluster communication fails, nodes drop out or fail to form a stable cluster, and data replication stops working correctly.
+
+**Cause:**  
+Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
+
+**Resolution:**  
+In Zowe v3.5, the startup scripts will not automatically disable this feature. To prevent the Caching Service from freezing in HA mode, apply one of the following workarounds:
+
+* **Option 1:** Downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
+
+* **Option 2:** Upgrade your Zowe instance installation to Zowe v3.6 or higher to automatically inherit the runtime startup script safeguards and configuration properties.
+
 ### Caching Service persistence directory issue after upgrading to Zowe 3.5
 
-When upgrading to Zowe v3.5 or a later version, which includes Infinispan 16.x, the Caching Service may fail to start with an error message similar to the following:
+When running Zowe v3.5 with Infinispan as the Caching Service storage backend, the Caching Service may fail to start with an error message similar to the following:
 
 `org.infinispan.persistence.spi.PersistenceException:
 Found an invalid protobuf tag (1) having a field number smaller than 1`
