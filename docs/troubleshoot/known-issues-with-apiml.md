@@ -216,23 +216,3 @@ In Zowe v3.5.0, the startup scripts will not automatically disable this feature.
 * **Option 1:** Downgrade the Zowe runtime Java version to Java 17, where virtual threads are not enabled by default in Infinispan.
 
 * **Option 2:** Upgrade your Zowe instance installation to Zowe v3.6.0 or higher to automatically inherit the runtime startup script safeguards and configuration properties.
-
-### Caching Service persistence directory issue after upgrading to Zowe 3.5.0
-
-When running Zowe v3.5.0 with Infinispan as the Caching Service storage backend, the Caching Service may fail to start with an error message similar to the following:
-
-`org.infinispan.persistence.spi.PersistenceException:
-Found an invalid protobuf tag (1) having a field number smaller than 1`
-
-**Cause:**  
-This issue can occur because the persisted cache store created by an earlier Zowe version may not be compatible with the version that uses Infinispan 16.x.
-
-**Resolution:**  
-As a workaround, stop Zowe, remove the existing Infinispan persistence directory, located under `zowe.workspaceDirectory`/caching-service, and restart the instance so that the cache store can be recreated on startup.
-
-:::note
-Removing the persistence directory clears all data stored by Infinispan, including revoked Personal Access Tokens (PATs) and revoked Zowe JWT tokens.
-For Personal Access Tokens, security administrators must manually revoke the affected tokens again, either by user or by scope, using the appropriate API. For more information, see [Authenticating with a Personal Access Token](../../../docs/user-guide/api-mediation/authenticating-with-personal-access-token.md).
-
-The impact on revoked Zowe JWT tokens is usually limited, since JWTs typically have a relatively short expiration time (for example, a few hours), after which they become invalid automatically.
-:::
