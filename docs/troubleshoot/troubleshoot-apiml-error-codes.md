@@ -1573,7 +1573,7 @@ The following error message codes may appear on logs or API responses. Use the f
 
   **Action:**
 
-  Use a valid body in the request. Format of a message: {userId: string, (optional)timestamp: long} or {serviceId: string, (optional)timestamp: long}.
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
 
 ### ZWEAZ600W
 
