@@ -205,7 +205,7 @@ Recreate the Zowe keystore by deleting it and recreating it. For more informatio
 
 ### Caching Service stalls in HA mode on z/OS with Java 21+ after upgrading to Zowe 3.5.0
 
-When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls. JGroups cluster communication fails, nodes drop out or fail to form a stable cluster, and data replication stops working correctly.
+When running Zowe v3.5.0 in High Availability (HA) mode with Infinispan as the Caching Service storage backend, the Caching Service randomly freezes or stalls resulting from JGroups cluster communication failure, nodes dropping out or failing to form a stable cluster, and a failure in correct data replication.
 
 **Cause:**  
 Infinispan 16 introduces and enables virtual thread pools by default when running on JDK 21+. On the z/OS operating system, using virtual threads within this architecture causes underlying thread pinning. This pinning stalls the JGroups network stack communication, rendering the Caching Service unresponsive.
