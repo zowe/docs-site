@@ -1182,6 +1182,451 @@ Contact your administrator.
 
   Supply a valid user and application name, and check that corresponding permissions have been set up.
 
+## ZAAS service messages
+
+### ZWEAG100E
+
+  Authentication exception: '%s' for URL '%s'
+
+  **Reason:**
+
+  A generic failure occurred during authentication.
+
+  **Action:**
+
+  Refer to the specific authentication exception details for troubleshooting.
+
+### ZWEAG102E
+
+  Token is not valid
+
+  **Reason:**
+
+  The JWT token is not valid.
+
+  **Action:**
+
+  Provide a valid token.
+
+### ZWEAG103E
+
+  The token has expired
+
+  **Reason:**
+
+  The JWT token has expired.
+
+  **Action:**
+
+  Obtain a new token by performing an authentication request.
+
+### ZWEAG104E
+
+  Authentication service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The authentication service is not available.
+
+  **Action:**
+
+  Make sure that the authentication service is running and is accessible by the URL provided in the message.
+
+### ZWEAG106W
+
+  Login endpoint is running in dummy mode. Use credentials '%s'/'%s' to log in. Do not use this option in the production environment.
+
+  **Reason:**
+
+  The authentication is running in dummy mode.
+
+  **Action:**
+
+  Ensure that this option is not being used in a production environment.
+
+### ZWEAG107W
+
+  Incorrect value: apiml.security.auth.provider = '%s'. The authentication provider is not set correctly. The default 'zosmf' authentication provider is being used.
+
+  **Reason:**
+
+  An incorrect value of the apiml.security.auth.provider parameter is set in the configuration.
+
+  **Action:**
+
+  Ensure that the value of apiml.security.auth.provider is set either to 'dummy' if you want to use dummy mode, or to 'zosmf' if you want to use the z/OSMF authentication provider.
+
+### ZWEAG108E
+
+  z/OSMF instance '%s' not found or incorrectly configured. ZAAS is shutting down.
+
+  **Reason:**
+
+  The ZAAS could not find the z/OSMF instance from the Discovery Service or it could not communicate with the provided z/OSMF instance.
+
+  **Action:**
+
+  Ensure that the z/OSMF instance is configured correctly and that it is successfully registered to the Discovery Service and that the API Mediation Layer can communicate with the provided z/OSMF instance. The default timeout is 5 minutes. On a slower system, add the variable components.zaas.apiml.security.jwtInitializerTimeout:... and the value in minutes into Zowe's configuration to override this value.
+
+### ZWEAG121E
+
+  Authorization header is missing, or the request body is missing or invalid for URL '%s'
+
+  **Reason:**
+
+  The authorization header is missing, or the request body is missing or invalid.
+
+  **Action:**
+
+  Provide valid authentication.
+
+### ZWEAG130E
+
+  Token is not valid for URL '%s'
+
+  **Reason:**
+
+  The token is not valid.
+
+  **Action:**
+
+  Provide a valid token.
+
+### ZWEAG131E
+
+  No authorization token provided for URL '%s'
+
+  **Reason:**
+
+  No authorization token is provided.
+
+  **Action:**
+
+  Provide a valid authorization token.
+
+### ZWEAG150E
+
+  SAF IDT generation failed. Reason: %s
+
+  **Reason:**
+
+  An error occurred during SAF verification. Review the reason in the error message.
+
+  **Action:**
+
+  Verify the Identity Token configuration.
+
+### ZWEAG160E
+
+  No authentication provided in the request
+
+  **Reason:**
+
+  The JWT token or client certificate was not provided with the request
+
+  **Action:**
+
+  Configure your client to provide valid authentication.
+
+### ZWEAG161E
+
+  No user was found
+
+  **Reason:**
+
+  It was not possible to map provided token or certificate to the mainframe identity.
+
+  **Action:**
+
+  Ask your security administrator to connect your token or client certificate with your mainframe user.
+
+### ZWEAG162E
+
+  ZAAS failed to obtain token.
+
+  **Reason:**
+
+  Authentication request to get token failed.
+
+  **Action:**
+
+  Contact your administrator.
+
+### ZWEAG169E
+
+  Unexpected response from the external identity mapper. Status: %s body: %s
+
+  **Reason:**
+
+  The external identity mapper request failed with Internal Error
+
+  **Action:**
+
+  Verify that ZSS is responding.
+
+### ZWEAG170E
+
+  Error occurred while trying to parse the response from the external identity mapper. Reason: %s
+
+  **Reason:**
+
+  The external identity mapper failed when trying to parse the response
+
+  **Action:**
+
+  Verify that the response is valid.
+
+### ZWEAG171E
+
+  Configuration error. Failed to construct the external identity mapper URI. Reason: %s
+
+  **Reason:**
+
+  Failed to construct the external identity mapper URI
+
+  **Action:**
+
+  Verify that the external identity mapper URL specified in the configuration is valid.
+
+### ZWEAG180E
+
+  There was an error while reading webfinger configuration
+
+  **Reason:**
+
+  Webfinger provider contains incorrect configuration.
+
+  **Action:**
+
+  Contact the administrator to validate webfinger configuration in the ZAAS.
+
+### ZWEAG181W
+
+  z/OSMF service '%s' is either not registered or not online yet.
+
+  **Reason:**
+
+  z/OSMF service may not be properly onboarded to API ML.
+
+  **Action:**
+
+  Verify if z/OSMF is up and registered to Discovery Service.
+
+### ZWEAG182E
+
+  SSL Misconfiguration, z/OSMF is not accessible.
+  Message: %s
+  Please verify the following:
+    - CN (Common Name) and z/OSMF hostname match.
+    - The certificate is valid
+    - TLS version matches
+    - z/OSMF server certificate is trusted in Zowe's truststore
+  Enable debugging to see further details in stack trace.
+
+  **Reason:**
+
+  The z/OSMF connection is incorrectly configured.
+
+  **Action:**
+
+  Verify z/OSMF connection details. Verify z/OSMF can be accessed with HTTPS. Configure sslDebug to see SSL debugging messages.
+
+### ZWEAG183E
+
+  z/OSMF internal error
+
+  **Reason:**
+
+  z/OSMF returned HTTP Status %s.
+
+  **Action:**
+
+  Review z/OSMF status and availability.
+
+### ZWEAG184E
+
+  Could not connect to z/OSMF: %s
+
+  **Reason:**
+
+  There was a connection issue between the API Mediation Layer instance and z/OSMF.
+
+  **Action:**
+
+  Verify z/OSMF is running. Verify connectivity to z/OSMF from this instance.
+
+### ZWEAG185W
+
+  The change password endpoint has failed with code %s
+
+  **Reason:**
+
+  The change password endpoint was not found.
+
+  **Action:**
+
+  Ensure PTF for APAR PH34912 is applied. (https://www.ibm.com/support/pages/apar/PH34912)
+
+### ZWEAG186E
+
+  z/OSMF internal error attempting password change: %s
+
+  **Reason:**
+
+  z/OSMF informed of an internal error.
+
+  **Action:**
+
+  Verify z/OSMF error log.
+
+### ZWEAG187W
+
+  The check of z/OSMF JWT authentication endpoint has failed. Using z/OSMF info endpoint as backup.
+
+  **Reason:**
+
+  z/OSMF JWT endpoint was not found.
+
+  **Action:**
+
+  Ensure APAR PH12143 (https://www.ibm.com/support/pages/apar/PH12143) fix has been applied.
+
+### ZWEAG188W
+
+  z/OSMF JWT builder endpoint call (%s) failed with %s
+
+  **Reason:**
+
+  z/OSMF returned an error code when calling JWT endpoint.
+
+  **Action:**
+
+  Review z/OSMF status. Contact your system administrator.
+
+### ZWEAG704E
+
+  Configuration error '%s' when trying to read the public and private key for signing JWT: %s
+
+  **Reason:**
+
+  A problem occurred while trying to read the certificate-key pair from the keystore.
+
+  **Action:**
+
+  Review the mandatory fields used in the configuration such as the keystore location path, the keystore and key password, and the keystore type.
+
+### ZWEAG705E
+
+  Failed to load public or private key from key with alias '%s' in the keystore '%s'. ZAAS is shutting down.
+
+  **Reason:**
+
+  Failed to load a public or private key from the keystore during JWT Token initialization.
+
+  **Action:**
+
+  Check that the key alias is specified and correct. Verify that the keys are present in the keystore.
+
+### ZWEAG711E
+
+  The principal '%s' is missing queried authorization.
+
+  **Reason:**
+
+  The principal does not have the queried access to the resource name within the resource class.
+
+  **Action:**
+
+  No action is needed.
+
+### ZWEAG713E
+
+  Configuration error when trying to establish JWT producer. Events: %s
+
+  **Reason:**
+
+  A problem occurred while trying to make sure that there is a valid JWT producer available. A possible cause of the problem is that API ML does not recognize the authentication type used by z/OSMF.
+
+  **Action:**
+
+  Based on the specific information in the message, verify that the key configuration is correct, or alternatively, that z/OSMF is available. If z/OSMF is available, specify the authentication type used by z/OSMF in your configuration settings.
+
+  Use the following configuration format:
+  ```
+    apiml:
+      security:
+        auth:
+          zosmf:
+            jwtAutoconfiguration:
+  ```
+  Apply one of the following values:
+
+  * **jwt**
+    Signifies that z/OSMF supports JWT (APAR PH12143 is applied)
+
+  * **ltpa**
+    Signifies that z/OSMF does not support JWT
+
+### ZWEAG715E
+
+  The wrong amount of keys retrieved. The amount of retrieved keys is: %s
+
+  **Reason:**
+
+  There are too many keys in the JWK set. As such, it is not possible to choose the correct one.
+
+  **Action:**
+
+  Verify the configuration of the z/OSMF to make sure that z/OSMF provides only one used key.
+
+### ZWEAG716E
+
+  The system does not know what key should be used.
+
+  **Reason:**
+
+  Typically z/OSMF is either unavailable or offline.
+
+  **Action:**
+
+  Verify that z/OSMF is available, accessible by the ZAAS, and online.
+
+### ZWEAT607E
+
+  Body in the revoke request is not valid.
+
+  **Reason:**
+
+  The request body is not valid
+
+  **Action:**
+
+  Use a valid body in the request. Format of a message: `{userId: string, (optional)timestamp: long}` or `{serviceId: string, (optional)timestamp: long}`.
+
+### ZWEAZ600W
+
+  ZAAS cannot generate or obtain Zowe token. Reason: %s
+
+  **Reason:**
+
+  Review the reason section of the message.
+
+  **Action:**
+
+  Make sure z/OSMF is available when using the z/OSMF authentication provider or whether Zowe can generate tokens for other authentication providers. Make also sure that the identity mapping is correctly configured and set for the requested authentication.
+
+### ZWEAZ601W
+
+  z/OSMF is not available or z/OSMF response does not contain any token. Reason: %s
+
+  **Reason:**
+
+  z/OSMF does not return JWT or LTPA tokens.
+
+  **Action:**
+
+  Make sure z/OSMF is available to API ML or review your z/OSMF configuration.
+
 ## Discovery service messages
 
 ### ZWEAD400E
@@ -1283,6 +1728,30 @@ Contact your administrator.
   **Action:**
 
   Review the log of Gateway Service and its configuration.
+
+### ZWEAD705E
+
+  Discovery Service cannot load static definition of services from %s: %s
+
+  **Reason:**
+
+  The input files with static definition is not valid and cannot be applied at the moment.
+
+  **Action:**
+
+  Verify directory with static definition files and fix their content.
+
+### ZWEAD706E
+
+  Some static services cannot be registered into Eureka from %s: %s
+
+  **Reason:**
+
+  Eureka is not initiated at the moment or static definition files contains an error.
+
+  **Action:**
+
+  Verify folder with static definition files or try it later.
 
 ## Gateway service messages
 
@@ -1746,4 +2215,211 @@ Contact your administrator.
   **Action:**
 
   Check the specific exception for troubleshooting.
+
+## Caching service messages
+
+### ZWEAG130E
+
+  Token is not valid for URL '%s'
+
+  **Reason:**
+
+  The token is not valid.
+
+  **Action:**
+
+  Provide a valid token.
+
+### ZWEAG131E
+
+  No authorization token provided for URL '%s'
+
+  **Reason:**
+
+  No authorization token is provided.
+
+  **Action:**
+
+  Provide a valid authorization token.
+
+### ZWECS130E
+
+  Payload '%s' is not valid: '%s'.
+
+  **Reason:**
+
+  The payload is not in valid JSON format.
+
+  **Action:**
+
+  Provide a payload in JSON format.
+
+### ZWECS131E
+
+  Key '%s' is not in the cache for service '%s'
+
+  **Reason:**
+
+  Cache does not contain the provided key.
+
+  **Action:**
+
+  Add a key-value pair to the cache using the key or operate on an existing key in the cache.
+
+### ZWECS132E
+
+  No cache key provided.
+
+  **Reason:**
+
+  No cache key was provided.
+
+  **Action:**
+
+  Provide a key that is in the cache.
+
+### ZWECS133E
+
+  Adding key '%s' resulted in a collision in the cache.
+
+  **Reason:**
+
+  Key is already in the cache.
+
+  **Action:**
+
+  Update or delete the key, or add a different key.
+
+### ZWECS134E
+
+  Insufficient storage space limit.
+
+  **Reason:**
+
+  The storage space is full.
+
+  **Action:**
+
+  Change the definition of the VSAM and the configuration for the maximum records stored or replace Reject strategy with Remove Oldest.
+
+### ZWECS135E
+
+  Adding value '%s' resulted in a collision in the cache.
+
+  **Reason:**
+
+  Value is already in the cache.
+
+  **Action:**
+
+  Provide a value that is not in the cache.
+
+### ZWECS136E
+
+  The storage of list items is supported only on Infinispan.
+
+  **Reason:**
+
+  This caching storage method doesn't support this API.
+
+  **Action:**
+
+  Switch to Infinispan to be able to use this API.
+
+### ZWECS151E
+
+  Problem initializing storage of type '%s': '%s'. Exception: '%s'
+
+  **Reason:**
+
+  Caching storage was not initialized.
+
+  **Action:**
+
+  Please submit an issue with this message.
+
+### ZWECS152E
+
+  Could not query the cache for '%s' storage: '%s'
+
+  **Reason:**
+
+  There was an error querying the persistent storage.
+
+  **Action:**
+
+  Check that your configured caching storage solution is functioning properly.
+
+### ZWECS154E
+
+  The JZOS toolkit implementation isn't available.
+
+  **Reason:**
+
+  JZOS toolkit used to communicate with JZOS is unavailable. Either you are running outside of zOS with VSAM as the storage or your zOS Java is misconfigured.
+
+  **Action:**
+
+  Check that you run on zOS and that the JZOS toolkit Java classes are on classpath.
+
+### ZWECS155W
+
+  '%s' storage option is deprecated.
+
+  **Reason:**
+
+  Specified storage option is deprecated and will be removed in the next major version.
+
+  **Action:**
+
+  Switch to one of the supported options.
+
+### ZWECS700E
+
+  Gateway service is not available at URL '%s'. Error returned: '%s'
+
+  **Reason:**
+
+  The gateway service is not available.
+
+  **Action:**
+
+  Make sure that the gateway service is running and is accessible by the URL provided in the message.
+
+### ZWECS701W
+
+  The InMemory configuration is used despite not being supported for production usage.
+
+  **Reason:**
+
+  Development configuration in the production.
+
+  **Action:**
+
+  Change the caching.storage.mode to other supported option than inMemory.
+
+### ZWECS702W
+
+  Missing header with certificate.
+
+  **Reason:**
+
+  Call executed without valid client certificate.
+
+  **Action:**
+
+  Verify ssl context in client application.
+
+### ZWECS703W
+
+  Cache is not available: %s
+
+  **Reason:**
+
+  Cache is not ready to write at the moment.
+
+  **Action:**
+
+  Wait till initialization of cache is done. In case it is done verify the instance configuration or connectivity between multiple instances.
+
 
