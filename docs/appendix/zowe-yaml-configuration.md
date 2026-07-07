@@ -754,7 +754,7 @@ These configurations can be used under the `components.caching-service` section:
   Specifies the enablement of the Infinispan virtual threads feature available from JDK 21+.  
   **Default:** `false`.
     :::note
-    We recommend the enablement of the virtual threads feature only on non-z/OS platforms. On z/OS, virtual threads currently cause JGroups cluster communication to stall due to thread pinning. For more information, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md) in _Using Infinispan as a storage solution through the Caching service_.
+    We recommend the enablement of the virtual threads feature only on non-z/OS platforms. On z/OS, virtual threads cause JGroups cluster communication to stall, when running in High Availability (HA) mode, due to thread pinning. For more information, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md) in _Using Infinispan as a storage solution through the Caching service_.
     :::
 
 ##### Redis specific configuration
