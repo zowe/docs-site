@@ -744,11 +744,11 @@ These configurations can be used under the `components.caching-service` section:
   Beginning with version 2.18.4, the value for `storage.infinispan.persistence.indexLocation` is no longer used. If you migrate to v2.18.4 or a later version, leaving this configuration results in a data migration. to `<workspace>/caching-service/<HA instance ID>/data`. In case of non-HA instance value `localhost` is used as `HA instance ID`.
   :::
 - **storage.infinispan.jgroups.port**  
-  Specifies the port number used by Infinispan to synchronize data among caching-service instances.
+  Specifies the port number used by Infinispan to synchronize data among Caching Service instances.
 - **storage.infinispan.jgroups.host**  
   The default value is derived from the Zowe hostname, which Infinispan uses to synchronize data among caching service instances.
 - **storage.infinispan.jgroups.keyExchange.port**  
-  The port number used by Infinispan to perform a secure handshake between caching-service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.  
+  The port number used by Infinispan to perform a secure handshake between Caching Service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.  
   **Default:** `7118`. 
 - **storage.infinispan.useVirtualThreads**  
   Specifies the enablement of the Infinispan virtual threads feature available from JDK 21+.  
