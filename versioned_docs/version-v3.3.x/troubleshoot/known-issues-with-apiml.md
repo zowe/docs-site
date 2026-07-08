@@ -203,5 +203,3 @@ Request a new certificate that contains a valid z/OSMF host name in the subject 
 ### Re-create the Zowe keystore
 
 Re-create the Zowe keystore by deleting it and re-creating it. For more information, see [Importing a file-based PKCS12 certificate](../user-guide/import-certificates.md#importing-an-existing-pkcs12-certificate).  The Zowe keystore directory is the value of the `KEYSTORE_DIRECTORY` variable in the `zowe.yaml` file that is used to launch Zowe.
-
-
