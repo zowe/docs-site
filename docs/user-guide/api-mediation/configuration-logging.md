@@ -2,6 +2,9 @@
 
 Zowe API Mediation Layer uses logback for its logging. You can customize the logging of Zowe API Mediation Layer by specifying the customized `logback.xml` file in `zowe.yaml` for each service separately.
 
+:::info Required Roles: system administrator, system programmer
+:::
+
 To change the default logback configuration file, set `components.<component>.logging.config` with a path to your `logback.xml`.
 
 * **component**  
@@ -23,7 +26,10 @@ components:
 
 ## Default logging configuration file
 
-The following `logback.xml` is an example of logging configuration file which is used by default in all API Mediation Layer components:
+The following `logback.xml` is an example of logging configuration file which is used by default in all API Mediation Layer components.
+
+<details>
+<summary>Click here for the full logback.xml example.</summary>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -82,8 +88,11 @@ The following `logback.xml` is an example of logging configuration file which is
 </configuration>
 ```
 
+</details>
+<br />
+
 :::note
-You can find the current default logging configuration in the [logback-spring.xml](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml) file in the api-layer repository.
+For more information about the current default logging configuration, see the [logback-spring.xml](https://github.com/zowe/api-layer/blob/v3.x.x/apiml-utility/src/main/resources/logback-spring.xml) file in the api-layer repository.
 :::
 
 ## Understanding appenders
@@ -114,7 +123,7 @@ Setting the root level to `DEBUG` enables verbose logging for all packages, whic
 
 ## Configuring Logging Level
 
-As a system administrator or system programmer, you can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
+As a  you can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
 
 ### Configuration Example
 
@@ -139,8 +148,8 @@ Suppresses standard `INFO`-level chatter to drastically minimize spool usage dur
 Provides full diagnostic output for troubleshooting. 
 
 :::note Backwards Compatibility  
-The legacy configuration property `components.apiml.debug: true` is still a functional property and takes precedence over the `logging.level` property. If set to `true`, the logging level automatically resolves to `debug`.
-:::
+ For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `components.apiml.logging.level` setting, forcing a resolution to `debug`.
+ ::: 
 
 ### Log Output Comparisons
 The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
