@@ -111,6 +111,103 @@ The `<root level="INFO">` element in the default configuration sets the base log
 
 Setting the root level to `DEBUG` enables verbose logging for all packages, which is useful for troubleshooting but can generate large log volumes.
 
+
+## Configuring Logging Level
+
+As a system administrator or system programmer, you can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
+
+### Configuration Example
+
+To adjust the logging level, update your `zowe.yaml` file under the `apiml` component block:
+
+```yaml
+# zowe.yaml
+components:  
+  apiml:    
+    logging:      
+      level: quiet   # Options: quiet | info (default) | debug
+```
+
+### Log Level Options
+
+Configure the logging verbosity using the following levels:
+* **info** (default)  
+Represents the standard, baseline logging configuration. It preserves current operational behavior, writing all standard `INFO`, `WARN`, and `ERROR` messages to the log.
+* **quiet**  
+Suppresses standard `INFO`-level chatter to drastically minimize spool usage during normal production operations. THis setting retains only selected critical informational messages (such as application startup, component status, and the configured authentication provider), alongside all warnings and errors.
+* **debug**  
+Provides full diagnostic output for troubleshooting. 
+
+:::note Backwards Compatibility  
+The legacy configuration property `components.apiml.debug: true` is still a functional property and takes precedence over the `logging.level` property. If set to `true`, the logging level automatically resolves to `debug`.
+:::
+
+### Log Output Comparisons
+The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
+
+**Log Output — `info` Level (Default)**  
+This level captures standard application milestones alongside framework warnings. 
+
+<details>
+<summary>Click here to review an example of info log level. </summary>
+<br />
+
+**`info` level**
+
+Notice the inclusion of verbose Tomcat and SpringDoc warning configurations:
+
+```plaintext
+2026-07-01 07:20:20.965 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:20:27.170 <ZWEAGW1:main:33885081> ZWESVUSR WARN  (o.a.t.u.n.j.JSSEUtil) Tomcat interprets the [ciphers] attribute [...]
+2026-07-01 07:20:27.301 <ZWEAGW1:Thread-3:33885081> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 21.785 seconds
+2026-07-01 07:20:27.319 <ZWEAGW1:main:33885081> ZWESVUSR WARN  (o.s.c.e.SpringDocAppInitializer) SpringDoc /v3/api-docs endpoint is enabled by default. [...]
+2026-07-01 07:20:27.320 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 21.805 seconds
+2026-07-01 07:20:27.337 <ZWEAGW1:main:33885081> ZWESVUSR INFO  (o.z.a.GatewayHealthIndicator) ZWEAM001I API Mediation Layer started
+```
+</details>
+<br />
+
+**Log Output — `quiet` Level (No Errors)**  
+When running normally under the quiet level, routine framework warnings and standard chatter are filtered out. Only critical startup and readiness milestones remain.
+
+<details>
+<summary>Click here to review an example of quiet log level without errors. </summary>
+<br />
+
+**`quiet` level (no errors)**
+
+```plaintext
+2026-07-01 07:30:09.697 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:30:15.951 <ZWEAGW1:Thread-3:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 20.496 seconds
+2026-07-01 07:30:15.981 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 20.527 seconds
+2026-07-01 07:30:15.998 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I API Catalog Service started in 20.544 seconds
+2026-07-01 07:30:15.998 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.GatewayHealthIndicator) ZWEAM001I API Mediation Layer started
+```
+</details>
+<br />
+
+**Log Output — `quiet` Level (With Errors)**  
+If an operational issue occurs while using the quiet level, the system dynamically allows relevant `WARN` and `ERROR` diagnostics through alongside the core startup sequence.
+
+<details>
+<summary>Click here to review an example of quiet log level with errors. </summary>
+<br />
+
+**`quiet` level (with errors)**
+
+```plaintext
+2026-07-01 07:34:20.524 <ZWEAGW1:main:33884222> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
+2026-07-01 07:34:26.562 <ZWEAGW1:Thread-3:33884222> ZWESVUSR WARN  (o.z.a.d.s.ServiceDefinitionProcessor) ZWEAD702W Unable to process static API definition data: [...]
+2026-07-01 07:34:26.563 <ZWEAGW1:Thread-3:33884222> ZWESVUSR ERROR (o.z.a.d.s.StaticServicesRegistrationService) Loading static definition failed: [...]
+2026-07-01 07:34:26.563 <ZWEAGW1:Thread-3:33884222> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Discovery Service started in 19.236 seconds
+2026-07-01 07:34:26.660 <ZWEAGW1:main:33884222> ZWESVUSR INFO  (o.z.a.p.s.ServiceStartupEventHandler) ZWEAM000I Caching Service started in 19.333 seconds
+2026-07-01 07:34:43.475 <ZWEAGW1:main:33884222> ZWESVUSR ERROR (o.z.a.c.s.i.ApimlSslKeyExchange) Cannot create server socket: java.net.BindException: EDC8115I Address already in use.
+```
+</details>
+
+
+----------------------------------
+
 ## Customization example
 
 One example of possible customization is changing the pattern for the logged messages. The pattern is defined in the `apimlLogPattern` property in `logback.xml`. By default, API ML prints log messages, as in the following example.
@@ -167,3 +264,4 @@ You can optionally set the level to `TRACE`, `WARN`, `ERROR`, or `OFF` depending
 :::tip
 Using per-package log levels is the recommended approach for troubleshooting specific issues in production, as these log levels prevent the large log volumes which may result from setting the root level to `DEBUG`.
 :::
+
