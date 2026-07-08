@@ -751,7 +751,7 @@ These configurations can be used under the `components.caching-service` section:
   The port number used by Infinispan to perform a secure handshake between Caching Service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.  
   **Default:** `7118`. 
 - **storage.infinispan.useVirtualThreads**  
-  Specifies the enablement of the Infinispan virtual threads feature available from JDK 21+.  
+  Specifies the enablement of the Infinispan virtual threads feature available from Java 21+.  
   **Default:** `false`.
     :::note
     We recommend the enablement of the virtual threads feature only on non-z/OS platforms. On z/OS, virtual threads cause JGroups cluster communication to stall, when running in High Availability (HA) mode, due to thread pinning. For more information, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md) in _Using Infinispan as a storage solution through the Caching service_.
