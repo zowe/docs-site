@@ -570,16 +570,19 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 #### Configure API Mediation Layer Global Logging
 
 - **components.apiml.logging.level**  
-Configures the global logging verbosity across both the APIML modulith and individual microservices (`gateway`, `discovery`, `api-catalog`, `caching-service`). 
+Configures the logging verbosity for the API ML when running in **single-service deployment** mode.
+  
+- **components.<component>.logging.level**  
+Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode (for example, `components.gateway.logging.level`, `components.discovery.logging.level`, `components.api-catalog.logging.level`, or `components.caching-service.logging.level`).
 
   **Possible values:**
-   * `quiet`: Minimizes spool usage. Filters routine framework noise but retains critical startup notifications, authentication provider initialization, warnings, and errors.
-   * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
-   * `debug`: Provides full diagnostic tracing for troubleshooting. Equivalent to setting the legacy debug property to true.
+  * `quiet`: Minimizes spool usage. Filters routine framework noise but retains critical startup notifications, authentication provider initialization, warnings, and errors.
+  * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
+  * `debug`: Provides full diagnostic tracing for troubleshooting. Equivalent to setting the legacy debug property to true.
  
  :::note
- For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `components.apiml.logging.level` setting, forcing a resolution to `debug`.
- ::: 
+ For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `logging.level` settings, forcing a resolution to `debug`.
+ :::
 
 #### Configure component gateway
 
@@ -942,7 +945,7 @@ For all high availability instances, these are the common definitions.
 
 - **haInstances._ha-instance_.sysname**  
  Specifies the system name of the LPAR where the instance is running. Zowe uses the `ROUTE` command to send JES2 start or stop command to this HA instance.
- 
+
 - **haInstances._ha-instance_.components._component_**  
  This optional settings allows you to override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 

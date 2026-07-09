@@ -120,14 +120,14 @@ The `<root level="INFO">` element in the default configuration sets the base log
 
 Setting the root level to `DEBUG` enables verbose logging for all packages, which is useful for troubleshooting but can generate large log volumes.
 
-
 ## Configuring logging level
 
-You can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
+You can manage the volume of API ML logs written to the spool by configuring their verbosity for both **single-service deployment** or a distributed **microservice deployment**. Adjust the logging level property by configuring the attribute corresponding to your deployment mode within your `zowe.yaml` file. 
 
-### Configuration Example
+### Configuration Examples
 
-To adjust the logging level, update your `zowe.yaml` file under the `apiml` component block:
+**For Single-Service Deployment Mode:**
+Update your `zowe.yaml` file under the global `apiml` component block:
 
 ```yaml
 # zowe.yaml
@@ -137,13 +137,28 @@ components:
       level: quiet   # Options: quiet | info (default) | debug
 ```
 
+**For Microservice Deployment Mode:**
+Configure the property under the specific microservice component block (for example, the API Gateway):
+
+```yaml
+# zowe.yaml
+components:  
+  gateway:    
+    logging:      
+      level: quiet   # Options: quiet | info (default) | debug
+```
+
+:::note
+This property is similarly supported under `components.discovery`, `components.api-catalog`, and `components.caching-service`.
+:::
+
 ### Log Level Options
 
 Configure the logging verbosity using the following levels:
 * **info** (default)  
 Represents the standard, baseline logging configuration. It preserves current operational behavior, writing all standard `INFO`, `WARN`, and `ERROR` messages to the log.
 * **quiet**  
-Suppresses standard `INFO`-level chatter to drastically minimize spool usage during normal production operations. THis setting retains only selected critical informational messages (such as application startup, component status, and the configured authentication provider), alongside all warnings and errors.
+Suppresses standard `INFO`-level chatter to drastically minimize spool usage during normal production operations. This setting retains only selected critical informational messages (such as application startup, component status, and the configured authentication provider), alongside all warnings and errors.
 * **debug**  
 Provides full diagnostic output for troubleshooting. 
 
