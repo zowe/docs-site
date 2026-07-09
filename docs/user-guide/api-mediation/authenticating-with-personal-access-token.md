@@ -277,35 +277,3 @@ In these examples, the API client is authenticated.
 
 If the API client tries to authenticate with a service that is not defined in the token scopes, the `X-Zowe-Auth-Failure` error header is set and passed to the southbound service. The error message contains a message that the provided authentication is not valid.
 
-## Troubleshooting PAT Authentication Failures
-
-When integrating Personal Access Tokens into automated scripts or CI/CD pipelines, your HTTP client may occasionally receive a `401 Unauthorized` response. To identify the root cause the API Gateway injects a dedicated diagnostic header into the HTTP response:
-
-* **Header Name:** `X-Zowe-Auth-Failure`
-
-Checking the value of this header allows your scripts to distinguish between different types of token rejections. Common PAT-specific failures include:
-
-* **Expired token:**  
-When a token exceeds its validity period (maximum of 90 days), the internal handling routine `handleTokenExpire()` passes processing forward without assigning an explicit ZWEA code. This results in a fallback diagnostic string of "Invalid or missing authentication"
-
-* **Malformed token:**  
-If the token structure is corrupted, missing cryptographic parts, or structurally unparseable, the `handleTokenNotValid()` error handler uniquely generates an explicit error string containing the code `ZWEAO402E`.
-
-* **Missing, Scope Mismatch, Revoked, or Generic Gateway Errors:**  
-If a token is absent from the request, has been revoked, or does not match the allowed target service IDs defined in the token's original scopes parameter, the Gateway flags the request with code `ZWEAG160E` ("No authentication provided in the request"). These scenarios are functionally grouped under the same identifier at the Gateway layer.
-
-**Example: Expired Token**  
-If a client attempts to access a service using a token that has expired, the Gateway blocks the identity translation and returns the fallback authentication failure string in the response header:
-
-```
-GET /some-service/api/v1/data HTTP/1.1
-Authorization: Bearer <valid-PAT-for-different-service>
-
-HTTP/1.1 200 OK
-X-Zowe-Auth-Failure: Invalid or missing authentication
-```
-:::note
-While the previous example shows a `200 OK` (which occurs if the downstream service allows fallback unauthenticated access to that specific endpoint), endpoints that strictly require authorization will typically return a `401 Unauthorized` status alongside this header.
-:::
-
-For a complete list of error codes, specific message strings, and mitigation steps associated with this header, see the [Authentication Failure Handling](../../extend/extend-apiml/api-medation-sso-integration-extenders.md#authentication-failure-handling) in _Single Sign On Integration for Extenders_.
