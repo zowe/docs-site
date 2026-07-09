@@ -121,9 +121,9 @@ The `<root level="INFO">` element in the default configuration sets the base log
 Setting the root level to `DEBUG` enables verbose logging for all packages, which is useful for troubleshooting but can generate large log volumes.
 
 
-## Configuring Logging Level
+## Configuring logging level
 
-As a  you can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
+You can manage the volume of API ML logs written to the spool by configuring their verbosity. Configure the property `components.apiml.logging.level` in your `zowe.yml` to adjust the logging level across both **single-service** and **microservice** deployment modes. 
 
 ### Configuration Example
 
@@ -154,7 +154,7 @@ Provides full diagnostic output for troubleshooting.
 ### Log Output Comparisons
 The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
 
-**Log Output — `info` Level (Default)**  
+**Log Output — `info` level (default)**  
 This level captures standard application milestones alongside framework warnings. 
 
 <details>
@@ -176,14 +176,14 @@ Notice the inclusion of verbose Tomcat and SpringDoc warning configurations:
 </details>
 <br />
 
-**Log Output — `quiet` Level (No Errors)**  
+**Log Output — `quiet` level (without errors)**  
 When running normally under the quiet level, routine framework warnings and standard chatter are filtered out. Only critical startup and readiness milestones remain.
 
 <details>
 <summary>Click here to review an example of quiet log level without errors. </summary>
 <br />
 
-**`quiet` level (no errors)**
+**`quiet` level (without errors)**
 
 ```plaintext
 2026-07-01 07:30:09.697 <ZWEAGW1:main:33883157> ZWESVUSR INFO  (o.z.a.z.s.c.CompoundAuthProvider) ZWEAM105I Using authentication provider: saf
@@ -195,7 +195,7 @@ When running normally under the quiet level, routine framework warnings and stan
 </details>
 <br />
 
-**Log Output — `quiet` Level (With Errors)**  
+**Log Output — `quiet` level (with errors)**  
 If an operational issue occurs while using the quiet level, the system dynamically allows relevant `WARN` and `ERROR` diagnostics through alongside the core startup sequence.
 
 <details>
@@ -213,9 +213,6 @@ If an operational issue occurs while using the quiet level, the system dynamical
 2026-07-01 07:34:43.475 <ZWEAGW1:main:33884222> ZWESVUSR ERROR (o.z.a.c.s.i.ApimlSslKeyExchange) Cannot create server socket: java.net.BindException: EDC8115I Address already in use.
 ```
 </details>
-
-
-----------------------------------
 
 ## Customization example
 
