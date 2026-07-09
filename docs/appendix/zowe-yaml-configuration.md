@@ -91,7 +91,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
 
 - The component can override the default certificate configuration. For the specific entry of certification configuration that is not overridden, the configuration falls back to default configurations.  
 <!-- Is the following example and example of the user modified configuration? -->
-**Example:**
+  **Example:**
 
   ```yaml
   zowe:
@@ -120,7 +120,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
   ```
   In this example, the App Server uses the certificate alias `app-server` instead of `localhost` from the same keystore defined in `zowe.certificate.keystore.file`. Note that the service uses the same truststore defined in `zowe.certificate.truststore.file`.
 
-- Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration  in the `components.<component>` level can be overridden in the `haInstances.<ha-instance>.components.<component>` level. 
+- Zowe high availability (HA) instance component configuration `haInstances.<ha-instance>.components.<component>` can override global level component configurations `components.<component>`. Any configuration in the `components.<component>` level can be overridden in the `haInstances.<ha-instance>.components.<component>` level. 
 
 **Example:**
 
@@ -140,7 +140,7 @@ In the `zowe.yaml`, you can define default values which can be overridden in mor
           port: 28544
   ```
   
-  In this example configuration, the App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, it will be started but on port 28544.
+  In this example configuration, the App Server on `lpar2a` HA instance will not be started. On `lpar2b` HA instance, the App Server will be started but on port 28544.
 
 ### YAML configurations - certificate
 
@@ -148,22 +148,31 @@ In Zowe YAML configuration, the certificate definition shares the same format wh
 
 - **keystore.type**  
  Specifies the type of the keystore. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
+
 - **keystore.file**  
  Specifies the path of the keystore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`. For example, `safkeyring://ZWESVUSR/ZoweKeyring`.
+
 - **keystore.password**  
  Specifies the password of the keystore.
+
 - **keystore.alias**  
  Represents the alias name of the certificate stored in keystore. If you are using keyring, this is the certificate label connected to the keyring.
+
 - **truststore.type**  
  Specifies the type of the truststore file. If you are using keystore, this value usually should be `PKCS12`. If you are using z/OS keyring, this value should be one of `JCEHYBRIDRACFKS`, `JCECCARACFKS`, `JCERACFKS`.
+
 - **truststore.file**  
  Specifies the path to the truststore file. If you are using keyring, this should look like `safkeyring://<keyring-owner>/<keyring-name>`, and usually will be the same value of `keystore.file`.
+
 - **truststore.password**  
  Specifies the password of the truststore.
+
 - **pem.key**  
  Specifies the private key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or z/OS keyring.
+
 - **pem.certificate**  
  Specifies the public key file in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
+
 - **pem.certificateAuthorities**  
  Specifies certificate authorities in PEM format. This can be used by applications that do not support either PKCS12 keystore format or a z/OS keyring.
 
@@ -175,10 +184,13 @@ The high-level configuration `zowe` supports these definitions:
 
 - **zowe.runtimeDirectory**  
  Specifies the runtime directory where Zowe is installed.
+
 - **zowe.logDirectory**  
  Some Zowe components write logs to file system. This parameter specifies which directory should be used to store log files.
+
 - **zowe.workspaceDirectory**  
  Specifies components where they can write temporary runtime files.
+
 - **zowe.extensionDirectory**  
  Specifies the location of the runtime of all your extensions.
 
@@ -186,6 +198,7 @@ The high-level configuration `zowe` supports these definitions:
 
 - **zowe.job.name**  
  Specifies the Zowe job name for the ZWESLSTC started task.
+
 - **zowe.job.prefix**  
  Specifies the Zowe address space prefix for Zowe components.
 
@@ -257,12 +270,16 @@ Launcher is the program behind the `ZWESLSTC` started task.
 
 - **zowe.launcher**  
  The launcher section defines defaults about how the Zowe launcher acts on components.
+
 - **zowe.launcher.restartIntervals**  
  An array of positive integers that defines how many times a component attempts to be restarted if it fails, and how much time to wait in seconds for that restart to succeed before retrying.
+
 - **zowe.launcher.minUptime**  
  Specifies the minimum amount of time a Zowe component should be running in order to be declared as started successfully.
+
 - **zowe.launcher.shareAs**  
  Specifies if the launcher should start components in the same address space. See documentation for [_BPX_SHAREAS](https://www.ibm.com/docs/en/zos/2.4.0?topic=shell-setting-bpx-shareas-bpx-spawn-script) for details.
+
 - **zowe.launchScript.logLevel**  
  Set to `debug` or `trace` to enable different levels of debug messages from Zowe launch scripts. This setting may help troubleshoot issues during Zowe start.
 
@@ -272,6 +289,7 @@ Duplicate the log messages into the SYSLOG according to `zowe.sysMessages` items
 
 - **zowe.sysMessages**  
  The array of message IDs or any text. Wildcards are not supported.
+
 - **zowe.sysMessageTrim**  
   Specifies to trim SYSLOG message and print only from the matching message ID or text.
 
@@ -373,38 +391,55 @@ zowe:
 ```
 - **zowe.setup.dataset.prefix**  
 Specifies where the `SZWEAUTH` data set is installed.
+
 - **zowe.setup.dataset.parmlib**  
 Specifies the user custom parameter library. The Zowe server command may generate sample PARMLIB members and stores in this library.
+
 - **zowe.setup.dataset.jcllib**  
 Specifies the custom JCL library. The Zowe server command may generate sample JCLs and put into this data set.
+
 - **zowe.setup.dataset.authLoadlib**  
 Specifies the user custom APF LOADLIB. This field is optional. If this parameter is defined, members of `SZWEAUTH` are copied over to this data set to be APF authorized. If this parameter is not defined, `SZWEAUTH` from `zowe.setup.dataset.prefix` is APF authorized.
+
 - **zowe.setup.dataset.authPluginLib**  
 Specifies the user custom APF PLUGINLIB. Zowe ZIS plug-ins can be installed into this load library. This loadlib requires APF authorize.
+
 - **zowe.setup.security.product**  
 Specifies the security product. Can be `RACF`, `ACF2`, or `TSS`. This configuration is optional. The default value is `RACF`.
+
 - **zowe.setup.security.groups.admin**  
 Specifies the group for Zowe administrators. This configuration is optional. The default value is `ZWEADMIN`.
+
 - **zowe.setup.security.groups.stc**  
 Specifies the group for Zowe started tasks. This configuration is optional. The default value is `ZWEADMIN`.
+
 - **zowe.setup.security.groups.sysProg**  
 Specifies the system programmer user ID/group. This configuration is optional. The default value is `ZWEADMIN`.
+
 - **zowe.setup.security.users.zowe**  
 Specifies the userid for Zowe started task. This configuration is optional. The default value is `ZWESVUSR`.
+
 - **zowe.setup.security.users.zis**  
 Specifies the userid for ZIS started task. This configuration is optional. The default value is `ZWESIUSR`.
+
 - **zowe.setup.security.stcs.zowe**  
  Specifies the Zowe started task name. This configuration is optional. The default value is `ZWESLSTC`.
+
 - **zowe.setup.security.stcs.zis**  
   Specifies the ZIS started task name. This configuration is optional. The default value is `ZWESISTC`.
+
 - **zowe.setup.security.stcs.aux**  
   Specifies ZIS AUX started task name. This configuration is optional. The default value is `ZWESASTC`.
+
 - **zowe.setup.certificate.type**  
 Specifies the type of certificate. Valid values are `PKCS12` (USS keystore) or `JCE*` (z/OS keyring: `JCEKS`, `JCECCAKS`, `JCERACFKS`, `JCECCARACFKS` and `JCEHYBRIDRACFKS`).
+
 - **zowe.setup.certificate.dname**  
 Specifies the distinguished name of the certificate. You can define `caCommonName`, `commonName`, `orgUnit`, `org`, `locality`, `state`, and / or `country`. These configurations are optional.
+
 - **zowe.setup.certificate.validity**  
 Specifies the validity days of the certificate. This is optional.
+
 - **zowe.setup.certificate.san**  
 Specifies the `Subject Alternative Name`(s) of the certificate if they are different from `zowe.externalDomains`. Note that for `JCERACFKS` type, with limitation of RACDCERT command, this should contain exact one hostname (domain) and one IP address.
 - **zowe.setup.certificate.importCertificateAuthorities**  
@@ -430,6 +465,7 @@ Specifies the password for keystore defined in `zowe.setup.certificate.pkcs12.im
 Specifies the original certificate alias defined in `zowe.setup.certificate.pkcs12.import.keystore`. After import, the certificate is saved as an alias specified in `zowe.setup.certificate.pkcs12.name`.
 
 </details>
+<br />
 
 **For `JCERACFKS` certificate (z/OS keyring) users**
 
@@ -510,8 +546,10 @@ The high-level configuration `zOSMF` supports the following definitions:
 
 - **zOSMF.host**  
  Specifies the hostname of your z/OSMF instance.
+
 - **zOSMF.port**  
  Specifies the port of your z/OSMF instance.
+
 - **zOSMF.applId**  
  Specifies the application ID of your z/OSMF instance.
 
@@ -525,6 +563,7 @@ In this section, _component_ represents any Zowe components or extension. For al
 Specifies if the component should be started in this Zowe instance, thereby providing control over each component instead of a group.
 - **components._component_.certificate**  
  Allows for customization for a component to use a different certificate from default values. This section follows the same format defined in [YAML configurations - certificate](#yaml-configurations---certificate). If this parameter is not customized, the component uses certificates defined in `zowe.certificate`.
+
 - **components._component_.launcher**  
  Specifies if a specific component has a launcher section which overrides the overall Zowe Launcher default defined in `zowe.launcher`.
 
@@ -532,6 +571,7 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 
 - **components.apiml.logging.level**  
 Configures the global logging verbosity across both the APIML modulith and individual microservices (`gateway`, `discovery`, `api-catalog`, `caching-service`). 
+
   **Possible values:**
    * `quiet`: Minimizes spool usage. Filters routine framework noise but retains critical startup notifications, authentication provider initialization, warnings, and errors.
    * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
@@ -547,52 +587,76 @@ These configurations can be used under the `components.gateway` section:
 
 - **port**  
  Specifies the port which the Gateway should start on. This value must be a valid port number.
+
 - **debug**  
  Specifies the enablement of debug mode for the Gateway.
+
 - **apiml.connectionTimeout**  
   Specifies the value in milliseconds which corresponds to the period in which API ML should establish a single, non-managed connection with the service. If omitted, the default value specified in the API ML Gateway service configuration is used.
+
 - **apiml.connection.idleConnectionTimeoutSeconds**  
   Specifies how long the connection to southbound remains open without communication. The default value is 5 seconds. The unit is in seconds.
+
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.  
+
 - **apiml.gateway.timeoutMillis**  
  Specifies the timeout for the connection to the services in milliseconds.
+
 - **apiml.gateway.servicesToDisableRetry**  
  Specifies a comma-separated list of service IDs for which automatic retries are disabled. Disabling retry for services where retries are not required helps prevent potential memory issues when handling requests with large payloads to the service. This parameter applies to Zowe version 3.3.0 and later versions. 
+
 - **apiml.security.x509.enabled**  
  Specifies if client certificate authentication functionality through ZSS is enabled. Set this parameter to `true` to enable the client certificate authentication functionality through ZSS.
+
 - **apiml.security.x509.externalMapperUrl**  
  Specifies the URL where the Gateway can query the mapping of client certificates.
+
 - **apiml.security.auth.jwt.customAuthHeader**  
  Provides a valid JWT for the southbound service in the custom header. A valid value is any valid name for an HTTP header. 
+
 - **apiml.security.auth.passticket.customAuthHeader**  
  Provides PassTickets for the southbound service in the custom header. A valid value is any valid name for an HTTP header.
+
 - **apiml.security.auth.passticket.customUserHeader**  
  Provides User Info when a PassTicket is provided in the custom header. A valid value is any valid name for an HTTP header.
+
 - **apiml.security.auth.provider**  
  Specifies the authentication provider used by the API Gateway. Valid options are `saf` or `zosmf`.
+
 - **apiml.security.auth.zosmf.serviceId**  
  Allows customization of the service id in case `zosmf` is specified as an authentication provider. The default value is `ibmzosmf`
+
 - **apiml.security.auth.zosmf.jwtAutoconfiguration**  
- Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option. 
+ Customizes the behavior of the Gateway with respect to how JWTs are produced. Valid options are `jwt` and `ltpa`.  `jwt` is the default option. `ltpa` allows API ML to produce JWTs instead of the z/OSMF service. `jwt` is the default and recommended option.
+
 - **apiml.security.authorization.endpoint.url**  
   Specifies the URL to the authorization endpoint. This endpoint informs the Gateway if a user has a particular permission on SAF profile, such as permission to the `APIML.SERVICES` profile of the `ZOWE` class.
+
 - **apiml.security.personalAccessToken.enabled**  
   Specifies if Personal Access Tokens are enabled. The default value is `false`.  
+
 - **apiml.security.forwardHeader.trustedProxies**  
   Specifies the IP address regular expression pattern used to identify trusted proxies from which `X-Forwarded-*` headers are accepted and forwarded. API ML gateways (including cloud gateways) in [Multitenancy Configuration](/user-guide/api-mediation/api-mediation-multi-tenancy) are trusted by default. For example: to trust all proxies from range 10.10.10.0-10.10.10.255, use `10\.10\.10\..*`. This parameter applies to Zowe version 3.3.0 and later versions.
+
 - **apiml.security.useInternalMapper**  
   This property is a global feature toggle. Set the value to `true` to enable the Internal Mapper. The default value is `true`.
+
 - **apiml.security.oidc.enabled**  
   Specifies the global feature toggle. Set the value to `true` to enable OIDC authentication functionality.
+
 - **apiml.security.oidc.registry**  
   Specifies the SAF registry used to group identities recognized as having an OIDC identity mapping. The registry name is the string used during the creation of the mapping between distributed and mainframe user identities. For more information, see [ESM configuration prerequisites](../extend/extend-apiml/api-mediation-oidc-authentication.md#esm-configuration-prerequisites).
+
 - **apiml.security.oidc.jwks.uri**  
   Specifies the URI obtained from the authorization server's metadata where the Gateway queries for the JWK used to sign and verify the access tokens. A valid value is any valid URI. Starting from Zowe version 3.4.0 and later versions, this parameter will support one or more URIs (comma-separated). Providing a list of JWK URIs allows Gateway to support multiple OIDC providers at the same time.
+
 - **apiml.security.oidc.jwks.refreshInternalHours**  
   Specifies the frequency in hours to refresh the JWK keys from the OIDC provider. Defaults to one hour.
+
 - **apiml.security.oidc.identityMapperUser**  
   (Optional) If the userId is different from the default Zowe runtime userId (`ZWESVUSR`), specify the `identityMapperUser` userId to configure API ML access to the external user identity mapper.
+
 - **apiml.security.oidc.userIdField**  
   Specifies the name of the field from the OIDC token with the value that is used for user mapping in SAF. Supports also nested objects via a dot-separated list. When the field contains multiple values, all values are used as distributed identifiers for mapping. Each value for mapping is evaluated sequentially and the first successfully mapped user is used. This parameter is used to specify, for example, a custom field with email or LDAP groups for user mapping. This parameter applies to Zowe version 3.4.0 and later versions.  
   **Default:** `sub`
@@ -613,24 +677,34 @@ User authorization is required to use the `IRR.RUSERMAP` resource within the `FA
     ```
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is used to verify certificates of services in strict mode. Setting to `true` enables `strict` mode where API ML validates if the certificate is trusted in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
+
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
  Specifies if API ML is used to verify certificates of services in non-strict mode. Setting the value to `true` enables the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration when `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+
 - **apiml.service.allowEncodedSlashes**  
  Specifies if the Gateway allows encoded characters to be part of URL requests redirected through the Gateway. Set to `true` to allow encoded characters to be part of URL requests. 
+
 - **apiml.service.corsEnabled**  
  Specifies if CORS are enabled in the API Gateway for Gateway routes `gateway/api/v1/**`. Set to `true` to enable CORS.
+
 - **server.maxConnectionsPerRoute**  
   Specifies the maximum connections for each service.
+
 - **server.maxTotalConnections**  
   Specifies the total connections for all services registered under API Mediation Layer.
+
 - **server.ssl.enabled**  
   Specifies if TLS is used
+
 - **server.webSocket.maxIdleTimeout**  
   This timeout handles how long the Websocket connection remains open if there is no communication happening over the open connection. The default is one hour (3600000 milliseconds).
+
 - **server.webSocket.connectTimeout**  
   This timeout limits how long the API Gateway waits until it drops connection if the Gateway cannot reach the target server. The default is 45 seconds (45000 milliseconds). 
+
 - **server.webSocket.asyncWriteTimeout**  
   This timeout handles how long before the server fails with an unsuccessful response when trying to write a message to the Websocket connection. The default is 60 seconds (60000 milliseconds).
+
 - **server.webSocket.requestBufferSize**  
   This property handles the maximum request size allowed in the WebSocket handshake requests. The default is 8K.
 
@@ -641,22 +715,29 @@ These configurations can be applied to the `components.discovery` section:
 
 - **port**  
  Specifies the port which discovery is to be started on. This value may be a valid port number or an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+
 - **debug**  
  Specifies the enablement of debug mode for the Discovery Service.
 
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication.
+
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in `strict` mode. Set to `true` to enable `strict` mode where API ML validates both trust in the certificate in the truststore, and also if the certificate Common Name or Subject Alternate Name (SAN) matches the service hostname.
+
 - **apiml.security.ssl.nonStrictVerifySslCertificatesOfServices**  
  Specifies if API ML is to verify certificates of services in `non-strict` mode. Set to `true` to enable the `non-strict` mode where API ML validates if the certificate is trusted in the truststore, but ignores the certificate Common Name or Subject Alternate Name (SAN) check. Zowe ignores this configuration if `strict` mode is enabled with `apiml.security.ssl.verifySslCertificatesOfServices`.
+
 - **alternativeStaticApiDefinitionsDirectories**  
  Specifies the alternative directories of static definitions. A valid value is the list of directories separated by commas. 
+
 - **apiml.server.maxTotalConnections**  
  Specifies the total number of connections for all services registered under API Mediation Layer.
+
 - **apiml.discovery.serviceIdPrefixReplacer**  
  Modifies the service ID of a service instance before it registers to API Mediation Layer.
  Use this parameter to ensure compatibility of services that use a non-conformant organization prefix with v2, based on Zowe v2 conformance.
+
 - **server.ssl.enabled**  
  Specifies if TLS is used. The default value is `true`. 
 
@@ -666,26 +747,37 @@ The following configurations can be used under the `components.api-catalog` sect
 
 - **port**  
  Specifies the port which API Catalog is to be started on.
+
 - **debug**  
  Specifies the enablement of debug mode for the API Catalog. This value is equivalent to the `APIML_DEBUG_MODE_ENABLED` variable but with a higher granular level.
+
 - **apiml.health.protected**  
   Specifies if the health check endpoint is accessible with or without authentication. The default value is `true`.
+
 - **apiml.security.authorization.provider**  
   Specifies the provider used for the SAF resource check.
+
 - **apiml.security.authorization.endpoint.url**  
   Specifies the base path of endpoint's URL (`{base path}/{userId}/{class}/{entity}/{level}`). 
+
 - **apiml.catalog.customStyle.logo**  
   Specifies the location of the logo that replaces the default Zowe logo in the API Catalog header. Supported image formats are: `svg`, `png` and `jpg/jpeg`.
+
 - **apiml.catalog.customStyle.fontFamily**  
   Specifies the font family to use across the API Catalog.
+
 - **apiml.catalog.customStyle.backgroundColor**  
   Specifies the HTML color of the main background across the API Catalog.
+
 - **apiml.catalog.customStyle.titlesColor`**  
   Specifies the title color.
+
 - **`apiml.catalog.customStyle.headerColor**  
   Specifies the HTML color of the header element in the API Catalog home page.
+
 - **apiml.catalog.customStyle.textColor**  
-  Specifies the HTML color of the main text across the API Catalog
+  Specifies the HTML color of the main text across the API Catalog.
+
 - **apiml.catalog.customStyle.docLink**  
   Specifies a custom link to be displayed in the header. Use this property to refer to applicable documentation. The format is `<link_name>|<link_url>`.  
 
@@ -695,8 +787,10 @@ These configurations can be used under the `components.caching-service` section:
 
 - **port**  
   Specifies the port which Caching Service should be started on. This may be defined as a valid port number or as an offset from the Gateway component's port. To define an offset enter `"+{offset}"` or `"-{offset}"` as a string. The offset must start with `+` or `-`.
+
 - **debug**  
   Specifies if debug mode is enabled for the Caching Service.
+
 - **apiml.security.ssl.verifySslCertificatesOfServices**  
   Specifies if API ML is to verify certificates of services in strict mode. Set to `false` to disable `strict` mode where API ML validates both if the certificate is trusted in a truststore, and also if the certificate Common Name or Subject Alternative Names (SANs) match the service hostname.
 
@@ -758,14 +852,18 @@ These configurations can be used under the `components.caching-service` section:
   :::
 - **storage.infinispan.jgroups.port**  
   Specifies the port number used by Infinispan to synchronize data among Caching Service instances.
+
 - **storage.infinispan.jgroups.host**  
   The default value is derived from the Zowe hostname, which Infinispan uses to synchronize data among caching service instances.
+
 - **storage.infinispan.jgroups.keyExchange.port**  
   The port number used by Infinispan to perform a secure handshake between Caching Service instances. This key exchange allows a new instance to securely receive the master encryption key from the existing cluster, ensuring all instances can encrypt and decrypt shared data consistently.  
   **Default:** `7118`. 
+
 - **storage.infinispan.useVirtualThreads**  
   Specifies the enablement of the Infinispan virtual threads feature available from Java 21+.  
   **Default:** `false`.
+
     :::note
     We recommend the enablement of the virtual threads feature only on non-z/OS platforms. On z/OS, virtual threads cause JGroups cluster communication to stall, when running in High Availability (HA) mode, due to thread pinning. For more information, see [Infinispan configuration](../extend/extend-apiml/api-mediation-infinispan.md) in _Using Infinispan as a storage solution through the Caching service_.
     :::
@@ -774,20 +872,27 @@ These configurations can be used under the `components.caching-service` section:
 
 - **storage.redis.masterNodeUri**  
  Specifies the URI used to connect to the Redis master instance in the form `username:password@host:port`.
+
 - **storage.redis.timeout**  
  Specifies the timeout second to Redis. Defaults to 60 seconds.
+
 - **storage.redis.sentinel.masterInstance**  
  Specifies the Redis master instance ID used by the Redis Sentinel instances.
 - **storage.redis.sentinel.nodes**  
  Specifies the array of URIs used to connect to a Redis Sentinel instances in the form `username:password@host:port`.
+
 - **storage.redis.ssl.enabled**  
  Specifies the boolean flag indicating if Redis is being used with SSL/TLS support. Defaults to `true`.
+
 - **storage.redis.ssl.keystore**  
  Specifies the keystore file used to store the private key. 
+
 - **storage.redis.ssl.keystorePassword**  
  Specifies the password used to unlock the keystore.
+
 - **storage.redis.ssl.truststore**  
  Specifies the truststore file used to keep other parties public keys and certificates.
+
 - **storage.redis.ssl.truststorePassword**  
  Specifies the password used to unlock the truststore.
 
@@ -834,8 +939,10 @@ For all high availability instances, these are the common definitions.
 
 - **haInstances._ha-instance_.hostname**  
  Specifies the host name where you want to start this instance. This value could be the host name of one LPAR in your Sysplex.
+
 - **haInstances._ha-instance_.sysname**  
  Specifies the system name of the LPAR where the instance is running. Zowe uses the `ROUTE` command to send JES2 start or stop command to this HA instance.
+ 
 - **haInstances._ha-instance_.components._component_**  
  This optional settings allows you to override component configurations for this high availability instance. See [Configuration override - defaults.yaml](#configuration-override---defaultsyaml) for more details.
 
