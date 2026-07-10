@@ -572,7 +572,7 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 - **components.apiml.logging.level**  
 Configures the logging verbosity for the API ML when running in **single-service deployment** mode.
   
-- **components.<component>.logging.level**  
+- **components._component_.logging.level**  
 Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode (for example, `components.gateway.logging.level`, `components.discovery.logging.level`, `components.api-catalog.logging.level`, or `components.caching-service.logging.level`).
 
   **Possible values:**
