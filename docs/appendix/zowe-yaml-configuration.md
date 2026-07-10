@@ -573,16 +573,22 @@ Specifies if the component should be started in this Zowe instance, thereby prov
 Configures the logging verbosity for the API ML when running in **single-service deployment** mode.
   
 - **components._component_.logging.level**  
-Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode (for example, `components.gateway.logging.level`, `components.discovery.logging.level`, `components.api-catalog.logging.level`, or `components.caching-service.logging.level`).
+Configures the logging verbosity for individual API Mediation Layer microservices when running in **microservice deployment** mode.  
+  **Possible components:** 
+  * `gateway`
+  * `discovery`
+  * `api-catalog`
+  * `caching-service`
+  * `zaas`
 
-  **Possible values:**
+  **Possible logging level values:**
   * `quiet`: Minimizes spool usage. Filters routine framework noise but retains critical startup notifications, authentication provider initialization, warnings, and errors.
   * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
   * `debug`: Provides full diagnostic tracing for troubleshooting. Equivalent to setting the legacy debug property to true.
  
- :::note
- For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `logging.level` settings, forcing a resolution to `debug`.
- :::
+  :::note
+  For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `logging.level` settings, forcing a resolution to `debug`.
+  :::
 
 #### Configure component gateway
 
