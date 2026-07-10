@@ -586,8 +586,8 @@ Configures the logging verbosity for individual API Mediation Layer microservice
   * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
   * `debug`: Provides full diagnostic tracing for troubleshooting. Equivalent to setting the legacy debug property to true.
  
-  :::note
-  For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `logging.level` settings, forcing a resolution to `debug`.
+  :::note Backwards Compatibility  
+  The legacy parameter `components.apiml.debug: true` remains fully functional for backwards compatibility. This parameter takes absolute precedence over all new `logging.level` settings. `components.apiml.debug` overrides both the global single-service setting (`components.apiml.logging.level`) and individual microservice settings, such as `components.gateway.logging.level`. When active, `components.apiml.debug` forces the entire operational logging resolution to `debug`.
   :::
 
 #### Configure component gateway

@@ -162,9 +162,9 @@ Suppresses standard `INFO`-level chatter to drastically minimize spool usage dur
 * **debug**  
 Provides full diagnostic output for troubleshooting. 
 
-:::note Backwards Compatibility  
- For backwards compatibility, the legacy parameter `components.apiml.debug: true` is still functional and takes precedence over the `components.apiml.logging.level` setting, forcing a resolution to `debug`.
- ::: 
+  :::note Backwards Compatibility  
+    The legacy parameter `components.apiml.debug: true` remains fully functional for backwards compatibility. This parameter takes absolute precedence over all new `logging.level` settings. `components.apiml.debug` overrides both the global single-service setting (`components.apiml.logging.level`) and individual microservice settings, such as `components.gateway.logging.level`. When active, `components.apiml.debug` forces the entire operational logging resolution to `debug`.
+  :::
 
 ### Log Output Comparisons
 The following examples demonstrate how the different logging levels affect the output and volume in your system logs.
