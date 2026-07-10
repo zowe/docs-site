@@ -149,7 +149,7 @@ components:
 ```
 
 :::note
-This property is similarly supported under `components.discovery`, `components.api-catalog`, and `components.caching-service`.
+This property is similarly supported under `components.discovery`, `components.api-catalog`, `components.caching-service`, and `components.zaas`.
 :::
 
 ### Log Level Options
