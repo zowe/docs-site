@@ -202,9 +202,6 @@ The following sequence outlines the flow when an authentication failure occurs a
 API ML strips out potentially broken identity artifacts (such as empty basic auth credentials) and injects the `X-Zowe-Auth-Failure` header into the request forwarded to your southbound service.
 2. **Upstream Pass-Through:**  
 If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call. API ML does not remove the header if passed from the upstream service. 
-1. **Response Propagation:**  
-The API ML Gateway also attaches this same header to the final HTTP response sent back to the client, ensuring request-response visibility.
-
 
 ### Expected Error Codes
 
@@ -212,8 +209,8 @@ The value of the `X-Zowe-Auth-Failure` header contains explicit message strings.
 
 | Error Code | Error Message | Reason for Failure |
 | :--- | :--- | :--- | 
-| **`ZWEAG160E`** | No authentication provided in the request |   The client request is missing required authentication context or headers completely. |
-| **`ZWEAG167E`** | No client certificate provided in the request | The client request is missing required authentication context or headers completely. |
+| **`ZWEAG160E`** | No authentication provided in the request | The JWT token or client certificate was not provided with the request. |
+| **`ZWEAG167E`** | No client certificate provided in the request | The X509 client certificate was not provided with the request. |
 | **`ZWEAG141E`** | The generation of the PassTicket failed | Invalid or missing authentication. |
 | *(Generic Fallback)* | Invalid or missing authentication | Fallback string when a generalized authentication validation error occurs. |
 | *(Variant)* | Invalid client certificate in request. Error message: Test Exception: | Fallback string when a client certificate is supplied but fails validation check variants. |
