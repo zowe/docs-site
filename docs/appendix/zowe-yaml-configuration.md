@@ -585,9 +585,13 @@ Configures the logging verbosity for individual API Mediation Layer microservice
   * `quiet`: Minimizes spool usage. Filters routine framework noise but retains critical startup notifications, authentication provider initialization, warnings, and errors.
   * `info`: The standard baseline configuration. Preserves default operational logging, including all standard info, warning, and error messages.
   * `debug`: Provides full diagnostic tracing for troubleshooting. Equivalent to setting the legacy debug property to true.
- 
+
   :::note Backwards Compatibility  
-  The legacy parameter `components.apiml.debug: true` remains fully functional for backwards compatibility. This parameter takes absolute precedence over all new `logging.level` settings. `components.apiml.debug` overrides both the global single-service setting (`components.apiml.logging.level`) and individual microservice settings, such as `components.gateway.logging.level`. When active, `components.apiml.debug` forces the entire operational logging resolution to `debug`.
+  Legacy debug parameters remain fully functional for backwards compatibility and take absolute precedence over new `logging.level` settings. 
+
+  The scope of these legacy overrides depends on your deployment mode:
+  * **Single-Service Deployment:** The legacy parameter `components.apiml.debug: true` takes precedence and forces a resolution to `debug`, overriding `components.apiml.logging.level`.
+  * **Microservice Deployment:** Individual service parameters such as `components.gateway.debug: true` take precedence and force a resolution to `debug` for that specific microservice, overriding settings like `components.gateway.logging.level`.
   :::
 
 #### Configure component gateway
