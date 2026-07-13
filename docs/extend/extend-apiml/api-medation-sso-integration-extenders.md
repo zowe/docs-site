@@ -186,3 +186,97 @@ Both the API ML Gateway and the downstream service must conform to the following
 - The downstream service must indicate that it supports forwarded client certificates in the meta-information used in the onboarding process. The property `apiml.service.supportClientCertForwarding` must be set to `true`.
   
 - To validate the Zowe server certificate used by the API Gateway, the service must be aware of the Zowe server certificate chain. This chain is available via the `/certificates` endpoint provided by every API Gateway instance. 
+
+## Authentication Failure Handling
+
+When a downstream (southbound) service is integrated with API ML, the API Gateway evaluates incoming authentication and translates this authentication into downstream security artifacts. If this upstream authentication process fails, API ML provides diagnostic feedback to your service via a dedicated HTTP header:
+
+* **Header Name:** `X-Zowe-Auth-Failure`
+
+### Purpose and Flow of the Header
+
+The primary purpose of the `X-Zowe-Auth-Failure` header is to help your service distinguish between an **upstream authentication failure** (where API ML could not verify the user's identity or generate credentials) and a **downstream authorization failure** (where the user's identity is valid, but your service lacks permissions to grant them access).
+
+The following sequence outlines the flow when an authentication failure occurs at the Gateway layer:
+1. **Request Propagation:**  
+API ML strips out potentially broken identity artifacts (such as empty basic auth credentials) and injects the `X-Zowe-Auth-Failure` header into the request forwarded to your southbound service.
+2. **Upstream Pass-Through:**  
+If an upstream client passes an `X-Zowe-Auth-Failure` header directly in the initial call. API ML does not remove the header if passed from the upstream service. 
+
+### Expected Error Codes
+
+The value of the `X-Zowe-Auth-Failure` header contains explicit message strings. The table below outlines the core error codes that can appear in this header, along with their general meanings:
+
+| Error Code | Error Message | Reason for Failure |
+| :--- | :--- | :--- | 
+| **`ZWEAG160E`** | No authentication provided in the request | The JWT token or client certificate was not provided with the request. |
+| **`ZWEAG167E`** | No client certificate provided in the request | The X509 client certificate was not provided with the request. |
+| **`ZWEAG141E`** | The generation of the PassTicket failed | Invalid or missing authentication. |
+| *(Generic Fallback)* | Invalid or missing authentication | Fallback string when a generalized authentication validation error occurs. |
+| *(Variant)* | Invalid client certificate in request. Error message: Test Exception: | Fallback string when a client certificate is supplied but fails validation check variants. |
+
+:::note
+For complete definitions, mitigation steps, and deeper technical context for each of these codes, see [Error Message Codes](../../troubleshoot/troubleshoot-apiml-error-codes.md) under _Troubleshooting Zowe API Mediation Layer_.
+:::
+
+
+### HTTP Request and Response Examples
+
+**Example of the header on the forwarded request to the southbound service**  
+When an upstream failure occurs (for example, no mapping identity is found), API ML forwards the request to your service with the header injected:
+
+```http
+GET /my-service/api/v1/data HTTP/1.1
+Host: my-service:8080
+X-Zowe-Auth-Failure: ZWEAG160E No authentication provided in the request
+```
+
+**Example HTTP response showing the header to the client**  
+The corresponding response returned by the Gateway contains the header context to inform the client or UI application:
+
+```html
+HTTP/1.1 200 OK
+X-Zowe-Auth-Failure: ZWEAG160E No authentication provided in the request
+Content-Type: application/json
+
+{"message": "The request was processed but authentication was not successful"}
+```
+
+**Personal Access Token (PAT) specific example**  
+If a client passes a PAT that has expired, a localized validation failure occurs. Note that API ML cannot differentiate scope-related errors from other validation constraints.  As such, an expired token results in a generalized authentication failure response:
+
+```html
+GET /some-service/api/v1/data HTTP/1.1
+Authorization: Bearer <expired-PAT>
+
+HTTP/1.1 200 OK
+X-Zowe-Auth-Failure: Invalid or missing authentication
+```
+
+**Code Example: Reading the Header (Java)**
+
+To handle this header cleanly within your southbound service logic, intercept the incoming header value using your application framework's routing layer. Extenders should read the header, log it locally, use it to construct meaningful error responses, and cleanly separate gateway identity concerns from internal authorization routines.
+
+The following Spring Boot example demonstrates how to extract the error, log its context, and propagate a meaningful response:
+
+```java
+@GetMapping("/api/v1/data")
+public ResponseEntity<?> getData(
+    @RequestHeader(value = "X-Zowe-Auth-Failure", required = false) String authFailure
+) {
+    if (authFailure != null) {
+        log.warn("API ML authentication failed: {}", authFailure);
+        
+        // Return 401 to the client with the API ML's error detail
+        return ResponseEntity.status(401)
+            .header("X-Zowe-Auth-Failure", authFailure)
+            .body(Map.of("error", "Authentication failed", "detail", authFailure));
+    }
+    
+    // Normal processing...
+}
+```
+
+This example demonstrates how a southbound service can intercept upstream issues by checking for the `X-Zowe-Auth-Failure` header before executing any business logic. When present, the service safely logs the specific diagnostic message locally to preserve an audit trail and interrupts the request issuing a 401 Unauthorized JSON response. This pattern ensures that upstream authentication failures are isolated from your service's internal authorization logic while also providing clear feedback to the client.
+
+

@@ -87,7 +87,7 @@ PERMIT IRR.RUSERMAP CLASS(FACILITY) ID(ZWEADMIN) ACCESS(READ)
 
 ### Setting the endpoint provider to perform SAF resouce check
 
-To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the [ZSS API](https://docs.zowe.org/stable/user-guide/zss-api/) is configured and used.
+To use the endpoint provider it is necessary to enable the endpoint property and customize the URL corresponding to the SAF resource authorization. By default, the ZSS API is configured and used.
 
 1. Open the file `zowe.yaml`.
 2. Find or add the following properties and their corresponding values:
@@ -183,4 +183,5 @@ The following YAML presents the structure of the file:
 - [IBM RACF documentation](https://www.ibm.com/docs/en/zos/latest?topic=racf)
 - [IBM MQ security documentation](https://www.ibm.com/docs/en/ibm-mq/latest?topic=security)
 - [Class PlatformAccessControl (IBM Java)](https://www.ibm.com/support/knowledgecenter/SSYKE2_8.0.0/com.ibm.java.zsecurity.api.80.doc/com.ibm.os390.security/com/ibm/os390/security/PlatformAccessControl.html?view=kc#checkPermission-java.lang.String-java.lang.String-java.lang.String-int-)
-- [Zowe ZSS API documentation](https://docs.zowe.org/stable/user-guide/zss-api/)
+- [Zowe ZSS documentation](../../getting-started/zowe-architecture.md#zss)
+

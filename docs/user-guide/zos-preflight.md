@@ -19,7 +19,7 @@ You can run each utility independently to diagnose specific issues or to validat
 ## How pre-flight checks work
 
 When `zwe start` (or the Zowe STC) runs, the internal command
-[`zwe internal start prepare`](commands/internal/start/prepare/index.ts) executes before any
+[`zwe internal start prepare`](../appendix/zwe_server_command_reference/zwe/internal/start/zwe-internal-start-prepare.md) executes before any
 Zowe component is launched. It performs a sequence of checks and, depending on their outcome
 and configuration, either continues, prints a warning, or exits with an error.
 

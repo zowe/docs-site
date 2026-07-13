@@ -57,7 +57,7 @@ To start Zowe without the desktop (for example to launch just the API Mediation 
 
 | Task | Results | Time Estimate |  
 |--------------------|----|------|
-| [Configure the Zowe cross memory server (ZIS)](./configure-xmem-server.md) | * JCL member `ZWESISTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path. <br /> * The PDSE Load Library `SZWEAUTH` is APF-authorized, or the load module `ZWESIS01` is copied to an existing APF Auth LoadLib.<br /> * The JCL member `ZWESISTC DD` statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. | 30 minutes 
+| [Configure the Zowe cross memory server (ZIS)](./configure-xmem-server.md) | * JCL member `ZWESISTC` is copied from `SZWESAMP` installation PDS to a PDS on the JES concatenation path. <br /> * The PDSE Load Library `SZWEAUTH` is APF-authorized, or the load module `ZWESIS01` is copied to an existing APF Auth LoadLib.<br /> * The JCL member `ZWESISTC` `DD` statements are updated to point to the location of `ZWESIS01` and `ZWESIP00`. | 30 minutes 
 
 ## Configuring High Availability (optional)
 
@@ -68,7 +68,7 @@ You can configure your system to enable HA. This configuration is not required t
 | [Configure Sysplex for high availability](../user-guide/configure-sysplex.md) | The Parallel Sysplex environment is set up.  | 30 minutes | 
  [Configure z/OSMF for high availability in Sysplex](../user-guide/systemrequirements-zosmf-ha.md)| The z/OSMF server is set up to provide continuous availability of REST services.  | 30 minutes | 
 [Configure the Caching Service for HA](../user-guide/configure-caching-service-ha.md)| State data persistent in HA mode is centralized.  | 30 minutes |
-[Define the `haInstances` section in your zowe.yaml](../appendix/zowe-yaml-configuration/#yaml-configurations---hainstances)| A dedicated section for `haInstances` is created in your zowe.yaml file. | 30 minutes |
+[Define the `haInstances` section in your zowe.yaml](../appendix/zowe-yaml-configuration.md/#yaml-configurations---hainstances)| A dedicated section for `haInstances` is created in your zowe.yaml file. | 30 minutes |
 
 ## Starting and Stopping Zowe  
 
