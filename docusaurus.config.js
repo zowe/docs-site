@@ -74,6 +74,12 @@ module.exports = {
         },
         {
           type: "doc",
+          label: "Upgrade",
+          docId: "upgrade/zowe-v3-migration",
+          position: "left",
+        },
+        {
+          type: "doc",
           label: "Extend",
           docId: "extend/extend-zowe-overview",
           position: "left",
