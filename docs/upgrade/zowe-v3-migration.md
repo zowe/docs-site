@@ -186,8 +186,8 @@ components:
       security:
         auth:
           zosmf:
-             jwtAutoconfiguration: jwt
-             serviceId: ibmzosmf
+            jwtAutoconfiguration: jwt
+            serviceId: ibmzosmf
 ```
 
 #### Caching Service
