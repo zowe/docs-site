@@ -1,7 +1,7 @@
 
-# Error Message Codes
+# Messages and Codes
 
-The following error message codes may appear on logs or API responses. Use the following message code references and the corresponding reasons and actions to help troubleshoot issues. 
+The following messages and codes may appear on logs or API responses. Use the following code references and the corresponding reasons and actions to help troubleshoot issues. 
 
 ## API Mediation Layer utility messages
 
