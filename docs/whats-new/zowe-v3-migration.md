@@ -1,15 +1,16 @@
-# Migrating from Zowe Vx to Zowe V3
+# Upgrading from Zowe Vx to Zowe V3
 
-Follow the procedure outlined in this article to migrate from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the migration process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
+Follow the procedure outlined in this article to upgrade from Zowe v2 to Zowe v3, or Zowe v1 to Zowe v3. While the upgrade process is similar to a Zowe v2 minor release upgrade, there are several new and updated configuration parameters to consider. The workspace directory should be re-created only if you are using the app-server component.
 Follow the steps described in this article to ensure a smooth migration.
 
 
-## Upgrading to the latest version of Zowe v2 (v2.18)
+## Prerequisite to upgrade to Zowe v3
 
-Before upgrading to Zowe v3.0.0, first upgrade to Zowe v2.18, as the rest of the migration instructions are based upon Zowe v2.18.
+* **Upgrade to the latest version of Zowe v2 (v2.18)**  
+If you are currently running on an earlier v2 version of Zowe, before upgrading to Zowe v3.x, first upgrade to Zowe v2.18.x. The following upgrade procedure to Zowe v3 applies to Zowe v2.18.
 Please follow the instructions from the version of Zowe you have and newer in order to prepare to upgrade from Zowe v2 to v3.0.0.
 
-### Migrating from Zowe v2.16.0 or Lower
+### Upgrading from Zowe v2.16.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
@@ -38,7 +39,7 @@ This can be performed with the unix command `zwe init stc`, by running the job Z
 
 </details>
 
-### Migrating from Zowe v2.15.0 or Lower
+### Upgrading from Zowe v2.15.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
@@ -50,7 +51,7 @@ This section is no longer needed and can cause startup error in newer versions o
 
 </details>
 
-### Migrating from Zowe v2.10.0 or Lower
+### Upgrading from Zowe v2.10.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>  
@@ -63,7 +64,7 @@ The `zowe.sysMessages` is a new array that allows you to select messages that, w
 
 </details>
 
-### Migrating from Zowe v2.9.0 or Lower
+### MUpgrading from Zowe v2.9.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>
@@ -75,7 +76,7 @@ In this version and prior there were old and no longer used Application Framewor
 
 </details>
 
-### Migrating from Zowe v2.3.0 or Lower
+### Upgrading from Zowe v2.3.0 or Lower
 
 <details>
 <summary>Click here for configuration details.</summary>
@@ -86,7 +87,7 @@ If you are running Zowe **v2.3.0** or a lower version, a **clean install** of Zo
 
 </details>
 
-### Migrating from Zowe v1
+### Upgrading from Zowe v1
 
 <details>
 <summary>Click here for configuration details.</summary>
@@ -121,7 +122,7 @@ zowe:
 
 ## V3 Prerequisite Changes
 
-Before starting the migration, ensure the following system requirements are met:
+Before starting the upgrade, ensure the following system requirements are met:
 
 - **z/OSMF**  
 Version V2R5 or V3R1 is required. JWT support for z/OSMF is highly recommended. For more information, see [Enabling JSON Web Token support](https://www.ibm.com/docs/en/zos/3.1.0?topic=configurations-enabling-json-web-token-support) in the IBM documentation. If you do not have JWT support in z/OSMF, make sure to set `components.gateway.apiml.security.auth.zosmf.jwtAutoconfiguration` to `ltpa`.

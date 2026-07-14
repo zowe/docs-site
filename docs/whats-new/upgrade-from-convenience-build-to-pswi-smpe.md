@@ -1,10 +1,10 @@
-# Upgrade from Convenience Build to PSWI or SMP/E installation
+# Migrating from Convenience Build to PSWI or SMP/E installation
 
-Review the recommended procedure for upgrading an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices for upgrading, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
+Review the recommended procedure to migrate an existing Zowe installation from a convenience build to a PSWI (Portable Software Instance) or SMP/E-based installation. The steps in this article outline the best practices to perform the migration, and include all necessary tasks for reusing or updating configuration, managing runtime datasets, and maintaining service continuity.
 
-## Prerequisites before upgrade
+## Prerequisites before migration
 
-Ensure you meet the following conditions before you start the upgrade process:
+Ensure you meet the following conditions before you start the migration process:
 
 * Determine the current installed version of Zowe (e.g. v3.0).
 * Determine if the upgrade target is the same version or a newer version (e.g. v3.1).
@@ -36,7 +36,7 @@ For more information about SMP/E installation, see [Installing Zowe SMP/E overvi
 
 ## Configuring to the same or newer version
 
-When upgrading from the convenience build, you can either use PSWI or SMP/E to upgrade to the same version or to a higher version.
+When migrating from the convenience build, you can either use PSWI or SMP/E to migrate to the same version or to upgrade to a higher version.
 
 ### Upgrade to the same version
 
