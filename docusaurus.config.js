@@ -66,16 +66,16 @@ module.exports = {
           docId: "user-guide/install-overview",
           position: "left",
         },
-        {
+                {
           type: "doc",
-          label: "Use",
-          docId: "user-guide/zowe-getting-started-tutorial",
+          label: "Upgrade",
+          docId: "upgrade/zowe-v3-migration",
           position: "left",
         },
         {
           type: "doc",
-          label: "Upgrade",
-          docId: "upgrade/zowe-v3-migration",
+          label: "Use",
+          docId: "user-guide/zowe-getting-started-tutorial",
           position: "left",
         },
         {
