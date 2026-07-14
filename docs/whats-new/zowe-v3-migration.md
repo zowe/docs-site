@@ -173,6 +173,24 @@ components:
 
 If you use keyrings, verify that Zowe YAML references to `safkeyring`. Use two forward slashes (`safkeyring://`). Do not use four forward slashes (`safkeyring:////`).
 
+Zowe v2 accepts an empty value for `zowe.certificate.keystore.password` and `zowe.certificate.truststore.password` when using keyring-based certificates. Zowe v3 requires both to be set to the literal value `password`.
+
+For example:
+
+```yaml
+zowe:
+  certificate:
+    keystore:
+      type: JCERACFKS
+      file: safkeyring://ZWESVUSR/ZoweKeyring
+      password: password
+      alias: localhost
+    truststore:
+      type: JCERACFKS
+      file: safkeyring://ZWESVUSR/ZoweKeyring
+      password: password
+```
+
 #### Gateway z/OSMF service configuration
 
 The service ID for gateway zosmf has changed to **ibmzosmf**. <br/>
@@ -207,6 +225,13 @@ components:
           keyExchange:
             port: 7601
 ```
+
+If you enable single-service deployment mode (see below), **Infinispan is a required storage option** for the Caching Service — other storage modes are not supported in that mode.
+
+#### Single-service deployment mode
+
+From Zowe v3.4.0 onwards, we recommend switching API Mediation Layer to the new single-service (modulith) deployment mode, which runs the Gateway, Discovery Service, API Catalog, and Caching Service in a single JVM process for improved performance and simplified configuration. For details on enabling this mode and its requirements, see [Enabling single-service deployment of API Mediation Layer](../user-guide/api-mediation/api-mediation-modulith.md).
+
 #### ZSS Server
 
 The ZSS server now runs in **64-bit** mode by default.
