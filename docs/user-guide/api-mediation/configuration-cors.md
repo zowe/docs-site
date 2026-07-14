@@ -3,9 +3,31 @@
 :::info Role: system programmer
 :::
 
-As a system programmer, you can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. After enabling the feature as stated in the following procedure, API Gateway endpoints start handling CORS requests. Individual services can control whether they want the Gateway to handle CORS for them through the [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) parameters.
+As a system programmer, you can enable the Gateway to terminate CORS requests for itself and also for routed services. By default, Cross-Origin Resource Sharing (CORS) handling is disabled for Gateway routes `gateway/api/v1/**` and for individual services. Once enabled, API Gateway endpoints handle CORS requests according to your global configuration, and individual services can seamlessly delegate CORS handling to the Gateway using per-service [Custom Metadata](../../extend/extend-apiml/onboard-spring-boot-enabler.md#custom-metadata) CORS parameters. 
 
-When the Gateway handles CORS on behalf of the service, the Gateway sanitizes the following defined headers from the communication (upstream and downstream) in the following comma -separated list:
+
+## Gateway-Managed CORS Handling
+When the Gateway handles CORS on behalf of a service, the Gateway strips specific CORS handshake headers from the upstream and downstream communication loop to prevent them from interfering with upstream or downstream components.
+
+-------
+## Header Sanitization
+
+The Gateway sanitizes the following three headers from the request before forwarding it upstream:
+
+Access-Control-Request-Method
+
+Access-Control-Request-Headers
+
+Origin
+
+Because these headers are removed, the resulting request delivered to the backend service is no longer treated as a CORS request, meaning no additional CORS configuration is required on the service side itself.
+
+Tip: You can override this default list of stripped headers by specifying a custom comma-separated list via the components.gateway.apiml.service.ignoredHeadersWhenCorsEnabled property in zowe.yaml.
+
+
+
+-------
+
 ```
 Access-Control-Request-Method,Access-Control-Request-Headers,Access-Control-Allow-Origin,Access-Control-Allow-Methods,Access-Control-Allow-Headers,Access-Control-Allow-Credentials,Origin
 ```
