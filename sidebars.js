@@ -120,7 +120,7 @@ module.exports = {
       ],
     },
     "whats-new/zowe-compatibility-statement-v3",
-  ],
+  ],  
   "setup": [
     "user-guide/install-overview",
     {
@@ -432,7 +432,6 @@ module.exports = {
             "user-guide/cli-uninstall",
           ],
         },
-
         {
           type: "category",
           label: "Zowe Explorer installation",
@@ -469,6 +468,10 @@ module.exports = {
       ],
     },
   ],
+  "upgrade": [
+    //id of the sidebar
+    "upgrade/zowe-v3-migration",
+  ],    
   "use": [
     "user-guide/zowe-getting-started-tutorial",
     {
@@ -686,10 +689,6 @@ module.exports = {
       ],
     },
   ],
-  "upgrade": [
-    //id of the sidebar
-    "upgrade/zowe-v3-migration",
-  ],  
   "extending": [
     "extend/extend-zowe-overview",
     "extend/zowe-conformance-program",
