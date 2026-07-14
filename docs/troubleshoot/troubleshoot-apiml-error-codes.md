@@ -237,6 +237,18 @@ The following messages and codes may appear on logs or API responses. Use the fo
 
   Verify that the URL of the endpoint you are trying to reach is correct.
 
+### ZWEAM105I
+
+  Using authentication provider: %s
+
+  **Reason:**
+
+  You have chosen an authentication provider, as seen in this message.
+
+  **Action:**
+
+  No action required.
+
 ### ZWEAG120E
 
   Invalid username or password for URL '/gateway/api/v1/auth/login'
