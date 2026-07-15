@@ -38,7 +38,7 @@ In the event that there is an issue with authentication, API Mediation Layer set
 
 ## Accepting JWT
 
-Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No configuration is needed on the user's side. 
+Accepting JSON Web Tokens (JWT) is the recommended method for integrating. No client-side configuration is needed. 
 
 ```yaml
 authentication:
